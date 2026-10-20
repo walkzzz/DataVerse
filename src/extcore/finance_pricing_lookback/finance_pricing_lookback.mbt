@@ -351,45 +351,45 @@ pub fn finance_pricing_lookback_frame_make(size : Int) -> Financepricinglookback
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_frame_len(s : FinancepricinglookbackFrame) -> Int { s.size }
+pub fn FinancepricinglookbackFrame::len(self : FinancepricinglookbackFrame) -> Int { self.size }
 
-pub fn finance_pricing_lookback_frame_get(s : FinancepricinglookbackFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackFrame::get(self : FinancepricinglookbackFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_frame_set(s : FinancepricinglookbackFrame, i : Int, v : Double) -> FinancepricinglookbackFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackFrame::set(self : FinancepricinglookbackFrame, i : Int, v : Double) -> FinancepricinglookbackFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_frame_sum(s : FinancepricinglookbackFrame) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackFrame::sum(self : FinancepricinglookbackFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_frame_mean(s : FinancepricinglookbackFrame) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackFrame::mean(self : FinancepricinglookbackFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_frame_scale(s : FinancepricinglookbackFrame, f : Double) -> FinancepricinglookbackFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackFrame::scale(self : FinancepricinglookbackFrame, f : Double) -> FinancepricinglookbackFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_frame_add(a : FinancepricinglookbackFrame, b : FinancepricinglookbackFrame) -> FinancepricinglookbackFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackFrame::add(self : FinancepricinglookbackFrame, other : FinancepricinglookbackFrame) -> FinancepricinglookbackFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_frame_copy(s : FinancepricinglookbackFrame) -> FinancepricinglookbackFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackFrame::copy(self : FinancepricinglookbackFrame) -> FinancepricinglookbackFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_frame_fill(s : FinancepricinglookbackFrame, v : Double) -> FinancepricinglookbackFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackFrame::fill(self : FinancepricinglookbackFrame, v : Double) -> FinancepricinglookbackFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_frame_min(s : FinancepricinglookbackFrame) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackFrame::min(self : FinancepricinglookbackFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_frame_max(s : FinancepricinglookbackFrame) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackFrame::max(self : FinancepricinglookbackFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_frame_to_string(s : FinancepricinglookbackFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackFrame::to_string(self : FinancepricinglookbackFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackTable {
@@ -402,45 +402,45 @@ pub fn finance_pricing_lookback_table_make(size : Int) -> Financepricinglookback
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_table_len(s : FinancepricinglookbackTable) -> Int { s.size }
+pub fn FinancepricinglookbackTable::len(self : FinancepricinglookbackTable) -> Int { self.size }
 
-pub fn finance_pricing_lookback_table_get(s : FinancepricinglookbackTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackTable::get(self : FinancepricinglookbackTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_table_set(s : FinancepricinglookbackTable, i : Int, v : Double) -> FinancepricinglookbackTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackTable::set(self : FinancepricinglookbackTable, i : Int, v : Double) -> FinancepricinglookbackTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_table_sum(s : FinancepricinglookbackTable) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackTable::sum(self : FinancepricinglookbackTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_table_mean(s : FinancepricinglookbackTable) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackTable::mean(self : FinancepricinglookbackTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_table_scale(s : FinancepricinglookbackTable, f : Double) -> FinancepricinglookbackTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackTable::scale(self : FinancepricinglookbackTable, f : Double) -> FinancepricinglookbackTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_table_add(a : FinancepricinglookbackTable, b : FinancepricinglookbackTable) -> FinancepricinglookbackTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackTable::add(self : FinancepricinglookbackTable, other : FinancepricinglookbackTable) -> FinancepricinglookbackTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_table_copy(s : FinancepricinglookbackTable) -> FinancepricinglookbackTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackTable::copy(self : FinancepricinglookbackTable) -> FinancepricinglookbackTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_table_fill(s : FinancepricinglookbackTable, v : Double) -> FinancepricinglookbackTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackTable::fill(self : FinancepricinglookbackTable, v : Double) -> FinancepricinglookbackTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_table_min(s : FinancepricinglookbackTable) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackTable::min(self : FinancepricinglookbackTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_table_max(s : FinancepricinglookbackTable) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackTable::max(self : FinancepricinglookbackTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_table_to_string(s : FinancepricinglookbackTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackTable::to_string(self : FinancepricinglookbackTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackGraphN {
@@ -453,45 +453,45 @@ pub fn finance_pricing_lookback_graphn_make(size : Int) -> Financepricinglookbac
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_graphn_len(s : FinancepricinglookbackGraphN) -> Int { s.size }
+pub fn FinancepricinglookbackGraphN::len(self : FinancepricinglookbackGraphN) -> Int { self.size }
 
-pub fn finance_pricing_lookback_graphn_get(s : FinancepricinglookbackGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackGraphN::get(self : FinancepricinglookbackGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_graphn_set(s : FinancepricinglookbackGraphN, i : Int, v : Double) -> FinancepricinglookbackGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackGraphN::set(self : FinancepricinglookbackGraphN, i : Int, v : Double) -> FinancepricinglookbackGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_graphn_sum(s : FinancepricinglookbackGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackGraphN::sum(self : FinancepricinglookbackGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_graphn_mean(s : FinancepricinglookbackGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackGraphN::mean(self : FinancepricinglookbackGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_graphn_scale(s : FinancepricinglookbackGraphN, f : Double) -> FinancepricinglookbackGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackGraphN::scale(self : FinancepricinglookbackGraphN, f : Double) -> FinancepricinglookbackGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_graphn_add(a : FinancepricinglookbackGraphN, b : FinancepricinglookbackGraphN) -> FinancepricinglookbackGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackGraphN::add(self : FinancepricinglookbackGraphN, other : FinancepricinglookbackGraphN) -> FinancepricinglookbackGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_graphn_copy(s : FinancepricinglookbackGraphN) -> FinancepricinglookbackGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackGraphN::copy(self : FinancepricinglookbackGraphN) -> FinancepricinglookbackGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_graphn_fill(s : FinancepricinglookbackGraphN, v : Double) -> FinancepricinglookbackGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackGraphN::fill(self : FinancepricinglookbackGraphN, v : Double) -> FinancepricinglookbackGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_graphn_min(s : FinancepricinglookbackGraphN) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackGraphN::min(self : FinancepricinglookbackGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_graphn_max(s : FinancepricinglookbackGraphN) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackGraphN::max(self : FinancepricinglookbackGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_graphn_to_string(s : FinancepricinglookbackGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackGraphN::to_string(self : FinancepricinglookbackGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackNode {
@@ -504,45 +504,45 @@ pub fn finance_pricing_lookback_node_make(size : Int) -> FinancepricinglookbackN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_node_len(s : FinancepricinglookbackNode) -> Int { s.size }
+pub fn FinancepricinglookbackNode::len(self : FinancepricinglookbackNode) -> Int { self.size }
 
-pub fn finance_pricing_lookback_node_get(s : FinancepricinglookbackNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackNode::get(self : FinancepricinglookbackNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_node_set(s : FinancepricinglookbackNode, i : Int, v : Double) -> FinancepricinglookbackNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackNode::set(self : FinancepricinglookbackNode, i : Int, v : Double) -> FinancepricinglookbackNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_node_sum(s : FinancepricinglookbackNode) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackNode::sum(self : FinancepricinglookbackNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_node_mean(s : FinancepricinglookbackNode) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackNode::mean(self : FinancepricinglookbackNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_node_scale(s : FinancepricinglookbackNode, f : Double) -> FinancepricinglookbackNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackNode::scale(self : FinancepricinglookbackNode, f : Double) -> FinancepricinglookbackNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_node_add(a : FinancepricinglookbackNode, b : FinancepricinglookbackNode) -> FinancepricinglookbackNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackNode::add(self : FinancepricinglookbackNode, other : FinancepricinglookbackNode) -> FinancepricinglookbackNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_node_copy(s : FinancepricinglookbackNode) -> FinancepricinglookbackNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackNode::copy(self : FinancepricinglookbackNode) -> FinancepricinglookbackNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_node_fill(s : FinancepricinglookbackNode, v : Double) -> FinancepricinglookbackNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackNode::fill(self : FinancepricinglookbackNode, v : Double) -> FinancepricinglookbackNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_node_min(s : FinancepricinglookbackNode) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackNode::min(self : FinancepricinglookbackNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_node_max(s : FinancepricinglookbackNode) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackNode::max(self : FinancepricinglookbackNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_node_to_string(s : FinancepricinglookbackNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackNode::to_string(self : FinancepricinglookbackNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackEdge {
@@ -555,45 +555,45 @@ pub fn finance_pricing_lookback_edge_make(size : Int) -> FinancepricinglookbackE
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_edge_len(s : FinancepricinglookbackEdge) -> Int { s.size }
+pub fn FinancepricinglookbackEdge::len(self : FinancepricinglookbackEdge) -> Int { self.size }
 
-pub fn finance_pricing_lookback_edge_get(s : FinancepricinglookbackEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackEdge::get(self : FinancepricinglookbackEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_edge_set(s : FinancepricinglookbackEdge, i : Int, v : Double) -> FinancepricinglookbackEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackEdge::set(self : FinancepricinglookbackEdge, i : Int, v : Double) -> FinancepricinglookbackEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_edge_sum(s : FinancepricinglookbackEdge) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackEdge::sum(self : FinancepricinglookbackEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_edge_mean(s : FinancepricinglookbackEdge) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackEdge::mean(self : FinancepricinglookbackEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_edge_scale(s : FinancepricinglookbackEdge, f : Double) -> FinancepricinglookbackEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackEdge::scale(self : FinancepricinglookbackEdge, f : Double) -> FinancepricinglookbackEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_edge_add(a : FinancepricinglookbackEdge, b : FinancepricinglookbackEdge) -> FinancepricinglookbackEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackEdge::add(self : FinancepricinglookbackEdge, other : FinancepricinglookbackEdge) -> FinancepricinglookbackEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_edge_copy(s : FinancepricinglookbackEdge) -> FinancepricinglookbackEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackEdge::copy(self : FinancepricinglookbackEdge) -> FinancepricinglookbackEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_edge_fill(s : FinancepricinglookbackEdge, v : Double) -> FinancepricinglookbackEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackEdge::fill(self : FinancepricinglookbackEdge, v : Double) -> FinancepricinglookbackEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_edge_min(s : FinancepricinglookbackEdge) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackEdge::min(self : FinancepricinglookbackEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_edge_max(s : FinancepricinglookbackEdge) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackEdge::max(self : FinancepricinglookbackEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_edge_to_string(s : FinancepricinglookbackEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackEdge::to_string(self : FinancepricinglookbackEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackPath {
@@ -606,45 +606,45 @@ pub fn finance_pricing_lookback_path_make(size : Int) -> FinancepricinglookbackP
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_path_len(s : FinancepricinglookbackPath) -> Int { s.size }
+pub fn FinancepricinglookbackPath::len(self : FinancepricinglookbackPath) -> Int { self.size }
 
-pub fn finance_pricing_lookback_path_get(s : FinancepricinglookbackPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackPath::get(self : FinancepricinglookbackPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_path_set(s : FinancepricinglookbackPath, i : Int, v : Double) -> FinancepricinglookbackPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackPath::set(self : FinancepricinglookbackPath, i : Int, v : Double) -> FinancepricinglookbackPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_path_sum(s : FinancepricinglookbackPath) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackPath::sum(self : FinancepricinglookbackPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_path_mean(s : FinancepricinglookbackPath) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackPath::mean(self : FinancepricinglookbackPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_path_scale(s : FinancepricinglookbackPath, f : Double) -> FinancepricinglookbackPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackPath::scale(self : FinancepricinglookbackPath, f : Double) -> FinancepricinglookbackPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_path_add(a : FinancepricinglookbackPath, b : FinancepricinglookbackPath) -> FinancepricinglookbackPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackPath::add(self : FinancepricinglookbackPath, other : FinancepricinglookbackPath) -> FinancepricinglookbackPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_path_copy(s : FinancepricinglookbackPath) -> FinancepricinglookbackPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackPath::copy(self : FinancepricinglookbackPath) -> FinancepricinglookbackPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_path_fill(s : FinancepricinglookbackPath, v : Double) -> FinancepricinglookbackPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackPath::fill(self : FinancepricinglookbackPath, v : Double) -> FinancepricinglookbackPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_path_min(s : FinancepricinglookbackPath) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackPath::min(self : FinancepricinglookbackPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_path_max(s : FinancepricinglookbackPath) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackPath::max(self : FinancepricinglookbackPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_path_to_string(s : FinancepricinglookbackPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackPath::to_string(self : FinancepricinglookbackPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackCluster {
@@ -657,45 +657,45 @@ pub fn finance_pricing_lookback_cluster_make(size : Int) -> Financepricinglookba
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_cluster_len(s : FinancepricinglookbackCluster) -> Int { s.size }
+pub fn FinancepricinglookbackCluster::len(self : FinancepricinglookbackCluster) -> Int { self.size }
 
-pub fn finance_pricing_lookback_cluster_get(s : FinancepricinglookbackCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackCluster::get(self : FinancepricinglookbackCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_cluster_set(s : FinancepricinglookbackCluster, i : Int, v : Double) -> FinancepricinglookbackCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackCluster::set(self : FinancepricinglookbackCluster, i : Int, v : Double) -> FinancepricinglookbackCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_cluster_sum(s : FinancepricinglookbackCluster) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackCluster::sum(self : FinancepricinglookbackCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_cluster_mean(s : FinancepricinglookbackCluster) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackCluster::mean(self : FinancepricinglookbackCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_cluster_scale(s : FinancepricinglookbackCluster, f : Double) -> FinancepricinglookbackCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackCluster::scale(self : FinancepricinglookbackCluster, f : Double) -> FinancepricinglookbackCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_cluster_add(a : FinancepricinglookbackCluster, b : FinancepricinglookbackCluster) -> FinancepricinglookbackCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackCluster::add(self : FinancepricinglookbackCluster, other : FinancepricinglookbackCluster) -> FinancepricinglookbackCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_cluster_copy(s : FinancepricinglookbackCluster) -> FinancepricinglookbackCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackCluster::copy(self : FinancepricinglookbackCluster) -> FinancepricinglookbackCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_cluster_fill(s : FinancepricinglookbackCluster, v : Double) -> FinancepricinglookbackCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackCluster::fill(self : FinancepricinglookbackCluster, v : Double) -> FinancepricinglookbackCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_cluster_min(s : FinancepricinglookbackCluster) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackCluster::min(self : FinancepricinglookbackCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_cluster_max(s : FinancepricinglookbackCluster) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackCluster::max(self : FinancepricinglookbackCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_cluster_to_string(s : FinancepricinglookbackCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackCluster::to_string(self : FinancepricinglookbackCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackModel {
@@ -708,45 +708,45 @@ pub fn finance_pricing_lookback_model_make(size : Int) -> Financepricinglookback
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_model_len(s : FinancepricinglookbackModel) -> Int { s.size }
+pub fn FinancepricinglookbackModel::len(self : FinancepricinglookbackModel) -> Int { self.size }
 
-pub fn finance_pricing_lookback_model_get(s : FinancepricinglookbackModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackModel::get(self : FinancepricinglookbackModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_model_set(s : FinancepricinglookbackModel, i : Int, v : Double) -> FinancepricinglookbackModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackModel::set(self : FinancepricinglookbackModel, i : Int, v : Double) -> FinancepricinglookbackModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_model_sum(s : FinancepricinglookbackModel) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackModel::sum(self : FinancepricinglookbackModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_model_mean(s : FinancepricinglookbackModel) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackModel::mean(self : FinancepricinglookbackModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_model_scale(s : FinancepricinglookbackModel, f : Double) -> FinancepricinglookbackModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackModel::scale(self : FinancepricinglookbackModel, f : Double) -> FinancepricinglookbackModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_model_add(a : FinancepricinglookbackModel, b : FinancepricinglookbackModel) -> FinancepricinglookbackModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackModel::add(self : FinancepricinglookbackModel, other : FinancepricinglookbackModel) -> FinancepricinglookbackModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_model_copy(s : FinancepricinglookbackModel) -> FinancepricinglookbackModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackModel::copy(self : FinancepricinglookbackModel) -> FinancepricinglookbackModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_model_fill(s : FinancepricinglookbackModel, v : Double) -> FinancepricinglookbackModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackModel::fill(self : FinancepricinglookbackModel, v : Double) -> FinancepricinglookbackModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_model_min(s : FinancepricinglookbackModel) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackModel::min(self : FinancepricinglookbackModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_model_max(s : FinancepricinglookbackModel) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackModel::max(self : FinancepricinglookbackModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_model_to_string(s : FinancepricinglookbackModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackModel::to_string(self : FinancepricinglookbackModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackLayer {
@@ -759,45 +759,45 @@ pub fn finance_pricing_lookback_layer_make(size : Int) -> Financepricinglookback
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_layer_len(s : FinancepricinglookbackLayer) -> Int { s.size }
+pub fn FinancepricinglookbackLayer::len(self : FinancepricinglookbackLayer) -> Int { self.size }
 
-pub fn finance_pricing_lookback_layer_get(s : FinancepricinglookbackLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackLayer::get(self : FinancepricinglookbackLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_layer_set(s : FinancepricinglookbackLayer, i : Int, v : Double) -> FinancepricinglookbackLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackLayer::set(self : FinancepricinglookbackLayer, i : Int, v : Double) -> FinancepricinglookbackLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_layer_sum(s : FinancepricinglookbackLayer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackLayer::sum(self : FinancepricinglookbackLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_layer_mean(s : FinancepricinglookbackLayer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackLayer::mean(self : FinancepricinglookbackLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_layer_scale(s : FinancepricinglookbackLayer, f : Double) -> FinancepricinglookbackLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackLayer::scale(self : FinancepricinglookbackLayer, f : Double) -> FinancepricinglookbackLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_layer_add(a : FinancepricinglookbackLayer, b : FinancepricinglookbackLayer) -> FinancepricinglookbackLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackLayer::add(self : FinancepricinglookbackLayer, other : FinancepricinglookbackLayer) -> FinancepricinglookbackLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_layer_copy(s : FinancepricinglookbackLayer) -> FinancepricinglookbackLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackLayer::copy(self : FinancepricinglookbackLayer) -> FinancepricinglookbackLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_layer_fill(s : FinancepricinglookbackLayer, v : Double) -> FinancepricinglookbackLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackLayer::fill(self : FinancepricinglookbackLayer, v : Double) -> FinancepricinglookbackLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_layer_min(s : FinancepricinglookbackLayer) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackLayer::min(self : FinancepricinglookbackLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_layer_max(s : FinancepricinglookbackLayer) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackLayer::max(self : FinancepricinglookbackLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_layer_to_string(s : FinancepricinglookbackLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackLayer::to_string(self : FinancepricinglookbackLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackBuffer {
@@ -810,45 +810,45 @@ pub fn finance_pricing_lookback_buffer_make(size : Int) -> Financepricinglookbac
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_buffer_len(s : FinancepricinglookbackBuffer) -> Int { s.size }
+pub fn FinancepricinglookbackBuffer::len(self : FinancepricinglookbackBuffer) -> Int { self.size }
 
-pub fn finance_pricing_lookback_buffer_get(s : FinancepricinglookbackBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackBuffer::get(self : FinancepricinglookbackBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_buffer_set(s : FinancepricinglookbackBuffer, i : Int, v : Double) -> FinancepricinglookbackBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackBuffer::set(self : FinancepricinglookbackBuffer, i : Int, v : Double) -> FinancepricinglookbackBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_buffer_sum(s : FinancepricinglookbackBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackBuffer::sum(self : FinancepricinglookbackBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_buffer_mean(s : FinancepricinglookbackBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackBuffer::mean(self : FinancepricinglookbackBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_buffer_scale(s : FinancepricinglookbackBuffer, f : Double) -> FinancepricinglookbackBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackBuffer::scale(self : FinancepricinglookbackBuffer, f : Double) -> FinancepricinglookbackBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_buffer_add(a : FinancepricinglookbackBuffer, b : FinancepricinglookbackBuffer) -> FinancepricinglookbackBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackBuffer::add(self : FinancepricinglookbackBuffer, other : FinancepricinglookbackBuffer) -> FinancepricinglookbackBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_buffer_copy(s : FinancepricinglookbackBuffer) -> FinancepricinglookbackBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackBuffer::copy(self : FinancepricinglookbackBuffer) -> FinancepricinglookbackBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_buffer_fill(s : FinancepricinglookbackBuffer, v : Double) -> FinancepricinglookbackBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackBuffer::fill(self : FinancepricinglookbackBuffer, v : Double) -> FinancepricinglookbackBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_buffer_min(s : FinancepricinglookbackBuffer) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackBuffer::min(self : FinancepricinglookbackBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_buffer_max(s : FinancepricinglookbackBuffer) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackBuffer::max(self : FinancepricinglookbackBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_buffer_to_string(s : FinancepricinglookbackBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackBuffer::to_string(self : FinancepricinglookbackBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackCursor {
@@ -861,45 +861,45 @@ pub fn finance_pricing_lookback_cursor_make(size : Int) -> Financepricinglookbac
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_cursor_len(s : FinancepricinglookbackCursor) -> Int { s.size }
+pub fn FinancepricinglookbackCursor::len(self : FinancepricinglookbackCursor) -> Int { self.size }
 
-pub fn finance_pricing_lookback_cursor_get(s : FinancepricinglookbackCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackCursor::get(self : FinancepricinglookbackCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_cursor_set(s : FinancepricinglookbackCursor, i : Int, v : Double) -> FinancepricinglookbackCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackCursor::set(self : FinancepricinglookbackCursor, i : Int, v : Double) -> FinancepricinglookbackCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_cursor_sum(s : FinancepricinglookbackCursor) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackCursor::sum(self : FinancepricinglookbackCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_cursor_mean(s : FinancepricinglookbackCursor) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackCursor::mean(self : FinancepricinglookbackCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_cursor_scale(s : FinancepricinglookbackCursor, f : Double) -> FinancepricinglookbackCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackCursor::scale(self : FinancepricinglookbackCursor, f : Double) -> FinancepricinglookbackCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_cursor_add(a : FinancepricinglookbackCursor, b : FinancepricinglookbackCursor) -> FinancepricinglookbackCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackCursor::add(self : FinancepricinglookbackCursor, other : FinancepricinglookbackCursor) -> FinancepricinglookbackCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_cursor_copy(s : FinancepricinglookbackCursor) -> FinancepricinglookbackCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackCursor::copy(self : FinancepricinglookbackCursor) -> FinancepricinglookbackCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_cursor_fill(s : FinancepricinglookbackCursor, v : Double) -> FinancepricinglookbackCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackCursor::fill(self : FinancepricinglookbackCursor, v : Double) -> FinancepricinglookbackCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_cursor_min(s : FinancepricinglookbackCursor) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackCursor::min(self : FinancepricinglookbackCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_cursor_max(s : FinancepricinglookbackCursor) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackCursor::max(self : FinancepricinglookbackCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_cursor_to_string(s : FinancepricinglookbackCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackCursor::to_string(self : FinancepricinglookbackCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackView {
@@ -912,45 +912,45 @@ pub fn finance_pricing_lookback_view_make(size : Int) -> FinancepricinglookbackV
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_view_len(s : FinancepricinglookbackView) -> Int { s.size }
+pub fn FinancepricinglookbackView::len(self : FinancepricinglookbackView) -> Int { self.size }
 
-pub fn finance_pricing_lookback_view_get(s : FinancepricinglookbackView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackView::get(self : FinancepricinglookbackView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_view_set(s : FinancepricinglookbackView, i : Int, v : Double) -> FinancepricinglookbackView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackView::set(self : FinancepricinglookbackView, i : Int, v : Double) -> FinancepricinglookbackView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_view_sum(s : FinancepricinglookbackView) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackView::sum(self : FinancepricinglookbackView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_view_mean(s : FinancepricinglookbackView) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackView::mean(self : FinancepricinglookbackView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_view_scale(s : FinancepricinglookbackView, f : Double) -> FinancepricinglookbackView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackView::scale(self : FinancepricinglookbackView, f : Double) -> FinancepricinglookbackView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_view_add(a : FinancepricinglookbackView, b : FinancepricinglookbackView) -> FinancepricinglookbackView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackView::add(self : FinancepricinglookbackView, other : FinancepricinglookbackView) -> FinancepricinglookbackView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_view_copy(s : FinancepricinglookbackView) -> FinancepricinglookbackView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackView::copy(self : FinancepricinglookbackView) -> FinancepricinglookbackView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_view_fill(s : FinancepricinglookbackView, v : Double) -> FinancepricinglookbackView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackView::fill(self : FinancepricinglookbackView, v : Double) -> FinancepricinglookbackView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_view_min(s : FinancepricinglookbackView) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackView::min(self : FinancepricinglookbackView) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_view_max(s : FinancepricinglookbackView) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackView::max(self : FinancepricinglookbackView) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_view_to_string(s : FinancepricinglookbackView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackView::to_string(self : FinancepricinglookbackView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackRange {
@@ -963,45 +963,45 @@ pub fn finance_pricing_lookback_range_make(size : Int) -> Financepricinglookback
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_range_len(s : FinancepricinglookbackRange) -> Int { s.size }
+pub fn FinancepricinglookbackRange::len(self : FinancepricinglookbackRange) -> Int { self.size }
 
-pub fn finance_pricing_lookback_range_get(s : FinancepricinglookbackRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackRange::get(self : FinancepricinglookbackRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_range_set(s : FinancepricinglookbackRange, i : Int, v : Double) -> FinancepricinglookbackRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackRange::set(self : FinancepricinglookbackRange, i : Int, v : Double) -> FinancepricinglookbackRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_range_sum(s : FinancepricinglookbackRange) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackRange::sum(self : FinancepricinglookbackRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_range_mean(s : FinancepricinglookbackRange) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackRange::mean(self : FinancepricinglookbackRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_range_scale(s : FinancepricinglookbackRange, f : Double) -> FinancepricinglookbackRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackRange::scale(self : FinancepricinglookbackRange, f : Double) -> FinancepricinglookbackRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_range_add(a : FinancepricinglookbackRange, b : FinancepricinglookbackRange) -> FinancepricinglookbackRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackRange::add(self : FinancepricinglookbackRange, other : FinancepricinglookbackRange) -> FinancepricinglookbackRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_range_copy(s : FinancepricinglookbackRange) -> FinancepricinglookbackRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackRange::copy(self : FinancepricinglookbackRange) -> FinancepricinglookbackRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_range_fill(s : FinancepricinglookbackRange, v : Double) -> FinancepricinglookbackRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackRange::fill(self : FinancepricinglookbackRange, v : Double) -> FinancepricinglookbackRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_range_min(s : FinancepricinglookbackRange) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackRange::min(self : FinancepricinglookbackRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_range_max(s : FinancepricinglookbackRange) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackRange::max(self : FinancepricinglookbackRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_range_to_string(s : FinancepricinglookbackRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackRange::to_string(self : FinancepricinglookbackRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricinglookbackSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_pricing_lookback_slice_make(size : Int) -> Financepricinglookback
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_lookback_slice_len(s : FinancepricinglookbackSlice) -> Int { s.size }
+pub fn FinancepricinglookbackSlice::len(self : FinancepricinglookbackSlice) -> Int { self.size }
 
-pub fn finance_pricing_lookback_slice_get(s : FinancepricinglookbackSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricinglookbackSlice::get(self : FinancepricinglookbackSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_lookback_slice_set(s : FinancepricinglookbackSlice, i : Int, v : Double) -> FinancepricinglookbackSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackSlice::set(self : FinancepricinglookbackSlice, i : Int, v : Double) -> FinancepricinglookbackSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_slice_sum(s : FinancepricinglookbackSlice) -> Double { @_common.sum(s.data) }
+pub fn FinancepricinglookbackSlice::sum(self : FinancepricinglookbackSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_lookback_slice_mean(s : FinancepricinglookbackSlice) -> Double { @_common.mean(s.data) }
+pub fn FinancepricinglookbackSlice::mean(self : FinancepricinglookbackSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_lookback_slice_scale(s : FinancepricinglookbackSlice, f : Double) -> FinancepricinglookbackSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackSlice::scale(self : FinancepricinglookbackSlice, f : Double) -> FinancepricinglookbackSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_slice_add(a : FinancepricinglookbackSlice, b : FinancepricinglookbackSlice) -> FinancepricinglookbackSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricinglookbackSlice::add(self : FinancepricinglookbackSlice, other : FinancepricinglookbackSlice) -> FinancepricinglookbackSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_slice_copy(s : FinancepricinglookbackSlice) -> FinancepricinglookbackSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackSlice::copy(self : FinancepricinglookbackSlice) -> FinancepricinglookbackSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_slice_fill(s : FinancepricinglookbackSlice, v : Double) -> FinancepricinglookbackSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricinglookbackSlice::fill(self : FinancepricinglookbackSlice, v : Double) -> FinancepricinglookbackSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_lookback_slice_min(s : FinancepricinglookbackSlice) -> Double { @_common.min(s.data) }
+pub fn FinancepricinglookbackSlice::min(self : FinancepricinglookbackSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_lookback_slice_max(s : FinancepricinglookbackSlice) -> Double { @_common.max(s.data) }
+pub fn FinancepricinglookbackSlice::max(self : FinancepricinglookbackSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_lookback_slice_to_string(s : FinancepricinglookbackSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricinglookbackSlice::to_string(self : FinancepricinglookbackSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

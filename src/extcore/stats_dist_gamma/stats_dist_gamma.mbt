@@ -351,45 +351,45 @@ pub fn stats_dist_gamma_frame_make(size : Int) -> StatsdistgammaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_frame_len(s : StatsdistgammaFrame) -> Int { s.size }
+pub fn StatsdistgammaFrame::len(self : StatsdistgammaFrame) -> Int { self.size }
 
-pub fn stats_dist_gamma_frame_get(s : StatsdistgammaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaFrame::get(self : StatsdistgammaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_frame_set(s : StatsdistgammaFrame, i : Int, v : Double) -> StatsdistgammaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaFrame::set(self : StatsdistgammaFrame, i : Int, v : Double) -> StatsdistgammaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_frame_sum(s : StatsdistgammaFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaFrame::sum(self : StatsdistgammaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_frame_mean(s : StatsdistgammaFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaFrame::mean(self : StatsdistgammaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_frame_scale(s : StatsdistgammaFrame, f : Double) -> StatsdistgammaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaFrame::scale(self : StatsdistgammaFrame, f : Double) -> StatsdistgammaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_frame_add(a : StatsdistgammaFrame, b : StatsdistgammaFrame) -> StatsdistgammaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaFrame::add(self : StatsdistgammaFrame, other : StatsdistgammaFrame) -> StatsdistgammaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_frame_copy(s : StatsdistgammaFrame) -> StatsdistgammaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaFrame::copy(self : StatsdistgammaFrame) -> StatsdistgammaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_frame_fill(s : StatsdistgammaFrame, v : Double) -> StatsdistgammaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaFrame::fill(self : StatsdistgammaFrame, v : Double) -> StatsdistgammaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_frame_min(s : StatsdistgammaFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaFrame::min(self : StatsdistgammaFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_frame_max(s : StatsdistgammaFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaFrame::max(self : StatsdistgammaFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_frame_to_string(s : StatsdistgammaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaFrame::to_string(self : StatsdistgammaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaTable {
@@ -402,45 +402,45 @@ pub fn stats_dist_gamma_table_make(size : Int) -> StatsdistgammaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_table_len(s : StatsdistgammaTable) -> Int { s.size }
+pub fn StatsdistgammaTable::len(self : StatsdistgammaTable) -> Int { self.size }
 
-pub fn stats_dist_gamma_table_get(s : StatsdistgammaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaTable::get(self : StatsdistgammaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_table_set(s : StatsdistgammaTable, i : Int, v : Double) -> StatsdistgammaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaTable::set(self : StatsdistgammaTable, i : Int, v : Double) -> StatsdistgammaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_table_sum(s : StatsdistgammaTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaTable::sum(self : StatsdistgammaTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_table_mean(s : StatsdistgammaTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaTable::mean(self : StatsdistgammaTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_table_scale(s : StatsdistgammaTable, f : Double) -> StatsdistgammaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaTable::scale(self : StatsdistgammaTable, f : Double) -> StatsdistgammaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_table_add(a : StatsdistgammaTable, b : StatsdistgammaTable) -> StatsdistgammaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaTable::add(self : StatsdistgammaTable, other : StatsdistgammaTable) -> StatsdistgammaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_table_copy(s : StatsdistgammaTable) -> StatsdistgammaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaTable::copy(self : StatsdistgammaTable) -> StatsdistgammaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_table_fill(s : StatsdistgammaTable, v : Double) -> StatsdistgammaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaTable::fill(self : StatsdistgammaTable, v : Double) -> StatsdistgammaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_table_min(s : StatsdistgammaTable) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaTable::min(self : StatsdistgammaTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_table_max(s : StatsdistgammaTable) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaTable::max(self : StatsdistgammaTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_table_to_string(s : StatsdistgammaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaTable::to_string(self : StatsdistgammaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaGraphN {
@@ -453,45 +453,45 @@ pub fn stats_dist_gamma_graphn_make(size : Int) -> StatsdistgammaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_graphn_len(s : StatsdistgammaGraphN) -> Int { s.size }
+pub fn StatsdistgammaGraphN::len(self : StatsdistgammaGraphN) -> Int { self.size }
 
-pub fn stats_dist_gamma_graphn_get(s : StatsdistgammaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaGraphN::get(self : StatsdistgammaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_graphn_set(s : StatsdistgammaGraphN, i : Int, v : Double) -> StatsdistgammaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaGraphN::set(self : StatsdistgammaGraphN, i : Int, v : Double) -> StatsdistgammaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_graphn_sum(s : StatsdistgammaGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaGraphN::sum(self : StatsdistgammaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_graphn_mean(s : StatsdistgammaGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaGraphN::mean(self : StatsdistgammaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_graphn_scale(s : StatsdistgammaGraphN, f : Double) -> StatsdistgammaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaGraphN::scale(self : StatsdistgammaGraphN, f : Double) -> StatsdistgammaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_graphn_add(a : StatsdistgammaGraphN, b : StatsdistgammaGraphN) -> StatsdistgammaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaGraphN::add(self : StatsdistgammaGraphN, other : StatsdistgammaGraphN) -> StatsdistgammaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_graphn_copy(s : StatsdistgammaGraphN) -> StatsdistgammaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaGraphN::copy(self : StatsdistgammaGraphN) -> StatsdistgammaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_graphn_fill(s : StatsdistgammaGraphN, v : Double) -> StatsdistgammaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaGraphN::fill(self : StatsdistgammaGraphN, v : Double) -> StatsdistgammaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_graphn_min(s : StatsdistgammaGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaGraphN::min(self : StatsdistgammaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_graphn_max(s : StatsdistgammaGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaGraphN::max(self : StatsdistgammaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_graphn_to_string(s : StatsdistgammaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaGraphN::to_string(self : StatsdistgammaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaNode {
@@ -504,45 +504,45 @@ pub fn stats_dist_gamma_node_make(size : Int) -> StatsdistgammaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_node_len(s : StatsdistgammaNode) -> Int { s.size }
+pub fn StatsdistgammaNode::len(self : StatsdistgammaNode) -> Int { self.size }
 
-pub fn stats_dist_gamma_node_get(s : StatsdistgammaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaNode::get(self : StatsdistgammaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_node_set(s : StatsdistgammaNode, i : Int, v : Double) -> StatsdistgammaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaNode::set(self : StatsdistgammaNode, i : Int, v : Double) -> StatsdistgammaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_node_sum(s : StatsdistgammaNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaNode::sum(self : StatsdistgammaNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_node_mean(s : StatsdistgammaNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaNode::mean(self : StatsdistgammaNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_node_scale(s : StatsdistgammaNode, f : Double) -> StatsdistgammaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaNode::scale(self : StatsdistgammaNode, f : Double) -> StatsdistgammaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_node_add(a : StatsdistgammaNode, b : StatsdistgammaNode) -> StatsdistgammaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaNode::add(self : StatsdistgammaNode, other : StatsdistgammaNode) -> StatsdistgammaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_node_copy(s : StatsdistgammaNode) -> StatsdistgammaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaNode::copy(self : StatsdistgammaNode) -> StatsdistgammaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_node_fill(s : StatsdistgammaNode, v : Double) -> StatsdistgammaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaNode::fill(self : StatsdistgammaNode, v : Double) -> StatsdistgammaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_node_min(s : StatsdistgammaNode) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaNode::min(self : StatsdistgammaNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_node_max(s : StatsdistgammaNode) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaNode::max(self : StatsdistgammaNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_node_to_string(s : StatsdistgammaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaNode::to_string(self : StatsdistgammaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaEdge {
@@ -555,45 +555,45 @@ pub fn stats_dist_gamma_edge_make(size : Int) -> StatsdistgammaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_edge_len(s : StatsdistgammaEdge) -> Int { s.size }
+pub fn StatsdistgammaEdge::len(self : StatsdistgammaEdge) -> Int { self.size }
 
-pub fn stats_dist_gamma_edge_get(s : StatsdistgammaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaEdge::get(self : StatsdistgammaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_edge_set(s : StatsdistgammaEdge, i : Int, v : Double) -> StatsdistgammaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaEdge::set(self : StatsdistgammaEdge, i : Int, v : Double) -> StatsdistgammaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_edge_sum(s : StatsdistgammaEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaEdge::sum(self : StatsdistgammaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_edge_mean(s : StatsdistgammaEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaEdge::mean(self : StatsdistgammaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_edge_scale(s : StatsdistgammaEdge, f : Double) -> StatsdistgammaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaEdge::scale(self : StatsdistgammaEdge, f : Double) -> StatsdistgammaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_edge_add(a : StatsdistgammaEdge, b : StatsdistgammaEdge) -> StatsdistgammaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaEdge::add(self : StatsdistgammaEdge, other : StatsdistgammaEdge) -> StatsdistgammaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_edge_copy(s : StatsdistgammaEdge) -> StatsdistgammaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaEdge::copy(self : StatsdistgammaEdge) -> StatsdistgammaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_edge_fill(s : StatsdistgammaEdge, v : Double) -> StatsdistgammaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaEdge::fill(self : StatsdistgammaEdge, v : Double) -> StatsdistgammaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_edge_min(s : StatsdistgammaEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaEdge::min(self : StatsdistgammaEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_edge_max(s : StatsdistgammaEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaEdge::max(self : StatsdistgammaEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_edge_to_string(s : StatsdistgammaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaEdge::to_string(self : StatsdistgammaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaPath {
@@ -606,45 +606,45 @@ pub fn stats_dist_gamma_path_make(size : Int) -> StatsdistgammaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_path_len(s : StatsdistgammaPath) -> Int { s.size }
+pub fn StatsdistgammaPath::len(self : StatsdistgammaPath) -> Int { self.size }
 
-pub fn stats_dist_gamma_path_get(s : StatsdistgammaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaPath::get(self : StatsdistgammaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_path_set(s : StatsdistgammaPath, i : Int, v : Double) -> StatsdistgammaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaPath::set(self : StatsdistgammaPath, i : Int, v : Double) -> StatsdistgammaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_path_sum(s : StatsdistgammaPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaPath::sum(self : StatsdistgammaPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_path_mean(s : StatsdistgammaPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaPath::mean(self : StatsdistgammaPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_path_scale(s : StatsdistgammaPath, f : Double) -> StatsdistgammaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaPath::scale(self : StatsdistgammaPath, f : Double) -> StatsdistgammaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_path_add(a : StatsdistgammaPath, b : StatsdistgammaPath) -> StatsdistgammaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaPath::add(self : StatsdistgammaPath, other : StatsdistgammaPath) -> StatsdistgammaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_path_copy(s : StatsdistgammaPath) -> StatsdistgammaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaPath::copy(self : StatsdistgammaPath) -> StatsdistgammaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_path_fill(s : StatsdistgammaPath, v : Double) -> StatsdistgammaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaPath::fill(self : StatsdistgammaPath, v : Double) -> StatsdistgammaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_path_min(s : StatsdistgammaPath) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaPath::min(self : StatsdistgammaPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_path_max(s : StatsdistgammaPath) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaPath::max(self : StatsdistgammaPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_path_to_string(s : StatsdistgammaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaPath::to_string(self : StatsdistgammaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaCluster {
@@ -657,45 +657,45 @@ pub fn stats_dist_gamma_cluster_make(size : Int) -> StatsdistgammaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_cluster_len(s : StatsdistgammaCluster) -> Int { s.size }
+pub fn StatsdistgammaCluster::len(self : StatsdistgammaCluster) -> Int { self.size }
 
-pub fn stats_dist_gamma_cluster_get(s : StatsdistgammaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaCluster::get(self : StatsdistgammaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_cluster_set(s : StatsdistgammaCluster, i : Int, v : Double) -> StatsdistgammaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaCluster::set(self : StatsdistgammaCluster, i : Int, v : Double) -> StatsdistgammaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_cluster_sum(s : StatsdistgammaCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaCluster::sum(self : StatsdistgammaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_cluster_mean(s : StatsdistgammaCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaCluster::mean(self : StatsdistgammaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_cluster_scale(s : StatsdistgammaCluster, f : Double) -> StatsdistgammaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaCluster::scale(self : StatsdistgammaCluster, f : Double) -> StatsdistgammaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_cluster_add(a : StatsdistgammaCluster, b : StatsdistgammaCluster) -> StatsdistgammaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaCluster::add(self : StatsdistgammaCluster, other : StatsdistgammaCluster) -> StatsdistgammaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_cluster_copy(s : StatsdistgammaCluster) -> StatsdistgammaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaCluster::copy(self : StatsdistgammaCluster) -> StatsdistgammaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_cluster_fill(s : StatsdistgammaCluster, v : Double) -> StatsdistgammaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaCluster::fill(self : StatsdistgammaCluster, v : Double) -> StatsdistgammaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_cluster_min(s : StatsdistgammaCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaCluster::min(self : StatsdistgammaCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_cluster_max(s : StatsdistgammaCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaCluster::max(self : StatsdistgammaCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_cluster_to_string(s : StatsdistgammaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaCluster::to_string(self : StatsdistgammaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaModel {
@@ -708,45 +708,45 @@ pub fn stats_dist_gamma_model_make(size : Int) -> StatsdistgammaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_model_len(s : StatsdistgammaModel) -> Int { s.size }
+pub fn StatsdistgammaModel::len(self : StatsdistgammaModel) -> Int { self.size }
 
-pub fn stats_dist_gamma_model_get(s : StatsdistgammaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaModel::get(self : StatsdistgammaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_model_set(s : StatsdistgammaModel, i : Int, v : Double) -> StatsdistgammaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaModel::set(self : StatsdistgammaModel, i : Int, v : Double) -> StatsdistgammaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_model_sum(s : StatsdistgammaModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaModel::sum(self : StatsdistgammaModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_model_mean(s : StatsdistgammaModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaModel::mean(self : StatsdistgammaModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_model_scale(s : StatsdistgammaModel, f : Double) -> StatsdistgammaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaModel::scale(self : StatsdistgammaModel, f : Double) -> StatsdistgammaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_model_add(a : StatsdistgammaModel, b : StatsdistgammaModel) -> StatsdistgammaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaModel::add(self : StatsdistgammaModel, other : StatsdistgammaModel) -> StatsdistgammaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_model_copy(s : StatsdistgammaModel) -> StatsdistgammaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaModel::copy(self : StatsdistgammaModel) -> StatsdistgammaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_model_fill(s : StatsdistgammaModel, v : Double) -> StatsdistgammaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaModel::fill(self : StatsdistgammaModel, v : Double) -> StatsdistgammaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_model_min(s : StatsdistgammaModel) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaModel::min(self : StatsdistgammaModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_model_max(s : StatsdistgammaModel) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaModel::max(self : StatsdistgammaModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_model_to_string(s : StatsdistgammaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaModel::to_string(self : StatsdistgammaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaLayer {
@@ -759,45 +759,45 @@ pub fn stats_dist_gamma_layer_make(size : Int) -> StatsdistgammaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_layer_len(s : StatsdistgammaLayer) -> Int { s.size }
+pub fn StatsdistgammaLayer::len(self : StatsdistgammaLayer) -> Int { self.size }
 
-pub fn stats_dist_gamma_layer_get(s : StatsdistgammaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaLayer::get(self : StatsdistgammaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_layer_set(s : StatsdistgammaLayer, i : Int, v : Double) -> StatsdistgammaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaLayer::set(self : StatsdistgammaLayer, i : Int, v : Double) -> StatsdistgammaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_layer_sum(s : StatsdistgammaLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaLayer::sum(self : StatsdistgammaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_layer_mean(s : StatsdistgammaLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaLayer::mean(self : StatsdistgammaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_layer_scale(s : StatsdistgammaLayer, f : Double) -> StatsdistgammaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaLayer::scale(self : StatsdistgammaLayer, f : Double) -> StatsdistgammaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_layer_add(a : StatsdistgammaLayer, b : StatsdistgammaLayer) -> StatsdistgammaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaLayer::add(self : StatsdistgammaLayer, other : StatsdistgammaLayer) -> StatsdistgammaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_layer_copy(s : StatsdistgammaLayer) -> StatsdistgammaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaLayer::copy(self : StatsdistgammaLayer) -> StatsdistgammaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_layer_fill(s : StatsdistgammaLayer, v : Double) -> StatsdistgammaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaLayer::fill(self : StatsdistgammaLayer, v : Double) -> StatsdistgammaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_layer_min(s : StatsdistgammaLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaLayer::min(self : StatsdistgammaLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_layer_max(s : StatsdistgammaLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaLayer::max(self : StatsdistgammaLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_layer_to_string(s : StatsdistgammaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaLayer::to_string(self : StatsdistgammaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaBuffer {
@@ -810,45 +810,45 @@ pub fn stats_dist_gamma_buffer_make(size : Int) -> StatsdistgammaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_buffer_len(s : StatsdistgammaBuffer) -> Int { s.size }
+pub fn StatsdistgammaBuffer::len(self : StatsdistgammaBuffer) -> Int { self.size }
 
-pub fn stats_dist_gamma_buffer_get(s : StatsdistgammaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaBuffer::get(self : StatsdistgammaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_buffer_set(s : StatsdistgammaBuffer, i : Int, v : Double) -> StatsdistgammaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaBuffer::set(self : StatsdistgammaBuffer, i : Int, v : Double) -> StatsdistgammaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_buffer_sum(s : StatsdistgammaBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaBuffer::sum(self : StatsdistgammaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_buffer_mean(s : StatsdistgammaBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaBuffer::mean(self : StatsdistgammaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_buffer_scale(s : StatsdistgammaBuffer, f : Double) -> StatsdistgammaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaBuffer::scale(self : StatsdistgammaBuffer, f : Double) -> StatsdistgammaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_buffer_add(a : StatsdistgammaBuffer, b : StatsdistgammaBuffer) -> StatsdistgammaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaBuffer::add(self : StatsdistgammaBuffer, other : StatsdistgammaBuffer) -> StatsdistgammaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_buffer_copy(s : StatsdistgammaBuffer) -> StatsdistgammaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaBuffer::copy(self : StatsdistgammaBuffer) -> StatsdistgammaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_buffer_fill(s : StatsdistgammaBuffer, v : Double) -> StatsdistgammaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaBuffer::fill(self : StatsdistgammaBuffer, v : Double) -> StatsdistgammaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_buffer_min(s : StatsdistgammaBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaBuffer::min(self : StatsdistgammaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_buffer_max(s : StatsdistgammaBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaBuffer::max(self : StatsdistgammaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_buffer_to_string(s : StatsdistgammaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaBuffer::to_string(self : StatsdistgammaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaCursor {
@@ -861,45 +861,45 @@ pub fn stats_dist_gamma_cursor_make(size : Int) -> StatsdistgammaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_cursor_len(s : StatsdistgammaCursor) -> Int { s.size }
+pub fn StatsdistgammaCursor::len(self : StatsdistgammaCursor) -> Int { self.size }
 
-pub fn stats_dist_gamma_cursor_get(s : StatsdistgammaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaCursor::get(self : StatsdistgammaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_cursor_set(s : StatsdistgammaCursor, i : Int, v : Double) -> StatsdistgammaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaCursor::set(self : StatsdistgammaCursor, i : Int, v : Double) -> StatsdistgammaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_cursor_sum(s : StatsdistgammaCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaCursor::sum(self : StatsdistgammaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_cursor_mean(s : StatsdistgammaCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaCursor::mean(self : StatsdistgammaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_cursor_scale(s : StatsdistgammaCursor, f : Double) -> StatsdistgammaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaCursor::scale(self : StatsdistgammaCursor, f : Double) -> StatsdistgammaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_cursor_add(a : StatsdistgammaCursor, b : StatsdistgammaCursor) -> StatsdistgammaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaCursor::add(self : StatsdistgammaCursor, other : StatsdistgammaCursor) -> StatsdistgammaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_cursor_copy(s : StatsdistgammaCursor) -> StatsdistgammaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaCursor::copy(self : StatsdistgammaCursor) -> StatsdistgammaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_cursor_fill(s : StatsdistgammaCursor, v : Double) -> StatsdistgammaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaCursor::fill(self : StatsdistgammaCursor, v : Double) -> StatsdistgammaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_cursor_min(s : StatsdistgammaCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaCursor::min(self : StatsdistgammaCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_cursor_max(s : StatsdistgammaCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaCursor::max(self : StatsdistgammaCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_cursor_to_string(s : StatsdistgammaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaCursor::to_string(self : StatsdistgammaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaView {
@@ -912,45 +912,45 @@ pub fn stats_dist_gamma_view_make(size : Int) -> StatsdistgammaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_view_len(s : StatsdistgammaView) -> Int { s.size }
+pub fn StatsdistgammaView::len(self : StatsdistgammaView) -> Int { self.size }
 
-pub fn stats_dist_gamma_view_get(s : StatsdistgammaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaView::get(self : StatsdistgammaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_view_set(s : StatsdistgammaView, i : Int, v : Double) -> StatsdistgammaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaView::set(self : StatsdistgammaView, i : Int, v : Double) -> StatsdistgammaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_view_sum(s : StatsdistgammaView) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaView::sum(self : StatsdistgammaView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_view_mean(s : StatsdistgammaView) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaView::mean(self : StatsdistgammaView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_view_scale(s : StatsdistgammaView, f : Double) -> StatsdistgammaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaView::scale(self : StatsdistgammaView, f : Double) -> StatsdistgammaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_view_add(a : StatsdistgammaView, b : StatsdistgammaView) -> StatsdistgammaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaView::add(self : StatsdistgammaView, other : StatsdistgammaView) -> StatsdistgammaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_view_copy(s : StatsdistgammaView) -> StatsdistgammaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaView::copy(self : StatsdistgammaView) -> StatsdistgammaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_view_fill(s : StatsdistgammaView, v : Double) -> StatsdistgammaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaView::fill(self : StatsdistgammaView, v : Double) -> StatsdistgammaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_view_min(s : StatsdistgammaView) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaView::min(self : StatsdistgammaView) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_view_max(s : StatsdistgammaView) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaView::max(self : StatsdistgammaView) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_view_to_string(s : StatsdistgammaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaView::to_string(self : StatsdistgammaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaRange {
@@ -963,45 +963,45 @@ pub fn stats_dist_gamma_range_make(size : Int) -> StatsdistgammaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_range_len(s : StatsdistgammaRange) -> Int { s.size }
+pub fn StatsdistgammaRange::len(self : StatsdistgammaRange) -> Int { self.size }
 
-pub fn stats_dist_gamma_range_get(s : StatsdistgammaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaRange::get(self : StatsdistgammaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_range_set(s : StatsdistgammaRange, i : Int, v : Double) -> StatsdistgammaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaRange::set(self : StatsdistgammaRange, i : Int, v : Double) -> StatsdistgammaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_range_sum(s : StatsdistgammaRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaRange::sum(self : StatsdistgammaRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_range_mean(s : StatsdistgammaRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaRange::mean(self : StatsdistgammaRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_range_scale(s : StatsdistgammaRange, f : Double) -> StatsdistgammaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaRange::scale(self : StatsdistgammaRange, f : Double) -> StatsdistgammaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_range_add(a : StatsdistgammaRange, b : StatsdistgammaRange) -> StatsdistgammaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaRange::add(self : StatsdistgammaRange, other : StatsdistgammaRange) -> StatsdistgammaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_range_copy(s : StatsdistgammaRange) -> StatsdistgammaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaRange::copy(self : StatsdistgammaRange) -> StatsdistgammaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_range_fill(s : StatsdistgammaRange, v : Double) -> StatsdistgammaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaRange::fill(self : StatsdistgammaRange, v : Double) -> StatsdistgammaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_range_min(s : StatsdistgammaRange) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaRange::min(self : StatsdistgammaRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_range_max(s : StatsdistgammaRange) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaRange::max(self : StatsdistgammaRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_range_to_string(s : StatsdistgammaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaRange::to_string(self : StatsdistgammaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_dist_gamma_slice_make(size : Int) -> StatsdistgammaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_gamma_slice_len(s : StatsdistgammaSlice) -> Int { s.size }
+pub fn StatsdistgammaSlice::len(self : StatsdistgammaSlice) -> Int { self.size }
 
-pub fn stats_dist_gamma_slice_get(s : StatsdistgammaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistgammaSlice::get(self : StatsdistgammaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_gamma_slice_set(s : StatsdistgammaSlice, i : Int, v : Double) -> StatsdistgammaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistgammaSlice::set(self : StatsdistgammaSlice, i : Int, v : Double) -> StatsdistgammaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_slice_sum(s : StatsdistgammaSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdistgammaSlice::sum(self : StatsdistgammaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_gamma_slice_mean(s : StatsdistgammaSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdistgammaSlice::mean(self : StatsdistgammaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_gamma_slice_scale(s : StatsdistgammaSlice, f : Double) -> StatsdistgammaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistgammaSlice::scale(self : StatsdistgammaSlice, f : Double) -> StatsdistgammaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_slice_add(a : StatsdistgammaSlice, b : StatsdistgammaSlice) -> StatsdistgammaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistgammaSlice::add(self : StatsdistgammaSlice, other : StatsdistgammaSlice) -> StatsdistgammaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_slice_copy(s : StatsdistgammaSlice) -> StatsdistgammaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistgammaSlice::copy(self : StatsdistgammaSlice) -> StatsdistgammaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_slice_fill(s : StatsdistgammaSlice, v : Double) -> StatsdistgammaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistgammaSlice::fill(self : StatsdistgammaSlice, v : Double) -> StatsdistgammaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_gamma_slice_min(s : StatsdistgammaSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdistgammaSlice::min(self : StatsdistgammaSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_gamma_slice_max(s : StatsdistgammaSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdistgammaSlice::max(self : StatsdistgammaSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_gamma_slice_to_string(s : StatsdistgammaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistgammaSlice::to_string(self : StatsdistgammaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

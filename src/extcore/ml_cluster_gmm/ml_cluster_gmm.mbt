@@ -351,45 +351,45 @@ pub fn ml_cluster_gmm_frame_make(size : Int) -> MlclustergmmFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_frame_len(s : MlclustergmmFrame) -> Int { s.size }
+pub fn MlclustergmmFrame::len(self : MlclustergmmFrame) -> Int { self.size }
 
-pub fn ml_cluster_gmm_frame_get(s : MlclustergmmFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmFrame::get(self : MlclustergmmFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_frame_set(s : MlclustergmmFrame, i : Int, v : Double) -> MlclustergmmFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmFrame::set(self : MlclustergmmFrame, i : Int, v : Double) -> MlclustergmmFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_frame_sum(s : MlclustergmmFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmFrame::sum(self : MlclustergmmFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_frame_mean(s : MlclustergmmFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmFrame::mean(self : MlclustergmmFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_frame_scale(s : MlclustergmmFrame, f : Double) -> MlclustergmmFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmFrame::scale(self : MlclustergmmFrame, f : Double) -> MlclustergmmFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_frame_add(a : MlclustergmmFrame, b : MlclustergmmFrame) -> MlclustergmmFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmFrame::add(self : MlclustergmmFrame, other : MlclustergmmFrame) -> MlclustergmmFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_frame_copy(s : MlclustergmmFrame) -> MlclustergmmFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmFrame::copy(self : MlclustergmmFrame) -> MlclustergmmFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_frame_fill(s : MlclustergmmFrame, v : Double) -> MlclustergmmFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmFrame::fill(self : MlclustergmmFrame, v : Double) -> MlclustergmmFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_frame_min(s : MlclustergmmFrame) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmFrame::min(self : MlclustergmmFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_frame_max(s : MlclustergmmFrame) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmFrame::max(self : MlclustergmmFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_frame_to_string(s : MlclustergmmFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmFrame::to_string(self : MlclustergmmFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmTable {
@@ -402,45 +402,45 @@ pub fn ml_cluster_gmm_table_make(size : Int) -> MlclustergmmTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_table_len(s : MlclustergmmTable) -> Int { s.size }
+pub fn MlclustergmmTable::len(self : MlclustergmmTable) -> Int { self.size }
 
-pub fn ml_cluster_gmm_table_get(s : MlclustergmmTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmTable::get(self : MlclustergmmTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_table_set(s : MlclustergmmTable, i : Int, v : Double) -> MlclustergmmTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmTable::set(self : MlclustergmmTable, i : Int, v : Double) -> MlclustergmmTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_table_sum(s : MlclustergmmTable) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmTable::sum(self : MlclustergmmTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_table_mean(s : MlclustergmmTable) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmTable::mean(self : MlclustergmmTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_table_scale(s : MlclustergmmTable, f : Double) -> MlclustergmmTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmTable::scale(self : MlclustergmmTable, f : Double) -> MlclustergmmTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_table_add(a : MlclustergmmTable, b : MlclustergmmTable) -> MlclustergmmTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmTable::add(self : MlclustergmmTable, other : MlclustergmmTable) -> MlclustergmmTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_table_copy(s : MlclustergmmTable) -> MlclustergmmTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmTable::copy(self : MlclustergmmTable) -> MlclustergmmTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_table_fill(s : MlclustergmmTable, v : Double) -> MlclustergmmTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmTable::fill(self : MlclustergmmTable, v : Double) -> MlclustergmmTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_table_min(s : MlclustergmmTable) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmTable::min(self : MlclustergmmTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_table_max(s : MlclustergmmTable) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmTable::max(self : MlclustergmmTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_table_to_string(s : MlclustergmmTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmTable::to_string(self : MlclustergmmTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmGraphN {
@@ -453,45 +453,45 @@ pub fn ml_cluster_gmm_graphn_make(size : Int) -> MlclustergmmGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_graphn_len(s : MlclustergmmGraphN) -> Int { s.size }
+pub fn MlclustergmmGraphN::len(self : MlclustergmmGraphN) -> Int { self.size }
 
-pub fn ml_cluster_gmm_graphn_get(s : MlclustergmmGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmGraphN::get(self : MlclustergmmGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_graphn_set(s : MlclustergmmGraphN, i : Int, v : Double) -> MlclustergmmGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmGraphN::set(self : MlclustergmmGraphN, i : Int, v : Double) -> MlclustergmmGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_graphn_sum(s : MlclustergmmGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmGraphN::sum(self : MlclustergmmGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_graphn_mean(s : MlclustergmmGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmGraphN::mean(self : MlclustergmmGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_graphn_scale(s : MlclustergmmGraphN, f : Double) -> MlclustergmmGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmGraphN::scale(self : MlclustergmmGraphN, f : Double) -> MlclustergmmGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_graphn_add(a : MlclustergmmGraphN, b : MlclustergmmGraphN) -> MlclustergmmGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmGraphN::add(self : MlclustergmmGraphN, other : MlclustergmmGraphN) -> MlclustergmmGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_graphn_copy(s : MlclustergmmGraphN) -> MlclustergmmGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmGraphN::copy(self : MlclustergmmGraphN) -> MlclustergmmGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_graphn_fill(s : MlclustergmmGraphN, v : Double) -> MlclustergmmGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmGraphN::fill(self : MlclustergmmGraphN, v : Double) -> MlclustergmmGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_graphn_min(s : MlclustergmmGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmGraphN::min(self : MlclustergmmGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_graphn_max(s : MlclustergmmGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmGraphN::max(self : MlclustergmmGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_graphn_to_string(s : MlclustergmmGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmGraphN::to_string(self : MlclustergmmGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmNode {
@@ -504,45 +504,45 @@ pub fn ml_cluster_gmm_node_make(size : Int) -> MlclustergmmNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_node_len(s : MlclustergmmNode) -> Int { s.size }
+pub fn MlclustergmmNode::len(self : MlclustergmmNode) -> Int { self.size }
 
-pub fn ml_cluster_gmm_node_get(s : MlclustergmmNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmNode::get(self : MlclustergmmNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_node_set(s : MlclustergmmNode, i : Int, v : Double) -> MlclustergmmNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmNode::set(self : MlclustergmmNode, i : Int, v : Double) -> MlclustergmmNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_node_sum(s : MlclustergmmNode) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmNode::sum(self : MlclustergmmNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_node_mean(s : MlclustergmmNode) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmNode::mean(self : MlclustergmmNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_node_scale(s : MlclustergmmNode, f : Double) -> MlclustergmmNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmNode::scale(self : MlclustergmmNode, f : Double) -> MlclustergmmNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_node_add(a : MlclustergmmNode, b : MlclustergmmNode) -> MlclustergmmNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmNode::add(self : MlclustergmmNode, other : MlclustergmmNode) -> MlclustergmmNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_node_copy(s : MlclustergmmNode) -> MlclustergmmNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmNode::copy(self : MlclustergmmNode) -> MlclustergmmNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_node_fill(s : MlclustergmmNode, v : Double) -> MlclustergmmNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmNode::fill(self : MlclustergmmNode, v : Double) -> MlclustergmmNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_node_min(s : MlclustergmmNode) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmNode::min(self : MlclustergmmNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_node_max(s : MlclustergmmNode) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmNode::max(self : MlclustergmmNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_node_to_string(s : MlclustergmmNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmNode::to_string(self : MlclustergmmNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmEdge {
@@ -555,45 +555,45 @@ pub fn ml_cluster_gmm_edge_make(size : Int) -> MlclustergmmEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_edge_len(s : MlclustergmmEdge) -> Int { s.size }
+pub fn MlclustergmmEdge::len(self : MlclustergmmEdge) -> Int { self.size }
 
-pub fn ml_cluster_gmm_edge_get(s : MlclustergmmEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmEdge::get(self : MlclustergmmEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_edge_set(s : MlclustergmmEdge, i : Int, v : Double) -> MlclustergmmEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmEdge::set(self : MlclustergmmEdge, i : Int, v : Double) -> MlclustergmmEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_edge_sum(s : MlclustergmmEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmEdge::sum(self : MlclustergmmEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_edge_mean(s : MlclustergmmEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmEdge::mean(self : MlclustergmmEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_edge_scale(s : MlclustergmmEdge, f : Double) -> MlclustergmmEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmEdge::scale(self : MlclustergmmEdge, f : Double) -> MlclustergmmEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_edge_add(a : MlclustergmmEdge, b : MlclustergmmEdge) -> MlclustergmmEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmEdge::add(self : MlclustergmmEdge, other : MlclustergmmEdge) -> MlclustergmmEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_edge_copy(s : MlclustergmmEdge) -> MlclustergmmEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmEdge::copy(self : MlclustergmmEdge) -> MlclustergmmEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_edge_fill(s : MlclustergmmEdge, v : Double) -> MlclustergmmEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmEdge::fill(self : MlclustergmmEdge, v : Double) -> MlclustergmmEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_edge_min(s : MlclustergmmEdge) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmEdge::min(self : MlclustergmmEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_edge_max(s : MlclustergmmEdge) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmEdge::max(self : MlclustergmmEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_edge_to_string(s : MlclustergmmEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmEdge::to_string(self : MlclustergmmEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmPath {
@@ -606,45 +606,45 @@ pub fn ml_cluster_gmm_path_make(size : Int) -> MlclustergmmPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_path_len(s : MlclustergmmPath) -> Int { s.size }
+pub fn MlclustergmmPath::len(self : MlclustergmmPath) -> Int { self.size }
 
-pub fn ml_cluster_gmm_path_get(s : MlclustergmmPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmPath::get(self : MlclustergmmPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_path_set(s : MlclustergmmPath, i : Int, v : Double) -> MlclustergmmPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmPath::set(self : MlclustergmmPath, i : Int, v : Double) -> MlclustergmmPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_path_sum(s : MlclustergmmPath) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmPath::sum(self : MlclustergmmPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_path_mean(s : MlclustergmmPath) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmPath::mean(self : MlclustergmmPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_path_scale(s : MlclustergmmPath, f : Double) -> MlclustergmmPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmPath::scale(self : MlclustergmmPath, f : Double) -> MlclustergmmPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_path_add(a : MlclustergmmPath, b : MlclustergmmPath) -> MlclustergmmPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmPath::add(self : MlclustergmmPath, other : MlclustergmmPath) -> MlclustergmmPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_path_copy(s : MlclustergmmPath) -> MlclustergmmPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmPath::copy(self : MlclustergmmPath) -> MlclustergmmPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_path_fill(s : MlclustergmmPath, v : Double) -> MlclustergmmPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmPath::fill(self : MlclustergmmPath, v : Double) -> MlclustergmmPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_path_min(s : MlclustergmmPath) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmPath::min(self : MlclustergmmPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_path_max(s : MlclustergmmPath) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmPath::max(self : MlclustergmmPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_path_to_string(s : MlclustergmmPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmPath::to_string(self : MlclustergmmPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmCluster {
@@ -657,45 +657,45 @@ pub fn ml_cluster_gmm_cluster_make(size : Int) -> MlclustergmmCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_cluster_len(s : MlclustergmmCluster) -> Int { s.size }
+pub fn MlclustergmmCluster::len(self : MlclustergmmCluster) -> Int { self.size }
 
-pub fn ml_cluster_gmm_cluster_get(s : MlclustergmmCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmCluster::get(self : MlclustergmmCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_cluster_set(s : MlclustergmmCluster, i : Int, v : Double) -> MlclustergmmCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmCluster::set(self : MlclustergmmCluster, i : Int, v : Double) -> MlclustergmmCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_cluster_sum(s : MlclustergmmCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmCluster::sum(self : MlclustergmmCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_cluster_mean(s : MlclustergmmCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmCluster::mean(self : MlclustergmmCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_cluster_scale(s : MlclustergmmCluster, f : Double) -> MlclustergmmCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmCluster::scale(self : MlclustergmmCluster, f : Double) -> MlclustergmmCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_cluster_add(a : MlclustergmmCluster, b : MlclustergmmCluster) -> MlclustergmmCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmCluster::add(self : MlclustergmmCluster, other : MlclustergmmCluster) -> MlclustergmmCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_cluster_copy(s : MlclustergmmCluster) -> MlclustergmmCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmCluster::copy(self : MlclustergmmCluster) -> MlclustergmmCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_cluster_fill(s : MlclustergmmCluster, v : Double) -> MlclustergmmCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmCluster::fill(self : MlclustergmmCluster, v : Double) -> MlclustergmmCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_cluster_min(s : MlclustergmmCluster) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmCluster::min(self : MlclustergmmCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_cluster_max(s : MlclustergmmCluster) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmCluster::max(self : MlclustergmmCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_cluster_to_string(s : MlclustergmmCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmCluster::to_string(self : MlclustergmmCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmModel {
@@ -708,45 +708,45 @@ pub fn ml_cluster_gmm_model_make(size : Int) -> MlclustergmmModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_model_len(s : MlclustergmmModel) -> Int { s.size }
+pub fn MlclustergmmModel::len(self : MlclustergmmModel) -> Int { self.size }
 
-pub fn ml_cluster_gmm_model_get(s : MlclustergmmModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmModel::get(self : MlclustergmmModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_model_set(s : MlclustergmmModel, i : Int, v : Double) -> MlclustergmmModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmModel::set(self : MlclustergmmModel, i : Int, v : Double) -> MlclustergmmModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_model_sum(s : MlclustergmmModel) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmModel::sum(self : MlclustergmmModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_model_mean(s : MlclustergmmModel) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmModel::mean(self : MlclustergmmModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_model_scale(s : MlclustergmmModel, f : Double) -> MlclustergmmModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmModel::scale(self : MlclustergmmModel, f : Double) -> MlclustergmmModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_model_add(a : MlclustergmmModel, b : MlclustergmmModel) -> MlclustergmmModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmModel::add(self : MlclustergmmModel, other : MlclustergmmModel) -> MlclustergmmModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_model_copy(s : MlclustergmmModel) -> MlclustergmmModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmModel::copy(self : MlclustergmmModel) -> MlclustergmmModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_model_fill(s : MlclustergmmModel, v : Double) -> MlclustergmmModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmModel::fill(self : MlclustergmmModel, v : Double) -> MlclustergmmModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_model_min(s : MlclustergmmModel) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmModel::min(self : MlclustergmmModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_model_max(s : MlclustergmmModel) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmModel::max(self : MlclustergmmModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_model_to_string(s : MlclustergmmModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmModel::to_string(self : MlclustergmmModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmLayer {
@@ -759,45 +759,45 @@ pub fn ml_cluster_gmm_layer_make(size : Int) -> MlclustergmmLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_layer_len(s : MlclustergmmLayer) -> Int { s.size }
+pub fn MlclustergmmLayer::len(self : MlclustergmmLayer) -> Int { self.size }
 
-pub fn ml_cluster_gmm_layer_get(s : MlclustergmmLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmLayer::get(self : MlclustergmmLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_layer_set(s : MlclustergmmLayer, i : Int, v : Double) -> MlclustergmmLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmLayer::set(self : MlclustergmmLayer, i : Int, v : Double) -> MlclustergmmLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_layer_sum(s : MlclustergmmLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmLayer::sum(self : MlclustergmmLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_layer_mean(s : MlclustergmmLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmLayer::mean(self : MlclustergmmLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_layer_scale(s : MlclustergmmLayer, f : Double) -> MlclustergmmLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmLayer::scale(self : MlclustergmmLayer, f : Double) -> MlclustergmmLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_layer_add(a : MlclustergmmLayer, b : MlclustergmmLayer) -> MlclustergmmLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmLayer::add(self : MlclustergmmLayer, other : MlclustergmmLayer) -> MlclustergmmLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_layer_copy(s : MlclustergmmLayer) -> MlclustergmmLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmLayer::copy(self : MlclustergmmLayer) -> MlclustergmmLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_layer_fill(s : MlclustergmmLayer, v : Double) -> MlclustergmmLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmLayer::fill(self : MlclustergmmLayer, v : Double) -> MlclustergmmLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_layer_min(s : MlclustergmmLayer) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmLayer::min(self : MlclustergmmLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_layer_max(s : MlclustergmmLayer) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmLayer::max(self : MlclustergmmLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_layer_to_string(s : MlclustergmmLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmLayer::to_string(self : MlclustergmmLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmBuffer {
@@ -810,45 +810,45 @@ pub fn ml_cluster_gmm_buffer_make(size : Int) -> MlclustergmmBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_buffer_len(s : MlclustergmmBuffer) -> Int { s.size }
+pub fn MlclustergmmBuffer::len(self : MlclustergmmBuffer) -> Int { self.size }
 
-pub fn ml_cluster_gmm_buffer_get(s : MlclustergmmBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmBuffer::get(self : MlclustergmmBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_buffer_set(s : MlclustergmmBuffer, i : Int, v : Double) -> MlclustergmmBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmBuffer::set(self : MlclustergmmBuffer, i : Int, v : Double) -> MlclustergmmBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_buffer_sum(s : MlclustergmmBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmBuffer::sum(self : MlclustergmmBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_buffer_mean(s : MlclustergmmBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmBuffer::mean(self : MlclustergmmBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_buffer_scale(s : MlclustergmmBuffer, f : Double) -> MlclustergmmBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmBuffer::scale(self : MlclustergmmBuffer, f : Double) -> MlclustergmmBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_buffer_add(a : MlclustergmmBuffer, b : MlclustergmmBuffer) -> MlclustergmmBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmBuffer::add(self : MlclustergmmBuffer, other : MlclustergmmBuffer) -> MlclustergmmBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_buffer_copy(s : MlclustergmmBuffer) -> MlclustergmmBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmBuffer::copy(self : MlclustergmmBuffer) -> MlclustergmmBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_buffer_fill(s : MlclustergmmBuffer, v : Double) -> MlclustergmmBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmBuffer::fill(self : MlclustergmmBuffer, v : Double) -> MlclustergmmBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_buffer_min(s : MlclustergmmBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmBuffer::min(self : MlclustergmmBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_buffer_max(s : MlclustergmmBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmBuffer::max(self : MlclustergmmBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_buffer_to_string(s : MlclustergmmBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmBuffer::to_string(self : MlclustergmmBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmCursor {
@@ -861,45 +861,45 @@ pub fn ml_cluster_gmm_cursor_make(size : Int) -> MlclustergmmCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_cursor_len(s : MlclustergmmCursor) -> Int { s.size }
+pub fn MlclustergmmCursor::len(self : MlclustergmmCursor) -> Int { self.size }
 
-pub fn ml_cluster_gmm_cursor_get(s : MlclustergmmCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmCursor::get(self : MlclustergmmCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_cursor_set(s : MlclustergmmCursor, i : Int, v : Double) -> MlclustergmmCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmCursor::set(self : MlclustergmmCursor, i : Int, v : Double) -> MlclustergmmCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_cursor_sum(s : MlclustergmmCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmCursor::sum(self : MlclustergmmCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_cursor_mean(s : MlclustergmmCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmCursor::mean(self : MlclustergmmCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_cursor_scale(s : MlclustergmmCursor, f : Double) -> MlclustergmmCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmCursor::scale(self : MlclustergmmCursor, f : Double) -> MlclustergmmCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_cursor_add(a : MlclustergmmCursor, b : MlclustergmmCursor) -> MlclustergmmCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmCursor::add(self : MlclustergmmCursor, other : MlclustergmmCursor) -> MlclustergmmCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_cursor_copy(s : MlclustergmmCursor) -> MlclustergmmCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmCursor::copy(self : MlclustergmmCursor) -> MlclustergmmCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_cursor_fill(s : MlclustergmmCursor, v : Double) -> MlclustergmmCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmCursor::fill(self : MlclustergmmCursor, v : Double) -> MlclustergmmCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_cursor_min(s : MlclustergmmCursor) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmCursor::min(self : MlclustergmmCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_cursor_max(s : MlclustergmmCursor) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmCursor::max(self : MlclustergmmCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_cursor_to_string(s : MlclustergmmCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmCursor::to_string(self : MlclustergmmCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmView {
@@ -912,45 +912,45 @@ pub fn ml_cluster_gmm_view_make(size : Int) -> MlclustergmmView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_view_len(s : MlclustergmmView) -> Int { s.size }
+pub fn MlclustergmmView::len(self : MlclustergmmView) -> Int { self.size }
 
-pub fn ml_cluster_gmm_view_get(s : MlclustergmmView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmView::get(self : MlclustergmmView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_view_set(s : MlclustergmmView, i : Int, v : Double) -> MlclustergmmView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmView::set(self : MlclustergmmView, i : Int, v : Double) -> MlclustergmmView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_view_sum(s : MlclustergmmView) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmView::sum(self : MlclustergmmView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_view_mean(s : MlclustergmmView) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmView::mean(self : MlclustergmmView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_view_scale(s : MlclustergmmView, f : Double) -> MlclustergmmView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmView::scale(self : MlclustergmmView, f : Double) -> MlclustergmmView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_view_add(a : MlclustergmmView, b : MlclustergmmView) -> MlclustergmmView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmView::add(self : MlclustergmmView, other : MlclustergmmView) -> MlclustergmmView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_view_copy(s : MlclustergmmView) -> MlclustergmmView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmView::copy(self : MlclustergmmView) -> MlclustergmmView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_view_fill(s : MlclustergmmView, v : Double) -> MlclustergmmView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmView::fill(self : MlclustergmmView, v : Double) -> MlclustergmmView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_view_min(s : MlclustergmmView) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmView::min(self : MlclustergmmView) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_view_max(s : MlclustergmmView) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmView::max(self : MlclustergmmView) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_view_to_string(s : MlclustergmmView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmView::to_string(self : MlclustergmmView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmRange {
@@ -963,45 +963,45 @@ pub fn ml_cluster_gmm_range_make(size : Int) -> MlclustergmmRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_range_len(s : MlclustergmmRange) -> Int { s.size }
+pub fn MlclustergmmRange::len(self : MlclustergmmRange) -> Int { self.size }
 
-pub fn ml_cluster_gmm_range_get(s : MlclustergmmRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmRange::get(self : MlclustergmmRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_range_set(s : MlclustergmmRange, i : Int, v : Double) -> MlclustergmmRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmRange::set(self : MlclustergmmRange, i : Int, v : Double) -> MlclustergmmRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_range_sum(s : MlclustergmmRange) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmRange::sum(self : MlclustergmmRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_range_mean(s : MlclustergmmRange) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmRange::mean(self : MlclustergmmRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_range_scale(s : MlclustergmmRange, f : Double) -> MlclustergmmRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmRange::scale(self : MlclustergmmRange, f : Double) -> MlclustergmmRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_range_add(a : MlclustergmmRange, b : MlclustergmmRange) -> MlclustergmmRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmRange::add(self : MlclustergmmRange, other : MlclustergmmRange) -> MlclustergmmRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_range_copy(s : MlclustergmmRange) -> MlclustergmmRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmRange::copy(self : MlclustergmmRange) -> MlclustergmmRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_range_fill(s : MlclustergmmRange, v : Double) -> MlclustergmmRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmRange::fill(self : MlclustergmmRange, v : Double) -> MlclustergmmRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_range_min(s : MlclustergmmRange) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmRange::min(self : MlclustergmmRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_range_max(s : MlclustergmmRange) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmRange::max(self : MlclustergmmRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_range_to_string(s : MlclustergmmRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmRange::to_string(self : MlclustergmmRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustergmmSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_cluster_gmm_slice_make(size : Int) -> MlclustergmmSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_gmm_slice_len(s : MlclustergmmSlice) -> Int { s.size }
+pub fn MlclustergmmSlice::len(self : MlclustergmmSlice) -> Int { self.size }
 
-pub fn ml_cluster_gmm_slice_get(s : MlclustergmmSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustergmmSlice::get(self : MlclustergmmSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_gmm_slice_set(s : MlclustergmmSlice, i : Int, v : Double) -> MlclustergmmSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustergmmSlice::set(self : MlclustergmmSlice, i : Int, v : Double) -> MlclustergmmSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_slice_sum(s : MlclustergmmSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclustergmmSlice::sum(self : MlclustergmmSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_gmm_slice_mean(s : MlclustergmmSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclustergmmSlice::mean(self : MlclustergmmSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_gmm_slice_scale(s : MlclustergmmSlice, f : Double) -> MlclustergmmSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustergmmSlice::scale(self : MlclustergmmSlice, f : Double) -> MlclustergmmSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_slice_add(a : MlclustergmmSlice, b : MlclustergmmSlice) -> MlclustergmmSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustergmmSlice::add(self : MlclustergmmSlice, other : MlclustergmmSlice) -> MlclustergmmSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_slice_copy(s : MlclustergmmSlice) -> MlclustergmmSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustergmmSlice::copy(self : MlclustergmmSlice) -> MlclustergmmSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_slice_fill(s : MlclustergmmSlice, v : Double) -> MlclustergmmSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustergmmSlice::fill(self : MlclustergmmSlice, v : Double) -> MlclustergmmSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_gmm_slice_min(s : MlclustergmmSlice) -> Double { @_common.min(s.data) }
+pub fn MlclustergmmSlice::min(self : MlclustergmmSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_gmm_slice_max(s : MlclustergmmSlice) -> Double { @_common.max(s.data) }
+pub fn MlclustergmmSlice::max(self : MlclustergmmSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_gmm_slice_to_string(s : MlclustergmmSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustergmmSlice::to_string(self : MlclustergmmSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

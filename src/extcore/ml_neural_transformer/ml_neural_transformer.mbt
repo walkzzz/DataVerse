@@ -351,45 +351,45 @@ pub fn ml_neural_transformer_frame_make(size : Int) -> MlneuraltransformerFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_frame_len(s : MlneuraltransformerFrame) -> Int { s.size }
+pub fn MlneuraltransformerFrame::len(self : MlneuraltransformerFrame) -> Int { self.size }
 
-pub fn ml_neural_transformer_frame_get(s : MlneuraltransformerFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerFrame::get(self : MlneuraltransformerFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_frame_set(s : MlneuraltransformerFrame, i : Int, v : Double) -> MlneuraltransformerFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerFrame::set(self : MlneuraltransformerFrame, i : Int, v : Double) -> MlneuraltransformerFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_frame_sum(s : MlneuraltransformerFrame) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerFrame::sum(self : MlneuraltransformerFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_frame_mean(s : MlneuraltransformerFrame) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerFrame::mean(self : MlneuraltransformerFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_frame_scale(s : MlneuraltransformerFrame, f : Double) -> MlneuraltransformerFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerFrame::scale(self : MlneuraltransformerFrame, f : Double) -> MlneuraltransformerFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_frame_add(a : MlneuraltransformerFrame, b : MlneuraltransformerFrame) -> MlneuraltransformerFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerFrame::add(self : MlneuraltransformerFrame, other : MlneuraltransformerFrame) -> MlneuraltransformerFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_frame_copy(s : MlneuraltransformerFrame) -> MlneuraltransformerFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerFrame::copy(self : MlneuraltransformerFrame) -> MlneuraltransformerFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_frame_fill(s : MlneuraltransformerFrame, v : Double) -> MlneuraltransformerFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerFrame::fill(self : MlneuraltransformerFrame, v : Double) -> MlneuraltransformerFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_frame_min(s : MlneuraltransformerFrame) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerFrame::min(self : MlneuraltransformerFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_frame_max(s : MlneuraltransformerFrame) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerFrame::max(self : MlneuraltransformerFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_frame_to_string(s : MlneuraltransformerFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerFrame::to_string(self : MlneuraltransformerFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerTable {
@@ -402,45 +402,45 @@ pub fn ml_neural_transformer_table_make(size : Int) -> MlneuraltransformerTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_table_len(s : MlneuraltransformerTable) -> Int { s.size }
+pub fn MlneuraltransformerTable::len(self : MlneuraltransformerTable) -> Int { self.size }
 
-pub fn ml_neural_transformer_table_get(s : MlneuraltransformerTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerTable::get(self : MlneuraltransformerTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_table_set(s : MlneuraltransformerTable, i : Int, v : Double) -> MlneuraltransformerTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerTable::set(self : MlneuraltransformerTable, i : Int, v : Double) -> MlneuraltransformerTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_table_sum(s : MlneuraltransformerTable) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerTable::sum(self : MlneuraltransformerTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_table_mean(s : MlneuraltransformerTable) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerTable::mean(self : MlneuraltransformerTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_table_scale(s : MlneuraltransformerTable, f : Double) -> MlneuraltransformerTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerTable::scale(self : MlneuraltransformerTable, f : Double) -> MlneuraltransformerTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_table_add(a : MlneuraltransformerTable, b : MlneuraltransformerTable) -> MlneuraltransformerTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerTable::add(self : MlneuraltransformerTable, other : MlneuraltransformerTable) -> MlneuraltransformerTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_table_copy(s : MlneuraltransformerTable) -> MlneuraltransformerTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerTable::copy(self : MlneuraltransformerTable) -> MlneuraltransformerTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_table_fill(s : MlneuraltransformerTable, v : Double) -> MlneuraltransformerTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerTable::fill(self : MlneuraltransformerTable, v : Double) -> MlneuraltransformerTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_table_min(s : MlneuraltransformerTable) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerTable::min(self : MlneuraltransformerTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_table_max(s : MlneuraltransformerTable) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerTable::max(self : MlneuraltransformerTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_table_to_string(s : MlneuraltransformerTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerTable::to_string(self : MlneuraltransformerTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerGraphN {
@@ -453,45 +453,45 @@ pub fn ml_neural_transformer_graphn_make(size : Int) -> MlneuraltransformerGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_graphn_len(s : MlneuraltransformerGraphN) -> Int { s.size }
+pub fn MlneuraltransformerGraphN::len(self : MlneuraltransformerGraphN) -> Int { self.size }
 
-pub fn ml_neural_transformer_graphn_get(s : MlneuraltransformerGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerGraphN::get(self : MlneuraltransformerGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_graphn_set(s : MlneuraltransformerGraphN, i : Int, v : Double) -> MlneuraltransformerGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerGraphN::set(self : MlneuraltransformerGraphN, i : Int, v : Double) -> MlneuraltransformerGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_graphn_sum(s : MlneuraltransformerGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerGraphN::sum(self : MlneuraltransformerGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_graphn_mean(s : MlneuraltransformerGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerGraphN::mean(self : MlneuraltransformerGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_graphn_scale(s : MlneuraltransformerGraphN, f : Double) -> MlneuraltransformerGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerGraphN::scale(self : MlneuraltransformerGraphN, f : Double) -> MlneuraltransformerGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_graphn_add(a : MlneuraltransformerGraphN, b : MlneuraltransformerGraphN) -> MlneuraltransformerGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerGraphN::add(self : MlneuraltransformerGraphN, other : MlneuraltransformerGraphN) -> MlneuraltransformerGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_graphn_copy(s : MlneuraltransformerGraphN) -> MlneuraltransformerGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerGraphN::copy(self : MlneuraltransformerGraphN) -> MlneuraltransformerGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_graphn_fill(s : MlneuraltransformerGraphN, v : Double) -> MlneuraltransformerGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerGraphN::fill(self : MlneuraltransformerGraphN, v : Double) -> MlneuraltransformerGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_graphn_min(s : MlneuraltransformerGraphN) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerGraphN::min(self : MlneuraltransformerGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_graphn_max(s : MlneuraltransformerGraphN) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerGraphN::max(self : MlneuraltransformerGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_graphn_to_string(s : MlneuraltransformerGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerGraphN::to_string(self : MlneuraltransformerGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerNode {
@@ -504,45 +504,45 @@ pub fn ml_neural_transformer_node_make(size : Int) -> MlneuraltransformerNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_node_len(s : MlneuraltransformerNode) -> Int { s.size }
+pub fn MlneuraltransformerNode::len(self : MlneuraltransformerNode) -> Int { self.size }
 
-pub fn ml_neural_transformer_node_get(s : MlneuraltransformerNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerNode::get(self : MlneuraltransformerNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_node_set(s : MlneuraltransformerNode, i : Int, v : Double) -> MlneuraltransformerNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerNode::set(self : MlneuraltransformerNode, i : Int, v : Double) -> MlneuraltransformerNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_node_sum(s : MlneuraltransformerNode) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerNode::sum(self : MlneuraltransformerNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_node_mean(s : MlneuraltransformerNode) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerNode::mean(self : MlneuraltransformerNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_node_scale(s : MlneuraltransformerNode, f : Double) -> MlneuraltransformerNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerNode::scale(self : MlneuraltransformerNode, f : Double) -> MlneuraltransformerNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_node_add(a : MlneuraltransformerNode, b : MlneuraltransformerNode) -> MlneuraltransformerNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerNode::add(self : MlneuraltransformerNode, other : MlneuraltransformerNode) -> MlneuraltransformerNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_node_copy(s : MlneuraltransformerNode) -> MlneuraltransformerNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerNode::copy(self : MlneuraltransformerNode) -> MlneuraltransformerNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_node_fill(s : MlneuraltransformerNode, v : Double) -> MlneuraltransformerNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerNode::fill(self : MlneuraltransformerNode, v : Double) -> MlneuraltransformerNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_node_min(s : MlneuraltransformerNode) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerNode::min(self : MlneuraltransformerNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_node_max(s : MlneuraltransformerNode) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerNode::max(self : MlneuraltransformerNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_node_to_string(s : MlneuraltransformerNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerNode::to_string(self : MlneuraltransformerNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerEdge {
@@ -555,45 +555,45 @@ pub fn ml_neural_transformer_edge_make(size : Int) -> MlneuraltransformerEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_edge_len(s : MlneuraltransformerEdge) -> Int { s.size }
+pub fn MlneuraltransformerEdge::len(self : MlneuraltransformerEdge) -> Int { self.size }
 
-pub fn ml_neural_transformer_edge_get(s : MlneuraltransformerEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerEdge::get(self : MlneuraltransformerEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_edge_set(s : MlneuraltransformerEdge, i : Int, v : Double) -> MlneuraltransformerEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerEdge::set(self : MlneuraltransformerEdge, i : Int, v : Double) -> MlneuraltransformerEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_edge_sum(s : MlneuraltransformerEdge) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerEdge::sum(self : MlneuraltransformerEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_edge_mean(s : MlneuraltransformerEdge) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerEdge::mean(self : MlneuraltransformerEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_edge_scale(s : MlneuraltransformerEdge, f : Double) -> MlneuraltransformerEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerEdge::scale(self : MlneuraltransformerEdge, f : Double) -> MlneuraltransformerEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_edge_add(a : MlneuraltransformerEdge, b : MlneuraltransformerEdge) -> MlneuraltransformerEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerEdge::add(self : MlneuraltransformerEdge, other : MlneuraltransformerEdge) -> MlneuraltransformerEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_edge_copy(s : MlneuraltransformerEdge) -> MlneuraltransformerEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerEdge::copy(self : MlneuraltransformerEdge) -> MlneuraltransformerEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_edge_fill(s : MlneuraltransformerEdge, v : Double) -> MlneuraltransformerEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerEdge::fill(self : MlneuraltransformerEdge, v : Double) -> MlneuraltransformerEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_edge_min(s : MlneuraltransformerEdge) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerEdge::min(self : MlneuraltransformerEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_edge_max(s : MlneuraltransformerEdge) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerEdge::max(self : MlneuraltransformerEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_edge_to_string(s : MlneuraltransformerEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerEdge::to_string(self : MlneuraltransformerEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerPath {
@@ -606,45 +606,45 @@ pub fn ml_neural_transformer_path_make(size : Int) -> MlneuraltransformerPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_path_len(s : MlneuraltransformerPath) -> Int { s.size }
+pub fn MlneuraltransformerPath::len(self : MlneuraltransformerPath) -> Int { self.size }
 
-pub fn ml_neural_transformer_path_get(s : MlneuraltransformerPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerPath::get(self : MlneuraltransformerPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_path_set(s : MlneuraltransformerPath, i : Int, v : Double) -> MlneuraltransformerPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerPath::set(self : MlneuraltransformerPath, i : Int, v : Double) -> MlneuraltransformerPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_path_sum(s : MlneuraltransformerPath) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerPath::sum(self : MlneuraltransformerPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_path_mean(s : MlneuraltransformerPath) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerPath::mean(self : MlneuraltransformerPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_path_scale(s : MlneuraltransformerPath, f : Double) -> MlneuraltransformerPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerPath::scale(self : MlneuraltransformerPath, f : Double) -> MlneuraltransformerPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_path_add(a : MlneuraltransformerPath, b : MlneuraltransformerPath) -> MlneuraltransformerPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerPath::add(self : MlneuraltransformerPath, other : MlneuraltransformerPath) -> MlneuraltransformerPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_path_copy(s : MlneuraltransformerPath) -> MlneuraltransformerPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerPath::copy(self : MlneuraltransformerPath) -> MlneuraltransformerPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_path_fill(s : MlneuraltransformerPath, v : Double) -> MlneuraltransformerPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerPath::fill(self : MlneuraltransformerPath, v : Double) -> MlneuraltransformerPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_path_min(s : MlneuraltransformerPath) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerPath::min(self : MlneuraltransformerPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_path_max(s : MlneuraltransformerPath) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerPath::max(self : MlneuraltransformerPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_path_to_string(s : MlneuraltransformerPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerPath::to_string(self : MlneuraltransformerPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerCluster {
@@ -657,45 +657,45 @@ pub fn ml_neural_transformer_cluster_make(size : Int) -> MlneuraltransformerClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_cluster_len(s : MlneuraltransformerCluster) -> Int { s.size }
+pub fn MlneuraltransformerCluster::len(self : MlneuraltransformerCluster) -> Int { self.size }
 
-pub fn ml_neural_transformer_cluster_get(s : MlneuraltransformerCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerCluster::get(self : MlneuraltransformerCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_cluster_set(s : MlneuraltransformerCluster, i : Int, v : Double) -> MlneuraltransformerCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerCluster::set(self : MlneuraltransformerCluster, i : Int, v : Double) -> MlneuraltransformerCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_cluster_sum(s : MlneuraltransformerCluster) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerCluster::sum(self : MlneuraltransformerCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_cluster_mean(s : MlneuraltransformerCluster) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerCluster::mean(self : MlneuraltransformerCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_cluster_scale(s : MlneuraltransformerCluster, f : Double) -> MlneuraltransformerCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerCluster::scale(self : MlneuraltransformerCluster, f : Double) -> MlneuraltransformerCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_cluster_add(a : MlneuraltransformerCluster, b : MlneuraltransformerCluster) -> MlneuraltransformerCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerCluster::add(self : MlneuraltransformerCluster, other : MlneuraltransformerCluster) -> MlneuraltransformerCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_cluster_copy(s : MlneuraltransformerCluster) -> MlneuraltransformerCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerCluster::copy(self : MlneuraltransformerCluster) -> MlneuraltransformerCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_cluster_fill(s : MlneuraltransformerCluster, v : Double) -> MlneuraltransformerCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerCluster::fill(self : MlneuraltransformerCluster, v : Double) -> MlneuraltransformerCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_cluster_min(s : MlneuraltransformerCluster) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerCluster::min(self : MlneuraltransformerCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_cluster_max(s : MlneuraltransformerCluster) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerCluster::max(self : MlneuraltransformerCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_cluster_to_string(s : MlneuraltransformerCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerCluster::to_string(self : MlneuraltransformerCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerModel {
@@ -708,45 +708,45 @@ pub fn ml_neural_transformer_model_make(size : Int) -> MlneuraltransformerModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_model_len(s : MlneuraltransformerModel) -> Int { s.size }
+pub fn MlneuraltransformerModel::len(self : MlneuraltransformerModel) -> Int { self.size }
 
-pub fn ml_neural_transformer_model_get(s : MlneuraltransformerModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerModel::get(self : MlneuraltransformerModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_model_set(s : MlneuraltransformerModel, i : Int, v : Double) -> MlneuraltransformerModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerModel::set(self : MlneuraltransformerModel, i : Int, v : Double) -> MlneuraltransformerModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_model_sum(s : MlneuraltransformerModel) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerModel::sum(self : MlneuraltransformerModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_model_mean(s : MlneuraltransformerModel) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerModel::mean(self : MlneuraltransformerModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_model_scale(s : MlneuraltransformerModel, f : Double) -> MlneuraltransformerModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerModel::scale(self : MlneuraltransformerModel, f : Double) -> MlneuraltransformerModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_model_add(a : MlneuraltransformerModel, b : MlneuraltransformerModel) -> MlneuraltransformerModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerModel::add(self : MlneuraltransformerModel, other : MlneuraltransformerModel) -> MlneuraltransformerModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_model_copy(s : MlneuraltransformerModel) -> MlneuraltransformerModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerModel::copy(self : MlneuraltransformerModel) -> MlneuraltransformerModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_model_fill(s : MlneuraltransformerModel, v : Double) -> MlneuraltransformerModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerModel::fill(self : MlneuraltransformerModel, v : Double) -> MlneuraltransformerModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_model_min(s : MlneuraltransformerModel) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerModel::min(self : MlneuraltransformerModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_model_max(s : MlneuraltransformerModel) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerModel::max(self : MlneuraltransformerModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_model_to_string(s : MlneuraltransformerModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerModel::to_string(self : MlneuraltransformerModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerLayer {
@@ -759,45 +759,45 @@ pub fn ml_neural_transformer_layer_make(size : Int) -> MlneuraltransformerLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_layer_len(s : MlneuraltransformerLayer) -> Int { s.size }
+pub fn MlneuraltransformerLayer::len(self : MlneuraltransformerLayer) -> Int { self.size }
 
-pub fn ml_neural_transformer_layer_get(s : MlneuraltransformerLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerLayer::get(self : MlneuraltransformerLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_layer_set(s : MlneuraltransformerLayer, i : Int, v : Double) -> MlneuraltransformerLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerLayer::set(self : MlneuraltransformerLayer, i : Int, v : Double) -> MlneuraltransformerLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_layer_sum(s : MlneuraltransformerLayer) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerLayer::sum(self : MlneuraltransformerLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_layer_mean(s : MlneuraltransformerLayer) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerLayer::mean(self : MlneuraltransformerLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_layer_scale(s : MlneuraltransformerLayer, f : Double) -> MlneuraltransformerLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerLayer::scale(self : MlneuraltransformerLayer, f : Double) -> MlneuraltransformerLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_layer_add(a : MlneuraltransformerLayer, b : MlneuraltransformerLayer) -> MlneuraltransformerLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerLayer::add(self : MlneuraltransformerLayer, other : MlneuraltransformerLayer) -> MlneuraltransformerLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_layer_copy(s : MlneuraltransformerLayer) -> MlneuraltransformerLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerLayer::copy(self : MlneuraltransformerLayer) -> MlneuraltransformerLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_layer_fill(s : MlneuraltransformerLayer, v : Double) -> MlneuraltransformerLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerLayer::fill(self : MlneuraltransformerLayer, v : Double) -> MlneuraltransformerLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_layer_min(s : MlneuraltransformerLayer) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerLayer::min(self : MlneuraltransformerLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_layer_max(s : MlneuraltransformerLayer) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerLayer::max(self : MlneuraltransformerLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_layer_to_string(s : MlneuraltransformerLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerLayer::to_string(self : MlneuraltransformerLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerBuffer {
@@ -810,45 +810,45 @@ pub fn ml_neural_transformer_buffer_make(size : Int) -> MlneuraltransformerBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_buffer_len(s : MlneuraltransformerBuffer) -> Int { s.size }
+pub fn MlneuraltransformerBuffer::len(self : MlneuraltransformerBuffer) -> Int { self.size }
 
-pub fn ml_neural_transformer_buffer_get(s : MlneuraltransformerBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerBuffer::get(self : MlneuraltransformerBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_buffer_set(s : MlneuraltransformerBuffer, i : Int, v : Double) -> MlneuraltransformerBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerBuffer::set(self : MlneuraltransformerBuffer, i : Int, v : Double) -> MlneuraltransformerBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_buffer_sum(s : MlneuraltransformerBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerBuffer::sum(self : MlneuraltransformerBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_buffer_mean(s : MlneuraltransformerBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerBuffer::mean(self : MlneuraltransformerBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_buffer_scale(s : MlneuraltransformerBuffer, f : Double) -> MlneuraltransformerBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerBuffer::scale(self : MlneuraltransformerBuffer, f : Double) -> MlneuraltransformerBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_buffer_add(a : MlneuraltransformerBuffer, b : MlneuraltransformerBuffer) -> MlneuraltransformerBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerBuffer::add(self : MlneuraltransformerBuffer, other : MlneuraltransformerBuffer) -> MlneuraltransformerBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_buffer_copy(s : MlneuraltransformerBuffer) -> MlneuraltransformerBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerBuffer::copy(self : MlneuraltransformerBuffer) -> MlneuraltransformerBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_buffer_fill(s : MlneuraltransformerBuffer, v : Double) -> MlneuraltransformerBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerBuffer::fill(self : MlneuraltransformerBuffer, v : Double) -> MlneuraltransformerBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_buffer_min(s : MlneuraltransformerBuffer) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerBuffer::min(self : MlneuraltransformerBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_buffer_max(s : MlneuraltransformerBuffer) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerBuffer::max(self : MlneuraltransformerBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_buffer_to_string(s : MlneuraltransformerBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerBuffer::to_string(self : MlneuraltransformerBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerCursor {
@@ -861,45 +861,45 @@ pub fn ml_neural_transformer_cursor_make(size : Int) -> MlneuraltransformerCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_cursor_len(s : MlneuraltransformerCursor) -> Int { s.size }
+pub fn MlneuraltransformerCursor::len(self : MlneuraltransformerCursor) -> Int { self.size }
 
-pub fn ml_neural_transformer_cursor_get(s : MlneuraltransformerCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerCursor::get(self : MlneuraltransformerCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_cursor_set(s : MlneuraltransformerCursor, i : Int, v : Double) -> MlneuraltransformerCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerCursor::set(self : MlneuraltransformerCursor, i : Int, v : Double) -> MlneuraltransformerCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_cursor_sum(s : MlneuraltransformerCursor) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerCursor::sum(self : MlneuraltransformerCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_cursor_mean(s : MlneuraltransformerCursor) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerCursor::mean(self : MlneuraltransformerCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_cursor_scale(s : MlneuraltransformerCursor, f : Double) -> MlneuraltransformerCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerCursor::scale(self : MlneuraltransformerCursor, f : Double) -> MlneuraltransformerCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_cursor_add(a : MlneuraltransformerCursor, b : MlneuraltransformerCursor) -> MlneuraltransformerCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerCursor::add(self : MlneuraltransformerCursor, other : MlneuraltransformerCursor) -> MlneuraltransformerCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_cursor_copy(s : MlneuraltransformerCursor) -> MlneuraltransformerCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerCursor::copy(self : MlneuraltransformerCursor) -> MlneuraltransformerCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_cursor_fill(s : MlneuraltransformerCursor, v : Double) -> MlneuraltransformerCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerCursor::fill(self : MlneuraltransformerCursor, v : Double) -> MlneuraltransformerCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_cursor_min(s : MlneuraltransformerCursor) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerCursor::min(self : MlneuraltransformerCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_cursor_max(s : MlneuraltransformerCursor) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerCursor::max(self : MlneuraltransformerCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_cursor_to_string(s : MlneuraltransformerCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerCursor::to_string(self : MlneuraltransformerCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerView {
@@ -912,45 +912,45 @@ pub fn ml_neural_transformer_view_make(size : Int) -> MlneuraltransformerView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_view_len(s : MlneuraltransformerView) -> Int { s.size }
+pub fn MlneuraltransformerView::len(self : MlneuraltransformerView) -> Int { self.size }
 
-pub fn ml_neural_transformer_view_get(s : MlneuraltransformerView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerView::get(self : MlneuraltransformerView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_view_set(s : MlneuraltransformerView, i : Int, v : Double) -> MlneuraltransformerView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerView::set(self : MlneuraltransformerView, i : Int, v : Double) -> MlneuraltransformerView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_view_sum(s : MlneuraltransformerView) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerView::sum(self : MlneuraltransformerView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_view_mean(s : MlneuraltransformerView) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerView::mean(self : MlneuraltransformerView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_view_scale(s : MlneuraltransformerView, f : Double) -> MlneuraltransformerView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerView::scale(self : MlneuraltransformerView, f : Double) -> MlneuraltransformerView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_view_add(a : MlneuraltransformerView, b : MlneuraltransformerView) -> MlneuraltransformerView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerView::add(self : MlneuraltransformerView, other : MlneuraltransformerView) -> MlneuraltransformerView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_view_copy(s : MlneuraltransformerView) -> MlneuraltransformerView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerView::copy(self : MlneuraltransformerView) -> MlneuraltransformerView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_view_fill(s : MlneuraltransformerView, v : Double) -> MlneuraltransformerView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerView::fill(self : MlneuraltransformerView, v : Double) -> MlneuraltransformerView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_view_min(s : MlneuraltransformerView) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerView::min(self : MlneuraltransformerView) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_view_max(s : MlneuraltransformerView) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerView::max(self : MlneuraltransformerView) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_view_to_string(s : MlneuraltransformerView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerView::to_string(self : MlneuraltransformerView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerRange {
@@ -963,45 +963,45 @@ pub fn ml_neural_transformer_range_make(size : Int) -> MlneuraltransformerRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_range_len(s : MlneuraltransformerRange) -> Int { s.size }
+pub fn MlneuraltransformerRange::len(self : MlneuraltransformerRange) -> Int { self.size }
 
-pub fn ml_neural_transformer_range_get(s : MlneuraltransformerRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerRange::get(self : MlneuraltransformerRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_range_set(s : MlneuraltransformerRange, i : Int, v : Double) -> MlneuraltransformerRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerRange::set(self : MlneuraltransformerRange, i : Int, v : Double) -> MlneuraltransformerRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_range_sum(s : MlneuraltransformerRange) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerRange::sum(self : MlneuraltransformerRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_range_mean(s : MlneuraltransformerRange) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerRange::mean(self : MlneuraltransformerRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_range_scale(s : MlneuraltransformerRange, f : Double) -> MlneuraltransformerRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerRange::scale(self : MlneuraltransformerRange, f : Double) -> MlneuraltransformerRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_range_add(a : MlneuraltransformerRange, b : MlneuraltransformerRange) -> MlneuraltransformerRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerRange::add(self : MlneuraltransformerRange, other : MlneuraltransformerRange) -> MlneuraltransformerRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_range_copy(s : MlneuraltransformerRange) -> MlneuraltransformerRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerRange::copy(self : MlneuraltransformerRange) -> MlneuraltransformerRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_range_fill(s : MlneuraltransformerRange, v : Double) -> MlneuraltransformerRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerRange::fill(self : MlneuraltransformerRange, v : Double) -> MlneuraltransformerRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_range_min(s : MlneuraltransformerRange) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerRange::min(self : MlneuraltransformerRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_range_max(s : MlneuraltransformerRange) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerRange::max(self : MlneuraltransformerRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_range_to_string(s : MlneuraltransformerRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerRange::to_string(self : MlneuraltransformerRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuraltransformerSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_neural_transformer_slice_make(size : Int) -> MlneuraltransformerSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_transformer_slice_len(s : MlneuraltransformerSlice) -> Int { s.size }
+pub fn MlneuraltransformerSlice::len(self : MlneuraltransformerSlice) -> Int { self.size }
 
-pub fn ml_neural_transformer_slice_get(s : MlneuraltransformerSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuraltransformerSlice::get(self : MlneuraltransformerSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_transformer_slice_set(s : MlneuraltransformerSlice, i : Int, v : Double) -> MlneuraltransformerSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuraltransformerSlice::set(self : MlneuraltransformerSlice, i : Int, v : Double) -> MlneuraltransformerSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_slice_sum(s : MlneuraltransformerSlice) -> Double { @_common.sum(s.data) }
+pub fn MlneuraltransformerSlice::sum(self : MlneuraltransformerSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_transformer_slice_mean(s : MlneuraltransformerSlice) -> Double { @_common.mean(s.data) }
+pub fn MlneuraltransformerSlice::mean(self : MlneuraltransformerSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_transformer_slice_scale(s : MlneuraltransformerSlice, f : Double) -> MlneuraltransformerSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerSlice::scale(self : MlneuraltransformerSlice, f : Double) -> MlneuraltransformerSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_slice_add(a : MlneuraltransformerSlice, b : MlneuraltransformerSlice) -> MlneuraltransformerSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuraltransformerSlice::add(self : MlneuraltransformerSlice, other : MlneuraltransformerSlice) -> MlneuraltransformerSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_slice_copy(s : MlneuraltransformerSlice) -> MlneuraltransformerSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerSlice::copy(self : MlneuraltransformerSlice) -> MlneuraltransformerSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_slice_fill(s : MlneuraltransformerSlice, v : Double) -> MlneuraltransformerSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuraltransformerSlice::fill(self : MlneuraltransformerSlice, v : Double) -> MlneuraltransformerSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_transformer_slice_min(s : MlneuraltransformerSlice) -> Double { @_common.min(s.data) }
+pub fn MlneuraltransformerSlice::min(self : MlneuraltransformerSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_transformer_slice_max(s : MlneuraltransformerSlice) -> Double { @_common.max(s.data) }
+pub fn MlneuraltransformerSlice::max(self : MlneuraltransformerSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_transformer_slice_to_string(s : MlneuraltransformerSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuraltransformerSlice::to_string(self : MlneuraltransformerSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

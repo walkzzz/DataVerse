@@ -351,45 +351,45 @@ pub fn nlp_parse_cfg_frame_make(size : Int) -> NlpparsecfgFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_frame_len(s : NlpparsecfgFrame) -> Int { s.size }
+pub fn NlpparsecfgFrame::len(self : NlpparsecfgFrame) -> Int { self.size }
 
-pub fn nlp_parse_cfg_frame_get(s : NlpparsecfgFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgFrame::get(self : NlpparsecfgFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_frame_set(s : NlpparsecfgFrame, i : Int, v : Double) -> NlpparsecfgFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgFrame::set(self : NlpparsecfgFrame, i : Int, v : Double) -> NlpparsecfgFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_frame_sum(s : NlpparsecfgFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgFrame::sum(self : NlpparsecfgFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_frame_mean(s : NlpparsecfgFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgFrame::mean(self : NlpparsecfgFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_frame_scale(s : NlpparsecfgFrame, f : Double) -> NlpparsecfgFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgFrame::scale(self : NlpparsecfgFrame, f : Double) -> NlpparsecfgFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_frame_add(a : NlpparsecfgFrame, b : NlpparsecfgFrame) -> NlpparsecfgFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgFrame::add(self : NlpparsecfgFrame, other : NlpparsecfgFrame) -> NlpparsecfgFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_frame_copy(s : NlpparsecfgFrame) -> NlpparsecfgFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgFrame::copy(self : NlpparsecfgFrame) -> NlpparsecfgFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_frame_fill(s : NlpparsecfgFrame, v : Double) -> NlpparsecfgFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgFrame::fill(self : NlpparsecfgFrame, v : Double) -> NlpparsecfgFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_frame_min(s : NlpparsecfgFrame) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgFrame::min(self : NlpparsecfgFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_frame_max(s : NlpparsecfgFrame) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgFrame::max(self : NlpparsecfgFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_frame_to_string(s : NlpparsecfgFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgFrame::to_string(self : NlpparsecfgFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgTable {
@@ -402,45 +402,45 @@ pub fn nlp_parse_cfg_table_make(size : Int) -> NlpparsecfgTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_table_len(s : NlpparsecfgTable) -> Int { s.size }
+pub fn NlpparsecfgTable::len(self : NlpparsecfgTable) -> Int { self.size }
 
-pub fn nlp_parse_cfg_table_get(s : NlpparsecfgTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgTable::get(self : NlpparsecfgTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_table_set(s : NlpparsecfgTable, i : Int, v : Double) -> NlpparsecfgTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgTable::set(self : NlpparsecfgTable, i : Int, v : Double) -> NlpparsecfgTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_table_sum(s : NlpparsecfgTable) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgTable::sum(self : NlpparsecfgTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_table_mean(s : NlpparsecfgTable) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgTable::mean(self : NlpparsecfgTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_table_scale(s : NlpparsecfgTable, f : Double) -> NlpparsecfgTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgTable::scale(self : NlpparsecfgTable, f : Double) -> NlpparsecfgTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_table_add(a : NlpparsecfgTable, b : NlpparsecfgTable) -> NlpparsecfgTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgTable::add(self : NlpparsecfgTable, other : NlpparsecfgTable) -> NlpparsecfgTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_table_copy(s : NlpparsecfgTable) -> NlpparsecfgTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgTable::copy(self : NlpparsecfgTable) -> NlpparsecfgTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_table_fill(s : NlpparsecfgTable, v : Double) -> NlpparsecfgTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgTable::fill(self : NlpparsecfgTable, v : Double) -> NlpparsecfgTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_table_min(s : NlpparsecfgTable) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgTable::min(self : NlpparsecfgTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_table_max(s : NlpparsecfgTable) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgTable::max(self : NlpparsecfgTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_table_to_string(s : NlpparsecfgTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgTable::to_string(self : NlpparsecfgTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_parse_cfg_graphn_make(size : Int) -> NlpparsecfgGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_graphn_len(s : NlpparsecfgGraphN) -> Int { s.size }
+pub fn NlpparsecfgGraphN::len(self : NlpparsecfgGraphN) -> Int { self.size }
 
-pub fn nlp_parse_cfg_graphn_get(s : NlpparsecfgGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgGraphN::get(self : NlpparsecfgGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_graphn_set(s : NlpparsecfgGraphN, i : Int, v : Double) -> NlpparsecfgGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgGraphN::set(self : NlpparsecfgGraphN, i : Int, v : Double) -> NlpparsecfgGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_graphn_sum(s : NlpparsecfgGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgGraphN::sum(self : NlpparsecfgGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_graphn_mean(s : NlpparsecfgGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgGraphN::mean(self : NlpparsecfgGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_graphn_scale(s : NlpparsecfgGraphN, f : Double) -> NlpparsecfgGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgGraphN::scale(self : NlpparsecfgGraphN, f : Double) -> NlpparsecfgGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_graphn_add(a : NlpparsecfgGraphN, b : NlpparsecfgGraphN) -> NlpparsecfgGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgGraphN::add(self : NlpparsecfgGraphN, other : NlpparsecfgGraphN) -> NlpparsecfgGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_graphn_copy(s : NlpparsecfgGraphN) -> NlpparsecfgGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgGraphN::copy(self : NlpparsecfgGraphN) -> NlpparsecfgGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_graphn_fill(s : NlpparsecfgGraphN, v : Double) -> NlpparsecfgGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgGraphN::fill(self : NlpparsecfgGraphN, v : Double) -> NlpparsecfgGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_graphn_min(s : NlpparsecfgGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgGraphN::min(self : NlpparsecfgGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_graphn_max(s : NlpparsecfgGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgGraphN::max(self : NlpparsecfgGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_graphn_to_string(s : NlpparsecfgGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgGraphN::to_string(self : NlpparsecfgGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgNode {
@@ -504,45 +504,45 @@ pub fn nlp_parse_cfg_node_make(size : Int) -> NlpparsecfgNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_node_len(s : NlpparsecfgNode) -> Int { s.size }
+pub fn NlpparsecfgNode::len(self : NlpparsecfgNode) -> Int { self.size }
 
-pub fn nlp_parse_cfg_node_get(s : NlpparsecfgNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgNode::get(self : NlpparsecfgNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_node_set(s : NlpparsecfgNode, i : Int, v : Double) -> NlpparsecfgNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgNode::set(self : NlpparsecfgNode, i : Int, v : Double) -> NlpparsecfgNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_node_sum(s : NlpparsecfgNode) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgNode::sum(self : NlpparsecfgNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_node_mean(s : NlpparsecfgNode) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgNode::mean(self : NlpparsecfgNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_node_scale(s : NlpparsecfgNode, f : Double) -> NlpparsecfgNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgNode::scale(self : NlpparsecfgNode, f : Double) -> NlpparsecfgNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_node_add(a : NlpparsecfgNode, b : NlpparsecfgNode) -> NlpparsecfgNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgNode::add(self : NlpparsecfgNode, other : NlpparsecfgNode) -> NlpparsecfgNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_node_copy(s : NlpparsecfgNode) -> NlpparsecfgNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgNode::copy(self : NlpparsecfgNode) -> NlpparsecfgNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_node_fill(s : NlpparsecfgNode, v : Double) -> NlpparsecfgNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgNode::fill(self : NlpparsecfgNode, v : Double) -> NlpparsecfgNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_node_min(s : NlpparsecfgNode) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgNode::min(self : NlpparsecfgNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_node_max(s : NlpparsecfgNode) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgNode::max(self : NlpparsecfgNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_node_to_string(s : NlpparsecfgNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgNode::to_string(self : NlpparsecfgNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgEdge {
@@ -555,45 +555,45 @@ pub fn nlp_parse_cfg_edge_make(size : Int) -> NlpparsecfgEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_edge_len(s : NlpparsecfgEdge) -> Int { s.size }
+pub fn NlpparsecfgEdge::len(self : NlpparsecfgEdge) -> Int { self.size }
 
-pub fn nlp_parse_cfg_edge_get(s : NlpparsecfgEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgEdge::get(self : NlpparsecfgEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_edge_set(s : NlpparsecfgEdge, i : Int, v : Double) -> NlpparsecfgEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgEdge::set(self : NlpparsecfgEdge, i : Int, v : Double) -> NlpparsecfgEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_edge_sum(s : NlpparsecfgEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgEdge::sum(self : NlpparsecfgEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_edge_mean(s : NlpparsecfgEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgEdge::mean(self : NlpparsecfgEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_edge_scale(s : NlpparsecfgEdge, f : Double) -> NlpparsecfgEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgEdge::scale(self : NlpparsecfgEdge, f : Double) -> NlpparsecfgEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_edge_add(a : NlpparsecfgEdge, b : NlpparsecfgEdge) -> NlpparsecfgEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgEdge::add(self : NlpparsecfgEdge, other : NlpparsecfgEdge) -> NlpparsecfgEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_edge_copy(s : NlpparsecfgEdge) -> NlpparsecfgEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgEdge::copy(self : NlpparsecfgEdge) -> NlpparsecfgEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_edge_fill(s : NlpparsecfgEdge, v : Double) -> NlpparsecfgEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgEdge::fill(self : NlpparsecfgEdge, v : Double) -> NlpparsecfgEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_edge_min(s : NlpparsecfgEdge) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgEdge::min(self : NlpparsecfgEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_edge_max(s : NlpparsecfgEdge) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgEdge::max(self : NlpparsecfgEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_edge_to_string(s : NlpparsecfgEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgEdge::to_string(self : NlpparsecfgEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgPath {
@@ -606,45 +606,45 @@ pub fn nlp_parse_cfg_path_make(size : Int) -> NlpparsecfgPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_path_len(s : NlpparsecfgPath) -> Int { s.size }
+pub fn NlpparsecfgPath::len(self : NlpparsecfgPath) -> Int { self.size }
 
-pub fn nlp_parse_cfg_path_get(s : NlpparsecfgPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgPath::get(self : NlpparsecfgPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_path_set(s : NlpparsecfgPath, i : Int, v : Double) -> NlpparsecfgPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgPath::set(self : NlpparsecfgPath, i : Int, v : Double) -> NlpparsecfgPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_path_sum(s : NlpparsecfgPath) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgPath::sum(self : NlpparsecfgPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_path_mean(s : NlpparsecfgPath) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgPath::mean(self : NlpparsecfgPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_path_scale(s : NlpparsecfgPath, f : Double) -> NlpparsecfgPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgPath::scale(self : NlpparsecfgPath, f : Double) -> NlpparsecfgPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_path_add(a : NlpparsecfgPath, b : NlpparsecfgPath) -> NlpparsecfgPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgPath::add(self : NlpparsecfgPath, other : NlpparsecfgPath) -> NlpparsecfgPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_path_copy(s : NlpparsecfgPath) -> NlpparsecfgPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgPath::copy(self : NlpparsecfgPath) -> NlpparsecfgPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_path_fill(s : NlpparsecfgPath, v : Double) -> NlpparsecfgPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgPath::fill(self : NlpparsecfgPath, v : Double) -> NlpparsecfgPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_path_min(s : NlpparsecfgPath) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgPath::min(self : NlpparsecfgPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_path_max(s : NlpparsecfgPath) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgPath::max(self : NlpparsecfgPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_path_to_string(s : NlpparsecfgPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgPath::to_string(self : NlpparsecfgPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgCluster {
@@ -657,45 +657,45 @@ pub fn nlp_parse_cfg_cluster_make(size : Int) -> NlpparsecfgCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_cluster_len(s : NlpparsecfgCluster) -> Int { s.size }
+pub fn NlpparsecfgCluster::len(self : NlpparsecfgCluster) -> Int { self.size }
 
-pub fn nlp_parse_cfg_cluster_get(s : NlpparsecfgCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgCluster::get(self : NlpparsecfgCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_cluster_set(s : NlpparsecfgCluster, i : Int, v : Double) -> NlpparsecfgCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgCluster::set(self : NlpparsecfgCluster, i : Int, v : Double) -> NlpparsecfgCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_cluster_sum(s : NlpparsecfgCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgCluster::sum(self : NlpparsecfgCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_cluster_mean(s : NlpparsecfgCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgCluster::mean(self : NlpparsecfgCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_cluster_scale(s : NlpparsecfgCluster, f : Double) -> NlpparsecfgCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgCluster::scale(self : NlpparsecfgCluster, f : Double) -> NlpparsecfgCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_cluster_add(a : NlpparsecfgCluster, b : NlpparsecfgCluster) -> NlpparsecfgCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgCluster::add(self : NlpparsecfgCluster, other : NlpparsecfgCluster) -> NlpparsecfgCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_cluster_copy(s : NlpparsecfgCluster) -> NlpparsecfgCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgCluster::copy(self : NlpparsecfgCluster) -> NlpparsecfgCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_cluster_fill(s : NlpparsecfgCluster, v : Double) -> NlpparsecfgCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgCluster::fill(self : NlpparsecfgCluster, v : Double) -> NlpparsecfgCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_cluster_min(s : NlpparsecfgCluster) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgCluster::min(self : NlpparsecfgCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_cluster_max(s : NlpparsecfgCluster) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgCluster::max(self : NlpparsecfgCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_cluster_to_string(s : NlpparsecfgCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgCluster::to_string(self : NlpparsecfgCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgModel {
@@ -708,45 +708,45 @@ pub fn nlp_parse_cfg_model_make(size : Int) -> NlpparsecfgModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_model_len(s : NlpparsecfgModel) -> Int { s.size }
+pub fn NlpparsecfgModel::len(self : NlpparsecfgModel) -> Int { self.size }
 
-pub fn nlp_parse_cfg_model_get(s : NlpparsecfgModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgModel::get(self : NlpparsecfgModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_model_set(s : NlpparsecfgModel, i : Int, v : Double) -> NlpparsecfgModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgModel::set(self : NlpparsecfgModel, i : Int, v : Double) -> NlpparsecfgModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_model_sum(s : NlpparsecfgModel) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgModel::sum(self : NlpparsecfgModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_model_mean(s : NlpparsecfgModel) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgModel::mean(self : NlpparsecfgModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_model_scale(s : NlpparsecfgModel, f : Double) -> NlpparsecfgModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgModel::scale(self : NlpparsecfgModel, f : Double) -> NlpparsecfgModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_model_add(a : NlpparsecfgModel, b : NlpparsecfgModel) -> NlpparsecfgModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgModel::add(self : NlpparsecfgModel, other : NlpparsecfgModel) -> NlpparsecfgModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_model_copy(s : NlpparsecfgModel) -> NlpparsecfgModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgModel::copy(self : NlpparsecfgModel) -> NlpparsecfgModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_model_fill(s : NlpparsecfgModel, v : Double) -> NlpparsecfgModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgModel::fill(self : NlpparsecfgModel, v : Double) -> NlpparsecfgModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_model_min(s : NlpparsecfgModel) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgModel::min(self : NlpparsecfgModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_model_max(s : NlpparsecfgModel) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgModel::max(self : NlpparsecfgModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_model_to_string(s : NlpparsecfgModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgModel::to_string(self : NlpparsecfgModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgLayer {
@@ -759,45 +759,45 @@ pub fn nlp_parse_cfg_layer_make(size : Int) -> NlpparsecfgLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_layer_len(s : NlpparsecfgLayer) -> Int { s.size }
+pub fn NlpparsecfgLayer::len(self : NlpparsecfgLayer) -> Int { self.size }
 
-pub fn nlp_parse_cfg_layer_get(s : NlpparsecfgLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgLayer::get(self : NlpparsecfgLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_layer_set(s : NlpparsecfgLayer, i : Int, v : Double) -> NlpparsecfgLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgLayer::set(self : NlpparsecfgLayer, i : Int, v : Double) -> NlpparsecfgLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_layer_sum(s : NlpparsecfgLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgLayer::sum(self : NlpparsecfgLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_layer_mean(s : NlpparsecfgLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgLayer::mean(self : NlpparsecfgLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_layer_scale(s : NlpparsecfgLayer, f : Double) -> NlpparsecfgLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgLayer::scale(self : NlpparsecfgLayer, f : Double) -> NlpparsecfgLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_layer_add(a : NlpparsecfgLayer, b : NlpparsecfgLayer) -> NlpparsecfgLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgLayer::add(self : NlpparsecfgLayer, other : NlpparsecfgLayer) -> NlpparsecfgLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_layer_copy(s : NlpparsecfgLayer) -> NlpparsecfgLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgLayer::copy(self : NlpparsecfgLayer) -> NlpparsecfgLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_layer_fill(s : NlpparsecfgLayer, v : Double) -> NlpparsecfgLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgLayer::fill(self : NlpparsecfgLayer, v : Double) -> NlpparsecfgLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_layer_min(s : NlpparsecfgLayer) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgLayer::min(self : NlpparsecfgLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_layer_max(s : NlpparsecfgLayer) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgLayer::max(self : NlpparsecfgLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_layer_to_string(s : NlpparsecfgLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgLayer::to_string(self : NlpparsecfgLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_parse_cfg_buffer_make(size : Int) -> NlpparsecfgBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_buffer_len(s : NlpparsecfgBuffer) -> Int { s.size }
+pub fn NlpparsecfgBuffer::len(self : NlpparsecfgBuffer) -> Int { self.size }
 
-pub fn nlp_parse_cfg_buffer_get(s : NlpparsecfgBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgBuffer::get(self : NlpparsecfgBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_buffer_set(s : NlpparsecfgBuffer, i : Int, v : Double) -> NlpparsecfgBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgBuffer::set(self : NlpparsecfgBuffer, i : Int, v : Double) -> NlpparsecfgBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_buffer_sum(s : NlpparsecfgBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgBuffer::sum(self : NlpparsecfgBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_buffer_mean(s : NlpparsecfgBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgBuffer::mean(self : NlpparsecfgBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_buffer_scale(s : NlpparsecfgBuffer, f : Double) -> NlpparsecfgBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgBuffer::scale(self : NlpparsecfgBuffer, f : Double) -> NlpparsecfgBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_buffer_add(a : NlpparsecfgBuffer, b : NlpparsecfgBuffer) -> NlpparsecfgBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgBuffer::add(self : NlpparsecfgBuffer, other : NlpparsecfgBuffer) -> NlpparsecfgBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_buffer_copy(s : NlpparsecfgBuffer) -> NlpparsecfgBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgBuffer::copy(self : NlpparsecfgBuffer) -> NlpparsecfgBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_buffer_fill(s : NlpparsecfgBuffer, v : Double) -> NlpparsecfgBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgBuffer::fill(self : NlpparsecfgBuffer, v : Double) -> NlpparsecfgBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_buffer_min(s : NlpparsecfgBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgBuffer::min(self : NlpparsecfgBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_buffer_max(s : NlpparsecfgBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgBuffer::max(self : NlpparsecfgBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_buffer_to_string(s : NlpparsecfgBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgBuffer::to_string(self : NlpparsecfgBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgCursor {
@@ -861,45 +861,45 @@ pub fn nlp_parse_cfg_cursor_make(size : Int) -> NlpparsecfgCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_cursor_len(s : NlpparsecfgCursor) -> Int { s.size }
+pub fn NlpparsecfgCursor::len(self : NlpparsecfgCursor) -> Int { self.size }
 
-pub fn nlp_parse_cfg_cursor_get(s : NlpparsecfgCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgCursor::get(self : NlpparsecfgCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_cursor_set(s : NlpparsecfgCursor, i : Int, v : Double) -> NlpparsecfgCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgCursor::set(self : NlpparsecfgCursor, i : Int, v : Double) -> NlpparsecfgCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_cursor_sum(s : NlpparsecfgCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgCursor::sum(self : NlpparsecfgCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_cursor_mean(s : NlpparsecfgCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgCursor::mean(self : NlpparsecfgCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_cursor_scale(s : NlpparsecfgCursor, f : Double) -> NlpparsecfgCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgCursor::scale(self : NlpparsecfgCursor, f : Double) -> NlpparsecfgCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_cursor_add(a : NlpparsecfgCursor, b : NlpparsecfgCursor) -> NlpparsecfgCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgCursor::add(self : NlpparsecfgCursor, other : NlpparsecfgCursor) -> NlpparsecfgCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_cursor_copy(s : NlpparsecfgCursor) -> NlpparsecfgCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgCursor::copy(self : NlpparsecfgCursor) -> NlpparsecfgCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_cursor_fill(s : NlpparsecfgCursor, v : Double) -> NlpparsecfgCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgCursor::fill(self : NlpparsecfgCursor, v : Double) -> NlpparsecfgCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_cursor_min(s : NlpparsecfgCursor) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgCursor::min(self : NlpparsecfgCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_cursor_max(s : NlpparsecfgCursor) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgCursor::max(self : NlpparsecfgCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_cursor_to_string(s : NlpparsecfgCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgCursor::to_string(self : NlpparsecfgCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgView {
@@ -912,45 +912,45 @@ pub fn nlp_parse_cfg_view_make(size : Int) -> NlpparsecfgView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_view_len(s : NlpparsecfgView) -> Int { s.size }
+pub fn NlpparsecfgView::len(self : NlpparsecfgView) -> Int { self.size }
 
-pub fn nlp_parse_cfg_view_get(s : NlpparsecfgView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgView::get(self : NlpparsecfgView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_view_set(s : NlpparsecfgView, i : Int, v : Double) -> NlpparsecfgView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgView::set(self : NlpparsecfgView, i : Int, v : Double) -> NlpparsecfgView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_view_sum(s : NlpparsecfgView) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgView::sum(self : NlpparsecfgView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_view_mean(s : NlpparsecfgView) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgView::mean(self : NlpparsecfgView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_view_scale(s : NlpparsecfgView, f : Double) -> NlpparsecfgView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgView::scale(self : NlpparsecfgView, f : Double) -> NlpparsecfgView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_view_add(a : NlpparsecfgView, b : NlpparsecfgView) -> NlpparsecfgView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgView::add(self : NlpparsecfgView, other : NlpparsecfgView) -> NlpparsecfgView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_view_copy(s : NlpparsecfgView) -> NlpparsecfgView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgView::copy(self : NlpparsecfgView) -> NlpparsecfgView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_view_fill(s : NlpparsecfgView, v : Double) -> NlpparsecfgView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgView::fill(self : NlpparsecfgView, v : Double) -> NlpparsecfgView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_view_min(s : NlpparsecfgView) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgView::min(self : NlpparsecfgView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_view_max(s : NlpparsecfgView) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgView::max(self : NlpparsecfgView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_view_to_string(s : NlpparsecfgView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgView::to_string(self : NlpparsecfgView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgRange {
@@ -963,45 +963,45 @@ pub fn nlp_parse_cfg_range_make(size : Int) -> NlpparsecfgRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_range_len(s : NlpparsecfgRange) -> Int { s.size }
+pub fn NlpparsecfgRange::len(self : NlpparsecfgRange) -> Int { self.size }
 
-pub fn nlp_parse_cfg_range_get(s : NlpparsecfgRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgRange::get(self : NlpparsecfgRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_range_set(s : NlpparsecfgRange, i : Int, v : Double) -> NlpparsecfgRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgRange::set(self : NlpparsecfgRange, i : Int, v : Double) -> NlpparsecfgRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_range_sum(s : NlpparsecfgRange) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgRange::sum(self : NlpparsecfgRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_range_mean(s : NlpparsecfgRange) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgRange::mean(self : NlpparsecfgRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_range_scale(s : NlpparsecfgRange, f : Double) -> NlpparsecfgRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgRange::scale(self : NlpparsecfgRange, f : Double) -> NlpparsecfgRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_range_add(a : NlpparsecfgRange, b : NlpparsecfgRange) -> NlpparsecfgRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgRange::add(self : NlpparsecfgRange, other : NlpparsecfgRange) -> NlpparsecfgRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_range_copy(s : NlpparsecfgRange) -> NlpparsecfgRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgRange::copy(self : NlpparsecfgRange) -> NlpparsecfgRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_range_fill(s : NlpparsecfgRange, v : Double) -> NlpparsecfgRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgRange::fill(self : NlpparsecfgRange, v : Double) -> NlpparsecfgRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_range_min(s : NlpparsecfgRange) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgRange::min(self : NlpparsecfgRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_range_max(s : NlpparsecfgRange) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgRange::max(self : NlpparsecfgRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_range_to_string(s : NlpparsecfgRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgRange::to_string(self : NlpparsecfgRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsecfgSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_parse_cfg_slice_make(size : Int) -> NlpparsecfgSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cfg_slice_len(s : NlpparsecfgSlice) -> Int { s.size }
+pub fn NlpparsecfgSlice::len(self : NlpparsecfgSlice) -> Int { self.size }
 
-pub fn nlp_parse_cfg_slice_get(s : NlpparsecfgSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsecfgSlice::get(self : NlpparsecfgSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cfg_slice_set(s : NlpparsecfgSlice, i : Int, v : Double) -> NlpparsecfgSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsecfgSlice::set(self : NlpparsecfgSlice, i : Int, v : Double) -> NlpparsecfgSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_slice_sum(s : NlpparsecfgSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpparsecfgSlice::sum(self : NlpparsecfgSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cfg_slice_mean(s : NlpparsecfgSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpparsecfgSlice::mean(self : NlpparsecfgSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cfg_slice_scale(s : NlpparsecfgSlice, f : Double) -> NlpparsecfgSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsecfgSlice::scale(self : NlpparsecfgSlice, f : Double) -> NlpparsecfgSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_slice_add(a : NlpparsecfgSlice, b : NlpparsecfgSlice) -> NlpparsecfgSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsecfgSlice::add(self : NlpparsecfgSlice, other : NlpparsecfgSlice) -> NlpparsecfgSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_slice_copy(s : NlpparsecfgSlice) -> NlpparsecfgSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsecfgSlice::copy(self : NlpparsecfgSlice) -> NlpparsecfgSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_slice_fill(s : NlpparsecfgSlice, v : Double) -> NlpparsecfgSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsecfgSlice::fill(self : NlpparsecfgSlice, v : Double) -> NlpparsecfgSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cfg_slice_min(s : NlpparsecfgSlice) -> Double { @_common.min(s.data) }
+pub fn NlpparsecfgSlice::min(self : NlpparsecfgSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cfg_slice_max(s : NlpparsecfgSlice) -> Double { @_common.max(s.data) }
+pub fn NlpparsecfgSlice::max(self : NlpparsecfgSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cfg_slice_to_string(s : NlpparsecfgSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsecfgSlice::to_string(self : NlpparsecfgSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn stats_infer_bayesian_frame_make(size : Int) -> StatsinferbayesianFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_frame_len(s : StatsinferbayesianFrame) -> Int { s.size }
+pub fn StatsinferbayesianFrame::len(self : StatsinferbayesianFrame) -> Int { self.size }
 
-pub fn stats_infer_bayesian_frame_get(s : StatsinferbayesianFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianFrame::get(self : StatsinferbayesianFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_frame_set(s : StatsinferbayesianFrame, i : Int, v : Double) -> StatsinferbayesianFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianFrame::set(self : StatsinferbayesianFrame, i : Int, v : Double) -> StatsinferbayesianFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_frame_sum(s : StatsinferbayesianFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianFrame::sum(self : StatsinferbayesianFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_frame_mean(s : StatsinferbayesianFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianFrame::mean(self : StatsinferbayesianFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_frame_scale(s : StatsinferbayesianFrame, f : Double) -> StatsinferbayesianFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianFrame::scale(self : StatsinferbayesianFrame, f : Double) -> StatsinferbayesianFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_frame_add(a : StatsinferbayesianFrame, b : StatsinferbayesianFrame) -> StatsinferbayesianFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianFrame::add(self : StatsinferbayesianFrame, other : StatsinferbayesianFrame) -> StatsinferbayesianFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_frame_copy(s : StatsinferbayesianFrame) -> StatsinferbayesianFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianFrame::copy(self : StatsinferbayesianFrame) -> StatsinferbayesianFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_frame_fill(s : StatsinferbayesianFrame, v : Double) -> StatsinferbayesianFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianFrame::fill(self : StatsinferbayesianFrame, v : Double) -> StatsinferbayesianFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_frame_min(s : StatsinferbayesianFrame) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianFrame::min(self : StatsinferbayesianFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_frame_max(s : StatsinferbayesianFrame) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianFrame::max(self : StatsinferbayesianFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_frame_to_string(s : StatsinferbayesianFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianFrame::to_string(self : StatsinferbayesianFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianTable {
@@ -402,45 +402,45 @@ pub fn stats_infer_bayesian_table_make(size : Int) -> StatsinferbayesianTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_table_len(s : StatsinferbayesianTable) -> Int { s.size }
+pub fn StatsinferbayesianTable::len(self : StatsinferbayesianTable) -> Int { self.size }
 
-pub fn stats_infer_bayesian_table_get(s : StatsinferbayesianTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianTable::get(self : StatsinferbayesianTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_table_set(s : StatsinferbayesianTable, i : Int, v : Double) -> StatsinferbayesianTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianTable::set(self : StatsinferbayesianTable, i : Int, v : Double) -> StatsinferbayesianTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_table_sum(s : StatsinferbayesianTable) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianTable::sum(self : StatsinferbayesianTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_table_mean(s : StatsinferbayesianTable) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianTable::mean(self : StatsinferbayesianTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_table_scale(s : StatsinferbayesianTable, f : Double) -> StatsinferbayesianTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianTable::scale(self : StatsinferbayesianTable, f : Double) -> StatsinferbayesianTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_table_add(a : StatsinferbayesianTable, b : StatsinferbayesianTable) -> StatsinferbayesianTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianTable::add(self : StatsinferbayesianTable, other : StatsinferbayesianTable) -> StatsinferbayesianTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_table_copy(s : StatsinferbayesianTable) -> StatsinferbayesianTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianTable::copy(self : StatsinferbayesianTable) -> StatsinferbayesianTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_table_fill(s : StatsinferbayesianTable, v : Double) -> StatsinferbayesianTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianTable::fill(self : StatsinferbayesianTable, v : Double) -> StatsinferbayesianTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_table_min(s : StatsinferbayesianTable) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianTable::min(self : StatsinferbayesianTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_table_max(s : StatsinferbayesianTable) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianTable::max(self : StatsinferbayesianTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_table_to_string(s : StatsinferbayesianTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianTable::to_string(self : StatsinferbayesianTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianGraphN {
@@ -453,45 +453,45 @@ pub fn stats_infer_bayesian_graphn_make(size : Int) -> StatsinferbayesianGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_graphn_len(s : StatsinferbayesianGraphN) -> Int { s.size }
+pub fn StatsinferbayesianGraphN::len(self : StatsinferbayesianGraphN) -> Int { self.size }
 
-pub fn stats_infer_bayesian_graphn_get(s : StatsinferbayesianGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianGraphN::get(self : StatsinferbayesianGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_graphn_set(s : StatsinferbayesianGraphN, i : Int, v : Double) -> StatsinferbayesianGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianGraphN::set(self : StatsinferbayesianGraphN, i : Int, v : Double) -> StatsinferbayesianGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_graphn_sum(s : StatsinferbayesianGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianGraphN::sum(self : StatsinferbayesianGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_graphn_mean(s : StatsinferbayesianGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianGraphN::mean(self : StatsinferbayesianGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_graphn_scale(s : StatsinferbayesianGraphN, f : Double) -> StatsinferbayesianGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianGraphN::scale(self : StatsinferbayesianGraphN, f : Double) -> StatsinferbayesianGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_graphn_add(a : StatsinferbayesianGraphN, b : StatsinferbayesianGraphN) -> StatsinferbayesianGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianGraphN::add(self : StatsinferbayesianGraphN, other : StatsinferbayesianGraphN) -> StatsinferbayesianGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_graphn_copy(s : StatsinferbayesianGraphN) -> StatsinferbayesianGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianGraphN::copy(self : StatsinferbayesianGraphN) -> StatsinferbayesianGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_graphn_fill(s : StatsinferbayesianGraphN, v : Double) -> StatsinferbayesianGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianGraphN::fill(self : StatsinferbayesianGraphN, v : Double) -> StatsinferbayesianGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_graphn_min(s : StatsinferbayesianGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianGraphN::min(self : StatsinferbayesianGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_graphn_max(s : StatsinferbayesianGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianGraphN::max(self : StatsinferbayesianGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_graphn_to_string(s : StatsinferbayesianGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianGraphN::to_string(self : StatsinferbayesianGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianNode {
@@ -504,45 +504,45 @@ pub fn stats_infer_bayesian_node_make(size : Int) -> StatsinferbayesianNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_node_len(s : StatsinferbayesianNode) -> Int { s.size }
+pub fn StatsinferbayesianNode::len(self : StatsinferbayesianNode) -> Int { self.size }
 
-pub fn stats_infer_bayesian_node_get(s : StatsinferbayesianNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianNode::get(self : StatsinferbayesianNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_node_set(s : StatsinferbayesianNode, i : Int, v : Double) -> StatsinferbayesianNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianNode::set(self : StatsinferbayesianNode, i : Int, v : Double) -> StatsinferbayesianNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_node_sum(s : StatsinferbayesianNode) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianNode::sum(self : StatsinferbayesianNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_node_mean(s : StatsinferbayesianNode) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianNode::mean(self : StatsinferbayesianNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_node_scale(s : StatsinferbayesianNode, f : Double) -> StatsinferbayesianNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianNode::scale(self : StatsinferbayesianNode, f : Double) -> StatsinferbayesianNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_node_add(a : StatsinferbayesianNode, b : StatsinferbayesianNode) -> StatsinferbayesianNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianNode::add(self : StatsinferbayesianNode, other : StatsinferbayesianNode) -> StatsinferbayesianNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_node_copy(s : StatsinferbayesianNode) -> StatsinferbayesianNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianNode::copy(self : StatsinferbayesianNode) -> StatsinferbayesianNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_node_fill(s : StatsinferbayesianNode, v : Double) -> StatsinferbayesianNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianNode::fill(self : StatsinferbayesianNode, v : Double) -> StatsinferbayesianNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_node_min(s : StatsinferbayesianNode) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianNode::min(self : StatsinferbayesianNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_node_max(s : StatsinferbayesianNode) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianNode::max(self : StatsinferbayesianNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_node_to_string(s : StatsinferbayesianNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianNode::to_string(self : StatsinferbayesianNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianEdge {
@@ -555,45 +555,45 @@ pub fn stats_infer_bayesian_edge_make(size : Int) -> StatsinferbayesianEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_edge_len(s : StatsinferbayesianEdge) -> Int { s.size }
+pub fn StatsinferbayesianEdge::len(self : StatsinferbayesianEdge) -> Int { self.size }
 
-pub fn stats_infer_bayesian_edge_get(s : StatsinferbayesianEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianEdge::get(self : StatsinferbayesianEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_edge_set(s : StatsinferbayesianEdge, i : Int, v : Double) -> StatsinferbayesianEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianEdge::set(self : StatsinferbayesianEdge, i : Int, v : Double) -> StatsinferbayesianEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_edge_sum(s : StatsinferbayesianEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianEdge::sum(self : StatsinferbayesianEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_edge_mean(s : StatsinferbayesianEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianEdge::mean(self : StatsinferbayesianEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_edge_scale(s : StatsinferbayesianEdge, f : Double) -> StatsinferbayesianEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianEdge::scale(self : StatsinferbayesianEdge, f : Double) -> StatsinferbayesianEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_edge_add(a : StatsinferbayesianEdge, b : StatsinferbayesianEdge) -> StatsinferbayesianEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianEdge::add(self : StatsinferbayesianEdge, other : StatsinferbayesianEdge) -> StatsinferbayesianEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_edge_copy(s : StatsinferbayesianEdge) -> StatsinferbayesianEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianEdge::copy(self : StatsinferbayesianEdge) -> StatsinferbayesianEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_edge_fill(s : StatsinferbayesianEdge, v : Double) -> StatsinferbayesianEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianEdge::fill(self : StatsinferbayesianEdge, v : Double) -> StatsinferbayesianEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_edge_min(s : StatsinferbayesianEdge) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianEdge::min(self : StatsinferbayesianEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_edge_max(s : StatsinferbayesianEdge) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianEdge::max(self : StatsinferbayesianEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_edge_to_string(s : StatsinferbayesianEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianEdge::to_string(self : StatsinferbayesianEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianPath {
@@ -606,45 +606,45 @@ pub fn stats_infer_bayesian_path_make(size : Int) -> StatsinferbayesianPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_path_len(s : StatsinferbayesianPath) -> Int { s.size }
+pub fn StatsinferbayesianPath::len(self : StatsinferbayesianPath) -> Int { self.size }
 
-pub fn stats_infer_bayesian_path_get(s : StatsinferbayesianPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianPath::get(self : StatsinferbayesianPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_path_set(s : StatsinferbayesianPath, i : Int, v : Double) -> StatsinferbayesianPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianPath::set(self : StatsinferbayesianPath, i : Int, v : Double) -> StatsinferbayesianPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_path_sum(s : StatsinferbayesianPath) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianPath::sum(self : StatsinferbayesianPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_path_mean(s : StatsinferbayesianPath) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianPath::mean(self : StatsinferbayesianPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_path_scale(s : StatsinferbayesianPath, f : Double) -> StatsinferbayesianPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianPath::scale(self : StatsinferbayesianPath, f : Double) -> StatsinferbayesianPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_path_add(a : StatsinferbayesianPath, b : StatsinferbayesianPath) -> StatsinferbayesianPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianPath::add(self : StatsinferbayesianPath, other : StatsinferbayesianPath) -> StatsinferbayesianPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_path_copy(s : StatsinferbayesianPath) -> StatsinferbayesianPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianPath::copy(self : StatsinferbayesianPath) -> StatsinferbayesianPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_path_fill(s : StatsinferbayesianPath, v : Double) -> StatsinferbayesianPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianPath::fill(self : StatsinferbayesianPath, v : Double) -> StatsinferbayesianPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_path_min(s : StatsinferbayesianPath) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianPath::min(self : StatsinferbayesianPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_path_max(s : StatsinferbayesianPath) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianPath::max(self : StatsinferbayesianPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_path_to_string(s : StatsinferbayesianPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianPath::to_string(self : StatsinferbayesianPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianCluster {
@@ -657,45 +657,45 @@ pub fn stats_infer_bayesian_cluster_make(size : Int) -> StatsinferbayesianCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_cluster_len(s : StatsinferbayesianCluster) -> Int { s.size }
+pub fn StatsinferbayesianCluster::len(self : StatsinferbayesianCluster) -> Int { self.size }
 
-pub fn stats_infer_bayesian_cluster_get(s : StatsinferbayesianCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianCluster::get(self : StatsinferbayesianCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_cluster_set(s : StatsinferbayesianCluster, i : Int, v : Double) -> StatsinferbayesianCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianCluster::set(self : StatsinferbayesianCluster, i : Int, v : Double) -> StatsinferbayesianCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_cluster_sum(s : StatsinferbayesianCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianCluster::sum(self : StatsinferbayesianCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_cluster_mean(s : StatsinferbayesianCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianCluster::mean(self : StatsinferbayesianCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_cluster_scale(s : StatsinferbayesianCluster, f : Double) -> StatsinferbayesianCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianCluster::scale(self : StatsinferbayesianCluster, f : Double) -> StatsinferbayesianCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_cluster_add(a : StatsinferbayesianCluster, b : StatsinferbayesianCluster) -> StatsinferbayesianCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianCluster::add(self : StatsinferbayesianCluster, other : StatsinferbayesianCluster) -> StatsinferbayesianCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_cluster_copy(s : StatsinferbayesianCluster) -> StatsinferbayesianCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianCluster::copy(self : StatsinferbayesianCluster) -> StatsinferbayesianCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_cluster_fill(s : StatsinferbayesianCluster, v : Double) -> StatsinferbayesianCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianCluster::fill(self : StatsinferbayesianCluster, v : Double) -> StatsinferbayesianCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_cluster_min(s : StatsinferbayesianCluster) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianCluster::min(self : StatsinferbayesianCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_cluster_max(s : StatsinferbayesianCluster) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianCluster::max(self : StatsinferbayesianCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_cluster_to_string(s : StatsinferbayesianCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianCluster::to_string(self : StatsinferbayesianCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianModel {
@@ -708,45 +708,45 @@ pub fn stats_infer_bayesian_model_make(size : Int) -> StatsinferbayesianModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_model_len(s : StatsinferbayesianModel) -> Int { s.size }
+pub fn StatsinferbayesianModel::len(self : StatsinferbayesianModel) -> Int { self.size }
 
-pub fn stats_infer_bayesian_model_get(s : StatsinferbayesianModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianModel::get(self : StatsinferbayesianModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_model_set(s : StatsinferbayesianModel, i : Int, v : Double) -> StatsinferbayesianModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianModel::set(self : StatsinferbayesianModel, i : Int, v : Double) -> StatsinferbayesianModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_model_sum(s : StatsinferbayesianModel) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianModel::sum(self : StatsinferbayesianModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_model_mean(s : StatsinferbayesianModel) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianModel::mean(self : StatsinferbayesianModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_model_scale(s : StatsinferbayesianModel, f : Double) -> StatsinferbayesianModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianModel::scale(self : StatsinferbayesianModel, f : Double) -> StatsinferbayesianModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_model_add(a : StatsinferbayesianModel, b : StatsinferbayesianModel) -> StatsinferbayesianModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianModel::add(self : StatsinferbayesianModel, other : StatsinferbayesianModel) -> StatsinferbayesianModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_model_copy(s : StatsinferbayesianModel) -> StatsinferbayesianModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianModel::copy(self : StatsinferbayesianModel) -> StatsinferbayesianModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_model_fill(s : StatsinferbayesianModel, v : Double) -> StatsinferbayesianModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianModel::fill(self : StatsinferbayesianModel, v : Double) -> StatsinferbayesianModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_model_min(s : StatsinferbayesianModel) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianModel::min(self : StatsinferbayesianModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_model_max(s : StatsinferbayesianModel) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianModel::max(self : StatsinferbayesianModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_model_to_string(s : StatsinferbayesianModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianModel::to_string(self : StatsinferbayesianModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianLayer {
@@ -759,45 +759,45 @@ pub fn stats_infer_bayesian_layer_make(size : Int) -> StatsinferbayesianLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_layer_len(s : StatsinferbayesianLayer) -> Int { s.size }
+pub fn StatsinferbayesianLayer::len(self : StatsinferbayesianLayer) -> Int { self.size }
 
-pub fn stats_infer_bayesian_layer_get(s : StatsinferbayesianLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianLayer::get(self : StatsinferbayesianLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_layer_set(s : StatsinferbayesianLayer, i : Int, v : Double) -> StatsinferbayesianLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianLayer::set(self : StatsinferbayesianLayer, i : Int, v : Double) -> StatsinferbayesianLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_layer_sum(s : StatsinferbayesianLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianLayer::sum(self : StatsinferbayesianLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_layer_mean(s : StatsinferbayesianLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianLayer::mean(self : StatsinferbayesianLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_layer_scale(s : StatsinferbayesianLayer, f : Double) -> StatsinferbayesianLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianLayer::scale(self : StatsinferbayesianLayer, f : Double) -> StatsinferbayesianLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_layer_add(a : StatsinferbayesianLayer, b : StatsinferbayesianLayer) -> StatsinferbayesianLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianLayer::add(self : StatsinferbayesianLayer, other : StatsinferbayesianLayer) -> StatsinferbayesianLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_layer_copy(s : StatsinferbayesianLayer) -> StatsinferbayesianLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianLayer::copy(self : StatsinferbayesianLayer) -> StatsinferbayesianLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_layer_fill(s : StatsinferbayesianLayer, v : Double) -> StatsinferbayesianLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianLayer::fill(self : StatsinferbayesianLayer, v : Double) -> StatsinferbayesianLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_layer_min(s : StatsinferbayesianLayer) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianLayer::min(self : StatsinferbayesianLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_layer_max(s : StatsinferbayesianLayer) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianLayer::max(self : StatsinferbayesianLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_layer_to_string(s : StatsinferbayesianLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianLayer::to_string(self : StatsinferbayesianLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianBuffer {
@@ -810,45 +810,45 @@ pub fn stats_infer_bayesian_buffer_make(size : Int) -> StatsinferbayesianBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_buffer_len(s : StatsinferbayesianBuffer) -> Int { s.size }
+pub fn StatsinferbayesianBuffer::len(self : StatsinferbayesianBuffer) -> Int { self.size }
 
-pub fn stats_infer_bayesian_buffer_get(s : StatsinferbayesianBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianBuffer::get(self : StatsinferbayesianBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_buffer_set(s : StatsinferbayesianBuffer, i : Int, v : Double) -> StatsinferbayesianBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianBuffer::set(self : StatsinferbayesianBuffer, i : Int, v : Double) -> StatsinferbayesianBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_buffer_sum(s : StatsinferbayesianBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianBuffer::sum(self : StatsinferbayesianBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_buffer_mean(s : StatsinferbayesianBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianBuffer::mean(self : StatsinferbayesianBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_buffer_scale(s : StatsinferbayesianBuffer, f : Double) -> StatsinferbayesianBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianBuffer::scale(self : StatsinferbayesianBuffer, f : Double) -> StatsinferbayesianBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_buffer_add(a : StatsinferbayesianBuffer, b : StatsinferbayesianBuffer) -> StatsinferbayesianBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianBuffer::add(self : StatsinferbayesianBuffer, other : StatsinferbayesianBuffer) -> StatsinferbayesianBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_buffer_copy(s : StatsinferbayesianBuffer) -> StatsinferbayesianBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianBuffer::copy(self : StatsinferbayesianBuffer) -> StatsinferbayesianBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_buffer_fill(s : StatsinferbayesianBuffer, v : Double) -> StatsinferbayesianBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianBuffer::fill(self : StatsinferbayesianBuffer, v : Double) -> StatsinferbayesianBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_buffer_min(s : StatsinferbayesianBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianBuffer::min(self : StatsinferbayesianBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_buffer_max(s : StatsinferbayesianBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianBuffer::max(self : StatsinferbayesianBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_buffer_to_string(s : StatsinferbayesianBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianBuffer::to_string(self : StatsinferbayesianBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianCursor {
@@ -861,45 +861,45 @@ pub fn stats_infer_bayesian_cursor_make(size : Int) -> StatsinferbayesianCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_cursor_len(s : StatsinferbayesianCursor) -> Int { s.size }
+pub fn StatsinferbayesianCursor::len(self : StatsinferbayesianCursor) -> Int { self.size }
 
-pub fn stats_infer_bayesian_cursor_get(s : StatsinferbayesianCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianCursor::get(self : StatsinferbayesianCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_cursor_set(s : StatsinferbayesianCursor, i : Int, v : Double) -> StatsinferbayesianCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianCursor::set(self : StatsinferbayesianCursor, i : Int, v : Double) -> StatsinferbayesianCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_cursor_sum(s : StatsinferbayesianCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianCursor::sum(self : StatsinferbayesianCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_cursor_mean(s : StatsinferbayesianCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianCursor::mean(self : StatsinferbayesianCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_cursor_scale(s : StatsinferbayesianCursor, f : Double) -> StatsinferbayesianCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianCursor::scale(self : StatsinferbayesianCursor, f : Double) -> StatsinferbayesianCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_cursor_add(a : StatsinferbayesianCursor, b : StatsinferbayesianCursor) -> StatsinferbayesianCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianCursor::add(self : StatsinferbayesianCursor, other : StatsinferbayesianCursor) -> StatsinferbayesianCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_cursor_copy(s : StatsinferbayesianCursor) -> StatsinferbayesianCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianCursor::copy(self : StatsinferbayesianCursor) -> StatsinferbayesianCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_cursor_fill(s : StatsinferbayesianCursor, v : Double) -> StatsinferbayesianCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianCursor::fill(self : StatsinferbayesianCursor, v : Double) -> StatsinferbayesianCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_cursor_min(s : StatsinferbayesianCursor) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianCursor::min(self : StatsinferbayesianCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_cursor_max(s : StatsinferbayesianCursor) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianCursor::max(self : StatsinferbayesianCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_cursor_to_string(s : StatsinferbayesianCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianCursor::to_string(self : StatsinferbayesianCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianView {
@@ -912,45 +912,45 @@ pub fn stats_infer_bayesian_view_make(size : Int) -> StatsinferbayesianView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_view_len(s : StatsinferbayesianView) -> Int { s.size }
+pub fn StatsinferbayesianView::len(self : StatsinferbayesianView) -> Int { self.size }
 
-pub fn stats_infer_bayesian_view_get(s : StatsinferbayesianView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianView::get(self : StatsinferbayesianView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_view_set(s : StatsinferbayesianView, i : Int, v : Double) -> StatsinferbayesianView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianView::set(self : StatsinferbayesianView, i : Int, v : Double) -> StatsinferbayesianView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_view_sum(s : StatsinferbayesianView) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianView::sum(self : StatsinferbayesianView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_view_mean(s : StatsinferbayesianView) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianView::mean(self : StatsinferbayesianView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_view_scale(s : StatsinferbayesianView, f : Double) -> StatsinferbayesianView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianView::scale(self : StatsinferbayesianView, f : Double) -> StatsinferbayesianView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_view_add(a : StatsinferbayesianView, b : StatsinferbayesianView) -> StatsinferbayesianView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianView::add(self : StatsinferbayesianView, other : StatsinferbayesianView) -> StatsinferbayesianView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_view_copy(s : StatsinferbayesianView) -> StatsinferbayesianView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianView::copy(self : StatsinferbayesianView) -> StatsinferbayesianView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_view_fill(s : StatsinferbayesianView, v : Double) -> StatsinferbayesianView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianView::fill(self : StatsinferbayesianView, v : Double) -> StatsinferbayesianView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_view_min(s : StatsinferbayesianView) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianView::min(self : StatsinferbayesianView) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_view_max(s : StatsinferbayesianView) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianView::max(self : StatsinferbayesianView) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_view_to_string(s : StatsinferbayesianView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianView::to_string(self : StatsinferbayesianView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianRange {
@@ -963,45 +963,45 @@ pub fn stats_infer_bayesian_range_make(size : Int) -> StatsinferbayesianRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_range_len(s : StatsinferbayesianRange) -> Int { s.size }
+pub fn StatsinferbayesianRange::len(self : StatsinferbayesianRange) -> Int { self.size }
 
-pub fn stats_infer_bayesian_range_get(s : StatsinferbayesianRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianRange::get(self : StatsinferbayesianRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_range_set(s : StatsinferbayesianRange, i : Int, v : Double) -> StatsinferbayesianRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianRange::set(self : StatsinferbayesianRange, i : Int, v : Double) -> StatsinferbayesianRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_range_sum(s : StatsinferbayesianRange) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianRange::sum(self : StatsinferbayesianRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_range_mean(s : StatsinferbayesianRange) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianRange::mean(self : StatsinferbayesianRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_range_scale(s : StatsinferbayesianRange, f : Double) -> StatsinferbayesianRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianRange::scale(self : StatsinferbayesianRange, f : Double) -> StatsinferbayesianRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_range_add(a : StatsinferbayesianRange, b : StatsinferbayesianRange) -> StatsinferbayesianRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianRange::add(self : StatsinferbayesianRange, other : StatsinferbayesianRange) -> StatsinferbayesianRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_range_copy(s : StatsinferbayesianRange) -> StatsinferbayesianRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianRange::copy(self : StatsinferbayesianRange) -> StatsinferbayesianRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_range_fill(s : StatsinferbayesianRange, v : Double) -> StatsinferbayesianRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianRange::fill(self : StatsinferbayesianRange, v : Double) -> StatsinferbayesianRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_range_min(s : StatsinferbayesianRange) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianRange::min(self : StatsinferbayesianRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_range_max(s : StatsinferbayesianRange) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianRange::max(self : StatsinferbayesianRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_range_to_string(s : StatsinferbayesianRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianRange::to_string(self : StatsinferbayesianRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferbayesianSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_infer_bayesian_slice_make(size : Int) -> StatsinferbayesianSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_bayesian_slice_len(s : StatsinferbayesianSlice) -> Int { s.size }
+pub fn StatsinferbayesianSlice::len(self : StatsinferbayesianSlice) -> Int { self.size }
 
-pub fn stats_infer_bayesian_slice_get(s : StatsinferbayesianSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferbayesianSlice::get(self : StatsinferbayesianSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_bayesian_slice_set(s : StatsinferbayesianSlice, i : Int, v : Double) -> StatsinferbayesianSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferbayesianSlice::set(self : StatsinferbayesianSlice, i : Int, v : Double) -> StatsinferbayesianSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_slice_sum(s : StatsinferbayesianSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsinferbayesianSlice::sum(self : StatsinferbayesianSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_bayesian_slice_mean(s : StatsinferbayesianSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsinferbayesianSlice::mean(self : StatsinferbayesianSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_bayesian_slice_scale(s : StatsinferbayesianSlice, f : Double) -> StatsinferbayesianSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianSlice::scale(self : StatsinferbayesianSlice, f : Double) -> StatsinferbayesianSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_slice_add(a : StatsinferbayesianSlice, b : StatsinferbayesianSlice) -> StatsinferbayesianSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferbayesianSlice::add(self : StatsinferbayesianSlice, other : StatsinferbayesianSlice) -> StatsinferbayesianSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_slice_copy(s : StatsinferbayesianSlice) -> StatsinferbayesianSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianSlice::copy(self : StatsinferbayesianSlice) -> StatsinferbayesianSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_slice_fill(s : StatsinferbayesianSlice, v : Double) -> StatsinferbayesianSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferbayesianSlice::fill(self : StatsinferbayesianSlice, v : Double) -> StatsinferbayesianSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_bayesian_slice_min(s : StatsinferbayesianSlice) -> Double { @_common.min(s.data) }
+pub fn StatsinferbayesianSlice::min(self : StatsinferbayesianSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_bayesian_slice_max(s : StatsinferbayesianSlice) -> Double { @_common.max(s.data) }
+pub fn StatsinferbayesianSlice::max(self : StatsinferbayesianSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_bayesian_slice_to_string(s : StatsinferbayesianSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferbayesianSlice::to_string(self : StatsinferbayesianSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

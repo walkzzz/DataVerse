@@ -351,45 +351,45 @@ pub fn signal_spec_daniell_frame_make(size : Int) -> SignalspecdaniellFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_frame_len(s : SignalspecdaniellFrame) -> Int { s.size }
+pub fn SignalspecdaniellFrame::len(self : SignalspecdaniellFrame) -> Int { self.size }
 
-pub fn signal_spec_daniell_frame_get(s : SignalspecdaniellFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellFrame::get(self : SignalspecdaniellFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_frame_set(s : SignalspecdaniellFrame, i : Int, v : Double) -> SignalspecdaniellFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellFrame::set(self : SignalspecdaniellFrame, i : Int, v : Double) -> SignalspecdaniellFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_frame_sum(s : SignalspecdaniellFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellFrame::sum(self : SignalspecdaniellFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_frame_mean(s : SignalspecdaniellFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellFrame::mean(self : SignalspecdaniellFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_frame_scale(s : SignalspecdaniellFrame, f : Double) -> SignalspecdaniellFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellFrame::scale(self : SignalspecdaniellFrame, f : Double) -> SignalspecdaniellFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_frame_add(a : SignalspecdaniellFrame, b : SignalspecdaniellFrame) -> SignalspecdaniellFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellFrame::add(self : SignalspecdaniellFrame, other : SignalspecdaniellFrame) -> SignalspecdaniellFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_frame_copy(s : SignalspecdaniellFrame) -> SignalspecdaniellFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellFrame::copy(self : SignalspecdaniellFrame) -> SignalspecdaniellFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_frame_fill(s : SignalspecdaniellFrame, v : Double) -> SignalspecdaniellFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellFrame::fill(self : SignalspecdaniellFrame, v : Double) -> SignalspecdaniellFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_frame_min(s : SignalspecdaniellFrame) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellFrame::min(self : SignalspecdaniellFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_frame_max(s : SignalspecdaniellFrame) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellFrame::max(self : SignalspecdaniellFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_frame_to_string(s : SignalspecdaniellFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellFrame::to_string(self : SignalspecdaniellFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellTable {
@@ -402,45 +402,45 @@ pub fn signal_spec_daniell_table_make(size : Int) -> SignalspecdaniellTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_table_len(s : SignalspecdaniellTable) -> Int { s.size }
+pub fn SignalspecdaniellTable::len(self : SignalspecdaniellTable) -> Int { self.size }
 
-pub fn signal_spec_daniell_table_get(s : SignalspecdaniellTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellTable::get(self : SignalspecdaniellTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_table_set(s : SignalspecdaniellTable, i : Int, v : Double) -> SignalspecdaniellTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellTable::set(self : SignalspecdaniellTable, i : Int, v : Double) -> SignalspecdaniellTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_table_sum(s : SignalspecdaniellTable) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellTable::sum(self : SignalspecdaniellTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_table_mean(s : SignalspecdaniellTable) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellTable::mean(self : SignalspecdaniellTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_table_scale(s : SignalspecdaniellTable, f : Double) -> SignalspecdaniellTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellTable::scale(self : SignalspecdaniellTable, f : Double) -> SignalspecdaniellTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_table_add(a : SignalspecdaniellTable, b : SignalspecdaniellTable) -> SignalspecdaniellTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellTable::add(self : SignalspecdaniellTable, other : SignalspecdaniellTable) -> SignalspecdaniellTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_table_copy(s : SignalspecdaniellTable) -> SignalspecdaniellTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellTable::copy(self : SignalspecdaniellTable) -> SignalspecdaniellTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_table_fill(s : SignalspecdaniellTable, v : Double) -> SignalspecdaniellTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellTable::fill(self : SignalspecdaniellTable, v : Double) -> SignalspecdaniellTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_table_min(s : SignalspecdaniellTable) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellTable::min(self : SignalspecdaniellTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_table_max(s : SignalspecdaniellTable) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellTable::max(self : SignalspecdaniellTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_table_to_string(s : SignalspecdaniellTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellTable::to_string(self : SignalspecdaniellTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellGraphN {
@@ -453,45 +453,45 @@ pub fn signal_spec_daniell_graphn_make(size : Int) -> SignalspecdaniellGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_graphn_len(s : SignalspecdaniellGraphN) -> Int { s.size }
+pub fn SignalspecdaniellGraphN::len(self : SignalspecdaniellGraphN) -> Int { self.size }
 
-pub fn signal_spec_daniell_graphn_get(s : SignalspecdaniellGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellGraphN::get(self : SignalspecdaniellGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_graphn_set(s : SignalspecdaniellGraphN, i : Int, v : Double) -> SignalspecdaniellGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellGraphN::set(self : SignalspecdaniellGraphN, i : Int, v : Double) -> SignalspecdaniellGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_graphn_sum(s : SignalspecdaniellGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellGraphN::sum(self : SignalspecdaniellGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_graphn_mean(s : SignalspecdaniellGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellGraphN::mean(self : SignalspecdaniellGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_graphn_scale(s : SignalspecdaniellGraphN, f : Double) -> SignalspecdaniellGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellGraphN::scale(self : SignalspecdaniellGraphN, f : Double) -> SignalspecdaniellGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_graphn_add(a : SignalspecdaniellGraphN, b : SignalspecdaniellGraphN) -> SignalspecdaniellGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellGraphN::add(self : SignalspecdaniellGraphN, other : SignalspecdaniellGraphN) -> SignalspecdaniellGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_graphn_copy(s : SignalspecdaniellGraphN) -> SignalspecdaniellGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellGraphN::copy(self : SignalspecdaniellGraphN) -> SignalspecdaniellGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_graphn_fill(s : SignalspecdaniellGraphN, v : Double) -> SignalspecdaniellGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellGraphN::fill(self : SignalspecdaniellGraphN, v : Double) -> SignalspecdaniellGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_graphn_min(s : SignalspecdaniellGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellGraphN::min(self : SignalspecdaniellGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_graphn_max(s : SignalspecdaniellGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellGraphN::max(self : SignalspecdaniellGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_graphn_to_string(s : SignalspecdaniellGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellGraphN::to_string(self : SignalspecdaniellGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellNode {
@@ -504,45 +504,45 @@ pub fn signal_spec_daniell_node_make(size : Int) -> SignalspecdaniellNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_node_len(s : SignalspecdaniellNode) -> Int { s.size }
+pub fn SignalspecdaniellNode::len(self : SignalspecdaniellNode) -> Int { self.size }
 
-pub fn signal_spec_daniell_node_get(s : SignalspecdaniellNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellNode::get(self : SignalspecdaniellNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_node_set(s : SignalspecdaniellNode, i : Int, v : Double) -> SignalspecdaniellNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellNode::set(self : SignalspecdaniellNode, i : Int, v : Double) -> SignalspecdaniellNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_node_sum(s : SignalspecdaniellNode) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellNode::sum(self : SignalspecdaniellNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_node_mean(s : SignalspecdaniellNode) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellNode::mean(self : SignalspecdaniellNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_node_scale(s : SignalspecdaniellNode, f : Double) -> SignalspecdaniellNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellNode::scale(self : SignalspecdaniellNode, f : Double) -> SignalspecdaniellNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_node_add(a : SignalspecdaniellNode, b : SignalspecdaniellNode) -> SignalspecdaniellNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellNode::add(self : SignalspecdaniellNode, other : SignalspecdaniellNode) -> SignalspecdaniellNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_node_copy(s : SignalspecdaniellNode) -> SignalspecdaniellNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellNode::copy(self : SignalspecdaniellNode) -> SignalspecdaniellNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_node_fill(s : SignalspecdaniellNode, v : Double) -> SignalspecdaniellNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellNode::fill(self : SignalspecdaniellNode, v : Double) -> SignalspecdaniellNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_node_min(s : SignalspecdaniellNode) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellNode::min(self : SignalspecdaniellNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_node_max(s : SignalspecdaniellNode) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellNode::max(self : SignalspecdaniellNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_node_to_string(s : SignalspecdaniellNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellNode::to_string(self : SignalspecdaniellNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellEdge {
@@ -555,45 +555,45 @@ pub fn signal_spec_daniell_edge_make(size : Int) -> SignalspecdaniellEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_edge_len(s : SignalspecdaniellEdge) -> Int { s.size }
+pub fn SignalspecdaniellEdge::len(self : SignalspecdaniellEdge) -> Int { self.size }
 
-pub fn signal_spec_daniell_edge_get(s : SignalspecdaniellEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellEdge::get(self : SignalspecdaniellEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_edge_set(s : SignalspecdaniellEdge, i : Int, v : Double) -> SignalspecdaniellEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellEdge::set(self : SignalspecdaniellEdge, i : Int, v : Double) -> SignalspecdaniellEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_edge_sum(s : SignalspecdaniellEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellEdge::sum(self : SignalspecdaniellEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_edge_mean(s : SignalspecdaniellEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellEdge::mean(self : SignalspecdaniellEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_edge_scale(s : SignalspecdaniellEdge, f : Double) -> SignalspecdaniellEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellEdge::scale(self : SignalspecdaniellEdge, f : Double) -> SignalspecdaniellEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_edge_add(a : SignalspecdaniellEdge, b : SignalspecdaniellEdge) -> SignalspecdaniellEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellEdge::add(self : SignalspecdaniellEdge, other : SignalspecdaniellEdge) -> SignalspecdaniellEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_edge_copy(s : SignalspecdaniellEdge) -> SignalspecdaniellEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellEdge::copy(self : SignalspecdaniellEdge) -> SignalspecdaniellEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_edge_fill(s : SignalspecdaniellEdge, v : Double) -> SignalspecdaniellEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellEdge::fill(self : SignalspecdaniellEdge, v : Double) -> SignalspecdaniellEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_edge_min(s : SignalspecdaniellEdge) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellEdge::min(self : SignalspecdaniellEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_edge_max(s : SignalspecdaniellEdge) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellEdge::max(self : SignalspecdaniellEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_edge_to_string(s : SignalspecdaniellEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellEdge::to_string(self : SignalspecdaniellEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellPath {
@@ -606,45 +606,45 @@ pub fn signal_spec_daniell_path_make(size : Int) -> SignalspecdaniellPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_path_len(s : SignalspecdaniellPath) -> Int { s.size }
+pub fn SignalspecdaniellPath::len(self : SignalspecdaniellPath) -> Int { self.size }
 
-pub fn signal_spec_daniell_path_get(s : SignalspecdaniellPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellPath::get(self : SignalspecdaniellPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_path_set(s : SignalspecdaniellPath, i : Int, v : Double) -> SignalspecdaniellPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellPath::set(self : SignalspecdaniellPath, i : Int, v : Double) -> SignalspecdaniellPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_path_sum(s : SignalspecdaniellPath) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellPath::sum(self : SignalspecdaniellPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_path_mean(s : SignalspecdaniellPath) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellPath::mean(self : SignalspecdaniellPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_path_scale(s : SignalspecdaniellPath, f : Double) -> SignalspecdaniellPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellPath::scale(self : SignalspecdaniellPath, f : Double) -> SignalspecdaniellPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_path_add(a : SignalspecdaniellPath, b : SignalspecdaniellPath) -> SignalspecdaniellPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellPath::add(self : SignalspecdaniellPath, other : SignalspecdaniellPath) -> SignalspecdaniellPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_path_copy(s : SignalspecdaniellPath) -> SignalspecdaniellPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellPath::copy(self : SignalspecdaniellPath) -> SignalspecdaniellPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_path_fill(s : SignalspecdaniellPath, v : Double) -> SignalspecdaniellPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellPath::fill(self : SignalspecdaniellPath, v : Double) -> SignalspecdaniellPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_path_min(s : SignalspecdaniellPath) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellPath::min(self : SignalspecdaniellPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_path_max(s : SignalspecdaniellPath) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellPath::max(self : SignalspecdaniellPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_path_to_string(s : SignalspecdaniellPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellPath::to_string(self : SignalspecdaniellPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellCluster {
@@ -657,45 +657,45 @@ pub fn signal_spec_daniell_cluster_make(size : Int) -> SignalspecdaniellCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_cluster_len(s : SignalspecdaniellCluster) -> Int { s.size }
+pub fn SignalspecdaniellCluster::len(self : SignalspecdaniellCluster) -> Int { self.size }
 
-pub fn signal_spec_daniell_cluster_get(s : SignalspecdaniellCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellCluster::get(self : SignalspecdaniellCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_cluster_set(s : SignalspecdaniellCluster, i : Int, v : Double) -> SignalspecdaniellCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellCluster::set(self : SignalspecdaniellCluster, i : Int, v : Double) -> SignalspecdaniellCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_cluster_sum(s : SignalspecdaniellCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellCluster::sum(self : SignalspecdaniellCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_cluster_mean(s : SignalspecdaniellCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellCluster::mean(self : SignalspecdaniellCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_cluster_scale(s : SignalspecdaniellCluster, f : Double) -> SignalspecdaniellCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellCluster::scale(self : SignalspecdaniellCluster, f : Double) -> SignalspecdaniellCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_cluster_add(a : SignalspecdaniellCluster, b : SignalspecdaniellCluster) -> SignalspecdaniellCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellCluster::add(self : SignalspecdaniellCluster, other : SignalspecdaniellCluster) -> SignalspecdaniellCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_cluster_copy(s : SignalspecdaniellCluster) -> SignalspecdaniellCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellCluster::copy(self : SignalspecdaniellCluster) -> SignalspecdaniellCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_cluster_fill(s : SignalspecdaniellCluster, v : Double) -> SignalspecdaniellCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellCluster::fill(self : SignalspecdaniellCluster, v : Double) -> SignalspecdaniellCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_cluster_min(s : SignalspecdaniellCluster) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellCluster::min(self : SignalspecdaniellCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_cluster_max(s : SignalspecdaniellCluster) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellCluster::max(self : SignalspecdaniellCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_cluster_to_string(s : SignalspecdaniellCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellCluster::to_string(self : SignalspecdaniellCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellModel {
@@ -708,45 +708,45 @@ pub fn signal_spec_daniell_model_make(size : Int) -> SignalspecdaniellModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_model_len(s : SignalspecdaniellModel) -> Int { s.size }
+pub fn SignalspecdaniellModel::len(self : SignalspecdaniellModel) -> Int { self.size }
 
-pub fn signal_spec_daniell_model_get(s : SignalspecdaniellModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellModel::get(self : SignalspecdaniellModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_model_set(s : SignalspecdaniellModel, i : Int, v : Double) -> SignalspecdaniellModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellModel::set(self : SignalspecdaniellModel, i : Int, v : Double) -> SignalspecdaniellModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_model_sum(s : SignalspecdaniellModel) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellModel::sum(self : SignalspecdaniellModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_model_mean(s : SignalspecdaniellModel) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellModel::mean(self : SignalspecdaniellModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_model_scale(s : SignalspecdaniellModel, f : Double) -> SignalspecdaniellModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellModel::scale(self : SignalspecdaniellModel, f : Double) -> SignalspecdaniellModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_model_add(a : SignalspecdaniellModel, b : SignalspecdaniellModel) -> SignalspecdaniellModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellModel::add(self : SignalspecdaniellModel, other : SignalspecdaniellModel) -> SignalspecdaniellModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_model_copy(s : SignalspecdaniellModel) -> SignalspecdaniellModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellModel::copy(self : SignalspecdaniellModel) -> SignalspecdaniellModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_model_fill(s : SignalspecdaniellModel, v : Double) -> SignalspecdaniellModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellModel::fill(self : SignalspecdaniellModel, v : Double) -> SignalspecdaniellModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_model_min(s : SignalspecdaniellModel) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellModel::min(self : SignalspecdaniellModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_model_max(s : SignalspecdaniellModel) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellModel::max(self : SignalspecdaniellModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_model_to_string(s : SignalspecdaniellModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellModel::to_string(self : SignalspecdaniellModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellLayer {
@@ -759,45 +759,45 @@ pub fn signal_spec_daniell_layer_make(size : Int) -> SignalspecdaniellLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_layer_len(s : SignalspecdaniellLayer) -> Int { s.size }
+pub fn SignalspecdaniellLayer::len(self : SignalspecdaniellLayer) -> Int { self.size }
 
-pub fn signal_spec_daniell_layer_get(s : SignalspecdaniellLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellLayer::get(self : SignalspecdaniellLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_layer_set(s : SignalspecdaniellLayer, i : Int, v : Double) -> SignalspecdaniellLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellLayer::set(self : SignalspecdaniellLayer, i : Int, v : Double) -> SignalspecdaniellLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_layer_sum(s : SignalspecdaniellLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellLayer::sum(self : SignalspecdaniellLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_layer_mean(s : SignalspecdaniellLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellLayer::mean(self : SignalspecdaniellLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_layer_scale(s : SignalspecdaniellLayer, f : Double) -> SignalspecdaniellLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellLayer::scale(self : SignalspecdaniellLayer, f : Double) -> SignalspecdaniellLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_layer_add(a : SignalspecdaniellLayer, b : SignalspecdaniellLayer) -> SignalspecdaniellLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellLayer::add(self : SignalspecdaniellLayer, other : SignalspecdaniellLayer) -> SignalspecdaniellLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_layer_copy(s : SignalspecdaniellLayer) -> SignalspecdaniellLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellLayer::copy(self : SignalspecdaniellLayer) -> SignalspecdaniellLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_layer_fill(s : SignalspecdaniellLayer, v : Double) -> SignalspecdaniellLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellLayer::fill(self : SignalspecdaniellLayer, v : Double) -> SignalspecdaniellLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_layer_min(s : SignalspecdaniellLayer) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellLayer::min(self : SignalspecdaniellLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_layer_max(s : SignalspecdaniellLayer) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellLayer::max(self : SignalspecdaniellLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_layer_to_string(s : SignalspecdaniellLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellLayer::to_string(self : SignalspecdaniellLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellBuffer {
@@ -810,45 +810,45 @@ pub fn signal_spec_daniell_buffer_make(size : Int) -> SignalspecdaniellBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_buffer_len(s : SignalspecdaniellBuffer) -> Int { s.size }
+pub fn SignalspecdaniellBuffer::len(self : SignalspecdaniellBuffer) -> Int { self.size }
 
-pub fn signal_spec_daniell_buffer_get(s : SignalspecdaniellBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellBuffer::get(self : SignalspecdaniellBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_buffer_set(s : SignalspecdaniellBuffer, i : Int, v : Double) -> SignalspecdaniellBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellBuffer::set(self : SignalspecdaniellBuffer, i : Int, v : Double) -> SignalspecdaniellBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_buffer_sum(s : SignalspecdaniellBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellBuffer::sum(self : SignalspecdaniellBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_buffer_mean(s : SignalspecdaniellBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellBuffer::mean(self : SignalspecdaniellBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_buffer_scale(s : SignalspecdaniellBuffer, f : Double) -> SignalspecdaniellBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellBuffer::scale(self : SignalspecdaniellBuffer, f : Double) -> SignalspecdaniellBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_buffer_add(a : SignalspecdaniellBuffer, b : SignalspecdaniellBuffer) -> SignalspecdaniellBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellBuffer::add(self : SignalspecdaniellBuffer, other : SignalspecdaniellBuffer) -> SignalspecdaniellBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_buffer_copy(s : SignalspecdaniellBuffer) -> SignalspecdaniellBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellBuffer::copy(self : SignalspecdaniellBuffer) -> SignalspecdaniellBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_buffer_fill(s : SignalspecdaniellBuffer, v : Double) -> SignalspecdaniellBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellBuffer::fill(self : SignalspecdaniellBuffer, v : Double) -> SignalspecdaniellBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_buffer_min(s : SignalspecdaniellBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellBuffer::min(self : SignalspecdaniellBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_buffer_max(s : SignalspecdaniellBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellBuffer::max(self : SignalspecdaniellBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_buffer_to_string(s : SignalspecdaniellBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellBuffer::to_string(self : SignalspecdaniellBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellCursor {
@@ -861,45 +861,45 @@ pub fn signal_spec_daniell_cursor_make(size : Int) -> SignalspecdaniellCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_cursor_len(s : SignalspecdaniellCursor) -> Int { s.size }
+pub fn SignalspecdaniellCursor::len(self : SignalspecdaniellCursor) -> Int { self.size }
 
-pub fn signal_spec_daniell_cursor_get(s : SignalspecdaniellCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellCursor::get(self : SignalspecdaniellCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_cursor_set(s : SignalspecdaniellCursor, i : Int, v : Double) -> SignalspecdaniellCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellCursor::set(self : SignalspecdaniellCursor, i : Int, v : Double) -> SignalspecdaniellCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_cursor_sum(s : SignalspecdaniellCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellCursor::sum(self : SignalspecdaniellCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_cursor_mean(s : SignalspecdaniellCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellCursor::mean(self : SignalspecdaniellCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_cursor_scale(s : SignalspecdaniellCursor, f : Double) -> SignalspecdaniellCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellCursor::scale(self : SignalspecdaniellCursor, f : Double) -> SignalspecdaniellCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_cursor_add(a : SignalspecdaniellCursor, b : SignalspecdaniellCursor) -> SignalspecdaniellCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellCursor::add(self : SignalspecdaniellCursor, other : SignalspecdaniellCursor) -> SignalspecdaniellCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_cursor_copy(s : SignalspecdaniellCursor) -> SignalspecdaniellCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellCursor::copy(self : SignalspecdaniellCursor) -> SignalspecdaniellCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_cursor_fill(s : SignalspecdaniellCursor, v : Double) -> SignalspecdaniellCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellCursor::fill(self : SignalspecdaniellCursor, v : Double) -> SignalspecdaniellCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_cursor_min(s : SignalspecdaniellCursor) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellCursor::min(self : SignalspecdaniellCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_cursor_max(s : SignalspecdaniellCursor) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellCursor::max(self : SignalspecdaniellCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_cursor_to_string(s : SignalspecdaniellCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellCursor::to_string(self : SignalspecdaniellCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellView {
@@ -912,45 +912,45 @@ pub fn signal_spec_daniell_view_make(size : Int) -> SignalspecdaniellView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_view_len(s : SignalspecdaniellView) -> Int { s.size }
+pub fn SignalspecdaniellView::len(self : SignalspecdaniellView) -> Int { self.size }
 
-pub fn signal_spec_daniell_view_get(s : SignalspecdaniellView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellView::get(self : SignalspecdaniellView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_view_set(s : SignalspecdaniellView, i : Int, v : Double) -> SignalspecdaniellView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellView::set(self : SignalspecdaniellView, i : Int, v : Double) -> SignalspecdaniellView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_view_sum(s : SignalspecdaniellView) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellView::sum(self : SignalspecdaniellView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_view_mean(s : SignalspecdaniellView) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellView::mean(self : SignalspecdaniellView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_view_scale(s : SignalspecdaniellView, f : Double) -> SignalspecdaniellView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellView::scale(self : SignalspecdaniellView, f : Double) -> SignalspecdaniellView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_view_add(a : SignalspecdaniellView, b : SignalspecdaniellView) -> SignalspecdaniellView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellView::add(self : SignalspecdaniellView, other : SignalspecdaniellView) -> SignalspecdaniellView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_view_copy(s : SignalspecdaniellView) -> SignalspecdaniellView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellView::copy(self : SignalspecdaniellView) -> SignalspecdaniellView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_view_fill(s : SignalspecdaniellView, v : Double) -> SignalspecdaniellView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellView::fill(self : SignalspecdaniellView, v : Double) -> SignalspecdaniellView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_view_min(s : SignalspecdaniellView) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellView::min(self : SignalspecdaniellView) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_view_max(s : SignalspecdaniellView) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellView::max(self : SignalspecdaniellView) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_view_to_string(s : SignalspecdaniellView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellView::to_string(self : SignalspecdaniellView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellRange {
@@ -963,45 +963,45 @@ pub fn signal_spec_daniell_range_make(size : Int) -> SignalspecdaniellRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_range_len(s : SignalspecdaniellRange) -> Int { s.size }
+pub fn SignalspecdaniellRange::len(self : SignalspecdaniellRange) -> Int { self.size }
 
-pub fn signal_spec_daniell_range_get(s : SignalspecdaniellRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellRange::get(self : SignalspecdaniellRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_range_set(s : SignalspecdaniellRange, i : Int, v : Double) -> SignalspecdaniellRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellRange::set(self : SignalspecdaniellRange, i : Int, v : Double) -> SignalspecdaniellRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_range_sum(s : SignalspecdaniellRange) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellRange::sum(self : SignalspecdaniellRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_range_mean(s : SignalspecdaniellRange) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellRange::mean(self : SignalspecdaniellRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_range_scale(s : SignalspecdaniellRange, f : Double) -> SignalspecdaniellRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellRange::scale(self : SignalspecdaniellRange, f : Double) -> SignalspecdaniellRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_range_add(a : SignalspecdaniellRange, b : SignalspecdaniellRange) -> SignalspecdaniellRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellRange::add(self : SignalspecdaniellRange, other : SignalspecdaniellRange) -> SignalspecdaniellRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_range_copy(s : SignalspecdaniellRange) -> SignalspecdaniellRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellRange::copy(self : SignalspecdaniellRange) -> SignalspecdaniellRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_range_fill(s : SignalspecdaniellRange, v : Double) -> SignalspecdaniellRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellRange::fill(self : SignalspecdaniellRange, v : Double) -> SignalspecdaniellRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_range_min(s : SignalspecdaniellRange) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellRange::min(self : SignalspecdaniellRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_range_max(s : SignalspecdaniellRange) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellRange::max(self : SignalspecdaniellRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_range_to_string(s : SignalspecdaniellRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellRange::to_string(self : SignalspecdaniellRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecdaniellSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_spec_daniell_slice_make(size : Int) -> SignalspecdaniellSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_daniell_slice_len(s : SignalspecdaniellSlice) -> Int { s.size }
+pub fn SignalspecdaniellSlice::len(self : SignalspecdaniellSlice) -> Int { self.size }
 
-pub fn signal_spec_daniell_slice_get(s : SignalspecdaniellSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecdaniellSlice::get(self : SignalspecdaniellSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_daniell_slice_set(s : SignalspecdaniellSlice, i : Int, v : Double) -> SignalspecdaniellSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecdaniellSlice::set(self : SignalspecdaniellSlice, i : Int, v : Double) -> SignalspecdaniellSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_slice_sum(s : SignalspecdaniellSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalspecdaniellSlice::sum(self : SignalspecdaniellSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_daniell_slice_mean(s : SignalspecdaniellSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalspecdaniellSlice::mean(self : SignalspecdaniellSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_daniell_slice_scale(s : SignalspecdaniellSlice, f : Double) -> SignalspecdaniellSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellSlice::scale(self : SignalspecdaniellSlice, f : Double) -> SignalspecdaniellSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_slice_add(a : SignalspecdaniellSlice, b : SignalspecdaniellSlice) -> SignalspecdaniellSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecdaniellSlice::add(self : SignalspecdaniellSlice, other : SignalspecdaniellSlice) -> SignalspecdaniellSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_slice_copy(s : SignalspecdaniellSlice) -> SignalspecdaniellSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellSlice::copy(self : SignalspecdaniellSlice) -> SignalspecdaniellSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_slice_fill(s : SignalspecdaniellSlice, v : Double) -> SignalspecdaniellSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecdaniellSlice::fill(self : SignalspecdaniellSlice, v : Double) -> SignalspecdaniellSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_daniell_slice_min(s : SignalspecdaniellSlice) -> Double { @_common.min(s.data) }
+pub fn SignalspecdaniellSlice::min(self : SignalspecdaniellSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_daniell_slice_max(s : SignalspecdaniellSlice) -> Double { @_common.max(s.data) }
+pub fn SignalspecdaniellSlice::max(self : SignalspecdaniellSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_daniell_slice_to_string(s : SignalspecdaniellSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecdaniellSlice::to_string(self : SignalspecdaniellSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

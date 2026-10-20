@@ -351,45 +351,45 @@ pub fn graph_connect_weak_frame_make(size : Int) -> GraphconnectweakFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_frame_len(s : GraphconnectweakFrame) -> Int { s.size }
+pub fn GraphconnectweakFrame::len(self : GraphconnectweakFrame) -> Int { self.size }
 
-pub fn graph_connect_weak_frame_get(s : GraphconnectweakFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakFrame::get(self : GraphconnectweakFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_frame_set(s : GraphconnectweakFrame, i : Int, v : Double) -> GraphconnectweakFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakFrame::set(self : GraphconnectweakFrame, i : Int, v : Double) -> GraphconnectweakFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_frame_sum(s : GraphconnectweakFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakFrame::sum(self : GraphconnectweakFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_frame_mean(s : GraphconnectweakFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakFrame::mean(self : GraphconnectweakFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_frame_scale(s : GraphconnectweakFrame, f : Double) -> GraphconnectweakFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakFrame::scale(self : GraphconnectweakFrame, f : Double) -> GraphconnectweakFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_frame_add(a : GraphconnectweakFrame, b : GraphconnectweakFrame) -> GraphconnectweakFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakFrame::add(self : GraphconnectweakFrame, other : GraphconnectweakFrame) -> GraphconnectweakFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_frame_copy(s : GraphconnectweakFrame) -> GraphconnectweakFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakFrame::copy(self : GraphconnectweakFrame) -> GraphconnectweakFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_frame_fill(s : GraphconnectweakFrame, v : Double) -> GraphconnectweakFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakFrame::fill(self : GraphconnectweakFrame, v : Double) -> GraphconnectweakFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_frame_min(s : GraphconnectweakFrame) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakFrame::min(self : GraphconnectweakFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_frame_max(s : GraphconnectweakFrame) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakFrame::max(self : GraphconnectweakFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_frame_to_string(s : GraphconnectweakFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakFrame::to_string(self : GraphconnectweakFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakTable {
@@ -402,45 +402,45 @@ pub fn graph_connect_weak_table_make(size : Int) -> GraphconnectweakTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_table_len(s : GraphconnectweakTable) -> Int { s.size }
+pub fn GraphconnectweakTable::len(self : GraphconnectweakTable) -> Int { self.size }
 
-pub fn graph_connect_weak_table_get(s : GraphconnectweakTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakTable::get(self : GraphconnectweakTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_table_set(s : GraphconnectweakTable, i : Int, v : Double) -> GraphconnectweakTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakTable::set(self : GraphconnectweakTable, i : Int, v : Double) -> GraphconnectweakTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_table_sum(s : GraphconnectweakTable) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakTable::sum(self : GraphconnectweakTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_table_mean(s : GraphconnectweakTable) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakTable::mean(self : GraphconnectweakTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_table_scale(s : GraphconnectweakTable, f : Double) -> GraphconnectweakTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakTable::scale(self : GraphconnectweakTable, f : Double) -> GraphconnectweakTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_table_add(a : GraphconnectweakTable, b : GraphconnectweakTable) -> GraphconnectweakTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakTable::add(self : GraphconnectweakTable, other : GraphconnectweakTable) -> GraphconnectweakTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_table_copy(s : GraphconnectweakTable) -> GraphconnectweakTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakTable::copy(self : GraphconnectweakTable) -> GraphconnectweakTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_table_fill(s : GraphconnectweakTable, v : Double) -> GraphconnectweakTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakTable::fill(self : GraphconnectweakTable, v : Double) -> GraphconnectweakTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_table_min(s : GraphconnectweakTable) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakTable::min(self : GraphconnectweakTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_table_max(s : GraphconnectweakTable) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakTable::max(self : GraphconnectweakTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_table_to_string(s : GraphconnectweakTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakTable::to_string(self : GraphconnectweakTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakGraphN {
@@ -453,45 +453,45 @@ pub fn graph_connect_weak_graphn_make(size : Int) -> GraphconnectweakGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_graphn_len(s : GraphconnectweakGraphN) -> Int { s.size }
+pub fn GraphconnectweakGraphN::len(self : GraphconnectweakGraphN) -> Int { self.size }
 
-pub fn graph_connect_weak_graphn_get(s : GraphconnectweakGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakGraphN::get(self : GraphconnectweakGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_graphn_set(s : GraphconnectweakGraphN, i : Int, v : Double) -> GraphconnectweakGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakGraphN::set(self : GraphconnectweakGraphN, i : Int, v : Double) -> GraphconnectweakGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_graphn_sum(s : GraphconnectweakGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakGraphN::sum(self : GraphconnectweakGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_graphn_mean(s : GraphconnectweakGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakGraphN::mean(self : GraphconnectweakGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_graphn_scale(s : GraphconnectweakGraphN, f : Double) -> GraphconnectweakGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakGraphN::scale(self : GraphconnectweakGraphN, f : Double) -> GraphconnectweakGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_graphn_add(a : GraphconnectweakGraphN, b : GraphconnectweakGraphN) -> GraphconnectweakGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakGraphN::add(self : GraphconnectweakGraphN, other : GraphconnectweakGraphN) -> GraphconnectweakGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_graphn_copy(s : GraphconnectweakGraphN) -> GraphconnectweakGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakGraphN::copy(self : GraphconnectweakGraphN) -> GraphconnectweakGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_graphn_fill(s : GraphconnectweakGraphN, v : Double) -> GraphconnectweakGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakGraphN::fill(self : GraphconnectweakGraphN, v : Double) -> GraphconnectweakGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_graphn_min(s : GraphconnectweakGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakGraphN::min(self : GraphconnectweakGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_graphn_max(s : GraphconnectweakGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakGraphN::max(self : GraphconnectweakGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_graphn_to_string(s : GraphconnectweakGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakGraphN::to_string(self : GraphconnectweakGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakNode {
@@ -504,45 +504,45 @@ pub fn graph_connect_weak_node_make(size : Int) -> GraphconnectweakNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_node_len(s : GraphconnectweakNode) -> Int { s.size }
+pub fn GraphconnectweakNode::len(self : GraphconnectweakNode) -> Int { self.size }
 
-pub fn graph_connect_weak_node_get(s : GraphconnectweakNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakNode::get(self : GraphconnectweakNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_node_set(s : GraphconnectweakNode, i : Int, v : Double) -> GraphconnectweakNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakNode::set(self : GraphconnectweakNode, i : Int, v : Double) -> GraphconnectweakNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_node_sum(s : GraphconnectweakNode) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakNode::sum(self : GraphconnectweakNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_node_mean(s : GraphconnectweakNode) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakNode::mean(self : GraphconnectweakNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_node_scale(s : GraphconnectweakNode, f : Double) -> GraphconnectweakNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakNode::scale(self : GraphconnectweakNode, f : Double) -> GraphconnectweakNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_node_add(a : GraphconnectweakNode, b : GraphconnectweakNode) -> GraphconnectweakNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakNode::add(self : GraphconnectweakNode, other : GraphconnectweakNode) -> GraphconnectweakNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_node_copy(s : GraphconnectweakNode) -> GraphconnectweakNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakNode::copy(self : GraphconnectweakNode) -> GraphconnectweakNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_node_fill(s : GraphconnectweakNode, v : Double) -> GraphconnectweakNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakNode::fill(self : GraphconnectweakNode, v : Double) -> GraphconnectweakNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_node_min(s : GraphconnectweakNode) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakNode::min(self : GraphconnectweakNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_node_max(s : GraphconnectweakNode) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakNode::max(self : GraphconnectweakNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_node_to_string(s : GraphconnectweakNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakNode::to_string(self : GraphconnectweakNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakEdge {
@@ -555,45 +555,45 @@ pub fn graph_connect_weak_edge_make(size : Int) -> GraphconnectweakEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_edge_len(s : GraphconnectweakEdge) -> Int { s.size }
+pub fn GraphconnectweakEdge::len(self : GraphconnectweakEdge) -> Int { self.size }
 
-pub fn graph_connect_weak_edge_get(s : GraphconnectweakEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakEdge::get(self : GraphconnectweakEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_edge_set(s : GraphconnectweakEdge, i : Int, v : Double) -> GraphconnectweakEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakEdge::set(self : GraphconnectweakEdge, i : Int, v : Double) -> GraphconnectweakEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_edge_sum(s : GraphconnectweakEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakEdge::sum(self : GraphconnectweakEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_edge_mean(s : GraphconnectweakEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakEdge::mean(self : GraphconnectweakEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_edge_scale(s : GraphconnectweakEdge, f : Double) -> GraphconnectweakEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakEdge::scale(self : GraphconnectweakEdge, f : Double) -> GraphconnectweakEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_edge_add(a : GraphconnectweakEdge, b : GraphconnectweakEdge) -> GraphconnectweakEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakEdge::add(self : GraphconnectweakEdge, other : GraphconnectweakEdge) -> GraphconnectweakEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_edge_copy(s : GraphconnectweakEdge) -> GraphconnectweakEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakEdge::copy(self : GraphconnectweakEdge) -> GraphconnectweakEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_edge_fill(s : GraphconnectweakEdge, v : Double) -> GraphconnectweakEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakEdge::fill(self : GraphconnectweakEdge, v : Double) -> GraphconnectweakEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_edge_min(s : GraphconnectweakEdge) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakEdge::min(self : GraphconnectweakEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_edge_max(s : GraphconnectweakEdge) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakEdge::max(self : GraphconnectweakEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_edge_to_string(s : GraphconnectweakEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakEdge::to_string(self : GraphconnectweakEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakPath {
@@ -606,45 +606,45 @@ pub fn graph_connect_weak_path_make(size : Int) -> GraphconnectweakPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_path_len(s : GraphconnectweakPath) -> Int { s.size }
+pub fn GraphconnectweakPath::len(self : GraphconnectweakPath) -> Int { self.size }
 
-pub fn graph_connect_weak_path_get(s : GraphconnectweakPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakPath::get(self : GraphconnectweakPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_path_set(s : GraphconnectweakPath, i : Int, v : Double) -> GraphconnectweakPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakPath::set(self : GraphconnectweakPath, i : Int, v : Double) -> GraphconnectweakPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_path_sum(s : GraphconnectweakPath) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakPath::sum(self : GraphconnectweakPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_path_mean(s : GraphconnectweakPath) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakPath::mean(self : GraphconnectweakPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_path_scale(s : GraphconnectweakPath, f : Double) -> GraphconnectweakPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakPath::scale(self : GraphconnectweakPath, f : Double) -> GraphconnectweakPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_path_add(a : GraphconnectweakPath, b : GraphconnectweakPath) -> GraphconnectweakPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakPath::add(self : GraphconnectweakPath, other : GraphconnectweakPath) -> GraphconnectweakPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_path_copy(s : GraphconnectweakPath) -> GraphconnectweakPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakPath::copy(self : GraphconnectweakPath) -> GraphconnectweakPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_path_fill(s : GraphconnectweakPath, v : Double) -> GraphconnectweakPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakPath::fill(self : GraphconnectweakPath, v : Double) -> GraphconnectweakPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_path_min(s : GraphconnectweakPath) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakPath::min(self : GraphconnectweakPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_path_max(s : GraphconnectweakPath) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakPath::max(self : GraphconnectweakPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_path_to_string(s : GraphconnectweakPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakPath::to_string(self : GraphconnectweakPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakCluster {
@@ -657,45 +657,45 @@ pub fn graph_connect_weak_cluster_make(size : Int) -> GraphconnectweakCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_cluster_len(s : GraphconnectweakCluster) -> Int { s.size }
+pub fn GraphconnectweakCluster::len(self : GraphconnectweakCluster) -> Int { self.size }
 
-pub fn graph_connect_weak_cluster_get(s : GraphconnectweakCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakCluster::get(self : GraphconnectweakCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_cluster_set(s : GraphconnectweakCluster, i : Int, v : Double) -> GraphconnectweakCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakCluster::set(self : GraphconnectweakCluster, i : Int, v : Double) -> GraphconnectweakCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_cluster_sum(s : GraphconnectweakCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakCluster::sum(self : GraphconnectweakCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_cluster_mean(s : GraphconnectweakCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakCluster::mean(self : GraphconnectweakCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_cluster_scale(s : GraphconnectweakCluster, f : Double) -> GraphconnectweakCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakCluster::scale(self : GraphconnectweakCluster, f : Double) -> GraphconnectweakCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_cluster_add(a : GraphconnectweakCluster, b : GraphconnectweakCluster) -> GraphconnectweakCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakCluster::add(self : GraphconnectweakCluster, other : GraphconnectweakCluster) -> GraphconnectweakCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_cluster_copy(s : GraphconnectweakCluster) -> GraphconnectweakCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakCluster::copy(self : GraphconnectweakCluster) -> GraphconnectweakCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_cluster_fill(s : GraphconnectweakCluster, v : Double) -> GraphconnectweakCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakCluster::fill(self : GraphconnectweakCluster, v : Double) -> GraphconnectweakCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_cluster_min(s : GraphconnectweakCluster) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakCluster::min(self : GraphconnectweakCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_cluster_max(s : GraphconnectweakCluster) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakCluster::max(self : GraphconnectweakCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_cluster_to_string(s : GraphconnectweakCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakCluster::to_string(self : GraphconnectweakCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakModel {
@@ -708,45 +708,45 @@ pub fn graph_connect_weak_model_make(size : Int) -> GraphconnectweakModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_model_len(s : GraphconnectweakModel) -> Int { s.size }
+pub fn GraphconnectweakModel::len(self : GraphconnectweakModel) -> Int { self.size }
 
-pub fn graph_connect_weak_model_get(s : GraphconnectweakModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakModel::get(self : GraphconnectweakModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_model_set(s : GraphconnectweakModel, i : Int, v : Double) -> GraphconnectweakModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakModel::set(self : GraphconnectweakModel, i : Int, v : Double) -> GraphconnectweakModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_model_sum(s : GraphconnectweakModel) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakModel::sum(self : GraphconnectweakModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_model_mean(s : GraphconnectweakModel) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakModel::mean(self : GraphconnectweakModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_model_scale(s : GraphconnectweakModel, f : Double) -> GraphconnectweakModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakModel::scale(self : GraphconnectweakModel, f : Double) -> GraphconnectweakModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_model_add(a : GraphconnectweakModel, b : GraphconnectweakModel) -> GraphconnectweakModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakModel::add(self : GraphconnectweakModel, other : GraphconnectweakModel) -> GraphconnectweakModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_model_copy(s : GraphconnectweakModel) -> GraphconnectweakModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakModel::copy(self : GraphconnectweakModel) -> GraphconnectweakModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_model_fill(s : GraphconnectweakModel, v : Double) -> GraphconnectweakModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakModel::fill(self : GraphconnectweakModel, v : Double) -> GraphconnectweakModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_model_min(s : GraphconnectweakModel) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakModel::min(self : GraphconnectweakModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_model_max(s : GraphconnectweakModel) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakModel::max(self : GraphconnectweakModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_model_to_string(s : GraphconnectweakModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakModel::to_string(self : GraphconnectweakModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakLayer {
@@ -759,45 +759,45 @@ pub fn graph_connect_weak_layer_make(size : Int) -> GraphconnectweakLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_layer_len(s : GraphconnectweakLayer) -> Int { s.size }
+pub fn GraphconnectweakLayer::len(self : GraphconnectweakLayer) -> Int { self.size }
 
-pub fn graph_connect_weak_layer_get(s : GraphconnectweakLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakLayer::get(self : GraphconnectweakLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_layer_set(s : GraphconnectweakLayer, i : Int, v : Double) -> GraphconnectweakLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakLayer::set(self : GraphconnectweakLayer, i : Int, v : Double) -> GraphconnectweakLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_layer_sum(s : GraphconnectweakLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakLayer::sum(self : GraphconnectweakLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_layer_mean(s : GraphconnectweakLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakLayer::mean(self : GraphconnectweakLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_layer_scale(s : GraphconnectweakLayer, f : Double) -> GraphconnectweakLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakLayer::scale(self : GraphconnectweakLayer, f : Double) -> GraphconnectweakLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_layer_add(a : GraphconnectweakLayer, b : GraphconnectweakLayer) -> GraphconnectweakLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakLayer::add(self : GraphconnectweakLayer, other : GraphconnectweakLayer) -> GraphconnectweakLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_layer_copy(s : GraphconnectweakLayer) -> GraphconnectweakLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakLayer::copy(self : GraphconnectweakLayer) -> GraphconnectweakLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_layer_fill(s : GraphconnectweakLayer, v : Double) -> GraphconnectweakLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakLayer::fill(self : GraphconnectweakLayer, v : Double) -> GraphconnectweakLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_layer_min(s : GraphconnectweakLayer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakLayer::min(self : GraphconnectweakLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_layer_max(s : GraphconnectweakLayer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakLayer::max(self : GraphconnectweakLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_layer_to_string(s : GraphconnectweakLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakLayer::to_string(self : GraphconnectweakLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakBuffer {
@@ -810,45 +810,45 @@ pub fn graph_connect_weak_buffer_make(size : Int) -> GraphconnectweakBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_buffer_len(s : GraphconnectweakBuffer) -> Int { s.size }
+pub fn GraphconnectweakBuffer::len(self : GraphconnectweakBuffer) -> Int { self.size }
 
-pub fn graph_connect_weak_buffer_get(s : GraphconnectweakBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakBuffer::get(self : GraphconnectweakBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_buffer_set(s : GraphconnectweakBuffer, i : Int, v : Double) -> GraphconnectweakBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakBuffer::set(self : GraphconnectweakBuffer, i : Int, v : Double) -> GraphconnectweakBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_buffer_sum(s : GraphconnectweakBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakBuffer::sum(self : GraphconnectweakBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_buffer_mean(s : GraphconnectweakBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakBuffer::mean(self : GraphconnectweakBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_buffer_scale(s : GraphconnectweakBuffer, f : Double) -> GraphconnectweakBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakBuffer::scale(self : GraphconnectweakBuffer, f : Double) -> GraphconnectweakBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_buffer_add(a : GraphconnectweakBuffer, b : GraphconnectweakBuffer) -> GraphconnectweakBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakBuffer::add(self : GraphconnectweakBuffer, other : GraphconnectweakBuffer) -> GraphconnectweakBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_buffer_copy(s : GraphconnectweakBuffer) -> GraphconnectweakBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakBuffer::copy(self : GraphconnectweakBuffer) -> GraphconnectweakBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_buffer_fill(s : GraphconnectweakBuffer, v : Double) -> GraphconnectweakBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakBuffer::fill(self : GraphconnectweakBuffer, v : Double) -> GraphconnectweakBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_buffer_min(s : GraphconnectweakBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakBuffer::min(self : GraphconnectweakBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_buffer_max(s : GraphconnectweakBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakBuffer::max(self : GraphconnectweakBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_buffer_to_string(s : GraphconnectweakBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakBuffer::to_string(self : GraphconnectweakBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakCursor {
@@ -861,45 +861,45 @@ pub fn graph_connect_weak_cursor_make(size : Int) -> GraphconnectweakCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_cursor_len(s : GraphconnectweakCursor) -> Int { s.size }
+pub fn GraphconnectweakCursor::len(self : GraphconnectweakCursor) -> Int { self.size }
 
-pub fn graph_connect_weak_cursor_get(s : GraphconnectweakCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakCursor::get(self : GraphconnectweakCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_cursor_set(s : GraphconnectweakCursor, i : Int, v : Double) -> GraphconnectweakCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakCursor::set(self : GraphconnectweakCursor, i : Int, v : Double) -> GraphconnectweakCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_cursor_sum(s : GraphconnectweakCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakCursor::sum(self : GraphconnectweakCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_cursor_mean(s : GraphconnectweakCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakCursor::mean(self : GraphconnectweakCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_cursor_scale(s : GraphconnectweakCursor, f : Double) -> GraphconnectweakCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakCursor::scale(self : GraphconnectweakCursor, f : Double) -> GraphconnectweakCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_cursor_add(a : GraphconnectweakCursor, b : GraphconnectweakCursor) -> GraphconnectweakCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakCursor::add(self : GraphconnectweakCursor, other : GraphconnectweakCursor) -> GraphconnectweakCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_cursor_copy(s : GraphconnectweakCursor) -> GraphconnectweakCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakCursor::copy(self : GraphconnectweakCursor) -> GraphconnectweakCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_cursor_fill(s : GraphconnectweakCursor, v : Double) -> GraphconnectweakCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakCursor::fill(self : GraphconnectweakCursor, v : Double) -> GraphconnectweakCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_cursor_min(s : GraphconnectweakCursor) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakCursor::min(self : GraphconnectweakCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_cursor_max(s : GraphconnectweakCursor) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakCursor::max(self : GraphconnectweakCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_cursor_to_string(s : GraphconnectweakCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakCursor::to_string(self : GraphconnectweakCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakView {
@@ -912,45 +912,45 @@ pub fn graph_connect_weak_view_make(size : Int) -> GraphconnectweakView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_view_len(s : GraphconnectweakView) -> Int { s.size }
+pub fn GraphconnectweakView::len(self : GraphconnectweakView) -> Int { self.size }
 
-pub fn graph_connect_weak_view_get(s : GraphconnectweakView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakView::get(self : GraphconnectweakView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_view_set(s : GraphconnectweakView, i : Int, v : Double) -> GraphconnectweakView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakView::set(self : GraphconnectweakView, i : Int, v : Double) -> GraphconnectweakView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_view_sum(s : GraphconnectweakView) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakView::sum(self : GraphconnectweakView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_view_mean(s : GraphconnectweakView) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakView::mean(self : GraphconnectweakView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_view_scale(s : GraphconnectweakView, f : Double) -> GraphconnectweakView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakView::scale(self : GraphconnectweakView, f : Double) -> GraphconnectweakView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_view_add(a : GraphconnectweakView, b : GraphconnectweakView) -> GraphconnectweakView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakView::add(self : GraphconnectweakView, other : GraphconnectweakView) -> GraphconnectweakView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_view_copy(s : GraphconnectweakView) -> GraphconnectweakView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakView::copy(self : GraphconnectweakView) -> GraphconnectweakView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_view_fill(s : GraphconnectweakView, v : Double) -> GraphconnectweakView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakView::fill(self : GraphconnectweakView, v : Double) -> GraphconnectweakView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_view_min(s : GraphconnectweakView) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakView::min(self : GraphconnectweakView) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_view_max(s : GraphconnectweakView) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakView::max(self : GraphconnectweakView) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_view_to_string(s : GraphconnectweakView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakView::to_string(self : GraphconnectweakView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakRange {
@@ -963,45 +963,45 @@ pub fn graph_connect_weak_range_make(size : Int) -> GraphconnectweakRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_range_len(s : GraphconnectweakRange) -> Int { s.size }
+pub fn GraphconnectweakRange::len(self : GraphconnectweakRange) -> Int { self.size }
 
-pub fn graph_connect_weak_range_get(s : GraphconnectweakRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakRange::get(self : GraphconnectweakRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_range_set(s : GraphconnectweakRange, i : Int, v : Double) -> GraphconnectweakRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakRange::set(self : GraphconnectweakRange, i : Int, v : Double) -> GraphconnectweakRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_range_sum(s : GraphconnectweakRange) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakRange::sum(self : GraphconnectweakRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_range_mean(s : GraphconnectweakRange) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakRange::mean(self : GraphconnectweakRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_range_scale(s : GraphconnectweakRange, f : Double) -> GraphconnectweakRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakRange::scale(self : GraphconnectweakRange, f : Double) -> GraphconnectweakRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_range_add(a : GraphconnectweakRange, b : GraphconnectweakRange) -> GraphconnectweakRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakRange::add(self : GraphconnectweakRange, other : GraphconnectweakRange) -> GraphconnectweakRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_range_copy(s : GraphconnectweakRange) -> GraphconnectweakRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakRange::copy(self : GraphconnectweakRange) -> GraphconnectweakRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_range_fill(s : GraphconnectweakRange, v : Double) -> GraphconnectweakRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakRange::fill(self : GraphconnectweakRange, v : Double) -> GraphconnectweakRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_range_min(s : GraphconnectweakRange) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakRange::min(self : GraphconnectweakRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_range_max(s : GraphconnectweakRange) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakRange::max(self : GraphconnectweakRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_range_to_string(s : GraphconnectweakRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakRange::to_string(self : GraphconnectweakRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectweakSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_connect_weak_slice_make(size : Int) -> GraphconnectweakSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_weak_slice_len(s : GraphconnectweakSlice) -> Int { s.size }
+pub fn GraphconnectweakSlice::len(self : GraphconnectweakSlice) -> Int { self.size }
 
-pub fn graph_connect_weak_slice_get(s : GraphconnectweakSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectweakSlice::get(self : GraphconnectweakSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_weak_slice_set(s : GraphconnectweakSlice, i : Int, v : Double) -> GraphconnectweakSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectweakSlice::set(self : GraphconnectweakSlice, i : Int, v : Double) -> GraphconnectweakSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_slice_sum(s : GraphconnectweakSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectweakSlice::sum(self : GraphconnectweakSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_weak_slice_mean(s : GraphconnectweakSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectweakSlice::mean(self : GraphconnectweakSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_weak_slice_scale(s : GraphconnectweakSlice, f : Double) -> GraphconnectweakSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectweakSlice::scale(self : GraphconnectweakSlice, f : Double) -> GraphconnectweakSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_slice_add(a : GraphconnectweakSlice, b : GraphconnectweakSlice) -> GraphconnectweakSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectweakSlice::add(self : GraphconnectweakSlice, other : GraphconnectweakSlice) -> GraphconnectweakSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_weak_slice_copy(s : GraphconnectweakSlice) -> GraphconnectweakSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectweakSlice::copy(self : GraphconnectweakSlice) -> GraphconnectweakSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_slice_fill(s : GraphconnectweakSlice, v : Double) -> GraphconnectweakSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectweakSlice::fill(self : GraphconnectweakSlice, v : Double) -> GraphconnectweakSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_weak_slice_min(s : GraphconnectweakSlice) -> Double { @_common.min(s.data) }
+pub fn GraphconnectweakSlice::min(self : GraphconnectweakSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_weak_slice_max(s : GraphconnectweakSlice) -> Double { @_common.max(s.data) }
+pub fn GraphconnectweakSlice::max(self : GraphconnectweakSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_weak_slice_to_string(s : GraphconnectweakSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectweakSlice::to_string(self : GraphconnectweakSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

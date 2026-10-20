@@ -351,45 +351,45 @@ pub fn crypto_sym_des_frame_make(size : Int) -> CryptosymdesFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_frame_len(s : CryptosymdesFrame) -> Int { s.size }
+pub fn CryptosymdesFrame::len(self : CryptosymdesFrame) -> Int { self.size }
 
-pub fn crypto_sym_des_frame_get(s : CryptosymdesFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesFrame::get(self : CryptosymdesFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_frame_set(s : CryptosymdesFrame, i : Int, v : Double) -> CryptosymdesFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesFrame::set(self : CryptosymdesFrame, i : Int, v : Double) -> CryptosymdesFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_frame_sum(s : CryptosymdesFrame) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesFrame::sum(self : CryptosymdesFrame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_frame_mean(s : CryptosymdesFrame) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesFrame::mean(self : CryptosymdesFrame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_frame_scale(s : CryptosymdesFrame, f : Double) -> CryptosymdesFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesFrame::scale(self : CryptosymdesFrame, f : Double) -> CryptosymdesFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_frame_add(a : CryptosymdesFrame, b : CryptosymdesFrame) -> CryptosymdesFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesFrame::add(self : CryptosymdesFrame, other : CryptosymdesFrame) -> CryptosymdesFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_frame_copy(s : CryptosymdesFrame) -> CryptosymdesFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesFrame::copy(self : CryptosymdesFrame) -> CryptosymdesFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_frame_fill(s : CryptosymdesFrame, v : Double) -> CryptosymdesFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesFrame::fill(self : CryptosymdesFrame, v : Double) -> CryptosymdesFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_frame_min(s : CryptosymdesFrame) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesFrame::min(self : CryptosymdesFrame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_frame_max(s : CryptosymdesFrame) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesFrame::max(self : CryptosymdesFrame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_frame_to_string(s : CryptosymdesFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesFrame::to_string(self : CryptosymdesFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesTable {
@@ -402,45 +402,45 @@ pub fn crypto_sym_des_table_make(size : Int) -> CryptosymdesTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_table_len(s : CryptosymdesTable) -> Int { s.size }
+pub fn CryptosymdesTable::len(self : CryptosymdesTable) -> Int { self.size }
 
-pub fn crypto_sym_des_table_get(s : CryptosymdesTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesTable::get(self : CryptosymdesTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_table_set(s : CryptosymdesTable, i : Int, v : Double) -> CryptosymdesTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesTable::set(self : CryptosymdesTable, i : Int, v : Double) -> CryptosymdesTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_table_sum(s : CryptosymdesTable) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesTable::sum(self : CryptosymdesTable) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_table_mean(s : CryptosymdesTable) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesTable::mean(self : CryptosymdesTable) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_table_scale(s : CryptosymdesTable, f : Double) -> CryptosymdesTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesTable::scale(self : CryptosymdesTable, f : Double) -> CryptosymdesTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_table_add(a : CryptosymdesTable, b : CryptosymdesTable) -> CryptosymdesTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesTable::add(self : CryptosymdesTable, other : CryptosymdesTable) -> CryptosymdesTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_table_copy(s : CryptosymdesTable) -> CryptosymdesTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesTable::copy(self : CryptosymdesTable) -> CryptosymdesTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_table_fill(s : CryptosymdesTable, v : Double) -> CryptosymdesTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesTable::fill(self : CryptosymdesTable, v : Double) -> CryptosymdesTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_table_min(s : CryptosymdesTable) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesTable::min(self : CryptosymdesTable) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_table_max(s : CryptosymdesTable) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesTable::max(self : CryptosymdesTable) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_table_to_string(s : CryptosymdesTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesTable::to_string(self : CryptosymdesTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesGraphN {
@@ -453,45 +453,45 @@ pub fn crypto_sym_des_graphn_make(size : Int) -> CryptosymdesGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_graphn_len(s : CryptosymdesGraphN) -> Int { s.size }
+pub fn CryptosymdesGraphN::len(self : CryptosymdesGraphN) -> Int { self.size }
 
-pub fn crypto_sym_des_graphn_get(s : CryptosymdesGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesGraphN::get(self : CryptosymdesGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_graphn_set(s : CryptosymdesGraphN, i : Int, v : Double) -> CryptosymdesGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesGraphN::set(self : CryptosymdesGraphN, i : Int, v : Double) -> CryptosymdesGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_graphn_sum(s : CryptosymdesGraphN) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesGraphN::sum(self : CryptosymdesGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_graphn_mean(s : CryptosymdesGraphN) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesGraphN::mean(self : CryptosymdesGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_graphn_scale(s : CryptosymdesGraphN, f : Double) -> CryptosymdesGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesGraphN::scale(self : CryptosymdesGraphN, f : Double) -> CryptosymdesGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_graphn_add(a : CryptosymdesGraphN, b : CryptosymdesGraphN) -> CryptosymdesGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesGraphN::add(self : CryptosymdesGraphN, other : CryptosymdesGraphN) -> CryptosymdesGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_graphn_copy(s : CryptosymdesGraphN) -> CryptosymdesGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesGraphN::copy(self : CryptosymdesGraphN) -> CryptosymdesGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_graphn_fill(s : CryptosymdesGraphN, v : Double) -> CryptosymdesGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesGraphN::fill(self : CryptosymdesGraphN, v : Double) -> CryptosymdesGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_graphn_min(s : CryptosymdesGraphN) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesGraphN::min(self : CryptosymdesGraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_graphn_max(s : CryptosymdesGraphN) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesGraphN::max(self : CryptosymdesGraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_graphn_to_string(s : CryptosymdesGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesGraphN::to_string(self : CryptosymdesGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesNode {
@@ -504,45 +504,45 @@ pub fn crypto_sym_des_node_make(size : Int) -> CryptosymdesNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_node_len(s : CryptosymdesNode) -> Int { s.size }
+pub fn CryptosymdesNode::len(self : CryptosymdesNode) -> Int { self.size }
 
-pub fn crypto_sym_des_node_get(s : CryptosymdesNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesNode::get(self : CryptosymdesNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_node_set(s : CryptosymdesNode, i : Int, v : Double) -> CryptosymdesNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesNode::set(self : CryptosymdesNode, i : Int, v : Double) -> CryptosymdesNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_node_sum(s : CryptosymdesNode) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesNode::sum(self : CryptosymdesNode) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_node_mean(s : CryptosymdesNode) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesNode::mean(self : CryptosymdesNode) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_node_scale(s : CryptosymdesNode, f : Double) -> CryptosymdesNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesNode::scale(self : CryptosymdesNode, f : Double) -> CryptosymdesNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_node_add(a : CryptosymdesNode, b : CryptosymdesNode) -> CryptosymdesNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesNode::add(self : CryptosymdesNode, other : CryptosymdesNode) -> CryptosymdesNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_node_copy(s : CryptosymdesNode) -> CryptosymdesNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesNode::copy(self : CryptosymdesNode) -> CryptosymdesNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_node_fill(s : CryptosymdesNode, v : Double) -> CryptosymdesNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesNode::fill(self : CryptosymdesNode, v : Double) -> CryptosymdesNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_node_min(s : CryptosymdesNode) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesNode::min(self : CryptosymdesNode) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_node_max(s : CryptosymdesNode) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesNode::max(self : CryptosymdesNode) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_node_to_string(s : CryptosymdesNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesNode::to_string(self : CryptosymdesNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesEdge {
@@ -555,45 +555,45 @@ pub fn crypto_sym_des_edge_make(size : Int) -> CryptosymdesEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_edge_len(s : CryptosymdesEdge) -> Int { s.size }
+pub fn CryptosymdesEdge::len(self : CryptosymdesEdge) -> Int { self.size }
 
-pub fn crypto_sym_des_edge_get(s : CryptosymdesEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesEdge::get(self : CryptosymdesEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_edge_set(s : CryptosymdesEdge, i : Int, v : Double) -> CryptosymdesEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesEdge::set(self : CryptosymdesEdge, i : Int, v : Double) -> CryptosymdesEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_edge_sum(s : CryptosymdesEdge) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesEdge::sum(self : CryptosymdesEdge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_edge_mean(s : CryptosymdesEdge) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesEdge::mean(self : CryptosymdesEdge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_edge_scale(s : CryptosymdesEdge, f : Double) -> CryptosymdesEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesEdge::scale(self : CryptosymdesEdge, f : Double) -> CryptosymdesEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_edge_add(a : CryptosymdesEdge, b : CryptosymdesEdge) -> CryptosymdesEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesEdge::add(self : CryptosymdesEdge, other : CryptosymdesEdge) -> CryptosymdesEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_edge_copy(s : CryptosymdesEdge) -> CryptosymdesEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesEdge::copy(self : CryptosymdesEdge) -> CryptosymdesEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_edge_fill(s : CryptosymdesEdge, v : Double) -> CryptosymdesEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesEdge::fill(self : CryptosymdesEdge, v : Double) -> CryptosymdesEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_edge_min(s : CryptosymdesEdge) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesEdge::min(self : CryptosymdesEdge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_edge_max(s : CryptosymdesEdge) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesEdge::max(self : CryptosymdesEdge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_edge_to_string(s : CryptosymdesEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesEdge::to_string(self : CryptosymdesEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesPath {
@@ -606,45 +606,45 @@ pub fn crypto_sym_des_path_make(size : Int) -> CryptosymdesPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_path_len(s : CryptosymdesPath) -> Int { s.size }
+pub fn CryptosymdesPath::len(self : CryptosymdesPath) -> Int { self.size }
 
-pub fn crypto_sym_des_path_get(s : CryptosymdesPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesPath::get(self : CryptosymdesPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_path_set(s : CryptosymdesPath, i : Int, v : Double) -> CryptosymdesPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesPath::set(self : CryptosymdesPath, i : Int, v : Double) -> CryptosymdesPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_path_sum(s : CryptosymdesPath) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesPath::sum(self : CryptosymdesPath) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_path_mean(s : CryptosymdesPath) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesPath::mean(self : CryptosymdesPath) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_path_scale(s : CryptosymdesPath, f : Double) -> CryptosymdesPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesPath::scale(self : CryptosymdesPath, f : Double) -> CryptosymdesPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_path_add(a : CryptosymdesPath, b : CryptosymdesPath) -> CryptosymdesPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesPath::add(self : CryptosymdesPath, other : CryptosymdesPath) -> CryptosymdesPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_path_copy(s : CryptosymdesPath) -> CryptosymdesPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesPath::copy(self : CryptosymdesPath) -> CryptosymdesPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_path_fill(s : CryptosymdesPath, v : Double) -> CryptosymdesPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesPath::fill(self : CryptosymdesPath, v : Double) -> CryptosymdesPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_path_min(s : CryptosymdesPath) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesPath::min(self : CryptosymdesPath) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_path_max(s : CryptosymdesPath) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesPath::max(self : CryptosymdesPath) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_path_to_string(s : CryptosymdesPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesPath::to_string(self : CryptosymdesPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesCluster {
@@ -657,45 +657,45 @@ pub fn crypto_sym_des_cluster_make(size : Int) -> CryptosymdesCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_cluster_len(s : CryptosymdesCluster) -> Int { s.size }
+pub fn CryptosymdesCluster::len(self : CryptosymdesCluster) -> Int { self.size }
 
-pub fn crypto_sym_des_cluster_get(s : CryptosymdesCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesCluster::get(self : CryptosymdesCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_cluster_set(s : CryptosymdesCluster, i : Int, v : Double) -> CryptosymdesCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesCluster::set(self : CryptosymdesCluster, i : Int, v : Double) -> CryptosymdesCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_cluster_sum(s : CryptosymdesCluster) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesCluster::sum(self : CryptosymdesCluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_cluster_mean(s : CryptosymdesCluster) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesCluster::mean(self : CryptosymdesCluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_cluster_scale(s : CryptosymdesCluster, f : Double) -> CryptosymdesCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesCluster::scale(self : CryptosymdesCluster, f : Double) -> CryptosymdesCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_cluster_add(a : CryptosymdesCluster, b : CryptosymdesCluster) -> CryptosymdesCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesCluster::add(self : CryptosymdesCluster, other : CryptosymdesCluster) -> CryptosymdesCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_cluster_copy(s : CryptosymdesCluster) -> CryptosymdesCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesCluster::copy(self : CryptosymdesCluster) -> CryptosymdesCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_cluster_fill(s : CryptosymdesCluster, v : Double) -> CryptosymdesCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesCluster::fill(self : CryptosymdesCluster, v : Double) -> CryptosymdesCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_cluster_min(s : CryptosymdesCluster) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesCluster::min(self : CryptosymdesCluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_cluster_max(s : CryptosymdesCluster) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesCluster::max(self : CryptosymdesCluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_cluster_to_string(s : CryptosymdesCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesCluster::to_string(self : CryptosymdesCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesModel {
@@ -708,45 +708,45 @@ pub fn crypto_sym_des_model_make(size : Int) -> CryptosymdesModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_model_len(s : CryptosymdesModel) -> Int { s.size }
+pub fn CryptosymdesModel::len(self : CryptosymdesModel) -> Int { self.size }
 
-pub fn crypto_sym_des_model_get(s : CryptosymdesModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesModel::get(self : CryptosymdesModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_model_set(s : CryptosymdesModel, i : Int, v : Double) -> CryptosymdesModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesModel::set(self : CryptosymdesModel, i : Int, v : Double) -> CryptosymdesModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_model_sum(s : CryptosymdesModel) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesModel::sum(self : CryptosymdesModel) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_model_mean(s : CryptosymdesModel) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesModel::mean(self : CryptosymdesModel) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_model_scale(s : CryptosymdesModel, f : Double) -> CryptosymdesModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesModel::scale(self : CryptosymdesModel, f : Double) -> CryptosymdesModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_model_add(a : CryptosymdesModel, b : CryptosymdesModel) -> CryptosymdesModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesModel::add(self : CryptosymdesModel, other : CryptosymdesModel) -> CryptosymdesModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_model_copy(s : CryptosymdesModel) -> CryptosymdesModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesModel::copy(self : CryptosymdesModel) -> CryptosymdesModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_model_fill(s : CryptosymdesModel, v : Double) -> CryptosymdesModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesModel::fill(self : CryptosymdesModel, v : Double) -> CryptosymdesModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_model_min(s : CryptosymdesModel) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesModel::min(self : CryptosymdesModel) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_model_max(s : CryptosymdesModel) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesModel::max(self : CryptosymdesModel) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_model_to_string(s : CryptosymdesModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesModel::to_string(self : CryptosymdesModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesLayer {
@@ -759,45 +759,45 @@ pub fn crypto_sym_des_layer_make(size : Int) -> CryptosymdesLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_layer_len(s : CryptosymdesLayer) -> Int { s.size }
+pub fn CryptosymdesLayer::len(self : CryptosymdesLayer) -> Int { self.size }
 
-pub fn crypto_sym_des_layer_get(s : CryptosymdesLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesLayer::get(self : CryptosymdesLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_layer_set(s : CryptosymdesLayer, i : Int, v : Double) -> CryptosymdesLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesLayer::set(self : CryptosymdesLayer, i : Int, v : Double) -> CryptosymdesLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_layer_sum(s : CryptosymdesLayer) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesLayer::sum(self : CryptosymdesLayer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_layer_mean(s : CryptosymdesLayer) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesLayer::mean(self : CryptosymdesLayer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_layer_scale(s : CryptosymdesLayer, f : Double) -> CryptosymdesLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesLayer::scale(self : CryptosymdesLayer, f : Double) -> CryptosymdesLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_layer_add(a : CryptosymdesLayer, b : CryptosymdesLayer) -> CryptosymdesLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesLayer::add(self : CryptosymdesLayer, other : CryptosymdesLayer) -> CryptosymdesLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_layer_copy(s : CryptosymdesLayer) -> CryptosymdesLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesLayer::copy(self : CryptosymdesLayer) -> CryptosymdesLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_layer_fill(s : CryptosymdesLayer, v : Double) -> CryptosymdesLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesLayer::fill(self : CryptosymdesLayer, v : Double) -> CryptosymdesLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_layer_min(s : CryptosymdesLayer) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesLayer::min(self : CryptosymdesLayer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_layer_max(s : CryptosymdesLayer) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesLayer::max(self : CryptosymdesLayer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_layer_to_string(s : CryptosymdesLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesLayer::to_string(self : CryptosymdesLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesBuffer {
@@ -810,45 +810,45 @@ pub fn crypto_sym_des_buffer_make(size : Int) -> CryptosymdesBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_buffer_len(s : CryptosymdesBuffer) -> Int { s.size }
+pub fn CryptosymdesBuffer::len(self : CryptosymdesBuffer) -> Int { self.size }
 
-pub fn crypto_sym_des_buffer_get(s : CryptosymdesBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesBuffer::get(self : CryptosymdesBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_buffer_set(s : CryptosymdesBuffer, i : Int, v : Double) -> CryptosymdesBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesBuffer::set(self : CryptosymdesBuffer, i : Int, v : Double) -> CryptosymdesBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_buffer_sum(s : CryptosymdesBuffer) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesBuffer::sum(self : CryptosymdesBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_buffer_mean(s : CryptosymdesBuffer) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesBuffer::mean(self : CryptosymdesBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_buffer_scale(s : CryptosymdesBuffer, f : Double) -> CryptosymdesBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesBuffer::scale(self : CryptosymdesBuffer, f : Double) -> CryptosymdesBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_buffer_add(a : CryptosymdesBuffer, b : CryptosymdesBuffer) -> CryptosymdesBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesBuffer::add(self : CryptosymdesBuffer, other : CryptosymdesBuffer) -> CryptosymdesBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_buffer_copy(s : CryptosymdesBuffer) -> CryptosymdesBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesBuffer::copy(self : CryptosymdesBuffer) -> CryptosymdesBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_buffer_fill(s : CryptosymdesBuffer, v : Double) -> CryptosymdesBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesBuffer::fill(self : CryptosymdesBuffer, v : Double) -> CryptosymdesBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_buffer_min(s : CryptosymdesBuffer) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesBuffer::min(self : CryptosymdesBuffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_buffer_max(s : CryptosymdesBuffer) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesBuffer::max(self : CryptosymdesBuffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_buffer_to_string(s : CryptosymdesBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesBuffer::to_string(self : CryptosymdesBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesCursor {
@@ -861,45 +861,45 @@ pub fn crypto_sym_des_cursor_make(size : Int) -> CryptosymdesCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_cursor_len(s : CryptosymdesCursor) -> Int { s.size }
+pub fn CryptosymdesCursor::len(self : CryptosymdesCursor) -> Int { self.size }
 
-pub fn crypto_sym_des_cursor_get(s : CryptosymdesCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesCursor::get(self : CryptosymdesCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_cursor_set(s : CryptosymdesCursor, i : Int, v : Double) -> CryptosymdesCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesCursor::set(self : CryptosymdesCursor, i : Int, v : Double) -> CryptosymdesCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_cursor_sum(s : CryptosymdesCursor) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesCursor::sum(self : CryptosymdesCursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_cursor_mean(s : CryptosymdesCursor) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesCursor::mean(self : CryptosymdesCursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_cursor_scale(s : CryptosymdesCursor, f : Double) -> CryptosymdesCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesCursor::scale(self : CryptosymdesCursor, f : Double) -> CryptosymdesCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_cursor_add(a : CryptosymdesCursor, b : CryptosymdesCursor) -> CryptosymdesCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesCursor::add(self : CryptosymdesCursor, other : CryptosymdesCursor) -> CryptosymdesCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_cursor_copy(s : CryptosymdesCursor) -> CryptosymdesCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesCursor::copy(self : CryptosymdesCursor) -> CryptosymdesCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_cursor_fill(s : CryptosymdesCursor, v : Double) -> CryptosymdesCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesCursor::fill(self : CryptosymdesCursor, v : Double) -> CryptosymdesCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_cursor_min(s : CryptosymdesCursor) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesCursor::min(self : CryptosymdesCursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_cursor_max(s : CryptosymdesCursor) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesCursor::max(self : CryptosymdesCursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_cursor_to_string(s : CryptosymdesCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesCursor::to_string(self : CryptosymdesCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesView {
@@ -912,45 +912,45 @@ pub fn crypto_sym_des_view_make(size : Int) -> CryptosymdesView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_view_len(s : CryptosymdesView) -> Int { s.size }
+pub fn CryptosymdesView::len(self : CryptosymdesView) -> Int { self.size }
 
-pub fn crypto_sym_des_view_get(s : CryptosymdesView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesView::get(self : CryptosymdesView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_view_set(s : CryptosymdesView, i : Int, v : Double) -> CryptosymdesView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesView::set(self : CryptosymdesView, i : Int, v : Double) -> CryptosymdesView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_view_sum(s : CryptosymdesView) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesView::sum(self : CryptosymdesView) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_view_mean(s : CryptosymdesView) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesView::mean(self : CryptosymdesView) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_view_scale(s : CryptosymdesView, f : Double) -> CryptosymdesView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesView::scale(self : CryptosymdesView, f : Double) -> CryptosymdesView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_view_add(a : CryptosymdesView, b : CryptosymdesView) -> CryptosymdesView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesView::add(self : CryptosymdesView, other : CryptosymdesView) -> CryptosymdesView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_view_copy(s : CryptosymdesView) -> CryptosymdesView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesView::copy(self : CryptosymdesView) -> CryptosymdesView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_view_fill(s : CryptosymdesView, v : Double) -> CryptosymdesView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesView::fill(self : CryptosymdesView, v : Double) -> CryptosymdesView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_view_min(s : CryptosymdesView) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesView::min(self : CryptosymdesView) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_view_max(s : CryptosymdesView) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesView::max(self : CryptosymdesView) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_view_to_string(s : CryptosymdesView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesView::to_string(self : CryptosymdesView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesRange {
@@ -963,45 +963,45 @@ pub fn crypto_sym_des_range_make(size : Int) -> CryptosymdesRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_range_len(s : CryptosymdesRange) -> Int { s.size }
+pub fn CryptosymdesRange::len(self : CryptosymdesRange) -> Int { self.size }
 
-pub fn crypto_sym_des_range_get(s : CryptosymdesRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesRange::get(self : CryptosymdesRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_range_set(s : CryptosymdesRange, i : Int, v : Double) -> CryptosymdesRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesRange::set(self : CryptosymdesRange, i : Int, v : Double) -> CryptosymdesRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_range_sum(s : CryptosymdesRange) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesRange::sum(self : CryptosymdesRange) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_range_mean(s : CryptosymdesRange) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesRange::mean(self : CryptosymdesRange) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_range_scale(s : CryptosymdesRange, f : Double) -> CryptosymdesRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesRange::scale(self : CryptosymdesRange, f : Double) -> CryptosymdesRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_range_add(a : CryptosymdesRange, b : CryptosymdesRange) -> CryptosymdesRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesRange::add(self : CryptosymdesRange, other : CryptosymdesRange) -> CryptosymdesRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_range_copy(s : CryptosymdesRange) -> CryptosymdesRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesRange::copy(self : CryptosymdesRange) -> CryptosymdesRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_range_fill(s : CryptosymdesRange, v : Double) -> CryptosymdesRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesRange::fill(self : CryptosymdesRange, v : Double) -> CryptosymdesRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_range_min(s : CryptosymdesRange) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesRange::min(self : CryptosymdesRange) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_range_max(s : CryptosymdesRange) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesRange::max(self : CryptosymdesRange) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_range_to_string(s : CryptosymdesRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesRange::to_string(self : CryptosymdesRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymdesSlice {
@@ -1014,44 +1014,44 @@ pub fn crypto_sym_des_slice_make(size : Int) -> CryptosymdesSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_des_slice_len(s : CryptosymdesSlice) -> Int { s.size }
+pub fn CryptosymdesSlice::len(self : CryptosymdesSlice) -> Int { self.size }
 
-pub fn crypto_sym_des_slice_get(s : CryptosymdesSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymdesSlice::get(self : CryptosymdesSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_des_slice_set(s : CryptosymdesSlice, i : Int, v : Double) -> CryptosymdesSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymdesSlice::set(self : CryptosymdesSlice, i : Int, v : Double) -> CryptosymdesSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_slice_sum(s : CryptosymdesSlice) -> Double { @_common.sum(s.data) }
+pub fn CryptosymdesSlice::sum(self : CryptosymdesSlice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_des_slice_mean(s : CryptosymdesSlice) -> Double { @_common.mean(s.data) }
+pub fn CryptosymdesSlice::mean(self : CryptosymdesSlice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_des_slice_scale(s : CryptosymdesSlice, f : Double) -> CryptosymdesSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymdesSlice::scale(self : CryptosymdesSlice, f : Double) -> CryptosymdesSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_slice_add(a : CryptosymdesSlice, b : CryptosymdesSlice) -> CryptosymdesSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymdesSlice::add(self : CryptosymdesSlice, other : CryptosymdesSlice) -> CryptosymdesSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_des_slice_copy(s : CryptosymdesSlice) -> CryptosymdesSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymdesSlice::copy(self : CryptosymdesSlice) -> CryptosymdesSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_slice_fill(s : CryptosymdesSlice, v : Double) -> CryptosymdesSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymdesSlice::fill(self : CryptosymdesSlice, v : Double) -> CryptosymdesSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_des_slice_min(s : CryptosymdesSlice) -> Double { @_common.min(s.data) }
+pub fn CryptosymdesSlice::min(self : CryptosymdesSlice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_des_slice_max(s : CryptosymdesSlice) -> Double { @_common.max(s.data) }
+pub fn CryptosymdesSlice::max(self : CryptosymdesSlice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_des_slice_to_string(s : CryptosymdesSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymdesSlice::to_string(self : CryptosymdesSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

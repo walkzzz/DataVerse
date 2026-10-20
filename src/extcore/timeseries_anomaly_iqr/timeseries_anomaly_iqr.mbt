@@ -351,45 +351,45 @@ pub fn timeseries_anomaly_iqr_frame_make(size : Int) -> TimeseriesanomalyiqrFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_frame_len(s : TimeseriesanomalyiqrFrame) -> Int { s.size }
+pub fn TimeseriesanomalyiqrFrame::len(self : TimeseriesanomalyiqrFrame) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_frame_get(s : TimeseriesanomalyiqrFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrFrame::get(self : TimeseriesanomalyiqrFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_frame_set(s : TimeseriesanomalyiqrFrame, i : Int, v : Double) -> TimeseriesanomalyiqrFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrFrame::set(self : TimeseriesanomalyiqrFrame, i : Int, v : Double) -> TimeseriesanomalyiqrFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_frame_sum(s : TimeseriesanomalyiqrFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrFrame::sum(self : TimeseriesanomalyiqrFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_frame_mean(s : TimeseriesanomalyiqrFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrFrame::mean(self : TimeseriesanomalyiqrFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_frame_scale(s : TimeseriesanomalyiqrFrame, f : Double) -> TimeseriesanomalyiqrFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrFrame::scale(self : TimeseriesanomalyiqrFrame, f : Double) -> TimeseriesanomalyiqrFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_frame_add(a : TimeseriesanomalyiqrFrame, b : TimeseriesanomalyiqrFrame) -> TimeseriesanomalyiqrFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrFrame::add(self : TimeseriesanomalyiqrFrame, other : TimeseriesanomalyiqrFrame) -> TimeseriesanomalyiqrFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_frame_copy(s : TimeseriesanomalyiqrFrame) -> TimeseriesanomalyiqrFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrFrame::copy(self : TimeseriesanomalyiqrFrame) -> TimeseriesanomalyiqrFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_frame_fill(s : TimeseriesanomalyiqrFrame, v : Double) -> TimeseriesanomalyiqrFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrFrame::fill(self : TimeseriesanomalyiqrFrame, v : Double) -> TimeseriesanomalyiqrFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_frame_min(s : TimeseriesanomalyiqrFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrFrame::min(self : TimeseriesanomalyiqrFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_frame_max(s : TimeseriesanomalyiqrFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrFrame::max(self : TimeseriesanomalyiqrFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_frame_to_string(s : TimeseriesanomalyiqrFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrFrame::to_string(self : TimeseriesanomalyiqrFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrTable {
@@ -402,45 +402,45 @@ pub fn timeseries_anomaly_iqr_table_make(size : Int) -> TimeseriesanomalyiqrTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_table_len(s : TimeseriesanomalyiqrTable) -> Int { s.size }
+pub fn TimeseriesanomalyiqrTable::len(self : TimeseriesanomalyiqrTable) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_table_get(s : TimeseriesanomalyiqrTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrTable::get(self : TimeseriesanomalyiqrTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_table_set(s : TimeseriesanomalyiqrTable, i : Int, v : Double) -> TimeseriesanomalyiqrTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrTable::set(self : TimeseriesanomalyiqrTable, i : Int, v : Double) -> TimeseriesanomalyiqrTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_table_sum(s : TimeseriesanomalyiqrTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrTable::sum(self : TimeseriesanomalyiqrTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_table_mean(s : TimeseriesanomalyiqrTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrTable::mean(self : TimeseriesanomalyiqrTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_table_scale(s : TimeseriesanomalyiqrTable, f : Double) -> TimeseriesanomalyiqrTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrTable::scale(self : TimeseriesanomalyiqrTable, f : Double) -> TimeseriesanomalyiqrTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_table_add(a : TimeseriesanomalyiqrTable, b : TimeseriesanomalyiqrTable) -> TimeseriesanomalyiqrTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrTable::add(self : TimeseriesanomalyiqrTable, other : TimeseriesanomalyiqrTable) -> TimeseriesanomalyiqrTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_table_copy(s : TimeseriesanomalyiqrTable) -> TimeseriesanomalyiqrTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrTable::copy(self : TimeseriesanomalyiqrTable) -> TimeseriesanomalyiqrTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_table_fill(s : TimeseriesanomalyiqrTable, v : Double) -> TimeseriesanomalyiqrTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrTable::fill(self : TimeseriesanomalyiqrTable, v : Double) -> TimeseriesanomalyiqrTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_table_min(s : TimeseriesanomalyiqrTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrTable::min(self : TimeseriesanomalyiqrTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_table_max(s : TimeseriesanomalyiqrTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrTable::max(self : TimeseriesanomalyiqrTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_table_to_string(s : TimeseriesanomalyiqrTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrTable::to_string(self : TimeseriesanomalyiqrTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_anomaly_iqr_graphn_make(size : Int) -> TimeseriesanomalyiqrGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_graphn_len(s : TimeseriesanomalyiqrGraphN) -> Int { s.size }
+pub fn TimeseriesanomalyiqrGraphN::len(self : TimeseriesanomalyiqrGraphN) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_graphn_get(s : TimeseriesanomalyiqrGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrGraphN::get(self : TimeseriesanomalyiqrGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_graphn_set(s : TimeseriesanomalyiqrGraphN, i : Int, v : Double) -> TimeseriesanomalyiqrGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrGraphN::set(self : TimeseriesanomalyiqrGraphN, i : Int, v : Double) -> TimeseriesanomalyiqrGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_graphn_sum(s : TimeseriesanomalyiqrGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrGraphN::sum(self : TimeseriesanomalyiqrGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_graphn_mean(s : TimeseriesanomalyiqrGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrGraphN::mean(self : TimeseriesanomalyiqrGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_graphn_scale(s : TimeseriesanomalyiqrGraphN, f : Double) -> TimeseriesanomalyiqrGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrGraphN::scale(self : TimeseriesanomalyiqrGraphN, f : Double) -> TimeseriesanomalyiqrGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_graphn_add(a : TimeseriesanomalyiqrGraphN, b : TimeseriesanomalyiqrGraphN) -> TimeseriesanomalyiqrGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrGraphN::add(self : TimeseriesanomalyiqrGraphN, other : TimeseriesanomalyiqrGraphN) -> TimeseriesanomalyiqrGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_graphn_copy(s : TimeseriesanomalyiqrGraphN) -> TimeseriesanomalyiqrGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrGraphN::copy(self : TimeseriesanomalyiqrGraphN) -> TimeseriesanomalyiqrGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_graphn_fill(s : TimeseriesanomalyiqrGraphN, v : Double) -> TimeseriesanomalyiqrGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrGraphN::fill(self : TimeseriesanomalyiqrGraphN, v : Double) -> TimeseriesanomalyiqrGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_graphn_min(s : TimeseriesanomalyiqrGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrGraphN::min(self : TimeseriesanomalyiqrGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_graphn_max(s : TimeseriesanomalyiqrGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrGraphN::max(self : TimeseriesanomalyiqrGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_graphn_to_string(s : TimeseriesanomalyiqrGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrGraphN::to_string(self : TimeseriesanomalyiqrGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrNode {
@@ -504,45 +504,45 @@ pub fn timeseries_anomaly_iqr_node_make(size : Int) -> TimeseriesanomalyiqrNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_node_len(s : TimeseriesanomalyiqrNode) -> Int { s.size }
+pub fn TimeseriesanomalyiqrNode::len(self : TimeseriesanomalyiqrNode) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_node_get(s : TimeseriesanomalyiqrNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrNode::get(self : TimeseriesanomalyiqrNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_node_set(s : TimeseriesanomalyiqrNode, i : Int, v : Double) -> TimeseriesanomalyiqrNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrNode::set(self : TimeseriesanomalyiqrNode, i : Int, v : Double) -> TimeseriesanomalyiqrNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_node_sum(s : TimeseriesanomalyiqrNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrNode::sum(self : TimeseriesanomalyiqrNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_node_mean(s : TimeseriesanomalyiqrNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrNode::mean(self : TimeseriesanomalyiqrNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_node_scale(s : TimeseriesanomalyiqrNode, f : Double) -> TimeseriesanomalyiqrNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrNode::scale(self : TimeseriesanomalyiqrNode, f : Double) -> TimeseriesanomalyiqrNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_node_add(a : TimeseriesanomalyiqrNode, b : TimeseriesanomalyiqrNode) -> TimeseriesanomalyiqrNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrNode::add(self : TimeseriesanomalyiqrNode, other : TimeseriesanomalyiqrNode) -> TimeseriesanomalyiqrNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_node_copy(s : TimeseriesanomalyiqrNode) -> TimeseriesanomalyiqrNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrNode::copy(self : TimeseriesanomalyiqrNode) -> TimeseriesanomalyiqrNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_node_fill(s : TimeseriesanomalyiqrNode, v : Double) -> TimeseriesanomalyiqrNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrNode::fill(self : TimeseriesanomalyiqrNode, v : Double) -> TimeseriesanomalyiqrNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_node_min(s : TimeseriesanomalyiqrNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrNode::min(self : TimeseriesanomalyiqrNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_node_max(s : TimeseriesanomalyiqrNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrNode::max(self : TimeseriesanomalyiqrNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_node_to_string(s : TimeseriesanomalyiqrNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrNode::to_string(self : TimeseriesanomalyiqrNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_anomaly_iqr_edge_make(size : Int) -> TimeseriesanomalyiqrEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_edge_len(s : TimeseriesanomalyiqrEdge) -> Int { s.size }
+pub fn TimeseriesanomalyiqrEdge::len(self : TimeseriesanomalyiqrEdge) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_edge_get(s : TimeseriesanomalyiqrEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrEdge::get(self : TimeseriesanomalyiqrEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_edge_set(s : TimeseriesanomalyiqrEdge, i : Int, v : Double) -> TimeseriesanomalyiqrEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrEdge::set(self : TimeseriesanomalyiqrEdge, i : Int, v : Double) -> TimeseriesanomalyiqrEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_edge_sum(s : TimeseriesanomalyiqrEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrEdge::sum(self : TimeseriesanomalyiqrEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_edge_mean(s : TimeseriesanomalyiqrEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrEdge::mean(self : TimeseriesanomalyiqrEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_edge_scale(s : TimeseriesanomalyiqrEdge, f : Double) -> TimeseriesanomalyiqrEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrEdge::scale(self : TimeseriesanomalyiqrEdge, f : Double) -> TimeseriesanomalyiqrEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_edge_add(a : TimeseriesanomalyiqrEdge, b : TimeseriesanomalyiqrEdge) -> TimeseriesanomalyiqrEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrEdge::add(self : TimeseriesanomalyiqrEdge, other : TimeseriesanomalyiqrEdge) -> TimeseriesanomalyiqrEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_edge_copy(s : TimeseriesanomalyiqrEdge) -> TimeseriesanomalyiqrEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrEdge::copy(self : TimeseriesanomalyiqrEdge) -> TimeseriesanomalyiqrEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_edge_fill(s : TimeseriesanomalyiqrEdge, v : Double) -> TimeseriesanomalyiqrEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrEdge::fill(self : TimeseriesanomalyiqrEdge, v : Double) -> TimeseriesanomalyiqrEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_edge_min(s : TimeseriesanomalyiqrEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrEdge::min(self : TimeseriesanomalyiqrEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_edge_max(s : TimeseriesanomalyiqrEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrEdge::max(self : TimeseriesanomalyiqrEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_edge_to_string(s : TimeseriesanomalyiqrEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrEdge::to_string(self : TimeseriesanomalyiqrEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrPath {
@@ -606,45 +606,45 @@ pub fn timeseries_anomaly_iqr_path_make(size : Int) -> TimeseriesanomalyiqrPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_path_len(s : TimeseriesanomalyiqrPath) -> Int { s.size }
+pub fn TimeseriesanomalyiqrPath::len(self : TimeseriesanomalyiqrPath) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_path_get(s : TimeseriesanomalyiqrPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrPath::get(self : TimeseriesanomalyiqrPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_path_set(s : TimeseriesanomalyiqrPath, i : Int, v : Double) -> TimeseriesanomalyiqrPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrPath::set(self : TimeseriesanomalyiqrPath, i : Int, v : Double) -> TimeseriesanomalyiqrPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_path_sum(s : TimeseriesanomalyiqrPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrPath::sum(self : TimeseriesanomalyiqrPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_path_mean(s : TimeseriesanomalyiqrPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrPath::mean(self : TimeseriesanomalyiqrPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_path_scale(s : TimeseriesanomalyiqrPath, f : Double) -> TimeseriesanomalyiqrPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrPath::scale(self : TimeseriesanomalyiqrPath, f : Double) -> TimeseriesanomalyiqrPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_path_add(a : TimeseriesanomalyiqrPath, b : TimeseriesanomalyiqrPath) -> TimeseriesanomalyiqrPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrPath::add(self : TimeseriesanomalyiqrPath, other : TimeseriesanomalyiqrPath) -> TimeseriesanomalyiqrPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_path_copy(s : TimeseriesanomalyiqrPath) -> TimeseriesanomalyiqrPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrPath::copy(self : TimeseriesanomalyiqrPath) -> TimeseriesanomalyiqrPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_path_fill(s : TimeseriesanomalyiqrPath, v : Double) -> TimeseriesanomalyiqrPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrPath::fill(self : TimeseriesanomalyiqrPath, v : Double) -> TimeseriesanomalyiqrPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_path_min(s : TimeseriesanomalyiqrPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrPath::min(self : TimeseriesanomalyiqrPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_path_max(s : TimeseriesanomalyiqrPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrPath::max(self : TimeseriesanomalyiqrPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_path_to_string(s : TimeseriesanomalyiqrPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrPath::to_string(self : TimeseriesanomalyiqrPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_anomaly_iqr_cluster_make(size : Int) -> TimeseriesanomalyiqrCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_cluster_len(s : TimeseriesanomalyiqrCluster) -> Int { s.size }
+pub fn TimeseriesanomalyiqrCluster::len(self : TimeseriesanomalyiqrCluster) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_cluster_get(s : TimeseriesanomalyiqrCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrCluster::get(self : TimeseriesanomalyiqrCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_cluster_set(s : TimeseriesanomalyiqrCluster, i : Int, v : Double) -> TimeseriesanomalyiqrCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrCluster::set(self : TimeseriesanomalyiqrCluster, i : Int, v : Double) -> TimeseriesanomalyiqrCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_cluster_sum(s : TimeseriesanomalyiqrCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrCluster::sum(self : TimeseriesanomalyiqrCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_cluster_mean(s : TimeseriesanomalyiqrCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrCluster::mean(self : TimeseriesanomalyiqrCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_cluster_scale(s : TimeseriesanomalyiqrCluster, f : Double) -> TimeseriesanomalyiqrCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrCluster::scale(self : TimeseriesanomalyiqrCluster, f : Double) -> TimeseriesanomalyiqrCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_cluster_add(a : TimeseriesanomalyiqrCluster, b : TimeseriesanomalyiqrCluster) -> TimeseriesanomalyiqrCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrCluster::add(self : TimeseriesanomalyiqrCluster, other : TimeseriesanomalyiqrCluster) -> TimeseriesanomalyiqrCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_cluster_copy(s : TimeseriesanomalyiqrCluster) -> TimeseriesanomalyiqrCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrCluster::copy(self : TimeseriesanomalyiqrCluster) -> TimeseriesanomalyiqrCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_cluster_fill(s : TimeseriesanomalyiqrCluster, v : Double) -> TimeseriesanomalyiqrCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrCluster::fill(self : TimeseriesanomalyiqrCluster, v : Double) -> TimeseriesanomalyiqrCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_cluster_min(s : TimeseriesanomalyiqrCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrCluster::min(self : TimeseriesanomalyiqrCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_cluster_max(s : TimeseriesanomalyiqrCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrCluster::max(self : TimeseriesanomalyiqrCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_cluster_to_string(s : TimeseriesanomalyiqrCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrCluster::to_string(self : TimeseriesanomalyiqrCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrModel {
@@ -708,45 +708,45 @@ pub fn timeseries_anomaly_iqr_model_make(size : Int) -> TimeseriesanomalyiqrMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_model_len(s : TimeseriesanomalyiqrModel) -> Int { s.size }
+pub fn TimeseriesanomalyiqrModel::len(self : TimeseriesanomalyiqrModel) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_model_get(s : TimeseriesanomalyiqrModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrModel::get(self : TimeseriesanomalyiqrModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_model_set(s : TimeseriesanomalyiqrModel, i : Int, v : Double) -> TimeseriesanomalyiqrModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrModel::set(self : TimeseriesanomalyiqrModel, i : Int, v : Double) -> TimeseriesanomalyiqrModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_model_sum(s : TimeseriesanomalyiqrModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrModel::sum(self : TimeseriesanomalyiqrModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_model_mean(s : TimeseriesanomalyiqrModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrModel::mean(self : TimeseriesanomalyiqrModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_model_scale(s : TimeseriesanomalyiqrModel, f : Double) -> TimeseriesanomalyiqrModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrModel::scale(self : TimeseriesanomalyiqrModel, f : Double) -> TimeseriesanomalyiqrModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_model_add(a : TimeseriesanomalyiqrModel, b : TimeseriesanomalyiqrModel) -> TimeseriesanomalyiqrModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrModel::add(self : TimeseriesanomalyiqrModel, other : TimeseriesanomalyiqrModel) -> TimeseriesanomalyiqrModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_model_copy(s : TimeseriesanomalyiqrModel) -> TimeseriesanomalyiqrModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrModel::copy(self : TimeseriesanomalyiqrModel) -> TimeseriesanomalyiqrModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_model_fill(s : TimeseriesanomalyiqrModel, v : Double) -> TimeseriesanomalyiqrModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrModel::fill(self : TimeseriesanomalyiqrModel, v : Double) -> TimeseriesanomalyiqrModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_model_min(s : TimeseriesanomalyiqrModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrModel::min(self : TimeseriesanomalyiqrModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_model_max(s : TimeseriesanomalyiqrModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrModel::max(self : TimeseriesanomalyiqrModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_model_to_string(s : TimeseriesanomalyiqrModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrModel::to_string(self : TimeseriesanomalyiqrModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_anomaly_iqr_layer_make(size : Int) -> TimeseriesanomalyiqrLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_layer_len(s : TimeseriesanomalyiqrLayer) -> Int { s.size }
+pub fn TimeseriesanomalyiqrLayer::len(self : TimeseriesanomalyiqrLayer) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_layer_get(s : TimeseriesanomalyiqrLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrLayer::get(self : TimeseriesanomalyiqrLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_layer_set(s : TimeseriesanomalyiqrLayer, i : Int, v : Double) -> TimeseriesanomalyiqrLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrLayer::set(self : TimeseriesanomalyiqrLayer, i : Int, v : Double) -> TimeseriesanomalyiqrLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_layer_sum(s : TimeseriesanomalyiqrLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrLayer::sum(self : TimeseriesanomalyiqrLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_layer_mean(s : TimeseriesanomalyiqrLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrLayer::mean(self : TimeseriesanomalyiqrLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_layer_scale(s : TimeseriesanomalyiqrLayer, f : Double) -> TimeseriesanomalyiqrLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrLayer::scale(self : TimeseriesanomalyiqrLayer, f : Double) -> TimeseriesanomalyiqrLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_layer_add(a : TimeseriesanomalyiqrLayer, b : TimeseriesanomalyiqrLayer) -> TimeseriesanomalyiqrLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrLayer::add(self : TimeseriesanomalyiqrLayer, other : TimeseriesanomalyiqrLayer) -> TimeseriesanomalyiqrLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_layer_copy(s : TimeseriesanomalyiqrLayer) -> TimeseriesanomalyiqrLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrLayer::copy(self : TimeseriesanomalyiqrLayer) -> TimeseriesanomalyiqrLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_layer_fill(s : TimeseriesanomalyiqrLayer, v : Double) -> TimeseriesanomalyiqrLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrLayer::fill(self : TimeseriesanomalyiqrLayer, v : Double) -> TimeseriesanomalyiqrLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_layer_min(s : TimeseriesanomalyiqrLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrLayer::min(self : TimeseriesanomalyiqrLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_layer_max(s : TimeseriesanomalyiqrLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrLayer::max(self : TimeseriesanomalyiqrLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_layer_to_string(s : TimeseriesanomalyiqrLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrLayer::to_string(self : TimeseriesanomalyiqrLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_anomaly_iqr_buffer_make(size : Int) -> TimeseriesanomalyiqrBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_buffer_len(s : TimeseriesanomalyiqrBuffer) -> Int { s.size }
+pub fn TimeseriesanomalyiqrBuffer::len(self : TimeseriesanomalyiqrBuffer) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_buffer_get(s : TimeseriesanomalyiqrBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrBuffer::get(self : TimeseriesanomalyiqrBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_buffer_set(s : TimeseriesanomalyiqrBuffer, i : Int, v : Double) -> TimeseriesanomalyiqrBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrBuffer::set(self : TimeseriesanomalyiqrBuffer, i : Int, v : Double) -> TimeseriesanomalyiqrBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_buffer_sum(s : TimeseriesanomalyiqrBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrBuffer::sum(self : TimeseriesanomalyiqrBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_buffer_mean(s : TimeseriesanomalyiqrBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrBuffer::mean(self : TimeseriesanomalyiqrBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_buffer_scale(s : TimeseriesanomalyiqrBuffer, f : Double) -> TimeseriesanomalyiqrBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrBuffer::scale(self : TimeseriesanomalyiqrBuffer, f : Double) -> TimeseriesanomalyiqrBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_buffer_add(a : TimeseriesanomalyiqrBuffer, b : TimeseriesanomalyiqrBuffer) -> TimeseriesanomalyiqrBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrBuffer::add(self : TimeseriesanomalyiqrBuffer, other : TimeseriesanomalyiqrBuffer) -> TimeseriesanomalyiqrBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_buffer_copy(s : TimeseriesanomalyiqrBuffer) -> TimeseriesanomalyiqrBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrBuffer::copy(self : TimeseriesanomalyiqrBuffer) -> TimeseriesanomalyiqrBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_buffer_fill(s : TimeseriesanomalyiqrBuffer, v : Double) -> TimeseriesanomalyiqrBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrBuffer::fill(self : TimeseriesanomalyiqrBuffer, v : Double) -> TimeseriesanomalyiqrBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_buffer_min(s : TimeseriesanomalyiqrBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrBuffer::min(self : TimeseriesanomalyiqrBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_buffer_max(s : TimeseriesanomalyiqrBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrBuffer::max(self : TimeseriesanomalyiqrBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_buffer_to_string(s : TimeseriesanomalyiqrBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrBuffer::to_string(self : TimeseriesanomalyiqrBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_anomaly_iqr_cursor_make(size : Int) -> TimeseriesanomalyiqrCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_cursor_len(s : TimeseriesanomalyiqrCursor) -> Int { s.size }
+pub fn TimeseriesanomalyiqrCursor::len(self : TimeseriesanomalyiqrCursor) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_cursor_get(s : TimeseriesanomalyiqrCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrCursor::get(self : TimeseriesanomalyiqrCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_cursor_set(s : TimeseriesanomalyiqrCursor, i : Int, v : Double) -> TimeseriesanomalyiqrCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrCursor::set(self : TimeseriesanomalyiqrCursor, i : Int, v : Double) -> TimeseriesanomalyiqrCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_cursor_sum(s : TimeseriesanomalyiqrCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrCursor::sum(self : TimeseriesanomalyiqrCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_cursor_mean(s : TimeseriesanomalyiqrCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrCursor::mean(self : TimeseriesanomalyiqrCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_cursor_scale(s : TimeseriesanomalyiqrCursor, f : Double) -> TimeseriesanomalyiqrCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrCursor::scale(self : TimeseriesanomalyiqrCursor, f : Double) -> TimeseriesanomalyiqrCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_cursor_add(a : TimeseriesanomalyiqrCursor, b : TimeseriesanomalyiqrCursor) -> TimeseriesanomalyiqrCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrCursor::add(self : TimeseriesanomalyiqrCursor, other : TimeseriesanomalyiqrCursor) -> TimeseriesanomalyiqrCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_cursor_copy(s : TimeseriesanomalyiqrCursor) -> TimeseriesanomalyiqrCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrCursor::copy(self : TimeseriesanomalyiqrCursor) -> TimeseriesanomalyiqrCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_cursor_fill(s : TimeseriesanomalyiqrCursor, v : Double) -> TimeseriesanomalyiqrCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrCursor::fill(self : TimeseriesanomalyiqrCursor, v : Double) -> TimeseriesanomalyiqrCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_cursor_min(s : TimeseriesanomalyiqrCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrCursor::min(self : TimeseriesanomalyiqrCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_cursor_max(s : TimeseriesanomalyiqrCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrCursor::max(self : TimeseriesanomalyiqrCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_cursor_to_string(s : TimeseriesanomalyiqrCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrCursor::to_string(self : TimeseriesanomalyiqrCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrView {
@@ -912,45 +912,45 @@ pub fn timeseries_anomaly_iqr_view_make(size : Int) -> TimeseriesanomalyiqrView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_view_len(s : TimeseriesanomalyiqrView) -> Int { s.size }
+pub fn TimeseriesanomalyiqrView::len(self : TimeseriesanomalyiqrView) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_view_get(s : TimeseriesanomalyiqrView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrView::get(self : TimeseriesanomalyiqrView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_view_set(s : TimeseriesanomalyiqrView, i : Int, v : Double) -> TimeseriesanomalyiqrView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrView::set(self : TimeseriesanomalyiqrView, i : Int, v : Double) -> TimeseriesanomalyiqrView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_view_sum(s : TimeseriesanomalyiqrView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrView::sum(self : TimeseriesanomalyiqrView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_view_mean(s : TimeseriesanomalyiqrView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrView::mean(self : TimeseriesanomalyiqrView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_view_scale(s : TimeseriesanomalyiqrView, f : Double) -> TimeseriesanomalyiqrView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrView::scale(self : TimeseriesanomalyiqrView, f : Double) -> TimeseriesanomalyiqrView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_view_add(a : TimeseriesanomalyiqrView, b : TimeseriesanomalyiqrView) -> TimeseriesanomalyiqrView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrView::add(self : TimeseriesanomalyiqrView, other : TimeseriesanomalyiqrView) -> TimeseriesanomalyiqrView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_view_copy(s : TimeseriesanomalyiqrView) -> TimeseriesanomalyiqrView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrView::copy(self : TimeseriesanomalyiqrView) -> TimeseriesanomalyiqrView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_view_fill(s : TimeseriesanomalyiqrView, v : Double) -> TimeseriesanomalyiqrView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrView::fill(self : TimeseriesanomalyiqrView, v : Double) -> TimeseriesanomalyiqrView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_view_min(s : TimeseriesanomalyiqrView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrView::min(self : TimeseriesanomalyiqrView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_view_max(s : TimeseriesanomalyiqrView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrView::max(self : TimeseriesanomalyiqrView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_view_to_string(s : TimeseriesanomalyiqrView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrView::to_string(self : TimeseriesanomalyiqrView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrRange {
@@ -963,45 +963,45 @@ pub fn timeseries_anomaly_iqr_range_make(size : Int) -> TimeseriesanomalyiqrRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_range_len(s : TimeseriesanomalyiqrRange) -> Int { s.size }
+pub fn TimeseriesanomalyiqrRange::len(self : TimeseriesanomalyiqrRange) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_range_get(s : TimeseriesanomalyiqrRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrRange::get(self : TimeseriesanomalyiqrRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_range_set(s : TimeseriesanomalyiqrRange, i : Int, v : Double) -> TimeseriesanomalyiqrRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrRange::set(self : TimeseriesanomalyiqrRange, i : Int, v : Double) -> TimeseriesanomalyiqrRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_range_sum(s : TimeseriesanomalyiqrRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrRange::sum(self : TimeseriesanomalyiqrRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_range_mean(s : TimeseriesanomalyiqrRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrRange::mean(self : TimeseriesanomalyiqrRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_range_scale(s : TimeseriesanomalyiqrRange, f : Double) -> TimeseriesanomalyiqrRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrRange::scale(self : TimeseriesanomalyiqrRange, f : Double) -> TimeseriesanomalyiqrRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_range_add(a : TimeseriesanomalyiqrRange, b : TimeseriesanomalyiqrRange) -> TimeseriesanomalyiqrRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrRange::add(self : TimeseriesanomalyiqrRange, other : TimeseriesanomalyiqrRange) -> TimeseriesanomalyiqrRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_range_copy(s : TimeseriesanomalyiqrRange) -> TimeseriesanomalyiqrRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrRange::copy(self : TimeseriesanomalyiqrRange) -> TimeseriesanomalyiqrRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_range_fill(s : TimeseriesanomalyiqrRange, v : Double) -> TimeseriesanomalyiqrRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrRange::fill(self : TimeseriesanomalyiqrRange, v : Double) -> TimeseriesanomalyiqrRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_range_min(s : TimeseriesanomalyiqrRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrRange::min(self : TimeseriesanomalyiqrRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_range_max(s : TimeseriesanomalyiqrRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrRange::max(self : TimeseriesanomalyiqrRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_range_to_string(s : TimeseriesanomalyiqrRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrRange::to_string(self : TimeseriesanomalyiqrRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyiqrSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_anomaly_iqr_slice_make(size : Int) -> TimeseriesanomalyiqrSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_iqr_slice_len(s : TimeseriesanomalyiqrSlice) -> Int { s.size }
+pub fn TimeseriesanomalyiqrSlice::len(self : TimeseriesanomalyiqrSlice) -> Int { self.size }
 
-pub fn timeseries_anomaly_iqr_slice_get(s : TimeseriesanomalyiqrSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyiqrSlice::get(self : TimeseriesanomalyiqrSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_iqr_slice_set(s : TimeseriesanomalyiqrSlice, i : Int, v : Double) -> TimeseriesanomalyiqrSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrSlice::set(self : TimeseriesanomalyiqrSlice, i : Int, v : Double) -> TimeseriesanomalyiqrSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_slice_sum(s : TimeseriesanomalyiqrSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyiqrSlice::sum(self : TimeseriesanomalyiqrSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_iqr_slice_mean(s : TimeseriesanomalyiqrSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyiqrSlice::mean(self : TimeseriesanomalyiqrSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_iqr_slice_scale(s : TimeseriesanomalyiqrSlice, f : Double) -> TimeseriesanomalyiqrSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrSlice::scale(self : TimeseriesanomalyiqrSlice, f : Double) -> TimeseriesanomalyiqrSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_slice_add(a : TimeseriesanomalyiqrSlice, b : TimeseriesanomalyiqrSlice) -> TimeseriesanomalyiqrSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyiqrSlice::add(self : TimeseriesanomalyiqrSlice, other : TimeseriesanomalyiqrSlice) -> TimeseriesanomalyiqrSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_slice_copy(s : TimeseriesanomalyiqrSlice) -> TimeseriesanomalyiqrSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrSlice::copy(self : TimeseriesanomalyiqrSlice) -> TimeseriesanomalyiqrSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_slice_fill(s : TimeseriesanomalyiqrSlice, v : Double) -> TimeseriesanomalyiqrSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyiqrSlice::fill(self : TimeseriesanomalyiqrSlice, v : Double) -> TimeseriesanomalyiqrSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_iqr_slice_min(s : TimeseriesanomalyiqrSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyiqrSlice::min(self : TimeseriesanomalyiqrSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_iqr_slice_max(s : TimeseriesanomalyiqrSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyiqrSlice::max(self : TimeseriesanomalyiqrSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_iqr_slice_to_string(s : TimeseriesanomalyiqrSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyiqrSlice::to_string(self : TimeseriesanomalyiqrSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

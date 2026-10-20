@@ -351,45 +351,45 @@ pub fn geo_proj_azimuthal_frame_make(size : Int) -> GeoprojazimuthalFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_frame_len(s : GeoprojazimuthalFrame) -> Int { s.size }
+pub fn GeoprojazimuthalFrame::len(self : GeoprojazimuthalFrame) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_frame_get(s : GeoprojazimuthalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalFrame::get(self : GeoprojazimuthalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_frame_set(s : GeoprojazimuthalFrame, i : Int, v : Double) -> GeoprojazimuthalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalFrame::set(self : GeoprojazimuthalFrame, i : Int, v : Double) -> GeoprojazimuthalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_frame_sum(s : GeoprojazimuthalFrame) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalFrame::sum(self : GeoprojazimuthalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_frame_mean(s : GeoprojazimuthalFrame) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalFrame::mean(self : GeoprojazimuthalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_frame_scale(s : GeoprojazimuthalFrame, f : Double) -> GeoprojazimuthalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalFrame::scale(self : GeoprojazimuthalFrame, f : Double) -> GeoprojazimuthalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_frame_add(a : GeoprojazimuthalFrame, b : GeoprojazimuthalFrame) -> GeoprojazimuthalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalFrame::add(self : GeoprojazimuthalFrame, other : GeoprojazimuthalFrame) -> GeoprojazimuthalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_frame_copy(s : GeoprojazimuthalFrame) -> GeoprojazimuthalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalFrame::copy(self : GeoprojazimuthalFrame) -> GeoprojazimuthalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_frame_fill(s : GeoprojazimuthalFrame, v : Double) -> GeoprojazimuthalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalFrame::fill(self : GeoprojazimuthalFrame, v : Double) -> GeoprojazimuthalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_frame_min(s : GeoprojazimuthalFrame) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalFrame::min(self : GeoprojazimuthalFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_frame_max(s : GeoprojazimuthalFrame) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalFrame::max(self : GeoprojazimuthalFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_frame_to_string(s : GeoprojazimuthalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalFrame::to_string(self : GeoprojazimuthalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalTable {
@@ -402,45 +402,45 @@ pub fn geo_proj_azimuthal_table_make(size : Int) -> GeoprojazimuthalTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_table_len(s : GeoprojazimuthalTable) -> Int { s.size }
+pub fn GeoprojazimuthalTable::len(self : GeoprojazimuthalTable) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_table_get(s : GeoprojazimuthalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalTable::get(self : GeoprojazimuthalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_table_set(s : GeoprojazimuthalTable, i : Int, v : Double) -> GeoprojazimuthalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalTable::set(self : GeoprojazimuthalTable, i : Int, v : Double) -> GeoprojazimuthalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_table_sum(s : GeoprojazimuthalTable) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalTable::sum(self : GeoprojazimuthalTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_table_mean(s : GeoprojazimuthalTable) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalTable::mean(self : GeoprojazimuthalTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_table_scale(s : GeoprojazimuthalTable, f : Double) -> GeoprojazimuthalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalTable::scale(self : GeoprojazimuthalTable, f : Double) -> GeoprojazimuthalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_table_add(a : GeoprojazimuthalTable, b : GeoprojazimuthalTable) -> GeoprojazimuthalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalTable::add(self : GeoprojazimuthalTable, other : GeoprojazimuthalTable) -> GeoprojazimuthalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_table_copy(s : GeoprojazimuthalTable) -> GeoprojazimuthalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalTable::copy(self : GeoprojazimuthalTable) -> GeoprojazimuthalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_table_fill(s : GeoprojazimuthalTable, v : Double) -> GeoprojazimuthalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalTable::fill(self : GeoprojazimuthalTable, v : Double) -> GeoprojazimuthalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_table_min(s : GeoprojazimuthalTable) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalTable::min(self : GeoprojazimuthalTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_table_max(s : GeoprojazimuthalTable) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalTable::max(self : GeoprojazimuthalTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_table_to_string(s : GeoprojazimuthalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalTable::to_string(self : GeoprojazimuthalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalGraphN {
@@ -453,45 +453,45 @@ pub fn geo_proj_azimuthal_graphn_make(size : Int) -> GeoprojazimuthalGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_graphn_len(s : GeoprojazimuthalGraphN) -> Int { s.size }
+pub fn GeoprojazimuthalGraphN::len(self : GeoprojazimuthalGraphN) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_graphn_get(s : GeoprojazimuthalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalGraphN::get(self : GeoprojazimuthalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_graphn_set(s : GeoprojazimuthalGraphN, i : Int, v : Double) -> GeoprojazimuthalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalGraphN::set(self : GeoprojazimuthalGraphN, i : Int, v : Double) -> GeoprojazimuthalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_graphn_sum(s : GeoprojazimuthalGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalGraphN::sum(self : GeoprojazimuthalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_graphn_mean(s : GeoprojazimuthalGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalGraphN::mean(self : GeoprojazimuthalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_graphn_scale(s : GeoprojazimuthalGraphN, f : Double) -> GeoprojazimuthalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalGraphN::scale(self : GeoprojazimuthalGraphN, f : Double) -> GeoprojazimuthalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_graphn_add(a : GeoprojazimuthalGraphN, b : GeoprojazimuthalGraphN) -> GeoprojazimuthalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalGraphN::add(self : GeoprojazimuthalGraphN, other : GeoprojazimuthalGraphN) -> GeoprojazimuthalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_graphn_copy(s : GeoprojazimuthalGraphN) -> GeoprojazimuthalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalGraphN::copy(self : GeoprojazimuthalGraphN) -> GeoprojazimuthalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_graphn_fill(s : GeoprojazimuthalGraphN, v : Double) -> GeoprojazimuthalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalGraphN::fill(self : GeoprojazimuthalGraphN, v : Double) -> GeoprojazimuthalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_graphn_min(s : GeoprojazimuthalGraphN) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalGraphN::min(self : GeoprojazimuthalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_graphn_max(s : GeoprojazimuthalGraphN) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalGraphN::max(self : GeoprojazimuthalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_graphn_to_string(s : GeoprojazimuthalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalGraphN::to_string(self : GeoprojazimuthalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalNode {
@@ -504,45 +504,45 @@ pub fn geo_proj_azimuthal_node_make(size : Int) -> GeoprojazimuthalNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_node_len(s : GeoprojazimuthalNode) -> Int { s.size }
+pub fn GeoprojazimuthalNode::len(self : GeoprojazimuthalNode) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_node_get(s : GeoprojazimuthalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalNode::get(self : GeoprojazimuthalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_node_set(s : GeoprojazimuthalNode, i : Int, v : Double) -> GeoprojazimuthalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalNode::set(self : GeoprojazimuthalNode, i : Int, v : Double) -> GeoprojazimuthalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_node_sum(s : GeoprojazimuthalNode) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalNode::sum(self : GeoprojazimuthalNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_node_mean(s : GeoprojazimuthalNode) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalNode::mean(self : GeoprojazimuthalNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_node_scale(s : GeoprojazimuthalNode, f : Double) -> GeoprojazimuthalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalNode::scale(self : GeoprojazimuthalNode, f : Double) -> GeoprojazimuthalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_node_add(a : GeoprojazimuthalNode, b : GeoprojazimuthalNode) -> GeoprojazimuthalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalNode::add(self : GeoprojazimuthalNode, other : GeoprojazimuthalNode) -> GeoprojazimuthalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_node_copy(s : GeoprojazimuthalNode) -> GeoprojazimuthalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalNode::copy(self : GeoprojazimuthalNode) -> GeoprojazimuthalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_node_fill(s : GeoprojazimuthalNode, v : Double) -> GeoprojazimuthalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalNode::fill(self : GeoprojazimuthalNode, v : Double) -> GeoprojazimuthalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_node_min(s : GeoprojazimuthalNode) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalNode::min(self : GeoprojazimuthalNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_node_max(s : GeoprojazimuthalNode) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalNode::max(self : GeoprojazimuthalNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_node_to_string(s : GeoprojazimuthalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalNode::to_string(self : GeoprojazimuthalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalEdge {
@@ -555,45 +555,45 @@ pub fn geo_proj_azimuthal_edge_make(size : Int) -> GeoprojazimuthalEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_edge_len(s : GeoprojazimuthalEdge) -> Int { s.size }
+pub fn GeoprojazimuthalEdge::len(self : GeoprojazimuthalEdge) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_edge_get(s : GeoprojazimuthalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalEdge::get(self : GeoprojazimuthalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_edge_set(s : GeoprojazimuthalEdge, i : Int, v : Double) -> GeoprojazimuthalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalEdge::set(self : GeoprojazimuthalEdge, i : Int, v : Double) -> GeoprojazimuthalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_edge_sum(s : GeoprojazimuthalEdge) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalEdge::sum(self : GeoprojazimuthalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_edge_mean(s : GeoprojazimuthalEdge) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalEdge::mean(self : GeoprojazimuthalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_edge_scale(s : GeoprojazimuthalEdge, f : Double) -> GeoprojazimuthalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalEdge::scale(self : GeoprojazimuthalEdge, f : Double) -> GeoprojazimuthalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_edge_add(a : GeoprojazimuthalEdge, b : GeoprojazimuthalEdge) -> GeoprojazimuthalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalEdge::add(self : GeoprojazimuthalEdge, other : GeoprojazimuthalEdge) -> GeoprojazimuthalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_edge_copy(s : GeoprojazimuthalEdge) -> GeoprojazimuthalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalEdge::copy(self : GeoprojazimuthalEdge) -> GeoprojazimuthalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_edge_fill(s : GeoprojazimuthalEdge, v : Double) -> GeoprojazimuthalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalEdge::fill(self : GeoprojazimuthalEdge, v : Double) -> GeoprojazimuthalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_edge_min(s : GeoprojazimuthalEdge) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalEdge::min(self : GeoprojazimuthalEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_edge_max(s : GeoprojazimuthalEdge) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalEdge::max(self : GeoprojazimuthalEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_edge_to_string(s : GeoprojazimuthalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalEdge::to_string(self : GeoprojazimuthalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalPath {
@@ -606,45 +606,45 @@ pub fn geo_proj_azimuthal_path_make(size : Int) -> GeoprojazimuthalPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_path_len(s : GeoprojazimuthalPath) -> Int { s.size }
+pub fn GeoprojazimuthalPath::len(self : GeoprojazimuthalPath) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_path_get(s : GeoprojazimuthalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalPath::get(self : GeoprojazimuthalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_path_set(s : GeoprojazimuthalPath, i : Int, v : Double) -> GeoprojazimuthalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalPath::set(self : GeoprojazimuthalPath, i : Int, v : Double) -> GeoprojazimuthalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_path_sum(s : GeoprojazimuthalPath) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalPath::sum(self : GeoprojazimuthalPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_path_mean(s : GeoprojazimuthalPath) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalPath::mean(self : GeoprojazimuthalPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_path_scale(s : GeoprojazimuthalPath, f : Double) -> GeoprojazimuthalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalPath::scale(self : GeoprojazimuthalPath, f : Double) -> GeoprojazimuthalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_path_add(a : GeoprojazimuthalPath, b : GeoprojazimuthalPath) -> GeoprojazimuthalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalPath::add(self : GeoprojazimuthalPath, other : GeoprojazimuthalPath) -> GeoprojazimuthalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_path_copy(s : GeoprojazimuthalPath) -> GeoprojazimuthalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalPath::copy(self : GeoprojazimuthalPath) -> GeoprojazimuthalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_path_fill(s : GeoprojazimuthalPath, v : Double) -> GeoprojazimuthalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalPath::fill(self : GeoprojazimuthalPath, v : Double) -> GeoprojazimuthalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_path_min(s : GeoprojazimuthalPath) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalPath::min(self : GeoprojazimuthalPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_path_max(s : GeoprojazimuthalPath) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalPath::max(self : GeoprojazimuthalPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_path_to_string(s : GeoprojazimuthalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalPath::to_string(self : GeoprojazimuthalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalCluster {
@@ -657,45 +657,45 @@ pub fn geo_proj_azimuthal_cluster_make(size : Int) -> GeoprojazimuthalCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_cluster_len(s : GeoprojazimuthalCluster) -> Int { s.size }
+pub fn GeoprojazimuthalCluster::len(self : GeoprojazimuthalCluster) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_cluster_get(s : GeoprojazimuthalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalCluster::get(self : GeoprojazimuthalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_cluster_set(s : GeoprojazimuthalCluster, i : Int, v : Double) -> GeoprojazimuthalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalCluster::set(self : GeoprojazimuthalCluster, i : Int, v : Double) -> GeoprojazimuthalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_cluster_sum(s : GeoprojazimuthalCluster) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalCluster::sum(self : GeoprojazimuthalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_cluster_mean(s : GeoprojazimuthalCluster) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalCluster::mean(self : GeoprojazimuthalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_cluster_scale(s : GeoprojazimuthalCluster, f : Double) -> GeoprojazimuthalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalCluster::scale(self : GeoprojazimuthalCluster, f : Double) -> GeoprojazimuthalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_cluster_add(a : GeoprojazimuthalCluster, b : GeoprojazimuthalCluster) -> GeoprojazimuthalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalCluster::add(self : GeoprojazimuthalCluster, other : GeoprojazimuthalCluster) -> GeoprojazimuthalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_cluster_copy(s : GeoprojazimuthalCluster) -> GeoprojazimuthalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalCluster::copy(self : GeoprojazimuthalCluster) -> GeoprojazimuthalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_cluster_fill(s : GeoprojazimuthalCluster, v : Double) -> GeoprojazimuthalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalCluster::fill(self : GeoprojazimuthalCluster, v : Double) -> GeoprojazimuthalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_cluster_min(s : GeoprojazimuthalCluster) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalCluster::min(self : GeoprojazimuthalCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_cluster_max(s : GeoprojazimuthalCluster) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalCluster::max(self : GeoprojazimuthalCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_cluster_to_string(s : GeoprojazimuthalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalCluster::to_string(self : GeoprojazimuthalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalModel {
@@ -708,45 +708,45 @@ pub fn geo_proj_azimuthal_model_make(size : Int) -> GeoprojazimuthalModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_model_len(s : GeoprojazimuthalModel) -> Int { s.size }
+pub fn GeoprojazimuthalModel::len(self : GeoprojazimuthalModel) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_model_get(s : GeoprojazimuthalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalModel::get(self : GeoprojazimuthalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_model_set(s : GeoprojazimuthalModel, i : Int, v : Double) -> GeoprojazimuthalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalModel::set(self : GeoprojazimuthalModel, i : Int, v : Double) -> GeoprojazimuthalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_model_sum(s : GeoprojazimuthalModel) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalModel::sum(self : GeoprojazimuthalModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_model_mean(s : GeoprojazimuthalModel) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalModel::mean(self : GeoprojazimuthalModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_model_scale(s : GeoprojazimuthalModel, f : Double) -> GeoprojazimuthalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalModel::scale(self : GeoprojazimuthalModel, f : Double) -> GeoprojazimuthalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_model_add(a : GeoprojazimuthalModel, b : GeoprojazimuthalModel) -> GeoprojazimuthalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalModel::add(self : GeoprojazimuthalModel, other : GeoprojazimuthalModel) -> GeoprojazimuthalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_model_copy(s : GeoprojazimuthalModel) -> GeoprojazimuthalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalModel::copy(self : GeoprojazimuthalModel) -> GeoprojazimuthalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_model_fill(s : GeoprojazimuthalModel, v : Double) -> GeoprojazimuthalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalModel::fill(self : GeoprojazimuthalModel, v : Double) -> GeoprojazimuthalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_model_min(s : GeoprojazimuthalModel) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalModel::min(self : GeoprojazimuthalModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_model_max(s : GeoprojazimuthalModel) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalModel::max(self : GeoprojazimuthalModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_model_to_string(s : GeoprojazimuthalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalModel::to_string(self : GeoprojazimuthalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalLayer {
@@ -759,45 +759,45 @@ pub fn geo_proj_azimuthal_layer_make(size : Int) -> GeoprojazimuthalLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_layer_len(s : GeoprojazimuthalLayer) -> Int { s.size }
+pub fn GeoprojazimuthalLayer::len(self : GeoprojazimuthalLayer) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_layer_get(s : GeoprojazimuthalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalLayer::get(self : GeoprojazimuthalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_layer_set(s : GeoprojazimuthalLayer, i : Int, v : Double) -> GeoprojazimuthalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalLayer::set(self : GeoprojazimuthalLayer, i : Int, v : Double) -> GeoprojazimuthalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_layer_sum(s : GeoprojazimuthalLayer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalLayer::sum(self : GeoprojazimuthalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_layer_mean(s : GeoprojazimuthalLayer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalLayer::mean(self : GeoprojazimuthalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_layer_scale(s : GeoprojazimuthalLayer, f : Double) -> GeoprojazimuthalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalLayer::scale(self : GeoprojazimuthalLayer, f : Double) -> GeoprojazimuthalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_layer_add(a : GeoprojazimuthalLayer, b : GeoprojazimuthalLayer) -> GeoprojazimuthalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalLayer::add(self : GeoprojazimuthalLayer, other : GeoprojazimuthalLayer) -> GeoprojazimuthalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_layer_copy(s : GeoprojazimuthalLayer) -> GeoprojazimuthalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalLayer::copy(self : GeoprojazimuthalLayer) -> GeoprojazimuthalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_layer_fill(s : GeoprojazimuthalLayer, v : Double) -> GeoprojazimuthalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalLayer::fill(self : GeoprojazimuthalLayer, v : Double) -> GeoprojazimuthalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_layer_min(s : GeoprojazimuthalLayer) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalLayer::min(self : GeoprojazimuthalLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_layer_max(s : GeoprojazimuthalLayer) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalLayer::max(self : GeoprojazimuthalLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_layer_to_string(s : GeoprojazimuthalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalLayer::to_string(self : GeoprojazimuthalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalBuffer {
@@ -810,45 +810,45 @@ pub fn geo_proj_azimuthal_buffer_make(size : Int) -> GeoprojazimuthalBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_buffer_len(s : GeoprojazimuthalBuffer) -> Int { s.size }
+pub fn GeoprojazimuthalBuffer::len(self : GeoprojazimuthalBuffer) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_buffer_get(s : GeoprojazimuthalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalBuffer::get(self : GeoprojazimuthalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_buffer_set(s : GeoprojazimuthalBuffer, i : Int, v : Double) -> GeoprojazimuthalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalBuffer::set(self : GeoprojazimuthalBuffer, i : Int, v : Double) -> GeoprojazimuthalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_buffer_sum(s : GeoprojazimuthalBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalBuffer::sum(self : GeoprojazimuthalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_buffer_mean(s : GeoprojazimuthalBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalBuffer::mean(self : GeoprojazimuthalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_buffer_scale(s : GeoprojazimuthalBuffer, f : Double) -> GeoprojazimuthalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalBuffer::scale(self : GeoprojazimuthalBuffer, f : Double) -> GeoprojazimuthalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_buffer_add(a : GeoprojazimuthalBuffer, b : GeoprojazimuthalBuffer) -> GeoprojazimuthalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalBuffer::add(self : GeoprojazimuthalBuffer, other : GeoprojazimuthalBuffer) -> GeoprojazimuthalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_buffer_copy(s : GeoprojazimuthalBuffer) -> GeoprojazimuthalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalBuffer::copy(self : GeoprojazimuthalBuffer) -> GeoprojazimuthalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_buffer_fill(s : GeoprojazimuthalBuffer, v : Double) -> GeoprojazimuthalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalBuffer::fill(self : GeoprojazimuthalBuffer, v : Double) -> GeoprojazimuthalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_buffer_min(s : GeoprojazimuthalBuffer) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalBuffer::min(self : GeoprojazimuthalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_buffer_max(s : GeoprojazimuthalBuffer) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalBuffer::max(self : GeoprojazimuthalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_buffer_to_string(s : GeoprojazimuthalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalBuffer::to_string(self : GeoprojazimuthalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalCursor {
@@ -861,45 +861,45 @@ pub fn geo_proj_azimuthal_cursor_make(size : Int) -> GeoprojazimuthalCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_cursor_len(s : GeoprojazimuthalCursor) -> Int { s.size }
+pub fn GeoprojazimuthalCursor::len(self : GeoprojazimuthalCursor) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_cursor_get(s : GeoprojazimuthalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalCursor::get(self : GeoprojazimuthalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_cursor_set(s : GeoprojazimuthalCursor, i : Int, v : Double) -> GeoprojazimuthalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalCursor::set(self : GeoprojazimuthalCursor, i : Int, v : Double) -> GeoprojazimuthalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_cursor_sum(s : GeoprojazimuthalCursor) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalCursor::sum(self : GeoprojazimuthalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_cursor_mean(s : GeoprojazimuthalCursor) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalCursor::mean(self : GeoprojazimuthalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_cursor_scale(s : GeoprojazimuthalCursor, f : Double) -> GeoprojazimuthalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalCursor::scale(self : GeoprojazimuthalCursor, f : Double) -> GeoprojazimuthalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_cursor_add(a : GeoprojazimuthalCursor, b : GeoprojazimuthalCursor) -> GeoprojazimuthalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalCursor::add(self : GeoprojazimuthalCursor, other : GeoprojazimuthalCursor) -> GeoprojazimuthalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_cursor_copy(s : GeoprojazimuthalCursor) -> GeoprojazimuthalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalCursor::copy(self : GeoprojazimuthalCursor) -> GeoprojazimuthalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_cursor_fill(s : GeoprojazimuthalCursor, v : Double) -> GeoprojazimuthalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalCursor::fill(self : GeoprojazimuthalCursor, v : Double) -> GeoprojazimuthalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_cursor_min(s : GeoprojazimuthalCursor) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalCursor::min(self : GeoprojazimuthalCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_cursor_max(s : GeoprojazimuthalCursor) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalCursor::max(self : GeoprojazimuthalCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_cursor_to_string(s : GeoprojazimuthalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalCursor::to_string(self : GeoprojazimuthalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalView {
@@ -912,45 +912,45 @@ pub fn geo_proj_azimuthal_view_make(size : Int) -> GeoprojazimuthalView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_view_len(s : GeoprojazimuthalView) -> Int { s.size }
+pub fn GeoprojazimuthalView::len(self : GeoprojazimuthalView) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_view_get(s : GeoprojazimuthalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalView::get(self : GeoprojazimuthalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_view_set(s : GeoprojazimuthalView, i : Int, v : Double) -> GeoprojazimuthalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalView::set(self : GeoprojazimuthalView, i : Int, v : Double) -> GeoprojazimuthalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_view_sum(s : GeoprojazimuthalView) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalView::sum(self : GeoprojazimuthalView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_view_mean(s : GeoprojazimuthalView) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalView::mean(self : GeoprojazimuthalView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_view_scale(s : GeoprojazimuthalView, f : Double) -> GeoprojazimuthalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalView::scale(self : GeoprojazimuthalView, f : Double) -> GeoprojazimuthalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_view_add(a : GeoprojazimuthalView, b : GeoprojazimuthalView) -> GeoprojazimuthalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalView::add(self : GeoprojazimuthalView, other : GeoprojazimuthalView) -> GeoprojazimuthalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_view_copy(s : GeoprojazimuthalView) -> GeoprojazimuthalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalView::copy(self : GeoprojazimuthalView) -> GeoprojazimuthalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_view_fill(s : GeoprojazimuthalView, v : Double) -> GeoprojazimuthalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalView::fill(self : GeoprojazimuthalView, v : Double) -> GeoprojazimuthalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_view_min(s : GeoprojazimuthalView) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalView::min(self : GeoprojazimuthalView) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_view_max(s : GeoprojazimuthalView) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalView::max(self : GeoprojazimuthalView) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_view_to_string(s : GeoprojazimuthalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalView::to_string(self : GeoprojazimuthalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalRange {
@@ -963,45 +963,45 @@ pub fn geo_proj_azimuthal_range_make(size : Int) -> GeoprojazimuthalRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_range_len(s : GeoprojazimuthalRange) -> Int { s.size }
+pub fn GeoprojazimuthalRange::len(self : GeoprojazimuthalRange) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_range_get(s : GeoprojazimuthalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalRange::get(self : GeoprojazimuthalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_range_set(s : GeoprojazimuthalRange, i : Int, v : Double) -> GeoprojazimuthalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalRange::set(self : GeoprojazimuthalRange, i : Int, v : Double) -> GeoprojazimuthalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_range_sum(s : GeoprojazimuthalRange) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalRange::sum(self : GeoprojazimuthalRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_range_mean(s : GeoprojazimuthalRange) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalRange::mean(self : GeoprojazimuthalRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_range_scale(s : GeoprojazimuthalRange, f : Double) -> GeoprojazimuthalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalRange::scale(self : GeoprojazimuthalRange, f : Double) -> GeoprojazimuthalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_range_add(a : GeoprojazimuthalRange, b : GeoprojazimuthalRange) -> GeoprojazimuthalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalRange::add(self : GeoprojazimuthalRange, other : GeoprojazimuthalRange) -> GeoprojazimuthalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_range_copy(s : GeoprojazimuthalRange) -> GeoprojazimuthalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalRange::copy(self : GeoprojazimuthalRange) -> GeoprojazimuthalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_range_fill(s : GeoprojazimuthalRange, v : Double) -> GeoprojazimuthalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalRange::fill(self : GeoprojazimuthalRange, v : Double) -> GeoprojazimuthalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_range_min(s : GeoprojazimuthalRange) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalRange::min(self : GeoprojazimuthalRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_range_max(s : GeoprojazimuthalRange) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalRange::max(self : GeoprojazimuthalRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_range_to_string(s : GeoprojazimuthalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalRange::to_string(self : GeoprojazimuthalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojazimuthalSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_proj_azimuthal_slice_make(size : Int) -> GeoprojazimuthalSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_azimuthal_slice_len(s : GeoprojazimuthalSlice) -> Int { s.size }
+pub fn GeoprojazimuthalSlice::len(self : GeoprojazimuthalSlice) -> Int { self.size }
 
-pub fn geo_proj_azimuthal_slice_get(s : GeoprojazimuthalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojazimuthalSlice::get(self : GeoprojazimuthalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_azimuthal_slice_set(s : GeoprojazimuthalSlice, i : Int, v : Double) -> GeoprojazimuthalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalSlice::set(self : GeoprojazimuthalSlice, i : Int, v : Double) -> GeoprojazimuthalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_slice_sum(s : GeoprojazimuthalSlice) -> Double { @_common.sum(s.data) }
+pub fn GeoprojazimuthalSlice::sum(self : GeoprojazimuthalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_azimuthal_slice_mean(s : GeoprojazimuthalSlice) -> Double { @_common.mean(s.data) }
+pub fn GeoprojazimuthalSlice::mean(self : GeoprojazimuthalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_azimuthal_slice_scale(s : GeoprojazimuthalSlice, f : Double) -> GeoprojazimuthalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalSlice::scale(self : GeoprojazimuthalSlice, f : Double) -> GeoprojazimuthalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_slice_add(a : GeoprojazimuthalSlice, b : GeoprojazimuthalSlice) -> GeoprojazimuthalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojazimuthalSlice::add(self : GeoprojazimuthalSlice, other : GeoprojazimuthalSlice) -> GeoprojazimuthalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_slice_copy(s : GeoprojazimuthalSlice) -> GeoprojazimuthalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalSlice::copy(self : GeoprojazimuthalSlice) -> GeoprojazimuthalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_slice_fill(s : GeoprojazimuthalSlice, v : Double) -> GeoprojazimuthalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojazimuthalSlice::fill(self : GeoprojazimuthalSlice, v : Double) -> GeoprojazimuthalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_azimuthal_slice_min(s : GeoprojazimuthalSlice) -> Double { @_common.min(s.data) }
+pub fn GeoprojazimuthalSlice::min(self : GeoprojazimuthalSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_azimuthal_slice_max(s : GeoprojazimuthalSlice) -> Double { @_common.max(s.data) }
+pub fn GeoprojazimuthalSlice::max(self : GeoprojazimuthalSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_azimuthal_slice_to_string(s : GeoprojazimuthalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojazimuthalSlice::to_string(self : GeoprojazimuthalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn chem_rxn_yield_frame_make(size : Int) -> ChemrxnyieldFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_frame_len(s : ChemrxnyieldFrame) -> Int { s.size }
+pub fn ChemrxnyieldFrame::len(self : ChemrxnyieldFrame) -> Int { self.size }
 
-pub fn chem_rxn_yield_frame_get(s : ChemrxnyieldFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldFrame::get(self : ChemrxnyieldFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_frame_set(s : ChemrxnyieldFrame, i : Int, v : Double) -> ChemrxnyieldFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldFrame::set(self : ChemrxnyieldFrame, i : Int, v : Double) -> ChemrxnyieldFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_frame_sum(s : ChemrxnyieldFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldFrame::sum(self : ChemrxnyieldFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_frame_mean(s : ChemrxnyieldFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldFrame::mean(self : ChemrxnyieldFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_frame_scale(s : ChemrxnyieldFrame, f : Double) -> ChemrxnyieldFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldFrame::scale(self : ChemrxnyieldFrame, f : Double) -> ChemrxnyieldFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_frame_add(a : ChemrxnyieldFrame, b : ChemrxnyieldFrame) -> ChemrxnyieldFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldFrame::add(self : ChemrxnyieldFrame, other : ChemrxnyieldFrame) -> ChemrxnyieldFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_frame_copy(s : ChemrxnyieldFrame) -> ChemrxnyieldFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldFrame::copy(self : ChemrxnyieldFrame) -> ChemrxnyieldFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_frame_fill(s : ChemrxnyieldFrame, v : Double) -> ChemrxnyieldFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldFrame::fill(self : ChemrxnyieldFrame, v : Double) -> ChemrxnyieldFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_frame_min(s : ChemrxnyieldFrame) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldFrame::min(self : ChemrxnyieldFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_frame_max(s : ChemrxnyieldFrame) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldFrame::max(self : ChemrxnyieldFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_frame_to_string(s : ChemrxnyieldFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldFrame::to_string(self : ChemrxnyieldFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldTable {
@@ -402,45 +402,45 @@ pub fn chem_rxn_yield_table_make(size : Int) -> ChemrxnyieldTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_table_len(s : ChemrxnyieldTable) -> Int { s.size }
+pub fn ChemrxnyieldTable::len(self : ChemrxnyieldTable) -> Int { self.size }
 
-pub fn chem_rxn_yield_table_get(s : ChemrxnyieldTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldTable::get(self : ChemrxnyieldTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_table_set(s : ChemrxnyieldTable, i : Int, v : Double) -> ChemrxnyieldTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldTable::set(self : ChemrxnyieldTable, i : Int, v : Double) -> ChemrxnyieldTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_table_sum(s : ChemrxnyieldTable) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldTable::sum(self : ChemrxnyieldTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_table_mean(s : ChemrxnyieldTable) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldTable::mean(self : ChemrxnyieldTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_table_scale(s : ChemrxnyieldTable, f : Double) -> ChemrxnyieldTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldTable::scale(self : ChemrxnyieldTable, f : Double) -> ChemrxnyieldTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_table_add(a : ChemrxnyieldTable, b : ChemrxnyieldTable) -> ChemrxnyieldTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldTable::add(self : ChemrxnyieldTable, other : ChemrxnyieldTable) -> ChemrxnyieldTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_table_copy(s : ChemrxnyieldTable) -> ChemrxnyieldTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldTable::copy(self : ChemrxnyieldTable) -> ChemrxnyieldTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_table_fill(s : ChemrxnyieldTable, v : Double) -> ChemrxnyieldTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldTable::fill(self : ChemrxnyieldTable, v : Double) -> ChemrxnyieldTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_table_min(s : ChemrxnyieldTable) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldTable::min(self : ChemrxnyieldTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_table_max(s : ChemrxnyieldTable) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldTable::max(self : ChemrxnyieldTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_table_to_string(s : ChemrxnyieldTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldTable::to_string(self : ChemrxnyieldTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldGraphN {
@@ -453,45 +453,45 @@ pub fn chem_rxn_yield_graphn_make(size : Int) -> ChemrxnyieldGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_graphn_len(s : ChemrxnyieldGraphN) -> Int { s.size }
+pub fn ChemrxnyieldGraphN::len(self : ChemrxnyieldGraphN) -> Int { self.size }
 
-pub fn chem_rxn_yield_graphn_get(s : ChemrxnyieldGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldGraphN::get(self : ChemrxnyieldGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_graphn_set(s : ChemrxnyieldGraphN, i : Int, v : Double) -> ChemrxnyieldGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldGraphN::set(self : ChemrxnyieldGraphN, i : Int, v : Double) -> ChemrxnyieldGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_graphn_sum(s : ChemrxnyieldGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldGraphN::sum(self : ChemrxnyieldGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_graphn_mean(s : ChemrxnyieldGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldGraphN::mean(self : ChemrxnyieldGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_graphn_scale(s : ChemrxnyieldGraphN, f : Double) -> ChemrxnyieldGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldGraphN::scale(self : ChemrxnyieldGraphN, f : Double) -> ChemrxnyieldGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_graphn_add(a : ChemrxnyieldGraphN, b : ChemrxnyieldGraphN) -> ChemrxnyieldGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldGraphN::add(self : ChemrxnyieldGraphN, other : ChemrxnyieldGraphN) -> ChemrxnyieldGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_graphn_copy(s : ChemrxnyieldGraphN) -> ChemrxnyieldGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldGraphN::copy(self : ChemrxnyieldGraphN) -> ChemrxnyieldGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_graphn_fill(s : ChemrxnyieldGraphN, v : Double) -> ChemrxnyieldGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldGraphN::fill(self : ChemrxnyieldGraphN, v : Double) -> ChemrxnyieldGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_graphn_min(s : ChemrxnyieldGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldGraphN::min(self : ChemrxnyieldGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_graphn_max(s : ChemrxnyieldGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldGraphN::max(self : ChemrxnyieldGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_graphn_to_string(s : ChemrxnyieldGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldGraphN::to_string(self : ChemrxnyieldGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldNode {
@@ -504,45 +504,45 @@ pub fn chem_rxn_yield_node_make(size : Int) -> ChemrxnyieldNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_node_len(s : ChemrxnyieldNode) -> Int { s.size }
+pub fn ChemrxnyieldNode::len(self : ChemrxnyieldNode) -> Int { self.size }
 
-pub fn chem_rxn_yield_node_get(s : ChemrxnyieldNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldNode::get(self : ChemrxnyieldNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_node_set(s : ChemrxnyieldNode, i : Int, v : Double) -> ChemrxnyieldNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldNode::set(self : ChemrxnyieldNode, i : Int, v : Double) -> ChemrxnyieldNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_node_sum(s : ChemrxnyieldNode) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldNode::sum(self : ChemrxnyieldNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_node_mean(s : ChemrxnyieldNode) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldNode::mean(self : ChemrxnyieldNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_node_scale(s : ChemrxnyieldNode, f : Double) -> ChemrxnyieldNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldNode::scale(self : ChemrxnyieldNode, f : Double) -> ChemrxnyieldNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_node_add(a : ChemrxnyieldNode, b : ChemrxnyieldNode) -> ChemrxnyieldNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldNode::add(self : ChemrxnyieldNode, other : ChemrxnyieldNode) -> ChemrxnyieldNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_node_copy(s : ChemrxnyieldNode) -> ChemrxnyieldNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldNode::copy(self : ChemrxnyieldNode) -> ChemrxnyieldNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_node_fill(s : ChemrxnyieldNode, v : Double) -> ChemrxnyieldNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldNode::fill(self : ChemrxnyieldNode, v : Double) -> ChemrxnyieldNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_node_min(s : ChemrxnyieldNode) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldNode::min(self : ChemrxnyieldNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_node_max(s : ChemrxnyieldNode) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldNode::max(self : ChemrxnyieldNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_node_to_string(s : ChemrxnyieldNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldNode::to_string(self : ChemrxnyieldNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldEdge {
@@ -555,45 +555,45 @@ pub fn chem_rxn_yield_edge_make(size : Int) -> ChemrxnyieldEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_edge_len(s : ChemrxnyieldEdge) -> Int { s.size }
+pub fn ChemrxnyieldEdge::len(self : ChemrxnyieldEdge) -> Int { self.size }
 
-pub fn chem_rxn_yield_edge_get(s : ChemrxnyieldEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldEdge::get(self : ChemrxnyieldEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_edge_set(s : ChemrxnyieldEdge, i : Int, v : Double) -> ChemrxnyieldEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldEdge::set(self : ChemrxnyieldEdge, i : Int, v : Double) -> ChemrxnyieldEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_edge_sum(s : ChemrxnyieldEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldEdge::sum(self : ChemrxnyieldEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_edge_mean(s : ChemrxnyieldEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldEdge::mean(self : ChemrxnyieldEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_edge_scale(s : ChemrxnyieldEdge, f : Double) -> ChemrxnyieldEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldEdge::scale(self : ChemrxnyieldEdge, f : Double) -> ChemrxnyieldEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_edge_add(a : ChemrxnyieldEdge, b : ChemrxnyieldEdge) -> ChemrxnyieldEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldEdge::add(self : ChemrxnyieldEdge, other : ChemrxnyieldEdge) -> ChemrxnyieldEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_edge_copy(s : ChemrxnyieldEdge) -> ChemrxnyieldEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldEdge::copy(self : ChemrxnyieldEdge) -> ChemrxnyieldEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_edge_fill(s : ChemrxnyieldEdge, v : Double) -> ChemrxnyieldEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldEdge::fill(self : ChemrxnyieldEdge, v : Double) -> ChemrxnyieldEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_edge_min(s : ChemrxnyieldEdge) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldEdge::min(self : ChemrxnyieldEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_edge_max(s : ChemrxnyieldEdge) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldEdge::max(self : ChemrxnyieldEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_edge_to_string(s : ChemrxnyieldEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldEdge::to_string(self : ChemrxnyieldEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldPath {
@@ -606,45 +606,45 @@ pub fn chem_rxn_yield_path_make(size : Int) -> ChemrxnyieldPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_path_len(s : ChemrxnyieldPath) -> Int { s.size }
+pub fn ChemrxnyieldPath::len(self : ChemrxnyieldPath) -> Int { self.size }
 
-pub fn chem_rxn_yield_path_get(s : ChemrxnyieldPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldPath::get(self : ChemrxnyieldPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_path_set(s : ChemrxnyieldPath, i : Int, v : Double) -> ChemrxnyieldPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldPath::set(self : ChemrxnyieldPath, i : Int, v : Double) -> ChemrxnyieldPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_path_sum(s : ChemrxnyieldPath) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldPath::sum(self : ChemrxnyieldPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_path_mean(s : ChemrxnyieldPath) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldPath::mean(self : ChemrxnyieldPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_path_scale(s : ChemrxnyieldPath, f : Double) -> ChemrxnyieldPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldPath::scale(self : ChemrxnyieldPath, f : Double) -> ChemrxnyieldPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_path_add(a : ChemrxnyieldPath, b : ChemrxnyieldPath) -> ChemrxnyieldPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldPath::add(self : ChemrxnyieldPath, other : ChemrxnyieldPath) -> ChemrxnyieldPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_path_copy(s : ChemrxnyieldPath) -> ChemrxnyieldPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldPath::copy(self : ChemrxnyieldPath) -> ChemrxnyieldPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_path_fill(s : ChemrxnyieldPath, v : Double) -> ChemrxnyieldPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldPath::fill(self : ChemrxnyieldPath, v : Double) -> ChemrxnyieldPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_path_min(s : ChemrxnyieldPath) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldPath::min(self : ChemrxnyieldPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_path_max(s : ChemrxnyieldPath) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldPath::max(self : ChemrxnyieldPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_path_to_string(s : ChemrxnyieldPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldPath::to_string(self : ChemrxnyieldPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldCluster {
@@ -657,45 +657,45 @@ pub fn chem_rxn_yield_cluster_make(size : Int) -> ChemrxnyieldCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_cluster_len(s : ChemrxnyieldCluster) -> Int { s.size }
+pub fn ChemrxnyieldCluster::len(self : ChemrxnyieldCluster) -> Int { self.size }
 
-pub fn chem_rxn_yield_cluster_get(s : ChemrxnyieldCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldCluster::get(self : ChemrxnyieldCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_cluster_set(s : ChemrxnyieldCluster, i : Int, v : Double) -> ChemrxnyieldCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldCluster::set(self : ChemrxnyieldCluster, i : Int, v : Double) -> ChemrxnyieldCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_cluster_sum(s : ChemrxnyieldCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldCluster::sum(self : ChemrxnyieldCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_cluster_mean(s : ChemrxnyieldCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldCluster::mean(self : ChemrxnyieldCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_cluster_scale(s : ChemrxnyieldCluster, f : Double) -> ChemrxnyieldCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldCluster::scale(self : ChemrxnyieldCluster, f : Double) -> ChemrxnyieldCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_cluster_add(a : ChemrxnyieldCluster, b : ChemrxnyieldCluster) -> ChemrxnyieldCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldCluster::add(self : ChemrxnyieldCluster, other : ChemrxnyieldCluster) -> ChemrxnyieldCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_cluster_copy(s : ChemrxnyieldCluster) -> ChemrxnyieldCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldCluster::copy(self : ChemrxnyieldCluster) -> ChemrxnyieldCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_cluster_fill(s : ChemrxnyieldCluster, v : Double) -> ChemrxnyieldCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldCluster::fill(self : ChemrxnyieldCluster, v : Double) -> ChemrxnyieldCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_cluster_min(s : ChemrxnyieldCluster) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldCluster::min(self : ChemrxnyieldCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_cluster_max(s : ChemrxnyieldCluster) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldCluster::max(self : ChemrxnyieldCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_cluster_to_string(s : ChemrxnyieldCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldCluster::to_string(self : ChemrxnyieldCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldModel {
@@ -708,45 +708,45 @@ pub fn chem_rxn_yield_model_make(size : Int) -> ChemrxnyieldModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_model_len(s : ChemrxnyieldModel) -> Int { s.size }
+pub fn ChemrxnyieldModel::len(self : ChemrxnyieldModel) -> Int { self.size }
 
-pub fn chem_rxn_yield_model_get(s : ChemrxnyieldModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldModel::get(self : ChemrxnyieldModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_model_set(s : ChemrxnyieldModel, i : Int, v : Double) -> ChemrxnyieldModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldModel::set(self : ChemrxnyieldModel, i : Int, v : Double) -> ChemrxnyieldModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_model_sum(s : ChemrxnyieldModel) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldModel::sum(self : ChemrxnyieldModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_model_mean(s : ChemrxnyieldModel) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldModel::mean(self : ChemrxnyieldModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_model_scale(s : ChemrxnyieldModel, f : Double) -> ChemrxnyieldModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldModel::scale(self : ChemrxnyieldModel, f : Double) -> ChemrxnyieldModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_model_add(a : ChemrxnyieldModel, b : ChemrxnyieldModel) -> ChemrxnyieldModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldModel::add(self : ChemrxnyieldModel, other : ChemrxnyieldModel) -> ChemrxnyieldModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_model_copy(s : ChemrxnyieldModel) -> ChemrxnyieldModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldModel::copy(self : ChemrxnyieldModel) -> ChemrxnyieldModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_model_fill(s : ChemrxnyieldModel, v : Double) -> ChemrxnyieldModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldModel::fill(self : ChemrxnyieldModel, v : Double) -> ChemrxnyieldModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_model_min(s : ChemrxnyieldModel) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldModel::min(self : ChemrxnyieldModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_model_max(s : ChemrxnyieldModel) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldModel::max(self : ChemrxnyieldModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_model_to_string(s : ChemrxnyieldModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldModel::to_string(self : ChemrxnyieldModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldLayer {
@@ -759,45 +759,45 @@ pub fn chem_rxn_yield_layer_make(size : Int) -> ChemrxnyieldLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_layer_len(s : ChemrxnyieldLayer) -> Int { s.size }
+pub fn ChemrxnyieldLayer::len(self : ChemrxnyieldLayer) -> Int { self.size }
 
-pub fn chem_rxn_yield_layer_get(s : ChemrxnyieldLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldLayer::get(self : ChemrxnyieldLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_layer_set(s : ChemrxnyieldLayer, i : Int, v : Double) -> ChemrxnyieldLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldLayer::set(self : ChemrxnyieldLayer, i : Int, v : Double) -> ChemrxnyieldLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_layer_sum(s : ChemrxnyieldLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldLayer::sum(self : ChemrxnyieldLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_layer_mean(s : ChemrxnyieldLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldLayer::mean(self : ChemrxnyieldLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_layer_scale(s : ChemrxnyieldLayer, f : Double) -> ChemrxnyieldLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldLayer::scale(self : ChemrxnyieldLayer, f : Double) -> ChemrxnyieldLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_layer_add(a : ChemrxnyieldLayer, b : ChemrxnyieldLayer) -> ChemrxnyieldLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldLayer::add(self : ChemrxnyieldLayer, other : ChemrxnyieldLayer) -> ChemrxnyieldLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_layer_copy(s : ChemrxnyieldLayer) -> ChemrxnyieldLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldLayer::copy(self : ChemrxnyieldLayer) -> ChemrxnyieldLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_layer_fill(s : ChemrxnyieldLayer, v : Double) -> ChemrxnyieldLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldLayer::fill(self : ChemrxnyieldLayer, v : Double) -> ChemrxnyieldLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_layer_min(s : ChemrxnyieldLayer) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldLayer::min(self : ChemrxnyieldLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_layer_max(s : ChemrxnyieldLayer) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldLayer::max(self : ChemrxnyieldLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_layer_to_string(s : ChemrxnyieldLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldLayer::to_string(self : ChemrxnyieldLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldBuffer {
@@ -810,45 +810,45 @@ pub fn chem_rxn_yield_buffer_make(size : Int) -> ChemrxnyieldBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_buffer_len(s : ChemrxnyieldBuffer) -> Int { s.size }
+pub fn ChemrxnyieldBuffer::len(self : ChemrxnyieldBuffer) -> Int { self.size }
 
-pub fn chem_rxn_yield_buffer_get(s : ChemrxnyieldBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldBuffer::get(self : ChemrxnyieldBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_buffer_set(s : ChemrxnyieldBuffer, i : Int, v : Double) -> ChemrxnyieldBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldBuffer::set(self : ChemrxnyieldBuffer, i : Int, v : Double) -> ChemrxnyieldBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_buffer_sum(s : ChemrxnyieldBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldBuffer::sum(self : ChemrxnyieldBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_buffer_mean(s : ChemrxnyieldBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldBuffer::mean(self : ChemrxnyieldBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_buffer_scale(s : ChemrxnyieldBuffer, f : Double) -> ChemrxnyieldBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldBuffer::scale(self : ChemrxnyieldBuffer, f : Double) -> ChemrxnyieldBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_buffer_add(a : ChemrxnyieldBuffer, b : ChemrxnyieldBuffer) -> ChemrxnyieldBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldBuffer::add(self : ChemrxnyieldBuffer, other : ChemrxnyieldBuffer) -> ChemrxnyieldBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_buffer_copy(s : ChemrxnyieldBuffer) -> ChemrxnyieldBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldBuffer::copy(self : ChemrxnyieldBuffer) -> ChemrxnyieldBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_buffer_fill(s : ChemrxnyieldBuffer, v : Double) -> ChemrxnyieldBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldBuffer::fill(self : ChemrxnyieldBuffer, v : Double) -> ChemrxnyieldBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_buffer_min(s : ChemrxnyieldBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldBuffer::min(self : ChemrxnyieldBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_buffer_max(s : ChemrxnyieldBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldBuffer::max(self : ChemrxnyieldBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_buffer_to_string(s : ChemrxnyieldBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldBuffer::to_string(self : ChemrxnyieldBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldCursor {
@@ -861,45 +861,45 @@ pub fn chem_rxn_yield_cursor_make(size : Int) -> ChemrxnyieldCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_cursor_len(s : ChemrxnyieldCursor) -> Int { s.size }
+pub fn ChemrxnyieldCursor::len(self : ChemrxnyieldCursor) -> Int { self.size }
 
-pub fn chem_rxn_yield_cursor_get(s : ChemrxnyieldCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldCursor::get(self : ChemrxnyieldCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_cursor_set(s : ChemrxnyieldCursor, i : Int, v : Double) -> ChemrxnyieldCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldCursor::set(self : ChemrxnyieldCursor, i : Int, v : Double) -> ChemrxnyieldCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_cursor_sum(s : ChemrxnyieldCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldCursor::sum(self : ChemrxnyieldCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_cursor_mean(s : ChemrxnyieldCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldCursor::mean(self : ChemrxnyieldCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_cursor_scale(s : ChemrxnyieldCursor, f : Double) -> ChemrxnyieldCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldCursor::scale(self : ChemrxnyieldCursor, f : Double) -> ChemrxnyieldCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_cursor_add(a : ChemrxnyieldCursor, b : ChemrxnyieldCursor) -> ChemrxnyieldCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldCursor::add(self : ChemrxnyieldCursor, other : ChemrxnyieldCursor) -> ChemrxnyieldCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_cursor_copy(s : ChemrxnyieldCursor) -> ChemrxnyieldCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldCursor::copy(self : ChemrxnyieldCursor) -> ChemrxnyieldCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_cursor_fill(s : ChemrxnyieldCursor, v : Double) -> ChemrxnyieldCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldCursor::fill(self : ChemrxnyieldCursor, v : Double) -> ChemrxnyieldCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_cursor_min(s : ChemrxnyieldCursor) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldCursor::min(self : ChemrxnyieldCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_cursor_max(s : ChemrxnyieldCursor) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldCursor::max(self : ChemrxnyieldCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_cursor_to_string(s : ChemrxnyieldCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldCursor::to_string(self : ChemrxnyieldCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldView {
@@ -912,45 +912,45 @@ pub fn chem_rxn_yield_view_make(size : Int) -> ChemrxnyieldView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_view_len(s : ChemrxnyieldView) -> Int { s.size }
+pub fn ChemrxnyieldView::len(self : ChemrxnyieldView) -> Int { self.size }
 
-pub fn chem_rxn_yield_view_get(s : ChemrxnyieldView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldView::get(self : ChemrxnyieldView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_view_set(s : ChemrxnyieldView, i : Int, v : Double) -> ChemrxnyieldView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldView::set(self : ChemrxnyieldView, i : Int, v : Double) -> ChemrxnyieldView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_view_sum(s : ChemrxnyieldView) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldView::sum(self : ChemrxnyieldView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_view_mean(s : ChemrxnyieldView) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldView::mean(self : ChemrxnyieldView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_view_scale(s : ChemrxnyieldView, f : Double) -> ChemrxnyieldView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldView::scale(self : ChemrxnyieldView, f : Double) -> ChemrxnyieldView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_view_add(a : ChemrxnyieldView, b : ChemrxnyieldView) -> ChemrxnyieldView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldView::add(self : ChemrxnyieldView, other : ChemrxnyieldView) -> ChemrxnyieldView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_view_copy(s : ChemrxnyieldView) -> ChemrxnyieldView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldView::copy(self : ChemrxnyieldView) -> ChemrxnyieldView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_view_fill(s : ChemrxnyieldView, v : Double) -> ChemrxnyieldView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldView::fill(self : ChemrxnyieldView, v : Double) -> ChemrxnyieldView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_view_min(s : ChemrxnyieldView) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldView::min(self : ChemrxnyieldView) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_view_max(s : ChemrxnyieldView) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldView::max(self : ChemrxnyieldView) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_view_to_string(s : ChemrxnyieldView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldView::to_string(self : ChemrxnyieldView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldRange {
@@ -963,45 +963,45 @@ pub fn chem_rxn_yield_range_make(size : Int) -> ChemrxnyieldRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_range_len(s : ChemrxnyieldRange) -> Int { s.size }
+pub fn ChemrxnyieldRange::len(self : ChemrxnyieldRange) -> Int { self.size }
 
-pub fn chem_rxn_yield_range_get(s : ChemrxnyieldRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldRange::get(self : ChemrxnyieldRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_range_set(s : ChemrxnyieldRange, i : Int, v : Double) -> ChemrxnyieldRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldRange::set(self : ChemrxnyieldRange, i : Int, v : Double) -> ChemrxnyieldRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_range_sum(s : ChemrxnyieldRange) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldRange::sum(self : ChemrxnyieldRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_range_mean(s : ChemrxnyieldRange) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldRange::mean(self : ChemrxnyieldRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_range_scale(s : ChemrxnyieldRange, f : Double) -> ChemrxnyieldRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldRange::scale(self : ChemrxnyieldRange, f : Double) -> ChemrxnyieldRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_range_add(a : ChemrxnyieldRange, b : ChemrxnyieldRange) -> ChemrxnyieldRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldRange::add(self : ChemrxnyieldRange, other : ChemrxnyieldRange) -> ChemrxnyieldRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_range_copy(s : ChemrxnyieldRange) -> ChemrxnyieldRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldRange::copy(self : ChemrxnyieldRange) -> ChemrxnyieldRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_range_fill(s : ChemrxnyieldRange, v : Double) -> ChemrxnyieldRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldRange::fill(self : ChemrxnyieldRange, v : Double) -> ChemrxnyieldRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_range_min(s : ChemrxnyieldRange) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldRange::min(self : ChemrxnyieldRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_range_max(s : ChemrxnyieldRange) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldRange::max(self : ChemrxnyieldRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_range_to_string(s : ChemrxnyieldRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldRange::to_string(self : ChemrxnyieldRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnyieldSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_rxn_yield_slice_make(size : Int) -> ChemrxnyieldSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_yield_slice_len(s : ChemrxnyieldSlice) -> Int { s.size }
+pub fn ChemrxnyieldSlice::len(self : ChemrxnyieldSlice) -> Int { self.size }
 
-pub fn chem_rxn_yield_slice_get(s : ChemrxnyieldSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnyieldSlice::get(self : ChemrxnyieldSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_yield_slice_set(s : ChemrxnyieldSlice, i : Int, v : Double) -> ChemrxnyieldSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnyieldSlice::set(self : ChemrxnyieldSlice, i : Int, v : Double) -> ChemrxnyieldSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_slice_sum(s : ChemrxnyieldSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnyieldSlice::sum(self : ChemrxnyieldSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_yield_slice_mean(s : ChemrxnyieldSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnyieldSlice::mean(self : ChemrxnyieldSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_yield_slice_scale(s : ChemrxnyieldSlice, f : Double) -> ChemrxnyieldSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldSlice::scale(self : ChemrxnyieldSlice, f : Double) -> ChemrxnyieldSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_slice_add(a : ChemrxnyieldSlice, b : ChemrxnyieldSlice) -> ChemrxnyieldSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnyieldSlice::add(self : ChemrxnyieldSlice, other : ChemrxnyieldSlice) -> ChemrxnyieldSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_slice_copy(s : ChemrxnyieldSlice) -> ChemrxnyieldSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldSlice::copy(self : ChemrxnyieldSlice) -> ChemrxnyieldSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_slice_fill(s : ChemrxnyieldSlice, v : Double) -> ChemrxnyieldSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnyieldSlice::fill(self : ChemrxnyieldSlice, v : Double) -> ChemrxnyieldSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_yield_slice_min(s : ChemrxnyieldSlice) -> Double { @_common.min(s.data) }
+pub fn ChemrxnyieldSlice::min(self : ChemrxnyieldSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_yield_slice_max(s : ChemrxnyieldSlice) -> Double { @_common.max(s.data) }
+pub fn ChemrxnyieldSlice::max(self : ChemrxnyieldSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_yield_slice_to_string(s : ChemrxnyieldSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnyieldSlice::to_string(self : ChemrxnyieldSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

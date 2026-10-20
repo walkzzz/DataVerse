@@ -351,45 +351,45 @@ pub fn ds_list_circular_frame_make(size : Int) -> DslistcircularFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_frame_len(s : DslistcircularFrame) -> Int { s.size }
+pub fn DslistcircularFrame::len(self : DslistcircularFrame) -> Int { self.size }
 
-pub fn ds_list_circular_frame_get(s : DslistcircularFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularFrame::get(self : DslistcircularFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_frame_set(s : DslistcircularFrame, i : Int, v : Double) -> DslistcircularFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularFrame::set(self : DslistcircularFrame, i : Int, v : Double) -> DslistcircularFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_frame_sum(s : DslistcircularFrame) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularFrame::sum(self : DslistcircularFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_frame_mean(s : DslistcircularFrame) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularFrame::mean(self : DslistcircularFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_frame_scale(s : DslistcircularFrame, f : Double) -> DslistcircularFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularFrame::scale(self : DslistcircularFrame, f : Double) -> DslistcircularFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_frame_add(a : DslistcircularFrame, b : DslistcircularFrame) -> DslistcircularFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularFrame::add(self : DslistcircularFrame, other : DslistcircularFrame) -> DslistcircularFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_frame_copy(s : DslistcircularFrame) -> DslistcircularFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularFrame::copy(self : DslistcircularFrame) -> DslistcircularFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_frame_fill(s : DslistcircularFrame, v : Double) -> DslistcircularFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularFrame::fill(self : DslistcircularFrame, v : Double) -> DslistcircularFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_frame_min(s : DslistcircularFrame) -> Double { @_common.min(s.data) }
+pub fn DslistcircularFrame::min(self : DslistcircularFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_frame_max(s : DslistcircularFrame) -> Double { @_common.max(s.data) }
+pub fn DslistcircularFrame::max(self : DslistcircularFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_frame_to_string(s : DslistcircularFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularFrame::to_string(self : DslistcircularFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularTable {
@@ -402,45 +402,45 @@ pub fn ds_list_circular_table_make(size : Int) -> DslistcircularTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_table_len(s : DslistcircularTable) -> Int { s.size }
+pub fn DslistcircularTable::len(self : DslistcircularTable) -> Int { self.size }
 
-pub fn ds_list_circular_table_get(s : DslistcircularTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularTable::get(self : DslistcircularTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_table_set(s : DslistcircularTable, i : Int, v : Double) -> DslistcircularTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularTable::set(self : DslistcircularTable, i : Int, v : Double) -> DslistcircularTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_table_sum(s : DslistcircularTable) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularTable::sum(self : DslistcircularTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_table_mean(s : DslistcircularTable) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularTable::mean(self : DslistcircularTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_table_scale(s : DslistcircularTable, f : Double) -> DslistcircularTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularTable::scale(self : DslistcircularTable, f : Double) -> DslistcircularTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_table_add(a : DslistcircularTable, b : DslistcircularTable) -> DslistcircularTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularTable::add(self : DslistcircularTable, other : DslistcircularTable) -> DslistcircularTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_table_copy(s : DslistcircularTable) -> DslistcircularTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularTable::copy(self : DslistcircularTable) -> DslistcircularTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_table_fill(s : DslistcircularTable, v : Double) -> DslistcircularTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularTable::fill(self : DslistcircularTable, v : Double) -> DslistcircularTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_table_min(s : DslistcircularTable) -> Double { @_common.min(s.data) }
+pub fn DslistcircularTable::min(self : DslistcircularTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_table_max(s : DslistcircularTable) -> Double { @_common.max(s.data) }
+pub fn DslistcircularTable::max(self : DslistcircularTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_table_to_string(s : DslistcircularTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularTable::to_string(self : DslistcircularTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularGraphN {
@@ -453,45 +453,45 @@ pub fn ds_list_circular_graphn_make(size : Int) -> DslistcircularGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_graphn_len(s : DslistcircularGraphN) -> Int { s.size }
+pub fn DslistcircularGraphN::len(self : DslistcircularGraphN) -> Int { self.size }
 
-pub fn ds_list_circular_graphn_get(s : DslistcircularGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularGraphN::get(self : DslistcircularGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_graphn_set(s : DslistcircularGraphN, i : Int, v : Double) -> DslistcircularGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularGraphN::set(self : DslistcircularGraphN, i : Int, v : Double) -> DslistcircularGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_graphn_sum(s : DslistcircularGraphN) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularGraphN::sum(self : DslistcircularGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_graphn_mean(s : DslistcircularGraphN) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularGraphN::mean(self : DslistcircularGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_graphn_scale(s : DslistcircularGraphN, f : Double) -> DslistcircularGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularGraphN::scale(self : DslistcircularGraphN, f : Double) -> DslistcircularGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_graphn_add(a : DslistcircularGraphN, b : DslistcircularGraphN) -> DslistcircularGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularGraphN::add(self : DslistcircularGraphN, other : DslistcircularGraphN) -> DslistcircularGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_graphn_copy(s : DslistcircularGraphN) -> DslistcircularGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularGraphN::copy(self : DslistcircularGraphN) -> DslistcircularGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_graphn_fill(s : DslistcircularGraphN, v : Double) -> DslistcircularGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularGraphN::fill(self : DslistcircularGraphN, v : Double) -> DslistcircularGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_graphn_min(s : DslistcircularGraphN) -> Double { @_common.min(s.data) }
+pub fn DslistcircularGraphN::min(self : DslistcircularGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_graphn_max(s : DslistcircularGraphN) -> Double { @_common.max(s.data) }
+pub fn DslistcircularGraphN::max(self : DslistcircularGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_graphn_to_string(s : DslistcircularGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularGraphN::to_string(self : DslistcircularGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularNode {
@@ -504,45 +504,45 @@ pub fn ds_list_circular_node_make(size : Int) -> DslistcircularNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_node_len(s : DslistcircularNode) -> Int { s.size }
+pub fn DslistcircularNode::len(self : DslistcircularNode) -> Int { self.size }
 
-pub fn ds_list_circular_node_get(s : DslistcircularNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularNode::get(self : DslistcircularNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_node_set(s : DslistcircularNode, i : Int, v : Double) -> DslistcircularNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularNode::set(self : DslistcircularNode, i : Int, v : Double) -> DslistcircularNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_node_sum(s : DslistcircularNode) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularNode::sum(self : DslistcircularNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_node_mean(s : DslistcircularNode) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularNode::mean(self : DslistcircularNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_node_scale(s : DslistcircularNode, f : Double) -> DslistcircularNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularNode::scale(self : DslistcircularNode, f : Double) -> DslistcircularNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_node_add(a : DslistcircularNode, b : DslistcircularNode) -> DslistcircularNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularNode::add(self : DslistcircularNode, other : DslistcircularNode) -> DslistcircularNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_node_copy(s : DslistcircularNode) -> DslistcircularNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularNode::copy(self : DslistcircularNode) -> DslistcircularNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_node_fill(s : DslistcircularNode, v : Double) -> DslistcircularNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularNode::fill(self : DslistcircularNode, v : Double) -> DslistcircularNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_node_min(s : DslistcircularNode) -> Double { @_common.min(s.data) }
+pub fn DslistcircularNode::min(self : DslistcircularNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_node_max(s : DslistcircularNode) -> Double { @_common.max(s.data) }
+pub fn DslistcircularNode::max(self : DslistcircularNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_node_to_string(s : DslistcircularNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularNode::to_string(self : DslistcircularNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularEdge {
@@ -555,45 +555,45 @@ pub fn ds_list_circular_edge_make(size : Int) -> DslistcircularEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_edge_len(s : DslistcircularEdge) -> Int { s.size }
+pub fn DslistcircularEdge::len(self : DslistcircularEdge) -> Int { self.size }
 
-pub fn ds_list_circular_edge_get(s : DslistcircularEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularEdge::get(self : DslistcircularEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_edge_set(s : DslistcircularEdge, i : Int, v : Double) -> DslistcircularEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularEdge::set(self : DslistcircularEdge, i : Int, v : Double) -> DslistcircularEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_edge_sum(s : DslistcircularEdge) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularEdge::sum(self : DslistcircularEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_edge_mean(s : DslistcircularEdge) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularEdge::mean(self : DslistcircularEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_edge_scale(s : DslistcircularEdge, f : Double) -> DslistcircularEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularEdge::scale(self : DslistcircularEdge, f : Double) -> DslistcircularEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_edge_add(a : DslistcircularEdge, b : DslistcircularEdge) -> DslistcircularEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularEdge::add(self : DslistcircularEdge, other : DslistcircularEdge) -> DslistcircularEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_edge_copy(s : DslistcircularEdge) -> DslistcircularEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularEdge::copy(self : DslistcircularEdge) -> DslistcircularEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_edge_fill(s : DslistcircularEdge, v : Double) -> DslistcircularEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularEdge::fill(self : DslistcircularEdge, v : Double) -> DslistcircularEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_edge_min(s : DslistcircularEdge) -> Double { @_common.min(s.data) }
+pub fn DslistcircularEdge::min(self : DslistcircularEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_edge_max(s : DslistcircularEdge) -> Double { @_common.max(s.data) }
+pub fn DslistcircularEdge::max(self : DslistcircularEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_edge_to_string(s : DslistcircularEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularEdge::to_string(self : DslistcircularEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularPath {
@@ -606,45 +606,45 @@ pub fn ds_list_circular_path_make(size : Int) -> DslistcircularPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_path_len(s : DslistcircularPath) -> Int { s.size }
+pub fn DslistcircularPath::len(self : DslistcircularPath) -> Int { self.size }
 
-pub fn ds_list_circular_path_get(s : DslistcircularPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularPath::get(self : DslistcircularPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_path_set(s : DslistcircularPath, i : Int, v : Double) -> DslistcircularPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularPath::set(self : DslistcircularPath, i : Int, v : Double) -> DslistcircularPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_path_sum(s : DslistcircularPath) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularPath::sum(self : DslistcircularPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_path_mean(s : DslistcircularPath) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularPath::mean(self : DslistcircularPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_path_scale(s : DslistcircularPath, f : Double) -> DslistcircularPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularPath::scale(self : DslistcircularPath, f : Double) -> DslistcircularPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_path_add(a : DslistcircularPath, b : DslistcircularPath) -> DslistcircularPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularPath::add(self : DslistcircularPath, other : DslistcircularPath) -> DslistcircularPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_path_copy(s : DslistcircularPath) -> DslistcircularPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularPath::copy(self : DslistcircularPath) -> DslistcircularPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_path_fill(s : DslistcircularPath, v : Double) -> DslistcircularPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularPath::fill(self : DslistcircularPath, v : Double) -> DslistcircularPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_path_min(s : DslistcircularPath) -> Double { @_common.min(s.data) }
+pub fn DslistcircularPath::min(self : DslistcircularPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_path_max(s : DslistcircularPath) -> Double { @_common.max(s.data) }
+pub fn DslistcircularPath::max(self : DslistcircularPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_path_to_string(s : DslistcircularPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularPath::to_string(self : DslistcircularPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularCluster {
@@ -657,45 +657,45 @@ pub fn ds_list_circular_cluster_make(size : Int) -> DslistcircularCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_cluster_len(s : DslistcircularCluster) -> Int { s.size }
+pub fn DslistcircularCluster::len(self : DslistcircularCluster) -> Int { self.size }
 
-pub fn ds_list_circular_cluster_get(s : DslistcircularCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularCluster::get(self : DslistcircularCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_cluster_set(s : DslistcircularCluster, i : Int, v : Double) -> DslistcircularCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularCluster::set(self : DslistcircularCluster, i : Int, v : Double) -> DslistcircularCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_cluster_sum(s : DslistcircularCluster) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularCluster::sum(self : DslistcircularCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_cluster_mean(s : DslistcircularCluster) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularCluster::mean(self : DslistcircularCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_cluster_scale(s : DslistcircularCluster, f : Double) -> DslistcircularCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularCluster::scale(self : DslistcircularCluster, f : Double) -> DslistcircularCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_cluster_add(a : DslistcircularCluster, b : DslistcircularCluster) -> DslistcircularCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularCluster::add(self : DslistcircularCluster, other : DslistcircularCluster) -> DslistcircularCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_cluster_copy(s : DslistcircularCluster) -> DslistcircularCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularCluster::copy(self : DslistcircularCluster) -> DslistcircularCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_cluster_fill(s : DslistcircularCluster, v : Double) -> DslistcircularCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularCluster::fill(self : DslistcircularCluster, v : Double) -> DslistcircularCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_cluster_min(s : DslistcircularCluster) -> Double { @_common.min(s.data) }
+pub fn DslistcircularCluster::min(self : DslistcircularCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_cluster_max(s : DslistcircularCluster) -> Double { @_common.max(s.data) }
+pub fn DslistcircularCluster::max(self : DslistcircularCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_cluster_to_string(s : DslistcircularCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularCluster::to_string(self : DslistcircularCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularModel {
@@ -708,45 +708,45 @@ pub fn ds_list_circular_model_make(size : Int) -> DslistcircularModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_model_len(s : DslistcircularModel) -> Int { s.size }
+pub fn DslistcircularModel::len(self : DslistcircularModel) -> Int { self.size }
 
-pub fn ds_list_circular_model_get(s : DslistcircularModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularModel::get(self : DslistcircularModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_model_set(s : DslistcircularModel, i : Int, v : Double) -> DslistcircularModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularModel::set(self : DslistcircularModel, i : Int, v : Double) -> DslistcircularModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_model_sum(s : DslistcircularModel) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularModel::sum(self : DslistcircularModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_model_mean(s : DslistcircularModel) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularModel::mean(self : DslistcircularModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_model_scale(s : DslistcircularModel, f : Double) -> DslistcircularModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularModel::scale(self : DslistcircularModel, f : Double) -> DslistcircularModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_model_add(a : DslistcircularModel, b : DslistcircularModel) -> DslistcircularModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularModel::add(self : DslistcircularModel, other : DslistcircularModel) -> DslistcircularModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_model_copy(s : DslistcircularModel) -> DslistcircularModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularModel::copy(self : DslistcircularModel) -> DslistcircularModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_model_fill(s : DslistcircularModel, v : Double) -> DslistcircularModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularModel::fill(self : DslistcircularModel, v : Double) -> DslistcircularModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_model_min(s : DslistcircularModel) -> Double { @_common.min(s.data) }
+pub fn DslistcircularModel::min(self : DslistcircularModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_model_max(s : DslistcircularModel) -> Double { @_common.max(s.data) }
+pub fn DslistcircularModel::max(self : DslistcircularModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_model_to_string(s : DslistcircularModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularModel::to_string(self : DslistcircularModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularLayer {
@@ -759,45 +759,45 @@ pub fn ds_list_circular_layer_make(size : Int) -> DslistcircularLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_layer_len(s : DslistcircularLayer) -> Int { s.size }
+pub fn DslistcircularLayer::len(self : DslistcircularLayer) -> Int { self.size }
 
-pub fn ds_list_circular_layer_get(s : DslistcircularLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularLayer::get(self : DslistcircularLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_layer_set(s : DslistcircularLayer, i : Int, v : Double) -> DslistcircularLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularLayer::set(self : DslistcircularLayer, i : Int, v : Double) -> DslistcircularLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_layer_sum(s : DslistcircularLayer) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularLayer::sum(self : DslistcircularLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_layer_mean(s : DslistcircularLayer) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularLayer::mean(self : DslistcircularLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_layer_scale(s : DslistcircularLayer, f : Double) -> DslistcircularLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularLayer::scale(self : DslistcircularLayer, f : Double) -> DslistcircularLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_layer_add(a : DslistcircularLayer, b : DslistcircularLayer) -> DslistcircularLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularLayer::add(self : DslistcircularLayer, other : DslistcircularLayer) -> DslistcircularLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_layer_copy(s : DslistcircularLayer) -> DslistcircularLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularLayer::copy(self : DslistcircularLayer) -> DslistcircularLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_layer_fill(s : DslistcircularLayer, v : Double) -> DslistcircularLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularLayer::fill(self : DslistcircularLayer, v : Double) -> DslistcircularLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_layer_min(s : DslistcircularLayer) -> Double { @_common.min(s.data) }
+pub fn DslistcircularLayer::min(self : DslistcircularLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_layer_max(s : DslistcircularLayer) -> Double { @_common.max(s.data) }
+pub fn DslistcircularLayer::max(self : DslistcircularLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_layer_to_string(s : DslistcircularLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularLayer::to_string(self : DslistcircularLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularBuffer {
@@ -810,45 +810,45 @@ pub fn ds_list_circular_buffer_make(size : Int) -> DslistcircularBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_buffer_len(s : DslistcircularBuffer) -> Int { s.size }
+pub fn DslistcircularBuffer::len(self : DslistcircularBuffer) -> Int { self.size }
 
-pub fn ds_list_circular_buffer_get(s : DslistcircularBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularBuffer::get(self : DslistcircularBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_buffer_set(s : DslistcircularBuffer, i : Int, v : Double) -> DslistcircularBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularBuffer::set(self : DslistcircularBuffer, i : Int, v : Double) -> DslistcircularBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_buffer_sum(s : DslistcircularBuffer) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularBuffer::sum(self : DslistcircularBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_buffer_mean(s : DslistcircularBuffer) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularBuffer::mean(self : DslistcircularBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_buffer_scale(s : DslistcircularBuffer, f : Double) -> DslistcircularBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularBuffer::scale(self : DslistcircularBuffer, f : Double) -> DslistcircularBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_buffer_add(a : DslistcircularBuffer, b : DslistcircularBuffer) -> DslistcircularBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularBuffer::add(self : DslistcircularBuffer, other : DslistcircularBuffer) -> DslistcircularBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_buffer_copy(s : DslistcircularBuffer) -> DslistcircularBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularBuffer::copy(self : DslistcircularBuffer) -> DslistcircularBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_buffer_fill(s : DslistcircularBuffer, v : Double) -> DslistcircularBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularBuffer::fill(self : DslistcircularBuffer, v : Double) -> DslistcircularBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_buffer_min(s : DslistcircularBuffer) -> Double { @_common.min(s.data) }
+pub fn DslistcircularBuffer::min(self : DslistcircularBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_buffer_max(s : DslistcircularBuffer) -> Double { @_common.max(s.data) }
+pub fn DslistcircularBuffer::max(self : DslistcircularBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_buffer_to_string(s : DslistcircularBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularBuffer::to_string(self : DslistcircularBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularCursor {
@@ -861,45 +861,45 @@ pub fn ds_list_circular_cursor_make(size : Int) -> DslistcircularCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_cursor_len(s : DslistcircularCursor) -> Int { s.size }
+pub fn DslistcircularCursor::len(self : DslistcircularCursor) -> Int { self.size }
 
-pub fn ds_list_circular_cursor_get(s : DslistcircularCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularCursor::get(self : DslistcircularCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_cursor_set(s : DslistcircularCursor, i : Int, v : Double) -> DslistcircularCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularCursor::set(self : DslistcircularCursor, i : Int, v : Double) -> DslistcircularCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_cursor_sum(s : DslistcircularCursor) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularCursor::sum(self : DslistcircularCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_cursor_mean(s : DslistcircularCursor) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularCursor::mean(self : DslistcircularCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_cursor_scale(s : DslistcircularCursor, f : Double) -> DslistcircularCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularCursor::scale(self : DslistcircularCursor, f : Double) -> DslistcircularCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_cursor_add(a : DslistcircularCursor, b : DslistcircularCursor) -> DslistcircularCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularCursor::add(self : DslistcircularCursor, other : DslistcircularCursor) -> DslistcircularCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_cursor_copy(s : DslistcircularCursor) -> DslistcircularCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularCursor::copy(self : DslistcircularCursor) -> DslistcircularCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_cursor_fill(s : DslistcircularCursor, v : Double) -> DslistcircularCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularCursor::fill(self : DslistcircularCursor, v : Double) -> DslistcircularCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_cursor_min(s : DslistcircularCursor) -> Double { @_common.min(s.data) }
+pub fn DslistcircularCursor::min(self : DslistcircularCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_cursor_max(s : DslistcircularCursor) -> Double { @_common.max(s.data) }
+pub fn DslistcircularCursor::max(self : DslistcircularCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_cursor_to_string(s : DslistcircularCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularCursor::to_string(self : DslistcircularCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularView {
@@ -912,45 +912,45 @@ pub fn ds_list_circular_view_make(size : Int) -> DslistcircularView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_view_len(s : DslistcircularView) -> Int { s.size }
+pub fn DslistcircularView::len(self : DslistcircularView) -> Int { self.size }
 
-pub fn ds_list_circular_view_get(s : DslistcircularView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularView::get(self : DslistcircularView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_view_set(s : DslistcircularView, i : Int, v : Double) -> DslistcircularView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularView::set(self : DslistcircularView, i : Int, v : Double) -> DslistcircularView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_view_sum(s : DslistcircularView) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularView::sum(self : DslistcircularView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_view_mean(s : DslistcircularView) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularView::mean(self : DslistcircularView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_view_scale(s : DslistcircularView, f : Double) -> DslistcircularView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularView::scale(self : DslistcircularView, f : Double) -> DslistcircularView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_view_add(a : DslistcircularView, b : DslistcircularView) -> DslistcircularView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularView::add(self : DslistcircularView, other : DslistcircularView) -> DslistcircularView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_view_copy(s : DslistcircularView) -> DslistcircularView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularView::copy(self : DslistcircularView) -> DslistcircularView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_view_fill(s : DslistcircularView, v : Double) -> DslistcircularView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularView::fill(self : DslistcircularView, v : Double) -> DslistcircularView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_view_min(s : DslistcircularView) -> Double { @_common.min(s.data) }
+pub fn DslistcircularView::min(self : DslistcircularView) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_view_max(s : DslistcircularView) -> Double { @_common.max(s.data) }
+pub fn DslistcircularView::max(self : DslistcircularView) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_view_to_string(s : DslistcircularView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularView::to_string(self : DslistcircularView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularRange {
@@ -963,45 +963,45 @@ pub fn ds_list_circular_range_make(size : Int) -> DslistcircularRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_range_len(s : DslistcircularRange) -> Int { s.size }
+pub fn DslistcircularRange::len(self : DslistcircularRange) -> Int { self.size }
 
-pub fn ds_list_circular_range_get(s : DslistcircularRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularRange::get(self : DslistcircularRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_range_set(s : DslistcircularRange, i : Int, v : Double) -> DslistcircularRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularRange::set(self : DslistcircularRange, i : Int, v : Double) -> DslistcircularRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_range_sum(s : DslistcircularRange) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularRange::sum(self : DslistcircularRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_range_mean(s : DslistcircularRange) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularRange::mean(self : DslistcircularRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_range_scale(s : DslistcircularRange, f : Double) -> DslistcircularRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularRange::scale(self : DslistcircularRange, f : Double) -> DslistcircularRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_range_add(a : DslistcircularRange, b : DslistcircularRange) -> DslistcircularRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularRange::add(self : DslistcircularRange, other : DslistcircularRange) -> DslistcircularRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_range_copy(s : DslistcircularRange) -> DslistcircularRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularRange::copy(self : DslistcircularRange) -> DslistcircularRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_range_fill(s : DslistcircularRange, v : Double) -> DslistcircularRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularRange::fill(self : DslistcircularRange, v : Double) -> DslistcircularRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_range_min(s : DslistcircularRange) -> Double { @_common.min(s.data) }
+pub fn DslistcircularRange::min(self : DslistcircularRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_range_max(s : DslistcircularRange) -> Double { @_common.max(s.data) }
+pub fn DslistcircularRange::max(self : DslistcircularRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_range_to_string(s : DslistcircularRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularRange::to_string(self : DslistcircularRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistcircularSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_list_circular_slice_make(size : Int) -> DslistcircularSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_circular_slice_len(s : DslistcircularSlice) -> Int { s.size }
+pub fn DslistcircularSlice::len(self : DslistcircularSlice) -> Int { self.size }
 
-pub fn ds_list_circular_slice_get(s : DslistcircularSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistcircularSlice::get(self : DslistcircularSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_circular_slice_set(s : DslistcircularSlice, i : Int, v : Double) -> DslistcircularSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistcircularSlice::set(self : DslistcircularSlice, i : Int, v : Double) -> DslistcircularSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_slice_sum(s : DslistcircularSlice) -> Double { @_common.sum(s.data) }
+pub fn DslistcircularSlice::sum(self : DslistcircularSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_circular_slice_mean(s : DslistcircularSlice) -> Double { @_common.mean(s.data) }
+pub fn DslistcircularSlice::mean(self : DslistcircularSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_circular_slice_scale(s : DslistcircularSlice, f : Double) -> DslistcircularSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistcircularSlice::scale(self : DslistcircularSlice, f : Double) -> DslistcircularSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_slice_add(a : DslistcircularSlice, b : DslistcircularSlice) -> DslistcircularSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistcircularSlice::add(self : DslistcircularSlice, other : DslistcircularSlice) -> DslistcircularSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_circular_slice_copy(s : DslistcircularSlice) -> DslistcircularSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistcircularSlice::copy(self : DslistcircularSlice) -> DslistcircularSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_slice_fill(s : DslistcircularSlice, v : Double) -> DslistcircularSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistcircularSlice::fill(self : DslistcircularSlice, v : Double) -> DslistcircularSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_circular_slice_min(s : DslistcircularSlice) -> Double { @_common.min(s.data) }
+pub fn DslistcircularSlice::min(self : DslistcircularSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_circular_slice_max(s : DslistcircularSlice) -> Double { @_common.max(s.data) }
+pub fn DslistcircularSlice::max(self : DslistcircularSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_circular_slice_to_string(s : DslistcircularSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistcircularSlice::to_string(self : DslistcircularSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

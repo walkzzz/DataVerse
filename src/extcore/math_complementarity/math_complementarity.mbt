@@ -351,45 +351,45 @@ pub fn math_complementarity_frame_make(size : Int) -> MathcomplementarityFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_frame_len(s : MathcomplementarityFrame) -> Int { s.size }
+pub fn MathcomplementarityFrame::len(self : MathcomplementarityFrame) -> Int { self.size }
 
-pub fn math_complementarity_frame_get(s : MathcomplementarityFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityFrame::get(self : MathcomplementarityFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_frame_set(s : MathcomplementarityFrame, i : Int, v : Double) -> MathcomplementarityFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityFrame::set(self : MathcomplementarityFrame, i : Int, v : Double) -> MathcomplementarityFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_frame_sum(s : MathcomplementarityFrame) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityFrame::sum(self : MathcomplementarityFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_frame_mean(s : MathcomplementarityFrame) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityFrame::mean(self : MathcomplementarityFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_frame_scale(s : MathcomplementarityFrame, f : Double) -> MathcomplementarityFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityFrame::scale(self : MathcomplementarityFrame, f : Double) -> MathcomplementarityFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_frame_add(a : MathcomplementarityFrame, b : MathcomplementarityFrame) -> MathcomplementarityFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityFrame::add(self : MathcomplementarityFrame, other : MathcomplementarityFrame) -> MathcomplementarityFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_frame_copy(s : MathcomplementarityFrame) -> MathcomplementarityFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityFrame::copy(self : MathcomplementarityFrame) -> MathcomplementarityFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_frame_fill(s : MathcomplementarityFrame, v : Double) -> MathcomplementarityFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityFrame::fill(self : MathcomplementarityFrame, v : Double) -> MathcomplementarityFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_frame_min(s : MathcomplementarityFrame) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityFrame::min(self : MathcomplementarityFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_frame_max(s : MathcomplementarityFrame) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityFrame::max(self : MathcomplementarityFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_frame_to_string(s : MathcomplementarityFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityFrame::to_string(self : MathcomplementarityFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementarityTable {
@@ -402,45 +402,45 @@ pub fn math_complementarity_table_make(size : Int) -> MathcomplementarityTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_table_len(s : MathcomplementarityTable) -> Int { s.size }
+pub fn MathcomplementarityTable::len(self : MathcomplementarityTable) -> Int { self.size }
 
-pub fn math_complementarity_table_get(s : MathcomplementarityTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityTable::get(self : MathcomplementarityTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_table_set(s : MathcomplementarityTable, i : Int, v : Double) -> MathcomplementarityTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityTable::set(self : MathcomplementarityTable, i : Int, v : Double) -> MathcomplementarityTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_table_sum(s : MathcomplementarityTable) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityTable::sum(self : MathcomplementarityTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_table_mean(s : MathcomplementarityTable) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityTable::mean(self : MathcomplementarityTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_table_scale(s : MathcomplementarityTable, f : Double) -> MathcomplementarityTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityTable::scale(self : MathcomplementarityTable, f : Double) -> MathcomplementarityTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_table_add(a : MathcomplementarityTable, b : MathcomplementarityTable) -> MathcomplementarityTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityTable::add(self : MathcomplementarityTable, other : MathcomplementarityTable) -> MathcomplementarityTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_table_copy(s : MathcomplementarityTable) -> MathcomplementarityTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityTable::copy(self : MathcomplementarityTable) -> MathcomplementarityTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_table_fill(s : MathcomplementarityTable, v : Double) -> MathcomplementarityTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityTable::fill(self : MathcomplementarityTable, v : Double) -> MathcomplementarityTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_table_min(s : MathcomplementarityTable) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityTable::min(self : MathcomplementarityTable) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_table_max(s : MathcomplementarityTable) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityTable::max(self : MathcomplementarityTable) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_table_to_string(s : MathcomplementarityTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityTable::to_string(self : MathcomplementarityTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementarityGraphN {
@@ -453,45 +453,45 @@ pub fn math_complementarity_graphn_make(size : Int) -> MathcomplementarityGraphN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_graphn_len(s : MathcomplementarityGraphN) -> Int { s.size }
+pub fn MathcomplementarityGraphN::len(self : MathcomplementarityGraphN) -> Int { self.size }
 
-pub fn math_complementarity_graphn_get(s : MathcomplementarityGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityGraphN::get(self : MathcomplementarityGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_graphn_set(s : MathcomplementarityGraphN, i : Int, v : Double) -> MathcomplementarityGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityGraphN::set(self : MathcomplementarityGraphN, i : Int, v : Double) -> MathcomplementarityGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_graphn_sum(s : MathcomplementarityGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityGraphN::sum(self : MathcomplementarityGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_graphn_mean(s : MathcomplementarityGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityGraphN::mean(self : MathcomplementarityGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_graphn_scale(s : MathcomplementarityGraphN, f : Double) -> MathcomplementarityGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityGraphN::scale(self : MathcomplementarityGraphN, f : Double) -> MathcomplementarityGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_graphn_add(a : MathcomplementarityGraphN, b : MathcomplementarityGraphN) -> MathcomplementarityGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityGraphN::add(self : MathcomplementarityGraphN, other : MathcomplementarityGraphN) -> MathcomplementarityGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_graphn_copy(s : MathcomplementarityGraphN) -> MathcomplementarityGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityGraphN::copy(self : MathcomplementarityGraphN) -> MathcomplementarityGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_graphn_fill(s : MathcomplementarityGraphN, v : Double) -> MathcomplementarityGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityGraphN::fill(self : MathcomplementarityGraphN, v : Double) -> MathcomplementarityGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_graphn_min(s : MathcomplementarityGraphN) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityGraphN::min(self : MathcomplementarityGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_graphn_max(s : MathcomplementarityGraphN) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityGraphN::max(self : MathcomplementarityGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_graphn_to_string(s : MathcomplementarityGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityGraphN::to_string(self : MathcomplementarityGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementarityNode {
@@ -504,45 +504,45 @@ pub fn math_complementarity_node_make(size : Int) -> MathcomplementarityNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_node_len(s : MathcomplementarityNode) -> Int { s.size }
+pub fn MathcomplementarityNode::len(self : MathcomplementarityNode) -> Int { self.size }
 
-pub fn math_complementarity_node_get(s : MathcomplementarityNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityNode::get(self : MathcomplementarityNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_node_set(s : MathcomplementarityNode, i : Int, v : Double) -> MathcomplementarityNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityNode::set(self : MathcomplementarityNode, i : Int, v : Double) -> MathcomplementarityNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_node_sum(s : MathcomplementarityNode) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityNode::sum(self : MathcomplementarityNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_node_mean(s : MathcomplementarityNode) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityNode::mean(self : MathcomplementarityNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_node_scale(s : MathcomplementarityNode, f : Double) -> MathcomplementarityNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityNode::scale(self : MathcomplementarityNode, f : Double) -> MathcomplementarityNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_node_add(a : MathcomplementarityNode, b : MathcomplementarityNode) -> MathcomplementarityNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityNode::add(self : MathcomplementarityNode, other : MathcomplementarityNode) -> MathcomplementarityNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_node_copy(s : MathcomplementarityNode) -> MathcomplementarityNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityNode::copy(self : MathcomplementarityNode) -> MathcomplementarityNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_node_fill(s : MathcomplementarityNode, v : Double) -> MathcomplementarityNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityNode::fill(self : MathcomplementarityNode, v : Double) -> MathcomplementarityNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_node_min(s : MathcomplementarityNode) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityNode::min(self : MathcomplementarityNode) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_node_max(s : MathcomplementarityNode) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityNode::max(self : MathcomplementarityNode) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_node_to_string(s : MathcomplementarityNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityNode::to_string(self : MathcomplementarityNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementarityEdge {
@@ -555,45 +555,45 @@ pub fn math_complementarity_edge_make(size : Int) -> MathcomplementarityEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_edge_len(s : MathcomplementarityEdge) -> Int { s.size }
+pub fn MathcomplementarityEdge::len(self : MathcomplementarityEdge) -> Int { self.size }
 
-pub fn math_complementarity_edge_get(s : MathcomplementarityEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityEdge::get(self : MathcomplementarityEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_edge_set(s : MathcomplementarityEdge, i : Int, v : Double) -> MathcomplementarityEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityEdge::set(self : MathcomplementarityEdge, i : Int, v : Double) -> MathcomplementarityEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_edge_sum(s : MathcomplementarityEdge) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityEdge::sum(self : MathcomplementarityEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_edge_mean(s : MathcomplementarityEdge) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityEdge::mean(self : MathcomplementarityEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_edge_scale(s : MathcomplementarityEdge, f : Double) -> MathcomplementarityEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityEdge::scale(self : MathcomplementarityEdge, f : Double) -> MathcomplementarityEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_edge_add(a : MathcomplementarityEdge, b : MathcomplementarityEdge) -> MathcomplementarityEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityEdge::add(self : MathcomplementarityEdge, other : MathcomplementarityEdge) -> MathcomplementarityEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_edge_copy(s : MathcomplementarityEdge) -> MathcomplementarityEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityEdge::copy(self : MathcomplementarityEdge) -> MathcomplementarityEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_edge_fill(s : MathcomplementarityEdge, v : Double) -> MathcomplementarityEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityEdge::fill(self : MathcomplementarityEdge, v : Double) -> MathcomplementarityEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_edge_min(s : MathcomplementarityEdge) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityEdge::min(self : MathcomplementarityEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_edge_max(s : MathcomplementarityEdge) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityEdge::max(self : MathcomplementarityEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_edge_to_string(s : MathcomplementarityEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityEdge::to_string(self : MathcomplementarityEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementarityPath {
@@ -606,45 +606,45 @@ pub fn math_complementarity_path_make(size : Int) -> MathcomplementarityPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_path_len(s : MathcomplementarityPath) -> Int { s.size }
+pub fn MathcomplementarityPath::len(self : MathcomplementarityPath) -> Int { self.size }
 
-pub fn math_complementarity_path_get(s : MathcomplementarityPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityPath::get(self : MathcomplementarityPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_path_set(s : MathcomplementarityPath, i : Int, v : Double) -> MathcomplementarityPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityPath::set(self : MathcomplementarityPath, i : Int, v : Double) -> MathcomplementarityPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_path_sum(s : MathcomplementarityPath) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityPath::sum(self : MathcomplementarityPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_path_mean(s : MathcomplementarityPath) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityPath::mean(self : MathcomplementarityPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_path_scale(s : MathcomplementarityPath, f : Double) -> MathcomplementarityPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityPath::scale(self : MathcomplementarityPath, f : Double) -> MathcomplementarityPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_path_add(a : MathcomplementarityPath, b : MathcomplementarityPath) -> MathcomplementarityPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityPath::add(self : MathcomplementarityPath, other : MathcomplementarityPath) -> MathcomplementarityPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_path_copy(s : MathcomplementarityPath) -> MathcomplementarityPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityPath::copy(self : MathcomplementarityPath) -> MathcomplementarityPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_path_fill(s : MathcomplementarityPath, v : Double) -> MathcomplementarityPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityPath::fill(self : MathcomplementarityPath, v : Double) -> MathcomplementarityPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_path_min(s : MathcomplementarityPath) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityPath::min(self : MathcomplementarityPath) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_path_max(s : MathcomplementarityPath) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityPath::max(self : MathcomplementarityPath) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_path_to_string(s : MathcomplementarityPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityPath::to_string(self : MathcomplementarityPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementarityCluster {
@@ -657,45 +657,45 @@ pub fn math_complementarity_cluster_make(size : Int) -> MathcomplementarityClust
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_cluster_len(s : MathcomplementarityCluster) -> Int { s.size }
+pub fn MathcomplementarityCluster::len(self : MathcomplementarityCluster) -> Int { self.size }
 
-pub fn math_complementarity_cluster_get(s : MathcomplementarityCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityCluster::get(self : MathcomplementarityCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_cluster_set(s : MathcomplementarityCluster, i : Int, v : Double) -> MathcomplementarityCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityCluster::set(self : MathcomplementarityCluster, i : Int, v : Double) -> MathcomplementarityCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_cluster_sum(s : MathcomplementarityCluster) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityCluster::sum(self : MathcomplementarityCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_cluster_mean(s : MathcomplementarityCluster) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityCluster::mean(self : MathcomplementarityCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_cluster_scale(s : MathcomplementarityCluster, f : Double) -> MathcomplementarityCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityCluster::scale(self : MathcomplementarityCluster, f : Double) -> MathcomplementarityCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_cluster_add(a : MathcomplementarityCluster, b : MathcomplementarityCluster) -> MathcomplementarityCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityCluster::add(self : MathcomplementarityCluster, other : MathcomplementarityCluster) -> MathcomplementarityCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_cluster_copy(s : MathcomplementarityCluster) -> MathcomplementarityCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityCluster::copy(self : MathcomplementarityCluster) -> MathcomplementarityCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_cluster_fill(s : MathcomplementarityCluster, v : Double) -> MathcomplementarityCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityCluster::fill(self : MathcomplementarityCluster, v : Double) -> MathcomplementarityCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_cluster_min(s : MathcomplementarityCluster) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityCluster::min(self : MathcomplementarityCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_cluster_max(s : MathcomplementarityCluster) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityCluster::max(self : MathcomplementarityCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_cluster_to_string(s : MathcomplementarityCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityCluster::to_string(self : MathcomplementarityCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementarityModel {
@@ -708,45 +708,45 @@ pub fn math_complementarity_model_make(size : Int) -> MathcomplementarityModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_model_len(s : MathcomplementarityModel) -> Int { s.size }
+pub fn MathcomplementarityModel::len(self : MathcomplementarityModel) -> Int { self.size }
 
-pub fn math_complementarity_model_get(s : MathcomplementarityModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityModel::get(self : MathcomplementarityModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_model_set(s : MathcomplementarityModel, i : Int, v : Double) -> MathcomplementarityModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityModel::set(self : MathcomplementarityModel, i : Int, v : Double) -> MathcomplementarityModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_model_sum(s : MathcomplementarityModel) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityModel::sum(self : MathcomplementarityModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_model_mean(s : MathcomplementarityModel) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityModel::mean(self : MathcomplementarityModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_model_scale(s : MathcomplementarityModel, f : Double) -> MathcomplementarityModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityModel::scale(self : MathcomplementarityModel, f : Double) -> MathcomplementarityModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_model_add(a : MathcomplementarityModel, b : MathcomplementarityModel) -> MathcomplementarityModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityModel::add(self : MathcomplementarityModel, other : MathcomplementarityModel) -> MathcomplementarityModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_model_copy(s : MathcomplementarityModel) -> MathcomplementarityModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityModel::copy(self : MathcomplementarityModel) -> MathcomplementarityModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_model_fill(s : MathcomplementarityModel, v : Double) -> MathcomplementarityModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityModel::fill(self : MathcomplementarityModel, v : Double) -> MathcomplementarityModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_model_min(s : MathcomplementarityModel) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityModel::min(self : MathcomplementarityModel) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_model_max(s : MathcomplementarityModel) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityModel::max(self : MathcomplementarityModel) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_model_to_string(s : MathcomplementarityModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityModel::to_string(self : MathcomplementarityModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementarityLayer {
@@ -759,45 +759,45 @@ pub fn math_complementarity_layer_make(size : Int) -> MathcomplementarityLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_layer_len(s : MathcomplementarityLayer) -> Int { s.size }
+pub fn MathcomplementarityLayer::len(self : MathcomplementarityLayer) -> Int { self.size }
 
-pub fn math_complementarity_layer_get(s : MathcomplementarityLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityLayer::get(self : MathcomplementarityLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_layer_set(s : MathcomplementarityLayer, i : Int, v : Double) -> MathcomplementarityLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityLayer::set(self : MathcomplementarityLayer, i : Int, v : Double) -> MathcomplementarityLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_layer_sum(s : MathcomplementarityLayer) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityLayer::sum(self : MathcomplementarityLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_layer_mean(s : MathcomplementarityLayer) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityLayer::mean(self : MathcomplementarityLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_layer_scale(s : MathcomplementarityLayer, f : Double) -> MathcomplementarityLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityLayer::scale(self : MathcomplementarityLayer, f : Double) -> MathcomplementarityLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_layer_add(a : MathcomplementarityLayer, b : MathcomplementarityLayer) -> MathcomplementarityLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityLayer::add(self : MathcomplementarityLayer, other : MathcomplementarityLayer) -> MathcomplementarityLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_layer_copy(s : MathcomplementarityLayer) -> MathcomplementarityLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityLayer::copy(self : MathcomplementarityLayer) -> MathcomplementarityLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_layer_fill(s : MathcomplementarityLayer, v : Double) -> MathcomplementarityLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityLayer::fill(self : MathcomplementarityLayer, v : Double) -> MathcomplementarityLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_layer_min(s : MathcomplementarityLayer) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityLayer::min(self : MathcomplementarityLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_layer_max(s : MathcomplementarityLayer) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityLayer::max(self : MathcomplementarityLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_layer_to_string(s : MathcomplementarityLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityLayer::to_string(self : MathcomplementarityLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementarityBuffer {
@@ -810,45 +810,45 @@ pub fn math_complementarity_buffer_make(size : Int) -> MathcomplementarityBuffer
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_buffer_len(s : MathcomplementarityBuffer) -> Int { s.size }
+pub fn MathcomplementarityBuffer::len(self : MathcomplementarityBuffer) -> Int { self.size }
 
-pub fn math_complementarity_buffer_get(s : MathcomplementarityBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityBuffer::get(self : MathcomplementarityBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_buffer_set(s : MathcomplementarityBuffer, i : Int, v : Double) -> MathcomplementarityBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityBuffer::set(self : MathcomplementarityBuffer, i : Int, v : Double) -> MathcomplementarityBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_buffer_sum(s : MathcomplementarityBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityBuffer::sum(self : MathcomplementarityBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_buffer_mean(s : MathcomplementarityBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityBuffer::mean(self : MathcomplementarityBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_buffer_scale(s : MathcomplementarityBuffer, f : Double) -> MathcomplementarityBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityBuffer::scale(self : MathcomplementarityBuffer, f : Double) -> MathcomplementarityBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_buffer_add(a : MathcomplementarityBuffer, b : MathcomplementarityBuffer) -> MathcomplementarityBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityBuffer::add(self : MathcomplementarityBuffer, other : MathcomplementarityBuffer) -> MathcomplementarityBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_buffer_copy(s : MathcomplementarityBuffer) -> MathcomplementarityBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityBuffer::copy(self : MathcomplementarityBuffer) -> MathcomplementarityBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_buffer_fill(s : MathcomplementarityBuffer, v : Double) -> MathcomplementarityBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityBuffer::fill(self : MathcomplementarityBuffer, v : Double) -> MathcomplementarityBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_buffer_min(s : MathcomplementarityBuffer) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityBuffer::min(self : MathcomplementarityBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_buffer_max(s : MathcomplementarityBuffer) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityBuffer::max(self : MathcomplementarityBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_buffer_to_string(s : MathcomplementarityBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityBuffer::to_string(self : MathcomplementarityBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementarityCursor {
@@ -861,45 +861,45 @@ pub fn math_complementarity_cursor_make(size : Int) -> MathcomplementarityCursor
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_cursor_len(s : MathcomplementarityCursor) -> Int { s.size }
+pub fn MathcomplementarityCursor::len(self : MathcomplementarityCursor) -> Int { self.size }
 
-pub fn math_complementarity_cursor_get(s : MathcomplementarityCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityCursor::get(self : MathcomplementarityCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_cursor_set(s : MathcomplementarityCursor, i : Int, v : Double) -> MathcomplementarityCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityCursor::set(self : MathcomplementarityCursor, i : Int, v : Double) -> MathcomplementarityCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_cursor_sum(s : MathcomplementarityCursor) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityCursor::sum(self : MathcomplementarityCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_cursor_mean(s : MathcomplementarityCursor) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityCursor::mean(self : MathcomplementarityCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_cursor_scale(s : MathcomplementarityCursor, f : Double) -> MathcomplementarityCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityCursor::scale(self : MathcomplementarityCursor, f : Double) -> MathcomplementarityCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_cursor_add(a : MathcomplementarityCursor, b : MathcomplementarityCursor) -> MathcomplementarityCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityCursor::add(self : MathcomplementarityCursor, other : MathcomplementarityCursor) -> MathcomplementarityCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_cursor_copy(s : MathcomplementarityCursor) -> MathcomplementarityCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityCursor::copy(self : MathcomplementarityCursor) -> MathcomplementarityCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_cursor_fill(s : MathcomplementarityCursor, v : Double) -> MathcomplementarityCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityCursor::fill(self : MathcomplementarityCursor, v : Double) -> MathcomplementarityCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_cursor_min(s : MathcomplementarityCursor) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityCursor::min(self : MathcomplementarityCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_cursor_max(s : MathcomplementarityCursor) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityCursor::max(self : MathcomplementarityCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_cursor_to_string(s : MathcomplementarityCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityCursor::to_string(self : MathcomplementarityCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementarityView {
@@ -912,45 +912,45 @@ pub fn math_complementarity_view_make(size : Int) -> MathcomplementarityView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_view_len(s : MathcomplementarityView) -> Int { s.size }
+pub fn MathcomplementarityView::len(self : MathcomplementarityView) -> Int { self.size }
 
-pub fn math_complementarity_view_get(s : MathcomplementarityView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityView::get(self : MathcomplementarityView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_view_set(s : MathcomplementarityView, i : Int, v : Double) -> MathcomplementarityView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityView::set(self : MathcomplementarityView, i : Int, v : Double) -> MathcomplementarityView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_view_sum(s : MathcomplementarityView) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityView::sum(self : MathcomplementarityView) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_view_mean(s : MathcomplementarityView) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityView::mean(self : MathcomplementarityView) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_view_scale(s : MathcomplementarityView, f : Double) -> MathcomplementarityView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityView::scale(self : MathcomplementarityView, f : Double) -> MathcomplementarityView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_view_add(a : MathcomplementarityView, b : MathcomplementarityView) -> MathcomplementarityView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityView::add(self : MathcomplementarityView, other : MathcomplementarityView) -> MathcomplementarityView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_view_copy(s : MathcomplementarityView) -> MathcomplementarityView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityView::copy(self : MathcomplementarityView) -> MathcomplementarityView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_view_fill(s : MathcomplementarityView, v : Double) -> MathcomplementarityView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityView::fill(self : MathcomplementarityView, v : Double) -> MathcomplementarityView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_view_min(s : MathcomplementarityView) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityView::min(self : MathcomplementarityView) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_view_max(s : MathcomplementarityView) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityView::max(self : MathcomplementarityView) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_view_to_string(s : MathcomplementarityView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityView::to_string(self : MathcomplementarityView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementarityRange {
@@ -963,45 +963,45 @@ pub fn math_complementarity_range_make(size : Int) -> MathcomplementarityRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_range_len(s : MathcomplementarityRange) -> Int { s.size }
+pub fn MathcomplementarityRange::len(self : MathcomplementarityRange) -> Int { self.size }
 
-pub fn math_complementarity_range_get(s : MathcomplementarityRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementarityRange::get(self : MathcomplementarityRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_range_set(s : MathcomplementarityRange, i : Int, v : Double) -> MathcomplementarityRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementarityRange::set(self : MathcomplementarityRange, i : Int, v : Double) -> MathcomplementarityRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_range_sum(s : MathcomplementarityRange) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementarityRange::sum(self : MathcomplementarityRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_range_mean(s : MathcomplementarityRange) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementarityRange::mean(self : MathcomplementarityRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_range_scale(s : MathcomplementarityRange, f : Double) -> MathcomplementarityRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementarityRange::scale(self : MathcomplementarityRange, f : Double) -> MathcomplementarityRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_range_add(a : MathcomplementarityRange, b : MathcomplementarityRange) -> MathcomplementarityRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementarityRange::add(self : MathcomplementarityRange, other : MathcomplementarityRange) -> MathcomplementarityRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_range_copy(s : MathcomplementarityRange) -> MathcomplementarityRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementarityRange::copy(self : MathcomplementarityRange) -> MathcomplementarityRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_range_fill(s : MathcomplementarityRange, v : Double) -> MathcomplementarityRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementarityRange::fill(self : MathcomplementarityRange, v : Double) -> MathcomplementarityRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_range_min(s : MathcomplementarityRange) -> Double { @_common.min(s.data) }
+pub fn MathcomplementarityRange::min(self : MathcomplementarityRange) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_range_max(s : MathcomplementarityRange) -> Double { @_common.max(s.data) }
+pub fn MathcomplementarityRange::max(self : MathcomplementarityRange) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_range_to_string(s : MathcomplementarityRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementarityRange::to_string(self : MathcomplementarityRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcomplementaritySlice {
@@ -1014,44 +1014,44 @@ pub fn math_complementarity_slice_make(size : Int) -> MathcomplementaritySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_complementarity_slice_len(s : MathcomplementaritySlice) -> Int { s.size }
+pub fn MathcomplementaritySlice::len(self : MathcomplementaritySlice) -> Int { self.size }
 
-pub fn math_complementarity_slice_get(s : MathcomplementaritySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcomplementaritySlice::get(self : MathcomplementaritySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_complementarity_slice_set(s : MathcomplementaritySlice, i : Int, v : Double) -> MathcomplementaritySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcomplementaritySlice::set(self : MathcomplementaritySlice, i : Int, v : Double) -> MathcomplementaritySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_slice_sum(s : MathcomplementaritySlice) -> Double { @_common.sum(s.data) }
+pub fn MathcomplementaritySlice::sum(self : MathcomplementaritySlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_complementarity_slice_mean(s : MathcomplementaritySlice) -> Double { @_common.mean(s.data) }
+pub fn MathcomplementaritySlice::mean(self : MathcomplementaritySlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_complementarity_slice_scale(s : MathcomplementaritySlice, f : Double) -> MathcomplementaritySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcomplementaritySlice::scale(self : MathcomplementaritySlice, f : Double) -> MathcomplementaritySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_slice_add(a : MathcomplementaritySlice, b : MathcomplementaritySlice) -> MathcomplementaritySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcomplementaritySlice::add(self : MathcomplementaritySlice, other : MathcomplementaritySlice) -> MathcomplementaritySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_complementarity_slice_copy(s : MathcomplementaritySlice) -> MathcomplementaritySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcomplementaritySlice::copy(self : MathcomplementaritySlice) -> MathcomplementaritySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_slice_fill(s : MathcomplementaritySlice, v : Double) -> MathcomplementaritySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcomplementaritySlice::fill(self : MathcomplementaritySlice, v : Double) -> MathcomplementaritySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_complementarity_slice_min(s : MathcomplementaritySlice) -> Double { @_common.min(s.data) }
+pub fn MathcomplementaritySlice::min(self : MathcomplementaritySlice) -> Double { @_common.min(self.data) }
 
-pub fn math_complementarity_slice_max(s : MathcomplementaritySlice) -> Double { @_common.max(s.data) }
+pub fn MathcomplementaritySlice::max(self : MathcomplementaritySlice) -> Double { @_common.max(self.data) }
 
-pub fn math_complementarity_slice_to_string(s : MathcomplementaritySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcomplementaritySlice::to_string(self : MathcomplementaritySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

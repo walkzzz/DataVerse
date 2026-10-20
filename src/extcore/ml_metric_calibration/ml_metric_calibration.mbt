@@ -351,45 +351,45 @@ pub fn ml_metric_calibration_frame_make(size : Int) -> MlmetriccalibrationFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_frame_len(s : MlmetriccalibrationFrame) -> Int { s.size }
+pub fn MlmetriccalibrationFrame::len(self : MlmetriccalibrationFrame) -> Int { self.size }
 
-pub fn ml_metric_calibration_frame_get(s : MlmetriccalibrationFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationFrame::get(self : MlmetriccalibrationFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_frame_set(s : MlmetriccalibrationFrame, i : Int, v : Double) -> MlmetriccalibrationFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationFrame::set(self : MlmetriccalibrationFrame, i : Int, v : Double) -> MlmetriccalibrationFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_frame_sum(s : MlmetriccalibrationFrame) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationFrame::sum(self : MlmetriccalibrationFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_frame_mean(s : MlmetriccalibrationFrame) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationFrame::mean(self : MlmetriccalibrationFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_frame_scale(s : MlmetriccalibrationFrame, f : Double) -> MlmetriccalibrationFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationFrame::scale(self : MlmetriccalibrationFrame, f : Double) -> MlmetriccalibrationFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_frame_add(a : MlmetriccalibrationFrame, b : MlmetriccalibrationFrame) -> MlmetriccalibrationFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationFrame::add(self : MlmetriccalibrationFrame, other : MlmetriccalibrationFrame) -> MlmetriccalibrationFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_frame_copy(s : MlmetriccalibrationFrame) -> MlmetriccalibrationFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationFrame::copy(self : MlmetriccalibrationFrame) -> MlmetriccalibrationFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_frame_fill(s : MlmetriccalibrationFrame, v : Double) -> MlmetriccalibrationFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationFrame::fill(self : MlmetriccalibrationFrame, v : Double) -> MlmetriccalibrationFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_frame_min(s : MlmetriccalibrationFrame) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationFrame::min(self : MlmetriccalibrationFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_frame_max(s : MlmetriccalibrationFrame) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationFrame::max(self : MlmetriccalibrationFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_frame_to_string(s : MlmetriccalibrationFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationFrame::to_string(self : MlmetriccalibrationFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationTable {
@@ -402,45 +402,45 @@ pub fn ml_metric_calibration_table_make(size : Int) -> MlmetriccalibrationTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_table_len(s : MlmetriccalibrationTable) -> Int { s.size }
+pub fn MlmetriccalibrationTable::len(self : MlmetriccalibrationTable) -> Int { self.size }
 
-pub fn ml_metric_calibration_table_get(s : MlmetriccalibrationTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationTable::get(self : MlmetriccalibrationTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_table_set(s : MlmetriccalibrationTable, i : Int, v : Double) -> MlmetriccalibrationTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationTable::set(self : MlmetriccalibrationTable, i : Int, v : Double) -> MlmetriccalibrationTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_table_sum(s : MlmetriccalibrationTable) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationTable::sum(self : MlmetriccalibrationTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_table_mean(s : MlmetriccalibrationTable) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationTable::mean(self : MlmetriccalibrationTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_table_scale(s : MlmetriccalibrationTable, f : Double) -> MlmetriccalibrationTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationTable::scale(self : MlmetriccalibrationTable, f : Double) -> MlmetriccalibrationTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_table_add(a : MlmetriccalibrationTable, b : MlmetriccalibrationTable) -> MlmetriccalibrationTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationTable::add(self : MlmetriccalibrationTable, other : MlmetriccalibrationTable) -> MlmetriccalibrationTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_table_copy(s : MlmetriccalibrationTable) -> MlmetriccalibrationTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationTable::copy(self : MlmetriccalibrationTable) -> MlmetriccalibrationTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_table_fill(s : MlmetriccalibrationTable, v : Double) -> MlmetriccalibrationTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationTable::fill(self : MlmetriccalibrationTable, v : Double) -> MlmetriccalibrationTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_table_min(s : MlmetriccalibrationTable) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationTable::min(self : MlmetriccalibrationTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_table_max(s : MlmetriccalibrationTable) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationTable::max(self : MlmetriccalibrationTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_table_to_string(s : MlmetriccalibrationTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationTable::to_string(self : MlmetriccalibrationTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationGraphN {
@@ -453,45 +453,45 @@ pub fn ml_metric_calibration_graphn_make(size : Int) -> MlmetriccalibrationGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_graphn_len(s : MlmetriccalibrationGraphN) -> Int { s.size }
+pub fn MlmetriccalibrationGraphN::len(self : MlmetriccalibrationGraphN) -> Int { self.size }
 
-pub fn ml_metric_calibration_graphn_get(s : MlmetriccalibrationGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationGraphN::get(self : MlmetriccalibrationGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_graphn_set(s : MlmetriccalibrationGraphN, i : Int, v : Double) -> MlmetriccalibrationGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationGraphN::set(self : MlmetriccalibrationGraphN, i : Int, v : Double) -> MlmetriccalibrationGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_graphn_sum(s : MlmetriccalibrationGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationGraphN::sum(self : MlmetriccalibrationGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_graphn_mean(s : MlmetriccalibrationGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationGraphN::mean(self : MlmetriccalibrationGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_graphn_scale(s : MlmetriccalibrationGraphN, f : Double) -> MlmetriccalibrationGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationGraphN::scale(self : MlmetriccalibrationGraphN, f : Double) -> MlmetriccalibrationGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_graphn_add(a : MlmetriccalibrationGraphN, b : MlmetriccalibrationGraphN) -> MlmetriccalibrationGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationGraphN::add(self : MlmetriccalibrationGraphN, other : MlmetriccalibrationGraphN) -> MlmetriccalibrationGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_graphn_copy(s : MlmetriccalibrationGraphN) -> MlmetriccalibrationGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationGraphN::copy(self : MlmetriccalibrationGraphN) -> MlmetriccalibrationGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_graphn_fill(s : MlmetriccalibrationGraphN, v : Double) -> MlmetriccalibrationGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationGraphN::fill(self : MlmetriccalibrationGraphN, v : Double) -> MlmetriccalibrationGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_graphn_min(s : MlmetriccalibrationGraphN) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationGraphN::min(self : MlmetriccalibrationGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_graphn_max(s : MlmetriccalibrationGraphN) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationGraphN::max(self : MlmetriccalibrationGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_graphn_to_string(s : MlmetriccalibrationGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationGraphN::to_string(self : MlmetriccalibrationGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationNode {
@@ -504,45 +504,45 @@ pub fn ml_metric_calibration_node_make(size : Int) -> MlmetriccalibrationNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_node_len(s : MlmetriccalibrationNode) -> Int { s.size }
+pub fn MlmetriccalibrationNode::len(self : MlmetriccalibrationNode) -> Int { self.size }
 
-pub fn ml_metric_calibration_node_get(s : MlmetriccalibrationNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationNode::get(self : MlmetriccalibrationNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_node_set(s : MlmetriccalibrationNode, i : Int, v : Double) -> MlmetriccalibrationNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationNode::set(self : MlmetriccalibrationNode, i : Int, v : Double) -> MlmetriccalibrationNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_node_sum(s : MlmetriccalibrationNode) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationNode::sum(self : MlmetriccalibrationNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_node_mean(s : MlmetriccalibrationNode) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationNode::mean(self : MlmetriccalibrationNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_node_scale(s : MlmetriccalibrationNode, f : Double) -> MlmetriccalibrationNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationNode::scale(self : MlmetriccalibrationNode, f : Double) -> MlmetriccalibrationNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_node_add(a : MlmetriccalibrationNode, b : MlmetriccalibrationNode) -> MlmetriccalibrationNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationNode::add(self : MlmetriccalibrationNode, other : MlmetriccalibrationNode) -> MlmetriccalibrationNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_node_copy(s : MlmetriccalibrationNode) -> MlmetriccalibrationNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationNode::copy(self : MlmetriccalibrationNode) -> MlmetriccalibrationNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_node_fill(s : MlmetriccalibrationNode, v : Double) -> MlmetriccalibrationNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationNode::fill(self : MlmetriccalibrationNode, v : Double) -> MlmetriccalibrationNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_node_min(s : MlmetriccalibrationNode) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationNode::min(self : MlmetriccalibrationNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_node_max(s : MlmetriccalibrationNode) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationNode::max(self : MlmetriccalibrationNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_node_to_string(s : MlmetriccalibrationNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationNode::to_string(self : MlmetriccalibrationNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationEdge {
@@ -555,45 +555,45 @@ pub fn ml_metric_calibration_edge_make(size : Int) -> MlmetriccalibrationEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_edge_len(s : MlmetriccalibrationEdge) -> Int { s.size }
+pub fn MlmetriccalibrationEdge::len(self : MlmetriccalibrationEdge) -> Int { self.size }
 
-pub fn ml_metric_calibration_edge_get(s : MlmetriccalibrationEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationEdge::get(self : MlmetriccalibrationEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_edge_set(s : MlmetriccalibrationEdge, i : Int, v : Double) -> MlmetriccalibrationEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationEdge::set(self : MlmetriccalibrationEdge, i : Int, v : Double) -> MlmetriccalibrationEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_edge_sum(s : MlmetriccalibrationEdge) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationEdge::sum(self : MlmetriccalibrationEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_edge_mean(s : MlmetriccalibrationEdge) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationEdge::mean(self : MlmetriccalibrationEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_edge_scale(s : MlmetriccalibrationEdge, f : Double) -> MlmetriccalibrationEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationEdge::scale(self : MlmetriccalibrationEdge, f : Double) -> MlmetriccalibrationEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_edge_add(a : MlmetriccalibrationEdge, b : MlmetriccalibrationEdge) -> MlmetriccalibrationEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationEdge::add(self : MlmetriccalibrationEdge, other : MlmetriccalibrationEdge) -> MlmetriccalibrationEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_edge_copy(s : MlmetriccalibrationEdge) -> MlmetriccalibrationEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationEdge::copy(self : MlmetriccalibrationEdge) -> MlmetriccalibrationEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_edge_fill(s : MlmetriccalibrationEdge, v : Double) -> MlmetriccalibrationEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationEdge::fill(self : MlmetriccalibrationEdge, v : Double) -> MlmetriccalibrationEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_edge_min(s : MlmetriccalibrationEdge) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationEdge::min(self : MlmetriccalibrationEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_edge_max(s : MlmetriccalibrationEdge) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationEdge::max(self : MlmetriccalibrationEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_edge_to_string(s : MlmetriccalibrationEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationEdge::to_string(self : MlmetriccalibrationEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationPath {
@@ -606,45 +606,45 @@ pub fn ml_metric_calibration_path_make(size : Int) -> MlmetriccalibrationPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_path_len(s : MlmetriccalibrationPath) -> Int { s.size }
+pub fn MlmetriccalibrationPath::len(self : MlmetriccalibrationPath) -> Int { self.size }
 
-pub fn ml_metric_calibration_path_get(s : MlmetriccalibrationPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationPath::get(self : MlmetriccalibrationPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_path_set(s : MlmetriccalibrationPath, i : Int, v : Double) -> MlmetriccalibrationPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationPath::set(self : MlmetriccalibrationPath, i : Int, v : Double) -> MlmetriccalibrationPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_path_sum(s : MlmetriccalibrationPath) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationPath::sum(self : MlmetriccalibrationPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_path_mean(s : MlmetriccalibrationPath) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationPath::mean(self : MlmetriccalibrationPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_path_scale(s : MlmetriccalibrationPath, f : Double) -> MlmetriccalibrationPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationPath::scale(self : MlmetriccalibrationPath, f : Double) -> MlmetriccalibrationPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_path_add(a : MlmetriccalibrationPath, b : MlmetriccalibrationPath) -> MlmetriccalibrationPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationPath::add(self : MlmetriccalibrationPath, other : MlmetriccalibrationPath) -> MlmetriccalibrationPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_path_copy(s : MlmetriccalibrationPath) -> MlmetriccalibrationPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationPath::copy(self : MlmetriccalibrationPath) -> MlmetriccalibrationPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_path_fill(s : MlmetriccalibrationPath, v : Double) -> MlmetriccalibrationPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationPath::fill(self : MlmetriccalibrationPath, v : Double) -> MlmetriccalibrationPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_path_min(s : MlmetriccalibrationPath) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationPath::min(self : MlmetriccalibrationPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_path_max(s : MlmetriccalibrationPath) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationPath::max(self : MlmetriccalibrationPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_path_to_string(s : MlmetriccalibrationPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationPath::to_string(self : MlmetriccalibrationPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationCluster {
@@ -657,45 +657,45 @@ pub fn ml_metric_calibration_cluster_make(size : Int) -> MlmetriccalibrationClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_cluster_len(s : MlmetriccalibrationCluster) -> Int { s.size }
+pub fn MlmetriccalibrationCluster::len(self : MlmetriccalibrationCluster) -> Int { self.size }
 
-pub fn ml_metric_calibration_cluster_get(s : MlmetriccalibrationCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationCluster::get(self : MlmetriccalibrationCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_cluster_set(s : MlmetriccalibrationCluster, i : Int, v : Double) -> MlmetriccalibrationCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationCluster::set(self : MlmetriccalibrationCluster, i : Int, v : Double) -> MlmetriccalibrationCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_cluster_sum(s : MlmetriccalibrationCluster) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationCluster::sum(self : MlmetriccalibrationCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_cluster_mean(s : MlmetriccalibrationCluster) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationCluster::mean(self : MlmetriccalibrationCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_cluster_scale(s : MlmetriccalibrationCluster, f : Double) -> MlmetriccalibrationCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationCluster::scale(self : MlmetriccalibrationCluster, f : Double) -> MlmetriccalibrationCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_cluster_add(a : MlmetriccalibrationCluster, b : MlmetriccalibrationCluster) -> MlmetriccalibrationCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationCluster::add(self : MlmetriccalibrationCluster, other : MlmetriccalibrationCluster) -> MlmetriccalibrationCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_cluster_copy(s : MlmetriccalibrationCluster) -> MlmetriccalibrationCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationCluster::copy(self : MlmetriccalibrationCluster) -> MlmetriccalibrationCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_cluster_fill(s : MlmetriccalibrationCluster, v : Double) -> MlmetriccalibrationCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationCluster::fill(self : MlmetriccalibrationCluster, v : Double) -> MlmetriccalibrationCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_cluster_min(s : MlmetriccalibrationCluster) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationCluster::min(self : MlmetriccalibrationCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_cluster_max(s : MlmetriccalibrationCluster) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationCluster::max(self : MlmetriccalibrationCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_cluster_to_string(s : MlmetriccalibrationCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationCluster::to_string(self : MlmetriccalibrationCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationModel {
@@ -708,45 +708,45 @@ pub fn ml_metric_calibration_model_make(size : Int) -> MlmetriccalibrationModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_model_len(s : MlmetriccalibrationModel) -> Int { s.size }
+pub fn MlmetriccalibrationModel::len(self : MlmetriccalibrationModel) -> Int { self.size }
 
-pub fn ml_metric_calibration_model_get(s : MlmetriccalibrationModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationModel::get(self : MlmetriccalibrationModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_model_set(s : MlmetriccalibrationModel, i : Int, v : Double) -> MlmetriccalibrationModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationModel::set(self : MlmetriccalibrationModel, i : Int, v : Double) -> MlmetriccalibrationModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_model_sum(s : MlmetriccalibrationModel) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationModel::sum(self : MlmetriccalibrationModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_model_mean(s : MlmetriccalibrationModel) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationModel::mean(self : MlmetriccalibrationModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_model_scale(s : MlmetriccalibrationModel, f : Double) -> MlmetriccalibrationModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationModel::scale(self : MlmetriccalibrationModel, f : Double) -> MlmetriccalibrationModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_model_add(a : MlmetriccalibrationModel, b : MlmetriccalibrationModel) -> MlmetriccalibrationModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationModel::add(self : MlmetriccalibrationModel, other : MlmetriccalibrationModel) -> MlmetriccalibrationModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_model_copy(s : MlmetriccalibrationModel) -> MlmetriccalibrationModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationModel::copy(self : MlmetriccalibrationModel) -> MlmetriccalibrationModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_model_fill(s : MlmetriccalibrationModel, v : Double) -> MlmetriccalibrationModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationModel::fill(self : MlmetriccalibrationModel, v : Double) -> MlmetriccalibrationModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_model_min(s : MlmetriccalibrationModel) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationModel::min(self : MlmetriccalibrationModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_model_max(s : MlmetriccalibrationModel) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationModel::max(self : MlmetriccalibrationModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_model_to_string(s : MlmetriccalibrationModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationModel::to_string(self : MlmetriccalibrationModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationLayer {
@@ -759,45 +759,45 @@ pub fn ml_metric_calibration_layer_make(size : Int) -> MlmetriccalibrationLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_layer_len(s : MlmetriccalibrationLayer) -> Int { s.size }
+pub fn MlmetriccalibrationLayer::len(self : MlmetriccalibrationLayer) -> Int { self.size }
 
-pub fn ml_metric_calibration_layer_get(s : MlmetriccalibrationLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationLayer::get(self : MlmetriccalibrationLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_layer_set(s : MlmetriccalibrationLayer, i : Int, v : Double) -> MlmetriccalibrationLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationLayer::set(self : MlmetriccalibrationLayer, i : Int, v : Double) -> MlmetriccalibrationLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_layer_sum(s : MlmetriccalibrationLayer) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationLayer::sum(self : MlmetriccalibrationLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_layer_mean(s : MlmetriccalibrationLayer) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationLayer::mean(self : MlmetriccalibrationLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_layer_scale(s : MlmetriccalibrationLayer, f : Double) -> MlmetriccalibrationLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationLayer::scale(self : MlmetriccalibrationLayer, f : Double) -> MlmetriccalibrationLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_layer_add(a : MlmetriccalibrationLayer, b : MlmetriccalibrationLayer) -> MlmetriccalibrationLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationLayer::add(self : MlmetriccalibrationLayer, other : MlmetriccalibrationLayer) -> MlmetriccalibrationLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_layer_copy(s : MlmetriccalibrationLayer) -> MlmetriccalibrationLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationLayer::copy(self : MlmetriccalibrationLayer) -> MlmetriccalibrationLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_layer_fill(s : MlmetriccalibrationLayer, v : Double) -> MlmetriccalibrationLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationLayer::fill(self : MlmetriccalibrationLayer, v : Double) -> MlmetriccalibrationLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_layer_min(s : MlmetriccalibrationLayer) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationLayer::min(self : MlmetriccalibrationLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_layer_max(s : MlmetriccalibrationLayer) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationLayer::max(self : MlmetriccalibrationLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_layer_to_string(s : MlmetriccalibrationLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationLayer::to_string(self : MlmetriccalibrationLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationBuffer {
@@ -810,45 +810,45 @@ pub fn ml_metric_calibration_buffer_make(size : Int) -> MlmetriccalibrationBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_buffer_len(s : MlmetriccalibrationBuffer) -> Int { s.size }
+pub fn MlmetriccalibrationBuffer::len(self : MlmetriccalibrationBuffer) -> Int { self.size }
 
-pub fn ml_metric_calibration_buffer_get(s : MlmetriccalibrationBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationBuffer::get(self : MlmetriccalibrationBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_buffer_set(s : MlmetriccalibrationBuffer, i : Int, v : Double) -> MlmetriccalibrationBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationBuffer::set(self : MlmetriccalibrationBuffer, i : Int, v : Double) -> MlmetriccalibrationBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_buffer_sum(s : MlmetriccalibrationBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationBuffer::sum(self : MlmetriccalibrationBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_buffer_mean(s : MlmetriccalibrationBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationBuffer::mean(self : MlmetriccalibrationBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_buffer_scale(s : MlmetriccalibrationBuffer, f : Double) -> MlmetriccalibrationBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationBuffer::scale(self : MlmetriccalibrationBuffer, f : Double) -> MlmetriccalibrationBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_buffer_add(a : MlmetriccalibrationBuffer, b : MlmetriccalibrationBuffer) -> MlmetriccalibrationBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationBuffer::add(self : MlmetriccalibrationBuffer, other : MlmetriccalibrationBuffer) -> MlmetriccalibrationBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_buffer_copy(s : MlmetriccalibrationBuffer) -> MlmetriccalibrationBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationBuffer::copy(self : MlmetriccalibrationBuffer) -> MlmetriccalibrationBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_buffer_fill(s : MlmetriccalibrationBuffer, v : Double) -> MlmetriccalibrationBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationBuffer::fill(self : MlmetriccalibrationBuffer, v : Double) -> MlmetriccalibrationBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_buffer_min(s : MlmetriccalibrationBuffer) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationBuffer::min(self : MlmetriccalibrationBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_buffer_max(s : MlmetriccalibrationBuffer) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationBuffer::max(self : MlmetriccalibrationBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_buffer_to_string(s : MlmetriccalibrationBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationBuffer::to_string(self : MlmetriccalibrationBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationCursor {
@@ -861,45 +861,45 @@ pub fn ml_metric_calibration_cursor_make(size : Int) -> MlmetriccalibrationCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_cursor_len(s : MlmetriccalibrationCursor) -> Int { s.size }
+pub fn MlmetriccalibrationCursor::len(self : MlmetriccalibrationCursor) -> Int { self.size }
 
-pub fn ml_metric_calibration_cursor_get(s : MlmetriccalibrationCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationCursor::get(self : MlmetriccalibrationCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_cursor_set(s : MlmetriccalibrationCursor, i : Int, v : Double) -> MlmetriccalibrationCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationCursor::set(self : MlmetriccalibrationCursor, i : Int, v : Double) -> MlmetriccalibrationCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_cursor_sum(s : MlmetriccalibrationCursor) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationCursor::sum(self : MlmetriccalibrationCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_cursor_mean(s : MlmetriccalibrationCursor) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationCursor::mean(self : MlmetriccalibrationCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_cursor_scale(s : MlmetriccalibrationCursor, f : Double) -> MlmetriccalibrationCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationCursor::scale(self : MlmetriccalibrationCursor, f : Double) -> MlmetriccalibrationCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_cursor_add(a : MlmetriccalibrationCursor, b : MlmetriccalibrationCursor) -> MlmetriccalibrationCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationCursor::add(self : MlmetriccalibrationCursor, other : MlmetriccalibrationCursor) -> MlmetriccalibrationCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_cursor_copy(s : MlmetriccalibrationCursor) -> MlmetriccalibrationCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationCursor::copy(self : MlmetriccalibrationCursor) -> MlmetriccalibrationCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_cursor_fill(s : MlmetriccalibrationCursor, v : Double) -> MlmetriccalibrationCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationCursor::fill(self : MlmetriccalibrationCursor, v : Double) -> MlmetriccalibrationCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_cursor_min(s : MlmetriccalibrationCursor) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationCursor::min(self : MlmetriccalibrationCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_cursor_max(s : MlmetriccalibrationCursor) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationCursor::max(self : MlmetriccalibrationCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_cursor_to_string(s : MlmetriccalibrationCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationCursor::to_string(self : MlmetriccalibrationCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationView {
@@ -912,45 +912,45 @@ pub fn ml_metric_calibration_view_make(size : Int) -> MlmetriccalibrationView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_view_len(s : MlmetriccalibrationView) -> Int { s.size }
+pub fn MlmetriccalibrationView::len(self : MlmetriccalibrationView) -> Int { self.size }
 
-pub fn ml_metric_calibration_view_get(s : MlmetriccalibrationView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationView::get(self : MlmetriccalibrationView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_view_set(s : MlmetriccalibrationView, i : Int, v : Double) -> MlmetriccalibrationView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationView::set(self : MlmetriccalibrationView, i : Int, v : Double) -> MlmetriccalibrationView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_view_sum(s : MlmetriccalibrationView) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationView::sum(self : MlmetriccalibrationView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_view_mean(s : MlmetriccalibrationView) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationView::mean(self : MlmetriccalibrationView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_view_scale(s : MlmetriccalibrationView, f : Double) -> MlmetriccalibrationView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationView::scale(self : MlmetriccalibrationView, f : Double) -> MlmetriccalibrationView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_view_add(a : MlmetriccalibrationView, b : MlmetriccalibrationView) -> MlmetriccalibrationView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationView::add(self : MlmetriccalibrationView, other : MlmetriccalibrationView) -> MlmetriccalibrationView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_view_copy(s : MlmetriccalibrationView) -> MlmetriccalibrationView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationView::copy(self : MlmetriccalibrationView) -> MlmetriccalibrationView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_view_fill(s : MlmetriccalibrationView, v : Double) -> MlmetriccalibrationView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationView::fill(self : MlmetriccalibrationView, v : Double) -> MlmetriccalibrationView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_view_min(s : MlmetriccalibrationView) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationView::min(self : MlmetriccalibrationView) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_view_max(s : MlmetriccalibrationView) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationView::max(self : MlmetriccalibrationView) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_view_to_string(s : MlmetriccalibrationView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationView::to_string(self : MlmetriccalibrationView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationRange {
@@ -963,45 +963,45 @@ pub fn ml_metric_calibration_range_make(size : Int) -> MlmetriccalibrationRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_range_len(s : MlmetriccalibrationRange) -> Int { s.size }
+pub fn MlmetriccalibrationRange::len(self : MlmetriccalibrationRange) -> Int { self.size }
 
-pub fn ml_metric_calibration_range_get(s : MlmetriccalibrationRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationRange::get(self : MlmetriccalibrationRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_range_set(s : MlmetriccalibrationRange, i : Int, v : Double) -> MlmetriccalibrationRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationRange::set(self : MlmetriccalibrationRange, i : Int, v : Double) -> MlmetriccalibrationRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_range_sum(s : MlmetriccalibrationRange) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationRange::sum(self : MlmetriccalibrationRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_range_mean(s : MlmetriccalibrationRange) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationRange::mean(self : MlmetriccalibrationRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_range_scale(s : MlmetriccalibrationRange, f : Double) -> MlmetriccalibrationRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationRange::scale(self : MlmetriccalibrationRange, f : Double) -> MlmetriccalibrationRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_range_add(a : MlmetriccalibrationRange, b : MlmetriccalibrationRange) -> MlmetriccalibrationRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationRange::add(self : MlmetriccalibrationRange, other : MlmetriccalibrationRange) -> MlmetriccalibrationRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_range_copy(s : MlmetriccalibrationRange) -> MlmetriccalibrationRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationRange::copy(self : MlmetriccalibrationRange) -> MlmetriccalibrationRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_range_fill(s : MlmetriccalibrationRange, v : Double) -> MlmetriccalibrationRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationRange::fill(self : MlmetriccalibrationRange, v : Double) -> MlmetriccalibrationRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_range_min(s : MlmetriccalibrationRange) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationRange::min(self : MlmetriccalibrationRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_range_max(s : MlmetriccalibrationRange) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationRange::max(self : MlmetriccalibrationRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_range_to_string(s : MlmetriccalibrationRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationRange::to_string(self : MlmetriccalibrationRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetriccalibrationSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_metric_calibration_slice_make(size : Int) -> MlmetriccalibrationSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_calibration_slice_len(s : MlmetriccalibrationSlice) -> Int { s.size }
+pub fn MlmetriccalibrationSlice::len(self : MlmetriccalibrationSlice) -> Int { self.size }
 
-pub fn ml_metric_calibration_slice_get(s : MlmetriccalibrationSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetriccalibrationSlice::get(self : MlmetriccalibrationSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_calibration_slice_set(s : MlmetriccalibrationSlice, i : Int, v : Double) -> MlmetriccalibrationSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationSlice::set(self : MlmetriccalibrationSlice, i : Int, v : Double) -> MlmetriccalibrationSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_slice_sum(s : MlmetriccalibrationSlice) -> Double { @_common.sum(s.data) }
+pub fn MlmetriccalibrationSlice::sum(self : MlmetriccalibrationSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_calibration_slice_mean(s : MlmetriccalibrationSlice) -> Double { @_common.mean(s.data) }
+pub fn MlmetriccalibrationSlice::mean(self : MlmetriccalibrationSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_calibration_slice_scale(s : MlmetriccalibrationSlice, f : Double) -> MlmetriccalibrationSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationSlice::scale(self : MlmetriccalibrationSlice, f : Double) -> MlmetriccalibrationSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_slice_add(a : MlmetriccalibrationSlice, b : MlmetriccalibrationSlice) -> MlmetriccalibrationSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetriccalibrationSlice::add(self : MlmetriccalibrationSlice, other : MlmetriccalibrationSlice) -> MlmetriccalibrationSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_slice_copy(s : MlmetriccalibrationSlice) -> MlmetriccalibrationSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationSlice::copy(self : MlmetriccalibrationSlice) -> MlmetriccalibrationSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_slice_fill(s : MlmetriccalibrationSlice, v : Double) -> MlmetriccalibrationSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetriccalibrationSlice::fill(self : MlmetriccalibrationSlice, v : Double) -> MlmetriccalibrationSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_calibration_slice_min(s : MlmetriccalibrationSlice) -> Double { @_common.min(s.data) }
+pub fn MlmetriccalibrationSlice::min(self : MlmetriccalibrationSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_calibration_slice_max(s : MlmetriccalibrationSlice) -> Double { @_common.max(s.data) }
+pub fn MlmetriccalibrationSlice::max(self : MlmetriccalibrationSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_calibration_slice_to_string(s : MlmetriccalibrationSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetriccalibrationSlice::to_string(self : MlmetriccalibrationSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

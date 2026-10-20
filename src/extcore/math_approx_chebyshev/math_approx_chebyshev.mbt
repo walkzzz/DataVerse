@@ -351,45 +351,45 @@ pub fn math_approx_chebyshev_frame_make(size : Int) -> MathapproxchebyshevFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_frame_len(s : MathapproxchebyshevFrame) -> Int { s.size }
+pub fn MathapproxchebyshevFrame::len(self : MathapproxchebyshevFrame) -> Int { self.size }
 
-pub fn math_approx_chebyshev_frame_get(s : MathapproxchebyshevFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevFrame::get(self : MathapproxchebyshevFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_frame_set(s : MathapproxchebyshevFrame, i : Int, v : Double) -> MathapproxchebyshevFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevFrame::set(self : MathapproxchebyshevFrame, i : Int, v : Double) -> MathapproxchebyshevFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_frame_sum(s : MathapproxchebyshevFrame) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevFrame::sum(self : MathapproxchebyshevFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_frame_mean(s : MathapproxchebyshevFrame) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevFrame::mean(self : MathapproxchebyshevFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_frame_scale(s : MathapproxchebyshevFrame, f : Double) -> MathapproxchebyshevFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevFrame::scale(self : MathapproxchebyshevFrame, f : Double) -> MathapproxchebyshevFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_frame_add(a : MathapproxchebyshevFrame, b : MathapproxchebyshevFrame) -> MathapproxchebyshevFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevFrame::add(self : MathapproxchebyshevFrame, other : MathapproxchebyshevFrame) -> MathapproxchebyshevFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_frame_copy(s : MathapproxchebyshevFrame) -> MathapproxchebyshevFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevFrame::copy(self : MathapproxchebyshevFrame) -> MathapproxchebyshevFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_frame_fill(s : MathapproxchebyshevFrame, v : Double) -> MathapproxchebyshevFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevFrame::fill(self : MathapproxchebyshevFrame, v : Double) -> MathapproxchebyshevFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_frame_min(s : MathapproxchebyshevFrame) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevFrame::min(self : MathapproxchebyshevFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_frame_max(s : MathapproxchebyshevFrame) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevFrame::max(self : MathapproxchebyshevFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_frame_to_string(s : MathapproxchebyshevFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevFrame::to_string(self : MathapproxchebyshevFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevTable {
@@ -402,45 +402,45 @@ pub fn math_approx_chebyshev_table_make(size : Int) -> MathapproxchebyshevTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_table_len(s : MathapproxchebyshevTable) -> Int { s.size }
+pub fn MathapproxchebyshevTable::len(self : MathapproxchebyshevTable) -> Int { self.size }
 
-pub fn math_approx_chebyshev_table_get(s : MathapproxchebyshevTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevTable::get(self : MathapproxchebyshevTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_table_set(s : MathapproxchebyshevTable, i : Int, v : Double) -> MathapproxchebyshevTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevTable::set(self : MathapproxchebyshevTable, i : Int, v : Double) -> MathapproxchebyshevTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_table_sum(s : MathapproxchebyshevTable) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevTable::sum(self : MathapproxchebyshevTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_table_mean(s : MathapproxchebyshevTable) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevTable::mean(self : MathapproxchebyshevTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_table_scale(s : MathapproxchebyshevTable, f : Double) -> MathapproxchebyshevTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevTable::scale(self : MathapproxchebyshevTable, f : Double) -> MathapproxchebyshevTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_table_add(a : MathapproxchebyshevTable, b : MathapproxchebyshevTable) -> MathapproxchebyshevTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevTable::add(self : MathapproxchebyshevTable, other : MathapproxchebyshevTable) -> MathapproxchebyshevTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_table_copy(s : MathapproxchebyshevTable) -> MathapproxchebyshevTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevTable::copy(self : MathapproxchebyshevTable) -> MathapproxchebyshevTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_table_fill(s : MathapproxchebyshevTable, v : Double) -> MathapproxchebyshevTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevTable::fill(self : MathapproxchebyshevTable, v : Double) -> MathapproxchebyshevTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_table_min(s : MathapproxchebyshevTable) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevTable::min(self : MathapproxchebyshevTable) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_table_max(s : MathapproxchebyshevTable) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevTable::max(self : MathapproxchebyshevTable) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_table_to_string(s : MathapproxchebyshevTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevTable::to_string(self : MathapproxchebyshevTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevGraphN {
@@ -453,45 +453,45 @@ pub fn math_approx_chebyshev_graphn_make(size : Int) -> MathapproxchebyshevGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_graphn_len(s : MathapproxchebyshevGraphN) -> Int { s.size }
+pub fn MathapproxchebyshevGraphN::len(self : MathapproxchebyshevGraphN) -> Int { self.size }
 
-pub fn math_approx_chebyshev_graphn_get(s : MathapproxchebyshevGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevGraphN::get(self : MathapproxchebyshevGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_graphn_set(s : MathapproxchebyshevGraphN, i : Int, v : Double) -> MathapproxchebyshevGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevGraphN::set(self : MathapproxchebyshevGraphN, i : Int, v : Double) -> MathapproxchebyshevGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_graphn_sum(s : MathapproxchebyshevGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevGraphN::sum(self : MathapproxchebyshevGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_graphn_mean(s : MathapproxchebyshevGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevGraphN::mean(self : MathapproxchebyshevGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_graphn_scale(s : MathapproxchebyshevGraphN, f : Double) -> MathapproxchebyshevGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevGraphN::scale(self : MathapproxchebyshevGraphN, f : Double) -> MathapproxchebyshevGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_graphn_add(a : MathapproxchebyshevGraphN, b : MathapproxchebyshevGraphN) -> MathapproxchebyshevGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevGraphN::add(self : MathapproxchebyshevGraphN, other : MathapproxchebyshevGraphN) -> MathapproxchebyshevGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_graphn_copy(s : MathapproxchebyshevGraphN) -> MathapproxchebyshevGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevGraphN::copy(self : MathapproxchebyshevGraphN) -> MathapproxchebyshevGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_graphn_fill(s : MathapproxchebyshevGraphN, v : Double) -> MathapproxchebyshevGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevGraphN::fill(self : MathapproxchebyshevGraphN, v : Double) -> MathapproxchebyshevGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_graphn_min(s : MathapproxchebyshevGraphN) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevGraphN::min(self : MathapproxchebyshevGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_graphn_max(s : MathapproxchebyshevGraphN) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevGraphN::max(self : MathapproxchebyshevGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_graphn_to_string(s : MathapproxchebyshevGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevGraphN::to_string(self : MathapproxchebyshevGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevNode {
@@ -504,45 +504,45 @@ pub fn math_approx_chebyshev_node_make(size : Int) -> MathapproxchebyshevNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_node_len(s : MathapproxchebyshevNode) -> Int { s.size }
+pub fn MathapproxchebyshevNode::len(self : MathapproxchebyshevNode) -> Int { self.size }
 
-pub fn math_approx_chebyshev_node_get(s : MathapproxchebyshevNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevNode::get(self : MathapproxchebyshevNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_node_set(s : MathapproxchebyshevNode, i : Int, v : Double) -> MathapproxchebyshevNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevNode::set(self : MathapproxchebyshevNode, i : Int, v : Double) -> MathapproxchebyshevNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_node_sum(s : MathapproxchebyshevNode) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevNode::sum(self : MathapproxchebyshevNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_node_mean(s : MathapproxchebyshevNode) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevNode::mean(self : MathapproxchebyshevNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_node_scale(s : MathapproxchebyshevNode, f : Double) -> MathapproxchebyshevNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevNode::scale(self : MathapproxchebyshevNode, f : Double) -> MathapproxchebyshevNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_node_add(a : MathapproxchebyshevNode, b : MathapproxchebyshevNode) -> MathapproxchebyshevNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevNode::add(self : MathapproxchebyshevNode, other : MathapproxchebyshevNode) -> MathapproxchebyshevNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_node_copy(s : MathapproxchebyshevNode) -> MathapproxchebyshevNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevNode::copy(self : MathapproxchebyshevNode) -> MathapproxchebyshevNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_node_fill(s : MathapproxchebyshevNode, v : Double) -> MathapproxchebyshevNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevNode::fill(self : MathapproxchebyshevNode, v : Double) -> MathapproxchebyshevNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_node_min(s : MathapproxchebyshevNode) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevNode::min(self : MathapproxchebyshevNode) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_node_max(s : MathapproxchebyshevNode) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevNode::max(self : MathapproxchebyshevNode) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_node_to_string(s : MathapproxchebyshevNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevNode::to_string(self : MathapproxchebyshevNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevEdge {
@@ -555,45 +555,45 @@ pub fn math_approx_chebyshev_edge_make(size : Int) -> MathapproxchebyshevEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_edge_len(s : MathapproxchebyshevEdge) -> Int { s.size }
+pub fn MathapproxchebyshevEdge::len(self : MathapproxchebyshevEdge) -> Int { self.size }
 
-pub fn math_approx_chebyshev_edge_get(s : MathapproxchebyshevEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevEdge::get(self : MathapproxchebyshevEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_edge_set(s : MathapproxchebyshevEdge, i : Int, v : Double) -> MathapproxchebyshevEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevEdge::set(self : MathapproxchebyshevEdge, i : Int, v : Double) -> MathapproxchebyshevEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_edge_sum(s : MathapproxchebyshevEdge) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevEdge::sum(self : MathapproxchebyshevEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_edge_mean(s : MathapproxchebyshevEdge) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevEdge::mean(self : MathapproxchebyshevEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_edge_scale(s : MathapproxchebyshevEdge, f : Double) -> MathapproxchebyshevEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevEdge::scale(self : MathapproxchebyshevEdge, f : Double) -> MathapproxchebyshevEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_edge_add(a : MathapproxchebyshevEdge, b : MathapproxchebyshevEdge) -> MathapproxchebyshevEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevEdge::add(self : MathapproxchebyshevEdge, other : MathapproxchebyshevEdge) -> MathapproxchebyshevEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_edge_copy(s : MathapproxchebyshevEdge) -> MathapproxchebyshevEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevEdge::copy(self : MathapproxchebyshevEdge) -> MathapproxchebyshevEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_edge_fill(s : MathapproxchebyshevEdge, v : Double) -> MathapproxchebyshevEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevEdge::fill(self : MathapproxchebyshevEdge, v : Double) -> MathapproxchebyshevEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_edge_min(s : MathapproxchebyshevEdge) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevEdge::min(self : MathapproxchebyshevEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_edge_max(s : MathapproxchebyshevEdge) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevEdge::max(self : MathapproxchebyshevEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_edge_to_string(s : MathapproxchebyshevEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevEdge::to_string(self : MathapproxchebyshevEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevPath {
@@ -606,45 +606,45 @@ pub fn math_approx_chebyshev_path_make(size : Int) -> MathapproxchebyshevPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_path_len(s : MathapproxchebyshevPath) -> Int { s.size }
+pub fn MathapproxchebyshevPath::len(self : MathapproxchebyshevPath) -> Int { self.size }
 
-pub fn math_approx_chebyshev_path_get(s : MathapproxchebyshevPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevPath::get(self : MathapproxchebyshevPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_path_set(s : MathapproxchebyshevPath, i : Int, v : Double) -> MathapproxchebyshevPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevPath::set(self : MathapproxchebyshevPath, i : Int, v : Double) -> MathapproxchebyshevPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_path_sum(s : MathapproxchebyshevPath) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevPath::sum(self : MathapproxchebyshevPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_path_mean(s : MathapproxchebyshevPath) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevPath::mean(self : MathapproxchebyshevPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_path_scale(s : MathapproxchebyshevPath, f : Double) -> MathapproxchebyshevPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevPath::scale(self : MathapproxchebyshevPath, f : Double) -> MathapproxchebyshevPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_path_add(a : MathapproxchebyshevPath, b : MathapproxchebyshevPath) -> MathapproxchebyshevPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevPath::add(self : MathapproxchebyshevPath, other : MathapproxchebyshevPath) -> MathapproxchebyshevPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_path_copy(s : MathapproxchebyshevPath) -> MathapproxchebyshevPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevPath::copy(self : MathapproxchebyshevPath) -> MathapproxchebyshevPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_path_fill(s : MathapproxchebyshevPath, v : Double) -> MathapproxchebyshevPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevPath::fill(self : MathapproxchebyshevPath, v : Double) -> MathapproxchebyshevPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_path_min(s : MathapproxchebyshevPath) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevPath::min(self : MathapproxchebyshevPath) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_path_max(s : MathapproxchebyshevPath) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevPath::max(self : MathapproxchebyshevPath) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_path_to_string(s : MathapproxchebyshevPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevPath::to_string(self : MathapproxchebyshevPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevCluster {
@@ -657,45 +657,45 @@ pub fn math_approx_chebyshev_cluster_make(size : Int) -> MathapproxchebyshevClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_cluster_len(s : MathapproxchebyshevCluster) -> Int { s.size }
+pub fn MathapproxchebyshevCluster::len(self : MathapproxchebyshevCluster) -> Int { self.size }
 
-pub fn math_approx_chebyshev_cluster_get(s : MathapproxchebyshevCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevCluster::get(self : MathapproxchebyshevCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_cluster_set(s : MathapproxchebyshevCluster, i : Int, v : Double) -> MathapproxchebyshevCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevCluster::set(self : MathapproxchebyshevCluster, i : Int, v : Double) -> MathapproxchebyshevCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_cluster_sum(s : MathapproxchebyshevCluster) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevCluster::sum(self : MathapproxchebyshevCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_cluster_mean(s : MathapproxchebyshevCluster) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevCluster::mean(self : MathapproxchebyshevCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_cluster_scale(s : MathapproxchebyshevCluster, f : Double) -> MathapproxchebyshevCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevCluster::scale(self : MathapproxchebyshevCluster, f : Double) -> MathapproxchebyshevCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_cluster_add(a : MathapproxchebyshevCluster, b : MathapproxchebyshevCluster) -> MathapproxchebyshevCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevCluster::add(self : MathapproxchebyshevCluster, other : MathapproxchebyshevCluster) -> MathapproxchebyshevCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_cluster_copy(s : MathapproxchebyshevCluster) -> MathapproxchebyshevCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevCluster::copy(self : MathapproxchebyshevCluster) -> MathapproxchebyshevCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_cluster_fill(s : MathapproxchebyshevCluster, v : Double) -> MathapproxchebyshevCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevCluster::fill(self : MathapproxchebyshevCluster, v : Double) -> MathapproxchebyshevCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_cluster_min(s : MathapproxchebyshevCluster) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevCluster::min(self : MathapproxchebyshevCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_cluster_max(s : MathapproxchebyshevCluster) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevCluster::max(self : MathapproxchebyshevCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_cluster_to_string(s : MathapproxchebyshevCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevCluster::to_string(self : MathapproxchebyshevCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevModel {
@@ -708,45 +708,45 @@ pub fn math_approx_chebyshev_model_make(size : Int) -> MathapproxchebyshevModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_model_len(s : MathapproxchebyshevModel) -> Int { s.size }
+pub fn MathapproxchebyshevModel::len(self : MathapproxchebyshevModel) -> Int { self.size }
 
-pub fn math_approx_chebyshev_model_get(s : MathapproxchebyshevModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevModel::get(self : MathapproxchebyshevModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_model_set(s : MathapproxchebyshevModel, i : Int, v : Double) -> MathapproxchebyshevModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevModel::set(self : MathapproxchebyshevModel, i : Int, v : Double) -> MathapproxchebyshevModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_model_sum(s : MathapproxchebyshevModel) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevModel::sum(self : MathapproxchebyshevModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_model_mean(s : MathapproxchebyshevModel) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevModel::mean(self : MathapproxchebyshevModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_model_scale(s : MathapproxchebyshevModel, f : Double) -> MathapproxchebyshevModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevModel::scale(self : MathapproxchebyshevModel, f : Double) -> MathapproxchebyshevModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_model_add(a : MathapproxchebyshevModel, b : MathapproxchebyshevModel) -> MathapproxchebyshevModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevModel::add(self : MathapproxchebyshevModel, other : MathapproxchebyshevModel) -> MathapproxchebyshevModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_model_copy(s : MathapproxchebyshevModel) -> MathapproxchebyshevModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevModel::copy(self : MathapproxchebyshevModel) -> MathapproxchebyshevModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_model_fill(s : MathapproxchebyshevModel, v : Double) -> MathapproxchebyshevModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevModel::fill(self : MathapproxchebyshevModel, v : Double) -> MathapproxchebyshevModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_model_min(s : MathapproxchebyshevModel) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevModel::min(self : MathapproxchebyshevModel) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_model_max(s : MathapproxchebyshevModel) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevModel::max(self : MathapproxchebyshevModel) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_model_to_string(s : MathapproxchebyshevModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevModel::to_string(self : MathapproxchebyshevModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevLayer {
@@ -759,45 +759,45 @@ pub fn math_approx_chebyshev_layer_make(size : Int) -> MathapproxchebyshevLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_layer_len(s : MathapproxchebyshevLayer) -> Int { s.size }
+pub fn MathapproxchebyshevLayer::len(self : MathapproxchebyshevLayer) -> Int { self.size }
 
-pub fn math_approx_chebyshev_layer_get(s : MathapproxchebyshevLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevLayer::get(self : MathapproxchebyshevLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_layer_set(s : MathapproxchebyshevLayer, i : Int, v : Double) -> MathapproxchebyshevLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevLayer::set(self : MathapproxchebyshevLayer, i : Int, v : Double) -> MathapproxchebyshevLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_layer_sum(s : MathapproxchebyshevLayer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevLayer::sum(self : MathapproxchebyshevLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_layer_mean(s : MathapproxchebyshevLayer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevLayer::mean(self : MathapproxchebyshevLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_layer_scale(s : MathapproxchebyshevLayer, f : Double) -> MathapproxchebyshevLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevLayer::scale(self : MathapproxchebyshevLayer, f : Double) -> MathapproxchebyshevLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_layer_add(a : MathapproxchebyshevLayer, b : MathapproxchebyshevLayer) -> MathapproxchebyshevLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevLayer::add(self : MathapproxchebyshevLayer, other : MathapproxchebyshevLayer) -> MathapproxchebyshevLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_layer_copy(s : MathapproxchebyshevLayer) -> MathapproxchebyshevLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevLayer::copy(self : MathapproxchebyshevLayer) -> MathapproxchebyshevLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_layer_fill(s : MathapproxchebyshevLayer, v : Double) -> MathapproxchebyshevLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevLayer::fill(self : MathapproxchebyshevLayer, v : Double) -> MathapproxchebyshevLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_layer_min(s : MathapproxchebyshevLayer) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevLayer::min(self : MathapproxchebyshevLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_layer_max(s : MathapproxchebyshevLayer) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevLayer::max(self : MathapproxchebyshevLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_layer_to_string(s : MathapproxchebyshevLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevLayer::to_string(self : MathapproxchebyshevLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevBuffer {
@@ -810,45 +810,45 @@ pub fn math_approx_chebyshev_buffer_make(size : Int) -> MathapproxchebyshevBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_buffer_len(s : MathapproxchebyshevBuffer) -> Int { s.size }
+pub fn MathapproxchebyshevBuffer::len(self : MathapproxchebyshevBuffer) -> Int { self.size }
 
-pub fn math_approx_chebyshev_buffer_get(s : MathapproxchebyshevBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevBuffer::get(self : MathapproxchebyshevBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_buffer_set(s : MathapproxchebyshevBuffer, i : Int, v : Double) -> MathapproxchebyshevBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevBuffer::set(self : MathapproxchebyshevBuffer, i : Int, v : Double) -> MathapproxchebyshevBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_buffer_sum(s : MathapproxchebyshevBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevBuffer::sum(self : MathapproxchebyshevBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_buffer_mean(s : MathapproxchebyshevBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevBuffer::mean(self : MathapproxchebyshevBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_buffer_scale(s : MathapproxchebyshevBuffer, f : Double) -> MathapproxchebyshevBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevBuffer::scale(self : MathapproxchebyshevBuffer, f : Double) -> MathapproxchebyshevBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_buffer_add(a : MathapproxchebyshevBuffer, b : MathapproxchebyshevBuffer) -> MathapproxchebyshevBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevBuffer::add(self : MathapproxchebyshevBuffer, other : MathapproxchebyshevBuffer) -> MathapproxchebyshevBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_buffer_copy(s : MathapproxchebyshevBuffer) -> MathapproxchebyshevBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevBuffer::copy(self : MathapproxchebyshevBuffer) -> MathapproxchebyshevBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_buffer_fill(s : MathapproxchebyshevBuffer, v : Double) -> MathapproxchebyshevBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevBuffer::fill(self : MathapproxchebyshevBuffer, v : Double) -> MathapproxchebyshevBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_buffer_min(s : MathapproxchebyshevBuffer) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevBuffer::min(self : MathapproxchebyshevBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_buffer_max(s : MathapproxchebyshevBuffer) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevBuffer::max(self : MathapproxchebyshevBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_buffer_to_string(s : MathapproxchebyshevBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevBuffer::to_string(self : MathapproxchebyshevBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevCursor {
@@ -861,45 +861,45 @@ pub fn math_approx_chebyshev_cursor_make(size : Int) -> MathapproxchebyshevCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_cursor_len(s : MathapproxchebyshevCursor) -> Int { s.size }
+pub fn MathapproxchebyshevCursor::len(self : MathapproxchebyshevCursor) -> Int { self.size }
 
-pub fn math_approx_chebyshev_cursor_get(s : MathapproxchebyshevCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevCursor::get(self : MathapproxchebyshevCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_cursor_set(s : MathapproxchebyshevCursor, i : Int, v : Double) -> MathapproxchebyshevCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevCursor::set(self : MathapproxchebyshevCursor, i : Int, v : Double) -> MathapproxchebyshevCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_cursor_sum(s : MathapproxchebyshevCursor) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevCursor::sum(self : MathapproxchebyshevCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_cursor_mean(s : MathapproxchebyshevCursor) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevCursor::mean(self : MathapproxchebyshevCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_cursor_scale(s : MathapproxchebyshevCursor, f : Double) -> MathapproxchebyshevCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevCursor::scale(self : MathapproxchebyshevCursor, f : Double) -> MathapproxchebyshevCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_cursor_add(a : MathapproxchebyshevCursor, b : MathapproxchebyshevCursor) -> MathapproxchebyshevCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevCursor::add(self : MathapproxchebyshevCursor, other : MathapproxchebyshevCursor) -> MathapproxchebyshevCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_cursor_copy(s : MathapproxchebyshevCursor) -> MathapproxchebyshevCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevCursor::copy(self : MathapproxchebyshevCursor) -> MathapproxchebyshevCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_cursor_fill(s : MathapproxchebyshevCursor, v : Double) -> MathapproxchebyshevCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevCursor::fill(self : MathapproxchebyshevCursor, v : Double) -> MathapproxchebyshevCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_cursor_min(s : MathapproxchebyshevCursor) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevCursor::min(self : MathapproxchebyshevCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_cursor_max(s : MathapproxchebyshevCursor) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevCursor::max(self : MathapproxchebyshevCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_cursor_to_string(s : MathapproxchebyshevCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevCursor::to_string(self : MathapproxchebyshevCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevView {
@@ -912,45 +912,45 @@ pub fn math_approx_chebyshev_view_make(size : Int) -> MathapproxchebyshevView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_view_len(s : MathapproxchebyshevView) -> Int { s.size }
+pub fn MathapproxchebyshevView::len(self : MathapproxchebyshevView) -> Int { self.size }
 
-pub fn math_approx_chebyshev_view_get(s : MathapproxchebyshevView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevView::get(self : MathapproxchebyshevView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_view_set(s : MathapproxchebyshevView, i : Int, v : Double) -> MathapproxchebyshevView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevView::set(self : MathapproxchebyshevView, i : Int, v : Double) -> MathapproxchebyshevView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_view_sum(s : MathapproxchebyshevView) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevView::sum(self : MathapproxchebyshevView) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_view_mean(s : MathapproxchebyshevView) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevView::mean(self : MathapproxchebyshevView) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_view_scale(s : MathapproxchebyshevView, f : Double) -> MathapproxchebyshevView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevView::scale(self : MathapproxchebyshevView, f : Double) -> MathapproxchebyshevView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_view_add(a : MathapproxchebyshevView, b : MathapproxchebyshevView) -> MathapproxchebyshevView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevView::add(self : MathapproxchebyshevView, other : MathapproxchebyshevView) -> MathapproxchebyshevView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_view_copy(s : MathapproxchebyshevView) -> MathapproxchebyshevView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevView::copy(self : MathapproxchebyshevView) -> MathapproxchebyshevView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_view_fill(s : MathapproxchebyshevView, v : Double) -> MathapproxchebyshevView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevView::fill(self : MathapproxchebyshevView, v : Double) -> MathapproxchebyshevView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_view_min(s : MathapproxchebyshevView) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevView::min(self : MathapproxchebyshevView) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_view_max(s : MathapproxchebyshevView) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevView::max(self : MathapproxchebyshevView) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_view_to_string(s : MathapproxchebyshevView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevView::to_string(self : MathapproxchebyshevView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevRange {
@@ -963,45 +963,45 @@ pub fn math_approx_chebyshev_range_make(size : Int) -> MathapproxchebyshevRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_range_len(s : MathapproxchebyshevRange) -> Int { s.size }
+pub fn MathapproxchebyshevRange::len(self : MathapproxchebyshevRange) -> Int { self.size }
 
-pub fn math_approx_chebyshev_range_get(s : MathapproxchebyshevRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevRange::get(self : MathapproxchebyshevRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_range_set(s : MathapproxchebyshevRange, i : Int, v : Double) -> MathapproxchebyshevRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevRange::set(self : MathapproxchebyshevRange, i : Int, v : Double) -> MathapproxchebyshevRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_range_sum(s : MathapproxchebyshevRange) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevRange::sum(self : MathapproxchebyshevRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_range_mean(s : MathapproxchebyshevRange) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevRange::mean(self : MathapproxchebyshevRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_range_scale(s : MathapproxchebyshevRange, f : Double) -> MathapproxchebyshevRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevRange::scale(self : MathapproxchebyshevRange, f : Double) -> MathapproxchebyshevRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_range_add(a : MathapproxchebyshevRange, b : MathapproxchebyshevRange) -> MathapproxchebyshevRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevRange::add(self : MathapproxchebyshevRange, other : MathapproxchebyshevRange) -> MathapproxchebyshevRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_range_copy(s : MathapproxchebyshevRange) -> MathapproxchebyshevRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevRange::copy(self : MathapproxchebyshevRange) -> MathapproxchebyshevRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_range_fill(s : MathapproxchebyshevRange, v : Double) -> MathapproxchebyshevRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevRange::fill(self : MathapproxchebyshevRange, v : Double) -> MathapproxchebyshevRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_range_min(s : MathapproxchebyshevRange) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevRange::min(self : MathapproxchebyshevRange) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_range_max(s : MathapproxchebyshevRange) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevRange::max(self : MathapproxchebyshevRange) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_range_to_string(s : MathapproxchebyshevRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevRange::to_string(self : MathapproxchebyshevRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxchebyshevSlice {
@@ -1014,44 +1014,44 @@ pub fn math_approx_chebyshev_slice_make(size : Int) -> MathapproxchebyshevSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_chebyshev_slice_len(s : MathapproxchebyshevSlice) -> Int { s.size }
+pub fn MathapproxchebyshevSlice::len(self : MathapproxchebyshevSlice) -> Int { self.size }
 
-pub fn math_approx_chebyshev_slice_get(s : MathapproxchebyshevSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxchebyshevSlice::get(self : MathapproxchebyshevSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_chebyshev_slice_set(s : MathapproxchebyshevSlice, i : Int, v : Double) -> MathapproxchebyshevSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevSlice::set(self : MathapproxchebyshevSlice, i : Int, v : Double) -> MathapproxchebyshevSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_slice_sum(s : MathapproxchebyshevSlice) -> Double { @_common.sum(s.data) }
+pub fn MathapproxchebyshevSlice::sum(self : MathapproxchebyshevSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_chebyshev_slice_mean(s : MathapproxchebyshevSlice) -> Double { @_common.mean(s.data) }
+pub fn MathapproxchebyshevSlice::mean(self : MathapproxchebyshevSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_chebyshev_slice_scale(s : MathapproxchebyshevSlice, f : Double) -> MathapproxchebyshevSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevSlice::scale(self : MathapproxchebyshevSlice, f : Double) -> MathapproxchebyshevSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_slice_add(a : MathapproxchebyshevSlice, b : MathapproxchebyshevSlice) -> MathapproxchebyshevSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxchebyshevSlice::add(self : MathapproxchebyshevSlice, other : MathapproxchebyshevSlice) -> MathapproxchebyshevSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_slice_copy(s : MathapproxchebyshevSlice) -> MathapproxchebyshevSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevSlice::copy(self : MathapproxchebyshevSlice) -> MathapproxchebyshevSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_slice_fill(s : MathapproxchebyshevSlice, v : Double) -> MathapproxchebyshevSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxchebyshevSlice::fill(self : MathapproxchebyshevSlice, v : Double) -> MathapproxchebyshevSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_chebyshev_slice_min(s : MathapproxchebyshevSlice) -> Double { @_common.min(s.data) }
+pub fn MathapproxchebyshevSlice::min(self : MathapproxchebyshevSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_chebyshev_slice_max(s : MathapproxchebyshevSlice) -> Double { @_common.max(s.data) }
+pub fn MathapproxchebyshevSlice::max(self : MathapproxchebyshevSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_chebyshev_slice_to_string(s : MathapproxchebyshevSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxchebyshevSlice::to_string(self : MathapproxchebyshevSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

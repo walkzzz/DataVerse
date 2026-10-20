@@ -351,45 +351,45 @@ pub fn ml_regress_lasso_frame_make(size : Int) -> MlregresslassoFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_frame_len(s : MlregresslassoFrame) -> Int { s.size }
+pub fn MlregresslassoFrame::len(self : MlregresslassoFrame) -> Int { self.size }
 
-pub fn ml_regress_lasso_frame_get(s : MlregresslassoFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoFrame::get(self : MlregresslassoFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_frame_set(s : MlregresslassoFrame, i : Int, v : Double) -> MlregresslassoFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoFrame::set(self : MlregresslassoFrame, i : Int, v : Double) -> MlregresslassoFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_frame_sum(s : MlregresslassoFrame) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoFrame::sum(self : MlregresslassoFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_frame_mean(s : MlregresslassoFrame) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoFrame::mean(self : MlregresslassoFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_frame_scale(s : MlregresslassoFrame, f : Double) -> MlregresslassoFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoFrame::scale(self : MlregresslassoFrame, f : Double) -> MlregresslassoFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_frame_add(a : MlregresslassoFrame, b : MlregresslassoFrame) -> MlregresslassoFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoFrame::add(self : MlregresslassoFrame, other : MlregresslassoFrame) -> MlregresslassoFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_frame_copy(s : MlregresslassoFrame) -> MlregresslassoFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoFrame::copy(self : MlregresslassoFrame) -> MlregresslassoFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_frame_fill(s : MlregresslassoFrame, v : Double) -> MlregresslassoFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoFrame::fill(self : MlregresslassoFrame, v : Double) -> MlregresslassoFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_frame_min(s : MlregresslassoFrame) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoFrame::min(self : MlregresslassoFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_frame_max(s : MlregresslassoFrame) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoFrame::max(self : MlregresslassoFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_frame_to_string(s : MlregresslassoFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoFrame::to_string(self : MlregresslassoFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoTable {
@@ -402,45 +402,45 @@ pub fn ml_regress_lasso_table_make(size : Int) -> MlregresslassoTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_table_len(s : MlregresslassoTable) -> Int { s.size }
+pub fn MlregresslassoTable::len(self : MlregresslassoTable) -> Int { self.size }
 
-pub fn ml_regress_lasso_table_get(s : MlregresslassoTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoTable::get(self : MlregresslassoTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_table_set(s : MlregresslassoTable, i : Int, v : Double) -> MlregresslassoTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoTable::set(self : MlregresslassoTable, i : Int, v : Double) -> MlregresslassoTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_table_sum(s : MlregresslassoTable) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoTable::sum(self : MlregresslassoTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_table_mean(s : MlregresslassoTable) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoTable::mean(self : MlregresslassoTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_table_scale(s : MlregresslassoTable, f : Double) -> MlregresslassoTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoTable::scale(self : MlregresslassoTable, f : Double) -> MlregresslassoTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_table_add(a : MlregresslassoTable, b : MlregresslassoTable) -> MlregresslassoTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoTable::add(self : MlregresslassoTable, other : MlregresslassoTable) -> MlregresslassoTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_table_copy(s : MlregresslassoTable) -> MlregresslassoTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoTable::copy(self : MlregresslassoTable) -> MlregresslassoTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_table_fill(s : MlregresslassoTable, v : Double) -> MlregresslassoTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoTable::fill(self : MlregresslassoTable, v : Double) -> MlregresslassoTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_table_min(s : MlregresslassoTable) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoTable::min(self : MlregresslassoTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_table_max(s : MlregresslassoTable) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoTable::max(self : MlregresslassoTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_table_to_string(s : MlregresslassoTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoTable::to_string(self : MlregresslassoTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoGraphN {
@@ -453,45 +453,45 @@ pub fn ml_regress_lasso_graphn_make(size : Int) -> MlregresslassoGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_graphn_len(s : MlregresslassoGraphN) -> Int { s.size }
+pub fn MlregresslassoGraphN::len(self : MlregresslassoGraphN) -> Int { self.size }
 
-pub fn ml_regress_lasso_graphn_get(s : MlregresslassoGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoGraphN::get(self : MlregresslassoGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_graphn_set(s : MlregresslassoGraphN, i : Int, v : Double) -> MlregresslassoGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoGraphN::set(self : MlregresslassoGraphN, i : Int, v : Double) -> MlregresslassoGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_graphn_sum(s : MlregresslassoGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoGraphN::sum(self : MlregresslassoGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_graphn_mean(s : MlregresslassoGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoGraphN::mean(self : MlregresslassoGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_graphn_scale(s : MlregresslassoGraphN, f : Double) -> MlregresslassoGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoGraphN::scale(self : MlregresslassoGraphN, f : Double) -> MlregresslassoGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_graphn_add(a : MlregresslassoGraphN, b : MlregresslassoGraphN) -> MlregresslassoGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoGraphN::add(self : MlregresslassoGraphN, other : MlregresslassoGraphN) -> MlregresslassoGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_graphn_copy(s : MlregresslassoGraphN) -> MlregresslassoGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoGraphN::copy(self : MlregresslassoGraphN) -> MlregresslassoGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_graphn_fill(s : MlregresslassoGraphN, v : Double) -> MlregresslassoGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoGraphN::fill(self : MlregresslassoGraphN, v : Double) -> MlregresslassoGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_graphn_min(s : MlregresslassoGraphN) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoGraphN::min(self : MlregresslassoGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_graphn_max(s : MlregresslassoGraphN) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoGraphN::max(self : MlregresslassoGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_graphn_to_string(s : MlregresslassoGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoGraphN::to_string(self : MlregresslassoGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoNode {
@@ -504,45 +504,45 @@ pub fn ml_regress_lasso_node_make(size : Int) -> MlregresslassoNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_node_len(s : MlregresslassoNode) -> Int { s.size }
+pub fn MlregresslassoNode::len(self : MlregresslassoNode) -> Int { self.size }
 
-pub fn ml_regress_lasso_node_get(s : MlregresslassoNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoNode::get(self : MlregresslassoNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_node_set(s : MlregresslassoNode, i : Int, v : Double) -> MlregresslassoNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoNode::set(self : MlregresslassoNode, i : Int, v : Double) -> MlregresslassoNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_node_sum(s : MlregresslassoNode) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoNode::sum(self : MlregresslassoNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_node_mean(s : MlregresslassoNode) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoNode::mean(self : MlregresslassoNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_node_scale(s : MlregresslassoNode, f : Double) -> MlregresslassoNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoNode::scale(self : MlregresslassoNode, f : Double) -> MlregresslassoNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_node_add(a : MlregresslassoNode, b : MlregresslassoNode) -> MlregresslassoNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoNode::add(self : MlregresslassoNode, other : MlregresslassoNode) -> MlregresslassoNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_node_copy(s : MlregresslassoNode) -> MlregresslassoNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoNode::copy(self : MlregresslassoNode) -> MlregresslassoNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_node_fill(s : MlregresslassoNode, v : Double) -> MlregresslassoNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoNode::fill(self : MlregresslassoNode, v : Double) -> MlregresslassoNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_node_min(s : MlregresslassoNode) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoNode::min(self : MlregresslassoNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_node_max(s : MlregresslassoNode) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoNode::max(self : MlregresslassoNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_node_to_string(s : MlregresslassoNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoNode::to_string(self : MlregresslassoNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoEdge {
@@ -555,45 +555,45 @@ pub fn ml_regress_lasso_edge_make(size : Int) -> MlregresslassoEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_edge_len(s : MlregresslassoEdge) -> Int { s.size }
+pub fn MlregresslassoEdge::len(self : MlregresslassoEdge) -> Int { self.size }
 
-pub fn ml_regress_lasso_edge_get(s : MlregresslassoEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoEdge::get(self : MlregresslassoEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_edge_set(s : MlregresslassoEdge, i : Int, v : Double) -> MlregresslassoEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoEdge::set(self : MlregresslassoEdge, i : Int, v : Double) -> MlregresslassoEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_edge_sum(s : MlregresslassoEdge) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoEdge::sum(self : MlregresslassoEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_edge_mean(s : MlregresslassoEdge) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoEdge::mean(self : MlregresslassoEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_edge_scale(s : MlregresslassoEdge, f : Double) -> MlregresslassoEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoEdge::scale(self : MlregresslassoEdge, f : Double) -> MlregresslassoEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_edge_add(a : MlregresslassoEdge, b : MlregresslassoEdge) -> MlregresslassoEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoEdge::add(self : MlregresslassoEdge, other : MlregresslassoEdge) -> MlregresslassoEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_edge_copy(s : MlregresslassoEdge) -> MlregresslassoEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoEdge::copy(self : MlregresslassoEdge) -> MlregresslassoEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_edge_fill(s : MlregresslassoEdge, v : Double) -> MlregresslassoEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoEdge::fill(self : MlregresslassoEdge, v : Double) -> MlregresslassoEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_edge_min(s : MlregresslassoEdge) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoEdge::min(self : MlregresslassoEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_edge_max(s : MlregresslassoEdge) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoEdge::max(self : MlregresslassoEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_edge_to_string(s : MlregresslassoEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoEdge::to_string(self : MlregresslassoEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoPath {
@@ -606,45 +606,45 @@ pub fn ml_regress_lasso_path_make(size : Int) -> MlregresslassoPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_path_len(s : MlregresslassoPath) -> Int { s.size }
+pub fn MlregresslassoPath::len(self : MlregresslassoPath) -> Int { self.size }
 
-pub fn ml_regress_lasso_path_get(s : MlregresslassoPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoPath::get(self : MlregresslassoPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_path_set(s : MlregresslassoPath, i : Int, v : Double) -> MlregresslassoPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoPath::set(self : MlregresslassoPath, i : Int, v : Double) -> MlregresslassoPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_path_sum(s : MlregresslassoPath) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoPath::sum(self : MlregresslassoPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_path_mean(s : MlregresslassoPath) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoPath::mean(self : MlregresslassoPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_path_scale(s : MlregresslassoPath, f : Double) -> MlregresslassoPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoPath::scale(self : MlregresslassoPath, f : Double) -> MlregresslassoPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_path_add(a : MlregresslassoPath, b : MlregresslassoPath) -> MlregresslassoPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoPath::add(self : MlregresslassoPath, other : MlregresslassoPath) -> MlregresslassoPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_path_copy(s : MlregresslassoPath) -> MlregresslassoPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoPath::copy(self : MlregresslassoPath) -> MlregresslassoPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_path_fill(s : MlregresslassoPath, v : Double) -> MlregresslassoPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoPath::fill(self : MlregresslassoPath, v : Double) -> MlregresslassoPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_path_min(s : MlregresslassoPath) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoPath::min(self : MlregresslassoPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_path_max(s : MlregresslassoPath) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoPath::max(self : MlregresslassoPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_path_to_string(s : MlregresslassoPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoPath::to_string(self : MlregresslassoPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoCluster {
@@ -657,45 +657,45 @@ pub fn ml_regress_lasso_cluster_make(size : Int) -> MlregresslassoCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_cluster_len(s : MlregresslassoCluster) -> Int { s.size }
+pub fn MlregresslassoCluster::len(self : MlregresslassoCluster) -> Int { self.size }
 
-pub fn ml_regress_lasso_cluster_get(s : MlregresslassoCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoCluster::get(self : MlregresslassoCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_cluster_set(s : MlregresslassoCluster, i : Int, v : Double) -> MlregresslassoCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoCluster::set(self : MlregresslassoCluster, i : Int, v : Double) -> MlregresslassoCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_cluster_sum(s : MlregresslassoCluster) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoCluster::sum(self : MlregresslassoCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_cluster_mean(s : MlregresslassoCluster) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoCluster::mean(self : MlregresslassoCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_cluster_scale(s : MlregresslassoCluster, f : Double) -> MlregresslassoCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoCluster::scale(self : MlregresslassoCluster, f : Double) -> MlregresslassoCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_cluster_add(a : MlregresslassoCluster, b : MlregresslassoCluster) -> MlregresslassoCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoCluster::add(self : MlregresslassoCluster, other : MlregresslassoCluster) -> MlregresslassoCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_cluster_copy(s : MlregresslassoCluster) -> MlregresslassoCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoCluster::copy(self : MlregresslassoCluster) -> MlregresslassoCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_cluster_fill(s : MlregresslassoCluster, v : Double) -> MlregresslassoCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoCluster::fill(self : MlregresslassoCluster, v : Double) -> MlregresslassoCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_cluster_min(s : MlregresslassoCluster) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoCluster::min(self : MlregresslassoCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_cluster_max(s : MlregresslassoCluster) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoCluster::max(self : MlregresslassoCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_cluster_to_string(s : MlregresslassoCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoCluster::to_string(self : MlregresslassoCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoModel {
@@ -708,45 +708,45 @@ pub fn ml_regress_lasso_model_make(size : Int) -> MlregresslassoModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_model_len(s : MlregresslassoModel) -> Int { s.size }
+pub fn MlregresslassoModel::len(self : MlregresslassoModel) -> Int { self.size }
 
-pub fn ml_regress_lasso_model_get(s : MlregresslassoModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoModel::get(self : MlregresslassoModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_model_set(s : MlregresslassoModel, i : Int, v : Double) -> MlregresslassoModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoModel::set(self : MlregresslassoModel, i : Int, v : Double) -> MlregresslassoModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_model_sum(s : MlregresslassoModel) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoModel::sum(self : MlregresslassoModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_model_mean(s : MlregresslassoModel) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoModel::mean(self : MlregresslassoModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_model_scale(s : MlregresslassoModel, f : Double) -> MlregresslassoModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoModel::scale(self : MlregresslassoModel, f : Double) -> MlregresslassoModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_model_add(a : MlregresslassoModel, b : MlregresslassoModel) -> MlregresslassoModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoModel::add(self : MlregresslassoModel, other : MlregresslassoModel) -> MlregresslassoModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_model_copy(s : MlregresslassoModel) -> MlregresslassoModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoModel::copy(self : MlregresslassoModel) -> MlregresslassoModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_model_fill(s : MlregresslassoModel, v : Double) -> MlregresslassoModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoModel::fill(self : MlregresslassoModel, v : Double) -> MlregresslassoModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_model_min(s : MlregresslassoModel) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoModel::min(self : MlregresslassoModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_model_max(s : MlregresslassoModel) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoModel::max(self : MlregresslassoModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_model_to_string(s : MlregresslassoModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoModel::to_string(self : MlregresslassoModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoLayer {
@@ -759,45 +759,45 @@ pub fn ml_regress_lasso_layer_make(size : Int) -> MlregresslassoLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_layer_len(s : MlregresslassoLayer) -> Int { s.size }
+pub fn MlregresslassoLayer::len(self : MlregresslassoLayer) -> Int { self.size }
 
-pub fn ml_regress_lasso_layer_get(s : MlregresslassoLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoLayer::get(self : MlregresslassoLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_layer_set(s : MlregresslassoLayer, i : Int, v : Double) -> MlregresslassoLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoLayer::set(self : MlregresslassoLayer, i : Int, v : Double) -> MlregresslassoLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_layer_sum(s : MlregresslassoLayer) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoLayer::sum(self : MlregresslassoLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_layer_mean(s : MlregresslassoLayer) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoLayer::mean(self : MlregresslassoLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_layer_scale(s : MlregresslassoLayer, f : Double) -> MlregresslassoLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoLayer::scale(self : MlregresslassoLayer, f : Double) -> MlregresslassoLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_layer_add(a : MlregresslassoLayer, b : MlregresslassoLayer) -> MlregresslassoLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoLayer::add(self : MlregresslassoLayer, other : MlregresslassoLayer) -> MlregresslassoLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_layer_copy(s : MlregresslassoLayer) -> MlregresslassoLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoLayer::copy(self : MlregresslassoLayer) -> MlregresslassoLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_layer_fill(s : MlregresslassoLayer, v : Double) -> MlregresslassoLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoLayer::fill(self : MlregresslassoLayer, v : Double) -> MlregresslassoLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_layer_min(s : MlregresslassoLayer) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoLayer::min(self : MlregresslassoLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_layer_max(s : MlregresslassoLayer) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoLayer::max(self : MlregresslassoLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_layer_to_string(s : MlregresslassoLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoLayer::to_string(self : MlregresslassoLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoBuffer {
@@ -810,45 +810,45 @@ pub fn ml_regress_lasso_buffer_make(size : Int) -> MlregresslassoBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_buffer_len(s : MlregresslassoBuffer) -> Int { s.size }
+pub fn MlregresslassoBuffer::len(self : MlregresslassoBuffer) -> Int { self.size }
 
-pub fn ml_regress_lasso_buffer_get(s : MlregresslassoBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoBuffer::get(self : MlregresslassoBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_buffer_set(s : MlregresslassoBuffer, i : Int, v : Double) -> MlregresslassoBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoBuffer::set(self : MlregresslassoBuffer, i : Int, v : Double) -> MlregresslassoBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_buffer_sum(s : MlregresslassoBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoBuffer::sum(self : MlregresslassoBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_buffer_mean(s : MlregresslassoBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoBuffer::mean(self : MlregresslassoBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_buffer_scale(s : MlregresslassoBuffer, f : Double) -> MlregresslassoBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoBuffer::scale(self : MlregresslassoBuffer, f : Double) -> MlregresslassoBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_buffer_add(a : MlregresslassoBuffer, b : MlregresslassoBuffer) -> MlregresslassoBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoBuffer::add(self : MlregresslassoBuffer, other : MlregresslassoBuffer) -> MlregresslassoBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_buffer_copy(s : MlregresslassoBuffer) -> MlregresslassoBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoBuffer::copy(self : MlregresslassoBuffer) -> MlregresslassoBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_buffer_fill(s : MlregresslassoBuffer, v : Double) -> MlregresslassoBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoBuffer::fill(self : MlregresslassoBuffer, v : Double) -> MlregresslassoBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_buffer_min(s : MlregresslassoBuffer) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoBuffer::min(self : MlregresslassoBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_buffer_max(s : MlregresslassoBuffer) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoBuffer::max(self : MlregresslassoBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_buffer_to_string(s : MlregresslassoBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoBuffer::to_string(self : MlregresslassoBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoCursor {
@@ -861,45 +861,45 @@ pub fn ml_regress_lasso_cursor_make(size : Int) -> MlregresslassoCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_cursor_len(s : MlregresslassoCursor) -> Int { s.size }
+pub fn MlregresslassoCursor::len(self : MlregresslassoCursor) -> Int { self.size }
 
-pub fn ml_regress_lasso_cursor_get(s : MlregresslassoCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoCursor::get(self : MlregresslassoCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_cursor_set(s : MlregresslassoCursor, i : Int, v : Double) -> MlregresslassoCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoCursor::set(self : MlregresslassoCursor, i : Int, v : Double) -> MlregresslassoCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_cursor_sum(s : MlregresslassoCursor) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoCursor::sum(self : MlregresslassoCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_cursor_mean(s : MlregresslassoCursor) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoCursor::mean(self : MlregresslassoCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_cursor_scale(s : MlregresslassoCursor, f : Double) -> MlregresslassoCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoCursor::scale(self : MlregresslassoCursor, f : Double) -> MlregresslassoCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_cursor_add(a : MlregresslassoCursor, b : MlregresslassoCursor) -> MlregresslassoCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoCursor::add(self : MlregresslassoCursor, other : MlregresslassoCursor) -> MlregresslassoCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_cursor_copy(s : MlregresslassoCursor) -> MlregresslassoCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoCursor::copy(self : MlregresslassoCursor) -> MlregresslassoCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_cursor_fill(s : MlregresslassoCursor, v : Double) -> MlregresslassoCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoCursor::fill(self : MlregresslassoCursor, v : Double) -> MlregresslassoCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_cursor_min(s : MlregresslassoCursor) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoCursor::min(self : MlregresslassoCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_cursor_max(s : MlregresslassoCursor) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoCursor::max(self : MlregresslassoCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_cursor_to_string(s : MlregresslassoCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoCursor::to_string(self : MlregresslassoCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoView {
@@ -912,45 +912,45 @@ pub fn ml_regress_lasso_view_make(size : Int) -> MlregresslassoView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_view_len(s : MlregresslassoView) -> Int { s.size }
+pub fn MlregresslassoView::len(self : MlregresslassoView) -> Int { self.size }
 
-pub fn ml_regress_lasso_view_get(s : MlregresslassoView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoView::get(self : MlregresslassoView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_view_set(s : MlregresslassoView, i : Int, v : Double) -> MlregresslassoView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoView::set(self : MlregresslassoView, i : Int, v : Double) -> MlregresslassoView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_view_sum(s : MlregresslassoView) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoView::sum(self : MlregresslassoView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_view_mean(s : MlregresslassoView) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoView::mean(self : MlregresslassoView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_view_scale(s : MlregresslassoView, f : Double) -> MlregresslassoView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoView::scale(self : MlregresslassoView, f : Double) -> MlregresslassoView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_view_add(a : MlregresslassoView, b : MlregresslassoView) -> MlregresslassoView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoView::add(self : MlregresslassoView, other : MlregresslassoView) -> MlregresslassoView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_view_copy(s : MlregresslassoView) -> MlregresslassoView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoView::copy(self : MlregresslassoView) -> MlregresslassoView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_view_fill(s : MlregresslassoView, v : Double) -> MlregresslassoView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoView::fill(self : MlregresslassoView, v : Double) -> MlregresslassoView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_view_min(s : MlregresslassoView) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoView::min(self : MlregresslassoView) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_view_max(s : MlregresslassoView) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoView::max(self : MlregresslassoView) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_view_to_string(s : MlregresslassoView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoView::to_string(self : MlregresslassoView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoRange {
@@ -963,45 +963,45 @@ pub fn ml_regress_lasso_range_make(size : Int) -> MlregresslassoRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_range_len(s : MlregresslassoRange) -> Int { s.size }
+pub fn MlregresslassoRange::len(self : MlregresslassoRange) -> Int { self.size }
 
-pub fn ml_regress_lasso_range_get(s : MlregresslassoRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoRange::get(self : MlregresslassoRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_range_set(s : MlregresslassoRange, i : Int, v : Double) -> MlregresslassoRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoRange::set(self : MlregresslassoRange, i : Int, v : Double) -> MlregresslassoRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_range_sum(s : MlregresslassoRange) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoRange::sum(self : MlregresslassoRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_range_mean(s : MlregresslassoRange) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoRange::mean(self : MlregresslassoRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_range_scale(s : MlregresslassoRange, f : Double) -> MlregresslassoRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoRange::scale(self : MlregresslassoRange, f : Double) -> MlregresslassoRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_range_add(a : MlregresslassoRange, b : MlregresslassoRange) -> MlregresslassoRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoRange::add(self : MlregresslassoRange, other : MlregresslassoRange) -> MlregresslassoRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_range_copy(s : MlregresslassoRange) -> MlregresslassoRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoRange::copy(self : MlregresslassoRange) -> MlregresslassoRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_range_fill(s : MlregresslassoRange, v : Double) -> MlregresslassoRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoRange::fill(self : MlregresslassoRange, v : Double) -> MlregresslassoRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_range_min(s : MlregresslassoRange) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoRange::min(self : MlregresslassoRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_range_max(s : MlregresslassoRange) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoRange::max(self : MlregresslassoRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_range_to_string(s : MlregresslassoRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoRange::to_string(self : MlregresslassoRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslassoSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_regress_lasso_slice_make(size : Int) -> MlregresslassoSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_lasso_slice_len(s : MlregresslassoSlice) -> Int { s.size }
+pub fn MlregresslassoSlice::len(self : MlregresslassoSlice) -> Int { self.size }
 
-pub fn ml_regress_lasso_slice_get(s : MlregresslassoSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslassoSlice::get(self : MlregresslassoSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_lasso_slice_set(s : MlregresslassoSlice, i : Int, v : Double) -> MlregresslassoSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslassoSlice::set(self : MlregresslassoSlice, i : Int, v : Double) -> MlregresslassoSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_slice_sum(s : MlregresslassoSlice) -> Double { @_common.sum(s.data) }
+pub fn MlregresslassoSlice::sum(self : MlregresslassoSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_lasso_slice_mean(s : MlregresslassoSlice) -> Double { @_common.mean(s.data) }
+pub fn MlregresslassoSlice::mean(self : MlregresslassoSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_lasso_slice_scale(s : MlregresslassoSlice, f : Double) -> MlregresslassoSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslassoSlice::scale(self : MlregresslassoSlice, f : Double) -> MlregresslassoSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_slice_add(a : MlregresslassoSlice, b : MlregresslassoSlice) -> MlregresslassoSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslassoSlice::add(self : MlregresslassoSlice, other : MlregresslassoSlice) -> MlregresslassoSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_slice_copy(s : MlregresslassoSlice) -> MlregresslassoSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslassoSlice::copy(self : MlregresslassoSlice) -> MlregresslassoSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_slice_fill(s : MlregresslassoSlice, v : Double) -> MlregresslassoSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslassoSlice::fill(self : MlregresslassoSlice, v : Double) -> MlregresslassoSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_lasso_slice_min(s : MlregresslassoSlice) -> Double { @_common.min(s.data) }
+pub fn MlregresslassoSlice::min(self : MlregresslassoSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_lasso_slice_max(s : MlregresslassoSlice) -> Double { @_common.max(s.data) }
+pub fn MlregresslassoSlice::max(self : MlregresslassoSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_lasso_slice_to_string(s : MlregresslassoSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslassoSlice::to_string(self : MlregresslassoSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

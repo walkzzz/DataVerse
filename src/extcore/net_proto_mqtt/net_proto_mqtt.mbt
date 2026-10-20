@@ -351,45 +351,45 @@ pub fn net_proto_mqtt_frame_make(size : Int) -> NetprotomqttFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_frame_len(s : NetprotomqttFrame) -> Int { s.size }
+pub fn NetprotomqttFrame::len(self : NetprotomqttFrame) -> Int { self.size }
 
-pub fn net_proto_mqtt_frame_get(s : NetprotomqttFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttFrame::get(self : NetprotomqttFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_frame_set(s : NetprotomqttFrame, i : Int, v : Double) -> NetprotomqttFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttFrame::set(self : NetprotomqttFrame, i : Int, v : Double) -> NetprotomqttFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_frame_sum(s : NetprotomqttFrame) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttFrame::sum(self : NetprotomqttFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_frame_mean(s : NetprotomqttFrame) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttFrame::mean(self : NetprotomqttFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_frame_scale(s : NetprotomqttFrame, f : Double) -> NetprotomqttFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttFrame::scale(self : NetprotomqttFrame, f : Double) -> NetprotomqttFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_frame_add(a : NetprotomqttFrame, b : NetprotomqttFrame) -> NetprotomqttFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttFrame::add(self : NetprotomqttFrame, other : NetprotomqttFrame) -> NetprotomqttFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_frame_copy(s : NetprotomqttFrame) -> NetprotomqttFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttFrame::copy(self : NetprotomqttFrame) -> NetprotomqttFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_frame_fill(s : NetprotomqttFrame, v : Double) -> NetprotomqttFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttFrame::fill(self : NetprotomqttFrame, v : Double) -> NetprotomqttFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_frame_min(s : NetprotomqttFrame) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttFrame::min(self : NetprotomqttFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_frame_max(s : NetprotomqttFrame) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttFrame::max(self : NetprotomqttFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_frame_to_string(s : NetprotomqttFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttFrame::to_string(self : NetprotomqttFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttTable {
@@ -402,45 +402,45 @@ pub fn net_proto_mqtt_table_make(size : Int) -> NetprotomqttTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_table_len(s : NetprotomqttTable) -> Int { s.size }
+pub fn NetprotomqttTable::len(self : NetprotomqttTable) -> Int { self.size }
 
-pub fn net_proto_mqtt_table_get(s : NetprotomqttTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttTable::get(self : NetprotomqttTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_table_set(s : NetprotomqttTable, i : Int, v : Double) -> NetprotomqttTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttTable::set(self : NetprotomqttTable, i : Int, v : Double) -> NetprotomqttTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_table_sum(s : NetprotomqttTable) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttTable::sum(self : NetprotomqttTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_table_mean(s : NetprotomqttTable) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttTable::mean(self : NetprotomqttTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_table_scale(s : NetprotomqttTable, f : Double) -> NetprotomqttTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttTable::scale(self : NetprotomqttTable, f : Double) -> NetprotomqttTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_table_add(a : NetprotomqttTable, b : NetprotomqttTable) -> NetprotomqttTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttTable::add(self : NetprotomqttTable, other : NetprotomqttTable) -> NetprotomqttTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_table_copy(s : NetprotomqttTable) -> NetprotomqttTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttTable::copy(self : NetprotomqttTable) -> NetprotomqttTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_table_fill(s : NetprotomqttTable, v : Double) -> NetprotomqttTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttTable::fill(self : NetprotomqttTable, v : Double) -> NetprotomqttTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_table_min(s : NetprotomqttTable) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttTable::min(self : NetprotomqttTable) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_table_max(s : NetprotomqttTable) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttTable::max(self : NetprotomqttTable) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_table_to_string(s : NetprotomqttTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttTable::to_string(self : NetprotomqttTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttGraphN {
@@ -453,45 +453,45 @@ pub fn net_proto_mqtt_graphn_make(size : Int) -> NetprotomqttGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_graphn_len(s : NetprotomqttGraphN) -> Int { s.size }
+pub fn NetprotomqttGraphN::len(self : NetprotomqttGraphN) -> Int { self.size }
 
-pub fn net_proto_mqtt_graphn_get(s : NetprotomqttGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttGraphN::get(self : NetprotomqttGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_graphn_set(s : NetprotomqttGraphN, i : Int, v : Double) -> NetprotomqttGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttGraphN::set(self : NetprotomqttGraphN, i : Int, v : Double) -> NetprotomqttGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_graphn_sum(s : NetprotomqttGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttGraphN::sum(self : NetprotomqttGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_graphn_mean(s : NetprotomqttGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttGraphN::mean(self : NetprotomqttGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_graphn_scale(s : NetprotomqttGraphN, f : Double) -> NetprotomqttGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttGraphN::scale(self : NetprotomqttGraphN, f : Double) -> NetprotomqttGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_graphn_add(a : NetprotomqttGraphN, b : NetprotomqttGraphN) -> NetprotomqttGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttGraphN::add(self : NetprotomqttGraphN, other : NetprotomqttGraphN) -> NetprotomqttGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_graphn_copy(s : NetprotomqttGraphN) -> NetprotomqttGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttGraphN::copy(self : NetprotomqttGraphN) -> NetprotomqttGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_graphn_fill(s : NetprotomqttGraphN, v : Double) -> NetprotomqttGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttGraphN::fill(self : NetprotomqttGraphN, v : Double) -> NetprotomqttGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_graphn_min(s : NetprotomqttGraphN) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttGraphN::min(self : NetprotomqttGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_graphn_max(s : NetprotomqttGraphN) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttGraphN::max(self : NetprotomqttGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_graphn_to_string(s : NetprotomqttGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttGraphN::to_string(self : NetprotomqttGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttNode {
@@ -504,45 +504,45 @@ pub fn net_proto_mqtt_node_make(size : Int) -> NetprotomqttNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_node_len(s : NetprotomqttNode) -> Int { s.size }
+pub fn NetprotomqttNode::len(self : NetprotomqttNode) -> Int { self.size }
 
-pub fn net_proto_mqtt_node_get(s : NetprotomqttNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttNode::get(self : NetprotomqttNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_node_set(s : NetprotomqttNode, i : Int, v : Double) -> NetprotomqttNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttNode::set(self : NetprotomqttNode, i : Int, v : Double) -> NetprotomqttNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_node_sum(s : NetprotomqttNode) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttNode::sum(self : NetprotomqttNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_node_mean(s : NetprotomqttNode) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttNode::mean(self : NetprotomqttNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_node_scale(s : NetprotomqttNode, f : Double) -> NetprotomqttNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttNode::scale(self : NetprotomqttNode, f : Double) -> NetprotomqttNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_node_add(a : NetprotomqttNode, b : NetprotomqttNode) -> NetprotomqttNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttNode::add(self : NetprotomqttNode, other : NetprotomqttNode) -> NetprotomqttNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_node_copy(s : NetprotomqttNode) -> NetprotomqttNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttNode::copy(self : NetprotomqttNode) -> NetprotomqttNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_node_fill(s : NetprotomqttNode, v : Double) -> NetprotomqttNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttNode::fill(self : NetprotomqttNode, v : Double) -> NetprotomqttNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_node_min(s : NetprotomqttNode) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttNode::min(self : NetprotomqttNode) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_node_max(s : NetprotomqttNode) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttNode::max(self : NetprotomqttNode) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_node_to_string(s : NetprotomqttNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttNode::to_string(self : NetprotomqttNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttEdge {
@@ -555,45 +555,45 @@ pub fn net_proto_mqtt_edge_make(size : Int) -> NetprotomqttEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_edge_len(s : NetprotomqttEdge) -> Int { s.size }
+pub fn NetprotomqttEdge::len(self : NetprotomqttEdge) -> Int { self.size }
 
-pub fn net_proto_mqtt_edge_get(s : NetprotomqttEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttEdge::get(self : NetprotomqttEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_edge_set(s : NetprotomqttEdge, i : Int, v : Double) -> NetprotomqttEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttEdge::set(self : NetprotomqttEdge, i : Int, v : Double) -> NetprotomqttEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_edge_sum(s : NetprotomqttEdge) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttEdge::sum(self : NetprotomqttEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_edge_mean(s : NetprotomqttEdge) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttEdge::mean(self : NetprotomqttEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_edge_scale(s : NetprotomqttEdge, f : Double) -> NetprotomqttEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttEdge::scale(self : NetprotomqttEdge, f : Double) -> NetprotomqttEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_edge_add(a : NetprotomqttEdge, b : NetprotomqttEdge) -> NetprotomqttEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttEdge::add(self : NetprotomqttEdge, other : NetprotomqttEdge) -> NetprotomqttEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_edge_copy(s : NetprotomqttEdge) -> NetprotomqttEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttEdge::copy(self : NetprotomqttEdge) -> NetprotomqttEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_edge_fill(s : NetprotomqttEdge, v : Double) -> NetprotomqttEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttEdge::fill(self : NetprotomqttEdge, v : Double) -> NetprotomqttEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_edge_min(s : NetprotomqttEdge) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttEdge::min(self : NetprotomqttEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_edge_max(s : NetprotomqttEdge) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttEdge::max(self : NetprotomqttEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_edge_to_string(s : NetprotomqttEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttEdge::to_string(self : NetprotomqttEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttPath {
@@ -606,45 +606,45 @@ pub fn net_proto_mqtt_path_make(size : Int) -> NetprotomqttPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_path_len(s : NetprotomqttPath) -> Int { s.size }
+pub fn NetprotomqttPath::len(self : NetprotomqttPath) -> Int { self.size }
 
-pub fn net_proto_mqtt_path_get(s : NetprotomqttPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttPath::get(self : NetprotomqttPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_path_set(s : NetprotomqttPath, i : Int, v : Double) -> NetprotomqttPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttPath::set(self : NetprotomqttPath, i : Int, v : Double) -> NetprotomqttPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_path_sum(s : NetprotomqttPath) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttPath::sum(self : NetprotomqttPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_path_mean(s : NetprotomqttPath) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttPath::mean(self : NetprotomqttPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_path_scale(s : NetprotomqttPath, f : Double) -> NetprotomqttPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttPath::scale(self : NetprotomqttPath, f : Double) -> NetprotomqttPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_path_add(a : NetprotomqttPath, b : NetprotomqttPath) -> NetprotomqttPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttPath::add(self : NetprotomqttPath, other : NetprotomqttPath) -> NetprotomqttPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_path_copy(s : NetprotomqttPath) -> NetprotomqttPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttPath::copy(self : NetprotomqttPath) -> NetprotomqttPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_path_fill(s : NetprotomqttPath, v : Double) -> NetprotomqttPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttPath::fill(self : NetprotomqttPath, v : Double) -> NetprotomqttPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_path_min(s : NetprotomqttPath) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttPath::min(self : NetprotomqttPath) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_path_max(s : NetprotomqttPath) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttPath::max(self : NetprotomqttPath) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_path_to_string(s : NetprotomqttPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttPath::to_string(self : NetprotomqttPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttCluster {
@@ -657,45 +657,45 @@ pub fn net_proto_mqtt_cluster_make(size : Int) -> NetprotomqttCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_cluster_len(s : NetprotomqttCluster) -> Int { s.size }
+pub fn NetprotomqttCluster::len(self : NetprotomqttCluster) -> Int { self.size }
 
-pub fn net_proto_mqtt_cluster_get(s : NetprotomqttCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttCluster::get(self : NetprotomqttCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_cluster_set(s : NetprotomqttCluster, i : Int, v : Double) -> NetprotomqttCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttCluster::set(self : NetprotomqttCluster, i : Int, v : Double) -> NetprotomqttCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_cluster_sum(s : NetprotomqttCluster) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttCluster::sum(self : NetprotomqttCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_cluster_mean(s : NetprotomqttCluster) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttCluster::mean(self : NetprotomqttCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_cluster_scale(s : NetprotomqttCluster, f : Double) -> NetprotomqttCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttCluster::scale(self : NetprotomqttCluster, f : Double) -> NetprotomqttCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_cluster_add(a : NetprotomqttCluster, b : NetprotomqttCluster) -> NetprotomqttCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttCluster::add(self : NetprotomqttCluster, other : NetprotomqttCluster) -> NetprotomqttCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_cluster_copy(s : NetprotomqttCluster) -> NetprotomqttCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttCluster::copy(self : NetprotomqttCluster) -> NetprotomqttCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_cluster_fill(s : NetprotomqttCluster, v : Double) -> NetprotomqttCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttCluster::fill(self : NetprotomqttCluster, v : Double) -> NetprotomqttCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_cluster_min(s : NetprotomqttCluster) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttCluster::min(self : NetprotomqttCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_cluster_max(s : NetprotomqttCluster) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttCluster::max(self : NetprotomqttCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_cluster_to_string(s : NetprotomqttCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttCluster::to_string(self : NetprotomqttCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttModel {
@@ -708,45 +708,45 @@ pub fn net_proto_mqtt_model_make(size : Int) -> NetprotomqttModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_model_len(s : NetprotomqttModel) -> Int { s.size }
+pub fn NetprotomqttModel::len(self : NetprotomqttModel) -> Int { self.size }
 
-pub fn net_proto_mqtt_model_get(s : NetprotomqttModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttModel::get(self : NetprotomqttModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_model_set(s : NetprotomqttModel, i : Int, v : Double) -> NetprotomqttModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttModel::set(self : NetprotomqttModel, i : Int, v : Double) -> NetprotomqttModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_model_sum(s : NetprotomqttModel) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttModel::sum(self : NetprotomqttModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_model_mean(s : NetprotomqttModel) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttModel::mean(self : NetprotomqttModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_model_scale(s : NetprotomqttModel, f : Double) -> NetprotomqttModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttModel::scale(self : NetprotomqttModel, f : Double) -> NetprotomqttModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_model_add(a : NetprotomqttModel, b : NetprotomqttModel) -> NetprotomqttModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttModel::add(self : NetprotomqttModel, other : NetprotomqttModel) -> NetprotomqttModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_model_copy(s : NetprotomqttModel) -> NetprotomqttModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttModel::copy(self : NetprotomqttModel) -> NetprotomqttModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_model_fill(s : NetprotomqttModel, v : Double) -> NetprotomqttModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttModel::fill(self : NetprotomqttModel, v : Double) -> NetprotomqttModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_model_min(s : NetprotomqttModel) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttModel::min(self : NetprotomqttModel) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_model_max(s : NetprotomqttModel) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttModel::max(self : NetprotomqttModel) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_model_to_string(s : NetprotomqttModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttModel::to_string(self : NetprotomqttModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttLayer {
@@ -759,45 +759,45 @@ pub fn net_proto_mqtt_layer_make(size : Int) -> NetprotomqttLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_layer_len(s : NetprotomqttLayer) -> Int { s.size }
+pub fn NetprotomqttLayer::len(self : NetprotomqttLayer) -> Int { self.size }
 
-pub fn net_proto_mqtt_layer_get(s : NetprotomqttLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttLayer::get(self : NetprotomqttLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_layer_set(s : NetprotomqttLayer, i : Int, v : Double) -> NetprotomqttLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttLayer::set(self : NetprotomqttLayer, i : Int, v : Double) -> NetprotomqttLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_layer_sum(s : NetprotomqttLayer) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttLayer::sum(self : NetprotomqttLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_layer_mean(s : NetprotomqttLayer) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttLayer::mean(self : NetprotomqttLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_layer_scale(s : NetprotomqttLayer, f : Double) -> NetprotomqttLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttLayer::scale(self : NetprotomqttLayer, f : Double) -> NetprotomqttLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_layer_add(a : NetprotomqttLayer, b : NetprotomqttLayer) -> NetprotomqttLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttLayer::add(self : NetprotomqttLayer, other : NetprotomqttLayer) -> NetprotomqttLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_layer_copy(s : NetprotomqttLayer) -> NetprotomqttLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttLayer::copy(self : NetprotomqttLayer) -> NetprotomqttLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_layer_fill(s : NetprotomqttLayer, v : Double) -> NetprotomqttLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttLayer::fill(self : NetprotomqttLayer, v : Double) -> NetprotomqttLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_layer_min(s : NetprotomqttLayer) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttLayer::min(self : NetprotomqttLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_layer_max(s : NetprotomqttLayer) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttLayer::max(self : NetprotomqttLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_layer_to_string(s : NetprotomqttLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttLayer::to_string(self : NetprotomqttLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttBuffer {
@@ -810,45 +810,45 @@ pub fn net_proto_mqtt_buffer_make(size : Int) -> NetprotomqttBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_buffer_len(s : NetprotomqttBuffer) -> Int { s.size }
+pub fn NetprotomqttBuffer::len(self : NetprotomqttBuffer) -> Int { self.size }
 
-pub fn net_proto_mqtt_buffer_get(s : NetprotomqttBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttBuffer::get(self : NetprotomqttBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_buffer_set(s : NetprotomqttBuffer, i : Int, v : Double) -> NetprotomqttBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttBuffer::set(self : NetprotomqttBuffer, i : Int, v : Double) -> NetprotomqttBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_buffer_sum(s : NetprotomqttBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttBuffer::sum(self : NetprotomqttBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_buffer_mean(s : NetprotomqttBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttBuffer::mean(self : NetprotomqttBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_buffer_scale(s : NetprotomqttBuffer, f : Double) -> NetprotomqttBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttBuffer::scale(self : NetprotomqttBuffer, f : Double) -> NetprotomqttBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_buffer_add(a : NetprotomqttBuffer, b : NetprotomqttBuffer) -> NetprotomqttBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttBuffer::add(self : NetprotomqttBuffer, other : NetprotomqttBuffer) -> NetprotomqttBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_buffer_copy(s : NetprotomqttBuffer) -> NetprotomqttBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttBuffer::copy(self : NetprotomqttBuffer) -> NetprotomqttBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_buffer_fill(s : NetprotomqttBuffer, v : Double) -> NetprotomqttBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttBuffer::fill(self : NetprotomqttBuffer, v : Double) -> NetprotomqttBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_buffer_min(s : NetprotomqttBuffer) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttBuffer::min(self : NetprotomqttBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_buffer_max(s : NetprotomqttBuffer) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttBuffer::max(self : NetprotomqttBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_buffer_to_string(s : NetprotomqttBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttBuffer::to_string(self : NetprotomqttBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttCursor {
@@ -861,45 +861,45 @@ pub fn net_proto_mqtt_cursor_make(size : Int) -> NetprotomqttCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_cursor_len(s : NetprotomqttCursor) -> Int { s.size }
+pub fn NetprotomqttCursor::len(self : NetprotomqttCursor) -> Int { self.size }
 
-pub fn net_proto_mqtt_cursor_get(s : NetprotomqttCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttCursor::get(self : NetprotomqttCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_cursor_set(s : NetprotomqttCursor, i : Int, v : Double) -> NetprotomqttCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttCursor::set(self : NetprotomqttCursor, i : Int, v : Double) -> NetprotomqttCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_cursor_sum(s : NetprotomqttCursor) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttCursor::sum(self : NetprotomqttCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_cursor_mean(s : NetprotomqttCursor) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttCursor::mean(self : NetprotomqttCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_cursor_scale(s : NetprotomqttCursor, f : Double) -> NetprotomqttCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttCursor::scale(self : NetprotomqttCursor, f : Double) -> NetprotomqttCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_cursor_add(a : NetprotomqttCursor, b : NetprotomqttCursor) -> NetprotomqttCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttCursor::add(self : NetprotomqttCursor, other : NetprotomqttCursor) -> NetprotomqttCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_cursor_copy(s : NetprotomqttCursor) -> NetprotomqttCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttCursor::copy(self : NetprotomqttCursor) -> NetprotomqttCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_cursor_fill(s : NetprotomqttCursor, v : Double) -> NetprotomqttCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttCursor::fill(self : NetprotomqttCursor, v : Double) -> NetprotomqttCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_cursor_min(s : NetprotomqttCursor) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttCursor::min(self : NetprotomqttCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_cursor_max(s : NetprotomqttCursor) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttCursor::max(self : NetprotomqttCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_cursor_to_string(s : NetprotomqttCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttCursor::to_string(self : NetprotomqttCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttView {
@@ -912,45 +912,45 @@ pub fn net_proto_mqtt_view_make(size : Int) -> NetprotomqttView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_view_len(s : NetprotomqttView) -> Int { s.size }
+pub fn NetprotomqttView::len(self : NetprotomqttView) -> Int { self.size }
 
-pub fn net_proto_mqtt_view_get(s : NetprotomqttView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttView::get(self : NetprotomqttView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_view_set(s : NetprotomqttView, i : Int, v : Double) -> NetprotomqttView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttView::set(self : NetprotomqttView, i : Int, v : Double) -> NetprotomqttView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_view_sum(s : NetprotomqttView) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttView::sum(self : NetprotomqttView) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_view_mean(s : NetprotomqttView) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttView::mean(self : NetprotomqttView) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_view_scale(s : NetprotomqttView, f : Double) -> NetprotomqttView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttView::scale(self : NetprotomqttView, f : Double) -> NetprotomqttView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_view_add(a : NetprotomqttView, b : NetprotomqttView) -> NetprotomqttView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttView::add(self : NetprotomqttView, other : NetprotomqttView) -> NetprotomqttView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_view_copy(s : NetprotomqttView) -> NetprotomqttView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttView::copy(self : NetprotomqttView) -> NetprotomqttView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_view_fill(s : NetprotomqttView, v : Double) -> NetprotomqttView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttView::fill(self : NetprotomqttView, v : Double) -> NetprotomqttView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_view_min(s : NetprotomqttView) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttView::min(self : NetprotomqttView) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_view_max(s : NetprotomqttView) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttView::max(self : NetprotomqttView) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_view_to_string(s : NetprotomqttView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttView::to_string(self : NetprotomqttView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttRange {
@@ -963,45 +963,45 @@ pub fn net_proto_mqtt_range_make(size : Int) -> NetprotomqttRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_range_len(s : NetprotomqttRange) -> Int { s.size }
+pub fn NetprotomqttRange::len(self : NetprotomqttRange) -> Int { self.size }
 
-pub fn net_proto_mqtt_range_get(s : NetprotomqttRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttRange::get(self : NetprotomqttRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_range_set(s : NetprotomqttRange, i : Int, v : Double) -> NetprotomqttRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttRange::set(self : NetprotomqttRange, i : Int, v : Double) -> NetprotomqttRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_range_sum(s : NetprotomqttRange) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttRange::sum(self : NetprotomqttRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_range_mean(s : NetprotomqttRange) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttRange::mean(self : NetprotomqttRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_range_scale(s : NetprotomqttRange, f : Double) -> NetprotomqttRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttRange::scale(self : NetprotomqttRange, f : Double) -> NetprotomqttRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_range_add(a : NetprotomqttRange, b : NetprotomqttRange) -> NetprotomqttRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttRange::add(self : NetprotomqttRange, other : NetprotomqttRange) -> NetprotomqttRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_range_copy(s : NetprotomqttRange) -> NetprotomqttRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttRange::copy(self : NetprotomqttRange) -> NetprotomqttRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_range_fill(s : NetprotomqttRange, v : Double) -> NetprotomqttRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttRange::fill(self : NetprotomqttRange, v : Double) -> NetprotomqttRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_range_min(s : NetprotomqttRange) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttRange::min(self : NetprotomqttRange) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_range_max(s : NetprotomqttRange) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttRange::max(self : NetprotomqttRange) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_range_to_string(s : NetprotomqttRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttRange::to_string(self : NetprotomqttRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotomqttSlice {
@@ -1014,44 +1014,44 @@ pub fn net_proto_mqtt_slice_make(size : Int) -> NetprotomqttSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_mqtt_slice_len(s : NetprotomqttSlice) -> Int { s.size }
+pub fn NetprotomqttSlice::len(self : NetprotomqttSlice) -> Int { self.size }
 
-pub fn net_proto_mqtt_slice_get(s : NetprotomqttSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotomqttSlice::get(self : NetprotomqttSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_mqtt_slice_set(s : NetprotomqttSlice, i : Int, v : Double) -> NetprotomqttSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotomqttSlice::set(self : NetprotomqttSlice, i : Int, v : Double) -> NetprotomqttSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_slice_sum(s : NetprotomqttSlice) -> Double { @_common.sum(s.data) }
+pub fn NetprotomqttSlice::sum(self : NetprotomqttSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_mqtt_slice_mean(s : NetprotomqttSlice) -> Double { @_common.mean(s.data) }
+pub fn NetprotomqttSlice::mean(self : NetprotomqttSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_mqtt_slice_scale(s : NetprotomqttSlice, f : Double) -> NetprotomqttSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotomqttSlice::scale(self : NetprotomqttSlice, f : Double) -> NetprotomqttSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_slice_add(a : NetprotomqttSlice, b : NetprotomqttSlice) -> NetprotomqttSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotomqttSlice::add(self : NetprotomqttSlice, other : NetprotomqttSlice) -> NetprotomqttSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_slice_copy(s : NetprotomqttSlice) -> NetprotomqttSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotomqttSlice::copy(self : NetprotomqttSlice) -> NetprotomqttSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_slice_fill(s : NetprotomqttSlice, v : Double) -> NetprotomqttSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotomqttSlice::fill(self : NetprotomqttSlice, v : Double) -> NetprotomqttSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_mqtt_slice_min(s : NetprotomqttSlice) -> Double { @_common.min(s.data) }
+pub fn NetprotomqttSlice::min(self : NetprotomqttSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_mqtt_slice_max(s : NetprotomqttSlice) -> Double { @_common.max(s.data) }
+pub fn NetprotomqttSlice::max(self : NetprotomqttSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_mqtt_slice_to_string(s : NetprotomqttSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotomqttSlice::to_string(self : NetprotomqttSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

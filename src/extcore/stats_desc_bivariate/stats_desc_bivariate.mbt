@@ -351,45 +351,45 @@ pub fn stats_desc_bivariate_frame_make(size : Int) -> StatsdescbivariateFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_frame_len(s : StatsdescbivariateFrame) -> Int { s.size }
+pub fn StatsdescbivariateFrame::len(self : StatsdescbivariateFrame) -> Int { self.size }
 
-pub fn stats_desc_bivariate_frame_get(s : StatsdescbivariateFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateFrame::get(self : StatsdescbivariateFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_frame_set(s : StatsdescbivariateFrame, i : Int, v : Double) -> StatsdescbivariateFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateFrame::set(self : StatsdescbivariateFrame, i : Int, v : Double) -> StatsdescbivariateFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_frame_sum(s : StatsdescbivariateFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateFrame::sum(self : StatsdescbivariateFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_frame_mean(s : StatsdescbivariateFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateFrame::mean(self : StatsdescbivariateFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_frame_scale(s : StatsdescbivariateFrame, f : Double) -> StatsdescbivariateFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateFrame::scale(self : StatsdescbivariateFrame, f : Double) -> StatsdescbivariateFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_frame_add(a : StatsdescbivariateFrame, b : StatsdescbivariateFrame) -> StatsdescbivariateFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateFrame::add(self : StatsdescbivariateFrame, other : StatsdescbivariateFrame) -> StatsdescbivariateFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_frame_copy(s : StatsdescbivariateFrame) -> StatsdescbivariateFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateFrame::copy(self : StatsdescbivariateFrame) -> StatsdescbivariateFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_frame_fill(s : StatsdescbivariateFrame, v : Double) -> StatsdescbivariateFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateFrame::fill(self : StatsdescbivariateFrame, v : Double) -> StatsdescbivariateFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_frame_min(s : StatsdescbivariateFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateFrame::min(self : StatsdescbivariateFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_frame_max(s : StatsdescbivariateFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateFrame::max(self : StatsdescbivariateFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_frame_to_string(s : StatsdescbivariateFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateFrame::to_string(self : StatsdescbivariateFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariateTable {
@@ -402,45 +402,45 @@ pub fn stats_desc_bivariate_table_make(size : Int) -> StatsdescbivariateTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_table_len(s : StatsdescbivariateTable) -> Int { s.size }
+pub fn StatsdescbivariateTable::len(self : StatsdescbivariateTable) -> Int { self.size }
 
-pub fn stats_desc_bivariate_table_get(s : StatsdescbivariateTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateTable::get(self : StatsdescbivariateTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_table_set(s : StatsdescbivariateTable, i : Int, v : Double) -> StatsdescbivariateTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateTable::set(self : StatsdescbivariateTable, i : Int, v : Double) -> StatsdescbivariateTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_table_sum(s : StatsdescbivariateTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateTable::sum(self : StatsdescbivariateTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_table_mean(s : StatsdescbivariateTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateTable::mean(self : StatsdescbivariateTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_table_scale(s : StatsdescbivariateTable, f : Double) -> StatsdescbivariateTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateTable::scale(self : StatsdescbivariateTable, f : Double) -> StatsdescbivariateTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_table_add(a : StatsdescbivariateTable, b : StatsdescbivariateTable) -> StatsdescbivariateTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateTable::add(self : StatsdescbivariateTable, other : StatsdescbivariateTable) -> StatsdescbivariateTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_table_copy(s : StatsdescbivariateTable) -> StatsdescbivariateTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateTable::copy(self : StatsdescbivariateTable) -> StatsdescbivariateTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_table_fill(s : StatsdescbivariateTable, v : Double) -> StatsdescbivariateTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateTable::fill(self : StatsdescbivariateTable, v : Double) -> StatsdescbivariateTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_table_min(s : StatsdescbivariateTable) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateTable::min(self : StatsdescbivariateTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_table_max(s : StatsdescbivariateTable) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateTable::max(self : StatsdescbivariateTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_table_to_string(s : StatsdescbivariateTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateTable::to_string(self : StatsdescbivariateTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariateGraphN {
@@ -453,45 +453,45 @@ pub fn stats_desc_bivariate_graphn_make(size : Int) -> StatsdescbivariateGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_graphn_len(s : StatsdescbivariateGraphN) -> Int { s.size }
+pub fn StatsdescbivariateGraphN::len(self : StatsdescbivariateGraphN) -> Int { self.size }
 
-pub fn stats_desc_bivariate_graphn_get(s : StatsdescbivariateGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateGraphN::get(self : StatsdescbivariateGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_graphn_set(s : StatsdescbivariateGraphN, i : Int, v : Double) -> StatsdescbivariateGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateGraphN::set(self : StatsdescbivariateGraphN, i : Int, v : Double) -> StatsdescbivariateGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_graphn_sum(s : StatsdescbivariateGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateGraphN::sum(self : StatsdescbivariateGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_graphn_mean(s : StatsdescbivariateGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateGraphN::mean(self : StatsdescbivariateGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_graphn_scale(s : StatsdescbivariateGraphN, f : Double) -> StatsdescbivariateGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateGraphN::scale(self : StatsdescbivariateGraphN, f : Double) -> StatsdescbivariateGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_graphn_add(a : StatsdescbivariateGraphN, b : StatsdescbivariateGraphN) -> StatsdescbivariateGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateGraphN::add(self : StatsdescbivariateGraphN, other : StatsdescbivariateGraphN) -> StatsdescbivariateGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_graphn_copy(s : StatsdescbivariateGraphN) -> StatsdescbivariateGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateGraphN::copy(self : StatsdescbivariateGraphN) -> StatsdescbivariateGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_graphn_fill(s : StatsdescbivariateGraphN, v : Double) -> StatsdescbivariateGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateGraphN::fill(self : StatsdescbivariateGraphN, v : Double) -> StatsdescbivariateGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_graphn_min(s : StatsdescbivariateGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateGraphN::min(self : StatsdescbivariateGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_graphn_max(s : StatsdescbivariateGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateGraphN::max(self : StatsdescbivariateGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_graphn_to_string(s : StatsdescbivariateGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateGraphN::to_string(self : StatsdescbivariateGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariateNode {
@@ -504,45 +504,45 @@ pub fn stats_desc_bivariate_node_make(size : Int) -> StatsdescbivariateNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_node_len(s : StatsdescbivariateNode) -> Int { s.size }
+pub fn StatsdescbivariateNode::len(self : StatsdescbivariateNode) -> Int { self.size }
 
-pub fn stats_desc_bivariate_node_get(s : StatsdescbivariateNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateNode::get(self : StatsdescbivariateNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_node_set(s : StatsdescbivariateNode, i : Int, v : Double) -> StatsdescbivariateNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateNode::set(self : StatsdescbivariateNode, i : Int, v : Double) -> StatsdescbivariateNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_node_sum(s : StatsdescbivariateNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateNode::sum(self : StatsdescbivariateNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_node_mean(s : StatsdescbivariateNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateNode::mean(self : StatsdescbivariateNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_node_scale(s : StatsdescbivariateNode, f : Double) -> StatsdescbivariateNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateNode::scale(self : StatsdescbivariateNode, f : Double) -> StatsdescbivariateNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_node_add(a : StatsdescbivariateNode, b : StatsdescbivariateNode) -> StatsdescbivariateNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateNode::add(self : StatsdescbivariateNode, other : StatsdescbivariateNode) -> StatsdescbivariateNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_node_copy(s : StatsdescbivariateNode) -> StatsdescbivariateNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateNode::copy(self : StatsdescbivariateNode) -> StatsdescbivariateNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_node_fill(s : StatsdescbivariateNode, v : Double) -> StatsdescbivariateNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateNode::fill(self : StatsdescbivariateNode, v : Double) -> StatsdescbivariateNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_node_min(s : StatsdescbivariateNode) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateNode::min(self : StatsdescbivariateNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_node_max(s : StatsdescbivariateNode) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateNode::max(self : StatsdescbivariateNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_node_to_string(s : StatsdescbivariateNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateNode::to_string(self : StatsdescbivariateNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariateEdge {
@@ -555,45 +555,45 @@ pub fn stats_desc_bivariate_edge_make(size : Int) -> StatsdescbivariateEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_edge_len(s : StatsdescbivariateEdge) -> Int { s.size }
+pub fn StatsdescbivariateEdge::len(self : StatsdescbivariateEdge) -> Int { self.size }
 
-pub fn stats_desc_bivariate_edge_get(s : StatsdescbivariateEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateEdge::get(self : StatsdescbivariateEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_edge_set(s : StatsdescbivariateEdge, i : Int, v : Double) -> StatsdescbivariateEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateEdge::set(self : StatsdescbivariateEdge, i : Int, v : Double) -> StatsdescbivariateEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_edge_sum(s : StatsdescbivariateEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateEdge::sum(self : StatsdescbivariateEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_edge_mean(s : StatsdescbivariateEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateEdge::mean(self : StatsdescbivariateEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_edge_scale(s : StatsdescbivariateEdge, f : Double) -> StatsdescbivariateEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateEdge::scale(self : StatsdescbivariateEdge, f : Double) -> StatsdescbivariateEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_edge_add(a : StatsdescbivariateEdge, b : StatsdescbivariateEdge) -> StatsdescbivariateEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateEdge::add(self : StatsdescbivariateEdge, other : StatsdescbivariateEdge) -> StatsdescbivariateEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_edge_copy(s : StatsdescbivariateEdge) -> StatsdescbivariateEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateEdge::copy(self : StatsdescbivariateEdge) -> StatsdescbivariateEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_edge_fill(s : StatsdescbivariateEdge, v : Double) -> StatsdescbivariateEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateEdge::fill(self : StatsdescbivariateEdge, v : Double) -> StatsdescbivariateEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_edge_min(s : StatsdescbivariateEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateEdge::min(self : StatsdescbivariateEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_edge_max(s : StatsdescbivariateEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateEdge::max(self : StatsdescbivariateEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_edge_to_string(s : StatsdescbivariateEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateEdge::to_string(self : StatsdescbivariateEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariatePath {
@@ -606,45 +606,45 @@ pub fn stats_desc_bivariate_path_make(size : Int) -> StatsdescbivariatePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_path_len(s : StatsdescbivariatePath) -> Int { s.size }
+pub fn StatsdescbivariatePath::len(self : StatsdescbivariatePath) -> Int { self.size }
 
-pub fn stats_desc_bivariate_path_get(s : StatsdescbivariatePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariatePath::get(self : StatsdescbivariatePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_path_set(s : StatsdescbivariatePath, i : Int, v : Double) -> StatsdescbivariatePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariatePath::set(self : StatsdescbivariatePath, i : Int, v : Double) -> StatsdescbivariatePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_path_sum(s : StatsdescbivariatePath) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariatePath::sum(self : StatsdescbivariatePath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_path_mean(s : StatsdescbivariatePath) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariatePath::mean(self : StatsdescbivariatePath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_path_scale(s : StatsdescbivariatePath, f : Double) -> StatsdescbivariatePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariatePath::scale(self : StatsdescbivariatePath, f : Double) -> StatsdescbivariatePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_path_add(a : StatsdescbivariatePath, b : StatsdescbivariatePath) -> StatsdescbivariatePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariatePath::add(self : StatsdescbivariatePath, other : StatsdescbivariatePath) -> StatsdescbivariatePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_path_copy(s : StatsdescbivariatePath) -> StatsdescbivariatePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariatePath::copy(self : StatsdescbivariatePath) -> StatsdescbivariatePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_path_fill(s : StatsdescbivariatePath, v : Double) -> StatsdescbivariatePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariatePath::fill(self : StatsdescbivariatePath, v : Double) -> StatsdescbivariatePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_path_min(s : StatsdescbivariatePath) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariatePath::min(self : StatsdescbivariatePath) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_path_max(s : StatsdescbivariatePath) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariatePath::max(self : StatsdescbivariatePath) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_path_to_string(s : StatsdescbivariatePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariatePath::to_string(self : StatsdescbivariatePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariateCluster {
@@ -657,45 +657,45 @@ pub fn stats_desc_bivariate_cluster_make(size : Int) -> StatsdescbivariateCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_cluster_len(s : StatsdescbivariateCluster) -> Int { s.size }
+pub fn StatsdescbivariateCluster::len(self : StatsdescbivariateCluster) -> Int { self.size }
 
-pub fn stats_desc_bivariate_cluster_get(s : StatsdescbivariateCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateCluster::get(self : StatsdescbivariateCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_cluster_set(s : StatsdescbivariateCluster, i : Int, v : Double) -> StatsdescbivariateCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateCluster::set(self : StatsdescbivariateCluster, i : Int, v : Double) -> StatsdescbivariateCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_cluster_sum(s : StatsdescbivariateCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateCluster::sum(self : StatsdescbivariateCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_cluster_mean(s : StatsdescbivariateCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateCluster::mean(self : StatsdescbivariateCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_cluster_scale(s : StatsdescbivariateCluster, f : Double) -> StatsdescbivariateCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateCluster::scale(self : StatsdescbivariateCluster, f : Double) -> StatsdescbivariateCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_cluster_add(a : StatsdescbivariateCluster, b : StatsdescbivariateCluster) -> StatsdescbivariateCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateCluster::add(self : StatsdescbivariateCluster, other : StatsdescbivariateCluster) -> StatsdescbivariateCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_cluster_copy(s : StatsdescbivariateCluster) -> StatsdescbivariateCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateCluster::copy(self : StatsdescbivariateCluster) -> StatsdescbivariateCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_cluster_fill(s : StatsdescbivariateCluster, v : Double) -> StatsdescbivariateCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateCluster::fill(self : StatsdescbivariateCluster, v : Double) -> StatsdescbivariateCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_cluster_min(s : StatsdescbivariateCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateCluster::min(self : StatsdescbivariateCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_cluster_max(s : StatsdescbivariateCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateCluster::max(self : StatsdescbivariateCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_cluster_to_string(s : StatsdescbivariateCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateCluster::to_string(self : StatsdescbivariateCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariateModel {
@@ -708,45 +708,45 @@ pub fn stats_desc_bivariate_model_make(size : Int) -> StatsdescbivariateModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_model_len(s : StatsdescbivariateModel) -> Int { s.size }
+pub fn StatsdescbivariateModel::len(self : StatsdescbivariateModel) -> Int { self.size }
 
-pub fn stats_desc_bivariate_model_get(s : StatsdescbivariateModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateModel::get(self : StatsdescbivariateModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_model_set(s : StatsdescbivariateModel, i : Int, v : Double) -> StatsdescbivariateModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateModel::set(self : StatsdescbivariateModel, i : Int, v : Double) -> StatsdescbivariateModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_model_sum(s : StatsdescbivariateModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateModel::sum(self : StatsdescbivariateModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_model_mean(s : StatsdescbivariateModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateModel::mean(self : StatsdescbivariateModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_model_scale(s : StatsdescbivariateModel, f : Double) -> StatsdescbivariateModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateModel::scale(self : StatsdescbivariateModel, f : Double) -> StatsdescbivariateModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_model_add(a : StatsdescbivariateModel, b : StatsdescbivariateModel) -> StatsdescbivariateModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateModel::add(self : StatsdescbivariateModel, other : StatsdescbivariateModel) -> StatsdescbivariateModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_model_copy(s : StatsdescbivariateModel) -> StatsdescbivariateModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateModel::copy(self : StatsdescbivariateModel) -> StatsdescbivariateModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_model_fill(s : StatsdescbivariateModel, v : Double) -> StatsdescbivariateModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateModel::fill(self : StatsdescbivariateModel, v : Double) -> StatsdescbivariateModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_model_min(s : StatsdescbivariateModel) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateModel::min(self : StatsdescbivariateModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_model_max(s : StatsdescbivariateModel) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateModel::max(self : StatsdescbivariateModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_model_to_string(s : StatsdescbivariateModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateModel::to_string(self : StatsdescbivariateModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariateLayer {
@@ -759,45 +759,45 @@ pub fn stats_desc_bivariate_layer_make(size : Int) -> StatsdescbivariateLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_layer_len(s : StatsdescbivariateLayer) -> Int { s.size }
+pub fn StatsdescbivariateLayer::len(self : StatsdescbivariateLayer) -> Int { self.size }
 
-pub fn stats_desc_bivariate_layer_get(s : StatsdescbivariateLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateLayer::get(self : StatsdescbivariateLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_layer_set(s : StatsdescbivariateLayer, i : Int, v : Double) -> StatsdescbivariateLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateLayer::set(self : StatsdescbivariateLayer, i : Int, v : Double) -> StatsdescbivariateLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_layer_sum(s : StatsdescbivariateLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateLayer::sum(self : StatsdescbivariateLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_layer_mean(s : StatsdescbivariateLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateLayer::mean(self : StatsdescbivariateLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_layer_scale(s : StatsdescbivariateLayer, f : Double) -> StatsdescbivariateLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateLayer::scale(self : StatsdescbivariateLayer, f : Double) -> StatsdescbivariateLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_layer_add(a : StatsdescbivariateLayer, b : StatsdescbivariateLayer) -> StatsdescbivariateLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateLayer::add(self : StatsdescbivariateLayer, other : StatsdescbivariateLayer) -> StatsdescbivariateLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_layer_copy(s : StatsdescbivariateLayer) -> StatsdescbivariateLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateLayer::copy(self : StatsdescbivariateLayer) -> StatsdescbivariateLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_layer_fill(s : StatsdescbivariateLayer, v : Double) -> StatsdescbivariateLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateLayer::fill(self : StatsdescbivariateLayer, v : Double) -> StatsdescbivariateLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_layer_min(s : StatsdescbivariateLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateLayer::min(self : StatsdescbivariateLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_layer_max(s : StatsdescbivariateLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateLayer::max(self : StatsdescbivariateLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_layer_to_string(s : StatsdescbivariateLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateLayer::to_string(self : StatsdescbivariateLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariateBuffer {
@@ -810,45 +810,45 @@ pub fn stats_desc_bivariate_buffer_make(size : Int) -> StatsdescbivariateBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_buffer_len(s : StatsdescbivariateBuffer) -> Int { s.size }
+pub fn StatsdescbivariateBuffer::len(self : StatsdescbivariateBuffer) -> Int { self.size }
 
-pub fn stats_desc_bivariate_buffer_get(s : StatsdescbivariateBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateBuffer::get(self : StatsdescbivariateBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_buffer_set(s : StatsdescbivariateBuffer, i : Int, v : Double) -> StatsdescbivariateBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateBuffer::set(self : StatsdescbivariateBuffer, i : Int, v : Double) -> StatsdescbivariateBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_buffer_sum(s : StatsdescbivariateBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateBuffer::sum(self : StatsdescbivariateBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_buffer_mean(s : StatsdescbivariateBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateBuffer::mean(self : StatsdescbivariateBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_buffer_scale(s : StatsdescbivariateBuffer, f : Double) -> StatsdescbivariateBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateBuffer::scale(self : StatsdescbivariateBuffer, f : Double) -> StatsdescbivariateBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_buffer_add(a : StatsdescbivariateBuffer, b : StatsdescbivariateBuffer) -> StatsdescbivariateBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateBuffer::add(self : StatsdescbivariateBuffer, other : StatsdescbivariateBuffer) -> StatsdescbivariateBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_buffer_copy(s : StatsdescbivariateBuffer) -> StatsdescbivariateBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateBuffer::copy(self : StatsdescbivariateBuffer) -> StatsdescbivariateBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_buffer_fill(s : StatsdescbivariateBuffer, v : Double) -> StatsdescbivariateBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateBuffer::fill(self : StatsdescbivariateBuffer, v : Double) -> StatsdescbivariateBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_buffer_min(s : StatsdescbivariateBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateBuffer::min(self : StatsdescbivariateBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_buffer_max(s : StatsdescbivariateBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateBuffer::max(self : StatsdescbivariateBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_buffer_to_string(s : StatsdescbivariateBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateBuffer::to_string(self : StatsdescbivariateBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariateCursor {
@@ -861,45 +861,45 @@ pub fn stats_desc_bivariate_cursor_make(size : Int) -> StatsdescbivariateCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_cursor_len(s : StatsdescbivariateCursor) -> Int { s.size }
+pub fn StatsdescbivariateCursor::len(self : StatsdescbivariateCursor) -> Int { self.size }
 
-pub fn stats_desc_bivariate_cursor_get(s : StatsdescbivariateCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateCursor::get(self : StatsdescbivariateCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_cursor_set(s : StatsdescbivariateCursor, i : Int, v : Double) -> StatsdescbivariateCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateCursor::set(self : StatsdescbivariateCursor, i : Int, v : Double) -> StatsdescbivariateCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_cursor_sum(s : StatsdescbivariateCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateCursor::sum(self : StatsdescbivariateCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_cursor_mean(s : StatsdescbivariateCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateCursor::mean(self : StatsdescbivariateCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_cursor_scale(s : StatsdescbivariateCursor, f : Double) -> StatsdescbivariateCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateCursor::scale(self : StatsdescbivariateCursor, f : Double) -> StatsdescbivariateCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_cursor_add(a : StatsdescbivariateCursor, b : StatsdescbivariateCursor) -> StatsdescbivariateCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateCursor::add(self : StatsdescbivariateCursor, other : StatsdescbivariateCursor) -> StatsdescbivariateCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_cursor_copy(s : StatsdescbivariateCursor) -> StatsdescbivariateCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateCursor::copy(self : StatsdescbivariateCursor) -> StatsdescbivariateCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_cursor_fill(s : StatsdescbivariateCursor, v : Double) -> StatsdescbivariateCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateCursor::fill(self : StatsdescbivariateCursor, v : Double) -> StatsdescbivariateCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_cursor_min(s : StatsdescbivariateCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateCursor::min(self : StatsdescbivariateCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_cursor_max(s : StatsdescbivariateCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateCursor::max(self : StatsdescbivariateCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_cursor_to_string(s : StatsdescbivariateCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateCursor::to_string(self : StatsdescbivariateCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariateView {
@@ -912,45 +912,45 @@ pub fn stats_desc_bivariate_view_make(size : Int) -> StatsdescbivariateView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_view_len(s : StatsdescbivariateView) -> Int { s.size }
+pub fn StatsdescbivariateView::len(self : StatsdescbivariateView) -> Int { self.size }
 
-pub fn stats_desc_bivariate_view_get(s : StatsdescbivariateView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateView::get(self : StatsdescbivariateView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_view_set(s : StatsdescbivariateView, i : Int, v : Double) -> StatsdescbivariateView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateView::set(self : StatsdescbivariateView, i : Int, v : Double) -> StatsdescbivariateView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_view_sum(s : StatsdescbivariateView) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateView::sum(self : StatsdescbivariateView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_view_mean(s : StatsdescbivariateView) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateView::mean(self : StatsdescbivariateView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_view_scale(s : StatsdescbivariateView, f : Double) -> StatsdescbivariateView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateView::scale(self : StatsdescbivariateView, f : Double) -> StatsdescbivariateView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_view_add(a : StatsdescbivariateView, b : StatsdescbivariateView) -> StatsdescbivariateView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateView::add(self : StatsdescbivariateView, other : StatsdescbivariateView) -> StatsdescbivariateView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_view_copy(s : StatsdescbivariateView) -> StatsdescbivariateView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateView::copy(self : StatsdescbivariateView) -> StatsdescbivariateView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_view_fill(s : StatsdescbivariateView, v : Double) -> StatsdescbivariateView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateView::fill(self : StatsdescbivariateView, v : Double) -> StatsdescbivariateView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_view_min(s : StatsdescbivariateView) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateView::min(self : StatsdescbivariateView) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_view_max(s : StatsdescbivariateView) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateView::max(self : StatsdescbivariateView) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_view_to_string(s : StatsdescbivariateView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateView::to_string(self : StatsdescbivariateView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariateRange {
@@ -963,45 +963,45 @@ pub fn stats_desc_bivariate_range_make(size : Int) -> StatsdescbivariateRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_range_len(s : StatsdescbivariateRange) -> Int { s.size }
+pub fn StatsdescbivariateRange::len(self : StatsdescbivariateRange) -> Int { self.size }
 
-pub fn stats_desc_bivariate_range_get(s : StatsdescbivariateRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateRange::get(self : StatsdescbivariateRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_range_set(s : StatsdescbivariateRange, i : Int, v : Double) -> StatsdescbivariateRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateRange::set(self : StatsdescbivariateRange, i : Int, v : Double) -> StatsdescbivariateRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_range_sum(s : StatsdescbivariateRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateRange::sum(self : StatsdescbivariateRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_range_mean(s : StatsdescbivariateRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateRange::mean(self : StatsdescbivariateRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_range_scale(s : StatsdescbivariateRange, f : Double) -> StatsdescbivariateRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateRange::scale(self : StatsdescbivariateRange, f : Double) -> StatsdescbivariateRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_range_add(a : StatsdescbivariateRange, b : StatsdescbivariateRange) -> StatsdescbivariateRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateRange::add(self : StatsdescbivariateRange, other : StatsdescbivariateRange) -> StatsdescbivariateRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_range_copy(s : StatsdescbivariateRange) -> StatsdescbivariateRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateRange::copy(self : StatsdescbivariateRange) -> StatsdescbivariateRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_range_fill(s : StatsdescbivariateRange, v : Double) -> StatsdescbivariateRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateRange::fill(self : StatsdescbivariateRange, v : Double) -> StatsdescbivariateRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_range_min(s : StatsdescbivariateRange) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateRange::min(self : StatsdescbivariateRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_range_max(s : StatsdescbivariateRange) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateRange::max(self : StatsdescbivariateRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_range_to_string(s : StatsdescbivariateRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateRange::to_string(self : StatsdescbivariateRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescbivariateSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_desc_bivariate_slice_make(size : Int) -> StatsdescbivariateSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_bivariate_slice_len(s : StatsdescbivariateSlice) -> Int { s.size }
+pub fn StatsdescbivariateSlice::len(self : StatsdescbivariateSlice) -> Int { self.size }
 
-pub fn stats_desc_bivariate_slice_get(s : StatsdescbivariateSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescbivariateSlice::get(self : StatsdescbivariateSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_bivariate_slice_set(s : StatsdescbivariateSlice, i : Int, v : Double) -> StatsdescbivariateSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescbivariateSlice::set(self : StatsdescbivariateSlice, i : Int, v : Double) -> StatsdescbivariateSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_slice_sum(s : StatsdescbivariateSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdescbivariateSlice::sum(self : StatsdescbivariateSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_bivariate_slice_mean(s : StatsdescbivariateSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdescbivariateSlice::mean(self : StatsdescbivariateSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_bivariate_slice_scale(s : StatsdescbivariateSlice, f : Double) -> StatsdescbivariateSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateSlice::scale(self : StatsdescbivariateSlice, f : Double) -> StatsdescbivariateSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_slice_add(a : StatsdescbivariateSlice, b : StatsdescbivariateSlice) -> StatsdescbivariateSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescbivariateSlice::add(self : StatsdescbivariateSlice, other : StatsdescbivariateSlice) -> StatsdescbivariateSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_slice_copy(s : StatsdescbivariateSlice) -> StatsdescbivariateSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateSlice::copy(self : StatsdescbivariateSlice) -> StatsdescbivariateSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_slice_fill(s : StatsdescbivariateSlice, v : Double) -> StatsdescbivariateSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescbivariateSlice::fill(self : StatsdescbivariateSlice, v : Double) -> StatsdescbivariateSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_bivariate_slice_min(s : StatsdescbivariateSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdescbivariateSlice::min(self : StatsdescbivariateSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_bivariate_slice_max(s : StatsdescbivariateSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdescbivariateSlice::max(self : StatsdescbivariateSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_bivariate_slice_to_string(s : StatsdescbivariateSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescbivariateSlice::to_string(self : StatsdescbivariateSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

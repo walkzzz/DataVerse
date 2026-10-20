@@ -351,45 +351,45 @@ pub fn db_index_brin_frame_make(size : Int) -> DbindexbrinFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_frame_len(s : DbindexbrinFrame) -> Int { s.size }
+pub fn DbindexbrinFrame::len(self : DbindexbrinFrame) -> Int { self.size }
 
-pub fn db_index_brin_frame_get(s : DbindexbrinFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinFrame::get(self : DbindexbrinFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_frame_set(s : DbindexbrinFrame, i : Int, v : Double) -> DbindexbrinFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinFrame::set(self : DbindexbrinFrame, i : Int, v : Double) -> DbindexbrinFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_frame_sum(s : DbindexbrinFrame) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinFrame::sum(self : DbindexbrinFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_frame_mean(s : DbindexbrinFrame) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinFrame::mean(self : DbindexbrinFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_frame_scale(s : DbindexbrinFrame, f : Double) -> DbindexbrinFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinFrame::scale(self : DbindexbrinFrame, f : Double) -> DbindexbrinFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_frame_add(a : DbindexbrinFrame, b : DbindexbrinFrame) -> DbindexbrinFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinFrame::add(self : DbindexbrinFrame, other : DbindexbrinFrame) -> DbindexbrinFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_frame_copy(s : DbindexbrinFrame) -> DbindexbrinFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinFrame::copy(self : DbindexbrinFrame) -> DbindexbrinFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_frame_fill(s : DbindexbrinFrame, v : Double) -> DbindexbrinFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinFrame::fill(self : DbindexbrinFrame, v : Double) -> DbindexbrinFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_frame_min(s : DbindexbrinFrame) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinFrame::min(self : DbindexbrinFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_frame_max(s : DbindexbrinFrame) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinFrame::max(self : DbindexbrinFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_frame_to_string(s : DbindexbrinFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinFrame::to_string(self : DbindexbrinFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinTable {
@@ -402,45 +402,45 @@ pub fn db_index_brin_table_make(size : Int) -> DbindexbrinTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_table_len(s : DbindexbrinTable) -> Int { s.size }
+pub fn DbindexbrinTable::len(self : DbindexbrinTable) -> Int { self.size }
 
-pub fn db_index_brin_table_get(s : DbindexbrinTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinTable::get(self : DbindexbrinTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_table_set(s : DbindexbrinTable, i : Int, v : Double) -> DbindexbrinTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinTable::set(self : DbindexbrinTable, i : Int, v : Double) -> DbindexbrinTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_table_sum(s : DbindexbrinTable) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinTable::sum(self : DbindexbrinTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_table_mean(s : DbindexbrinTable) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinTable::mean(self : DbindexbrinTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_table_scale(s : DbindexbrinTable, f : Double) -> DbindexbrinTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinTable::scale(self : DbindexbrinTable, f : Double) -> DbindexbrinTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_table_add(a : DbindexbrinTable, b : DbindexbrinTable) -> DbindexbrinTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinTable::add(self : DbindexbrinTable, other : DbindexbrinTable) -> DbindexbrinTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_table_copy(s : DbindexbrinTable) -> DbindexbrinTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinTable::copy(self : DbindexbrinTable) -> DbindexbrinTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_table_fill(s : DbindexbrinTable, v : Double) -> DbindexbrinTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinTable::fill(self : DbindexbrinTable, v : Double) -> DbindexbrinTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_table_min(s : DbindexbrinTable) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinTable::min(self : DbindexbrinTable) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_table_max(s : DbindexbrinTable) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinTable::max(self : DbindexbrinTable) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_table_to_string(s : DbindexbrinTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinTable::to_string(self : DbindexbrinTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinGraphN {
@@ -453,45 +453,45 @@ pub fn db_index_brin_graphn_make(size : Int) -> DbindexbrinGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_graphn_len(s : DbindexbrinGraphN) -> Int { s.size }
+pub fn DbindexbrinGraphN::len(self : DbindexbrinGraphN) -> Int { self.size }
 
-pub fn db_index_brin_graphn_get(s : DbindexbrinGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinGraphN::get(self : DbindexbrinGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_graphn_set(s : DbindexbrinGraphN, i : Int, v : Double) -> DbindexbrinGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinGraphN::set(self : DbindexbrinGraphN, i : Int, v : Double) -> DbindexbrinGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_graphn_sum(s : DbindexbrinGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinGraphN::sum(self : DbindexbrinGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_graphn_mean(s : DbindexbrinGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinGraphN::mean(self : DbindexbrinGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_graphn_scale(s : DbindexbrinGraphN, f : Double) -> DbindexbrinGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinGraphN::scale(self : DbindexbrinGraphN, f : Double) -> DbindexbrinGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_graphn_add(a : DbindexbrinGraphN, b : DbindexbrinGraphN) -> DbindexbrinGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinGraphN::add(self : DbindexbrinGraphN, other : DbindexbrinGraphN) -> DbindexbrinGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_graphn_copy(s : DbindexbrinGraphN) -> DbindexbrinGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinGraphN::copy(self : DbindexbrinGraphN) -> DbindexbrinGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_graphn_fill(s : DbindexbrinGraphN, v : Double) -> DbindexbrinGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinGraphN::fill(self : DbindexbrinGraphN, v : Double) -> DbindexbrinGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_graphn_min(s : DbindexbrinGraphN) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinGraphN::min(self : DbindexbrinGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_graphn_max(s : DbindexbrinGraphN) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinGraphN::max(self : DbindexbrinGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_graphn_to_string(s : DbindexbrinGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinGraphN::to_string(self : DbindexbrinGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinNode {
@@ -504,45 +504,45 @@ pub fn db_index_brin_node_make(size : Int) -> DbindexbrinNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_node_len(s : DbindexbrinNode) -> Int { s.size }
+pub fn DbindexbrinNode::len(self : DbindexbrinNode) -> Int { self.size }
 
-pub fn db_index_brin_node_get(s : DbindexbrinNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinNode::get(self : DbindexbrinNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_node_set(s : DbindexbrinNode, i : Int, v : Double) -> DbindexbrinNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinNode::set(self : DbindexbrinNode, i : Int, v : Double) -> DbindexbrinNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_node_sum(s : DbindexbrinNode) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinNode::sum(self : DbindexbrinNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_node_mean(s : DbindexbrinNode) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinNode::mean(self : DbindexbrinNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_node_scale(s : DbindexbrinNode, f : Double) -> DbindexbrinNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinNode::scale(self : DbindexbrinNode, f : Double) -> DbindexbrinNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_node_add(a : DbindexbrinNode, b : DbindexbrinNode) -> DbindexbrinNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinNode::add(self : DbindexbrinNode, other : DbindexbrinNode) -> DbindexbrinNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_node_copy(s : DbindexbrinNode) -> DbindexbrinNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinNode::copy(self : DbindexbrinNode) -> DbindexbrinNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_node_fill(s : DbindexbrinNode, v : Double) -> DbindexbrinNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinNode::fill(self : DbindexbrinNode, v : Double) -> DbindexbrinNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_node_min(s : DbindexbrinNode) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinNode::min(self : DbindexbrinNode) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_node_max(s : DbindexbrinNode) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinNode::max(self : DbindexbrinNode) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_node_to_string(s : DbindexbrinNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinNode::to_string(self : DbindexbrinNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinEdge {
@@ -555,45 +555,45 @@ pub fn db_index_brin_edge_make(size : Int) -> DbindexbrinEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_edge_len(s : DbindexbrinEdge) -> Int { s.size }
+pub fn DbindexbrinEdge::len(self : DbindexbrinEdge) -> Int { self.size }
 
-pub fn db_index_brin_edge_get(s : DbindexbrinEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinEdge::get(self : DbindexbrinEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_edge_set(s : DbindexbrinEdge, i : Int, v : Double) -> DbindexbrinEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinEdge::set(self : DbindexbrinEdge, i : Int, v : Double) -> DbindexbrinEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_edge_sum(s : DbindexbrinEdge) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinEdge::sum(self : DbindexbrinEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_edge_mean(s : DbindexbrinEdge) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinEdge::mean(self : DbindexbrinEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_edge_scale(s : DbindexbrinEdge, f : Double) -> DbindexbrinEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinEdge::scale(self : DbindexbrinEdge, f : Double) -> DbindexbrinEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_edge_add(a : DbindexbrinEdge, b : DbindexbrinEdge) -> DbindexbrinEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinEdge::add(self : DbindexbrinEdge, other : DbindexbrinEdge) -> DbindexbrinEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_edge_copy(s : DbindexbrinEdge) -> DbindexbrinEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinEdge::copy(self : DbindexbrinEdge) -> DbindexbrinEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_edge_fill(s : DbindexbrinEdge, v : Double) -> DbindexbrinEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinEdge::fill(self : DbindexbrinEdge, v : Double) -> DbindexbrinEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_edge_min(s : DbindexbrinEdge) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinEdge::min(self : DbindexbrinEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_edge_max(s : DbindexbrinEdge) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinEdge::max(self : DbindexbrinEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_edge_to_string(s : DbindexbrinEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinEdge::to_string(self : DbindexbrinEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinPath {
@@ -606,45 +606,45 @@ pub fn db_index_brin_path_make(size : Int) -> DbindexbrinPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_path_len(s : DbindexbrinPath) -> Int { s.size }
+pub fn DbindexbrinPath::len(self : DbindexbrinPath) -> Int { self.size }
 
-pub fn db_index_brin_path_get(s : DbindexbrinPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinPath::get(self : DbindexbrinPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_path_set(s : DbindexbrinPath, i : Int, v : Double) -> DbindexbrinPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinPath::set(self : DbindexbrinPath, i : Int, v : Double) -> DbindexbrinPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_path_sum(s : DbindexbrinPath) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinPath::sum(self : DbindexbrinPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_path_mean(s : DbindexbrinPath) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinPath::mean(self : DbindexbrinPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_path_scale(s : DbindexbrinPath, f : Double) -> DbindexbrinPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinPath::scale(self : DbindexbrinPath, f : Double) -> DbindexbrinPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_path_add(a : DbindexbrinPath, b : DbindexbrinPath) -> DbindexbrinPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinPath::add(self : DbindexbrinPath, other : DbindexbrinPath) -> DbindexbrinPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_path_copy(s : DbindexbrinPath) -> DbindexbrinPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinPath::copy(self : DbindexbrinPath) -> DbindexbrinPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_path_fill(s : DbindexbrinPath, v : Double) -> DbindexbrinPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinPath::fill(self : DbindexbrinPath, v : Double) -> DbindexbrinPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_path_min(s : DbindexbrinPath) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinPath::min(self : DbindexbrinPath) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_path_max(s : DbindexbrinPath) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinPath::max(self : DbindexbrinPath) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_path_to_string(s : DbindexbrinPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinPath::to_string(self : DbindexbrinPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinCluster {
@@ -657,45 +657,45 @@ pub fn db_index_brin_cluster_make(size : Int) -> DbindexbrinCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_cluster_len(s : DbindexbrinCluster) -> Int { s.size }
+pub fn DbindexbrinCluster::len(self : DbindexbrinCluster) -> Int { self.size }
 
-pub fn db_index_brin_cluster_get(s : DbindexbrinCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinCluster::get(self : DbindexbrinCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_cluster_set(s : DbindexbrinCluster, i : Int, v : Double) -> DbindexbrinCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinCluster::set(self : DbindexbrinCluster, i : Int, v : Double) -> DbindexbrinCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_cluster_sum(s : DbindexbrinCluster) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinCluster::sum(self : DbindexbrinCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_cluster_mean(s : DbindexbrinCluster) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinCluster::mean(self : DbindexbrinCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_cluster_scale(s : DbindexbrinCluster, f : Double) -> DbindexbrinCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinCluster::scale(self : DbindexbrinCluster, f : Double) -> DbindexbrinCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_cluster_add(a : DbindexbrinCluster, b : DbindexbrinCluster) -> DbindexbrinCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinCluster::add(self : DbindexbrinCluster, other : DbindexbrinCluster) -> DbindexbrinCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_cluster_copy(s : DbindexbrinCluster) -> DbindexbrinCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinCluster::copy(self : DbindexbrinCluster) -> DbindexbrinCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_cluster_fill(s : DbindexbrinCluster, v : Double) -> DbindexbrinCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinCluster::fill(self : DbindexbrinCluster, v : Double) -> DbindexbrinCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_cluster_min(s : DbindexbrinCluster) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinCluster::min(self : DbindexbrinCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_cluster_max(s : DbindexbrinCluster) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinCluster::max(self : DbindexbrinCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_cluster_to_string(s : DbindexbrinCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinCluster::to_string(self : DbindexbrinCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinModel {
@@ -708,45 +708,45 @@ pub fn db_index_brin_model_make(size : Int) -> DbindexbrinModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_model_len(s : DbindexbrinModel) -> Int { s.size }
+pub fn DbindexbrinModel::len(self : DbindexbrinModel) -> Int { self.size }
 
-pub fn db_index_brin_model_get(s : DbindexbrinModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinModel::get(self : DbindexbrinModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_model_set(s : DbindexbrinModel, i : Int, v : Double) -> DbindexbrinModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinModel::set(self : DbindexbrinModel, i : Int, v : Double) -> DbindexbrinModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_model_sum(s : DbindexbrinModel) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinModel::sum(self : DbindexbrinModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_model_mean(s : DbindexbrinModel) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinModel::mean(self : DbindexbrinModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_model_scale(s : DbindexbrinModel, f : Double) -> DbindexbrinModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinModel::scale(self : DbindexbrinModel, f : Double) -> DbindexbrinModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_model_add(a : DbindexbrinModel, b : DbindexbrinModel) -> DbindexbrinModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinModel::add(self : DbindexbrinModel, other : DbindexbrinModel) -> DbindexbrinModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_model_copy(s : DbindexbrinModel) -> DbindexbrinModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinModel::copy(self : DbindexbrinModel) -> DbindexbrinModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_model_fill(s : DbindexbrinModel, v : Double) -> DbindexbrinModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinModel::fill(self : DbindexbrinModel, v : Double) -> DbindexbrinModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_model_min(s : DbindexbrinModel) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinModel::min(self : DbindexbrinModel) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_model_max(s : DbindexbrinModel) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinModel::max(self : DbindexbrinModel) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_model_to_string(s : DbindexbrinModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinModel::to_string(self : DbindexbrinModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinLayer {
@@ -759,45 +759,45 @@ pub fn db_index_brin_layer_make(size : Int) -> DbindexbrinLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_layer_len(s : DbindexbrinLayer) -> Int { s.size }
+pub fn DbindexbrinLayer::len(self : DbindexbrinLayer) -> Int { self.size }
 
-pub fn db_index_brin_layer_get(s : DbindexbrinLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinLayer::get(self : DbindexbrinLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_layer_set(s : DbindexbrinLayer, i : Int, v : Double) -> DbindexbrinLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinLayer::set(self : DbindexbrinLayer, i : Int, v : Double) -> DbindexbrinLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_layer_sum(s : DbindexbrinLayer) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinLayer::sum(self : DbindexbrinLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_layer_mean(s : DbindexbrinLayer) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinLayer::mean(self : DbindexbrinLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_layer_scale(s : DbindexbrinLayer, f : Double) -> DbindexbrinLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinLayer::scale(self : DbindexbrinLayer, f : Double) -> DbindexbrinLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_layer_add(a : DbindexbrinLayer, b : DbindexbrinLayer) -> DbindexbrinLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinLayer::add(self : DbindexbrinLayer, other : DbindexbrinLayer) -> DbindexbrinLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_layer_copy(s : DbindexbrinLayer) -> DbindexbrinLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinLayer::copy(self : DbindexbrinLayer) -> DbindexbrinLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_layer_fill(s : DbindexbrinLayer, v : Double) -> DbindexbrinLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinLayer::fill(self : DbindexbrinLayer, v : Double) -> DbindexbrinLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_layer_min(s : DbindexbrinLayer) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinLayer::min(self : DbindexbrinLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_layer_max(s : DbindexbrinLayer) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinLayer::max(self : DbindexbrinLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_layer_to_string(s : DbindexbrinLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinLayer::to_string(self : DbindexbrinLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinBuffer {
@@ -810,45 +810,45 @@ pub fn db_index_brin_buffer_make(size : Int) -> DbindexbrinBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_buffer_len(s : DbindexbrinBuffer) -> Int { s.size }
+pub fn DbindexbrinBuffer::len(self : DbindexbrinBuffer) -> Int { self.size }
 
-pub fn db_index_brin_buffer_get(s : DbindexbrinBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinBuffer::get(self : DbindexbrinBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_buffer_set(s : DbindexbrinBuffer, i : Int, v : Double) -> DbindexbrinBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinBuffer::set(self : DbindexbrinBuffer, i : Int, v : Double) -> DbindexbrinBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_buffer_sum(s : DbindexbrinBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinBuffer::sum(self : DbindexbrinBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_buffer_mean(s : DbindexbrinBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinBuffer::mean(self : DbindexbrinBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_buffer_scale(s : DbindexbrinBuffer, f : Double) -> DbindexbrinBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinBuffer::scale(self : DbindexbrinBuffer, f : Double) -> DbindexbrinBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_buffer_add(a : DbindexbrinBuffer, b : DbindexbrinBuffer) -> DbindexbrinBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinBuffer::add(self : DbindexbrinBuffer, other : DbindexbrinBuffer) -> DbindexbrinBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_buffer_copy(s : DbindexbrinBuffer) -> DbindexbrinBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinBuffer::copy(self : DbindexbrinBuffer) -> DbindexbrinBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_buffer_fill(s : DbindexbrinBuffer, v : Double) -> DbindexbrinBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinBuffer::fill(self : DbindexbrinBuffer, v : Double) -> DbindexbrinBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_buffer_min(s : DbindexbrinBuffer) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinBuffer::min(self : DbindexbrinBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_buffer_max(s : DbindexbrinBuffer) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinBuffer::max(self : DbindexbrinBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_buffer_to_string(s : DbindexbrinBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinBuffer::to_string(self : DbindexbrinBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinCursor {
@@ -861,45 +861,45 @@ pub fn db_index_brin_cursor_make(size : Int) -> DbindexbrinCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_cursor_len(s : DbindexbrinCursor) -> Int { s.size }
+pub fn DbindexbrinCursor::len(self : DbindexbrinCursor) -> Int { self.size }
 
-pub fn db_index_brin_cursor_get(s : DbindexbrinCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinCursor::get(self : DbindexbrinCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_cursor_set(s : DbindexbrinCursor, i : Int, v : Double) -> DbindexbrinCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinCursor::set(self : DbindexbrinCursor, i : Int, v : Double) -> DbindexbrinCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_cursor_sum(s : DbindexbrinCursor) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinCursor::sum(self : DbindexbrinCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_cursor_mean(s : DbindexbrinCursor) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinCursor::mean(self : DbindexbrinCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_cursor_scale(s : DbindexbrinCursor, f : Double) -> DbindexbrinCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinCursor::scale(self : DbindexbrinCursor, f : Double) -> DbindexbrinCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_cursor_add(a : DbindexbrinCursor, b : DbindexbrinCursor) -> DbindexbrinCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinCursor::add(self : DbindexbrinCursor, other : DbindexbrinCursor) -> DbindexbrinCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_cursor_copy(s : DbindexbrinCursor) -> DbindexbrinCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinCursor::copy(self : DbindexbrinCursor) -> DbindexbrinCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_cursor_fill(s : DbindexbrinCursor, v : Double) -> DbindexbrinCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinCursor::fill(self : DbindexbrinCursor, v : Double) -> DbindexbrinCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_cursor_min(s : DbindexbrinCursor) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinCursor::min(self : DbindexbrinCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_cursor_max(s : DbindexbrinCursor) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinCursor::max(self : DbindexbrinCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_cursor_to_string(s : DbindexbrinCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinCursor::to_string(self : DbindexbrinCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinView {
@@ -912,45 +912,45 @@ pub fn db_index_brin_view_make(size : Int) -> DbindexbrinView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_view_len(s : DbindexbrinView) -> Int { s.size }
+pub fn DbindexbrinView::len(self : DbindexbrinView) -> Int { self.size }
 
-pub fn db_index_brin_view_get(s : DbindexbrinView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinView::get(self : DbindexbrinView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_view_set(s : DbindexbrinView, i : Int, v : Double) -> DbindexbrinView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinView::set(self : DbindexbrinView, i : Int, v : Double) -> DbindexbrinView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_view_sum(s : DbindexbrinView) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinView::sum(self : DbindexbrinView) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_view_mean(s : DbindexbrinView) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinView::mean(self : DbindexbrinView) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_view_scale(s : DbindexbrinView, f : Double) -> DbindexbrinView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinView::scale(self : DbindexbrinView, f : Double) -> DbindexbrinView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_view_add(a : DbindexbrinView, b : DbindexbrinView) -> DbindexbrinView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinView::add(self : DbindexbrinView, other : DbindexbrinView) -> DbindexbrinView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_view_copy(s : DbindexbrinView) -> DbindexbrinView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinView::copy(self : DbindexbrinView) -> DbindexbrinView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_view_fill(s : DbindexbrinView, v : Double) -> DbindexbrinView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinView::fill(self : DbindexbrinView, v : Double) -> DbindexbrinView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_view_min(s : DbindexbrinView) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinView::min(self : DbindexbrinView) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_view_max(s : DbindexbrinView) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinView::max(self : DbindexbrinView) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_view_to_string(s : DbindexbrinView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinView::to_string(self : DbindexbrinView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinRange {
@@ -963,45 +963,45 @@ pub fn db_index_brin_range_make(size : Int) -> DbindexbrinRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_range_len(s : DbindexbrinRange) -> Int { s.size }
+pub fn DbindexbrinRange::len(self : DbindexbrinRange) -> Int { self.size }
 
-pub fn db_index_brin_range_get(s : DbindexbrinRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinRange::get(self : DbindexbrinRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_range_set(s : DbindexbrinRange, i : Int, v : Double) -> DbindexbrinRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinRange::set(self : DbindexbrinRange, i : Int, v : Double) -> DbindexbrinRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_range_sum(s : DbindexbrinRange) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinRange::sum(self : DbindexbrinRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_range_mean(s : DbindexbrinRange) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinRange::mean(self : DbindexbrinRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_range_scale(s : DbindexbrinRange, f : Double) -> DbindexbrinRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinRange::scale(self : DbindexbrinRange, f : Double) -> DbindexbrinRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_range_add(a : DbindexbrinRange, b : DbindexbrinRange) -> DbindexbrinRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinRange::add(self : DbindexbrinRange, other : DbindexbrinRange) -> DbindexbrinRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_range_copy(s : DbindexbrinRange) -> DbindexbrinRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinRange::copy(self : DbindexbrinRange) -> DbindexbrinRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_range_fill(s : DbindexbrinRange, v : Double) -> DbindexbrinRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinRange::fill(self : DbindexbrinRange, v : Double) -> DbindexbrinRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_range_min(s : DbindexbrinRange) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinRange::min(self : DbindexbrinRange) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_range_max(s : DbindexbrinRange) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinRange::max(self : DbindexbrinRange) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_range_to_string(s : DbindexbrinRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinRange::to_string(self : DbindexbrinRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbrinSlice {
@@ -1014,44 +1014,44 @@ pub fn db_index_brin_slice_make(size : Int) -> DbindexbrinSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_brin_slice_len(s : DbindexbrinSlice) -> Int { s.size }
+pub fn DbindexbrinSlice::len(self : DbindexbrinSlice) -> Int { self.size }
 
-pub fn db_index_brin_slice_get(s : DbindexbrinSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbrinSlice::get(self : DbindexbrinSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_brin_slice_set(s : DbindexbrinSlice, i : Int, v : Double) -> DbindexbrinSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbrinSlice::set(self : DbindexbrinSlice, i : Int, v : Double) -> DbindexbrinSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_slice_sum(s : DbindexbrinSlice) -> Double { @_common.sum(s.data) }
+pub fn DbindexbrinSlice::sum(self : DbindexbrinSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_brin_slice_mean(s : DbindexbrinSlice) -> Double { @_common.mean(s.data) }
+pub fn DbindexbrinSlice::mean(self : DbindexbrinSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_brin_slice_scale(s : DbindexbrinSlice, f : Double) -> DbindexbrinSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbrinSlice::scale(self : DbindexbrinSlice, f : Double) -> DbindexbrinSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_slice_add(a : DbindexbrinSlice, b : DbindexbrinSlice) -> DbindexbrinSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbrinSlice::add(self : DbindexbrinSlice, other : DbindexbrinSlice) -> DbindexbrinSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_brin_slice_copy(s : DbindexbrinSlice) -> DbindexbrinSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbrinSlice::copy(self : DbindexbrinSlice) -> DbindexbrinSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_slice_fill(s : DbindexbrinSlice, v : Double) -> DbindexbrinSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbrinSlice::fill(self : DbindexbrinSlice, v : Double) -> DbindexbrinSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_brin_slice_min(s : DbindexbrinSlice) -> Double { @_common.min(s.data) }
+pub fn DbindexbrinSlice::min(self : DbindexbrinSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_index_brin_slice_max(s : DbindexbrinSlice) -> Double { @_common.max(s.data) }
+pub fn DbindexbrinSlice::max(self : DbindexbrinSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_index_brin_slice_to_string(s : DbindexbrinSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbrinSlice::to_string(self : DbindexbrinSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn math_numerical_integ_frame_make(size : Int) -> MathnumericalintegFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_frame_len(s : MathnumericalintegFrame) -> Int { s.size }
+pub fn MathnumericalintegFrame::len(self : MathnumericalintegFrame) -> Int { self.size }
 
-pub fn math_numerical_integ_frame_get(s : MathnumericalintegFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegFrame::get(self : MathnumericalintegFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_frame_set(s : MathnumericalintegFrame, i : Int, v : Double) -> MathnumericalintegFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegFrame::set(self : MathnumericalintegFrame, i : Int, v : Double) -> MathnumericalintegFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_frame_sum(s : MathnumericalintegFrame) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegFrame::sum(self : MathnumericalintegFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_frame_mean(s : MathnumericalintegFrame) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegFrame::mean(self : MathnumericalintegFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_frame_scale(s : MathnumericalintegFrame, f : Double) -> MathnumericalintegFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegFrame::scale(self : MathnumericalintegFrame, f : Double) -> MathnumericalintegFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_frame_add(a : MathnumericalintegFrame, b : MathnumericalintegFrame) -> MathnumericalintegFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegFrame::add(self : MathnumericalintegFrame, other : MathnumericalintegFrame) -> MathnumericalintegFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_frame_copy(s : MathnumericalintegFrame) -> MathnumericalintegFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegFrame::copy(self : MathnumericalintegFrame) -> MathnumericalintegFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_frame_fill(s : MathnumericalintegFrame, v : Double) -> MathnumericalintegFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegFrame::fill(self : MathnumericalintegFrame, v : Double) -> MathnumericalintegFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_frame_min(s : MathnumericalintegFrame) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegFrame::min(self : MathnumericalintegFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_frame_max(s : MathnumericalintegFrame) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegFrame::max(self : MathnumericalintegFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_frame_to_string(s : MathnumericalintegFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegFrame::to_string(self : MathnumericalintegFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegTable {
@@ -402,45 +402,45 @@ pub fn math_numerical_integ_table_make(size : Int) -> MathnumericalintegTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_table_len(s : MathnumericalintegTable) -> Int { s.size }
+pub fn MathnumericalintegTable::len(self : MathnumericalintegTable) -> Int { self.size }
 
-pub fn math_numerical_integ_table_get(s : MathnumericalintegTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegTable::get(self : MathnumericalintegTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_table_set(s : MathnumericalintegTable, i : Int, v : Double) -> MathnumericalintegTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegTable::set(self : MathnumericalintegTable, i : Int, v : Double) -> MathnumericalintegTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_table_sum(s : MathnumericalintegTable) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegTable::sum(self : MathnumericalintegTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_table_mean(s : MathnumericalintegTable) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegTable::mean(self : MathnumericalintegTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_table_scale(s : MathnumericalintegTable, f : Double) -> MathnumericalintegTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegTable::scale(self : MathnumericalintegTable, f : Double) -> MathnumericalintegTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_table_add(a : MathnumericalintegTable, b : MathnumericalintegTable) -> MathnumericalintegTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegTable::add(self : MathnumericalintegTable, other : MathnumericalintegTable) -> MathnumericalintegTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_table_copy(s : MathnumericalintegTable) -> MathnumericalintegTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegTable::copy(self : MathnumericalintegTable) -> MathnumericalintegTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_table_fill(s : MathnumericalintegTable, v : Double) -> MathnumericalintegTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegTable::fill(self : MathnumericalintegTable, v : Double) -> MathnumericalintegTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_table_min(s : MathnumericalintegTable) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegTable::min(self : MathnumericalintegTable) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_table_max(s : MathnumericalintegTable) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegTable::max(self : MathnumericalintegTable) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_table_to_string(s : MathnumericalintegTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegTable::to_string(self : MathnumericalintegTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegGraphN {
@@ -453,45 +453,45 @@ pub fn math_numerical_integ_graphn_make(size : Int) -> MathnumericalintegGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_graphn_len(s : MathnumericalintegGraphN) -> Int { s.size }
+pub fn MathnumericalintegGraphN::len(self : MathnumericalintegGraphN) -> Int { self.size }
 
-pub fn math_numerical_integ_graphn_get(s : MathnumericalintegGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegGraphN::get(self : MathnumericalintegGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_graphn_set(s : MathnumericalintegGraphN, i : Int, v : Double) -> MathnumericalintegGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegGraphN::set(self : MathnumericalintegGraphN, i : Int, v : Double) -> MathnumericalintegGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_graphn_sum(s : MathnumericalintegGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegGraphN::sum(self : MathnumericalintegGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_graphn_mean(s : MathnumericalintegGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegGraphN::mean(self : MathnumericalintegGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_graphn_scale(s : MathnumericalintegGraphN, f : Double) -> MathnumericalintegGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegGraphN::scale(self : MathnumericalintegGraphN, f : Double) -> MathnumericalintegGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_graphn_add(a : MathnumericalintegGraphN, b : MathnumericalintegGraphN) -> MathnumericalintegGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegGraphN::add(self : MathnumericalintegGraphN, other : MathnumericalintegGraphN) -> MathnumericalintegGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_graphn_copy(s : MathnumericalintegGraphN) -> MathnumericalintegGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegGraphN::copy(self : MathnumericalintegGraphN) -> MathnumericalintegGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_graphn_fill(s : MathnumericalintegGraphN, v : Double) -> MathnumericalintegGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegGraphN::fill(self : MathnumericalintegGraphN, v : Double) -> MathnumericalintegGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_graphn_min(s : MathnumericalintegGraphN) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegGraphN::min(self : MathnumericalintegGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_graphn_max(s : MathnumericalintegGraphN) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegGraphN::max(self : MathnumericalintegGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_graphn_to_string(s : MathnumericalintegGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegGraphN::to_string(self : MathnumericalintegGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegNode {
@@ -504,45 +504,45 @@ pub fn math_numerical_integ_node_make(size : Int) -> MathnumericalintegNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_node_len(s : MathnumericalintegNode) -> Int { s.size }
+pub fn MathnumericalintegNode::len(self : MathnumericalintegNode) -> Int { self.size }
 
-pub fn math_numerical_integ_node_get(s : MathnumericalintegNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegNode::get(self : MathnumericalintegNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_node_set(s : MathnumericalintegNode, i : Int, v : Double) -> MathnumericalintegNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegNode::set(self : MathnumericalintegNode, i : Int, v : Double) -> MathnumericalintegNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_node_sum(s : MathnumericalintegNode) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegNode::sum(self : MathnumericalintegNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_node_mean(s : MathnumericalintegNode) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegNode::mean(self : MathnumericalintegNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_node_scale(s : MathnumericalintegNode, f : Double) -> MathnumericalintegNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegNode::scale(self : MathnumericalintegNode, f : Double) -> MathnumericalintegNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_node_add(a : MathnumericalintegNode, b : MathnumericalintegNode) -> MathnumericalintegNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegNode::add(self : MathnumericalintegNode, other : MathnumericalintegNode) -> MathnumericalintegNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_node_copy(s : MathnumericalintegNode) -> MathnumericalintegNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegNode::copy(self : MathnumericalintegNode) -> MathnumericalintegNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_node_fill(s : MathnumericalintegNode, v : Double) -> MathnumericalintegNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegNode::fill(self : MathnumericalintegNode, v : Double) -> MathnumericalintegNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_node_min(s : MathnumericalintegNode) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegNode::min(self : MathnumericalintegNode) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_node_max(s : MathnumericalintegNode) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegNode::max(self : MathnumericalintegNode) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_node_to_string(s : MathnumericalintegNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegNode::to_string(self : MathnumericalintegNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegEdge {
@@ -555,45 +555,45 @@ pub fn math_numerical_integ_edge_make(size : Int) -> MathnumericalintegEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_edge_len(s : MathnumericalintegEdge) -> Int { s.size }
+pub fn MathnumericalintegEdge::len(self : MathnumericalintegEdge) -> Int { self.size }
 
-pub fn math_numerical_integ_edge_get(s : MathnumericalintegEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegEdge::get(self : MathnumericalintegEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_edge_set(s : MathnumericalintegEdge, i : Int, v : Double) -> MathnumericalintegEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegEdge::set(self : MathnumericalintegEdge, i : Int, v : Double) -> MathnumericalintegEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_edge_sum(s : MathnumericalintegEdge) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegEdge::sum(self : MathnumericalintegEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_edge_mean(s : MathnumericalintegEdge) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegEdge::mean(self : MathnumericalintegEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_edge_scale(s : MathnumericalintegEdge, f : Double) -> MathnumericalintegEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegEdge::scale(self : MathnumericalintegEdge, f : Double) -> MathnumericalintegEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_edge_add(a : MathnumericalintegEdge, b : MathnumericalintegEdge) -> MathnumericalintegEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegEdge::add(self : MathnumericalintegEdge, other : MathnumericalintegEdge) -> MathnumericalintegEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_edge_copy(s : MathnumericalintegEdge) -> MathnumericalintegEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegEdge::copy(self : MathnumericalintegEdge) -> MathnumericalintegEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_edge_fill(s : MathnumericalintegEdge, v : Double) -> MathnumericalintegEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegEdge::fill(self : MathnumericalintegEdge, v : Double) -> MathnumericalintegEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_edge_min(s : MathnumericalintegEdge) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegEdge::min(self : MathnumericalintegEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_edge_max(s : MathnumericalintegEdge) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegEdge::max(self : MathnumericalintegEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_edge_to_string(s : MathnumericalintegEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegEdge::to_string(self : MathnumericalintegEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegPath {
@@ -606,45 +606,45 @@ pub fn math_numerical_integ_path_make(size : Int) -> MathnumericalintegPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_path_len(s : MathnumericalintegPath) -> Int { s.size }
+pub fn MathnumericalintegPath::len(self : MathnumericalintegPath) -> Int { self.size }
 
-pub fn math_numerical_integ_path_get(s : MathnumericalintegPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegPath::get(self : MathnumericalintegPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_path_set(s : MathnumericalintegPath, i : Int, v : Double) -> MathnumericalintegPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegPath::set(self : MathnumericalintegPath, i : Int, v : Double) -> MathnumericalintegPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_path_sum(s : MathnumericalintegPath) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegPath::sum(self : MathnumericalintegPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_path_mean(s : MathnumericalintegPath) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegPath::mean(self : MathnumericalintegPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_path_scale(s : MathnumericalintegPath, f : Double) -> MathnumericalintegPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegPath::scale(self : MathnumericalintegPath, f : Double) -> MathnumericalintegPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_path_add(a : MathnumericalintegPath, b : MathnumericalintegPath) -> MathnumericalintegPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegPath::add(self : MathnumericalintegPath, other : MathnumericalintegPath) -> MathnumericalintegPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_path_copy(s : MathnumericalintegPath) -> MathnumericalintegPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegPath::copy(self : MathnumericalintegPath) -> MathnumericalintegPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_path_fill(s : MathnumericalintegPath, v : Double) -> MathnumericalintegPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegPath::fill(self : MathnumericalintegPath, v : Double) -> MathnumericalintegPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_path_min(s : MathnumericalintegPath) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegPath::min(self : MathnumericalintegPath) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_path_max(s : MathnumericalintegPath) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegPath::max(self : MathnumericalintegPath) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_path_to_string(s : MathnumericalintegPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegPath::to_string(self : MathnumericalintegPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegCluster {
@@ -657,45 +657,45 @@ pub fn math_numerical_integ_cluster_make(size : Int) -> MathnumericalintegCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_cluster_len(s : MathnumericalintegCluster) -> Int { s.size }
+pub fn MathnumericalintegCluster::len(self : MathnumericalintegCluster) -> Int { self.size }
 
-pub fn math_numerical_integ_cluster_get(s : MathnumericalintegCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegCluster::get(self : MathnumericalintegCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_cluster_set(s : MathnumericalintegCluster, i : Int, v : Double) -> MathnumericalintegCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegCluster::set(self : MathnumericalintegCluster, i : Int, v : Double) -> MathnumericalintegCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_cluster_sum(s : MathnumericalintegCluster) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegCluster::sum(self : MathnumericalintegCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_cluster_mean(s : MathnumericalintegCluster) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegCluster::mean(self : MathnumericalintegCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_cluster_scale(s : MathnumericalintegCluster, f : Double) -> MathnumericalintegCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegCluster::scale(self : MathnumericalintegCluster, f : Double) -> MathnumericalintegCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_cluster_add(a : MathnumericalintegCluster, b : MathnumericalintegCluster) -> MathnumericalintegCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegCluster::add(self : MathnumericalintegCluster, other : MathnumericalintegCluster) -> MathnumericalintegCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_cluster_copy(s : MathnumericalintegCluster) -> MathnumericalintegCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegCluster::copy(self : MathnumericalintegCluster) -> MathnumericalintegCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_cluster_fill(s : MathnumericalintegCluster, v : Double) -> MathnumericalintegCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegCluster::fill(self : MathnumericalintegCluster, v : Double) -> MathnumericalintegCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_cluster_min(s : MathnumericalintegCluster) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegCluster::min(self : MathnumericalintegCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_cluster_max(s : MathnumericalintegCluster) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegCluster::max(self : MathnumericalintegCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_cluster_to_string(s : MathnumericalintegCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegCluster::to_string(self : MathnumericalintegCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegModel {
@@ -708,45 +708,45 @@ pub fn math_numerical_integ_model_make(size : Int) -> MathnumericalintegModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_model_len(s : MathnumericalintegModel) -> Int { s.size }
+pub fn MathnumericalintegModel::len(self : MathnumericalintegModel) -> Int { self.size }
 
-pub fn math_numerical_integ_model_get(s : MathnumericalintegModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegModel::get(self : MathnumericalintegModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_model_set(s : MathnumericalintegModel, i : Int, v : Double) -> MathnumericalintegModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegModel::set(self : MathnumericalintegModel, i : Int, v : Double) -> MathnumericalintegModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_model_sum(s : MathnumericalintegModel) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegModel::sum(self : MathnumericalintegModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_model_mean(s : MathnumericalintegModel) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegModel::mean(self : MathnumericalintegModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_model_scale(s : MathnumericalintegModel, f : Double) -> MathnumericalintegModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegModel::scale(self : MathnumericalintegModel, f : Double) -> MathnumericalintegModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_model_add(a : MathnumericalintegModel, b : MathnumericalintegModel) -> MathnumericalintegModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegModel::add(self : MathnumericalintegModel, other : MathnumericalintegModel) -> MathnumericalintegModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_model_copy(s : MathnumericalintegModel) -> MathnumericalintegModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegModel::copy(self : MathnumericalintegModel) -> MathnumericalintegModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_model_fill(s : MathnumericalintegModel, v : Double) -> MathnumericalintegModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegModel::fill(self : MathnumericalintegModel, v : Double) -> MathnumericalintegModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_model_min(s : MathnumericalintegModel) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegModel::min(self : MathnumericalintegModel) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_model_max(s : MathnumericalintegModel) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegModel::max(self : MathnumericalintegModel) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_model_to_string(s : MathnumericalintegModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegModel::to_string(self : MathnumericalintegModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegLayer {
@@ -759,45 +759,45 @@ pub fn math_numerical_integ_layer_make(size : Int) -> MathnumericalintegLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_layer_len(s : MathnumericalintegLayer) -> Int { s.size }
+pub fn MathnumericalintegLayer::len(self : MathnumericalintegLayer) -> Int { self.size }
 
-pub fn math_numerical_integ_layer_get(s : MathnumericalintegLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegLayer::get(self : MathnumericalintegLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_layer_set(s : MathnumericalintegLayer, i : Int, v : Double) -> MathnumericalintegLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegLayer::set(self : MathnumericalintegLayer, i : Int, v : Double) -> MathnumericalintegLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_layer_sum(s : MathnumericalintegLayer) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegLayer::sum(self : MathnumericalintegLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_layer_mean(s : MathnumericalintegLayer) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegLayer::mean(self : MathnumericalintegLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_layer_scale(s : MathnumericalintegLayer, f : Double) -> MathnumericalintegLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegLayer::scale(self : MathnumericalintegLayer, f : Double) -> MathnumericalintegLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_layer_add(a : MathnumericalintegLayer, b : MathnumericalintegLayer) -> MathnumericalintegLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegLayer::add(self : MathnumericalintegLayer, other : MathnumericalintegLayer) -> MathnumericalintegLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_layer_copy(s : MathnumericalintegLayer) -> MathnumericalintegLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegLayer::copy(self : MathnumericalintegLayer) -> MathnumericalintegLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_layer_fill(s : MathnumericalintegLayer, v : Double) -> MathnumericalintegLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegLayer::fill(self : MathnumericalintegLayer, v : Double) -> MathnumericalintegLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_layer_min(s : MathnumericalintegLayer) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegLayer::min(self : MathnumericalintegLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_layer_max(s : MathnumericalintegLayer) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegLayer::max(self : MathnumericalintegLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_layer_to_string(s : MathnumericalintegLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegLayer::to_string(self : MathnumericalintegLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegBuffer {
@@ -810,45 +810,45 @@ pub fn math_numerical_integ_buffer_make(size : Int) -> MathnumericalintegBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_buffer_len(s : MathnumericalintegBuffer) -> Int { s.size }
+pub fn MathnumericalintegBuffer::len(self : MathnumericalintegBuffer) -> Int { self.size }
 
-pub fn math_numerical_integ_buffer_get(s : MathnumericalintegBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegBuffer::get(self : MathnumericalintegBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_buffer_set(s : MathnumericalintegBuffer, i : Int, v : Double) -> MathnumericalintegBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegBuffer::set(self : MathnumericalintegBuffer, i : Int, v : Double) -> MathnumericalintegBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_buffer_sum(s : MathnumericalintegBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegBuffer::sum(self : MathnumericalintegBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_buffer_mean(s : MathnumericalintegBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegBuffer::mean(self : MathnumericalintegBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_buffer_scale(s : MathnumericalintegBuffer, f : Double) -> MathnumericalintegBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegBuffer::scale(self : MathnumericalintegBuffer, f : Double) -> MathnumericalintegBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_buffer_add(a : MathnumericalintegBuffer, b : MathnumericalintegBuffer) -> MathnumericalintegBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegBuffer::add(self : MathnumericalintegBuffer, other : MathnumericalintegBuffer) -> MathnumericalintegBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_buffer_copy(s : MathnumericalintegBuffer) -> MathnumericalintegBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegBuffer::copy(self : MathnumericalintegBuffer) -> MathnumericalintegBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_buffer_fill(s : MathnumericalintegBuffer, v : Double) -> MathnumericalintegBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegBuffer::fill(self : MathnumericalintegBuffer, v : Double) -> MathnumericalintegBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_buffer_min(s : MathnumericalintegBuffer) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegBuffer::min(self : MathnumericalintegBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_buffer_max(s : MathnumericalintegBuffer) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegBuffer::max(self : MathnumericalintegBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_buffer_to_string(s : MathnumericalintegBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegBuffer::to_string(self : MathnumericalintegBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegCursor {
@@ -861,45 +861,45 @@ pub fn math_numerical_integ_cursor_make(size : Int) -> MathnumericalintegCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_cursor_len(s : MathnumericalintegCursor) -> Int { s.size }
+pub fn MathnumericalintegCursor::len(self : MathnumericalintegCursor) -> Int { self.size }
 
-pub fn math_numerical_integ_cursor_get(s : MathnumericalintegCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegCursor::get(self : MathnumericalintegCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_cursor_set(s : MathnumericalintegCursor, i : Int, v : Double) -> MathnumericalintegCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegCursor::set(self : MathnumericalintegCursor, i : Int, v : Double) -> MathnumericalintegCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_cursor_sum(s : MathnumericalintegCursor) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegCursor::sum(self : MathnumericalintegCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_cursor_mean(s : MathnumericalintegCursor) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegCursor::mean(self : MathnumericalintegCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_cursor_scale(s : MathnumericalintegCursor, f : Double) -> MathnumericalintegCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegCursor::scale(self : MathnumericalintegCursor, f : Double) -> MathnumericalintegCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_cursor_add(a : MathnumericalintegCursor, b : MathnumericalintegCursor) -> MathnumericalintegCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegCursor::add(self : MathnumericalintegCursor, other : MathnumericalintegCursor) -> MathnumericalintegCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_cursor_copy(s : MathnumericalintegCursor) -> MathnumericalintegCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegCursor::copy(self : MathnumericalintegCursor) -> MathnumericalintegCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_cursor_fill(s : MathnumericalintegCursor, v : Double) -> MathnumericalintegCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegCursor::fill(self : MathnumericalintegCursor, v : Double) -> MathnumericalintegCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_cursor_min(s : MathnumericalintegCursor) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegCursor::min(self : MathnumericalintegCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_cursor_max(s : MathnumericalintegCursor) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegCursor::max(self : MathnumericalintegCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_cursor_to_string(s : MathnumericalintegCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegCursor::to_string(self : MathnumericalintegCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegView {
@@ -912,45 +912,45 @@ pub fn math_numerical_integ_view_make(size : Int) -> MathnumericalintegView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_view_len(s : MathnumericalintegView) -> Int { s.size }
+pub fn MathnumericalintegView::len(self : MathnumericalintegView) -> Int { self.size }
 
-pub fn math_numerical_integ_view_get(s : MathnumericalintegView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegView::get(self : MathnumericalintegView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_view_set(s : MathnumericalintegView, i : Int, v : Double) -> MathnumericalintegView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegView::set(self : MathnumericalintegView, i : Int, v : Double) -> MathnumericalintegView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_view_sum(s : MathnumericalintegView) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegView::sum(self : MathnumericalintegView) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_view_mean(s : MathnumericalintegView) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegView::mean(self : MathnumericalintegView) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_view_scale(s : MathnumericalintegView, f : Double) -> MathnumericalintegView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegView::scale(self : MathnumericalintegView, f : Double) -> MathnumericalintegView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_view_add(a : MathnumericalintegView, b : MathnumericalintegView) -> MathnumericalintegView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegView::add(self : MathnumericalintegView, other : MathnumericalintegView) -> MathnumericalintegView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_view_copy(s : MathnumericalintegView) -> MathnumericalintegView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegView::copy(self : MathnumericalintegView) -> MathnumericalintegView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_view_fill(s : MathnumericalintegView, v : Double) -> MathnumericalintegView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegView::fill(self : MathnumericalintegView, v : Double) -> MathnumericalintegView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_view_min(s : MathnumericalintegView) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegView::min(self : MathnumericalintegView) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_view_max(s : MathnumericalintegView) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegView::max(self : MathnumericalintegView) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_view_to_string(s : MathnumericalintegView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegView::to_string(self : MathnumericalintegView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegRange {
@@ -963,45 +963,45 @@ pub fn math_numerical_integ_range_make(size : Int) -> MathnumericalintegRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_range_len(s : MathnumericalintegRange) -> Int { s.size }
+pub fn MathnumericalintegRange::len(self : MathnumericalintegRange) -> Int { self.size }
 
-pub fn math_numerical_integ_range_get(s : MathnumericalintegRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegRange::get(self : MathnumericalintegRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_range_set(s : MathnumericalintegRange, i : Int, v : Double) -> MathnumericalintegRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegRange::set(self : MathnumericalintegRange, i : Int, v : Double) -> MathnumericalintegRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_range_sum(s : MathnumericalintegRange) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegRange::sum(self : MathnumericalintegRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_range_mean(s : MathnumericalintegRange) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegRange::mean(self : MathnumericalintegRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_range_scale(s : MathnumericalintegRange, f : Double) -> MathnumericalintegRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegRange::scale(self : MathnumericalintegRange, f : Double) -> MathnumericalintegRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_range_add(a : MathnumericalintegRange, b : MathnumericalintegRange) -> MathnumericalintegRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegRange::add(self : MathnumericalintegRange, other : MathnumericalintegRange) -> MathnumericalintegRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_range_copy(s : MathnumericalintegRange) -> MathnumericalintegRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegRange::copy(self : MathnumericalintegRange) -> MathnumericalintegRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_range_fill(s : MathnumericalintegRange, v : Double) -> MathnumericalintegRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegRange::fill(self : MathnumericalintegRange, v : Double) -> MathnumericalintegRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_range_min(s : MathnumericalintegRange) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegRange::min(self : MathnumericalintegRange) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_range_max(s : MathnumericalintegRange) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegRange::max(self : MathnumericalintegRange) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_range_to_string(s : MathnumericalintegRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegRange::to_string(self : MathnumericalintegRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegSlice {
@@ -1014,44 +1014,44 @@ pub fn math_numerical_integ_slice_make(size : Int) -> MathnumericalintegSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_integ_slice_len(s : MathnumericalintegSlice) -> Int { s.size }
+pub fn MathnumericalintegSlice::len(self : MathnumericalintegSlice) -> Int { self.size }
 
-pub fn math_numerical_integ_slice_get(s : MathnumericalintegSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericalintegSlice::get(self : MathnumericalintegSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_integ_slice_set(s : MathnumericalintegSlice, i : Int, v : Double) -> MathnumericalintegSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericalintegSlice::set(self : MathnumericalintegSlice, i : Int, v : Double) -> MathnumericalintegSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_slice_sum(s : MathnumericalintegSlice) -> Double { @_common.sum(s.data) }
+pub fn MathnumericalintegSlice::sum(self : MathnumericalintegSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_integ_slice_mean(s : MathnumericalintegSlice) -> Double { @_common.mean(s.data) }
+pub fn MathnumericalintegSlice::mean(self : MathnumericalintegSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_integ_slice_scale(s : MathnumericalintegSlice, f : Double) -> MathnumericalintegSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericalintegSlice::scale(self : MathnumericalintegSlice, f : Double) -> MathnumericalintegSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_slice_add(a : MathnumericalintegSlice, b : MathnumericalintegSlice) -> MathnumericalintegSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericalintegSlice::add(self : MathnumericalintegSlice, other : MathnumericalintegSlice) -> MathnumericalintegSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_integ_slice_copy(s : MathnumericalintegSlice) -> MathnumericalintegSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericalintegSlice::copy(self : MathnumericalintegSlice) -> MathnumericalintegSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_slice_fill(s : MathnumericalintegSlice, v : Double) -> MathnumericalintegSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericalintegSlice::fill(self : MathnumericalintegSlice, v : Double) -> MathnumericalintegSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_integ_slice_min(s : MathnumericalintegSlice) -> Double { @_common.min(s.data) }
+pub fn MathnumericalintegSlice::min(self : MathnumericalintegSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_integ_slice_max(s : MathnumericalintegSlice) -> Double { @_common.max(s.data) }
+pub fn MathnumericalintegSlice::max(self : MathnumericalintegSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_integ_slice_to_string(s : MathnumericalintegSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericalintegSlice::to_string(self : MathnumericalintegSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

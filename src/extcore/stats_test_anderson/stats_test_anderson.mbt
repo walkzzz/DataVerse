@@ -351,45 +351,45 @@ pub fn stats_test_anderson_frame_make(size : Int) -> StatstestandersonFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_frame_len(s : StatstestandersonFrame) -> Int { s.size }
+pub fn StatstestandersonFrame::len(self : StatstestandersonFrame) -> Int { self.size }
 
-pub fn stats_test_anderson_frame_get(s : StatstestandersonFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonFrame::get(self : StatstestandersonFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_frame_set(s : StatstestandersonFrame, i : Int, v : Double) -> StatstestandersonFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonFrame::set(self : StatstestandersonFrame, i : Int, v : Double) -> StatstestandersonFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_frame_sum(s : StatstestandersonFrame) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonFrame::sum(self : StatstestandersonFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_frame_mean(s : StatstestandersonFrame) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonFrame::mean(self : StatstestandersonFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_frame_scale(s : StatstestandersonFrame, f : Double) -> StatstestandersonFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonFrame::scale(self : StatstestandersonFrame, f : Double) -> StatstestandersonFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_frame_add(a : StatstestandersonFrame, b : StatstestandersonFrame) -> StatstestandersonFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonFrame::add(self : StatstestandersonFrame, other : StatstestandersonFrame) -> StatstestandersonFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_frame_copy(s : StatstestandersonFrame) -> StatstestandersonFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonFrame::copy(self : StatstestandersonFrame) -> StatstestandersonFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_frame_fill(s : StatstestandersonFrame, v : Double) -> StatstestandersonFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonFrame::fill(self : StatstestandersonFrame, v : Double) -> StatstestandersonFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_frame_min(s : StatstestandersonFrame) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonFrame::min(self : StatstestandersonFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_frame_max(s : StatstestandersonFrame) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonFrame::max(self : StatstestandersonFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_frame_to_string(s : StatstestandersonFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonFrame::to_string(self : StatstestandersonFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonTable {
@@ -402,45 +402,45 @@ pub fn stats_test_anderson_table_make(size : Int) -> StatstestandersonTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_table_len(s : StatstestandersonTable) -> Int { s.size }
+pub fn StatstestandersonTable::len(self : StatstestandersonTable) -> Int { self.size }
 
-pub fn stats_test_anderson_table_get(s : StatstestandersonTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonTable::get(self : StatstestandersonTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_table_set(s : StatstestandersonTable, i : Int, v : Double) -> StatstestandersonTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonTable::set(self : StatstestandersonTable, i : Int, v : Double) -> StatstestandersonTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_table_sum(s : StatstestandersonTable) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonTable::sum(self : StatstestandersonTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_table_mean(s : StatstestandersonTable) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonTable::mean(self : StatstestandersonTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_table_scale(s : StatstestandersonTable, f : Double) -> StatstestandersonTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonTable::scale(self : StatstestandersonTable, f : Double) -> StatstestandersonTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_table_add(a : StatstestandersonTable, b : StatstestandersonTable) -> StatstestandersonTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonTable::add(self : StatstestandersonTable, other : StatstestandersonTable) -> StatstestandersonTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_table_copy(s : StatstestandersonTable) -> StatstestandersonTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonTable::copy(self : StatstestandersonTable) -> StatstestandersonTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_table_fill(s : StatstestandersonTable, v : Double) -> StatstestandersonTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonTable::fill(self : StatstestandersonTable, v : Double) -> StatstestandersonTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_table_min(s : StatstestandersonTable) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonTable::min(self : StatstestandersonTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_table_max(s : StatstestandersonTable) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonTable::max(self : StatstestandersonTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_table_to_string(s : StatstestandersonTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonTable::to_string(self : StatstestandersonTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonGraphN {
@@ -453,45 +453,45 @@ pub fn stats_test_anderson_graphn_make(size : Int) -> StatstestandersonGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_graphn_len(s : StatstestandersonGraphN) -> Int { s.size }
+pub fn StatstestandersonGraphN::len(self : StatstestandersonGraphN) -> Int { self.size }
 
-pub fn stats_test_anderson_graphn_get(s : StatstestandersonGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonGraphN::get(self : StatstestandersonGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_graphn_set(s : StatstestandersonGraphN, i : Int, v : Double) -> StatstestandersonGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonGraphN::set(self : StatstestandersonGraphN, i : Int, v : Double) -> StatstestandersonGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_graphn_sum(s : StatstestandersonGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonGraphN::sum(self : StatstestandersonGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_graphn_mean(s : StatstestandersonGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonGraphN::mean(self : StatstestandersonGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_graphn_scale(s : StatstestandersonGraphN, f : Double) -> StatstestandersonGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonGraphN::scale(self : StatstestandersonGraphN, f : Double) -> StatstestandersonGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_graphn_add(a : StatstestandersonGraphN, b : StatstestandersonGraphN) -> StatstestandersonGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonGraphN::add(self : StatstestandersonGraphN, other : StatstestandersonGraphN) -> StatstestandersonGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_graphn_copy(s : StatstestandersonGraphN) -> StatstestandersonGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonGraphN::copy(self : StatstestandersonGraphN) -> StatstestandersonGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_graphn_fill(s : StatstestandersonGraphN, v : Double) -> StatstestandersonGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonGraphN::fill(self : StatstestandersonGraphN, v : Double) -> StatstestandersonGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_graphn_min(s : StatstestandersonGraphN) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonGraphN::min(self : StatstestandersonGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_graphn_max(s : StatstestandersonGraphN) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonGraphN::max(self : StatstestandersonGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_graphn_to_string(s : StatstestandersonGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonGraphN::to_string(self : StatstestandersonGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonNode {
@@ -504,45 +504,45 @@ pub fn stats_test_anderson_node_make(size : Int) -> StatstestandersonNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_node_len(s : StatstestandersonNode) -> Int { s.size }
+pub fn StatstestandersonNode::len(self : StatstestandersonNode) -> Int { self.size }
 
-pub fn stats_test_anderson_node_get(s : StatstestandersonNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonNode::get(self : StatstestandersonNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_node_set(s : StatstestandersonNode, i : Int, v : Double) -> StatstestandersonNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonNode::set(self : StatstestandersonNode, i : Int, v : Double) -> StatstestandersonNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_node_sum(s : StatstestandersonNode) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonNode::sum(self : StatstestandersonNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_node_mean(s : StatstestandersonNode) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonNode::mean(self : StatstestandersonNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_node_scale(s : StatstestandersonNode, f : Double) -> StatstestandersonNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonNode::scale(self : StatstestandersonNode, f : Double) -> StatstestandersonNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_node_add(a : StatstestandersonNode, b : StatstestandersonNode) -> StatstestandersonNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonNode::add(self : StatstestandersonNode, other : StatstestandersonNode) -> StatstestandersonNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_node_copy(s : StatstestandersonNode) -> StatstestandersonNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonNode::copy(self : StatstestandersonNode) -> StatstestandersonNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_node_fill(s : StatstestandersonNode, v : Double) -> StatstestandersonNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonNode::fill(self : StatstestandersonNode, v : Double) -> StatstestandersonNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_node_min(s : StatstestandersonNode) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonNode::min(self : StatstestandersonNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_node_max(s : StatstestandersonNode) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonNode::max(self : StatstestandersonNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_node_to_string(s : StatstestandersonNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonNode::to_string(self : StatstestandersonNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonEdge {
@@ -555,45 +555,45 @@ pub fn stats_test_anderson_edge_make(size : Int) -> StatstestandersonEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_edge_len(s : StatstestandersonEdge) -> Int { s.size }
+pub fn StatstestandersonEdge::len(self : StatstestandersonEdge) -> Int { self.size }
 
-pub fn stats_test_anderson_edge_get(s : StatstestandersonEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonEdge::get(self : StatstestandersonEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_edge_set(s : StatstestandersonEdge, i : Int, v : Double) -> StatstestandersonEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonEdge::set(self : StatstestandersonEdge, i : Int, v : Double) -> StatstestandersonEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_edge_sum(s : StatstestandersonEdge) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonEdge::sum(self : StatstestandersonEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_edge_mean(s : StatstestandersonEdge) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonEdge::mean(self : StatstestandersonEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_edge_scale(s : StatstestandersonEdge, f : Double) -> StatstestandersonEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonEdge::scale(self : StatstestandersonEdge, f : Double) -> StatstestandersonEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_edge_add(a : StatstestandersonEdge, b : StatstestandersonEdge) -> StatstestandersonEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonEdge::add(self : StatstestandersonEdge, other : StatstestandersonEdge) -> StatstestandersonEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_edge_copy(s : StatstestandersonEdge) -> StatstestandersonEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonEdge::copy(self : StatstestandersonEdge) -> StatstestandersonEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_edge_fill(s : StatstestandersonEdge, v : Double) -> StatstestandersonEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonEdge::fill(self : StatstestandersonEdge, v : Double) -> StatstestandersonEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_edge_min(s : StatstestandersonEdge) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonEdge::min(self : StatstestandersonEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_edge_max(s : StatstestandersonEdge) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonEdge::max(self : StatstestandersonEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_edge_to_string(s : StatstestandersonEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonEdge::to_string(self : StatstestandersonEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonPath {
@@ -606,45 +606,45 @@ pub fn stats_test_anderson_path_make(size : Int) -> StatstestandersonPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_path_len(s : StatstestandersonPath) -> Int { s.size }
+pub fn StatstestandersonPath::len(self : StatstestandersonPath) -> Int { self.size }
 
-pub fn stats_test_anderson_path_get(s : StatstestandersonPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonPath::get(self : StatstestandersonPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_path_set(s : StatstestandersonPath, i : Int, v : Double) -> StatstestandersonPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonPath::set(self : StatstestandersonPath, i : Int, v : Double) -> StatstestandersonPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_path_sum(s : StatstestandersonPath) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonPath::sum(self : StatstestandersonPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_path_mean(s : StatstestandersonPath) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonPath::mean(self : StatstestandersonPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_path_scale(s : StatstestandersonPath, f : Double) -> StatstestandersonPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonPath::scale(self : StatstestandersonPath, f : Double) -> StatstestandersonPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_path_add(a : StatstestandersonPath, b : StatstestandersonPath) -> StatstestandersonPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonPath::add(self : StatstestandersonPath, other : StatstestandersonPath) -> StatstestandersonPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_path_copy(s : StatstestandersonPath) -> StatstestandersonPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonPath::copy(self : StatstestandersonPath) -> StatstestandersonPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_path_fill(s : StatstestandersonPath, v : Double) -> StatstestandersonPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonPath::fill(self : StatstestandersonPath, v : Double) -> StatstestandersonPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_path_min(s : StatstestandersonPath) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonPath::min(self : StatstestandersonPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_path_max(s : StatstestandersonPath) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonPath::max(self : StatstestandersonPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_path_to_string(s : StatstestandersonPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonPath::to_string(self : StatstestandersonPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonCluster {
@@ -657,45 +657,45 @@ pub fn stats_test_anderson_cluster_make(size : Int) -> StatstestandersonCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_cluster_len(s : StatstestandersonCluster) -> Int { s.size }
+pub fn StatstestandersonCluster::len(self : StatstestandersonCluster) -> Int { self.size }
 
-pub fn stats_test_anderson_cluster_get(s : StatstestandersonCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonCluster::get(self : StatstestandersonCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_cluster_set(s : StatstestandersonCluster, i : Int, v : Double) -> StatstestandersonCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonCluster::set(self : StatstestandersonCluster, i : Int, v : Double) -> StatstestandersonCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_cluster_sum(s : StatstestandersonCluster) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonCluster::sum(self : StatstestandersonCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_cluster_mean(s : StatstestandersonCluster) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonCluster::mean(self : StatstestandersonCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_cluster_scale(s : StatstestandersonCluster, f : Double) -> StatstestandersonCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonCluster::scale(self : StatstestandersonCluster, f : Double) -> StatstestandersonCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_cluster_add(a : StatstestandersonCluster, b : StatstestandersonCluster) -> StatstestandersonCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonCluster::add(self : StatstestandersonCluster, other : StatstestandersonCluster) -> StatstestandersonCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_cluster_copy(s : StatstestandersonCluster) -> StatstestandersonCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonCluster::copy(self : StatstestandersonCluster) -> StatstestandersonCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_cluster_fill(s : StatstestandersonCluster, v : Double) -> StatstestandersonCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonCluster::fill(self : StatstestandersonCluster, v : Double) -> StatstestandersonCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_cluster_min(s : StatstestandersonCluster) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonCluster::min(self : StatstestandersonCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_cluster_max(s : StatstestandersonCluster) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonCluster::max(self : StatstestandersonCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_cluster_to_string(s : StatstestandersonCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonCluster::to_string(self : StatstestandersonCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonModel {
@@ -708,45 +708,45 @@ pub fn stats_test_anderson_model_make(size : Int) -> StatstestandersonModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_model_len(s : StatstestandersonModel) -> Int { s.size }
+pub fn StatstestandersonModel::len(self : StatstestandersonModel) -> Int { self.size }
 
-pub fn stats_test_anderson_model_get(s : StatstestandersonModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonModel::get(self : StatstestandersonModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_model_set(s : StatstestandersonModel, i : Int, v : Double) -> StatstestandersonModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonModel::set(self : StatstestandersonModel, i : Int, v : Double) -> StatstestandersonModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_model_sum(s : StatstestandersonModel) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonModel::sum(self : StatstestandersonModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_model_mean(s : StatstestandersonModel) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonModel::mean(self : StatstestandersonModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_model_scale(s : StatstestandersonModel, f : Double) -> StatstestandersonModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonModel::scale(self : StatstestandersonModel, f : Double) -> StatstestandersonModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_model_add(a : StatstestandersonModel, b : StatstestandersonModel) -> StatstestandersonModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonModel::add(self : StatstestandersonModel, other : StatstestandersonModel) -> StatstestandersonModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_model_copy(s : StatstestandersonModel) -> StatstestandersonModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonModel::copy(self : StatstestandersonModel) -> StatstestandersonModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_model_fill(s : StatstestandersonModel, v : Double) -> StatstestandersonModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonModel::fill(self : StatstestandersonModel, v : Double) -> StatstestandersonModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_model_min(s : StatstestandersonModel) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonModel::min(self : StatstestandersonModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_model_max(s : StatstestandersonModel) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonModel::max(self : StatstestandersonModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_model_to_string(s : StatstestandersonModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonModel::to_string(self : StatstestandersonModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonLayer {
@@ -759,45 +759,45 @@ pub fn stats_test_anderson_layer_make(size : Int) -> StatstestandersonLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_layer_len(s : StatstestandersonLayer) -> Int { s.size }
+pub fn StatstestandersonLayer::len(self : StatstestandersonLayer) -> Int { self.size }
 
-pub fn stats_test_anderson_layer_get(s : StatstestandersonLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonLayer::get(self : StatstestandersonLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_layer_set(s : StatstestandersonLayer, i : Int, v : Double) -> StatstestandersonLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonLayer::set(self : StatstestandersonLayer, i : Int, v : Double) -> StatstestandersonLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_layer_sum(s : StatstestandersonLayer) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonLayer::sum(self : StatstestandersonLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_layer_mean(s : StatstestandersonLayer) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonLayer::mean(self : StatstestandersonLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_layer_scale(s : StatstestandersonLayer, f : Double) -> StatstestandersonLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonLayer::scale(self : StatstestandersonLayer, f : Double) -> StatstestandersonLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_layer_add(a : StatstestandersonLayer, b : StatstestandersonLayer) -> StatstestandersonLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonLayer::add(self : StatstestandersonLayer, other : StatstestandersonLayer) -> StatstestandersonLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_layer_copy(s : StatstestandersonLayer) -> StatstestandersonLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonLayer::copy(self : StatstestandersonLayer) -> StatstestandersonLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_layer_fill(s : StatstestandersonLayer, v : Double) -> StatstestandersonLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonLayer::fill(self : StatstestandersonLayer, v : Double) -> StatstestandersonLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_layer_min(s : StatstestandersonLayer) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonLayer::min(self : StatstestandersonLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_layer_max(s : StatstestandersonLayer) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonLayer::max(self : StatstestandersonLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_layer_to_string(s : StatstestandersonLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonLayer::to_string(self : StatstestandersonLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonBuffer {
@@ -810,45 +810,45 @@ pub fn stats_test_anderson_buffer_make(size : Int) -> StatstestandersonBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_buffer_len(s : StatstestandersonBuffer) -> Int { s.size }
+pub fn StatstestandersonBuffer::len(self : StatstestandersonBuffer) -> Int { self.size }
 
-pub fn stats_test_anderson_buffer_get(s : StatstestandersonBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonBuffer::get(self : StatstestandersonBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_buffer_set(s : StatstestandersonBuffer, i : Int, v : Double) -> StatstestandersonBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonBuffer::set(self : StatstestandersonBuffer, i : Int, v : Double) -> StatstestandersonBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_buffer_sum(s : StatstestandersonBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonBuffer::sum(self : StatstestandersonBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_buffer_mean(s : StatstestandersonBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonBuffer::mean(self : StatstestandersonBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_buffer_scale(s : StatstestandersonBuffer, f : Double) -> StatstestandersonBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonBuffer::scale(self : StatstestandersonBuffer, f : Double) -> StatstestandersonBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_buffer_add(a : StatstestandersonBuffer, b : StatstestandersonBuffer) -> StatstestandersonBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonBuffer::add(self : StatstestandersonBuffer, other : StatstestandersonBuffer) -> StatstestandersonBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_buffer_copy(s : StatstestandersonBuffer) -> StatstestandersonBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonBuffer::copy(self : StatstestandersonBuffer) -> StatstestandersonBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_buffer_fill(s : StatstestandersonBuffer, v : Double) -> StatstestandersonBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonBuffer::fill(self : StatstestandersonBuffer, v : Double) -> StatstestandersonBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_buffer_min(s : StatstestandersonBuffer) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonBuffer::min(self : StatstestandersonBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_buffer_max(s : StatstestandersonBuffer) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonBuffer::max(self : StatstestandersonBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_buffer_to_string(s : StatstestandersonBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonBuffer::to_string(self : StatstestandersonBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonCursor {
@@ -861,45 +861,45 @@ pub fn stats_test_anderson_cursor_make(size : Int) -> StatstestandersonCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_cursor_len(s : StatstestandersonCursor) -> Int { s.size }
+pub fn StatstestandersonCursor::len(self : StatstestandersonCursor) -> Int { self.size }
 
-pub fn stats_test_anderson_cursor_get(s : StatstestandersonCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonCursor::get(self : StatstestandersonCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_cursor_set(s : StatstestandersonCursor, i : Int, v : Double) -> StatstestandersonCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonCursor::set(self : StatstestandersonCursor, i : Int, v : Double) -> StatstestandersonCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_cursor_sum(s : StatstestandersonCursor) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonCursor::sum(self : StatstestandersonCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_cursor_mean(s : StatstestandersonCursor) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonCursor::mean(self : StatstestandersonCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_cursor_scale(s : StatstestandersonCursor, f : Double) -> StatstestandersonCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonCursor::scale(self : StatstestandersonCursor, f : Double) -> StatstestandersonCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_cursor_add(a : StatstestandersonCursor, b : StatstestandersonCursor) -> StatstestandersonCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonCursor::add(self : StatstestandersonCursor, other : StatstestandersonCursor) -> StatstestandersonCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_cursor_copy(s : StatstestandersonCursor) -> StatstestandersonCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonCursor::copy(self : StatstestandersonCursor) -> StatstestandersonCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_cursor_fill(s : StatstestandersonCursor, v : Double) -> StatstestandersonCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonCursor::fill(self : StatstestandersonCursor, v : Double) -> StatstestandersonCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_cursor_min(s : StatstestandersonCursor) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonCursor::min(self : StatstestandersonCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_cursor_max(s : StatstestandersonCursor) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonCursor::max(self : StatstestandersonCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_cursor_to_string(s : StatstestandersonCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonCursor::to_string(self : StatstestandersonCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonView {
@@ -912,45 +912,45 @@ pub fn stats_test_anderson_view_make(size : Int) -> StatstestandersonView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_view_len(s : StatstestandersonView) -> Int { s.size }
+pub fn StatstestandersonView::len(self : StatstestandersonView) -> Int { self.size }
 
-pub fn stats_test_anderson_view_get(s : StatstestandersonView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonView::get(self : StatstestandersonView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_view_set(s : StatstestandersonView, i : Int, v : Double) -> StatstestandersonView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonView::set(self : StatstestandersonView, i : Int, v : Double) -> StatstestandersonView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_view_sum(s : StatstestandersonView) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonView::sum(self : StatstestandersonView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_view_mean(s : StatstestandersonView) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonView::mean(self : StatstestandersonView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_view_scale(s : StatstestandersonView, f : Double) -> StatstestandersonView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonView::scale(self : StatstestandersonView, f : Double) -> StatstestandersonView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_view_add(a : StatstestandersonView, b : StatstestandersonView) -> StatstestandersonView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonView::add(self : StatstestandersonView, other : StatstestandersonView) -> StatstestandersonView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_view_copy(s : StatstestandersonView) -> StatstestandersonView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonView::copy(self : StatstestandersonView) -> StatstestandersonView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_view_fill(s : StatstestandersonView, v : Double) -> StatstestandersonView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonView::fill(self : StatstestandersonView, v : Double) -> StatstestandersonView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_view_min(s : StatstestandersonView) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonView::min(self : StatstestandersonView) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_view_max(s : StatstestandersonView) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonView::max(self : StatstestandersonView) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_view_to_string(s : StatstestandersonView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonView::to_string(self : StatstestandersonView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonRange {
@@ -963,45 +963,45 @@ pub fn stats_test_anderson_range_make(size : Int) -> StatstestandersonRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_range_len(s : StatstestandersonRange) -> Int { s.size }
+pub fn StatstestandersonRange::len(self : StatstestandersonRange) -> Int { self.size }
 
-pub fn stats_test_anderson_range_get(s : StatstestandersonRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonRange::get(self : StatstestandersonRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_range_set(s : StatstestandersonRange, i : Int, v : Double) -> StatstestandersonRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonRange::set(self : StatstestandersonRange, i : Int, v : Double) -> StatstestandersonRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_range_sum(s : StatstestandersonRange) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonRange::sum(self : StatstestandersonRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_range_mean(s : StatstestandersonRange) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonRange::mean(self : StatstestandersonRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_range_scale(s : StatstestandersonRange, f : Double) -> StatstestandersonRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonRange::scale(self : StatstestandersonRange, f : Double) -> StatstestandersonRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_range_add(a : StatstestandersonRange, b : StatstestandersonRange) -> StatstestandersonRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonRange::add(self : StatstestandersonRange, other : StatstestandersonRange) -> StatstestandersonRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_range_copy(s : StatstestandersonRange) -> StatstestandersonRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonRange::copy(self : StatstestandersonRange) -> StatstestandersonRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_range_fill(s : StatstestandersonRange, v : Double) -> StatstestandersonRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonRange::fill(self : StatstestandersonRange, v : Double) -> StatstestandersonRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_range_min(s : StatstestandersonRange) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonRange::min(self : StatstestandersonRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_range_max(s : StatstestandersonRange) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonRange::max(self : StatstestandersonRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_range_to_string(s : StatstestandersonRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonRange::to_string(self : StatstestandersonRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestandersonSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_test_anderson_slice_make(size : Int) -> StatstestandersonSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_anderson_slice_len(s : StatstestandersonSlice) -> Int { s.size }
+pub fn StatstestandersonSlice::len(self : StatstestandersonSlice) -> Int { self.size }
 
-pub fn stats_test_anderson_slice_get(s : StatstestandersonSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestandersonSlice::get(self : StatstestandersonSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_anderson_slice_set(s : StatstestandersonSlice, i : Int, v : Double) -> StatstestandersonSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestandersonSlice::set(self : StatstestandersonSlice, i : Int, v : Double) -> StatstestandersonSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_slice_sum(s : StatstestandersonSlice) -> Double { @_common.sum(s.data) }
+pub fn StatstestandersonSlice::sum(self : StatstestandersonSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_anderson_slice_mean(s : StatstestandersonSlice) -> Double { @_common.mean(s.data) }
+pub fn StatstestandersonSlice::mean(self : StatstestandersonSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_anderson_slice_scale(s : StatstestandersonSlice, f : Double) -> StatstestandersonSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestandersonSlice::scale(self : StatstestandersonSlice, f : Double) -> StatstestandersonSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_slice_add(a : StatstestandersonSlice, b : StatstestandersonSlice) -> StatstestandersonSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestandersonSlice::add(self : StatstestandersonSlice, other : StatstestandersonSlice) -> StatstestandersonSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_anderson_slice_copy(s : StatstestandersonSlice) -> StatstestandersonSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestandersonSlice::copy(self : StatstestandersonSlice) -> StatstestandersonSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_slice_fill(s : StatstestandersonSlice, v : Double) -> StatstestandersonSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestandersonSlice::fill(self : StatstestandersonSlice, v : Double) -> StatstestandersonSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_anderson_slice_min(s : StatstestandersonSlice) -> Double { @_common.min(s.data) }
+pub fn StatstestandersonSlice::min(self : StatstestandersonSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_anderson_slice_max(s : StatstestandersonSlice) -> Double { @_common.max(s.data) }
+pub fn StatstestandersonSlice::max(self : StatstestandersonSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_anderson_slice_to_string(s : StatstestandersonSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestandersonSlice::to_string(self : StatstestandersonSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

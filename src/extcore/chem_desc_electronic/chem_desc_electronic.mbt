@@ -351,45 +351,45 @@ pub fn chem_desc_electronic_frame_make(size : Int) -> ChemdescelectronicFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_frame_len(s : ChemdescelectronicFrame) -> Int { s.size }
+pub fn ChemdescelectronicFrame::len(self : ChemdescelectronicFrame) -> Int { self.size }
 
-pub fn chem_desc_electronic_frame_get(s : ChemdescelectronicFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicFrame::get(self : ChemdescelectronicFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_frame_set(s : ChemdescelectronicFrame, i : Int, v : Double) -> ChemdescelectronicFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicFrame::set(self : ChemdescelectronicFrame, i : Int, v : Double) -> ChemdescelectronicFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_frame_sum(s : ChemdescelectronicFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicFrame::sum(self : ChemdescelectronicFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_frame_mean(s : ChemdescelectronicFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicFrame::mean(self : ChemdescelectronicFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_frame_scale(s : ChemdescelectronicFrame, f : Double) -> ChemdescelectronicFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicFrame::scale(self : ChemdescelectronicFrame, f : Double) -> ChemdescelectronicFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_frame_add(a : ChemdescelectronicFrame, b : ChemdescelectronicFrame) -> ChemdescelectronicFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicFrame::add(self : ChemdescelectronicFrame, other : ChemdescelectronicFrame) -> ChemdescelectronicFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_frame_copy(s : ChemdescelectronicFrame) -> ChemdescelectronicFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicFrame::copy(self : ChemdescelectronicFrame) -> ChemdescelectronicFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_frame_fill(s : ChemdescelectronicFrame, v : Double) -> ChemdescelectronicFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicFrame::fill(self : ChemdescelectronicFrame, v : Double) -> ChemdescelectronicFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_frame_min(s : ChemdescelectronicFrame) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicFrame::min(self : ChemdescelectronicFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_frame_max(s : ChemdescelectronicFrame) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicFrame::max(self : ChemdescelectronicFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_frame_to_string(s : ChemdescelectronicFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicFrame::to_string(self : ChemdescelectronicFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicTable {
@@ -402,45 +402,45 @@ pub fn chem_desc_electronic_table_make(size : Int) -> ChemdescelectronicTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_table_len(s : ChemdescelectronicTable) -> Int { s.size }
+pub fn ChemdescelectronicTable::len(self : ChemdescelectronicTable) -> Int { self.size }
 
-pub fn chem_desc_electronic_table_get(s : ChemdescelectronicTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicTable::get(self : ChemdescelectronicTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_table_set(s : ChemdescelectronicTable, i : Int, v : Double) -> ChemdescelectronicTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicTable::set(self : ChemdescelectronicTable, i : Int, v : Double) -> ChemdescelectronicTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_table_sum(s : ChemdescelectronicTable) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicTable::sum(self : ChemdescelectronicTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_table_mean(s : ChemdescelectronicTable) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicTable::mean(self : ChemdescelectronicTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_table_scale(s : ChemdescelectronicTable, f : Double) -> ChemdescelectronicTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicTable::scale(self : ChemdescelectronicTable, f : Double) -> ChemdescelectronicTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_table_add(a : ChemdescelectronicTable, b : ChemdescelectronicTable) -> ChemdescelectronicTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicTable::add(self : ChemdescelectronicTable, other : ChemdescelectronicTable) -> ChemdescelectronicTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_table_copy(s : ChemdescelectronicTable) -> ChemdescelectronicTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicTable::copy(self : ChemdescelectronicTable) -> ChemdescelectronicTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_table_fill(s : ChemdescelectronicTable, v : Double) -> ChemdescelectronicTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicTable::fill(self : ChemdescelectronicTable, v : Double) -> ChemdescelectronicTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_table_min(s : ChemdescelectronicTable) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicTable::min(self : ChemdescelectronicTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_table_max(s : ChemdescelectronicTable) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicTable::max(self : ChemdescelectronicTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_table_to_string(s : ChemdescelectronicTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicTable::to_string(self : ChemdescelectronicTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicGraphN {
@@ -453,45 +453,45 @@ pub fn chem_desc_electronic_graphn_make(size : Int) -> ChemdescelectronicGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_graphn_len(s : ChemdescelectronicGraphN) -> Int { s.size }
+pub fn ChemdescelectronicGraphN::len(self : ChemdescelectronicGraphN) -> Int { self.size }
 
-pub fn chem_desc_electronic_graphn_get(s : ChemdescelectronicGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicGraphN::get(self : ChemdescelectronicGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_graphn_set(s : ChemdescelectronicGraphN, i : Int, v : Double) -> ChemdescelectronicGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicGraphN::set(self : ChemdescelectronicGraphN, i : Int, v : Double) -> ChemdescelectronicGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_graphn_sum(s : ChemdescelectronicGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicGraphN::sum(self : ChemdescelectronicGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_graphn_mean(s : ChemdescelectronicGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicGraphN::mean(self : ChemdescelectronicGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_graphn_scale(s : ChemdescelectronicGraphN, f : Double) -> ChemdescelectronicGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicGraphN::scale(self : ChemdescelectronicGraphN, f : Double) -> ChemdescelectronicGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_graphn_add(a : ChemdescelectronicGraphN, b : ChemdescelectronicGraphN) -> ChemdescelectronicGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicGraphN::add(self : ChemdescelectronicGraphN, other : ChemdescelectronicGraphN) -> ChemdescelectronicGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_graphn_copy(s : ChemdescelectronicGraphN) -> ChemdescelectronicGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicGraphN::copy(self : ChemdescelectronicGraphN) -> ChemdescelectronicGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_graphn_fill(s : ChemdescelectronicGraphN, v : Double) -> ChemdescelectronicGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicGraphN::fill(self : ChemdescelectronicGraphN, v : Double) -> ChemdescelectronicGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_graphn_min(s : ChemdescelectronicGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicGraphN::min(self : ChemdescelectronicGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_graphn_max(s : ChemdescelectronicGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicGraphN::max(self : ChemdescelectronicGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_graphn_to_string(s : ChemdescelectronicGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicGraphN::to_string(self : ChemdescelectronicGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicNode {
@@ -504,45 +504,45 @@ pub fn chem_desc_electronic_node_make(size : Int) -> ChemdescelectronicNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_node_len(s : ChemdescelectronicNode) -> Int { s.size }
+pub fn ChemdescelectronicNode::len(self : ChemdescelectronicNode) -> Int { self.size }
 
-pub fn chem_desc_electronic_node_get(s : ChemdescelectronicNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicNode::get(self : ChemdescelectronicNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_node_set(s : ChemdescelectronicNode, i : Int, v : Double) -> ChemdescelectronicNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicNode::set(self : ChemdescelectronicNode, i : Int, v : Double) -> ChemdescelectronicNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_node_sum(s : ChemdescelectronicNode) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicNode::sum(self : ChemdescelectronicNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_node_mean(s : ChemdescelectronicNode) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicNode::mean(self : ChemdescelectronicNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_node_scale(s : ChemdescelectronicNode, f : Double) -> ChemdescelectronicNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicNode::scale(self : ChemdescelectronicNode, f : Double) -> ChemdescelectronicNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_node_add(a : ChemdescelectronicNode, b : ChemdescelectronicNode) -> ChemdescelectronicNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicNode::add(self : ChemdescelectronicNode, other : ChemdescelectronicNode) -> ChemdescelectronicNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_node_copy(s : ChemdescelectronicNode) -> ChemdescelectronicNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicNode::copy(self : ChemdescelectronicNode) -> ChemdescelectronicNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_node_fill(s : ChemdescelectronicNode, v : Double) -> ChemdescelectronicNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicNode::fill(self : ChemdescelectronicNode, v : Double) -> ChemdescelectronicNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_node_min(s : ChemdescelectronicNode) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicNode::min(self : ChemdescelectronicNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_node_max(s : ChemdescelectronicNode) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicNode::max(self : ChemdescelectronicNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_node_to_string(s : ChemdescelectronicNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicNode::to_string(self : ChemdescelectronicNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicEdge {
@@ -555,45 +555,45 @@ pub fn chem_desc_electronic_edge_make(size : Int) -> ChemdescelectronicEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_edge_len(s : ChemdescelectronicEdge) -> Int { s.size }
+pub fn ChemdescelectronicEdge::len(self : ChemdescelectronicEdge) -> Int { self.size }
 
-pub fn chem_desc_electronic_edge_get(s : ChemdescelectronicEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicEdge::get(self : ChemdescelectronicEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_edge_set(s : ChemdescelectronicEdge, i : Int, v : Double) -> ChemdescelectronicEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicEdge::set(self : ChemdescelectronicEdge, i : Int, v : Double) -> ChemdescelectronicEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_edge_sum(s : ChemdescelectronicEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicEdge::sum(self : ChemdescelectronicEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_edge_mean(s : ChemdescelectronicEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicEdge::mean(self : ChemdescelectronicEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_edge_scale(s : ChemdescelectronicEdge, f : Double) -> ChemdescelectronicEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicEdge::scale(self : ChemdescelectronicEdge, f : Double) -> ChemdescelectronicEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_edge_add(a : ChemdescelectronicEdge, b : ChemdescelectronicEdge) -> ChemdescelectronicEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicEdge::add(self : ChemdescelectronicEdge, other : ChemdescelectronicEdge) -> ChemdescelectronicEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_edge_copy(s : ChemdescelectronicEdge) -> ChemdescelectronicEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicEdge::copy(self : ChemdescelectronicEdge) -> ChemdescelectronicEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_edge_fill(s : ChemdescelectronicEdge, v : Double) -> ChemdescelectronicEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicEdge::fill(self : ChemdescelectronicEdge, v : Double) -> ChemdescelectronicEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_edge_min(s : ChemdescelectronicEdge) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicEdge::min(self : ChemdescelectronicEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_edge_max(s : ChemdescelectronicEdge) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicEdge::max(self : ChemdescelectronicEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_edge_to_string(s : ChemdescelectronicEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicEdge::to_string(self : ChemdescelectronicEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicPath {
@@ -606,45 +606,45 @@ pub fn chem_desc_electronic_path_make(size : Int) -> ChemdescelectronicPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_path_len(s : ChemdescelectronicPath) -> Int { s.size }
+pub fn ChemdescelectronicPath::len(self : ChemdescelectronicPath) -> Int { self.size }
 
-pub fn chem_desc_electronic_path_get(s : ChemdescelectronicPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicPath::get(self : ChemdescelectronicPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_path_set(s : ChemdescelectronicPath, i : Int, v : Double) -> ChemdescelectronicPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicPath::set(self : ChemdescelectronicPath, i : Int, v : Double) -> ChemdescelectronicPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_path_sum(s : ChemdescelectronicPath) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicPath::sum(self : ChemdescelectronicPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_path_mean(s : ChemdescelectronicPath) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicPath::mean(self : ChemdescelectronicPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_path_scale(s : ChemdescelectronicPath, f : Double) -> ChemdescelectronicPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicPath::scale(self : ChemdescelectronicPath, f : Double) -> ChemdescelectronicPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_path_add(a : ChemdescelectronicPath, b : ChemdescelectronicPath) -> ChemdescelectronicPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicPath::add(self : ChemdescelectronicPath, other : ChemdescelectronicPath) -> ChemdescelectronicPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_path_copy(s : ChemdescelectronicPath) -> ChemdescelectronicPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicPath::copy(self : ChemdescelectronicPath) -> ChemdescelectronicPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_path_fill(s : ChemdescelectronicPath, v : Double) -> ChemdescelectronicPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicPath::fill(self : ChemdescelectronicPath, v : Double) -> ChemdescelectronicPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_path_min(s : ChemdescelectronicPath) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicPath::min(self : ChemdescelectronicPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_path_max(s : ChemdescelectronicPath) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicPath::max(self : ChemdescelectronicPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_path_to_string(s : ChemdescelectronicPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicPath::to_string(self : ChemdescelectronicPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicCluster {
@@ -657,45 +657,45 @@ pub fn chem_desc_electronic_cluster_make(size : Int) -> ChemdescelectronicCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_cluster_len(s : ChemdescelectronicCluster) -> Int { s.size }
+pub fn ChemdescelectronicCluster::len(self : ChemdescelectronicCluster) -> Int { self.size }
 
-pub fn chem_desc_electronic_cluster_get(s : ChemdescelectronicCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicCluster::get(self : ChemdescelectronicCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_cluster_set(s : ChemdescelectronicCluster, i : Int, v : Double) -> ChemdescelectronicCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicCluster::set(self : ChemdescelectronicCluster, i : Int, v : Double) -> ChemdescelectronicCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_cluster_sum(s : ChemdescelectronicCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicCluster::sum(self : ChemdescelectronicCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_cluster_mean(s : ChemdescelectronicCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicCluster::mean(self : ChemdescelectronicCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_cluster_scale(s : ChemdescelectronicCluster, f : Double) -> ChemdescelectronicCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicCluster::scale(self : ChemdescelectronicCluster, f : Double) -> ChemdescelectronicCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_cluster_add(a : ChemdescelectronicCluster, b : ChemdescelectronicCluster) -> ChemdescelectronicCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicCluster::add(self : ChemdescelectronicCluster, other : ChemdescelectronicCluster) -> ChemdescelectronicCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_cluster_copy(s : ChemdescelectronicCluster) -> ChemdescelectronicCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicCluster::copy(self : ChemdescelectronicCluster) -> ChemdescelectronicCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_cluster_fill(s : ChemdescelectronicCluster, v : Double) -> ChemdescelectronicCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicCluster::fill(self : ChemdescelectronicCluster, v : Double) -> ChemdescelectronicCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_cluster_min(s : ChemdescelectronicCluster) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicCluster::min(self : ChemdescelectronicCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_cluster_max(s : ChemdescelectronicCluster) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicCluster::max(self : ChemdescelectronicCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_cluster_to_string(s : ChemdescelectronicCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicCluster::to_string(self : ChemdescelectronicCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicModel {
@@ -708,45 +708,45 @@ pub fn chem_desc_electronic_model_make(size : Int) -> ChemdescelectronicModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_model_len(s : ChemdescelectronicModel) -> Int { s.size }
+pub fn ChemdescelectronicModel::len(self : ChemdescelectronicModel) -> Int { self.size }
 
-pub fn chem_desc_electronic_model_get(s : ChemdescelectronicModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicModel::get(self : ChemdescelectronicModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_model_set(s : ChemdescelectronicModel, i : Int, v : Double) -> ChemdescelectronicModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicModel::set(self : ChemdescelectronicModel, i : Int, v : Double) -> ChemdescelectronicModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_model_sum(s : ChemdescelectronicModel) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicModel::sum(self : ChemdescelectronicModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_model_mean(s : ChemdescelectronicModel) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicModel::mean(self : ChemdescelectronicModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_model_scale(s : ChemdescelectronicModel, f : Double) -> ChemdescelectronicModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicModel::scale(self : ChemdescelectronicModel, f : Double) -> ChemdescelectronicModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_model_add(a : ChemdescelectronicModel, b : ChemdescelectronicModel) -> ChemdescelectronicModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicModel::add(self : ChemdescelectronicModel, other : ChemdescelectronicModel) -> ChemdescelectronicModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_model_copy(s : ChemdescelectronicModel) -> ChemdescelectronicModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicModel::copy(self : ChemdescelectronicModel) -> ChemdescelectronicModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_model_fill(s : ChemdescelectronicModel, v : Double) -> ChemdescelectronicModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicModel::fill(self : ChemdescelectronicModel, v : Double) -> ChemdescelectronicModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_model_min(s : ChemdescelectronicModel) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicModel::min(self : ChemdescelectronicModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_model_max(s : ChemdescelectronicModel) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicModel::max(self : ChemdescelectronicModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_model_to_string(s : ChemdescelectronicModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicModel::to_string(self : ChemdescelectronicModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicLayer {
@@ -759,45 +759,45 @@ pub fn chem_desc_electronic_layer_make(size : Int) -> ChemdescelectronicLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_layer_len(s : ChemdescelectronicLayer) -> Int { s.size }
+pub fn ChemdescelectronicLayer::len(self : ChemdescelectronicLayer) -> Int { self.size }
 
-pub fn chem_desc_electronic_layer_get(s : ChemdescelectronicLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicLayer::get(self : ChemdescelectronicLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_layer_set(s : ChemdescelectronicLayer, i : Int, v : Double) -> ChemdescelectronicLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicLayer::set(self : ChemdescelectronicLayer, i : Int, v : Double) -> ChemdescelectronicLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_layer_sum(s : ChemdescelectronicLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicLayer::sum(self : ChemdescelectronicLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_layer_mean(s : ChemdescelectronicLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicLayer::mean(self : ChemdescelectronicLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_layer_scale(s : ChemdescelectronicLayer, f : Double) -> ChemdescelectronicLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicLayer::scale(self : ChemdescelectronicLayer, f : Double) -> ChemdescelectronicLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_layer_add(a : ChemdescelectronicLayer, b : ChemdescelectronicLayer) -> ChemdescelectronicLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicLayer::add(self : ChemdescelectronicLayer, other : ChemdescelectronicLayer) -> ChemdescelectronicLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_layer_copy(s : ChemdescelectronicLayer) -> ChemdescelectronicLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicLayer::copy(self : ChemdescelectronicLayer) -> ChemdescelectronicLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_layer_fill(s : ChemdescelectronicLayer, v : Double) -> ChemdescelectronicLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicLayer::fill(self : ChemdescelectronicLayer, v : Double) -> ChemdescelectronicLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_layer_min(s : ChemdescelectronicLayer) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicLayer::min(self : ChemdescelectronicLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_layer_max(s : ChemdescelectronicLayer) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicLayer::max(self : ChemdescelectronicLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_layer_to_string(s : ChemdescelectronicLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicLayer::to_string(self : ChemdescelectronicLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicBuffer {
@@ -810,45 +810,45 @@ pub fn chem_desc_electronic_buffer_make(size : Int) -> ChemdescelectronicBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_buffer_len(s : ChemdescelectronicBuffer) -> Int { s.size }
+pub fn ChemdescelectronicBuffer::len(self : ChemdescelectronicBuffer) -> Int { self.size }
 
-pub fn chem_desc_electronic_buffer_get(s : ChemdescelectronicBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicBuffer::get(self : ChemdescelectronicBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_buffer_set(s : ChemdescelectronicBuffer, i : Int, v : Double) -> ChemdescelectronicBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicBuffer::set(self : ChemdescelectronicBuffer, i : Int, v : Double) -> ChemdescelectronicBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_buffer_sum(s : ChemdescelectronicBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicBuffer::sum(self : ChemdescelectronicBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_buffer_mean(s : ChemdescelectronicBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicBuffer::mean(self : ChemdescelectronicBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_buffer_scale(s : ChemdescelectronicBuffer, f : Double) -> ChemdescelectronicBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicBuffer::scale(self : ChemdescelectronicBuffer, f : Double) -> ChemdescelectronicBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_buffer_add(a : ChemdescelectronicBuffer, b : ChemdescelectronicBuffer) -> ChemdescelectronicBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicBuffer::add(self : ChemdescelectronicBuffer, other : ChemdescelectronicBuffer) -> ChemdescelectronicBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_buffer_copy(s : ChemdescelectronicBuffer) -> ChemdescelectronicBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicBuffer::copy(self : ChemdescelectronicBuffer) -> ChemdescelectronicBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_buffer_fill(s : ChemdescelectronicBuffer, v : Double) -> ChemdescelectronicBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicBuffer::fill(self : ChemdescelectronicBuffer, v : Double) -> ChemdescelectronicBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_buffer_min(s : ChemdescelectronicBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicBuffer::min(self : ChemdescelectronicBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_buffer_max(s : ChemdescelectronicBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicBuffer::max(self : ChemdescelectronicBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_buffer_to_string(s : ChemdescelectronicBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicBuffer::to_string(self : ChemdescelectronicBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicCursor {
@@ -861,45 +861,45 @@ pub fn chem_desc_electronic_cursor_make(size : Int) -> ChemdescelectronicCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_cursor_len(s : ChemdescelectronicCursor) -> Int { s.size }
+pub fn ChemdescelectronicCursor::len(self : ChemdescelectronicCursor) -> Int { self.size }
 
-pub fn chem_desc_electronic_cursor_get(s : ChemdescelectronicCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicCursor::get(self : ChemdescelectronicCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_cursor_set(s : ChemdescelectronicCursor, i : Int, v : Double) -> ChemdescelectronicCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicCursor::set(self : ChemdescelectronicCursor, i : Int, v : Double) -> ChemdescelectronicCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_cursor_sum(s : ChemdescelectronicCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicCursor::sum(self : ChemdescelectronicCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_cursor_mean(s : ChemdescelectronicCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicCursor::mean(self : ChemdescelectronicCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_cursor_scale(s : ChemdescelectronicCursor, f : Double) -> ChemdescelectronicCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicCursor::scale(self : ChemdescelectronicCursor, f : Double) -> ChemdescelectronicCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_cursor_add(a : ChemdescelectronicCursor, b : ChemdescelectronicCursor) -> ChemdescelectronicCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicCursor::add(self : ChemdescelectronicCursor, other : ChemdescelectronicCursor) -> ChemdescelectronicCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_cursor_copy(s : ChemdescelectronicCursor) -> ChemdescelectronicCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicCursor::copy(self : ChemdescelectronicCursor) -> ChemdescelectronicCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_cursor_fill(s : ChemdescelectronicCursor, v : Double) -> ChemdescelectronicCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicCursor::fill(self : ChemdescelectronicCursor, v : Double) -> ChemdescelectronicCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_cursor_min(s : ChemdescelectronicCursor) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicCursor::min(self : ChemdescelectronicCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_cursor_max(s : ChemdescelectronicCursor) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicCursor::max(self : ChemdescelectronicCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_cursor_to_string(s : ChemdescelectronicCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicCursor::to_string(self : ChemdescelectronicCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicView {
@@ -912,45 +912,45 @@ pub fn chem_desc_electronic_view_make(size : Int) -> ChemdescelectronicView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_view_len(s : ChemdescelectronicView) -> Int { s.size }
+pub fn ChemdescelectronicView::len(self : ChemdescelectronicView) -> Int { self.size }
 
-pub fn chem_desc_electronic_view_get(s : ChemdescelectronicView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicView::get(self : ChemdescelectronicView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_view_set(s : ChemdescelectronicView, i : Int, v : Double) -> ChemdescelectronicView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicView::set(self : ChemdescelectronicView, i : Int, v : Double) -> ChemdescelectronicView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_view_sum(s : ChemdescelectronicView) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicView::sum(self : ChemdescelectronicView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_view_mean(s : ChemdescelectronicView) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicView::mean(self : ChemdescelectronicView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_view_scale(s : ChemdescelectronicView, f : Double) -> ChemdescelectronicView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicView::scale(self : ChemdescelectronicView, f : Double) -> ChemdescelectronicView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_view_add(a : ChemdescelectronicView, b : ChemdescelectronicView) -> ChemdescelectronicView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicView::add(self : ChemdescelectronicView, other : ChemdescelectronicView) -> ChemdescelectronicView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_view_copy(s : ChemdescelectronicView) -> ChemdescelectronicView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicView::copy(self : ChemdescelectronicView) -> ChemdescelectronicView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_view_fill(s : ChemdescelectronicView, v : Double) -> ChemdescelectronicView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicView::fill(self : ChemdescelectronicView, v : Double) -> ChemdescelectronicView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_view_min(s : ChemdescelectronicView) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicView::min(self : ChemdescelectronicView) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_view_max(s : ChemdescelectronicView) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicView::max(self : ChemdescelectronicView) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_view_to_string(s : ChemdescelectronicView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicView::to_string(self : ChemdescelectronicView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicRange {
@@ -963,45 +963,45 @@ pub fn chem_desc_electronic_range_make(size : Int) -> ChemdescelectronicRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_range_len(s : ChemdescelectronicRange) -> Int { s.size }
+pub fn ChemdescelectronicRange::len(self : ChemdescelectronicRange) -> Int { self.size }
 
-pub fn chem_desc_electronic_range_get(s : ChemdescelectronicRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicRange::get(self : ChemdescelectronicRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_range_set(s : ChemdescelectronicRange, i : Int, v : Double) -> ChemdescelectronicRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicRange::set(self : ChemdescelectronicRange, i : Int, v : Double) -> ChemdescelectronicRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_range_sum(s : ChemdescelectronicRange) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicRange::sum(self : ChemdescelectronicRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_range_mean(s : ChemdescelectronicRange) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicRange::mean(self : ChemdescelectronicRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_range_scale(s : ChemdescelectronicRange, f : Double) -> ChemdescelectronicRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicRange::scale(self : ChemdescelectronicRange, f : Double) -> ChemdescelectronicRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_range_add(a : ChemdescelectronicRange, b : ChemdescelectronicRange) -> ChemdescelectronicRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicRange::add(self : ChemdescelectronicRange, other : ChemdescelectronicRange) -> ChemdescelectronicRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_range_copy(s : ChemdescelectronicRange) -> ChemdescelectronicRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicRange::copy(self : ChemdescelectronicRange) -> ChemdescelectronicRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_range_fill(s : ChemdescelectronicRange, v : Double) -> ChemdescelectronicRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicRange::fill(self : ChemdescelectronicRange, v : Double) -> ChemdescelectronicRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_range_min(s : ChemdescelectronicRange) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicRange::min(self : ChemdescelectronicRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_range_max(s : ChemdescelectronicRange) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicRange::max(self : ChemdescelectronicRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_range_to_string(s : ChemdescelectronicRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicRange::to_string(self : ChemdescelectronicRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescelectronicSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_desc_electronic_slice_make(size : Int) -> ChemdescelectronicSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_electronic_slice_len(s : ChemdescelectronicSlice) -> Int { s.size }
+pub fn ChemdescelectronicSlice::len(self : ChemdescelectronicSlice) -> Int { self.size }
 
-pub fn chem_desc_electronic_slice_get(s : ChemdescelectronicSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescelectronicSlice::get(self : ChemdescelectronicSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_electronic_slice_set(s : ChemdescelectronicSlice, i : Int, v : Double) -> ChemdescelectronicSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescelectronicSlice::set(self : ChemdescelectronicSlice, i : Int, v : Double) -> ChemdescelectronicSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_slice_sum(s : ChemdescelectronicSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemdescelectronicSlice::sum(self : ChemdescelectronicSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_electronic_slice_mean(s : ChemdescelectronicSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemdescelectronicSlice::mean(self : ChemdescelectronicSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_electronic_slice_scale(s : ChemdescelectronicSlice, f : Double) -> ChemdescelectronicSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicSlice::scale(self : ChemdescelectronicSlice, f : Double) -> ChemdescelectronicSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_slice_add(a : ChemdescelectronicSlice, b : ChemdescelectronicSlice) -> ChemdescelectronicSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescelectronicSlice::add(self : ChemdescelectronicSlice, other : ChemdescelectronicSlice) -> ChemdescelectronicSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_slice_copy(s : ChemdescelectronicSlice) -> ChemdescelectronicSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicSlice::copy(self : ChemdescelectronicSlice) -> ChemdescelectronicSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_slice_fill(s : ChemdescelectronicSlice, v : Double) -> ChemdescelectronicSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescelectronicSlice::fill(self : ChemdescelectronicSlice, v : Double) -> ChemdescelectronicSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_electronic_slice_min(s : ChemdescelectronicSlice) -> Double { @_common.min(s.data) }
+pub fn ChemdescelectronicSlice::min(self : ChemdescelectronicSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_electronic_slice_max(s : ChemdescelectronicSlice) -> Double { @_common.max(s.data) }
+pub fn ChemdescelectronicSlice::max(self : ChemdescelectronicSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_electronic_slice_to_string(s : ChemdescelectronicSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescelectronicSlice::to_string(self : ChemdescelectronicSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

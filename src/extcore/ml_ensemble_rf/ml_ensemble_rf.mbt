@@ -351,45 +351,45 @@ pub fn ml_ensemble_rf_frame_make(size : Int) -> MlensemblerfFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_frame_len(s : MlensemblerfFrame) -> Int { s.size }
+pub fn MlensemblerfFrame::len(self : MlensemblerfFrame) -> Int { self.size }
 
-pub fn ml_ensemble_rf_frame_get(s : MlensemblerfFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfFrame::get(self : MlensemblerfFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_frame_set(s : MlensemblerfFrame, i : Int, v : Double) -> MlensemblerfFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfFrame::set(self : MlensemblerfFrame, i : Int, v : Double) -> MlensemblerfFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_frame_sum(s : MlensemblerfFrame) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfFrame::sum(self : MlensemblerfFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_frame_mean(s : MlensemblerfFrame) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfFrame::mean(self : MlensemblerfFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_frame_scale(s : MlensemblerfFrame, f : Double) -> MlensemblerfFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfFrame::scale(self : MlensemblerfFrame, f : Double) -> MlensemblerfFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_frame_add(a : MlensemblerfFrame, b : MlensemblerfFrame) -> MlensemblerfFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfFrame::add(self : MlensemblerfFrame, other : MlensemblerfFrame) -> MlensemblerfFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_frame_copy(s : MlensemblerfFrame) -> MlensemblerfFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfFrame::copy(self : MlensemblerfFrame) -> MlensemblerfFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_frame_fill(s : MlensemblerfFrame, v : Double) -> MlensemblerfFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfFrame::fill(self : MlensemblerfFrame, v : Double) -> MlensemblerfFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_frame_min(s : MlensemblerfFrame) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfFrame::min(self : MlensemblerfFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_frame_max(s : MlensemblerfFrame) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfFrame::max(self : MlensemblerfFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_frame_to_string(s : MlensemblerfFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfFrame::to_string(self : MlensemblerfFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfTable {
@@ -402,45 +402,45 @@ pub fn ml_ensemble_rf_table_make(size : Int) -> MlensemblerfTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_table_len(s : MlensemblerfTable) -> Int { s.size }
+pub fn MlensemblerfTable::len(self : MlensemblerfTable) -> Int { self.size }
 
-pub fn ml_ensemble_rf_table_get(s : MlensemblerfTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfTable::get(self : MlensemblerfTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_table_set(s : MlensemblerfTable, i : Int, v : Double) -> MlensemblerfTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfTable::set(self : MlensemblerfTable, i : Int, v : Double) -> MlensemblerfTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_table_sum(s : MlensemblerfTable) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfTable::sum(self : MlensemblerfTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_table_mean(s : MlensemblerfTable) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfTable::mean(self : MlensemblerfTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_table_scale(s : MlensemblerfTable, f : Double) -> MlensemblerfTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfTable::scale(self : MlensemblerfTable, f : Double) -> MlensemblerfTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_table_add(a : MlensemblerfTable, b : MlensemblerfTable) -> MlensemblerfTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfTable::add(self : MlensemblerfTable, other : MlensemblerfTable) -> MlensemblerfTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_table_copy(s : MlensemblerfTable) -> MlensemblerfTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfTable::copy(self : MlensemblerfTable) -> MlensemblerfTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_table_fill(s : MlensemblerfTable, v : Double) -> MlensemblerfTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfTable::fill(self : MlensemblerfTable, v : Double) -> MlensemblerfTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_table_min(s : MlensemblerfTable) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfTable::min(self : MlensemblerfTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_table_max(s : MlensemblerfTable) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfTable::max(self : MlensemblerfTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_table_to_string(s : MlensemblerfTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfTable::to_string(self : MlensemblerfTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfGraphN {
@@ -453,45 +453,45 @@ pub fn ml_ensemble_rf_graphn_make(size : Int) -> MlensemblerfGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_graphn_len(s : MlensemblerfGraphN) -> Int { s.size }
+pub fn MlensemblerfGraphN::len(self : MlensemblerfGraphN) -> Int { self.size }
 
-pub fn ml_ensemble_rf_graphn_get(s : MlensemblerfGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfGraphN::get(self : MlensemblerfGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_graphn_set(s : MlensemblerfGraphN, i : Int, v : Double) -> MlensemblerfGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfGraphN::set(self : MlensemblerfGraphN, i : Int, v : Double) -> MlensemblerfGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_graphn_sum(s : MlensemblerfGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfGraphN::sum(self : MlensemblerfGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_graphn_mean(s : MlensemblerfGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfGraphN::mean(self : MlensemblerfGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_graphn_scale(s : MlensemblerfGraphN, f : Double) -> MlensemblerfGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfGraphN::scale(self : MlensemblerfGraphN, f : Double) -> MlensemblerfGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_graphn_add(a : MlensemblerfGraphN, b : MlensemblerfGraphN) -> MlensemblerfGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfGraphN::add(self : MlensemblerfGraphN, other : MlensemblerfGraphN) -> MlensemblerfGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_graphn_copy(s : MlensemblerfGraphN) -> MlensemblerfGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfGraphN::copy(self : MlensemblerfGraphN) -> MlensemblerfGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_graphn_fill(s : MlensemblerfGraphN, v : Double) -> MlensemblerfGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfGraphN::fill(self : MlensemblerfGraphN, v : Double) -> MlensemblerfGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_graphn_min(s : MlensemblerfGraphN) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfGraphN::min(self : MlensemblerfGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_graphn_max(s : MlensemblerfGraphN) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfGraphN::max(self : MlensemblerfGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_graphn_to_string(s : MlensemblerfGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfGraphN::to_string(self : MlensemblerfGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfNode {
@@ -504,45 +504,45 @@ pub fn ml_ensemble_rf_node_make(size : Int) -> MlensemblerfNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_node_len(s : MlensemblerfNode) -> Int { s.size }
+pub fn MlensemblerfNode::len(self : MlensemblerfNode) -> Int { self.size }
 
-pub fn ml_ensemble_rf_node_get(s : MlensemblerfNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfNode::get(self : MlensemblerfNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_node_set(s : MlensemblerfNode, i : Int, v : Double) -> MlensemblerfNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfNode::set(self : MlensemblerfNode, i : Int, v : Double) -> MlensemblerfNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_node_sum(s : MlensemblerfNode) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfNode::sum(self : MlensemblerfNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_node_mean(s : MlensemblerfNode) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfNode::mean(self : MlensemblerfNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_node_scale(s : MlensemblerfNode, f : Double) -> MlensemblerfNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfNode::scale(self : MlensemblerfNode, f : Double) -> MlensemblerfNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_node_add(a : MlensemblerfNode, b : MlensemblerfNode) -> MlensemblerfNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfNode::add(self : MlensemblerfNode, other : MlensemblerfNode) -> MlensemblerfNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_node_copy(s : MlensemblerfNode) -> MlensemblerfNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfNode::copy(self : MlensemblerfNode) -> MlensemblerfNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_node_fill(s : MlensemblerfNode, v : Double) -> MlensemblerfNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfNode::fill(self : MlensemblerfNode, v : Double) -> MlensemblerfNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_node_min(s : MlensemblerfNode) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfNode::min(self : MlensemblerfNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_node_max(s : MlensemblerfNode) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfNode::max(self : MlensemblerfNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_node_to_string(s : MlensemblerfNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfNode::to_string(self : MlensemblerfNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfEdge {
@@ -555,45 +555,45 @@ pub fn ml_ensemble_rf_edge_make(size : Int) -> MlensemblerfEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_edge_len(s : MlensemblerfEdge) -> Int { s.size }
+pub fn MlensemblerfEdge::len(self : MlensemblerfEdge) -> Int { self.size }
 
-pub fn ml_ensemble_rf_edge_get(s : MlensemblerfEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfEdge::get(self : MlensemblerfEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_edge_set(s : MlensemblerfEdge, i : Int, v : Double) -> MlensemblerfEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfEdge::set(self : MlensemblerfEdge, i : Int, v : Double) -> MlensemblerfEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_edge_sum(s : MlensemblerfEdge) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfEdge::sum(self : MlensemblerfEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_edge_mean(s : MlensemblerfEdge) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfEdge::mean(self : MlensemblerfEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_edge_scale(s : MlensemblerfEdge, f : Double) -> MlensemblerfEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfEdge::scale(self : MlensemblerfEdge, f : Double) -> MlensemblerfEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_edge_add(a : MlensemblerfEdge, b : MlensemblerfEdge) -> MlensemblerfEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfEdge::add(self : MlensemblerfEdge, other : MlensemblerfEdge) -> MlensemblerfEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_edge_copy(s : MlensemblerfEdge) -> MlensemblerfEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfEdge::copy(self : MlensemblerfEdge) -> MlensemblerfEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_edge_fill(s : MlensemblerfEdge, v : Double) -> MlensemblerfEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfEdge::fill(self : MlensemblerfEdge, v : Double) -> MlensemblerfEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_edge_min(s : MlensemblerfEdge) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfEdge::min(self : MlensemblerfEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_edge_max(s : MlensemblerfEdge) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfEdge::max(self : MlensemblerfEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_edge_to_string(s : MlensemblerfEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfEdge::to_string(self : MlensemblerfEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfPath {
@@ -606,45 +606,45 @@ pub fn ml_ensemble_rf_path_make(size : Int) -> MlensemblerfPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_path_len(s : MlensemblerfPath) -> Int { s.size }
+pub fn MlensemblerfPath::len(self : MlensemblerfPath) -> Int { self.size }
 
-pub fn ml_ensemble_rf_path_get(s : MlensemblerfPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfPath::get(self : MlensemblerfPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_path_set(s : MlensemblerfPath, i : Int, v : Double) -> MlensemblerfPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfPath::set(self : MlensemblerfPath, i : Int, v : Double) -> MlensemblerfPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_path_sum(s : MlensemblerfPath) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfPath::sum(self : MlensemblerfPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_path_mean(s : MlensemblerfPath) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfPath::mean(self : MlensemblerfPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_path_scale(s : MlensemblerfPath, f : Double) -> MlensemblerfPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfPath::scale(self : MlensemblerfPath, f : Double) -> MlensemblerfPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_path_add(a : MlensemblerfPath, b : MlensemblerfPath) -> MlensemblerfPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfPath::add(self : MlensemblerfPath, other : MlensemblerfPath) -> MlensemblerfPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_path_copy(s : MlensemblerfPath) -> MlensemblerfPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfPath::copy(self : MlensemblerfPath) -> MlensemblerfPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_path_fill(s : MlensemblerfPath, v : Double) -> MlensemblerfPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfPath::fill(self : MlensemblerfPath, v : Double) -> MlensemblerfPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_path_min(s : MlensemblerfPath) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfPath::min(self : MlensemblerfPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_path_max(s : MlensemblerfPath) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfPath::max(self : MlensemblerfPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_path_to_string(s : MlensemblerfPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfPath::to_string(self : MlensemblerfPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfCluster {
@@ -657,45 +657,45 @@ pub fn ml_ensemble_rf_cluster_make(size : Int) -> MlensemblerfCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_cluster_len(s : MlensemblerfCluster) -> Int { s.size }
+pub fn MlensemblerfCluster::len(self : MlensemblerfCluster) -> Int { self.size }
 
-pub fn ml_ensemble_rf_cluster_get(s : MlensemblerfCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfCluster::get(self : MlensemblerfCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_cluster_set(s : MlensemblerfCluster, i : Int, v : Double) -> MlensemblerfCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfCluster::set(self : MlensemblerfCluster, i : Int, v : Double) -> MlensemblerfCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_cluster_sum(s : MlensemblerfCluster) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfCluster::sum(self : MlensemblerfCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_cluster_mean(s : MlensemblerfCluster) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfCluster::mean(self : MlensemblerfCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_cluster_scale(s : MlensemblerfCluster, f : Double) -> MlensemblerfCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfCluster::scale(self : MlensemblerfCluster, f : Double) -> MlensemblerfCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_cluster_add(a : MlensemblerfCluster, b : MlensemblerfCluster) -> MlensemblerfCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfCluster::add(self : MlensemblerfCluster, other : MlensemblerfCluster) -> MlensemblerfCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_cluster_copy(s : MlensemblerfCluster) -> MlensemblerfCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfCluster::copy(self : MlensemblerfCluster) -> MlensemblerfCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_cluster_fill(s : MlensemblerfCluster, v : Double) -> MlensemblerfCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfCluster::fill(self : MlensemblerfCluster, v : Double) -> MlensemblerfCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_cluster_min(s : MlensemblerfCluster) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfCluster::min(self : MlensemblerfCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_cluster_max(s : MlensemblerfCluster) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfCluster::max(self : MlensemblerfCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_cluster_to_string(s : MlensemblerfCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfCluster::to_string(self : MlensemblerfCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfModel {
@@ -708,45 +708,45 @@ pub fn ml_ensemble_rf_model_make(size : Int) -> MlensemblerfModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_model_len(s : MlensemblerfModel) -> Int { s.size }
+pub fn MlensemblerfModel::len(self : MlensemblerfModel) -> Int { self.size }
 
-pub fn ml_ensemble_rf_model_get(s : MlensemblerfModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfModel::get(self : MlensemblerfModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_model_set(s : MlensemblerfModel, i : Int, v : Double) -> MlensemblerfModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfModel::set(self : MlensemblerfModel, i : Int, v : Double) -> MlensemblerfModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_model_sum(s : MlensemblerfModel) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfModel::sum(self : MlensemblerfModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_model_mean(s : MlensemblerfModel) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfModel::mean(self : MlensemblerfModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_model_scale(s : MlensemblerfModel, f : Double) -> MlensemblerfModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfModel::scale(self : MlensemblerfModel, f : Double) -> MlensemblerfModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_model_add(a : MlensemblerfModel, b : MlensemblerfModel) -> MlensemblerfModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfModel::add(self : MlensemblerfModel, other : MlensemblerfModel) -> MlensemblerfModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_model_copy(s : MlensemblerfModel) -> MlensemblerfModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfModel::copy(self : MlensemblerfModel) -> MlensemblerfModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_model_fill(s : MlensemblerfModel, v : Double) -> MlensemblerfModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfModel::fill(self : MlensemblerfModel, v : Double) -> MlensemblerfModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_model_min(s : MlensemblerfModel) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfModel::min(self : MlensemblerfModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_model_max(s : MlensemblerfModel) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfModel::max(self : MlensemblerfModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_model_to_string(s : MlensemblerfModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfModel::to_string(self : MlensemblerfModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfLayer {
@@ -759,45 +759,45 @@ pub fn ml_ensemble_rf_layer_make(size : Int) -> MlensemblerfLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_layer_len(s : MlensemblerfLayer) -> Int { s.size }
+pub fn MlensemblerfLayer::len(self : MlensemblerfLayer) -> Int { self.size }
 
-pub fn ml_ensemble_rf_layer_get(s : MlensemblerfLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfLayer::get(self : MlensemblerfLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_layer_set(s : MlensemblerfLayer, i : Int, v : Double) -> MlensemblerfLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfLayer::set(self : MlensemblerfLayer, i : Int, v : Double) -> MlensemblerfLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_layer_sum(s : MlensemblerfLayer) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfLayer::sum(self : MlensemblerfLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_layer_mean(s : MlensemblerfLayer) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfLayer::mean(self : MlensemblerfLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_layer_scale(s : MlensemblerfLayer, f : Double) -> MlensemblerfLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfLayer::scale(self : MlensemblerfLayer, f : Double) -> MlensemblerfLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_layer_add(a : MlensemblerfLayer, b : MlensemblerfLayer) -> MlensemblerfLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfLayer::add(self : MlensemblerfLayer, other : MlensemblerfLayer) -> MlensemblerfLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_layer_copy(s : MlensemblerfLayer) -> MlensemblerfLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfLayer::copy(self : MlensemblerfLayer) -> MlensemblerfLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_layer_fill(s : MlensemblerfLayer, v : Double) -> MlensemblerfLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfLayer::fill(self : MlensemblerfLayer, v : Double) -> MlensemblerfLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_layer_min(s : MlensemblerfLayer) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfLayer::min(self : MlensemblerfLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_layer_max(s : MlensemblerfLayer) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfLayer::max(self : MlensemblerfLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_layer_to_string(s : MlensemblerfLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfLayer::to_string(self : MlensemblerfLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfBuffer {
@@ -810,45 +810,45 @@ pub fn ml_ensemble_rf_buffer_make(size : Int) -> MlensemblerfBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_buffer_len(s : MlensemblerfBuffer) -> Int { s.size }
+pub fn MlensemblerfBuffer::len(self : MlensemblerfBuffer) -> Int { self.size }
 
-pub fn ml_ensemble_rf_buffer_get(s : MlensemblerfBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfBuffer::get(self : MlensemblerfBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_buffer_set(s : MlensemblerfBuffer, i : Int, v : Double) -> MlensemblerfBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfBuffer::set(self : MlensemblerfBuffer, i : Int, v : Double) -> MlensemblerfBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_buffer_sum(s : MlensemblerfBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfBuffer::sum(self : MlensemblerfBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_buffer_mean(s : MlensemblerfBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfBuffer::mean(self : MlensemblerfBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_buffer_scale(s : MlensemblerfBuffer, f : Double) -> MlensemblerfBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfBuffer::scale(self : MlensemblerfBuffer, f : Double) -> MlensemblerfBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_buffer_add(a : MlensemblerfBuffer, b : MlensemblerfBuffer) -> MlensemblerfBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfBuffer::add(self : MlensemblerfBuffer, other : MlensemblerfBuffer) -> MlensemblerfBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_buffer_copy(s : MlensemblerfBuffer) -> MlensemblerfBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfBuffer::copy(self : MlensemblerfBuffer) -> MlensemblerfBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_buffer_fill(s : MlensemblerfBuffer, v : Double) -> MlensemblerfBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfBuffer::fill(self : MlensemblerfBuffer, v : Double) -> MlensemblerfBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_buffer_min(s : MlensemblerfBuffer) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfBuffer::min(self : MlensemblerfBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_buffer_max(s : MlensemblerfBuffer) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfBuffer::max(self : MlensemblerfBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_buffer_to_string(s : MlensemblerfBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfBuffer::to_string(self : MlensemblerfBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfCursor {
@@ -861,45 +861,45 @@ pub fn ml_ensemble_rf_cursor_make(size : Int) -> MlensemblerfCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_cursor_len(s : MlensemblerfCursor) -> Int { s.size }
+pub fn MlensemblerfCursor::len(self : MlensemblerfCursor) -> Int { self.size }
 
-pub fn ml_ensemble_rf_cursor_get(s : MlensemblerfCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfCursor::get(self : MlensemblerfCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_cursor_set(s : MlensemblerfCursor, i : Int, v : Double) -> MlensemblerfCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfCursor::set(self : MlensemblerfCursor, i : Int, v : Double) -> MlensemblerfCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_cursor_sum(s : MlensemblerfCursor) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfCursor::sum(self : MlensemblerfCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_cursor_mean(s : MlensemblerfCursor) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfCursor::mean(self : MlensemblerfCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_cursor_scale(s : MlensemblerfCursor, f : Double) -> MlensemblerfCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfCursor::scale(self : MlensemblerfCursor, f : Double) -> MlensemblerfCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_cursor_add(a : MlensemblerfCursor, b : MlensemblerfCursor) -> MlensemblerfCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfCursor::add(self : MlensemblerfCursor, other : MlensemblerfCursor) -> MlensemblerfCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_cursor_copy(s : MlensemblerfCursor) -> MlensemblerfCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfCursor::copy(self : MlensemblerfCursor) -> MlensemblerfCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_cursor_fill(s : MlensemblerfCursor, v : Double) -> MlensemblerfCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfCursor::fill(self : MlensemblerfCursor, v : Double) -> MlensemblerfCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_cursor_min(s : MlensemblerfCursor) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfCursor::min(self : MlensemblerfCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_cursor_max(s : MlensemblerfCursor) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfCursor::max(self : MlensemblerfCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_cursor_to_string(s : MlensemblerfCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfCursor::to_string(self : MlensemblerfCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfView {
@@ -912,45 +912,45 @@ pub fn ml_ensemble_rf_view_make(size : Int) -> MlensemblerfView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_view_len(s : MlensemblerfView) -> Int { s.size }
+pub fn MlensemblerfView::len(self : MlensemblerfView) -> Int { self.size }
 
-pub fn ml_ensemble_rf_view_get(s : MlensemblerfView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfView::get(self : MlensemblerfView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_view_set(s : MlensemblerfView, i : Int, v : Double) -> MlensemblerfView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfView::set(self : MlensemblerfView, i : Int, v : Double) -> MlensemblerfView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_view_sum(s : MlensemblerfView) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfView::sum(self : MlensemblerfView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_view_mean(s : MlensemblerfView) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfView::mean(self : MlensemblerfView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_view_scale(s : MlensemblerfView, f : Double) -> MlensemblerfView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfView::scale(self : MlensemblerfView, f : Double) -> MlensemblerfView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_view_add(a : MlensemblerfView, b : MlensemblerfView) -> MlensemblerfView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfView::add(self : MlensemblerfView, other : MlensemblerfView) -> MlensemblerfView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_view_copy(s : MlensemblerfView) -> MlensemblerfView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfView::copy(self : MlensemblerfView) -> MlensemblerfView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_view_fill(s : MlensemblerfView, v : Double) -> MlensemblerfView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfView::fill(self : MlensemblerfView, v : Double) -> MlensemblerfView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_view_min(s : MlensemblerfView) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfView::min(self : MlensemblerfView) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_view_max(s : MlensemblerfView) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfView::max(self : MlensemblerfView) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_view_to_string(s : MlensemblerfView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfView::to_string(self : MlensemblerfView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfRange {
@@ -963,45 +963,45 @@ pub fn ml_ensemble_rf_range_make(size : Int) -> MlensemblerfRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_range_len(s : MlensemblerfRange) -> Int { s.size }
+pub fn MlensemblerfRange::len(self : MlensemblerfRange) -> Int { self.size }
 
-pub fn ml_ensemble_rf_range_get(s : MlensemblerfRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfRange::get(self : MlensemblerfRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_range_set(s : MlensemblerfRange, i : Int, v : Double) -> MlensemblerfRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfRange::set(self : MlensemblerfRange, i : Int, v : Double) -> MlensemblerfRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_range_sum(s : MlensemblerfRange) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfRange::sum(self : MlensemblerfRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_range_mean(s : MlensemblerfRange) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfRange::mean(self : MlensemblerfRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_range_scale(s : MlensemblerfRange, f : Double) -> MlensemblerfRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfRange::scale(self : MlensemblerfRange, f : Double) -> MlensemblerfRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_range_add(a : MlensemblerfRange, b : MlensemblerfRange) -> MlensemblerfRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfRange::add(self : MlensemblerfRange, other : MlensemblerfRange) -> MlensemblerfRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_range_copy(s : MlensemblerfRange) -> MlensemblerfRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfRange::copy(self : MlensemblerfRange) -> MlensemblerfRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_range_fill(s : MlensemblerfRange, v : Double) -> MlensemblerfRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfRange::fill(self : MlensemblerfRange, v : Double) -> MlensemblerfRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_range_min(s : MlensemblerfRange) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfRange::min(self : MlensemblerfRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_range_max(s : MlensemblerfRange) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfRange::max(self : MlensemblerfRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_range_to_string(s : MlensemblerfRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfRange::to_string(self : MlensemblerfRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblerfSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_ensemble_rf_slice_make(size : Int) -> MlensemblerfSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_rf_slice_len(s : MlensemblerfSlice) -> Int { s.size }
+pub fn MlensemblerfSlice::len(self : MlensemblerfSlice) -> Int { self.size }
 
-pub fn ml_ensemble_rf_slice_get(s : MlensemblerfSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblerfSlice::get(self : MlensemblerfSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_rf_slice_set(s : MlensemblerfSlice, i : Int, v : Double) -> MlensemblerfSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblerfSlice::set(self : MlensemblerfSlice, i : Int, v : Double) -> MlensemblerfSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_slice_sum(s : MlensemblerfSlice) -> Double { @_common.sum(s.data) }
+pub fn MlensemblerfSlice::sum(self : MlensemblerfSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_rf_slice_mean(s : MlensemblerfSlice) -> Double { @_common.mean(s.data) }
+pub fn MlensemblerfSlice::mean(self : MlensemblerfSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_rf_slice_scale(s : MlensemblerfSlice, f : Double) -> MlensemblerfSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblerfSlice::scale(self : MlensemblerfSlice, f : Double) -> MlensemblerfSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_slice_add(a : MlensemblerfSlice, b : MlensemblerfSlice) -> MlensemblerfSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblerfSlice::add(self : MlensemblerfSlice, other : MlensemblerfSlice) -> MlensemblerfSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_slice_copy(s : MlensemblerfSlice) -> MlensemblerfSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblerfSlice::copy(self : MlensemblerfSlice) -> MlensemblerfSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_slice_fill(s : MlensemblerfSlice, v : Double) -> MlensemblerfSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblerfSlice::fill(self : MlensemblerfSlice, v : Double) -> MlensemblerfSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_rf_slice_min(s : MlensemblerfSlice) -> Double { @_common.min(s.data) }
+pub fn MlensemblerfSlice::min(self : MlensemblerfSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_rf_slice_max(s : MlensemblerfSlice) -> Double { @_common.max(s.data) }
+pub fn MlensemblerfSlice::max(self : MlensemblerfSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_rf_slice_to_string(s : MlensemblerfSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblerfSlice::to_string(self : MlensemblerfSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn signal_filter_elliptic_frame_make(size : Int) -> SignalfilterellipticFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_frame_len(s : SignalfilterellipticFrame) -> Int { s.size }
+pub fn SignalfilterellipticFrame::len(self : SignalfilterellipticFrame) -> Int { self.size }
 
-pub fn signal_filter_elliptic_frame_get(s : SignalfilterellipticFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticFrame::get(self : SignalfilterellipticFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_frame_set(s : SignalfilterellipticFrame, i : Int, v : Double) -> SignalfilterellipticFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticFrame::set(self : SignalfilterellipticFrame, i : Int, v : Double) -> SignalfilterellipticFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_frame_sum(s : SignalfilterellipticFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticFrame::sum(self : SignalfilterellipticFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_frame_mean(s : SignalfilterellipticFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticFrame::mean(self : SignalfilterellipticFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_frame_scale(s : SignalfilterellipticFrame, f : Double) -> SignalfilterellipticFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticFrame::scale(self : SignalfilterellipticFrame, f : Double) -> SignalfilterellipticFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_frame_add(a : SignalfilterellipticFrame, b : SignalfilterellipticFrame) -> SignalfilterellipticFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticFrame::add(self : SignalfilterellipticFrame, other : SignalfilterellipticFrame) -> SignalfilterellipticFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_frame_copy(s : SignalfilterellipticFrame) -> SignalfilterellipticFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticFrame::copy(self : SignalfilterellipticFrame) -> SignalfilterellipticFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_frame_fill(s : SignalfilterellipticFrame, v : Double) -> SignalfilterellipticFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticFrame::fill(self : SignalfilterellipticFrame, v : Double) -> SignalfilterellipticFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_frame_min(s : SignalfilterellipticFrame) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticFrame::min(self : SignalfilterellipticFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_frame_max(s : SignalfilterellipticFrame) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticFrame::max(self : SignalfilterellipticFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_frame_to_string(s : SignalfilterellipticFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticFrame::to_string(self : SignalfilterellipticFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticTable {
@@ -402,45 +402,45 @@ pub fn signal_filter_elliptic_table_make(size : Int) -> SignalfilterellipticTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_table_len(s : SignalfilterellipticTable) -> Int { s.size }
+pub fn SignalfilterellipticTable::len(self : SignalfilterellipticTable) -> Int { self.size }
 
-pub fn signal_filter_elliptic_table_get(s : SignalfilterellipticTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticTable::get(self : SignalfilterellipticTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_table_set(s : SignalfilterellipticTable, i : Int, v : Double) -> SignalfilterellipticTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticTable::set(self : SignalfilterellipticTable, i : Int, v : Double) -> SignalfilterellipticTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_table_sum(s : SignalfilterellipticTable) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticTable::sum(self : SignalfilterellipticTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_table_mean(s : SignalfilterellipticTable) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticTable::mean(self : SignalfilterellipticTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_table_scale(s : SignalfilterellipticTable, f : Double) -> SignalfilterellipticTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticTable::scale(self : SignalfilterellipticTable, f : Double) -> SignalfilterellipticTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_table_add(a : SignalfilterellipticTable, b : SignalfilterellipticTable) -> SignalfilterellipticTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticTable::add(self : SignalfilterellipticTable, other : SignalfilterellipticTable) -> SignalfilterellipticTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_table_copy(s : SignalfilterellipticTable) -> SignalfilterellipticTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticTable::copy(self : SignalfilterellipticTable) -> SignalfilterellipticTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_table_fill(s : SignalfilterellipticTable, v : Double) -> SignalfilterellipticTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticTable::fill(self : SignalfilterellipticTable, v : Double) -> SignalfilterellipticTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_table_min(s : SignalfilterellipticTable) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticTable::min(self : SignalfilterellipticTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_table_max(s : SignalfilterellipticTable) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticTable::max(self : SignalfilterellipticTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_table_to_string(s : SignalfilterellipticTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticTable::to_string(self : SignalfilterellipticTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticGraphN {
@@ -453,45 +453,45 @@ pub fn signal_filter_elliptic_graphn_make(size : Int) -> SignalfilterellipticGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_graphn_len(s : SignalfilterellipticGraphN) -> Int { s.size }
+pub fn SignalfilterellipticGraphN::len(self : SignalfilterellipticGraphN) -> Int { self.size }
 
-pub fn signal_filter_elliptic_graphn_get(s : SignalfilterellipticGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticGraphN::get(self : SignalfilterellipticGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_graphn_set(s : SignalfilterellipticGraphN, i : Int, v : Double) -> SignalfilterellipticGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticGraphN::set(self : SignalfilterellipticGraphN, i : Int, v : Double) -> SignalfilterellipticGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_graphn_sum(s : SignalfilterellipticGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticGraphN::sum(self : SignalfilterellipticGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_graphn_mean(s : SignalfilterellipticGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticGraphN::mean(self : SignalfilterellipticGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_graphn_scale(s : SignalfilterellipticGraphN, f : Double) -> SignalfilterellipticGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticGraphN::scale(self : SignalfilterellipticGraphN, f : Double) -> SignalfilterellipticGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_graphn_add(a : SignalfilterellipticGraphN, b : SignalfilterellipticGraphN) -> SignalfilterellipticGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticGraphN::add(self : SignalfilterellipticGraphN, other : SignalfilterellipticGraphN) -> SignalfilterellipticGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_graphn_copy(s : SignalfilterellipticGraphN) -> SignalfilterellipticGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticGraphN::copy(self : SignalfilterellipticGraphN) -> SignalfilterellipticGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_graphn_fill(s : SignalfilterellipticGraphN, v : Double) -> SignalfilterellipticGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticGraphN::fill(self : SignalfilterellipticGraphN, v : Double) -> SignalfilterellipticGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_graphn_min(s : SignalfilterellipticGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticGraphN::min(self : SignalfilterellipticGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_graphn_max(s : SignalfilterellipticGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticGraphN::max(self : SignalfilterellipticGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_graphn_to_string(s : SignalfilterellipticGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticGraphN::to_string(self : SignalfilterellipticGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticNode {
@@ -504,45 +504,45 @@ pub fn signal_filter_elliptic_node_make(size : Int) -> SignalfilterellipticNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_node_len(s : SignalfilterellipticNode) -> Int { s.size }
+pub fn SignalfilterellipticNode::len(self : SignalfilterellipticNode) -> Int { self.size }
 
-pub fn signal_filter_elliptic_node_get(s : SignalfilterellipticNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticNode::get(self : SignalfilterellipticNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_node_set(s : SignalfilterellipticNode, i : Int, v : Double) -> SignalfilterellipticNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticNode::set(self : SignalfilterellipticNode, i : Int, v : Double) -> SignalfilterellipticNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_node_sum(s : SignalfilterellipticNode) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticNode::sum(self : SignalfilterellipticNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_node_mean(s : SignalfilterellipticNode) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticNode::mean(self : SignalfilterellipticNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_node_scale(s : SignalfilterellipticNode, f : Double) -> SignalfilterellipticNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticNode::scale(self : SignalfilterellipticNode, f : Double) -> SignalfilterellipticNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_node_add(a : SignalfilterellipticNode, b : SignalfilterellipticNode) -> SignalfilterellipticNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticNode::add(self : SignalfilterellipticNode, other : SignalfilterellipticNode) -> SignalfilterellipticNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_node_copy(s : SignalfilterellipticNode) -> SignalfilterellipticNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticNode::copy(self : SignalfilterellipticNode) -> SignalfilterellipticNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_node_fill(s : SignalfilterellipticNode, v : Double) -> SignalfilterellipticNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticNode::fill(self : SignalfilterellipticNode, v : Double) -> SignalfilterellipticNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_node_min(s : SignalfilterellipticNode) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticNode::min(self : SignalfilterellipticNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_node_max(s : SignalfilterellipticNode) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticNode::max(self : SignalfilterellipticNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_node_to_string(s : SignalfilterellipticNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticNode::to_string(self : SignalfilterellipticNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticEdge {
@@ -555,45 +555,45 @@ pub fn signal_filter_elliptic_edge_make(size : Int) -> SignalfilterellipticEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_edge_len(s : SignalfilterellipticEdge) -> Int { s.size }
+pub fn SignalfilterellipticEdge::len(self : SignalfilterellipticEdge) -> Int { self.size }
 
-pub fn signal_filter_elliptic_edge_get(s : SignalfilterellipticEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticEdge::get(self : SignalfilterellipticEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_edge_set(s : SignalfilterellipticEdge, i : Int, v : Double) -> SignalfilterellipticEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticEdge::set(self : SignalfilterellipticEdge, i : Int, v : Double) -> SignalfilterellipticEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_edge_sum(s : SignalfilterellipticEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticEdge::sum(self : SignalfilterellipticEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_edge_mean(s : SignalfilterellipticEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticEdge::mean(self : SignalfilterellipticEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_edge_scale(s : SignalfilterellipticEdge, f : Double) -> SignalfilterellipticEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticEdge::scale(self : SignalfilterellipticEdge, f : Double) -> SignalfilterellipticEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_edge_add(a : SignalfilterellipticEdge, b : SignalfilterellipticEdge) -> SignalfilterellipticEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticEdge::add(self : SignalfilterellipticEdge, other : SignalfilterellipticEdge) -> SignalfilterellipticEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_edge_copy(s : SignalfilterellipticEdge) -> SignalfilterellipticEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticEdge::copy(self : SignalfilterellipticEdge) -> SignalfilterellipticEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_edge_fill(s : SignalfilterellipticEdge, v : Double) -> SignalfilterellipticEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticEdge::fill(self : SignalfilterellipticEdge, v : Double) -> SignalfilterellipticEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_edge_min(s : SignalfilterellipticEdge) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticEdge::min(self : SignalfilterellipticEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_edge_max(s : SignalfilterellipticEdge) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticEdge::max(self : SignalfilterellipticEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_edge_to_string(s : SignalfilterellipticEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticEdge::to_string(self : SignalfilterellipticEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticPath {
@@ -606,45 +606,45 @@ pub fn signal_filter_elliptic_path_make(size : Int) -> SignalfilterellipticPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_path_len(s : SignalfilterellipticPath) -> Int { s.size }
+pub fn SignalfilterellipticPath::len(self : SignalfilterellipticPath) -> Int { self.size }
 
-pub fn signal_filter_elliptic_path_get(s : SignalfilterellipticPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticPath::get(self : SignalfilterellipticPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_path_set(s : SignalfilterellipticPath, i : Int, v : Double) -> SignalfilterellipticPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticPath::set(self : SignalfilterellipticPath, i : Int, v : Double) -> SignalfilterellipticPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_path_sum(s : SignalfilterellipticPath) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticPath::sum(self : SignalfilterellipticPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_path_mean(s : SignalfilterellipticPath) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticPath::mean(self : SignalfilterellipticPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_path_scale(s : SignalfilterellipticPath, f : Double) -> SignalfilterellipticPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticPath::scale(self : SignalfilterellipticPath, f : Double) -> SignalfilterellipticPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_path_add(a : SignalfilterellipticPath, b : SignalfilterellipticPath) -> SignalfilterellipticPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticPath::add(self : SignalfilterellipticPath, other : SignalfilterellipticPath) -> SignalfilterellipticPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_path_copy(s : SignalfilterellipticPath) -> SignalfilterellipticPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticPath::copy(self : SignalfilterellipticPath) -> SignalfilterellipticPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_path_fill(s : SignalfilterellipticPath, v : Double) -> SignalfilterellipticPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticPath::fill(self : SignalfilterellipticPath, v : Double) -> SignalfilterellipticPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_path_min(s : SignalfilterellipticPath) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticPath::min(self : SignalfilterellipticPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_path_max(s : SignalfilterellipticPath) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticPath::max(self : SignalfilterellipticPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_path_to_string(s : SignalfilterellipticPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticPath::to_string(self : SignalfilterellipticPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticCluster {
@@ -657,45 +657,45 @@ pub fn signal_filter_elliptic_cluster_make(size : Int) -> SignalfilterellipticCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_cluster_len(s : SignalfilterellipticCluster) -> Int { s.size }
+pub fn SignalfilterellipticCluster::len(self : SignalfilterellipticCluster) -> Int { self.size }
 
-pub fn signal_filter_elliptic_cluster_get(s : SignalfilterellipticCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticCluster::get(self : SignalfilterellipticCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_cluster_set(s : SignalfilterellipticCluster, i : Int, v : Double) -> SignalfilterellipticCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticCluster::set(self : SignalfilterellipticCluster, i : Int, v : Double) -> SignalfilterellipticCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_cluster_sum(s : SignalfilterellipticCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticCluster::sum(self : SignalfilterellipticCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_cluster_mean(s : SignalfilterellipticCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticCluster::mean(self : SignalfilterellipticCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_cluster_scale(s : SignalfilterellipticCluster, f : Double) -> SignalfilterellipticCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticCluster::scale(self : SignalfilterellipticCluster, f : Double) -> SignalfilterellipticCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_cluster_add(a : SignalfilterellipticCluster, b : SignalfilterellipticCluster) -> SignalfilterellipticCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticCluster::add(self : SignalfilterellipticCluster, other : SignalfilterellipticCluster) -> SignalfilterellipticCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_cluster_copy(s : SignalfilterellipticCluster) -> SignalfilterellipticCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticCluster::copy(self : SignalfilterellipticCluster) -> SignalfilterellipticCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_cluster_fill(s : SignalfilterellipticCluster, v : Double) -> SignalfilterellipticCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticCluster::fill(self : SignalfilterellipticCluster, v : Double) -> SignalfilterellipticCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_cluster_min(s : SignalfilterellipticCluster) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticCluster::min(self : SignalfilterellipticCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_cluster_max(s : SignalfilterellipticCluster) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticCluster::max(self : SignalfilterellipticCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_cluster_to_string(s : SignalfilterellipticCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticCluster::to_string(self : SignalfilterellipticCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticModel {
@@ -708,45 +708,45 @@ pub fn signal_filter_elliptic_model_make(size : Int) -> SignalfilterellipticMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_model_len(s : SignalfilterellipticModel) -> Int { s.size }
+pub fn SignalfilterellipticModel::len(self : SignalfilterellipticModel) -> Int { self.size }
 
-pub fn signal_filter_elliptic_model_get(s : SignalfilterellipticModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticModel::get(self : SignalfilterellipticModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_model_set(s : SignalfilterellipticModel, i : Int, v : Double) -> SignalfilterellipticModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticModel::set(self : SignalfilterellipticModel, i : Int, v : Double) -> SignalfilterellipticModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_model_sum(s : SignalfilterellipticModel) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticModel::sum(self : SignalfilterellipticModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_model_mean(s : SignalfilterellipticModel) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticModel::mean(self : SignalfilterellipticModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_model_scale(s : SignalfilterellipticModel, f : Double) -> SignalfilterellipticModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticModel::scale(self : SignalfilterellipticModel, f : Double) -> SignalfilterellipticModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_model_add(a : SignalfilterellipticModel, b : SignalfilterellipticModel) -> SignalfilterellipticModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticModel::add(self : SignalfilterellipticModel, other : SignalfilterellipticModel) -> SignalfilterellipticModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_model_copy(s : SignalfilterellipticModel) -> SignalfilterellipticModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticModel::copy(self : SignalfilterellipticModel) -> SignalfilterellipticModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_model_fill(s : SignalfilterellipticModel, v : Double) -> SignalfilterellipticModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticModel::fill(self : SignalfilterellipticModel, v : Double) -> SignalfilterellipticModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_model_min(s : SignalfilterellipticModel) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticModel::min(self : SignalfilterellipticModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_model_max(s : SignalfilterellipticModel) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticModel::max(self : SignalfilterellipticModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_model_to_string(s : SignalfilterellipticModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticModel::to_string(self : SignalfilterellipticModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticLayer {
@@ -759,45 +759,45 @@ pub fn signal_filter_elliptic_layer_make(size : Int) -> SignalfilterellipticLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_layer_len(s : SignalfilterellipticLayer) -> Int { s.size }
+pub fn SignalfilterellipticLayer::len(self : SignalfilterellipticLayer) -> Int { self.size }
 
-pub fn signal_filter_elliptic_layer_get(s : SignalfilterellipticLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticLayer::get(self : SignalfilterellipticLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_layer_set(s : SignalfilterellipticLayer, i : Int, v : Double) -> SignalfilterellipticLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticLayer::set(self : SignalfilterellipticLayer, i : Int, v : Double) -> SignalfilterellipticLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_layer_sum(s : SignalfilterellipticLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticLayer::sum(self : SignalfilterellipticLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_layer_mean(s : SignalfilterellipticLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticLayer::mean(self : SignalfilterellipticLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_layer_scale(s : SignalfilterellipticLayer, f : Double) -> SignalfilterellipticLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticLayer::scale(self : SignalfilterellipticLayer, f : Double) -> SignalfilterellipticLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_layer_add(a : SignalfilterellipticLayer, b : SignalfilterellipticLayer) -> SignalfilterellipticLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticLayer::add(self : SignalfilterellipticLayer, other : SignalfilterellipticLayer) -> SignalfilterellipticLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_layer_copy(s : SignalfilterellipticLayer) -> SignalfilterellipticLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticLayer::copy(self : SignalfilterellipticLayer) -> SignalfilterellipticLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_layer_fill(s : SignalfilterellipticLayer, v : Double) -> SignalfilterellipticLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticLayer::fill(self : SignalfilterellipticLayer, v : Double) -> SignalfilterellipticLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_layer_min(s : SignalfilterellipticLayer) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticLayer::min(self : SignalfilterellipticLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_layer_max(s : SignalfilterellipticLayer) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticLayer::max(self : SignalfilterellipticLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_layer_to_string(s : SignalfilterellipticLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticLayer::to_string(self : SignalfilterellipticLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticBuffer {
@@ -810,45 +810,45 @@ pub fn signal_filter_elliptic_buffer_make(size : Int) -> SignalfilterellipticBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_buffer_len(s : SignalfilterellipticBuffer) -> Int { s.size }
+pub fn SignalfilterellipticBuffer::len(self : SignalfilterellipticBuffer) -> Int { self.size }
 
-pub fn signal_filter_elliptic_buffer_get(s : SignalfilterellipticBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticBuffer::get(self : SignalfilterellipticBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_buffer_set(s : SignalfilterellipticBuffer, i : Int, v : Double) -> SignalfilterellipticBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticBuffer::set(self : SignalfilterellipticBuffer, i : Int, v : Double) -> SignalfilterellipticBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_buffer_sum(s : SignalfilterellipticBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticBuffer::sum(self : SignalfilterellipticBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_buffer_mean(s : SignalfilterellipticBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticBuffer::mean(self : SignalfilterellipticBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_buffer_scale(s : SignalfilterellipticBuffer, f : Double) -> SignalfilterellipticBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticBuffer::scale(self : SignalfilterellipticBuffer, f : Double) -> SignalfilterellipticBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_buffer_add(a : SignalfilterellipticBuffer, b : SignalfilterellipticBuffer) -> SignalfilterellipticBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticBuffer::add(self : SignalfilterellipticBuffer, other : SignalfilterellipticBuffer) -> SignalfilterellipticBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_buffer_copy(s : SignalfilterellipticBuffer) -> SignalfilterellipticBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticBuffer::copy(self : SignalfilterellipticBuffer) -> SignalfilterellipticBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_buffer_fill(s : SignalfilterellipticBuffer, v : Double) -> SignalfilterellipticBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticBuffer::fill(self : SignalfilterellipticBuffer, v : Double) -> SignalfilterellipticBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_buffer_min(s : SignalfilterellipticBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticBuffer::min(self : SignalfilterellipticBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_buffer_max(s : SignalfilterellipticBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticBuffer::max(self : SignalfilterellipticBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_buffer_to_string(s : SignalfilterellipticBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticBuffer::to_string(self : SignalfilterellipticBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticCursor {
@@ -861,45 +861,45 @@ pub fn signal_filter_elliptic_cursor_make(size : Int) -> SignalfilterellipticCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_cursor_len(s : SignalfilterellipticCursor) -> Int { s.size }
+pub fn SignalfilterellipticCursor::len(self : SignalfilterellipticCursor) -> Int { self.size }
 
-pub fn signal_filter_elliptic_cursor_get(s : SignalfilterellipticCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticCursor::get(self : SignalfilterellipticCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_cursor_set(s : SignalfilterellipticCursor, i : Int, v : Double) -> SignalfilterellipticCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticCursor::set(self : SignalfilterellipticCursor, i : Int, v : Double) -> SignalfilterellipticCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_cursor_sum(s : SignalfilterellipticCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticCursor::sum(self : SignalfilterellipticCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_cursor_mean(s : SignalfilterellipticCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticCursor::mean(self : SignalfilterellipticCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_cursor_scale(s : SignalfilterellipticCursor, f : Double) -> SignalfilterellipticCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticCursor::scale(self : SignalfilterellipticCursor, f : Double) -> SignalfilterellipticCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_cursor_add(a : SignalfilterellipticCursor, b : SignalfilterellipticCursor) -> SignalfilterellipticCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticCursor::add(self : SignalfilterellipticCursor, other : SignalfilterellipticCursor) -> SignalfilterellipticCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_cursor_copy(s : SignalfilterellipticCursor) -> SignalfilterellipticCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticCursor::copy(self : SignalfilterellipticCursor) -> SignalfilterellipticCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_cursor_fill(s : SignalfilterellipticCursor, v : Double) -> SignalfilterellipticCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticCursor::fill(self : SignalfilterellipticCursor, v : Double) -> SignalfilterellipticCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_cursor_min(s : SignalfilterellipticCursor) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticCursor::min(self : SignalfilterellipticCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_cursor_max(s : SignalfilterellipticCursor) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticCursor::max(self : SignalfilterellipticCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_cursor_to_string(s : SignalfilterellipticCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticCursor::to_string(self : SignalfilterellipticCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticView {
@@ -912,45 +912,45 @@ pub fn signal_filter_elliptic_view_make(size : Int) -> SignalfilterellipticView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_view_len(s : SignalfilterellipticView) -> Int { s.size }
+pub fn SignalfilterellipticView::len(self : SignalfilterellipticView) -> Int { self.size }
 
-pub fn signal_filter_elliptic_view_get(s : SignalfilterellipticView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticView::get(self : SignalfilterellipticView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_view_set(s : SignalfilterellipticView, i : Int, v : Double) -> SignalfilterellipticView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticView::set(self : SignalfilterellipticView, i : Int, v : Double) -> SignalfilterellipticView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_view_sum(s : SignalfilterellipticView) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticView::sum(self : SignalfilterellipticView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_view_mean(s : SignalfilterellipticView) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticView::mean(self : SignalfilterellipticView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_view_scale(s : SignalfilterellipticView, f : Double) -> SignalfilterellipticView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticView::scale(self : SignalfilterellipticView, f : Double) -> SignalfilterellipticView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_view_add(a : SignalfilterellipticView, b : SignalfilterellipticView) -> SignalfilterellipticView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticView::add(self : SignalfilterellipticView, other : SignalfilterellipticView) -> SignalfilterellipticView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_view_copy(s : SignalfilterellipticView) -> SignalfilterellipticView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticView::copy(self : SignalfilterellipticView) -> SignalfilterellipticView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_view_fill(s : SignalfilterellipticView, v : Double) -> SignalfilterellipticView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticView::fill(self : SignalfilterellipticView, v : Double) -> SignalfilterellipticView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_view_min(s : SignalfilterellipticView) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticView::min(self : SignalfilterellipticView) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_view_max(s : SignalfilterellipticView) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticView::max(self : SignalfilterellipticView) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_view_to_string(s : SignalfilterellipticView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticView::to_string(self : SignalfilterellipticView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticRange {
@@ -963,45 +963,45 @@ pub fn signal_filter_elliptic_range_make(size : Int) -> SignalfilterellipticRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_range_len(s : SignalfilterellipticRange) -> Int { s.size }
+pub fn SignalfilterellipticRange::len(self : SignalfilterellipticRange) -> Int { self.size }
 
-pub fn signal_filter_elliptic_range_get(s : SignalfilterellipticRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticRange::get(self : SignalfilterellipticRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_range_set(s : SignalfilterellipticRange, i : Int, v : Double) -> SignalfilterellipticRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticRange::set(self : SignalfilterellipticRange, i : Int, v : Double) -> SignalfilterellipticRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_range_sum(s : SignalfilterellipticRange) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticRange::sum(self : SignalfilterellipticRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_range_mean(s : SignalfilterellipticRange) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticRange::mean(self : SignalfilterellipticRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_range_scale(s : SignalfilterellipticRange, f : Double) -> SignalfilterellipticRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticRange::scale(self : SignalfilterellipticRange, f : Double) -> SignalfilterellipticRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_range_add(a : SignalfilterellipticRange, b : SignalfilterellipticRange) -> SignalfilterellipticRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticRange::add(self : SignalfilterellipticRange, other : SignalfilterellipticRange) -> SignalfilterellipticRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_range_copy(s : SignalfilterellipticRange) -> SignalfilterellipticRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticRange::copy(self : SignalfilterellipticRange) -> SignalfilterellipticRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_range_fill(s : SignalfilterellipticRange, v : Double) -> SignalfilterellipticRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticRange::fill(self : SignalfilterellipticRange, v : Double) -> SignalfilterellipticRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_range_min(s : SignalfilterellipticRange) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticRange::min(self : SignalfilterellipticRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_range_max(s : SignalfilterellipticRange) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticRange::max(self : SignalfilterellipticRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_range_to_string(s : SignalfilterellipticRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticRange::to_string(self : SignalfilterellipticRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterellipticSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_filter_elliptic_slice_make(size : Int) -> SignalfilterellipticSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_elliptic_slice_len(s : SignalfilterellipticSlice) -> Int { s.size }
+pub fn SignalfilterellipticSlice::len(self : SignalfilterellipticSlice) -> Int { self.size }
 
-pub fn signal_filter_elliptic_slice_get(s : SignalfilterellipticSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterellipticSlice::get(self : SignalfilterellipticSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_elliptic_slice_set(s : SignalfilterellipticSlice, i : Int, v : Double) -> SignalfilterellipticSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterellipticSlice::set(self : SignalfilterellipticSlice, i : Int, v : Double) -> SignalfilterellipticSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_slice_sum(s : SignalfilterellipticSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterellipticSlice::sum(self : SignalfilterellipticSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_elliptic_slice_mean(s : SignalfilterellipticSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterellipticSlice::mean(self : SignalfilterellipticSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_elliptic_slice_scale(s : SignalfilterellipticSlice, f : Double) -> SignalfilterellipticSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticSlice::scale(self : SignalfilterellipticSlice, f : Double) -> SignalfilterellipticSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_slice_add(a : SignalfilterellipticSlice, b : SignalfilterellipticSlice) -> SignalfilterellipticSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterellipticSlice::add(self : SignalfilterellipticSlice, other : SignalfilterellipticSlice) -> SignalfilterellipticSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_slice_copy(s : SignalfilterellipticSlice) -> SignalfilterellipticSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticSlice::copy(self : SignalfilterellipticSlice) -> SignalfilterellipticSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_slice_fill(s : SignalfilterellipticSlice, v : Double) -> SignalfilterellipticSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterellipticSlice::fill(self : SignalfilterellipticSlice, v : Double) -> SignalfilterellipticSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_elliptic_slice_min(s : SignalfilterellipticSlice) -> Double { @_common.min(s.data) }
+pub fn SignalfilterellipticSlice::min(self : SignalfilterellipticSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_elliptic_slice_max(s : SignalfilterellipticSlice) -> Double { @_common.max(s.data) }
+pub fn SignalfilterellipticSlice::max(self : SignalfilterellipticSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_elliptic_slice_to_string(s : SignalfilterellipticSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterellipticSlice::to_string(self : SignalfilterellipticSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

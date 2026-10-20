@@ -351,45 +351,45 @@ pub fn ds_hash_robin_frame_make(size : Int) -> DshashrobinFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_frame_len(s : DshashrobinFrame) -> Int { s.size }
+pub fn DshashrobinFrame::len(self : DshashrobinFrame) -> Int { self.size }
 
-pub fn ds_hash_robin_frame_get(s : DshashrobinFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinFrame::get(self : DshashrobinFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_frame_set(s : DshashrobinFrame, i : Int, v : Double) -> DshashrobinFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinFrame::set(self : DshashrobinFrame, i : Int, v : Double) -> DshashrobinFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_frame_sum(s : DshashrobinFrame) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinFrame::sum(self : DshashrobinFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_frame_mean(s : DshashrobinFrame) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinFrame::mean(self : DshashrobinFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_frame_scale(s : DshashrobinFrame, f : Double) -> DshashrobinFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinFrame::scale(self : DshashrobinFrame, f : Double) -> DshashrobinFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_frame_add(a : DshashrobinFrame, b : DshashrobinFrame) -> DshashrobinFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinFrame::add(self : DshashrobinFrame, other : DshashrobinFrame) -> DshashrobinFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_frame_copy(s : DshashrobinFrame) -> DshashrobinFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinFrame::copy(self : DshashrobinFrame) -> DshashrobinFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_frame_fill(s : DshashrobinFrame, v : Double) -> DshashrobinFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinFrame::fill(self : DshashrobinFrame, v : Double) -> DshashrobinFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_frame_min(s : DshashrobinFrame) -> Double { @_common.min(s.data) }
+pub fn DshashrobinFrame::min(self : DshashrobinFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_frame_max(s : DshashrobinFrame) -> Double { @_common.max(s.data) }
+pub fn DshashrobinFrame::max(self : DshashrobinFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_frame_to_string(s : DshashrobinFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinFrame::to_string(self : DshashrobinFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinTable {
@@ -402,45 +402,45 @@ pub fn ds_hash_robin_table_make(size : Int) -> DshashrobinTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_table_len(s : DshashrobinTable) -> Int { s.size }
+pub fn DshashrobinTable::len(self : DshashrobinTable) -> Int { self.size }
 
-pub fn ds_hash_robin_table_get(s : DshashrobinTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinTable::get(self : DshashrobinTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_table_set(s : DshashrobinTable, i : Int, v : Double) -> DshashrobinTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinTable::set(self : DshashrobinTable, i : Int, v : Double) -> DshashrobinTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_table_sum(s : DshashrobinTable) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinTable::sum(self : DshashrobinTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_table_mean(s : DshashrobinTable) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinTable::mean(self : DshashrobinTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_table_scale(s : DshashrobinTable, f : Double) -> DshashrobinTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinTable::scale(self : DshashrobinTable, f : Double) -> DshashrobinTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_table_add(a : DshashrobinTable, b : DshashrobinTable) -> DshashrobinTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinTable::add(self : DshashrobinTable, other : DshashrobinTable) -> DshashrobinTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_table_copy(s : DshashrobinTable) -> DshashrobinTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinTable::copy(self : DshashrobinTable) -> DshashrobinTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_table_fill(s : DshashrobinTable, v : Double) -> DshashrobinTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinTable::fill(self : DshashrobinTable, v : Double) -> DshashrobinTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_table_min(s : DshashrobinTable) -> Double { @_common.min(s.data) }
+pub fn DshashrobinTable::min(self : DshashrobinTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_table_max(s : DshashrobinTable) -> Double { @_common.max(s.data) }
+pub fn DshashrobinTable::max(self : DshashrobinTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_table_to_string(s : DshashrobinTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinTable::to_string(self : DshashrobinTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinGraphN {
@@ -453,45 +453,45 @@ pub fn ds_hash_robin_graphn_make(size : Int) -> DshashrobinGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_graphn_len(s : DshashrobinGraphN) -> Int { s.size }
+pub fn DshashrobinGraphN::len(self : DshashrobinGraphN) -> Int { self.size }
 
-pub fn ds_hash_robin_graphn_get(s : DshashrobinGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinGraphN::get(self : DshashrobinGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_graphn_set(s : DshashrobinGraphN, i : Int, v : Double) -> DshashrobinGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinGraphN::set(self : DshashrobinGraphN, i : Int, v : Double) -> DshashrobinGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_graphn_sum(s : DshashrobinGraphN) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinGraphN::sum(self : DshashrobinGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_graphn_mean(s : DshashrobinGraphN) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinGraphN::mean(self : DshashrobinGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_graphn_scale(s : DshashrobinGraphN, f : Double) -> DshashrobinGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinGraphN::scale(self : DshashrobinGraphN, f : Double) -> DshashrobinGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_graphn_add(a : DshashrobinGraphN, b : DshashrobinGraphN) -> DshashrobinGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinGraphN::add(self : DshashrobinGraphN, other : DshashrobinGraphN) -> DshashrobinGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_graphn_copy(s : DshashrobinGraphN) -> DshashrobinGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinGraphN::copy(self : DshashrobinGraphN) -> DshashrobinGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_graphn_fill(s : DshashrobinGraphN, v : Double) -> DshashrobinGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinGraphN::fill(self : DshashrobinGraphN, v : Double) -> DshashrobinGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_graphn_min(s : DshashrobinGraphN) -> Double { @_common.min(s.data) }
+pub fn DshashrobinGraphN::min(self : DshashrobinGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_graphn_max(s : DshashrobinGraphN) -> Double { @_common.max(s.data) }
+pub fn DshashrobinGraphN::max(self : DshashrobinGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_graphn_to_string(s : DshashrobinGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinGraphN::to_string(self : DshashrobinGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinNode {
@@ -504,45 +504,45 @@ pub fn ds_hash_robin_node_make(size : Int) -> DshashrobinNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_node_len(s : DshashrobinNode) -> Int { s.size }
+pub fn DshashrobinNode::len(self : DshashrobinNode) -> Int { self.size }
 
-pub fn ds_hash_robin_node_get(s : DshashrobinNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinNode::get(self : DshashrobinNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_node_set(s : DshashrobinNode, i : Int, v : Double) -> DshashrobinNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinNode::set(self : DshashrobinNode, i : Int, v : Double) -> DshashrobinNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_node_sum(s : DshashrobinNode) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinNode::sum(self : DshashrobinNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_node_mean(s : DshashrobinNode) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinNode::mean(self : DshashrobinNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_node_scale(s : DshashrobinNode, f : Double) -> DshashrobinNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinNode::scale(self : DshashrobinNode, f : Double) -> DshashrobinNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_node_add(a : DshashrobinNode, b : DshashrobinNode) -> DshashrobinNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinNode::add(self : DshashrobinNode, other : DshashrobinNode) -> DshashrobinNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_node_copy(s : DshashrobinNode) -> DshashrobinNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinNode::copy(self : DshashrobinNode) -> DshashrobinNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_node_fill(s : DshashrobinNode, v : Double) -> DshashrobinNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinNode::fill(self : DshashrobinNode, v : Double) -> DshashrobinNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_node_min(s : DshashrobinNode) -> Double { @_common.min(s.data) }
+pub fn DshashrobinNode::min(self : DshashrobinNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_node_max(s : DshashrobinNode) -> Double { @_common.max(s.data) }
+pub fn DshashrobinNode::max(self : DshashrobinNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_node_to_string(s : DshashrobinNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinNode::to_string(self : DshashrobinNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinEdge {
@@ -555,45 +555,45 @@ pub fn ds_hash_robin_edge_make(size : Int) -> DshashrobinEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_edge_len(s : DshashrobinEdge) -> Int { s.size }
+pub fn DshashrobinEdge::len(self : DshashrobinEdge) -> Int { self.size }
 
-pub fn ds_hash_robin_edge_get(s : DshashrobinEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinEdge::get(self : DshashrobinEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_edge_set(s : DshashrobinEdge, i : Int, v : Double) -> DshashrobinEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinEdge::set(self : DshashrobinEdge, i : Int, v : Double) -> DshashrobinEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_edge_sum(s : DshashrobinEdge) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinEdge::sum(self : DshashrobinEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_edge_mean(s : DshashrobinEdge) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinEdge::mean(self : DshashrobinEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_edge_scale(s : DshashrobinEdge, f : Double) -> DshashrobinEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinEdge::scale(self : DshashrobinEdge, f : Double) -> DshashrobinEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_edge_add(a : DshashrobinEdge, b : DshashrobinEdge) -> DshashrobinEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinEdge::add(self : DshashrobinEdge, other : DshashrobinEdge) -> DshashrobinEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_edge_copy(s : DshashrobinEdge) -> DshashrobinEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinEdge::copy(self : DshashrobinEdge) -> DshashrobinEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_edge_fill(s : DshashrobinEdge, v : Double) -> DshashrobinEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinEdge::fill(self : DshashrobinEdge, v : Double) -> DshashrobinEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_edge_min(s : DshashrobinEdge) -> Double { @_common.min(s.data) }
+pub fn DshashrobinEdge::min(self : DshashrobinEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_edge_max(s : DshashrobinEdge) -> Double { @_common.max(s.data) }
+pub fn DshashrobinEdge::max(self : DshashrobinEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_edge_to_string(s : DshashrobinEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinEdge::to_string(self : DshashrobinEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinPath {
@@ -606,45 +606,45 @@ pub fn ds_hash_robin_path_make(size : Int) -> DshashrobinPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_path_len(s : DshashrobinPath) -> Int { s.size }
+pub fn DshashrobinPath::len(self : DshashrobinPath) -> Int { self.size }
 
-pub fn ds_hash_robin_path_get(s : DshashrobinPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinPath::get(self : DshashrobinPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_path_set(s : DshashrobinPath, i : Int, v : Double) -> DshashrobinPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinPath::set(self : DshashrobinPath, i : Int, v : Double) -> DshashrobinPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_path_sum(s : DshashrobinPath) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinPath::sum(self : DshashrobinPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_path_mean(s : DshashrobinPath) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinPath::mean(self : DshashrobinPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_path_scale(s : DshashrobinPath, f : Double) -> DshashrobinPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinPath::scale(self : DshashrobinPath, f : Double) -> DshashrobinPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_path_add(a : DshashrobinPath, b : DshashrobinPath) -> DshashrobinPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinPath::add(self : DshashrobinPath, other : DshashrobinPath) -> DshashrobinPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_path_copy(s : DshashrobinPath) -> DshashrobinPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinPath::copy(self : DshashrobinPath) -> DshashrobinPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_path_fill(s : DshashrobinPath, v : Double) -> DshashrobinPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinPath::fill(self : DshashrobinPath, v : Double) -> DshashrobinPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_path_min(s : DshashrobinPath) -> Double { @_common.min(s.data) }
+pub fn DshashrobinPath::min(self : DshashrobinPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_path_max(s : DshashrobinPath) -> Double { @_common.max(s.data) }
+pub fn DshashrobinPath::max(self : DshashrobinPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_path_to_string(s : DshashrobinPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinPath::to_string(self : DshashrobinPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinCluster {
@@ -657,45 +657,45 @@ pub fn ds_hash_robin_cluster_make(size : Int) -> DshashrobinCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_cluster_len(s : DshashrobinCluster) -> Int { s.size }
+pub fn DshashrobinCluster::len(self : DshashrobinCluster) -> Int { self.size }
 
-pub fn ds_hash_robin_cluster_get(s : DshashrobinCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinCluster::get(self : DshashrobinCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_cluster_set(s : DshashrobinCluster, i : Int, v : Double) -> DshashrobinCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinCluster::set(self : DshashrobinCluster, i : Int, v : Double) -> DshashrobinCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_cluster_sum(s : DshashrobinCluster) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinCluster::sum(self : DshashrobinCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_cluster_mean(s : DshashrobinCluster) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinCluster::mean(self : DshashrobinCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_cluster_scale(s : DshashrobinCluster, f : Double) -> DshashrobinCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinCluster::scale(self : DshashrobinCluster, f : Double) -> DshashrobinCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_cluster_add(a : DshashrobinCluster, b : DshashrobinCluster) -> DshashrobinCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinCluster::add(self : DshashrobinCluster, other : DshashrobinCluster) -> DshashrobinCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_cluster_copy(s : DshashrobinCluster) -> DshashrobinCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinCluster::copy(self : DshashrobinCluster) -> DshashrobinCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_cluster_fill(s : DshashrobinCluster, v : Double) -> DshashrobinCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinCluster::fill(self : DshashrobinCluster, v : Double) -> DshashrobinCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_cluster_min(s : DshashrobinCluster) -> Double { @_common.min(s.data) }
+pub fn DshashrobinCluster::min(self : DshashrobinCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_cluster_max(s : DshashrobinCluster) -> Double { @_common.max(s.data) }
+pub fn DshashrobinCluster::max(self : DshashrobinCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_cluster_to_string(s : DshashrobinCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinCluster::to_string(self : DshashrobinCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinModel {
@@ -708,45 +708,45 @@ pub fn ds_hash_robin_model_make(size : Int) -> DshashrobinModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_model_len(s : DshashrobinModel) -> Int { s.size }
+pub fn DshashrobinModel::len(self : DshashrobinModel) -> Int { self.size }
 
-pub fn ds_hash_robin_model_get(s : DshashrobinModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinModel::get(self : DshashrobinModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_model_set(s : DshashrobinModel, i : Int, v : Double) -> DshashrobinModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinModel::set(self : DshashrobinModel, i : Int, v : Double) -> DshashrobinModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_model_sum(s : DshashrobinModel) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinModel::sum(self : DshashrobinModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_model_mean(s : DshashrobinModel) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinModel::mean(self : DshashrobinModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_model_scale(s : DshashrobinModel, f : Double) -> DshashrobinModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinModel::scale(self : DshashrobinModel, f : Double) -> DshashrobinModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_model_add(a : DshashrobinModel, b : DshashrobinModel) -> DshashrobinModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinModel::add(self : DshashrobinModel, other : DshashrobinModel) -> DshashrobinModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_model_copy(s : DshashrobinModel) -> DshashrobinModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinModel::copy(self : DshashrobinModel) -> DshashrobinModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_model_fill(s : DshashrobinModel, v : Double) -> DshashrobinModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinModel::fill(self : DshashrobinModel, v : Double) -> DshashrobinModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_model_min(s : DshashrobinModel) -> Double { @_common.min(s.data) }
+pub fn DshashrobinModel::min(self : DshashrobinModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_model_max(s : DshashrobinModel) -> Double { @_common.max(s.data) }
+pub fn DshashrobinModel::max(self : DshashrobinModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_model_to_string(s : DshashrobinModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinModel::to_string(self : DshashrobinModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinLayer {
@@ -759,45 +759,45 @@ pub fn ds_hash_robin_layer_make(size : Int) -> DshashrobinLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_layer_len(s : DshashrobinLayer) -> Int { s.size }
+pub fn DshashrobinLayer::len(self : DshashrobinLayer) -> Int { self.size }
 
-pub fn ds_hash_robin_layer_get(s : DshashrobinLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinLayer::get(self : DshashrobinLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_layer_set(s : DshashrobinLayer, i : Int, v : Double) -> DshashrobinLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinLayer::set(self : DshashrobinLayer, i : Int, v : Double) -> DshashrobinLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_layer_sum(s : DshashrobinLayer) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinLayer::sum(self : DshashrobinLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_layer_mean(s : DshashrobinLayer) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinLayer::mean(self : DshashrobinLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_layer_scale(s : DshashrobinLayer, f : Double) -> DshashrobinLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinLayer::scale(self : DshashrobinLayer, f : Double) -> DshashrobinLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_layer_add(a : DshashrobinLayer, b : DshashrobinLayer) -> DshashrobinLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinLayer::add(self : DshashrobinLayer, other : DshashrobinLayer) -> DshashrobinLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_layer_copy(s : DshashrobinLayer) -> DshashrobinLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinLayer::copy(self : DshashrobinLayer) -> DshashrobinLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_layer_fill(s : DshashrobinLayer, v : Double) -> DshashrobinLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinLayer::fill(self : DshashrobinLayer, v : Double) -> DshashrobinLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_layer_min(s : DshashrobinLayer) -> Double { @_common.min(s.data) }
+pub fn DshashrobinLayer::min(self : DshashrobinLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_layer_max(s : DshashrobinLayer) -> Double { @_common.max(s.data) }
+pub fn DshashrobinLayer::max(self : DshashrobinLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_layer_to_string(s : DshashrobinLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinLayer::to_string(self : DshashrobinLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinBuffer {
@@ -810,45 +810,45 @@ pub fn ds_hash_robin_buffer_make(size : Int) -> DshashrobinBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_buffer_len(s : DshashrobinBuffer) -> Int { s.size }
+pub fn DshashrobinBuffer::len(self : DshashrobinBuffer) -> Int { self.size }
 
-pub fn ds_hash_robin_buffer_get(s : DshashrobinBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinBuffer::get(self : DshashrobinBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_buffer_set(s : DshashrobinBuffer, i : Int, v : Double) -> DshashrobinBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinBuffer::set(self : DshashrobinBuffer, i : Int, v : Double) -> DshashrobinBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_buffer_sum(s : DshashrobinBuffer) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinBuffer::sum(self : DshashrobinBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_buffer_mean(s : DshashrobinBuffer) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinBuffer::mean(self : DshashrobinBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_buffer_scale(s : DshashrobinBuffer, f : Double) -> DshashrobinBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinBuffer::scale(self : DshashrobinBuffer, f : Double) -> DshashrobinBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_buffer_add(a : DshashrobinBuffer, b : DshashrobinBuffer) -> DshashrobinBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinBuffer::add(self : DshashrobinBuffer, other : DshashrobinBuffer) -> DshashrobinBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_buffer_copy(s : DshashrobinBuffer) -> DshashrobinBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinBuffer::copy(self : DshashrobinBuffer) -> DshashrobinBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_buffer_fill(s : DshashrobinBuffer, v : Double) -> DshashrobinBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinBuffer::fill(self : DshashrobinBuffer, v : Double) -> DshashrobinBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_buffer_min(s : DshashrobinBuffer) -> Double { @_common.min(s.data) }
+pub fn DshashrobinBuffer::min(self : DshashrobinBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_buffer_max(s : DshashrobinBuffer) -> Double { @_common.max(s.data) }
+pub fn DshashrobinBuffer::max(self : DshashrobinBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_buffer_to_string(s : DshashrobinBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinBuffer::to_string(self : DshashrobinBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinCursor {
@@ -861,45 +861,45 @@ pub fn ds_hash_robin_cursor_make(size : Int) -> DshashrobinCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_cursor_len(s : DshashrobinCursor) -> Int { s.size }
+pub fn DshashrobinCursor::len(self : DshashrobinCursor) -> Int { self.size }
 
-pub fn ds_hash_robin_cursor_get(s : DshashrobinCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinCursor::get(self : DshashrobinCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_cursor_set(s : DshashrobinCursor, i : Int, v : Double) -> DshashrobinCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinCursor::set(self : DshashrobinCursor, i : Int, v : Double) -> DshashrobinCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_cursor_sum(s : DshashrobinCursor) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinCursor::sum(self : DshashrobinCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_cursor_mean(s : DshashrobinCursor) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinCursor::mean(self : DshashrobinCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_cursor_scale(s : DshashrobinCursor, f : Double) -> DshashrobinCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinCursor::scale(self : DshashrobinCursor, f : Double) -> DshashrobinCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_cursor_add(a : DshashrobinCursor, b : DshashrobinCursor) -> DshashrobinCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinCursor::add(self : DshashrobinCursor, other : DshashrobinCursor) -> DshashrobinCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_cursor_copy(s : DshashrobinCursor) -> DshashrobinCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinCursor::copy(self : DshashrobinCursor) -> DshashrobinCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_cursor_fill(s : DshashrobinCursor, v : Double) -> DshashrobinCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinCursor::fill(self : DshashrobinCursor, v : Double) -> DshashrobinCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_cursor_min(s : DshashrobinCursor) -> Double { @_common.min(s.data) }
+pub fn DshashrobinCursor::min(self : DshashrobinCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_cursor_max(s : DshashrobinCursor) -> Double { @_common.max(s.data) }
+pub fn DshashrobinCursor::max(self : DshashrobinCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_cursor_to_string(s : DshashrobinCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinCursor::to_string(self : DshashrobinCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinView {
@@ -912,45 +912,45 @@ pub fn ds_hash_robin_view_make(size : Int) -> DshashrobinView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_view_len(s : DshashrobinView) -> Int { s.size }
+pub fn DshashrobinView::len(self : DshashrobinView) -> Int { self.size }
 
-pub fn ds_hash_robin_view_get(s : DshashrobinView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinView::get(self : DshashrobinView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_view_set(s : DshashrobinView, i : Int, v : Double) -> DshashrobinView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinView::set(self : DshashrobinView, i : Int, v : Double) -> DshashrobinView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_view_sum(s : DshashrobinView) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinView::sum(self : DshashrobinView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_view_mean(s : DshashrobinView) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinView::mean(self : DshashrobinView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_view_scale(s : DshashrobinView, f : Double) -> DshashrobinView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinView::scale(self : DshashrobinView, f : Double) -> DshashrobinView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_view_add(a : DshashrobinView, b : DshashrobinView) -> DshashrobinView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinView::add(self : DshashrobinView, other : DshashrobinView) -> DshashrobinView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_view_copy(s : DshashrobinView) -> DshashrobinView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinView::copy(self : DshashrobinView) -> DshashrobinView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_view_fill(s : DshashrobinView, v : Double) -> DshashrobinView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinView::fill(self : DshashrobinView, v : Double) -> DshashrobinView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_view_min(s : DshashrobinView) -> Double { @_common.min(s.data) }
+pub fn DshashrobinView::min(self : DshashrobinView) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_view_max(s : DshashrobinView) -> Double { @_common.max(s.data) }
+pub fn DshashrobinView::max(self : DshashrobinView) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_view_to_string(s : DshashrobinView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinView::to_string(self : DshashrobinView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinRange {
@@ -963,45 +963,45 @@ pub fn ds_hash_robin_range_make(size : Int) -> DshashrobinRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_range_len(s : DshashrobinRange) -> Int { s.size }
+pub fn DshashrobinRange::len(self : DshashrobinRange) -> Int { self.size }
 
-pub fn ds_hash_robin_range_get(s : DshashrobinRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinRange::get(self : DshashrobinRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_range_set(s : DshashrobinRange, i : Int, v : Double) -> DshashrobinRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinRange::set(self : DshashrobinRange, i : Int, v : Double) -> DshashrobinRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_range_sum(s : DshashrobinRange) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinRange::sum(self : DshashrobinRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_range_mean(s : DshashrobinRange) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinRange::mean(self : DshashrobinRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_range_scale(s : DshashrobinRange, f : Double) -> DshashrobinRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinRange::scale(self : DshashrobinRange, f : Double) -> DshashrobinRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_range_add(a : DshashrobinRange, b : DshashrobinRange) -> DshashrobinRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinRange::add(self : DshashrobinRange, other : DshashrobinRange) -> DshashrobinRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_range_copy(s : DshashrobinRange) -> DshashrobinRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinRange::copy(self : DshashrobinRange) -> DshashrobinRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_range_fill(s : DshashrobinRange, v : Double) -> DshashrobinRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinRange::fill(self : DshashrobinRange, v : Double) -> DshashrobinRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_range_min(s : DshashrobinRange) -> Double { @_common.min(s.data) }
+pub fn DshashrobinRange::min(self : DshashrobinRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_range_max(s : DshashrobinRange) -> Double { @_common.max(s.data) }
+pub fn DshashrobinRange::max(self : DshashrobinRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_range_to_string(s : DshashrobinRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinRange::to_string(self : DshashrobinRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashrobinSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_hash_robin_slice_make(size : Int) -> DshashrobinSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_robin_slice_len(s : DshashrobinSlice) -> Int { s.size }
+pub fn DshashrobinSlice::len(self : DshashrobinSlice) -> Int { self.size }
 
-pub fn ds_hash_robin_slice_get(s : DshashrobinSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashrobinSlice::get(self : DshashrobinSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_robin_slice_set(s : DshashrobinSlice, i : Int, v : Double) -> DshashrobinSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashrobinSlice::set(self : DshashrobinSlice, i : Int, v : Double) -> DshashrobinSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_slice_sum(s : DshashrobinSlice) -> Double { @_common.sum(s.data) }
+pub fn DshashrobinSlice::sum(self : DshashrobinSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_robin_slice_mean(s : DshashrobinSlice) -> Double { @_common.mean(s.data) }
+pub fn DshashrobinSlice::mean(self : DshashrobinSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_robin_slice_scale(s : DshashrobinSlice, f : Double) -> DshashrobinSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashrobinSlice::scale(self : DshashrobinSlice, f : Double) -> DshashrobinSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_slice_add(a : DshashrobinSlice, b : DshashrobinSlice) -> DshashrobinSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashrobinSlice::add(self : DshashrobinSlice, other : DshashrobinSlice) -> DshashrobinSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_robin_slice_copy(s : DshashrobinSlice) -> DshashrobinSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashrobinSlice::copy(self : DshashrobinSlice) -> DshashrobinSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_slice_fill(s : DshashrobinSlice, v : Double) -> DshashrobinSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashrobinSlice::fill(self : DshashrobinSlice, v : Double) -> DshashrobinSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_robin_slice_min(s : DshashrobinSlice) -> Double { @_common.min(s.data) }
+pub fn DshashrobinSlice::min(self : DshashrobinSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_robin_slice_max(s : DshashrobinSlice) -> Double { @_common.max(s.data) }
+pub fn DshashrobinSlice::max(self : DshashrobinSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_robin_slice_to_string(s : DshashrobinSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashrobinSlice::to_string(self : DshashrobinSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

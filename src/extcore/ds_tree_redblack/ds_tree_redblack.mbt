@@ -351,45 +351,45 @@ pub fn ds_tree_redblack_frame_make(size : Int) -> DstreeredblackFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_frame_len(s : DstreeredblackFrame) -> Int { s.size }
+pub fn DstreeredblackFrame::len(self : DstreeredblackFrame) -> Int { self.size }
 
-pub fn ds_tree_redblack_frame_get(s : DstreeredblackFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackFrame::get(self : DstreeredblackFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_frame_set(s : DstreeredblackFrame, i : Int, v : Double) -> DstreeredblackFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackFrame::set(self : DstreeredblackFrame, i : Int, v : Double) -> DstreeredblackFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_frame_sum(s : DstreeredblackFrame) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackFrame::sum(self : DstreeredblackFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_frame_mean(s : DstreeredblackFrame) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackFrame::mean(self : DstreeredblackFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_frame_scale(s : DstreeredblackFrame, f : Double) -> DstreeredblackFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackFrame::scale(self : DstreeredblackFrame, f : Double) -> DstreeredblackFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_frame_add(a : DstreeredblackFrame, b : DstreeredblackFrame) -> DstreeredblackFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackFrame::add(self : DstreeredblackFrame, other : DstreeredblackFrame) -> DstreeredblackFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_frame_copy(s : DstreeredblackFrame) -> DstreeredblackFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackFrame::copy(self : DstreeredblackFrame) -> DstreeredblackFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_frame_fill(s : DstreeredblackFrame, v : Double) -> DstreeredblackFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackFrame::fill(self : DstreeredblackFrame, v : Double) -> DstreeredblackFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_frame_min(s : DstreeredblackFrame) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackFrame::min(self : DstreeredblackFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_frame_max(s : DstreeredblackFrame) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackFrame::max(self : DstreeredblackFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_frame_to_string(s : DstreeredblackFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackFrame::to_string(self : DstreeredblackFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackTable {
@@ -402,45 +402,45 @@ pub fn ds_tree_redblack_table_make(size : Int) -> DstreeredblackTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_table_len(s : DstreeredblackTable) -> Int { s.size }
+pub fn DstreeredblackTable::len(self : DstreeredblackTable) -> Int { self.size }
 
-pub fn ds_tree_redblack_table_get(s : DstreeredblackTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackTable::get(self : DstreeredblackTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_table_set(s : DstreeredblackTable, i : Int, v : Double) -> DstreeredblackTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackTable::set(self : DstreeredblackTable, i : Int, v : Double) -> DstreeredblackTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_table_sum(s : DstreeredblackTable) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackTable::sum(self : DstreeredblackTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_table_mean(s : DstreeredblackTable) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackTable::mean(self : DstreeredblackTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_table_scale(s : DstreeredblackTable, f : Double) -> DstreeredblackTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackTable::scale(self : DstreeredblackTable, f : Double) -> DstreeredblackTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_table_add(a : DstreeredblackTable, b : DstreeredblackTable) -> DstreeredblackTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackTable::add(self : DstreeredblackTable, other : DstreeredblackTable) -> DstreeredblackTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_table_copy(s : DstreeredblackTable) -> DstreeredblackTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackTable::copy(self : DstreeredblackTable) -> DstreeredblackTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_table_fill(s : DstreeredblackTable, v : Double) -> DstreeredblackTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackTable::fill(self : DstreeredblackTable, v : Double) -> DstreeredblackTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_table_min(s : DstreeredblackTable) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackTable::min(self : DstreeredblackTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_table_max(s : DstreeredblackTable) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackTable::max(self : DstreeredblackTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_table_to_string(s : DstreeredblackTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackTable::to_string(self : DstreeredblackTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackGraphN {
@@ -453,45 +453,45 @@ pub fn ds_tree_redblack_graphn_make(size : Int) -> DstreeredblackGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_graphn_len(s : DstreeredblackGraphN) -> Int { s.size }
+pub fn DstreeredblackGraphN::len(self : DstreeredblackGraphN) -> Int { self.size }
 
-pub fn ds_tree_redblack_graphn_get(s : DstreeredblackGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackGraphN::get(self : DstreeredblackGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_graphn_set(s : DstreeredblackGraphN, i : Int, v : Double) -> DstreeredblackGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackGraphN::set(self : DstreeredblackGraphN, i : Int, v : Double) -> DstreeredblackGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_graphn_sum(s : DstreeredblackGraphN) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackGraphN::sum(self : DstreeredblackGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_graphn_mean(s : DstreeredblackGraphN) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackGraphN::mean(self : DstreeredblackGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_graphn_scale(s : DstreeredblackGraphN, f : Double) -> DstreeredblackGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackGraphN::scale(self : DstreeredblackGraphN, f : Double) -> DstreeredblackGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_graphn_add(a : DstreeredblackGraphN, b : DstreeredblackGraphN) -> DstreeredblackGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackGraphN::add(self : DstreeredblackGraphN, other : DstreeredblackGraphN) -> DstreeredblackGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_graphn_copy(s : DstreeredblackGraphN) -> DstreeredblackGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackGraphN::copy(self : DstreeredblackGraphN) -> DstreeredblackGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_graphn_fill(s : DstreeredblackGraphN, v : Double) -> DstreeredblackGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackGraphN::fill(self : DstreeredblackGraphN, v : Double) -> DstreeredblackGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_graphn_min(s : DstreeredblackGraphN) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackGraphN::min(self : DstreeredblackGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_graphn_max(s : DstreeredblackGraphN) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackGraphN::max(self : DstreeredblackGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_graphn_to_string(s : DstreeredblackGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackGraphN::to_string(self : DstreeredblackGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackNode {
@@ -504,45 +504,45 @@ pub fn ds_tree_redblack_node_make(size : Int) -> DstreeredblackNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_node_len(s : DstreeredblackNode) -> Int { s.size }
+pub fn DstreeredblackNode::len(self : DstreeredblackNode) -> Int { self.size }
 
-pub fn ds_tree_redblack_node_get(s : DstreeredblackNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackNode::get(self : DstreeredblackNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_node_set(s : DstreeredblackNode, i : Int, v : Double) -> DstreeredblackNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackNode::set(self : DstreeredblackNode, i : Int, v : Double) -> DstreeredblackNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_node_sum(s : DstreeredblackNode) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackNode::sum(self : DstreeredblackNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_node_mean(s : DstreeredblackNode) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackNode::mean(self : DstreeredblackNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_node_scale(s : DstreeredblackNode, f : Double) -> DstreeredblackNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackNode::scale(self : DstreeredblackNode, f : Double) -> DstreeredblackNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_node_add(a : DstreeredblackNode, b : DstreeredblackNode) -> DstreeredblackNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackNode::add(self : DstreeredblackNode, other : DstreeredblackNode) -> DstreeredblackNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_node_copy(s : DstreeredblackNode) -> DstreeredblackNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackNode::copy(self : DstreeredblackNode) -> DstreeredblackNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_node_fill(s : DstreeredblackNode, v : Double) -> DstreeredblackNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackNode::fill(self : DstreeredblackNode, v : Double) -> DstreeredblackNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_node_min(s : DstreeredblackNode) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackNode::min(self : DstreeredblackNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_node_max(s : DstreeredblackNode) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackNode::max(self : DstreeredblackNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_node_to_string(s : DstreeredblackNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackNode::to_string(self : DstreeredblackNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackEdge {
@@ -555,45 +555,45 @@ pub fn ds_tree_redblack_edge_make(size : Int) -> DstreeredblackEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_edge_len(s : DstreeredblackEdge) -> Int { s.size }
+pub fn DstreeredblackEdge::len(self : DstreeredblackEdge) -> Int { self.size }
 
-pub fn ds_tree_redblack_edge_get(s : DstreeredblackEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackEdge::get(self : DstreeredblackEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_edge_set(s : DstreeredblackEdge, i : Int, v : Double) -> DstreeredblackEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackEdge::set(self : DstreeredblackEdge, i : Int, v : Double) -> DstreeredblackEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_edge_sum(s : DstreeredblackEdge) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackEdge::sum(self : DstreeredblackEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_edge_mean(s : DstreeredblackEdge) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackEdge::mean(self : DstreeredblackEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_edge_scale(s : DstreeredblackEdge, f : Double) -> DstreeredblackEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackEdge::scale(self : DstreeredblackEdge, f : Double) -> DstreeredblackEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_edge_add(a : DstreeredblackEdge, b : DstreeredblackEdge) -> DstreeredblackEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackEdge::add(self : DstreeredblackEdge, other : DstreeredblackEdge) -> DstreeredblackEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_edge_copy(s : DstreeredblackEdge) -> DstreeredblackEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackEdge::copy(self : DstreeredblackEdge) -> DstreeredblackEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_edge_fill(s : DstreeredblackEdge, v : Double) -> DstreeredblackEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackEdge::fill(self : DstreeredblackEdge, v : Double) -> DstreeredblackEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_edge_min(s : DstreeredblackEdge) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackEdge::min(self : DstreeredblackEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_edge_max(s : DstreeredblackEdge) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackEdge::max(self : DstreeredblackEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_edge_to_string(s : DstreeredblackEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackEdge::to_string(self : DstreeredblackEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackPath {
@@ -606,45 +606,45 @@ pub fn ds_tree_redblack_path_make(size : Int) -> DstreeredblackPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_path_len(s : DstreeredblackPath) -> Int { s.size }
+pub fn DstreeredblackPath::len(self : DstreeredblackPath) -> Int { self.size }
 
-pub fn ds_tree_redblack_path_get(s : DstreeredblackPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackPath::get(self : DstreeredblackPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_path_set(s : DstreeredblackPath, i : Int, v : Double) -> DstreeredblackPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackPath::set(self : DstreeredblackPath, i : Int, v : Double) -> DstreeredblackPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_path_sum(s : DstreeredblackPath) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackPath::sum(self : DstreeredblackPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_path_mean(s : DstreeredblackPath) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackPath::mean(self : DstreeredblackPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_path_scale(s : DstreeredblackPath, f : Double) -> DstreeredblackPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackPath::scale(self : DstreeredblackPath, f : Double) -> DstreeredblackPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_path_add(a : DstreeredblackPath, b : DstreeredblackPath) -> DstreeredblackPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackPath::add(self : DstreeredblackPath, other : DstreeredblackPath) -> DstreeredblackPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_path_copy(s : DstreeredblackPath) -> DstreeredblackPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackPath::copy(self : DstreeredblackPath) -> DstreeredblackPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_path_fill(s : DstreeredblackPath, v : Double) -> DstreeredblackPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackPath::fill(self : DstreeredblackPath, v : Double) -> DstreeredblackPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_path_min(s : DstreeredblackPath) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackPath::min(self : DstreeredblackPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_path_max(s : DstreeredblackPath) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackPath::max(self : DstreeredblackPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_path_to_string(s : DstreeredblackPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackPath::to_string(self : DstreeredblackPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackCluster {
@@ -657,45 +657,45 @@ pub fn ds_tree_redblack_cluster_make(size : Int) -> DstreeredblackCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_cluster_len(s : DstreeredblackCluster) -> Int { s.size }
+pub fn DstreeredblackCluster::len(self : DstreeredblackCluster) -> Int { self.size }
 
-pub fn ds_tree_redblack_cluster_get(s : DstreeredblackCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackCluster::get(self : DstreeredblackCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_cluster_set(s : DstreeredblackCluster, i : Int, v : Double) -> DstreeredblackCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackCluster::set(self : DstreeredblackCluster, i : Int, v : Double) -> DstreeredblackCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_cluster_sum(s : DstreeredblackCluster) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackCluster::sum(self : DstreeredblackCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_cluster_mean(s : DstreeredblackCluster) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackCluster::mean(self : DstreeredblackCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_cluster_scale(s : DstreeredblackCluster, f : Double) -> DstreeredblackCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackCluster::scale(self : DstreeredblackCluster, f : Double) -> DstreeredblackCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_cluster_add(a : DstreeredblackCluster, b : DstreeredblackCluster) -> DstreeredblackCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackCluster::add(self : DstreeredblackCluster, other : DstreeredblackCluster) -> DstreeredblackCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_cluster_copy(s : DstreeredblackCluster) -> DstreeredblackCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackCluster::copy(self : DstreeredblackCluster) -> DstreeredblackCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_cluster_fill(s : DstreeredblackCluster, v : Double) -> DstreeredblackCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackCluster::fill(self : DstreeredblackCluster, v : Double) -> DstreeredblackCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_cluster_min(s : DstreeredblackCluster) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackCluster::min(self : DstreeredblackCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_cluster_max(s : DstreeredblackCluster) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackCluster::max(self : DstreeredblackCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_cluster_to_string(s : DstreeredblackCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackCluster::to_string(self : DstreeredblackCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackModel {
@@ -708,45 +708,45 @@ pub fn ds_tree_redblack_model_make(size : Int) -> DstreeredblackModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_model_len(s : DstreeredblackModel) -> Int { s.size }
+pub fn DstreeredblackModel::len(self : DstreeredblackModel) -> Int { self.size }
 
-pub fn ds_tree_redblack_model_get(s : DstreeredblackModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackModel::get(self : DstreeredblackModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_model_set(s : DstreeredblackModel, i : Int, v : Double) -> DstreeredblackModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackModel::set(self : DstreeredblackModel, i : Int, v : Double) -> DstreeredblackModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_model_sum(s : DstreeredblackModel) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackModel::sum(self : DstreeredblackModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_model_mean(s : DstreeredblackModel) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackModel::mean(self : DstreeredblackModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_model_scale(s : DstreeredblackModel, f : Double) -> DstreeredblackModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackModel::scale(self : DstreeredblackModel, f : Double) -> DstreeredblackModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_model_add(a : DstreeredblackModel, b : DstreeredblackModel) -> DstreeredblackModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackModel::add(self : DstreeredblackModel, other : DstreeredblackModel) -> DstreeredblackModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_model_copy(s : DstreeredblackModel) -> DstreeredblackModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackModel::copy(self : DstreeredblackModel) -> DstreeredblackModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_model_fill(s : DstreeredblackModel, v : Double) -> DstreeredblackModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackModel::fill(self : DstreeredblackModel, v : Double) -> DstreeredblackModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_model_min(s : DstreeredblackModel) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackModel::min(self : DstreeredblackModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_model_max(s : DstreeredblackModel) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackModel::max(self : DstreeredblackModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_model_to_string(s : DstreeredblackModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackModel::to_string(self : DstreeredblackModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackLayer {
@@ -759,45 +759,45 @@ pub fn ds_tree_redblack_layer_make(size : Int) -> DstreeredblackLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_layer_len(s : DstreeredblackLayer) -> Int { s.size }
+pub fn DstreeredblackLayer::len(self : DstreeredblackLayer) -> Int { self.size }
 
-pub fn ds_tree_redblack_layer_get(s : DstreeredblackLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackLayer::get(self : DstreeredblackLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_layer_set(s : DstreeredblackLayer, i : Int, v : Double) -> DstreeredblackLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackLayer::set(self : DstreeredblackLayer, i : Int, v : Double) -> DstreeredblackLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_layer_sum(s : DstreeredblackLayer) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackLayer::sum(self : DstreeredblackLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_layer_mean(s : DstreeredblackLayer) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackLayer::mean(self : DstreeredblackLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_layer_scale(s : DstreeredblackLayer, f : Double) -> DstreeredblackLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackLayer::scale(self : DstreeredblackLayer, f : Double) -> DstreeredblackLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_layer_add(a : DstreeredblackLayer, b : DstreeredblackLayer) -> DstreeredblackLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackLayer::add(self : DstreeredblackLayer, other : DstreeredblackLayer) -> DstreeredblackLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_layer_copy(s : DstreeredblackLayer) -> DstreeredblackLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackLayer::copy(self : DstreeredblackLayer) -> DstreeredblackLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_layer_fill(s : DstreeredblackLayer, v : Double) -> DstreeredblackLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackLayer::fill(self : DstreeredblackLayer, v : Double) -> DstreeredblackLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_layer_min(s : DstreeredblackLayer) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackLayer::min(self : DstreeredblackLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_layer_max(s : DstreeredblackLayer) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackLayer::max(self : DstreeredblackLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_layer_to_string(s : DstreeredblackLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackLayer::to_string(self : DstreeredblackLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackBuffer {
@@ -810,45 +810,45 @@ pub fn ds_tree_redblack_buffer_make(size : Int) -> DstreeredblackBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_buffer_len(s : DstreeredblackBuffer) -> Int { s.size }
+pub fn DstreeredblackBuffer::len(self : DstreeredblackBuffer) -> Int { self.size }
 
-pub fn ds_tree_redblack_buffer_get(s : DstreeredblackBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackBuffer::get(self : DstreeredblackBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_buffer_set(s : DstreeredblackBuffer, i : Int, v : Double) -> DstreeredblackBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackBuffer::set(self : DstreeredblackBuffer, i : Int, v : Double) -> DstreeredblackBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_buffer_sum(s : DstreeredblackBuffer) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackBuffer::sum(self : DstreeredblackBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_buffer_mean(s : DstreeredblackBuffer) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackBuffer::mean(self : DstreeredblackBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_buffer_scale(s : DstreeredblackBuffer, f : Double) -> DstreeredblackBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackBuffer::scale(self : DstreeredblackBuffer, f : Double) -> DstreeredblackBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_buffer_add(a : DstreeredblackBuffer, b : DstreeredblackBuffer) -> DstreeredblackBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackBuffer::add(self : DstreeredblackBuffer, other : DstreeredblackBuffer) -> DstreeredblackBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_buffer_copy(s : DstreeredblackBuffer) -> DstreeredblackBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackBuffer::copy(self : DstreeredblackBuffer) -> DstreeredblackBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_buffer_fill(s : DstreeredblackBuffer, v : Double) -> DstreeredblackBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackBuffer::fill(self : DstreeredblackBuffer, v : Double) -> DstreeredblackBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_buffer_min(s : DstreeredblackBuffer) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackBuffer::min(self : DstreeredblackBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_buffer_max(s : DstreeredblackBuffer) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackBuffer::max(self : DstreeredblackBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_buffer_to_string(s : DstreeredblackBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackBuffer::to_string(self : DstreeredblackBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackCursor {
@@ -861,45 +861,45 @@ pub fn ds_tree_redblack_cursor_make(size : Int) -> DstreeredblackCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_cursor_len(s : DstreeredblackCursor) -> Int { s.size }
+pub fn DstreeredblackCursor::len(self : DstreeredblackCursor) -> Int { self.size }
 
-pub fn ds_tree_redblack_cursor_get(s : DstreeredblackCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackCursor::get(self : DstreeredblackCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_cursor_set(s : DstreeredblackCursor, i : Int, v : Double) -> DstreeredblackCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackCursor::set(self : DstreeredblackCursor, i : Int, v : Double) -> DstreeredblackCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_cursor_sum(s : DstreeredblackCursor) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackCursor::sum(self : DstreeredblackCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_cursor_mean(s : DstreeredblackCursor) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackCursor::mean(self : DstreeredblackCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_cursor_scale(s : DstreeredblackCursor, f : Double) -> DstreeredblackCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackCursor::scale(self : DstreeredblackCursor, f : Double) -> DstreeredblackCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_cursor_add(a : DstreeredblackCursor, b : DstreeredblackCursor) -> DstreeredblackCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackCursor::add(self : DstreeredblackCursor, other : DstreeredblackCursor) -> DstreeredblackCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_cursor_copy(s : DstreeredblackCursor) -> DstreeredblackCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackCursor::copy(self : DstreeredblackCursor) -> DstreeredblackCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_cursor_fill(s : DstreeredblackCursor, v : Double) -> DstreeredblackCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackCursor::fill(self : DstreeredblackCursor, v : Double) -> DstreeredblackCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_cursor_min(s : DstreeredblackCursor) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackCursor::min(self : DstreeredblackCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_cursor_max(s : DstreeredblackCursor) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackCursor::max(self : DstreeredblackCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_cursor_to_string(s : DstreeredblackCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackCursor::to_string(self : DstreeredblackCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackView {
@@ -912,45 +912,45 @@ pub fn ds_tree_redblack_view_make(size : Int) -> DstreeredblackView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_view_len(s : DstreeredblackView) -> Int { s.size }
+pub fn DstreeredblackView::len(self : DstreeredblackView) -> Int { self.size }
 
-pub fn ds_tree_redblack_view_get(s : DstreeredblackView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackView::get(self : DstreeredblackView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_view_set(s : DstreeredblackView, i : Int, v : Double) -> DstreeredblackView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackView::set(self : DstreeredblackView, i : Int, v : Double) -> DstreeredblackView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_view_sum(s : DstreeredblackView) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackView::sum(self : DstreeredblackView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_view_mean(s : DstreeredblackView) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackView::mean(self : DstreeredblackView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_view_scale(s : DstreeredblackView, f : Double) -> DstreeredblackView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackView::scale(self : DstreeredblackView, f : Double) -> DstreeredblackView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_view_add(a : DstreeredblackView, b : DstreeredblackView) -> DstreeredblackView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackView::add(self : DstreeredblackView, other : DstreeredblackView) -> DstreeredblackView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_view_copy(s : DstreeredblackView) -> DstreeredblackView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackView::copy(self : DstreeredblackView) -> DstreeredblackView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_view_fill(s : DstreeredblackView, v : Double) -> DstreeredblackView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackView::fill(self : DstreeredblackView, v : Double) -> DstreeredblackView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_view_min(s : DstreeredblackView) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackView::min(self : DstreeredblackView) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_view_max(s : DstreeredblackView) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackView::max(self : DstreeredblackView) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_view_to_string(s : DstreeredblackView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackView::to_string(self : DstreeredblackView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackRange {
@@ -963,45 +963,45 @@ pub fn ds_tree_redblack_range_make(size : Int) -> DstreeredblackRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_range_len(s : DstreeredblackRange) -> Int { s.size }
+pub fn DstreeredblackRange::len(self : DstreeredblackRange) -> Int { self.size }
 
-pub fn ds_tree_redblack_range_get(s : DstreeredblackRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackRange::get(self : DstreeredblackRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_range_set(s : DstreeredblackRange, i : Int, v : Double) -> DstreeredblackRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackRange::set(self : DstreeredblackRange, i : Int, v : Double) -> DstreeredblackRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_range_sum(s : DstreeredblackRange) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackRange::sum(self : DstreeredblackRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_range_mean(s : DstreeredblackRange) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackRange::mean(self : DstreeredblackRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_range_scale(s : DstreeredblackRange, f : Double) -> DstreeredblackRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackRange::scale(self : DstreeredblackRange, f : Double) -> DstreeredblackRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_range_add(a : DstreeredblackRange, b : DstreeredblackRange) -> DstreeredblackRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackRange::add(self : DstreeredblackRange, other : DstreeredblackRange) -> DstreeredblackRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_range_copy(s : DstreeredblackRange) -> DstreeredblackRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackRange::copy(self : DstreeredblackRange) -> DstreeredblackRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_range_fill(s : DstreeredblackRange, v : Double) -> DstreeredblackRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackRange::fill(self : DstreeredblackRange, v : Double) -> DstreeredblackRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_range_min(s : DstreeredblackRange) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackRange::min(self : DstreeredblackRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_range_max(s : DstreeredblackRange) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackRange::max(self : DstreeredblackRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_range_to_string(s : DstreeredblackRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackRange::to_string(self : DstreeredblackRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeredblackSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_tree_redblack_slice_make(size : Int) -> DstreeredblackSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_redblack_slice_len(s : DstreeredblackSlice) -> Int { s.size }
+pub fn DstreeredblackSlice::len(self : DstreeredblackSlice) -> Int { self.size }
 
-pub fn ds_tree_redblack_slice_get(s : DstreeredblackSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeredblackSlice::get(self : DstreeredblackSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_redblack_slice_set(s : DstreeredblackSlice, i : Int, v : Double) -> DstreeredblackSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeredblackSlice::set(self : DstreeredblackSlice, i : Int, v : Double) -> DstreeredblackSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_slice_sum(s : DstreeredblackSlice) -> Double { @_common.sum(s.data) }
+pub fn DstreeredblackSlice::sum(self : DstreeredblackSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_redblack_slice_mean(s : DstreeredblackSlice) -> Double { @_common.mean(s.data) }
+pub fn DstreeredblackSlice::mean(self : DstreeredblackSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_redblack_slice_scale(s : DstreeredblackSlice, f : Double) -> DstreeredblackSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeredblackSlice::scale(self : DstreeredblackSlice, f : Double) -> DstreeredblackSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_slice_add(a : DstreeredblackSlice, b : DstreeredblackSlice) -> DstreeredblackSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeredblackSlice::add(self : DstreeredblackSlice, other : DstreeredblackSlice) -> DstreeredblackSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_slice_copy(s : DstreeredblackSlice) -> DstreeredblackSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeredblackSlice::copy(self : DstreeredblackSlice) -> DstreeredblackSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_slice_fill(s : DstreeredblackSlice, v : Double) -> DstreeredblackSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeredblackSlice::fill(self : DstreeredblackSlice, v : Double) -> DstreeredblackSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_redblack_slice_min(s : DstreeredblackSlice) -> Double { @_common.min(s.data) }
+pub fn DstreeredblackSlice::min(self : DstreeredblackSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_redblack_slice_max(s : DstreeredblackSlice) -> Double { @_common.max(s.data) }
+pub fn DstreeredblackSlice::max(self : DstreeredblackSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_redblack_slice_to_string(s : DstreeredblackSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeredblackSlice::to_string(self : DstreeredblackSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

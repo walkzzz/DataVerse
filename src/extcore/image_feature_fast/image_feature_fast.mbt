@@ -351,45 +351,45 @@ pub fn image_feature_fast_frame_make(size : Int) -> ImagefeaturefastFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_frame_len(s : ImagefeaturefastFrame) -> Int { s.size }
+pub fn ImagefeaturefastFrame::len(self : ImagefeaturefastFrame) -> Int { self.size }
 
-pub fn image_feature_fast_frame_get(s : ImagefeaturefastFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastFrame::get(self : ImagefeaturefastFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_frame_set(s : ImagefeaturefastFrame, i : Int, v : Double) -> ImagefeaturefastFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastFrame::set(self : ImagefeaturefastFrame, i : Int, v : Double) -> ImagefeaturefastFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_frame_sum(s : ImagefeaturefastFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastFrame::sum(self : ImagefeaturefastFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_frame_mean(s : ImagefeaturefastFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastFrame::mean(self : ImagefeaturefastFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_frame_scale(s : ImagefeaturefastFrame, f : Double) -> ImagefeaturefastFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastFrame::scale(self : ImagefeaturefastFrame, f : Double) -> ImagefeaturefastFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_frame_add(a : ImagefeaturefastFrame, b : ImagefeaturefastFrame) -> ImagefeaturefastFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastFrame::add(self : ImagefeaturefastFrame, other : ImagefeaturefastFrame) -> ImagefeaturefastFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_frame_copy(s : ImagefeaturefastFrame) -> ImagefeaturefastFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastFrame::copy(self : ImagefeaturefastFrame) -> ImagefeaturefastFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_frame_fill(s : ImagefeaturefastFrame, v : Double) -> ImagefeaturefastFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastFrame::fill(self : ImagefeaturefastFrame, v : Double) -> ImagefeaturefastFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_frame_min(s : ImagefeaturefastFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastFrame::min(self : ImagefeaturefastFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_frame_max(s : ImagefeaturefastFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastFrame::max(self : ImagefeaturefastFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_frame_to_string(s : ImagefeaturefastFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastFrame::to_string(self : ImagefeaturefastFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastTable {
@@ -402,45 +402,45 @@ pub fn image_feature_fast_table_make(size : Int) -> ImagefeaturefastTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_table_len(s : ImagefeaturefastTable) -> Int { s.size }
+pub fn ImagefeaturefastTable::len(self : ImagefeaturefastTable) -> Int { self.size }
 
-pub fn image_feature_fast_table_get(s : ImagefeaturefastTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastTable::get(self : ImagefeaturefastTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_table_set(s : ImagefeaturefastTable, i : Int, v : Double) -> ImagefeaturefastTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastTable::set(self : ImagefeaturefastTable, i : Int, v : Double) -> ImagefeaturefastTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_table_sum(s : ImagefeaturefastTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastTable::sum(self : ImagefeaturefastTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_table_mean(s : ImagefeaturefastTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastTable::mean(self : ImagefeaturefastTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_table_scale(s : ImagefeaturefastTable, f : Double) -> ImagefeaturefastTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastTable::scale(self : ImagefeaturefastTable, f : Double) -> ImagefeaturefastTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_table_add(a : ImagefeaturefastTable, b : ImagefeaturefastTable) -> ImagefeaturefastTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastTable::add(self : ImagefeaturefastTable, other : ImagefeaturefastTable) -> ImagefeaturefastTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_table_copy(s : ImagefeaturefastTable) -> ImagefeaturefastTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastTable::copy(self : ImagefeaturefastTable) -> ImagefeaturefastTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_table_fill(s : ImagefeaturefastTable, v : Double) -> ImagefeaturefastTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastTable::fill(self : ImagefeaturefastTable, v : Double) -> ImagefeaturefastTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_table_min(s : ImagefeaturefastTable) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastTable::min(self : ImagefeaturefastTable) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_table_max(s : ImagefeaturefastTable) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastTable::max(self : ImagefeaturefastTable) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_table_to_string(s : ImagefeaturefastTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastTable::to_string(self : ImagefeaturefastTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastGraphN {
@@ -453,45 +453,45 @@ pub fn image_feature_fast_graphn_make(size : Int) -> ImagefeaturefastGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_graphn_len(s : ImagefeaturefastGraphN) -> Int { s.size }
+pub fn ImagefeaturefastGraphN::len(self : ImagefeaturefastGraphN) -> Int { self.size }
 
-pub fn image_feature_fast_graphn_get(s : ImagefeaturefastGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastGraphN::get(self : ImagefeaturefastGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_graphn_set(s : ImagefeaturefastGraphN, i : Int, v : Double) -> ImagefeaturefastGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastGraphN::set(self : ImagefeaturefastGraphN, i : Int, v : Double) -> ImagefeaturefastGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_graphn_sum(s : ImagefeaturefastGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastGraphN::sum(self : ImagefeaturefastGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_graphn_mean(s : ImagefeaturefastGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastGraphN::mean(self : ImagefeaturefastGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_graphn_scale(s : ImagefeaturefastGraphN, f : Double) -> ImagefeaturefastGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastGraphN::scale(self : ImagefeaturefastGraphN, f : Double) -> ImagefeaturefastGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_graphn_add(a : ImagefeaturefastGraphN, b : ImagefeaturefastGraphN) -> ImagefeaturefastGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastGraphN::add(self : ImagefeaturefastGraphN, other : ImagefeaturefastGraphN) -> ImagefeaturefastGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_graphn_copy(s : ImagefeaturefastGraphN) -> ImagefeaturefastGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastGraphN::copy(self : ImagefeaturefastGraphN) -> ImagefeaturefastGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_graphn_fill(s : ImagefeaturefastGraphN, v : Double) -> ImagefeaturefastGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastGraphN::fill(self : ImagefeaturefastGraphN, v : Double) -> ImagefeaturefastGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_graphn_min(s : ImagefeaturefastGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastGraphN::min(self : ImagefeaturefastGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_graphn_max(s : ImagefeaturefastGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastGraphN::max(self : ImagefeaturefastGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_graphn_to_string(s : ImagefeaturefastGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastGraphN::to_string(self : ImagefeaturefastGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastNode {
@@ -504,45 +504,45 @@ pub fn image_feature_fast_node_make(size : Int) -> ImagefeaturefastNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_node_len(s : ImagefeaturefastNode) -> Int { s.size }
+pub fn ImagefeaturefastNode::len(self : ImagefeaturefastNode) -> Int { self.size }
 
-pub fn image_feature_fast_node_get(s : ImagefeaturefastNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastNode::get(self : ImagefeaturefastNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_node_set(s : ImagefeaturefastNode, i : Int, v : Double) -> ImagefeaturefastNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastNode::set(self : ImagefeaturefastNode, i : Int, v : Double) -> ImagefeaturefastNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_node_sum(s : ImagefeaturefastNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastNode::sum(self : ImagefeaturefastNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_node_mean(s : ImagefeaturefastNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastNode::mean(self : ImagefeaturefastNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_node_scale(s : ImagefeaturefastNode, f : Double) -> ImagefeaturefastNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastNode::scale(self : ImagefeaturefastNode, f : Double) -> ImagefeaturefastNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_node_add(a : ImagefeaturefastNode, b : ImagefeaturefastNode) -> ImagefeaturefastNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastNode::add(self : ImagefeaturefastNode, other : ImagefeaturefastNode) -> ImagefeaturefastNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_node_copy(s : ImagefeaturefastNode) -> ImagefeaturefastNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastNode::copy(self : ImagefeaturefastNode) -> ImagefeaturefastNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_node_fill(s : ImagefeaturefastNode, v : Double) -> ImagefeaturefastNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastNode::fill(self : ImagefeaturefastNode, v : Double) -> ImagefeaturefastNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_node_min(s : ImagefeaturefastNode) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastNode::min(self : ImagefeaturefastNode) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_node_max(s : ImagefeaturefastNode) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastNode::max(self : ImagefeaturefastNode) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_node_to_string(s : ImagefeaturefastNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastNode::to_string(self : ImagefeaturefastNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastEdge {
@@ -555,45 +555,45 @@ pub fn image_feature_fast_edge_make(size : Int) -> ImagefeaturefastEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_edge_len(s : ImagefeaturefastEdge) -> Int { s.size }
+pub fn ImagefeaturefastEdge::len(self : ImagefeaturefastEdge) -> Int { self.size }
 
-pub fn image_feature_fast_edge_get(s : ImagefeaturefastEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastEdge::get(self : ImagefeaturefastEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_edge_set(s : ImagefeaturefastEdge, i : Int, v : Double) -> ImagefeaturefastEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastEdge::set(self : ImagefeaturefastEdge, i : Int, v : Double) -> ImagefeaturefastEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_edge_sum(s : ImagefeaturefastEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastEdge::sum(self : ImagefeaturefastEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_edge_mean(s : ImagefeaturefastEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastEdge::mean(self : ImagefeaturefastEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_edge_scale(s : ImagefeaturefastEdge, f : Double) -> ImagefeaturefastEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastEdge::scale(self : ImagefeaturefastEdge, f : Double) -> ImagefeaturefastEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_edge_add(a : ImagefeaturefastEdge, b : ImagefeaturefastEdge) -> ImagefeaturefastEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastEdge::add(self : ImagefeaturefastEdge, other : ImagefeaturefastEdge) -> ImagefeaturefastEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_edge_copy(s : ImagefeaturefastEdge) -> ImagefeaturefastEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastEdge::copy(self : ImagefeaturefastEdge) -> ImagefeaturefastEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_edge_fill(s : ImagefeaturefastEdge, v : Double) -> ImagefeaturefastEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastEdge::fill(self : ImagefeaturefastEdge, v : Double) -> ImagefeaturefastEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_edge_min(s : ImagefeaturefastEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastEdge::min(self : ImagefeaturefastEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_edge_max(s : ImagefeaturefastEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastEdge::max(self : ImagefeaturefastEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_edge_to_string(s : ImagefeaturefastEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastEdge::to_string(self : ImagefeaturefastEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastPath {
@@ -606,45 +606,45 @@ pub fn image_feature_fast_path_make(size : Int) -> ImagefeaturefastPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_path_len(s : ImagefeaturefastPath) -> Int { s.size }
+pub fn ImagefeaturefastPath::len(self : ImagefeaturefastPath) -> Int { self.size }
 
-pub fn image_feature_fast_path_get(s : ImagefeaturefastPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastPath::get(self : ImagefeaturefastPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_path_set(s : ImagefeaturefastPath, i : Int, v : Double) -> ImagefeaturefastPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastPath::set(self : ImagefeaturefastPath, i : Int, v : Double) -> ImagefeaturefastPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_path_sum(s : ImagefeaturefastPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastPath::sum(self : ImagefeaturefastPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_path_mean(s : ImagefeaturefastPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastPath::mean(self : ImagefeaturefastPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_path_scale(s : ImagefeaturefastPath, f : Double) -> ImagefeaturefastPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastPath::scale(self : ImagefeaturefastPath, f : Double) -> ImagefeaturefastPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_path_add(a : ImagefeaturefastPath, b : ImagefeaturefastPath) -> ImagefeaturefastPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastPath::add(self : ImagefeaturefastPath, other : ImagefeaturefastPath) -> ImagefeaturefastPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_path_copy(s : ImagefeaturefastPath) -> ImagefeaturefastPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastPath::copy(self : ImagefeaturefastPath) -> ImagefeaturefastPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_path_fill(s : ImagefeaturefastPath, v : Double) -> ImagefeaturefastPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastPath::fill(self : ImagefeaturefastPath, v : Double) -> ImagefeaturefastPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_path_min(s : ImagefeaturefastPath) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastPath::min(self : ImagefeaturefastPath) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_path_max(s : ImagefeaturefastPath) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastPath::max(self : ImagefeaturefastPath) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_path_to_string(s : ImagefeaturefastPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastPath::to_string(self : ImagefeaturefastPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastCluster {
@@ -657,45 +657,45 @@ pub fn image_feature_fast_cluster_make(size : Int) -> ImagefeaturefastCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_cluster_len(s : ImagefeaturefastCluster) -> Int { s.size }
+pub fn ImagefeaturefastCluster::len(self : ImagefeaturefastCluster) -> Int { self.size }
 
-pub fn image_feature_fast_cluster_get(s : ImagefeaturefastCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastCluster::get(self : ImagefeaturefastCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_cluster_set(s : ImagefeaturefastCluster, i : Int, v : Double) -> ImagefeaturefastCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastCluster::set(self : ImagefeaturefastCluster, i : Int, v : Double) -> ImagefeaturefastCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_cluster_sum(s : ImagefeaturefastCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastCluster::sum(self : ImagefeaturefastCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_cluster_mean(s : ImagefeaturefastCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastCluster::mean(self : ImagefeaturefastCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_cluster_scale(s : ImagefeaturefastCluster, f : Double) -> ImagefeaturefastCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastCluster::scale(self : ImagefeaturefastCluster, f : Double) -> ImagefeaturefastCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_cluster_add(a : ImagefeaturefastCluster, b : ImagefeaturefastCluster) -> ImagefeaturefastCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastCluster::add(self : ImagefeaturefastCluster, other : ImagefeaturefastCluster) -> ImagefeaturefastCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_cluster_copy(s : ImagefeaturefastCluster) -> ImagefeaturefastCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastCluster::copy(self : ImagefeaturefastCluster) -> ImagefeaturefastCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_cluster_fill(s : ImagefeaturefastCluster, v : Double) -> ImagefeaturefastCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastCluster::fill(self : ImagefeaturefastCluster, v : Double) -> ImagefeaturefastCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_cluster_min(s : ImagefeaturefastCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastCluster::min(self : ImagefeaturefastCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_cluster_max(s : ImagefeaturefastCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastCluster::max(self : ImagefeaturefastCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_cluster_to_string(s : ImagefeaturefastCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastCluster::to_string(self : ImagefeaturefastCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastModel {
@@ -708,45 +708,45 @@ pub fn image_feature_fast_model_make(size : Int) -> ImagefeaturefastModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_model_len(s : ImagefeaturefastModel) -> Int { s.size }
+pub fn ImagefeaturefastModel::len(self : ImagefeaturefastModel) -> Int { self.size }
 
-pub fn image_feature_fast_model_get(s : ImagefeaturefastModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastModel::get(self : ImagefeaturefastModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_model_set(s : ImagefeaturefastModel, i : Int, v : Double) -> ImagefeaturefastModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastModel::set(self : ImagefeaturefastModel, i : Int, v : Double) -> ImagefeaturefastModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_model_sum(s : ImagefeaturefastModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastModel::sum(self : ImagefeaturefastModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_model_mean(s : ImagefeaturefastModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastModel::mean(self : ImagefeaturefastModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_model_scale(s : ImagefeaturefastModel, f : Double) -> ImagefeaturefastModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastModel::scale(self : ImagefeaturefastModel, f : Double) -> ImagefeaturefastModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_model_add(a : ImagefeaturefastModel, b : ImagefeaturefastModel) -> ImagefeaturefastModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastModel::add(self : ImagefeaturefastModel, other : ImagefeaturefastModel) -> ImagefeaturefastModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_model_copy(s : ImagefeaturefastModel) -> ImagefeaturefastModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastModel::copy(self : ImagefeaturefastModel) -> ImagefeaturefastModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_model_fill(s : ImagefeaturefastModel, v : Double) -> ImagefeaturefastModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastModel::fill(self : ImagefeaturefastModel, v : Double) -> ImagefeaturefastModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_model_min(s : ImagefeaturefastModel) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastModel::min(self : ImagefeaturefastModel) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_model_max(s : ImagefeaturefastModel) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastModel::max(self : ImagefeaturefastModel) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_model_to_string(s : ImagefeaturefastModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastModel::to_string(self : ImagefeaturefastModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastLayer {
@@ -759,45 +759,45 @@ pub fn image_feature_fast_layer_make(size : Int) -> ImagefeaturefastLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_layer_len(s : ImagefeaturefastLayer) -> Int { s.size }
+pub fn ImagefeaturefastLayer::len(self : ImagefeaturefastLayer) -> Int { self.size }
 
-pub fn image_feature_fast_layer_get(s : ImagefeaturefastLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastLayer::get(self : ImagefeaturefastLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_layer_set(s : ImagefeaturefastLayer, i : Int, v : Double) -> ImagefeaturefastLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastLayer::set(self : ImagefeaturefastLayer, i : Int, v : Double) -> ImagefeaturefastLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_layer_sum(s : ImagefeaturefastLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastLayer::sum(self : ImagefeaturefastLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_layer_mean(s : ImagefeaturefastLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastLayer::mean(self : ImagefeaturefastLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_layer_scale(s : ImagefeaturefastLayer, f : Double) -> ImagefeaturefastLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastLayer::scale(self : ImagefeaturefastLayer, f : Double) -> ImagefeaturefastLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_layer_add(a : ImagefeaturefastLayer, b : ImagefeaturefastLayer) -> ImagefeaturefastLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastLayer::add(self : ImagefeaturefastLayer, other : ImagefeaturefastLayer) -> ImagefeaturefastLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_layer_copy(s : ImagefeaturefastLayer) -> ImagefeaturefastLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastLayer::copy(self : ImagefeaturefastLayer) -> ImagefeaturefastLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_layer_fill(s : ImagefeaturefastLayer, v : Double) -> ImagefeaturefastLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastLayer::fill(self : ImagefeaturefastLayer, v : Double) -> ImagefeaturefastLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_layer_min(s : ImagefeaturefastLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastLayer::min(self : ImagefeaturefastLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_layer_max(s : ImagefeaturefastLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastLayer::max(self : ImagefeaturefastLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_layer_to_string(s : ImagefeaturefastLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastLayer::to_string(self : ImagefeaturefastLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastBuffer {
@@ -810,45 +810,45 @@ pub fn image_feature_fast_buffer_make(size : Int) -> ImagefeaturefastBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_buffer_len(s : ImagefeaturefastBuffer) -> Int { s.size }
+pub fn ImagefeaturefastBuffer::len(self : ImagefeaturefastBuffer) -> Int { self.size }
 
-pub fn image_feature_fast_buffer_get(s : ImagefeaturefastBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastBuffer::get(self : ImagefeaturefastBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_buffer_set(s : ImagefeaturefastBuffer, i : Int, v : Double) -> ImagefeaturefastBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastBuffer::set(self : ImagefeaturefastBuffer, i : Int, v : Double) -> ImagefeaturefastBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_buffer_sum(s : ImagefeaturefastBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastBuffer::sum(self : ImagefeaturefastBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_buffer_mean(s : ImagefeaturefastBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastBuffer::mean(self : ImagefeaturefastBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_buffer_scale(s : ImagefeaturefastBuffer, f : Double) -> ImagefeaturefastBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastBuffer::scale(self : ImagefeaturefastBuffer, f : Double) -> ImagefeaturefastBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_buffer_add(a : ImagefeaturefastBuffer, b : ImagefeaturefastBuffer) -> ImagefeaturefastBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastBuffer::add(self : ImagefeaturefastBuffer, other : ImagefeaturefastBuffer) -> ImagefeaturefastBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_buffer_copy(s : ImagefeaturefastBuffer) -> ImagefeaturefastBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastBuffer::copy(self : ImagefeaturefastBuffer) -> ImagefeaturefastBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_buffer_fill(s : ImagefeaturefastBuffer, v : Double) -> ImagefeaturefastBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastBuffer::fill(self : ImagefeaturefastBuffer, v : Double) -> ImagefeaturefastBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_buffer_min(s : ImagefeaturefastBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastBuffer::min(self : ImagefeaturefastBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_buffer_max(s : ImagefeaturefastBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastBuffer::max(self : ImagefeaturefastBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_buffer_to_string(s : ImagefeaturefastBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastBuffer::to_string(self : ImagefeaturefastBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastCursor {
@@ -861,45 +861,45 @@ pub fn image_feature_fast_cursor_make(size : Int) -> ImagefeaturefastCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_cursor_len(s : ImagefeaturefastCursor) -> Int { s.size }
+pub fn ImagefeaturefastCursor::len(self : ImagefeaturefastCursor) -> Int { self.size }
 
-pub fn image_feature_fast_cursor_get(s : ImagefeaturefastCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastCursor::get(self : ImagefeaturefastCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_cursor_set(s : ImagefeaturefastCursor, i : Int, v : Double) -> ImagefeaturefastCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastCursor::set(self : ImagefeaturefastCursor, i : Int, v : Double) -> ImagefeaturefastCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_cursor_sum(s : ImagefeaturefastCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastCursor::sum(self : ImagefeaturefastCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_cursor_mean(s : ImagefeaturefastCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastCursor::mean(self : ImagefeaturefastCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_cursor_scale(s : ImagefeaturefastCursor, f : Double) -> ImagefeaturefastCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastCursor::scale(self : ImagefeaturefastCursor, f : Double) -> ImagefeaturefastCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_cursor_add(a : ImagefeaturefastCursor, b : ImagefeaturefastCursor) -> ImagefeaturefastCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastCursor::add(self : ImagefeaturefastCursor, other : ImagefeaturefastCursor) -> ImagefeaturefastCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_cursor_copy(s : ImagefeaturefastCursor) -> ImagefeaturefastCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastCursor::copy(self : ImagefeaturefastCursor) -> ImagefeaturefastCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_cursor_fill(s : ImagefeaturefastCursor, v : Double) -> ImagefeaturefastCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastCursor::fill(self : ImagefeaturefastCursor, v : Double) -> ImagefeaturefastCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_cursor_min(s : ImagefeaturefastCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastCursor::min(self : ImagefeaturefastCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_cursor_max(s : ImagefeaturefastCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastCursor::max(self : ImagefeaturefastCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_cursor_to_string(s : ImagefeaturefastCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastCursor::to_string(self : ImagefeaturefastCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastView {
@@ -912,45 +912,45 @@ pub fn image_feature_fast_view_make(size : Int) -> ImagefeaturefastView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_view_len(s : ImagefeaturefastView) -> Int { s.size }
+pub fn ImagefeaturefastView::len(self : ImagefeaturefastView) -> Int { self.size }
 
-pub fn image_feature_fast_view_get(s : ImagefeaturefastView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastView::get(self : ImagefeaturefastView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_view_set(s : ImagefeaturefastView, i : Int, v : Double) -> ImagefeaturefastView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastView::set(self : ImagefeaturefastView, i : Int, v : Double) -> ImagefeaturefastView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_view_sum(s : ImagefeaturefastView) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastView::sum(self : ImagefeaturefastView) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_view_mean(s : ImagefeaturefastView) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastView::mean(self : ImagefeaturefastView) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_view_scale(s : ImagefeaturefastView, f : Double) -> ImagefeaturefastView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastView::scale(self : ImagefeaturefastView, f : Double) -> ImagefeaturefastView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_view_add(a : ImagefeaturefastView, b : ImagefeaturefastView) -> ImagefeaturefastView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastView::add(self : ImagefeaturefastView, other : ImagefeaturefastView) -> ImagefeaturefastView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_view_copy(s : ImagefeaturefastView) -> ImagefeaturefastView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastView::copy(self : ImagefeaturefastView) -> ImagefeaturefastView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_view_fill(s : ImagefeaturefastView, v : Double) -> ImagefeaturefastView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastView::fill(self : ImagefeaturefastView, v : Double) -> ImagefeaturefastView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_view_min(s : ImagefeaturefastView) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastView::min(self : ImagefeaturefastView) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_view_max(s : ImagefeaturefastView) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastView::max(self : ImagefeaturefastView) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_view_to_string(s : ImagefeaturefastView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastView::to_string(self : ImagefeaturefastView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastRange {
@@ -963,45 +963,45 @@ pub fn image_feature_fast_range_make(size : Int) -> ImagefeaturefastRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_range_len(s : ImagefeaturefastRange) -> Int { s.size }
+pub fn ImagefeaturefastRange::len(self : ImagefeaturefastRange) -> Int { self.size }
 
-pub fn image_feature_fast_range_get(s : ImagefeaturefastRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastRange::get(self : ImagefeaturefastRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_range_set(s : ImagefeaturefastRange, i : Int, v : Double) -> ImagefeaturefastRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastRange::set(self : ImagefeaturefastRange, i : Int, v : Double) -> ImagefeaturefastRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_range_sum(s : ImagefeaturefastRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastRange::sum(self : ImagefeaturefastRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_range_mean(s : ImagefeaturefastRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastRange::mean(self : ImagefeaturefastRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_range_scale(s : ImagefeaturefastRange, f : Double) -> ImagefeaturefastRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastRange::scale(self : ImagefeaturefastRange, f : Double) -> ImagefeaturefastRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_range_add(a : ImagefeaturefastRange, b : ImagefeaturefastRange) -> ImagefeaturefastRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastRange::add(self : ImagefeaturefastRange, other : ImagefeaturefastRange) -> ImagefeaturefastRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_range_copy(s : ImagefeaturefastRange) -> ImagefeaturefastRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastRange::copy(self : ImagefeaturefastRange) -> ImagefeaturefastRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_range_fill(s : ImagefeaturefastRange, v : Double) -> ImagefeaturefastRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastRange::fill(self : ImagefeaturefastRange, v : Double) -> ImagefeaturefastRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_range_min(s : ImagefeaturefastRange) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastRange::min(self : ImagefeaturefastRange) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_range_max(s : ImagefeaturefastRange) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastRange::max(self : ImagefeaturefastRange) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_range_to_string(s : ImagefeaturefastRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastRange::to_string(self : ImagefeaturefastRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturefastSlice {
@@ -1014,44 +1014,44 @@ pub fn image_feature_fast_slice_make(size : Int) -> ImagefeaturefastSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_fast_slice_len(s : ImagefeaturefastSlice) -> Int { s.size }
+pub fn ImagefeaturefastSlice::len(self : ImagefeaturefastSlice) -> Int { self.size }
 
-pub fn image_feature_fast_slice_get(s : ImagefeaturefastSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturefastSlice::get(self : ImagefeaturefastSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_fast_slice_set(s : ImagefeaturefastSlice, i : Int, v : Double) -> ImagefeaturefastSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturefastSlice::set(self : ImagefeaturefastSlice, i : Int, v : Double) -> ImagefeaturefastSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_slice_sum(s : ImagefeaturefastSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturefastSlice::sum(self : ImagefeaturefastSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_fast_slice_mean(s : ImagefeaturefastSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturefastSlice::mean(self : ImagefeaturefastSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_fast_slice_scale(s : ImagefeaturefastSlice, f : Double) -> ImagefeaturefastSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastSlice::scale(self : ImagefeaturefastSlice, f : Double) -> ImagefeaturefastSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_slice_add(a : ImagefeaturefastSlice, b : ImagefeaturefastSlice) -> ImagefeaturefastSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturefastSlice::add(self : ImagefeaturefastSlice, other : ImagefeaturefastSlice) -> ImagefeaturefastSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_fast_slice_copy(s : ImagefeaturefastSlice) -> ImagefeaturefastSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastSlice::copy(self : ImagefeaturefastSlice) -> ImagefeaturefastSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_slice_fill(s : ImagefeaturefastSlice, v : Double) -> ImagefeaturefastSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturefastSlice::fill(self : ImagefeaturefastSlice, v : Double) -> ImagefeaturefastSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_fast_slice_min(s : ImagefeaturefastSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturefastSlice::min(self : ImagefeaturefastSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_fast_slice_max(s : ImagefeaturefastSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturefastSlice::max(self : ImagefeaturefastSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_fast_slice_to_string(s : ImagefeaturefastSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturefastSlice::to_string(self : ImagefeaturefastSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

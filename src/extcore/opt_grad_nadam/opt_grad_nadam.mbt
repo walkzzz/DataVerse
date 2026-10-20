@@ -351,45 +351,45 @@ pub fn opt_grad_nadam_frame_make(size : Int) -> OptgradnadamFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_frame_len(s : OptgradnadamFrame) -> Int { s.size }
+pub fn OptgradnadamFrame::len(self : OptgradnadamFrame) -> Int { self.size }
 
-pub fn opt_grad_nadam_frame_get(s : OptgradnadamFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamFrame::get(self : OptgradnadamFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_frame_set(s : OptgradnadamFrame, i : Int, v : Double) -> OptgradnadamFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamFrame::set(self : OptgradnadamFrame, i : Int, v : Double) -> OptgradnadamFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_frame_sum(s : OptgradnadamFrame) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamFrame::sum(self : OptgradnadamFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_frame_mean(s : OptgradnadamFrame) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamFrame::mean(self : OptgradnadamFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_frame_scale(s : OptgradnadamFrame, f : Double) -> OptgradnadamFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamFrame::scale(self : OptgradnadamFrame, f : Double) -> OptgradnadamFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_frame_add(a : OptgradnadamFrame, b : OptgradnadamFrame) -> OptgradnadamFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamFrame::add(self : OptgradnadamFrame, other : OptgradnadamFrame) -> OptgradnadamFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_frame_copy(s : OptgradnadamFrame) -> OptgradnadamFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamFrame::copy(self : OptgradnadamFrame) -> OptgradnadamFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_frame_fill(s : OptgradnadamFrame, v : Double) -> OptgradnadamFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamFrame::fill(self : OptgradnadamFrame, v : Double) -> OptgradnadamFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_frame_min(s : OptgradnadamFrame) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamFrame::min(self : OptgradnadamFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_frame_max(s : OptgradnadamFrame) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamFrame::max(self : OptgradnadamFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_frame_to_string(s : OptgradnadamFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamFrame::to_string(self : OptgradnadamFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamTable {
@@ -402,45 +402,45 @@ pub fn opt_grad_nadam_table_make(size : Int) -> OptgradnadamTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_table_len(s : OptgradnadamTable) -> Int { s.size }
+pub fn OptgradnadamTable::len(self : OptgradnadamTable) -> Int { self.size }
 
-pub fn opt_grad_nadam_table_get(s : OptgradnadamTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamTable::get(self : OptgradnadamTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_table_set(s : OptgradnadamTable, i : Int, v : Double) -> OptgradnadamTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamTable::set(self : OptgradnadamTable, i : Int, v : Double) -> OptgradnadamTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_table_sum(s : OptgradnadamTable) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamTable::sum(self : OptgradnadamTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_table_mean(s : OptgradnadamTable) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamTable::mean(self : OptgradnadamTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_table_scale(s : OptgradnadamTable, f : Double) -> OptgradnadamTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamTable::scale(self : OptgradnadamTable, f : Double) -> OptgradnadamTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_table_add(a : OptgradnadamTable, b : OptgradnadamTable) -> OptgradnadamTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamTable::add(self : OptgradnadamTable, other : OptgradnadamTable) -> OptgradnadamTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_table_copy(s : OptgradnadamTable) -> OptgradnadamTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamTable::copy(self : OptgradnadamTable) -> OptgradnadamTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_table_fill(s : OptgradnadamTable, v : Double) -> OptgradnadamTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamTable::fill(self : OptgradnadamTable, v : Double) -> OptgradnadamTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_table_min(s : OptgradnadamTable) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamTable::min(self : OptgradnadamTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_table_max(s : OptgradnadamTable) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamTable::max(self : OptgradnadamTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_table_to_string(s : OptgradnadamTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamTable::to_string(self : OptgradnadamTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamGraphN {
@@ -453,45 +453,45 @@ pub fn opt_grad_nadam_graphn_make(size : Int) -> OptgradnadamGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_graphn_len(s : OptgradnadamGraphN) -> Int { s.size }
+pub fn OptgradnadamGraphN::len(self : OptgradnadamGraphN) -> Int { self.size }
 
-pub fn opt_grad_nadam_graphn_get(s : OptgradnadamGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamGraphN::get(self : OptgradnadamGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_graphn_set(s : OptgradnadamGraphN, i : Int, v : Double) -> OptgradnadamGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamGraphN::set(self : OptgradnadamGraphN, i : Int, v : Double) -> OptgradnadamGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_graphn_sum(s : OptgradnadamGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamGraphN::sum(self : OptgradnadamGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_graphn_mean(s : OptgradnadamGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamGraphN::mean(self : OptgradnadamGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_graphn_scale(s : OptgradnadamGraphN, f : Double) -> OptgradnadamGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamGraphN::scale(self : OptgradnadamGraphN, f : Double) -> OptgradnadamGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_graphn_add(a : OptgradnadamGraphN, b : OptgradnadamGraphN) -> OptgradnadamGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamGraphN::add(self : OptgradnadamGraphN, other : OptgradnadamGraphN) -> OptgradnadamGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_graphn_copy(s : OptgradnadamGraphN) -> OptgradnadamGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamGraphN::copy(self : OptgradnadamGraphN) -> OptgradnadamGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_graphn_fill(s : OptgradnadamGraphN, v : Double) -> OptgradnadamGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamGraphN::fill(self : OptgradnadamGraphN, v : Double) -> OptgradnadamGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_graphn_min(s : OptgradnadamGraphN) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamGraphN::min(self : OptgradnadamGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_graphn_max(s : OptgradnadamGraphN) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamGraphN::max(self : OptgradnadamGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_graphn_to_string(s : OptgradnadamGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamGraphN::to_string(self : OptgradnadamGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamNode {
@@ -504,45 +504,45 @@ pub fn opt_grad_nadam_node_make(size : Int) -> OptgradnadamNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_node_len(s : OptgradnadamNode) -> Int { s.size }
+pub fn OptgradnadamNode::len(self : OptgradnadamNode) -> Int { self.size }
 
-pub fn opt_grad_nadam_node_get(s : OptgradnadamNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamNode::get(self : OptgradnadamNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_node_set(s : OptgradnadamNode, i : Int, v : Double) -> OptgradnadamNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamNode::set(self : OptgradnadamNode, i : Int, v : Double) -> OptgradnadamNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_node_sum(s : OptgradnadamNode) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamNode::sum(self : OptgradnadamNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_node_mean(s : OptgradnadamNode) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamNode::mean(self : OptgradnadamNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_node_scale(s : OptgradnadamNode, f : Double) -> OptgradnadamNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamNode::scale(self : OptgradnadamNode, f : Double) -> OptgradnadamNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_node_add(a : OptgradnadamNode, b : OptgradnadamNode) -> OptgradnadamNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamNode::add(self : OptgradnadamNode, other : OptgradnadamNode) -> OptgradnadamNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_node_copy(s : OptgradnadamNode) -> OptgradnadamNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamNode::copy(self : OptgradnadamNode) -> OptgradnadamNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_node_fill(s : OptgradnadamNode, v : Double) -> OptgradnadamNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamNode::fill(self : OptgradnadamNode, v : Double) -> OptgradnadamNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_node_min(s : OptgradnadamNode) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamNode::min(self : OptgradnadamNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_node_max(s : OptgradnadamNode) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamNode::max(self : OptgradnadamNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_node_to_string(s : OptgradnadamNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamNode::to_string(self : OptgradnadamNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamEdge {
@@ -555,45 +555,45 @@ pub fn opt_grad_nadam_edge_make(size : Int) -> OptgradnadamEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_edge_len(s : OptgradnadamEdge) -> Int { s.size }
+pub fn OptgradnadamEdge::len(self : OptgradnadamEdge) -> Int { self.size }
 
-pub fn opt_grad_nadam_edge_get(s : OptgradnadamEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamEdge::get(self : OptgradnadamEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_edge_set(s : OptgradnadamEdge, i : Int, v : Double) -> OptgradnadamEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamEdge::set(self : OptgradnadamEdge, i : Int, v : Double) -> OptgradnadamEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_edge_sum(s : OptgradnadamEdge) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamEdge::sum(self : OptgradnadamEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_edge_mean(s : OptgradnadamEdge) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamEdge::mean(self : OptgradnadamEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_edge_scale(s : OptgradnadamEdge, f : Double) -> OptgradnadamEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamEdge::scale(self : OptgradnadamEdge, f : Double) -> OptgradnadamEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_edge_add(a : OptgradnadamEdge, b : OptgradnadamEdge) -> OptgradnadamEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamEdge::add(self : OptgradnadamEdge, other : OptgradnadamEdge) -> OptgradnadamEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_edge_copy(s : OptgradnadamEdge) -> OptgradnadamEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamEdge::copy(self : OptgradnadamEdge) -> OptgradnadamEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_edge_fill(s : OptgradnadamEdge, v : Double) -> OptgradnadamEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamEdge::fill(self : OptgradnadamEdge, v : Double) -> OptgradnadamEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_edge_min(s : OptgradnadamEdge) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamEdge::min(self : OptgradnadamEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_edge_max(s : OptgradnadamEdge) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamEdge::max(self : OptgradnadamEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_edge_to_string(s : OptgradnadamEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamEdge::to_string(self : OptgradnadamEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamPath {
@@ -606,45 +606,45 @@ pub fn opt_grad_nadam_path_make(size : Int) -> OptgradnadamPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_path_len(s : OptgradnadamPath) -> Int { s.size }
+pub fn OptgradnadamPath::len(self : OptgradnadamPath) -> Int { self.size }
 
-pub fn opt_grad_nadam_path_get(s : OptgradnadamPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamPath::get(self : OptgradnadamPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_path_set(s : OptgradnadamPath, i : Int, v : Double) -> OptgradnadamPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamPath::set(self : OptgradnadamPath, i : Int, v : Double) -> OptgradnadamPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_path_sum(s : OptgradnadamPath) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamPath::sum(self : OptgradnadamPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_path_mean(s : OptgradnadamPath) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamPath::mean(self : OptgradnadamPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_path_scale(s : OptgradnadamPath, f : Double) -> OptgradnadamPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamPath::scale(self : OptgradnadamPath, f : Double) -> OptgradnadamPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_path_add(a : OptgradnadamPath, b : OptgradnadamPath) -> OptgradnadamPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamPath::add(self : OptgradnadamPath, other : OptgradnadamPath) -> OptgradnadamPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_path_copy(s : OptgradnadamPath) -> OptgradnadamPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamPath::copy(self : OptgradnadamPath) -> OptgradnadamPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_path_fill(s : OptgradnadamPath, v : Double) -> OptgradnadamPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamPath::fill(self : OptgradnadamPath, v : Double) -> OptgradnadamPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_path_min(s : OptgradnadamPath) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamPath::min(self : OptgradnadamPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_path_max(s : OptgradnadamPath) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamPath::max(self : OptgradnadamPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_path_to_string(s : OptgradnadamPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamPath::to_string(self : OptgradnadamPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamCluster {
@@ -657,45 +657,45 @@ pub fn opt_grad_nadam_cluster_make(size : Int) -> OptgradnadamCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_cluster_len(s : OptgradnadamCluster) -> Int { s.size }
+pub fn OptgradnadamCluster::len(self : OptgradnadamCluster) -> Int { self.size }
 
-pub fn opt_grad_nadam_cluster_get(s : OptgradnadamCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamCluster::get(self : OptgradnadamCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_cluster_set(s : OptgradnadamCluster, i : Int, v : Double) -> OptgradnadamCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamCluster::set(self : OptgradnadamCluster, i : Int, v : Double) -> OptgradnadamCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_cluster_sum(s : OptgradnadamCluster) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamCluster::sum(self : OptgradnadamCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_cluster_mean(s : OptgradnadamCluster) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamCluster::mean(self : OptgradnadamCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_cluster_scale(s : OptgradnadamCluster, f : Double) -> OptgradnadamCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamCluster::scale(self : OptgradnadamCluster, f : Double) -> OptgradnadamCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_cluster_add(a : OptgradnadamCluster, b : OptgradnadamCluster) -> OptgradnadamCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamCluster::add(self : OptgradnadamCluster, other : OptgradnadamCluster) -> OptgradnadamCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_cluster_copy(s : OptgradnadamCluster) -> OptgradnadamCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamCluster::copy(self : OptgradnadamCluster) -> OptgradnadamCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_cluster_fill(s : OptgradnadamCluster, v : Double) -> OptgradnadamCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamCluster::fill(self : OptgradnadamCluster, v : Double) -> OptgradnadamCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_cluster_min(s : OptgradnadamCluster) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamCluster::min(self : OptgradnadamCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_cluster_max(s : OptgradnadamCluster) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamCluster::max(self : OptgradnadamCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_cluster_to_string(s : OptgradnadamCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamCluster::to_string(self : OptgradnadamCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamModel {
@@ -708,45 +708,45 @@ pub fn opt_grad_nadam_model_make(size : Int) -> OptgradnadamModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_model_len(s : OptgradnadamModel) -> Int { s.size }
+pub fn OptgradnadamModel::len(self : OptgradnadamModel) -> Int { self.size }
 
-pub fn opt_grad_nadam_model_get(s : OptgradnadamModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamModel::get(self : OptgradnadamModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_model_set(s : OptgradnadamModel, i : Int, v : Double) -> OptgradnadamModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamModel::set(self : OptgradnadamModel, i : Int, v : Double) -> OptgradnadamModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_model_sum(s : OptgradnadamModel) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamModel::sum(self : OptgradnadamModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_model_mean(s : OptgradnadamModel) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamModel::mean(self : OptgradnadamModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_model_scale(s : OptgradnadamModel, f : Double) -> OptgradnadamModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamModel::scale(self : OptgradnadamModel, f : Double) -> OptgradnadamModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_model_add(a : OptgradnadamModel, b : OptgradnadamModel) -> OptgradnadamModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamModel::add(self : OptgradnadamModel, other : OptgradnadamModel) -> OptgradnadamModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_model_copy(s : OptgradnadamModel) -> OptgradnadamModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamModel::copy(self : OptgradnadamModel) -> OptgradnadamModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_model_fill(s : OptgradnadamModel, v : Double) -> OptgradnadamModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamModel::fill(self : OptgradnadamModel, v : Double) -> OptgradnadamModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_model_min(s : OptgradnadamModel) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamModel::min(self : OptgradnadamModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_model_max(s : OptgradnadamModel) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamModel::max(self : OptgradnadamModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_model_to_string(s : OptgradnadamModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamModel::to_string(self : OptgradnadamModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamLayer {
@@ -759,45 +759,45 @@ pub fn opt_grad_nadam_layer_make(size : Int) -> OptgradnadamLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_layer_len(s : OptgradnadamLayer) -> Int { s.size }
+pub fn OptgradnadamLayer::len(self : OptgradnadamLayer) -> Int { self.size }
 
-pub fn opt_grad_nadam_layer_get(s : OptgradnadamLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamLayer::get(self : OptgradnadamLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_layer_set(s : OptgradnadamLayer, i : Int, v : Double) -> OptgradnadamLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamLayer::set(self : OptgradnadamLayer, i : Int, v : Double) -> OptgradnadamLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_layer_sum(s : OptgradnadamLayer) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamLayer::sum(self : OptgradnadamLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_layer_mean(s : OptgradnadamLayer) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamLayer::mean(self : OptgradnadamLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_layer_scale(s : OptgradnadamLayer, f : Double) -> OptgradnadamLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamLayer::scale(self : OptgradnadamLayer, f : Double) -> OptgradnadamLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_layer_add(a : OptgradnadamLayer, b : OptgradnadamLayer) -> OptgradnadamLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamLayer::add(self : OptgradnadamLayer, other : OptgradnadamLayer) -> OptgradnadamLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_layer_copy(s : OptgradnadamLayer) -> OptgradnadamLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamLayer::copy(self : OptgradnadamLayer) -> OptgradnadamLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_layer_fill(s : OptgradnadamLayer, v : Double) -> OptgradnadamLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamLayer::fill(self : OptgradnadamLayer, v : Double) -> OptgradnadamLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_layer_min(s : OptgradnadamLayer) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamLayer::min(self : OptgradnadamLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_layer_max(s : OptgradnadamLayer) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamLayer::max(self : OptgradnadamLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_layer_to_string(s : OptgradnadamLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamLayer::to_string(self : OptgradnadamLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamBuffer {
@@ -810,45 +810,45 @@ pub fn opt_grad_nadam_buffer_make(size : Int) -> OptgradnadamBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_buffer_len(s : OptgradnadamBuffer) -> Int { s.size }
+pub fn OptgradnadamBuffer::len(self : OptgradnadamBuffer) -> Int { self.size }
 
-pub fn opt_grad_nadam_buffer_get(s : OptgradnadamBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamBuffer::get(self : OptgradnadamBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_buffer_set(s : OptgradnadamBuffer, i : Int, v : Double) -> OptgradnadamBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamBuffer::set(self : OptgradnadamBuffer, i : Int, v : Double) -> OptgradnadamBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_buffer_sum(s : OptgradnadamBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamBuffer::sum(self : OptgradnadamBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_buffer_mean(s : OptgradnadamBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamBuffer::mean(self : OptgradnadamBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_buffer_scale(s : OptgradnadamBuffer, f : Double) -> OptgradnadamBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamBuffer::scale(self : OptgradnadamBuffer, f : Double) -> OptgradnadamBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_buffer_add(a : OptgradnadamBuffer, b : OptgradnadamBuffer) -> OptgradnadamBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamBuffer::add(self : OptgradnadamBuffer, other : OptgradnadamBuffer) -> OptgradnadamBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_buffer_copy(s : OptgradnadamBuffer) -> OptgradnadamBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamBuffer::copy(self : OptgradnadamBuffer) -> OptgradnadamBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_buffer_fill(s : OptgradnadamBuffer, v : Double) -> OptgradnadamBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamBuffer::fill(self : OptgradnadamBuffer, v : Double) -> OptgradnadamBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_buffer_min(s : OptgradnadamBuffer) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamBuffer::min(self : OptgradnadamBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_buffer_max(s : OptgradnadamBuffer) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamBuffer::max(self : OptgradnadamBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_buffer_to_string(s : OptgradnadamBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamBuffer::to_string(self : OptgradnadamBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamCursor {
@@ -861,45 +861,45 @@ pub fn opt_grad_nadam_cursor_make(size : Int) -> OptgradnadamCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_cursor_len(s : OptgradnadamCursor) -> Int { s.size }
+pub fn OptgradnadamCursor::len(self : OptgradnadamCursor) -> Int { self.size }
 
-pub fn opt_grad_nadam_cursor_get(s : OptgradnadamCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamCursor::get(self : OptgradnadamCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_cursor_set(s : OptgradnadamCursor, i : Int, v : Double) -> OptgradnadamCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamCursor::set(self : OptgradnadamCursor, i : Int, v : Double) -> OptgradnadamCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_cursor_sum(s : OptgradnadamCursor) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamCursor::sum(self : OptgradnadamCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_cursor_mean(s : OptgradnadamCursor) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamCursor::mean(self : OptgradnadamCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_cursor_scale(s : OptgradnadamCursor, f : Double) -> OptgradnadamCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamCursor::scale(self : OptgradnadamCursor, f : Double) -> OptgradnadamCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_cursor_add(a : OptgradnadamCursor, b : OptgradnadamCursor) -> OptgradnadamCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamCursor::add(self : OptgradnadamCursor, other : OptgradnadamCursor) -> OptgradnadamCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_cursor_copy(s : OptgradnadamCursor) -> OptgradnadamCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamCursor::copy(self : OptgradnadamCursor) -> OptgradnadamCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_cursor_fill(s : OptgradnadamCursor, v : Double) -> OptgradnadamCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamCursor::fill(self : OptgradnadamCursor, v : Double) -> OptgradnadamCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_cursor_min(s : OptgradnadamCursor) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamCursor::min(self : OptgradnadamCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_cursor_max(s : OptgradnadamCursor) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamCursor::max(self : OptgradnadamCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_cursor_to_string(s : OptgradnadamCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamCursor::to_string(self : OptgradnadamCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamView {
@@ -912,45 +912,45 @@ pub fn opt_grad_nadam_view_make(size : Int) -> OptgradnadamView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_view_len(s : OptgradnadamView) -> Int { s.size }
+pub fn OptgradnadamView::len(self : OptgradnadamView) -> Int { self.size }
 
-pub fn opt_grad_nadam_view_get(s : OptgradnadamView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamView::get(self : OptgradnadamView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_view_set(s : OptgradnadamView, i : Int, v : Double) -> OptgradnadamView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamView::set(self : OptgradnadamView, i : Int, v : Double) -> OptgradnadamView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_view_sum(s : OptgradnadamView) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamView::sum(self : OptgradnadamView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_view_mean(s : OptgradnadamView) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamView::mean(self : OptgradnadamView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_view_scale(s : OptgradnadamView, f : Double) -> OptgradnadamView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamView::scale(self : OptgradnadamView, f : Double) -> OptgradnadamView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_view_add(a : OptgradnadamView, b : OptgradnadamView) -> OptgradnadamView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamView::add(self : OptgradnadamView, other : OptgradnadamView) -> OptgradnadamView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_view_copy(s : OptgradnadamView) -> OptgradnadamView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamView::copy(self : OptgradnadamView) -> OptgradnadamView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_view_fill(s : OptgradnadamView, v : Double) -> OptgradnadamView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamView::fill(self : OptgradnadamView, v : Double) -> OptgradnadamView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_view_min(s : OptgradnadamView) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamView::min(self : OptgradnadamView) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_view_max(s : OptgradnadamView) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamView::max(self : OptgradnadamView) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_view_to_string(s : OptgradnadamView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamView::to_string(self : OptgradnadamView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamRange {
@@ -963,45 +963,45 @@ pub fn opt_grad_nadam_range_make(size : Int) -> OptgradnadamRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_range_len(s : OptgradnadamRange) -> Int { s.size }
+pub fn OptgradnadamRange::len(self : OptgradnadamRange) -> Int { self.size }
 
-pub fn opt_grad_nadam_range_get(s : OptgradnadamRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamRange::get(self : OptgradnadamRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_range_set(s : OptgradnadamRange, i : Int, v : Double) -> OptgradnadamRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamRange::set(self : OptgradnadamRange, i : Int, v : Double) -> OptgradnadamRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_range_sum(s : OptgradnadamRange) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamRange::sum(self : OptgradnadamRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_range_mean(s : OptgradnadamRange) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamRange::mean(self : OptgradnadamRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_range_scale(s : OptgradnadamRange, f : Double) -> OptgradnadamRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamRange::scale(self : OptgradnadamRange, f : Double) -> OptgradnadamRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_range_add(a : OptgradnadamRange, b : OptgradnadamRange) -> OptgradnadamRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamRange::add(self : OptgradnadamRange, other : OptgradnadamRange) -> OptgradnadamRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_range_copy(s : OptgradnadamRange) -> OptgradnadamRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamRange::copy(self : OptgradnadamRange) -> OptgradnadamRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_range_fill(s : OptgradnadamRange, v : Double) -> OptgradnadamRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamRange::fill(self : OptgradnadamRange, v : Double) -> OptgradnadamRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_range_min(s : OptgradnadamRange) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamRange::min(self : OptgradnadamRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_range_max(s : OptgradnadamRange) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamRange::max(self : OptgradnadamRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_range_to_string(s : OptgradnadamRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamRange::to_string(self : OptgradnadamRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnadamSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_grad_nadam_slice_make(size : Int) -> OptgradnadamSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nadam_slice_len(s : OptgradnadamSlice) -> Int { s.size }
+pub fn OptgradnadamSlice::len(self : OptgradnadamSlice) -> Int { self.size }
 
-pub fn opt_grad_nadam_slice_get(s : OptgradnadamSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnadamSlice::get(self : OptgradnadamSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nadam_slice_set(s : OptgradnadamSlice, i : Int, v : Double) -> OptgradnadamSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnadamSlice::set(self : OptgradnadamSlice, i : Int, v : Double) -> OptgradnadamSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_slice_sum(s : OptgradnadamSlice) -> Double { @_common.sum(s.data) }
+pub fn OptgradnadamSlice::sum(self : OptgradnadamSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nadam_slice_mean(s : OptgradnadamSlice) -> Double { @_common.mean(s.data) }
+pub fn OptgradnadamSlice::mean(self : OptgradnadamSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nadam_slice_scale(s : OptgradnadamSlice, f : Double) -> OptgradnadamSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnadamSlice::scale(self : OptgradnadamSlice, f : Double) -> OptgradnadamSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_slice_add(a : OptgradnadamSlice, b : OptgradnadamSlice) -> OptgradnadamSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnadamSlice::add(self : OptgradnadamSlice, other : OptgradnadamSlice) -> OptgradnadamSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_slice_copy(s : OptgradnadamSlice) -> OptgradnadamSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnadamSlice::copy(self : OptgradnadamSlice) -> OptgradnadamSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_slice_fill(s : OptgradnadamSlice, v : Double) -> OptgradnadamSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnadamSlice::fill(self : OptgradnadamSlice, v : Double) -> OptgradnadamSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nadam_slice_min(s : OptgradnadamSlice) -> Double { @_common.min(s.data) }
+pub fn OptgradnadamSlice::min(self : OptgradnadamSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nadam_slice_max(s : OptgradnadamSlice) -> Double { @_common.max(s.data) }
+pub fn OptgradnadamSlice::max(self : OptgradnadamSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nadam_slice_to_string(s : OptgradnadamSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnadamSlice::to_string(self : OptgradnadamSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

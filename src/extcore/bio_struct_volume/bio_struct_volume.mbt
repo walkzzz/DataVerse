@@ -351,45 +351,45 @@ pub fn bio_struct_volume_frame_make(size : Int) -> BiostructvolumeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_frame_len(s : BiostructvolumeFrame) -> Int { s.size }
+pub fn BiostructvolumeFrame::len(self : BiostructvolumeFrame) -> Int { self.size }
 
-pub fn bio_struct_volume_frame_get(s : BiostructvolumeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeFrame::get(self : BiostructvolumeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_frame_set(s : BiostructvolumeFrame, i : Int, v : Double) -> BiostructvolumeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeFrame::set(self : BiostructvolumeFrame, i : Int, v : Double) -> BiostructvolumeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_frame_sum(s : BiostructvolumeFrame) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeFrame::sum(self : BiostructvolumeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_frame_mean(s : BiostructvolumeFrame) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeFrame::mean(self : BiostructvolumeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_frame_scale(s : BiostructvolumeFrame, f : Double) -> BiostructvolumeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeFrame::scale(self : BiostructvolumeFrame, f : Double) -> BiostructvolumeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_frame_add(a : BiostructvolumeFrame, b : BiostructvolumeFrame) -> BiostructvolumeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeFrame::add(self : BiostructvolumeFrame, other : BiostructvolumeFrame) -> BiostructvolumeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_frame_copy(s : BiostructvolumeFrame) -> BiostructvolumeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeFrame::copy(self : BiostructvolumeFrame) -> BiostructvolumeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_frame_fill(s : BiostructvolumeFrame, v : Double) -> BiostructvolumeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeFrame::fill(self : BiostructvolumeFrame, v : Double) -> BiostructvolumeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_frame_min(s : BiostructvolumeFrame) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeFrame::min(self : BiostructvolumeFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_frame_max(s : BiostructvolumeFrame) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeFrame::max(self : BiostructvolumeFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_frame_to_string(s : BiostructvolumeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeFrame::to_string(self : BiostructvolumeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumeTable {
@@ -402,45 +402,45 @@ pub fn bio_struct_volume_table_make(size : Int) -> BiostructvolumeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_table_len(s : BiostructvolumeTable) -> Int { s.size }
+pub fn BiostructvolumeTable::len(self : BiostructvolumeTable) -> Int { self.size }
 
-pub fn bio_struct_volume_table_get(s : BiostructvolumeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeTable::get(self : BiostructvolumeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_table_set(s : BiostructvolumeTable, i : Int, v : Double) -> BiostructvolumeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeTable::set(self : BiostructvolumeTable, i : Int, v : Double) -> BiostructvolumeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_table_sum(s : BiostructvolumeTable) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeTable::sum(self : BiostructvolumeTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_table_mean(s : BiostructvolumeTable) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeTable::mean(self : BiostructvolumeTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_table_scale(s : BiostructvolumeTable, f : Double) -> BiostructvolumeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeTable::scale(self : BiostructvolumeTable, f : Double) -> BiostructvolumeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_table_add(a : BiostructvolumeTable, b : BiostructvolumeTable) -> BiostructvolumeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeTable::add(self : BiostructvolumeTable, other : BiostructvolumeTable) -> BiostructvolumeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_table_copy(s : BiostructvolumeTable) -> BiostructvolumeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeTable::copy(self : BiostructvolumeTable) -> BiostructvolumeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_table_fill(s : BiostructvolumeTable, v : Double) -> BiostructvolumeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeTable::fill(self : BiostructvolumeTable, v : Double) -> BiostructvolumeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_table_min(s : BiostructvolumeTable) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeTable::min(self : BiostructvolumeTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_table_max(s : BiostructvolumeTable) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeTable::max(self : BiostructvolumeTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_table_to_string(s : BiostructvolumeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeTable::to_string(self : BiostructvolumeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumeGraphN {
@@ -453,45 +453,45 @@ pub fn bio_struct_volume_graphn_make(size : Int) -> BiostructvolumeGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_graphn_len(s : BiostructvolumeGraphN) -> Int { s.size }
+pub fn BiostructvolumeGraphN::len(self : BiostructvolumeGraphN) -> Int { self.size }
 
-pub fn bio_struct_volume_graphn_get(s : BiostructvolumeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeGraphN::get(self : BiostructvolumeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_graphn_set(s : BiostructvolumeGraphN, i : Int, v : Double) -> BiostructvolumeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeGraphN::set(self : BiostructvolumeGraphN, i : Int, v : Double) -> BiostructvolumeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_graphn_sum(s : BiostructvolumeGraphN) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeGraphN::sum(self : BiostructvolumeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_graphn_mean(s : BiostructvolumeGraphN) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeGraphN::mean(self : BiostructvolumeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_graphn_scale(s : BiostructvolumeGraphN, f : Double) -> BiostructvolumeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeGraphN::scale(self : BiostructvolumeGraphN, f : Double) -> BiostructvolumeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_graphn_add(a : BiostructvolumeGraphN, b : BiostructvolumeGraphN) -> BiostructvolumeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeGraphN::add(self : BiostructvolumeGraphN, other : BiostructvolumeGraphN) -> BiostructvolumeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_graphn_copy(s : BiostructvolumeGraphN) -> BiostructvolumeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeGraphN::copy(self : BiostructvolumeGraphN) -> BiostructvolumeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_graphn_fill(s : BiostructvolumeGraphN, v : Double) -> BiostructvolumeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeGraphN::fill(self : BiostructvolumeGraphN, v : Double) -> BiostructvolumeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_graphn_min(s : BiostructvolumeGraphN) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeGraphN::min(self : BiostructvolumeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_graphn_max(s : BiostructvolumeGraphN) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeGraphN::max(self : BiostructvolumeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_graphn_to_string(s : BiostructvolumeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeGraphN::to_string(self : BiostructvolumeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumeNode {
@@ -504,45 +504,45 @@ pub fn bio_struct_volume_node_make(size : Int) -> BiostructvolumeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_node_len(s : BiostructvolumeNode) -> Int { s.size }
+pub fn BiostructvolumeNode::len(self : BiostructvolumeNode) -> Int { self.size }
 
-pub fn bio_struct_volume_node_get(s : BiostructvolumeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeNode::get(self : BiostructvolumeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_node_set(s : BiostructvolumeNode, i : Int, v : Double) -> BiostructvolumeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeNode::set(self : BiostructvolumeNode, i : Int, v : Double) -> BiostructvolumeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_node_sum(s : BiostructvolumeNode) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeNode::sum(self : BiostructvolumeNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_node_mean(s : BiostructvolumeNode) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeNode::mean(self : BiostructvolumeNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_node_scale(s : BiostructvolumeNode, f : Double) -> BiostructvolumeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeNode::scale(self : BiostructvolumeNode, f : Double) -> BiostructvolumeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_node_add(a : BiostructvolumeNode, b : BiostructvolumeNode) -> BiostructvolumeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeNode::add(self : BiostructvolumeNode, other : BiostructvolumeNode) -> BiostructvolumeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_node_copy(s : BiostructvolumeNode) -> BiostructvolumeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeNode::copy(self : BiostructvolumeNode) -> BiostructvolumeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_node_fill(s : BiostructvolumeNode, v : Double) -> BiostructvolumeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeNode::fill(self : BiostructvolumeNode, v : Double) -> BiostructvolumeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_node_min(s : BiostructvolumeNode) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeNode::min(self : BiostructvolumeNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_node_max(s : BiostructvolumeNode) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeNode::max(self : BiostructvolumeNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_node_to_string(s : BiostructvolumeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeNode::to_string(self : BiostructvolumeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumeEdge {
@@ -555,45 +555,45 @@ pub fn bio_struct_volume_edge_make(size : Int) -> BiostructvolumeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_edge_len(s : BiostructvolumeEdge) -> Int { s.size }
+pub fn BiostructvolumeEdge::len(self : BiostructvolumeEdge) -> Int { self.size }
 
-pub fn bio_struct_volume_edge_get(s : BiostructvolumeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeEdge::get(self : BiostructvolumeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_edge_set(s : BiostructvolumeEdge, i : Int, v : Double) -> BiostructvolumeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeEdge::set(self : BiostructvolumeEdge, i : Int, v : Double) -> BiostructvolumeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_edge_sum(s : BiostructvolumeEdge) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeEdge::sum(self : BiostructvolumeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_edge_mean(s : BiostructvolumeEdge) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeEdge::mean(self : BiostructvolumeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_edge_scale(s : BiostructvolumeEdge, f : Double) -> BiostructvolumeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeEdge::scale(self : BiostructvolumeEdge, f : Double) -> BiostructvolumeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_edge_add(a : BiostructvolumeEdge, b : BiostructvolumeEdge) -> BiostructvolumeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeEdge::add(self : BiostructvolumeEdge, other : BiostructvolumeEdge) -> BiostructvolumeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_edge_copy(s : BiostructvolumeEdge) -> BiostructvolumeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeEdge::copy(self : BiostructvolumeEdge) -> BiostructvolumeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_edge_fill(s : BiostructvolumeEdge, v : Double) -> BiostructvolumeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeEdge::fill(self : BiostructvolumeEdge, v : Double) -> BiostructvolumeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_edge_min(s : BiostructvolumeEdge) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeEdge::min(self : BiostructvolumeEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_edge_max(s : BiostructvolumeEdge) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeEdge::max(self : BiostructvolumeEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_edge_to_string(s : BiostructvolumeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeEdge::to_string(self : BiostructvolumeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumePath {
@@ -606,45 +606,45 @@ pub fn bio_struct_volume_path_make(size : Int) -> BiostructvolumePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_path_len(s : BiostructvolumePath) -> Int { s.size }
+pub fn BiostructvolumePath::len(self : BiostructvolumePath) -> Int { self.size }
 
-pub fn bio_struct_volume_path_get(s : BiostructvolumePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumePath::get(self : BiostructvolumePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_path_set(s : BiostructvolumePath, i : Int, v : Double) -> BiostructvolumePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumePath::set(self : BiostructvolumePath, i : Int, v : Double) -> BiostructvolumePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_path_sum(s : BiostructvolumePath) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumePath::sum(self : BiostructvolumePath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_path_mean(s : BiostructvolumePath) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumePath::mean(self : BiostructvolumePath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_path_scale(s : BiostructvolumePath, f : Double) -> BiostructvolumePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumePath::scale(self : BiostructvolumePath, f : Double) -> BiostructvolumePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_path_add(a : BiostructvolumePath, b : BiostructvolumePath) -> BiostructvolumePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumePath::add(self : BiostructvolumePath, other : BiostructvolumePath) -> BiostructvolumePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_path_copy(s : BiostructvolumePath) -> BiostructvolumePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumePath::copy(self : BiostructvolumePath) -> BiostructvolumePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_path_fill(s : BiostructvolumePath, v : Double) -> BiostructvolumePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumePath::fill(self : BiostructvolumePath, v : Double) -> BiostructvolumePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_path_min(s : BiostructvolumePath) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumePath::min(self : BiostructvolumePath) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_path_max(s : BiostructvolumePath) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumePath::max(self : BiostructvolumePath) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_path_to_string(s : BiostructvolumePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumePath::to_string(self : BiostructvolumePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumeCluster {
@@ -657,45 +657,45 @@ pub fn bio_struct_volume_cluster_make(size : Int) -> BiostructvolumeCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_cluster_len(s : BiostructvolumeCluster) -> Int { s.size }
+pub fn BiostructvolumeCluster::len(self : BiostructvolumeCluster) -> Int { self.size }
 
-pub fn bio_struct_volume_cluster_get(s : BiostructvolumeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeCluster::get(self : BiostructvolumeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_cluster_set(s : BiostructvolumeCluster, i : Int, v : Double) -> BiostructvolumeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeCluster::set(self : BiostructvolumeCluster, i : Int, v : Double) -> BiostructvolumeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_cluster_sum(s : BiostructvolumeCluster) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeCluster::sum(self : BiostructvolumeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_cluster_mean(s : BiostructvolumeCluster) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeCluster::mean(self : BiostructvolumeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_cluster_scale(s : BiostructvolumeCluster, f : Double) -> BiostructvolumeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeCluster::scale(self : BiostructvolumeCluster, f : Double) -> BiostructvolumeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_cluster_add(a : BiostructvolumeCluster, b : BiostructvolumeCluster) -> BiostructvolumeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeCluster::add(self : BiostructvolumeCluster, other : BiostructvolumeCluster) -> BiostructvolumeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_cluster_copy(s : BiostructvolumeCluster) -> BiostructvolumeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeCluster::copy(self : BiostructvolumeCluster) -> BiostructvolumeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_cluster_fill(s : BiostructvolumeCluster, v : Double) -> BiostructvolumeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeCluster::fill(self : BiostructvolumeCluster, v : Double) -> BiostructvolumeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_cluster_min(s : BiostructvolumeCluster) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeCluster::min(self : BiostructvolumeCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_cluster_max(s : BiostructvolumeCluster) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeCluster::max(self : BiostructvolumeCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_cluster_to_string(s : BiostructvolumeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeCluster::to_string(self : BiostructvolumeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumeModel {
@@ -708,45 +708,45 @@ pub fn bio_struct_volume_model_make(size : Int) -> BiostructvolumeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_model_len(s : BiostructvolumeModel) -> Int { s.size }
+pub fn BiostructvolumeModel::len(self : BiostructvolumeModel) -> Int { self.size }
 
-pub fn bio_struct_volume_model_get(s : BiostructvolumeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeModel::get(self : BiostructvolumeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_model_set(s : BiostructvolumeModel, i : Int, v : Double) -> BiostructvolumeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeModel::set(self : BiostructvolumeModel, i : Int, v : Double) -> BiostructvolumeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_model_sum(s : BiostructvolumeModel) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeModel::sum(self : BiostructvolumeModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_model_mean(s : BiostructvolumeModel) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeModel::mean(self : BiostructvolumeModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_model_scale(s : BiostructvolumeModel, f : Double) -> BiostructvolumeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeModel::scale(self : BiostructvolumeModel, f : Double) -> BiostructvolumeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_model_add(a : BiostructvolumeModel, b : BiostructvolumeModel) -> BiostructvolumeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeModel::add(self : BiostructvolumeModel, other : BiostructvolumeModel) -> BiostructvolumeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_model_copy(s : BiostructvolumeModel) -> BiostructvolumeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeModel::copy(self : BiostructvolumeModel) -> BiostructvolumeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_model_fill(s : BiostructvolumeModel, v : Double) -> BiostructvolumeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeModel::fill(self : BiostructvolumeModel, v : Double) -> BiostructvolumeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_model_min(s : BiostructvolumeModel) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeModel::min(self : BiostructvolumeModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_model_max(s : BiostructvolumeModel) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeModel::max(self : BiostructvolumeModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_model_to_string(s : BiostructvolumeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeModel::to_string(self : BiostructvolumeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumeLayer {
@@ -759,45 +759,45 @@ pub fn bio_struct_volume_layer_make(size : Int) -> BiostructvolumeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_layer_len(s : BiostructvolumeLayer) -> Int { s.size }
+pub fn BiostructvolumeLayer::len(self : BiostructvolumeLayer) -> Int { self.size }
 
-pub fn bio_struct_volume_layer_get(s : BiostructvolumeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeLayer::get(self : BiostructvolumeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_layer_set(s : BiostructvolumeLayer, i : Int, v : Double) -> BiostructvolumeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeLayer::set(self : BiostructvolumeLayer, i : Int, v : Double) -> BiostructvolumeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_layer_sum(s : BiostructvolumeLayer) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeLayer::sum(self : BiostructvolumeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_layer_mean(s : BiostructvolumeLayer) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeLayer::mean(self : BiostructvolumeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_layer_scale(s : BiostructvolumeLayer, f : Double) -> BiostructvolumeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeLayer::scale(self : BiostructvolumeLayer, f : Double) -> BiostructvolumeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_layer_add(a : BiostructvolumeLayer, b : BiostructvolumeLayer) -> BiostructvolumeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeLayer::add(self : BiostructvolumeLayer, other : BiostructvolumeLayer) -> BiostructvolumeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_layer_copy(s : BiostructvolumeLayer) -> BiostructvolumeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeLayer::copy(self : BiostructvolumeLayer) -> BiostructvolumeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_layer_fill(s : BiostructvolumeLayer, v : Double) -> BiostructvolumeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeLayer::fill(self : BiostructvolumeLayer, v : Double) -> BiostructvolumeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_layer_min(s : BiostructvolumeLayer) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeLayer::min(self : BiostructvolumeLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_layer_max(s : BiostructvolumeLayer) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeLayer::max(self : BiostructvolumeLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_layer_to_string(s : BiostructvolumeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeLayer::to_string(self : BiostructvolumeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumeBuffer {
@@ -810,45 +810,45 @@ pub fn bio_struct_volume_buffer_make(size : Int) -> BiostructvolumeBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_buffer_len(s : BiostructvolumeBuffer) -> Int { s.size }
+pub fn BiostructvolumeBuffer::len(self : BiostructvolumeBuffer) -> Int { self.size }
 
-pub fn bio_struct_volume_buffer_get(s : BiostructvolumeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeBuffer::get(self : BiostructvolumeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_buffer_set(s : BiostructvolumeBuffer, i : Int, v : Double) -> BiostructvolumeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeBuffer::set(self : BiostructvolumeBuffer, i : Int, v : Double) -> BiostructvolumeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_buffer_sum(s : BiostructvolumeBuffer) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeBuffer::sum(self : BiostructvolumeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_buffer_mean(s : BiostructvolumeBuffer) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeBuffer::mean(self : BiostructvolumeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_buffer_scale(s : BiostructvolumeBuffer, f : Double) -> BiostructvolumeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeBuffer::scale(self : BiostructvolumeBuffer, f : Double) -> BiostructvolumeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_buffer_add(a : BiostructvolumeBuffer, b : BiostructvolumeBuffer) -> BiostructvolumeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeBuffer::add(self : BiostructvolumeBuffer, other : BiostructvolumeBuffer) -> BiostructvolumeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_buffer_copy(s : BiostructvolumeBuffer) -> BiostructvolumeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeBuffer::copy(self : BiostructvolumeBuffer) -> BiostructvolumeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_buffer_fill(s : BiostructvolumeBuffer, v : Double) -> BiostructvolumeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeBuffer::fill(self : BiostructvolumeBuffer, v : Double) -> BiostructvolumeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_buffer_min(s : BiostructvolumeBuffer) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeBuffer::min(self : BiostructvolumeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_buffer_max(s : BiostructvolumeBuffer) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeBuffer::max(self : BiostructvolumeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_buffer_to_string(s : BiostructvolumeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeBuffer::to_string(self : BiostructvolumeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumeCursor {
@@ -861,45 +861,45 @@ pub fn bio_struct_volume_cursor_make(size : Int) -> BiostructvolumeCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_cursor_len(s : BiostructvolumeCursor) -> Int { s.size }
+pub fn BiostructvolumeCursor::len(self : BiostructvolumeCursor) -> Int { self.size }
 
-pub fn bio_struct_volume_cursor_get(s : BiostructvolumeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeCursor::get(self : BiostructvolumeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_cursor_set(s : BiostructvolumeCursor, i : Int, v : Double) -> BiostructvolumeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeCursor::set(self : BiostructvolumeCursor, i : Int, v : Double) -> BiostructvolumeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_cursor_sum(s : BiostructvolumeCursor) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeCursor::sum(self : BiostructvolumeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_cursor_mean(s : BiostructvolumeCursor) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeCursor::mean(self : BiostructvolumeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_cursor_scale(s : BiostructvolumeCursor, f : Double) -> BiostructvolumeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeCursor::scale(self : BiostructvolumeCursor, f : Double) -> BiostructvolumeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_cursor_add(a : BiostructvolumeCursor, b : BiostructvolumeCursor) -> BiostructvolumeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeCursor::add(self : BiostructvolumeCursor, other : BiostructvolumeCursor) -> BiostructvolumeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_cursor_copy(s : BiostructvolumeCursor) -> BiostructvolumeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeCursor::copy(self : BiostructvolumeCursor) -> BiostructvolumeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_cursor_fill(s : BiostructvolumeCursor, v : Double) -> BiostructvolumeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeCursor::fill(self : BiostructvolumeCursor, v : Double) -> BiostructvolumeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_cursor_min(s : BiostructvolumeCursor) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeCursor::min(self : BiostructvolumeCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_cursor_max(s : BiostructvolumeCursor) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeCursor::max(self : BiostructvolumeCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_cursor_to_string(s : BiostructvolumeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeCursor::to_string(self : BiostructvolumeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumeView {
@@ -912,45 +912,45 @@ pub fn bio_struct_volume_view_make(size : Int) -> BiostructvolumeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_view_len(s : BiostructvolumeView) -> Int { s.size }
+pub fn BiostructvolumeView::len(self : BiostructvolumeView) -> Int { self.size }
 
-pub fn bio_struct_volume_view_get(s : BiostructvolumeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeView::get(self : BiostructvolumeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_view_set(s : BiostructvolumeView, i : Int, v : Double) -> BiostructvolumeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeView::set(self : BiostructvolumeView, i : Int, v : Double) -> BiostructvolumeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_view_sum(s : BiostructvolumeView) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeView::sum(self : BiostructvolumeView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_view_mean(s : BiostructvolumeView) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeView::mean(self : BiostructvolumeView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_view_scale(s : BiostructvolumeView, f : Double) -> BiostructvolumeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeView::scale(self : BiostructvolumeView, f : Double) -> BiostructvolumeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_view_add(a : BiostructvolumeView, b : BiostructvolumeView) -> BiostructvolumeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeView::add(self : BiostructvolumeView, other : BiostructvolumeView) -> BiostructvolumeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_view_copy(s : BiostructvolumeView) -> BiostructvolumeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeView::copy(self : BiostructvolumeView) -> BiostructvolumeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_view_fill(s : BiostructvolumeView, v : Double) -> BiostructvolumeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeView::fill(self : BiostructvolumeView, v : Double) -> BiostructvolumeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_view_min(s : BiostructvolumeView) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeView::min(self : BiostructvolumeView) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_view_max(s : BiostructvolumeView) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeView::max(self : BiostructvolumeView) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_view_to_string(s : BiostructvolumeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeView::to_string(self : BiostructvolumeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumeRange {
@@ -963,45 +963,45 @@ pub fn bio_struct_volume_range_make(size : Int) -> BiostructvolumeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_range_len(s : BiostructvolumeRange) -> Int { s.size }
+pub fn BiostructvolumeRange::len(self : BiostructvolumeRange) -> Int { self.size }
 
-pub fn bio_struct_volume_range_get(s : BiostructvolumeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeRange::get(self : BiostructvolumeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_range_set(s : BiostructvolumeRange, i : Int, v : Double) -> BiostructvolumeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeRange::set(self : BiostructvolumeRange, i : Int, v : Double) -> BiostructvolumeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_range_sum(s : BiostructvolumeRange) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeRange::sum(self : BiostructvolumeRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_range_mean(s : BiostructvolumeRange) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeRange::mean(self : BiostructvolumeRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_range_scale(s : BiostructvolumeRange, f : Double) -> BiostructvolumeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeRange::scale(self : BiostructvolumeRange, f : Double) -> BiostructvolumeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_range_add(a : BiostructvolumeRange, b : BiostructvolumeRange) -> BiostructvolumeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeRange::add(self : BiostructvolumeRange, other : BiostructvolumeRange) -> BiostructvolumeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_range_copy(s : BiostructvolumeRange) -> BiostructvolumeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeRange::copy(self : BiostructvolumeRange) -> BiostructvolumeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_range_fill(s : BiostructvolumeRange, v : Double) -> BiostructvolumeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeRange::fill(self : BiostructvolumeRange, v : Double) -> BiostructvolumeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_range_min(s : BiostructvolumeRange) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeRange::min(self : BiostructvolumeRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_range_max(s : BiostructvolumeRange) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeRange::max(self : BiostructvolumeRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_range_to_string(s : BiostructvolumeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeRange::to_string(self : BiostructvolumeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructvolumeSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_struct_volume_slice_make(size : Int) -> BiostructvolumeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_volume_slice_len(s : BiostructvolumeSlice) -> Int { s.size }
+pub fn BiostructvolumeSlice::len(self : BiostructvolumeSlice) -> Int { self.size }
 
-pub fn bio_struct_volume_slice_get(s : BiostructvolumeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructvolumeSlice::get(self : BiostructvolumeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_volume_slice_set(s : BiostructvolumeSlice, i : Int, v : Double) -> BiostructvolumeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructvolumeSlice::set(self : BiostructvolumeSlice, i : Int, v : Double) -> BiostructvolumeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_slice_sum(s : BiostructvolumeSlice) -> Double { @_common.sum(s.data) }
+pub fn BiostructvolumeSlice::sum(self : BiostructvolumeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_volume_slice_mean(s : BiostructvolumeSlice) -> Double { @_common.mean(s.data) }
+pub fn BiostructvolumeSlice::mean(self : BiostructvolumeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_volume_slice_scale(s : BiostructvolumeSlice, f : Double) -> BiostructvolumeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructvolumeSlice::scale(self : BiostructvolumeSlice, f : Double) -> BiostructvolumeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_slice_add(a : BiostructvolumeSlice, b : BiostructvolumeSlice) -> BiostructvolumeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructvolumeSlice::add(self : BiostructvolumeSlice, other : BiostructvolumeSlice) -> BiostructvolumeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_volume_slice_copy(s : BiostructvolumeSlice) -> BiostructvolumeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructvolumeSlice::copy(self : BiostructvolumeSlice) -> BiostructvolumeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_slice_fill(s : BiostructvolumeSlice, v : Double) -> BiostructvolumeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructvolumeSlice::fill(self : BiostructvolumeSlice, v : Double) -> BiostructvolumeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_volume_slice_min(s : BiostructvolumeSlice) -> Double { @_common.min(s.data) }
+pub fn BiostructvolumeSlice::min(self : BiostructvolumeSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_volume_slice_max(s : BiostructvolumeSlice) -> Double { @_common.max(s.data) }
+pub fn BiostructvolumeSlice::max(self : BiostructvolumeSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_volume_slice_to_string(s : BiostructvolumeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructvolumeSlice::to_string(self : BiostructvolumeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

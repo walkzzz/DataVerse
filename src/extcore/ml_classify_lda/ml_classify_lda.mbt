@@ -351,45 +351,45 @@ pub fn ml_classify_lda_frame_make(size : Int) -> MlclassifyldaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_frame_len(s : MlclassifyldaFrame) -> Int { s.size }
+pub fn MlclassifyldaFrame::len(self : MlclassifyldaFrame) -> Int { self.size }
 
-pub fn ml_classify_lda_frame_get(s : MlclassifyldaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaFrame::get(self : MlclassifyldaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_frame_set(s : MlclassifyldaFrame, i : Int, v : Double) -> MlclassifyldaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaFrame::set(self : MlclassifyldaFrame, i : Int, v : Double) -> MlclassifyldaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_frame_sum(s : MlclassifyldaFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaFrame::sum(self : MlclassifyldaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_frame_mean(s : MlclassifyldaFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaFrame::mean(self : MlclassifyldaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_frame_scale(s : MlclassifyldaFrame, f : Double) -> MlclassifyldaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaFrame::scale(self : MlclassifyldaFrame, f : Double) -> MlclassifyldaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_frame_add(a : MlclassifyldaFrame, b : MlclassifyldaFrame) -> MlclassifyldaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaFrame::add(self : MlclassifyldaFrame, other : MlclassifyldaFrame) -> MlclassifyldaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_frame_copy(s : MlclassifyldaFrame) -> MlclassifyldaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaFrame::copy(self : MlclassifyldaFrame) -> MlclassifyldaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_frame_fill(s : MlclassifyldaFrame, v : Double) -> MlclassifyldaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaFrame::fill(self : MlclassifyldaFrame, v : Double) -> MlclassifyldaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_frame_min(s : MlclassifyldaFrame) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaFrame::min(self : MlclassifyldaFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_frame_max(s : MlclassifyldaFrame) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaFrame::max(self : MlclassifyldaFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_frame_to_string(s : MlclassifyldaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaFrame::to_string(self : MlclassifyldaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaTable {
@@ -402,45 +402,45 @@ pub fn ml_classify_lda_table_make(size : Int) -> MlclassifyldaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_table_len(s : MlclassifyldaTable) -> Int { s.size }
+pub fn MlclassifyldaTable::len(self : MlclassifyldaTable) -> Int { self.size }
 
-pub fn ml_classify_lda_table_get(s : MlclassifyldaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaTable::get(self : MlclassifyldaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_table_set(s : MlclassifyldaTable, i : Int, v : Double) -> MlclassifyldaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaTable::set(self : MlclassifyldaTable, i : Int, v : Double) -> MlclassifyldaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_table_sum(s : MlclassifyldaTable) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaTable::sum(self : MlclassifyldaTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_table_mean(s : MlclassifyldaTable) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaTable::mean(self : MlclassifyldaTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_table_scale(s : MlclassifyldaTable, f : Double) -> MlclassifyldaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaTable::scale(self : MlclassifyldaTable, f : Double) -> MlclassifyldaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_table_add(a : MlclassifyldaTable, b : MlclassifyldaTable) -> MlclassifyldaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaTable::add(self : MlclassifyldaTable, other : MlclassifyldaTable) -> MlclassifyldaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_table_copy(s : MlclassifyldaTable) -> MlclassifyldaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaTable::copy(self : MlclassifyldaTable) -> MlclassifyldaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_table_fill(s : MlclassifyldaTable, v : Double) -> MlclassifyldaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaTable::fill(self : MlclassifyldaTable, v : Double) -> MlclassifyldaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_table_min(s : MlclassifyldaTable) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaTable::min(self : MlclassifyldaTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_table_max(s : MlclassifyldaTable) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaTable::max(self : MlclassifyldaTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_table_to_string(s : MlclassifyldaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaTable::to_string(self : MlclassifyldaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaGraphN {
@@ -453,45 +453,45 @@ pub fn ml_classify_lda_graphn_make(size : Int) -> MlclassifyldaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_graphn_len(s : MlclassifyldaGraphN) -> Int { s.size }
+pub fn MlclassifyldaGraphN::len(self : MlclassifyldaGraphN) -> Int { self.size }
 
-pub fn ml_classify_lda_graphn_get(s : MlclassifyldaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaGraphN::get(self : MlclassifyldaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_graphn_set(s : MlclassifyldaGraphN, i : Int, v : Double) -> MlclassifyldaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaGraphN::set(self : MlclassifyldaGraphN, i : Int, v : Double) -> MlclassifyldaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_graphn_sum(s : MlclassifyldaGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaGraphN::sum(self : MlclassifyldaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_graphn_mean(s : MlclassifyldaGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaGraphN::mean(self : MlclassifyldaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_graphn_scale(s : MlclassifyldaGraphN, f : Double) -> MlclassifyldaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaGraphN::scale(self : MlclassifyldaGraphN, f : Double) -> MlclassifyldaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_graphn_add(a : MlclassifyldaGraphN, b : MlclassifyldaGraphN) -> MlclassifyldaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaGraphN::add(self : MlclassifyldaGraphN, other : MlclassifyldaGraphN) -> MlclassifyldaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_graphn_copy(s : MlclassifyldaGraphN) -> MlclassifyldaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaGraphN::copy(self : MlclassifyldaGraphN) -> MlclassifyldaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_graphn_fill(s : MlclassifyldaGraphN, v : Double) -> MlclassifyldaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaGraphN::fill(self : MlclassifyldaGraphN, v : Double) -> MlclassifyldaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_graphn_min(s : MlclassifyldaGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaGraphN::min(self : MlclassifyldaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_graphn_max(s : MlclassifyldaGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaGraphN::max(self : MlclassifyldaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_graphn_to_string(s : MlclassifyldaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaGraphN::to_string(self : MlclassifyldaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaNode {
@@ -504,45 +504,45 @@ pub fn ml_classify_lda_node_make(size : Int) -> MlclassifyldaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_node_len(s : MlclassifyldaNode) -> Int { s.size }
+pub fn MlclassifyldaNode::len(self : MlclassifyldaNode) -> Int { self.size }
 
-pub fn ml_classify_lda_node_get(s : MlclassifyldaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaNode::get(self : MlclassifyldaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_node_set(s : MlclassifyldaNode, i : Int, v : Double) -> MlclassifyldaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaNode::set(self : MlclassifyldaNode, i : Int, v : Double) -> MlclassifyldaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_node_sum(s : MlclassifyldaNode) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaNode::sum(self : MlclassifyldaNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_node_mean(s : MlclassifyldaNode) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaNode::mean(self : MlclassifyldaNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_node_scale(s : MlclassifyldaNode, f : Double) -> MlclassifyldaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaNode::scale(self : MlclassifyldaNode, f : Double) -> MlclassifyldaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_node_add(a : MlclassifyldaNode, b : MlclassifyldaNode) -> MlclassifyldaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaNode::add(self : MlclassifyldaNode, other : MlclassifyldaNode) -> MlclassifyldaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_node_copy(s : MlclassifyldaNode) -> MlclassifyldaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaNode::copy(self : MlclassifyldaNode) -> MlclassifyldaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_node_fill(s : MlclassifyldaNode, v : Double) -> MlclassifyldaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaNode::fill(self : MlclassifyldaNode, v : Double) -> MlclassifyldaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_node_min(s : MlclassifyldaNode) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaNode::min(self : MlclassifyldaNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_node_max(s : MlclassifyldaNode) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaNode::max(self : MlclassifyldaNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_node_to_string(s : MlclassifyldaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaNode::to_string(self : MlclassifyldaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaEdge {
@@ -555,45 +555,45 @@ pub fn ml_classify_lda_edge_make(size : Int) -> MlclassifyldaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_edge_len(s : MlclassifyldaEdge) -> Int { s.size }
+pub fn MlclassifyldaEdge::len(self : MlclassifyldaEdge) -> Int { self.size }
 
-pub fn ml_classify_lda_edge_get(s : MlclassifyldaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaEdge::get(self : MlclassifyldaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_edge_set(s : MlclassifyldaEdge, i : Int, v : Double) -> MlclassifyldaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaEdge::set(self : MlclassifyldaEdge, i : Int, v : Double) -> MlclassifyldaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_edge_sum(s : MlclassifyldaEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaEdge::sum(self : MlclassifyldaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_edge_mean(s : MlclassifyldaEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaEdge::mean(self : MlclassifyldaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_edge_scale(s : MlclassifyldaEdge, f : Double) -> MlclassifyldaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaEdge::scale(self : MlclassifyldaEdge, f : Double) -> MlclassifyldaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_edge_add(a : MlclassifyldaEdge, b : MlclassifyldaEdge) -> MlclassifyldaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaEdge::add(self : MlclassifyldaEdge, other : MlclassifyldaEdge) -> MlclassifyldaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_edge_copy(s : MlclassifyldaEdge) -> MlclassifyldaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaEdge::copy(self : MlclassifyldaEdge) -> MlclassifyldaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_edge_fill(s : MlclassifyldaEdge, v : Double) -> MlclassifyldaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaEdge::fill(self : MlclassifyldaEdge, v : Double) -> MlclassifyldaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_edge_min(s : MlclassifyldaEdge) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaEdge::min(self : MlclassifyldaEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_edge_max(s : MlclassifyldaEdge) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaEdge::max(self : MlclassifyldaEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_edge_to_string(s : MlclassifyldaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaEdge::to_string(self : MlclassifyldaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaPath {
@@ -606,45 +606,45 @@ pub fn ml_classify_lda_path_make(size : Int) -> MlclassifyldaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_path_len(s : MlclassifyldaPath) -> Int { s.size }
+pub fn MlclassifyldaPath::len(self : MlclassifyldaPath) -> Int { self.size }
 
-pub fn ml_classify_lda_path_get(s : MlclassifyldaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaPath::get(self : MlclassifyldaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_path_set(s : MlclassifyldaPath, i : Int, v : Double) -> MlclassifyldaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaPath::set(self : MlclassifyldaPath, i : Int, v : Double) -> MlclassifyldaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_path_sum(s : MlclassifyldaPath) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaPath::sum(self : MlclassifyldaPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_path_mean(s : MlclassifyldaPath) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaPath::mean(self : MlclassifyldaPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_path_scale(s : MlclassifyldaPath, f : Double) -> MlclassifyldaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaPath::scale(self : MlclassifyldaPath, f : Double) -> MlclassifyldaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_path_add(a : MlclassifyldaPath, b : MlclassifyldaPath) -> MlclassifyldaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaPath::add(self : MlclassifyldaPath, other : MlclassifyldaPath) -> MlclassifyldaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_path_copy(s : MlclassifyldaPath) -> MlclassifyldaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaPath::copy(self : MlclassifyldaPath) -> MlclassifyldaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_path_fill(s : MlclassifyldaPath, v : Double) -> MlclassifyldaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaPath::fill(self : MlclassifyldaPath, v : Double) -> MlclassifyldaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_path_min(s : MlclassifyldaPath) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaPath::min(self : MlclassifyldaPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_path_max(s : MlclassifyldaPath) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaPath::max(self : MlclassifyldaPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_path_to_string(s : MlclassifyldaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaPath::to_string(self : MlclassifyldaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaCluster {
@@ -657,45 +657,45 @@ pub fn ml_classify_lda_cluster_make(size : Int) -> MlclassifyldaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_cluster_len(s : MlclassifyldaCluster) -> Int { s.size }
+pub fn MlclassifyldaCluster::len(self : MlclassifyldaCluster) -> Int { self.size }
 
-pub fn ml_classify_lda_cluster_get(s : MlclassifyldaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaCluster::get(self : MlclassifyldaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_cluster_set(s : MlclassifyldaCluster, i : Int, v : Double) -> MlclassifyldaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaCluster::set(self : MlclassifyldaCluster, i : Int, v : Double) -> MlclassifyldaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_cluster_sum(s : MlclassifyldaCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaCluster::sum(self : MlclassifyldaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_cluster_mean(s : MlclassifyldaCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaCluster::mean(self : MlclassifyldaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_cluster_scale(s : MlclassifyldaCluster, f : Double) -> MlclassifyldaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaCluster::scale(self : MlclassifyldaCluster, f : Double) -> MlclassifyldaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_cluster_add(a : MlclassifyldaCluster, b : MlclassifyldaCluster) -> MlclassifyldaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaCluster::add(self : MlclassifyldaCluster, other : MlclassifyldaCluster) -> MlclassifyldaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_cluster_copy(s : MlclassifyldaCluster) -> MlclassifyldaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaCluster::copy(self : MlclassifyldaCluster) -> MlclassifyldaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_cluster_fill(s : MlclassifyldaCluster, v : Double) -> MlclassifyldaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaCluster::fill(self : MlclassifyldaCluster, v : Double) -> MlclassifyldaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_cluster_min(s : MlclassifyldaCluster) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaCluster::min(self : MlclassifyldaCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_cluster_max(s : MlclassifyldaCluster) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaCluster::max(self : MlclassifyldaCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_cluster_to_string(s : MlclassifyldaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaCluster::to_string(self : MlclassifyldaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaModel {
@@ -708,45 +708,45 @@ pub fn ml_classify_lda_model_make(size : Int) -> MlclassifyldaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_model_len(s : MlclassifyldaModel) -> Int { s.size }
+pub fn MlclassifyldaModel::len(self : MlclassifyldaModel) -> Int { self.size }
 
-pub fn ml_classify_lda_model_get(s : MlclassifyldaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaModel::get(self : MlclassifyldaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_model_set(s : MlclassifyldaModel, i : Int, v : Double) -> MlclassifyldaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaModel::set(self : MlclassifyldaModel, i : Int, v : Double) -> MlclassifyldaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_model_sum(s : MlclassifyldaModel) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaModel::sum(self : MlclassifyldaModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_model_mean(s : MlclassifyldaModel) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaModel::mean(self : MlclassifyldaModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_model_scale(s : MlclassifyldaModel, f : Double) -> MlclassifyldaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaModel::scale(self : MlclassifyldaModel, f : Double) -> MlclassifyldaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_model_add(a : MlclassifyldaModel, b : MlclassifyldaModel) -> MlclassifyldaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaModel::add(self : MlclassifyldaModel, other : MlclassifyldaModel) -> MlclassifyldaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_model_copy(s : MlclassifyldaModel) -> MlclassifyldaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaModel::copy(self : MlclassifyldaModel) -> MlclassifyldaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_model_fill(s : MlclassifyldaModel, v : Double) -> MlclassifyldaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaModel::fill(self : MlclassifyldaModel, v : Double) -> MlclassifyldaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_model_min(s : MlclassifyldaModel) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaModel::min(self : MlclassifyldaModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_model_max(s : MlclassifyldaModel) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaModel::max(self : MlclassifyldaModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_model_to_string(s : MlclassifyldaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaModel::to_string(self : MlclassifyldaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaLayer {
@@ -759,45 +759,45 @@ pub fn ml_classify_lda_layer_make(size : Int) -> MlclassifyldaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_layer_len(s : MlclassifyldaLayer) -> Int { s.size }
+pub fn MlclassifyldaLayer::len(self : MlclassifyldaLayer) -> Int { self.size }
 
-pub fn ml_classify_lda_layer_get(s : MlclassifyldaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaLayer::get(self : MlclassifyldaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_layer_set(s : MlclassifyldaLayer, i : Int, v : Double) -> MlclassifyldaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaLayer::set(self : MlclassifyldaLayer, i : Int, v : Double) -> MlclassifyldaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_layer_sum(s : MlclassifyldaLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaLayer::sum(self : MlclassifyldaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_layer_mean(s : MlclassifyldaLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaLayer::mean(self : MlclassifyldaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_layer_scale(s : MlclassifyldaLayer, f : Double) -> MlclassifyldaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaLayer::scale(self : MlclassifyldaLayer, f : Double) -> MlclassifyldaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_layer_add(a : MlclassifyldaLayer, b : MlclassifyldaLayer) -> MlclassifyldaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaLayer::add(self : MlclassifyldaLayer, other : MlclassifyldaLayer) -> MlclassifyldaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_layer_copy(s : MlclassifyldaLayer) -> MlclassifyldaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaLayer::copy(self : MlclassifyldaLayer) -> MlclassifyldaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_layer_fill(s : MlclassifyldaLayer, v : Double) -> MlclassifyldaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaLayer::fill(self : MlclassifyldaLayer, v : Double) -> MlclassifyldaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_layer_min(s : MlclassifyldaLayer) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaLayer::min(self : MlclassifyldaLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_layer_max(s : MlclassifyldaLayer) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaLayer::max(self : MlclassifyldaLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_layer_to_string(s : MlclassifyldaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaLayer::to_string(self : MlclassifyldaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaBuffer {
@@ -810,45 +810,45 @@ pub fn ml_classify_lda_buffer_make(size : Int) -> MlclassifyldaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_buffer_len(s : MlclassifyldaBuffer) -> Int { s.size }
+pub fn MlclassifyldaBuffer::len(self : MlclassifyldaBuffer) -> Int { self.size }
 
-pub fn ml_classify_lda_buffer_get(s : MlclassifyldaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaBuffer::get(self : MlclassifyldaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_buffer_set(s : MlclassifyldaBuffer, i : Int, v : Double) -> MlclassifyldaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaBuffer::set(self : MlclassifyldaBuffer, i : Int, v : Double) -> MlclassifyldaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_buffer_sum(s : MlclassifyldaBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaBuffer::sum(self : MlclassifyldaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_buffer_mean(s : MlclassifyldaBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaBuffer::mean(self : MlclassifyldaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_buffer_scale(s : MlclassifyldaBuffer, f : Double) -> MlclassifyldaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaBuffer::scale(self : MlclassifyldaBuffer, f : Double) -> MlclassifyldaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_buffer_add(a : MlclassifyldaBuffer, b : MlclassifyldaBuffer) -> MlclassifyldaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaBuffer::add(self : MlclassifyldaBuffer, other : MlclassifyldaBuffer) -> MlclassifyldaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_buffer_copy(s : MlclassifyldaBuffer) -> MlclassifyldaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaBuffer::copy(self : MlclassifyldaBuffer) -> MlclassifyldaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_buffer_fill(s : MlclassifyldaBuffer, v : Double) -> MlclassifyldaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaBuffer::fill(self : MlclassifyldaBuffer, v : Double) -> MlclassifyldaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_buffer_min(s : MlclassifyldaBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaBuffer::min(self : MlclassifyldaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_buffer_max(s : MlclassifyldaBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaBuffer::max(self : MlclassifyldaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_buffer_to_string(s : MlclassifyldaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaBuffer::to_string(self : MlclassifyldaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaCursor {
@@ -861,45 +861,45 @@ pub fn ml_classify_lda_cursor_make(size : Int) -> MlclassifyldaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_cursor_len(s : MlclassifyldaCursor) -> Int { s.size }
+pub fn MlclassifyldaCursor::len(self : MlclassifyldaCursor) -> Int { self.size }
 
-pub fn ml_classify_lda_cursor_get(s : MlclassifyldaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaCursor::get(self : MlclassifyldaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_cursor_set(s : MlclassifyldaCursor, i : Int, v : Double) -> MlclassifyldaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaCursor::set(self : MlclassifyldaCursor, i : Int, v : Double) -> MlclassifyldaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_cursor_sum(s : MlclassifyldaCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaCursor::sum(self : MlclassifyldaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_cursor_mean(s : MlclassifyldaCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaCursor::mean(self : MlclassifyldaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_cursor_scale(s : MlclassifyldaCursor, f : Double) -> MlclassifyldaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaCursor::scale(self : MlclassifyldaCursor, f : Double) -> MlclassifyldaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_cursor_add(a : MlclassifyldaCursor, b : MlclassifyldaCursor) -> MlclassifyldaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaCursor::add(self : MlclassifyldaCursor, other : MlclassifyldaCursor) -> MlclassifyldaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_cursor_copy(s : MlclassifyldaCursor) -> MlclassifyldaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaCursor::copy(self : MlclassifyldaCursor) -> MlclassifyldaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_cursor_fill(s : MlclassifyldaCursor, v : Double) -> MlclassifyldaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaCursor::fill(self : MlclassifyldaCursor, v : Double) -> MlclassifyldaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_cursor_min(s : MlclassifyldaCursor) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaCursor::min(self : MlclassifyldaCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_cursor_max(s : MlclassifyldaCursor) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaCursor::max(self : MlclassifyldaCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_cursor_to_string(s : MlclassifyldaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaCursor::to_string(self : MlclassifyldaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaView {
@@ -912,45 +912,45 @@ pub fn ml_classify_lda_view_make(size : Int) -> MlclassifyldaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_view_len(s : MlclassifyldaView) -> Int { s.size }
+pub fn MlclassifyldaView::len(self : MlclassifyldaView) -> Int { self.size }
 
-pub fn ml_classify_lda_view_get(s : MlclassifyldaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaView::get(self : MlclassifyldaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_view_set(s : MlclassifyldaView, i : Int, v : Double) -> MlclassifyldaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaView::set(self : MlclassifyldaView, i : Int, v : Double) -> MlclassifyldaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_view_sum(s : MlclassifyldaView) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaView::sum(self : MlclassifyldaView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_view_mean(s : MlclassifyldaView) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaView::mean(self : MlclassifyldaView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_view_scale(s : MlclassifyldaView, f : Double) -> MlclassifyldaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaView::scale(self : MlclassifyldaView, f : Double) -> MlclassifyldaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_view_add(a : MlclassifyldaView, b : MlclassifyldaView) -> MlclassifyldaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaView::add(self : MlclassifyldaView, other : MlclassifyldaView) -> MlclassifyldaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_view_copy(s : MlclassifyldaView) -> MlclassifyldaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaView::copy(self : MlclassifyldaView) -> MlclassifyldaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_view_fill(s : MlclassifyldaView, v : Double) -> MlclassifyldaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaView::fill(self : MlclassifyldaView, v : Double) -> MlclassifyldaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_view_min(s : MlclassifyldaView) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaView::min(self : MlclassifyldaView) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_view_max(s : MlclassifyldaView) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaView::max(self : MlclassifyldaView) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_view_to_string(s : MlclassifyldaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaView::to_string(self : MlclassifyldaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaRange {
@@ -963,45 +963,45 @@ pub fn ml_classify_lda_range_make(size : Int) -> MlclassifyldaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_range_len(s : MlclassifyldaRange) -> Int { s.size }
+pub fn MlclassifyldaRange::len(self : MlclassifyldaRange) -> Int { self.size }
 
-pub fn ml_classify_lda_range_get(s : MlclassifyldaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaRange::get(self : MlclassifyldaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_range_set(s : MlclassifyldaRange, i : Int, v : Double) -> MlclassifyldaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaRange::set(self : MlclassifyldaRange, i : Int, v : Double) -> MlclassifyldaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_range_sum(s : MlclassifyldaRange) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaRange::sum(self : MlclassifyldaRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_range_mean(s : MlclassifyldaRange) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaRange::mean(self : MlclassifyldaRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_range_scale(s : MlclassifyldaRange, f : Double) -> MlclassifyldaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaRange::scale(self : MlclassifyldaRange, f : Double) -> MlclassifyldaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_range_add(a : MlclassifyldaRange, b : MlclassifyldaRange) -> MlclassifyldaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaRange::add(self : MlclassifyldaRange, other : MlclassifyldaRange) -> MlclassifyldaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_range_copy(s : MlclassifyldaRange) -> MlclassifyldaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaRange::copy(self : MlclassifyldaRange) -> MlclassifyldaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_range_fill(s : MlclassifyldaRange, v : Double) -> MlclassifyldaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaRange::fill(self : MlclassifyldaRange, v : Double) -> MlclassifyldaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_range_min(s : MlclassifyldaRange) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaRange::min(self : MlclassifyldaRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_range_max(s : MlclassifyldaRange) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaRange::max(self : MlclassifyldaRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_range_to_string(s : MlclassifyldaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaRange::to_string(self : MlclassifyldaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyldaSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_classify_lda_slice_make(size : Int) -> MlclassifyldaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_lda_slice_len(s : MlclassifyldaSlice) -> Int { s.size }
+pub fn MlclassifyldaSlice::len(self : MlclassifyldaSlice) -> Int { self.size }
 
-pub fn ml_classify_lda_slice_get(s : MlclassifyldaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyldaSlice::get(self : MlclassifyldaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_lda_slice_set(s : MlclassifyldaSlice, i : Int, v : Double) -> MlclassifyldaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyldaSlice::set(self : MlclassifyldaSlice, i : Int, v : Double) -> MlclassifyldaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_slice_sum(s : MlclassifyldaSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyldaSlice::sum(self : MlclassifyldaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_lda_slice_mean(s : MlclassifyldaSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyldaSlice::mean(self : MlclassifyldaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_lda_slice_scale(s : MlclassifyldaSlice, f : Double) -> MlclassifyldaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyldaSlice::scale(self : MlclassifyldaSlice, f : Double) -> MlclassifyldaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_slice_add(a : MlclassifyldaSlice, b : MlclassifyldaSlice) -> MlclassifyldaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyldaSlice::add(self : MlclassifyldaSlice, other : MlclassifyldaSlice) -> MlclassifyldaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_lda_slice_copy(s : MlclassifyldaSlice) -> MlclassifyldaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyldaSlice::copy(self : MlclassifyldaSlice) -> MlclassifyldaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_slice_fill(s : MlclassifyldaSlice, v : Double) -> MlclassifyldaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyldaSlice::fill(self : MlclassifyldaSlice, v : Double) -> MlclassifyldaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_lda_slice_min(s : MlclassifyldaSlice) -> Double { @_common.min(s.data) }
+pub fn MlclassifyldaSlice::min(self : MlclassifyldaSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_lda_slice_max(s : MlclassifyldaSlice) -> Double { @_common.max(s.data) }
+pub fn MlclassifyldaSlice::max(self : MlclassifyldaSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_lda_slice_to_string(s : MlclassifyldaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyldaSlice::to_string(self : MlclassifyldaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

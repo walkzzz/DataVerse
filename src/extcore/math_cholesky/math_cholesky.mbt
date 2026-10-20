@@ -351,45 +351,45 @@ pub fn math_cholesky_frame_make(size : Int) -> MathcholeskyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_frame_len(s : MathcholeskyFrame) -> Int { s.size }
+pub fn MathcholeskyFrame::len(self : MathcholeskyFrame) -> Int { self.size }
 
-pub fn math_cholesky_frame_get(s : MathcholeskyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyFrame::get(self : MathcholeskyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_frame_set(s : MathcholeskyFrame, i : Int, v : Double) -> MathcholeskyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyFrame::set(self : MathcholeskyFrame, i : Int, v : Double) -> MathcholeskyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_frame_sum(s : MathcholeskyFrame) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyFrame::sum(self : MathcholeskyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_frame_mean(s : MathcholeskyFrame) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyFrame::mean(self : MathcholeskyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_frame_scale(s : MathcholeskyFrame, f : Double) -> MathcholeskyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyFrame::scale(self : MathcholeskyFrame, f : Double) -> MathcholeskyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_frame_add(a : MathcholeskyFrame, b : MathcholeskyFrame) -> MathcholeskyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyFrame::add(self : MathcholeskyFrame, other : MathcholeskyFrame) -> MathcholeskyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_frame_copy(s : MathcholeskyFrame) -> MathcholeskyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyFrame::copy(self : MathcholeskyFrame) -> MathcholeskyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_frame_fill(s : MathcholeskyFrame, v : Double) -> MathcholeskyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyFrame::fill(self : MathcholeskyFrame, v : Double) -> MathcholeskyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_frame_min(s : MathcholeskyFrame) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyFrame::min(self : MathcholeskyFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_frame_max(s : MathcholeskyFrame) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyFrame::max(self : MathcholeskyFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_frame_to_string(s : MathcholeskyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyFrame::to_string(self : MathcholeskyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskyTable {
@@ -402,45 +402,45 @@ pub fn math_cholesky_table_make(size : Int) -> MathcholeskyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_table_len(s : MathcholeskyTable) -> Int { s.size }
+pub fn MathcholeskyTable::len(self : MathcholeskyTable) -> Int { self.size }
 
-pub fn math_cholesky_table_get(s : MathcholeskyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyTable::get(self : MathcholeskyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_table_set(s : MathcholeskyTable, i : Int, v : Double) -> MathcholeskyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyTable::set(self : MathcholeskyTable, i : Int, v : Double) -> MathcholeskyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_table_sum(s : MathcholeskyTable) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyTable::sum(self : MathcholeskyTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_table_mean(s : MathcholeskyTable) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyTable::mean(self : MathcholeskyTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_table_scale(s : MathcholeskyTable, f : Double) -> MathcholeskyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyTable::scale(self : MathcholeskyTable, f : Double) -> MathcholeskyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_table_add(a : MathcholeskyTable, b : MathcholeskyTable) -> MathcholeskyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyTable::add(self : MathcholeskyTable, other : MathcholeskyTable) -> MathcholeskyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_table_copy(s : MathcholeskyTable) -> MathcholeskyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyTable::copy(self : MathcholeskyTable) -> MathcholeskyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_table_fill(s : MathcholeskyTable, v : Double) -> MathcholeskyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyTable::fill(self : MathcholeskyTable, v : Double) -> MathcholeskyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_table_min(s : MathcholeskyTable) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyTable::min(self : MathcholeskyTable) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_table_max(s : MathcholeskyTable) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyTable::max(self : MathcholeskyTable) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_table_to_string(s : MathcholeskyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyTable::to_string(self : MathcholeskyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskyGraphN {
@@ -453,45 +453,45 @@ pub fn math_cholesky_graphn_make(size : Int) -> MathcholeskyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_graphn_len(s : MathcholeskyGraphN) -> Int { s.size }
+pub fn MathcholeskyGraphN::len(self : MathcholeskyGraphN) -> Int { self.size }
 
-pub fn math_cholesky_graphn_get(s : MathcholeskyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyGraphN::get(self : MathcholeskyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_graphn_set(s : MathcholeskyGraphN, i : Int, v : Double) -> MathcholeskyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyGraphN::set(self : MathcholeskyGraphN, i : Int, v : Double) -> MathcholeskyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_graphn_sum(s : MathcholeskyGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyGraphN::sum(self : MathcholeskyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_graphn_mean(s : MathcholeskyGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyGraphN::mean(self : MathcholeskyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_graphn_scale(s : MathcholeskyGraphN, f : Double) -> MathcholeskyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyGraphN::scale(self : MathcholeskyGraphN, f : Double) -> MathcholeskyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_graphn_add(a : MathcholeskyGraphN, b : MathcholeskyGraphN) -> MathcholeskyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyGraphN::add(self : MathcholeskyGraphN, other : MathcholeskyGraphN) -> MathcholeskyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_graphn_copy(s : MathcholeskyGraphN) -> MathcholeskyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyGraphN::copy(self : MathcholeskyGraphN) -> MathcholeskyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_graphn_fill(s : MathcholeskyGraphN, v : Double) -> MathcholeskyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyGraphN::fill(self : MathcholeskyGraphN, v : Double) -> MathcholeskyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_graphn_min(s : MathcholeskyGraphN) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyGraphN::min(self : MathcholeskyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_graphn_max(s : MathcholeskyGraphN) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyGraphN::max(self : MathcholeskyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_graphn_to_string(s : MathcholeskyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyGraphN::to_string(self : MathcholeskyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskyNode {
@@ -504,45 +504,45 @@ pub fn math_cholesky_node_make(size : Int) -> MathcholeskyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_node_len(s : MathcholeskyNode) -> Int { s.size }
+pub fn MathcholeskyNode::len(self : MathcholeskyNode) -> Int { self.size }
 
-pub fn math_cholesky_node_get(s : MathcholeskyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyNode::get(self : MathcholeskyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_node_set(s : MathcholeskyNode, i : Int, v : Double) -> MathcholeskyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyNode::set(self : MathcholeskyNode, i : Int, v : Double) -> MathcholeskyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_node_sum(s : MathcholeskyNode) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyNode::sum(self : MathcholeskyNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_node_mean(s : MathcholeskyNode) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyNode::mean(self : MathcholeskyNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_node_scale(s : MathcholeskyNode, f : Double) -> MathcholeskyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyNode::scale(self : MathcholeskyNode, f : Double) -> MathcholeskyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_node_add(a : MathcholeskyNode, b : MathcholeskyNode) -> MathcholeskyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyNode::add(self : MathcholeskyNode, other : MathcholeskyNode) -> MathcholeskyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_node_copy(s : MathcholeskyNode) -> MathcholeskyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyNode::copy(self : MathcholeskyNode) -> MathcholeskyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_node_fill(s : MathcholeskyNode, v : Double) -> MathcholeskyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyNode::fill(self : MathcholeskyNode, v : Double) -> MathcholeskyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_node_min(s : MathcholeskyNode) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyNode::min(self : MathcholeskyNode) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_node_max(s : MathcholeskyNode) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyNode::max(self : MathcholeskyNode) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_node_to_string(s : MathcholeskyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyNode::to_string(self : MathcholeskyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskyEdge {
@@ -555,45 +555,45 @@ pub fn math_cholesky_edge_make(size : Int) -> MathcholeskyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_edge_len(s : MathcholeskyEdge) -> Int { s.size }
+pub fn MathcholeskyEdge::len(self : MathcholeskyEdge) -> Int { self.size }
 
-pub fn math_cholesky_edge_get(s : MathcholeskyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyEdge::get(self : MathcholeskyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_edge_set(s : MathcholeskyEdge, i : Int, v : Double) -> MathcholeskyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyEdge::set(self : MathcholeskyEdge, i : Int, v : Double) -> MathcholeskyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_edge_sum(s : MathcholeskyEdge) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyEdge::sum(self : MathcholeskyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_edge_mean(s : MathcholeskyEdge) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyEdge::mean(self : MathcholeskyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_edge_scale(s : MathcholeskyEdge, f : Double) -> MathcholeskyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyEdge::scale(self : MathcholeskyEdge, f : Double) -> MathcholeskyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_edge_add(a : MathcholeskyEdge, b : MathcholeskyEdge) -> MathcholeskyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyEdge::add(self : MathcholeskyEdge, other : MathcholeskyEdge) -> MathcholeskyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_edge_copy(s : MathcholeskyEdge) -> MathcholeskyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyEdge::copy(self : MathcholeskyEdge) -> MathcholeskyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_edge_fill(s : MathcholeskyEdge, v : Double) -> MathcholeskyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyEdge::fill(self : MathcholeskyEdge, v : Double) -> MathcholeskyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_edge_min(s : MathcholeskyEdge) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyEdge::min(self : MathcholeskyEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_edge_max(s : MathcholeskyEdge) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyEdge::max(self : MathcholeskyEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_edge_to_string(s : MathcholeskyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyEdge::to_string(self : MathcholeskyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskyPath {
@@ -606,45 +606,45 @@ pub fn math_cholesky_path_make(size : Int) -> MathcholeskyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_path_len(s : MathcholeskyPath) -> Int { s.size }
+pub fn MathcholeskyPath::len(self : MathcholeskyPath) -> Int { self.size }
 
-pub fn math_cholesky_path_get(s : MathcholeskyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyPath::get(self : MathcholeskyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_path_set(s : MathcholeskyPath, i : Int, v : Double) -> MathcholeskyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyPath::set(self : MathcholeskyPath, i : Int, v : Double) -> MathcholeskyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_path_sum(s : MathcholeskyPath) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyPath::sum(self : MathcholeskyPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_path_mean(s : MathcholeskyPath) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyPath::mean(self : MathcholeskyPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_path_scale(s : MathcholeskyPath, f : Double) -> MathcholeskyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyPath::scale(self : MathcholeskyPath, f : Double) -> MathcholeskyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_path_add(a : MathcholeskyPath, b : MathcholeskyPath) -> MathcholeskyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyPath::add(self : MathcholeskyPath, other : MathcholeskyPath) -> MathcholeskyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_path_copy(s : MathcholeskyPath) -> MathcholeskyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyPath::copy(self : MathcholeskyPath) -> MathcholeskyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_path_fill(s : MathcholeskyPath, v : Double) -> MathcholeskyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyPath::fill(self : MathcholeskyPath, v : Double) -> MathcholeskyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_path_min(s : MathcholeskyPath) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyPath::min(self : MathcholeskyPath) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_path_max(s : MathcholeskyPath) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyPath::max(self : MathcholeskyPath) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_path_to_string(s : MathcholeskyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyPath::to_string(self : MathcholeskyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskyCluster {
@@ -657,45 +657,45 @@ pub fn math_cholesky_cluster_make(size : Int) -> MathcholeskyCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_cluster_len(s : MathcholeskyCluster) -> Int { s.size }
+pub fn MathcholeskyCluster::len(self : MathcholeskyCluster) -> Int { self.size }
 
-pub fn math_cholesky_cluster_get(s : MathcholeskyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyCluster::get(self : MathcholeskyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_cluster_set(s : MathcholeskyCluster, i : Int, v : Double) -> MathcholeskyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyCluster::set(self : MathcholeskyCluster, i : Int, v : Double) -> MathcholeskyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_cluster_sum(s : MathcholeskyCluster) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyCluster::sum(self : MathcholeskyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_cluster_mean(s : MathcholeskyCluster) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyCluster::mean(self : MathcholeskyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_cluster_scale(s : MathcholeskyCluster, f : Double) -> MathcholeskyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyCluster::scale(self : MathcholeskyCluster, f : Double) -> MathcholeskyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_cluster_add(a : MathcholeskyCluster, b : MathcholeskyCluster) -> MathcholeskyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyCluster::add(self : MathcholeskyCluster, other : MathcholeskyCluster) -> MathcholeskyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_cluster_copy(s : MathcholeskyCluster) -> MathcholeskyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyCluster::copy(self : MathcholeskyCluster) -> MathcholeskyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_cluster_fill(s : MathcholeskyCluster, v : Double) -> MathcholeskyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyCluster::fill(self : MathcholeskyCluster, v : Double) -> MathcholeskyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_cluster_min(s : MathcholeskyCluster) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyCluster::min(self : MathcholeskyCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_cluster_max(s : MathcholeskyCluster) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyCluster::max(self : MathcholeskyCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_cluster_to_string(s : MathcholeskyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyCluster::to_string(self : MathcholeskyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskyModel {
@@ -708,45 +708,45 @@ pub fn math_cholesky_model_make(size : Int) -> MathcholeskyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_model_len(s : MathcholeskyModel) -> Int { s.size }
+pub fn MathcholeskyModel::len(self : MathcholeskyModel) -> Int { self.size }
 
-pub fn math_cholesky_model_get(s : MathcholeskyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyModel::get(self : MathcholeskyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_model_set(s : MathcholeskyModel, i : Int, v : Double) -> MathcholeskyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyModel::set(self : MathcholeskyModel, i : Int, v : Double) -> MathcholeskyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_model_sum(s : MathcholeskyModel) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyModel::sum(self : MathcholeskyModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_model_mean(s : MathcholeskyModel) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyModel::mean(self : MathcholeskyModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_model_scale(s : MathcholeskyModel, f : Double) -> MathcholeskyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyModel::scale(self : MathcholeskyModel, f : Double) -> MathcholeskyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_model_add(a : MathcholeskyModel, b : MathcholeskyModel) -> MathcholeskyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyModel::add(self : MathcholeskyModel, other : MathcholeskyModel) -> MathcholeskyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_model_copy(s : MathcholeskyModel) -> MathcholeskyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyModel::copy(self : MathcholeskyModel) -> MathcholeskyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_model_fill(s : MathcholeskyModel, v : Double) -> MathcholeskyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyModel::fill(self : MathcholeskyModel, v : Double) -> MathcholeskyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_model_min(s : MathcholeskyModel) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyModel::min(self : MathcholeskyModel) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_model_max(s : MathcholeskyModel) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyModel::max(self : MathcholeskyModel) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_model_to_string(s : MathcholeskyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyModel::to_string(self : MathcholeskyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskyLayer {
@@ -759,45 +759,45 @@ pub fn math_cholesky_layer_make(size : Int) -> MathcholeskyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_layer_len(s : MathcholeskyLayer) -> Int { s.size }
+pub fn MathcholeskyLayer::len(self : MathcholeskyLayer) -> Int { self.size }
 
-pub fn math_cholesky_layer_get(s : MathcholeskyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyLayer::get(self : MathcholeskyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_layer_set(s : MathcholeskyLayer, i : Int, v : Double) -> MathcholeskyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyLayer::set(self : MathcholeskyLayer, i : Int, v : Double) -> MathcholeskyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_layer_sum(s : MathcholeskyLayer) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyLayer::sum(self : MathcholeskyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_layer_mean(s : MathcholeskyLayer) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyLayer::mean(self : MathcholeskyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_layer_scale(s : MathcholeskyLayer, f : Double) -> MathcholeskyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyLayer::scale(self : MathcholeskyLayer, f : Double) -> MathcholeskyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_layer_add(a : MathcholeskyLayer, b : MathcholeskyLayer) -> MathcholeskyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyLayer::add(self : MathcholeskyLayer, other : MathcholeskyLayer) -> MathcholeskyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_layer_copy(s : MathcholeskyLayer) -> MathcholeskyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyLayer::copy(self : MathcholeskyLayer) -> MathcholeskyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_layer_fill(s : MathcholeskyLayer, v : Double) -> MathcholeskyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyLayer::fill(self : MathcholeskyLayer, v : Double) -> MathcholeskyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_layer_min(s : MathcholeskyLayer) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyLayer::min(self : MathcholeskyLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_layer_max(s : MathcholeskyLayer) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyLayer::max(self : MathcholeskyLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_layer_to_string(s : MathcholeskyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyLayer::to_string(self : MathcholeskyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskyBuffer {
@@ -810,45 +810,45 @@ pub fn math_cholesky_buffer_make(size : Int) -> MathcholeskyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_buffer_len(s : MathcholeskyBuffer) -> Int { s.size }
+pub fn MathcholeskyBuffer::len(self : MathcholeskyBuffer) -> Int { self.size }
 
-pub fn math_cholesky_buffer_get(s : MathcholeskyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyBuffer::get(self : MathcholeskyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_buffer_set(s : MathcholeskyBuffer, i : Int, v : Double) -> MathcholeskyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyBuffer::set(self : MathcholeskyBuffer, i : Int, v : Double) -> MathcholeskyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_buffer_sum(s : MathcholeskyBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyBuffer::sum(self : MathcholeskyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_buffer_mean(s : MathcholeskyBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyBuffer::mean(self : MathcholeskyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_buffer_scale(s : MathcholeskyBuffer, f : Double) -> MathcholeskyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyBuffer::scale(self : MathcholeskyBuffer, f : Double) -> MathcholeskyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_buffer_add(a : MathcholeskyBuffer, b : MathcholeskyBuffer) -> MathcholeskyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyBuffer::add(self : MathcholeskyBuffer, other : MathcholeskyBuffer) -> MathcholeskyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_buffer_copy(s : MathcholeskyBuffer) -> MathcholeskyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyBuffer::copy(self : MathcholeskyBuffer) -> MathcholeskyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_buffer_fill(s : MathcholeskyBuffer, v : Double) -> MathcholeskyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyBuffer::fill(self : MathcholeskyBuffer, v : Double) -> MathcholeskyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_buffer_min(s : MathcholeskyBuffer) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyBuffer::min(self : MathcholeskyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_buffer_max(s : MathcholeskyBuffer) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyBuffer::max(self : MathcholeskyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_buffer_to_string(s : MathcholeskyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyBuffer::to_string(self : MathcholeskyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskyCursor {
@@ -861,45 +861,45 @@ pub fn math_cholesky_cursor_make(size : Int) -> MathcholeskyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_cursor_len(s : MathcholeskyCursor) -> Int { s.size }
+pub fn MathcholeskyCursor::len(self : MathcholeskyCursor) -> Int { self.size }
 
-pub fn math_cholesky_cursor_get(s : MathcholeskyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyCursor::get(self : MathcholeskyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_cursor_set(s : MathcholeskyCursor, i : Int, v : Double) -> MathcholeskyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyCursor::set(self : MathcholeskyCursor, i : Int, v : Double) -> MathcholeskyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_cursor_sum(s : MathcholeskyCursor) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyCursor::sum(self : MathcholeskyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_cursor_mean(s : MathcholeskyCursor) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyCursor::mean(self : MathcholeskyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_cursor_scale(s : MathcholeskyCursor, f : Double) -> MathcholeskyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyCursor::scale(self : MathcholeskyCursor, f : Double) -> MathcholeskyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_cursor_add(a : MathcholeskyCursor, b : MathcholeskyCursor) -> MathcholeskyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyCursor::add(self : MathcholeskyCursor, other : MathcholeskyCursor) -> MathcholeskyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_cursor_copy(s : MathcholeskyCursor) -> MathcholeskyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyCursor::copy(self : MathcholeskyCursor) -> MathcholeskyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_cursor_fill(s : MathcholeskyCursor, v : Double) -> MathcholeskyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyCursor::fill(self : MathcholeskyCursor, v : Double) -> MathcholeskyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_cursor_min(s : MathcholeskyCursor) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyCursor::min(self : MathcholeskyCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_cursor_max(s : MathcholeskyCursor) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyCursor::max(self : MathcholeskyCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_cursor_to_string(s : MathcholeskyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyCursor::to_string(self : MathcholeskyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskyView {
@@ -912,45 +912,45 @@ pub fn math_cholesky_view_make(size : Int) -> MathcholeskyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_view_len(s : MathcholeskyView) -> Int { s.size }
+pub fn MathcholeskyView::len(self : MathcholeskyView) -> Int { self.size }
 
-pub fn math_cholesky_view_get(s : MathcholeskyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyView::get(self : MathcholeskyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_view_set(s : MathcholeskyView, i : Int, v : Double) -> MathcholeskyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyView::set(self : MathcholeskyView, i : Int, v : Double) -> MathcholeskyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_view_sum(s : MathcholeskyView) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyView::sum(self : MathcholeskyView) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_view_mean(s : MathcholeskyView) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyView::mean(self : MathcholeskyView) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_view_scale(s : MathcholeskyView, f : Double) -> MathcholeskyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyView::scale(self : MathcholeskyView, f : Double) -> MathcholeskyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_view_add(a : MathcholeskyView, b : MathcholeskyView) -> MathcholeskyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyView::add(self : MathcholeskyView, other : MathcholeskyView) -> MathcholeskyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_view_copy(s : MathcholeskyView) -> MathcholeskyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyView::copy(self : MathcholeskyView) -> MathcholeskyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_view_fill(s : MathcholeskyView, v : Double) -> MathcholeskyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyView::fill(self : MathcholeskyView, v : Double) -> MathcholeskyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_view_min(s : MathcholeskyView) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyView::min(self : MathcholeskyView) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_view_max(s : MathcholeskyView) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyView::max(self : MathcholeskyView) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_view_to_string(s : MathcholeskyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyView::to_string(self : MathcholeskyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskyRange {
@@ -963,45 +963,45 @@ pub fn math_cholesky_range_make(size : Int) -> MathcholeskyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_range_len(s : MathcholeskyRange) -> Int { s.size }
+pub fn MathcholeskyRange::len(self : MathcholeskyRange) -> Int { self.size }
 
-pub fn math_cholesky_range_get(s : MathcholeskyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskyRange::get(self : MathcholeskyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_range_set(s : MathcholeskyRange, i : Int, v : Double) -> MathcholeskyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskyRange::set(self : MathcholeskyRange, i : Int, v : Double) -> MathcholeskyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_range_sum(s : MathcholeskyRange) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskyRange::sum(self : MathcholeskyRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_range_mean(s : MathcholeskyRange) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskyRange::mean(self : MathcholeskyRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_range_scale(s : MathcholeskyRange, f : Double) -> MathcholeskyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskyRange::scale(self : MathcholeskyRange, f : Double) -> MathcholeskyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_range_add(a : MathcholeskyRange, b : MathcholeskyRange) -> MathcholeskyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskyRange::add(self : MathcholeskyRange, other : MathcholeskyRange) -> MathcholeskyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_range_copy(s : MathcholeskyRange) -> MathcholeskyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskyRange::copy(self : MathcholeskyRange) -> MathcholeskyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_range_fill(s : MathcholeskyRange, v : Double) -> MathcholeskyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskyRange::fill(self : MathcholeskyRange, v : Double) -> MathcholeskyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_range_min(s : MathcholeskyRange) -> Double { @_common.min(s.data) }
+pub fn MathcholeskyRange::min(self : MathcholeskyRange) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_range_max(s : MathcholeskyRange) -> Double { @_common.max(s.data) }
+pub fn MathcholeskyRange::max(self : MathcholeskyRange) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_range_to_string(s : MathcholeskyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskyRange::to_string(self : MathcholeskyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathcholeskySlice {
@@ -1014,44 +1014,44 @@ pub fn math_cholesky_slice_make(size : Int) -> MathcholeskySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_cholesky_slice_len(s : MathcholeskySlice) -> Int { s.size }
+pub fn MathcholeskySlice::len(self : MathcholeskySlice) -> Int { self.size }
 
-pub fn math_cholesky_slice_get(s : MathcholeskySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathcholeskySlice::get(self : MathcholeskySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_cholesky_slice_set(s : MathcholeskySlice, i : Int, v : Double) -> MathcholeskySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathcholeskySlice::set(self : MathcholeskySlice, i : Int, v : Double) -> MathcholeskySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_slice_sum(s : MathcholeskySlice) -> Double { @_common.sum(s.data) }
+pub fn MathcholeskySlice::sum(self : MathcholeskySlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_cholesky_slice_mean(s : MathcholeskySlice) -> Double { @_common.mean(s.data) }
+pub fn MathcholeskySlice::mean(self : MathcholeskySlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_cholesky_slice_scale(s : MathcholeskySlice, f : Double) -> MathcholeskySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathcholeskySlice::scale(self : MathcholeskySlice, f : Double) -> MathcholeskySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_slice_add(a : MathcholeskySlice, b : MathcholeskySlice) -> MathcholeskySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathcholeskySlice::add(self : MathcholeskySlice, other : MathcholeskySlice) -> MathcholeskySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_cholesky_slice_copy(s : MathcholeskySlice) -> MathcholeskySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathcholeskySlice::copy(self : MathcholeskySlice) -> MathcholeskySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_slice_fill(s : MathcholeskySlice, v : Double) -> MathcholeskySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathcholeskySlice::fill(self : MathcholeskySlice, v : Double) -> MathcholeskySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_cholesky_slice_min(s : MathcholeskySlice) -> Double { @_common.min(s.data) }
+pub fn MathcholeskySlice::min(self : MathcholeskySlice) -> Double { @_common.min(self.data) }
 
-pub fn math_cholesky_slice_max(s : MathcholeskySlice) -> Double { @_common.max(s.data) }
+pub fn MathcholeskySlice::max(self : MathcholeskySlice) -> Double { @_common.max(self.data) }
 
-pub fn math_cholesky_slice_to_string(s : MathcholeskySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathcholeskySlice::to_string(self : MathcholeskySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

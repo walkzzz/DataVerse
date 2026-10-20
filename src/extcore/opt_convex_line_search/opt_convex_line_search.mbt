@@ -351,45 +351,45 @@ pub fn opt_convex_line_search_frame_make(size : Int) -> OptconvexlinesearchFrame
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_frame_len(s : OptconvexlinesearchFrame) -> Int { s.size }
+pub fn OptconvexlinesearchFrame::len(self : OptconvexlinesearchFrame) -> Int { self.size }
 
-pub fn opt_convex_line_search_frame_get(s : OptconvexlinesearchFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchFrame::get(self : OptconvexlinesearchFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_frame_set(s : OptconvexlinesearchFrame, i : Int, v : Double) -> OptconvexlinesearchFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchFrame::set(self : OptconvexlinesearchFrame, i : Int, v : Double) -> OptconvexlinesearchFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_frame_sum(s : OptconvexlinesearchFrame) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchFrame::sum(self : OptconvexlinesearchFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_frame_mean(s : OptconvexlinesearchFrame) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchFrame::mean(self : OptconvexlinesearchFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_frame_scale(s : OptconvexlinesearchFrame, f : Double) -> OptconvexlinesearchFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchFrame::scale(self : OptconvexlinesearchFrame, f : Double) -> OptconvexlinesearchFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_frame_add(a : OptconvexlinesearchFrame, b : OptconvexlinesearchFrame) -> OptconvexlinesearchFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchFrame::add(self : OptconvexlinesearchFrame, other : OptconvexlinesearchFrame) -> OptconvexlinesearchFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_frame_copy(s : OptconvexlinesearchFrame) -> OptconvexlinesearchFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchFrame::copy(self : OptconvexlinesearchFrame) -> OptconvexlinesearchFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_frame_fill(s : OptconvexlinesearchFrame, v : Double) -> OptconvexlinesearchFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchFrame::fill(self : OptconvexlinesearchFrame, v : Double) -> OptconvexlinesearchFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_frame_min(s : OptconvexlinesearchFrame) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchFrame::min(self : OptconvexlinesearchFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_frame_max(s : OptconvexlinesearchFrame) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchFrame::max(self : OptconvexlinesearchFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_frame_to_string(s : OptconvexlinesearchFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchFrame::to_string(self : OptconvexlinesearchFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchTable {
@@ -402,45 +402,45 @@ pub fn opt_convex_line_search_table_make(size : Int) -> OptconvexlinesearchTable
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_table_len(s : OptconvexlinesearchTable) -> Int { s.size }
+pub fn OptconvexlinesearchTable::len(self : OptconvexlinesearchTable) -> Int { self.size }
 
-pub fn opt_convex_line_search_table_get(s : OptconvexlinesearchTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchTable::get(self : OptconvexlinesearchTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_table_set(s : OptconvexlinesearchTable, i : Int, v : Double) -> OptconvexlinesearchTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchTable::set(self : OptconvexlinesearchTable, i : Int, v : Double) -> OptconvexlinesearchTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_table_sum(s : OptconvexlinesearchTable) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchTable::sum(self : OptconvexlinesearchTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_table_mean(s : OptconvexlinesearchTable) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchTable::mean(self : OptconvexlinesearchTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_table_scale(s : OptconvexlinesearchTable, f : Double) -> OptconvexlinesearchTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchTable::scale(self : OptconvexlinesearchTable, f : Double) -> OptconvexlinesearchTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_table_add(a : OptconvexlinesearchTable, b : OptconvexlinesearchTable) -> OptconvexlinesearchTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchTable::add(self : OptconvexlinesearchTable, other : OptconvexlinesearchTable) -> OptconvexlinesearchTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_table_copy(s : OptconvexlinesearchTable) -> OptconvexlinesearchTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchTable::copy(self : OptconvexlinesearchTable) -> OptconvexlinesearchTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_table_fill(s : OptconvexlinesearchTable, v : Double) -> OptconvexlinesearchTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchTable::fill(self : OptconvexlinesearchTable, v : Double) -> OptconvexlinesearchTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_table_min(s : OptconvexlinesearchTable) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchTable::min(self : OptconvexlinesearchTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_table_max(s : OptconvexlinesearchTable) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchTable::max(self : OptconvexlinesearchTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_table_to_string(s : OptconvexlinesearchTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchTable::to_string(self : OptconvexlinesearchTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchGraphN {
@@ -453,45 +453,45 @@ pub fn opt_convex_line_search_graphn_make(size : Int) -> OptconvexlinesearchGrap
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_graphn_len(s : OptconvexlinesearchGraphN) -> Int { s.size }
+pub fn OptconvexlinesearchGraphN::len(self : OptconvexlinesearchGraphN) -> Int { self.size }
 
-pub fn opt_convex_line_search_graphn_get(s : OptconvexlinesearchGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchGraphN::get(self : OptconvexlinesearchGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_graphn_set(s : OptconvexlinesearchGraphN, i : Int, v : Double) -> OptconvexlinesearchGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchGraphN::set(self : OptconvexlinesearchGraphN, i : Int, v : Double) -> OptconvexlinesearchGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_graphn_sum(s : OptconvexlinesearchGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchGraphN::sum(self : OptconvexlinesearchGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_graphn_mean(s : OptconvexlinesearchGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchGraphN::mean(self : OptconvexlinesearchGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_graphn_scale(s : OptconvexlinesearchGraphN, f : Double) -> OptconvexlinesearchGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchGraphN::scale(self : OptconvexlinesearchGraphN, f : Double) -> OptconvexlinesearchGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_graphn_add(a : OptconvexlinesearchGraphN, b : OptconvexlinesearchGraphN) -> OptconvexlinesearchGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchGraphN::add(self : OptconvexlinesearchGraphN, other : OptconvexlinesearchGraphN) -> OptconvexlinesearchGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_graphn_copy(s : OptconvexlinesearchGraphN) -> OptconvexlinesearchGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchGraphN::copy(self : OptconvexlinesearchGraphN) -> OptconvexlinesearchGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_graphn_fill(s : OptconvexlinesearchGraphN, v : Double) -> OptconvexlinesearchGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchGraphN::fill(self : OptconvexlinesearchGraphN, v : Double) -> OptconvexlinesearchGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_graphn_min(s : OptconvexlinesearchGraphN) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchGraphN::min(self : OptconvexlinesearchGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_graphn_max(s : OptconvexlinesearchGraphN) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchGraphN::max(self : OptconvexlinesearchGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_graphn_to_string(s : OptconvexlinesearchGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchGraphN::to_string(self : OptconvexlinesearchGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchNode {
@@ -504,45 +504,45 @@ pub fn opt_convex_line_search_node_make(size : Int) -> OptconvexlinesearchNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_node_len(s : OptconvexlinesearchNode) -> Int { s.size }
+pub fn OptconvexlinesearchNode::len(self : OptconvexlinesearchNode) -> Int { self.size }
 
-pub fn opt_convex_line_search_node_get(s : OptconvexlinesearchNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchNode::get(self : OptconvexlinesearchNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_node_set(s : OptconvexlinesearchNode, i : Int, v : Double) -> OptconvexlinesearchNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchNode::set(self : OptconvexlinesearchNode, i : Int, v : Double) -> OptconvexlinesearchNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_node_sum(s : OptconvexlinesearchNode) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchNode::sum(self : OptconvexlinesearchNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_node_mean(s : OptconvexlinesearchNode) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchNode::mean(self : OptconvexlinesearchNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_node_scale(s : OptconvexlinesearchNode, f : Double) -> OptconvexlinesearchNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchNode::scale(self : OptconvexlinesearchNode, f : Double) -> OptconvexlinesearchNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_node_add(a : OptconvexlinesearchNode, b : OptconvexlinesearchNode) -> OptconvexlinesearchNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchNode::add(self : OptconvexlinesearchNode, other : OptconvexlinesearchNode) -> OptconvexlinesearchNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_node_copy(s : OptconvexlinesearchNode) -> OptconvexlinesearchNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchNode::copy(self : OptconvexlinesearchNode) -> OptconvexlinesearchNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_node_fill(s : OptconvexlinesearchNode, v : Double) -> OptconvexlinesearchNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchNode::fill(self : OptconvexlinesearchNode, v : Double) -> OptconvexlinesearchNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_node_min(s : OptconvexlinesearchNode) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchNode::min(self : OptconvexlinesearchNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_node_max(s : OptconvexlinesearchNode) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchNode::max(self : OptconvexlinesearchNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_node_to_string(s : OptconvexlinesearchNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchNode::to_string(self : OptconvexlinesearchNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchEdge {
@@ -555,45 +555,45 @@ pub fn opt_convex_line_search_edge_make(size : Int) -> OptconvexlinesearchEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_edge_len(s : OptconvexlinesearchEdge) -> Int { s.size }
+pub fn OptconvexlinesearchEdge::len(self : OptconvexlinesearchEdge) -> Int { self.size }
 
-pub fn opt_convex_line_search_edge_get(s : OptconvexlinesearchEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchEdge::get(self : OptconvexlinesearchEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_edge_set(s : OptconvexlinesearchEdge, i : Int, v : Double) -> OptconvexlinesearchEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchEdge::set(self : OptconvexlinesearchEdge, i : Int, v : Double) -> OptconvexlinesearchEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_edge_sum(s : OptconvexlinesearchEdge) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchEdge::sum(self : OptconvexlinesearchEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_edge_mean(s : OptconvexlinesearchEdge) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchEdge::mean(self : OptconvexlinesearchEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_edge_scale(s : OptconvexlinesearchEdge, f : Double) -> OptconvexlinesearchEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchEdge::scale(self : OptconvexlinesearchEdge, f : Double) -> OptconvexlinesearchEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_edge_add(a : OptconvexlinesearchEdge, b : OptconvexlinesearchEdge) -> OptconvexlinesearchEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchEdge::add(self : OptconvexlinesearchEdge, other : OptconvexlinesearchEdge) -> OptconvexlinesearchEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_edge_copy(s : OptconvexlinesearchEdge) -> OptconvexlinesearchEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchEdge::copy(self : OptconvexlinesearchEdge) -> OptconvexlinesearchEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_edge_fill(s : OptconvexlinesearchEdge, v : Double) -> OptconvexlinesearchEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchEdge::fill(self : OptconvexlinesearchEdge, v : Double) -> OptconvexlinesearchEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_edge_min(s : OptconvexlinesearchEdge) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchEdge::min(self : OptconvexlinesearchEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_edge_max(s : OptconvexlinesearchEdge) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchEdge::max(self : OptconvexlinesearchEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_edge_to_string(s : OptconvexlinesearchEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchEdge::to_string(self : OptconvexlinesearchEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchPath {
@@ -606,45 +606,45 @@ pub fn opt_convex_line_search_path_make(size : Int) -> OptconvexlinesearchPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_path_len(s : OptconvexlinesearchPath) -> Int { s.size }
+pub fn OptconvexlinesearchPath::len(self : OptconvexlinesearchPath) -> Int { self.size }
 
-pub fn opt_convex_line_search_path_get(s : OptconvexlinesearchPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchPath::get(self : OptconvexlinesearchPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_path_set(s : OptconvexlinesearchPath, i : Int, v : Double) -> OptconvexlinesearchPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchPath::set(self : OptconvexlinesearchPath, i : Int, v : Double) -> OptconvexlinesearchPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_path_sum(s : OptconvexlinesearchPath) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchPath::sum(self : OptconvexlinesearchPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_path_mean(s : OptconvexlinesearchPath) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchPath::mean(self : OptconvexlinesearchPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_path_scale(s : OptconvexlinesearchPath, f : Double) -> OptconvexlinesearchPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchPath::scale(self : OptconvexlinesearchPath, f : Double) -> OptconvexlinesearchPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_path_add(a : OptconvexlinesearchPath, b : OptconvexlinesearchPath) -> OptconvexlinesearchPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchPath::add(self : OptconvexlinesearchPath, other : OptconvexlinesearchPath) -> OptconvexlinesearchPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_path_copy(s : OptconvexlinesearchPath) -> OptconvexlinesearchPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchPath::copy(self : OptconvexlinesearchPath) -> OptconvexlinesearchPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_path_fill(s : OptconvexlinesearchPath, v : Double) -> OptconvexlinesearchPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchPath::fill(self : OptconvexlinesearchPath, v : Double) -> OptconvexlinesearchPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_path_min(s : OptconvexlinesearchPath) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchPath::min(self : OptconvexlinesearchPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_path_max(s : OptconvexlinesearchPath) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchPath::max(self : OptconvexlinesearchPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_path_to_string(s : OptconvexlinesearchPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchPath::to_string(self : OptconvexlinesearchPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchCluster {
@@ -657,45 +657,45 @@ pub fn opt_convex_line_search_cluster_make(size : Int) -> OptconvexlinesearchClu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_cluster_len(s : OptconvexlinesearchCluster) -> Int { s.size }
+pub fn OptconvexlinesearchCluster::len(self : OptconvexlinesearchCluster) -> Int { self.size }
 
-pub fn opt_convex_line_search_cluster_get(s : OptconvexlinesearchCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchCluster::get(self : OptconvexlinesearchCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_cluster_set(s : OptconvexlinesearchCluster, i : Int, v : Double) -> OptconvexlinesearchCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchCluster::set(self : OptconvexlinesearchCluster, i : Int, v : Double) -> OptconvexlinesearchCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_cluster_sum(s : OptconvexlinesearchCluster) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchCluster::sum(self : OptconvexlinesearchCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_cluster_mean(s : OptconvexlinesearchCluster) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchCluster::mean(self : OptconvexlinesearchCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_cluster_scale(s : OptconvexlinesearchCluster, f : Double) -> OptconvexlinesearchCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchCluster::scale(self : OptconvexlinesearchCluster, f : Double) -> OptconvexlinesearchCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_cluster_add(a : OptconvexlinesearchCluster, b : OptconvexlinesearchCluster) -> OptconvexlinesearchCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchCluster::add(self : OptconvexlinesearchCluster, other : OptconvexlinesearchCluster) -> OptconvexlinesearchCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_cluster_copy(s : OptconvexlinesearchCluster) -> OptconvexlinesearchCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchCluster::copy(self : OptconvexlinesearchCluster) -> OptconvexlinesearchCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_cluster_fill(s : OptconvexlinesearchCluster, v : Double) -> OptconvexlinesearchCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchCluster::fill(self : OptconvexlinesearchCluster, v : Double) -> OptconvexlinesearchCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_cluster_min(s : OptconvexlinesearchCluster) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchCluster::min(self : OptconvexlinesearchCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_cluster_max(s : OptconvexlinesearchCluster) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchCluster::max(self : OptconvexlinesearchCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_cluster_to_string(s : OptconvexlinesearchCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchCluster::to_string(self : OptconvexlinesearchCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchModel {
@@ -708,45 +708,45 @@ pub fn opt_convex_line_search_model_make(size : Int) -> OptconvexlinesearchModel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_model_len(s : OptconvexlinesearchModel) -> Int { s.size }
+pub fn OptconvexlinesearchModel::len(self : OptconvexlinesearchModel) -> Int { self.size }
 
-pub fn opt_convex_line_search_model_get(s : OptconvexlinesearchModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchModel::get(self : OptconvexlinesearchModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_model_set(s : OptconvexlinesearchModel, i : Int, v : Double) -> OptconvexlinesearchModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchModel::set(self : OptconvexlinesearchModel, i : Int, v : Double) -> OptconvexlinesearchModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_model_sum(s : OptconvexlinesearchModel) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchModel::sum(self : OptconvexlinesearchModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_model_mean(s : OptconvexlinesearchModel) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchModel::mean(self : OptconvexlinesearchModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_model_scale(s : OptconvexlinesearchModel, f : Double) -> OptconvexlinesearchModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchModel::scale(self : OptconvexlinesearchModel, f : Double) -> OptconvexlinesearchModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_model_add(a : OptconvexlinesearchModel, b : OptconvexlinesearchModel) -> OptconvexlinesearchModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchModel::add(self : OptconvexlinesearchModel, other : OptconvexlinesearchModel) -> OptconvexlinesearchModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_model_copy(s : OptconvexlinesearchModel) -> OptconvexlinesearchModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchModel::copy(self : OptconvexlinesearchModel) -> OptconvexlinesearchModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_model_fill(s : OptconvexlinesearchModel, v : Double) -> OptconvexlinesearchModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchModel::fill(self : OptconvexlinesearchModel, v : Double) -> OptconvexlinesearchModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_model_min(s : OptconvexlinesearchModel) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchModel::min(self : OptconvexlinesearchModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_model_max(s : OptconvexlinesearchModel) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchModel::max(self : OptconvexlinesearchModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_model_to_string(s : OptconvexlinesearchModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchModel::to_string(self : OptconvexlinesearchModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchLayer {
@@ -759,45 +759,45 @@ pub fn opt_convex_line_search_layer_make(size : Int) -> OptconvexlinesearchLayer
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_layer_len(s : OptconvexlinesearchLayer) -> Int { s.size }
+pub fn OptconvexlinesearchLayer::len(self : OptconvexlinesearchLayer) -> Int { self.size }
 
-pub fn opt_convex_line_search_layer_get(s : OptconvexlinesearchLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchLayer::get(self : OptconvexlinesearchLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_layer_set(s : OptconvexlinesearchLayer, i : Int, v : Double) -> OptconvexlinesearchLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchLayer::set(self : OptconvexlinesearchLayer, i : Int, v : Double) -> OptconvexlinesearchLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_layer_sum(s : OptconvexlinesearchLayer) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchLayer::sum(self : OptconvexlinesearchLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_layer_mean(s : OptconvexlinesearchLayer) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchLayer::mean(self : OptconvexlinesearchLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_layer_scale(s : OptconvexlinesearchLayer, f : Double) -> OptconvexlinesearchLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchLayer::scale(self : OptconvexlinesearchLayer, f : Double) -> OptconvexlinesearchLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_layer_add(a : OptconvexlinesearchLayer, b : OptconvexlinesearchLayer) -> OptconvexlinesearchLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchLayer::add(self : OptconvexlinesearchLayer, other : OptconvexlinesearchLayer) -> OptconvexlinesearchLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_layer_copy(s : OptconvexlinesearchLayer) -> OptconvexlinesearchLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchLayer::copy(self : OptconvexlinesearchLayer) -> OptconvexlinesearchLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_layer_fill(s : OptconvexlinesearchLayer, v : Double) -> OptconvexlinesearchLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchLayer::fill(self : OptconvexlinesearchLayer, v : Double) -> OptconvexlinesearchLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_layer_min(s : OptconvexlinesearchLayer) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchLayer::min(self : OptconvexlinesearchLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_layer_max(s : OptconvexlinesearchLayer) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchLayer::max(self : OptconvexlinesearchLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_layer_to_string(s : OptconvexlinesearchLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchLayer::to_string(self : OptconvexlinesearchLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchBuffer {
@@ -810,45 +810,45 @@ pub fn opt_convex_line_search_buffer_make(size : Int) -> OptconvexlinesearchBuff
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_buffer_len(s : OptconvexlinesearchBuffer) -> Int { s.size }
+pub fn OptconvexlinesearchBuffer::len(self : OptconvexlinesearchBuffer) -> Int { self.size }
 
-pub fn opt_convex_line_search_buffer_get(s : OptconvexlinesearchBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchBuffer::get(self : OptconvexlinesearchBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_buffer_set(s : OptconvexlinesearchBuffer, i : Int, v : Double) -> OptconvexlinesearchBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchBuffer::set(self : OptconvexlinesearchBuffer, i : Int, v : Double) -> OptconvexlinesearchBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_buffer_sum(s : OptconvexlinesearchBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchBuffer::sum(self : OptconvexlinesearchBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_buffer_mean(s : OptconvexlinesearchBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchBuffer::mean(self : OptconvexlinesearchBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_buffer_scale(s : OptconvexlinesearchBuffer, f : Double) -> OptconvexlinesearchBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchBuffer::scale(self : OptconvexlinesearchBuffer, f : Double) -> OptconvexlinesearchBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_buffer_add(a : OptconvexlinesearchBuffer, b : OptconvexlinesearchBuffer) -> OptconvexlinesearchBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchBuffer::add(self : OptconvexlinesearchBuffer, other : OptconvexlinesearchBuffer) -> OptconvexlinesearchBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_buffer_copy(s : OptconvexlinesearchBuffer) -> OptconvexlinesearchBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchBuffer::copy(self : OptconvexlinesearchBuffer) -> OptconvexlinesearchBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_buffer_fill(s : OptconvexlinesearchBuffer, v : Double) -> OptconvexlinesearchBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchBuffer::fill(self : OptconvexlinesearchBuffer, v : Double) -> OptconvexlinesearchBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_buffer_min(s : OptconvexlinesearchBuffer) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchBuffer::min(self : OptconvexlinesearchBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_buffer_max(s : OptconvexlinesearchBuffer) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchBuffer::max(self : OptconvexlinesearchBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_buffer_to_string(s : OptconvexlinesearchBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchBuffer::to_string(self : OptconvexlinesearchBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchCursor {
@@ -861,45 +861,45 @@ pub fn opt_convex_line_search_cursor_make(size : Int) -> OptconvexlinesearchCurs
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_cursor_len(s : OptconvexlinesearchCursor) -> Int { s.size }
+pub fn OptconvexlinesearchCursor::len(self : OptconvexlinesearchCursor) -> Int { self.size }
 
-pub fn opt_convex_line_search_cursor_get(s : OptconvexlinesearchCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchCursor::get(self : OptconvexlinesearchCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_cursor_set(s : OptconvexlinesearchCursor, i : Int, v : Double) -> OptconvexlinesearchCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchCursor::set(self : OptconvexlinesearchCursor, i : Int, v : Double) -> OptconvexlinesearchCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_cursor_sum(s : OptconvexlinesearchCursor) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchCursor::sum(self : OptconvexlinesearchCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_cursor_mean(s : OptconvexlinesearchCursor) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchCursor::mean(self : OptconvexlinesearchCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_cursor_scale(s : OptconvexlinesearchCursor, f : Double) -> OptconvexlinesearchCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchCursor::scale(self : OptconvexlinesearchCursor, f : Double) -> OptconvexlinesearchCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_cursor_add(a : OptconvexlinesearchCursor, b : OptconvexlinesearchCursor) -> OptconvexlinesearchCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchCursor::add(self : OptconvexlinesearchCursor, other : OptconvexlinesearchCursor) -> OptconvexlinesearchCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_cursor_copy(s : OptconvexlinesearchCursor) -> OptconvexlinesearchCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchCursor::copy(self : OptconvexlinesearchCursor) -> OptconvexlinesearchCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_cursor_fill(s : OptconvexlinesearchCursor, v : Double) -> OptconvexlinesearchCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchCursor::fill(self : OptconvexlinesearchCursor, v : Double) -> OptconvexlinesearchCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_cursor_min(s : OptconvexlinesearchCursor) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchCursor::min(self : OptconvexlinesearchCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_cursor_max(s : OptconvexlinesearchCursor) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchCursor::max(self : OptconvexlinesearchCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_cursor_to_string(s : OptconvexlinesearchCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchCursor::to_string(self : OptconvexlinesearchCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchView {
@@ -912,45 +912,45 @@ pub fn opt_convex_line_search_view_make(size : Int) -> OptconvexlinesearchView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_view_len(s : OptconvexlinesearchView) -> Int { s.size }
+pub fn OptconvexlinesearchView::len(self : OptconvexlinesearchView) -> Int { self.size }
 
-pub fn opt_convex_line_search_view_get(s : OptconvexlinesearchView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchView::get(self : OptconvexlinesearchView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_view_set(s : OptconvexlinesearchView, i : Int, v : Double) -> OptconvexlinesearchView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchView::set(self : OptconvexlinesearchView, i : Int, v : Double) -> OptconvexlinesearchView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_view_sum(s : OptconvexlinesearchView) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchView::sum(self : OptconvexlinesearchView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_view_mean(s : OptconvexlinesearchView) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchView::mean(self : OptconvexlinesearchView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_view_scale(s : OptconvexlinesearchView, f : Double) -> OptconvexlinesearchView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchView::scale(self : OptconvexlinesearchView, f : Double) -> OptconvexlinesearchView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_view_add(a : OptconvexlinesearchView, b : OptconvexlinesearchView) -> OptconvexlinesearchView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchView::add(self : OptconvexlinesearchView, other : OptconvexlinesearchView) -> OptconvexlinesearchView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_view_copy(s : OptconvexlinesearchView) -> OptconvexlinesearchView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchView::copy(self : OptconvexlinesearchView) -> OptconvexlinesearchView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_view_fill(s : OptconvexlinesearchView, v : Double) -> OptconvexlinesearchView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchView::fill(self : OptconvexlinesearchView, v : Double) -> OptconvexlinesearchView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_view_min(s : OptconvexlinesearchView) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchView::min(self : OptconvexlinesearchView) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_view_max(s : OptconvexlinesearchView) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchView::max(self : OptconvexlinesearchView) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_view_to_string(s : OptconvexlinesearchView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchView::to_string(self : OptconvexlinesearchView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchRange {
@@ -963,45 +963,45 @@ pub fn opt_convex_line_search_range_make(size : Int) -> OptconvexlinesearchRange
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_range_len(s : OptconvexlinesearchRange) -> Int { s.size }
+pub fn OptconvexlinesearchRange::len(self : OptconvexlinesearchRange) -> Int { self.size }
 
-pub fn opt_convex_line_search_range_get(s : OptconvexlinesearchRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchRange::get(self : OptconvexlinesearchRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_range_set(s : OptconvexlinesearchRange, i : Int, v : Double) -> OptconvexlinesearchRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchRange::set(self : OptconvexlinesearchRange, i : Int, v : Double) -> OptconvexlinesearchRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_range_sum(s : OptconvexlinesearchRange) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchRange::sum(self : OptconvexlinesearchRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_range_mean(s : OptconvexlinesearchRange) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchRange::mean(self : OptconvexlinesearchRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_range_scale(s : OptconvexlinesearchRange, f : Double) -> OptconvexlinesearchRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchRange::scale(self : OptconvexlinesearchRange, f : Double) -> OptconvexlinesearchRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_range_add(a : OptconvexlinesearchRange, b : OptconvexlinesearchRange) -> OptconvexlinesearchRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchRange::add(self : OptconvexlinesearchRange, other : OptconvexlinesearchRange) -> OptconvexlinesearchRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_range_copy(s : OptconvexlinesearchRange) -> OptconvexlinesearchRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchRange::copy(self : OptconvexlinesearchRange) -> OptconvexlinesearchRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_range_fill(s : OptconvexlinesearchRange, v : Double) -> OptconvexlinesearchRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchRange::fill(self : OptconvexlinesearchRange, v : Double) -> OptconvexlinesearchRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_range_min(s : OptconvexlinesearchRange) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchRange::min(self : OptconvexlinesearchRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_range_max(s : OptconvexlinesearchRange) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchRange::max(self : OptconvexlinesearchRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_range_to_string(s : OptconvexlinesearchRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchRange::to_string(self : OptconvexlinesearchRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlinesearchSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_convex_line_search_slice_make(size : Int) -> OptconvexlinesearchSlice
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_line_search_slice_len(s : OptconvexlinesearchSlice) -> Int { s.size }
+pub fn OptconvexlinesearchSlice::len(self : OptconvexlinesearchSlice) -> Int { self.size }
 
-pub fn opt_convex_line_search_slice_get(s : OptconvexlinesearchSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlinesearchSlice::get(self : OptconvexlinesearchSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_line_search_slice_set(s : OptconvexlinesearchSlice, i : Int, v : Double) -> OptconvexlinesearchSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchSlice::set(self : OptconvexlinesearchSlice, i : Int, v : Double) -> OptconvexlinesearchSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_slice_sum(s : OptconvexlinesearchSlice) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlinesearchSlice::sum(self : OptconvexlinesearchSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_line_search_slice_mean(s : OptconvexlinesearchSlice) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlinesearchSlice::mean(self : OptconvexlinesearchSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_line_search_slice_scale(s : OptconvexlinesearchSlice, f : Double) -> OptconvexlinesearchSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchSlice::scale(self : OptconvexlinesearchSlice, f : Double) -> OptconvexlinesearchSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_slice_add(a : OptconvexlinesearchSlice, b : OptconvexlinesearchSlice) -> OptconvexlinesearchSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlinesearchSlice::add(self : OptconvexlinesearchSlice, other : OptconvexlinesearchSlice) -> OptconvexlinesearchSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_slice_copy(s : OptconvexlinesearchSlice) -> OptconvexlinesearchSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchSlice::copy(self : OptconvexlinesearchSlice) -> OptconvexlinesearchSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_slice_fill(s : OptconvexlinesearchSlice, v : Double) -> OptconvexlinesearchSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlinesearchSlice::fill(self : OptconvexlinesearchSlice, v : Double) -> OptconvexlinesearchSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_line_search_slice_min(s : OptconvexlinesearchSlice) -> Double { @_common.min(s.data) }
+pub fn OptconvexlinesearchSlice::min(self : OptconvexlinesearchSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_line_search_slice_max(s : OptconvexlinesearchSlice) -> Double { @_common.max(s.data) }
+pub fn OptconvexlinesearchSlice::max(self : OptconvexlinesearchSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_line_search_slice_to_string(s : OptconvexlinesearchSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlinesearchSlice::to_string(self : OptconvexlinesearchSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

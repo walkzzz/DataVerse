@@ -351,45 +351,45 @@ pub fn signal_spec_min_norm_frame_make(size : Int) -> SignalspecminnormFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_frame_len(s : SignalspecminnormFrame) -> Int { s.size }
+pub fn SignalspecminnormFrame::len(self : SignalspecminnormFrame) -> Int { self.size }
 
-pub fn signal_spec_min_norm_frame_get(s : SignalspecminnormFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormFrame::get(self : SignalspecminnormFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_frame_set(s : SignalspecminnormFrame, i : Int, v : Double) -> SignalspecminnormFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormFrame::set(self : SignalspecminnormFrame, i : Int, v : Double) -> SignalspecminnormFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_frame_sum(s : SignalspecminnormFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormFrame::sum(self : SignalspecminnormFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_frame_mean(s : SignalspecminnormFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormFrame::mean(self : SignalspecminnormFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_frame_scale(s : SignalspecminnormFrame, f : Double) -> SignalspecminnormFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormFrame::scale(self : SignalspecminnormFrame, f : Double) -> SignalspecminnormFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_frame_add(a : SignalspecminnormFrame, b : SignalspecminnormFrame) -> SignalspecminnormFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormFrame::add(self : SignalspecminnormFrame, other : SignalspecminnormFrame) -> SignalspecminnormFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_frame_copy(s : SignalspecminnormFrame) -> SignalspecminnormFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormFrame::copy(self : SignalspecminnormFrame) -> SignalspecminnormFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_frame_fill(s : SignalspecminnormFrame, v : Double) -> SignalspecminnormFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormFrame::fill(self : SignalspecminnormFrame, v : Double) -> SignalspecminnormFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_frame_min(s : SignalspecminnormFrame) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormFrame::min(self : SignalspecminnormFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_frame_max(s : SignalspecminnormFrame) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormFrame::max(self : SignalspecminnormFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_frame_to_string(s : SignalspecminnormFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormFrame::to_string(self : SignalspecminnormFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormTable {
@@ -402,45 +402,45 @@ pub fn signal_spec_min_norm_table_make(size : Int) -> SignalspecminnormTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_table_len(s : SignalspecminnormTable) -> Int { s.size }
+pub fn SignalspecminnormTable::len(self : SignalspecminnormTable) -> Int { self.size }
 
-pub fn signal_spec_min_norm_table_get(s : SignalspecminnormTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormTable::get(self : SignalspecminnormTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_table_set(s : SignalspecminnormTable, i : Int, v : Double) -> SignalspecminnormTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormTable::set(self : SignalspecminnormTable, i : Int, v : Double) -> SignalspecminnormTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_table_sum(s : SignalspecminnormTable) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormTable::sum(self : SignalspecminnormTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_table_mean(s : SignalspecminnormTable) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormTable::mean(self : SignalspecminnormTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_table_scale(s : SignalspecminnormTable, f : Double) -> SignalspecminnormTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormTable::scale(self : SignalspecminnormTable, f : Double) -> SignalspecminnormTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_table_add(a : SignalspecminnormTable, b : SignalspecminnormTable) -> SignalspecminnormTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormTable::add(self : SignalspecminnormTable, other : SignalspecminnormTable) -> SignalspecminnormTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_table_copy(s : SignalspecminnormTable) -> SignalspecminnormTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormTable::copy(self : SignalspecminnormTable) -> SignalspecminnormTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_table_fill(s : SignalspecminnormTable, v : Double) -> SignalspecminnormTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormTable::fill(self : SignalspecminnormTable, v : Double) -> SignalspecminnormTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_table_min(s : SignalspecminnormTable) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormTable::min(self : SignalspecminnormTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_table_max(s : SignalspecminnormTable) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormTable::max(self : SignalspecminnormTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_table_to_string(s : SignalspecminnormTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormTable::to_string(self : SignalspecminnormTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormGraphN {
@@ -453,45 +453,45 @@ pub fn signal_spec_min_norm_graphn_make(size : Int) -> SignalspecminnormGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_graphn_len(s : SignalspecminnormGraphN) -> Int { s.size }
+pub fn SignalspecminnormGraphN::len(self : SignalspecminnormGraphN) -> Int { self.size }
 
-pub fn signal_spec_min_norm_graphn_get(s : SignalspecminnormGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormGraphN::get(self : SignalspecminnormGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_graphn_set(s : SignalspecminnormGraphN, i : Int, v : Double) -> SignalspecminnormGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormGraphN::set(self : SignalspecminnormGraphN, i : Int, v : Double) -> SignalspecminnormGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_graphn_sum(s : SignalspecminnormGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormGraphN::sum(self : SignalspecminnormGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_graphn_mean(s : SignalspecminnormGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormGraphN::mean(self : SignalspecminnormGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_graphn_scale(s : SignalspecminnormGraphN, f : Double) -> SignalspecminnormGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormGraphN::scale(self : SignalspecminnormGraphN, f : Double) -> SignalspecminnormGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_graphn_add(a : SignalspecminnormGraphN, b : SignalspecminnormGraphN) -> SignalspecminnormGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormGraphN::add(self : SignalspecminnormGraphN, other : SignalspecminnormGraphN) -> SignalspecminnormGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_graphn_copy(s : SignalspecminnormGraphN) -> SignalspecminnormGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormGraphN::copy(self : SignalspecminnormGraphN) -> SignalspecminnormGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_graphn_fill(s : SignalspecminnormGraphN, v : Double) -> SignalspecminnormGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormGraphN::fill(self : SignalspecminnormGraphN, v : Double) -> SignalspecminnormGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_graphn_min(s : SignalspecminnormGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormGraphN::min(self : SignalspecminnormGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_graphn_max(s : SignalspecminnormGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormGraphN::max(self : SignalspecminnormGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_graphn_to_string(s : SignalspecminnormGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormGraphN::to_string(self : SignalspecminnormGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormNode {
@@ -504,45 +504,45 @@ pub fn signal_spec_min_norm_node_make(size : Int) -> SignalspecminnormNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_node_len(s : SignalspecminnormNode) -> Int { s.size }
+pub fn SignalspecminnormNode::len(self : SignalspecminnormNode) -> Int { self.size }
 
-pub fn signal_spec_min_norm_node_get(s : SignalspecminnormNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormNode::get(self : SignalspecminnormNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_node_set(s : SignalspecminnormNode, i : Int, v : Double) -> SignalspecminnormNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormNode::set(self : SignalspecminnormNode, i : Int, v : Double) -> SignalspecminnormNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_node_sum(s : SignalspecminnormNode) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormNode::sum(self : SignalspecminnormNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_node_mean(s : SignalspecminnormNode) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormNode::mean(self : SignalspecminnormNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_node_scale(s : SignalspecminnormNode, f : Double) -> SignalspecminnormNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormNode::scale(self : SignalspecminnormNode, f : Double) -> SignalspecminnormNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_node_add(a : SignalspecminnormNode, b : SignalspecminnormNode) -> SignalspecminnormNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormNode::add(self : SignalspecminnormNode, other : SignalspecminnormNode) -> SignalspecminnormNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_node_copy(s : SignalspecminnormNode) -> SignalspecminnormNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormNode::copy(self : SignalspecminnormNode) -> SignalspecminnormNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_node_fill(s : SignalspecminnormNode, v : Double) -> SignalspecminnormNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormNode::fill(self : SignalspecminnormNode, v : Double) -> SignalspecminnormNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_node_min(s : SignalspecminnormNode) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormNode::min(self : SignalspecminnormNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_node_max(s : SignalspecminnormNode) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormNode::max(self : SignalspecminnormNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_node_to_string(s : SignalspecminnormNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormNode::to_string(self : SignalspecminnormNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormEdge {
@@ -555,45 +555,45 @@ pub fn signal_spec_min_norm_edge_make(size : Int) -> SignalspecminnormEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_edge_len(s : SignalspecminnormEdge) -> Int { s.size }
+pub fn SignalspecminnormEdge::len(self : SignalspecminnormEdge) -> Int { self.size }
 
-pub fn signal_spec_min_norm_edge_get(s : SignalspecminnormEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormEdge::get(self : SignalspecminnormEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_edge_set(s : SignalspecminnormEdge, i : Int, v : Double) -> SignalspecminnormEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormEdge::set(self : SignalspecminnormEdge, i : Int, v : Double) -> SignalspecminnormEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_edge_sum(s : SignalspecminnormEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormEdge::sum(self : SignalspecminnormEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_edge_mean(s : SignalspecminnormEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormEdge::mean(self : SignalspecminnormEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_edge_scale(s : SignalspecminnormEdge, f : Double) -> SignalspecminnormEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormEdge::scale(self : SignalspecminnormEdge, f : Double) -> SignalspecminnormEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_edge_add(a : SignalspecminnormEdge, b : SignalspecminnormEdge) -> SignalspecminnormEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormEdge::add(self : SignalspecminnormEdge, other : SignalspecminnormEdge) -> SignalspecminnormEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_edge_copy(s : SignalspecminnormEdge) -> SignalspecminnormEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormEdge::copy(self : SignalspecminnormEdge) -> SignalspecminnormEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_edge_fill(s : SignalspecminnormEdge, v : Double) -> SignalspecminnormEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormEdge::fill(self : SignalspecminnormEdge, v : Double) -> SignalspecminnormEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_edge_min(s : SignalspecminnormEdge) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormEdge::min(self : SignalspecminnormEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_edge_max(s : SignalspecminnormEdge) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormEdge::max(self : SignalspecminnormEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_edge_to_string(s : SignalspecminnormEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormEdge::to_string(self : SignalspecminnormEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormPath {
@@ -606,45 +606,45 @@ pub fn signal_spec_min_norm_path_make(size : Int) -> SignalspecminnormPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_path_len(s : SignalspecminnormPath) -> Int { s.size }
+pub fn SignalspecminnormPath::len(self : SignalspecminnormPath) -> Int { self.size }
 
-pub fn signal_spec_min_norm_path_get(s : SignalspecminnormPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormPath::get(self : SignalspecminnormPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_path_set(s : SignalspecminnormPath, i : Int, v : Double) -> SignalspecminnormPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormPath::set(self : SignalspecminnormPath, i : Int, v : Double) -> SignalspecminnormPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_path_sum(s : SignalspecminnormPath) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormPath::sum(self : SignalspecminnormPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_path_mean(s : SignalspecminnormPath) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormPath::mean(self : SignalspecminnormPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_path_scale(s : SignalspecminnormPath, f : Double) -> SignalspecminnormPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormPath::scale(self : SignalspecminnormPath, f : Double) -> SignalspecminnormPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_path_add(a : SignalspecminnormPath, b : SignalspecminnormPath) -> SignalspecminnormPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormPath::add(self : SignalspecminnormPath, other : SignalspecminnormPath) -> SignalspecminnormPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_path_copy(s : SignalspecminnormPath) -> SignalspecminnormPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormPath::copy(self : SignalspecminnormPath) -> SignalspecminnormPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_path_fill(s : SignalspecminnormPath, v : Double) -> SignalspecminnormPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormPath::fill(self : SignalspecminnormPath, v : Double) -> SignalspecminnormPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_path_min(s : SignalspecminnormPath) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormPath::min(self : SignalspecminnormPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_path_max(s : SignalspecminnormPath) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormPath::max(self : SignalspecminnormPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_path_to_string(s : SignalspecminnormPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormPath::to_string(self : SignalspecminnormPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormCluster {
@@ -657,45 +657,45 @@ pub fn signal_spec_min_norm_cluster_make(size : Int) -> SignalspecminnormCluster
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_cluster_len(s : SignalspecminnormCluster) -> Int { s.size }
+pub fn SignalspecminnormCluster::len(self : SignalspecminnormCluster) -> Int { self.size }
 
-pub fn signal_spec_min_norm_cluster_get(s : SignalspecminnormCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormCluster::get(self : SignalspecminnormCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_cluster_set(s : SignalspecminnormCluster, i : Int, v : Double) -> SignalspecminnormCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormCluster::set(self : SignalspecminnormCluster, i : Int, v : Double) -> SignalspecminnormCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_cluster_sum(s : SignalspecminnormCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormCluster::sum(self : SignalspecminnormCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_cluster_mean(s : SignalspecminnormCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormCluster::mean(self : SignalspecminnormCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_cluster_scale(s : SignalspecminnormCluster, f : Double) -> SignalspecminnormCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormCluster::scale(self : SignalspecminnormCluster, f : Double) -> SignalspecminnormCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_cluster_add(a : SignalspecminnormCluster, b : SignalspecminnormCluster) -> SignalspecminnormCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormCluster::add(self : SignalspecminnormCluster, other : SignalspecminnormCluster) -> SignalspecminnormCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_cluster_copy(s : SignalspecminnormCluster) -> SignalspecminnormCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormCluster::copy(self : SignalspecminnormCluster) -> SignalspecminnormCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_cluster_fill(s : SignalspecminnormCluster, v : Double) -> SignalspecminnormCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormCluster::fill(self : SignalspecminnormCluster, v : Double) -> SignalspecminnormCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_cluster_min(s : SignalspecminnormCluster) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormCluster::min(self : SignalspecminnormCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_cluster_max(s : SignalspecminnormCluster) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormCluster::max(self : SignalspecminnormCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_cluster_to_string(s : SignalspecminnormCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormCluster::to_string(self : SignalspecminnormCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormModel {
@@ -708,45 +708,45 @@ pub fn signal_spec_min_norm_model_make(size : Int) -> SignalspecminnormModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_model_len(s : SignalspecminnormModel) -> Int { s.size }
+pub fn SignalspecminnormModel::len(self : SignalspecminnormModel) -> Int { self.size }
 
-pub fn signal_spec_min_norm_model_get(s : SignalspecminnormModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormModel::get(self : SignalspecminnormModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_model_set(s : SignalspecminnormModel, i : Int, v : Double) -> SignalspecminnormModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormModel::set(self : SignalspecminnormModel, i : Int, v : Double) -> SignalspecminnormModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_model_sum(s : SignalspecminnormModel) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormModel::sum(self : SignalspecminnormModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_model_mean(s : SignalspecminnormModel) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormModel::mean(self : SignalspecminnormModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_model_scale(s : SignalspecminnormModel, f : Double) -> SignalspecminnormModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormModel::scale(self : SignalspecminnormModel, f : Double) -> SignalspecminnormModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_model_add(a : SignalspecminnormModel, b : SignalspecminnormModel) -> SignalspecminnormModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormModel::add(self : SignalspecminnormModel, other : SignalspecminnormModel) -> SignalspecminnormModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_model_copy(s : SignalspecminnormModel) -> SignalspecminnormModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormModel::copy(self : SignalspecminnormModel) -> SignalspecminnormModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_model_fill(s : SignalspecminnormModel, v : Double) -> SignalspecminnormModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormModel::fill(self : SignalspecminnormModel, v : Double) -> SignalspecminnormModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_model_min(s : SignalspecminnormModel) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormModel::min(self : SignalspecminnormModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_model_max(s : SignalspecminnormModel) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormModel::max(self : SignalspecminnormModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_model_to_string(s : SignalspecminnormModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormModel::to_string(self : SignalspecminnormModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormLayer {
@@ -759,45 +759,45 @@ pub fn signal_spec_min_norm_layer_make(size : Int) -> SignalspecminnormLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_layer_len(s : SignalspecminnormLayer) -> Int { s.size }
+pub fn SignalspecminnormLayer::len(self : SignalspecminnormLayer) -> Int { self.size }
 
-pub fn signal_spec_min_norm_layer_get(s : SignalspecminnormLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormLayer::get(self : SignalspecminnormLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_layer_set(s : SignalspecminnormLayer, i : Int, v : Double) -> SignalspecminnormLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormLayer::set(self : SignalspecminnormLayer, i : Int, v : Double) -> SignalspecminnormLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_layer_sum(s : SignalspecminnormLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormLayer::sum(self : SignalspecminnormLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_layer_mean(s : SignalspecminnormLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormLayer::mean(self : SignalspecminnormLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_layer_scale(s : SignalspecminnormLayer, f : Double) -> SignalspecminnormLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormLayer::scale(self : SignalspecminnormLayer, f : Double) -> SignalspecminnormLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_layer_add(a : SignalspecminnormLayer, b : SignalspecminnormLayer) -> SignalspecminnormLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormLayer::add(self : SignalspecminnormLayer, other : SignalspecminnormLayer) -> SignalspecminnormLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_layer_copy(s : SignalspecminnormLayer) -> SignalspecminnormLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormLayer::copy(self : SignalspecminnormLayer) -> SignalspecminnormLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_layer_fill(s : SignalspecminnormLayer, v : Double) -> SignalspecminnormLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormLayer::fill(self : SignalspecminnormLayer, v : Double) -> SignalspecminnormLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_layer_min(s : SignalspecminnormLayer) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormLayer::min(self : SignalspecminnormLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_layer_max(s : SignalspecminnormLayer) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormLayer::max(self : SignalspecminnormLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_layer_to_string(s : SignalspecminnormLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormLayer::to_string(self : SignalspecminnormLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormBuffer {
@@ -810,45 +810,45 @@ pub fn signal_spec_min_norm_buffer_make(size : Int) -> SignalspecminnormBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_buffer_len(s : SignalspecminnormBuffer) -> Int { s.size }
+pub fn SignalspecminnormBuffer::len(self : SignalspecminnormBuffer) -> Int { self.size }
 
-pub fn signal_spec_min_norm_buffer_get(s : SignalspecminnormBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormBuffer::get(self : SignalspecminnormBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_buffer_set(s : SignalspecminnormBuffer, i : Int, v : Double) -> SignalspecminnormBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormBuffer::set(self : SignalspecminnormBuffer, i : Int, v : Double) -> SignalspecminnormBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_buffer_sum(s : SignalspecminnormBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormBuffer::sum(self : SignalspecminnormBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_buffer_mean(s : SignalspecminnormBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormBuffer::mean(self : SignalspecminnormBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_buffer_scale(s : SignalspecminnormBuffer, f : Double) -> SignalspecminnormBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormBuffer::scale(self : SignalspecminnormBuffer, f : Double) -> SignalspecminnormBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_buffer_add(a : SignalspecminnormBuffer, b : SignalspecminnormBuffer) -> SignalspecminnormBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormBuffer::add(self : SignalspecminnormBuffer, other : SignalspecminnormBuffer) -> SignalspecminnormBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_buffer_copy(s : SignalspecminnormBuffer) -> SignalspecminnormBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormBuffer::copy(self : SignalspecminnormBuffer) -> SignalspecminnormBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_buffer_fill(s : SignalspecminnormBuffer, v : Double) -> SignalspecminnormBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormBuffer::fill(self : SignalspecminnormBuffer, v : Double) -> SignalspecminnormBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_buffer_min(s : SignalspecminnormBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormBuffer::min(self : SignalspecminnormBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_buffer_max(s : SignalspecminnormBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormBuffer::max(self : SignalspecminnormBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_buffer_to_string(s : SignalspecminnormBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormBuffer::to_string(self : SignalspecminnormBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormCursor {
@@ -861,45 +861,45 @@ pub fn signal_spec_min_norm_cursor_make(size : Int) -> SignalspecminnormCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_cursor_len(s : SignalspecminnormCursor) -> Int { s.size }
+pub fn SignalspecminnormCursor::len(self : SignalspecminnormCursor) -> Int { self.size }
 
-pub fn signal_spec_min_norm_cursor_get(s : SignalspecminnormCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormCursor::get(self : SignalspecminnormCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_cursor_set(s : SignalspecminnormCursor, i : Int, v : Double) -> SignalspecminnormCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormCursor::set(self : SignalspecminnormCursor, i : Int, v : Double) -> SignalspecminnormCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_cursor_sum(s : SignalspecminnormCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormCursor::sum(self : SignalspecminnormCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_cursor_mean(s : SignalspecminnormCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormCursor::mean(self : SignalspecminnormCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_cursor_scale(s : SignalspecminnormCursor, f : Double) -> SignalspecminnormCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormCursor::scale(self : SignalspecminnormCursor, f : Double) -> SignalspecminnormCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_cursor_add(a : SignalspecminnormCursor, b : SignalspecminnormCursor) -> SignalspecminnormCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormCursor::add(self : SignalspecminnormCursor, other : SignalspecminnormCursor) -> SignalspecminnormCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_cursor_copy(s : SignalspecminnormCursor) -> SignalspecminnormCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormCursor::copy(self : SignalspecminnormCursor) -> SignalspecminnormCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_cursor_fill(s : SignalspecminnormCursor, v : Double) -> SignalspecminnormCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormCursor::fill(self : SignalspecminnormCursor, v : Double) -> SignalspecminnormCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_cursor_min(s : SignalspecminnormCursor) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormCursor::min(self : SignalspecminnormCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_cursor_max(s : SignalspecminnormCursor) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormCursor::max(self : SignalspecminnormCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_cursor_to_string(s : SignalspecminnormCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormCursor::to_string(self : SignalspecminnormCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormView {
@@ -912,45 +912,45 @@ pub fn signal_spec_min_norm_view_make(size : Int) -> SignalspecminnormView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_view_len(s : SignalspecminnormView) -> Int { s.size }
+pub fn SignalspecminnormView::len(self : SignalspecminnormView) -> Int { self.size }
 
-pub fn signal_spec_min_norm_view_get(s : SignalspecminnormView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormView::get(self : SignalspecminnormView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_view_set(s : SignalspecminnormView, i : Int, v : Double) -> SignalspecminnormView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormView::set(self : SignalspecminnormView, i : Int, v : Double) -> SignalspecminnormView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_view_sum(s : SignalspecminnormView) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormView::sum(self : SignalspecminnormView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_view_mean(s : SignalspecminnormView) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormView::mean(self : SignalspecminnormView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_view_scale(s : SignalspecminnormView, f : Double) -> SignalspecminnormView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormView::scale(self : SignalspecminnormView, f : Double) -> SignalspecminnormView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_view_add(a : SignalspecminnormView, b : SignalspecminnormView) -> SignalspecminnormView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormView::add(self : SignalspecminnormView, other : SignalspecminnormView) -> SignalspecminnormView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_view_copy(s : SignalspecminnormView) -> SignalspecminnormView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormView::copy(self : SignalspecminnormView) -> SignalspecminnormView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_view_fill(s : SignalspecminnormView, v : Double) -> SignalspecminnormView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormView::fill(self : SignalspecminnormView, v : Double) -> SignalspecminnormView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_view_min(s : SignalspecminnormView) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormView::min(self : SignalspecminnormView) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_view_max(s : SignalspecminnormView) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormView::max(self : SignalspecminnormView) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_view_to_string(s : SignalspecminnormView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormView::to_string(self : SignalspecminnormView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormRange {
@@ -963,45 +963,45 @@ pub fn signal_spec_min_norm_range_make(size : Int) -> SignalspecminnormRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_range_len(s : SignalspecminnormRange) -> Int { s.size }
+pub fn SignalspecminnormRange::len(self : SignalspecminnormRange) -> Int { self.size }
 
-pub fn signal_spec_min_norm_range_get(s : SignalspecminnormRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormRange::get(self : SignalspecminnormRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_range_set(s : SignalspecminnormRange, i : Int, v : Double) -> SignalspecminnormRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormRange::set(self : SignalspecminnormRange, i : Int, v : Double) -> SignalspecminnormRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_range_sum(s : SignalspecminnormRange) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormRange::sum(self : SignalspecminnormRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_range_mean(s : SignalspecminnormRange) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormRange::mean(self : SignalspecminnormRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_range_scale(s : SignalspecminnormRange, f : Double) -> SignalspecminnormRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormRange::scale(self : SignalspecminnormRange, f : Double) -> SignalspecminnormRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_range_add(a : SignalspecminnormRange, b : SignalspecminnormRange) -> SignalspecminnormRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormRange::add(self : SignalspecminnormRange, other : SignalspecminnormRange) -> SignalspecminnormRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_range_copy(s : SignalspecminnormRange) -> SignalspecminnormRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormRange::copy(self : SignalspecminnormRange) -> SignalspecminnormRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_range_fill(s : SignalspecminnormRange, v : Double) -> SignalspecminnormRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormRange::fill(self : SignalspecminnormRange, v : Double) -> SignalspecminnormRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_range_min(s : SignalspecminnormRange) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormRange::min(self : SignalspecminnormRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_range_max(s : SignalspecminnormRange) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormRange::max(self : SignalspecminnormRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_range_to_string(s : SignalspecminnormRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormRange::to_string(self : SignalspecminnormRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecminnormSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_spec_min_norm_slice_make(size : Int) -> SignalspecminnormSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_min_norm_slice_len(s : SignalspecminnormSlice) -> Int { s.size }
+pub fn SignalspecminnormSlice::len(self : SignalspecminnormSlice) -> Int { self.size }
 
-pub fn signal_spec_min_norm_slice_get(s : SignalspecminnormSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecminnormSlice::get(self : SignalspecminnormSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_min_norm_slice_set(s : SignalspecminnormSlice, i : Int, v : Double) -> SignalspecminnormSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecminnormSlice::set(self : SignalspecminnormSlice, i : Int, v : Double) -> SignalspecminnormSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_slice_sum(s : SignalspecminnormSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalspecminnormSlice::sum(self : SignalspecminnormSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_min_norm_slice_mean(s : SignalspecminnormSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalspecminnormSlice::mean(self : SignalspecminnormSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_min_norm_slice_scale(s : SignalspecminnormSlice, f : Double) -> SignalspecminnormSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecminnormSlice::scale(self : SignalspecminnormSlice, f : Double) -> SignalspecminnormSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_slice_add(a : SignalspecminnormSlice, b : SignalspecminnormSlice) -> SignalspecminnormSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecminnormSlice::add(self : SignalspecminnormSlice, other : SignalspecminnormSlice) -> SignalspecminnormSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_slice_copy(s : SignalspecminnormSlice) -> SignalspecminnormSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecminnormSlice::copy(self : SignalspecminnormSlice) -> SignalspecminnormSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_slice_fill(s : SignalspecminnormSlice, v : Double) -> SignalspecminnormSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecminnormSlice::fill(self : SignalspecminnormSlice, v : Double) -> SignalspecminnormSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_min_norm_slice_min(s : SignalspecminnormSlice) -> Double { @_common.min(s.data) }
+pub fn SignalspecminnormSlice::min(self : SignalspecminnormSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_min_norm_slice_max(s : SignalspecminnormSlice) -> Double { @_common.max(s.data) }
+pub fn SignalspecminnormSlice::max(self : SignalspecminnormSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_min_norm_slice_to_string(s : SignalspecminnormSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecminnormSlice::to_string(self : SignalspecminnormSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

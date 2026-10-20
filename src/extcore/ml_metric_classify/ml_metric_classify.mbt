@@ -351,45 +351,45 @@ pub fn ml_metric_classify_frame_make(size : Int) -> MlmetricclassifyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_frame_len(s : MlmetricclassifyFrame) -> Int { s.size }
+pub fn MlmetricclassifyFrame::len(self : MlmetricclassifyFrame) -> Int { self.size }
 
-pub fn ml_metric_classify_frame_get(s : MlmetricclassifyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyFrame::get(self : MlmetricclassifyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_frame_set(s : MlmetricclassifyFrame, i : Int, v : Double) -> MlmetricclassifyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyFrame::set(self : MlmetricclassifyFrame, i : Int, v : Double) -> MlmetricclassifyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_frame_sum(s : MlmetricclassifyFrame) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyFrame::sum(self : MlmetricclassifyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_frame_mean(s : MlmetricclassifyFrame) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyFrame::mean(self : MlmetricclassifyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_frame_scale(s : MlmetricclassifyFrame, f : Double) -> MlmetricclassifyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyFrame::scale(self : MlmetricclassifyFrame, f : Double) -> MlmetricclassifyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_frame_add(a : MlmetricclassifyFrame, b : MlmetricclassifyFrame) -> MlmetricclassifyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyFrame::add(self : MlmetricclassifyFrame, other : MlmetricclassifyFrame) -> MlmetricclassifyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_frame_copy(s : MlmetricclassifyFrame) -> MlmetricclassifyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyFrame::copy(self : MlmetricclassifyFrame) -> MlmetricclassifyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_frame_fill(s : MlmetricclassifyFrame, v : Double) -> MlmetricclassifyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyFrame::fill(self : MlmetricclassifyFrame, v : Double) -> MlmetricclassifyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_frame_min(s : MlmetricclassifyFrame) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyFrame::min(self : MlmetricclassifyFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_frame_max(s : MlmetricclassifyFrame) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyFrame::max(self : MlmetricclassifyFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_frame_to_string(s : MlmetricclassifyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyFrame::to_string(self : MlmetricclassifyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifyTable {
@@ -402,45 +402,45 @@ pub fn ml_metric_classify_table_make(size : Int) -> MlmetricclassifyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_table_len(s : MlmetricclassifyTable) -> Int { s.size }
+pub fn MlmetricclassifyTable::len(self : MlmetricclassifyTable) -> Int { self.size }
 
-pub fn ml_metric_classify_table_get(s : MlmetricclassifyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyTable::get(self : MlmetricclassifyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_table_set(s : MlmetricclassifyTable, i : Int, v : Double) -> MlmetricclassifyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyTable::set(self : MlmetricclassifyTable, i : Int, v : Double) -> MlmetricclassifyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_table_sum(s : MlmetricclassifyTable) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyTable::sum(self : MlmetricclassifyTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_table_mean(s : MlmetricclassifyTable) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyTable::mean(self : MlmetricclassifyTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_table_scale(s : MlmetricclassifyTable, f : Double) -> MlmetricclassifyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyTable::scale(self : MlmetricclassifyTable, f : Double) -> MlmetricclassifyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_table_add(a : MlmetricclassifyTable, b : MlmetricclassifyTable) -> MlmetricclassifyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyTable::add(self : MlmetricclassifyTable, other : MlmetricclassifyTable) -> MlmetricclassifyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_table_copy(s : MlmetricclassifyTable) -> MlmetricclassifyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyTable::copy(self : MlmetricclassifyTable) -> MlmetricclassifyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_table_fill(s : MlmetricclassifyTable, v : Double) -> MlmetricclassifyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyTable::fill(self : MlmetricclassifyTable, v : Double) -> MlmetricclassifyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_table_min(s : MlmetricclassifyTable) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyTable::min(self : MlmetricclassifyTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_table_max(s : MlmetricclassifyTable) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyTable::max(self : MlmetricclassifyTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_table_to_string(s : MlmetricclassifyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyTable::to_string(self : MlmetricclassifyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifyGraphN {
@@ -453,45 +453,45 @@ pub fn ml_metric_classify_graphn_make(size : Int) -> MlmetricclassifyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_graphn_len(s : MlmetricclassifyGraphN) -> Int { s.size }
+pub fn MlmetricclassifyGraphN::len(self : MlmetricclassifyGraphN) -> Int { self.size }
 
-pub fn ml_metric_classify_graphn_get(s : MlmetricclassifyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyGraphN::get(self : MlmetricclassifyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_graphn_set(s : MlmetricclassifyGraphN, i : Int, v : Double) -> MlmetricclassifyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyGraphN::set(self : MlmetricclassifyGraphN, i : Int, v : Double) -> MlmetricclassifyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_graphn_sum(s : MlmetricclassifyGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyGraphN::sum(self : MlmetricclassifyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_graphn_mean(s : MlmetricclassifyGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyGraphN::mean(self : MlmetricclassifyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_graphn_scale(s : MlmetricclassifyGraphN, f : Double) -> MlmetricclassifyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyGraphN::scale(self : MlmetricclassifyGraphN, f : Double) -> MlmetricclassifyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_graphn_add(a : MlmetricclassifyGraphN, b : MlmetricclassifyGraphN) -> MlmetricclassifyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyGraphN::add(self : MlmetricclassifyGraphN, other : MlmetricclassifyGraphN) -> MlmetricclassifyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_graphn_copy(s : MlmetricclassifyGraphN) -> MlmetricclassifyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyGraphN::copy(self : MlmetricclassifyGraphN) -> MlmetricclassifyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_graphn_fill(s : MlmetricclassifyGraphN, v : Double) -> MlmetricclassifyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyGraphN::fill(self : MlmetricclassifyGraphN, v : Double) -> MlmetricclassifyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_graphn_min(s : MlmetricclassifyGraphN) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyGraphN::min(self : MlmetricclassifyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_graphn_max(s : MlmetricclassifyGraphN) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyGraphN::max(self : MlmetricclassifyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_graphn_to_string(s : MlmetricclassifyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyGraphN::to_string(self : MlmetricclassifyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifyNode {
@@ -504,45 +504,45 @@ pub fn ml_metric_classify_node_make(size : Int) -> MlmetricclassifyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_node_len(s : MlmetricclassifyNode) -> Int { s.size }
+pub fn MlmetricclassifyNode::len(self : MlmetricclassifyNode) -> Int { self.size }
 
-pub fn ml_metric_classify_node_get(s : MlmetricclassifyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyNode::get(self : MlmetricclassifyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_node_set(s : MlmetricclassifyNode, i : Int, v : Double) -> MlmetricclassifyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyNode::set(self : MlmetricclassifyNode, i : Int, v : Double) -> MlmetricclassifyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_node_sum(s : MlmetricclassifyNode) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyNode::sum(self : MlmetricclassifyNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_node_mean(s : MlmetricclassifyNode) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyNode::mean(self : MlmetricclassifyNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_node_scale(s : MlmetricclassifyNode, f : Double) -> MlmetricclassifyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyNode::scale(self : MlmetricclassifyNode, f : Double) -> MlmetricclassifyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_node_add(a : MlmetricclassifyNode, b : MlmetricclassifyNode) -> MlmetricclassifyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyNode::add(self : MlmetricclassifyNode, other : MlmetricclassifyNode) -> MlmetricclassifyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_node_copy(s : MlmetricclassifyNode) -> MlmetricclassifyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyNode::copy(self : MlmetricclassifyNode) -> MlmetricclassifyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_node_fill(s : MlmetricclassifyNode, v : Double) -> MlmetricclassifyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyNode::fill(self : MlmetricclassifyNode, v : Double) -> MlmetricclassifyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_node_min(s : MlmetricclassifyNode) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyNode::min(self : MlmetricclassifyNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_node_max(s : MlmetricclassifyNode) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyNode::max(self : MlmetricclassifyNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_node_to_string(s : MlmetricclassifyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyNode::to_string(self : MlmetricclassifyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifyEdge {
@@ -555,45 +555,45 @@ pub fn ml_metric_classify_edge_make(size : Int) -> MlmetricclassifyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_edge_len(s : MlmetricclassifyEdge) -> Int { s.size }
+pub fn MlmetricclassifyEdge::len(self : MlmetricclassifyEdge) -> Int { self.size }
 
-pub fn ml_metric_classify_edge_get(s : MlmetricclassifyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyEdge::get(self : MlmetricclassifyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_edge_set(s : MlmetricclassifyEdge, i : Int, v : Double) -> MlmetricclassifyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyEdge::set(self : MlmetricclassifyEdge, i : Int, v : Double) -> MlmetricclassifyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_edge_sum(s : MlmetricclassifyEdge) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyEdge::sum(self : MlmetricclassifyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_edge_mean(s : MlmetricclassifyEdge) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyEdge::mean(self : MlmetricclassifyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_edge_scale(s : MlmetricclassifyEdge, f : Double) -> MlmetricclassifyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyEdge::scale(self : MlmetricclassifyEdge, f : Double) -> MlmetricclassifyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_edge_add(a : MlmetricclassifyEdge, b : MlmetricclassifyEdge) -> MlmetricclassifyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyEdge::add(self : MlmetricclassifyEdge, other : MlmetricclassifyEdge) -> MlmetricclassifyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_edge_copy(s : MlmetricclassifyEdge) -> MlmetricclassifyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyEdge::copy(self : MlmetricclassifyEdge) -> MlmetricclassifyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_edge_fill(s : MlmetricclassifyEdge, v : Double) -> MlmetricclassifyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyEdge::fill(self : MlmetricclassifyEdge, v : Double) -> MlmetricclassifyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_edge_min(s : MlmetricclassifyEdge) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyEdge::min(self : MlmetricclassifyEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_edge_max(s : MlmetricclassifyEdge) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyEdge::max(self : MlmetricclassifyEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_edge_to_string(s : MlmetricclassifyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyEdge::to_string(self : MlmetricclassifyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifyPath {
@@ -606,45 +606,45 @@ pub fn ml_metric_classify_path_make(size : Int) -> MlmetricclassifyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_path_len(s : MlmetricclassifyPath) -> Int { s.size }
+pub fn MlmetricclassifyPath::len(self : MlmetricclassifyPath) -> Int { self.size }
 
-pub fn ml_metric_classify_path_get(s : MlmetricclassifyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyPath::get(self : MlmetricclassifyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_path_set(s : MlmetricclassifyPath, i : Int, v : Double) -> MlmetricclassifyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyPath::set(self : MlmetricclassifyPath, i : Int, v : Double) -> MlmetricclassifyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_path_sum(s : MlmetricclassifyPath) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyPath::sum(self : MlmetricclassifyPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_path_mean(s : MlmetricclassifyPath) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyPath::mean(self : MlmetricclassifyPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_path_scale(s : MlmetricclassifyPath, f : Double) -> MlmetricclassifyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyPath::scale(self : MlmetricclassifyPath, f : Double) -> MlmetricclassifyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_path_add(a : MlmetricclassifyPath, b : MlmetricclassifyPath) -> MlmetricclassifyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyPath::add(self : MlmetricclassifyPath, other : MlmetricclassifyPath) -> MlmetricclassifyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_path_copy(s : MlmetricclassifyPath) -> MlmetricclassifyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyPath::copy(self : MlmetricclassifyPath) -> MlmetricclassifyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_path_fill(s : MlmetricclassifyPath, v : Double) -> MlmetricclassifyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyPath::fill(self : MlmetricclassifyPath, v : Double) -> MlmetricclassifyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_path_min(s : MlmetricclassifyPath) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyPath::min(self : MlmetricclassifyPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_path_max(s : MlmetricclassifyPath) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyPath::max(self : MlmetricclassifyPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_path_to_string(s : MlmetricclassifyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyPath::to_string(self : MlmetricclassifyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifyCluster {
@@ -657,45 +657,45 @@ pub fn ml_metric_classify_cluster_make(size : Int) -> MlmetricclassifyCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_cluster_len(s : MlmetricclassifyCluster) -> Int { s.size }
+pub fn MlmetricclassifyCluster::len(self : MlmetricclassifyCluster) -> Int { self.size }
 
-pub fn ml_metric_classify_cluster_get(s : MlmetricclassifyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyCluster::get(self : MlmetricclassifyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_cluster_set(s : MlmetricclassifyCluster, i : Int, v : Double) -> MlmetricclassifyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyCluster::set(self : MlmetricclassifyCluster, i : Int, v : Double) -> MlmetricclassifyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_cluster_sum(s : MlmetricclassifyCluster) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyCluster::sum(self : MlmetricclassifyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_cluster_mean(s : MlmetricclassifyCluster) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyCluster::mean(self : MlmetricclassifyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_cluster_scale(s : MlmetricclassifyCluster, f : Double) -> MlmetricclassifyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyCluster::scale(self : MlmetricclassifyCluster, f : Double) -> MlmetricclassifyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_cluster_add(a : MlmetricclassifyCluster, b : MlmetricclassifyCluster) -> MlmetricclassifyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyCluster::add(self : MlmetricclassifyCluster, other : MlmetricclassifyCluster) -> MlmetricclassifyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_cluster_copy(s : MlmetricclassifyCluster) -> MlmetricclassifyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyCluster::copy(self : MlmetricclassifyCluster) -> MlmetricclassifyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_cluster_fill(s : MlmetricclassifyCluster, v : Double) -> MlmetricclassifyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyCluster::fill(self : MlmetricclassifyCluster, v : Double) -> MlmetricclassifyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_cluster_min(s : MlmetricclassifyCluster) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyCluster::min(self : MlmetricclassifyCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_cluster_max(s : MlmetricclassifyCluster) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyCluster::max(self : MlmetricclassifyCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_cluster_to_string(s : MlmetricclassifyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyCluster::to_string(self : MlmetricclassifyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifyModel {
@@ -708,45 +708,45 @@ pub fn ml_metric_classify_model_make(size : Int) -> MlmetricclassifyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_model_len(s : MlmetricclassifyModel) -> Int { s.size }
+pub fn MlmetricclassifyModel::len(self : MlmetricclassifyModel) -> Int { self.size }
 
-pub fn ml_metric_classify_model_get(s : MlmetricclassifyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyModel::get(self : MlmetricclassifyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_model_set(s : MlmetricclassifyModel, i : Int, v : Double) -> MlmetricclassifyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyModel::set(self : MlmetricclassifyModel, i : Int, v : Double) -> MlmetricclassifyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_model_sum(s : MlmetricclassifyModel) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyModel::sum(self : MlmetricclassifyModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_model_mean(s : MlmetricclassifyModel) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyModel::mean(self : MlmetricclassifyModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_model_scale(s : MlmetricclassifyModel, f : Double) -> MlmetricclassifyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyModel::scale(self : MlmetricclassifyModel, f : Double) -> MlmetricclassifyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_model_add(a : MlmetricclassifyModel, b : MlmetricclassifyModel) -> MlmetricclassifyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyModel::add(self : MlmetricclassifyModel, other : MlmetricclassifyModel) -> MlmetricclassifyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_model_copy(s : MlmetricclassifyModel) -> MlmetricclassifyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyModel::copy(self : MlmetricclassifyModel) -> MlmetricclassifyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_model_fill(s : MlmetricclassifyModel, v : Double) -> MlmetricclassifyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyModel::fill(self : MlmetricclassifyModel, v : Double) -> MlmetricclassifyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_model_min(s : MlmetricclassifyModel) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyModel::min(self : MlmetricclassifyModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_model_max(s : MlmetricclassifyModel) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyModel::max(self : MlmetricclassifyModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_model_to_string(s : MlmetricclassifyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyModel::to_string(self : MlmetricclassifyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifyLayer {
@@ -759,45 +759,45 @@ pub fn ml_metric_classify_layer_make(size : Int) -> MlmetricclassifyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_layer_len(s : MlmetricclassifyLayer) -> Int { s.size }
+pub fn MlmetricclassifyLayer::len(self : MlmetricclassifyLayer) -> Int { self.size }
 
-pub fn ml_metric_classify_layer_get(s : MlmetricclassifyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyLayer::get(self : MlmetricclassifyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_layer_set(s : MlmetricclassifyLayer, i : Int, v : Double) -> MlmetricclassifyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyLayer::set(self : MlmetricclassifyLayer, i : Int, v : Double) -> MlmetricclassifyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_layer_sum(s : MlmetricclassifyLayer) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyLayer::sum(self : MlmetricclassifyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_layer_mean(s : MlmetricclassifyLayer) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyLayer::mean(self : MlmetricclassifyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_layer_scale(s : MlmetricclassifyLayer, f : Double) -> MlmetricclassifyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyLayer::scale(self : MlmetricclassifyLayer, f : Double) -> MlmetricclassifyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_layer_add(a : MlmetricclassifyLayer, b : MlmetricclassifyLayer) -> MlmetricclassifyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyLayer::add(self : MlmetricclassifyLayer, other : MlmetricclassifyLayer) -> MlmetricclassifyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_layer_copy(s : MlmetricclassifyLayer) -> MlmetricclassifyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyLayer::copy(self : MlmetricclassifyLayer) -> MlmetricclassifyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_layer_fill(s : MlmetricclassifyLayer, v : Double) -> MlmetricclassifyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyLayer::fill(self : MlmetricclassifyLayer, v : Double) -> MlmetricclassifyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_layer_min(s : MlmetricclassifyLayer) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyLayer::min(self : MlmetricclassifyLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_layer_max(s : MlmetricclassifyLayer) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyLayer::max(self : MlmetricclassifyLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_layer_to_string(s : MlmetricclassifyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyLayer::to_string(self : MlmetricclassifyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifyBuffer {
@@ -810,45 +810,45 @@ pub fn ml_metric_classify_buffer_make(size : Int) -> MlmetricclassifyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_buffer_len(s : MlmetricclassifyBuffer) -> Int { s.size }
+pub fn MlmetricclassifyBuffer::len(self : MlmetricclassifyBuffer) -> Int { self.size }
 
-pub fn ml_metric_classify_buffer_get(s : MlmetricclassifyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyBuffer::get(self : MlmetricclassifyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_buffer_set(s : MlmetricclassifyBuffer, i : Int, v : Double) -> MlmetricclassifyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyBuffer::set(self : MlmetricclassifyBuffer, i : Int, v : Double) -> MlmetricclassifyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_buffer_sum(s : MlmetricclassifyBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyBuffer::sum(self : MlmetricclassifyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_buffer_mean(s : MlmetricclassifyBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyBuffer::mean(self : MlmetricclassifyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_buffer_scale(s : MlmetricclassifyBuffer, f : Double) -> MlmetricclassifyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyBuffer::scale(self : MlmetricclassifyBuffer, f : Double) -> MlmetricclassifyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_buffer_add(a : MlmetricclassifyBuffer, b : MlmetricclassifyBuffer) -> MlmetricclassifyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyBuffer::add(self : MlmetricclassifyBuffer, other : MlmetricclassifyBuffer) -> MlmetricclassifyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_buffer_copy(s : MlmetricclassifyBuffer) -> MlmetricclassifyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyBuffer::copy(self : MlmetricclassifyBuffer) -> MlmetricclassifyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_buffer_fill(s : MlmetricclassifyBuffer, v : Double) -> MlmetricclassifyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyBuffer::fill(self : MlmetricclassifyBuffer, v : Double) -> MlmetricclassifyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_buffer_min(s : MlmetricclassifyBuffer) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyBuffer::min(self : MlmetricclassifyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_buffer_max(s : MlmetricclassifyBuffer) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyBuffer::max(self : MlmetricclassifyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_buffer_to_string(s : MlmetricclassifyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyBuffer::to_string(self : MlmetricclassifyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifyCursor {
@@ -861,45 +861,45 @@ pub fn ml_metric_classify_cursor_make(size : Int) -> MlmetricclassifyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_cursor_len(s : MlmetricclassifyCursor) -> Int { s.size }
+pub fn MlmetricclassifyCursor::len(self : MlmetricclassifyCursor) -> Int { self.size }
 
-pub fn ml_metric_classify_cursor_get(s : MlmetricclassifyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyCursor::get(self : MlmetricclassifyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_cursor_set(s : MlmetricclassifyCursor, i : Int, v : Double) -> MlmetricclassifyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyCursor::set(self : MlmetricclassifyCursor, i : Int, v : Double) -> MlmetricclassifyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_cursor_sum(s : MlmetricclassifyCursor) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyCursor::sum(self : MlmetricclassifyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_cursor_mean(s : MlmetricclassifyCursor) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyCursor::mean(self : MlmetricclassifyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_cursor_scale(s : MlmetricclassifyCursor, f : Double) -> MlmetricclassifyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyCursor::scale(self : MlmetricclassifyCursor, f : Double) -> MlmetricclassifyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_cursor_add(a : MlmetricclassifyCursor, b : MlmetricclassifyCursor) -> MlmetricclassifyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyCursor::add(self : MlmetricclassifyCursor, other : MlmetricclassifyCursor) -> MlmetricclassifyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_cursor_copy(s : MlmetricclassifyCursor) -> MlmetricclassifyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyCursor::copy(self : MlmetricclassifyCursor) -> MlmetricclassifyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_cursor_fill(s : MlmetricclassifyCursor, v : Double) -> MlmetricclassifyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyCursor::fill(self : MlmetricclassifyCursor, v : Double) -> MlmetricclassifyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_cursor_min(s : MlmetricclassifyCursor) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyCursor::min(self : MlmetricclassifyCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_cursor_max(s : MlmetricclassifyCursor) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyCursor::max(self : MlmetricclassifyCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_cursor_to_string(s : MlmetricclassifyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyCursor::to_string(self : MlmetricclassifyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifyView {
@@ -912,45 +912,45 @@ pub fn ml_metric_classify_view_make(size : Int) -> MlmetricclassifyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_view_len(s : MlmetricclassifyView) -> Int { s.size }
+pub fn MlmetricclassifyView::len(self : MlmetricclassifyView) -> Int { self.size }
 
-pub fn ml_metric_classify_view_get(s : MlmetricclassifyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyView::get(self : MlmetricclassifyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_view_set(s : MlmetricclassifyView, i : Int, v : Double) -> MlmetricclassifyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyView::set(self : MlmetricclassifyView, i : Int, v : Double) -> MlmetricclassifyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_view_sum(s : MlmetricclassifyView) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyView::sum(self : MlmetricclassifyView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_view_mean(s : MlmetricclassifyView) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyView::mean(self : MlmetricclassifyView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_view_scale(s : MlmetricclassifyView, f : Double) -> MlmetricclassifyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyView::scale(self : MlmetricclassifyView, f : Double) -> MlmetricclassifyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_view_add(a : MlmetricclassifyView, b : MlmetricclassifyView) -> MlmetricclassifyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyView::add(self : MlmetricclassifyView, other : MlmetricclassifyView) -> MlmetricclassifyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_view_copy(s : MlmetricclassifyView) -> MlmetricclassifyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyView::copy(self : MlmetricclassifyView) -> MlmetricclassifyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_view_fill(s : MlmetricclassifyView, v : Double) -> MlmetricclassifyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyView::fill(self : MlmetricclassifyView, v : Double) -> MlmetricclassifyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_view_min(s : MlmetricclassifyView) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyView::min(self : MlmetricclassifyView) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_view_max(s : MlmetricclassifyView) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyView::max(self : MlmetricclassifyView) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_view_to_string(s : MlmetricclassifyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyView::to_string(self : MlmetricclassifyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifyRange {
@@ -963,45 +963,45 @@ pub fn ml_metric_classify_range_make(size : Int) -> MlmetricclassifyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_range_len(s : MlmetricclassifyRange) -> Int { s.size }
+pub fn MlmetricclassifyRange::len(self : MlmetricclassifyRange) -> Int { self.size }
 
-pub fn ml_metric_classify_range_get(s : MlmetricclassifyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifyRange::get(self : MlmetricclassifyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_range_set(s : MlmetricclassifyRange, i : Int, v : Double) -> MlmetricclassifyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifyRange::set(self : MlmetricclassifyRange, i : Int, v : Double) -> MlmetricclassifyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_range_sum(s : MlmetricclassifyRange) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifyRange::sum(self : MlmetricclassifyRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_range_mean(s : MlmetricclassifyRange) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifyRange::mean(self : MlmetricclassifyRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_range_scale(s : MlmetricclassifyRange, f : Double) -> MlmetricclassifyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyRange::scale(self : MlmetricclassifyRange, f : Double) -> MlmetricclassifyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_range_add(a : MlmetricclassifyRange, b : MlmetricclassifyRange) -> MlmetricclassifyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifyRange::add(self : MlmetricclassifyRange, other : MlmetricclassifyRange) -> MlmetricclassifyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_range_copy(s : MlmetricclassifyRange) -> MlmetricclassifyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyRange::copy(self : MlmetricclassifyRange) -> MlmetricclassifyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_range_fill(s : MlmetricclassifyRange, v : Double) -> MlmetricclassifyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifyRange::fill(self : MlmetricclassifyRange, v : Double) -> MlmetricclassifyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_range_min(s : MlmetricclassifyRange) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifyRange::min(self : MlmetricclassifyRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_range_max(s : MlmetricclassifyRange) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifyRange::max(self : MlmetricclassifyRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_range_to_string(s : MlmetricclassifyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifyRange::to_string(self : MlmetricclassifyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclassifySlice {
@@ -1014,44 +1014,44 @@ pub fn ml_metric_classify_slice_make(size : Int) -> MlmetricclassifySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_classify_slice_len(s : MlmetricclassifySlice) -> Int { s.size }
+pub fn MlmetricclassifySlice::len(self : MlmetricclassifySlice) -> Int { self.size }
 
-pub fn ml_metric_classify_slice_get(s : MlmetricclassifySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclassifySlice::get(self : MlmetricclassifySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_classify_slice_set(s : MlmetricclassifySlice, i : Int, v : Double) -> MlmetricclassifySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclassifySlice::set(self : MlmetricclassifySlice, i : Int, v : Double) -> MlmetricclassifySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_slice_sum(s : MlmetricclassifySlice) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclassifySlice::sum(self : MlmetricclassifySlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_classify_slice_mean(s : MlmetricclassifySlice) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclassifySlice::mean(self : MlmetricclassifySlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_classify_slice_scale(s : MlmetricclassifySlice, f : Double) -> MlmetricclassifySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclassifySlice::scale(self : MlmetricclassifySlice, f : Double) -> MlmetricclassifySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_slice_add(a : MlmetricclassifySlice, b : MlmetricclassifySlice) -> MlmetricclassifySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclassifySlice::add(self : MlmetricclassifySlice, other : MlmetricclassifySlice) -> MlmetricclassifySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_classify_slice_copy(s : MlmetricclassifySlice) -> MlmetricclassifySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclassifySlice::copy(self : MlmetricclassifySlice) -> MlmetricclassifySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_slice_fill(s : MlmetricclassifySlice, v : Double) -> MlmetricclassifySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclassifySlice::fill(self : MlmetricclassifySlice, v : Double) -> MlmetricclassifySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_classify_slice_min(s : MlmetricclassifySlice) -> Double { @_common.min(s.data) }
+pub fn MlmetricclassifySlice::min(self : MlmetricclassifySlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_classify_slice_max(s : MlmetricclassifySlice) -> Double { @_common.max(s.data) }
+pub fn MlmetricclassifySlice::max(self : MlmetricclassifySlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_classify_slice_to_string(s : MlmetricclassifySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclassifySlice::to_string(self : MlmetricclassifySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ml_ensemble_gbm_frame_make(size : Int) -> MlensemblegbmFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_frame_len(s : MlensemblegbmFrame) -> Int { s.size }
+pub fn MlensemblegbmFrame::len(self : MlensemblegbmFrame) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_frame_get(s : MlensemblegbmFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmFrame::get(self : MlensemblegbmFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_frame_set(s : MlensemblegbmFrame, i : Int, v : Double) -> MlensemblegbmFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmFrame::set(self : MlensemblegbmFrame, i : Int, v : Double) -> MlensemblegbmFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_frame_sum(s : MlensemblegbmFrame) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmFrame::sum(self : MlensemblegbmFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_frame_mean(s : MlensemblegbmFrame) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmFrame::mean(self : MlensemblegbmFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_frame_scale(s : MlensemblegbmFrame, f : Double) -> MlensemblegbmFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmFrame::scale(self : MlensemblegbmFrame, f : Double) -> MlensemblegbmFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_frame_add(a : MlensemblegbmFrame, b : MlensemblegbmFrame) -> MlensemblegbmFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmFrame::add(self : MlensemblegbmFrame, other : MlensemblegbmFrame) -> MlensemblegbmFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_frame_copy(s : MlensemblegbmFrame) -> MlensemblegbmFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmFrame::copy(self : MlensemblegbmFrame) -> MlensemblegbmFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_frame_fill(s : MlensemblegbmFrame, v : Double) -> MlensemblegbmFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmFrame::fill(self : MlensemblegbmFrame, v : Double) -> MlensemblegbmFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_frame_min(s : MlensemblegbmFrame) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmFrame::min(self : MlensemblegbmFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_frame_max(s : MlensemblegbmFrame) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmFrame::max(self : MlensemblegbmFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_frame_to_string(s : MlensemblegbmFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmFrame::to_string(self : MlensemblegbmFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmTable {
@@ -402,45 +402,45 @@ pub fn ml_ensemble_gbm_table_make(size : Int) -> MlensemblegbmTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_table_len(s : MlensemblegbmTable) -> Int { s.size }
+pub fn MlensemblegbmTable::len(self : MlensemblegbmTable) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_table_get(s : MlensemblegbmTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmTable::get(self : MlensemblegbmTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_table_set(s : MlensemblegbmTable, i : Int, v : Double) -> MlensemblegbmTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmTable::set(self : MlensemblegbmTable, i : Int, v : Double) -> MlensemblegbmTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_table_sum(s : MlensemblegbmTable) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmTable::sum(self : MlensemblegbmTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_table_mean(s : MlensemblegbmTable) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmTable::mean(self : MlensemblegbmTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_table_scale(s : MlensemblegbmTable, f : Double) -> MlensemblegbmTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmTable::scale(self : MlensemblegbmTable, f : Double) -> MlensemblegbmTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_table_add(a : MlensemblegbmTable, b : MlensemblegbmTable) -> MlensemblegbmTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmTable::add(self : MlensemblegbmTable, other : MlensemblegbmTable) -> MlensemblegbmTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_table_copy(s : MlensemblegbmTable) -> MlensemblegbmTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmTable::copy(self : MlensemblegbmTable) -> MlensemblegbmTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_table_fill(s : MlensemblegbmTable, v : Double) -> MlensemblegbmTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmTable::fill(self : MlensemblegbmTable, v : Double) -> MlensemblegbmTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_table_min(s : MlensemblegbmTable) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmTable::min(self : MlensemblegbmTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_table_max(s : MlensemblegbmTable) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmTable::max(self : MlensemblegbmTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_table_to_string(s : MlensemblegbmTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmTable::to_string(self : MlensemblegbmTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmGraphN {
@@ -453,45 +453,45 @@ pub fn ml_ensemble_gbm_graphn_make(size : Int) -> MlensemblegbmGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_graphn_len(s : MlensemblegbmGraphN) -> Int { s.size }
+pub fn MlensemblegbmGraphN::len(self : MlensemblegbmGraphN) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_graphn_get(s : MlensemblegbmGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmGraphN::get(self : MlensemblegbmGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_graphn_set(s : MlensemblegbmGraphN, i : Int, v : Double) -> MlensemblegbmGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmGraphN::set(self : MlensemblegbmGraphN, i : Int, v : Double) -> MlensemblegbmGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_graphn_sum(s : MlensemblegbmGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmGraphN::sum(self : MlensemblegbmGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_graphn_mean(s : MlensemblegbmGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmGraphN::mean(self : MlensemblegbmGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_graphn_scale(s : MlensemblegbmGraphN, f : Double) -> MlensemblegbmGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmGraphN::scale(self : MlensemblegbmGraphN, f : Double) -> MlensemblegbmGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_graphn_add(a : MlensemblegbmGraphN, b : MlensemblegbmGraphN) -> MlensemblegbmGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmGraphN::add(self : MlensemblegbmGraphN, other : MlensemblegbmGraphN) -> MlensemblegbmGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_graphn_copy(s : MlensemblegbmGraphN) -> MlensemblegbmGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmGraphN::copy(self : MlensemblegbmGraphN) -> MlensemblegbmGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_graphn_fill(s : MlensemblegbmGraphN, v : Double) -> MlensemblegbmGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmGraphN::fill(self : MlensemblegbmGraphN, v : Double) -> MlensemblegbmGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_graphn_min(s : MlensemblegbmGraphN) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmGraphN::min(self : MlensemblegbmGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_graphn_max(s : MlensemblegbmGraphN) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmGraphN::max(self : MlensemblegbmGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_graphn_to_string(s : MlensemblegbmGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmGraphN::to_string(self : MlensemblegbmGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmNode {
@@ -504,45 +504,45 @@ pub fn ml_ensemble_gbm_node_make(size : Int) -> MlensemblegbmNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_node_len(s : MlensemblegbmNode) -> Int { s.size }
+pub fn MlensemblegbmNode::len(self : MlensemblegbmNode) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_node_get(s : MlensemblegbmNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmNode::get(self : MlensemblegbmNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_node_set(s : MlensemblegbmNode, i : Int, v : Double) -> MlensemblegbmNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmNode::set(self : MlensemblegbmNode, i : Int, v : Double) -> MlensemblegbmNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_node_sum(s : MlensemblegbmNode) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmNode::sum(self : MlensemblegbmNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_node_mean(s : MlensemblegbmNode) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmNode::mean(self : MlensemblegbmNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_node_scale(s : MlensemblegbmNode, f : Double) -> MlensemblegbmNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmNode::scale(self : MlensemblegbmNode, f : Double) -> MlensemblegbmNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_node_add(a : MlensemblegbmNode, b : MlensemblegbmNode) -> MlensemblegbmNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmNode::add(self : MlensemblegbmNode, other : MlensemblegbmNode) -> MlensemblegbmNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_node_copy(s : MlensemblegbmNode) -> MlensemblegbmNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmNode::copy(self : MlensemblegbmNode) -> MlensemblegbmNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_node_fill(s : MlensemblegbmNode, v : Double) -> MlensemblegbmNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmNode::fill(self : MlensemblegbmNode, v : Double) -> MlensemblegbmNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_node_min(s : MlensemblegbmNode) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmNode::min(self : MlensemblegbmNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_node_max(s : MlensemblegbmNode) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmNode::max(self : MlensemblegbmNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_node_to_string(s : MlensemblegbmNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmNode::to_string(self : MlensemblegbmNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmEdge {
@@ -555,45 +555,45 @@ pub fn ml_ensemble_gbm_edge_make(size : Int) -> MlensemblegbmEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_edge_len(s : MlensemblegbmEdge) -> Int { s.size }
+pub fn MlensemblegbmEdge::len(self : MlensemblegbmEdge) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_edge_get(s : MlensemblegbmEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmEdge::get(self : MlensemblegbmEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_edge_set(s : MlensemblegbmEdge, i : Int, v : Double) -> MlensemblegbmEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmEdge::set(self : MlensemblegbmEdge, i : Int, v : Double) -> MlensemblegbmEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_edge_sum(s : MlensemblegbmEdge) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmEdge::sum(self : MlensemblegbmEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_edge_mean(s : MlensemblegbmEdge) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmEdge::mean(self : MlensemblegbmEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_edge_scale(s : MlensemblegbmEdge, f : Double) -> MlensemblegbmEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmEdge::scale(self : MlensemblegbmEdge, f : Double) -> MlensemblegbmEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_edge_add(a : MlensemblegbmEdge, b : MlensemblegbmEdge) -> MlensemblegbmEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmEdge::add(self : MlensemblegbmEdge, other : MlensemblegbmEdge) -> MlensemblegbmEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_edge_copy(s : MlensemblegbmEdge) -> MlensemblegbmEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmEdge::copy(self : MlensemblegbmEdge) -> MlensemblegbmEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_edge_fill(s : MlensemblegbmEdge, v : Double) -> MlensemblegbmEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmEdge::fill(self : MlensemblegbmEdge, v : Double) -> MlensemblegbmEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_edge_min(s : MlensemblegbmEdge) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmEdge::min(self : MlensemblegbmEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_edge_max(s : MlensemblegbmEdge) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmEdge::max(self : MlensemblegbmEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_edge_to_string(s : MlensemblegbmEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmEdge::to_string(self : MlensemblegbmEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmPath {
@@ -606,45 +606,45 @@ pub fn ml_ensemble_gbm_path_make(size : Int) -> MlensemblegbmPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_path_len(s : MlensemblegbmPath) -> Int { s.size }
+pub fn MlensemblegbmPath::len(self : MlensemblegbmPath) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_path_get(s : MlensemblegbmPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmPath::get(self : MlensemblegbmPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_path_set(s : MlensemblegbmPath, i : Int, v : Double) -> MlensemblegbmPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmPath::set(self : MlensemblegbmPath, i : Int, v : Double) -> MlensemblegbmPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_path_sum(s : MlensemblegbmPath) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmPath::sum(self : MlensemblegbmPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_path_mean(s : MlensemblegbmPath) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmPath::mean(self : MlensemblegbmPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_path_scale(s : MlensemblegbmPath, f : Double) -> MlensemblegbmPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmPath::scale(self : MlensemblegbmPath, f : Double) -> MlensemblegbmPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_path_add(a : MlensemblegbmPath, b : MlensemblegbmPath) -> MlensemblegbmPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmPath::add(self : MlensemblegbmPath, other : MlensemblegbmPath) -> MlensemblegbmPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_path_copy(s : MlensemblegbmPath) -> MlensemblegbmPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmPath::copy(self : MlensemblegbmPath) -> MlensemblegbmPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_path_fill(s : MlensemblegbmPath, v : Double) -> MlensemblegbmPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmPath::fill(self : MlensemblegbmPath, v : Double) -> MlensemblegbmPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_path_min(s : MlensemblegbmPath) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmPath::min(self : MlensemblegbmPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_path_max(s : MlensemblegbmPath) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmPath::max(self : MlensemblegbmPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_path_to_string(s : MlensemblegbmPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmPath::to_string(self : MlensemblegbmPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmCluster {
@@ -657,45 +657,45 @@ pub fn ml_ensemble_gbm_cluster_make(size : Int) -> MlensemblegbmCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_cluster_len(s : MlensemblegbmCluster) -> Int { s.size }
+pub fn MlensemblegbmCluster::len(self : MlensemblegbmCluster) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_cluster_get(s : MlensemblegbmCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmCluster::get(self : MlensemblegbmCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_cluster_set(s : MlensemblegbmCluster, i : Int, v : Double) -> MlensemblegbmCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmCluster::set(self : MlensemblegbmCluster, i : Int, v : Double) -> MlensemblegbmCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_cluster_sum(s : MlensemblegbmCluster) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmCluster::sum(self : MlensemblegbmCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_cluster_mean(s : MlensemblegbmCluster) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmCluster::mean(self : MlensemblegbmCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_cluster_scale(s : MlensemblegbmCluster, f : Double) -> MlensemblegbmCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmCluster::scale(self : MlensemblegbmCluster, f : Double) -> MlensemblegbmCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_cluster_add(a : MlensemblegbmCluster, b : MlensemblegbmCluster) -> MlensemblegbmCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmCluster::add(self : MlensemblegbmCluster, other : MlensemblegbmCluster) -> MlensemblegbmCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_cluster_copy(s : MlensemblegbmCluster) -> MlensemblegbmCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmCluster::copy(self : MlensemblegbmCluster) -> MlensemblegbmCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_cluster_fill(s : MlensemblegbmCluster, v : Double) -> MlensemblegbmCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmCluster::fill(self : MlensemblegbmCluster, v : Double) -> MlensemblegbmCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_cluster_min(s : MlensemblegbmCluster) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmCluster::min(self : MlensemblegbmCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_cluster_max(s : MlensemblegbmCluster) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmCluster::max(self : MlensemblegbmCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_cluster_to_string(s : MlensemblegbmCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmCluster::to_string(self : MlensemblegbmCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmModel {
@@ -708,45 +708,45 @@ pub fn ml_ensemble_gbm_model_make(size : Int) -> MlensemblegbmModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_model_len(s : MlensemblegbmModel) -> Int { s.size }
+pub fn MlensemblegbmModel::len(self : MlensemblegbmModel) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_model_get(s : MlensemblegbmModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmModel::get(self : MlensemblegbmModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_model_set(s : MlensemblegbmModel, i : Int, v : Double) -> MlensemblegbmModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmModel::set(self : MlensemblegbmModel, i : Int, v : Double) -> MlensemblegbmModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_model_sum(s : MlensemblegbmModel) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmModel::sum(self : MlensemblegbmModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_model_mean(s : MlensemblegbmModel) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmModel::mean(self : MlensemblegbmModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_model_scale(s : MlensemblegbmModel, f : Double) -> MlensemblegbmModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmModel::scale(self : MlensemblegbmModel, f : Double) -> MlensemblegbmModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_model_add(a : MlensemblegbmModel, b : MlensemblegbmModel) -> MlensemblegbmModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmModel::add(self : MlensemblegbmModel, other : MlensemblegbmModel) -> MlensemblegbmModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_model_copy(s : MlensemblegbmModel) -> MlensemblegbmModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmModel::copy(self : MlensemblegbmModel) -> MlensemblegbmModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_model_fill(s : MlensemblegbmModel, v : Double) -> MlensemblegbmModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmModel::fill(self : MlensemblegbmModel, v : Double) -> MlensemblegbmModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_model_min(s : MlensemblegbmModel) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmModel::min(self : MlensemblegbmModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_model_max(s : MlensemblegbmModel) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmModel::max(self : MlensemblegbmModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_model_to_string(s : MlensemblegbmModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmModel::to_string(self : MlensemblegbmModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmLayer {
@@ -759,45 +759,45 @@ pub fn ml_ensemble_gbm_layer_make(size : Int) -> MlensemblegbmLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_layer_len(s : MlensemblegbmLayer) -> Int { s.size }
+pub fn MlensemblegbmLayer::len(self : MlensemblegbmLayer) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_layer_get(s : MlensemblegbmLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmLayer::get(self : MlensemblegbmLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_layer_set(s : MlensemblegbmLayer, i : Int, v : Double) -> MlensemblegbmLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmLayer::set(self : MlensemblegbmLayer, i : Int, v : Double) -> MlensemblegbmLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_layer_sum(s : MlensemblegbmLayer) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmLayer::sum(self : MlensemblegbmLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_layer_mean(s : MlensemblegbmLayer) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmLayer::mean(self : MlensemblegbmLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_layer_scale(s : MlensemblegbmLayer, f : Double) -> MlensemblegbmLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmLayer::scale(self : MlensemblegbmLayer, f : Double) -> MlensemblegbmLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_layer_add(a : MlensemblegbmLayer, b : MlensemblegbmLayer) -> MlensemblegbmLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmLayer::add(self : MlensemblegbmLayer, other : MlensemblegbmLayer) -> MlensemblegbmLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_layer_copy(s : MlensemblegbmLayer) -> MlensemblegbmLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmLayer::copy(self : MlensemblegbmLayer) -> MlensemblegbmLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_layer_fill(s : MlensemblegbmLayer, v : Double) -> MlensemblegbmLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmLayer::fill(self : MlensemblegbmLayer, v : Double) -> MlensemblegbmLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_layer_min(s : MlensemblegbmLayer) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmLayer::min(self : MlensemblegbmLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_layer_max(s : MlensemblegbmLayer) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmLayer::max(self : MlensemblegbmLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_layer_to_string(s : MlensemblegbmLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmLayer::to_string(self : MlensemblegbmLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmBuffer {
@@ -810,45 +810,45 @@ pub fn ml_ensemble_gbm_buffer_make(size : Int) -> MlensemblegbmBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_buffer_len(s : MlensemblegbmBuffer) -> Int { s.size }
+pub fn MlensemblegbmBuffer::len(self : MlensemblegbmBuffer) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_buffer_get(s : MlensemblegbmBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmBuffer::get(self : MlensemblegbmBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_buffer_set(s : MlensemblegbmBuffer, i : Int, v : Double) -> MlensemblegbmBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmBuffer::set(self : MlensemblegbmBuffer, i : Int, v : Double) -> MlensemblegbmBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_buffer_sum(s : MlensemblegbmBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmBuffer::sum(self : MlensemblegbmBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_buffer_mean(s : MlensemblegbmBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmBuffer::mean(self : MlensemblegbmBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_buffer_scale(s : MlensemblegbmBuffer, f : Double) -> MlensemblegbmBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmBuffer::scale(self : MlensemblegbmBuffer, f : Double) -> MlensemblegbmBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_buffer_add(a : MlensemblegbmBuffer, b : MlensemblegbmBuffer) -> MlensemblegbmBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmBuffer::add(self : MlensemblegbmBuffer, other : MlensemblegbmBuffer) -> MlensemblegbmBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_buffer_copy(s : MlensemblegbmBuffer) -> MlensemblegbmBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmBuffer::copy(self : MlensemblegbmBuffer) -> MlensemblegbmBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_buffer_fill(s : MlensemblegbmBuffer, v : Double) -> MlensemblegbmBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmBuffer::fill(self : MlensemblegbmBuffer, v : Double) -> MlensemblegbmBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_buffer_min(s : MlensemblegbmBuffer) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmBuffer::min(self : MlensemblegbmBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_buffer_max(s : MlensemblegbmBuffer) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmBuffer::max(self : MlensemblegbmBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_buffer_to_string(s : MlensemblegbmBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmBuffer::to_string(self : MlensemblegbmBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmCursor {
@@ -861,45 +861,45 @@ pub fn ml_ensemble_gbm_cursor_make(size : Int) -> MlensemblegbmCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_cursor_len(s : MlensemblegbmCursor) -> Int { s.size }
+pub fn MlensemblegbmCursor::len(self : MlensemblegbmCursor) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_cursor_get(s : MlensemblegbmCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmCursor::get(self : MlensemblegbmCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_cursor_set(s : MlensemblegbmCursor, i : Int, v : Double) -> MlensemblegbmCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmCursor::set(self : MlensemblegbmCursor, i : Int, v : Double) -> MlensemblegbmCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_cursor_sum(s : MlensemblegbmCursor) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmCursor::sum(self : MlensemblegbmCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_cursor_mean(s : MlensemblegbmCursor) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmCursor::mean(self : MlensemblegbmCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_cursor_scale(s : MlensemblegbmCursor, f : Double) -> MlensemblegbmCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmCursor::scale(self : MlensemblegbmCursor, f : Double) -> MlensemblegbmCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_cursor_add(a : MlensemblegbmCursor, b : MlensemblegbmCursor) -> MlensemblegbmCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmCursor::add(self : MlensemblegbmCursor, other : MlensemblegbmCursor) -> MlensemblegbmCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_cursor_copy(s : MlensemblegbmCursor) -> MlensemblegbmCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmCursor::copy(self : MlensemblegbmCursor) -> MlensemblegbmCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_cursor_fill(s : MlensemblegbmCursor, v : Double) -> MlensemblegbmCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmCursor::fill(self : MlensemblegbmCursor, v : Double) -> MlensemblegbmCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_cursor_min(s : MlensemblegbmCursor) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmCursor::min(self : MlensemblegbmCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_cursor_max(s : MlensemblegbmCursor) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmCursor::max(self : MlensemblegbmCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_cursor_to_string(s : MlensemblegbmCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmCursor::to_string(self : MlensemblegbmCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmView {
@@ -912,45 +912,45 @@ pub fn ml_ensemble_gbm_view_make(size : Int) -> MlensemblegbmView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_view_len(s : MlensemblegbmView) -> Int { s.size }
+pub fn MlensemblegbmView::len(self : MlensemblegbmView) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_view_get(s : MlensemblegbmView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmView::get(self : MlensemblegbmView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_view_set(s : MlensemblegbmView, i : Int, v : Double) -> MlensemblegbmView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmView::set(self : MlensemblegbmView, i : Int, v : Double) -> MlensemblegbmView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_view_sum(s : MlensemblegbmView) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmView::sum(self : MlensemblegbmView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_view_mean(s : MlensemblegbmView) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmView::mean(self : MlensemblegbmView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_view_scale(s : MlensemblegbmView, f : Double) -> MlensemblegbmView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmView::scale(self : MlensemblegbmView, f : Double) -> MlensemblegbmView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_view_add(a : MlensemblegbmView, b : MlensemblegbmView) -> MlensemblegbmView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmView::add(self : MlensemblegbmView, other : MlensemblegbmView) -> MlensemblegbmView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_view_copy(s : MlensemblegbmView) -> MlensemblegbmView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmView::copy(self : MlensemblegbmView) -> MlensemblegbmView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_view_fill(s : MlensemblegbmView, v : Double) -> MlensemblegbmView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmView::fill(self : MlensemblegbmView, v : Double) -> MlensemblegbmView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_view_min(s : MlensemblegbmView) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmView::min(self : MlensemblegbmView) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_view_max(s : MlensemblegbmView) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmView::max(self : MlensemblegbmView) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_view_to_string(s : MlensemblegbmView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmView::to_string(self : MlensemblegbmView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmRange {
@@ -963,45 +963,45 @@ pub fn ml_ensemble_gbm_range_make(size : Int) -> MlensemblegbmRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_range_len(s : MlensemblegbmRange) -> Int { s.size }
+pub fn MlensemblegbmRange::len(self : MlensemblegbmRange) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_range_get(s : MlensemblegbmRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmRange::get(self : MlensemblegbmRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_range_set(s : MlensemblegbmRange, i : Int, v : Double) -> MlensemblegbmRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmRange::set(self : MlensemblegbmRange, i : Int, v : Double) -> MlensemblegbmRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_range_sum(s : MlensemblegbmRange) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmRange::sum(self : MlensemblegbmRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_range_mean(s : MlensemblegbmRange) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmRange::mean(self : MlensemblegbmRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_range_scale(s : MlensemblegbmRange, f : Double) -> MlensemblegbmRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmRange::scale(self : MlensemblegbmRange, f : Double) -> MlensemblegbmRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_range_add(a : MlensemblegbmRange, b : MlensemblegbmRange) -> MlensemblegbmRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmRange::add(self : MlensemblegbmRange, other : MlensemblegbmRange) -> MlensemblegbmRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_range_copy(s : MlensemblegbmRange) -> MlensemblegbmRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmRange::copy(self : MlensemblegbmRange) -> MlensemblegbmRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_range_fill(s : MlensemblegbmRange, v : Double) -> MlensemblegbmRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmRange::fill(self : MlensemblegbmRange, v : Double) -> MlensemblegbmRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_range_min(s : MlensemblegbmRange) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmRange::min(self : MlensemblegbmRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_range_max(s : MlensemblegbmRange) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmRange::max(self : MlensemblegbmRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_range_to_string(s : MlensemblegbmRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmRange::to_string(self : MlensemblegbmRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblegbmSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_ensemble_gbm_slice_make(size : Int) -> MlensemblegbmSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_gbm_slice_len(s : MlensemblegbmSlice) -> Int { s.size }
+pub fn MlensemblegbmSlice::len(self : MlensemblegbmSlice) -> Int { self.size }
 
-pub fn ml_ensemble_gbm_slice_get(s : MlensemblegbmSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblegbmSlice::get(self : MlensemblegbmSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_gbm_slice_set(s : MlensemblegbmSlice, i : Int, v : Double) -> MlensemblegbmSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblegbmSlice::set(self : MlensemblegbmSlice, i : Int, v : Double) -> MlensemblegbmSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_slice_sum(s : MlensemblegbmSlice) -> Double { @_common.sum(s.data) }
+pub fn MlensemblegbmSlice::sum(self : MlensemblegbmSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_gbm_slice_mean(s : MlensemblegbmSlice) -> Double { @_common.mean(s.data) }
+pub fn MlensemblegbmSlice::mean(self : MlensemblegbmSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_gbm_slice_scale(s : MlensemblegbmSlice, f : Double) -> MlensemblegbmSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblegbmSlice::scale(self : MlensemblegbmSlice, f : Double) -> MlensemblegbmSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_slice_add(a : MlensemblegbmSlice, b : MlensemblegbmSlice) -> MlensemblegbmSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblegbmSlice::add(self : MlensemblegbmSlice, other : MlensemblegbmSlice) -> MlensemblegbmSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_slice_copy(s : MlensemblegbmSlice) -> MlensemblegbmSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblegbmSlice::copy(self : MlensemblegbmSlice) -> MlensemblegbmSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_slice_fill(s : MlensemblegbmSlice, v : Double) -> MlensemblegbmSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblegbmSlice::fill(self : MlensemblegbmSlice, v : Double) -> MlensemblegbmSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_gbm_slice_min(s : MlensemblegbmSlice) -> Double { @_common.min(s.data) }
+pub fn MlensemblegbmSlice::min(self : MlensemblegbmSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_gbm_slice_max(s : MlensemblegbmSlice) -> Double { @_common.max(s.data) }
+pub fn MlensemblegbmSlice::max(self : MlensemblegbmSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_gbm_slice_to_string(s : MlensemblegbmSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblegbmSlice::to_string(self : MlensemblegbmSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

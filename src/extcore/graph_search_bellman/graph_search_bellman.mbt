@@ -351,45 +351,45 @@ pub fn graph_search_bellman_frame_make(size : Int) -> GraphsearchbellmanFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_frame_len(s : GraphsearchbellmanFrame) -> Int { s.size }
+pub fn GraphsearchbellmanFrame::len(self : GraphsearchbellmanFrame) -> Int { self.size }
 
-pub fn graph_search_bellman_frame_get(s : GraphsearchbellmanFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanFrame::get(self : GraphsearchbellmanFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_frame_set(s : GraphsearchbellmanFrame, i : Int, v : Double) -> GraphsearchbellmanFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanFrame::set(self : GraphsearchbellmanFrame, i : Int, v : Double) -> GraphsearchbellmanFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_frame_sum(s : GraphsearchbellmanFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanFrame::sum(self : GraphsearchbellmanFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_frame_mean(s : GraphsearchbellmanFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanFrame::mean(self : GraphsearchbellmanFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_frame_scale(s : GraphsearchbellmanFrame, f : Double) -> GraphsearchbellmanFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanFrame::scale(self : GraphsearchbellmanFrame, f : Double) -> GraphsearchbellmanFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_frame_add(a : GraphsearchbellmanFrame, b : GraphsearchbellmanFrame) -> GraphsearchbellmanFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanFrame::add(self : GraphsearchbellmanFrame, other : GraphsearchbellmanFrame) -> GraphsearchbellmanFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_frame_copy(s : GraphsearchbellmanFrame) -> GraphsearchbellmanFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanFrame::copy(self : GraphsearchbellmanFrame) -> GraphsearchbellmanFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_frame_fill(s : GraphsearchbellmanFrame, v : Double) -> GraphsearchbellmanFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanFrame::fill(self : GraphsearchbellmanFrame, v : Double) -> GraphsearchbellmanFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_frame_min(s : GraphsearchbellmanFrame) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanFrame::min(self : GraphsearchbellmanFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_frame_max(s : GraphsearchbellmanFrame) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanFrame::max(self : GraphsearchbellmanFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_frame_to_string(s : GraphsearchbellmanFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanFrame::to_string(self : GraphsearchbellmanFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanTable {
@@ -402,45 +402,45 @@ pub fn graph_search_bellman_table_make(size : Int) -> GraphsearchbellmanTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_table_len(s : GraphsearchbellmanTable) -> Int { s.size }
+pub fn GraphsearchbellmanTable::len(self : GraphsearchbellmanTable) -> Int { self.size }
 
-pub fn graph_search_bellman_table_get(s : GraphsearchbellmanTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanTable::get(self : GraphsearchbellmanTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_table_set(s : GraphsearchbellmanTable, i : Int, v : Double) -> GraphsearchbellmanTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanTable::set(self : GraphsearchbellmanTable, i : Int, v : Double) -> GraphsearchbellmanTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_table_sum(s : GraphsearchbellmanTable) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanTable::sum(self : GraphsearchbellmanTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_table_mean(s : GraphsearchbellmanTable) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanTable::mean(self : GraphsearchbellmanTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_table_scale(s : GraphsearchbellmanTable, f : Double) -> GraphsearchbellmanTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanTable::scale(self : GraphsearchbellmanTable, f : Double) -> GraphsearchbellmanTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_table_add(a : GraphsearchbellmanTable, b : GraphsearchbellmanTable) -> GraphsearchbellmanTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanTable::add(self : GraphsearchbellmanTable, other : GraphsearchbellmanTable) -> GraphsearchbellmanTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_table_copy(s : GraphsearchbellmanTable) -> GraphsearchbellmanTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanTable::copy(self : GraphsearchbellmanTable) -> GraphsearchbellmanTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_table_fill(s : GraphsearchbellmanTable, v : Double) -> GraphsearchbellmanTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanTable::fill(self : GraphsearchbellmanTable, v : Double) -> GraphsearchbellmanTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_table_min(s : GraphsearchbellmanTable) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanTable::min(self : GraphsearchbellmanTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_table_max(s : GraphsearchbellmanTable) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanTable::max(self : GraphsearchbellmanTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_table_to_string(s : GraphsearchbellmanTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanTable::to_string(self : GraphsearchbellmanTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanGraphN {
@@ -453,45 +453,45 @@ pub fn graph_search_bellman_graphn_make(size : Int) -> GraphsearchbellmanGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_graphn_len(s : GraphsearchbellmanGraphN) -> Int { s.size }
+pub fn GraphsearchbellmanGraphN::len(self : GraphsearchbellmanGraphN) -> Int { self.size }
 
-pub fn graph_search_bellman_graphn_get(s : GraphsearchbellmanGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanGraphN::get(self : GraphsearchbellmanGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_graphn_set(s : GraphsearchbellmanGraphN, i : Int, v : Double) -> GraphsearchbellmanGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanGraphN::set(self : GraphsearchbellmanGraphN, i : Int, v : Double) -> GraphsearchbellmanGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_graphn_sum(s : GraphsearchbellmanGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanGraphN::sum(self : GraphsearchbellmanGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_graphn_mean(s : GraphsearchbellmanGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanGraphN::mean(self : GraphsearchbellmanGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_graphn_scale(s : GraphsearchbellmanGraphN, f : Double) -> GraphsearchbellmanGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanGraphN::scale(self : GraphsearchbellmanGraphN, f : Double) -> GraphsearchbellmanGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_graphn_add(a : GraphsearchbellmanGraphN, b : GraphsearchbellmanGraphN) -> GraphsearchbellmanGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanGraphN::add(self : GraphsearchbellmanGraphN, other : GraphsearchbellmanGraphN) -> GraphsearchbellmanGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_graphn_copy(s : GraphsearchbellmanGraphN) -> GraphsearchbellmanGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanGraphN::copy(self : GraphsearchbellmanGraphN) -> GraphsearchbellmanGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_graphn_fill(s : GraphsearchbellmanGraphN, v : Double) -> GraphsearchbellmanGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanGraphN::fill(self : GraphsearchbellmanGraphN, v : Double) -> GraphsearchbellmanGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_graphn_min(s : GraphsearchbellmanGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanGraphN::min(self : GraphsearchbellmanGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_graphn_max(s : GraphsearchbellmanGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanGraphN::max(self : GraphsearchbellmanGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_graphn_to_string(s : GraphsearchbellmanGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanGraphN::to_string(self : GraphsearchbellmanGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanNode {
@@ -504,45 +504,45 @@ pub fn graph_search_bellman_node_make(size : Int) -> GraphsearchbellmanNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_node_len(s : GraphsearchbellmanNode) -> Int { s.size }
+pub fn GraphsearchbellmanNode::len(self : GraphsearchbellmanNode) -> Int { self.size }
 
-pub fn graph_search_bellman_node_get(s : GraphsearchbellmanNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanNode::get(self : GraphsearchbellmanNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_node_set(s : GraphsearchbellmanNode, i : Int, v : Double) -> GraphsearchbellmanNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanNode::set(self : GraphsearchbellmanNode, i : Int, v : Double) -> GraphsearchbellmanNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_node_sum(s : GraphsearchbellmanNode) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanNode::sum(self : GraphsearchbellmanNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_node_mean(s : GraphsearchbellmanNode) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanNode::mean(self : GraphsearchbellmanNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_node_scale(s : GraphsearchbellmanNode, f : Double) -> GraphsearchbellmanNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanNode::scale(self : GraphsearchbellmanNode, f : Double) -> GraphsearchbellmanNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_node_add(a : GraphsearchbellmanNode, b : GraphsearchbellmanNode) -> GraphsearchbellmanNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanNode::add(self : GraphsearchbellmanNode, other : GraphsearchbellmanNode) -> GraphsearchbellmanNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_node_copy(s : GraphsearchbellmanNode) -> GraphsearchbellmanNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanNode::copy(self : GraphsearchbellmanNode) -> GraphsearchbellmanNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_node_fill(s : GraphsearchbellmanNode, v : Double) -> GraphsearchbellmanNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanNode::fill(self : GraphsearchbellmanNode, v : Double) -> GraphsearchbellmanNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_node_min(s : GraphsearchbellmanNode) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanNode::min(self : GraphsearchbellmanNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_node_max(s : GraphsearchbellmanNode) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanNode::max(self : GraphsearchbellmanNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_node_to_string(s : GraphsearchbellmanNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanNode::to_string(self : GraphsearchbellmanNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanEdge {
@@ -555,45 +555,45 @@ pub fn graph_search_bellman_edge_make(size : Int) -> GraphsearchbellmanEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_edge_len(s : GraphsearchbellmanEdge) -> Int { s.size }
+pub fn GraphsearchbellmanEdge::len(self : GraphsearchbellmanEdge) -> Int { self.size }
 
-pub fn graph_search_bellman_edge_get(s : GraphsearchbellmanEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanEdge::get(self : GraphsearchbellmanEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_edge_set(s : GraphsearchbellmanEdge, i : Int, v : Double) -> GraphsearchbellmanEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanEdge::set(self : GraphsearchbellmanEdge, i : Int, v : Double) -> GraphsearchbellmanEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_edge_sum(s : GraphsearchbellmanEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanEdge::sum(self : GraphsearchbellmanEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_edge_mean(s : GraphsearchbellmanEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanEdge::mean(self : GraphsearchbellmanEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_edge_scale(s : GraphsearchbellmanEdge, f : Double) -> GraphsearchbellmanEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanEdge::scale(self : GraphsearchbellmanEdge, f : Double) -> GraphsearchbellmanEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_edge_add(a : GraphsearchbellmanEdge, b : GraphsearchbellmanEdge) -> GraphsearchbellmanEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanEdge::add(self : GraphsearchbellmanEdge, other : GraphsearchbellmanEdge) -> GraphsearchbellmanEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_edge_copy(s : GraphsearchbellmanEdge) -> GraphsearchbellmanEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanEdge::copy(self : GraphsearchbellmanEdge) -> GraphsearchbellmanEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_edge_fill(s : GraphsearchbellmanEdge, v : Double) -> GraphsearchbellmanEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanEdge::fill(self : GraphsearchbellmanEdge, v : Double) -> GraphsearchbellmanEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_edge_min(s : GraphsearchbellmanEdge) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanEdge::min(self : GraphsearchbellmanEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_edge_max(s : GraphsearchbellmanEdge) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanEdge::max(self : GraphsearchbellmanEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_edge_to_string(s : GraphsearchbellmanEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanEdge::to_string(self : GraphsearchbellmanEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanPath {
@@ -606,45 +606,45 @@ pub fn graph_search_bellman_path_make(size : Int) -> GraphsearchbellmanPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_path_len(s : GraphsearchbellmanPath) -> Int { s.size }
+pub fn GraphsearchbellmanPath::len(self : GraphsearchbellmanPath) -> Int { self.size }
 
-pub fn graph_search_bellman_path_get(s : GraphsearchbellmanPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanPath::get(self : GraphsearchbellmanPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_path_set(s : GraphsearchbellmanPath, i : Int, v : Double) -> GraphsearchbellmanPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanPath::set(self : GraphsearchbellmanPath, i : Int, v : Double) -> GraphsearchbellmanPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_path_sum(s : GraphsearchbellmanPath) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanPath::sum(self : GraphsearchbellmanPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_path_mean(s : GraphsearchbellmanPath) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanPath::mean(self : GraphsearchbellmanPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_path_scale(s : GraphsearchbellmanPath, f : Double) -> GraphsearchbellmanPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanPath::scale(self : GraphsearchbellmanPath, f : Double) -> GraphsearchbellmanPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_path_add(a : GraphsearchbellmanPath, b : GraphsearchbellmanPath) -> GraphsearchbellmanPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanPath::add(self : GraphsearchbellmanPath, other : GraphsearchbellmanPath) -> GraphsearchbellmanPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_path_copy(s : GraphsearchbellmanPath) -> GraphsearchbellmanPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanPath::copy(self : GraphsearchbellmanPath) -> GraphsearchbellmanPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_path_fill(s : GraphsearchbellmanPath, v : Double) -> GraphsearchbellmanPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanPath::fill(self : GraphsearchbellmanPath, v : Double) -> GraphsearchbellmanPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_path_min(s : GraphsearchbellmanPath) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanPath::min(self : GraphsearchbellmanPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_path_max(s : GraphsearchbellmanPath) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanPath::max(self : GraphsearchbellmanPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_path_to_string(s : GraphsearchbellmanPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanPath::to_string(self : GraphsearchbellmanPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanCluster {
@@ -657,45 +657,45 @@ pub fn graph_search_bellman_cluster_make(size : Int) -> GraphsearchbellmanCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_cluster_len(s : GraphsearchbellmanCluster) -> Int { s.size }
+pub fn GraphsearchbellmanCluster::len(self : GraphsearchbellmanCluster) -> Int { self.size }
 
-pub fn graph_search_bellman_cluster_get(s : GraphsearchbellmanCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanCluster::get(self : GraphsearchbellmanCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_cluster_set(s : GraphsearchbellmanCluster, i : Int, v : Double) -> GraphsearchbellmanCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanCluster::set(self : GraphsearchbellmanCluster, i : Int, v : Double) -> GraphsearchbellmanCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_cluster_sum(s : GraphsearchbellmanCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanCluster::sum(self : GraphsearchbellmanCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_cluster_mean(s : GraphsearchbellmanCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanCluster::mean(self : GraphsearchbellmanCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_cluster_scale(s : GraphsearchbellmanCluster, f : Double) -> GraphsearchbellmanCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanCluster::scale(self : GraphsearchbellmanCluster, f : Double) -> GraphsearchbellmanCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_cluster_add(a : GraphsearchbellmanCluster, b : GraphsearchbellmanCluster) -> GraphsearchbellmanCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanCluster::add(self : GraphsearchbellmanCluster, other : GraphsearchbellmanCluster) -> GraphsearchbellmanCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_cluster_copy(s : GraphsearchbellmanCluster) -> GraphsearchbellmanCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanCluster::copy(self : GraphsearchbellmanCluster) -> GraphsearchbellmanCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_cluster_fill(s : GraphsearchbellmanCluster, v : Double) -> GraphsearchbellmanCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanCluster::fill(self : GraphsearchbellmanCluster, v : Double) -> GraphsearchbellmanCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_cluster_min(s : GraphsearchbellmanCluster) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanCluster::min(self : GraphsearchbellmanCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_cluster_max(s : GraphsearchbellmanCluster) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanCluster::max(self : GraphsearchbellmanCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_cluster_to_string(s : GraphsearchbellmanCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanCluster::to_string(self : GraphsearchbellmanCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanModel {
@@ -708,45 +708,45 @@ pub fn graph_search_bellman_model_make(size : Int) -> GraphsearchbellmanModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_model_len(s : GraphsearchbellmanModel) -> Int { s.size }
+pub fn GraphsearchbellmanModel::len(self : GraphsearchbellmanModel) -> Int { self.size }
 
-pub fn graph_search_bellman_model_get(s : GraphsearchbellmanModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanModel::get(self : GraphsearchbellmanModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_model_set(s : GraphsearchbellmanModel, i : Int, v : Double) -> GraphsearchbellmanModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanModel::set(self : GraphsearchbellmanModel, i : Int, v : Double) -> GraphsearchbellmanModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_model_sum(s : GraphsearchbellmanModel) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanModel::sum(self : GraphsearchbellmanModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_model_mean(s : GraphsearchbellmanModel) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanModel::mean(self : GraphsearchbellmanModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_model_scale(s : GraphsearchbellmanModel, f : Double) -> GraphsearchbellmanModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanModel::scale(self : GraphsearchbellmanModel, f : Double) -> GraphsearchbellmanModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_model_add(a : GraphsearchbellmanModel, b : GraphsearchbellmanModel) -> GraphsearchbellmanModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanModel::add(self : GraphsearchbellmanModel, other : GraphsearchbellmanModel) -> GraphsearchbellmanModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_model_copy(s : GraphsearchbellmanModel) -> GraphsearchbellmanModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanModel::copy(self : GraphsearchbellmanModel) -> GraphsearchbellmanModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_model_fill(s : GraphsearchbellmanModel, v : Double) -> GraphsearchbellmanModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanModel::fill(self : GraphsearchbellmanModel, v : Double) -> GraphsearchbellmanModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_model_min(s : GraphsearchbellmanModel) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanModel::min(self : GraphsearchbellmanModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_model_max(s : GraphsearchbellmanModel) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanModel::max(self : GraphsearchbellmanModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_model_to_string(s : GraphsearchbellmanModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanModel::to_string(self : GraphsearchbellmanModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanLayer {
@@ -759,45 +759,45 @@ pub fn graph_search_bellman_layer_make(size : Int) -> GraphsearchbellmanLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_layer_len(s : GraphsearchbellmanLayer) -> Int { s.size }
+pub fn GraphsearchbellmanLayer::len(self : GraphsearchbellmanLayer) -> Int { self.size }
 
-pub fn graph_search_bellman_layer_get(s : GraphsearchbellmanLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanLayer::get(self : GraphsearchbellmanLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_layer_set(s : GraphsearchbellmanLayer, i : Int, v : Double) -> GraphsearchbellmanLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanLayer::set(self : GraphsearchbellmanLayer, i : Int, v : Double) -> GraphsearchbellmanLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_layer_sum(s : GraphsearchbellmanLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanLayer::sum(self : GraphsearchbellmanLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_layer_mean(s : GraphsearchbellmanLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanLayer::mean(self : GraphsearchbellmanLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_layer_scale(s : GraphsearchbellmanLayer, f : Double) -> GraphsearchbellmanLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanLayer::scale(self : GraphsearchbellmanLayer, f : Double) -> GraphsearchbellmanLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_layer_add(a : GraphsearchbellmanLayer, b : GraphsearchbellmanLayer) -> GraphsearchbellmanLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanLayer::add(self : GraphsearchbellmanLayer, other : GraphsearchbellmanLayer) -> GraphsearchbellmanLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_layer_copy(s : GraphsearchbellmanLayer) -> GraphsearchbellmanLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanLayer::copy(self : GraphsearchbellmanLayer) -> GraphsearchbellmanLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_layer_fill(s : GraphsearchbellmanLayer, v : Double) -> GraphsearchbellmanLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanLayer::fill(self : GraphsearchbellmanLayer, v : Double) -> GraphsearchbellmanLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_layer_min(s : GraphsearchbellmanLayer) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanLayer::min(self : GraphsearchbellmanLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_layer_max(s : GraphsearchbellmanLayer) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanLayer::max(self : GraphsearchbellmanLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_layer_to_string(s : GraphsearchbellmanLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanLayer::to_string(self : GraphsearchbellmanLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanBuffer {
@@ -810,45 +810,45 @@ pub fn graph_search_bellman_buffer_make(size : Int) -> GraphsearchbellmanBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_buffer_len(s : GraphsearchbellmanBuffer) -> Int { s.size }
+pub fn GraphsearchbellmanBuffer::len(self : GraphsearchbellmanBuffer) -> Int { self.size }
 
-pub fn graph_search_bellman_buffer_get(s : GraphsearchbellmanBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanBuffer::get(self : GraphsearchbellmanBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_buffer_set(s : GraphsearchbellmanBuffer, i : Int, v : Double) -> GraphsearchbellmanBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanBuffer::set(self : GraphsearchbellmanBuffer, i : Int, v : Double) -> GraphsearchbellmanBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_buffer_sum(s : GraphsearchbellmanBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanBuffer::sum(self : GraphsearchbellmanBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_buffer_mean(s : GraphsearchbellmanBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanBuffer::mean(self : GraphsearchbellmanBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_buffer_scale(s : GraphsearchbellmanBuffer, f : Double) -> GraphsearchbellmanBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanBuffer::scale(self : GraphsearchbellmanBuffer, f : Double) -> GraphsearchbellmanBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_buffer_add(a : GraphsearchbellmanBuffer, b : GraphsearchbellmanBuffer) -> GraphsearchbellmanBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanBuffer::add(self : GraphsearchbellmanBuffer, other : GraphsearchbellmanBuffer) -> GraphsearchbellmanBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_buffer_copy(s : GraphsearchbellmanBuffer) -> GraphsearchbellmanBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanBuffer::copy(self : GraphsearchbellmanBuffer) -> GraphsearchbellmanBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_buffer_fill(s : GraphsearchbellmanBuffer, v : Double) -> GraphsearchbellmanBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanBuffer::fill(self : GraphsearchbellmanBuffer, v : Double) -> GraphsearchbellmanBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_buffer_min(s : GraphsearchbellmanBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanBuffer::min(self : GraphsearchbellmanBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_buffer_max(s : GraphsearchbellmanBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanBuffer::max(self : GraphsearchbellmanBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_buffer_to_string(s : GraphsearchbellmanBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanBuffer::to_string(self : GraphsearchbellmanBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanCursor {
@@ -861,45 +861,45 @@ pub fn graph_search_bellman_cursor_make(size : Int) -> GraphsearchbellmanCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_cursor_len(s : GraphsearchbellmanCursor) -> Int { s.size }
+pub fn GraphsearchbellmanCursor::len(self : GraphsearchbellmanCursor) -> Int { self.size }
 
-pub fn graph_search_bellman_cursor_get(s : GraphsearchbellmanCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanCursor::get(self : GraphsearchbellmanCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_cursor_set(s : GraphsearchbellmanCursor, i : Int, v : Double) -> GraphsearchbellmanCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanCursor::set(self : GraphsearchbellmanCursor, i : Int, v : Double) -> GraphsearchbellmanCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_cursor_sum(s : GraphsearchbellmanCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanCursor::sum(self : GraphsearchbellmanCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_cursor_mean(s : GraphsearchbellmanCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanCursor::mean(self : GraphsearchbellmanCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_cursor_scale(s : GraphsearchbellmanCursor, f : Double) -> GraphsearchbellmanCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanCursor::scale(self : GraphsearchbellmanCursor, f : Double) -> GraphsearchbellmanCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_cursor_add(a : GraphsearchbellmanCursor, b : GraphsearchbellmanCursor) -> GraphsearchbellmanCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanCursor::add(self : GraphsearchbellmanCursor, other : GraphsearchbellmanCursor) -> GraphsearchbellmanCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_cursor_copy(s : GraphsearchbellmanCursor) -> GraphsearchbellmanCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanCursor::copy(self : GraphsearchbellmanCursor) -> GraphsearchbellmanCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_cursor_fill(s : GraphsearchbellmanCursor, v : Double) -> GraphsearchbellmanCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanCursor::fill(self : GraphsearchbellmanCursor, v : Double) -> GraphsearchbellmanCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_cursor_min(s : GraphsearchbellmanCursor) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanCursor::min(self : GraphsearchbellmanCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_cursor_max(s : GraphsearchbellmanCursor) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanCursor::max(self : GraphsearchbellmanCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_cursor_to_string(s : GraphsearchbellmanCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanCursor::to_string(self : GraphsearchbellmanCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanView {
@@ -912,45 +912,45 @@ pub fn graph_search_bellman_view_make(size : Int) -> GraphsearchbellmanView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_view_len(s : GraphsearchbellmanView) -> Int { s.size }
+pub fn GraphsearchbellmanView::len(self : GraphsearchbellmanView) -> Int { self.size }
 
-pub fn graph_search_bellman_view_get(s : GraphsearchbellmanView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanView::get(self : GraphsearchbellmanView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_view_set(s : GraphsearchbellmanView, i : Int, v : Double) -> GraphsearchbellmanView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanView::set(self : GraphsearchbellmanView, i : Int, v : Double) -> GraphsearchbellmanView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_view_sum(s : GraphsearchbellmanView) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanView::sum(self : GraphsearchbellmanView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_view_mean(s : GraphsearchbellmanView) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanView::mean(self : GraphsearchbellmanView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_view_scale(s : GraphsearchbellmanView, f : Double) -> GraphsearchbellmanView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanView::scale(self : GraphsearchbellmanView, f : Double) -> GraphsearchbellmanView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_view_add(a : GraphsearchbellmanView, b : GraphsearchbellmanView) -> GraphsearchbellmanView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanView::add(self : GraphsearchbellmanView, other : GraphsearchbellmanView) -> GraphsearchbellmanView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_view_copy(s : GraphsearchbellmanView) -> GraphsearchbellmanView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanView::copy(self : GraphsearchbellmanView) -> GraphsearchbellmanView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_view_fill(s : GraphsearchbellmanView, v : Double) -> GraphsearchbellmanView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanView::fill(self : GraphsearchbellmanView, v : Double) -> GraphsearchbellmanView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_view_min(s : GraphsearchbellmanView) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanView::min(self : GraphsearchbellmanView) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_view_max(s : GraphsearchbellmanView) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanView::max(self : GraphsearchbellmanView) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_view_to_string(s : GraphsearchbellmanView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanView::to_string(self : GraphsearchbellmanView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanRange {
@@ -963,45 +963,45 @@ pub fn graph_search_bellman_range_make(size : Int) -> GraphsearchbellmanRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_range_len(s : GraphsearchbellmanRange) -> Int { s.size }
+pub fn GraphsearchbellmanRange::len(self : GraphsearchbellmanRange) -> Int { self.size }
 
-pub fn graph_search_bellman_range_get(s : GraphsearchbellmanRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanRange::get(self : GraphsearchbellmanRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_range_set(s : GraphsearchbellmanRange, i : Int, v : Double) -> GraphsearchbellmanRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanRange::set(self : GraphsearchbellmanRange, i : Int, v : Double) -> GraphsearchbellmanRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_range_sum(s : GraphsearchbellmanRange) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanRange::sum(self : GraphsearchbellmanRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_range_mean(s : GraphsearchbellmanRange) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanRange::mean(self : GraphsearchbellmanRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_range_scale(s : GraphsearchbellmanRange, f : Double) -> GraphsearchbellmanRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanRange::scale(self : GraphsearchbellmanRange, f : Double) -> GraphsearchbellmanRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_range_add(a : GraphsearchbellmanRange, b : GraphsearchbellmanRange) -> GraphsearchbellmanRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanRange::add(self : GraphsearchbellmanRange, other : GraphsearchbellmanRange) -> GraphsearchbellmanRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_range_copy(s : GraphsearchbellmanRange) -> GraphsearchbellmanRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanRange::copy(self : GraphsearchbellmanRange) -> GraphsearchbellmanRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_range_fill(s : GraphsearchbellmanRange, v : Double) -> GraphsearchbellmanRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanRange::fill(self : GraphsearchbellmanRange, v : Double) -> GraphsearchbellmanRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_range_min(s : GraphsearchbellmanRange) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanRange::min(self : GraphsearchbellmanRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_range_max(s : GraphsearchbellmanRange) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanRange::max(self : GraphsearchbellmanRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_range_to_string(s : GraphsearchbellmanRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanRange::to_string(self : GraphsearchbellmanRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbellmanSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_search_bellman_slice_make(size : Int) -> GraphsearchbellmanSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bellman_slice_len(s : GraphsearchbellmanSlice) -> Int { s.size }
+pub fn GraphsearchbellmanSlice::len(self : GraphsearchbellmanSlice) -> Int { self.size }
 
-pub fn graph_search_bellman_slice_get(s : GraphsearchbellmanSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbellmanSlice::get(self : GraphsearchbellmanSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bellman_slice_set(s : GraphsearchbellmanSlice, i : Int, v : Double) -> GraphsearchbellmanSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanSlice::set(self : GraphsearchbellmanSlice, i : Int, v : Double) -> GraphsearchbellmanSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_slice_sum(s : GraphsearchbellmanSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbellmanSlice::sum(self : GraphsearchbellmanSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bellman_slice_mean(s : GraphsearchbellmanSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbellmanSlice::mean(self : GraphsearchbellmanSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bellman_slice_scale(s : GraphsearchbellmanSlice, f : Double) -> GraphsearchbellmanSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanSlice::scale(self : GraphsearchbellmanSlice, f : Double) -> GraphsearchbellmanSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_slice_add(a : GraphsearchbellmanSlice, b : GraphsearchbellmanSlice) -> GraphsearchbellmanSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbellmanSlice::add(self : GraphsearchbellmanSlice, other : GraphsearchbellmanSlice) -> GraphsearchbellmanSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bellman_slice_copy(s : GraphsearchbellmanSlice) -> GraphsearchbellmanSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanSlice::copy(self : GraphsearchbellmanSlice) -> GraphsearchbellmanSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_slice_fill(s : GraphsearchbellmanSlice, v : Double) -> GraphsearchbellmanSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbellmanSlice::fill(self : GraphsearchbellmanSlice, v : Double) -> GraphsearchbellmanSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bellman_slice_min(s : GraphsearchbellmanSlice) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbellmanSlice::min(self : GraphsearchbellmanSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bellman_slice_max(s : GraphsearchbellmanSlice) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbellmanSlice::max(self : GraphsearchbellmanSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bellman_slice_to_string(s : GraphsearchbellmanSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbellmanSlice::to_string(self : GraphsearchbellmanSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

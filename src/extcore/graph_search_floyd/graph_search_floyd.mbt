@@ -351,45 +351,45 @@ pub fn graph_search_floyd_frame_make(size : Int) -> GraphsearchfloydFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_frame_len(s : GraphsearchfloydFrame) -> Int { s.size }
+pub fn GraphsearchfloydFrame::len(self : GraphsearchfloydFrame) -> Int { self.size }
 
-pub fn graph_search_floyd_frame_get(s : GraphsearchfloydFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydFrame::get(self : GraphsearchfloydFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_frame_set(s : GraphsearchfloydFrame, i : Int, v : Double) -> GraphsearchfloydFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydFrame::set(self : GraphsearchfloydFrame, i : Int, v : Double) -> GraphsearchfloydFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_frame_sum(s : GraphsearchfloydFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydFrame::sum(self : GraphsearchfloydFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_frame_mean(s : GraphsearchfloydFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydFrame::mean(self : GraphsearchfloydFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_frame_scale(s : GraphsearchfloydFrame, f : Double) -> GraphsearchfloydFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydFrame::scale(self : GraphsearchfloydFrame, f : Double) -> GraphsearchfloydFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_frame_add(a : GraphsearchfloydFrame, b : GraphsearchfloydFrame) -> GraphsearchfloydFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydFrame::add(self : GraphsearchfloydFrame, other : GraphsearchfloydFrame) -> GraphsearchfloydFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_frame_copy(s : GraphsearchfloydFrame) -> GraphsearchfloydFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydFrame::copy(self : GraphsearchfloydFrame) -> GraphsearchfloydFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_frame_fill(s : GraphsearchfloydFrame, v : Double) -> GraphsearchfloydFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydFrame::fill(self : GraphsearchfloydFrame, v : Double) -> GraphsearchfloydFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_frame_min(s : GraphsearchfloydFrame) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydFrame::min(self : GraphsearchfloydFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_frame_max(s : GraphsearchfloydFrame) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydFrame::max(self : GraphsearchfloydFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_frame_to_string(s : GraphsearchfloydFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydFrame::to_string(self : GraphsearchfloydFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydTable {
@@ -402,45 +402,45 @@ pub fn graph_search_floyd_table_make(size : Int) -> GraphsearchfloydTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_table_len(s : GraphsearchfloydTable) -> Int { s.size }
+pub fn GraphsearchfloydTable::len(self : GraphsearchfloydTable) -> Int { self.size }
 
-pub fn graph_search_floyd_table_get(s : GraphsearchfloydTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydTable::get(self : GraphsearchfloydTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_table_set(s : GraphsearchfloydTable, i : Int, v : Double) -> GraphsearchfloydTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydTable::set(self : GraphsearchfloydTable, i : Int, v : Double) -> GraphsearchfloydTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_table_sum(s : GraphsearchfloydTable) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydTable::sum(self : GraphsearchfloydTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_table_mean(s : GraphsearchfloydTable) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydTable::mean(self : GraphsearchfloydTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_table_scale(s : GraphsearchfloydTable, f : Double) -> GraphsearchfloydTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydTable::scale(self : GraphsearchfloydTable, f : Double) -> GraphsearchfloydTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_table_add(a : GraphsearchfloydTable, b : GraphsearchfloydTable) -> GraphsearchfloydTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydTable::add(self : GraphsearchfloydTable, other : GraphsearchfloydTable) -> GraphsearchfloydTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_table_copy(s : GraphsearchfloydTable) -> GraphsearchfloydTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydTable::copy(self : GraphsearchfloydTable) -> GraphsearchfloydTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_table_fill(s : GraphsearchfloydTable, v : Double) -> GraphsearchfloydTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydTable::fill(self : GraphsearchfloydTable, v : Double) -> GraphsearchfloydTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_table_min(s : GraphsearchfloydTable) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydTable::min(self : GraphsearchfloydTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_table_max(s : GraphsearchfloydTable) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydTable::max(self : GraphsearchfloydTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_table_to_string(s : GraphsearchfloydTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydTable::to_string(self : GraphsearchfloydTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydGraphN {
@@ -453,45 +453,45 @@ pub fn graph_search_floyd_graphn_make(size : Int) -> GraphsearchfloydGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_graphn_len(s : GraphsearchfloydGraphN) -> Int { s.size }
+pub fn GraphsearchfloydGraphN::len(self : GraphsearchfloydGraphN) -> Int { self.size }
 
-pub fn graph_search_floyd_graphn_get(s : GraphsearchfloydGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydGraphN::get(self : GraphsearchfloydGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_graphn_set(s : GraphsearchfloydGraphN, i : Int, v : Double) -> GraphsearchfloydGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydGraphN::set(self : GraphsearchfloydGraphN, i : Int, v : Double) -> GraphsearchfloydGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_graphn_sum(s : GraphsearchfloydGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydGraphN::sum(self : GraphsearchfloydGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_graphn_mean(s : GraphsearchfloydGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydGraphN::mean(self : GraphsearchfloydGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_graphn_scale(s : GraphsearchfloydGraphN, f : Double) -> GraphsearchfloydGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydGraphN::scale(self : GraphsearchfloydGraphN, f : Double) -> GraphsearchfloydGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_graphn_add(a : GraphsearchfloydGraphN, b : GraphsearchfloydGraphN) -> GraphsearchfloydGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydGraphN::add(self : GraphsearchfloydGraphN, other : GraphsearchfloydGraphN) -> GraphsearchfloydGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_graphn_copy(s : GraphsearchfloydGraphN) -> GraphsearchfloydGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydGraphN::copy(self : GraphsearchfloydGraphN) -> GraphsearchfloydGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_graphn_fill(s : GraphsearchfloydGraphN, v : Double) -> GraphsearchfloydGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydGraphN::fill(self : GraphsearchfloydGraphN, v : Double) -> GraphsearchfloydGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_graphn_min(s : GraphsearchfloydGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydGraphN::min(self : GraphsearchfloydGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_graphn_max(s : GraphsearchfloydGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydGraphN::max(self : GraphsearchfloydGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_graphn_to_string(s : GraphsearchfloydGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydGraphN::to_string(self : GraphsearchfloydGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydNode {
@@ -504,45 +504,45 @@ pub fn graph_search_floyd_node_make(size : Int) -> GraphsearchfloydNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_node_len(s : GraphsearchfloydNode) -> Int { s.size }
+pub fn GraphsearchfloydNode::len(self : GraphsearchfloydNode) -> Int { self.size }
 
-pub fn graph_search_floyd_node_get(s : GraphsearchfloydNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydNode::get(self : GraphsearchfloydNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_node_set(s : GraphsearchfloydNode, i : Int, v : Double) -> GraphsearchfloydNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydNode::set(self : GraphsearchfloydNode, i : Int, v : Double) -> GraphsearchfloydNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_node_sum(s : GraphsearchfloydNode) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydNode::sum(self : GraphsearchfloydNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_node_mean(s : GraphsearchfloydNode) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydNode::mean(self : GraphsearchfloydNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_node_scale(s : GraphsearchfloydNode, f : Double) -> GraphsearchfloydNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydNode::scale(self : GraphsearchfloydNode, f : Double) -> GraphsearchfloydNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_node_add(a : GraphsearchfloydNode, b : GraphsearchfloydNode) -> GraphsearchfloydNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydNode::add(self : GraphsearchfloydNode, other : GraphsearchfloydNode) -> GraphsearchfloydNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_node_copy(s : GraphsearchfloydNode) -> GraphsearchfloydNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydNode::copy(self : GraphsearchfloydNode) -> GraphsearchfloydNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_node_fill(s : GraphsearchfloydNode, v : Double) -> GraphsearchfloydNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydNode::fill(self : GraphsearchfloydNode, v : Double) -> GraphsearchfloydNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_node_min(s : GraphsearchfloydNode) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydNode::min(self : GraphsearchfloydNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_node_max(s : GraphsearchfloydNode) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydNode::max(self : GraphsearchfloydNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_node_to_string(s : GraphsearchfloydNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydNode::to_string(self : GraphsearchfloydNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydEdge {
@@ -555,45 +555,45 @@ pub fn graph_search_floyd_edge_make(size : Int) -> GraphsearchfloydEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_edge_len(s : GraphsearchfloydEdge) -> Int { s.size }
+pub fn GraphsearchfloydEdge::len(self : GraphsearchfloydEdge) -> Int { self.size }
 
-pub fn graph_search_floyd_edge_get(s : GraphsearchfloydEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydEdge::get(self : GraphsearchfloydEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_edge_set(s : GraphsearchfloydEdge, i : Int, v : Double) -> GraphsearchfloydEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydEdge::set(self : GraphsearchfloydEdge, i : Int, v : Double) -> GraphsearchfloydEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_edge_sum(s : GraphsearchfloydEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydEdge::sum(self : GraphsearchfloydEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_edge_mean(s : GraphsearchfloydEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydEdge::mean(self : GraphsearchfloydEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_edge_scale(s : GraphsearchfloydEdge, f : Double) -> GraphsearchfloydEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydEdge::scale(self : GraphsearchfloydEdge, f : Double) -> GraphsearchfloydEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_edge_add(a : GraphsearchfloydEdge, b : GraphsearchfloydEdge) -> GraphsearchfloydEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydEdge::add(self : GraphsearchfloydEdge, other : GraphsearchfloydEdge) -> GraphsearchfloydEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_edge_copy(s : GraphsearchfloydEdge) -> GraphsearchfloydEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydEdge::copy(self : GraphsearchfloydEdge) -> GraphsearchfloydEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_edge_fill(s : GraphsearchfloydEdge, v : Double) -> GraphsearchfloydEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydEdge::fill(self : GraphsearchfloydEdge, v : Double) -> GraphsearchfloydEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_edge_min(s : GraphsearchfloydEdge) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydEdge::min(self : GraphsearchfloydEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_edge_max(s : GraphsearchfloydEdge) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydEdge::max(self : GraphsearchfloydEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_edge_to_string(s : GraphsearchfloydEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydEdge::to_string(self : GraphsearchfloydEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydPath {
@@ -606,45 +606,45 @@ pub fn graph_search_floyd_path_make(size : Int) -> GraphsearchfloydPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_path_len(s : GraphsearchfloydPath) -> Int { s.size }
+pub fn GraphsearchfloydPath::len(self : GraphsearchfloydPath) -> Int { self.size }
 
-pub fn graph_search_floyd_path_get(s : GraphsearchfloydPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydPath::get(self : GraphsearchfloydPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_path_set(s : GraphsearchfloydPath, i : Int, v : Double) -> GraphsearchfloydPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydPath::set(self : GraphsearchfloydPath, i : Int, v : Double) -> GraphsearchfloydPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_path_sum(s : GraphsearchfloydPath) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydPath::sum(self : GraphsearchfloydPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_path_mean(s : GraphsearchfloydPath) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydPath::mean(self : GraphsearchfloydPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_path_scale(s : GraphsearchfloydPath, f : Double) -> GraphsearchfloydPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydPath::scale(self : GraphsearchfloydPath, f : Double) -> GraphsearchfloydPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_path_add(a : GraphsearchfloydPath, b : GraphsearchfloydPath) -> GraphsearchfloydPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydPath::add(self : GraphsearchfloydPath, other : GraphsearchfloydPath) -> GraphsearchfloydPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_path_copy(s : GraphsearchfloydPath) -> GraphsearchfloydPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydPath::copy(self : GraphsearchfloydPath) -> GraphsearchfloydPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_path_fill(s : GraphsearchfloydPath, v : Double) -> GraphsearchfloydPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydPath::fill(self : GraphsearchfloydPath, v : Double) -> GraphsearchfloydPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_path_min(s : GraphsearchfloydPath) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydPath::min(self : GraphsearchfloydPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_path_max(s : GraphsearchfloydPath) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydPath::max(self : GraphsearchfloydPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_path_to_string(s : GraphsearchfloydPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydPath::to_string(self : GraphsearchfloydPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydCluster {
@@ -657,45 +657,45 @@ pub fn graph_search_floyd_cluster_make(size : Int) -> GraphsearchfloydCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_cluster_len(s : GraphsearchfloydCluster) -> Int { s.size }
+pub fn GraphsearchfloydCluster::len(self : GraphsearchfloydCluster) -> Int { self.size }
 
-pub fn graph_search_floyd_cluster_get(s : GraphsearchfloydCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydCluster::get(self : GraphsearchfloydCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_cluster_set(s : GraphsearchfloydCluster, i : Int, v : Double) -> GraphsearchfloydCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydCluster::set(self : GraphsearchfloydCluster, i : Int, v : Double) -> GraphsearchfloydCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_cluster_sum(s : GraphsearchfloydCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydCluster::sum(self : GraphsearchfloydCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_cluster_mean(s : GraphsearchfloydCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydCluster::mean(self : GraphsearchfloydCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_cluster_scale(s : GraphsearchfloydCluster, f : Double) -> GraphsearchfloydCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydCluster::scale(self : GraphsearchfloydCluster, f : Double) -> GraphsearchfloydCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_cluster_add(a : GraphsearchfloydCluster, b : GraphsearchfloydCluster) -> GraphsearchfloydCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydCluster::add(self : GraphsearchfloydCluster, other : GraphsearchfloydCluster) -> GraphsearchfloydCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_cluster_copy(s : GraphsearchfloydCluster) -> GraphsearchfloydCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydCluster::copy(self : GraphsearchfloydCluster) -> GraphsearchfloydCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_cluster_fill(s : GraphsearchfloydCluster, v : Double) -> GraphsearchfloydCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydCluster::fill(self : GraphsearchfloydCluster, v : Double) -> GraphsearchfloydCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_cluster_min(s : GraphsearchfloydCluster) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydCluster::min(self : GraphsearchfloydCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_cluster_max(s : GraphsearchfloydCluster) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydCluster::max(self : GraphsearchfloydCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_cluster_to_string(s : GraphsearchfloydCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydCluster::to_string(self : GraphsearchfloydCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydModel {
@@ -708,45 +708,45 @@ pub fn graph_search_floyd_model_make(size : Int) -> GraphsearchfloydModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_model_len(s : GraphsearchfloydModel) -> Int { s.size }
+pub fn GraphsearchfloydModel::len(self : GraphsearchfloydModel) -> Int { self.size }
 
-pub fn graph_search_floyd_model_get(s : GraphsearchfloydModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydModel::get(self : GraphsearchfloydModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_model_set(s : GraphsearchfloydModel, i : Int, v : Double) -> GraphsearchfloydModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydModel::set(self : GraphsearchfloydModel, i : Int, v : Double) -> GraphsearchfloydModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_model_sum(s : GraphsearchfloydModel) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydModel::sum(self : GraphsearchfloydModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_model_mean(s : GraphsearchfloydModel) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydModel::mean(self : GraphsearchfloydModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_model_scale(s : GraphsearchfloydModel, f : Double) -> GraphsearchfloydModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydModel::scale(self : GraphsearchfloydModel, f : Double) -> GraphsearchfloydModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_model_add(a : GraphsearchfloydModel, b : GraphsearchfloydModel) -> GraphsearchfloydModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydModel::add(self : GraphsearchfloydModel, other : GraphsearchfloydModel) -> GraphsearchfloydModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_model_copy(s : GraphsearchfloydModel) -> GraphsearchfloydModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydModel::copy(self : GraphsearchfloydModel) -> GraphsearchfloydModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_model_fill(s : GraphsearchfloydModel, v : Double) -> GraphsearchfloydModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydModel::fill(self : GraphsearchfloydModel, v : Double) -> GraphsearchfloydModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_model_min(s : GraphsearchfloydModel) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydModel::min(self : GraphsearchfloydModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_model_max(s : GraphsearchfloydModel) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydModel::max(self : GraphsearchfloydModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_model_to_string(s : GraphsearchfloydModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydModel::to_string(self : GraphsearchfloydModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydLayer {
@@ -759,45 +759,45 @@ pub fn graph_search_floyd_layer_make(size : Int) -> GraphsearchfloydLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_layer_len(s : GraphsearchfloydLayer) -> Int { s.size }
+pub fn GraphsearchfloydLayer::len(self : GraphsearchfloydLayer) -> Int { self.size }
 
-pub fn graph_search_floyd_layer_get(s : GraphsearchfloydLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydLayer::get(self : GraphsearchfloydLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_layer_set(s : GraphsearchfloydLayer, i : Int, v : Double) -> GraphsearchfloydLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydLayer::set(self : GraphsearchfloydLayer, i : Int, v : Double) -> GraphsearchfloydLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_layer_sum(s : GraphsearchfloydLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydLayer::sum(self : GraphsearchfloydLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_layer_mean(s : GraphsearchfloydLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydLayer::mean(self : GraphsearchfloydLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_layer_scale(s : GraphsearchfloydLayer, f : Double) -> GraphsearchfloydLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydLayer::scale(self : GraphsearchfloydLayer, f : Double) -> GraphsearchfloydLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_layer_add(a : GraphsearchfloydLayer, b : GraphsearchfloydLayer) -> GraphsearchfloydLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydLayer::add(self : GraphsearchfloydLayer, other : GraphsearchfloydLayer) -> GraphsearchfloydLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_layer_copy(s : GraphsearchfloydLayer) -> GraphsearchfloydLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydLayer::copy(self : GraphsearchfloydLayer) -> GraphsearchfloydLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_layer_fill(s : GraphsearchfloydLayer, v : Double) -> GraphsearchfloydLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydLayer::fill(self : GraphsearchfloydLayer, v : Double) -> GraphsearchfloydLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_layer_min(s : GraphsearchfloydLayer) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydLayer::min(self : GraphsearchfloydLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_layer_max(s : GraphsearchfloydLayer) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydLayer::max(self : GraphsearchfloydLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_layer_to_string(s : GraphsearchfloydLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydLayer::to_string(self : GraphsearchfloydLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydBuffer {
@@ -810,45 +810,45 @@ pub fn graph_search_floyd_buffer_make(size : Int) -> GraphsearchfloydBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_buffer_len(s : GraphsearchfloydBuffer) -> Int { s.size }
+pub fn GraphsearchfloydBuffer::len(self : GraphsearchfloydBuffer) -> Int { self.size }
 
-pub fn graph_search_floyd_buffer_get(s : GraphsearchfloydBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydBuffer::get(self : GraphsearchfloydBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_buffer_set(s : GraphsearchfloydBuffer, i : Int, v : Double) -> GraphsearchfloydBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydBuffer::set(self : GraphsearchfloydBuffer, i : Int, v : Double) -> GraphsearchfloydBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_buffer_sum(s : GraphsearchfloydBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydBuffer::sum(self : GraphsearchfloydBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_buffer_mean(s : GraphsearchfloydBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydBuffer::mean(self : GraphsearchfloydBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_buffer_scale(s : GraphsearchfloydBuffer, f : Double) -> GraphsearchfloydBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydBuffer::scale(self : GraphsearchfloydBuffer, f : Double) -> GraphsearchfloydBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_buffer_add(a : GraphsearchfloydBuffer, b : GraphsearchfloydBuffer) -> GraphsearchfloydBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydBuffer::add(self : GraphsearchfloydBuffer, other : GraphsearchfloydBuffer) -> GraphsearchfloydBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_buffer_copy(s : GraphsearchfloydBuffer) -> GraphsearchfloydBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydBuffer::copy(self : GraphsearchfloydBuffer) -> GraphsearchfloydBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_buffer_fill(s : GraphsearchfloydBuffer, v : Double) -> GraphsearchfloydBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydBuffer::fill(self : GraphsearchfloydBuffer, v : Double) -> GraphsearchfloydBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_buffer_min(s : GraphsearchfloydBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydBuffer::min(self : GraphsearchfloydBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_buffer_max(s : GraphsearchfloydBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydBuffer::max(self : GraphsearchfloydBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_buffer_to_string(s : GraphsearchfloydBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydBuffer::to_string(self : GraphsearchfloydBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydCursor {
@@ -861,45 +861,45 @@ pub fn graph_search_floyd_cursor_make(size : Int) -> GraphsearchfloydCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_cursor_len(s : GraphsearchfloydCursor) -> Int { s.size }
+pub fn GraphsearchfloydCursor::len(self : GraphsearchfloydCursor) -> Int { self.size }
 
-pub fn graph_search_floyd_cursor_get(s : GraphsearchfloydCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydCursor::get(self : GraphsearchfloydCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_cursor_set(s : GraphsearchfloydCursor, i : Int, v : Double) -> GraphsearchfloydCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydCursor::set(self : GraphsearchfloydCursor, i : Int, v : Double) -> GraphsearchfloydCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_cursor_sum(s : GraphsearchfloydCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydCursor::sum(self : GraphsearchfloydCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_cursor_mean(s : GraphsearchfloydCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydCursor::mean(self : GraphsearchfloydCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_cursor_scale(s : GraphsearchfloydCursor, f : Double) -> GraphsearchfloydCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydCursor::scale(self : GraphsearchfloydCursor, f : Double) -> GraphsearchfloydCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_cursor_add(a : GraphsearchfloydCursor, b : GraphsearchfloydCursor) -> GraphsearchfloydCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydCursor::add(self : GraphsearchfloydCursor, other : GraphsearchfloydCursor) -> GraphsearchfloydCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_cursor_copy(s : GraphsearchfloydCursor) -> GraphsearchfloydCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydCursor::copy(self : GraphsearchfloydCursor) -> GraphsearchfloydCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_cursor_fill(s : GraphsearchfloydCursor, v : Double) -> GraphsearchfloydCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydCursor::fill(self : GraphsearchfloydCursor, v : Double) -> GraphsearchfloydCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_cursor_min(s : GraphsearchfloydCursor) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydCursor::min(self : GraphsearchfloydCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_cursor_max(s : GraphsearchfloydCursor) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydCursor::max(self : GraphsearchfloydCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_cursor_to_string(s : GraphsearchfloydCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydCursor::to_string(self : GraphsearchfloydCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydView {
@@ -912,45 +912,45 @@ pub fn graph_search_floyd_view_make(size : Int) -> GraphsearchfloydView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_view_len(s : GraphsearchfloydView) -> Int { s.size }
+pub fn GraphsearchfloydView::len(self : GraphsearchfloydView) -> Int { self.size }
 
-pub fn graph_search_floyd_view_get(s : GraphsearchfloydView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydView::get(self : GraphsearchfloydView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_view_set(s : GraphsearchfloydView, i : Int, v : Double) -> GraphsearchfloydView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydView::set(self : GraphsearchfloydView, i : Int, v : Double) -> GraphsearchfloydView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_view_sum(s : GraphsearchfloydView) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydView::sum(self : GraphsearchfloydView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_view_mean(s : GraphsearchfloydView) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydView::mean(self : GraphsearchfloydView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_view_scale(s : GraphsearchfloydView, f : Double) -> GraphsearchfloydView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydView::scale(self : GraphsearchfloydView, f : Double) -> GraphsearchfloydView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_view_add(a : GraphsearchfloydView, b : GraphsearchfloydView) -> GraphsearchfloydView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydView::add(self : GraphsearchfloydView, other : GraphsearchfloydView) -> GraphsearchfloydView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_view_copy(s : GraphsearchfloydView) -> GraphsearchfloydView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydView::copy(self : GraphsearchfloydView) -> GraphsearchfloydView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_view_fill(s : GraphsearchfloydView, v : Double) -> GraphsearchfloydView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydView::fill(self : GraphsearchfloydView, v : Double) -> GraphsearchfloydView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_view_min(s : GraphsearchfloydView) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydView::min(self : GraphsearchfloydView) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_view_max(s : GraphsearchfloydView) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydView::max(self : GraphsearchfloydView) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_view_to_string(s : GraphsearchfloydView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydView::to_string(self : GraphsearchfloydView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydRange {
@@ -963,45 +963,45 @@ pub fn graph_search_floyd_range_make(size : Int) -> GraphsearchfloydRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_range_len(s : GraphsearchfloydRange) -> Int { s.size }
+pub fn GraphsearchfloydRange::len(self : GraphsearchfloydRange) -> Int { self.size }
 
-pub fn graph_search_floyd_range_get(s : GraphsearchfloydRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydRange::get(self : GraphsearchfloydRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_range_set(s : GraphsearchfloydRange, i : Int, v : Double) -> GraphsearchfloydRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydRange::set(self : GraphsearchfloydRange, i : Int, v : Double) -> GraphsearchfloydRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_range_sum(s : GraphsearchfloydRange) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydRange::sum(self : GraphsearchfloydRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_range_mean(s : GraphsearchfloydRange) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydRange::mean(self : GraphsearchfloydRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_range_scale(s : GraphsearchfloydRange, f : Double) -> GraphsearchfloydRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydRange::scale(self : GraphsearchfloydRange, f : Double) -> GraphsearchfloydRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_range_add(a : GraphsearchfloydRange, b : GraphsearchfloydRange) -> GraphsearchfloydRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydRange::add(self : GraphsearchfloydRange, other : GraphsearchfloydRange) -> GraphsearchfloydRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_range_copy(s : GraphsearchfloydRange) -> GraphsearchfloydRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydRange::copy(self : GraphsearchfloydRange) -> GraphsearchfloydRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_range_fill(s : GraphsearchfloydRange, v : Double) -> GraphsearchfloydRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydRange::fill(self : GraphsearchfloydRange, v : Double) -> GraphsearchfloydRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_range_min(s : GraphsearchfloydRange) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydRange::min(self : GraphsearchfloydRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_range_max(s : GraphsearchfloydRange) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydRange::max(self : GraphsearchfloydRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_range_to_string(s : GraphsearchfloydRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydRange::to_string(self : GraphsearchfloydRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchfloydSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_search_floyd_slice_make(size : Int) -> GraphsearchfloydSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_floyd_slice_len(s : GraphsearchfloydSlice) -> Int { s.size }
+pub fn GraphsearchfloydSlice::len(self : GraphsearchfloydSlice) -> Int { self.size }
 
-pub fn graph_search_floyd_slice_get(s : GraphsearchfloydSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchfloydSlice::get(self : GraphsearchfloydSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_floyd_slice_set(s : GraphsearchfloydSlice, i : Int, v : Double) -> GraphsearchfloydSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchfloydSlice::set(self : GraphsearchfloydSlice, i : Int, v : Double) -> GraphsearchfloydSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_slice_sum(s : GraphsearchfloydSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchfloydSlice::sum(self : GraphsearchfloydSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_floyd_slice_mean(s : GraphsearchfloydSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchfloydSlice::mean(self : GraphsearchfloydSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_floyd_slice_scale(s : GraphsearchfloydSlice, f : Double) -> GraphsearchfloydSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydSlice::scale(self : GraphsearchfloydSlice, f : Double) -> GraphsearchfloydSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_slice_add(a : GraphsearchfloydSlice, b : GraphsearchfloydSlice) -> GraphsearchfloydSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchfloydSlice::add(self : GraphsearchfloydSlice, other : GraphsearchfloydSlice) -> GraphsearchfloydSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_floyd_slice_copy(s : GraphsearchfloydSlice) -> GraphsearchfloydSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydSlice::copy(self : GraphsearchfloydSlice) -> GraphsearchfloydSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_slice_fill(s : GraphsearchfloydSlice, v : Double) -> GraphsearchfloydSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchfloydSlice::fill(self : GraphsearchfloydSlice, v : Double) -> GraphsearchfloydSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_floyd_slice_min(s : GraphsearchfloydSlice) -> Double { @_common.min(s.data) }
+pub fn GraphsearchfloydSlice::min(self : GraphsearchfloydSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_floyd_slice_max(s : GraphsearchfloydSlice) -> Double { @_common.max(s.data) }
+pub fn GraphsearchfloydSlice::max(self : GraphsearchfloydSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_floyd_slice_to_string(s : GraphsearchfloydSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchfloydSlice::to_string(self : GraphsearchfloydSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

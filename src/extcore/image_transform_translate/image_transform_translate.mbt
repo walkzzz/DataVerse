@@ -351,45 +351,45 @@ pub fn image_transform_translate_frame_make(size : Int) -> Imagetransformtransla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_frame_len(s : ImagetransformtranslateFrame) -> Int { s.size }
+pub fn ImagetransformtranslateFrame::len(self : ImagetransformtranslateFrame) -> Int { self.size }
 
-pub fn image_transform_translate_frame_get(s : ImagetransformtranslateFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateFrame::get(self : ImagetransformtranslateFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_frame_set(s : ImagetransformtranslateFrame, i : Int, v : Double) -> ImagetransformtranslateFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateFrame::set(self : ImagetransformtranslateFrame, i : Int, v : Double) -> ImagetransformtranslateFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_frame_sum(s : ImagetransformtranslateFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateFrame::sum(self : ImagetransformtranslateFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_frame_mean(s : ImagetransformtranslateFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateFrame::mean(self : ImagetransformtranslateFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_frame_scale(s : ImagetransformtranslateFrame, f : Double) -> ImagetransformtranslateFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateFrame::scale(self : ImagetransformtranslateFrame, f : Double) -> ImagetransformtranslateFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_frame_add(a : ImagetransformtranslateFrame, b : ImagetransformtranslateFrame) -> ImagetransformtranslateFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateFrame::add(self : ImagetransformtranslateFrame, other : ImagetransformtranslateFrame) -> ImagetransformtranslateFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_frame_copy(s : ImagetransformtranslateFrame) -> ImagetransformtranslateFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateFrame::copy(self : ImagetransformtranslateFrame) -> ImagetransformtranslateFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_frame_fill(s : ImagetransformtranslateFrame, v : Double) -> ImagetransformtranslateFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateFrame::fill(self : ImagetransformtranslateFrame, v : Double) -> ImagetransformtranslateFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_frame_min(s : ImagetransformtranslateFrame) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateFrame::min(self : ImagetransformtranslateFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_frame_max(s : ImagetransformtranslateFrame) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateFrame::max(self : ImagetransformtranslateFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_frame_to_string(s : ImagetransformtranslateFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateFrame::to_string(self : ImagetransformtranslateFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslateTable {
@@ -402,45 +402,45 @@ pub fn image_transform_translate_table_make(size : Int) -> Imagetransformtransla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_table_len(s : ImagetransformtranslateTable) -> Int { s.size }
+pub fn ImagetransformtranslateTable::len(self : ImagetransformtranslateTable) -> Int { self.size }
 
-pub fn image_transform_translate_table_get(s : ImagetransformtranslateTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateTable::get(self : ImagetransformtranslateTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_table_set(s : ImagetransformtranslateTable, i : Int, v : Double) -> ImagetransformtranslateTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateTable::set(self : ImagetransformtranslateTable, i : Int, v : Double) -> ImagetransformtranslateTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_table_sum(s : ImagetransformtranslateTable) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateTable::sum(self : ImagetransformtranslateTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_table_mean(s : ImagetransformtranslateTable) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateTable::mean(self : ImagetransformtranslateTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_table_scale(s : ImagetransformtranslateTable, f : Double) -> ImagetransformtranslateTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateTable::scale(self : ImagetransformtranslateTable, f : Double) -> ImagetransformtranslateTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_table_add(a : ImagetransformtranslateTable, b : ImagetransformtranslateTable) -> ImagetransformtranslateTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateTable::add(self : ImagetransformtranslateTable, other : ImagetransformtranslateTable) -> ImagetransformtranslateTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_table_copy(s : ImagetransformtranslateTable) -> ImagetransformtranslateTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateTable::copy(self : ImagetransformtranslateTable) -> ImagetransformtranslateTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_table_fill(s : ImagetransformtranslateTable, v : Double) -> ImagetransformtranslateTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateTable::fill(self : ImagetransformtranslateTable, v : Double) -> ImagetransformtranslateTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_table_min(s : ImagetransformtranslateTable) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateTable::min(self : ImagetransformtranslateTable) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_table_max(s : ImagetransformtranslateTable) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateTable::max(self : ImagetransformtranslateTable) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_table_to_string(s : ImagetransformtranslateTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateTable::to_string(self : ImagetransformtranslateTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslateGraphN {
@@ -453,45 +453,45 @@ pub fn image_transform_translate_graphn_make(size : Int) -> Imagetransformtransl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_graphn_len(s : ImagetransformtranslateGraphN) -> Int { s.size }
+pub fn ImagetransformtranslateGraphN::len(self : ImagetransformtranslateGraphN) -> Int { self.size }
 
-pub fn image_transform_translate_graphn_get(s : ImagetransformtranslateGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateGraphN::get(self : ImagetransformtranslateGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_graphn_set(s : ImagetransformtranslateGraphN, i : Int, v : Double) -> ImagetransformtranslateGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateGraphN::set(self : ImagetransformtranslateGraphN, i : Int, v : Double) -> ImagetransformtranslateGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_graphn_sum(s : ImagetransformtranslateGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateGraphN::sum(self : ImagetransformtranslateGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_graphn_mean(s : ImagetransformtranslateGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateGraphN::mean(self : ImagetransformtranslateGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_graphn_scale(s : ImagetransformtranslateGraphN, f : Double) -> ImagetransformtranslateGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateGraphN::scale(self : ImagetransformtranslateGraphN, f : Double) -> ImagetransformtranslateGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_graphn_add(a : ImagetransformtranslateGraphN, b : ImagetransformtranslateGraphN) -> ImagetransformtranslateGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateGraphN::add(self : ImagetransformtranslateGraphN, other : ImagetransformtranslateGraphN) -> ImagetransformtranslateGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_graphn_copy(s : ImagetransformtranslateGraphN) -> ImagetransformtranslateGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateGraphN::copy(self : ImagetransformtranslateGraphN) -> ImagetransformtranslateGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_graphn_fill(s : ImagetransformtranslateGraphN, v : Double) -> ImagetransformtranslateGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateGraphN::fill(self : ImagetransformtranslateGraphN, v : Double) -> ImagetransformtranslateGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_graphn_min(s : ImagetransformtranslateGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateGraphN::min(self : ImagetransformtranslateGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_graphn_max(s : ImagetransformtranslateGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateGraphN::max(self : ImagetransformtranslateGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_graphn_to_string(s : ImagetransformtranslateGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateGraphN::to_string(self : ImagetransformtranslateGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslateNode {
@@ -504,45 +504,45 @@ pub fn image_transform_translate_node_make(size : Int) -> Imagetransformtranslat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_node_len(s : ImagetransformtranslateNode) -> Int { s.size }
+pub fn ImagetransformtranslateNode::len(self : ImagetransformtranslateNode) -> Int { self.size }
 
-pub fn image_transform_translate_node_get(s : ImagetransformtranslateNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateNode::get(self : ImagetransformtranslateNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_node_set(s : ImagetransformtranslateNode, i : Int, v : Double) -> ImagetransformtranslateNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateNode::set(self : ImagetransformtranslateNode, i : Int, v : Double) -> ImagetransformtranslateNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_node_sum(s : ImagetransformtranslateNode) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateNode::sum(self : ImagetransformtranslateNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_node_mean(s : ImagetransformtranslateNode) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateNode::mean(self : ImagetransformtranslateNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_node_scale(s : ImagetransformtranslateNode, f : Double) -> ImagetransformtranslateNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateNode::scale(self : ImagetransformtranslateNode, f : Double) -> ImagetransformtranslateNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_node_add(a : ImagetransformtranslateNode, b : ImagetransformtranslateNode) -> ImagetransformtranslateNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateNode::add(self : ImagetransformtranslateNode, other : ImagetransformtranslateNode) -> ImagetransformtranslateNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_node_copy(s : ImagetransformtranslateNode) -> ImagetransformtranslateNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateNode::copy(self : ImagetransformtranslateNode) -> ImagetransformtranslateNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_node_fill(s : ImagetransformtranslateNode, v : Double) -> ImagetransformtranslateNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateNode::fill(self : ImagetransformtranslateNode, v : Double) -> ImagetransformtranslateNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_node_min(s : ImagetransformtranslateNode) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateNode::min(self : ImagetransformtranslateNode) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_node_max(s : ImagetransformtranslateNode) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateNode::max(self : ImagetransformtranslateNode) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_node_to_string(s : ImagetransformtranslateNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateNode::to_string(self : ImagetransformtranslateNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslateEdge {
@@ -555,45 +555,45 @@ pub fn image_transform_translate_edge_make(size : Int) -> Imagetransformtranslat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_edge_len(s : ImagetransformtranslateEdge) -> Int { s.size }
+pub fn ImagetransformtranslateEdge::len(self : ImagetransformtranslateEdge) -> Int { self.size }
 
-pub fn image_transform_translate_edge_get(s : ImagetransformtranslateEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateEdge::get(self : ImagetransformtranslateEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_edge_set(s : ImagetransformtranslateEdge, i : Int, v : Double) -> ImagetransformtranslateEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateEdge::set(self : ImagetransformtranslateEdge, i : Int, v : Double) -> ImagetransformtranslateEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_edge_sum(s : ImagetransformtranslateEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateEdge::sum(self : ImagetransformtranslateEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_edge_mean(s : ImagetransformtranslateEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateEdge::mean(self : ImagetransformtranslateEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_edge_scale(s : ImagetransformtranslateEdge, f : Double) -> ImagetransformtranslateEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateEdge::scale(self : ImagetransformtranslateEdge, f : Double) -> ImagetransformtranslateEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_edge_add(a : ImagetransformtranslateEdge, b : ImagetransformtranslateEdge) -> ImagetransformtranslateEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateEdge::add(self : ImagetransformtranslateEdge, other : ImagetransformtranslateEdge) -> ImagetransformtranslateEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_edge_copy(s : ImagetransformtranslateEdge) -> ImagetransformtranslateEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateEdge::copy(self : ImagetransformtranslateEdge) -> ImagetransformtranslateEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_edge_fill(s : ImagetransformtranslateEdge, v : Double) -> ImagetransformtranslateEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateEdge::fill(self : ImagetransformtranslateEdge, v : Double) -> ImagetransformtranslateEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_edge_min(s : ImagetransformtranslateEdge) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateEdge::min(self : ImagetransformtranslateEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_edge_max(s : ImagetransformtranslateEdge) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateEdge::max(self : ImagetransformtranslateEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_edge_to_string(s : ImagetransformtranslateEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateEdge::to_string(self : ImagetransformtranslateEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslatePath {
@@ -606,45 +606,45 @@ pub fn image_transform_translate_path_make(size : Int) -> Imagetransformtranslat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_path_len(s : ImagetransformtranslatePath) -> Int { s.size }
+pub fn ImagetransformtranslatePath::len(self : ImagetransformtranslatePath) -> Int { self.size }
 
-pub fn image_transform_translate_path_get(s : ImagetransformtranslatePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslatePath::get(self : ImagetransformtranslatePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_path_set(s : ImagetransformtranslatePath, i : Int, v : Double) -> ImagetransformtranslatePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslatePath::set(self : ImagetransformtranslatePath, i : Int, v : Double) -> ImagetransformtranslatePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_path_sum(s : ImagetransformtranslatePath) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslatePath::sum(self : ImagetransformtranslatePath) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_path_mean(s : ImagetransformtranslatePath) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslatePath::mean(self : ImagetransformtranslatePath) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_path_scale(s : ImagetransformtranslatePath, f : Double) -> ImagetransformtranslatePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslatePath::scale(self : ImagetransformtranslatePath, f : Double) -> ImagetransformtranslatePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_path_add(a : ImagetransformtranslatePath, b : ImagetransformtranslatePath) -> ImagetransformtranslatePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslatePath::add(self : ImagetransformtranslatePath, other : ImagetransformtranslatePath) -> ImagetransformtranslatePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_path_copy(s : ImagetransformtranslatePath) -> ImagetransformtranslatePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslatePath::copy(self : ImagetransformtranslatePath) -> ImagetransformtranslatePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_path_fill(s : ImagetransformtranslatePath, v : Double) -> ImagetransformtranslatePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslatePath::fill(self : ImagetransformtranslatePath, v : Double) -> ImagetransformtranslatePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_path_min(s : ImagetransformtranslatePath) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslatePath::min(self : ImagetransformtranslatePath) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_path_max(s : ImagetransformtranslatePath) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslatePath::max(self : ImagetransformtranslatePath) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_path_to_string(s : ImagetransformtranslatePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslatePath::to_string(self : ImagetransformtranslatePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslateCluster {
@@ -657,45 +657,45 @@ pub fn image_transform_translate_cluster_make(size : Int) -> Imagetransformtrans
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_cluster_len(s : ImagetransformtranslateCluster) -> Int { s.size }
+pub fn ImagetransformtranslateCluster::len(self : ImagetransformtranslateCluster) -> Int { self.size }
 
-pub fn image_transform_translate_cluster_get(s : ImagetransformtranslateCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateCluster::get(self : ImagetransformtranslateCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_cluster_set(s : ImagetransformtranslateCluster, i : Int, v : Double) -> ImagetransformtranslateCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateCluster::set(self : ImagetransformtranslateCluster, i : Int, v : Double) -> ImagetransformtranslateCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_cluster_sum(s : ImagetransformtranslateCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateCluster::sum(self : ImagetransformtranslateCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_cluster_mean(s : ImagetransformtranslateCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateCluster::mean(self : ImagetransformtranslateCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_cluster_scale(s : ImagetransformtranslateCluster, f : Double) -> ImagetransformtranslateCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateCluster::scale(self : ImagetransformtranslateCluster, f : Double) -> ImagetransformtranslateCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_cluster_add(a : ImagetransformtranslateCluster, b : ImagetransformtranslateCluster) -> ImagetransformtranslateCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateCluster::add(self : ImagetransformtranslateCluster, other : ImagetransformtranslateCluster) -> ImagetransformtranslateCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_cluster_copy(s : ImagetransformtranslateCluster) -> ImagetransformtranslateCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateCluster::copy(self : ImagetransformtranslateCluster) -> ImagetransformtranslateCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_cluster_fill(s : ImagetransformtranslateCluster, v : Double) -> ImagetransformtranslateCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateCluster::fill(self : ImagetransformtranslateCluster, v : Double) -> ImagetransformtranslateCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_cluster_min(s : ImagetransformtranslateCluster) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateCluster::min(self : ImagetransformtranslateCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_cluster_max(s : ImagetransformtranslateCluster) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateCluster::max(self : ImagetransformtranslateCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_cluster_to_string(s : ImagetransformtranslateCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateCluster::to_string(self : ImagetransformtranslateCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslateModel {
@@ -708,45 +708,45 @@ pub fn image_transform_translate_model_make(size : Int) -> Imagetransformtransla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_model_len(s : ImagetransformtranslateModel) -> Int { s.size }
+pub fn ImagetransformtranslateModel::len(self : ImagetransformtranslateModel) -> Int { self.size }
 
-pub fn image_transform_translate_model_get(s : ImagetransformtranslateModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateModel::get(self : ImagetransformtranslateModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_model_set(s : ImagetransformtranslateModel, i : Int, v : Double) -> ImagetransformtranslateModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateModel::set(self : ImagetransformtranslateModel, i : Int, v : Double) -> ImagetransformtranslateModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_model_sum(s : ImagetransformtranslateModel) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateModel::sum(self : ImagetransformtranslateModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_model_mean(s : ImagetransformtranslateModel) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateModel::mean(self : ImagetransformtranslateModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_model_scale(s : ImagetransformtranslateModel, f : Double) -> ImagetransformtranslateModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateModel::scale(self : ImagetransformtranslateModel, f : Double) -> ImagetransformtranslateModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_model_add(a : ImagetransformtranslateModel, b : ImagetransformtranslateModel) -> ImagetransformtranslateModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateModel::add(self : ImagetransformtranslateModel, other : ImagetransformtranslateModel) -> ImagetransformtranslateModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_model_copy(s : ImagetransformtranslateModel) -> ImagetransformtranslateModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateModel::copy(self : ImagetransformtranslateModel) -> ImagetransformtranslateModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_model_fill(s : ImagetransformtranslateModel, v : Double) -> ImagetransformtranslateModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateModel::fill(self : ImagetransformtranslateModel, v : Double) -> ImagetransformtranslateModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_model_min(s : ImagetransformtranslateModel) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateModel::min(self : ImagetransformtranslateModel) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_model_max(s : ImagetransformtranslateModel) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateModel::max(self : ImagetransformtranslateModel) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_model_to_string(s : ImagetransformtranslateModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateModel::to_string(self : ImagetransformtranslateModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslateLayer {
@@ -759,45 +759,45 @@ pub fn image_transform_translate_layer_make(size : Int) -> Imagetransformtransla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_layer_len(s : ImagetransformtranslateLayer) -> Int { s.size }
+pub fn ImagetransformtranslateLayer::len(self : ImagetransformtranslateLayer) -> Int { self.size }
 
-pub fn image_transform_translate_layer_get(s : ImagetransformtranslateLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateLayer::get(self : ImagetransformtranslateLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_layer_set(s : ImagetransformtranslateLayer, i : Int, v : Double) -> ImagetransformtranslateLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateLayer::set(self : ImagetransformtranslateLayer, i : Int, v : Double) -> ImagetransformtranslateLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_layer_sum(s : ImagetransformtranslateLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateLayer::sum(self : ImagetransformtranslateLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_layer_mean(s : ImagetransformtranslateLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateLayer::mean(self : ImagetransformtranslateLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_layer_scale(s : ImagetransformtranslateLayer, f : Double) -> ImagetransformtranslateLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateLayer::scale(self : ImagetransformtranslateLayer, f : Double) -> ImagetransformtranslateLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_layer_add(a : ImagetransformtranslateLayer, b : ImagetransformtranslateLayer) -> ImagetransformtranslateLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateLayer::add(self : ImagetransformtranslateLayer, other : ImagetransformtranslateLayer) -> ImagetransformtranslateLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_layer_copy(s : ImagetransformtranslateLayer) -> ImagetransformtranslateLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateLayer::copy(self : ImagetransformtranslateLayer) -> ImagetransformtranslateLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_layer_fill(s : ImagetransformtranslateLayer, v : Double) -> ImagetransformtranslateLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateLayer::fill(self : ImagetransformtranslateLayer, v : Double) -> ImagetransformtranslateLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_layer_min(s : ImagetransformtranslateLayer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateLayer::min(self : ImagetransformtranslateLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_layer_max(s : ImagetransformtranslateLayer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateLayer::max(self : ImagetransformtranslateLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_layer_to_string(s : ImagetransformtranslateLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateLayer::to_string(self : ImagetransformtranslateLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslateBuffer {
@@ -810,45 +810,45 @@ pub fn image_transform_translate_buffer_make(size : Int) -> Imagetransformtransl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_buffer_len(s : ImagetransformtranslateBuffer) -> Int { s.size }
+pub fn ImagetransformtranslateBuffer::len(self : ImagetransformtranslateBuffer) -> Int { self.size }
 
-pub fn image_transform_translate_buffer_get(s : ImagetransformtranslateBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateBuffer::get(self : ImagetransformtranslateBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_buffer_set(s : ImagetransformtranslateBuffer, i : Int, v : Double) -> ImagetransformtranslateBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateBuffer::set(self : ImagetransformtranslateBuffer, i : Int, v : Double) -> ImagetransformtranslateBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_buffer_sum(s : ImagetransformtranslateBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateBuffer::sum(self : ImagetransformtranslateBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_buffer_mean(s : ImagetransformtranslateBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateBuffer::mean(self : ImagetransformtranslateBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_buffer_scale(s : ImagetransformtranslateBuffer, f : Double) -> ImagetransformtranslateBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateBuffer::scale(self : ImagetransformtranslateBuffer, f : Double) -> ImagetransformtranslateBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_buffer_add(a : ImagetransformtranslateBuffer, b : ImagetransformtranslateBuffer) -> ImagetransformtranslateBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateBuffer::add(self : ImagetransformtranslateBuffer, other : ImagetransformtranslateBuffer) -> ImagetransformtranslateBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_buffer_copy(s : ImagetransformtranslateBuffer) -> ImagetransformtranslateBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateBuffer::copy(self : ImagetransformtranslateBuffer) -> ImagetransformtranslateBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_buffer_fill(s : ImagetransformtranslateBuffer, v : Double) -> ImagetransformtranslateBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateBuffer::fill(self : ImagetransformtranslateBuffer, v : Double) -> ImagetransformtranslateBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_buffer_min(s : ImagetransformtranslateBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateBuffer::min(self : ImagetransformtranslateBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_buffer_max(s : ImagetransformtranslateBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateBuffer::max(self : ImagetransformtranslateBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_buffer_to_string(s : ImagetransformtranslateBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateBuffer::to_string(self : ImagetransformtranslateBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslateCursor {
@@ -861,45 +861,45 @@ pub fn image_transform_translate_cursor_make(size : Int) -> Imagetransformtransl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_cursor_len(s : ImagetransformtranslateCursor) -> Int { s.size }
+pub fn ImagetransformtranslateCursor::len(self : ImagetransformtranslateCursor) -> Int { self.size }
 
-pub fn image_transform_translate_cursor_get(s : ImagetransformtranslateCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateCursor::get(self : ImagetransformtranslateCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_cursor_set(s : ImagetransformtranslateCursor, i : Int, v : Double) -> ImagetransformtranslateCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateCursor::set(self : ImagetransformtranslateCursor, i : Int, v : Double) -> ImagetransformtranslateCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_cursor_sum(s : ImagetransformtranslateCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateCursor::sum(self : ImagetransformtranslateCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_cursor_mean(s : ImagetransformtranslateCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateCursor::mean(self : ImagetransformtranslateCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_cursor_scale(s : ImagetransformtranslateCursor, f : Double) -> ImagetransformtranslateCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateCursor::scale(self : ImagetransformtranslateCursor, f : Double) -> ImagetransformtranslateCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_cursor_add(a : ImagetransformtranslateCursor, b : ImagetransformtranslateCursor) -> ImagetransformtranslateCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateCursor::add(self : ImagetransformtranslateCursor, other : ImagetransformtranslateCursor) -> ImagetransformtranslateCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_cursor_copy(s : ImagetransformtranslateCursor) -> ImagetransformtranslateCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateCursor::copy(self : ImagetransformtranslateCursor) -> ImagetransformtranslateCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_cursor_fill(s : ImagetransformtranslateCursor, v : Double) -> ImagetransformtranslateCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateCursor::fill(self : ImagetransformtranslateCursor, v : Double) -> ImagetransformtranslateCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_cursor_min(s : ImagetransformtranslateCursor) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateCursor::min(self : ImagetransformtranslateCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_cursor_max(s : ImagetransformtranslateCursor) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateCursor::max(self : ImagetransformtranslateCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_cursor_to_string(s : ImagetransformtranslateCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateCursor::to_string(self : ImagetransformtranslateCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslateView {
@@ -912,45 +912,45 @@ pub fn image_transform_translate_view_make(size : Int) -> Imagetransformtranslat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_view_len(s : ImagetransformtranslateView) -> Int { s.size }
+pub fn ImagetransformtranslateView::len(self : ImagetransformtranslateView) -> Int { self.size }
 
-pub fn image_transform_translate_view_get(s : ImagetransformtranslateView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateView::get(self : ImagetransformtranslateView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_view_set(s : ImagetransformtranslateView, i : Int, v : Double) -> ImagetransformtranslateView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateView::set(self : ImagetransformtranslateView, i : Int, v : Double) -> ImagetransformtranslateView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_view_sum(s : ImagetransformtranslateView) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateView::sum(self : ImagetransformtranslateView) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_view_mean(s : ImagetransformtranslateView) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateView::mean(self : ImagetransformtranslateView) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_view_scale(s : ImagetransformtranslateView, f : Double) -> ImagetransformtranslateView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateView::scale(self : ImagetransformtranslateView, f : Double) -> ImagetransformtranslateView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_view_add(a : ImagetransformtranslateView, b : ImagetransformtranslateView) -> ImagetransformtranslateView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateView::add(self : ImagetransformtranslateView, other : ImagetransformtranslateView) -> ImagetransformtranslateView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_view_copy(s : ImagetransformtranslateView) -> ImagetransformtranslateView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateView::copy(self : ImagetransformtranslateView) -> ImagetransformtranslateView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_view_fill(s : ImagetransformtranslateView, v : Double) -> ImagetransformtranslateView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateView::fill(self : ImagetransformtranslateView, v : Double) -> ImagetransformtranslateView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_view_min(s : ImagetransformtranslateView) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateView::min(self : ImagetransformtranslateView) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_view_max(s : ImagetransformtranslateView) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateView::max(self : ImagetransformtranslateView) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_view_to_string(s : ImagetransformtranslateView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateView::to_string(self : ImagetransformtranslateView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslateRange {
@@ -963,45 +963,45 @@ pub fn image_transform_translate_range_make(size : Int) -> Imagetransformtransla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_range_len(s : ImagetransformtranslateRange) -> Int { s.size }
+pub fn ImagetransformtranslateRange::len(self : ImagetransformtranslateRange) -> Int { self.size }
 
-pub fn image_transform_translate_range_get(s : ImagetransformtranslateRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateRange::get(self : ImagetransformtranslateRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_range_set(s : ImagetransformtranslateRange, i : Int, v : Double) -> ImagetransformtranslateRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateRange::set(self : ImagetransformtranslateRange, i : Int, v : Double) -> ImagetransformtranslateRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_range_sum(s : ImagetransformtranslateRange) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateRange::sum(self : ImagetransformtranslateRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_range_mean(s : ImagetransformtranslateRange) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateRange::mean(self : ImagetransformtranslateRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_range_scale(s : ImagetransformtranslateRange, f : Double) -> ImagetransformtranslateRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateRange::scale(self : ImagetransformtranslateRange, f : Double) -> ImagetransformtranslateRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_range_add(a : ImagetransformtranslateRange, b : ImagetransformtranslateRange) -> ImagetransformtranslateRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateRange::add(self : ImagetransformtranslateRange, other : ImagetransformtranslateRange) -> ImagetransformtranslateRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_range_copy(s : ImagetransformtranslateRange) -> ImagetransformtranslateRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateRange::copy(self : ImagetransformtranslateRange) -> ImagetransformtranslateRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_range_fill(s : ImagetransformtranslateRange, v : Double) -> ImagetransformtranslateRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateRange::fill(self : ImagetransformtranslateRange, v : Double) -> ImagetransformtranslateRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_range_min(s : ImagetransformtranslateRange) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateRange::min(self : ImagetransformtranslateRange) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_range_max(s : ImagetransformtranslateRange) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateRange::max(self : ImagetransformtranslateRange) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_range_to_string(s : ImagetransformtranslateRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateRange::to_string(self : ImagetransformtranslateRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformtranslateSlice {
@@ -1014,44 +1014,44 @@ pub fn image_transform_translate_slice_make(size : Int) -> Imagetransformtransla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_translate_slice_len(s : ImagetransformtranslateSlice) -> Int { s.size }
+pub fn ImagetransformtranslateSlice::len(self : ImagetransformtranslateSlice) -> Int { self.size }
 
-pub fn image_transform_translate_slice_get(s : ImagetransformtranslateSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformtranslateSlice::get(self : ImagetransformtranslateSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_translate_slice_set(s : ImagetransformtranslateSlice, i : Int, v : Double) -> ImagetransformtranslateSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateSlice::set(self : ImagetransformtranslateSlice, i : Int, v : Double) -> ImagetransformtranslateSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_slice_sum(s : ImagetransformtranslateSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformtranslateSlice::sum(self : ImagetransformtranslateSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_translate_slice_mean(s : ImagetransformtranslateSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformtranslateSlice::mean(self : ImagetransformtranslateSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_translate_slice_scale(s : ImagetransformtranslateSlice, f : Double) -> ImagetransformtranslateSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateSlice::scale(self : ImagetransformtranslateSlice, f : Double) -> ImagetransformtranslateSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_slice_add(a : ImagetransformtranslateSlice, b : ImagetransformtranslateSlice) -> ImagetransformtranslateSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformtranslateSlice::add(self : ImagetransformtranslateSlice, other : ImagetransformtranslateSlice) -> ImagetransformtranslateSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_translate_slice_copy(s : ImagetransformtranslateSlice) -> ImagetransformtranslateSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateSlice::copy(self : ImagetransformtranslateSlice) -> ImagetransformtranslateSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_slice_fill(s : ImagetransformtranslateSlice, v : Double) -> ImagetransformtranslateSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformtranslateSlice::fill(self : ImagetransformtranslateSlice, v : Double) -> ImagetransformtranslateSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_translate_slice_min(s : ImagetransformtranslateSlice) -> Double { @_common.min(s.data) }
+pub fn ImagetransformtranslateSlice::min(self : ImagetransformtranslateSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_translate_slice_max(s : ImagetransformtranslateSlice) -> Double { @_common.max(s.data) }
+pub fn ImagetransformtranslateSlice::max(self : ImagetransformtranslateSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_translate_slice_to_string(s : ImagetransformtranslateSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformtranslateSlice::to_string(self : ImagetransformtranslateSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

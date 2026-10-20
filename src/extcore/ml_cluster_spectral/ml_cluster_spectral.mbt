@@ -351,45 +351,45 @@ pub fn ml_cluster_spectral_frame_make(size : Int) -> MlclusterspectralFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_frame_len(s : MlclusterspectralFrame) -> Int { s.size }
+pub fn MlclusterspectralFrame::len(self : MlclusterspectralFrame) -> Int { self.size }
 
-pub fn ml_cluster_spectral_frame_get(s : MlclusterspectralFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralFrame::get(self : MlclusterspectralFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_frame_set(s : MlclusterspectralFrame, i : Int, v : Double) -> MlclusterspectralFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralFrame::set(self : MlclusterspectralFrame, i : Int, v : Double) -> MlclusterspectralFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_frame_sum(s : MlclusterspectralFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralFrame::sum(self : MlclusterspectralFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_frame_mean(s : MlclusterspectralFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralFrame::mean(self : MlclusterspectralFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_frame_scale(s : MlclusterspectralFrame, f : Double) -> MlclusterspectralFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralFrame::scale(self : MlclusterspectralFrame, f : Double) -> MlclusterspectralFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_frame_add(a : MlclusterspectralFrame, b : MlclusterspectralFrame) -> MlclusterspectralFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralFrame::add(self : MlclusterspectralFrame, other : MlclusterspectralFrame) -> MlclusterspectralFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_frame_copy(s : MlclusterspectralFrame) -> MlclusterspectralFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralFrame::copy(self : MlclusterspectralFrame) -> MlclusterspectralFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_frame_fill(s : MlclusterspectralFrame, v : Double) -> MlclusterspectralFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralFrame::fill(self : MlclusterspectralFrame, v : Double) -> MlclusterspectralFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_frame_min(s : MlclusterspectralFrame) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralFrame::min(self : MlclusterspectralFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_frame_max(s : MlclusterspectralFrame) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralFrame::max(self : MlclusterspectralFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_frame_to_string(s : MlclusterspectralFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralFrame::to_string(self : MlclusterspectralFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralTable {
@@ -402,45 +402,45 @@ pub fn ml_cluster_spectral_table_make(size : Int) -> MlclusterspectralTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_table_len(s : MlclusterspectralTable) -> Int { s.size }
+pub fn MlclusterspectralTable::len(self : MlclusterspectralTable) -> Int { self.size }
 
-pub fn ml_cluster_spectral_table_get(s : MlclusterspectralTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralTable::get(self : MlclusterspectralTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_table_set(s : MlclusterspectralTable, i : Int, v : Double) -> MlclusterspectralTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralTable::set(self : MlclusterspectralTable, i : Int, v : Double) -> MlclusterspectralTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_table_sum(s : MlclusterspectralTable) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralTable::sum(self : MlclusterspectralTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_table_mean(s : MlclusterspectralTable) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralTable::mean(self : MlclusterspectralTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_table_scale(s : MlclusterspectralTable, f : Double) -> MlclusterspectralTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralTable::scale(self : MlclusterspectralTable, f : Double) -> MlclusterspectralTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_table_add(a : MlclusterspectralTable, b : MlclusterspectralTable) -> MlclusterspectralTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralTable::add(self : MlclusterspectralTable, other : MlclusterspectralTable) -> MlclusterspectralTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_table_copy(s : MlclusterspectralTable) -> MlclusterspectralTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralTable::copy(self : MlclusterspectralTable) -> MlclusterspectralTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_table_fill(s : MlclusterspectralTable, v : Double) -> MlclusterspectralTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralTable::fill(self : MlclusterspectralTable, v : Double) -> MlclusterspectralTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_table_min(s : MlclusterspectralTable) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralTable::min(self : MlclusterspectralTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_table_max(s : MlclusterspectralTable) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralTable::max(self : MlclusterspectralTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_table_to_string(s : MlclusterspectralTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralTable::to_string(self : MlclusterspectralTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralGraphN {
@@ -453,45 +453,45 @@ pub fn ml_cluster_spectral_graphn_make(size : Int) -> MlclusterspectralGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_graphn_len(s : MlclusterspectralGraphN) -> Int { s.size }
+pub fn MlclusterspectralGraphN::len(self : MlclusterspectralGraphN) -> Int { self.size }
 
-pub fn ml_cluster_spectral_graphn_get(s : MlclusterspectralGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralGraphN::get(self : MlclusterspectralGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_graphn_set(s : MlclusterspectralGraphN, i : Int, v : Double) -> MlclusterspectralGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralGraphN::set(self : MlclusterspectralGraphN, i : Int, v : Double) -> MlclusterspectralGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_graphn_sum(s : MlclusterspectralGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralGraphN::sum(self : MlclusterspectralGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_graphn_mean(s : MlclusterspectralGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralGraphN::mean(self : MlclusterspectralGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_graphn_scale(s : MlclusterspectralGraphN, f : Double) -> MlclusterspectralGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralGraphN::scale(self : MlclusterspectralGraphN, f : Double) -> MlclusterspectralGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_graphn_add(a : MlclusterspectralGraphN, b : MlclusterspectralGraphN) -> MlclusterspectralGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralGraphN::add(self : MlclusterspectralGraphN, other : MlclusterspectralGraphN) -> MlclusterspectralGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_graphn_copy(s : MlclusterspectralGraphN) -> MlclusterspectralGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralGraphN::copy(self : MlclusterspectralGraphN) -> MlclusterspectralGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_graphn_fill(s : MlclusterspectralGraphN, v : Double) -> MlclusterspectralGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralGraphN::fill(self : MlclusterspectralGraphN, v : Double) -> MlclusterspectralGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_graphn_min(s : MlclusterspectralGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralGraphN::min(self : MlclusterspectralGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_graphn_max(s : MlclusterspectralGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralGraphN::max(self : MlclusterspectralGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_graphn_to_string(s : MlclusterspectralGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralGraphN::to_string(self : MlclusterspectralGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralNode {
@@ -504,45 +504,45 @@ pub fn ml_cluster_spectral_node_make(size : Int) -> MlclusterspectralNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_node_len(s : MlclusterspectralNode) -> Int { s.size }
+pub fn MlclusterspectralNode::len(self : MlclusterspectralNode) -> Int { self.size }
 
-pub fn ml_cluster_spectral_node_get(s : MlclusterspectralNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralNode::get(self : MlclusterspectralNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_node_set(s : MlclusterspectralNode, i : Int, v : Double) -> MlclusterspectralNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralNode::set(self : MlclusterspectralNode, i : Int, v : Double) -> MlclusterspectralNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_node_sum(s : MlclusterspectralNode) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralNode::sum(self : MlclusterspectralNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_node_mean(s : MlclusterspectralNode) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralNode::mean(self : MlclusterspectralNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_node_scale(s : MlclusterspectralNode, f : Double) -> MlclusterspectralNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralNode::scale(self : MlclusterspectralNode, f : Double) -> MlclusterspectralNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_node_add(a : MlclusterspectralNode, b : MlclusterspectralNode) -> MlclusterspectralNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralNode::add(self : MlclusterspectralNode, other : MlclusterspectralNode) -> MlclusterspectralNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_node_copy(s : MlclusterspectralNode) -> MlclusterspectralNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralNode::copy(self : MlclusterspectralNode) -> MlclusterspectralNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_node_fill(s : MlclusterspectralNode, v : Double) -> MlclusterspectralNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralNode::fill(self : MlclusterspectralNode, v : Double) -> MlclusterspectralNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_node_min(s : MlclusterspectralNode) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralNode::min(self : MlclusterspectralNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_node_max(s : MlclusterspectralNode) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralNode::max(self : MlclusterspectralNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_node_to_string(s : MlclusterspectralNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralNode::to_string(self : MlclusterspectralNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralEdge {
@@ -555,45 +555,45 @@ pub fn ml_cluster_spectral_edge_make(size : Int) -> MlclusterspectralEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_edge_len(s : MlclusterspectralEdge) -> Int { s.size }
+pub fn MlclusterspectralEdge::len(self : MlclusterspectralEdge) -> Int { self.size }
 
-pub fn ml_cluster_spectral_edge_get(s : MlclusterspectralEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralEdge::get(self : MlclusterspectralEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_edge_set(s : MlclusterspectralEdge, i : Int, v : Double) -> MlclusterspectralEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralEdge::set(self : MlclusterspectralEdge, i : Int, v : Double) -> MlclusterspectralEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_edge_sum(s : MlclusterspectralEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralEdge::sum(self : MlclusterspectralEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_edge_mean(s : MlclusterspectralEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralEdge::mean(self : MlclusterspectralEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_edge_scale(s : MlclusterspectralEdge, f : Double) -> MlclusterspectralEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralEdge::scale(self : MlclusterspectralEdge, f : Double) -> MlclusterspectralEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_edge_add(a : MlclusterspectralEdge, b : MlclusterspectralEdge) -> MlclusterspectralEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralEdge::add(self : MlclusterspectralEdge, other : MlclusterspectralEdge) -> MlclusterspectralEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_edge_copy(s : MlclusterspectralEdge) -> MlclusterspectralEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralEdge::copy(self : MlclusterspectralEdge) -> MlclusterspectralEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_edge_fill(s : MlclusterspectralEdge, v : Double) -> MlclusterspectralEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralEdge::fill(self : MlclusterspectralEdge, v : Double) -> MlclusterspectralEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_edge_min(s : MlclusterspectralEdge) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralEdge::min(self : MlclusterspectralEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_edge_max(s : MlclusterspectralEdge) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralEdge::max(self : MlclusterspectralEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_edge_to_string(s : MlclusterspectralEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralEdge::to_string(self : MlclusterspectralEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralPath {
@@ -606,45 +606,45 @@ pub fn ml_cluster_spectral_path_make(size : Int) -> MlclusterspectralPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_path_len(s : MlclusterspectralPath) -> Int { s.size }
+pub fn MlclusterspectralPath::len(self : MlclusterspectralPath) -> Int { self.size }
 
-pub fn ml_cluster_spectral_path_get(s : MlclusterspectralPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralPath::get(self : MlclusterspectralPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_path_set(s : MlclusterspectralPath, i : Int, v : Double) -> MlclusterspectralPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralPath::set(self : MlclusterspectralPath, i : Int, v : Double) -> MlclusterspectralPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_path_sum(s : MlclusterspectralPath) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralPath::sum(self : MlclusterspectralPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_path_mean(s : MlclusterspectralPath) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralPath::mean(self : MlclusterspectralPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_path_scale(s : MlclusterspectralPath, f : Double) -> MlclusterspectralPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralPath::scale(self : MlclusterspectralPath, f : Double) -> MlclusterspectralPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_path_add(a : MlclusterspectralPath, b : MlclusterspectralPath) -> MlclusterspectralPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralPath::add(self : MlclusterspectralPath, other : MlclusterspectralPath) -> MlclusterspectralPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_path_copy(s : MlclusterspectralPath) -> MlclusterspectralPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralPath::copy(self : MlclusterspectralPath) -> MlclusterspectralPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_path_fill(s : MlclusterspectralPath, v : Double) -> MlclusterspectralPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralPath::fill(self : MlclusterspectralPath, v : Double) -> MlclusterspectralPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_path_min(s : MlclusterspectralPath) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralPath::min(self : MlclusterspectralPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_path_max(s : MlclusterspectralPath) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralPath::max(self : MlclusterspectralPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_path_to_string(s : MlclusterspectralPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralPath::to_string(self : MlclusterspectralPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralCluster {
@@ -657,45 +657,45 @@ pub fn ml_cluster_spectral_cluster_make(size : Int) -> MlclusterspectralCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_cluster_len(s : MlclusterspectralCluster) -> Int { s.size }
+pub fn MlclusterspectralCluster::len(self : MlclusterspectralCluster) -> Int { self.size }
 
-pub fn ml_cluster_spectral_cluster_get(s : MlclusterspectralCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralCluster::get(self : MlclusterspectralCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_cluster_set(s : MlclusterspectralCluster, i : Int, v : Double) -> MlclusterspectralCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralCluster::set(self : MlclusterspectralCluster, i : Int, v : Double) -> MlclusterspectralCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_cluster_sum(s : MlclusterspectralCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralCluster::sum(self : MlclusterspectralCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_cluster_mean(s : MlclusterspectralCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralCluster::mean(self : MlclusterspectralCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_cluster_scale(s : MlclusterspectralCluster, f : Double) -> MlclusterspectralCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralCluster::scale(self : MlclusterspectralCluster, f : Double) -> MlclusterspectralCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_cluster_add(a : MlclusterspectralCluster, b : MlclusterspectralCluster) -> MlclusterspectralCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralCluster::add(self : MlclusterspectralCluster, other : MlclusterspectralCluster) -> MlclusterspectralCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_cluster_copy(s : MlclusterspectralCluster) -> MlclusterspectralCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralCluster::copy(self : MlclusterspectralCluster) -> MlclusterspectralCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_cluster_fill(s : MlclusterspectralCluster, v : Double) -> MlclusterspectralCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralCluster::fill(self : MlclusterspectralCluster, v : Double) -> MlclusterspectralCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_cluster_min(s : MlclusterspectralCluster) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralCluster::min(self : MlclusterspectralCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_cluster_max(s : MlclusterspectralCluster) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralCluster::max(self : MlclusterspectralCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_cluster_to_string(s : MlclusterspectralCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralCluster::to_string(self : MlclusterspectralCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralModel {
@@ -708,45 +708,45 @@ pub fn ml_cluster_spectral_model_make(size : Int) -> MlclusterspectralModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_model_len(s : MlclusterspectralModel) -> Int { s.size }
+pub fn MlclusterspectralModel::len(self : MlclusterspectralModel) -> Int { self.size }
 
-pub fn ml_cluster_spectral_model_get(s : MlclusterspectralModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralModel::get(self : MlclusterspectralModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_model_set(s : MlclusterspectralModel, i : Int, v : Double) -> MlclusterspectralModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralModel::set(self : MlclusterspectralModel, i : Int, v : Double) -> MlclusterspectralModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_model_sum(s : MlclusterspectralModel) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralModel::sum(self : MlclusterspectralModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_model_mean(s : MlclusterspectralModel) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralModel::mean(self : MlclusterspectralModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_model_scale(s : MlclusterspectralModel, f : Double) -> MlclusterspectralModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralModel::scale(self : MlclusterspectralModel, f : Double) -> MlclusterspectralModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_model_add(a : MlclusterspectralModel, b : MlclusterspectralModel) -> MlclusterspectralModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralModel::add(self : MlclusterspectralModel, other : MlclusterspectralModel) -> MlclusterspectralModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_model_copy(s : MlclusterspectralModel) -> MlclusterspectralModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralModel::copy(self : MlclusterspectralModel) -> MlclusterspectralModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_model_fill(s : MlclusterspectralModel, v : Double) -> MlclusterspectralModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralModel::fill(self : MlclusterspectralModel, v : Double) -> MlclusterspectralModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_model_min(s : MlclusterspectralModel) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralModel::min(self : MlclusterspectralModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_model_max(s : MlclusterspectralModel) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralModel::max(self : MlclusterspectralModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_model_to_string(s : MlclusterspectralModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralModel::to_string(self : MlclusterspectralModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralLayer {
@@ -759,45 +759,45 @@ pub fn ml_cluster_spectral_layer_make(size : Int) -> MlclusterspectralLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_layer_len(s : MlclusterspectralLayer) -> Int { s.size }
+pub fn MlclusterspectralLayer::len(self : MlclusterspectralLayer) -> Int { self.size }
 
-pub fn ml_cluster_spectral_layer_get(s : MlclusterspectralLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralLayer::get(self : MlclusterspectralLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_layer_set(s : MlclusterspectralLayer, i : Int, v : Double) -> MlclusterspectralLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralLayer::set(self : MlclusterspectralLayer, i : Int, v : Double) -> MlclusterspectralLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_layer_sum(s : MlclusterspectralLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralLayer::sum(self : MlclusterspectralLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_layer_mean(s : MlclusterspectralLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralLayer::mean(self : MlclusterspectralLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_layer_scale(s : MlclusterspectralLayer, f : Double) -> MlclusterspectralLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralLayer::scale(self : MlclusterspectralLayer, f : Double) -> MlclusterspectralLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_layer_add(a : MlclusterspectralLayer, b : MlclusterspectralLayer) -> MlclusterspectralLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralLayer::add(self : MlclusterspectralLayer, other : MlclusterspectralLayer) -> MlclusterspectralLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_layer_copy(s : MlclusterspectralLayer) -> MlclusterspectralLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralLayer::copy(self : MlclusterspectralLayer) -> MlclusterspectralLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_layer_fill(s : MlclusterspectralLayer, v : Double) -> MlclusterspectralLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralLayer::fill(self : MlclusterspectralLayer, v : Double) -> MlclusterspectralLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_layer_min(s : MlclusterspectralLayer) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralLayer::min(self : MlclusterspectralLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_layer_max(s : MlclusterspectralLayer) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralLayer::max(self : MlclusterspectralLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_layer_to_string(s : MlclusterspectralLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralLayer::to_string(self : MlclusterspectralLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralBuffer {
@@ -810,45 +810,45 @@ pub fn ml_cluster_spectral_buffer_make(size : Int) -> MlclusterspectralBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_buffer_len(s : MlclusterspectralBuffer) -> Int { s.size }
+pub fn MlclusterspectralBuffer::len(self : MlclusterspectralBuffer) -> Int { self.size }
 
-pub fn ml_cluster_spectral_buffer_get(s : MlclusterspectralBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralBuffer::get(self : MlclusterspectralBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_buffer_set(s : MlclusterspectralBuffer, i : Int, v : Double) -> MlclusterspectralBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralBuffer::set(self : MlclusterspectralBuffer, i : Int, v : Double) -> MlclusterspectralBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_buffer_sum(s : MlclusterspectralBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralBuffer::sum(self : MlclusterspectralBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_buffer_mean(s : MlclusterspectralBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralBuffer::mean(self : MlclusterspectralBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_buffer_scale(s : MlclusterspectralBuffer, f : Double) -> MlclusterspectralBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralBuffer::scale(self : MlclusterspectralBuffer, f : Double) -> MlclusterspectralBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_buffer_add(a : MlclusterspectralBuffer, b : MlclusterspectralBuffer) -> MlclusterspectralBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralBuffer::add(self : MlclusterspectralBuffer, other : MlclusterspectralBuffer) -> MlclusterspectralBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_buffer_copy(s : MlclusterspectralBuffer) -> MlclusterspectralBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralBuffer::copy(self : MlclusterspectralBuffer) -> MlclusterspectralBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_buffer_fill(s : MlclusterspectralBuffer, v : Double) -> MlclusterspectralBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralBuffer::fill(self : MlclusterspectralBuffer, v : Double) -> MlclusterspectralBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_buffer_min(s : MlclusterspectralBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralBuffer::min(self : MlclusterspectralBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_buffer_max(s : MlclusterspectralBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralBuffer::max(self : MlclusterspectralBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_buffer_to_string(s : MlclusterspectralBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralBuffer::to_string(self : MlclusterspectralBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralCursor {
@@ -861,45 +861,45 @@ pub fn ml_cluster_spectral_cursor_make(size : Int) -> MlclusterspectralCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_cursor_len(s : MlclusterspectralCursor) -> Int { s.size }
+pub fn MlclusterspectralCursor::len(self : MlclusterspectralCursor) -> Int { self.size }
 
-pub fn ml_cluster_spectral_cursor_get(s : MlclusterspectralCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralCursor::get(self : MlclusterspectralCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_cursor_set(s : MlclusterspectralCursor, i : Int, v : Double) -> MlclusterspectralCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralCursor::set(self : MlclusterspectralCursor, i : Int, v : Double) -> MlclusterspectralCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_cursor_sum(s : MlclusterspectralCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralCursor::sum(self : MlclusterspectralCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_cursor_mean(s : MlclusterspectralCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralCursor::mean(self : MlclusterspectralCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_cursor_scale(s : MlclusterspectralCursor, f : Double) -> MlclusterspectralCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralCursor::scale(self : MlclusterspectralCursor, f : Double) -> MlclusterspectralCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_cursor_add(a : MlclusterspectralCursor, b : MlclusterspectralCursor) -> MlclusterspectralCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralCursor::add(self : MlclusterspectralCursor, other : MlclusterspectralCursor) -> MlclusterspectralCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_cursor_copy(s : MlclusterspectralCursor) -> MlclusterspectralCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralCursor::copy(self : MlclusterspectralCursor) -> MlclusterspectralCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_cursor_fill(s : MlclusterspectralCursor, v : Double) -> MlclusterspectralCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralCursor::fill(self : MlclusterspectralCursor, v : Double) -> MlclusterspectralCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_cursor_min(s : MlclusterspectralCursor) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralCursor::min(self : MlclusterspectralCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_cursor_max(s : MlclusterspectralCursor) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralCursor::max(self : MlclusterspectralCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_cursor_to_string(s : MlclusterspectralCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralCursor::to_string(self : MlclusterspectralCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralView {
@@ -912,45 +912,45 @@ pub fn ml_cluster_spectral_view_make(size : Int) -> MlclusterspectralView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_view_len(s : MlclusterspectralView) -> Int { s.size }
+pub fn MlclusterspectralView::len(self : MlclusterspectralView) -> Int { self.size }
 
-pub fn ml_cluster_spectral_view_get(s : MlclusterspectralView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralView::get(self : MlclusterspectralView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_view_set(s : MlclusterspectralView, i : Int, v : Double) -> MlclusterspectralView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralView::set(self : MlclusterspectralView, i : Int, v : Double) -> MlclusterspectralView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_view_sum(s : MlclusterspectralView) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralView::sum(self : MlclusterspectralView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_view_mean(s : MlclusterspectralView) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralView::mean(self : MlclusterspectralView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_view_scale(s : MlclusterspectralView, f : Double) -> MlclusterspectralView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralView::scale(self : MlclusterspectralView, f : Double) -> MlclusterspectralView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_view_add(a : MlclusterspectralView, b : MlclusterspectralView) -> MlclusterspectralView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralView::add(self : MlclusterspectralView, other : MlclusterspectralView) -> MlclusterspectralView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_view_copy(s : MlclusterspectralView) -> MlclusterspectralView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralView::copy(self : MlclusterspectralView) -> MlclusterspectralView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_view_fill(s : MlclusterspectralView, v : Double) -> MlclusterspectralView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralView::fill(self : MlclusterspectralView, v : Double) -> MlclusterspectralView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_view_min(s : MlclusterspectralView) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralView::min(self : MlclusterspectralView) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_view_max(s : MlclusterspectralView) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralView::max(self : MlclusterspectralView) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_view_to_string(s : MlclusterspectralView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralView::to_string(self : MlclusterspectralView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralRange {
@@ -963,45 +963,45 @@ pub fn ml_cluster_spectral_range_make(size : Int) -> MlclusterspectralRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_range_len(s : MlclusterspectralRange) -> Int { s.size }
+pub fn MlclusterspectralRange::len(self : MlclusterspectralRange) -> Int { self.size }
 
-pub fn ml_cluster_spectral_range_get(s : MlclusterspectralRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralRange::get(self : MlclusterspectralRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_range_set(s : MlclusterspectralRange, i : Int, v : Double) -> MlclusterspectralRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralRange::set(self : MlclusterspectralRange, i : Int, v : Double) -> MlclusterspectralRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_range_sum(s : MlclusterspectralRange) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralRange::sum(self : MlclusterspectralRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_range_mean(s : MlclusterspectralRange) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralRange::mean(self : MlclusterspectralRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_range_scale(s : MlclusterspectralRange, f : Double) -> MlclusterspectralRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralRange::scale(self : MlclusterspectralRange, f : Double) -> MlclusterspectralRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_range_add(a : MlclusterspectralRange, b : MlclusterspectralRange) -> MlclusterspectralRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralRange::add(self : MlclusterspectralRange, other : MlclusterspectralRange) -> MlclusterspectralRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_range_copy(s : MlclusterspectralRange) -> MlclusterspectralRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralRange::copy(self : MlclusterspectralRange) -> MlclusterspectralRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_range_fill(s : MlclusterspectralRange, v : Double) -> MlclusterspectralRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralRange::fill(self : MlclusterspectralRange, v : Double) -> MlclusterspectralRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_range_min(s : MlclusterspectralRange) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralRange::min(self : MlclusterspectralRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_range_max(s : MlclusterspectralRange) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralRange::max(self : MlclusterspectralRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_range_to_string(s : MlclusterspectralRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralRange::to_string(self : MlclusterspectralRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterspectralSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_cluster_spectral_slice_make(size : Int) -> MlclusterspectralSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_spectral_slice_len(s : MlclusterspectralSlice) -> Int { s.size }
+pub fn MlclusterspectralSlice::len(self : MlclusterspectralSlice) -> Int { self.size }
 
-pub fn ml_cluster_spectral_slice_get(s : MlclusterspectralSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterspectralSlice::get(self : MlclusterspectralSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_spectral_slice_set(s : MlclusterspectralSlice, i : Int, v : Double) -> MlclusterspectralSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterspectralSlice::set(self : MlclusterspectralSlice, i : Int, v : Double) -> MlclusterspectralSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_slice_sum(s : MlclusterspectralSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclusterspectralSlice::sum(self : MlclusterspectralSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_spectral_slice_mean(s : MlclusterspectralSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclusterspectralSlice::mean(self : MlclusterspectralSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_spectral_slice_scale(s : MlclusterspectralSlice, f : Double) -> MlclusterspectralSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterspectralSlice::scale(self : MlclusterspectralSlice, f : Double) -> MlclusterspectralSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_slice_add(a : MlclusterspectralSlice, b : MlclusterspectralSlice) -> MlclusterspectralSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterspectralSlice::add(self : MlclusterspectralSlice, other : MlclusterspectralSlice) -> MlclusterspectralSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_slice_copy(s : MlclusterspectralSlice) -> MlclusterspectralSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterspectralSlice::copy(self : MlclusterspectralSlice) -> MlclusterspectralSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_slice_fill(s : MlclusterspectralSlice, v : Double) -> MlclusterspectralSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterspectralSlice::fill(self : MlclusterspectralSlice, v : Double) -> MlclusterspectralSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_spectral_slice_min(s : MlclusterspectralSlice) -> Double { @_common.min(s.data) }
+pub fn MlclusterspectralSlice::min(self : MlclusterspectralSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_spectral_slice_max(s : MlclusterspectralSlice) -> Double { @_common.max(s.data) }
+pub fn MlclusterspectralSlice::max(self : MlclusterspectralSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_spectral_slice_to_string(s : MlclusterspectralSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterspectralSlice::to_string(self : MlclusterspectralSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

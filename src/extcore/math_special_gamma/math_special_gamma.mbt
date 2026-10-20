@@ -351,45 +351,45 @@ pub fn math_special_gamma_frame_make(size : Int) -> MathspecialgammaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_frame_len(s : MathspecialgammaFrame) -> Int { s.size }
+pub fn MathspecialgammaFrame::len(self : MathspecialgammaFrame) -> Int { self.size }
 
-pub fn math_special_gamma_frame_get(s : MathspecialgammaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaFrame::get(self : MathspecialgammaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_frame_set(s : MathspecialgammaFrame, i : Int, v : Double) -> MathspecialgammaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaFrame::set(self : MathspecialgammaFrame, i : Int, v : Double) -> MathspecialgammaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_frame_sum(s : MathspecialgammaFrame) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaFrame::sum(self : MathspecialgammaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_frame_mean(s : MathspecialgammaFrame) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaFrame::mean(self : MathspecialgammaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_frame_scale(s : MathspecialgammaFrame, f : Double) -> MathspecialgammaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaFrame::scale(self : MathspecialgammaFrame, f : Double) -> MathspecialgammaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_frame_add(a : MathspecialgammaFrame, b : MathspecialgammaFrame) -> MathspecialgammaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaFrame::add(self : MathspecialgammaFrame, other : MathspecialgammaFrame) -> MathspecialgammaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_frame_copy(s : MathspecialgammaFrame) -> MathspecialgammaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaFrame::copy(self : MathspecialgammaFrame) -> MathspecialgammaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_frame_fill(s : MathspecialgammaFrame, v : Double) -> MathspecialgammaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaFrame::fill(self : MathspecialgammaFrame, v : Double) -> MathspecialgammaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_frame_min(s : MathspecialgammaFrame) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaFrame::min(self : MathspecialgammaFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_frame_max(s : MathspecialgammaFrame) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaFrame::max(self : MathspecialgammaFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_frame_to_string(s : MathspecialgammaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaFrame::to_string(self : MathspecialgammaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaTable {
@@ -402,45 +402,45 @@ pub fn math_special_gamma_table_make(size : Int) -> MathspecialgammaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_table_len(s : MathspecialgammaTable) -> Int { s.size }
+pub fn MathspecialgammaTable::len(self : MathspecialgammaTable) -> Int { self.size }
 
-pub fn math_special_gamma_table_get(s : MathspecialgammaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaTable::get(self : MathspecialgammaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_table_set(s : MathspecialgammaTable, i : Int, v : Double) -> MathspecialgammaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaTable::set(self : MathspecialgammaTable, i : Int, v : Double) -> MathspecialgammaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_table_sum(s : MathspecialgammaTable) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaTable::sum(self : MathspecialgammaTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_table_mean(s : MathspecialgammaTable) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaTable::mean(self : MathspecialgammaTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_table_scale(s : MathspecialgammaTable, f : Double) -> MathspecialgammaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaTable::scale(self : MathspecialgammaTable, f : Double) -> MathspecialgammaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_table_add(a : MathspecialgammaTable, b : MathspecialgammaTable) -> MathspecialgammaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaTable::add(self : MathspecialgammaTable, other : MathspecialgammaTable) -> MathspecialgammaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_table_copy(s : MathspecialgammaTable) -> MathspecialgammaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaTable::copy(self : MathspecialgammaTable) -> MathspecialgammaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_table_fill(s : MathspecialgammaTable, v : Double) -> MathspecialgammaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaTable::fill(self : MathspecialgammaTable, v : Double) -> MathspecialgammaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_table_min(s : MathspecialgammaTable) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaTable::min(self : MathspecialgammaTable) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_table_max(s : MathspecialgammaTable) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaTable::max(self : MathspecialgammaTable) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_table_to_string(s : MathspecialgammaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaTable::to_string(self : MathspecialgammaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaGraphN {
@@ -453,45 +453,45 @@ pub fn math_special_gamma_graphn_make(size : Int) -> MathspecialgammaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_graphn_len(s : MathspecialgammaGraphN) -> Int { s.size }
+pub fn MathspecialgammaGraphN::len(self : MathspecialgammaGraphN) -> Int { self.size }
 
-pub fn math_special_gamma_graphn_get(s : MathspecialgammaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaGraphN::get(self : MathspecialgammaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_graphn_set(s : MathspecialgammaGraphN, i : Int, v : Double) -> MathspecialgammaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaGraphN::set(self : MathspecialgammaGraphN, i : Int, v : Double) -> MathspecialgammaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_graphn_sum(s : MathspecialgammaGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaGraphN::sum(self : MathspecialgammaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_graphn_mean(s : MathspecialgammaGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaGraphN::mean(self : MathspecialgammaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_graphn_scale(s : MathspecialgammaGraphN, f : Double) -> MathspecialgammaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaGraphN::scale(self : MathspecialgammaGraphN, f : Double) -> MathspecialgammaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_graphn_add(a : MathspecialgammaGraphN, b : MathspecialgammaGraphN) -> MathspecialgammaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaGraphN::add(self : MathspecialgammaGraphN, other : MathspecialgammaGraphN) -> MathspecialgammaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_graphn_copy(s : MathspecialgammaGraphN) -> MathspecialgammaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaGraphN::copy(self : MathspecialgammaGraphN) -> MathspecialgammaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_graphn_fill(s : MathspecialgammaGraphN, v : Double) -> MathspecialgammaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaGraphN::fill(self : MathspecialgammaGraphN, v : Double) -> MathspecialgammaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_graphn_min(s : MathspecialgammaGraphN) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaGraphN::min(self : MathspecialgammaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_graphn_max(s : MathspecialgammaGraphN) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaGraphN::max(self : MathspecialgammaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_graphn_to_string(s : MathspecialgammaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaGraphN::to_string(self : MathspecialgammaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaNode {
@@ -504,45 +504,45 @@ pub fn math_special_gamma_node_make(size : Int) -> MathspecialgammaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_node_len(s : MathspecialgammaNode) -> Int { s.size }
+pub fn MathspecialgammaNode::len(self : MathspecialgammaNode) -> Int { self.size }
 
-pub fn math_special_gamma_node_get(s : MathspecialgammaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaNode::get(self : MathspecialgammaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_node_set(s : MathspecialgammaNode, i : Int, v : Double) -> MathspecialgammaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaNode::set(self : MathspecialgammaNode, i : Int, v : Double) -> MathspecialgammaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_node_sum(s : MathspecialgammaNode) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaNode::sum(self : MathspecialgammaNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_node_mean(s : MathspecialgammaNode) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaNode::mean(self : MathspecialgammaNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_node_scale(s : MathspecialgammaNode, f : Double) -> MathspecialgammaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaNode::scale(self : MathspecialgammaNode, f : Double) -> MathspecialgammaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_node_add(a : MathspecialgammaNode, b : MathspecialgammaNode) -> MathspecialgammaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaNode::add(self : MathspecialgammaNode, other : MathspecialgammaNode) -> MathspecialgammaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_node_copy(s : MathspecialgammaNode) -> MathspecialgammaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaNode::copy(self : MathspecialgammaNode) -> MathspecialgammaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_node_fill(s : MathspecialgammaNode, v : Double) -> MathspecialgammaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaNode::fill(self : MathspecialgammaNode, v : Double) -> MathspecialgammaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_node_min(s : MathspecialgammaNode) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaNode::min(self : MathspecialgammaNode) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_node_max(s : MathspecialgammaNode) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaNode::max(self : MathspecialgammaNode) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_node_to_string(s : MathspecialgammaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaNode::to_string(self : MathspecialgammaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaEdge {
@@ -555,45 +555,45 @@ pub fn math_special_gamma_edge_make(size : Int) -> MathspecialgammaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_edge_len(s : MathspecialgammaEdge) -> Int { s.size }
+pub fn MathspecialgammaEdge::len(self : MathspecialgammaEdge) -> Int { self.size }
 
-pub fn math_special_gamma_edge_get(s : MathspecialgammaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaEdge::get(self : MathspecialgammaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_edge_set(s : MathspecialgammaEdge, i : Int, v : Double) -> MathspecialgammaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaEdge::set(self : MathspecialgammaEdge, i : Int, v : Double) -> MathspecialgammaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_edge_sum(s : MathspecialgammaEdge) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaEdge::sum(self : MathspecialgammaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_edge_mean(s : MathspecialgammaEdge) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaEdge::mean(self : MathspecialgammaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_edge_scale(s : MathspecialgammaEdge, f : Double) -> MathspecialgammaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaEdge::scale(self : MathspecialgammaEdge, f : Double) -> MathspecialgammaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_edge_add(a : MathspecialgammaEdge, b : MathspecialgammaEdge) -> MathspecialgammaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaEdge::add(self : MathspecialgammaEdge, other : MathspecialgammaEdge) -> MathspecialgammaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_edge_copy(s : MathspecialgammaEdge) -> MathspecialgammaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaEdge::copy(self : MathspecialgammaEdge) -> MathspecialgammaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_edge_fill(s : MathspecialgammaEdge, v : Double) -> MathspecialgammaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaEdge::fill(self : MathspecialgammaEdge, v : Double) -> MathspecialgammaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_edge_min(s : MathspecialgammaEdge) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaEdge::min(self : MathspecialgammaEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_edge_max(s : MathspecialgammaEdge) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaEdge::max(self : MathspecialgammaEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_edge_to_string(s : MathspecialgammaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaEdge::to_string(self : MathspecialgammaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaPath {
@@ -606,45 +606,45 @@ pub fn math_special_gamma_path_make(size : Int) -> MathspecialgammaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_path_len(s : MathspecialgammaPath) -> Int { s.size }
+pub fn MathspecialgammaPath::len(self : MathspecialgammaPath) -> Int { self.size }
 
-pub fn math_special_gamma_path_get(s : MathspecialgammaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaPath::get(self : MathspecialgammaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_path_set(s : MathspecialgammaPath, i : Int, v : Double) -> MathspecialgammaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaPath::set(self : MathspecialgammaPath, i : Int, v : Double) -> MathspecialgammaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_path_sum(s : MathspecialgammaPath) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaPath::sum(self : MathspecialgammaPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_path_mean(s : MathspecialgammaPath) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaPath::mean(self : MathspecialgammaPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_path_scale(s : MathspecialgammaPath, f : Double) -> MathspecialgammaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaPath::scale(self : MathspecialgammaPath, f : Double) -> MathspecialgammaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_path_add(a : MathspecialgammaPath, b : MathspecialgammaPath) -> MathspecialgammaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaPath::add(self : MathspecialgammaPath, other : MathspecialgammaPath) -> MathspecialgammaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_path_copy(s : MathspecialgammaPath) -> MathspecialgammaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaPath::copy(self : MathspecialgammaPath) -> MathspecialgammaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_path_fill(s : MathspecialgammaPath, v : Double) -> MathspecialgammaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaPath::fill(self : MathspecialgammaPath, v : Double) -> MathspecialgammaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_path_min(s : MathspecialgammaPath) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaPath::min(self : MathspecialgammaPath) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_path_max(s : MathspecialgammaPath) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaPath::max(self : MathspecialgammaPath) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_path_to_string(s : MathspecialgammaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaPath::to_string(self : MathspecialgammaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaCluster {
@@ -657,45 +657,45 @@ pub fn math_special_gamma_cluster_make(size : Int) -> MathspecialgammaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_cluster_len(s : MathspecialgammaCluster) -> Int { s.size }
+pub fn MathspecialgammaCluster::len(self : MathspecialgammaCluster) -> Int { self.size }
 
-pub fn math_special_gamma_cluster_get(s : MathspecialgammaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaCluster::get(self : MathspecialgammaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_cluster_set(s : MathspecialgammaCluster, i : Int, v : Double) -> MathspecialgammaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaCluster::set(self : MathspecialgammaCluster, i : Int, v : Double) -> MathspecialgammaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_cluster_sum(s : MathspecialgammaCluster) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaCluster::sum(self : MathspecialgammaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_cluster_mean(s : MathspecialgammaCluster) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaCluster::mean(self : MathspecialgammaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_cluster_scale(s : MathspecialgammaCluster, f : Double) -> MathspecialgammaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaCluster::scale(self : MathspecialgammaCluster, f : Double) -> MathspecialgammaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_cluster_add(a : MathspecialgammaCluster, b : MathspecialgammaCluster) -> MathspecialgammaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaCluster::add(self : MathspecialgammaCluster, other : MathspecialgammaCluster) -> MathspecialgammaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_cluster_copy(s : MathspecialgammaCluster) -> MathspecialgammaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaCluster::copy(self : MathspecialgammaCluster) -> MathspecialgammaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_cluster_fill(s : MathspecialgammaCluster, v : Double) -> MathspecialgammaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaCluster::fill(self : MathspecialgammaCluster, v : Double) -> MathspecialgammaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_cluster_min(s : MathspecialgammaCluster) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaCluster::min(self : MathspecialgammaCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_cluster_max(s : MathspecialgammaCluster) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaCluster::max(self : MathspecialgammaCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_cluster_to_string(s : MathspecialgammaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaCluster::to_string(self : MathspecialgammaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaModel {
@@ -708,45 +708,45 @@ pub fn math_special_gamma_model_make(size : Int) -> MathspecialgammaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_model_len(s : MathspecialgammaModel) -> Int { s.size }
+pub fn MathspecialgammaModel::len(self : MathspecialgammaModel) -> Int { self.size }
 
-pub fn math_special_gamma_model_get(s : MathspecialgammaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaModel::get(self : MathspecialgammaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_model_set(s : MathspecialgammaModel, i : Int, v : Double) -> MathspecialgammaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaModel::set(self : MathspecialgammaModel, i : Int, v : Double) -> MathspecialgammaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_model_sum(s : MathspecialgammaModel) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaModel::sum(self : MathspecialgammaModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_model_mean(s : MathspecialgammaModel) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaModel::mean(self : MathspecialgammaModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_model_scale(s : MathspecialgammaModel, f : Double) -> MathspecialgammaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaModel::scale(self : MathspecialgammaModel, f : Double) -> MathspecialgammaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_model_add(a : MathspecialgammaModel, b : MathspecialgammaModel) -> MathspecialgammaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaModel::add(self : MathspecialgammaModel, other : MathspecialgammaModel) -> MathspecialgammaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_model_copy(s : MathspecialgammaModel) -> MathspecialgammaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaModel::copy(self : MathspecialgammaModel) -> MathspecialgammaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_model_fill(s : MathspecialgammaModel, v : Double) -> MathspecialgammaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaModel::fill(self : MathspecialgammaModel, v : Double) -> MathspecialgammaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_model_min(s : MathspecialgammaModel) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaModel::min(self : MathspecialgammaModel) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_model_max(s : MathspecialgammaModel) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaModel::max(self : MathspecialgammaModel) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_model_to_string(s : MathspecialgammaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaModel::to_string(self : MathspecialgammaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaLayer {
@@ -759,45 +759,45 @@ pub fn math_special_gamma_layer_make(size : Int) -> MathspecialgammaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_layer_len(s : MathspecialgammaLayer) -> Int { s.size }
+pub fn MathspecialgammaLayer::len(self : MathspecialgammaLayer) -> Int { self.size }
 
-pub fn math_special_gamma_layer_get(s : MathspecialgammaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaLayer::get(self : MathspecialgammaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_layer_set(s : MathspecialgammaLayer, i : Int, v : Double) -> MathspecialgammaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaLayer::set(self : MathspecialgammaLayer, i : Int, v : Double) -> MathspecialgammaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_layer_sum(s : MathspecialgammaLayer) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaLayer::sum(self : MathspecialgammaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_layer_mean(s : MathspecialgammaLayer) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaLayer::mean(self : MathspecialgammaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_layer_scale(s : MathspecialgammaLayer, f : Double) -> MathspecialgammaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaLayer::scale(self : MathspecialgammaLayer, f : Double) -> MathspecialgammaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_layer_add(a : MathspecialgammaLayer, b : MathspecialgammaLayer) -> MathspecialgammaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaLayer::add(self : MathspecialgammaLayer, other : MathspecialgammaLayer) -> MathspecialgammaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_layer_copy(s : MathspecialgammaLayer) -> MathspecialgammaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaLayer::copy(self : MathspecialgammaLayer) -> MathspecialgammaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_layer_fill(s : MathspecialgammaLayer, v : Double) -> MathspecialgammaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaLayer::fill(self : MathspecialgammaLayer, v : Double) -> MathspecialgammaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_layer_min(s : MathspecialgammaLayer) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaLayer::min(self : MathspecialgammaLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_layer_max(s : MathspecialgammaLayer) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaLayer::max(self : MathspecialgammaLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_layer_to_string(s : MathspecialgammaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaLayer::to_string(self : MathspecialgammaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaBuffer {
@@ -810,45 +810,45 @@ pub fn math_special_gamma_buffer_make(size : Int) -> MathspecialgammaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_buffer_len(s : MathspecialgammaBuffer) -> Int { s.size }
+pub fn MathspecialgammaBuffer::len(self : MathspecialgammaBuffer) -> Int { self.size }
 
-pub fn math_special_gamma_buffer_get(s : MathspecialgammaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaBuffer::get(self : MathspecialgammaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_buffer_set(s : MathspecialgammaBuffer, i : Int, v : Double) -> MathspecialgammaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaBuffer::set(self : MathspecialgammaBuffer, i : Int, v : Double) -> MathspecialgammaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_buffer_sum(s : MathspecialgammaBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaBuffer::sum(self : MathspecialgammaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_buffer_mean(s : MathspecialgammaBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaBuffer::mean(self : MathspecialgammaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_buffer_scale(s : MathspecialgammaBuffer, f : Double) -> MathspecialgammaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaBuffer::scale(self : MathspecialgammaBuffer, f : Double) -> MathspecialgammaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_buffer_add(a : MathspecialgammaBuffer, b : MathspecialgammaBuffer) -> MathspecialgammaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaBuffer::add(self : MathspecialgammaBuffer, other : MathspecialgammaBuffer) -> MathspecialgammaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_buffer_copy(s : MathspecialgammaBuffer) -> MathspecialgammaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaBuffer::copy(self : MathspecialgammaBuffer) -> MathspecialgammaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_buffer_fill(s : MathspecialgammaBuffer, v : Double) -> MathspecialgammaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaBuffer::fill(self : MathspecialgammaBuffer, v : Double) -> MathspecialgammaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_buffer_min(s : MathspecialgammaBuffer) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaBuffer::min(self : MathspecialgammaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_buffer_max(s : MathspecialgammaBuffer) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaBuffer::max(self : MathspecialgammaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_buffer_to_string(s : MathspecialgammaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaBuffer::to_string(self : MathspecialgammaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaCursor {
@@ -861,45 +861,45 @@ pub fn math_special_gamma_cursor_make(size : Int) -> MathspecialgammaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_cursor_len(s : MathspecialgammaCursor) -> Int { s.size }
+pub fn MathspecialgammaCursor::len(self : MathspecialgammaCursor) -> Int { self.size }
 
-pub fn math_special_gamma_cursor_get(s : MathspecialgammaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaCursor::get(self : MathspecialgammaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_cursor_set(s : MathspecialgammaCursor, i : Int, v : Double) -> MathspecialgammaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaCursor::set(self : MathspecialgammaCursor, i : Int, v : Double) -> MathspecialgammaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_cursor_sum(s : MathspecialgammaCursor) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaCursor::sum(self : MathspecialgammaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_cursor_mean(s : MathspecialgammaCursor) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaCursor::mean(self : MathspecialgammaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_cursor_scale(s : MathspecialgammaCursor, f : Double) -> MathspecialgammaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaCursor::scale(self : MathspecialgammaCursor, f : Double) -> MathspecialgammaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_cursor_add(a : MathspecialgammaCursor, b : MathspecialgammaCursor) -> MathspecialgammaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaCursor::add(self : MathspecialgammaCursor, other : MathspecialgammaCursor) -> MathspecialgammaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_cursor_copy(s : MathspecialgammaCursor) -> MathspecialgammaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaCursor::copy(self : MathspecialgammaCursor) -> MathspecialgammaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_cursor_fill(s : MathspecialgammaCursor, v : Double) -> MathspecialgammaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaCursor::fill(self : MathspecialgammaCursor, v : Double) -> MathspecialgammaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_cursor_min(s : MathspecialgammaCursor) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaCursor::min(self : MathspecialgammaCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_cursor_max(s : MathspecialgammaCursor) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaCursor::max(self : MathspecialgammaCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_cursor_to_string(s : MathspecialgammaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaCursor::to_string(self : MathspecialgammaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaView {
@@ -912,45 +912,45 @@ pub fn math_special_gamma_view_make(size : Int) -> MathspecialgammaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_view_len(s : MathspecialgammaView) -> Int { s.size }
+pub fn MathspecialgammaView::len(self : MathspecialgammaView) -> Int { self.size }
 
-pub fn math_special_gamma_view_get(s : MathspecialgammaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaView::get(self : MathspecialgammaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_view_set(s : MathspecialgammaView, i : Int, v : Double) -> MathspecialgammaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaView::set(self : MathspecialgammaView, i : Int, v : Double) -> MathspecialgammaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_view_sum(s : MathspecialgammaView) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaView::sum(self : MathspecialgammaView) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_view_mean(s : MathspecialgammaView) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaView::mean(self : MathspecialgammaView) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_view_scale(s : MathspecialgammaView, f : Double) -> MathspecialgammaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaView::scale(self : MathspecialgammaView, f : Double) -> MathspecialgammaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_view_add(a : MathspecialgammaView, b : MathspecialgammaView) -> MathspecialgammaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaView::add(self : MathspecialgammaView, other : MathspecialgammaView) -> MathspecialgammaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_view_copy(s : MathspecialgammaView) -> MathspecialgammaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaView::copy(self : MathspecialgammaView) -> MathspecialgammaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_view_fill(s : MathspecialgammaView, v : Double) -> MathspecialgammaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaView::fill(self : MathspecialgammaView, v : Double) -> MathspecialgammaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_view_min(s : MathspecialgammaView) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaView::min(self : MathspecialgammaView) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_view_max(s : MathspecialgammaView) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaView::max(self : MathspecialgammaView) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_view_to_string(s : MathspecialgammaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaView::to_string(self : MathspecialgammaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaRange {
@@ -963,45 +963,45 @@ pub fn math_special_gamma_range_make(size : Int) -> MathspecialgammaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_range_len(s : MathspecialgammaRange) -> Int { s.size }
+pub fn MathspecialgammaRange::len(self : MathspecialgammaRange) -> Int { self.size }
 
-pub fn math_special_gamma_range_get(s : MathspecialgammaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaRange::get(self : MathspecialgammaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_range_set(s : MathspecialgammaRange, i : Int, v : Double) -> MathspecialgammaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaRange::set(self : MathspecialgammaRange, i : Int, v : Double) -> MathspecialgammaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_range_sum(s : MathspecialgammaRange) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaRange::sum(self : MathspecialgammaRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_range_mean(s : MathspecialgammaRange) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaRange::mean(self : MathspecialgammaRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_range_scale(s : MathspecialgammaRange, f : Double) -> MathspecialgammaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaRange::scale(self : MathspecialgammaRange, f : Double) -> MathspecialgammaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_range_add(a : MathspecialgammaRange, b : MathspecialgammaRange) -> MathspecialgammaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaRange::add(self : MathspecialgammaRange, other : MathspecialgammaRange) -> MathspecialgammaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_range_copy(s : MathspecialgammaRange) -> MathspecialgammaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaRange::copy(self : MathspecialgammaRange) -> MathspecialgammaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_range_fill(s : MathspecialgammaRange, v : Double) -> MathspecialgammaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaRange::fill(self : MathspecialgammaRange, v : Double) -> MathspecialgammaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_range_min(s : MathspecialgammaRange) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaRange::min(self : MathspecialgammaRange) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_range_max(s : MathspecialgammaRange) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaRange::max(self : MathspecialgammaRange) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_range_to_string(s : MathspecialgammaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaRange::to_string(self : MathspecialgammaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaSlice {
@@ -1014,44 +1014,44 @@ pub fn math_special_gamma_slice_make(size : Int) -> MathspecialgammaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_gamma_slice_len(s : MathspecialgammaSlice) -> Int { s.size }
+pub fn MathspecialgammaSlice::len(self : MathspecialgammaSlice) -> Int { self.size }
 
-pub fn math_special_gamma_slice_get(s : MathspecialgammaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialgammaSlice::get(self : MathspecialgammaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_gamma_slice_set(s : MathspecialgammaSlice, i : Int, v : Double) -> MathspecialgammaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialgammaSlice::set(self : MathspecialgammaSlice, i : Int, v : Double) -> MathspecialgammaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_slice_sum(s : MathspecialgammaSlice) -> Double { @_common.sum(s.data) }
+pub fn MathspecialgammaSlice::sum(self : MathspecialgammaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_gamma_slice_mean(s : MathspecialgammaSlice) -> Double { @_common.mean(s.data) }
+pub fn MathspecialgammaSlice::mean(self : MathspecialgammaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_gamma_slice_scale(s : MathspecialgammaSlice, f : Double) -> MathspecialgammaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialgammaSlice::scale(self : MathspecialgammaSlice, f : Double) -> MathspecialgammaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_slice_add(a : MathspecialgammaSlice, b : MathspecialgammaSlice) -> MathspecialgammaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialgammaSlice::add(self : MathspecialgammaSlice, other : MathspecialgammaSlice) -> MathspecialgammaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_gamma_slice_copy(s : MathspecialgammaSlice) -> MathspecialgammaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialgammaSlice::copy(self : MathspecialgammaSlice) -> MathspecialgammaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_slice_fill(s : MathspecialgammaSlice, v : Double) -> MathspecialgammaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialgammaSlice::fill(self : MathspecialgammaSlice, v : Double) -> MathspecialgammaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_gamma_slice_min(s : MathspecialgammaSlice) -> Double { @_common.min(s.data) }
+pub fn MathspecialgammaSlice::min(self : MathspecialgammaSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_special_gamma_slice_max(s : MathspecialgammaSlice) -> Double { @_common.max(s.data) }
+pub fn MathspecialgammaSlice::max(self : MathspecialgammaSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_special_gamma_slice_to_string(s : MathspecialgammaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialgammaSlice::to_string(self : MathspecialgammaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

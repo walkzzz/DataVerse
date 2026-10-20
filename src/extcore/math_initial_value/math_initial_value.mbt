@@ -351,45 +351,45 @@ pub fn math_initial_value_frame_make(size : Int) -> MathinitialvalueFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_frame_len(s : MathinitialvalueFrame) -> Int { s.size }
+pub fn MathinitialvalueFrame::len(self : MathinitialvalueFrame) -> Int { self.size }
 
-pub fn math_initial_value_frame_get(s : MathinitialvalueFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueFrame::get(self : MathinitialvalueFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_frame_set(s : MathinitialvalueFrame, i : Int, v : Double) -> MathinitialvalueFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueFrame::set(self : MathinitialvalueFrame, i : Int, v : Double) -> MathinitialvalueFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_frame_sum(s : MathinitialvalueFrame) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueFrame::sum(self : MathinitialvalueFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_frame_mean(s : MathinitialvalueFrame) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueFrame::mean(self : MathinitialvalueFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_frame_scale(s : MathinitialvalueFrame, f : Double) -> MathinitialvalueFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueFrame::scale(self : MathinitialvalueFrame, f : Double) -> MathinitialvalueFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_frame_add(a : MathinitialvalueFrame, b : MathinitialvalueFrame) -> MathinitialvalueFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueFrame::add(self : MathinitialvalueFrame, other : MathinitialvalueFrame) -> MathinitialvalueFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_frame_copy(s : MathinitialvalueFrame) -> MathinitialvalueFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueFrame::copy(self : MathinitialvalueFrame) -> MathinitialvalueFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_frame_fill(s : MathinitialvalueFrame, v : Double) -> MathinitialvalueFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueFrame::fill(self : MathinitialvalueFrame, v : Double) -> MathinitialvalueFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_frame_min(s : MathinitialvalueFrame) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueFrame::min(self : MathinitialvalueFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_frame_max(s : MathinitialvalueFrame) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueFrame::max(self : MathinitialvalueFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_frame_to_string(s : MathinitialvalueFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueFrame::to_string(self : MathinitialvalueFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvalueTable {
@@ -402,45 +402,45 @@ pub fn math_initial_value_table_make(size : Int) -> MathinitialvalueTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_table_len(s : MathinitialvalueTable) -> Int { s.size }
+pub fn MathinitialvalueTable::len(self : MathinitialvalueTable) -> Int { self.size }
 
-pub fn math_initial_value_table_get(s : MathinitialvalueTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueTable::get(self : MathinitialvalueTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_table_set(s : MathinitialvalueTable, i : Int, v : Double) -> MathinitialvalueTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueTable::set(self : MathinitialvalueTable, i : Int, v : Double) -> MathinitialvalueTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_table_sum(s : MathinitialvalueTable) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueTable::sum(self : MathinitialvalueTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_table_mean(s : MathinitialvalueTable) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueTable::mean(self : MathinitialvalueTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_table_scale(s : MathinitialvalueTable, f : Double) -> MathinitialvalueTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueTable::scale(self : MathinitialvalueTable, f : Double) -> MathinitialvalueTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_table_add(a : MathinitialvalueTable, b : MathinitialvalueTable) -> MathinitialvalueTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueTable::add(self : MathinitialvalueTable, other : MathinitialvalueTable) -> MathinitialvalueTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_table_copy(s : MathinitialvalueTable) -> MathinitialvalueTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueTable::copy(self : MathinitialvalueTable) -> MathinitialvalueTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_table_fill(s : MathinitialvalueTable, v : Double) -> MathinitialvalueTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueTable::fill(self : MathinitialvalueTable, v : Double) -> MathinitialvalueTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_table_min(s : MathinitialvalueTable) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueTable::min(self : MathinitialvalueTable) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_table_max(s : MathinitialvalueTable) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueTable::max(self : MathinitialvalueTable) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_table_to_string(s : MathinitialvalueTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueTable::to_string(self : MathinitialvalueTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvalueGraphN {
@@ -453,45 +453,45 @@ pub fn math_initial_value_graphn_make(size : Int) -> MathinitialvalueGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_graphn_len(s : MathinitialvalueGraphN) -> Int { s.size }
+pub fn MathinitialvalueGraphN::len(self : MathinitialvalueGraphN) -> Int { self.size }
 
-pub fn math_initial_value_graphn_get(s : MathinitialvalueGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueGraphN::get(self : MathinitialvalueGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_graphn_set(s : MathinitialvalueGraphN, i : Int, v : Double) -> MathinitialvalueGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueGraphN::set(self : MathinitialvalueGraphN, i : Int, v : Double) -> MathinitialvalueGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_graphn_sum(s : MathinitialvalueGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueGraphN::sum(self : MathinitialvalueGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_graphn_mean(s : MathinitialvalueGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueGraphN::mean(self : MathinitialvalueGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_graphn_scale(s : MathinitialvalueGraphN, f : Double) -> MathinitialvalueGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueGraphN::scale(self : MathinitialvalueGraphN, f : Double) -> MathinitialvalueGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_graphn_add(a : MathinitialvalueGraphN, b : MathinitialvalueGraphN) -> MathinitialvalueGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueGraphN::add(self : MathinitialvalueGraphN, other : MathinitialvalueGraphN) -> MathinitialvalueGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_graphn_copy(s : MathinitialvalueGraphN) -> MathinitialvalueGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueGraphN::copy(self : MathinitialvalueGraphN) -> MathinitialvalueGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_graphn_fill(s : MathinitialvalueGraphN, v : Double) -> MathinitialvalueGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueGraphN::fill(self : MathinitialvalueGraphN, v : Double) -> MathinitialvalueGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_graphn_min(s : MathinitialvalueGraphN) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueGraphN::min(self : MathinitialvalueGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_graphn_max(s : MathinitialvalueGraphN) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueGraphN::max(self : MathinitialvalueGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_graphn_to_string(s : MathinitialvalueGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueGraphN::to_string(self : MathinitialvalueGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvalueNode {
@@ -504,45 +504,45 @@ pub fn math_initial_value_node_make(size : Int) -> MathinitialvalueNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_node_len(s : MathinitialvalueNode) -> Int { s.size }
+pub fn MathinitialvalueNode::len(self : MathinitialvalueNode) -> Int { self.size }
 
-pub fn math_initial_value_node_get(s : MathinitialvalueNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueNode::get(self : MathinitialvalueNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_node_set(s : MathinitialvalueNode, i : Int, v : Double) -> MathinitialvalueNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueNode::set(self : MathinitialvalueNode, i : Int, v : Double) -> MathinitialvalueNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_node_sum(s : MathinitialvalueNode) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueNode::sum(self : MathinitialvalueNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_node_mean(s : MathinitialvalueNode) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueNode::mean(self : MathinitialvalueNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_node_scale(s : MathinitialvalueNode, f : Double) -> MathinitialvalueNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueNode::scale(self : MathinitialvalueNode, f : Double) -> MathinitialvalueNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_node_add(a : MathinitialvalueNode, b : MathinitialvalueNode) -> MathinitialvalueNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueNode::add(self : MathinitialvalueNode, other : MathinitialvalueNode) -> MathinitialvalueNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_node_copy(s : MathinitialvalueNode) -> MathinitialvalueNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueNode::copy(self : MathinitialvalueNode) -> MathinitialvalueNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_node_fill(s : MathinitialvalueNode, v : Double) -> MathinitialvalueNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueNode::fill(self : MathinitialvalueNode, v : Double) -> MathinitialvalueNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_node_min(s : MathinitialvalueNode) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueNode::min(self : MathinitialvalueNode) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_node_max(s : MathinitialvalueNode) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueNode::max(self : MathinitialvalueNode) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_node_to_string(s : MathinitialvalueNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueNode::to_string(self : MathinitialvalueNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvalueEdge {
@@ -555,45 +555,45 @@ pub fn math_initial_value_edge_make(size : Int) -> MathinitialvalueEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_edge_len(s : MathinitialvalueEdge) -> Int { s.size }
+pub fn MathinitialvalueEdge::len(self : MathinitialvalueEdge) -> Int { self.size }
 
-pub fn math_initial_value_edge_get(s : MathinitialvalueEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueEdge::get(self : MathinitialvalueEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_edge_set(s : MathinitialvalueEdge, i : Int, v : Double) -> MathinitialvalueEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueEdge::set(self : MathinitialvalueEdge, i : Int, v : Double) -> MathinitialvalueEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_edge_sum(s : MathinitialvalueEdge) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueEdge::sum(self : MathinitialvalueEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_edge_mean(s : MathinitialvalueEdge) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueEdge::mean(self : MathinitialvalueEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_edge_scale(s : MathinitialvalueEdge, f : Double) -> MathinitialvalueEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueEdge::scale(self : MathinitialvalueEdge, f : Double) -> MathinitialvalueEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_edge_add(a : MathinitialvalueEdge, b : MathinitialvalueEdge) -> MathinitialvalueEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueEdge::add(self : MathinitialvalueEdge, other : MathinitialvalueEdge) -> MathinitialvalueEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_edge_copy(s : MathinitialvalueEdge) -> MathinitialvalueEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueEdge::copy(self : MathinitialvalueEdge) -> MathinitialvalueEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_edge_fill(s : MathinitialvalueEdge, v : Double) -> MathinitialvalueEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueEdge::fill(self : MathinitialvalueEdge, v : Double) -> MathinitialvalueEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_edge_min(s : MathinitialvalueEdge) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueEdge::min(self : MathinitialvalueEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_edge_max(s : MathinitialvalueEdge) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueEdge::max(self : MathinitialvalueEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_edge_to_string(s : MathinitialvalueEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueEdge::to_string(self : MathinitialvalueEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvaluePath {
@@ -606,45 +606,45 @@ pub fn math_initial_value_path_make(size : Int) -> MathinitialvaluePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_path_len(s : MathinitialvaluePath) -> Int { s.size }
+pub fn MathinitialvaluePath::len(self : MathinitialvaluePath) -> Int { self.size }
 
-pub fn math_initial_value_path_get(s : MathinitialvaluePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvaluePath::get(self : MathinitialvaluePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_path_set(s : MathinitialvaluePath, i : Int, v : Double) -> MathinitialvaluePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvaluePath::set(self : MathinitialvaluePath, i : Int, v : Double) -> MathinitialvaluePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_path_sum(s : MathinitialvaluePath) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvaluePath::sum(self : MathinitialvaluePath) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_path_mean(s : MathinitialvaluePath) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvaluePath::mean(self : MathinitialvaluePath) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_path_scale(s : MathinitialvaluePath, f : Double) -> MathinitialvaluePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvaluePath::scale(self : MathinitialvaluePath, f : Double) -> MathinitialvaluePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_path_add(a : MathinitialvaluePath, b : MathinitialvaluePath) -> MathinitialvaluePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvaluePath::add(self : MathinitialvaluePath, other : MathinitialvaluePath) -> MathinitialvaluePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_path_copy(s : MathinitialvaluePath) -> MathinitialvaluePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvaluePath::copy(self : MathinitialvaluePath) -> MathinitialvaluePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_path_fill(s : MathinitialvaluePath, v : Double) -> MathinitialvaluePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvaluePath::fill(self : MathinitialvaluePath, v : Double) -> MathinitialvaluePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_path_min(s : MathinitialvaluePath) -> Double { @_common.min(s.data) }
+pub fn MathinitialvaluePath::min(self : MathinitialvaluePath) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_path_max(s : MathinitialvaluePath) -> Double { @_common.max(s.data) }
+pub fn MathinitialvaluePath::max(self : MathinitialvaluePath) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_path_to_string(s : MathinitialvaluePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvaluePath::to_string(self : MathinitialvaluePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvalueCluster {
@@ -657,45 +657,45 @@ pub fn math_initial_value_cluster_make(size : Int) -> MathinitialvalueCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_cluster_len(s : MathinitialvalueCluster) -> Int { s.size }
+pub fn MathinitialvalueCluster::len(self : MathinitialvalueCluster) -> Int { self.size }
 
-pub fn math_initial_value_cluster_get(s : MathinitialvalueCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueCluster::get(self : MathinitialvalueCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_cluster_set(s : MathinitialvalueCluster, i : Int, v : Double) -> MathinitialvalueCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueCluster::set(self : MathinitialvalueCluster, i : Int, v : Double) -> MathinitialvalueCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_cluster_sum(s : MathinitialvalueCluster) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueCluster::sum(self : MathinitialvalueCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_cluster_mean(s : MathinitialvalueCluster) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueCluster::mean(self : MathinitialvalueCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_cluster_scale(s : MathinitialvalueCluster, f : Double) -> MathinitialvalueCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueCluster::scale(self : MathinitialvalueCluster, f : Double) -> MathinitialvalueCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_cluster_add(a : MathinitialvalueCluster, b : MathinitialvalueCluster) -> MathinitialvalueCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueCluster::add(self : MathinitialvalueCluster, other : MathinitialvalueCluster) -> MathinitialvalueCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_cluster_copy(s : MathinitialvalueCluster) -> MathinitialvalueCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueCluster::copy(self : MathinitialvalueCluster) -> MathinitialvalueCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_cluster_fill(s : MathinitialvalueCluster, v : Double) -> MathinitialvalueCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueCluster::fill(self : MathinitialvalueCluster, v : Double) -> MathinitialvalueCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_cluster_min(s : MathinitialvalueCluster) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueCluster::min(self : MathinitialvalueCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_cluster_max(s : MathinitialvalueCluster) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueCluster::max(self : MathinitialvalueCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_cluster_to_string(s : MathinitialvalueCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueCluster::to_string(self : MathinitialvalueCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvalueModel {
@@ -708,45 +708,45 @@ pub fn math_initial_value_model_make(size : Int) -> MathinitialvalueModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_model_len(s : MathinitialvalueModel) -> Int { s.size }
+pub fn MathinitialvalueModel::len(self : MathinitialvalueModel) -> Int { self.size }
 
-pub fn math_initial_value_model_get(s : MathinitialvalueModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueModel::get(self : MathinitialvalueModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_model_set(s : MathinitialvalueModel, i : Int, v : Double) -> MathinitialvalueModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueModel::set(self : MathinitialvalueModel, i : Int, v : Double) -> MathinitialvalueModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_model_sum(s : MathinitialvalueModel) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueModel::sum(self : MathinitialvalueModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_model_mean(s : MathinitialvalueModel) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueModel::mean(self : MathinitialvalueModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_model_scale(s : MathinitialvalueModel, f : Double) -> MathinitialvalueModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueModel::scale(self : MathinitialvalueModel, f : Double) -> MathinitialvalueModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_model_add(a : MathinitialvalueModel, b : MathinitialvalueModel) -> MathinitialvalueModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueModel::add(self : MathinitialvalueModel, other : MathinitialvalueModel) -> MathinitialvalueModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_model_copy(s : MathinitialvalueModel) -> MathinitialvalueModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueModel::copy(self : MathinitialvalueModel) -> MathinitialvalueModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_model_fill(s : MathinitialvalueModel, v : Double) -> MathinitialvalueModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueModel::fill(self : MathinitialvalueModel, v : Double) -> MathinitialvalueModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_model_min(s : MathinitialvalueModel) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueModel::min(self : MathinitialvalueModel) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_model_max(s : MathinitialvalueModel) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueModel::max(self : MathinitialvalueModel) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_model_to_string(s : MathinitialvalueModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueModel::to_string(self : MathinitialvalueModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvalueLayer {
@@ -759,45 +759,45 @@ pub fn math_initial_value_layer_make(size : Int) -> MathinitialvalueLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_layer_len(s : MathinitialvalueLayer) -> Int { s.size }
+pub fn MathinitialvalueLayer::len(self : MathinitialvalueLayer) -> Int { self.size }
 
-pub fn math_initial_value_layer_get(s : MathinitialvalueLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueLayer::get(self : MathinitialvalueLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_layer_set(s : MathinitialvalueLayer, i : Int, v : Double) -> MathinitialvalueLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueLayer::set(self : MathinitialvalueLayer, i : Int, v : Double) -> MathinitialvalueLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_layer_sum(s : MathinitialvalueLayer) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueLayer::sum(self : MathinitialvalueLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_layer_mean(s : MathinitialvalueLayer) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueLayer::mean(self : MathinitialvalueLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_layer_scale(s : MathinitialvalueLayer, f : Double) -> MathinitialvalueLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueLayer::scale(self : MathinitialvalueLayer, f : Double) -> MathinitialvalueLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_layer_add(a : MathinitialvalueLayer, b : MathinitialvalueLayer) -> MathinitialvalueLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueLayer::add(self : MathinitialvalueLayer, other : MathinitialvalueLayer) -> MathinitialvalueLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_layer_copy(s : MathinitialvalueLayer) -> MathinitialvalueLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueLayer::copy(self : MathinitialvalueLayer) -> MathinitialvalueLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_layer_fill(s : MathinitialvalueLayer, v : Double) -> MathinitialvalueLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueLayer::fill(self : MathinitialvalueLayer, v : Double) -> MathinitialvalueLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_layer_min(s : MathinitialvalueLayer) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueLayer::min(self : MathinitialvalueLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_layer_max(s : MathinitialvalueLayer) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueLayer::max(self : MathinitialvalueLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_layer_to_string(s : MathinitialvalueLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueLayer::to_string(self : MathinitialvalueLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvalueBuffer {
@@ -810,45 +810,45 @@ pub fn math_initial_value_buffer_make(size : Int) -> MathinitialvalueBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_buffer_len(s : MathinitialvalueBuffer) -> Int { s.size }
+pub fn MathinitialvalueBuffer::len(self : MathinitialvalueBuffer) -> Int { self.size }
 
-pub fn math_initial_value_buffer_get(s : MathinitialvalueBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueBuffer::get(self : MathinitialvalueBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_buffer_set(s : MathinitialvalueBuffer, i : Int, v : Double) -> MathinitialvalueBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueBuffer::set(self : MathinitialvalueBuffer, i : Int, v : Double) -> MathinitialvalueBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_buffer_sum(s : MathinitialvalueBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueBuffer::sum(self : MathinitialvalueBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_buffer_mean(s : MathinitialvalueBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueBuffer::mean(self : MathinitialvalueBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_buffer_scale(s : MathinitialvalueBuffer, f : Double) -> MathinitialvalueBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueBuffer::scale(self : MathinitialvalueBuffer, f : Double) -> MathinitialvalueBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_buffer_add(a : MathinitialvalueBuffer, b : MathinitialvalueBuffer) -> MathinitialvalueBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueBuffer::add(self : MathinitialvalueBuffer, other : MathinitialvalueBuffer) -> MathinitialvalueBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_buffer_copy(s : MathinitialvalueBuffer) -> MathinitialvalueBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueBuffer::copy(self : MathinitialvalueBuffer) -> MathinitialvalueBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_buffer_fill(s : MathinitialvalueBuffer, v : Double) -> MathinitialvalueBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueBuffer::fill(self : MathinitialvalueBuffer, v : Double) -> MathinitialvalueBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_buffer_min(s : MathinitialvalueBuffer) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueBuffer::min(self : MathinitialvalueBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_buffer_max(s : MathinitialvalueBuffer) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueBuffer::max(self : MathinitialvalueBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_buffer_to_string(s : MathinitialvalueBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueBuffer::to_string(self : MathinitialvalueBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvalueCursor {
@@ -861,45 +861,45 @@ pub fn math_initial_value_cursor_make(size : Int) -> MathinitialvalueCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_cursor_len(s : MathinitialvalueCursor) -> Int { s.size }
+pub fn MathinitialvalueCursor::len(self : MathinitialvalueCursor) -> Int { self.size }
 
-pub fn math_initial_value_cursor_get(s : MathinitialvalueCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueCursor::get(self : MathinitialvalueCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_cursor_set(s : MathinitialvalueCursor, i : Int, v : Double) -> MathinitialvalueCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueCursor::set(self : MathinitialvalueCursor, i : Int, v : Double) -> MathinitialvalueCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_cursor_sum(s : MathinitialvalueCursor) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueCursor::sum(self : MathinitialvalueCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_cursor_mean(s : MathinitialvalueCursor) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueCursor::mean(self : MathinitialvalueCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_cursor_scale(s : MathinitialvalueCursor, f : Double) -> MathinitialvalueCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueCursor::scale(self : MathinitialvalueCursor, f : Double) -> MathinitialvalueCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_cursor_add(a : MathinitialvalueCursor, b : MathinitialvalueCursor) -> MathinitialvalueCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueCursor::add(self : MathinitialvalueCursor, other : MathinitialvalueCursor) -> MathinitialvalueCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_cursor_copy(s : MathinitialvalueCursor) -> MathinitialvalueCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueCursor::copy(self : MathinitialvalueCursor) -> MathinitialvalueCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_cursor_fill(s : MathinitialvalueCursor, v : Double) -> MathinitialvalueCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueCursor::fill(self : MathinitialvalueCursor, v : Double) -> MathinitialvalueCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_cursor_min(s : MathinitialvalueCursor) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueCursor::min(self : MathinitialvalueCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_cursor_max(s : MathinitialvalueCursor) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueCursor::max(self : MathinitialvalueCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_cursor_to_string(s : MathinitialvalueCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueCursor::to_string(self : MathinitialvalueCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvalueView {
@@ -912,45 +912,45 @@ pub fn math_initial_value_view_make(size : Int) -> MathinitialvalueView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_view_len(s : MathinitialvalueView) -> Int { s.size }
+pub fn MathinitialvalueView::len(self : MathinitialvalueView) -> Int { self.size }
 
-pub fn math_initial_value_view_get(s : MathinitialvalueView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueView::get(self : MathinitialvalueView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_view_set(s : MathinitialvalueView, i : Int, v : Double) -> MathinitialvalueView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueView::set(self : MathinitialvalueView, i : Int, v : Double) -> MathinitialvalueView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_view_sum(s : MathinitialvalueView) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueView::sum(self : MathinitialvalueView) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_view_mean(s : MathinitialvalueView) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueView::mean(self : MathinitialvalueView) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_view_scale(s : MathinitialvalueView, f : Double) -> MathinitialvalueView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueView::scale(self : MathinitialvalueView, f : Double) -> MathinitialvalueView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_view_add(a : MathinitialvalueView, b : MathinitialvalueView) -> MathinitialvalueView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueView::add(self : MathinitialvalueView, other : MathinitialvalueView) -> MathinitialvalueView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_view_copy(s : MathinitialvalueView) -> MathinitialvalueView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueView::copy(self : MathinitialvalueView) -> MathinitialvalueView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_view_fill(s : MathinitialvalueView, v : Double) -> MathinitialvalueView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueView::fill(self : MathinitialvalueView, v : Double) -> MathinitialvalueView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_view_min(s : MathinitialvalueView) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueView::min(self : MathinitialvalueView) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_view_max(s : MathinitialvalueView) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueView::max(self : MathinitialvalueView) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_view_to_string(s : MathinitialvalueView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueView::to_string(self : MathinitialvalueView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvalueRange {
@@ -963,45 +963,45 @@ pub fn math_initial_value_range_make(size : Int) -> MathinitialvalueRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_range_len(s : MathinitialvalueRange) -> Int { s.size }
+pub fn MathinitialvalueRange::len(self : MathinitialvalueRange) -> Int { self.size }
 
-pub fn math_initial_value_range_get(s : MathinitialvalueRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueRange::get(self : MathinitialvalueRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_range_set(s : MathinitialvalueRange, i : Int, v : Double) -> MathinitialvalueRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueRange::set(self : MathinitialvalueRange, i : Int, v : Double) -> MathinitialvalueRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_range_sum(s : MathinitialvalueRange) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueRange::sum(self : MathinitialvalueRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_range_mean(s : MathinitialvalueRange) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueRange::mean(self : MathinitialvalueRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_range_scale(s : MathinitialvalueRange, f : Double) -> MathinitialvalueRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueRange::scale(self : MathinitialvalueRange, f : Double) -> MathinitialvalueRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_range_add(a : MathinitialvalueRange, b : MathinitialvalueRange) -> MathinitialvalueRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueRange::add(self : MathinitialvalueRange, other : MathinitialvalueRange) -> MathinitialvalueRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_range_copy(s : MathinitialvalueRange) -> MathinitialvalueRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueRange::copy(self : MathinitialvalueRange) -> MathinitialvalueRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_range_fill(s : MathinitialvalueRange, v : Double) -> MathinitialvalueRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueRange::fill(self : MathinitialvalueRange, v : Double) -> MathinitialvalueRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_range_min(s : MathinitialvalueRange) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueRange::min(self : MathinitialvalueRange) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_range_max(s : MathinitialvalueRange) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueRange::max(self : MathinitialvalueRange) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_range_to_string(s : MathinitialvalueRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueRange::to_string(self : MathinitialvalueRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathinitialvalueSlice {
@@ -1014,44 +1014,44 @@ pub fn math_initial_value_slice_make(size : Int) -> MathinitialvalueSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_initial_value_slice_len(s : MathinitialvalueSlice) -> Int { s.size }
+pub fn MathinitialvalueSlice::len(self : MathinitialvalueSlice) -> Int { self.size }
 
-pub fn math_initial_value_slice_get(s : MathinitialvalueSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathinitialvalueSlice::get(self : MathinitialvalueSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_initial_value_slice_set(s : MathinitialvalueSlice, i : Int, v : Double) -> MathinitialvalueSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathinitialvalueSlice::set(self : MathinitialvalueSlice, i : Int, v : Double) -> MathinitialvalueSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_slice_sum(s : MathinitialvalueSlice) -> Double { @_common.sum(s.data) }
+pub fn MathinitialvalueSlice::sum(self : MathinitialvalueSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_initial_value_slice_mean(s : MathinitialvalueSlice) -> Double { @_common.mean(s.data) }
+pub fn MathinitialvalueSlice::mean(self : MathinitialvalueSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_initial_value_slice_scale(s : MathinitialvalueSlice, f : Double) -> MathinitialvalueSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathinitialvalueSlice::scale(self : MathinitialvalueSlice, f : Double) -> MathinitialvalueSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_slice_add(a : MathinitialvalueSlice, b : MathinitialvalueSlice) -> MathinitialvalueSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathinitialvalueSlice::add(self : MathinitialvalueSlice, other : MathinitialvalueSlice) -> MathinitialvalueSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_initial_value_slice_copy(s : MathinitialvalueSlice) -> MathinitialvalueSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathinitialvalueSlice::copy(self : MathinitialvalueSlice) -> MathinitialvalueSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_slice_fill(s : MathinitialvalueSlice, v : Double) -> MathinitialvalueSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathinitialvalueSlice::fill(self : MathinitialvalueSlice, v : Double) -> MathinitialvalueSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_initial_value_slice_min(s : MathinitialvalueSlice) -> Double { @_common.min(s.data) }
+pub fn MathinitialvalueSlice::min(self : MathinitialvalueSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_initial_value_slice_max(s : MathinitialvalueSlice) -> Double { @_common.max(s.data) }
+pub fn MathinitialvalueSlice::max(self : MathinitialvalueSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_initial_value_slice_to_string(s : MathinitialvalueSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathinitialvalueSlice::to_string(self : MathinitialvalueSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

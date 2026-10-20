@@ -351,45 +351,45 @@ pub fn chem_mol_repr_pdb_frame_make(size : Int) -> ChemmolreprpdbFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_frame_len(s : ChemmolreprpdbFrame) -> Int { s.size }
+pub fn ChemmolreprpdbFrame::len(self : ChemmolreprpdbFrame) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_frame_get(s : ChemmolreprpdbFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbFrame::get(self : ChemmolreprpdbFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_frame_set(s : ChemmolreprpdbFrame, i : Int, v : Double) -> ChemmolreprpdbFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbFrame::set(self : ChemmolreprpdbFrame, i : Int, v : Double) -> ChemmolreprpdbFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_frame_sum(s : ChemmolreprpdbFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbFrame::sum(self : ChemmolreprpdbFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_frame_mean(s : ChemmolreprpdbFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbFrame::mean(self : ChemmolreprpdbFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_frame_scale(s : ChemmolreprpdbFrame, f : Double) -> ChemmolreprpdbFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbFrame::scale(self : ChemmolreprpdbFrame, f : Double) -> ChemmolreprpdbFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_frame_add(a : ChemmolreprpdbFrame, b : ChemmolreprpdbFrame) -> ChemmolreprpdbFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbFrame::add(self : ChemmolreprpdbFrame, other : ChemmolreprpdbFrame) -> ChemmolreprpdbFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_frame_copy(s : ChemmolreprpdbFrame) -> ChemmolreprpdbFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbFrame::copy(self : ChemmolreprpdbFrame) -> ChemmolreprpdbFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_frame_fill(s : ChemmolreprpdbFrame, v : Double) -> ChemmolreprpdbFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbFrame::fill(self : ChemmolreprpdbFrame, v : Double) -> ChemmolreprpdbFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_frame_min(s : ChemmolreprpdbFrame) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbFrame::min(self : ChemmolreprpdbFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_frame_max(s : ChemmolreprpdbFrame) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbFrame::max(self : ChemmolreprpdbFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_frame_to_string(s : ChemmolreprpdbFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbFrame::to_string(self : ChemmolreprpdbFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbTable {
@@ -402,45 +402,45 @@ pub fn chem_mol_repr_pdb_table_make(size : Int) -> ChemmolreprpdbTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_table_len(s : ChemmolreprpdbTable) -> Int { s.size }
+pub fn ChemmolreprpdbTable::len(self : ChemmolreprpdbTable) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_table_get(s : ChemmolreprpdbTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbTable::get(self : ChemmolreprpdbTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_table_set(s : ChemmolreprpdbTable, i : Int, v : Double) -> ChemmolreprpdbTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbTable::set(self : ChemmolreprpdbTable, i : Int, v : Double) -> ChemmolreprpdbTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_table_sum(s : ChemmolreprpdbTable) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbTable::sum(self : ChemmolreprpdbTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_table_mean(s : ChemmolreprpdbTable) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbTable::mean(self : ChemmolreprpdbTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_table_scale(s : ChemmolreprpdbTable, f : Double) -> ChemmolreprpdbTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbTable::scale(self : ChemmolreprpdbTable, f : Double) -> ChemmolreprpdbTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_table_add(a : ChemmolreprpdbTable, b : ChemmolreprpdbTable) -> ChemmolreprpdbTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbTable::add(self : ChemmolreprpdbTable, other : ChemmolreprpdbTable) -> ChemmolreprpdbTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_table_copy(s : ChemmolreprpdbTable) -> ChemmolreprpdbTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbTable::copy(self : ChemmolreprpdbTable) -> ChemmolreprpdbTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_table_fill(s : ChemmolreprpdbTable, v : Double) -> ChemmolreprpdbTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbTable::fill(self : ChemmolreprpdbTable, v : Double) -> ChemmolreprpdbTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_table_min(s : ChemmolreprpdbTable) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbTable::min(self : ChemmolreprpdbTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_table_max(s : ChemmolreprpdbTable) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbTable::max(self : ChemmolreprpdbTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_table_to_string(s : ChemmolreprpdbTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbTable::to_string(self : ChemmolreprpdbTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbGraphN {
@@ -453,45 +453,45 @@ pub fn chem_mol_repr_pdb_graphn_make(size : Int) -> ChemmolreprpdbGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_graphn_len(s : ChemmolreprpdbGraphN) -> Int { s.size }
+pub fn ChemmolreprpdbGraphN::len(self : ChemmolreprpdbGraphN) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_graphn_get(s : ChemmolreprpdbGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbGraphN::get(self : ChemmolreprpdbGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_graphn_set(s : ChemmolreprpdbGraphN, i : Int, v : Double) -> ChemmolreprpdbGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbGraphN::set(self : ChemmolreprpdbGraphN, i : Int, v : Double) -> ChemmolreprpdbGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_graphn_sum(s : ChemmolreprpdbGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbGraphN::sum(self : ChemmolreprpdbGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_graphn_mean(s : ChemmolreprpdbGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbGraphN::mean(self : ChemmolreprpdbGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_graphn_scale(s : ChemmolreprpdbGraphN, f : Double) -> ChemmolreprpdbGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbGraphN::scale(self : ChemmolreprpdbGraphN, f : Double) -> ChemmolreprpdbGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_graphn_add(a : ChemmolreprpdbGraphN, b : ChemmolreprpdbGraphN) -> ChemmolreprpdbGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbGraphN::add(self : ChemmolreprpdbGraphN, other : ChemmolreprpdbGraphN) -> ChemmolreprpdbGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_graphn_copy(s : ChemmolreprpdbGraphN) -> ChemmolreprpdbGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbGraphN::copy(self : ChemmolreprpdbGraphN) -> ChemmolreprpdbGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_graphn_fill(s : ChemmolreprpdbGraphN, v : Double) -> ChemmolreprpdbGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbGraphN::fill(self : ChemmolreprpdbGraphN, v : Double) -> ChemmolreprpdbGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_graphn_min(s : ChemmolreprpdbGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbGraphN::min(self : ChemmolreprpdbGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_graphn_max(s : ChemmolreprpdbGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbGraphN::max(self : ChemmolreprpdbGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_graphn_to_string(s : ChemmolreprpdbGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbGraphN::to_string(self : ChemmolreprpdbGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbNode {
@@ -504,45 +504,45 @@ pub fn chem_mol_repr_pdb_node_make(size : Int) -> ChemmolreprpdbNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_node_len(s : ChemmolreprpdbNode) -> Int { s.size }
+pub fn ChemmolreprpdbNode::len(self : ChemmolreprpdbNode) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_node_get(s : ChemmolreprpdbNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbNode::get(self : ChemmolreprpdbNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_node_set(s : ChemmolreprpdbNode, i : Int, v : Double) -> ChemmolreprpdbNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbNode::set(self : ChemmolreprpdbNode, i : Int, v : Double) -> ChemmolreprpdbNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_node_sum(s : ChemmolreprpdbNode) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbNode::sum(self : ChemmolreprpdbNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_node_mean(s : ChemmolreprpdbNode) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbNode::mean(self : ChemmolreprpdbNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_node_scale(s : ChemmolreprpdbNode, f : Double) -> ChemmolreprpdbNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbNode::scale(self : ChemmolreprpdbNode, f : Double) -> ChemmolreprpdbNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_node_add(a : ChemmolreprpdbNode, b : ChemmolreprpdbNode) -> ChemmolreprpdbNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbNode::add(self : ChemmolreprpdbNode, other : ChemmolreprpdbNode) -> ChemmolreprpdbNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_node_copy(s : ChemmolreprpdbNode) -> ChemmolreprpdbNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbNode::copy(self : ChemmolreprpdbNode) -> ChemmolreprpdbNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_node_fill(s : ChemmolreprpdbNode, v : Double) -> ChemmolreprpdbNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbNode::fill(self : ChemmolreprpdbNode, v : Double) -> ChemmolreprpdbNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_node_min(s : ChemmolreprpdbNode) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbNode::min(self : ChemmolreprpdbNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_node_max(s : ChemmolreprpdbNode) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbNode::max(self : ChemmolreprpdbNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_node_to_string(s : ChemmolreprpdbNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbNode::to_string(self : ChemmolreprpdbNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbEdge {
@@ -555,45 +555,45 @@ pub fn chem_mol_repr_pdb_edge_make(size : Int) -> ChemmolreprpdbEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_edge_len(s : ChemmolreprpdbEdge) -> Int { s.size }
+pub fn ChemmolreprpdbEdge::len(self : ChemmolreprpdbEdge) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_edge_get(s : ChemmolreprpdbEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbEdge::get(self : ChemmolreprpdbEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_edge_set(s : ChemmolreprpdbEdge, i : Int, v : Double) -> ChemmolreprpdbEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbEdge::set(self : ChemmolreprpdbEdge, i : Int, v : Double) -> ChemmolreprpdbEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_edge_sum(s : ChemmolreprpdbEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbEdge::sum(self : ChemmolreprpdbEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_edge_mean(s : ChemmolreprpdbEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbEdge::mean(self : ChemmolreprpdbEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_edge_scale(s : ChemmolreprpdbEdge, f : Double) -> ChemmolreprpdbEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbEdge::scale(self : ChemmolreprpdbEdge, f : Double) -> ChemmolreprpdbEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_edge_add(a : ChemmolreprpdbEdge, b : ChemmolreprpdbEdge) -> ChemmolreprpdbEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbEdge::add(self : ChemmolreprpdbEdge, other : ChemmolreprpdbEdge) -> ChemmolreprpdbEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_edge_copy(s : ChemmolreprpdbEdge) -> ChemmolreprpdbEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbEdge::copy(self : ChemmolreprpdbEdge) -> ChemmolreprpdbEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_edge_fill(s : ChemmolreprpdbEdge, v : Double) -> ChemmolreprpdbEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbEdge::fill(self : ChemmolreprpdbEdge, v : Double) -> ChemmolreprpdbEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_edge_min(s : ChemmolreprpdbEdge) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbEdge::min(self : ChemmolreprpdbEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_edge_max(s : ChemmolreprpdbEdge) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbEdge::max(self : ChemmolreprpdbEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_edge_to_string(s : ChemmolreprpdbEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbEdge::to_string(self : ChemmolreprpdbEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbPath {
@@ -606,45 +606,45 @@ pub fn chem_mol_repr_pdb_path_make(size : Int) -> ChemmolreprpdbPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_path_len(s : ChemmolreprpdbPath) -> Int { s.size }
+pub fn ChemmolreprpdbPath::len(self : ChemmolreprpdbPath) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_path_get(s : ChemmolreprpdbPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbPath::get(self : ChemmolreprpdbPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_path_set(s : ChemmolreprpdbPath, i : Int, v : Double) -> ChemmolreprpdbPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbPath::set(self : ChemmolreprpdbPath, i : Int, v : Double) -> ChemmolreprpdbPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_path_sum(s : ChemmolreprpdbPath) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbPath::sum(self : ChemmolreprpdbPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_path_mean(s : ChemmolreprpdbPath) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbPath::mean(self : ChemmolreprpdbPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_path_scale(s : ChemmolreprpdbPath, f : Double) -> ChemmolreprpdbPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbPath::scale(self : ChemmolreprpdbPath, f : Double) -> ChemmolreprpdbPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_path_add(a : ChemmolreprpdbPath, b : ChemmolreprpdbPath) -> ChemmolreprpdbPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbPath::add(self : ChemmolreprpdbPath, other : ChemmolreprpdbPath) -> ChemmolreprpdbPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_path_copy(s : ChemmolreprpdbPath) -> ChemmolreprpdbPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbPath::copy(self : ChemmolreprpdbPath) -> ChemmolreprpdbPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_path_fill(s : ChemmolreprpdbPath, v : Double) -> ChemmolreprpdbPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbPath::fill(self : ChemmolreprpdbPath, v : Double) -> ChemmolreprpdbPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_path_min(s : ChemmolreprpdbPath) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbPath::min(self : ChemmolreprpdbPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_path_max(s : ChemmolreprpdbPath) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbPath::max(self : ChemmolreprpdbPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_path_to_string(s : ChemmolreprpdbPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbPath::to_string(self : ChemmolreprpdbPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbCluster {
@@ -657,45 +657,45 @@ pub fn chem_mol_repr_pdb_cluster_make(size : Int) -> ChemmolreprpdbCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_cluster_len(s : ChemmolreprpdbCluster) -> Int { s.size }
+pub fn ChemmolreprpdbCluster::len(self : ChemmolreprpdbCluster) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_cluster_get(s : ChemmolreprpdbCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbCluster::get(self : ChemmolreprpdbCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_cluster_set(s : ChemmolreprpdbCluster, i : Int, v : Double) -> ChemmolreprpdbCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbCluster::set(self : ChemmolreprpdbCluster, i : Int, v : Double) -> ChemmolreprpdbCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_cluster_sum(s : ChemmolreprpdbCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbCluster::sum(self : ChemmolreprpdbCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_cluster_mean(s : ChemmolreprpdbCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbCluster::mean(self : ChemmolreprpdbCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_cluster_scale(s : ChemmolreprpdbCluster, f : Double) -> ChemmolreprpdbCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbCluster::scale(self : ChemmolreprpdbCluster, f : Double) -> ChemmolreprpdbCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_cluster_add(a : ChemmolreprpdbCluster, b : ChemmolreprpdbCluster) -> ChemmolreprpdbCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbCluster::add(self : ChemmolreprpdbCluster, other : ChemmolreprpdbCluster) -> ChemmolreprpdbCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_cluster_copy(s : ChemmolreprpdbCluster) -> ChemmolreprpdbCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbCluster::copy(self : ChemmolreprpdbCluster) -> ChemmolreprpdbCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_cluster_fill(s : ChemmolreprpdbCluster, v : Double) -> ChemmolreprpdbCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbCluster::fill(self : ChemmolreprpdbCluster, v : Double) -> ChemmolreprpdbCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_cluster_min(s : ChemmolreprpdbCluster) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbCluster::min(self : ChemmolreprpdbCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_cluster_max(s : ChemmolreprpdbCluster) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbCluster::max(self : ChemmolreprpdbCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_cluster_to_string(s : ChemmolreprpdbCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbCluster::to_string(self : ChemmolreprpdbCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbModel {
@@ -708,45 +708,45 @@ pub fn chem_mol_repr_pdb_model_make(size : Int) -> ChemmolreprpdbModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_model_len(s : ChemmolreprpdbModel) -> Int { s.size }
+pub fn ChemmolreprpdbModel::len(self : ChemmolreprpdbModel) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_model_get(s : ChemmolreprpdbModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbModel::get(self : ChemmolreprpdbModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_model_set(s : ChemmolreprpdbModel, i : Int, v : Double) -> ChemmolreprpdbModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbModel::set(self : ChemmolreprpdbModel, i : Int, v : Double) -> ChemmolreprpdbModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_model_sum(s : ChemmolreprpdbModel) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbModel::sum(self : ChemmolreprpdbModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_model_mean(s : ChemmolreprpdbModel) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbModel::mean(self : ChemmolreprpdbModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_model_scale(s : ChemmolreprpdbModel, f : Double) -> ChemmolreprpdbModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbModel::scale(self : ChemmolreprpdbModel, f : Double) -> ChemmolreprpdbModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_model_add(a : ChemmolreprpdbModel, b : ChemmolreprpdbModel) -> ChemmolreprpdbModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbModel::add(self : ChemmolreprpdbModel, other : ChemmolreprpdbModel) -> ChemmolreprpdbModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_model_copy(s : ChemmolreprpdbModel) -> ChemmolreprpdbModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbModel::copy(self : ChemmolreprpdbModel) -> ChemmolreprpdbModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_model_fill(s : ChemmolreprpdbModel, v : Double) -> ChemmolreprpdbModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbModel::fill(self : ChemmolreprpdbModel, v : Double) -> ChemmolreprpdbModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_model_min(s : ChemmolreprpdbModel) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbModel::min(self : ChemmolreprpdbModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_model_max(s : ChemmolreprpdbModel) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbModel::max(self : ChemmolreprpdbModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_model_to_string(s : ChemmolreprpdbModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbModel::to_string(self : ChemmolreprpdbModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbLayer {
@@ -759,45 +759,45 @@ pub fn chem_mol_repr_pdb_layer_make(size : Int) -> ChemmolreprpdbLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_layer_len(s : ChemmolreprpdbLayer) -> Int { s.size }
+pub fn ChemmolreprpdbLayer::len(self : ChemmolreprpdbLayer) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_layer_get(s : ChemmolreprpdbLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbLayer::get(self : ChemmolreprpdbLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_layer_set(s : ChemmolreprpdbLayer, i : Int, v : Double) -> ChemmolreprpdbLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbLayer::set(self : ChemmolreprpdbLayer, i : Int, v : Double) -> ChemmolreprpdbLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_layer_sum(s : ChemmolreprpdbLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbLayer::sum(self : ChemmolreprpdbLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_layer_mean(s : ChemmolreprpdbLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbLayer::mean(self : ChemmolreprpdbLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_layer_scale(s : ChemmolreprpdbLayer, f : Double) -> ChemmolreprpdbLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbLayer::scale(self : ChemmolreprpdbLayer, f : Double) -> ChemmolreprpdbLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_layer_add(a : ChemmolreprpdbLayer, b : ChemmolreprpdbLayer) -> ChemmolreprpdbLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbLayer::add(self : ChemmolreprpdbLayer, other : ChemmolreprpdbLayer) -> ChemmolreprpdbLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_layer_copy(s : ChemmolreprpdbLayer) -> ChemmolreprpdbLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbLayer::copy(self : ChemmolreprpdbLayer) -> ChemmolreprpdbLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_layer_fill(s : ChemmolreprpdbLayer, v : Double) -> ChemmolreprpdbLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbLayer::fill(self : ChemmolreprpdbLayer, v : Double) -> ChemmolreprpdbLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_layer_min(s : ChemmolreprpdbLayer) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbLayer::min(self : ChemmolreprpdbLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_layer_max(s : ChemmolreprpdbLayer) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbLayer::max(self : ChemmolreprpdbLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_layer_to_string(s : ChemmolreprpdbLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbLayer::to_string(self : ChemmolreprpdbLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbBuffer {
@@ -810,45 +810,45 @@ pub fn chem_mol_repr_pdb_buffer_make(size : Int) -> ChemmolreprpdbBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_buffer_len(s : ChemmolreprpdbBuffer) -> Int { s.size }
+pub fn ChemmolreprpdbBuffer::len(self : ChemmolreprpdbBuffer) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_buffer_get(s : ChemmolreprpdbBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbBuffer::get(self : ChemmolreprpdbBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_buffer_set(s : ChemmolreprpdbBuffer, i : Int, v : Double) -> ChemmolreprpdbBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbBuffer::set(self : ChemmolreprpdbBuffer, i : Int, v : Double) -> ChemmolreprpdbBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_buffer_sum(s : ChemmolreprpdbBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbBuffer::sum(self : ChemmolreprpdbBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_buffer_mean(s : ChemmolreprpdbBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbBuffer::mean(self : ChemmolreprpdbBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_buffer_scale(s : ChemmolreprpdbBuffer, f : Double) -> ChemmolreprpdbBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbBuffer::scale(self : ChemmolreprpdbBuffer, f : Double) -> ChemmolreprpdbBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_buffer_add(a : ChemmolreprpdbBuffer, b : ChemmolreprpdbBuffer) -> ChemmolreprpdbBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbBuffer::add(self : ChemmolreprpdbBuffer, other : ChemmolreprpdbBuffer) -> ChemmolreprpdbBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_buffer_copy(s : ChemmolreprpdbBuffer) -> ChemmolreprpdbBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbBuffer::copy(self : ChemmolreprpdbBuffer) -> ChemmolreprpdbBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_buffer_fill(s : ChemmolreprpdbBuffer, v : Double) -> ChemmolreprpdbBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbBuffer::fill(self : ChemmolreprpdbBuffer, v : Double) -> ChemmolreprpdbBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_buffer_min(s : ChemmolreprpdbBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbBuffer::min(self : ChemmolreprpdbBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_buffer_max(s : ChemmolreprpdbBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbBuffer::max(self : ChemmolreprpdbBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_buffer_to_string(s : ChemmolreprpdbBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbBuffer::to_string(self : ChemmolreprpdbBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbCursor {
@@ -861,45 +861,45 @@ pub fn chem_mol_repr_pdb_cursor_make(size : Int) -> ChemmolreprpdbCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_cursor_len(s : ChemmolreprpdbCursor) -> Int { s.size }
+pub fn ChemmolreprpdbCursor::len(self : ChemmolreprpdbCursor) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_cursor_get(s : ChemmolreprpdbCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbCursor::get(self : ChemmolreprpdbCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_cursor_set(s : ChemmolreprpdbCursor, i : Int, v : Double) -> ChemmolreprpdbCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbCursor::set(self : ChemmolreprpdbCursor, i : Int, v : Double) -> ChemmolreprpdbCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_cursor_sum(s : ChemmolreprpdbCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbCursor::sum(self : ChemmolreprpdbCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_cursor_mean(s : ChemmolreprpdbCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbCursor::mean(self : ChemmolreprpdbCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_cursor_scale(s : ChemmolreprpdbCursor, f : Double) -> ChemmolreprpdbCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbCursor::scale(self : ChemmolreprpdbCursor, f : Double) -> ChemmolreprpdbCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_cursor_add(a : ChemmolreprpdbCursor, b : ChemmolreprpdbCursor) -> ChemmolreprpdbCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbCursor::add(self : ChemmolreprpdbCursor, other : ChemmolreprpdbCursor) -> ChemmolreprpdbCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_cursor_copy(s : ChemmolreprpdbCursor) -> ChemmolreprpdbCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbCursor::copy(self : ChemmolreprpdbCursor) -> ChemmolreprpdbCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_cursor_fill(s : ChemmolreprpdbCursor, v : Double) -> ChemmolreprpdbCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbCursor::fill(self : ChemmolreprpdbCursor, v : Double) -> ChemmolreprpdbCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_cursor_min(s : ChemmolreprpdbCursor) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbCursor::min(self : ChemmolreprpdbCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_cursor_max(s : ChemmolreprpdbCursor) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbCursor::max(self : ChemmolreprpdbCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_cursor_to_string(s : ChemmolreprpdbCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbCursor::to_string(self : ChemmolreprpdbCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbView {
@@ -912,45 +912,45 @@ pub fn chem_mol_repr_pdb_view_make(size : Int) -> ChemmolreprpdbView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_view_len(s : ChemmolreprpdbView) -> Int { s.size }
+pub fn ChemmolreprpdbView::len(self : ChemmolreprpdbView) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_view_get(s : ChemmolreprpdbView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbView::get(self : ChemmolreprpdbView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_view_set(s : ChemmolreprpdbView, i : Int, v : Double) -> ChemmolreprpdbView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbView::set(self : ChemmolreprpdbView, i : Int, v : Double) -> ChemmolreprpdbView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_view_sum(s : ChemmolreprpdbView) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbView::sum(self : ChemmolreprpdbView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_view_mean(s : ChemmolreprpdbView) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbView::mean(self : ChemmolreprpdbView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_view_scale(s : ChemmolreprpdbView, f : Double) -> ChemmolreprpdbView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbView::scale(self : ChemmolreprpdbView, f : Double) -> ChemmolreprpdbView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_view_add(a : ChemmolreprpdbView, b : ChemmolreprpdbView) -> ChemmolreprpdbView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbView::add(self : ChemmolreprpdbView, other : ChemmolreprpdbView) -> ChemmolreprpdbView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_view_copy(s : ChemmolreprpdbView) -> ChemmolreprpdbView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbView::copy(self : ChemmolreprpdbView) -> ChemmolreprpdbView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_view_fill(s : ChemmolreprpdbView, v : Double) -> ChemmolreprpdbView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbView::fill(self : ChemmolreprpdbView, v : Double) -> ChemmolreprpdbView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_view_min(s : ChemmolreprpdbView) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbView::min(self : ChemmolreprpdbView) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_view_max(s : ChemmolreprpdbView) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbView::max(self : ChemmolreprpdbView) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_view_to_string(s : ChemmolreprpdbView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbView::to_string(self : ChemmolreprpdbView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbRange {
@@ -963,45 +963,45 @@ pub fn chem_mol_repr_pdb_range_make(size : Int) -> ChemmolreprpdbRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_range_len(s : ChemmolreprpdbRange) -> Int { s.size }
+pub fn ChemmolreprpdbRange::len(self : ChemmolreprpdbRange) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_range_get(s : ChemmolreprpdbRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbRange::get(self : ChemmolreprpdbRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_range_set(s : ChemmolreprpdbRange, i : Int, v : Double) -> ChemmolreprpdbRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbRange::set(self : ChemmolreprpdbRange, i : Int, v : Double) -> ChemmolreprpdbRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_range_sum(s : ChemmolreprpdbRange) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbRange::sum(self : ChemmolreprpdbRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_range_mean(s : ChemmolreprpdbRange) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbRange::mean(self : ChemmolreprpdbRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_range_scale(s : ChemmolreprpdbRange, f : Double) -> ChemmolreprpdbRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbRange::scale(self : ChemmolreprpdbRange, f : Double) -> ChemmolreprpdbRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_range_add(a : ChemmolreprpdbRange, b : ChemmolreprpdbRange) -> ChemmolreprpdbRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbRange::add(self : ChemmolreprpdbRange, other : ChemmolreprpdbRange) -> ChemmolreprpdbRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_range_copy(s : ChemmolreprpdbRange) -> ChemmolreprpdbRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbRange::copy(self : ChemmolreprpdbRange) -> ChemmolreprpdbRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_range_fill(s : ChemmolreprpdbRange, v : Double) -> ChemmolreprpdbRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbRange::fill(self : ChemmolreprpdbRange, v : Double) -> ChemmolreprpdbRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_range_min(s : ChemmolreprpdbRange) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbRange::min(self : ChemmolreprpdbRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_range_max(s : ChemmolreprpdbRange) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbRange::max(self : ChemmolreprpdbRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_range_to_string(s : ChemmolreprpdbRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbRange::to_string(self : ChemmolreprpdbRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprpdbSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_mol_repr_pdb_slice_make(size : Int) -> ChemmolreprpdbSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_pdb_slice_len(s : ChemmolreprpdbSlice) -> Int { s.size }
+pub fn ChemmolreprpdbSlice::len(self : ChemmolreprpdbSlice) -> Int { self.size }
 
-pub fn chem_mol_repr_pdb_slice_get(s : ChemmolreprpdbSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprpdbSlice::get(self : ChemmolreprpdbSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_pdb_slice_set(s : ChemmolreprpdbSlice, i : Int, v : Double) -> ChemmolreprpdbSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbSlice::set(self : ChemmolreprpdbSlice, i : Int, v : Double) -> ChemmolreprpdbSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_slice_sum(s : ChemmolreprpdbSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprpdbSlice::sum(self : ChemmolreprpdbSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_pdb_slice_mean(s : ChemmolreprpdbSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprpdbSlice::mean(self : ChemmolreprpdbSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_pdb_slice_scale(s : ChemmolreprpdbSlice, f : Double) -> ChemmolreprpdbSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbSlice::scale(self : ChemmolreprpdbSlice, f : Double) -> ChemmolreprpdbSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_slice_add(a : ChemmolreprpdbSlice, b : ChemmolreprpdbSlice) -> ChemmolreprpdbSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprpdbSlice::add(self : ChemmolreprpdbSlice, other : ChemmolreprpdbSlice) -> ChemmolreprpdbSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_slice_copy(s : ChemmolreprpdbSlice) -> ChemmolreprpdbSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbSlice::copy(self : ChemmolreprpdbSlice) -> ChemmolreprpdbSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_slice_fill(s : ChemmolreprpdbSlice, v : Double) -> ChemmolreprpdbSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprpdbSlice::fill(self : ChemmolreprpdbSlice, v : Double) -> ChemmolreprpdbSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_pdb_slice_min(s : ChemmolreprpdbSlice) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprpdbSlice::min(self : ChemmolreprpdbSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_pdb_slice_max(s : ChemmolreprpdbSlice) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprpdbSlice::max(self : ChemmolreprpdbSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_pdb_slice_to_string(s : ChemmolreprpdbSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprpdbSlice::to_string(self : ChemmolreprpdbSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

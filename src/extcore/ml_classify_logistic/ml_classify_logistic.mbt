@@ -351,45 +351,45 @@ pub fn ml_classify_logistic_frame_make(size : Int) -> MlclassifylogisticFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_frame_len(s : MlclassifylogisticFrame) -> Int { s.size }
+pub fn MlclassifylogisticFrame::len(self : MlclassifylogisticFrame) -> Int { self.size }
 
-pub fn ml_classify_logistic_frame_get(s : MlclassifylogisticFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticFrame::get(self : MlclassifylogisticFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_frame_set(s : MlclassifylogisticFrame, i : Int, v : Double) -> MlclassifylogisticFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticFrame::set(self : MlclassifylogisticFrame, i : Int, v : Double) -> MlclassifylogisticFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_frame_sum(s : MlclassifylogisticFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticFrame::sum(self : MlclassifylogisticFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_frame_mean(s : MlclassifylogisticFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticFrame::mean(self : MlclassifylogisticFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_frame_scale(s : MlclassifylogisticFrame, f : Double) -> MlclassifylogisticFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticFrame::scale(self : MlclassifylogisticFrame, f : Double) -> MlclassifylogisticFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_frame_add(a : MlclassifylogisticFrame, b : MlclassifylogisticFrame) -> MlclassifylogisticFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticFrame::add(self : MlclassifylogisticFrame, other : MlclassifylogisticFrame) -> MlclassifylogisticFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_frame_copy(s : MlclassifylogisticFrame) -> MlclassifylogisticFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticFrame::copy(self : MlclassifylogisticFrame) -> MlclassifylogisticFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_frame_fill(s : MlclassifylogisticFrame, v : Double) -> MlclassifylogisticFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticFrame::fill(self : MlclassifylogisticFrame, v : Double) -> MlclassifylogisticFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_frame_min(s : MlclassifylogisticFrame) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticFrame::min(self : MlclassifylogisticFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_frame_max(s : MlclassifylogisticFrame) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticFrame::max(self : MlclassifylogisticFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_frame_to_string(s : MlclassifylogisticFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticFrame::to_string(self : MlclassifylogisticFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticTable {
@@ -402,45 +402,45 @@ pub fn ml_classify_logistic_table_make(size : Int) -> MlclassifylogisticTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_table_len(s : MlclassifylogisticTable) -> Int { s.size }
+pub fn MlclassifylogisticTable::len(self : MlclassifylogisticTable) -> Int { self.size }
 
-pub fn ml_classify_logistic_table_get(s : MlclassifylogisticTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticTable::get(self : MlclassifylogisticTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_table_set(s : MlclassifylogisticTable, i : Int, v : Double) -> MlclassifylogisticTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticTable::set(self : MlclassifylogisticTable, i : Int, v : Double) -> MlclassifylogisticTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_table_sum(s : MlclassifylogisticTable) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticTable::sum(self : MlclassifylogisticTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_table_mean(s : MlclassifylogisticTable) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticTable::mean(self : MlclassifylogisticTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_table_scale(s : MlclassifylogisticTable, f : Double) -> MlclassifylogisticTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticTable::scale(self : MlclassifylogisticTable, f : Double) -> MlclassifylogisticTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_table_add(a : MlclassifylogisticTable, b : MlclassifylogisticTable) -> MlclassifylogisticTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticTable::add(self : MlclassifylogisticTable, other : MlclassifylogisticTable) -> MlclassifylogisticTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_table_copy(s : MlclassifylogisticTable) -> MlclassifylogisticTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticTable::copy(self : MlclassifylogisticTable) -> MlclassifylogisticTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_table_fill(s : MlclassifylogisticTable, v : Double) -> MlclassifylogisticTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticTable::fill(self : MlclassifylogisticTable, v : Double) -> MlclassifylogisticTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_table_min(s : MlclassifylogisticTable) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticTable::min(self : MlclassifylogisticTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_table_max(s : MlclassifylogisticTable) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticTable::max(self : MlclassifylogisticTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_table_to_string(s : MlclassifylogisticTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticTable::to_string(self : MlclassifylogisticTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticGraphN {
@@ -453,45 +453,45 @@ pub fn ml_classify_logistic_graphn_make(size : Int) -> MlclassifylogisticGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_graphn_len(s : MlclassifylogisticGraphN) -> Int { s.size }
+pub fn MlclassifylogisticGraphN::len(self : MlclassifylogisticGraphN) -> Int { self.size }
 
-pub fn ml_classify_logistic_graphn_get(s : MlclassifylogisticGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticGraphN::get(self : MlclassifylogisticGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_graphn_set(s : MlclassifylogisticGraphN, i : Int, v : Double) -> MlclassifylogisticGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticGraphN::set(self : MlclassifylogisticGraphN, i : Int, v : Double) -> MlclassifylogisticGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_graphn_sum(s : MlclassifylogisticGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticGraphN::sum(self : MlclassifylogisticGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_graphn_mean(s : MlclassifylogisticGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticGraphN::mean(self : MlclassifylogisticGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_graphn_scale(s : MlclassifylogisticGraphN, f : Double) -> MlclassifylogisticGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticGraphN::scale(self : MlclassifylogisticGraphN, f : Double) -> MlclassifylogisticGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_graphn_add(a : MlclassifylogisticGraphN, b : MlclassifylogisticGraphN) -> MlclassifylogisticGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticGraphN::add(self : MlclassifylogisticGraphN, other : MlclassifylogisticGraphN) -> MlclassifylogisticGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_graphn_copy(s : MlclassifylogisticGraphN) -> MlclassifylogisticGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticGraphN::copy(self : MlclassifylogisticGraphN) -> MlclassifylogisticGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_graphn_fill(s : MlclassifylogisticGraphN, v : Double) -> MlclassifylogisticGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticGraphN::fill(self : MlclassifylogisticGraphN, v : Double) -> MlclassifylogisticGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_graphn_min(s : MlclassifylogisticGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticGraphN::min(self : MlclassifylogisticGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_graphn_max(s : MlclassifylogisticGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticGraphN::max(self : MlclassifylogisticGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_graphn_to_string(s : MlclassifylogisticGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticGraphN::to_string(self : MlclassifylogisticGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticNode {
@@ -504,45 +504,45 @@ pub fn ml_classify_logistic_node_make(size : Int) -> MlclassifylogisticNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_node_len(s : MlclassifylogisticNode) -> Int { s.size }
+pub fn MlclassifylogisticNode::len(self : MlclassifylogisticNode) -> Int { self.size }
 
-pub fn ml_classify_logistic_node_get(s : MlclassifylogisticNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticNode::get(self : MlclassifylogisticNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_node_set(s : MlclassifylogisticNode, i : Int, v : Double) -> MlclassifylogisticNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticNode::set(self : MlclassifylogisticNode, i : Int, v : Double) -> MlclassifylogisticNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_node_sum(s : MlclassifylogisticNode) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticNode::sum(self : MlclassifylogisticNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_node_mean(s : MlclassifylogisticNode) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticNode::mean(self : MlclassifylogisticNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_node_scale(s : MlclassifylogisticNode, f : Double) -> MlclassifylogisticNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticNode::scale(self : MlclassifylogisticNode, f : Double) -> MlclassifylogisticNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_node_add(a : MlclassifylogisticNode, b : MlclassifylogisticNode) -> MlclassifylogisticNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticNode::add(self : MlclassifylogisticNode, other : MlclassifylogisticNode) -> MlclassifylogisticNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_node_copy(s : MlclassifylogisticNode) -> MlclassifylogisticNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticNode::copy(self : MlclassifylogisticNode) -> MlclassifylogisticNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_node_fill(s : MlclassifylogisticNode, v : Double) -> MlclassifylogisticNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticNode::fill(self : MlclassifylogisticNode, v : Double) -> MlclassifylogisticNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_node_min(s : MlclassifylogisticNode) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticNode::min(self : MlclassifylogisticNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_node_max(s : MlclassifylogisticNode) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticNode::max(self : MlclassifylogisticNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_node_to_string(s : MlclassifylogisticNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticNode::to_string(self : MlclassifylogisticNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticEdge {
@@ -555,45 +555,45 @@ pub fn ml_classify_logistic_edge_make(size : Int) -> MlclassifylogisticEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_edge_len(s : MlclassifylogisticEdge) -> Int { s.size }
+pub fn MlclassifylogisticEdge::len(self : MlclassifylogisticEdge) -> Int { self.size }
 
-pub fn ml_classify_logistic_edge_get(s : MlclassifylogisticEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticEdge::get(self : MlclassifylogisticEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_edge_set(s : MlclassifylogisticEdge, i : Int, v : Double) -> MlclassifylogisticEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticEdge::set(self : MlclassifylogisticEdge, i : Int, v : Double) -> MlclassifylogisticEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_edge_sum(s : MlclassifylogisticEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticEdge::sum(self : MlclassifylogisticEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_edge_mean(s : MlclassifylogisticEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticEdge::mean(self : MlclassifylogisticEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_edge_scale(s : MlclassifylogisticEdge, f : Double) -> MlclassifylogisticEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticEdge::scale(self : MlclassifylogisticEdge, f : Double) -> MlclassifylogisticEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_edge_add(a : MlclassifylogisticEdge, b : MlclassifylogisticEdge) -> MlclassifylogisticEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticEdge::add(self : MlclassifylogisticEdge, other : MlclassifylogisticEdge) -> MlclassifylogisticEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_edge_copy(s : MlclassifylogisticEdge) -> MlclassifylogisticEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticEdge::copy(self : MlclassifylogisticEdge) -> MlclassifylogisticEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_edge_fill(s : MlclassifylogisticEdge, v : Double) -> MlclassifylogisticEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticEdge::fill(self : MlclassifylogisticEdge, v : Double) -> MlclassifylogisticEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_edge_min(s : MlclassifylogisticEdge) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticEdge::min(self : MlclassifylogisticEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_edge_max(s : MlclassifylogisticEdge) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticEdge::max(self : MlclassifylogisticEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_edge_to_string(s : MlclassifylogisticEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticEdge::to_string(self : MlclassifylogisticEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticPath {
@@ -606,45 +606,45 @@ pub fn ml_classify_logistic_path_make(size : Int) -> MlclassifylogisticPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_path_len(s : MlclassifylogisticPath) -> Int { s.size }
+pub fn MlclassifylogisticPath::len(self : MlclassifylogisticPath) -> Int { self.size }
 
-pub fn ml_classify_logistic_path_get(s : MlclassifylogisticPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticPath::get(self : MlclassifylogisticPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_path_set(s : MlclassifylogisticPath, i : Int, v : Double) -> MlclassifylogisticPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticPath::set(self : MlclassifylogisticPath, i : Int, v : Double) -> MlclassifylogisticPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_path_sum(s : MlclassifylogisticPath) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticPath::sum(self : MlclassifylogisticPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_path_mean(s : MlclassifylogisticPath) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticPath::mean(self : MlclassifylogisticPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_path_scale(s : MlclassifylogisticPath, f : Double) -> MlclassifylogisticPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticPath::scale(self : MlclassifylogisticPath, f : Double) -> MlclassifylogisticPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_path_add(a : MlclassifylogisticPath, b : MlclassifylogisticPath) -> MlclassifylogisticPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticPath::add(self : MlclassifylogisticPath, other : MlclassifylogisticPath) -> MlclassifylogisticPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_path_copy(s : MlclassifylogisticPath) -> MlclassifylogisticPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticPath::copy(self : MlclassifylogisticPath) -> MlclassifylogisticPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_path_fill(s : MlclassifylogisticPath, v : Double) -> MlclassifylogisticPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticPath::fill(self : MlclassifylogisticPath, v : Double) -> MlclassifylogisticPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_path_min(s : MlclassifylogisticPath) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticPath::min(self : MlclassifylogisticPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_path_max(s : MlclassifylogisticPath) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticPath::max(self : MlclassifylogisticPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_path_to_string(s : MlclassifylogisticPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticPath::to_string(self : MlclassifylogisticPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticCluster {
@@ -657,45 +657,45 @@ pub fn ml_classify_logistic_cluster_make(size : Int) -> MlclassifylogisticCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_cluster_len(s : MlclassifylogisticCluster) -> Int { s.size }
+pub fn MlclassifylogisticCluster::len(self : MlclassifylogisticCluster) -> Int { self.size }
 
-pub fn ml_classify_logistic_cluster_get(s : MlclassifylogisticCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticCluster::get(self : MlclassifylogisticCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_cluster_set(s : MlclassifylogisticCluster, i : Int, v : Double) -> MlclassifylogisticCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticCluster::set(self : MlclassifylogisticCluster, i : Int, v : Double) -> MlclassifylogisticCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_cluster_sum(s : MlclassifylogisticCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticCluster::sum(self : MlclassifylogisticCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_cluster_mean(s : MlclassifylogisticCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticCluster::mean(self : MlclassifylogisticCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_cluster_scale(s : MlclassifylogisticCluster, f : Double) -> MlclassifylogisticCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticCluster::scale(self : MlclassifylogisticCluster, f : Double) -> MlclassifylogisticCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_cluster_add(a : MlclassifylogisticCluster, b : MlclassifylogisticCluster) -> MlclassifylogisticCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticCluster::add(self : MlclassifylogisticCluster, other : MlclassifylogisticCluster) -> MlclassifylogisticCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_cluster_copy(s : MlclassifylogisticCluster) -> MlclassifylogisticCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticCluster::copy(self : MlclassifylogisticCluster) -> MlclassifylogisticCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_cluster_fill(s : MlclassifylogisticCluster, v : Double) -> MlclassifylogisticCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticCluster::fill(self : MlclassifylogisticCluster, v : Double) -> MlclassifylogisticCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_cluster_min(s : MlclassifylogisticCluster) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticCluster::min(self : MlclassifylogisticCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_cluster_max(s : MlclassifylogisticCluster) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticCluster::max(self : MlclassifylogisticCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_cluster_to_string(s : MlclassifylogisticCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticCluster::to_string(self : MlclassifylogisticCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticModel {
@@ -708,45 +708,45 @@ pub fn ml_classify_logistic_model_make(size : Int) -> MlclassifylogisticModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_model_len(s : MlclassifylogisticModel) -> Int { s.size }
+pub fn MlclassifylogisticModel::len(self : MlclassifylogisticModel) -> Int { self.size }
 
-pub fn ml_classify_logistic_model_get(s : MlclassifylogisticModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticModel::get(self : MlclassifylogisticModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_model_set(s : MlclassifylogisticModel, i : Int, v : Double) -> MlclassifylogisticModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticModel::set(self : MlclassifylogisticModel, i : Int, v : Double) -> MlclassifylogisticModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_model_sum(s : MlclassifylogisticModel) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticModel::sum(self : MlclassifylogisticModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_model_mean(s : MlclassifylogisticModel) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticModel::mean(self : MlclassifylogisticModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_model_scale(s : MlclassifylogisticModel, f : Double) -> MlclassifylogisticModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticModel::scale(self : MlclassifylogisticModel, f : Double) -> MlclassifylogisticModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_model_add(a : MlclassifylogisticModel, b : MlclassifylogisticModel) -> MlclassifylogisticModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticModel::add(self : MlclassifylogisticModel, other : MlclassifylogisticModel) -> MlclassifylogisticModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_model_copy(s : MlclassifylogisticModel) -> MlclassifylogisticModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticModel::copy(self : MlclassifylogisticModel) -> MlclassifylogisticModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_model_fill(s : MlclassifylogisticModel, v : Double) -> MlclassifylogisticModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticModel::fill(self : MlclassifylogisticModel, v : Double) -> MlclassifylogisticModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_model_min(s : MlclassifylogisticModel) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticModel::min(self : MlclassifylogisticModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_model_max(s : MlclassifylogisticModel) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticModel::max(self : MlclassifylogisticModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_model_to_string(s : MlclassifylogisticModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticModel::to_string(self : MlclassifylogisticModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticLayer {
@@ -759,45 +759,45 @@ pub fn ml_classify_logistic_layer_make(size : Int) -> MlclassifylogisticLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_layer_len(s : MlclassifylogisticLayer) -> Int { s.size }
+pub fn MlclassifylogisticLayer::len(self : MlclassifylogisticLayer) -> Int { self.size }
 
-pub fn ml_classify_logistic_layer_get(s : MlclassifylogisticLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticLayer::get(self : MlclassifylogisticLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_layer_set(s : MlclassifylogisticLayer, i : Int, v : Double) -> MlclassifylogisticLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticLayer::set(self : MlclassifylogisticLayer, i : Int, v : Double) -> MlclassifylogisticLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_layer_sum(s : MlclassifylogisticLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticLayer::sum(self : MlclassifylogisticLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_layer_mean(s : MlclassifylogisticLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticLayer::mean(self : MlclassifylogisticLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_layer_scale(s : MlclassifylogisticLayer, f : Double) -> MlclassifylogisticLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticLayer::scale(self : MlclassifylogisticLayer, f : Double) -> MlclassifylogisticLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_layer_add(a : MlclassifylogisticLayer, b : MlclassifylogisticLayer) -> MlclassifylogisticLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticLayer::add(self : MlclassifylogisticLayer, other : MlclassifylogisticLayer) -> MlclassifylogisticLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_layer_copy(s : MlclassifylogisticLayer) -> MlclassifylogisticLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticLayer::copy(self : MlclassifylogisticLayer) -> MlclassifylogisticLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_layer_fill(s : MlclassifylogisticLayer, v : Double) -> MlclassifylogisticLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticLayer::fill(self : MlclassifylogisticLayer, v : Double) -> MlclassifylogisticLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_layer_min(s : MlclassifylogisticLayer) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticLayer::min(self : MlclassifylogisticLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_layer_max(s : MlclassifylogisticLayer) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticLayer::max(self : MlclassifylogisticLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_layer_to_string(s : MlclassifylogisticLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticLayer::to_string(self : MlclassifylogisticLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticBuffer {
@@ -810,45 +810,45 @@ pub fn ml_classify_logistic_buffer_make(size : Int) -> MlclassifylogisticBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_buffer_len(s : MlclassifylogisticBuffer) -> Int { s.size }
+pub fn MlclassifylogisticBuffer::len(self : MlclassifylogisticBuffer) -> Int { self.size }
 
-pub fn ml_classify_logistic_buffer_get(s : MlclassifylogisticBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticBuffer::get(self : MlclassifylogisticBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_buffer_set(s : MlclassifylogisticBuffer, i : Int, v : Double) -> MlclassifylogisticBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticBuffer::set(self : MlclassifylogisticBuffer, i : Int, v : Double) -> MlclassifylogisticBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_buffer_sum(s : MlclassifylogisticBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticBuffer::sum(self : MlclassifylogisticBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_buffer_mean(s : MlclassifylogisticBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticBuffer::mean(self : MlclassifylogisticBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_buffer_scale(s : MlclassifylogisticBuffer, f : Double) -> MlclassifylogisticBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticBuffer::scale(self : MlclassifylogisticBuffer, f : Double) -> MlclassifylogisticBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_buffer_add(a : MlclassifylogisticBuffer, b : MlclassifylogisticBuffer) -> MlclassifylogisticBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticBuffer::add(self : MlclassifylogisticBuffer, other : MlclassifylogisticBuffer) -> MlclassifylogisticBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_buffer_copy(s : MlclassifylogisticBuffer) -> MlclassifylogisticBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticBuffer::copy(self : MlclassifylogisticBuffer) -> MlclassifylogisticBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_buffer_fill(s : MlclassifylogisticBuffer, v : Double) -> MlclassifylogisticBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticBuffer::fill(self : MlclassifylogisticBuffer, v : Double) -> MlclassifylogisticBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_buffer_min(s : MlclassifylogisticBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticBuffer::min(self : MlclassifylogisticBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_buffer_max(s : MlclassifylogisticBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticBuffer::max(self : MlclassifylogisticBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_buffer_to_string(s : MlclassifylogisticBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticBuffer::to_string(self : MlclassifylogisticBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticCursor {
@@ -861,45 +861,45 @@ pub fn ml_classify_logistic_cursor_make(size : Int) -> MlclassifylogisticCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_cursor_len(s : MlclassifylogisticCursor) -> Int { s.size }
+pub fn MlclassifylogisticCursor::len(self : MlclassifylogisticCursor) -> Int { self.size }
 
-pub fn ml_classify_logistic_cursor_get(s : MlclassifylogisticCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticCursor::get(self : MlclassifylogisticCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_cursor_set(s : MlclassifylogisticCursor, i : Int, v : Double) -> MlclassifylogisticCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticCursor::set(self : MlclassifylogisticCursor, i : Int, v : Double) -> MlclassifylogisticCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_cursor_sum(s : MlclassifylogisticCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticCursor::sum(self : MlclassifylogisticCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_cursor_mean(s : MlclassifylogisticCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticCursor::mean(self : MlclassifylogisticCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_cursor_scale(s : MlclassifylogisticCursor, f : Double) -> MlclassifylogisticCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticCursor::scale(self : MlclassifylogisticCursor, f : Double) -> MlclassifylogisticCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_cursor_add(a : MlclassifylogisticCursor, b : MlclassifylogisticCursor) -> MlclassifylogisticCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticCursor::add(self : MlclassifylogisticCursor, other : MlclassifylogisticCursor) -> MlclassifylogisticCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_cursor_copy(s : MlclassifylogisticCursor) -> MlclassifylogisticCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticCursor::copy(self : MlclassifylogisticCursor) -> MlclassifylogisticCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_cursor_fill(s : MlclassifylogisticCursor, v : Double) -> MlclassifylogisticCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticCursor::fill(self : MlclassifylogisticCursor, v : Double) -> MlclassifylogisticCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_cursor_min(s : MlclassifylogisticCursor) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticCursor::min(self : MlclassifylogisticCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_cursor_max(s : MlclassifylogisticCursor) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticCursor::max(self : MlclassifylogisticCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_cursor_to_string(s : MlclassifylogisticCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticCursor::to_string(self : MlclassifylogisticCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticView {
@@ -912,45 +912,45 @@ pub fn ml_classify_logistic_view_make(size : Int) -> MlclassifylogisticView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_view_len(s : MlclassifylogisticView) -> Int { s.size }
+pub fn MlclassifylogisticView::len(self : MlclassifylogisticView) -> Int { self.size }
 
-pub fn ml_classify_logistic_view_get(s : MlclassifylogisticView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticView::get(self : MlclassifylogisticView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_view_set(s : MlclassifylogisticView, i : Int, v : Double) -> MlclassifylogisticView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticView::set(self : MlclassifylogisticView, i : Int, v : Double) -> MlclassifylogisticView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_view_sum(s : MlclassifylogisticView) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticView::sum(self : MlclassifylogisticView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_view_mean(s : MlclassifylogisticView) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticView::mean(self : MlclassifylogisticView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_view_scale(s : MlclassifylogisticView, f : Double) -> MlclassifylogisticView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticView::scale(self : MlclassifylogisticView, f : Double) -> MlclassifylogisticView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_view_add(a : MlclassifylogisticView, b : MlclassifylogisticView) -> MlclassifylogisticView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticView::add(self : MlclassifylogisticView, other : MlclassifylogisticView) -> MlclassifylogisticView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_view_copy(s : MlclassifylogisticView) -> MlclassifylogisticView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticView::copy(self : MlclassifylogisticView) -> MlclassifylogisticView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_view_fill(s : MlclassifylogisticView, v : Double) -> MlclassifylogisticView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticView::fill(self : MlclassifylogisticView, v : Double) -> MlclassifylogisticView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_view_min(s : MlclassifylogisticView) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticView::min(self : MlclassifylogisticView) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_view_max(s : MlclassifylogisticView) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticView::max(self : MlclassifylogisticView) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_view_to_string(s : MlclassifylogisticView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticView::to_string(self : MlclassifylogisticView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticRange {
@@ -963,45 +963,45 @@ pub fn ml_classify_logistic_range_make(size : Int) -> MlclassifylogisticRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_range_len(s : MlclassifylogisticRange) -> Int { s.size }
+pub fn MlclassifylogisticRange::len(self : MlclassifylogisticRange) -> Int { self.size }
 
-pub fn ml_classify_logistic_range_get(s : MlclassifylogisticRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticRange::get(self : MlclassifylogisticRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_range_set(s : MlclassifylogisticRange, i : Int, v : Double) -> MlclassifylogisticRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticRange::set(self : MlclassifylogisticRange, i : Int, v : Double) -> MlclassifylogisticRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_range_sum(s : MlclassifylogisticRange) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticRange::sum(self : MlclassifylogisticRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_range_mean(s : MlclassifylogisticRange) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticRange::mean(self : MlclassifylogisticRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_range_scale(s : MlclassifylogisticRange, f : Double) -> MlclassifylogisticRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticRange::scale(self : MlclassifylogisticRange, f : Double) -> MlclassifylogisticRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_range_add(a : MlclassifylogisticRange, b : MlclassifylogisticRange) -> MlclassifylogisticRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticRange::add(self : MlclassifylogisticRange, other : MlclassifylogisticRange) -> MlclassifylogisticRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_range_copy(s : MlclassifylogisticRange) -> MlclassifylogisticRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticRange::copy(self : MlclassifylogisticRange) -> MlclassifylogisticRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_range_fill(s : MlclassifylogisticRange, v : Double) -> MlclassifylogisticRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticRange::fill(self : MlclassifylogisticRange, v : Double) -> MlclassifylogisticRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_range_min(s : MlclassifylogisticRange) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticRange::min(self : MlclassifylogisticRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_range_max(s : MlclassifylogisticRange) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticRange::max(self : MlclassifylogisticRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_range_to_string(s : MlclassifylogisticRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticRange::to_string(self : MlclassifylogisticRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifylogisticSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_classify_logistic_slice_make(size : Int) -> MlclassifylogisticSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_logistic_slice_len(s : MlclassifylogisticSlice) -> Int { s.size }
+pub fn MlclassifylogisticSlice::len(self : MlclassifylogisticSlice) -> Int { self.size }
 
-pub fn ml_classify_logistic_slice_get(s : MlclassifylogisticSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifylogisticSlice::get(self : MlclassifylogisticSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_logistic_slice_set(s : MlclassifylogisticSlice, i : Int, v : Double) -> MlclassifylogisticSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifylogisticSlice::set(self : MlclassifylogisticSlice, i : Int, v : Double) -> MlclassifylogisticSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_slice_sum(s : MlclassifylogisticSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclassifylogisticSlice::sum(self : MlclassifylogisticSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_logistic_slice_mean(s : MlclassifylogisticSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclassifylogisticSlice::mean(self : MlclassifylogisticSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_logistic_slice_scale(s : MlclassifylogisticSlice, f : Double) -> MlclassifylogisticSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticSlice::scale(self : MlclassifylogisticSlice, f : Double) -> MlclassifylogisticSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_slice_add(a : MlclassifylogisticSlice, b : MlclassifylogisticSlice) -> MlclassifylogisticSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifylogisticSlice::add(self : MlclassifylogisticSlice, other : MlclassifylogisticSlice) -> MlclassifylogisticSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_slice_copy(s : MlclassifylogisticSlice) -> MlclassifylogisticSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticSlice::copy(self : MlclassifylogisticSlice) -> MlclassifylogisticSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_slice_fill(s : MlclassifylogisticSlice, v : Double) -> MlclassifylogisticSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifylogisticSlice::fill(self : MlclassifylogisticSlice, v : Double) -> MlclassifylogisticSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_logistic_slice_min(s : MlclassifylogisticSlice) -> Double { @_common.min(s.data) }
+pub fn MlclassifylogisticSlice::min(self : MlclassifylogisticSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_logistic_slice_max(s : MlclassifylogisticSlice) -> Double { @_common.max(s.data) }
+pub fn MlclassifylogisticSlice::max(self : MlclassifylogisticSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_logistic_slice_to_string(s : MlclassifylogisticSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifylogisticSlice::to_string(self : MlclassifylogisticSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

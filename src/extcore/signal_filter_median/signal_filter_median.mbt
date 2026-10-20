@@ -351,45 +351,45 @@ pub fn signal_filter_median_frame_make(size : Int) -> SignalfiltermedianFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_frame_len(s : SignalfiltermedianFrame) -> Int { s.size }
+pub fn SignalfiltermedianFrame::len(self : SignalfiltermedianFrame) -> Int { self.size }
 
-pub fn signal_filter_median_frame_get(s : SignalfiltermedianFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianFrame::get(self : SignalfiltermedianFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_frame_set(s : SignalfiltermedianFrame, i : Int, v : Double) -> SignalfiltermedianFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianFrame::set(self : SignalfiltermedianFrame, i : Int, v : Double) -> SignalfiltermedianFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_frame_sum(s : SignalfiltermedianFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianFrame::sum(self : SignalfiltermedianFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_frame_mean(s : SignalfiltermedianFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianFrame::mean(self : SignalfiltermedianFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_frame_scale(s : SignalfiltermedianFrame, f : Double) -> SignalfiltermedianFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianFrame::scale(self : SignalfiltermedianFrame, f : Double) -> SignalfiltermedianFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_frame_add(a : SignalfiltermedianFrame, b : SignalfiltermedianFrame) -> SignalfiltermedianFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianFrame::add(self : SignalfiltermedianFrame, other : SignalfiltermedianFrame) -> SignalfiltermedianFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_frame_copy(s : SignalfiltermedianFrame) -> SignalfiltermedianFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianFrame::copy(self : SignalfiltermedianFrame) -> SignalfiltermedianFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_frame_fill(s : SignalfiltermedianFrame, v : Double) -> SignalfiltermedianFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianFrame::fill(self : SignalfiltermedianFrame, v : Double) -> SignalfiltermedianFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_frame_min(s : SignalfiltermedianFrame) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianFrame::min(self : SignalfiltermedianFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_frame_max(s : SignalfiltermedianFrame) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianFrame::max(self : SignalfiltermedianFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_frame_to_string(s : SignalfiltermedianFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianFrame::to_string(self : SignalfiltermedianFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianTable {
@@ -402,45 +402,45 @@ pub fn signal_filter_median_table_make(size : Int) -> SignalfiltermedianTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_table_len(s : SignalfiltermedianTable) -> Int { s.size }
+pub fn SignalfiltermedianTable::len(self : SignalfiltermedianTable) -> Int { self.size }
 
-pub fn signal_filter_median_table_get(s : SignalfiltermedianTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianTable::get(self : SignalfiltermedianTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_table_set(s : SignalfiltermedianTable, i : Int, v : Double) -> SignalfiltermedianTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianTable::set(self : SignalfiltermedianTable, i : Int, v : Double) -> SignalfiltermedianTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_table_sum(s : SignalfiltermedianTable) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianTable::sum(self : SignalfiltermedianTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_table_mean(s : SignalfiltermedianTable) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianTable::mean(self : SignalfiltermedianTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_table_scale(s : SignalfiltermedianTable, f : Double) -> SignalfiltermedianTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianTable::scale(self : SignalfiltermedianTable, f : Double) -> SignalfiltermedianTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_table_add(a : SignalfiltermedianTable, b : SignalfiltermedianTable) -> SignalfiltermedianTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianTable::add(self : SignalfiltermedianTable, other : SignalfiltermedianTable) -> SignalfiltermedianTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_table_copy(s : SignalfiltermedianTable) -> SignalfiltermedianTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianTable::copy(self : SignalfiltermedianTable) -> SignalfiltermedianTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_table_fill(s : SignalfiltermedianTable, v : Double) -> SignalfiltermedianTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianTable::fill(self : SignalfiltermedianTable, v : Double) -> SignalfiltermedianTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_table_min(s : SignalfiltermedianTable) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianTable::min(self : SignalfiltermedianTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_table_max(s : SignalfiltermedianTable) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianTable::max(self : SignalfiltermedianTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_table_to_string(s : SignalfiltermedianTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianTable::to_string(self : SignalfiltermedianTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianGraphN {
@@ -453,45 +453,45 @@ pub fn signal_filter_median_graphn_make(size : Int) -> SignalfiltermedianGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_graphn_len(s : SignalfiltermedianGraphN) -> Int { s.size }
+pub fn SignalfiltermedianGraphN::len(self : SignalfiltermedianGraphN) -> Int { self.size }
 
-pub fn signal_filter_median_graphn_get(s : SignalfiltermedianGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianGraphN::get(self : SignalfiltermedianGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_graphn_set(s : SignalfiltermedianGraphN, i : Int, v : Double) -> SignalfiltermedianGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianGraphN::set(self : SignalfiltermedianGraphN, i : Int, v : Double) -> SignalfiltermedianGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_graphn_sum(s : SignalfiltermedianGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianGraphN::sum(self : SignalfiltermedianGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_graphn_mean(s : SignalfiltermedianGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianGraphN::mean(self : SignalfiltermedianGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_graphn_scale(s : SignalfiltermedianGraphN, f : Double) -> SignalfiltermedianGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianGraphN::scale(self : SignalfiltermedianGraphN, f : Double) -> SignalfiltermedianGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_graphn_add(a : SignalfiltermedianGraphN, b : SignalfiltermedianGraphN) -> SignalfiltermedianGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianGraphN::add(self : SignalfiltermedianGraphN, other : SignalfiltermedianGraphN) -> SignalfiltermedianGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_graphn_copy(s : SignalfiltermedianGraphN) -> SignalfiltermedianGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianGraphN::copy(self : SignalfiltermedianGraphN) -> SignalfiltermedianGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_graphn_fill(s : SignalfiltermedianGraphN, v : Double) -> SignalfiltermedianGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianGraphN::fill(self : SignalfiltermedianGraphN, v : Double) -> SignalfiltermedianGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_graphn_min(s : SignalfiltermedianGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianGraphN::min(self : SignalfiltermedianGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_graphn_max(s : SignalfiltermedianGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianGraphN::max(self : SignalfiltermedianGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_graphn_to_string(s : SignalfiltermedianGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianGraphN::to_string(self : SignalfiltermedianGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianNode {
@@ -504,45 +504,45 @@ pub fn signal_filter_median_node_make(size : Int) -> SignalfiltermedianNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_node_len(s : SignalfiltermedianNode) -> Int { s.size }
+pub fn SignalfiltermedianNode::len(self : SignalfiltermedianNode) -> Int { self.size }
 
-pub fn signal_filter_median_node_get(s : SignalfiltermedianNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianNode::get(self : SignalfiltermedianNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_node_set(s : SignalfiltermedianNode, i : Int, v : Double) -> SignalfiltermedianNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianNode::set(self : SignalfiltermedianNode, i : Int, v : Double) -> SignalfiltermedianNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_node_sum(s : SignalfiltermedianNode) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianNode::sum(self : SignalfiltermedianNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_node_mean(s : SignalfiltermedianNode) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianNode::mean(self : SignalfiltermedianNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_node_scale(s : SignalfiltermedianNode, f : Double) -> SignalfiltermedianNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianNode::scale(self : SignalfiltermedianNode, f : Double) -> SignalfiltermedianNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_node_add(a : SignalfiltermedianNode, b : SignalfiltermedianNode) -> SignalfiltermedianNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianNode::add(self : SignalfiltermedianNode, other : SignalfiltermedianNode) -> SignalfiltermedianNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_node_copy(s : SignalfiltermedianNode) -> SignalfiltermedianNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianNode::copy(self : SignalfiltermedianNode) -> SignalfiltermedianNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_node_fill(s : SignalfiltermedianNode, v : Double) -> SignalfiltermedianNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianNode::fill(self : SignalfiltermedianNode, v : Double) -> SignalfiltermedianNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_node_min(s : SignalfiltermedianNode) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianNode::min(self : SignalfiltermedianNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_node_max(s : SignalfiltermedianNode) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianNode::max(self : SignalfiltermedianNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_node_to_string(s : SignalfiltermedianNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianNode::to_string(self : SignalfiltermedianNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianEdge {
@@ -555,45 +555,45 @@ pub fn signal_filter_median_edge_make(size : Int) -> SignalfiltermedianEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_edge_len(s : SignalfiltermedianEdge) -> Int { s.size }
+pub fn SignalfiltermedianEdge::len(self : SignalfiltermedianEdge) -> Int { self.size }
 
-pub fn signal_filter_median_edge_get(s : SignalfiltermedianEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianEdge::get(self : SignalfiltermedianEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_edge_set(s : SignalfiltermedianEdge, i : Int, v : Double) -> SignalfiltermedianEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianEdge::set(self : SignalfiltermedianEdge, i : Int, v : Double) -> SignalfiltermedianEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_edge_sum(s : SignalfiltermedianEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianEdge::sum(self : SignalfiltermedianEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_edge_mean(s : SignalfiltermedianEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianEdge::mean(self : SignalfiltermedianEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_edge_scale(s : SignalfiltermedianEdge, f : Double) -> SignalfiltermedianEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianEdge::scale(self : SignalfiltermedianEdge, f : Double) -> SignalfiltermedianEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_edge_add(a : SignalfiltermedianEdge, b : SignalfiltermedianEdge) -> SignalfiltermedianEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianEdge::add(self : SignalfiltermedianEdge, other : SignalfiltermedianEdge) -> SignalfiltermedianEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_edge_copy(s : SignalfiltermedianEdge) -> SignalfiltermedianEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianEdge::copy(self : SignalfiltermedianEdge) -> SignalfiltermedianEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_edge_fill(s : SignalfiltermedianEdge, v : Double) -> SignalfiltermedianEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianEdge::fill(self : SignalfiltermedianEdge, v : Double) -> SignalfiltermedianEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_edge_min(s : SignalfiltermedianEdge) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianEdge::min(self : SignalfiltermedianEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_edge_max(s : SignalfiltermedianEdge) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianEdge::max(self : SignalfiltermedianEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_edge_to_string(s : SignalfiltermedianEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianEdge::to_string(self : SignalfiltermedianEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianPath {
@@ -606,45 +606,45 @@ pub fn signal_filter_median_path_make(size : Int) -> SignalfiltermedianPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_path_len(s : SignalfiltermedianPath) -> Int { s.size }
+pub fn SignalfiltermedianPath::len(self : SignalfiltermedianPath) -> Int { self.size }
 
-pub fn signal_filter_median_path_get(s : SignalfiltermedianPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianPath::get(self : SignalfiltermedianPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_path_set(s : SignalfiltermedianPath, i : Int, v : Double) -> SignalfiltermedianPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianPath::set(self : SignalfiltermedianPath, i : Int, v : Double) -> SignalfiltermedianPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_path_sum(s : SignalfiltermedianPath) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianPath::sum(self : SignalfiltermedianPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_path_mean(s : SignalfiltermedianPath) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianPath::mean(self : SignalfiltermedianPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_path_scale(s : SignalfiltermedianPath, f : Double) -> SignalfiltermedianPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianPath::scale(self : SignalfiltermedianPath, f : Double) -> SignalfiltermedianPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_path_add(a : SignalfiltermedianPath, b : SignalfiltermedianPath) -> SignalfiltermedianPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianPath::add(self : SignalfiltermedianPath, other : SignalfiltermedianPath) -> SignalfiltermedianPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_path_copy(s : SignalfiltermedianPath) -> SignalfiltermedianPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianPath::copy(self : SignalfiltermedianPath) -> SignalfiltermedianPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_path_fill(s : SignalfiltermedianPath, v : Double) -> SignalfiltermedianPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianPath::fill(self : SignalfiltermedianPath, v : Double) -> SignalfiltermedianPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_path_min(s : SignalfiltermedianPath) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianPath::min(self : SignalfiltermedianPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_path_max(s : SignalfiltermedianPath) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianPath::max(self : SignalfiltermedianPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_path_to_string(s : SignalfiltermedianPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianPath::to_string(self : SignalfiltermedianPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianCluster {
@@ -657,45 +657,45 @@ pub fn signal_filter_median_cluster_make(size : Int) -> SignalfiltermedianCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_cluster_len(s : SignalfiltermedianCluster) -> Int { s.size }
+pub fn SignalfiltermedianCluster::len(self : SignalfiltermedianCluster) -> Int { self.size }
 
-pub fn signal_filter_median_cluster_get(s : SignalfiltermedianCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianCluster::get(self : SignalfiltermedianCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_cluster_set(s : SignalfiltermedianCluster, i : Int, v : Double) -> SignalfiltermedianCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianCluster::set(self : SignalfiltermedianCluster, i : Int, v : Double) -> SignalfiltermedianCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_cluster_sum(s : SignalfiltermedianCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianCluster::sum(self : SignalfiltermedianCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_cluster_mean(s : SignalfiltermedianCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianCluster::mean(self : SignalfiltermedianCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_cluster_scale(s : SignalfiltermedianCluster, f : Double) -> SignalfiltermedianCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianCluster::scale(self : SignalfiltermedianCluster, f : Double) -> SignalfiltermedianCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_cluster_add(a : SignalfiltermedianCluster, b : SignalfiltermedianCluster) -> SignalfiltermedianCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianCluster::add(self : SignalfiltermedianCluster, other : SignalfiltermedianCluster) -> SignalfiltermedianCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_cluster_copy(s : SignalfiltermedianCluster) -> SignalfiltermedianCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianCluster::copy(self : SignalfiltermedianCluster) -> SignalfiltermedianCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_cluster_fill(s : SignalfiltermedianCluster, v : Double) -> SignalfiltermedianCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianCluster::fill(self : SignalfiltermedianCluster, v : Double) -> SignalfiltermedianCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_cluster_min(s : SignalfiltermedianCluster) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianCluster::min(self : SignalfiltermedianCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_cluster_max(s : SignalfiltermedianCluster) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianCluster::max(self : SignalfiltermedianCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_cluster_to_string(s : SignalfiltermedianCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianCluster::to_string(self : SignalfiltermedianCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianModel {
@@ -708,45 +708,45 @@ pub fn signal_filter_median_model_make(size : Int) -> SignalfiltermedianModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_model_len(s : SignalfiltermedianModel) -> Int { s.size }
+pub fn SignalfiltermedianModel::len(self : SignalfiltermedianModel) -> Int { self.size }
 
-pub fn signal_filter_median_model_get(s : SignalfiltermedianModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianModel::get(self : SignalfiltermedianModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_model_set(s : SignalfiltermedianModel, i : Int, v : Double) -> SignalfiltermedianModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianModel::set(self : SignalfiltermedianModel, i : Int, v : Double) -> SignalfiltermedianModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_model_sum(s : SignalfiltermedianModel) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianModel::sum(self : SignalfiltermedianModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_model_mean(s : SignalfiltermedianModel) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianModel::mean(self : SignalfiltermedianModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_model_scale(s : SignalfiltermedianModel, f : Double) -> SignalfiltermedianModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianModel::scale(self : SignalfiltermedianModel, f : Double) -> SignalfiltermedianModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_model_add(a : SignalfiltermedianModel, b : SignalfiltermedianModel) -> SignalfiltermedianModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianModel::add(self : SignalfiltermedianModel, other : SignalfiltermedianModel) -> SignalfiltermedianModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_model_copy(s : SignalfiltermedianModel) -> SignalfiltermedianModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianModel::copy(self : SignalfiltermedianModel) -> SignalfiltermedianModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_model_fill(s : SignalfiltermedianModel, v : Double) -> SignalfiltermedianModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianModel::fill(self : SignalfiltermedianModel, v : Double) -> SignalfiltermedianModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_model_min(s : SignalfiltermedianModel) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianModel::min(self : SignalfiltermedianModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_model_max(s : SignalfiltermedianModel) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianModel::max(self : SignalfiltermedianModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_model_to_string(s : SignalfiltermedianModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianModel::to_string(self : SignalfiltermedianModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianLayer {
@@ -759,45 +759,45 @@ pub fn signal_filter_median_layer_make(size : Int) -> SignalfiltermedianLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_layer_len(s : SignalfiltermedianLayer) -> Int { s.size }
+pub fn SignalfiltermedianLayer::len(self : SignalfiltermedianLayer) -> Int { self.size }
 
-pub fn signal_filter_median_layer_get(s : SignalfiltermedianLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianLayer::get(self : SignalfiltermedianLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_layer_set(s : SignalfiltermedianLayer, i : Int, v : Double) -> SignalfiltermedianLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianLayer::set(self : SignalfiltermedianLayer, i : Int, v : Double) -> SignalfiltermedianLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_layer_sum(s : SignalfiltermedianLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianLayer::sum(self : SignalfiltermedianLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_layer_mean(s : SignalfiltermedianLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianLayer::mean(self : SignalfiltermedianLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_layer_scale(s : SignalfiltermedianLayer, f : Double) -> SignalfiltermedianLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianLayer::scale(self : SignalfiltermedianLayer, f : Double) -> SignalfiltermedianLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_layer_add(a : SignalfiltermedianLayer, b : SignalfiltermedianLayer) -> SignalfiltermedianLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianLayer::add(self : SignalfiltermedianLayer, other : SignalfiltermedianLayer) -> SignalfiltermedianLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_layer_copy(s : SignalfiltermedianLayer) -> SignalfiltermedianLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianLayer::copy(self : SignalfiltermedianLayer) -> SignalfiltermedianLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_layer_fill(s : SignalfiltermedianLayer, v : Double) -> SignalfiltermedianLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianLayer::fill(self : SignalfiltermedianLayer, v : Double) -> SignalfiltermedianLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_layer_min(s : SignalfiltermedianLayer) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianLayer::min(self : SignalfiltermedianLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_layer_max(s : SignalfiltermedianLayer) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianLayer::max(self : SignalfiltermedianLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_layer_to_string(s : SignalfiltermedianLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianLayer::to_string(self : SignalfiltermedianLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianBuffer {
@@ -810,45 +810,45 @@ pub fn signal_filter_median_buffer_make(size : Int) -> SignalfiltermedianBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_buffer_len(s : SignalfiltermedianBuffer) -> Int { s.size }
+pub fn SignalfiltermedianBuffer::len(self : SignalfiltermedianBuffer) -> Int { self.size }
 
-pub fn signal_filter_median_buffer_get(s : SignalfiltermedianBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianBuffer::get(self : SignalfiltermedianBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_buffer_set(s : SignalfiltermedianBuffer, i : Int, v : Double) -> SignalfiltermedianBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianBuffer::set(self : SignalfiltermedianBuffer, i : Int, v : Double) -> SignalfiltermedianBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_buffer_sum(s : SignalfiltermedianBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianBuffer::sum(self : SignalfiltermedianBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_buffer_mean(s : SignalfiltermedianBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianBuffer::mean(self : SignalfiltermedianBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_buffer_scale(s : SignalfiltermedianBuffer, f : Double) -> SignalfiltermedianBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianBuffer::scale(self : SignalfiltermedianBuffer, f : Double) -> SignalfiltermedianBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_buffer_add(a : SignalfiltermedianBuffer, b : SignalfiltermedianBuffer) -> SignalfiltermedianBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianBuffer::add(self : SignalfiltermedianBuffer, other : SignalfiltermedianBuffer) -> SignalfiltermedianBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_buffer_copy(s : SignalfiltermedianBuffer) -> SignalfiltermedianBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianBuffer::copy(self : SignalfiltermedianBuffer) -> SignalfiltermedianBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_buffer_fill(s : SignalfiltermedianBuffer, v : Double) -> SignalfiltermedianBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianBuffer::fill(self : SignalfiltermedianBuffer, v : Double) -> SignalfiltermedianBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_buffer_min(s : SignalfiltermedianBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianBuffer::min(self : SignalfiltermedianBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_buffer_max(s : SignalfiltermedianBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianBuffer::max(self : SignalfiltermedianBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_buffer_to_string(s : SignalfiltermedianBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianBuffer::to_string(self : SignalfiltermedianBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianCursor {
@@ -861,45 +861,45 @@ pub fn signal_filter_median_cursor_make(size : Int) -> SignalfiltermedianCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_cursor_len(s : SignalfiltermedianCursor) -> Int { s.size }
+pub fn SignalfiltermedianCursor::len(self : SignalfiltermedianCursor) -> Int { self.size }
 
-pub fn signal_filter_median_cursor_get(s : SignalfiltermedianCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianCursor::get(self : SignalfiltermedianCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_cursor_set(s : SignalfiltermedianCursor, i : Int, v : Double) -> SignalfiltermedianCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianCursor::set(self : SignalfiltermedianCursor, i : Int, v : Double) -> SignalfiltermedianCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_cursor_sum(s : SignalfiltermedianCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianCursor::sum(self : SignalfiltermedianCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_cursor_mean(s : SignalfiltermedianCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianCursor::mean(self : SignalfiltermedianCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_cursor_scale(s : SignalfiltermedianCursor, f : Double) -> SignalfiltermedianCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianCursor::scale(self : SignalfiltermedianCursor, f : Double) -> SignalfiltermedianCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_cursor_add(a : SignalfiltermedianCursor, b : SignalfiltermedianCursor) -> SignalfiltermedianCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianCursor::add(self : SignalfiltermedianCursor, other : SignalfiltermedianCursor) -> SignalfiltermedianCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_cursor_copy(s : SignalfiltermedianCursor) -> SignalfiltermedianCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianCursor::copy(self : SignalfiltermedianCursor) -> SignalfiltermedianCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_cursor_fill(s : SignalfiltermedianCursor, v : Double) -> SignalfiltermedianCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianCursor::fill(self : SignalfiltermedianCursor, v : Double) -> SignalfiltermedianCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_cursor_min(s : SignalfiltermedianCursor) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianCursor::min(self : SignalfiltermedianCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_cursor_max(s : SignalfiltermedianCursor) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianCursor::max(self : SignalfiltermedianCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_cursor_to_string(s : SignalfiltermedianCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianCursor::to_string(self : SignalfiltermedianCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianView {
@@ -912,45 +912,45 @@ pub fn signal_filter_median_view_make(size : Int) -> SignalfiltermedianView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_view_len(s : SignalfiltermedianView) -> Int { s.size }
+pub fn SignalfiltermedianView::len(self : SignalfiltermedianView) -> Int { self.size }
 
-pub fn signal_filter_median_view_get(s : SignalfiltermedianView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianView::get(self : SignalfiltermedianView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_view_set(s : SignalfiltermedianView, i : Int, v : Double) -> SignalfiltermedianView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianView::set(self : SignalfiltermedianView, i : Int, v : Double) -> SignalfiltermedianView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_view_sum(s : SignalfiltermedianView) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianView::sum(self : SignalfiltermedianView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_view_mean(s : SignalfiltermedianView) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianView::mean(self : SignalfiltermedianView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_view_scale(s : SignalfiltermedianView, f : Double) -> SignalfiltermedianView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianView::scale(self : SignalfiltermedianView, f : Double) -> SignalfiltermedianView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_view_add(a : SignalfiltermedianView, b : SignalfiltermedianView) -> SignalfiltermedianView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianView::add(self : SignalfiltermedianView, other : SignalfiltermedianView) -> SignalfiltermedianView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_view_copy(s : SignalfiltermedianView) -> SignalfiltermedianView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianView::copy(self : SignalfiltermedianView) -> SignalfiltermedianView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_view_fill(s : SignalfiltermedianView, v : Double) -> SignalfiltermedianView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianView::fill(self : SignalfiltermedianView, v : Double) -> SignalfiltermedianView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_view_min(s : SignalfiltermedianView) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianView::min(self : SignalfiltermedianView) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_view_max(s : SignalfiltermedianView) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianView::max(self : SignalfiltermedianView) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_view_to_string(s : SignalfiltermedianView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianView::to_string(self : SignalfiltermedianView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianRange {
@@ -963,45 +963,45 @@ pub fn signal_filter_median_range_make(size : Int) -> SignalfiltermedianRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_range_len(s : SignalfiltermedianRange) -> Int { s.size }
+pub fn SignalfiltermedianRange::len(self : SignalfiltermedianRange) -> Int { self.size }
 
-pub fn signal_filter_median_range_get(s : SignalfiltermedianRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianRange::get(self : SignalfiltermedianRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_range_set(s : SignalfiltermedianRange, i : Int, v : Double) -> SignalfiltermedianRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianRange::set(self : SignalfiltermedianRange, i : Int, v : Double) -> SignalfiltermedianRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_range_sum(s : SignalfiltermedianRange) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianRange::sum(self : SignalfiltermedianRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_range_mean(s : SignalfiltermedianRange) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianRange::mean(self : SignalfiltermedianRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_range_scale(s : SignalfiltermedianRange, f : Double) -> SignalfiltermedianRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianRange::scale(self : SignalfiltermedianRange, f : Double) -> SignalfiltermedianRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_range_add(a : SignalfiltermedianRange, b : SignalfiltermedianRange) -> SignalfiltermedianRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianRange::add(self : SignalfiltermedianRange, other : SignalfiltermedianRange) -> SignalfiltermedianRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_range_copy(s : SignalfiltermedianRange) -> SignalfiltermedianRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianRange::copy(self : SignalfiltermedianRange) -> SignalfiltermedianRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_range_fill(s : SignalfiltermedianRange, v : Double) -> SignalfiltermedianRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianRange::fill(self : SignalfiltermedianRange, v : Double) -> SignalfiltermedianRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_range_min(s : SignalfiltermedianRange) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianRange::min(self : SignalfiltermedianRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_range_max(s : SignalfiltermedianRange) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianRange::max(self : SignalfiltermedianRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_range_to_string(s : SignalfiltermedianRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianRange::to_string(self : SignalfiltermedianRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfiltermedianSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_filter_median_slice_make(size : Int) -> SignalfiltermedianSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_median_slice_len(s : SignalfiltermedianSlice) -> Int { s.size }
+pub fn SignalfiltermedianSlice::len(self : SignalfiltermedianSlice) -> Int { self.size }
 
-pub fn signal_filter_median_slice_get(s : SignalfiltermedianSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfiltermedianSlice::get(self : SignalfiltermedianSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_median_slice_set(s : SignalfiltermedianSlice, i : Int, v : Double) -> SignalfiltermedianSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfiltermedianSlice::set(self : SignalfiltermedianSlice, i : Int, v : Double) -> SignalfiltermedianSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_slice_sum(s : SignalfiltermedianSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalfiltermedianSlice::sum(self : SignalfiltermedianSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_median_slice_mean(s : SignalfiltermedianSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalfiltermedianSlice::mean(self : SignalfiltermedianSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_median_slice_scale(s : SignalfiltermedianSlice, f : Double) -> SignalfiltermedianSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianSlice::scale(self : SignalfiltermedianSlice, f : Double) -> SignalfiltermedianSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_slice_add(a : SignalfiltermedianSlice, b : SignalfiltermedianSlice) -> SignalfiltermedianSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfiltermedianSlice::add(self : SignalfiltermedianSlice, other : SignalfiltermedianSlice) -> SignalfiltermedianSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_median_slice_copy(s : SignalfiltermedianSlice) -> SignalfiltermedianSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianSlice::copy(self : SignalfiltermedianSlice) -> SignalfiltermedianSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_slice_fill(s : SignalfiltermedianSlice, v : Double) -> SignalfiltermedianSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfiltermedianSlice::fill(self : SignalfiltermedianSlice, v : Double) -> SignalfiltermedianSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_median_slice_min(s : SignalfiltermedianSlice) -> Double { @_common.min(s.data) }
+pub fn SignalfiltermedianSlice::min(self : SignalfiltermedianSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_median_slice_max(s : SignalfiltermedianSlice) -> Double { @_common.max(s.data) }
+pub fn SignalfiltermedianSlice::max(self : SignalfiltermedianSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_median_slice_to_string(s : SignalfiltermedianSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfiltermedianSlice::to_string(self : SignalfiltermedianSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

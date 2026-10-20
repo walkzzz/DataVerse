@@ -351,45 +351,45 @@ pub fn bio_seq_assembly_greedy_frame_make(size : Int) -> BioseqassemblygreedyFra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_frame_len(s : BioseqassemblygreedyFrame) -> Int { s.size }
+pub fn BioseqassemblygreedyFrame::len(self : BioseqassemblygreedyFrame) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_frame_get(s : BioseqassemblygreedyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyFrame::get(self : BioseqassemblygreedyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_frame_set(s : BioseqassemblygreedyFrame, i : Int, v : Double) -> BioseqassemblygreedyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyFrame::set(self : BioseqassemblygreedyFrame, i : Int, v : Double) -> BioseqassemblygreedyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_frame_sum(s : BioseqassemblygreedyFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyFrame::sum(self : BioseqassemblygreedyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_frame_mean(s : BioseqassemblygreedyFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyFrame::mean(self : BioseqassemblygreedyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_frame_scale(s : BioseqassemblygreedyFrame, f : Double) -> BioseqassemblygreedyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyFrame::scale(self : BioseqassemblygreedyFrame, f : Double) -> BioseqassemblygreedyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_frame_add(a : BioseqassemblygreedyFrame, b : BioseqassemblygreedyFrame) -> BioseqassemblygreedyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyFrame::add(self : BioseqassemblygreedyFrame, other : BioseqassemblygreedyFrame) -> BioseqassemblygreedyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_frame_copy(s : BioseqassemblygreedyFrame) -> BioseqassemblygreedyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyFrame::copy(self : BioseqassemblygreedyFrame) -> BioseqassemblygreedyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_frame_fill(s : BioseqassemblygreedyFrame, v : Double) -> BioseqassemblygreedyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyFrame::fill(self : BioseqassemblygreedyFrame, v : Double) -> BioseqassemblygreedyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_frame_min(s : BioseqassemblygreedyFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyFrame::min(self : BioseqassemblygreedyFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_frame_max(s : BioseqassemblygreedyFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyFrame::max(self : BioseqassemblygreedyFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_frame_to_string(s : BioseqassemblygreedyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyFrame::to_string(self : BioseqassemblygreedyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedyTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_assembly_greedy_table_make(size : Int) -> BioseqassemblygreedyTab
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_table_len(s : BioseqassemblygreedyTable) -> Int { s.size }
+pub fn BioseqassemblygreedyTable::len(self : BioseqassemblygreedyTable) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_table_get(s : BioseqassemblygreedyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyTable::get(self : BioseqassemblygreedyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_table_set(s : BioseqassemblygreedyTable, i : Int, v : Double) -> BioseqassemblygreedyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyTable::set(self : BioseqassemblygreedyTable, i : Int, v : Double) -> BioseqassemblygreedyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_table_sum(s : BioseqassemblygreedyTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyTable::sum(self : BioseqassemblygreedyTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_table_mean(s : BioseqassemblygreedyTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyTable::mean(self : BioseqassemblygreedyTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_table_scale(s : BioseqassemblygreedyTable, f : Double) -> BioseqassemblygreedyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyTable::scale(self : BioseqassemblygreedyTable, f : Double) -> BioseqassemblygreedyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_table_add(a : BioseqassemblygreedyTable, b : BioseqassemblygreedyTable) -> BioseqassemblygreedyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyTable::add(self : BioseqassemblygreedyTable, other : BioseqassemblygreedyTable) -> BioseqassemblygreedyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_table_copy(s : BioseqassemblygreedyTable) -> BioseqassemblygreedyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyTable::copy(self : BioseqassemblygreedyTable) -> BioseqassemblygreedyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_table_fill(s : BioseqassemblygreedyTable, v : Double) -> BioseqassemblygreedyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyTable::fill(self : BioseqassemblygreedyTable, v : Double) -> BioseqassemblygreedyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_table_min(s : BioseqassemblygreedyTable) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyTable::min(self : BioseqassemblygreedyTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_table_max(s : BioseqassemblygreedyTable) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyTable::max(self : BioseqassemblygreedyTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_table_to_string(s : BioseqassemblygreedyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyTable::to_string(self : BioseqassemblygreedyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedyGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_assembly_greedy_graphn_make(size : Int) -> BioseqassemblygreedyGr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_graphn_len(s : BioseqassemblygreedyGraphN) -> Int { s.size }
+pub fn BioseqassemblygreedyGraphN::len(self : BioseqassemblygreedyGraphN) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_graphn_get(s : BioseqassemblygreedyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyGraphN::get(self : BioseqassemblygreedyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_graphn_set(s : BioseqassemblygreedyGraphN, i : Int, v : Double) -> BioseqassemblygreedyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyGraphN::set(self : BioseqassemblygreedyGraphN, i : Int, v : Double) -> BioseqassemblygreedyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_graphn_sum(s : BioseqassemblygreedyGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyGraphN::sum(self : BioseqassemblygreedyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_graphn_mean(s : BioseqassemblygreedyGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyGraphN::mean(self : BioseqassemblygreedyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_graphn_scale(s : BioseqassemblygreedyGraphN, f : Double) -> BioseqassemblygreedyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyGraphN::scale(self : BioseqassemblygreedyGraphN, f : Double) -> BioseqassemblygreedyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_graphn_add(a : BioseqassemblygreedyGraphN, b : BioseqassemblygreedyGraphN) -> BioseqassemblygreedyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyGraphN::add(self : BioseqassemblygreedyGraphN, other : BioseqassemblygreedyGraphN) -> BioseqassemblygreedyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_graphn_copy(s : BioseqassemblygreedyGraphN) -> BioseqassemblygreedyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyGraphN::copy(self : BioseqassemblygreedyGraphN) -> BioseqassemblygreedyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_graphn_fill(s : BioseqassemblygreedyGraphN, v : Double) -> BioseqassemblygreedyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyGraphN::fill(self : BioseqassemblygreedyGraphN, v : Double) -> BioseqassemblygreedyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_graphn_min(s : BioseqassemblygreedyGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyGraphN::min(self : BioseqassemblygreedyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_graphn_max(s : BioseqassemblygreedyGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyGraphN::max(self : BioseqassemblygreedyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_graphn_to_string(s : BioseqassemblygreedyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyGraphN::to_string(self : BioseqassemblygreedyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedyNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_assembly_greedy_node_make(size : Int) -> BioseqassemblygreedyNode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_node_len(s : BioseqassemblygreedyNode) -> Int { s.size }
+pub fn BioseqassemblygreedyNode::len(self : BioseqassemblygreedyNode) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_node_get(s : BioseqassemblygreedyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyNode::get(self : BioseqassemblygreedyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_node_set(s : BioseqassemblygreedyNode, i : Int, v : Double) -> BioseqassemblygreedyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyNode::set(self : BioseqassemblygreedyNode, i : Int, v : Double) -> BioseqassemblygreedyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_node_sum(s : BioseqassemblygreedyNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyNode::sum(self : BioseqassemblygreedyNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_node_mean(s : BioseqassemblygreedyNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyNode::mean(self : BioseqassemblygreedyNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_node_scale(s : BioseqassemblygreedyNode, f : Double) -> BioseqassemblygreedyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyNode::scale(self : BioseqassemblygreedyNode, f : Double) -> BioseqassemblygreedyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_node_add(a : BioseqassemblygreedyNode, b : BioseqassemblygreedyNode) -> BioseqassemblygreedyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyNode::add(self : BioseqassemblygreedyNode, other : BioseqassemblygreedyNode) -> BioseqassemblygreedyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_node_copy(s : BioseqassemblygreedyNode) -> BioseqassemblygreedyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyNode::copy(self : BioseqassemblygreedyNode) -> BioseqassemblygreedyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_node_fill(s : BioseqassemblygreedyNode, v : Double) -> BioseqassemblygreedyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyNode::fill(self : BioseqassemblygreedyNode, v : Double) -> BioseqassemblygreedyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_node_min(s : BioseqassemblygreedyNode) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyNode::min(self : BioseqassemblygreedyNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_node_max(s : BioseqassemblygreedyNode) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyNode::max(self : BioseqassemblygreedyNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_node_to_string(s : BioseqassemblygreedyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyNode::to_string(self : BioseqassemblygreedyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedyEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_assembly_greedy_edge_make(size : Int) -> BioseqassemblygreedyEdge
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_edge_len(s : BioseqassemblygreedyEdge) -> Int { s.size }
+pub fn BioseqassemblygreedyEdge::len(self : BioseqassemblygreedyEdge) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_edge_get(s : BioseqassemblygreedyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyEdge::get(self : BioseqassemblygreedyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_edge_set(s : BioseqassemblygreedyEdge, i : Int, v : Double) -> BioseqassemblygreedyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyEdge::set(self : BioseqassemblygreedyEdge, i : Int, v : Double) -> BioseqassemblygreedyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_edge_sum(s : BioseqassemblygreedyEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyEdge::sum(self : BioseqassemblygreedyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_edge_mean(s : BioseqassemblygreedyEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyEdge::mean(self : BioseqassemblygreedyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_edge_scale(s : BioseqassemblygreedyEdge, f : Double) -> BioseqassemblygreedyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyEdge::scale(self : BioseqassemblygreedyEdge, f : Double) -> BioseqassemblygreedyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_edge_add(a : BioseqassemblygreedyEdge, b : BioseqassemblygreedyEdge) -> BioseqassemblygreedyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyEdge::add(self : BioseqassemblygreedyEdge, other : BioseqassemblygreedyEdge) -> BioseqassemblygreedyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_edge_copy(s : BioseqassemblygreedyEdge) -> BioseqassemblygreedyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyEdge::copy(self : BioseqassemblygreedyEdge) -> BioseqassemblygreedyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_edge_fill(s : BioseqassemblygreedyEdge, v : Double) -> BioseqassemblygreedyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyEdge::fill(self : BioseqassemblygreedyEdge, v : Double) -> BioseqassemblygreedyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_edge_min(s : BioseqassemblygreedyEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyEdge::min(self : BioseqassemblygreedyEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_edge_max(s : BioseqassemblygreedyEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyEdge::max(self : BioseqassemblygreedyEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_edge_to_string(s : BioseqassemblygreedyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyEdge::to_string(self : BioseqassemblygreedyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedyPath {
@@ -606,45 +606,45 @@ pub fn bio_seq_assembly_greedy_path_make(size : Int) -> BioseqassemblygreedyPath
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_path_len(s : BioseqassemblygreedyPath) -> Int { s.size }
+pub fn BioseqassemblygreedyPath::len(self : BioseqassemblygreedyPath) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_path_get(s : BioseqassemblygreedyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyPath::get(self : BioseqassemblygreedyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_path_set(s : BioseqassemblygreedyPath, i : Int, v : Double) -> BioseqassemblygreedyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyPath::set(self : BioseqassemblygreedyPath, i : Int, v : Double) -> BioseqassemblygreedyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_path_sum(s : BioseqassemblygreedyPath) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyPath::sum(self : BioseqassemblygreedyPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_path_mean(s : BioseqassemblygreedyPath) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyPath::mean(self : BioseqassemblygreedyPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_path_scale(s : BioseqassemblygreedyPath, f : Double) -> BioseqassemblygreedyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyPath::scale(self : BioseqassemblygreedyPath, f : Double) -> BioseqassemblygreedyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_path_add(a : BioseqassemblygreedyPath, b : BioseqassemblygreedyPath) -> BioseqassemblygreedyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyPath::add(self : BioseqassemblygreedyPath, other : BioseqassemblygreedyPath) -> BioseqassemblygreedyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_path_copy(s : BioseqassemblygreedyPath) -> BioseqassemblygreedyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyPath::copy(self : BioseqassemblygreedyPath) -> BioseqassemblygreedyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_path_fill(s : BioseqassemblygreedyPath, v : Double) -> BioseqassemblygreedyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyPath::fill(self : BioseqassemblygreedyPath, v : Double) -> BioseqassemblygreedyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_path_min(s : BioseqassemblygreedyPath) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyPath::min(self : BioseqassemblygreedyPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_path_max(s : BioseqassemblygreedyPath) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyPath::max(self : BioseqassemblygreedyPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_path_to_string(s : BioseqassemblygreedyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyPath::to_string(self : BioseqassemblygreedyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedyCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_assembly_greedy_cluster_make(size : Int) -> BioseqassemblygreedyC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_cluster_len(s : BioseqassemblygreedyCluster) -> Int { s.size }
+pub fn BioseqassemblygreedyCluster::len(self : BioseqassemblygreedyCluster) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_cluster_get(s : BioseqassemblygreedyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyCluster::get(self : BioseqassemblygreedyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_cluster_set(s : BioseqassemblygreedyCluster, i : Int, v : Double) -> BioseqassemblygreedyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyCluster::set(self : BioseqassemblygreedyCluster, i : Int, v : Double) -> BioseqassemblygreedyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_cluster_sum(s : BioseqassemblygreedyCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyCluster::sum(self : BioseqassemblygreedyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_cluster_mean(s : BioseqassemblygreedyCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyCluster::mean(self : BioseqassemblygreedyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_cluster_scale(s : BioseqassemblygreedyCluster, f : Double) -> BioseqassemblygreedyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyCluster::scale(self : BioseqassemblygreedyCluster, f : Double) -> BioseqassemblygreedyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_cluster_add(a : BioseqassemblygreedyCluster, b : BioseqassemblygreedyCluster) -> BioseqassemblygreedyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyCluster::add(self : BioseqassemblygreedyCluster, other : BioseqassemblygreedyCluster) -> BioseqassemblygreedyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_cluster_copy(s : BioseqassemblygreedyCluster) -> BioseqassemblygreedyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyCluster::copy(self : BioseqassemblygreedyCluster) -> BioseqassemblygreedyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_cluster_fill(s : BioseqassemblygreedyCluster, v : Double) -> BioseqassemblygreedyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyCluster::fill(self : BioseqassemblygreedyCluster, v : Double) -> BioseqassemblygreedyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_cluster_min(s : BioseqassemblygreedyCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyCluster::min(self : BioseqassemblygreedyCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_cluster_max(s : BioseqassemblygreedyCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyCluster::max(self : BioseqassemblygreedyCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_cluster_to_string(s : BioseqassemblygreedyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyCluster::to_string(self : BioseqassemblygreedyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedyModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_assembly_greedy_model_make(size : Int) -> BioseqassemblygreedyMod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_model_len(s : BioseqassemblygreedyModel) -> Int { s.size }
+pub fn BioseqassemblygreedyModel::len(self : BioseqassemblygreedyModel) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_model_get(s : BioseqassemblygreedyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyModel::get(self : BioseqassemblygreedyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_model_set(s : BioseqassemblygreedyModel, i : Int, v : Double) -> BioseqassemblygreedyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyModel::set(self : BioseqassemblygreedyModel, i : Int, v : Double) -> BioseqassemblygreedyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_model_sum(s : BioseqassemblygreedyModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyModel::sum(self : BioseqassemblygreedyModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_model_mean(s : BioseqassemblygreedyModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyModel::mean(self : BioseqassemblygreedyModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_model_scale(s : BioseqassemblygreedyModel, f : Double) -> BioseqassemblygreedyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyModel::scale(self : BioseqassemblygreedyModel, f : Double) -> BioseqassemblygreedyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_model_add(a : BioseqassemblygreedyModel, b : BioseqassemblygreedyModel) -> BioseqassemblygreedyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyModel::add(self : BioseqassemblygreedyModel, other : BioseqassemblygreedyModel) -> BioseqassemblygreedyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_model_copy(s : BioseqassemblygreedyModel) -> BioseqassemblygreedyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyModel::copy(self : BioseqassemblygreedyModel) -> BioseqassemblygreedyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_model_fill(s : BioseqassemblygreedyModel, v : Double) -> BioseqassemblygreedyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyModel::fill(self : BioseqassemblygreedyModel, v : Double) -> BioseqassemblygreedyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_model_min(s : BioseqassemblygreedyModel) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyModel::min(self : BioseqassemblygreedyModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_model_max(s : BioseqassemblygreedyModel) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyModel::max(self : BioseqassemblygreedyModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_model_to_string(s : BioseqassemblygreedyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyModel::to_string(self : BioseqassemblygreedyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedyLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_assembly_greedy_layer_make(size : Int) -> BioseqassemblygreedyLay
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_layer_len(s : BioseqassemblygreedyLayer) -> Int { s.size }
+pub fn BioseqassemblygreedyLayer::len(self : BioseqassemblygreedyLayer) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_layer_get(s : BioseqassemblygreedyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyLayer::get(self : BioseqassemblygreedyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_layer_set(s : BioseqassemblygreedyLayer, i : Int, v : Double) -> BioseqassemblygreedyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyLayer::set(self : BioseqassemblygreedyLayer, i : Int, v : Double) -> BioseqassemblygreedyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_layer_sum(s : BioseqassemblygreedyLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyLayer::sum(self : BioseqassemblygreedyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_layer_mean(s : BioseqassemblygreedyLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyLayer::mean(self : BioseqassemblygreedyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_layer_scale(s : BioseqassemblygreedyLayer, f : Double) -> BioseqassemblygreedyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyLayer::scale(self : BioseqassemblygreedyLayer, f : Double) -> BioseqassemblygreedyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_layer_add(a : BioseqassemblygreedyLayer, b : BioseqassemblygreedyLayer) -> BioseqassemblygreedyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyLayer::add(self : BioseqassemblygreedyLayer, other : BioseqassemblygreedyLayer) -> BioseqassemblygreedyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_layer_copy(s : BioseqassemblygreedyLayer) -> BioseqassemblygreedyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyLayer::copy(self : BioseqassemblygreedyLayer) -> BioseqassemblygreedyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_layer_fill(s : BioseqassemblygreedyLayer, v : Double) -> BioseqassemblygreedyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyLayer::fill(self : BioseqassemblygreedyLayer, v : Double) -> BioseqassemblygreedyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_layer_min(s : BioseqassemblygreedyLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyLayer::min(self : BioseqassemblygreedyLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_layer_max(s : BioseqassemblygreedyLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyLayer::max(self : BioseqassemblygreedyLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_layer_to_string(s : BioseqassemblygreedyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyLayer::to_string(self : BioseqassemblygreedyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedyBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_assembly_greedy_buffer_make(size : Int) -> BioseqassemblygreedyBu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_buffer_len(s : BioseqassemblygreedyBuffer) -> Int { s.size }
+pub fn BioseqassemblygreedyBuffer::len(self : BioseqassemblygreedyBuffer) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_buffer_get(s : BioseqassemblygreedyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyBuffer::get(self : BioseqassemblygreedyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_buffer_set(s : BioseqassemblygreedyBuffer, i : Int, v : Double) -> BioseqassemblygreedyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyBuffer::set(self : BioseqassemblygreedyBuffer, i : Int, v : Double) -> BioseqassemblygreedyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_buffer_sum(s : BioseqassemblygreedyBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyBuffer::sum(self : BioseqassemblygreedyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_buffer_mean(s : BioseqassemblygreedyBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyBuffer::mean(self : BioseqassemblygreedyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_buffer_scale(s : BioseqassemblygreedyBuffer, f : Double) -> BioseqassemblygreedyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyBuffer::scale(self : BioseqassemblygreedyBuffer, f : Double) -> BioseqassemblygreedyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_buffer_add(a : BioseqassemblygreedyBuffer, b : BioseqassemblygreedyBuffer) -> BioseqassemblygreedyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyBuffer::add(self : BioseqassemblygreedyBuffer, other : BioseqassemblygreedyBuffer) -> BioseqassemblygreedyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_buffer_copy(s : BioseqassemblygreedyBuffer) -> BioseqassemblygreedyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyBuffer::copy(self : BioseqassemblygreedyBuffer) -> BioseqassemblygreedyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_buffer_fill(s : BioseqassemblygreedyBuffer, v : Double) -> BioseqassemblygreedyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyBuffer::fill(self : BioseqassemblygreedyBuffer, v : Double) -> BioseqassemblygreedyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_buffer_min(s : BioseqassemblygreedyBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyBuffer::min(self : BioseqassemblygreedyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_buffer_max(s : BioseqassemblygreedyBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyBuffer::max(self : BioseqassemblygreedyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_buffer_to_string(s : BioseqassemblygreedyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyBuffer::to_string(self : BioseqassemblygreedyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedyCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_assembly_greedy_cursor_make(size : Int) -> BioseqassemblygreedyCu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_cursor_len(s : BioseqassemblygreedyCursor) -> Int { s.size }
+pub fn BioseqassemblygreedyCursor::len(self : BioseqassemblygreedyCursor) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_cursor_get(s : BioseqassemblygreedyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyCursor::get(self : BioseqassemblygreedyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_cursor_set(s : BioseqassemblygreedyCursor, i : Int, v : Double) -> BioseqassemblygreedyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyCursor::set(self : BioseqassemblygreedyCursor, i : Int, v : Double) -> BioseqassemblygreedyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_cursor_sum(s : BioseqassemblygreedyCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyCursor::sum(self : BioseqassemblygreedyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_cursor_mean(s : BioseqassemblygreedyCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyCursor::mean(self : BioseqassemblygreedyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_cursor_scale(s : BioseqassemblygreedyCursor, f : Double) -> BioseqassemblygreedyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyCursor::scale(self : BioseqassemblygreedyCursor, f : Double) -> BioseqassemblygreedyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_cursor_add(a : BioseqassemblygreedyCursor, b : BioseqassemblygreedyCursor) -> BioseqassemblygreedyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyCursor::add(self : BioseqassemblygreedyCursor, other : BioseqassemblygreedyCursor) -> BioseqassemblygreedyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_cursor_copy(s : BioseqassemblygreedyCursor) -> BioseqassemblygreedyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyCursor::copy(self : BioseqassemblygreedyCursor) -> BioseqassemblygreedyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_cursor_fill(s : BioseqassemblygreedyCursor, v : Double) -> BioseqassemblygreedyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyCursor::fill(self : BioseqassemblygreedyCursor, v : Double) -> BioseqassemblygreedyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_cursor_min(s : BioseqassemblygreedyCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyCursor::min(self : BioseqassemblygreedyCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_cursor_max(s : BioseqassemblygreedyCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyCursor::max(self : BioseqassemblygreedyCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_cursor_to_string(s : BioseqassemblygreedyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyCursor::to_string(self : BioseqassemblygreedyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedyView {
@@ -912,45 +912,45 @@ pub fn bio_seq_assembly_greedy_view_make(size : Int) -> BioseqassemblygreedyView
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_view_len(s : BioseqassemblygreedyView) -> Int { s.size }
+pub fn BioseqassemblygreedyView::len(self : BioseqassemblygreedyView) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_view_get(s : BioseqassemblygreedyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyView::get(self : BioseqassemblygreedyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_view_set(s : BioseqassemblygreedyView, i : Int, v : Double) -> BioseqassemblygreedyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyView::set(self : BioseqassemblygreedyView, i : Int, v : Double) -> BioseqassemblygreedyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_view_sum(s : BioseqassemblygreedyView) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyView::sum(self : BioseqassemblygreedyView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_view_mean(s : BioseqassemblygreedyView) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyView::mean(self : BioseqassemblygreedyView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_view_scale(s : BioseqassemblygreedyView, f : Double) -> BioseqassemblygreedyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyView::scale(self : BioseqassemblygreedyView, f : Double) -> BioseqassemblygreedyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_view_add(a : BioseqassemblygreedyView, b : BioseqassemblygreedyView) -> BioseqassemblygreedyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyView::add(self : BioseqassemblygreedyView, other : BioseqassemblygreedyView) -> BioseqassemblygreedyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_view_copy(s : BioseqassemblygreedyView) -> BioseqassemblygreedyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyView::copy(self : BioseqassemblygreedyView) -> BioseqassemblygreedyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_view_fill(s : BioseqassemblygreedyView, v : Double) -> BioseqassemblygreedyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyView::fill(self : BioseqassemblygreedyView, v : Double) -> BioseqassemblygreedyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_view_min(s : BioseqassemblygreedyView) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyView::min(self : BioseqassemblygreedyView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_view_max(s : BioseqassemblygreedyView) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyView::max(self : BioseqassemblygreedyView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_view_to_string(s : BioseqassemblygreedyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyView::to_string(self : BioseqassemblygreedyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedyRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_assembly_greedy_range_make(size : Int) -> BioseqassemblygreedyRan
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_range_len(s : BioseqassemblygreedyRange) -> Int { s.size }
+pub fn BioseqassemblygreedyRange::len(self : BioseqassemblygreedyRange) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_range_get(s : BioseqassemblygreedyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedyRange::get(self : BioseqassemblygreedyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_range_set(s : BioseqassemblygreedyRange, i : Int, v : Double) -> BioseqassemblygreedyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyRange::set(self : BioseqassemblygreedyRange, i : Int, v : Double) -> BioseqassemblygreedyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_range_sum(s : BioseqassemblygreedyRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedyRange::sum(self : BioseqassemblygreedyRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_range_mean(s : BioseqassemblygreedyRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedyRange::mean(self : BioseqassemblygreedyRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_range_scale(s : BioseqassemblygreedyRange, f : Double) -> BioseqassemblygreedyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyRange::scale(self : BioseqassemblygreedyRange, f : Double) -> BioseqassemblygreedyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_range_add(a : BioseqassemblygreedyRange, b : BioseqassemblygreedyRange) -> BioseqassemblygreedyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedyRange::add(self : BioseqassemblygreedyRange, other : BioseqassemblygreedyRange) -> BioseqassemblygreedyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_range_copy(s : BioseqassemblygreedyRange) -> BioseqassemblygreedyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyRange::copy(self : BioseqassemblygreedyRange) -> BioseqassemblygreedyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_range_fill(s : BioseqassemblygreedyRange, v : Double) -> BioseqassemblygreedyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedyRange::fill(self : BioseqassemblygreedyRange, v : Double) -> BioseqassemblygreedyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_range_min(s : BioseqassemblygreedyRange) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedyRange::min(self : BioseqassemblygreedyRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_range_max(s : BioseqassemblygreedyRange) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedyRange::max(self : BioseqassemblygreedyRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_range_to_string(s : BioseqassemblygreedyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedyRange::to_string(self : BioseqassemblygreedyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblygreedySlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_assembly_greedy_slice_make(size : Int) -> BioseqassemblygreedySli
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_greedy_slice_len(s : BioseqassemblygreedySlice) -> Int { s.size }
+pub fn BioseqassemblygreedySlice::len(self : BioseqassemblygreedySlice) -> Int { self.size }
 
-pub fn bio_seq_assembly_greedy_slice_get(s : BioseqassemblygreedySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblygreedySlice::get(self : BioseqassemblygreedySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_greedy_slice_set(s : BioseqassemblygreedySlice, i : Int, v : Double) -> BioseqassemblygreedySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedySlice::set(self : BioseqassemblygreedySlice, i : Int, v : Double) -> BioseqassemblygreedySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_slice_sum(s : BioseqassemblygreedySlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblygreedySlice::sum(self : BioseqassemblygreedySlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_greedy_slice_mean(s : BioseqassemblygreedySlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblygreedySlice::mean(self : BioseqassemblygreedySlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_greedy_slice_scale(s : BioseqassemblygreedySlice, f : Double) -> BioseqassemblygreedySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedySlice::scale(self : BioseqassemblygreedySlice, f : Double) -> BioseqassemblygreedySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_slice_add(a : BioseqassemblygreedySlice, b : BioseqassemblygreedySlice) -> BioseqassemblygreedySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblygreedySlice::add(self : BioseqassemblygreedySlice, other : BioseqassemblygreedySlice) -> BioseqassemblygreedySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_slice_copy(s : BioseqassemblygreedySlice) -> BioseqassemblygreedySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedySlice::copy(self : BioseqassemblygreedySlice) -> BioseqassemblygreedySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_slice_fill(s : BioseqassemblygreedySlice, v : Double) -> BioseqassemblygreedySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblygreedySlice::fill(self : BioseqassemblygreedySlice, v : Double) -> BioseqassemblygreedySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_greedy_slice_min(s : BioseqassemblygreedySlice) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblygreedySlice::min(self : BioseqassemblygreedySlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_greedy_slice_max(s : BioseqassemblygreedySlice) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblygreedySlice::max(self : BioseqassemblygreedySlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_greedy_slice_to_string(s : BioseqassemblygreedySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblygreedySlice::to_string(self : BioseqassemblygreedySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

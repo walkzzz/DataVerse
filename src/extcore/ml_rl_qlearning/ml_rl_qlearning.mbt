@@ -351,45 +351,45 @@ pub fn ml_rl_qlearning_frame_make(size : Int) -> MlrlqlearningFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_frame_len(s : MlrlqlearningFrame) -> Int { s.size }
+pub fn MlrlqlearningFrame::len(self : MlrlqlearningFrame) -> Int { self.size }
 
-pub fn ml_rl_qlearning_frame_get(s : MlrlqlearningFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningFrame::get(self : MlrlqlearningFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_frame_set(s : MlrlqlearningFrame, i : Int, v : Double) -> MlrlqlearningFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningFrame::set(self : MlrlqlearningFrame, i : Int, v : Double) -> MlrlqlearningFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_frame_sum(s : MlrlqlearningFrame) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningFrame::sum(self : MlrlqlearningFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_frame_mean(s : MlrlqlearningFrame) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningFrame::mean(self : MlrlqlearningFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_frame_scale(s : MlrlqlearningFrame, f : Double) -> MlrlqlearningFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningFrame::scale(self : MlrlqlearningFrame, f : Double) -> MlrlqlearningFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_frame_add(a : MlrlqlearningFrame, b : MlrlqlearningFrame) -> MlrlqlearningFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningFrame::add(self : MlrlqlearningFrame, other : MlrlqlearningFrame) -> MlrlqlearningFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_frame_copy(s : MlrlqlearningFrame) -> MlrlqlearningFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningFrame::copy(self : MlrlqlearningFrame) -> MlrlqlearningFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_frame_fill(s : MlrlqlearningFrame, v : Double) -> MlrlqlearningFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningFrame::fill(self : MlrlqlearningFrame, v : Double) -> MlrlqlearningFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_frame_min(s : MlrlqlearningFrame) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningFrame::min(self : MlrlqlearningFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_frame_max(s : MlrlqlearningFrame) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningFrame::max(self : MlrlqlearningFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_frame_to_string(s : MlrlqlearningFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningFrame::to_string(self : MlrlqlearningFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningTable {
@@ -402,45 +402,45 @@ pub fn ml_rl_qlearning_table_make(size : Int) -> MlrlqlearningTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_table_len(s : MlrlqlearningTable) -> Int { s.size }
+pub fn MlrlqlearningTable::len(self : MlrlqlearningTable) -> Int { self.size }
 
-pub fn ml_rl_qlearning_table_get(s : MlrlqlearningTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningTable::get(self : MlrlqlearningTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_table_set(s : MlrlqlearningTable, i : Int, v : Double) -> MlrlqlearningTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningTable::set(self : MlrlqlearningTable, i : Int, v : Double) -> MlrlqlearningTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_table_sum(s : MlrlqlearningTable) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningTable::sum(self : MlrlqlearningTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_table_mean(s : MlrlqlearningTable) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningTable::mean(self : MlrlqlearningTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_table_scale(s : MlrlqlearningTable, f : Double) -> MlrlqlearningTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningTable::scale(self : MlrlqlearningTable, f : Double) -> MlrlqlearningTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_table_add(a : MlrlqlearningTable, b : MlrlqlearningTable) -> MlrlqlearningTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningTable::add(self : MlrlqlearningTable, other : MlrlqlearningTable) -> MlrlqlearningTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_table_copy(s : MlrlqlearningTable) -> MlrlqlearningTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningTable::copy(self : MlrlqlearningTable) -> MlrlqlearningTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_table_fill(s : MlrlqlearningTable, v : Double) -> MlrlqlearningTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningTable::fill(self : MlrlqlearningTable, v : Double) -> MlrlqlearningTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_table_min(s : MlrlqlearningTable) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningTable::min(self : MlrlqlearningTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_table_max(s : MlrlqlearningTable) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningTable::max(self : MlrlqlearningTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_table_to_string(s : MlrlqlearningTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningTable::to_string(self : MlrlqlearningTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningGraphN {
@@ -453,45 +453,45 @@ pub fn ml_rl_qlearning_graphn_make(size : Int) -> MlrlqlearningGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_graphn_len(s : MlrlqlearningGraphN) -> Int { s.size }
+pub fn MlrlqlearningGraphN::len(self : MlrlqlearningGraphN) -> Int { self.size }
 
-pub fn ml_rl_qlearning_graphn_get(s : MlrlqlearningGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningGraphN::get(self : MlrlqlearningGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_graphn_set(s : MlrlqlearningGraphN, i : Int, v : Double) -> MlrlqlearningGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningGraphN::set(self : MlrlqlearningGraphN, i : Int, v : Double) -> MlrlqlearningGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_graphn_sum(s : MlrlqlearningGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningGraphN::sum(self : MlrlqlearningGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_graphn_mean(s : MlrlqlearningGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningGraphN::mean(self : MlrlqlearningGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_graphn_scale(s : MlrlqlearningGraphN, f : Double) -> MlrlqlearningGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningGraphN::scale(self : MlrlqlearningGraphN, f : Double) -> MlrlqlearningGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_graphn_add(a : MlrlqlearningGraphN, b : MlrlqlearningGraphN) -> MlrlqlearningGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningGraphN::add(self : MlrlqlearningGraphN, other : MlrlqlearningGraphN) -> MlrlqlearningGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_graphn_copy(s : MlrlqlearningGraphN) -> MlrlqlearningGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningGraphN::copy(self : MlrlqlearningGraphN) -> MlrlqlearningGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_graphn_fill(s : MlrlqlearningGraphN, v : Double) -> MlrlqlearningGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningGraphN::fill(self : MlrlqlearningGraphN, v : Double) -> MlrlqlearningGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_graphn_min(s : MlrlqlearningGraphN) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningGraphN::min(self : MlrlqlearningGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_graphn_max(s : MlrlqlearningGraphN) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningGraphN::max(self : MlrlqlearningGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_graphn_to_string(s : MlrlqlearningGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningGraphN::to_string(self : MlrlqlearningGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningNode {
@@ -504,45 +504,45 @@ pub fn ml_rl_qlearning_node_make(size : Int) -> MlrlqlearningNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_node_len(s : MlrlqlearningNode) -> Int { s.size }
+pub fn MlrlqlearningNode::len(self : MlrlqlearningNode) -> Int { self.size }
 
-pub fn ml_rl_qlearning_node_get(s : MlrlqlearningNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningNode::get(self : MlrlqlearningNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_node_set(s : MlrlqlearningNode, i : Int, v : Double) -> MlrlqlearningNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningNode::set(self : MlrlqlearningNode, i : Int, v : Double) -> MlrlqlearningNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_node_sum(s : MlrlqlearningNode) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningNode::sum(self : MlrlqlearningNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_node_mean(s : MlrlqlearningNode) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningNode::mean(self : MlrlqlearningNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_node_scale(s : MlrlqlearningNode, f : Double) -> MlrlqlearningNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningNode::scale(self : MlrlqlearningNode, f : Double) -> MlrlqlearningNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_node_add(a : MlrlqlearningNode, b : MlrlqlearningNode) -> MlrlqlearningNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningNode::add(self : MlrlqlearningNode, other : MlrlqlearningNode) -> MlrlqlearningNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_node_copy(s : MlrlqlearningNode) -> MlrlqlearningNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningNode::copy(self : MlrlqlearningNode) -> MlrlqlearningNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_node_fill(s : MlrlqlearningNode, v : Double) -> MlrlqlearningNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningNode::fill(self : MlrlqlearningNode, v : Double) -> MlrlqlearningNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_node_min(s : MlrlqlearningNode) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningNode::min(self : MlrlqlearningNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_node_max(s : MlrlqlearningNode) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningNode::max(self : MlrlqlearningNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_node_to_string(s : MlrlqlearningNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningNode::to_string(self : MlrlqlearningNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningEdge {
@@ -555,45 +555,45 @@ pub fn ml_rl_qlearning_edge_make(size : Int) -> MlrlqlearningEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_edge_len(s : MlrlqlearningEdge) -> Int { s.size }
+pub fn MlrlqlearningEdge::len(self : MlrlqlearningEdge) -> Int { self.size }
 
-pub fn ml_rl_qlearning_edge_get(s : MlrlqlearningEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningEdge::get(self : MlrlqlearningEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_edge_set(s : MlrlqlearningEdge, i : Int, v : Double) -> MlrlqlearningEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningEdge::set(self : MlrlqlearningEdge, i : Int, v : Double) -> MlrlqlearningEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_edge_sum(s : MlrlqlearningEdge) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningEdge::sum(self : MlrlqlearningEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_edge_mean(s : MlrlqlearningEdge) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningEdge::mean(self : MlrlqlearningEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_edge_scale(s : MlrlqlearningEdge, f : Double) -> MlrlqlearningEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningEdge::scale(self : MlrlqlearningEdge, f : Double) -> MlrlqlearningEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_edge_add(a : MlrlqlearningEdge, b : MlrlqlearningEdge) -> MlrlqlearningEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningEdge::add(self : MlrlqlearningEdge, other : MlrlqlearningEdge) -> MlrlqlearningEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_edge_copy(s : MlrlqlearningEdge) -> MlrlqlearningEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningEdge::copy(self : MlrlqlearningEdge) -> MlrlqlearningEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_edge_fill(s : MlrlqlearningEdge, v : Double) -> MlrlqlearningEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningEdge::fill(self : MlrlqlearningEdge, v : Double) -> MlrlqlearningEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_edge_min(s : MlrlqlearningEdge) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningEdge::min(self : MlrlqlearningEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_edge_max(s : MlrlqlearningEdge) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningEdge::max(self : MlrlqlearningEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_edge_to_string(s : MlrlqlearningEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningEdge::to_string(self : MlrlqlearningEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningPath {
@@ -606,45 +606,45 @@ pub fn ml_rl_qlearning_path_make(size : Int) -> MlrlqlearningPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_path_len(s : MlrlqlearningPath) -> Int { s.size }
+pub fn MlrlqlearningPath::len(self : MlrlqlearningPath) -> Int { self.size }
 
-pub fn ml_rl_qlearning_path_get(s : MlrlqlearningPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningPath::get(self : MlrlqlearningPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_path_set(s : MlrlqlearningPath, i : Int, v : Double) -> MlrlqlearningPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningPath::set(self : MlrlqlearningPath, i : Int, v : Double) -> MlrlqlearningPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_path_sum(s : MlrlqlearningPath) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningPath::sum(self : MlrlqlearningPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_path_mean(s : MlrlqlearningPath) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningPath::mean(self : MlrlqlearningPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_path_scale(s : MlrlqlearningPath, f : Double) -> MlrlqlearningPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningPath::scale(self : MlrlqlearningPath, f : Double) -> MlrlqlearningPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_path_add(a : MlrlqlearningPath, b : MlrlqlearningPath) -> MlrlqlearningPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningPath::add(self : MlrlqlearningPath, other : MlrlqlearningPath) -> MlrlqlearningPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_path_copy(s : MlrlqlearningPath) -> MlrlqlearningPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningPath::copy(self : MlrlqlearningPath) -> MlrlqlearningPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_path_fill(s : MlrlqlearningPath, v : Double) -> MlrlqlearningPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningPath::fill(self : MlrlqlearningPath, v : Double) -> MlrlqlearningPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_path_min(s : MlrlqlearningPath) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningPath::min(self : MlrlqlearningPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_path_max(s : MlrlqlearningPath) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningPath::max(self : MlrlqlearningPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_path_to_string(s : MlrlqlearningPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningPath::to_string(self : MlrlqlearningPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningCluster {
@@ -657,45 +657,45 @@ pub fn ml_rl_qlearning_cluster_make(size : Int) -> MlrlqlearningCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_cluster_len(s : MlrlqlearningCluster) -> Int { s.size }
+pub fn MlrlqlearningCluster::len(self : MlrlqlearningCluster) -> Int { self.size }
 
-pub fn ml_rl_qlearning_cluster_get(s : MlrlqlearningCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningCluster::get(self : MlrlqlearningCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_cluster_set(s : MlrlqlearningCluster, i : Int, v : Double) -> MlrlqlearningCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningCluster::set(self : MlrlqlearningCluster, i : Int, v : Double) -> MlrlqlearningCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_cluster_sum(s : MlrlqlearningCluster) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningCluster::sum(self : MlrlqlearningCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_cluster_mean(s : MlrlqlearningCluster) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningCluster::mean(self : MlrlqlearningCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_cluster_scale(s : MlrlqlearningCluster, f : Double) -> MlrlqlearningCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningCluster::scale(self : MlrlqlearningCluster, f : Double) -> MlrlqlearningCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_cluster_add(a : MlrlqlearningCluster, b : MlrlqlearningCluster) -> MlrlqlearningCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningCluster::add(self : MlrlqlearningCluster, other : MlrlqlearningCluster) -> MlrlqlearningCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_cluster_copy(s : MlrlqlearningCluster) -> MlrlqlearningCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningCluster::copy(self : MlrlqlearningCluster) -> MlrlqlearningCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_cluster_fill(s : MlrlqlearningCluster, v : Double) -> MlrlqlearningCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningCluster::fill(self : MlrlqlearningCluster, v : Double) -> MlrlqlearningCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_cluster_min(s : MlrlqlearningCluster) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningCluster::min(self : MlrlqlearningCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_cluster_max(s : MlrlqlearningCluster) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningCluster::max(self : MlrlqlearningCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_cluster_to_string(s : MlrlqlearningCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningCluster::to_string(self : MlrlqlearningCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningModel {
@@ -708,45 +708,45 @@ pub fn ml_rl_qlearning_model_make(size : Int) -> MlrlqlearningModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_model_len(s : MlrlqlearningModel) -> Int { s.size }
+pub fn MlrlqlearningModel::len(self : MlrlqlearningModel) -> Int { self.size }
 
-pub fn ml_rl_qlearning_model_get(s : MlrlqlearningModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningModel::get(self : MlrlqlearningModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_model_set(s : MlrlqlearningModel, i : Int, v : Double) -> MlrlqlearningModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningModel::set(self : MlrlqlearningModel, i : Int, v : Double) -> MlrlqlearningModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_model_sum(s : MlrlqlearningModel) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningModel::sum(self : MlrlqlearningModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_model_mean(s : MlrlqlearningModel) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningModel::mean(self : MlrlqlearningModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_model_scale(s : MlrlqlearningModel, f : Double) -> MlrlqlearningModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningModel::scale(self : MlrlqlearningModel, f : Double) -> MlrlqlearningModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_model_add(a : MlrlqlearningModel, b : MlrlqlearningModel) -> MlrlqlearningModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningModel::add(self : MlrlqlearningModel, other : MlrlqlearningModel) -> MlrlqlearningModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_model_copy(s : MlrlqlearningModel) -> MlrlqlearningModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningModel::copy(self : MlrlqlearningModel) -> MlrlqlearningModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_model_fill(s : MlrlqlearningModel, v : Double) -> MlrlqlearningModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningModel::fill(self : MlrlqlearningModel, v : Double) -> MlrlqlearningModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_model_min(s : MlrlqlearningModel) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningModel::min(self : MlrlqlearningModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_model_max(s : MlrlqlearningModel) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningModel::max(self : MlrlqlearningModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_model_to_string(s : MlrlqlearningModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningModel::to_string(self : MlrlqlearningModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningLayer {
@@ -759,45 +759,45 @@ pub fn ml_rl_qlearning_layer_make(size : Int) -> MlrlqlearningLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_layer_len(s : MlrlqlearningLayer) -> Int { s.size }
+pub fn MlrlqlearningLayer::len(self : MlrlqlearningLayer) -> Int { self.size }
 
-pub fn ml_rl_qlearning_layer_get(s : MlrlqlearningLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningLayer::get(self : MlrlqlearningLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_layer_set(s : MlrlqlearningLayer, i : Int, v : Double) -> MlrlqlearningLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningLayer::set(self : MlrlqlearningLayer, i : Int, v : Double) -> MlrlqlearningLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_layer_sum(s : MlrlqlearningLayer) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningLayer::sum(self : MlrlqlearningLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_layer_mean(s : MlrlqlearningLayer) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningLayer::mean(self : MlrlqlearningLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_layer_scale(s : MlrlqlearningLayer, f : Double) -> MlrlqlearningLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningLayer::scale(self : MlrlqlearningLayer, f : Double) -> MlrlqlearningLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_layer_add(a : MlrlqlearningLayer, b : MlrlqlearningLayer) -> MlrlqlearningLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningLayer::add(self : MlrlqlearningLayer, other : MlrlqlearningLayer) -> MlrlqlearningLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_layer_copy(s : MlrlqlearningLayer) -> MlrlqlearningLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningLayer::copy(self : MlrlqlearningLayer) -> MlrlqlearningLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_layer_fill(s : MlrlqlearningLayer, v : Double) -> MlrlqlearningLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningLayer::fill(self : MlrlqlearningLayer, v : Double) -> MlrlqlearningLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_layer_min(s : MlrlqlearningLayer) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningLayer::min(self : MlrlqlearningLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_layer_max(s : MlrlqlearningLayer) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningLayer::max(self : MlrlqlearningLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_layer_to_string(s : MlrlqlearningLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningLayer::to_string(self : MlrlqlearningLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningBuffer {
@@ -810,45 +810,45 @@ pub fn ml_rl_qlearning_buffer_make(size : Int) -> MlrlqlearningBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_buffer_len(s : MlrlqlearningBuffer) -> Int { s.size }
+pub fn MlrlqlearningBuffer::len(self : MlrlqlearningBuffer) -> Int { self.size }
 
-pub fn ml_rl_qlearning_buffer_get(s : MlrlqlearningBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningBuffer::get(self : MlrlqlearningBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_buffer_set(s : MlrlqlearningBuffer, i : Int, v : Double) -> MlrlqlearningBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningBuffer::set(self : MlrlqlearningBuffer, i : Int, v : Double) -> MlrlqlearningBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_buffer_sum(s : MlrlqlearningBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningBuffer::sum(self : MlrlqlearningBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_buffer_mean(s : MlrlqlearningBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningBuffer::mean(self : MlrlqlearningBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_buffer_scale(s : MlrlqlearningBuffer, f : Double) -> MlrlqlearningBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningBuffer::scale(self : MlrlqlearningBuffer, f : Double) -> MlrlqlearningBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_buffer_add(a : MlrlqlearningBuffer, b : MlrlqlearningBuffer) -> MlrlqlearningBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningBuffer::add(self : MlrlqlearningBuffer, other : MlrlqlearningBuffer) -> MlrlqlearningBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_buffer_copy(s : MlrlqlearningBuffer) -> MlrlqlearningBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningBuffer::copy(self : MlrlqlearningBuffer) -> MlrlqlearningBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_buffer_fill(s : MlrlqlearningBuffer, v : Double) -> MlrlqlearningBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningBuffer::fill(self : MlrlqlearningBuffer, v : Double) -> MlrlqlearningBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_buffer_min(s : MlrlqlearningBuffer) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningBuffer::min(self : MlrlqlearningBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_buffer_max(s : MlrlqlearningBuffer) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningBuffer::max(self : MlrlqlearningBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_buffer_to_string(s : MlrlqlearningBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningBuffer::to_string(self : MlrlqlearningBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningCursor {
@@ -861,45 +861,45 @@ pub fn ml_rl_qlearning_cursor_make(size : Int) -> MlrlqlearningCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_cursor_len(s : MlrlqlearningCursor) -> Int { s.size }
+pub fn MlrlqlearningCursor::len(self : MlrlqlearningCursor) -> Int { self.size }
 
-pub fn ml_rl_qlearning_cursor_get(s : MlrlqlearningCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningCursor::get(self : MlrlqlearningCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_cursor_set(s : MlrlqlearningCursor, i : Int, v : Double) -> MlrlqlearningCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningCursor::set(self : MlrlqlearningCursor, i : Int, v : Double) -> MlrlqlearningCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_cursor_sum(s : MlrlqlearningCursor) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningCursor::sum(self : MlrlqlearningCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_cursor_mean(s : MlrlqlearningCursor) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningCursor::mean(self : MlrlqlearningCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_cursor_scale(s : MlrlqlearningCursor, f : Double) -> MlrlqlearningCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningCursor::scale(self : MlrlqlearningCursor, f : Double) -> MlrlqlearningCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_cursor_add(a : MlrlqlearningCursor, b : MlrlqlearningCursor) -> MlrlqlearningCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningCursor::add(self : MlrlqlearningCursor, other : MlrlqlearningCursor) -> MlrlqlearningCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_cursor_copy(s : MlrlqlearningCursor) -> MlrlqlearningCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningCursor::copy(self : MlrlqlearningCursor) -> MlrlqlearningCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_cursor_fill(s : MlrlqlearningCursor, v : Double) -> MlrlqlearningCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningCursor::fill(self : MlrlqlearningCursor, v : Double) -> MlrlqlearningCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_cursor_min(s : MlrlqlearningCursor) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningCursor::min(self : MlrlqlearningCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_cursor_max(s : MlrlqlearningCursor) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningCursor::max(self : MlrlqlearningCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_cursor_to_string(s : MlrlqlearningCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningCursor::to_string(self : MlrlqlearningCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningView {
@@ -912,45 +912,45 @@ pub fn ml_rl_qlearning_view_make(size : Int) -> MlrlqlearningView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_view_len(s : MlrlqlearningView) -> Int { s.size }
+pub fn MlrlqlearningView::len(self : MlrlqlearningView) -> Int { self.size }
 
-pub fn ml_rl_qlearning_view_get(s : MlrlqlearningView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningView::get(self : MlrlqlearningView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_view_set(s : MlrlqlearningView, i : Int, v : Double) -> MlrlqlearningView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningView::set(self : MlrlqlearningView, i : Int, v : Double) -> MlrlqlearningView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_view_sum(s : MlrlqlearningView) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningView::sum(self : MlrlqlearningView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_view_mean(s : MlrlqlearningView) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningView::mean(self : MlrlqlearningView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_view_scale(s : MlrlqlearningView, f : Double) -> MlrlqlearningView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningView::scale(self : MlrlqlearningView, f : Double) -> MlrlqlearningView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_view_add(a : MlrlqlearningView, b : MlrlqlearningView) -> MlrlqlearningView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningView::add(self : MlrlqlearningView, other : MlrlqlearningView) -> MlrlqlearningView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_view_copy(s : MlrlqlearningView) -> MlrlqlearningView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningView::copy(self : MlrlqlearningView) -> MlrlqlearningView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_view_fill(s : MlrlqlearningView, v : Double) -> MlrlqlearningView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningView::fill(self : MlrlqlearningView, v : Double) -> MlrlqlearningView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_view_min(s : MlrlqlearningView) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningView::min(self : MlrlqlearningView) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_view_max(s : MlrlqlearningView) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningView::max(self : MlrlqlearningView) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_view_to_string(s : MlrlqlearningView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningView::to_string(self : MlrlqlearningView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningRange {
@@ -963,45 +963,45 @@ pub fn ml_rl_qlearning_range_make(size : Int) -> MlrlqlearningRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_range_len(s : MlrlqlearningRange) -> Int { s.size }
+pub fn MlrlqlearningRange::len(self : MlrlqlearningRange) -> Int { self.size }
 
-pub fn ml_rl_qlearning_range_get(s : MlrlqlearningRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningRange::get(self : MlrlqlearningRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_range_set(s : MlrlqlearningRange, i : Int, v : Double) -> MlrlqlearningRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningRange::set(self : MlrlqlearningRange, i : Int, v : Double) -> MlrlqlearningRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_range_sum(s : MlrlqlearningRange) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningRange::sum(self : MlrlqlearningRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_range_mean(s : MlrlqlearningRange) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningRange::mean(self : MlrlqlearningRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_range_scale(s : MlrlqlearningRange, f : Double) -> MlrlqlearningRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningRange::scale(self : MlrlqlearningRange, f : Double) -> MlrlqlearningRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_range_add(a : MlrlqlearningRange, b : MlrlqlearningRange) -> MlrlqlearningRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningRange::add(self : MlrlqlearningRange, other : MlrlqlearningRange) -> MlrlqlearningRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_range_copy(s : MlrlqlearningRange) -> MlrlqlearningRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningRange::copy(self : MlrlqlearningRange) -> MlrlqlearningRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_range_fill(s : MlrlqlearningRange, v : Double) -> MlrlqlearningRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningRange::fill(self : MlrlqlearningRange, v : Double) -> MlrlqlearningRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_range_min(s : MlrlqlearningRange) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningRange::min(self : MlrlqlearningRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_range_max(s : MlrlqlearningRange) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningRange::max(self : MlrlqlearningRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_range_to_string(s : MlrlqlearningRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningRange::to_string(self : MlrlqlearningRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlqlearningSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_rl_qlearning_slice_make(size : Int) -> MlrlqlearningSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_qlearning_slice_len(s : MlrlqlearningSlice) -> Int { s.size }
+pub fn MlrlqlearningSlice::len(self : MlrlqlearningSlice) -> Int { self.size }
 
-pub fn ml_rl_qlearning_slice_get(s : MlrlqlearningSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlqlearningSlice::get(self : MlrlqlearningSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_qlearning_slice_set(s : MlrlqlearningSlice, i : Int, v : Double) -> MlrlqlearningSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlqlearningSlice::set(self : MlrlqlearningSlice, i : Int, v : Double) -> MlrlqlearningSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_slice_sum(s : MlrlqlearningSlice) -> Double { @_common.sum(s.data) }
+pub fn MlrlqlearningSlice::sum(self : MlrlqlearningSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_qlearning_slice_mean(s : MlrlqlearningSlice) -> Double { @_common.mean(s.data) }
+pub fn MlrlqlearningSlice::mean(self : MlrlqlearningSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_qlearning_slice_scale(s : MlrlqlearningSlice, f : Double) -> MlrlqlearningSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlqlearningSlice::scale(self : MlrlqlearningSlice, f : Double) -> MlrlqlearningSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_slice_add(a : MlrlqlearningSlice, b : MlrlqlearningSlice) -> MlrlqlearningSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlqlearningSlice::add(self : MlrlqlearningSlice, other : MlrlqlearningSlice) -> MlrlqlearningSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_slice_copy(s : MlrlqlearningSlice) -> MlrlqlearningSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlqlearningSlice::copy(self : MlrlqlearningSlice) -> MlrlqlearningSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_slice_fill(s : MlrlqlearningSlice, v : Double) -> MlrlqlearningSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlqlearningSlice::fill(self : MlrlqlearningSlice, v : Double) -> MlrlqlearningSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_qlearning_slice_min(s : MlrlqlearningSlice) -> Double { @_common.min(s.data) }
+pub fn MlrlqlearningSlice::min(self : MlrlqlearningSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_qlearning_slice_max(s : MlrlqlearningSlice) -> Double { @_common.max(s.data) }
+pub fn MlrlqlearningSlice::max(self : MlrlqlearningSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_qlearning_slice_to_string(s : MlrlqlearningSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlqlearningSlice::to_string(self : MlrlqlearningSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

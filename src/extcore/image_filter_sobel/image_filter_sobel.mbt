@@ -351,45 +351,45 @@ pub fn image_filter_sobel_frame_make(size : Int) -> ImagefiltersobelFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_frame_len(s : ImagefiltersobelFrame) -> Int { s.size }
+pub fn ImagefiltersobelFrame::len(self : ImagefiltersobelFrame) -> Int { self.size }
 
-pub fn image_filter_sobel_frame_get(s : ImagefiltersobelFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelFrame::get(self : ImagefiltersobelFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_frame_set(s : ImagefiltersobelFrame, i : Int, v : Double) -> ImagefiltersobelFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelFrame::set(self : ImagefiltersobelFrame, i : Int, v : Double) -> ImagefiltersobelFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_frame_sum(s : ImagefiltersobelFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelFrame::sum(self : ImagefiltersobelFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_frame_mean(s : ImagefiltersobelFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelFrame::mean(self : ImagefiltersobelFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_frame_scale(s : ImagefiltersobelFrame, f : Double) -> ImagefiltersobelFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelFrame::scale(self : ImagefiltersobelFrame, f : Double) -> ImagefiltersobelFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_frame_add(a : ImagefiltersobelFrame, b : ImagefiltersobelFrame) -> ImagefiltersobelFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelFrame::add(self : ImagefiltersobelFrame, other : ImagefiltersobelFrame) -> ImagefiltersobelFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_frame_copy(s : ImagefiltersobelFrame) -> ImagefiltersobelFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelFrame::copy(self : ImagefiltersobelFrame) -> ImagefiltersobelFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_frame_fill(s : ImagefiltersobelFrame, v : Double) -> ImagefiltersobelFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelFrame::fill(self : ImagefiltersobelFrame, v : Double) -> ImagefiltersobelFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_frame_min(s : ImagefiltersobelFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelFrame::min(self : ImagefiltersobelFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_frame_max(s : ImagefiltersobelFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelFrame::max(self : ImagefiltersobelFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_frame_to_string(s : ImagefiltersobelFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelFrame::to_string(self : ImagefiltersobelFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelTable {
@@ -402,45 +402,45 @@ pub fn image_filter_sobel_table_make(size : Int) -> ImagefiltersobelTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_table_len(s : ImagefiltersobelTable) -> Int { s.size }
+pub fn ImagefiltersobelTable::len(self : ImagefiltersobelTable) -> Int { self.size }
 
-pub fn image_filter_sobel_table_get(s : ImagefiltersobelTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelTable::get(self : ImagefiltersobelTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_table_set(s : ImagefiltersobelTable, i : Int, v : Double) -> ImagefiltersobelTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelTable::set(self : ImagefiltersobelTable, i : Int, v : Double) -> ImagefiltersobelTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_table_sum(s : ImagefiltersobelTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelTable::sum(self : ImagefiltersobelTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_table_mean(s : ImagefiltersobelTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelTable::mean(self : ImagefiltersobelTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_table_scale(s : ImagefiltersobelTable, f : Double) -> ImagefiltersobelTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelTable::scale(self : ImagefiltersobelTable, f : Double) -> ImagefiltersobelTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_table_add(a : ImagefiltersobelTable, b : ImagefiltersobelTable) -> ImagefiltersobelTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelTable::add(self : ImagefiltersobelTable, other : ImagefiltersobelTable) -> ImagefiltersobelTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_table_copy(s : ImagefiltersobelTable) -> ImagefiltersobelTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelTable::copy(self : ImagefiltersobelTable) -> ImagefiltersobelTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_table_fill(s : ImagefiltersobelTable, v : Double) -> ImagefiltersobelTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelTable::fill(self : ImagefiltersobelTable, v : Double) -> ImagefiltersobelTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_table_min(s : ImagefiltersobelTable) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelTable::min(self : ImagefiltersobelTable) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_table_max(s : ImagefiltersobelTable) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelTable::max(self : ImagefiltersobelTable) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_table_to_string(s : ImagefiltersobelTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelTable::to_string(self : ImagefiltersobelTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelGraphN {
@@ -453,45 +453,45 @@ pub fn image_filter_sobel_graphn_make(size : Int) -> ImagefiltersobelGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_graphn_len(s : ImagefiltersobelGraphN) -> Int { s.size }
+pub fn ImagefiltersobelGraphN::len(self : ImagefiltersobelGraphN) -> Int { self.size }
 
-pub fn image_filter_sobel_graphn_get(s : ImagefiltersobelGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelGraphN::get(self : ImagefiltersobelGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_graphn_set(s : ImagefiltersobelGraphN, i : Int, v : Double) -> ImagefiltersobelGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelGraphN::set(self : ImagefiltersobelGraphN, i : Int, v : Double) -> ImagefiltersobelGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_graphn_sum(s : ImagefiltersobelGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelGraphN::sum(self : ImagefiltersobelGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_graphn_mean(s : ImagefiltersobelGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelGraphN::mean(self : ImagefiltersobelGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_graphn_scale(s : ImagefiltersobelGraphN, f : Double) -> ImagefiltersobelGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelGraphN::scale(self : ImagefiltersobelGraphN, f : Double) -> ImagefiltersobelGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_graphn_add(a : ImagefiltersobelGraphN, b : ImagefiltersobelGraphN) -> ImagefiltersobelGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelGraphN::add(self : ImagefiltersobelGraphN, other : ImagefiltersobelGraphN) -> ImagefiltersobelGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_graphn_copy(s : ImagefiltersobelGraphN) -> ImagefiltersobelGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelGraphN::copy(self : ImagefiltersobelGraphN) -> ImagefiltersobelGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_graphn_fill(s : ImagefiltersobelGraphN, v : Double) -> ImagefiltersobelGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelGraphN::fill(self : ImagefiltersobelGraphN, v : Double) -> ImagefiltersobelGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_graphn_min(s : ImagefiltersobelGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelGraphN::min(self : ImagefiltersobelGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_graphn_max(s : ImagefiltersobelGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelGraphN::max(self : ImagefiltersobelGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_graphn_to_string(s : ImagefiltersobelGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelGraphN::to_string(self : ImagefiltersobelGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelNode {
@@ -504,45 +504,45 @@ pub fn image_filter_sobel_node_make(size : Int) -> ImagefiltersobelNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_node_len(s : ImagefiltersobelNode) -> Int { s.size }
+pub fn ImagefiltersobelNode::len(self : ImagefiltersobelNode) -> Int { self.size }
 
-pub fn image_filter_sobel_node_get(s : ImagefiltersobelNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelNode::get(self : ImagefiltersobelNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_node_set(s : ImagefiltersobelNode, i : Int, v : Double) -> ImagefiltersobelNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelNode::set(self : ImagefiltersobelNode, i : Int, v : Double) -> ImagefiltersobelNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_node_sum(s : ImagefiltersobelNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelNode::sum(self : ImagefiltersobelNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_node_mean(s : ImagefiltersobelNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelNode::mean(self : ImagefiltersobelNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_node_scale(s : ImagefiltersobelNode, f : Double) -> ImagefiltersobelNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelNode::scale(self : ImagefiltersobelNode, f : Double) -> ImagefiltersobelNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_node_add(a : ImagefiltersobelNode, b : ImagefiltersobelNode) -> ImagefiltersobelNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelNode::add(self : ImagefiltersobelNode, other : ImagefiltersobelNode) -> ImagefiltersobelNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_node_copy(s : ImagefiltersobelNode) -> ImagefiltersobelNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelNode::copy(self : ImagefiltersobelNode) -> ImagefiltersobelNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_node_fill(s : ImagefiltersobelNode, v : Double) -> ImagefiltersobelNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelNode::fill(self : ImagefiltersobelNode, v : Double) -> ImagefiltersobelNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_node_min(s : ImagefiltersobelNode) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelNode::min(self : ImagefiltersobelNode) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_node_max(s : ImagefiltersobelNode) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelNode::max(self : ImagefiltersobelNode) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_node_to_string(s : ImagefiltersobelNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelNode::to_string(self : ImagefiltersobelNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelEdge {
@@ -555,45 +555,45 @@ pub fn image_filter_sobel_edge_make(size : Int) -> ImagefiltersobelEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_edge_len(s : ImagefiltersobelEdge) -> Int { s.size }
+pub fn ImagefiltersobelEdge::len(self : ImagefiltersobelEdge) -> Int { self.size }
 
-pub fn image_filter_sobel_edge_get(s : ImagefiltersobelEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelEdge::get(self : ImagefiltersobelEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_edge_set(s : ImagefiltersobelEdge, i : Int, v : Double) -> ImagefiltersobelEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelEdge::set(self : ImagefiltersobelEdge, i : Int, v : Double) -> ImagefiltersobelEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_edge_sum(s : ImagefiltersobelEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelEdge::sum(self : ImagefiltersobelEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_edge_mean(s : ImagefiltersobelEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelEdge::mean(self : ImagefiltersobelEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_edge_scale(s : ImagefiltersobelEdge, f : Double) -> ImagefiltersobelEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelEdge::scale(self : ImagefiltersobelEdge, f : Double) -> ImagefiltersobelEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_edge_add(a : ImagefiltersobelEdge, b : ImagefiltersobelEdge) -> ImagefiltersobelEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelEdge::add(self : ImagefiltersobelEdge, other : ImagefiltersobelEdge) -> ImagefiltersobelEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_edge_copy(s : ImagefiltersobelEdge) -> ImagefiltersobelEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelEdge::copy(self : ImagefiltersobelEdge) -> ImagefiltersobelEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_edge_fill(s : ImagefiltersobelEdge, v : Double) -> ImagefiltersobelEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelEdge::fill(self : ImagefiltersobelEdge, v : Double) -> ImagefiltersobelEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_edge_min(s : ImagefiltersobelEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelEdge::min(self : ImagefiltersobelEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_edge_max(s : ImagefiltersobelEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelEdge::max(self : ImagefiltersobelEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_edge_to_string(s : ImagefiltersobelEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelEdge::to_string(self : ImagefiltersobelEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelPath {
@@ -606,45 +606,45 @@ pub fn image_filter_sobel_path_make(size : Int) -> ImagefiltersobelPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_path_len(s : ImagefiltersobelPath) -> Int { s.size }
+pub fn ImagefiltersobelPath::len(self : ImagefiltersobelPath) -> Int { self.size }
 
-pub fn image_filter_sobel_path_get(s : ImagefiltersobelPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelPath::get(self : ImagefiltersobelPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_path_set(s : ImagefiltersobelPath, i : Int, v : Double) -> ImagefiltersobelPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelPath::set(self : ImagefiltersobelPath, i : Int, v : Double) -> ImagefiltersobelPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_path_sum(s : ImagefiltersobelPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelPath::sum(self : ImagefiltersobelPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_path_mean(s : ImagefiltersobelPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelPath::mean(self : ImagefiltersobelPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_path_scale(s : ImagefiltersobelPath, f : Double) -> ImagefiltersobelPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelPath::scale(self : ImagefiltersobelPath, f : Double) -> ImagefiltersobelPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_path_add(a : ImagefiltersobelPath, b : ImagefiltersobelPath) -> ImagefiltersobelPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelPath::add(self : ImagefiltersobelPath, other : ImagefiltersobelPath) -> ImagefiltersobelPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_path_copy(s : ImagefiltersobelPath) -> ImagefiltersobelPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelPath::copy(self : ImagefiltersobelPath) -> ImagefiltersobelPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_path_fill(s : ImagefiltersobelPath, v : Double) -> ImagefiltersobelPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelPath::fill(self : ImagefiltersobelPath, v : Double) -> ImagefiltersobelPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_path_min(s : ImagefiltersobelPath) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelPath::min(self : ImagefiltersobelPath) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_path_max(s : ImagefiltersobelPath) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelPath::max(self : ImagefiltersobelPath) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_path_to_string(s : ImagefiltersobelPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelPath::to_string(self : ImagefiltersobelPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelCluster {
@@ -657,45 +657,45 @@ pub fn image_filter_sobel_cluster_make(size : Int) -> ImagefiltersobelCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_cluster_len(s : ImagefiltersobelCluster) -> Int { s.size }
+pub fn ImagefiltersobelCluster::len(self : ImagefiltersobelCluster) -> Int { self.size }
 
-pub fn image_filter_sobel_cluster_get(s : ImagefiltersobelCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelCluster::get(self : ImagefiltersobelCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_cluster_set(s : ImagefiltersobelCluster, i : Int, v : Double) -> ImagefiltersobelCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelCluster::set(self : ImagefiltersobelCluster, i : Int, v : Double) -> ImagefiltersobelCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_cluster_sum(s : ImagefiltersobelCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelCluster::sum(self : ImagefiltersobelCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_cluster_mean(s : ImagefiltersobelCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelCluster::mean(self : ImagefiltersobelCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_cluster_scale(s : ImagefiltersobelCluster, f : Double) -> ImagefiltersobelCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelCluster::scale(self : ImagefiltersobelCluster, f : Double) -> ImagefiltersobelCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_cluster_add(a : ImagefiltersobelCluster, b : ImagefiltersobelCluster) -> ImagefiltersobelCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelCluster::add(self : ImagefiltersobelCluster, other : ImagefiltersobelCluster) -> ImagefiltersobelCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_cluster_copy(s : ImagefiltersobelCluster) -> ImagefiltersobelCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelCluster::copy(self : ImagefiltersobelCluster) -> ImagefiltersobelCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_cluster_fill(s : ImagefiltersobelCluster, v : Double) -> ImagefiltersobelCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelCluster::fill(self : ImagefiltersobelCluster, v : Double) -> ImagefiltersobelCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_cluster_min(s : ImagefiltersobelCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelCluster::min(self : ImagefiltersobelCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_cluster_max(s : ImagefiltersobelCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelCluster::max(self : ImagefiltersobelCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_cluster_to_string(s : ImagefiltersobelCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelCluster::to_string(self : ImagefiltersobelCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelModel {
@@ -708,45 +708,45 @@ pub fn image_filter_sobel_model_make(size : Int) -> ImagefiltersobelModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_model_len(s : ImagefiltersobelModel) -> Int { s.size }
+pub fn ImagefiltersobelModel::len(self : ImagefiltersobelModel) -> Int { self.size }
 
-pub fn image_filter_sobel_model_get(s : ImagefiltersobelModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelModel::get(self : ImagefiltersobelModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_model_set(s : ImagefiltersobelModel, i : Int, v : Double) -> ImagefiltersobelModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelModel::set(self : ImagefiltersobelModel, i : Int, v : Double) -> ImagefiltersobelModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_model_sum(s : ImagefiltersobelModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelModel::sum(self : ImagefiltersobelModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_model_mean(s : ImagefiltersobelModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelModel::mean(self : ImagefiltersobelModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_model_scale(s : ImagefiltersobelModel, f : Double) -> ImagefiltersobelModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelModel::scale(self : ImagefiltersobelModel, f : Double) -> ImagefiltersobelModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_model_add(a : ImagefiltersobelModel, b : ImagefiltersobelModel) -> ImagefiltersobelModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelModel::add(self : ImagefiltersobelModel, other : ImagefiltersobelModel) -> ImagefiltersobelModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_model_copy(s : ImagefiltersobelModel) -> ImagefiltersobelModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelModel::copy(self : ImagefiltersobelModel) -> ImagefiltersobelModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_model_fill(s : ImagefiltersobelModel, v : Double) -> ImagefiltersobelModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelModel::fill(self : ImagefiltersobelModel, v : Double) -> ImagefiltersobelModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_model_min(s : ImagefiltersobelModel) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelModel::min(self : ImagefiltersobelModel) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_model_max(s : ImagefiltersobelModel) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelModel::max(self : ImagefiltersobelModel) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_model_to_string(s : ImagefiltersobelModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelModel::to_string(self : ImagefiltersobelModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelLayer {
@@ -759,45 +759,45 @@ pub fn image_filter_sobel_layer_make(size : Int) -> ImagefiltersobelLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_layer_len(s : ImagefiltersobelLayer) -> Int { s.size }
+pub fn ImagefiltersobelLayer::len(self : ImagefiltersobelLayer) -> Int { self.size }
 
-pub fn image_filter_sobel_layer_get(s : ImagefiltersobelLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelLayer::get(self : ImagefiltersobelLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_layer_set(s : ImagefiltersobelLayer, i : Int, v : Double) -> ImagefiltersobelLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelLayer::set(self : ImagefiltersobelLayer, i : Int, v : Double) -> ImagefiltersobelLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_layer_sum(s : ImagefiltersobelLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelLayer::sum(self : ImagefiltersobelLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_layer_mean(s : ImagefiltersobelLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelLayer::mean(self : ImagefiltersobelLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_layer_scale(s : ImagefiltersobelLayer, f : Double) -> ImagefiltersobelLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelLayer::scale(self : ImagefiltersobelLayer, f : Double) -> ImagefiltersobelLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_layer_add(a : ImagefiltersobelLayer, b : ImagefiltersobelLayer) -> ImagefiltersobelLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelLayer::add(self : ImagefiltersobelLayer, other : ImagefiltersobelLayer) -> ImagefiltersobelLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_layer_copy(s : ImagefiltersobelLayer) -> ImagefiltersobelLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelLayer::copy(self : ImagefiltersobelLayer) -> ImagefiltersobelLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_layer_fill(s : ImagefiltersobelLayer, v : Double) -> ImagefiltersobelLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelLayer::fill(self : ImagefiltersobelLayer, v : Double) -> ImagefiltersobelLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_layer_min(s : ImagefiltersobelLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelLayer::min(self : ImagefiltersobelLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_layer_max(s : ImagefiltersobelLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelLayer::max(self : ImagefiltersobelLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_layer_to_string(s : ImagefiltersobelLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelLayer::to_string(self : ImagefiltersobelLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelBuffer {
@@ -810,45 +810,45 @@ pub fn image_filter_sobel_buffer_make(size : Int) -> ImagefiltersobelBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_buffer_len(s : ImagefiltersobelBuffer) -> Int { s.size }
+pub fn ImagefiltersobelBuffer::len(self : ImagefiltersobelBuffer) -> Int { self.size }
 
-pub fn image_filter_sobel_buffer_get(s : ImagefiltersobelBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelBuffer::get(self : ImagefiltersobelBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_buffer_set(s : ImagefiltersobelBuffer, i : Int, v : Double) -> ImagefiltersobelBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelBuffer::set(self : ImagefiltersobelBuffer, i : Int, v : Double) -> ImagefiltersobelBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_buffer_sum(s : ImagefiltersobelBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelBuffer::sum(self : ImagefiltersobelBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_buffer_mean(s : ImagefiltersobelBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelBuffer::mean(self : ImagefiltersobelBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_buffer_scale(s : ImagefiltersobelBuffer, f : Double) -> ImagefiltersobelBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelBuffer::scale(self : ImagefiltersobelBuffer, f : Double) -> ImagefiltersobelBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_buffer_add(a : ImagefiltersobelBuffer, b : ImagefiltersobelBuffer) -> ImagefiltersobelBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelBuffer::add(self : ImagefiltersobelBuffer, other : ImagefiltersobelBuffer) -> ImagefiltersobelBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_buffer_copy(s : ImagefiltersobelBuffer) -> ImagefiltersobelBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelBuffer::copy(self : ImagefiltersobelBuffer) -> ImagefiltersobelBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_buffer_fill(s : ImagefiltersobelBuffer, v : Double) -> ImagefiltersobelBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelBuffer::fill(self : ImagefiltersobelBuffer, v : Double) -> ImagefiltersobelBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_buffer_min(s : ImagefiltersobelBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelBuffer::min(self : ImagefiltersobelBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_buffer_max(s : ImagefiltersobelBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelBuffer::max(self : ImagefiltersobelBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_buffer_to_string(s : ImagefiltersobelBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelBuffer::to_string(self : ImagefiltersobelBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelCursor {
@@ -861,45 +861,45 @@ pub fn image_filter_sobel_cursor_make(size : Int) -> ImagefiltersobelCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_cursor_len(s : ImagefiltersobelCursor) -> Int { s.size }
+pub fn ImagefiltersobelCursor::len(self : ImagefiltersobelCursor) -> Int { self.size }
 
-pub fn image_filter_sobel_cursor_get(s : ImagefiltersobelCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelCursor::get(self : ImagefiltersobelCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_cursor_set(s : ImagefiltersobelCursor, i : Int, v : Double) -> ImagefiltersobelCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelCursor::set(self : ImagefiltersobelCursor, i : Int, v : Double) -> ImagefiltersobelCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_cursor_sum(s : ImagefiltersobelCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelCursor::sum(self : ImagefiltersobelCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_cursor_mean(s : ImagefiltersobelCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelCursor::mean(self : ImagefiltersobelCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_cursor_scale(s : ImagefiltersobelCursor, f : Double) -> ImagefiltersobelCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelCursor::scale(self : ImagefiltersobelCursor, f : Double) -> ImagefiltersobelCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_cursor_add(a : ImagefiltersobelCursor, b : ImagefiltersobelCursor) -> ImagefiltersobelCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelCursor::add(self : ImagefiltersobelCursor, other : ImagefiltersobelCursor) -> ImagefiltersobelCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_cursor_copy(s : ImagefiltersobelCursor) -> ImagefiltersobelCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelCursor::copy(self : ImagefiltersobelCursor) -> ImagefiltersobelCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_cursor_fill(s : ImagefiltersobelCursor, v : Double) -> ImagefiltersobelCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelCursor::fill(self : ImagefiltersobelCursor, v : Double) -> ImagefiltersobelCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_cursor_min(s : ImagefiltersobelCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelCursor::min(self : ImagefiltersobelCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_cursor_max(s : ImagefiltersobelCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelCursor::max(self : ImagefiltersobelCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_cursor_to_string(s : ImagefiltersobelCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelCursor::to_string(self : ImagefiltersobelCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelView {
@@ -912,45 +912,45 @@ pub fn image_filter_sobel_view_make(size : Int) -> ImagefiltersobelView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_view_len(s : ImagefiltersobelView) -> Int { s.size }
+pub fn ImagefiltersobelView::len(self : ImagefiltersobelView) -> Int { self.size }
 
-pub fn image_filter_sobel_view_get(s : ImagefiltersobelView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelView::get(self : ImagefiltersobelView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_view_set(s : ImagefiltersobelView, i : Int, v : Double) -> ImagefiltersobelView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelView::set(self : ImagefiltersobelView, i : Int, v : Double) -> ImagefiltersobelView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_view_sum(s : ImagefiltersobelView) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelView::sum(self : ImagefiltersobelView) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_view_mean(s : ImagefiltersobelView) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelView::mean(self : ImagefiltersobelView) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_view_scale(s : ImagefiltersobelView, f : Double) -> ImagefiltersobelView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelView::scale(self : ImagefiltersobelView, f : Double) -> ImagefiltersobelView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_view_add(a : ImagefiltersobelView, b : ImagefiltersobelView) -> ImagefiltersobelView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelView::add(self : ImagefiltersobelView, other : ImagefiltersobelView) -> ImagefiltersobelView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_view_copy(s : ImagefiltersobelView) -> ImagefiltersobelView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelView::copy(self : ImagefiltersobelView) -> ImagefiltersobelView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_view_fill(s : ImagefiltersobelView, v : Double) -> ImagefiltersobelView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelView::fill(self : ImagefiltersobelView, v : Double) -> ImagefiltersobelView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_view_min(s : ImagefiltersobelView) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelView::min(self : ImagefiltersobelView) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_view_max(s : ImagefiltersobelView) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelView::max(self : ImagefiltersobelView) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_view_to_string(s : ImagefiltersobelView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelView::to_string(self : ImagefiltersobelView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelRange {
@@ -963,45 +963,45 @@ pub fn image_filter_sobel_range_make(size : Int) -> ImagefiltersobelRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_range_len(s : ImagefiltersobelRange) -> Int { s.size }
+pub fn ImagefiltersobelRange::len(self : ImagefiltersobelRange) -> Int { self.size }
 
-pub fn image_filter_sobel_range_get(s : ImagefiltersobelRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelRange::get(self : ImagefiltersobelRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_range_set(s : ImagefiltersobelRange, i : Int, v : Double) -> ImagefiltersobelRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelRange::set(self : ImagefiltersobelRange, i : Int, v : Double) -> ImagefiltersobelRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_range_sum(s : ImagefiltersobelRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelRange::sum(self : ImagefiltersobelRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_range_mean(s : ImagefiltersobelRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelRange::mean(self : ImagefiltersobelRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_range_scale(s : ImagefiltersobelRange, f : Double) -> ImagefiltersobelRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelRange::scale(self : ImagefiltersobelRange, f : Double) -> ImagefiltersobelRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_range_add(a : ImagefiltersobelRange, b : ImagefiltersobelRange) -> ImagefiltersobelRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelRange::add(self : ImagefiltersobelRange, other : ImagefiltersobelRange) -> ImagefiltersobelRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_range_copy(s : ImagefiltersobelRange) -> ImagefiltersobelRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelRange::copy(self : ImagefiltersobelRange) -> ImagefiltersobelRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_range_fill(s : ImagefiltersobelRange, v : Double) -> ImagefiltersobelRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelRange::fill(self : ImagefiltersobelRange, v : Double) -> ImagefiltersobelRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_range_min(s : ImagefiltersobelRange) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelRange::min(self : ImagefiltersobelRange) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_range_max(s : ImagefiltersobelRange) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelRange::max(self : ImagefiltersobelRange) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_range_to_string(s : ImagefiltersobelRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelRange::to_string(self : ImagefiltersobelRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelSlice {
@@ -1014,44 +1014,44 @@ pub fn image_filter_sobel_slice_make(size : Int) -> ImagefiltersobelSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_sobel_slice_len(s : ImagefiltersobelSlice) -> Int { s.size }
+pub fn ImagefiltersobelSlice::len(self : ImagefiltersobelSlice) -> Int { self.size }
 
-pub fn image_filter_sobel_slice_get(s : ImagefiltersobelSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltersobelSlice::get(self : ImagefiltersobelSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_sobel_slice_set(s : ImagefiltersobelSlice, i : Int, v : Double) -> ImagefiltersobelSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltersobelSlice::set(self : ImagefiltersobelSlice, i : Int, v : Double) -> ImagefiltersobelSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_slice_sum(s : ImagefiltersobelSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltersobelSlice::sum(self : ImagefiltersobelSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_sobel_slice_mean(s : ImagefiltersobelSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltersobelSlice::mean(self : ImagefiltersobelSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_sobel_slice_scale(s : ImagefiltersobelSlice, f : Double) -> ImagefiltersobelSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelSlice::scale(self : ImagefiltersobelSlice, f : Double) -> ImagefiltersobelSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_slice_add(a : ImagefiltersobelSlice, b : ImagefiltersobelSlice) -> ImagefiltersobelSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltersobelSlice::add(self : ImagefiltersobelSlice, other : ImagefiltersobelSlice) -> ImagefiltersobelSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_sobel_slice_copy(s : ImagefiltersobelSlice) -> ImagefiltersobelSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelSlice::copy(self : ImagefiltersobelSlice) -> ImagefiltersobelSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_slice_fill(s : ImagefiltersobelSlice, v : Double) -> ImagefiltersobelSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltersobelSlice::fill(self : ImagefiltersobelSlice, v : Double) -> ImagefiltersobelSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_sobel_slice_min(s : ImagefiltersobelSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefiltersobelSlice::min(self : ImagefiltersobelSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_sobel_slice_max(s : ImagefiltersobelSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefiltersobelSlice::max(self : ImagefiltersobelSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_sobel_slice_to_string(s : ImagefiltersobelSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltersobelSlice::to_string(self : ImagefiltersobelSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

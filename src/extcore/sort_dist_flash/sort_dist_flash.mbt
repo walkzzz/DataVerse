@@ -351,45 +351,45 @@ pub fn sort_dist_flash_frame_make(size : Int) -> SortdistflashFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_frame_len(s : SortdistflashFrame) -> Int { s.size }
+pub fn SortdistflashFrame::len(self : SortdistflashFrame) -> Int { self.size }
 
-pub fn sort_dist_flash_frame_get(s : SortdistflashFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashFrame::get(self : SortdistflashFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_frame_set(s : SortdistflashFrame, i : Int, v : Double) -> SortdistflashFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashFrame::set(self : SortdistflashFrame, i : Int, v : Double) -> SortdistflashFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_frame_sum(s : SortdistflashFrame) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashFrame::sum(self : SortdistflashFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_frame_mean(s : SortdistflashFrame) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashFrame::mean(self : SortdistflashFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_frame_scale(s : SortdistflashFrame, f : Double) -> SortdistflashFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashFrame::scale(self : SortdistflashFrame, f : Double) -> SortdistflashFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_frame_add(a : SortdistflashFrame, b : SortdistflashFrame) -> SortdistflashFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashFrame::add(self : SortdistflashFrame, other : SortdistflashFrame) -> SortdistflashFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_frame_copy(s : SortdistflashFrame) -> SortdistflashFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashFrame::copy(self : SortdistflashFrame) -> SortdistflashFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_frame_fill(s : SortdistflashFrame, v : Double) -> SortdistflashFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashFrame::fill(self : SortdistflashFrame, v : Double) -> SortdistflashFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_frame_min(s : SortdistflashFrame) -> Double { @_common.min(s.data) }
+pub fn SortdistflashFrame::min(self : SortdistflashFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_frame_max(s : SortdistflashFrame) -> Double { @_common.max(s.data) }
+pub fn SortdistflashFrame::max(self : SortdistflashFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_frame_to_string(s : SortdistflashFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashFrame::to_string(self : SortdistflashFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashTable {
@@ -402,45 +402,45 @@ pub fn sort_dist_flash_table_make(size : Int) -> SortdistflashTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_table_len(s : SortdistflashTable) -> Int { s.size }
+pub fn SortdistflashTable::len(self : SortdistflashTable) -> Int { self.size }
 
-pub fn sort_dist_flash_table_get(s : SortdistflashTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashTable::get(self : SortdistflashTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_table_set(s : SortdistflashTable, i : Int, v : Double) -> SortdistflashTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashTable::set(self : SortdistflashTable, i : Int, v : Double) -> SortdistflashTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_table_sum(s : SortdistflashTable) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashTable::sum(self : SortdistflashTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_table_mean(s : SortdistflashTable) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashTable::mean(self : SortdistflashTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_table_scale(s : SortdistflashTable, f : Double) -> SortdistflashTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashTable::scale(self : SortdistflashTable, f : Double) -> SortdistflashTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_table_add(a : SortdistflashTable, b : SortdistflashTable) -> SortdistflashTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashTable::add(self : SortdistflashTable, other : SortdistflashTable) -> SortdistflashTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_table_copy(s : SortdistflashTable) -> SortdistflashTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashTable::copy(self : SortdistflashTable) -> SortdistflashTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_table_fill(s : SortdistflashTable, v : Double) -> SortdistflashTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashTable::fill(self : SortdistflashTable, v : Double) -> SortdistflashTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_table_min(s : SortdistflashTable) -> Double { @_common.min(s.data) }
+pub fn SortdistflashTable::min(self : SortdistflashTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_table_max(s : SortdistflashTable) -> Double { @_common.max(s.data) }
+pub fn SortdistflashTable::max(self : SortdistflashTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_table_to_string(s : SortdistflashTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashTable::to_string(self : SortdistflashTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashGraphN {
@@ -453,45 +453,45 @@ pub fn sort_dist_flash_graphn_make(size : Int) -> SortdistflashGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_graphn_len(s : SortdistflashGraphN) -> Int { s.size }
+pub fn SortdistflashGraphN::len(self : SortdistflashGraphN) -> Int { self.size }
 
-pub fn sort_dist_flash_graphn_get(s : SortdistflashGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashGraphN::get(self : SortdistflashGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_graphn_set(s : SortdistflashGraphN, i : Int, v : Double) -> SortdistflashGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashGraphN::set(self : SortdistflashGraphN, i : Int, v : Double) -> SortdistflashGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_graphn_sum(s : SortdistflashGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashGraphN::sum(self : SortdistflashGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_graphn_mean(s : SortdistflashGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashGraphN::mean(self : SortdistflashGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_graphn_scale(s : SortdistflashGraphN, f : Double) -> SortdistflashGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashGraphN::scale(self : SortdistflashGraphN, f : Double) -> SortdistflashGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_graphn_add(a : SortdistflashGraphN, b : SortdistflashGraphN) -> SortdistflashGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashGraphN::add(self : SortdistflashGraphN, other : SortdistflashGraphN) -> SortdistflashGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_graphn_copy(s : SortdistflashGraphN) -> SortdistflashGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashGraphN::copy(self : SortdistflashGraphN) -> SortdistflashGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_graphn_fill(s : SortdistflashGraphN, v : Double) -> SortdistflashGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashGraphN::fill(self : SortdistflashGraphN, v : Double) -> SortdistflashGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_graphn_min(s : SortdistflashGraphN) -> Double { @_common.min(s.data) }
+pub fn SortdistflashGraphN::min(self : SortdistflashGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_graphn_max(s : SortdistflashGraphN) -> Double { @_common.max(s.data) }
+pub fn SortdistflashGraphN::max(self : SortdistflashGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_graphn_to_string(s : SortdistflashGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashGraphN::to_string(self : SortdistflashGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashNode {
@@ -504,45 +504,45 @@ pub fn sort_dist_flash_node_make(size : Int) -> SortdistflashNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_node_len(s : SortdistflashNode) -> Int { s.size }
+pub fn SortdistflashNode::len(self : SortdistflashNode) -> Int { self.size }
 
-pub fn sort_dist_flash_node_get(s : SortdistflashNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashNode::get(self : SortdistflashNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_node_set(s : SortdistflashNode, i : Int, v : Double) -> SortdistflashNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashNode::set(self : SortdistflashNode, i : Int, v : Double) -> SortdistflashNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_node_sum(s : SortdistflashNode) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashNode::sum(self : SortdistflashNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_node_mean(s : SortdistflashNode) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashNode::mean(self : SortdistflashNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_node_scale(s : SortdistflashNode, f : Double) -> SortdistflashNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashNode::scale(self : SortdistflashNode, f : Double) -> SortdistflashNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_node_add(a : SortdistflashNode, b : SortdistflashNode) -> SortdistflashNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashNode::add(self : SortdistflashNode, other : SortdistflashNode) -> SortdistflashNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_node_copy(s : SortdistflashNode) -> SortdistflashNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashNode::copy(self : SortdistflashNode) -> SortdistflashNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_node_fill(s : SortdistflashNode, v : Double) -> SortdistflashNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashNode::fill(self : SortdistflashNode, v : Double) -> SortdistflashNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_node_min(s : SortdistflashNode) -> Double { @_common.min(s.data) }
+pub fn SortdistflashNode::min(self : SortdistflashNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_node_max(s : SortdistflashNode) -> Double { @_common.max(s.data) }
+pub fn SortdistflashNode::max(self : SortdistflashNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_node_to_string(s : SortdistflashNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashNode::to_string(self : SortdistflashNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashEdge {
@@ -555,45 +555,45 @@ pub fn sort_dist_flash_edge_make(size : Int) -> SortdistflashEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_edge_len(s : SortdistflashEdge) -> Int { s.size }
+pub fn SortdistflashEdge::len(self : SortdistflashEdge) -> Int { self.size }
 
-pub fn sort_dist_flash_edge_get(s : SortdistflashEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashEdge::get(self : SortdistflashEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_edge_set(s : SortdistflashEdge, i : Int, v : Double) -> SortdistflashEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashEdge::set(self : SortdistflashEdge, i : Int, v : Double) -> SortdistflashEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_edge_sum(s : SortdistflashEdge) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashEdge::sum(self : SortdistflashEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_edge_mean(s : SortdistflashEdge) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashEdge::mean(self : SortdistflashEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_edge_scale(s : SortdistflashEdge, f : Double) -> SortdistflashEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashEdge::scale(self : SortdistflashEdge, f : Double) -> SortdistflashEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_edge_add(a : SortdistflashEdge, b : SortdistflashEdge) -> SortdistflashEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashEdge::add(self : SortdistflashEdge, other : SortdistflashEdge) -> SortdistflashEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_edge_copy(s : SortdistflashEdge) -> SortdistflashEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashEdge::copy(self : SortdistflashEdge) -> SortdistflashEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_edge_fill(s : SortdistflashEdge, v : Double) -> SortdistflashEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashEdge::fill(self : SortdistflashEdge, v : Double) -> SortdistflashEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_edge_min(s : SortdistflashEdge) -> Double { @_common.min(s.data) }
+pub fn SortdistflashEdge::min(self : SortdistflashEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_edge_max(s : SortdistflashEdge) -> Double { @_common.max(s.data) }
+pub fn SortdistflashEdge::max(self : SortdistflashEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_edge_to_string(s : SortdistflashEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashEdge::to_string(self : SortdistflashEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashPath {
@@ -606,45 +606,45 @@ pub fn sort_dist_flash_path_make(size : Int) -> SortdistflashPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_path_len(s : SortdistflashPath) -> Int { s.size }
+pub fn SortdistflashPath::len(self : SortdistflashPath) -> Int { self.size }
 
-pub fn sort_dist_flash_path_get(s : SortdistflashPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashPath::get(self : SortdistflashPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_path_set(s : SortdistflashPath, i : Int, v : Double) -> SortdistflashPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashPath::set(self : SortdistflashPath, i : Int, v : Double) -> SortdistflashPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_path_sum(s : SortdistflashPath) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashPath::sum(self : SortdistflashPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_path_mean(s : SortdistflashPath) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashPath::mean(self : SortdistflashPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_path_scale(s : SortdistflashPath, f : Double) -> SortdistflashPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashPath::scale(self : SortdistflashPath, f : Double) -> SortdistflashPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_path_add(a : SortdistflashPath, b : SortdistflashPath) -> SortdistflashPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashPath::add(self : SortdistflashPath, other : SortdistflashPath) -> SortdistflashPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_path_copy(s : SortdistflashPath) -> SortdistflashPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashPath::copy(self : SortdistflashPath) -> SortdistflashPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_path_fill(s : SortdistflashPath, v : Double) -> SortdistflashPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashPath::fill(self : SortdistflashPath, v : Double) -> SortdistflashPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_path_min(s : SortdistflashPath) -> Double { @_common.min(s.data) }
+pub fn SortdistflashPath::min(self : SortdistflashPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_path_max(s : SortdistflashPath) -> Double { @_common.max(s.data) }
+pub fn SortdistflashPath::max(self : SortdistflashPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_path_to_string(s : SortdistflashPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashPath::to_string(self : SortdistflashPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashCluster {
@@ -657,45 +657,45 @@ pub fn sort_dist_flash_cluster_make(size : Int) -> SortdistflashCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_cluster_len(s : SortdistflashCluster) -> Int { s.size }
+pub fn SortdistflashCluster::len(self : SortdistflashCluster) -> Int { self.size }
 
-pub fn sort_dist_flash_cluster_get(s : SortdistflashCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashCluster::get(self : SortdistflashCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_cluster_set(s : SortdistflashCluster, i : Int, v : Double) -> SortdistflashCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashCluster::set(self : SortdistflashCluster, i : Int, v : Double) -> SortdistflashCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_cluster_sum(s : SortdistflashCluster) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashCluster::sum(self : SortdistflashCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_cluster_mean(s : SortdistflashCluster) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashCluster::mean(self : SortdistflashCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_cluster_scale(s : SortdistflashCluster, f : Double) -> SortdistflashCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashCluster::scale(self : SortdistflashCluster, f : Double) -> SortdistflashCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_cluster_add(a : SortdistflashCluster, b : SortdistflashCluster) -> SortdistflashCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashCluster::add(self : SortdistflashCluster, other : SortdistflashCluster) -> SortdistflashCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_cluster_copy(s : SortdistflashCluster) -> SortdistflashCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashCluster::copy(self : SortdistflashCluster) -> SortdistflashCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_cluster_fill(s : SortdistflashCluster, v : Double) -> SortdistflashCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashCluster::fill(self : SortdistflashCluster, v : Double) -> SortdistflashCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_cluster_min(s : SortdistflashCluster) -> Double { @_common.min(s.data) }
+pub fn SortdistflashCluster::min(self : SortdistflashCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_cluster_max(s : SortdistflashCluster) -> Double { @_common.max(s.data) }
+pub fn SortdistflashCluster::max(self : SortdistflashCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_cluster_to_string(s : SortdistflashCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashCluster::to_string(self : SortdistflashCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashModel {
@@ -708,45 +708,45 @@ pub fn sort_dist_flash_model_make(size : Int) -> SortdistflashModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_model_len(s : SortdistflashModel) -> Int { s.size }
+pub fn SortdistflashModel::len(self : SortdistflashModel) -> Int { self.size }
 
-pub fn sort_dist_flash_model_get(s : SortdistflashModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashModel::get(self : SortdistflashModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_model_set(s : SortdistflashModel, i : Int, v : Double) -> SortdistflashModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashModel::set(self : SortdistflashModel, i : Int, v : Double) -> SortdistflashModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_model_sum(s : SortdistflashModel) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashModel::sum(self : SortdistflashModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_model_mean(s : SortdistflashModel) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashModel::mean(self : SortdistflashModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_model_scale(s : SortdistflashModel, f : Double) -> SortdistflashModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashModel::scale(self : SortdistflashModel, f : Double) -> SortdistflashModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_model_add(a : SortdistflashModel, b : SortdistflashModel) -> SortdistflashModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashModel::add(self : SortdistflashModel, other : SortdistflashModel) -> SortdistflashModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_model_copy(s : SortdistflashModel) -> SortdistflashModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashModel::copy(self : SortdistflashModel) -> SortdistflashModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_model_fill(s : SortdistflashModel, v : Double) -> SortdistflashModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashModel::fill(self : SortdistflashModel, v : Double) -> SortdistflashModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_model_min(s : SortdistflashModel) -> Double { @_common.min(s.data) }
+pub fn SortdistflashModel::min(self : SortdistflashModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_model_max(s : SortdistflashModel) -> Double { @_common.max(s.data) }
+pub fn SortdistflashModel::max(self : SortdistflashModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_model_to_string(s : SortdistflashModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashModel::to_string(self : SortdistflashModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashLayer {
@@ -759,45 +759,45 @@ pub fn sort_dist_flash_layer_make(size : Int) -> SortdistflashLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_layer_len(s : SortdistflashLayer) -> Int { s.size }
+pub fn SortdistflashLayer::len(self : SortdistflashLayer) -> Int { self.size }
 
-pub fn sort_dist_flash_layer_get(s : SortdistflashLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashLayer::get(self : SortdistflashLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_layer_set(s : SortdistflashLayer, i : Int, v : Double) -> SortdistflashLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashLayer::set(self : SortdistflashLayer, i : Int, v : Double) -> SortdistflashLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_layer_sum(s : SortdistflashLayer) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashLayer::sum(self : SortdistflashLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_layer_mean(s : SortdistflashLayer) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashLayer::mean(self : SortdistflashLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_layer_scale(s : SortdistflashLayer, f : Double) -> SortdistflashLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashLayer::scale(self : SortdistflashLayer, f : Double) -> SortdistflashLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_layer_add(a : SortdistflashLayer, b : SortdistflashLayer) -> SortdistflashLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashLayer::add(self : SortdistflashLayer, other : SortdistflashLayer) -> SortdistflashLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_layer_copy(s : SortdistflashLayer) -> SortdistflashLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashLayer::copy(self : SortdistflashLayer) -> SortdistflashLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_layer_fill(s : SortdistflashLayer, v : Double) -> SortdistflashLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashLayer::fill(self : SortdistflashLayer, v : Double) -> SortdistflashLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_layer_min(s : SortdistflashLayer) -> Double { @_common.min(s.data) }
+pub fn SortdistflashLayer::min(self : SortdistflashLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_layer_max(s : SortdistflashLayer) -> Double { @_common.max(s.data) }
+pub fn SortdistflashLayer::max(self : SortdistflashLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_layer_to_string(s : SortdistflashLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashLayer::to_string(self : SortdistflashLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashBuffer {
@@ -810,45 +810,45 @@ pub fn sort_dist_flash_buffer_make(size : Int) -> SortdistflashBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_buffer_len(s : SortdistflashBuffer) -> Int { s.size }
+pub fn SortdistflashBuffer::len(self : SortdistflashBuffer) -> Int { self.size }
 
-pub fn sort_dist_flash_buffer_get(s : SortdistflashBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashBuffer::get(self : SortdistflashBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_buffer_set(s : SortdistflashBuffer, i : Int, v : Double) -> SortdistflashBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashBuffer::set(self : SortdistflashBuffer, i : Int, v : Double) -> SortdistflashBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_buffer_sum(s : SortdistflashBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashBuffer::sum(self : SortdistflashBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_buffer_mean(s : SortdistflashBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashBuffer::mean(self : SortdistflashBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_buffer_scale(s : SortdistflashBuffer, f : Double) -> SortdistflashBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashBuffer::scale(self : SortdistflashBuffer, f : Double) -> SortdistflashBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_buffer_add(a : SortdistflashBuffer, b : SortdistflashBuffer) -> SortdistflashBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashBuffer::add(self : SortdistflashBuffer, other : SortdistflashBuffer) -> SortdistflashBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_buffer_copy(s : SortdistflashBuffer) -> SortdistflashBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashBuffer::copy(self : SortdistflashBuffer) -> SortdistflashBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_buffer_fill(s : SortdistflashBuffer, v : Double) -> SortdistflashBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashBuffer::fill(self : SortdistflashBuffer, v : Double) -> SortdistflashBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_buffer_min(s : SortdistflashBuffer) -> Double { @_common.min(s.data) }
+pub fn SortdistflashBuffer::min(self : SortdistflashBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_buffer_max(s : SortdistflashBuffer) -> Double { @_common.max(s.data) }
+pub fn SortdistflashBuffer::max(self : SortdistflashBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_buffer_to_string(s : SortdistflashBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashBuffer::to_string(self : SortdistflashBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashCursor {
@@ -861,45 +861,45 @@ pub fn sort_dist_flash_cursor_make(size : Int) -> SortdistflashCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_cursor_len(s : SortdistflashCursor) -> Int { s.size }
+pub fn SortdistflashCursor::len(self : SortdistflashCursor) -> Int { self.size }
 
-pub fn sort_dist_flash_cursor_get(s : SortdistflashCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashCursor::get(self : SortdistflashCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_cursor_set(s : SortdistflashCursor, i : Int, v : Double) -> SortdistflashCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashCursor::set(self : SortdistflashCursor, i : Int, v : Double) -> SortdistflashCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_cursor_sum(s : SortdistflashCursor) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashCursor::sum(self : SortdistflashCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_cursor_mean(s : SortdistflashCursor) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashCursor::mean(self : SortdistflashCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_cursor_scale(s : SortdistflashCursor, f : Double) -> SortdistflashCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashCursor::scale(self : SortdistflashCursor, f : Double) -> SortdistflashCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_cursor_add(a : SortdistflashCursor, b : SortdistflashCursor) -> SortdistflashCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashCursor::add(self : SortdistflashCursor, other : SortdistflashCursor) -> SortdistflashCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_cursor_copy(s : SortdistflashCursor) -> SortdistflashCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashCursor::copy(self : SortdistflashCursor) -> SortdistflashCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_cursor_fill(s : SortdistflashCursor, v : Double) -> SortdistflashCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashCursor::fill(self : SortdistflashCursor, v : Double) -> SortdistflashCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_cursor_min(s : SortdistflashCursor) -> Double { @_common.min(s.data) }
+pub fn SortdistflashCursor::min(self : SortdistflashCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_cursor_max(s : SortdistflashCursor) -> Double { @_common.max(s.data) }
+pub fn SortdistflashCursor::max(self : SortdistflashCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_cursor_to_string(s : SortdistflashCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashCursor::to_string(self : SortdistflashCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashView {
@@ -912,45 +912,45 @@ pub fn sort_dist_flash_view_make(size : Int) -> SortdistflashView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_view_len(s : SortdistflashView) -> Int { s.size }
+pub fn SortdistflashView::len(self : SortdistflashView) -> Int { self.size }
 
-pub fn sort_dist_flash_view_get(s : SortdistflashView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashView::get(self : SortdistflashView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_view_set(s : SortdistflashView, i : Int, v : Double) -> SortdistflashView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashView::set(self : SortdistflashView, i : Int, v : Double) -> SortdistflashView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_view_sum(s : SortdistflashView) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashView::sum(self : SortdistflashView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_view_mean(s : SortdistflashView) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashView::mean(self : SortdistflashView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_view_scale(s : SortdistflashView, f : Double) -> SortdistflashView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashView::scale(self : SortdistflashView, f : Double) -> SortdistflashView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_view_add(a : SortdistflashView, b : SortdistflashView) -> SortdistflashView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashView::add(self : SortdistflashView, other : SortdistflashView) -> SortdistflashView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_view_copy(s : SortdistflashView) -> SortdistflashView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashView::copy(self : SortdistflashView) -> SortdistflashView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_view_fill(s : SortdistflashView, v : Double) -> SortdistflashView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashView::fill(self : SortdistflashView, v : Double) -> SortdistflashView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_view_min(s : SortdistflashView) -> Double { @_common.min(s.data) }
+pub fn SortdistflashView::min(self : SortdistflashView) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_view_max(s : SortdistflashView) -> Double { @_common.max(s.data) }
+pub fn SortdistflashView::max(self : SortdistflashView) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_view_to_string(s : SortdistflashView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashView::to_string(self : SortdistflashView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashRange {
@@ -963,45 +963,45 @@ pub fn sort_dist_flash_range_make(size : Int) -> SortdistflashRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_range_len(s : SortdistflashRange) -> Int { s.size }
+pub fn SortdistflashRange::len(self : SortdistflashRange) -> Int { self.size }
 
-pub fn sort_dist_flash_range_get(s : SortdistflashRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashRange::get(self : SortdistflashRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_range_set(s : SortdistflashRange, i : Int, v : Double) -> SortdistflashRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashRange::set(self : SortdistflashRange, i : Int, v : Double) -> SortdistflashRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_range_sum(s : SortdistflashRange) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashRange::sum(self : SortdistflashRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_range_mean(s : SortdistflashRange) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashRange::mean(self : SortdistflashRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_range_scale(s : SortdistflashRange, f : Double) -> SortdistflashRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashRange::scale(self : SortdistflashRange, f : Double) -> SortdistflashRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_range_add(a : SortdistflashRange, b : SortdistflashRange) -> SortdistflashRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashRange::add(self : SortdistflashRange, other : SortdistflashRange) -> SortdistflashRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_range_copy(s : SortdistflashRange) -> SortdistflashRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashRange::copy(self : SortdistflashRange) -> SortdistflashRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_range_fill(s : SortdistflashRange, v : Double) -> SortdistflashRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashRange::fill(self : SortdistflashRange, v : Double) -> SortdistflashRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_range_min(s : SortdistflashRange) -> Double { @_common.min(s.data) }
+pub fn SortdistflashRange::min(self : SortdistflashRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_range_max(s : SortdistflashRange) -> Double { @_common.max(s.data) }
+pub fn SortdistflashRange::max(self : SortdistflashRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_range_to_string(s : SortdistflashRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashRange::to_string(self : SortdistflashRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistflashSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_dist_flash_slice_make(size : Int) -> SortdistflashSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_flash_slice_len(s : SortdistflashSlice) -> Int { s.size }
+pub fn SortdistflashSlice::len(self : SortdistflashSlice) -> Int { self.size }
 
-pub fn sort_dist_flash_slice_get(s : SortdistflashSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistflashSlice::get(self : SortdistflashSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_flash_slice_set(s : SortdistflashSlice, i : Int, v : Double) -> SortdistflashSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistflashSlice::set(self : SortdistflashSlice, i : Int, v : Double) -> SortdistflashSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_slice_sum(s : SortdistflashSlice) -> Double { @_common.sum(s.data) }
+pub fn SortdistflashSlice::sum(self : SortdistflashSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_flash_slice_mean(s : SortdistflashSlice) -> Double { @_common.mean(s.data) }
+pub fn SortdistflashSlice::mean(self : SortdistflashSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_flash_slice_scale(s : SortdistflashSlice, f : Double) -> SortdistflashSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistflashSlice::scale(self : SortdistflashSlice, f : Double) -> SortdistflashSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_slice_add(a : SortdistflashSlice, b : SortdistflashSlice) -> SortdistflashSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistflashSlice::add(self : SortdistflashSlice, other : SortdistflashSlice) -> SortdistflashSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_flash_slice_copy(s : SortdistflashSlice) -> SortdistflashSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistflashSlice::copy(self : SortdistflashSlice) -> SortdistflashSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_slice_fill(s : SortdistflashSlice, v : Double) -> SortdistflashSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistflashSlice::fill(self : SortdistflashSlice, v : Double) -> SortdistflashSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_flash_slice_min(s : SortdistflashSlice) -> Double { @_common.min(s.data) }
+pub fn SortdistflashSlice::min(self : SortdistflashSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_flash_slice_max(s : SortdistflashSlice) -> Double { @_common.max(s.data) }
+pub fn SortdistflashSlice::max(self : SortdistflashSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_flash_slice_to_string(s : SortdistflashSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistflashSlice::to_string(self : SortdistflashSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

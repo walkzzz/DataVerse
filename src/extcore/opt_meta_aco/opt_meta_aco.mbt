@@ -351,45 +351,45 @@ pub fn opt_meta_aco_frame_make(size : Int) -> OptmetaacoFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_frame_len(s : OptmetaacoFrame) -> Int { s.size }
+pub fn OptmetaacoFrame::len(self : OptmetaacoFrame) -> Int { self.size }
 
-pub fn opt_meta_aco_frame_get(s : OptmetaacoFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoFrame::get(self : OptmetaacoFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_frame_set(s : OptmetaacoFrame, i : Int, v : Double) -> OptmetaacoFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoFrame::set(self : OptmetaacoFrame, i : Int, v : Double) -> OptmetaacoFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_frame_sum(s : OptmetaacoFrame) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoFrame::sum(self : OptmetaacoFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_frame_mean(s : OptmetaacoFrame) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoFrame::mean(self : OptmetaacoFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_frame_scale(s : OptmetaacoFrame, f : Double) -> OptmetaacoFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoFrame::scale(self : OptmetaacoFrame, f : Double) -> OptmetaacoFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_frame_add(a : OptmetaacoFrame, b : OptmetaacoFrame) -> OptmetaacoFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoFrame::add(self : OptmetaacoFrame, other : OptmetaacoFrame) -> OptmetaacoFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_frame_copy(s : OptmetaacoFrame) -> OptmetaacoFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoFrame::copy(self : OptmetaacoFrame) -> OptmetaacoFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_frame_fill(s : OptmetaacoFrame, v : Double) -> OptmetaacoFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoFrame::fill(self : OptmetaacoFrame, v : Double) -> OptmetaacoFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_frame_min(s : OptmetaacoFrame) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoFrame::min(self : OptmetaacoFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_frame_max(s : OptmetaacoFrame) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoFrame::max(self : OptmetaacoFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_frame_to_string(s : OptmetaacoFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoFrame::to_string(self : OptmetaacoFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoTable {
@@ -402,45 +402,45 @@ pub fn opt_meta_aco_table_make(size : Int) -> OptmetaacoTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_table_len(s : OptmetaacoTable) -> Int { s.size }
+pub fn OptmetaacoTable::len(self : OptmetaacoTable) -> Int { self.size }
 
-pub fn opt_meta_aco_table_get(s : OptmetaacoTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoTable::get(self : OptmetaacoTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_table_set(s : OptmetaacoTable, i : Int, v : Double) -> OptmetaacoTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoTable::set(self : OptmetaacoTable, i : Int, v : Double) -> OptmetaacoTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_table_sum(s : OptmetaacoTable) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoTable::sum(self : OptmetaacoTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_table_mean(s : OptmetaacoTable) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoTable::mean(self : OptmetaacoTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_table_scale(s : OptmetaacoTable, f : Double) -> OptmetaacoTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoTable::scale(self : OptmetaacoTable, f : Double) -> OptmetaacoTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_table_add(a : OptmetaacoTable, b : OptmetaacoTable) -> OptmetaacoTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoTable::add(self : OptmetaacoTable, other : OptmetaacoTable) -> OptmetaacoTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_table_copy(s : OptmetaacoTable) -> OptmetaacoTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoTable::copy(self : OptmetaacoTable) -> OptmetaacoTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_table_fill(s : OptmetaacoTable, v : Double) -> OptmetaacoTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoTable::fill(self : OptmetaacoTable, v : Double) -> OptmetaacoTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_table_min(s : OptmetaacoTable) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoTable::min(self : OptmetaacoTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_table_max(s : OptmetaacoTable) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoTable::max(self : OptmetaacoTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_table_to_string(s : OptmetaacoTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoTable::to_string(self : OptmetaacoTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoGraphN {
@@ -453,45 +453,45 @@ pub fn opt_meta_aco_graphn_make(size : Int) -> OptmetaacoGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_graphn_len(s : OptmetaacoGraphN) -> Int { s.size }
+pub fn OptmetaacoGraphN::len(self : OptmetaacoGraphN) -> Int { self.size }
 
-pub fn opt_meta_aco_graphn_get(s : OptmetaacoGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoGraphN::get(self : OptmetaacoGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_graphn_set(s : OptmetaacoGraphN, i : Int, v : Double) -> OptmetaacoGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoGraphN::set(self : OptmetaacoGraphN, i : Int, v : Double) -> OptmetaacoGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_graphn_sum(s : OptmetaacoGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoGraphN::sum(self : OptmetaacoGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_graphn_mean(s : OptmetaacoGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoGraphN::mean(self : OptmetaacoGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_graphn_scale(s : OptmetaacoGraphN, f : Double) -> OptmetaacoGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoGraphN::scale(self : OptmetaacoGraphN, f : Double) -> OptmetaacoGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_graphn_add(a : OptmetaacoGraphN, b : OptmetaacoGraphN) -> OptmetaacoGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoGraphN::add(self : OptmetaacoGraphN, other : OptmetaacoGraphN) -> OptmetaacoGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_graphn_copy(s : OptmetaacoGraphN) -> OptmetaacoGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoGraphN::copy(self : OptmetaacoGraphN) -> OptmetaacoGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_graphn_fill(s : OptmetaacoGraphN, v : Double) -> OptmetaacoGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoGraphN::fill(self : OptmetaacoGraphN, v : Double) -> OptmetaacoGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_graphn_min(s : OptmetaacoGraphN) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoGraphN::min(self : OptmetaacoGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_graphn_max(s : OptmetaacoGraphN) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoGraphN::max(self : OptmetaacoGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_graphn_to_string(s : OptmetaacoGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoGraphN::to_string(self : OptmetaacoGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoNode {
@@ -504,45 +504,45 @@ pub fn opt_meta_aco_node_make(size : Int) -> OptmetaacoNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_node_len(s : OptmetaacoNode) -> Int { s.size }
+pub fn OptmetaacoNode::len(self : OptmetaacoNode) -> Int { self.size }
 
-pub fn opt_meta_aco_node_get(s : OptmetaacoNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoNode::get(self : OptmetaacoNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_node_set(s : OptmetaacoNode, i : Int, v : Double) -> OptmetaacoNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoNode::set(self : OptmetaacoNode, i : Int, v : Double) -> OptmetaacoNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_node_sum(s : OptmetaacoNode) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoNode::sum(self : OptmetaacoNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_node_mean(s : OptmetaacoNode) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoNode::mean(self : OptmetaacoNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_node_scale(s : OptmetaacoNode, f : Double) -> OptmetaacoNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoNode::scale(self : OptmetaacoNode, f : Double) -> OptmetaacoNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_node_add(a : OptmetaacoNode, b : OptmetaacoNode) -> OptmetaacoNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoNode::add(self : OptmetaacoNode, other : OptmetaacoNode) -> OptmetaacoNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_node_copy(s : OptmetaacoNode) -> OptmetaacoNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoNode::copy(self : OptmetaacoNode) -> OptmetaacoNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_node_fill(s : OptmetaacoNode, v : Double) -> OptmetaacoNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoNode::fill(self : OptmetaacoNode, v : Double) -> OptmetaacoNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_node_min(s : OptmetaacoNode) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoNode::min(self : OptmetaacoNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_node_max(s : OptmetaacoNode) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoNode::max(self : OptmetaacoNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_node_to_string(s : OptmetaacoNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoNode::to_string(self : OptmetaacoNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoEdge {
@@ -555,45 +555,45 @@ pub fn opt_meta_aco_edge_make(size : Int) -> OptmetaacoEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_edge_len(s : OptmetaacoEdge) -> Int { s.size }
+pub fn OptmetaacoEdge::len(self : OptmetaacoEdge) -> Int { self.size }
 
-pub fn opt_meta_aco_edge_get(s : OptmetaacoEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoEdge::get(self : OptmetaacoEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_edge_set(s : OptmetaacoEdge, i : Int, v : Double) -> OptmetaacoEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoEdge::set(self : OptmetaacoEdge, i : Int, v : Double) -> OptmetaacoEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_edge_sum(s : OptmetaacoEdge) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoEdge::sum(self : OptmetaacoEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_edge_mean(s : OptmetaacoEdge) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoEdge::mean(self : OptmetaacoEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_edge_scale(s : OptmetaacoEdge, f : Double) -> OptmetaacoEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoEdge::scale(self : OptmetaacoEdge, f : Double) -> OptmetaacoEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_edge_add(a : OptmetaacoEdge, b : OptmetaacoEdge) -> OptmetaacoEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoEdge::add(self : OptmetaacoEdge, other : OptmetaacoEdge) -> OptmetaacoEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_edge_copy(s : OptmetaacoEdge) -> OptmetaacoEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoEdge::copy(self : OptmetaacoEdge) -> OptmetaacoEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_edge_fill(s : OptmetaacoEdge, v : Double) -> OptmetaacoEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoEdge::fill(self : OptmetaacoEdge, v : Double) -> OptmetaacoEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_edge_min(s : OptmetaacoEdge) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoEdge::min(self : OptmetaacoEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_edge_max(s : OptmetaacoEdge) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoEdge::max(self : OptmetaacoEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_edge_to_string(s : OptmetaacoEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoEdge::to_string(self : OptmetaacoEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoPath {
@@ -606,45 +606,45 @@ pub fn opt_meta_aco_path_make(size : Int) -> OptmetaacoPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_path_len(s : OptmetaacoPath) -> Int { s.size }
+pub fn OptmetaacoPath::len(self : OptmetaacoPath) -> Int { self.size }
 
-pub fn opt_meta_aco_path_get(s : OptmetaacoPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoPath::get(self : OptmetaacoPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_path_set(s : OptmetaacoPath, i : Int, v : Double) -> OptmetaacoPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoPath::set(self : OptmetaacoPath, i : Int, v : Double) -> OptmetaacoPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_path_sum(s : OptmetaacoPath) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoPath::sum(self : OptmetaacoPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_path_mean(s : OptmetaacoPath) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoPath::mean(self : OptmetaacoPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_path_scale(s : OptmetaacoPath, f : Double) -> OptmetaacoPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoPath::scale(self : OptmetaacoPath, f : Double) -> OptmetaacoPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_path_add(a : OptmetaacoPath, b : OptmetaacoPath) -> OptmetaacoPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoPath::add(self : OptmetaacoPath, other : OptmetaacoPath) -> OptmetaacoPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_path_copy(s : OptmetaacoPath) -> OptmetaacoPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoPath::copy(self : OptmetaacoPath) -> OptmetaacoPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_path_fill(s : OptmetaacoPath, v : Double) -> OptmetaacoPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoPath::fill(self : OptmetaacoPath, v : Double) -> OptmetaacoPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_path_min(s : OptmetaacoPath) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoPath::min(self : OptmetaacoPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_path_max(s : OptmetaacoPath) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoPath::max(self : OptmetaacoPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_path_to_string(s : OptmetaacoPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoPath::to_string(self : OptmetaacoPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoCluster {
@@ -657,45 +657,45 @@ pub fn opt_meta_aco_cluster_make(size : Int) -> OptmetaacoCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_cluster_len(s : OptmetaacoCluster) -> Int { s.size }
+pub fn OptmetaacoCluster::len(self : OptmetaacoCluster) -> Int { self.size }
 
-pub fn opt_meta_aco_cluster_get(s : OptmetaacoCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoCluster::get(self : OptmetaacoCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_cluster_set(s : OptmetaacoCluster, i : Int, v : Double) -> OptmetaacoCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoCluster::set(self : OptmetaacoCluster, i : Int, v : Double) -> OptmetaacoCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_cluster_sum(s : OptmetaacoCluster) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoCluster::sum(self : OptmetaacoCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_cluster_mean(s : OptmetaacoCluster) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoCluster::mean(self : OptmetaacoCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_cluster_scale(s : OptmetaacoCluster, f : Double) -> OptmetaacoCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoCluster::scale(self : OptmetaacoCluster, f : Double) -> OptmetaacoCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_cluster_add(a : OptmetaacoCluster, b : OptmetaacoCluster) -> OptmetaacoCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoCluster::add(self : OptmetaacoCluster, other : OptmetaacoCluster) -> OptmetaacoCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_cluster_copy(s : OptmetaacoCluster) -> OptmetaacoCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoCluster::copy(self : OptmetaacoCluster) -> OptmetaacoCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_cluster_fill(s : OptmetaacoCluster, v : Double) -> OptmetaacoCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoCluster::fill(self : OptmetaacoCluster, v : Double) -> OptmetaacoCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_cluster_min(s : OptmetaacoCluster) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoCluster::min(self : OptmetaacoCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_cluster_max(s : OptmetaacoCluster) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoCluster::max(self : OptmetaacoCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_cluster_to_string(s : OptmetaacoCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoCluster::to_string(self : OptmetaacoCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoModel {
@@ -708,45 +708,45 @@ pub fn opt_meta_aco_model_make(size : Int) -> OptmetaacoModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_model_len(s : OptmetaacoModel) -> Int { s.size }
+pub fn OptmetaacoModel::len(self : OptmetaacoModel) -> Int { self.size }
 
-pub fn opt_meta_aco_model_get(s : OptmetaacoModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoModel::get(self : OptmetaacoModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_model_set(s : OptmetaacoModel, i : Int, v : Double) -> OptmetaacoModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoModel::set(self : OptmetaacoModel, i : Int, v : Double) -> OptmetaacoModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_model_sum(s : OptmetaacoModel) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoModel::sum(self : OptmetaacoModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_model_mean(s : OptmetaacoModel) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoModel::mean(self : OptmetaacoModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_model_scale(s : OptmetaacoModel, f : Double) -> OptmetaacoModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoModel::scale(self : OptmetaacoModel, f : Double) -> OptmetaacoModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_model_add(a : OptmetaacoModel, b : OptmetaacoModel) -> OptmetaacoModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoModel::add(self : OptmetaacoModel, other : OptmetaacoModel) -> OptmetaacoModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_model_copy(s : OptmetaacoModel) -> OptmetaacoModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoModel::copy(self : OptmetaacoModel) -> OptmetaacoModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_model_fill(s : OptmetaacoModel, v : Double) -> OptmetaacoModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoModel::fill(self : OptmetaacoModel, v : Double) -> OptmetaacoModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_model_min(s : OptmetaacoModel) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoModel::min(self : OptmetaacoModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_model_max(s : OptmetaacoModel) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoModel::max(self : OptmetaacoModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_model_to_string(s : OptmetaacoModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoModel::to_string(self : OptmetaacoModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoLayer {
@@ -759,45 +759,45 @@ pub fn opt_meta_aco_layer_make(size : Int) -> OptmetaacoLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_layer_len(s : OptmetaacoLayer) -> Int { s.size }
+pub fn OptmetaacoLayer::len(self : OptmetaacoLayer) -> Int { self.size }
 
-pub fn opt_meta_aco_layer_get(s : OptmetaacoLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoLayer::get(self : OptmetaacoLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_layer_set(s : OptmetaacoLayer, i : Int, v : Double) -> OptmetaacoLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoLayer::set(self : OptmetaacoLayer, i : Int, v : Double) -> OptmetaacoLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_layer_sum(s : OptmetaacoLayer) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoLayer::sum(self : OptmetaacoLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_layer_mean(s : OptmetaacoLayer) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoLayer::mean(self : OptmetaacoLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_layer_scale(s : OptmetaacoLayer, f : Double) -> OptmetaacoLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoLayer::scale(self : OptmetaacoLayer, f : Double) -> OptmetaacoLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_layer_add(a : OptmetaacoLayer, b : OptmetaacoLayer) -> OptmetaacoLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoLayer::add(self : OptmetaacoLayer, other : OptmetaacoLayer) -> OptmetaacoLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_layer_copy(s : OptmetaacoLayer) -> OptmetaacoLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoLayer::copy(self : OptmetaacoLayer) -> OptmetaacoLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_layer_fill(s : OptmetaacoLayer, v : Double) -> OptmetaacoLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoLayer::fill(self : OptmetaacoLayer, v : Double) -> OptmetaacoLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_layer_min(s : OptmetaacoLayer) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoLayer::min(self : OptmetaacoLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_layer_max(s : OptmetaacoLayer) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoLayer::max(self : OptmetaacoLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_layer_to_string(s : OptmetaacoLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoLayer::to_string(self : OptmetaacoLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoBuffer {
@@ -810,45 +810,45 @@ pub fn opt_meta_aco_buffer_make(size : Int) -> OptmetaacoBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_buffer_len(s : OptmetaacoBuffer) -> Int { s.size }
+pub fn OptmetaacoBuffer::len(self : OptmetaacoBuffer) -> Int { self.size }
 
-pub fn opt_meta_aco_buffer_get(s : OptmetaacoBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoBuffer::get(self : OptmetaacoBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_buffer_set(s : OptmetaacoBuffer, i : Int, v : Double) -> OptmetaacoBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoBuffer::set(self : OptmetaacoBuffer, i : Int, v : Double) -> OptmetaacoBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_buffer_sum(s : OptmetaacoBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoBuffer::sum(self : OptmetaacoBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_buffer_mean(s : OptmetaacoBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoBuffer::mean(self : OptmetaacoBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_buffer_scale(s : OptmetaacoBuffer, f : Double) -> OptmetaacoBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoBuffer::scale(self : OptmetaacoBuffer, f : Double) -> OptmetaacoBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_buffer_add(a : OptmetaacoBuffer, b : OptmetaacoBuffer) -> OptmetaacoBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoBuffer::add(self : OptmetaacoBuffer, other : OptmetaacoBuffer) -> OptmetaacoBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_buffer_copy(s : OptmetaacoBuffer) -> OptmetaacoBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoBuffer::copy(self : OptmetaacoBuffer) -> OptmetaacoBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_buffer_fill(s : OptmetaacoBuffer, v : Double) -> OptmetaacoBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoBuffer::fill(self : OptmetaacoBuffer, v : Double) -> OptmetaacoBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_buffer_min(s : OptmetaacoBuffer) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoBuffer::min(self : OptmetaacoBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_buffer_max(s : OptmetaacoBuffer) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoBuffer::max(self : OptmetaacoBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_buffer_to_string(s : OptmetaacoBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoBuffer::to_string(self : OptmetaacoBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoCursor {
@@ -861,45 +861,45 @@ pub fn opt_meta_aco_cursor_make(size : Int) -> OptmetaacoCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_cursor_len(s : OptmetaacoCursor) -> Int { s.size }
+pub fn OptmetaacoCursor::len(self : OptmetaacoCursor) -> Int { self.size }
 
-pub fn opt_meta_aco_cursor_get(s : OptmetaacoCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoCursor::get(self : OptmetaacoCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_cursor_set(s : OptmetaacoCursor, i : Int, v : Double) -> OptmetaacoCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoCursor::set(self : OptmetaacoCursor, i : Int, v : Double) -> OptmetaacoCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_cursor_sum(s : OptmetaacoCursor) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoCursor::sum(self : OptmetaacoCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_cursor_mean(s : OptmetaacoCursor) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoCursor::mean(self : OptmetaacoCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_cursor_scale(s : OptmetaacoCursor, f : Double) -> OptmetaacoCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoCursor::scale(self : OptmetaacoCursor, f : Double) -> OptmetaacoCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_cursor_add(a : OptmetaacoCursor, b : OptmetaacoCursor) -> OptmetaacoCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoCursor::add(self : OptmetaacoCursor, other : OptmetaacoCursor) -> OptmetaacoCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_cursor_copy(s : OptmetaacoCursor) -> OptmetaacoCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoCursor::copy(self : OptmetaacoCursor) -> OptmetaacoCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_cursor_fill(s : OptmetaacoCursor, v : Double) -> OptmetaacoCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoCursor::fill(self : OptmetaacoCursor, v : Double) -> OptmetaacoCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_cursor_min(s : OptmetaacoCursor) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoCursor::min(self : OptmetaacoCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_cursor_max(s : OptmetaacoCursor) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoCursor::max(self : OptmetaacoCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_cursor_to_string(s : OptmetaacoCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoCursor::to_string(self : OptmetaacoCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoView {
@@ -912,45 +912,45 @@ pub fn opt_meta_aco_view_make(size : Int) -> OptmetaacoView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_view_len(s : OptmetaacoView) -> Int { s.size }
+pub fn OptmetaacoView::len(self : OptmetaacoView) -> Int { self.size }
 
-pub fn opt_meta_aco_view_get(s : OptmetaacoView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoView::get(self : OptmetaacoView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_view_set(s : OptmetaacoView, i : Int, v : Double) -> OptmetaacoView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoView::set(self : OptmetaacoView, i : Int, v : Double) -> OptmetaacoView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_view_sum(s : OptmetaacoView) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoView::sum(self : OptmetaacoView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_view_mean(s : OptmetaacoView) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoView::mean(self : OptmetaacoView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_view_scale(s : OptmetaacoView, f : Double) -> OptmetaacoView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoView::scale(self : OptmetaacoView, f : Double) -> OptmetaacoView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_view_add(a : OptmetaacoView, b : OptmetaacoView) -> OptmetaacoView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoView::add(self : OptmetaacoView, other : OptmetaacoView) -> OptmetaacoView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_view_copy(s : OptmetaacoView) -> OptmetaacoView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoView::copy(self : OptmetaacoView) -> OptmetaacoView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_view_fill(s : OptmetaacoView, v : Double) -> OptmetaacoView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoView::fill(self : OptmetaacoView, v : Double) -> OptmetaacoView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_view_min(s : OptmetaacoView) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoView::min(self : OptmetaacoView) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_view_max(s : OptmetaacoView) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoView::max(self : OptmetaacoView) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_view_to_string(s : OptmetaacoView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoView::to_string(self : OptmetaacoView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoRange {
@@ -963,45 +963,45 @@ pub fn opt_meta_aco_range_make(size : Int) -> OptmetaacoRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_range_len(s : OptmetaacoRange) -> Int { s.size }
+pub fn OptmetaacoRange::len(self : OptmetaacoRange) -> Int { self.size }
 
-pub fn opt_meta_aco_range_get(s : OptmetaacoRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoRange::get(self : OptmetaacoRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_range_set(s : OptmetaacoRange, i : Int, v : Double) -> OptmetaacoRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoRange::set(self : OptmetaacoRange, i : Int, v : Double) -> OptmetaacoRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_range_sum(s : OptmetaacoRange) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoRange::sum(self : OptmetaacoRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_range_mean(s : OptmetaacoRange) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoRange::mean(self : OptmetaacoRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_range_scale(s : OptmetaacoRange, f : Double) -> OptmetaacoRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoRange::scale(self : OptmetaacoRange, f : Double) -> OptmetaacoRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_range_add(a : OptmetaacoRange, b : OptmetaacoRange) -> OptmetaacoRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoRange::add(self : OptmetaacoRange, other : OptmetaacoRange) -> OptmetaacoRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_range_copy(s : OptmetaacoRange) -> OptmetaacoRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoRange::copy(self : OptmetaacoRange) -> OptmetaacoRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_range_fill(s : OptmetaacoRange, v : Double) -> OptmetaacoRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoRange::fill(self : OptmetaacoRange, v : Double) -> OptmetaacoRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_range_min(s : OptmetaacoRange) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoRange::min(self : OptmetaacoRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_range_max(s : OptmetaacoRange) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoRange::max(self : OptmetaacoRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_range_to_string(s : OptmetaacoRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoRange::to_string(self : OptmetaacoRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_meta_aco_slice_make(size : Int) -> OptmetaacoSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_aco_slice_len(s : OptmetaacoSlice) -> Int { s.size }
+pub fn OptmetaacoSlice::len(self : OptmetaacoSlice) -> Int { self.size }
 
-pub fn opt_meta_aco_slice_get(s : OptmetaacoSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaacoSlice::get(self : OptmetaacoSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_aco_slice_set(s : OptmetaacoSlice, i : Int, v : Double) -> OptmetaacoSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaacoSlice::set(self : OptmetaacoSlice, i : Int, v : Double) -> OptmetaacoSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_slice_sum(s : OptmetaacoSlice) -> Double { @_common.sum(s.data) }
+pub fn OptmetaacoSlice::sum(self : OptmetaacoSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_aco_slice_mean(s : OptmetaacoSlice) -> Double { @_common.mean(s.data) }
+pub fn OptmetaacoSlice::mean(self : OptmetaacoSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_aco_slice_scale(s : OptmetaacoSlice, f : Double) -> OptmetaacoSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaacoSlice::scale(self : OptmetaacoSlice, f : Double) -> OptmetaacoSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_slice_add(a : OptmetaacoSlice, b : OptmetaacoSlice) -> OptmetaacoSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaacoSlice::add(self : OptmetaacoSlice, other : OptmetaacoSlice) -> OptmetaacoSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_aco_slice_copy(s : OptmetaacoSlice) -> OptmetaacoSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaacoSlice::copy(self : OptmetaacoSlice) -> OptmetaacoSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_slice_fill(s : OptmetaacoSlice, v : Double) -> OptmetaacoSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaacoSlice::fill(self : OptmetaacoSlice, v : Double) -> OptmetaacoSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_aco_slice_min(s : OptmetaacoSlice) -> Double { @_common.min(s.data) }
+pub fn OptmetaacoSlice::min(self : OptmetaacoSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_aco_slice_max(s : OptmetaacoSlice) -> Double { @_common.max(s.data) }
+pub fn OptmetaacoSlice::max(self : OptmetaacoSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_aco_slice_to_string(s : OptmetaacoSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaacoSlice::to_string(self : OptmetaacoSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

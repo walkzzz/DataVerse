@@ -351,45 +351,45 @@ pub fn timeseries_exponential_frame_make(size : Int) -> TimeseriesexponentialFra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_frame_len(s : TimeseriesexponentialFrame) -> Int { s.size }
+pub fn TimeseriesexponentialFrame::len(self : TimeseriesexponentialFrame) -> Int { self.size }
 
-pub fn timeseries_exponential_frame_get(s : TimeseriesexponentialFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialFrame::get(self : TimeseriesexponentialFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_frame_set(s : TimeseriesexponentialFrame, i : Int, v : Double) -> TimeseriesexponentialFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialFrame::set(self : TimeseriesexponentialFrame, i : Int, v : Double) -> TimeseriesexponentialFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_frame_sum(s : TimeseriesexponentialFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialFrame::sum(self : TimeseriesexponentialFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_frame_mean(s : TimeseriesexponentialFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialFrame::mean(self : TimeseriesexponentialFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_frame_scale(s : TimeseriesexponentialFrame, f : Double) -> TimeseriesexponentialFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialFrame::scale(self : TimeseriesexponentialFrame, f : Double) -> TimeseriesexponentialFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_frame_add(a : TimeseriesexponentialFrame, b : TimeseriesexponentialFrame) -> TimeseriesexponentialFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialFrame::add(self : TimeseriesexponentialFrame, other : TimeseriesexponentialFrame) -> TimeseriesexponentialFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_frame_copy(s : TimeseriesexponentialFrame) -> TimeseriesexponentialFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialFrame::copy(self : TimeseriesexponentialFrame) -> TimeseriesexponentialFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_frame_fill(s : TimeseriesexponentialFrame, v : Double) -> TimeseriesexponentialFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialFrame::fill(self : TimeseriesexponentialFrame, v : Double) -> TimeseriesexponentialFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_frame_min(s : TimeseriesexponentialFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialFrame::min(self : TimeseriesexponentialFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_frame_max(s : TimeseriesexponentialFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialFrame::max(self : TimeseriesexponentialFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_frame_to_string(s : TimeseriesexponentialFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialFrame::to_string(self : TimeseriesexponentialFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialTable {
@@ -402,45 +402,45 @@ pub fn timeseries_exponential_table_make(size : Int) -> TimeseriesexponentialTab
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_table_len(s : TimeseriesexponentialTable) -> Int { s.size }
+pub fn TimeseriesexponentialTable::len(self : TimeseriesexponentialTable) -> Int { self.size }
 
-pub fn timeseries_exponential_table_get(s : TimeseriesexponentialTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialTable::get(self : TimeseriesexponentialTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_table_set(s : TimeseriesexponentialTable, i : Int, v : Double) -> TimeseriesexponentialTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialTable::set(self : TimeseriesexponentialTable, i : Int, v : Double) -> TimeseriesexponentialTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_table_sum(s : TimeseriesexponentialTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialTable::sum(self : TimeseriesexponentialTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_table_mean(s : TimeseriesexponentialTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialTable::mean(self : TimeseriesexponentialTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_table_scale(s : TimeseriesexponentialTable, f : Double) -> TimeseriesexponentialTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialTable::scale(self : TimeseriesexponentialTable, f : Double) -> TimeseriesexponentialTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_table_add(a : TimeseriesexponentialTable, b : TimeseriesexponentialTable) -> TimeseriesexponentialTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialTable::add(self : TimeseriesexponentialTable, other : TimeseriesexponentialTable) -> TimeseriesexponentialTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_table_copy(s : TimeseriesexponentialTable) -> TimeseriesexponentialTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialTable::copy(self : TimeseriesexponentialTable) -> TimeseriesexponentialTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_table_fill(s : TimeseriesexponentialTable, v : Double) -> TimeseriesexponentialTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialTable::fill(self : TimeseriesexponentialTable, v : Double) -> TimeseriesexponentialTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_table_min(s : TimeseriesexponentialTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialTable::min(self : TimeseriesexponentialTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_table_max(s : TimeseriesexponentialTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialTable::max(self : TimeseriesexponentialTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_table_to_string(s : TimeseriesexponentialTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialTable::to_string(self : TimeseriesexponentialTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_exponential_graphn_make(size : Int) -> TimeseriesexponentialGr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_graphn_len(s : TimeseriesexponentialGraphN) -> Int { s.size }
+pub fn TimeseriesexponentialGraphN::len(self : TimeseriesexponentialGraphN) -> Int { self.size }
 
-pub fn timeseries_exponential_graphn_get(s : TimeseriesexponentialGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialGraphN::get(self : TimeseriesexponentialGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_graphn_set(s : TimeseriesexponentialGraphN, i : Int, v : Double) -> TimeseriesexponentialGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialGraphN::set(self : TimeseriesexponentialGraphN, i : Int, v : Double) -> TimeseriesexponentialGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_graphn_sum(s : TimeseriesexponentialGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialGraphN::sum(self : TimeseriesexponentialGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_graphn_mean(s : TimeseriesexponentialGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialGraphN::mean(self : TimeseriesexponentialGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_graphn_scale(s : TimeseriesexponentialGraphN, f : Double) -> TimeseriesexponentialGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialGraphN::scale(self : TimeseriesexponentialGraphN, f : Double) -> TimeseriesexponentialGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_graphn_add(a : TimeseriesexponentialGraphN, b : TimeseriesexponentialGraphN) -> TimeseriesexponentialGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialGraphN::add(self : TimeseriesexponentialGraphN, other : TimeseriesexponentialGraphN) -> TimeseriesexponentialGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_graphn_copy(s : TimeseriesexponentialGraphN) -> TimeseriesexponentialGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialGraphN::copy(self : TimeseriesexponentialGraphN) -> TimeseriesexponentialGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_graphn_fill(s : TimeseriesexponentialGraphN, v : Double) -> TimeseriesexponentialGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialGraphN::fill(self : TimeseriesexponentialGraphN, v : Double) -> TimeseriesexponentialGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_graphn_min(s : TimeseriesexponentialGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialGraphN::min(self : TimeseriesexponentialGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_graphn_max(s : TimeseriesexponentialGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialGraphN::max(self : TimeseriesexponentialGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_graphn_to_string(s : TimeseriesexponentialGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialGraphN::to_string(self : TimeseriesexponentialGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialNode {
@@ -504,45 +504,45 @@ pub fn timeseries_exponential_node_make(size : Int) -> TimeseriesexponentialNode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_node_len(s : TimeseriesexponentialNode) -> Int { s.size }
+pub fn TimeseriesexponentialNode::len(self : TimeseriesexponentialNode) -> Int { self.size }
 
-pub fn timeseries_exponential_node_get(s : TimeseriesexponentialNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialNode::get(self : TimeseriesexponentialNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_node_set(s : TimeseriesexponentialNode, i : Int, v : Double) -> TimeseriesexponentialNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialNode::set(self : TimeseriesexponentialNode, i : Int, v : Double) -> TimeseriesexponentialNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_node_sum(s : TimeseriesexponentialNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialNode::sum(self : TimeseriesexponentialNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_node_mean(s : TimeseriesexponentialNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialNode::mean(self : TimeseriesexponentialNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_node_scale(s : TimeseriesexponentialNode, f : Double) -> TimeseriesexponentialNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialNode::scale(self : TimeseriesexponentialNode, f : Double) -> TimeseriesexponentialNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_node_add(a : TimeseriesexponentialNode, b : TimeseriesexponentialNode) -> TimeseriesexponentialNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialNode::add(self : TimeseriesexponentialNode, other : TimeseriesexponentialNode) -> TimeseriesexponentialNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_node_copy(s : TimeseriesexponentialNode) -> TimeseriesexponentialNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialNode::copy(self : TimeseriesexponentialNode) -> TimeseriesexponentialNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_node_fill(s : TimeseriesexponentialNode, v : Double) -> TimeseriesexponentialNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialNode::fill(self : TimeseriesexponentialNode, v : Double) -> TimeseriesexponentialNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_node_min(s : TimeseriesexponentialNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialNode::min(self : TimeseriesexponentialNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_node_max(s : TimeseriesexponentialNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialNode::max(self : TimeseriesexponentialNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_node_to_string(s : TimeseriesexponentialNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialNode::to_string(self : TimeseriesexponentialNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_exponential_edge_make(size : Int) -> TimeseriesexponentialEdge
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_edge_len(s : TimeseriesexponentialEdge) -> Int { s.size }
+pub fn TimeseriesexponentialEdge::len(self : TimeseriesexponentialEdge) -> Int { self.size }
 
-pub fn timeseries_exponential_edge_get(s : TimeseriesexponentialEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialEdge::get(self : TimeseriesexponentialEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_edge_set(s : TimeseriesexponentialEdge, i : Int, v : Double) -> TimeseriesexponentialEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialEdge::set(self : TimeseriesexponentialEdge, i : Int, v : Double) -> TimeseriesexponentialEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_edge_sum(s : TimeseriesexponentialEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialEdge::sum(self : TimeseriesexponentialEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_edge_mean(s : TimeseriesexponentialEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialEdge::mean(self : TimeseriesexponentialEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_edge_scale(s : TimeseriesexponentialEdge, f : Double) -> TimeseriesexponentialEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialEdge::scale(self : TimeseriesexponentialEdge, f : Double) -> TimeseriesexponentialEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_edge_add(a : TimeseriesexponentialEdge, b : TimeseriesexponentialEdge) -> TimeseriesexponentialEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialEdge::add(self : TimeseriesexponentialEdge, other : TimeseriesexponentialEdge) -> TimeseriesexponentialEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_edge_copy(s : TimeseriesexponentialEdge) -> TimeseriesexponentialEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialEdge::copy(self : TimeseriesexponentialEdge) -> TimeseriesexponentialEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_edge_fill(s : TimeseriesexponentialEdge, v : Double) -> TimeseriesexponentialEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialEdge::fill(self : TimeseriesexponentialEdge, v : Double) -> TimeseriesexponentialEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_edge_min(s : TimeseriesexponentialEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialEdge::min(self : TimeseriesexponentialEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_edge_max(s : TimeseriesexponentialEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialEdge::max(self : TimeseriesexponentialEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_edge_to_string(s : TimeseriesexponentialEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialEdge::to_string(self : TimeseriesexponentialEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialPath {
@@ -606,45 +606,45 @@ pub fn timeseries_exponential_path_make(size : Int) -> TimeseriesexponentialPath
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_path_len(s : TimeseriesexponentialPath) -> Int { s.size }
+pub fn TimeseriesexponentialPath::len(self : TimeseriesexponentialPath) -> Int { self.size }
 
-pub fn timeseries_exponential_path_get(s : TimeseriesexponentialPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialPath::get(self : TimeseriesexponentialPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_path_set(s : TimeseriesexponentialPath, i : Int, v : Double) -> TimeseriesexponentialPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialPath::set(self : TimeseriesexponentialPath, i : Int, v : Double) -> TimeseriesexponentialPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_path_sum(s : TimeseriesexponentialPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialPath::sum(self : TimeseriesexponentialPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_path_mean(s : TimeseriesexponentialPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialPath::mean(self : TimeseriesexponentialPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_path_scale(s : TimeseriesexponentialPath, f : Double) -> TimeseriesexponentialPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialPath::scale(self : TimeseriesexponentialPath, f : Double) -> TimeseriesexponentialPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_path_add(a : TimeseriesexponentialPath, b : TimeseriesexponentialPath) -> TimeseriesexponentialPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialPath::add(self : TimeseriesexponentialPath, other : TimeseriesexponentialPath) -> TimeseriesexponentialPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_path_copy(s : TimeseriesexponentialPath) -> TimeseriesexponentialPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialPath::copy(self : TimeseriesexponentialPath) -> TimeseriesexponentialPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_path_fill(s : TimeseriesexponentialPath, v : Double) -> TimeseriesexponentialPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialPath::fill(self : TimeseriesexponentialPath, v : Double) -> TimeseriesexponentialPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_path_min(s : TimeseriesexponentialPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialPath::min(self : TimeseriesexponentialPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_path_max(s : TimeseriesexponentialPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialPath::max(self : TimeseriesexponentialPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_path_to_string(s : TimeseriesexponentialPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialPath::to_string(self : TimeseriesexponentialPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_exponential_cluster_make(size : Int) -> TimeseriesexponentialC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_cluster_len(s : TimeseriesexponentialCluster) -> Int { s.size }
+pub fn TimeseriesexponentialCluster::len(self : TimeseriesexponentialCluster) -> Int { self.size }
 
-pub fn timeseries_exponential_cluster_get(s : TimeseriesexponentialCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialCluster::get(self : TimeseriesexponentialCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_cluster_set(s : TimeseriesexponentialCluster, i : Int, v : Double) -> TimeseriesexponentialCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialCluster::set(self : TimeseriesexponentialCluster, i : Int, v : Double) -> TimeseriesexponentialCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_cluster_sum(s : TimeseriesexponentialCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialCluster::sum(self : TimeseriesexponentialCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_cluster_mean(s : TimeseriesexponentialCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialCluster::mean(self : TimeseriesexponentialCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_cluster_scale(s : TimeseriesexponentialCluster, f : Double) -> TimeseriesexponentialCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialCluster::scale(self : TimeseriesexponentialCluster, f : Double) -> TimeseriesexponentialCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_cluster_add(a : TimeseriesexponentialCluster, b : TimeseriesexponentialCluster) -> TimeseriesexponentialCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialCluster::add(self : TimeseriesexponentialCluster, other : TimeseriesexponentialCluster) -> TimeseriesexponentialCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_cluster_copy(s : TimeseriesexponentialCluster) -> TimeseriesexponentialCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialCluster::copy(self : TimeseriesexponentialCluster) -> TimeseriesexponentialCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_cluster_fill(s : TimeseriesexponentialCluster, v : Double) -> TimeseriesexponentialCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialCluster::fill(self : TimeseriesexponentialCluster, v : Double) -> TimeseriesexponentialCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_cluster_min(s : TimeseriesexponentialCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialCluster::min(self : TimeseriesexponentialCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_cluster_max(s : TimeseriesexponentialCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialCluster::max(self : TimeseriesexponentialCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_cluster_to_string(s : TimeseriesexponentialCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialCluster::to_string(self : TimeseriesexponentialCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialModel {
@@ -708,45 +708,45 @@ pub fn timeseries_exponential_model_make(size : Int) -> TimeseriesexponentialMod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_model_len(s : TimeseriesexponentialModel) -> Int { s.size }
+pub fn TimeseriesexponentialModel::len(self : TimeseriesexponentialModel) -> Int { self.size }
 
-pub fn timeseries_exponential_model_get(s : TimeseriesexponentialModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialModel::get(self : TimeseriesexponentialModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_model_set(s : TimeseriesexponentialModel, i : Int, v : Double) -> TimeseriesexponentialModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialModel::set(self : TimeseriesexponentialModel, i : Int, v : Double) -> TimeseriesexponentialModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_model_sum(s : TimeseriesexponentialModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialModel::sum(self : TimeseriesexponentialModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_model_mean(s : TimeseriesexponentialModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialModel::mean(self : TimeseriesexponentialModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_model_scale(s : TimeseriesexponentialModel, f : Double) -> TimeseriesexponentialModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialModel::scale(self : TimeseriesexponentialModel, f : Double) -> TimeseriesexponentialModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_model_add(a : TimeseriesexponentialModel, b : TimeseriesexponentialModel) -> TimeseriesexponentialModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialModel::add(self : TimeseriesexponentialModel, other : TimeseriesexponentialModel) -> TimeseriesexponentialModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_model_copy(s : TimeseriesexponentialModel) -> TimeseriesexponentialModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialModel::copy(self : TimeseriesexponentialModel) -> TimeseriesexponentialModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_model_fill(s : TimeseriesexponentialModel, v : Double) -> TimeseriesexponentialModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialModel::fill(self : TimeseriesexponentialModel, v : Double) -> TimeseriesexponentialModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_model_min(s : TimeseriesexponentialModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialModel::min(self : TimeseriesexponentialModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_model_max(s : TimeseriesexponentialModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialModel::max(self : TimeseriesexponentialModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_model_to_string(s : TimeseriesexponentialModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialModel::to_string(self : TimeseriesexponentialModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_exponential_layer_make(size : Int) -> TimeseriesexponentialLay
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_layer_len(s : TimeseriesexponentialLayer) -> Int { s.size }
+pub fn TimeseriesexponentialLayer::len(self : TimeseriesexponentialLayer) -> Int { self.size }
 
-pub fn timeseries_exponential_layer_get(s : TimeseriesexponentialLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialLayer::get(self : TimeseriesexponentialLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_layer_set(s : TimeseriesexponentialLayer, i : Int, v : Double) -> TimeseriesexponentialLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialLayer::set(self : TimeseriesexponentialLayer, i : Int, v : Double) -> TimeseriesexponentialLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_layer_sum(s : TimeseriesexponentialLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialLayer::sum(self : TimeseriesexponentialLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_layer_mean(s : TimeseriesexponentialLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialLayer::mean(self : TimeseriesexponentialLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_layer_scale(s : TimeseriesexponentialLayer, f : Double) -> TimeseriesexponentialLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialLayer::scale(self : TimeseriesexponentialLayer, f : Double) -> TimeseriesexponentialLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_layer_add(a : TimeseriesexponentialLayer, b : TimeseriesexponentialLayer) -> TimeseriesexponentialLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialLayer::add(self : TimeseriesexponentialLayer, other : TimeseriesexponentialLayer) -> TimeseriesexponentialLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_layer_copy(s : TimeseriesexponentialLayer) -> TimeseriesexponentialLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialLayer::copy(self : TimeseriesexponentialLayer) -> TimeseriesexponentialLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_layer_fill(s : TimeseriesexponentialLayer, v : Double) -> TimeseriesexponentialLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialLayer::fill(self : TimeseriesexponentialLayer, v : Double) -> TimeseriesexponentialLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_layer_min(s : TimeseriesexponentialLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialLayer::min(self : TimeseriesexponentialLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_layer_max(s : TimeseriesexponentialLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialLayer::max(self : TimeseriesexponentialLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_layer_to_string(s : TimeseriesexponentialLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialLayer::to_string(self : TimeseriesexponentialLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_exponential_buffer_make(size : Int) -> TimeseriesexponentialBu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_buffer_len(s : TimeseriesexponentialBuffer) -> Int { s.size }
+pub fn TimeseriesexponentialBuffer::len(self : TimeseriesexponentialBuffer) -> Int { self.size }
 
-pub fn timeseries_exponential_buffer_get(s : TimeseriesexponentialBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialBuffer::get(self : TimeseriesexponentialBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_buffer_set(s : TimeseriesexponentialBuffer, i : Int, v : Double) -> TimeseriesexponentialBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialBuffer::set(self : TimeseriesexponentialBuffer, i : Int, v : Double) -> TimeseriesexponentialBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_buffer_sum(s : TimeseriesexponentialBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialBuffer::sum(self : TimeseriesexponentialBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_buffer_mean(s : TimeseriesexponentialBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialBuffer::mean(self : TimeseriesexponentialBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_buffer_scale(s : TimeseriesexponentialBuffer, f : Double) -> TimeseriesexponentialBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialBuffer::scale(self : TimeseriesexponentialBuffer, f : Double) -> TimeseriesexponentialBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_buffer_add(a : TimeseriesexponentialBuffer, b : TimeseriesexponentialBuffer) -> TimeseriesexponentialBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialBuffer::add(self : TimeseriesexponentialBuffer, other : TimeseriesexponentialBuffer) -> TimeseriesexponentialBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_buffer_copy(s : TimeseriesexponentialBuffer) -> TimeseriesexponentialBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialBuffer::copy(self : TimeseriesexponentialBuffer) -> TimeseriesexponentialBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_buffer_fill(s : TimeseriesexponentialBuffer, v : Double) -> TimeseriesexponentialBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialBuffer::fill(self : TimeseriesexponentialBuffer, v : Double) -> TimeseriesexponentialBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_buffer_min(s : TimeseriesexponentialBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialBuffer::min(self : TimeseriesexponentialBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_buffer_max(s : TimeseriesexponentialBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialBuffer::max(self : TimeseriesexponentialBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_buffer_to_string(s : TimeseriesexponentialBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialBuffer::to_string(self : TimeseriesexponentialBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_exponential_cursor_make(size : Int) -> TimeseriesexponentialCu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_cursor_len(s : TimeseriesexponentialCursor) -> Int { s.size }
+pub fn TimeseriesexponentialCursor::len(self : TimeseriesexponentialCursor) -> Int { self.size }
 
-pub fn timeseries_exponential_cursor_get(s : TimeseriesexponentialCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialCursor::get(self : TimeseriesexponentialCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_cursor_set(s : TimeseriesexponentialCursor, i : Int, v : Double) -> TimeseriesexponentialCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialCursor::set(self : TimeseriesexponentialCursor, i : Int, v : Double) -> TimeseriesexponentialCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_cursor_sum(s : TimeseriesexponentialCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialCursor::sum(self : TimeseriesexponentialCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_cursor_mean(s : TimeseriesexponentialCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialCursor::mean(self : TimeseriesexponentialCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_cursor_scale(s : TimeseriesexponentialCursor, f : Double) -> TimeseriesexponentialCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialCursor::scale(self : TimeseriesexponentialCursor, f : Double) -> TimeseriesexponentialCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_cursor_add(a : TimeseriesexponentialCursor, b : TimeseriesexponentialCursor) -> TimeseriesexponentialCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialCursor::add(self : TimeseriesexponentialCursor, other : TimeseriesexponentialCursor) -> TimeseriesexponentialCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_cursor_copy(s : TimeseriesexponentialCursor) -> TimeseriesexponentialCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialCursor::copy(self : TimeseriesexponentialCursor) -> TimeseriesexponentialCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_cursor_fill(s : TimeseriesexponentialCursor, v : Double) -> TimeseriesexponentialCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialCursor::fill(self : TimeseriesexponentialCursor, v : Double) -> TimeseriesexponentialCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_cursor_min(s : TimeseriesexponentialCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialCursor::min(self : TimeseriesexponentialCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_cursor_max(s : TimeseriesexponentialCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialCursor::max(self : TimeseriesexponentialCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_cursor_to_string(s : TimeseriesexponentialCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialCursor::to_string(self : TimeseriesexponentialCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialView {
@@ -912,45 +912,45 @@ pub fn timeseries_exponential_view_make(size : Int) -> TimeseriesexponentialView
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_view_len(s : TimeseriesexponentialView) -> Int { s.size }
+pub fn TimeseriesexponentialView::len(self : TimeseriesexponentialView) -> Int { self.size }
 
-pub fn timeseries_exponential_view_get(s : TimeseriesexponentialView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialView::get(self : TimeseriesexponentialView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_view_set(s : TimeseriesexponentialView, i : Int, v : Double) -> TimeseriesexponentialView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialView::set(self : TimeseriesexponentialView, i : Int, v : Double) -> TimeseriesexponentialView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_view_sum(s : TimeseriesexponentialView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialView::sum(self : TimeseriesexponentialView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_view_mean(s : TimeseriesexponentialView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialView::mean(self : TimeseriesexponentialView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_view_scale(s : TimeseriesexponentialView, f : Double) -> TimeseriesexponentialView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialView::scale(self : TimeseriesexponentialView, f : Double) -> TimeseriesexponentialView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_view_add(a : TimeseriesexponentialView, b : TimeseriesexponentialView) -> TimeseriesexponentialView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialView::add(self : TimeseriesexponentialView, other : TimeseriesexponentialView) -> TimeseriesexponentialView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_view_copy(s : TimeseriesexponentialView) -> TimeseriesexponentialView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialView::copy(self : TimeseriesexponentialView) -> TimeseriesexponentialView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_view_fill(s : TimeseriesexponentialView, v : Double) -> TimeseriesexponentialView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialView::fill(self : TimeseriesexponentialView, v : Double) -> TimeseriesexponentialView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_view_min(s : TimeseriesexponentialView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialView::min(self : TimeseriesexponentialView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_view_max(s : TimeseriesexponentialView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialView::max(self : TimeseriesexponentialView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_view_to_string(s : TimeseriesexponentialView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialView::to_string(self : TimeseriesexponentialView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialRange {
@@ -963,45 +963,45 @@ pub fn timeseries_exponential_range_make(size : Int) -> TimeseriesexponentialRan
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_range_len(s : TimeseriesexponentialRange) -> Int { s.size }
+pub fn TimeseriesexponentialRange::len(self : TimeseriesexponentialRange) -> Int { self.size }
 
-pub fn timeseries_exponential_range_get(s : TimeseriesexponentialRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialRange::get(self : TimeseriesexponentialRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_range_set(s : TimeseriesexponentialRange, i : Int, v : Double) -> TimeseriesexponentialRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialRange::set(self : TimeseriesexponentialRange, i : Int, v : Double) -> TimeseriesexponentialRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_range_sum(s : TimeseriesexponentialRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialRange::sum(self : TimeseriesexponentialRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_range_mean(s : TimeseriesexponentialRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialRange::mean(self : TimeseriesexponentialRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_range_scale(s : TimeseriesexponentialRange, f : Double) -> TimeseriesexponentialRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialRange::scale(self : TimeseriesexponentialRange, f : Double) -> TimeseriesexponentialRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_range_add(a : TimeseriesexponentialRange, b : TimeseriesexponentialRange) -> TimeseriesexponentialRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialRange::add(self : TimeseriesexponentialRange, other : TimeseriesexponentialRange) -> TimeseriesexponentialRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_range_copy(s : TimeseriesexponentialRange) -> TimeseriesexponentialRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialRange::copy(self : TimeseriesexponentialRange) -> TimeseriesexponentialRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_range_fill(s : TimeseriesexponentialRange, v : Double) -> TimeseriesexponentialRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialRange::fill(self : TimeseriesexponentialRange, v : Double) -> TimeseriesexponentialRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_range_min(s : TimeseriesexponentialRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialRange::min(self : TimeseriesexponentialRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_range_max(s : TimeseriesexponentialRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialRange::max(self : TimeseriesexponentialRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_range_to_string(s : TimeseriesexponentialRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialRange::to_string(self : TimeseriesexponentialRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_exponential_slice_make(size : Int) -> TimeseriesexponentialSli
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_exponential_slice_len(s : TimeseriesexponentialSlice) -> Int { s.size }
+pub fn TimeseriesexponentialSlice::len(self : TimeseriesexponentialSlice) -> Int { self.size }
 
-pub fn timeseries_exponential_slice_get(s : TimeseriesexponentialSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesexponentialSlice::get(self : TimeseriesexponentialSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_exponential_slice_set(s : TimeseriesexponentialSlice, i : Int, v : Double) -> TimeseriesexponentialSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialSlice::set(self : TimeseriesexponentialSlice, i : Int, v : Double) -> TimeseriesexponentialSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_slice_sum(s : TimeseriesexponentialSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesexponentialSlice::sum(self : TimeseriesexponentialSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_exponential_slice_mean(s : TimeseriesexponentialSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesexponentialSlice::mean(self : TimeseriesexponentialSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_exponential_slice_scale(s : TimeseriesexponentialSlice, f : Double) -> TimeseriesexponentialSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialSlice::scale(self : TimeseriesexponentialSlice, f : Double) -> TimeseriesexponentialSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_slice_add(a : TimeseriesexponentialSlice, b : TimeseriesexponentialSlice) -> TimeseriesexponentialSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesexponentialSlice::add(self : TimeseriesexponentialSlice, other : TimeseriesexponentialSlice) -> TimeseriesexponentialSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_exponential_slice_copy(s : TimeseriesexponentialSlice) -> TimeseriesexponentialSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialSlice::copy(self : TimeseriesexponentialSlice) -> TimeseriesexponentialSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_slice_fill(s : TimeseriesexponentialSlice, v : Double) -> TimeseriesexponentialSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesexponentialSlice::fill(self : TimeseriesexponentialSlice, v : Double) -> TimeseriesexponentialSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_exponential_slice_min(s : TimeseriesexponentialSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesexponentialSlice::min(self : TimeseriesexponentialSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_exponential_slice_max(s : TimeseriesexponentialSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesexponentialSlice::max(self : TimeseriesexponentialSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_exponential_slice_to_string(s : TimeseriesexponentialSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesexponentialSlice::to_string(self : TimeseriesexponentialSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

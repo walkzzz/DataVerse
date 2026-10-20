@@ -351,45 +351,45 @@ pub fn bio_phylo_reconcile_frame_make(size : Int) -> BiophyloreconcileFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_frame_len(s : BiophyloreconcileFrame) -> Int { s.size }
+pub fn BiophyloreconcileFrame::len(self : BiophyloreconcileFrame) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_frame_get(s : BiophyloreconcileFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileFrame::get(self : BiophyloreconcileFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_frame_set(s : BiophyloreconcileFrame, i : Int, v : Double) -> BiophyloreconcileFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileFrame::set(self : BiophyloreconcileFrame, i : Int, v : Double) -> BiophyloreconcileFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_frame_sum(s : BiophyloreconcileFrame) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileFrame::sum(self : BiophyloreconcileFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_frame_mean(s : BiophyloreconcileFrame) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileFrame::mean(self : BiophyloreconcileFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_frame_scale(s : BiophyloreconcileFrame, f : Double) -> BiophyloreconcileFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileFrame::scale(self : BiophyloreconcileFrame, f : Double) -> BiophyloreconcileFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_frame_add(a : BiophyloreconcileFrame, b : BiophyloreconcileFrame) -> BiophyloreconcileFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileFrame::add(self : BiophyloreconcileFrame, other : BiophyloreconcileFrame) -> BiophyloreconcileFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_frame_copy(s : BiophyloreconcileFrame) -> BiophyloreconcileFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileFrame::copy(self : BiophyloreconcileFrame) -> BiophyloreconcileFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_frame_fill(s : BiophyloreconcileFrame, v : Double) -> BiophyloreconcileFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileFrame::fill(self : BiophyloreconcileFrame, v : Double) -> BiophyloreconcileFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_frame_min(s : BiophyloreconcileFrame) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileFrame::min(self : BiophyloreconcileFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_frame_max(s : BiophyloreconcileFrame) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileFrame::max(self : BiophyloreconcileFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_frame_to_string(s : BiophyloreconcileFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileFrame::to_string(self : BiophyloreconcileFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileTable {
@@ -402,45 +402,45 @@ pub fn bio_phylo_reconcile_table_make(size : Int) -> BiophyloreconcileTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_table_len(s : BiophyloreconcileTable) -> Int { s.size }
+pub fn BiophyloreconcileTable::len(self : BiophyloreconcileTable) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_table_get(s : BiophyloreconcileTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileTable::get(self : BiophyloreconcileTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_table_set(s : BiophyloreconcileTable, i : Int, v : Double) -> BiophyloreconcileTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileTable::set(self : BiophyloreconcileTable, i : Int, v : Double) -> BiophyloreconcileTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_table_sum(s : BiophyloreconcileTable) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileTable::sum(self : BiophyloreconcileTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_table_mean(s : BiophyloreconcileTable) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileTable::mean(self : BiophyloreconcileTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_table_scale(s : BiophyloreconcileTable, f : Double) -> BiophyloreconcileTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileTable::scale(self : BiophyloreconcileTable, f : Double) -> BiophyloreconcileTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_table_add(a : BiophyloreconcileTable, b : BiophyloreconcileTable) -> BiophyloreconcileTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileTable::add(self : BiophyloreconcileTable, other : BiophyloreconcileTable) -> BiophyloreconcileTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_table_copy(s : BiophyloreconcileTable) -> BiophyloreconcileTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileTable::copy(self : BiophyloreconcileTable) -> BiophyloreconcileTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_table_fill(s : BiophyloreconcileTable, v : Double) -> BiophyloreconcileTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileTable::fill(self : BiophyloreconcileTable, v : Double) -> BiophyloreconcileTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_table_min(s : BiophyloreconcileTable) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileTable::min(self : BiophyloreconcileTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_table_max(s : BiophyloreconcileTable) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileTable::max(self : BiophyloreconcileTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_table_to_string(s : BiophyloreconcileTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileTable::to_string(self : BiophyloreconcileTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileGraphN {
@@ -453,45 +453,45 @@ pub fn bio_phylo_reconcile_graphn_make(size : Int) -> BiophyloreconcileGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_graphn_len(s : BiophyloreconcileGraphN) -> Int { s.size }
+pub fn BiophyloreconcileGraphN::len(self : BiophyloreconcileGraphN) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_graphn_get(s : BiophyloreconcileGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileGraphN::get(self : BiophyloreconcileGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_graphn_set(s : BiophyloreconcileGraphN, i : Int, v : Double) -> BiophyloreconcileGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileGraphN::set(self : BiophyloreconcileGraphN, i : Int, v : Double) -> BiophyloreconcileGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_graphn_sum(s : BiophyloreconcileGraphN) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileGraphN::sum(self : BiophyloreconcileGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_graphn_mean(s : BiophyloreconcileGraphN) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileGraphN::mean(self : BiophyloreconcileGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_graphn_scale(s : BiophyloreconcileGraphN, f : Double) -> BiophyloreconcileGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileGraphN::scale(self : BiophyloreconcileGraphN, f : Double) -> BiophyloreconcileGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_graphn_add(a : BiophyloreconcileGraphN, b : BiophyloreconcileGraphN) -> BiophyloreconcileGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileGraphN::add(self : BiophyloreconcileGraphN, other : BiophyloreconcileGraphN) -> BiophyloreconcileGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_graphn_copy(s : BiophyloreconcileGraphN) -> BiophyloreconcileGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileGraphN::copy(self : BiophyloreconcileGraphN) -> BiophyloreconcileGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_graphn_fill(s : BiophyloreconcileGraphN, v : Double) -> BiophyloreconcileGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileGraphN::fill(self : BiophyloreconcileGraphN, v : Double) -> BiophyloreconcileGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_graphn_min(s : BiophyloreconcileGraphN) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileGraphN::min(self : BiophyloreconcileGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_graphn_max(s : BiophyloreconcileGraphN) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileGraphN::max(self : BiophyloreconcileGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_graphn_to_string(s : BiophyloreconcileGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileGraphN::to_string(self : BiophyloreconcileGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileNode {
@@ -504,45 +504,45 @@ pub fn bio_phylo_reconcile_node_make(size : Int) -> BiophyloreconcileNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_node_len(s : BiophyloreconcileNode) -> Int { s.size }
+pub fn BiophyloreconcileNode::len(self : BiophyloreconcileNode) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_node_get(s : BiophyloreconcileNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileNode::get(self : BiophyloreconcileNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_node_set(s : BiophyloreconcileNode, i : Int, v : Double) -> BiophyloreconcileNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileNode::set(self : BiophyloreconcileNode, i : Int, v : Double) -> BiophyloreconcileNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_node_sum(s : BiophyloreconcileNode) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileNode::sum(self : BiophyloreconcileNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_node_mean(s : BiophyloreconcileNode) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileNode::mean(self : BiophyloreconcileNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_node_scale(s : BiophyloreconcileNode, f : Double) -> BiophyloreconcileNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileNode::scale(self : BiophyloreconcileNode, f : Double) -> BiophyloreconcileNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_node_add(a : BiophyloreconcileNode, b : BiophyloreconcileNode) -> BiophyloreconcileNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileNode::add(self : BiophyloreconcileNode, other : BiophyloreconcileNode) -> BiophyloreconcileNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_node_copy(s : BiophyloreconcileNode) -> BiophyloreconcileNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileNode::copy(self : BiophyloreconcileNode) -> BiophyloreconcileNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_node_fill(s : BiophyloreconcileNode, v : Double) -> BiophyloreconcileNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileNode::fill(self : BiophyloreconcileNode, v : Double) -> BiophyloreconcileNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_node_min(s : BiophyloreconcileNode) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileNode::min(self : BiophyloreconcileNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_node_max(s : BiophyloreconcileNode) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileNode::max(self : BiophyloreconcileNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_node_to_string(s : BiophyloreconcileNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileNode::to_string(self : BiophyloreconcileNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileEdge {
@@ -555,45 +555,45 @@ pub fn bio_phylo_reconcile_edge_make(size : Int) -> BiophyloreconcileEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_edge_len(s : BiophyloreconcileEdge) -> Int { s.size }
+pub fn BiophyloreconcileEdge::len(self : BiophyloreconcileEdge) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_edge_get(s : BiophyloreconcileEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileEdge::get(self : BiophyloreconcileEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_edge_set(s : BiophyloreconcileEdge, i : Int, v : Double) -> BiophyloreconcileEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileEdge::set(self : BiophyloreconcileEdge, i : Int, v : Double) -> BiophyloreconcileEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_edge_sum(s : BiophyloreconcileEdge) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileEdge::sum(self : BiophyloreconcileEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_edge_mean(s : BiophyloreconcileEdge) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileEdge::mean(self : BiophyloreconcileEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_edge_scale(s : BiophyloreconcileEdge, f : Double) -> BiophyloreconcileEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileEdge::scale(self : BiophyloreconcileEdge, f : Double) -> BiophyloreconcileEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_edge_add(a : BiophyloreconcileEdge, b : BiophyloreconcileEdge) -> BiophyloreconcileEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileEdge::add(self : BiophyloreconcileEdge, other : BiophyloreconcileEdge) -> BiophyloreconcileEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_edge_copy(s : BiophyloreconcileEdge) -> BiophyloreconcileEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileEdge::copy(self : BiophyloreconcileEdge) -> BiophyloreconcileEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_edge_fill(s : BiophyloreconcileEdge, v : Double) -> BiophyloreconcileEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileEdge::fill(self : BiophyloreconcileEdge, v : Double) -> BiophyloreconcileEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_edge_min(s : BiophyloreconcileEdge) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileEdge::min(self : BiophyloreconcileEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_edge_max(s : BiophyloreconcileEdge) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileEdge::max(self : BiophyloreconcileEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_edge_to_string(s : BiophyloreconcileEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileEdge::to_string(self : BiophyloreconcileEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcilePath {
@@ -606,45 +606,45 @@ pub fn bio_phylo_reconcile_path_make(size : Int) -> BiophyloreconcilePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_path_len(s : BiophyloreconcilePath) -> Int { s.size }
+pub fn BiophyloreconcilePath::len(self : BiophyloreconcilePath) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_path_get(s : BiophyloreconcilePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcilePath::get(self : BiophyloreconcilePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_path_set(s : BiophyloreconcilePath, i : Int, v : Double) -> BiophyloreconcilePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcilePath::set(self : BiophyloreconcilePath, i : Int, v : Double) -> BiophyloreconcilePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_path_sum(s : BiophyloreconcilePath) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcilePath::sum(self : BiophyloreconcilePath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_path_mean(s : BiophyloreconcilePath) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcilePath::mean(self : BiophyloreconcilePath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_path_scale(s : BiophyloreconcilePath, f : Double) -> BiophyloreconcilePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcilePath::scale(self : BiophyloreconcilePath, f : Double) -> BiophyloreconcilePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_path_add(a : BiophyloreconcilePath, b : BiophyloreconcilePath) -> BiophyloreconcilePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcilePath::add(self : BiophyloreconcilePath, other : BiophyloreconcilePath) -> BiophyloreconcilePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_path_copy(s : BiophyloreconcilePath) -> BiophyloreconcilePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcilePath::copy(self : BiophyloreconcilePath) -> BiophyloreconcilePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_path_fill(s : BiophyloreconcilePath, v : Double) -> BiophyloreconcilePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcilePath::fill(self : BiophyloreconcilePath, v : Double) -> BiophyloreconcilePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_path_min(s : BiophyloreconcilePath) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcilePath::min(self : BiophyloreconcilePath) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_path_max(s : BiophyloreconcilePath) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcilePath::max(self : BiophyloreconcilePath) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_path_to_string(s : BiophyloreconcilePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcilePath::to_string(self : BiophyloreconcilePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileCluster {
@@ -657,45 +657,45 @@ pub fn bio_phylo_reconcile_cluster_make(size : Int) -> BiophyloreconcileCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_cluster_len(s : BiophyloreconcileCluster) -> Int { s.size }
+pub fn BiophyloreconcileCluster::len(self : BiophyloreconcileCluster) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_cluster_get(s : BiophyloreconcileCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileCluster::get(self : BiophyloreconcileCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_cluster_set(s : BiophyloreconcileCluster, i : Int, v : Double) -> BiophyloreconcileCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileCluster::set(self : BiophyloreconcileCluster, i : Int, v : Double) -> BiophyloreconcileCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_cluster_sum(s : BiophyloreconcileCluster) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileCluster::sum(self : BiophyloreconcileCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_cluster_mean(s : BiophyloreconcileCluster) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileCluster::mean(self : BiophyloreconcileCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_cluster_scale(s : BiophyloreconcileCluster, f : Double) -> BiophyloreconcileCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileCluster::scale(self : BiophyloreconcileCluster, f : Double) -> BiophyloreconcileCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_cluster_add(a : BiophyloreconcileCluster, b : BiophyloreconcileCluster) -> BiophyloreconcileCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileCluster::add(self : BiophyloreconcileCluster, other : BiophyloreconcileCluster) -> BiophyloreconcileCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_cluster_copy(s : BiophyloreconcileCluster) -> BiophyloreconcileCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileCluster::copy(self : BiophyloreconcileCluster) -> BiophyloreconcileCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_cluster_fill(s : BiophyloreconcileCluster, v : Double) -> BiophyloreconcileCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileCluster::fill(self : BiophyloreconcileCluster, v : Double) -> BiophyloreconcileCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_cluster_min(s : BiophyloreconcileCluster) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileCluster::min(self : BiophyloreconcileCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_cluster_max(s : BiophyloreconcileCluster) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileCluster::max(self : BiophyloreconcileCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_cluster_to_string(s : BiophyloreconcileCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileCluster::to_string(self : BiophyloreconcileCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileModel {
@@ -708,45 +708,45 @@ pub fn bio_phylo_reconcile_model_make(size : Int) -> BiophyloreconcileModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_model_len(s : BiophyloreconcileModel) -> Int { s.size }
+pub fn BiophyloreconcileModel::len(self : BiophyloreconcileModel) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_model_get(s : BiophyloreconcileModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileModel::get(self : BiophyloreconcileModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_model_set(s : BiophyloreconcileModel, i : Int, v : Double) -> BiophyloreconcileModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileModel::set(self : BiophyloreconcileModel, i : Int, v : Double) -> BiophyloreconcileModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_model_sum(s : BiophyloreconcileModel) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileModel::sum(self : BiophyloreconcileModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_model_mean(s : BiophyloreconcileModel) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileModel::mean(self : BiophyloreconcileModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_model_scale(s : BiophyloreconcileModel, f : Double) -> BiophyloreconcileModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileModel::scale(self : BiophyloreconcileModel, f : Double) -> BiophyloreconcileModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_model_add(a : BiophyloreconcileModel, b : BiophyloreconcileModel) -> BiophyloreconcileModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileModel::add(self : BiophyloreconcileModel, other : BiophyloreconcileModel) -> BiophyloreconcileModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_model_copy(s : BiophyloreconcileModel) -> BiophyloreconcileModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileModel::copy(self : BiophyloreconcileModel) -> BiophyloreconcileModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_model_fill(s : BiophyloreconcileModel, v : Double) -> BiophyloreconcileModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileModel::fill(self : BiophyloreconcileModel, v : Double) -> BiophyloreconcileModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_model_min(s : BiophyloreconcileModel) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileModel::min(self : BiophyloreconcileModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_model_max(s : BiophyloreconcileModel) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileModel::max(self : BiophyloreconcileModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_model_to_string(s : BiophyloreconcileModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileModel::to_string(self : BiophyloreconcileModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileLayer {
@@ -759,45 +759,45 @@ pub fn bio_phylo_reconcile_layer_make(size : Int) -> BiophyloreconcileLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_layer_len(s : BiophyloreconcileLayer) -> Int { s.size }
+pub fn BiophyloreconcileLayer::len(self : BiophyloreconcileLayer) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_layer_get(s : BiophyloreconcileLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileLayer::get(self : BiophyloreconcileLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_layer_set(s : BiophyloreconcileLayer, i : Int, v : Double) -> BiophyloreconcileLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileLayer::set(self : BiophyloreconcileLayer, i : Int, v : Double) -> BiophyloreconcileLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_layer_sum(s : BiophyloreconcileLayer) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileLayer::sum(self : BiophyloreconcileLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_layer_mean(s : BiophyloreconcileLayer) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileLayer::mean(self : BiophyloreconcileLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_layer_scale(s : BiophyloreconcileLayer, f : Double) -> BiophyloreconcileLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileLayer::scale(self : BiophyloreconcileLayer, f : Double) -> BiophyloreconcileLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_layer_add(a : BiophyloreconcileLayer, b : BiophyloreconcileLayer) -> BiophyloreconcileLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileLayer::add(self : BiophyloreconcileLayer, other : BiophyloreconcileLayer) -> BiophyloreconcileLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_layer_copy(s : BiophyloreconcileLayer) -> BiophyloreconcileLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileLayer::copy(self : BiophyloreconcileLayer) -> BiophyloreconcileLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_layer_fill(s : BiophyloreconcileLayer, v : Double) -> BiophyloreconcileLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileLayer::fill(self : BiophyloreconcileLayer, v : Double) -> BiophyloreconcileLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_layer_min(s : BiophyloreconcileLayer) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileLayer::min(self : BiophyloreconcileLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_layer_max(s : BiophyloreconcileLayer) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileLayer::max(self : BiophyloreconcileLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_layer_to_string(s : BiophyloreconcileLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileLayer::to_string(self : BiophyloreconcileLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileBuffer {
@@ -810,45 +810,45 @@ pub fn bio_phylo_reconcile_buffer_make(size : Int) -> BiophyloreconcileBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_buffer_len(s : BiophyloreconcileBuffer) -> Int { s.size }
+pub fn BiophyloreconcileBuffer::len(self : BiophyloreconcileBuffer) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_buffer_get(s : BiophyloreconcileBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileBuffer::get(self : BiophyloreconcileBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_buffer_set(s : BiophyloreconcileBuffer, i : Int, v : Double) -> BiophyloreconcileBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileBuffer::set(self : BiophyloreconcileBuffer, i : Int, v : Double) -> BiophyloreconcileBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_buffer_sum(s : BiophyloreconcileBuffer) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileBuffer::sum(self : BiophyloreconcileBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_buffer_mean(s : BiophyloreconcileBuffer) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileBuffer::mean(self : BiophyloreconcileBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_buffer_scale(s : BiophyloreconcileBuffer, f : Double) -> BiophyloreconcileBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileBuffer::scale(self : BiophyloreconcileBuffer, f : Double) -> BiophyloreconcileBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_buffer_add(a : BiophyloreconcileBuffer, b : BiophyloreconcileBuffer) -> BiophyloreconcileBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileBuffer::add(self : BiophyloreconcileBuffer, other : BiophyloreconcileBuffer) -> BiophyloreconcileBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_buffer_copy(s : BiophyloreconcileBuffer) -> BiophyloreconcileBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileBuffer::copy(self : BiophyloreconcileBuffer) -> BiophyloreconcileBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_buffer_fill(s : BiophyloreconcileBuffer, v : Double) -> BiophyloreconcileBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileBuffer::fill(self : BiophyloreconcileBuffer, v : Double) -> BiophyloreconcileBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_buffer_min(s : BiophyloreconcileBuffer) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileBuffer::min(self : BiophyloreconcileBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_buffer_max(s : BiophyloreconcileBuffer) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileBuffer::max(self : BiophyloreconcileBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_buffer_to_string(s : BiophyloreconcileBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileBuffer::to_string(self : BiophyloreconcileBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileCursor {
@@ -861,45 +861,45 @@ pub fn bio_phylo_reconcile_cursor_make(size : Int) -> BiophyloreconcileCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_cursor_len(s : BiophyloreconcileCursor) -> Int { s.size }
+pub fn BiophyloreconcileCursor::len(self : BiophyloreconcileCursor) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_cursor_get(s : BiophyloreconcileCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileCursor::get(self : BiophyloreconcileCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_cursor_set(s : BiophyloreconcileCursor, i : Int, v : Double) -> BiophyloreconcileCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileCursor::set(self : BiophyloreconcileCursor, i : Int, v : Double) -> BiophyloreconcileCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_cursor_sum(s : BiophyloreconcileCursor) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileCursor::sum(self : BiophyloreconcileCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_cursor_mean(s : BiophyloreconcileCursor) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileCursor::mean(self : BiophyloreconcileCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_cursor_scale(s : BiophyloreconcileCursor, f : Double) -> BiophyloreconcileCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileCursor::scale(self : BiophyloreconcileCursor, f : Double) -> BiophyloreconcileCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_cursor_add(a : BiophyloreconcileCursor, b : BiophyloreconcileCursor) -> BiophyloreconcileCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileCursor::add(self : BiophyloreconcileCursor, other : BiophyloreconcileCursor) -> BiophyloreconcileCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_cursor_copy(s : BiophyloreconcileCursor) -> BiophyloreconcileCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileCursor::copy(self : BiophyloreconcileCursor) -> BiophyloreconcileCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_cursor_fill(s : BiophyloreconcileCursor, v : Double) -> BiophyloreconcileCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileCursor::fill(self : BiophyloreconcileCursor, v : Double) -> BiophyloreconcileCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_cursor_min(s : BiophyloreconcileCursor) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileCursor::min(self : BiophyloreconcileCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_cursor_max(s : BiophyloreconcileCursor) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileCursor::max(self : BiophyloreconcileCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_cursor_to_string(s : BiophyloreconcileCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileCursor::to_string(self : BiophyloreconcileCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileView {
@@ -912,45 +912,45 @@ pub fn bio_phylo_reconcile_view_make(size : Int) -> BiophyloreconcileView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_view_len(s : BiophyloreconcileView) -> Int { s.size }
+pub fn BiophyloreconcileView::len(self : BiophyloreconcileView) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_view_get(s : BiophyloreconcileView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileView::get(self : BiophyloreconcileView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_view_set(s : BiophyloreconcileView, i : Int, v : Double) -> BiophyloreconcileView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileView::set(self : BiophyloreconcileView, i : Int, v : Double) -> BiophyloreconcileView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_view_sum(s : BiophyloreconcileView) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileView::sum(self : BiophyloreconcileView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_view_mean(s : BiophyloreconcileView) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileView::mean(self : BiophyloreconcileView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_view_scale(s : BiophyloreconcileView, f : Double) -> BiophyloreconcileView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileView::scale(self : BiophyloreconcileView, f : Double) -> BiophyloreconcileView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_view_add(a : BiophyloreconcileView, b : BiophyloreconcileView) -> BiophyloreconcileView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileView::add(self : BiophyloreconcileView, other : BiophyloreconcileView) -> BiophyloreconcileView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_view_copy(s : BiophyloreconcileView) -> BiophyloreconcileView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileView::copy(self : BiophyloreconcileView) -> BiophyloreconcileView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_view_fill(s : BiophyloreconcileView, v : Double) -> BiophyloreconcileView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileView::fill(self : BiophyloreconcileView, v : Double) -> BiophyloreconcileView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_view_min(s : BiophyloreconcileView) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileView::min(self : BiophyloreconcileView) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_view_max(s : BiophyloreconcileView) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileView::max(self : BiophyloreconcileView) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_view_to_string(s : BiophyloreconcileView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileView::to_string(self : BiophyloreconcileView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileRange {
@@ -963,45 +963,45 @@ pub fn bio_phylo_reconcile_range_make(size : Int) -> BiophyloreconcileRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_range_len(s : BiophyloreconcileRange) -> Int { s.size }
+pub fn BiophyloreconcileRange::len(self : BiophyloreconcileRange) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_range_get(s : BiophyloreconcileRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileRange::get(self : BiophyloreconcileRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_range_set(s : BiophyloreconcileRange, i : Int, v : Double) -> BiophyloreconcileRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileRange::set(self : BiophyloreconcileRange, i : Int, v : Double) -> BiophyloreconcileRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_range_sum(s : BiophyloreconcileRange) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileRange::sum(self : BiophyloreconcileRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_range_mean(s : BiophyloreconcileRange) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileRange::mean(self : BiophyloreconcileRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_range_scale(s : BiophyloreconcileRange, f : Double) -> BiophyloreconcileRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileRange::scale(self : BiophyloreconcileRange, f : Double) -> BiophyloreconcileRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_range_add(a : BiophyloreconcileRange, b : BiophyloreconcileRange) -> BiophyloreconcileRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileRange::add(self : BiophyloreconcileRange, other : BiophyloreconcileRange) -> BiophyloreconcileRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_range_copy(s : BiophyloreconcileRange) -> BiophyloreconcileRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileRange::copy(self : BiophyloreconcileRange) -> BiophyloreconcileRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_range_fill(s : BiophyloreconcileRange, v : Double) -> BiophyloreconcileRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileRange::fill(self : BiophyloreconcileRange, v : Double) -> BiophyloreconcileRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_range_min(s : BiophyloreconcileRange) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileRange::min(self : BiophyloreconcileRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_range_max(s : BiophyloreconcileRange) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileRange::max(self : BiophyloreconcileRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_range_to_string(s : BiophyloreconcileRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileRange::to_string(self : BiophyloreconcileRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_phylo_reconcile_slice_make(size : Int) -> BiophyloreconcileSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_reconcile_slice_len(s : BiophyloreconcileSlice) -> Int { s.size }
+pub fn BiophyloreconcileSlice::len(self : BiophyloreconcileSlice) -> Int { self.size }
 
-pub fn bio_phylo_reconcile_slice_get(s : BiophyloreconcileSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloreconcileSlice::get(self : BiophyloreconcileSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_reconcile_slice_set(s : BiophyloreconcileSlice, i : Int, v : Double) -> BiophyloreconcileSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloreconcileSlice::set(self : BiophyloreconcileSlice, i : Int, v : Double) -> BiophyloreconcileSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_slice_sum(s : BiophyloreconcileSlice) -> Double { @_common.sum(s.data) }
+pub fn BiophyloreconcileSlice::sum(self : BiophyloreconcileSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_reconcile_slice_mean(s : BiophyloreconcileSlice) -> Double { @_common.mean(s.data) }
+pub fn BiophyloreconcileSlice::mean(self : BiophyloreconcileSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_reconcile_slice_scale(s : BiophyloreconcileSlice, f : Double) -> BiophyloreconcileSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileSlice::scale(self : BiophyloreconcileSlice, f : Double) -> BiophyloreconcileSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_slice_add(a : BiophyloreconcileSlice, b : BiophyloreconcileSlice) -> BiophyloreconcileSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloreconcileSlice::add(self : BiophyloreconcileSlice, other : BiophyloreconcileSlice) -> BiophyloreconcileSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_slice_copy(s : BiophyloreconcileSlice) -> BiophyloreconcileSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileSlice::copy(self : BiophyloreconcileSlice) -> BiophyloreconcileSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_slice_fill(s : BiophyloreconcileSlice, v : Double) -> BiophyloreconcileSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloreconcileSlice::fill(self : BiophyloreconcileSlice, v : Double) -> BiophyloreconcileSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_reconcile_slice_min(s : BiophyloreconcileSlice) -> Double { @_common.min(s.data) }
+pub fn BiophyloreconcileSlice::min(self : BiophyloreconcileSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_reconcile_slice_max(s : BiophyloreconcileSlice) -> Double { @_common.max(s.data) }
+pub fn BiophyloreconcileSlice::max(self : BiophyloreconcileSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_reconcile_slice_to_string(s : BiophyloreconcileSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloreconcileSlice::to_string(self : BiophyloreconcileSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn db_store_tensor_frame_make(size : Int) -> DbstoretensorFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_frame_len(s : DbstoretensorFrame) -> Int { s.size }
+pub fn DbstoretensorFrame::len(self : DbstoretensorFrame) -> Int { self.size }
 
-pub fn db_store_tensor_frame_get(s : DbstoretensorFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorFrame::get(self : DbstoretensorFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_frame_set(s : DbstoretensorFrame, i : Int, v : Double) -> DbstoretensorFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorFrame::set(self : DbstoretensorFrame, i : Int, v : Double) -> DbstoretensorFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_frame_sum(s : DbstoretensorFrame) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorFrame::sum(self : DbstoretensorFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_frame_mean(s : DbstoretensorFrame) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorFrame::mean(self : DbstoretensorFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_frame_scale(s : DbstoretensorFrame, f : Double) -> DbstoretensorFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorFrame::scale(self : DbstoretensorFrame, f : Double) -> DbstoretensorFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_frame_add(a : DbstoretensorFrame, b : DbstoretensorFrame) -> DbstoretensorFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorFrame::add(self : DbstoretensorFrame, other : DbstoretensorFrame) -> DbstoretensorFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_frame_copy(s : DbstoretensorFrame) -> DbstoretensorFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorFrame::copy(self : DbstoretensorFrame) -> DbstoretensorFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_frame_fill(s : DbstoretensorFrame, v : Double) -> DbstoretensorFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorFrame::fill(self : DbstoretensorFrame, v : Double) -> DbstoretensorFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_frame_min(s : DbstoretensorFrame) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorFrame::min(self : DbstoretensorFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_frame_max(s : DbstoretensorFrame) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorFrame::max(self : DbstoretensorFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_frame_to_string(s : DbstoretensorFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorFrame::to_string(self : DbstoretensorFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorTable {
@@ -402,45 +402,45 @@ pub fn db_store_tensor_table_make(size : Int) -> DbstoretensorTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_table_len(s : DbstoretensorTable) -> Int { s.size }
+pub fn DbstoretensorTable::len(self : DbstoretensorTable) -> Int { self.size }
 
-pub fn db_store_tensor_table_get(s : DbstoretensorTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorTable::get(self : DbstoretensorTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_table_set(s : DbstoretensorTable, i : Int, v : Double) -> DbstoretensorTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorTable::set(self : DbstoretensorTable, i : Int, v : Double) -> DbstoretensorTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_table_sum(s : DbstoretensorTable) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorTable::sum(self : DbstoretensorTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_table_mean(s : DbstoretensorTable) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorTable::mean(self : DbstoretensorTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_table_scale(s : DbstoretensorTable, f : Double) -> DbstoretensorTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorTable::scale(self : DbstoretensorTable, f : Double) -> DbstoretensorTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_table_add(a : DbstoretensorTable, b : DbstoretensorTable) -> DbstoretensorTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorTable::add(self : DbstoretensorTable, other : DbstoretensorTable) -> DbstoretensorTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_table_copy(s : DbstoretensorTable) -> DbstoretensorTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorTable::copy(self : DbstoretensorTable) -> DbstoretensorTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_table_fill(s : DbstoretensorTable, v : Double) -> DbstoretensorTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorTable::fill(self : DbstoretensorTable, v : Double) -> DbstoretensorTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_table_min(s : DbstoretensorTable) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorTable::min(self : DbstoretensorTable) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_table_max(s : DbstoretensorTable) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorTable::max(self : DbstoretensorTable) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_table_to_string(s : DbstoretensorTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorTable::to_string(self : DbstoretensorTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorGraphN {
@@ -453,45 +453,45 @@ pub fn db_store_tensor_graphn_make(size : Int) -> DbstoretensorGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_graphn_len(s : DbstoretensorGraphN) -> Int { s.size }
+pub fn DbstoretensorGraphN::len(self : DbstoretensorGraphN) -> Int { self.size }
 
-pub fn db_store_tensor_graphn_get(s : DbstoretensorGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorGraphN::get(self : DbstoretensorGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_graphn_set(s : DbstoretensorGraphN, i : Int, v : Double) -> DbstoretensorGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorGraphN::set(self : DbstoretensorGraphN, i : Int, v : Double) -> DbstoretensorGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_graphn_sum(s : DbstoretensorGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorGraphN::sum(self : DbstoretensorGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_graphn_mean(s : DbstoretensorGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorGraphN::mean(self : DbstoretensorGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_graphn_scale(s : DbstoretensorGraphN, f : Double) -> DbstoretensorGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorGraphN::scale(self : DbstoretensorGraphN, f : Double) -> DbstoretensorGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_graphn_add(a : DbstoretensorGraphN, b : DbstoretensorGraphN) -> DbstoretensorGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorGraphN::add(self : DbstoretensorGraphN, other : DbstoretensorGraphN) -> DbstoretensorGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_graphn_copy(s : DbstoretensorGraphN) -> DbstoretensorGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorGraphN::copy(self : DbstoretensorGraphN) -> DbstoretensorGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_graphn_fill(s : DbstoretensorGraphN, v : Double) -> DbstoretensorGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorGraphN::fill(self : DbstoretensorGraphN, v : Double) -> DbstoretensorGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_graphn_min(s : DbstoretensorGraphN) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorGraphN::min(self : DbstoretensorGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_graphn_max(s : DbstoretensorGraphN) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorGraphN::max(self : DbstoretensorGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_graphn_to_string(s : DbstoretensorGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorGraphN::to_string(self : DbstoretensorGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorNode {
@@ -504,45 +504,45 @@ pub fn db_store_tensor_node_make(size : Int) -> DbstoretensorNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_node_len(s : DbstoretensorNode) -> Int { s.size }
+pub fn DbstoretensorNode::len(self : DbstoretensorNode) -> Int { self.size }
 
-pub fn db_store_tensor_node_get(s : DbstoretensorNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorNode::get(self : DbstoretensorNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_node_set(s : DbstoretensorNode, i : Int, v : Double) -> DbstoretensorNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorNode::set(self : DbstoretensorNode, i : Int, v : Double) -> DbstoretensorNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_node_sum(s : DbstoretensorNode) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorNode::sum(self : DbstoretensorNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_node_mean(s : DbstoretensorNode) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorNode::mean(self : DbstoretensorNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_node_scale(s : DbstoretensorNode, f : Double) -> DbstoretensorNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorNode::scale(self : DbstoretensorNode, f : Double) -> DbstoretensorNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_node_add(a : DbstoretensorNode, b : DbstoretensorNode) -> DbstoretensorNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorNode::add(self : DbstoretensorNode, other : DbstoretensorNode) -> DbstoretensorNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_node_copy(s : DbstoretensorNode) -> DbstoretensorNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorNode::copy(self : DbstoretensorNode) -> DbstoretensorNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_node_fill(s : DbstoretensorNode, v : Double) -> DbstoretensorNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorNode::fill(self : DbstoretensorNode, v : Double) -> DbstoretensorNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_node_min(s : DbstoretensorNode) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorNode::min(self : DbstoretensorNode) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_node_max(s : DbstoretensorNode) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorNode::max(self : DbstoretensorNode) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_node_to_string(s : DbstoretensorNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorNode::to_string(self : DbstoretensorNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorEdge {
@@ -555,45 +555,45 @@ pub fn db_store_tensor_edge_make(size : Int) -> DbstoretensorEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_edge_len(s : DbstoretensorEdge) -> Int { s.size }
+pub fn DbstoretensorEdge::len(self : DbstoretensorEdge) -> Int { self.size }
 
-pub fn db_store_tensor_edge_get(s : DbstoretensorEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorEdge::get(self : DbstoretensorEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_edge_set(s : DbstoretensorEdge, i : Int, v : Double) -> DbstoretensorEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorEdge::set(self : DbstoretensorEdge, i : Int, v : Double) -> DbstoretensorEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_edge_sum(s : DbstoretensorEdge) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorEdge::sum(self : DbstoretensorEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_edge_mean(s : DbstoretensorEdge) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorEdge::mean(self : DbstoretensorEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_edge_scale(s : DbstoretensorEdge, f : Double) -> DbstoretensorEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorEdge::scale(self : DbstoretensorEdge, f : Double) -> DbstoretensorEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_edge_add(a : DbstoretensorEdge, b : DbstoretensorEdge) -> DbstoretensorEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorEdge::add(self : DbstoretensorEdge, other : DbstoretensorEdge) -> DbstoretensorEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_edge_copy(s : DbstoretensorEdge) -> DbstoretensorEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorEdge::copy(self : DbstoretensorEdge) -> DbstoretensorEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_edge_fill(s : DbstoretensorEdge, v : Double) -> DbstoretensorEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorEdge::fill(self : DbstoretensorEdge, v : Double) -> DbstoretensorEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_edge_min(s : DbstoretensorEdge) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorEdge::min(self : DbstoretensorEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_edge_max(s : DbstoretensorEdge) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorEdge::max(self : DbstoretensorEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_edge_to_string(s : DbstoretensorEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorEdge::to_string(self : DbstoretensorEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorPath {
@@ -606,45 +606,45 @@ pub fn db_store_tensor_path_make(size : Int) -> DbstoretensorPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_path_len(s : DbstoretensorPath) -> Int { s.size }
+pub fn DbstoretensorPath::len(self : DbstoretensorPath) -> Int { self.size }
 
-pub fn db_store_tensor_path_get(s : DbstoretensorPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorPath::get(self : DbstoretensorPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_path_set(s : DbstoretensorPath, i : Int, v : Double) -> DbstoretensorPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorPath::set(self : DbstoretensorPath, i : Int, v : Double) -> DbstoretensorPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_path_sum(s : DbstoretensorPath) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorPath::sum(self : DbstoretensorPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_path_mean(s : DbstoretensorPath) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorPath::mean(self : DbstoretensorPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_path_scale(s : DbstoretensorPath, f : Double) -> DbstoretensorPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorPath::scale(self : DbstoretensorPath, f : Double) -> DbstoretensorPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_path_add(a : DbstoretensorPath, b : DbstoretensorPath) -> DbstoretensorPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorPath::add(self : DbstoretensorPath, other : DbstoretensorPath) -> DbstoretensorPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_path_copy(s : DbstoretensorPath) -> DbstoretensorPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorPath::copy(self : DbstoretensorPath) -> DbstoretensorPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_path_fill(s : DbstoretensorPath, v : Double) -> DbstoretensorPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorPath::fill(self : DbstoretensorPath, v : Double) -> DbstoretensorPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_path_min(s : DbstoretensorPath) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorPath::min(self : DbstoretensorPath) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_path_max(s : DbstoretensorPath) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorPath::max(self : DbstoretensorPath) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_path_to_string(s : DbstoretensorPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorPath::to_string(self : DbstoretensorPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorCluster {
@@ -657,45 +657,45 @@ pub fn db_store_tensor_cluster_make(size : Int) -> DbstoretensorCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_cluster_len(s : DbstoretensorCluster) -> Int { s.size }
+pub fn DbstoretensorCluster::len(self : DbstoretensorCluster) -> Int { self.size }
 
-pub fn db_store_tensor_cluster_get(s : DbstoretensorCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorCluster::get(self : DbstoretensorCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_cluster_set(s : DbstoretensorCluster, i : Int, v : Double) -> DbstoretensorCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorCluster::set(self : DbstoretensorCluster, i : Int, v : Double) -> DbstoretensorCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_cluster_sum(s : DbstoretensorCluster) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorCluster::sum(self : DbstoretensorCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_cluster_mean(s : DbstoretensorCluster) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorCluster::mean(self : DbstoretensorCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_cluster_scale(s : DbstoretensorCluster, f : Double) -> DbstoretensorCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorCluster::scale(self : DbstoretensorCluster, f : Double) -> DbstoretensorCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_cluster_add(a : DbstoretensorCluster, b : DbstoretensorCluster) -> DbstoretensorCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorCluster::add(self : DbstoretensorCluster, other : DbstoretensorCluster) -> DbstoretensorCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_cluster_copy(s : DbstoretensorCluster) -> DbstoretensorCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorCluster::copy(self : DbstoretensorCluster) -> DbstoretensorCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_cluster_fill(s : DbstoretensorCluster, v : Double) -> DbstoretensorCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorCluster::fill(self : DbstoretensorCluster, v : Double) -> DbstoretensorCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_cluster_min(s : DbstoretensorCluster) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorCluster::min(self : DbstoretensorCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_cluster_max(s : DbstoretensorCluster) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorCluster::max(self : DbstoretensorCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_cluster_to_string(s : DbstoretensorCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorCluster::to_string(self : DbstoretensorCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorModel {
@@ -708,45 +708,45 @@ pub fn db_store_tensor_model_make(size : Int) -> DbstoretensorModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_model_len(s : DbstoretensorModel) -> Int { s.size }
+pub fn DbstoretensorModel::len(self : DbstoretensorModel) -> Int { self.size }
 
-pub fn db_store_tensor_model_get(s : DbstoretensorModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorModel::get(self : DbstoretensorModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_model_set(s : DbstoretensorModel, i : Int, v : Double) -> DbstoretensorModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorModel::set(self : DbstoretensorModel, i : Int, v : Double) -> DbstoretensorModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_model_sum(s : DbstoretensorModel) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorModel::sum(self : DbstoretensorModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_model_mean(s : DbstoretensorModel) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorModel::mean(self : DbstoretensorModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_model_scale(s : DbstoretensorModel, f : Double) -> DbstoretensorModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorModel::scale(self : DbstoretensorModel, f : Double) -> DbstoretensorModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_model_add(a : DbstoretensorModel, b : DbstoretensorModel) -> DbstoretensorModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorModel::add(self : DbstoretensorModel, other : DbstoretensorModel) -> DbstoretensorModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_model_copy(s : DbstoretensorModel) -> DbstoretensorModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorModel::copy(self : DbstoretensorModel) -> DbstoretensorModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_model_fill(s : DbstoretensorModel, v : Double) -> DbstoretensorModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorModel::fill(self : DbstoretensorModel, v : Double) -> DbstoretensorModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_model_min(s : DbstoretensorModel) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorModel::min(self : DbstoretensorModel) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_model_max(s : DbstoretensorModel) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorModel::max(self : DbstoretensorModel) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_model_to_string(s : DbstoretensorModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorModel::to_string(self : DbstoretensorModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorLayer {
@@ -759,45 +759,45 @@ pub fn db_store_tensor_layer_make(size : Int) -> DbstoretensorLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_layer_len(s : DbstoretensorLayer) -> Int { s.size }
+pub fn DbstoretensorLayer::len(self : DbstoretensorLayer) -> Int { self.size }
 
-pub fn db_store_tensor_layer_get(s : DbstoretensorLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorLayer::get(self : DbstoretensorLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_layer_set(s : DbstoretensorLayer, i : Int, v : Double) -> DbstoretensorLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorLayer::set(self : DbstoretensorLayer, i : Int, v : Double) -> DbstoretensorLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_layer_sum(s : DbstoretensorLayer) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorLayer::sum(self : DbstoretensorLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_layer_mean(s : DbstoretensorLayer) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorLayer::mean(self : DbstoretensorLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_layer_scale(s : DbstoretensorLayer, f : Double) -> DbstoretensorLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorLayer::scale(self : DbstoretensorLayer, f : Double) -> DbstoretensorLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_layer_add(a : DbstoretensorLayer, b : DbstoretensorLayer) -> DbstoretensorLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorLayer::add(self : DbstoretensorLayer, other : DbstoretensorLayer) -> DbstoretensorLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_layer_copy(s : DbstoretensorLayer) -> DbstoretensorLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorLayer::copy(self : DbstoretensorLayer) -> DbstoretensorLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_layer_fill(s : DbstoretensorLayer, v : Double) -> DbstoretensorLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorLayer::fill(self : DbstoretensorLayer, v : Double) -> DbstoretensorLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_layer_min(s : DbstoretensorLayer) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorLayer::min(self : DbstoretensorLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_layer_max(s : DbstoretensorLayer) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorLayer::max(self : DbstoretensorLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_layer_to_string(s : DbstoretensorLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorLayer::to_string(self : DbstoretensorLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorBuffer {
@@ -810,45 +810,45 @@ pub fn db_store_tensor_buffer_make(size : Int) -> DbstoretensorBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_buffer_len(s : DbstoretensorBuffer) -> Int { s.size }
+pub fn DbstoretensorBuffer::len(self : DbstoretensorBuffer) -> Int { self.size }
 
-pub fn db_store_tensor_buffer_get(s : DbstoretensorBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorBuffer::get(self : DbstoretensorBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_buffer_set(s : DbstoretensorBuffer, i : Int, v : Double) -> DbstoretensorBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorBuffer::set(self : DbstoretensorBuffer, i : Int, v : Double) -> DbstoretensorBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_buffer_sum(s : DbstoretensorBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorBuffer::sum(self : DbstoretensorBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_buffer_mean(s : DbstoretensorBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorBuffer::mean(self : DbstoretensorBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_buffer_scale(s : DbstoretensorBuffer, f : Double) -> DbstoretensorBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorBuffer::scale(self : DbstoretensorBuffer, f : Double) -> DbstoretensorBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_buffer_add(a : DbstoretensorBuffer, b : DbstoretensorBuffer) -> DbstoretensorBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorBuffer::add(self : DbstoretensorBuffer, other : DbstoretensorBuffer) -> DbstoretensorBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_buffer_copy(s : DbstoretensorBuffer) -> DbstoretensorBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorBuffer::copy(self : DbstoretensorBuffer) -> DbstoretensorBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_buffer_fill(s : DbstoretensorBuffer, v : Double) -> DbstoretensorBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorBuffer::fill(self : DbstoretensorBuffer, v : Double) -> DbstoretensorBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_buffer_min(s : DbstoretensorBuffer) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorBuffer::min(self : DbstoretensorBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_buffer_max(s : DbstoretensorBuffer) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorBuffer::max(self : DbstoretensorBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_buffer_to_string(s : DbstoretensorBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorBuffer::to_string(self : DbstoretensorBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorCursor {
@@ -861,45 +861,45 @@ pub fn db_store_tensor_cursor_make(size : Int) -> DbstoretensorCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_cursor_len(s : DbstoretensorCursor) -> Int { s.size }
+pub fn DbstoretensorCursor::len(self : DbstoretensorCursor) -> Int { self.size }
 
-pub fn db_store_tensor_cursor_get(s : DbstoretensorCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorCursor::get(self : DbstoretensorCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_cursor_set(s : DbstoretensorCursor, i : Int, v : Double) -> DbstoretensorCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorCursor::set(self : DbstoretensorCursor, i : Int, v : Double) -> DbstoretensorCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_cursor_sum(s : DbstoretensorCursor) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorCursor::sum(self : DbstoretensorCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_cursor_mean(s : DbstoretensorCursor) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorCursor::mean(self : DbstoretensorCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_cursor_scale(s : DbstoretensorCursor, f : Double) -> DbstoretensorCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorCursor::scale(self : DbstoretensorCursor, f : Double) -> DbstoretensorCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_cursor_add(a : DbstoretensorCursor, b : DbstoretensorCursor) -> DbstoretensorCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorCursor::add(self : DbstoretensorCursor, other : DbstoretensorCursor) -> DbstoretensorCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_cursor_copy(s : DbstoretensorCursor) -> DbstoretensorCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorCursor::copy(self : DbstoretensorCursor) -> DbstoretensorCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_cursor_fill(s : DbstoretensorCursor, v : Double) -> DbstoretensorCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorCursor::fill(self : DbstoretensorCursor, v : Double) -> DbstoretensorCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_cursor_min(s : DbstoretensorCursor) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorCursor::min(self : DbstoretensorCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_cursor_max(s : DbstoretensorCursor) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorCursor::max(self : DbstoretensorCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_cursor_to_string(s : DbstoretensorCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorCursor::to_string(self : DbstoretensorCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorView {
@@ -912,45 +912,45 @@ pub fn db_store_tensor_view_make(size : Int) -> DbstoretensorView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_view_len(s : DbstoretensorView) -> Int { s.size }
+pub fn DbstoretensorView::len(self : DbstoretensorView) -> Int { self.size }
 
-pub fn db_store_tensor_view_get(s : DbstoretensorView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorView::get(self : DbstoretensorView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_view_set(s : DbstoretensorView, i : Int, v : Double) -> DbstoretensorView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorView::set(self : DbstoretensorView, i : Int, v : Double) -> DbstoretensorView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_view_sum(s : DbstoretensorView) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorView::sum(self : DbstoretensorView) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_view_mean(s : DbstoretensorView) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorView::mean(self : DbstoretensorView) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_view_scale(s : DbstoretensorView, f : Double) -> DbstoretensorView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorView::scale(self : DbstoretensorView, f : Double) -> DbstoretensorView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_view_add(a : DbstoretensorView, b : DbstoretensorView) -> DbstoretensorView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorView::add(self : DbstoretensorView, other : DbstoretensorView) -> DbstoretensorView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_view_copy(s : DbstoretensorView) -> DbstoretensorView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorView::copy(self : DbstoretensorView) -> DbstoretensorView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_view_fill(s : DbstoretensorView, v : Double) -> DbstoretensorView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorView::fill(self : DbstoretensorView, v : Double) -> DbstoretensorView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_view_min(s : DbstoretensorView) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorView::min(self : DbstoretensorView) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_view_max(s : DbstoretensorView) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorView::max(self : DbstoretensorView) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_view_to_string(s : DbstoretensorView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorView::to_string(self : DbstoretensorView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorRange {
@@ -963,45 +963,45 @@ pub fn db_store_tensor_range_make(size : Int) -> DbstoretensorRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_range_len(s : DbstoretensorRange) -> Int { s.size }
+pub fn DbstoretensorRange::len(self : DbstoretensorRange) -> Int { self.size }
 
-pub fn db_store_tensor_range_get(s : DbstoretensorRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorRange::get(self : DbstoretensorRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_range_set(s : DbstoretensorRange, i : Int, v : Double) -> DbstoretensorRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorRange::set(self : DbstoretensorRange, i : Int, v : Double) -> DbstoretensorRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_range_sum(s : DbstoretensorRange) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorRange::sum(self : DbstoretensorRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_range_mean(s : DbstoretensorRange) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorRange::mean(self : DbstoretensorRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_range_scale(s : DbstoretensorRange, f : Double) -> DbstoretensorRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorRange::scale(self : DbstoretensorRange, f : Double) -> DbstoretensorRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_range_add(a : DbstoretensorRange, b : DbstoretensorRange) -> DbstoretensorRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorRange::add(self : DbstoretensorRange, other : DbstoretensorRange) -> DbstoretensorRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_range_copy(s : DbstoretensorRange) -> DbstoretensorRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorRange::copy(self : DbstoretensorRange) -> DbstoretensorRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_range_fill(s : DbstoretensorRange, v : Double) -> DbstoretensorRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorRange::fill(self : DbstoretensorRange, v : Double) -> DbstoretensorRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_range_min(s : DbstoretensorRange) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorRange::min(self : DbstoretensorRange) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_range_max(s : DbstoretensorRange) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorRange::max(self : DbstoretensorRange) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_range_to_string(s : DbstoretensorRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorRange::to_string(self : DbstoretensorRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretensorSlice {
@@ -1014,44 +1014,44 @@ pub fn db_store_tensor_slice_make(size : Int) -> DbstoretensorSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_tensor_slice_len(s : DbstoretensorSlice) -> Int { s.size }
+pub fn DbstoretensorSlice::len(self : DbstoretensorSlice) -> Int { self.size }
 
-pub fn db_store_tensor_slice_get(s : DbstoretensorSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretensorSlice::get(self : DbstoretensorSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_tensor_slice_set(s : DbstoretensorSlice, i : Int, v : Double) -> DbstoretensorSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretensorSlice::set(self : DbstoretensorSlice, i : Int, v : Double) -> DbstoretensorSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_slice_sum(s : DbstoretensorSlice) -> Double { @_common.sum(s.data) }
+pub fn DbstoretensorSlice::sum(self : DbstoretensorSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_tensor_slice_mean(s : DbstoretensorSlice) -> Double { @_common.mean(s.data) }
+pub fn DbstoretensorSlice::mean(self : DbstoretensorSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_tensor_slice_scale(s : DbstoretensorSlice, f : Double) -> DbstoretensorSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretensorSlice::scale(self : DbstoretensorSlice, f : Double) -> DbstoretensorSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_slice_add(a : DbstoretensorSlice, b : DbstoretensorSlice) -> DbstoretensorSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretensorSlice::add(self : DbstoretensorSlice, other : DbstoretensorSlice) -> DbstoretensorSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_tensor_slice_copy(s : DbstoretensorSlice) -> DbstoretensorSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretensorSlice::copy(self : DbstoretensorSlice) -> DbstoretensorSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_slice_fill(s : DbstoretensorSlice, v : Double) -> DbstoretensorSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretensorSlice::fill(self : DbstoretensorSlice, v : Double) -> DbstoretensorSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_tensor_slice_min(s : DbstoretensorSlice) -> Double { @_common.min(s.data) }
+pub fn DbstoretensorSlice::min(self : DbstoretensorSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_store_tensor_slice_max(s : DbstoretensorSlice) -> Double { @_common.max(s.data) }
+pub fn DbstoretensorSlice::max(self : DbstoretensorSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_store_tensor_slice_to_string(s : DbstoretensorSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretensorSlice::to_string(self : DbstoretensorSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

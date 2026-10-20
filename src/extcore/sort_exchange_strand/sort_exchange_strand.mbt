@@ -351,45 +351,45 @@ pub fn sort_exchange_strand_frame_make(size : Int) -> SortexchangestrandFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_frame_len(s : SortexchangestrandFrame) -> Int { s.size }
+pub fn SortexchangestrandFrame::len(self : SortexchangestrandFrame) -> Int { self.size }
 
-pub fn sort_exchange_strand_frame_get(s : SortexchangestrandFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandFrame::get(self : SortexchangestrandFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_frame_set(s : SortexchangestrandFrame, i : Int, v : Double) -> SortexchangestrandFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandFrame::set(self : SortexchangestrandFrame, i : Int, v : Double) -> SortexchangestrandFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_frame_sum(s : SortexchangestrandFrame) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandFrame::sum(self : SortexchangestrandFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_frame_mean(s : SortexchangestrandFrame) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandFrame::mean(self : SortexchangestrandFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_frame_scale(s : SortexchangestrandFrame, f : Double) -> SortexchangestrandFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandFrame::scale(self : SortexchangestrandFrame, f : Double) -> SortexchangestrandFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_frame_add(a : SortexchangestrandFrame, b : SortexchangestrandFrame) -> SortexchangestrandFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandFrame::add(self : SortexchangestrandFrame, other : SortexchangestrandFrame) -> SortexchangestrandFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_frame_copy(s : SortexchangestrandFrame) -> SortexchangestrandFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandFrame::copy(self : SortexchangestrandFrame) -> SortexchangestrandFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_frame_fill(s : SortexchangestrandFrame, v : Double) -> SortexchangestrandFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandFrame::fill(self : SortexchangestrandFrame, v : Double) -> SortexchangestrandFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_frame_min(s : SortexchangestrandFrame) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandFrame::min(self : SortexchangestrandFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_frame_max(s : SortexchangestrandFrame) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandFrame::max(self : SortexchangestrandFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_frame_to_string(s : SortexchangestrandFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandFrame::to_string(self : SortexchangestrandFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandTable {
@@ -402,45 +402,45 @@ pub fn sort_exchange_strand_table_make(size : Int) -> SortexchangestrandTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_table_len(s : SortexchangestrandTable) -> Int { s.size }
+pub fn SortexchangestrandTable::len(self : SortexchangestrandTable) -> Int { self.size }
 
-pub fn sort_exchange_strand_table_get(s : SortexchangestrandTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandTable::get(self : SortexchangestrandTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_table_set(s : SortexchangestrandTable, i : Int, v : Double) -> SortexchangestrandTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandTable::set(self : SortexchangestrandTable, i : Int, v : Double) -> SortexchangestrandTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_table_sum(s : SortexchangestrandTable) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandTable::sum(self : SortexchangestrandTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_table_mean(s : SortexchangestrandTable) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandTable::mean(self : SortexchangestrandTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_table_scale(s : SortexchangestrandTable, f : Double) -> SortexchangestrandTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandTable::scale(self : SortexchangestrandTable, f : Double) -> SortexchangestrandTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_table_add(a : SortexchangestrandTable, b : SortexchangestrandTable) -> SortexchangestrandTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandTable::add(self : SortexchangestrandTable, other : SortexchangestrandTable) -> SortexchangestrandTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_table_copy(s : SortexchangestrandTable) -> SortexchangestrandTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandTable::copy(self : SortexchangestrandTable) -> SortexchangestrandTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_table_fill(s : SortexchangestrandTable, v : Double) -> SortexchangestrandTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandTable::fill(self : SortexchangestrandTable, v : Double) -> SortexchangestrandTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_table_min(s : SortexchangestrandTable) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandTable::min(self : SortexchangestrandTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_table_max(s : SortexchangestrandTable) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandTable::max(self : SortexchangestrandTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_table_to_string(s : SortexchangestrandTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandTable::to_string(self : SortexchangestrandTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandGraphN {
@@ -453,45 +453,45 @@ pub fn sort_exchange_strand_graphn_make(size : Int) -> SortexchangestrandGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_graphn_len(s : SortexchangestrandGraphN) -> Int { s.size }
+pub fn SortexchangestrandGraphN::len(self : SortexchangestrandGraphN) -> Int { self.size }
 
-pub fn sort_exchange_strand_graphn_get(s : SortexchangestrandGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandGraphN::get(self : SortexchangestrandGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_graphn_set(s : SortexchangestrandGraphN, i : Int, v : Double) -> SortexchangestrandGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandGraphN::set(self : SortexchangestrandGraphN, i : Int, v : Double) -> SortexchangestrandGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_graphn_sum(s : SortexchangestrandGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandGraphN::sum(self : SortexchangestrandGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_graphn_mean(s : SortexchangestrandGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandGraphN::mean(self : SortexchangestrandGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_graphn_scale(s : SortexchangestrandGraphN, f : Double) -> SortexchangestrandGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandGraphN::scale(self : SortexchangestrandGraphN, f : Double) -> SortexchangestrandGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_graphn_add(a : SortexchangestrandGraphN, b : SortexchangestrandGraphN) -> SortexchangestrandGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandGraphN::add(self : SortexchangestrandGraphN, other : SortexchangestrandGraphN) -> SortexchangestrandGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_graphn_copy(s : SortexchangestrandGraphN) -> SortexchangestrandGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandGraphN::copy(self : SortexchangestrandGraphN) -> SortexchangestrandGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_graphn_fill(s : SortexchangestrandGraphN, v : Double) -> SortexchangestrandGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandGraphN::fill(self : SortexchangestrandGraphN, v : Double) -> SortexchangestrandGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_graphn_min(s : SortexchangestrandGraphN) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandGraphN::min(self : SortexchangestrandGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_graphn_max(s : SortexchangestrandGraphN) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandGraphN::max(self : SortexchangestrandGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_graphn_to_string(s : SortexchangestrandGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandGraphN::to_string(self : SortexchangestrandGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandNode {
@@ -504,45 +504,45 @@ pub fn sort_exchange_strand_node_make(size : Int) -> SortexchangestrandNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_node_len(s : SortexchangestrandNode) -> Int { s.size }
+pub fn SortexchangestrandNode::len(self : SortexchangestrandNode) -> Int { self.size }
 
-pub fn sort_exchange_strand_node_get(s : SortexchangestrandNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandNode::get(self : SortexchangestrandNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_node_set(s : SortexchangestrandNode, i : Int, v : Double) -> SortexchangestrandNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandNode::set(self : SortexchangestrandNode, i : Int, v : Double) -> SortexchangestrandNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_node_sum(s : SortexchangestrandNode) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandNode::sum(self : SortexchangestrandNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_node_mean(s : SortexchangestrandNode) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandNode::mean(self : SortexchangestrandNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_node_scale(s : SortexchangestrandNode, f : Double) -> SortexchangestrandNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandNode::scale(self : SortexchangestrandNode, f : Double) -> SortexchangestrandNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_node_add(a : SortexchangestrandNode, b : SortexchangestrandNode) -> SortexchangestrandNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandNode::add(self : SortexchangestrandNode, other : SortexchangestrandNode) -> SortexchangestrandNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_node_copy(s : SortexchangestrandNode) -> SortexchangestrandNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandNode::copy(self : SortexchangestrandNode) -> SortexchangestrandNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_node_fill(s : SortexchangestrandNode, v : Double) -> SortexchangestrandNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandNode::fill(self : SortexchangestrandNode, v : Double) -> SortexchangestrandNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_node_min(s : SortexchangestrandNode) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandNode::min(self : SortexchangestrandNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_node_max(s : SortexchangestrandNode) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandNode::max(self : SortexchangestrandNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_node_to_string(s : SortexchangestrandNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandNode::to_string(self : SortexchangestrandNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandEdge {
@@ -555,45 +555,45 @@ pub fn sort_exchange_strand_edge_make(size : Int) -> SortexchangestrandEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_edge_len(s : SortexchangestrandEdge) -> Int { s.size }
+pub fn SortexchangestrandEdge::len(self : SortexchangestrandEdge) -> Int { self.size }
 
-pub fn sort_exchange_strand_edge_get(s : SortexchangestrandEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandEdge::get(self : SortexchangestrandEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_edge_set(s : SortexchangestrandEdge, i : Int, v : Double) -> SortexchangestrandEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandEdge::set(self : SortexchangestrandEdge, i : Int, v : Double) -> SortexchangestrandEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_edge_sum(s : SortexchangestrandEdge) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandEdge::sum(self : SortexchangestrandEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_edge_mean(s : SortexchangestrandEdge) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandEdge::mean(self : SortexchangestrandEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_edge_scale(s : SortexchangestrandEdge, f : Double) -> SortexchangestrandEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandEdge::scale(self : SortexchangestrandEdge, f : Double) -> SortexchangestrandEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_edge_add(a : SortexchangestrandEdge, b : SortexchangestrandEdge) -> SortexchangestrandEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandEdge::add(self : SortexchangestrandEdge, other : SortexchangestrandEdge) -> SortexchangestrandEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_edge_copy(s : SortexchangestrandEdge) -> SortexchangestrandEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandEdge::copy(self : SortexchangestrandEdge) -> SortexchangestrandEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_edge_fill(s : SortexchangestrandEdge, v : Double) -> SortexchangestrandEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandEdge::fill(self : SortexchangestrandEdge, v : Double) -> SortexchangestrandEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_edge_min(s : SortexchangestrandEdge) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandEdge::min(self : SortexchangestrandEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_edge_max(s : SortexchangestrandEdge) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandEdge::max(self : SortexchangestrandEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_edge_to_string(s : SortexchangestrandEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandEdge::to_string(self : SortexchangestrandEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandPath {
@@ -606,45 +606,45 @@ pub fn sort_exchange_strand_path_make(size : Int) -> SortexchangestrandPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_path_len(s : SortexchangestrandPath) -> Int { s.size }
+pub fn SortexchangestrandPath::len(self : SortexchangestrandPath) -> Int { self.size }
 
-pub fn sort_exchange_strand_path_get(s : SortexchangestrandPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandPath::get(self : SortexchangestrandPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_path_set(s : SortexchangestrandPath, i : Int, v : Double) -> SortexchangestrandPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandPath::set(self : SortexchangestrandPath, i : Int, v : Double) -> SortexchangestrandPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_path_sum(s : SortexchangestrandPath) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandPath::sum(self : SortexchangestrandPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_path_mean(s : SortexchangestrandPath) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandPath::mean(self : SortexchangestrandPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_path_scale(s : SortexchangestrandPath, f : Double) -> SortexchangestrandPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandPath::scale(self : SortexchangestrandPath, f : Double) -> SortexchangestrandPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_path_add(a : SortexchangestrandPath, b : SortexchangestrandPath) -> SortexchangestrandPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandPath::add(self : SortexchangestrandPath, other : SortexchangestrandPath) -> SortexchangestrandPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_path_copy(s : SortexchangestrandPath) -> SortexchangestrandPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandPath::copy(self : SortexchangestrandPath) -> SortexchangestrandPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_path_fill(s : SortexchangestrandPath, v : Double) -> SortexchangestrandPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandPath::fill(self : SortexchangestrandPath, v : Double) -> SortexchangestrandPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_path_min(s : SortexchangestrandPath) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandPath::min(self : SortexchangestrandPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_path_max(s : SortexchangestrandPath) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandPath::max(self : SortexchangestrandPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_path_to_string(s : SortexchangestrandPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandPath::to_string(self : SortexchangestrandPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandCluster {
@@ -657,45 +657,45 @@ pub fn sort_exchange_strand_cluster_make(size : Int) -> SortexchangestrandCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_cluster_len(s : SortexchangestrandCluster) -> Int { s.size }
+pub fn SortexchangestrandCluster::len(self : SortexchangestrandCluster) -> Int { self.size }
 
-pub fn sort_exchange_strand_cluster_get(s : SortexchangestrandCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandCluster::get(self : SortexchangestrandCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_cluster_set(s : SortexchangestrandCluster, i : Int, v : Double) -> SortexchangestrandCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandCluster::set(self : SortexchangestrandCluster, i : Int, v : Double) -> SortexchangestrandCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_cluster_sum(s : SortexchangestrandCluster) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandCluster::sum(self : SortexchangestrandCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_cluster_mean(s : SortexchangestrandCluster) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandCluster::mean(self : SortexchangestrandCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_cluster_scale(s : SortexchangestrandCluster, f : Double) -> SortexchangestrandCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandCluster::scale(self : SortexchangestrandCluster, f : Double) -> SortexchangestrandCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_cluster_add(a : SortexchangestrandCluster, b : SortexchangestrandCluster) -> SortexchangestrandCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandCluster::add(self : SortexchangestrandCluster, other : SortexchangestrandCluster) -> SortexchangestrandCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_cluster_copy(s : SortexchangestrandCluster) -> SortexchangestrandCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandCluster::copy(self : SortexchangestrandCluster) -> SortexchangestrandCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_cluster_fill(s : SortexchangestrandCluster, v : Double) -> SortexchangestrandCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandCluster::fill(self : SortexchangestrandCluster, v : Double) -> SortexchangestrandCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_cluster_min(s : SortexchangestrandCluster) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandCluster::min(self : SortexchangestrandCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_cluster_max(s : SortexchangestrandCluster) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandCluster::max(self : SortexchangestrandCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_cluster_to_string(s : SortexchangestrandCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandCluster::to_string(self : SortexchangestrandCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandModel {
@@ -708,45 +708,45 @@ pub fn sort_exchange_strand_model_make(size : Int) -> SortexchangestrandModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_model_len(s : SortexchangestrandModel) -> Int { s.size }
+pub fn SortexchangestrandModel::len(self : SortexchangestrandModel) -> Int { self.size }
 
-pub fn sort_exchange_strand_model_get(s : SortexchangestrandModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandModel::get(self : SortexchangestrandModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_model_set(s : SortexchangestrandModel, i : Int, v : Double) -> SortexchangestrandModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandModel::set(self : SortexchangestrandModel, i : Int, v : Double) -> SortexchangestrandModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_model_sum(s : SortexchangestrandModel) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandModel::sum(self : SortexchangestrandModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_model_mean(s : SortexchangestrandModel) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandModel::mean(self : SortexchangestrandModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_model_scale(s : SortexchangestrandModel, f : Double) -> SortexchangestrandModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandModel::scale(self : SortexchangestrandModel, f : Double) -> SortexchangestrandModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_model_add(a : SortexchangestrandModel, b : SortexchangestrandModel) -> SortexchangestrandModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandModel::add(self : SortexchangestrandModel, other : SortexchangestrandModel) -> SortexchangestrandModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_model_copy(s : SortexchangestrandModel) -> SortexchangestrandModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandModel::copy(self : SortexchangestrandModel) -> SortexchangestrandModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_model_fill(s : SortexchangestrandModel, v : Double) -> SortexchangestrandModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandModel::fill(self : SortexchangestrandModel, v : Double) -> SortexchangestrandModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_model_min(s : SortexchangestrandModel) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandModel::min(self : SortexchangestrandModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_model_max(s : SortexchangestrandModel) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandModel::max(self : SortexchangestrandModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_model_to_string(s : SortexchangestrandModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandModel::to_string(self : SortexchangestrandModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandLayer {
@@ -759,45 +759,45 @@ pub fn sort_exchange_strand_layer_make(size : Int) -> SortexchangestrandLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_layer_len(s : SortexchangestrandLayer) -> Int { s.size }
+pub fn SortexchangestrandLayer::len(self : SortexchangestrandLayer) -> Int { self.size }
 
-pub fn sort_exchange_strand_layer_get(s : SortexchangestrandLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandLayer::get(self : SortexchangestrandLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_layer_set(s : SortexchangestrandLayer, i : Int, v : Double) -> SortexchangestrandLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandLayer::set(self : SortexchangestrandLayer, i : Int, v : Double) -> SortexchangestrandLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_layer_sum(s : SortexchangestrandLayer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandLayer::sum(self : SortexchangestrandLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_layer_mean(s : SortexchangestrandLayer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandLayer::mean(self : SortexchangestrandLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_layer_scale(s : SortexchangestrandLayer, f : Double) -> SortexchangestrandLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandLayer::scale(self : SortexchangestrandLayer, f : Double) -> SortexchangestrandLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_layer_add(a : SortexchangestrandLayer, b : SortexchangestrandLayer) -> SortexchangestrandLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandLayer::add(self : SortexchangestrandLayer, other : SortexchangestrandLayer) -> SortexchangestrandLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_layer_copy(s : SortexchangestrandLayer) -> SortexchangestrandLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandLayer::copy(self : SortexchangestrandLayer) -> SortexchangestrandLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_layer_fill(s : SortexchangestrandLayer, v : Double) -> SortexchangestrandLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandLayer::fill(self : SortexchangestrandLayer, v : Double) -> SortexchangestrandLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_layer_min(s : SortexchangestrandLayer) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandLayer::min(self : SortexchangestrandLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_layer_max(s : SortexchangestrandLayer) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandLayer::max(self : SortexchangestrandLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_layer_to_string(s : SortexchangestrandLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandLayer::to_string(self : SortexchangestrandLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandBuffer {
@@ -810,45 +810,45 @@ pub fn sort_exchange_strand_buffer_make(size : Int) -> SortexchangestrandBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_buffer_len(s : SortexchangestrandBuffer) -> Int { s.size }
+pub fn SortexchangestrandBuffer::len(self : SortexchangestrandBuffer) -> Int { self.size }
 
-pub fn sort_exchange_strand_buffer_get(s : SortexchangestrandBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandBuffer::get(self : SortexchangestrandBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_buffer_set(s : SortexchangestrandBuffer, i : Int, v : Double) -> SortexchangestrandBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandBuffer::set(self : SortexchangestrandBuffer, i : Int, v : Double) -> SortexchangestrandBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_buffer_sum(s : SortexchangestrandBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandBuffer::sum(self : SortexchangestrandBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_buffer_mean(s : SortexchangestrandBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandBuffer::mean(self : SortexchangestrandBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_buffer_scale(s : SortexchangestrandBuffer, f : Double) -> SortexchangestrandBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandBuffer::scale(self : SortexchangestrandBuffer, f : Double) -> SortexchangestrandBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_buffer_add(a : SortexchangestrandBuffer, b : SortexchangestrandBuffer) -> SortexchangestrandBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandBuffer::add(self : SortexchangestrandBuffer, other : SortexchangestrandBuffer) -> SortexchangestrandBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_buffer_copy(s : SortexchangestrandBuffer) -> SortexchangestrandBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandBuffer::copy(self : SortexchangestrandBuffer) -> SortexchangestrandBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_buffer_fill(s : SortexchangestrandBuffer, v : Double) -> SortexchangestrandBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandBuffer::fill(self : SortexchangestrandBuffer, v : Double) -> SortexchangestrandBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_buffer_min(s : SortexchangestrandBuffer) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandBuffer::min(self : SortexchangestrandBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_buffer_max(s : SortexchangestrandBuffer) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandBuffer::max(self : SortexchangestrandBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_buffer_to_string(s : SortexchangestrandBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandBuffer::to_string(self : SortexchangestrandBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandCursor {
@@ -861,45 +861,45 @@ pub fn sort_exchange_strand_cursor_make(size : Int) -> SortexchangestrandCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_cursor_len(s : SortexchangestrandCursor) -> Int { s.size }
+pub fn SortexchangestrandCursor::len(self : SortexchangestrandCursor) -> Int { self.size }
 
-pub fn sort_exchange_strand_cursor_get(s : SortexchangestrandCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandCursor::get(self : SortexchangestrandCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_cursor_set(s : SortexchangestrandCursor, i : Int, v : Double) -> SortexchangestrandCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandCursor::set(self : SortexchangestrandCursor, i : Int, v : Double) -> SortexchangestrandCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_cursor_sum(s : SortexchangestrandCursor) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandCursor::sum(self : SortexchangestrandCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_cursor_mean(s : SortexchangestrandCursor) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandCursor::mean(self : SortexchangestrandCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_cursor_scale(s : SortexchangestrandCursor, f : Double) -> SortexchangestrandCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandCursor::scale(self : SortexchangestrandCursor, f : Double) -> SortexchangestrandCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_cursor_add(a : SortexchangestrandCursor, b : SortexchangestrandCursor) -> SortexchangestrandCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandCursor::add(self : SortexchangestrandCursor, other : SortexchangestrandCursor) -> SortexchangestrandCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_cursor_copy(s : SortexchangestrandCursor) -> SortexchangestrandCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandCursor::copy(self : SortexchangestrandCursor) -> SortexchangestrandCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_cursor_fill(s : SortexchangestrandCursor, v : Double) -> SortexchangestrandCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandCursor::fill(self : SortexchangestrandCursor, v : Double) -> SortexchangestrandCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_cursor_min(s : SortexchangestrandCursor) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandCursor::min(self : SortexchangestrandCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_cursor_max(s : SortexchangestrandCursor) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandCursor::max(self : SortexchangestrandCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_cursor_to_string(s : SortexchangestrandCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandCursor::to_string(self : SortexchangestrandCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandView {
@@ -912,45 +912,45 @@ pub fn sort_exchange_strand_view_make(size : Int) -> SortexchangestrandView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_view_len(s : SortexchangestrandView) -> Int { s.size }
+pub fn SortexchangestrandView::len(self : SortexchangestrandView) -> Int { self.size }
 
-pub fn sort_exchange_strand_view_get(s : SortexchangestrandView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandView::get(self : SortexchangestrandView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_view_set(s : SortexchangestrandView, i : Int, v : Double) -> SortexchangestrandView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandView::set(self : SortexchangestrandView, i : Int, v : Double) -> SortexchangestrandView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_view_sum(s : SortexchangestrandView) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandView::sum(self : SortexchangestrandView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_view_mean(s : SortexchangestrandView) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandView::mean(self : SortexchangestrandView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_view_scale(s : SortexchangestrandView, f : Double) -> SortexchangestrandView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandView::scale(self : SortexchangestrandView, f : Double) -> SortexchangestrandView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_view_add(a : SortexchangestrandView, b : SortexchangestrandView) -> SortexchangestrandView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandView::add(self : SortexchangestrandView, other : SortexchangestrandView) -> SortexchangestrandView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_view_copy(s : SortexchangestrandView) -> SortexchangestrandView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandView::copy(self : SortexchangestrandView) -> SortexchangestrandView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_view_fill(s : SortexchangestrandView, v : Double) -> SortexchangestrandView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandView::fill(self : SortexchangestrandView, v : Double) -> SortexchangestrandView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_view_min(s : SortexchangestrandView) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandView::min(self : SortexchangestrandView) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_view_max(s : SortexchangestrandView) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandView::max(self : SortexchangestrandView) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_view_to_string(s : SortexchangestrandView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandView::to_string(self : SortexchangestrandView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandRange {
@@ -963,45 +963,45 @@ pub fn sort_exchange_strand_range_make(size : Int) -> SortexchangestrandRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_range_len(s : SortexchangestrandRange) -> Int { s.size }
+pub fn SortexchangestrandRange::len(self : SortexchangestrandRange) -> Int { self.size }
 
-pub fn sort_exchange_strand_range_get(s : SortexchangestrandRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandRange::get(self : SortexchangestrandRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_range_set(s : SortexchangestrandRange, i : Int, v : Double) -> SortexchangestrandRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandRange::set(self : SortexchangestrandRange, i : Int, v : Double) -> SortexchangestrandRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_range_sum(s : SortexchangestrandRange) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandRange::sum(self : SortexchangestrandRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_range_mean(s : SortexchangestrandRange) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandRange::mean(self : SortexchangestrandRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_range_scale(s : SortexchangestrandRange, f : Double) -> SortexchangestrandRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandRange::scale(self : SortexchangestrandRange, f : Double) -> SortexchangestrandRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_range_add(a : SortexchangestrandRange, b : SortexchangestrandRange) -> SortexchangestrandRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandRange::add(self : SortexchangestrandRange, other : SortexchangestrandRange) -> SortexchangestrandRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_range_copy(s : SortexchangestrandRange) -> SortexchangestrandRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandRange::copy(self : SortexchangestrandRange) -> SortexchangestrandRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_range_fill(s : SortexchangestrandRange, v : Double) -> SortexchangestrandRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandRange::fill(self : SortexchangestrandRange, v : Double) -> SortexchangestrandRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_range_min(s : SortexchangestrandRange) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandRange::min(self : SortexchangestrandRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_range_max(s : SortexchangestrandRange) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandRange::max(self : SortexchangestrandRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_range_to_string(s : SortexchangestrandRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandRange::to_string(self : SortexchangestrandRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestrandSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_exchange_strand_slice_make(size : Int) -> SortexchangestrandSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_strand_slice_len(s : SortexchangestrandSlice) -> Int { s.size }
+pub fn SortexchangestrandSlice::len(self : SortexchangestrandSlice) -> Int { self.size }
 
-pub fn sort_exchange_strand_slice_get(s : SortexchangestrandSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestrandSlice::get(self : SortexchangestrandSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_strand_slice_set(s : SortexchangestrandSlice, i : Int, v : Double) -> SortexchangestrandSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestrandSlice::set(self : SortexchangestrandSlice, i : Int, v : Double) -> SortexchangestrandSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_slice_sum(s : SortexchangestrandSlice) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestrandSlice::sum(self : SortexchangestrandSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_strand_slice_mean(s : SortexchangestrandSlice) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestrandSlice::mean(self : SortexchangestrandSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_strand_slice_scale(s : SortexchangestrandSlice, f : Double) -> SortexchangestrandSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestrandSlice::scale(self : SortexchangestrandSlice, f : Double) -> SortexchangestrandSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_slice_add(a : SortexchangestrandSlice, b : SortexchangestrandSlice) -> SortexchangestrandSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestrandSlice::add(self : SortexchangestrandSlice, other : SortexchangestrandSlice) -> SortexchangestrandSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_slice_copy(s : SortexchangestrandSlice) -> SortexchangestrandSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestrandSlice::copy(self : SortexchangestrandSlice) -> SortexchangestrandSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_slice_fill(s : SortexchangestrandSlice, v : Double) -> SortexchangestrandSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestrandSlice::fill(self : SortexchangestrandSlice, v : Double) -> SortexchangestrandSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_strand_slice_min(s : SortexchangestrandSlice) -> Double { @_common.min(s.data) }
+pub fn SortexchangestrandSlice::min(self : SortexchangestrandSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_strand_slice_max(s : SortexchangestrandSlice) -> Double { @_common.max(s.data) }
+pub fn SortexchangestrandSlice::max(self : SortexchangestrandSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_strand_slice_to_string(s : SortexchangestrandSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestrandSlice::to_string(self : SortexchangestrandSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

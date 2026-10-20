@@ -351,45 +351,45 @@ pub fn ml_rl_policy_grad_frame_make(size : Int) -> MlrlpolicygradFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_frame_len(s : MlrlpolicygradFrame) -> Int { s.size }
+pub fn MlrlpolicygradFrame::len(self : MlrlpolicygradFrame) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_frame_get(s : MlrlpolicygradFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradFrame::get(self : MlrlpolicygradFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_frame_set(s : MlrlpolicygradFrame, i : Int, v : Double) -> MlrlpolicygradFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradFrame::set(self : MlrlpolicygradFrame, i : Int, v : Double) -> MlrlpolicygradFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_frame_sum(s : MlrlpolicygradFrame) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradFrame::sum(self : MlrlpolicygradFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_frame_mean(s : MlrlpolicygradFrame) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradFrame::mean(self : MlrlpolicygradFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_frame_scale(s : MlrlpolicygradFrame, f : Double) -> MlrlpolicygradFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradFrame::scale(self : MlrlpolicygradFrame, f : Double) -> MlrlpolicygradFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_frame_add(a : MlrlpolicygradFrame, b : MlrlpolicygradFrame) -> MlrlpolicygradFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradFrame::add(self : MlrlpolicygradFrame, other : MlrlpolicygradFrame) -> MlrlpolicygradFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_frame_copy(s : MlrlpolicygradFrame) -> MlrlpolicygradFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradFrame::copy(self : MlrlpolicygradFrame) -> MlrlpolicygradFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_frame_fill(s : MlrlpolicygradFrame, v : Double) -> MlrlpolicygradFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradFrame::fill(self : MlrlpolicygradFrame, v : Double) -> MlrlpolicygradFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_frame_min(s : MlrlpolicygradFrame) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradFrame::min(self : MlrlpolicygradFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_frame_max(s : MlrlpolicygradFrame) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradFrame::max(self : MlrlpolicygradFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_frame_to_string(s : MlrlpolicygradFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradFrame::to_string(self : MlrlpolicygradFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradTable {
@@ -402,45 +402,45 @@ pub fn ml_rl_policy_grad_table_make(size : Int) -> MlrlpolicygradTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_table_len(s : MlrlpolicygradTable) -> Int { s.size }
+pub fn MlrlpolicygradTable::len(self : MlrlpolicygradTable) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_table_get(s : MlrlpolicygradTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradTable::get(self : MlrlpolicygradTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_table_set(s : MlrlpolicygradTable, i : Int, v : Double) -> MlrlpolicygradTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradTable::set(self : MlrlpolicygradTable, i : Int, v : Double) -> MlrlpolicygradTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_table_sum(s : MlrlpolicygradTable) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradTable::sum(self : MlrlpolicygradTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_table_mean(s : MlrlpolicygradTable) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradTable::mean(self : MlrlpolicygradTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_table_scale(s : MlrlpolicygradTable, f : Double) -> MlrlpolicygradTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradTable::scale(self : MlrlpolicygradTable, f : Double) -> MlrlpolicygradTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_table_add(a : MlrlpolicygradTable, b : MlrlpolicygradTable) -> MlrlpolicygradTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradTable::add(self : MlrlpolicygradTable, other : MlrlpolicygradTable) -> MlrlpolicygradTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_table_copy(s : MlrlpolicygradTable) -> MlrlpolicygradTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradTable::copy(self : MlrlpolicygradTable) -> MlrlpolicygradTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_table_fill(s : MlrlpolicygradTable, v : Double) -> MlrlpolicygradTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradTable::fill(self : MlrlpolicygradTable, v : Double) -> MlrlpolicygradTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_table_min(s : MlrlpolicygradTable) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradTable::min(self : MlrlpolicygradTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_table_max(s : MlrlpolicygradTable) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradTable::max(self : MlrlpolicygradTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_table_to_string(s : MlrlpolicygradTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradTable::to_string(self : MlrlpolicygradTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradGraphN {
@@ -453,45 +453,45 @@ pub fn ml_rl_policy_grad_graphn_make(size : Int) -> MlrlpolicygradGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_graphn_len(s : MlrlpolicygradGraphN) -> Int { s.size }
+pub fn MlrlpolicygradGraphN::len(self : MlrlpolicygradGraphN) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_graphn_get(s : MlrlpolicygradGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradGraphN::get(self : MlrlpolicygradGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_graphn_set(s : MlrlpolicygradGraphN, i : Int, v : Double) -> MlrlpolicygradGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradGraphN::set(self : MlrlpolicygradGraphN, i : Int, v : Double) -> MlrlpolicygradGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_graphn_sum(s : MlrlpolicygradGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradGraphN::sum(self : MlrlpolicygradGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_graphn_mean(s : MlrlpolicygradGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradGraphN::mean(self : MlrlpolicygradGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_graphn_scale(s : MlrlpolicygradGraphN, f : Double) -> MlrlpolicygradGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradGraphN::scale(self : MlrlpolicygradGraphN, f : Double) -> MlrlpolicygradGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_graphn_add(a : MlrlpolicygradGraphN, b : MlrlpolicygradGraphN) -> MlrlpolicygradGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradGraphN::add(self : MlrlpolicygradGraphN, other : MlrlpolicygradGraphN) -> MlrlpolicygradGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_graphn_copy(s : MlrlpolicygradGraphN) -> MlrlpolicygradGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradGraphN::copy(self : MlrlpolicygradGraphN) -> MlrlpolicygradGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_graphn_fill(s : MlrlpolicygradGraphN, v : Double) -> MlrlpolicygradGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradGraphN::fill(self : MlrlpolicygradGraphN, v : Double) -> MlrlpolicygradGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_graphn_min(s : MlrlpolicygradGraphN) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradGraphN::min(self : MlrlpolicygradGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_graphn_max(s : MlrlpolicygradGraphN) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradGraphN::max(self : MlrlpolicygradGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_graphn_to_string(s : MlrlpolicygradGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradGraphN::to_string(self : MlrlpolicygradGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradNode {
@@ -504,45 +504,45 @@ pub fn ml_rl_policy_grad_node_make(size : Int) -> MlrlpolicygradNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_node_len(s : MlrlpolicygradNode) -> Int { s.size }
+pub fn MlrlpolicygradNode::len(self : MlrlpolicygradNode) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_node_get(s : MlrlpolicygradNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradNode::get(self : MlrlpolicygradNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_node_set(s : MlrlpolicygradNode, i : Int, v : Double) -> MlrlpolicygradNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradNode::set(self : MlrlpolicygradNode, i : Int, v : Double) -> MlrlpolicygradNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_node_sum(s : MlrlpolicygradNode) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradNode::sum(self : MlrlpolicygradNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_node_mean(s : MlrlpolicygradNode) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradNode::mean(self : MlrlpolicygradNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_node_scale(s : MlrlpolicygradNode, f : Double) -> MlrlpolicygradNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradNode::scale(self : MlrlpolicygradNode, f : Double) -> MlrlpolicygradNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_node_add(a : MlrlpolicygradNode, b : MlrlpolicygradNode) -> MlrlpolicygradNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradNode::add(self : MlrlpolicygradNode, other : MlrlpolicygradNode) -> MlrlpolicygradNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_node_copy(s : MlrlpolicygradNode) -> MlrlpolicygradNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradNode::copy(self : MlrlpolicygradNode) -> MlrlpolicygradNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_node_fill(s : MlrlpolicygradNode, v : Double) -> MlrlpolicygradNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradNode::fill(self : MlrlpolicygradNode, v : Double) -> MlrlpolicygradNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_node_min(s : MlrlpolicygradNode) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradNode::min(self : MlrlpolicygradNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_node_max(s : MlrlpolicygradNode) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradNode::max(self : MlrlpolicygradNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_node_to_string(s : MlrlpolicygradNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradNode::to_string(self : MlrlpolicygradNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradEdge {
@@ -555,45 +555,45 @@ pub fn ml_rl_policy_grad_edge_make(size : Int) -> MlrlpolicygradEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_edge_len(s : MlrlpolicygradEdge) -> Int { s.size }
+pub fn MlrlpolicygradEdge::len(self : MlrlpolicygradEdge) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_edge_get(s : MlrlpolicygradEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradEdge::get(self : MlrlpolicygradEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_edge_set(s : MlrlpolicygradEdge, i : Int, v : Double) -> MlrlpolicygradEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradEdge::set(self : MlrlpolicygradEdge, i : Int, v : Double) -> MlrlpolicygradEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_edge_sum(s : MlrlpolicygradEdge) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradEdge::sum(self : MlrlpolicygradEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_edge_mean(s : MlrlpolicygradEdge) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradEdge::mean(self : MlrlpolicygradEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_edge_scale(s : MlrlpolicygradEdge, f : Double) -> MlrlpolicygradEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradEdge::scale(self : MlrlpolicygradEdge, f : Double) -> MlrlpolicygradEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_edge_add(a : MlrlpolicygradEdge, b : MlrlpolicygradEdge) -> MlrlpolicygradEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradEdge::add(self : MlrlpolicygradEdge, other : MlrlpolicygradEdge) -> MlrlpolicygradEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_edge_copy(s : MlrlpolicygradEdge) -> MlrlpolicygradEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradEdge::copy(self : MlrlpolicygradEdge) -> MlrlpolicygradEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_edge_fill(s : MlrlpolicygradEdge, v : Double) -> MlrlpolicygradEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradEdge::fill(self : MlrlpolicygradEdge, v : Double) -> MlrlpolicygradEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_edge_min(s : MlrlpolicygradEdge) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradEdge::min(self : MlrlpolicygradEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_edge_max(s : MlrlpolicygradEdge) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradEdge::max(self : MlrlpolicygradEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_edge_to_string(s : MlrlpolicygradEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradEdge::to_string(self : MlrlpolicygradEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradPath {
@@ -606,45 +606,45 @@ pub fn ml_rl_policy_grad_path_make(size : Int) -> MlrlpolicygradPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_path_len(s : MlrlpolicygradPath) -> Int { s.size }
+pub fn MlrlpolicygradPath::len(self : MlrlpolicygradPath) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_path_get(s : MlrlpolicygradPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradPath::get(self : MlrlpolicygradPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_path_set(s : MlrlpolicygradPath, i : Int, v : Double) -> MlrlpolicygradPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradPath::set(self : MlrlpolicygradPath, i : Int, v : Double) -> MlrlpolicygradPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_path_sum(s : MlrlpolicygradPath) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradPath::sum(self : MlrlpolicygradPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_path_mean(s : MlrlpolicygradPath) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradPath::mean(self : MlrlpolicygradPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_path_scale(s : MlrlpolicygradPath, f : Double) -> MlrlpolicygradPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradPath::scale(self : MlrlpolicygradPath, f : Double) -> MlrlpolicygradPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_path_add(a : MlrlpolicygradPath, b : MlrlpolicygradPath) -> MlrlpolicygradPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradPath::add(self : MlrlpolicygradPath, other : MlrlpolicygradPath) -> MlrlpolicygradPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_path_copy(s : MlrlpolicygradPath) -> MlrlpolicygradPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradPath::copy(self : MlrlpolicygradPath) -> MlrlpolicygradPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_path_fill(s : MlrlpolicygradPath, v : Double) -> MlrlpolicygradPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradPath::fill(self : MlrlpolicygradPath, v : Double) -> MlrlpolicygradPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_path_min(s : MlrlpolicygradPath) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradPath::min(self : MlrlpolicygradPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_path_max(s : MlrlpolicygradPath) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradPath::max(self : MlrlpolicygradPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_path_to_string(s : MlrlpolicygradPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradPath::to_string(self : MlrlpolicygradPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradCluster {
@@ -657,45 +657,45 @@ pub fn ml_rl_policy_grad_cluster_make(size : Int) -> MlrlpolicygradCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_cluster_len(s : MlrlpolicygradCluster) -> Int { s.size }
+pub fn MlrlpolicygradCluster::len(self : MlrlpolicygradCluster) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_cluster_get(s : MlrlpolicygradCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradCluster::get(self : MlrlpolicygradCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_cluster_set(s : MlrlpolicygradCluster, i : Int, v : Double) -> MlrlpolicygradCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradCluster::set(self : MlrlpolicygradCluster, i : Int, v : Double) -> MlrlpolicygradCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_cluster_sum(s : MlrlpolicygradCluster) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradCluster::sum(self : MlrlpolicygradCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_cluster_mean(s : MlrlpolicygradCluster) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradCluster::mean(self : MlrlpolicygradCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_cluster_scale(s : MlrlpolicygradCluster, f : Double) -> MlrlpolicygradCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradCluster::scale(self : MlrlpolicygradCluster, f : Double) -> MlrlpolicygradCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_cluster_add(a : MlrlpolicygradCluster, b : MlrlpolicygradCluster) -> MlrlpolicygradCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradCluster::add(self : MlrlpolicygradCluster, other : MlrlpolicygradCluster) -> MlrlpolicygradCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_cluster_copy(s : MlrlpolicygradCluster) -> MlrlpolicygradCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradCluster::copy(self : MlrlpolicygradCluster) -> MlrlpolicygradCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_cluster_fill(s : MlrlpolicygradCluster, v : Double) -> MlrlpolicygradCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradCluster::fill(self : MlrlpolicygradCluster, v : Double) -> MlrlpolicygradCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_cluster_min(s : MlrlpolicygradCluster) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradCluster::min(self : MlrlpolicygradCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_cluster_max(s : MlrlpolicygradCluster) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradCluster::max(self : MlrlpolicygradCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_cluster_to_string(s : MlrlpolicygradCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradCluster::to_string(self : MlrlpolicygradCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradModel {
@@ -708,45 +708,45 @@ pub fn ml_rl_policy_grad_model_make(size : Int) -> MlrlpolicygradModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_model_len(s : MlrlpolicygradModel) -> Int { s.size }
+pub fn MlrlpolicygradModel::len(self : MlrlpolicygradModel) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_model_get(s : MlrlpolicygradModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradModel::get(self : MlrlpolicygradModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_model_set(s : MlrlpolicygradModel, i : Int, v : Double) -> MlrlpolicygradModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradModel::set(self : MlrlpolicygradModel, i : Int, v : Double) -> MlrlpolicygradModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_model_sum(s : MlrlpolicygradModel) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradModel::sum(self : MlrlpolicygradModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_model_mean(s : MlrlpolicygradModel) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradModel::mean(self : MlrlpolicygradModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_model_scale(s : MlrlpolicygradModel, f : Double) -> MlrlpolicygradModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradModel::scale(self : MlrlpolicygradModel, f : Double) -> MlrlpolicygradModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_model_add(a : MlrlpolicygradModel, b : MlrlpolicygradModel) -> MlrlpolicygradModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradModel::add(self : MlrlpolicygradModel, other : MlrlpolicygradModel) -> MlrlpolicygradModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_model_copy(s : MlrlpolicygradModel) -> MlrlpolicygradModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradModel::copy(self : MlrlpolicygradModel) -> MlrlpolicygradModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_model_fill(s : MlrlpolicygradModel, v : Double) -> MlrlpolicygradModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradModel::fill(self : MlrlpolicygradModel, v : Double) -> MlrlpolicygradModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_model_min(s : MlrlpolicygradModel) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradModel::min(self : MlrlpolicygradModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_model_max(s : MlrlpolicygradModel) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradModel::max(self : MlrlpolicygradModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_model_to_string(s : MlrlpolicygradModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradModel::to_string(self : MlrlpolicygradModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradLayer {
@@ -759,45 +759,45 @@ pub fn ml_rl_policy_grad_layer_make(size : Int) -> MlrlpolicygradLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_layer_len(s : MlrlpolicygradLayer) -> Int { s.size }
+pub fn MlrlpolicygradLayer::len(self : MlrlpolicygradLayer) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_layer_get(s : MlrlpolicygradLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradLayer::get(self : MlrlpolicygradLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_layer_set(s : MlrlpolicygradLayer, i : Int, v : Double) -> MlrlpolicygradLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradLayer::set(self : MlrlpolicygradLayer, i : Int, v : Double) -> MlrlpolicygradLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_layer_sum(s : MlrlpolicygradLayer) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradLayer::sum(self : MlrlpolicygradLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_layer_mean(s : MlrlpolicygradLayer) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradLayer::mean(self : MlrlpolicygradLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_layer_scale(s : MlrlpolicygradLayer, f : Double) -> MlrlpolicygradLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradLayer::scale(self : MlrlpolicygradLayer, f : Double) -> MlrlpolicygradLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_layer_add(a : MlrlpolicygradLayer, b : MlrlpolicygradLayer) -> MlrlpolicygradLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradLayer::add(self : MlrlpolicygradLayer, other : MlrlpolicygradLayer) -> MlrlpolicygradLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_layer_copy(s : MlrlpolicygradLayer) -> MlrlpolicygradLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradLayer::copy(self : MlrlpolicygradLayer) -> MlrlpolicygradLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_layer_fill(s : MlrlpolicygradLayer, v : Double) -> MlrlpolicygradLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradLayer::fill(self : MlrlpolicygradLayer, v : Double) -> MlrlpolicygradLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_layer_min(s : MlrlpolicygradLayer) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradLayer::min(self : MlrlpolicygradLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_layer_max(s : MlrlpolicygradLayer) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradLayer::max(self : MlrlpolicygradLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_layer_to_string(s : MlrlpolicygradLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradLayer::to_string(self : MlrlpolicygradLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradBuffer {
@@ -810,45 +810,45 @@ pub fn ml_rl_policy_grad_buffer_make(size : Int) -> MlrlpolicygradBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_buffer_len(s : MlrlpolicygradBuffer) -> Int { s.size }
+pub fn MlrlpolicygradBuffer::len(self : MlrlpolicygradBuffer) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_buffer_get(s : MlrlpolicygradBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradBuffer::get(self : MlrlpolicygradBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_buffer_set(s : MlrlpolicygradBuffer, i : Int, v : Double) -> MlrlpolicygradBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradBuffer::set(self : MlrlpolicygradBuffer, i : Int, v : Double) -> MlrlpolicygradBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_buffer_sum(s : MlrlpolicygradBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradBuffer::sum(self : MlrlpolicygradBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_buffer_mean(s : MlrlpolicygradBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradBuffer::mean(self : MlrlpolicygradBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_buffer_scale(s : MlrlpolicygradBuffer, f : Double) -> MlrlpolicygradBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradBuffer::scale(self : MlrlpolicygradBuffer, f : Double) -> MlrlpolicygradBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_buffer_add(a : MlrlpolicygradBuffer, b : MlrlpolicygradBuffer) -> MlrlpolicygradBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradBuffer::add(self : MlrlpolicygradBuffer, other : MlrlpolicygradBuffer) -> MlrlpolicygradBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_buffer_copy(s : MlrlpolicygradBuffer) -> MlrlpolicygradBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradBuffer::copy(self : MlrlpolicygradBuffer) -> MlrlpolicygradBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_buffer_fill(s : MlrlpolicygradBuffer, v : Double) -> MlrlpolicygradBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradBuffer::fill(self : MlrlpolicygradBuffer, v : Double) -> MlrlpolicygradBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_buffer_min(s : MlrlpolicygradBuffer) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradBuffer::min(self : MlrlpolicygradBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_buffer_max(s : MlrlpolicygradBuffer) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradBuffer::max(self : MlrlpolicygradBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_buffer_to_string(s : MlrlpolicygradBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradBuffer::to_string(self : MlrlpolicygradBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradCursor {
@@ -861,45 +861,45 @@ pub fn ml_rl_policy_grad_cursor_make(size : Int) -> MlrlpolicygradCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_cursor_len(s : MlrlpolicygradCursor) -> Int { s.size }
+pub fn MlrlpolicygradCursor::len(self : MlrlpolicygradCursor) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_cursor_get(s : MlrlpolicygradCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradCursor::get(self : MlrlpolicygradCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_cursor_set(s : MlrlpolicygradCursor, i : Int, v : Double) -> MlrlpolicygradCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradCursor::set(self : MlrlpolicygradCursor, i : Int, v : Double) -> MlrlpolicygradCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_cursor_sum(s : MlrlpolicygradCursor) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradCursor::sum(self : MlrlpolicygradCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_cursor_mean(s : MlrlpolicygradCursor) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradCursor::mean(self : MlrlpolicygradCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_cursor_scale(s : MlrlpolicygradCursor, f : Double) -> MlrlpolicygradCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradCursor::scale(self : MlrlpolicygradCursor, f : Double) -> MlrlpolicygradCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_cursor_add(a : MlrlpolicygradCursor, b : MlrlpolicygradCursor) -> MlrlpolicygradCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradCursor::add(self : MlrlpolicygradCursor, other : MlrlpolicygradCursor) -> MlrlpolicygradCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_cursor_copy(s : MlrlpolicygradCursor) -> MlrlpolicygradCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradCursor::copy(self : MlrlpolicygradCursor) -> MlrlpolicygradCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_cursor_fill(s : MlrlpolicygradCursor, v : Double) -> MlrlpolicygradCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradCursor::fill(self : MlrlpolicygradCursor, v : Double) -> MlrlpolicygradCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_cursor_min(s : MlrlpolicygradCursor) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradCursor::min(self : MlrlpolicygradCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_cursor_max(s : MlrlpolicygradCursor) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradCursor::max(self : MlrlpolicygradCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_cursor_to_string(s : MlrlpolicygradCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradCursor::to_string(self : MlrlpolicygradCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradView {
@@ -912,45 +912,45 @@ pub fn ml_rl_policy_grad_view_make(size : Int) -> MlrlpolicygradView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_view_len(s : MlrlpolicygradView) -> Int { s.size }
+pub fn MlrlpolicygradView::len(self : MlrlpolicygradView) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_view_get(s : MlrlpolicygradView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradView::get(self : MlrlpolicygradView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_view_set(s : MlrlpolicygradView, i : Int, v : Double) -> MlrlpolicygradView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradView::set(self : MlrlpolicygradView, i : Int, v : Double) -> MlrlpolicygradView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_view_sum(s : MlrlpolicygradView) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradView::sum(self : MlrlpolicygradView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_view_mean(s : MlrlpolicygradView) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradView::mean(self : MlrlpolicygradView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_view_scale(s : MlrlpolicygradView, f : Double) -> MlrlpolicygradView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradView::scale(self : MlrlpolicygradView, f : Double) -> MlrlpolicygradView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_view_add(a : MlrlpolicygradView, b : MlrlpolicygradView) -> MlrlpolicygradView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradView::add(self : MlrlpolicygradView, other : MlrlpolicygradView) -> MlrlpolicygradView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_view_copy(s : MlrlpolicygradView) -> MlrlpolicygradView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradView::copy(self : MlrlpolicygradView) -> MlrlpolicygradView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_view_fill(s : MlrlpolicygradView, v : Double) -> MlrlpolicygradView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradView::fill(self : MlrlpolicygradView, v : Double) -> MlrlpolicygradView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_view_min(s : MlrlpolicygradView) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradView::min(self : MlrlpolicygradView) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_view_max(s : MlrlpolicygradView) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradView::max(self : MlrlpolicygradView) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_view_to_string(s : MlrlpolicygradView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradView::to_string(self : MlrlpolicygradView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradRange {
@@ -963,45 +963,45 @@ pub fn ml_rl_policy_grad_range_make(size : Int) -> MlrlpolicygradRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_range_len(s : MlrlpolicygradRange) -> Int { s.size }
+pub fn MlrlpolicygradRange::len(self : MlrlpolicygradRange) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_range_get(s : MlrlpolicygradRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradRange::get(self : MlrlpolicygradRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_range_set(s : MlrlpolicygradRange, i : Int, v : Double) -> MlrlpolicygradRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradRange::set(self : MlrlpolicygradRange, i : Int, v : Double) -> MlrlpolicygradRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_range_sum(s : MlrlpolicygradRange) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradRange::sum(self : MlrlpolicygradRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_range_mean(s : MlrlpolicygradRange) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradRange::mean(self : MlrlpolicygradRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_range_scale(s : MlrlpolicygradRange, f : Double) -> MlrlpolicygradRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradRange::scale(self : MlrlpolicygradRange, f : Double) -> MlrlpolicygradRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_range_add(a : MlrlpolicygradRange, b : MlrlpolicygradRange) -> MlrlpolicygradRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradRange::add(self : MlrlpolicygradRange, other : MlrlpolicygradRange) -> MlrlpolicygradRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_range_copy(s : MlrlpolicygradRange) -> MlrlpolicygradRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradRange::copy(self : MlrlpolicygradRange) -> MlrlpolicygradRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_range_fill(s : MlrlpolicygradRange, v : Double) -> MlrlpolicygradRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradRange::fill(self : MlrlpolicygradRange, v : Double) -> MlrlpolicygradRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_range_min(s : MlrlpolicygradRange) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradRange::min(self : MlrlpolicygradRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_range_max(s : MlrlpolicygradRange) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradRange::max(self : MlrlpolicygradRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_range_to_string(s : MlrlpolicygradRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradRange::to_string(self : MlrlpolicygradRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlpolicygradSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_rl_policy_grad_slice_make(size : Int) -> MlrlpolicygradSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_policy_grad_slice_len(s : MlrlpolicygradSlice) -> Int { s.size }
+pub fn MlrlpolicygradSlice::len(self : MlrlpolicygradSlice) -> Int { self.size }
 
-pub fn ml_rl_policy_grad_slice_get(s : MlrlpolicygradSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlpolicygradSlice::get(self : MlrlpolicygradSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_policy_grad_slice_set(s : MlrlpolicygradSlice, i : Int, v : Double) -> MlrlpolicygradSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlpolicygradSlice::set(self : MlrlpolicygradSlice, i : Int, v : Double) -> MlrlpolicygradSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_slice_sum(s : MlrlpolicygradSlice) -> Double { @_common.sum(s.data) }
+pub fn MlrlpolicygradSlice::sum(self : MlrlpolicygradSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_policy_grad_slice_mean(s : MlrlpolicygradSlice) -> Double { @_common.mean(s.data) }
+pub fn MlrlpolicygradSlice::mean(self : MlrlpolicygradSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_policy_grad_slice_scale(s : MlrlpolicygradSlice, f : Double) -> MlrlpolicygradSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradSlice::scale(self : MlrlpolicygradSlice, f : Double) -> MlrlpolicygradSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_slice_add(a : MlrlpolicygradSlice, b : MlrlpolicygradSlice) -> MlrlpolicygradSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlpolicygradSlice::add(self : MlrlpolicygradSlice, other : MlrlpolicygradSlice) -> MlrlpolicygradSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_slice_copy(s : MlrlpolicygradSlice) -> MlrlpolicygradSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradSlice::copy(self : MlrlpolicygradSlice) -> MlrlpolicygradSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_slice_fill(s : MlrlpolicygradSlice, v : Double) -> MlrlpolicygradSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlpolicygradSlice::fill(self : MlrlpolicygradSlice, v : Double) -> MlrlpolicygradSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_policy_grad_slice_min(s : MlrlpolicygradSlice) -> Double { @_common.min(s.data) }
+pub fn MlrlpolicygradSlice::min(self : MlrlpolicygradSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_policy_grad_slice_max(s : MlrlpolicygradSlice) -> Double { @_common.max(s.data) }
+pub fn MlrlpolicygradSlice::max(self : MlrlpolicygradSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_policy_grad_slice_to_string(s : MlrlpolicygradSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlpolicygradSlice::to_string(self : MlrlpolicygradSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

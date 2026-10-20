@@ -351,45 +351,45 @@ pub fn chem_mol_repr_canonical_frame_make(size : Int) -> ChemmolreprcanonicalFra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_frame_len(s : ChemmolreprcanonicalFrame) -> Int { s.size }
+pub fn ChemmolreprcanonicalFrame::len(self : ChemmolreprcanonicalFrame) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_frame_get(s : ChemmolreprcanonicalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalFrame::get(self : ChemmolreprcanonicalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_frame_set(s : ChemmolreprcanonicalFrame, i : Int, v : Double) -> ChemmolreprcanonicalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalFrame::set(self : ChemmolreprcanonicalFrame, i : Int, v : Double) -> ChemmolreprcanonicalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_frame_sum(s : ChemmolreprcanonicalFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalFrame::sum(self : ChemmolreprcanonicalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_frame_mean(s : ChemmolreprcanonicalFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalFrame::mean(self : ChemmolreprcanonicalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_frame_scale(s : ChemmolreprcanonicalFrame, f : Double) -> ChemmolreprcanonicalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalFrame::scale(self : ChemmolreprcanonicalFrame, f : Double) -> ChemmolreprcanonicalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_frame_add(a : ChemmolreprcanonicalFrame, b : ChemmolreprcanonicalFrame) -> ChemmolreprcanonicalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalFrame::add(self : ChemmolreprcanonicalFrame, other : ChemmolreprcanonicalFrame) -> ChemmolreprcanonicalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_frame_copy(s : ChemmolreprcanonicalFrame) -> ChemmolreprcanonicalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalFrame::copy(self : ChemmolreprcanonicalFrame) -> ChemmolreprcanonicalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_frame_fill(s : ChemmolreprcanonicalFrame, v : Double) -> ChemmolreprcanonicalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalFrame::fill(self : ChemmolreprcanonicalFrame, v : Double) -> ChemmolreprcanonicalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_frame_min(s : ChemmolreprcanonicalFrame) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalFrame::min(self : ChemmolreprcanonicalFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_frame_max(s : ChemmolreprcanonicalFrame) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalFrame::max(self : ChemmolreprcanonicalFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_frame_to_string(s : ChemmolreprcanonicalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalFrame::to_string(self : ChemmolreprcanonicalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalTable {
@@ -402,45 +402,45 @@ pub fn chem_mol_repr_canonical_table_make(size : Int) -> ChemmolreprcanonicalTab
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_table_len(s : ChemmolreprcanonicalTable) -> Int { s.size }
+pub fn ChemmolreprcanonicalTable::len(self : ChemmolreprcanonicalTable) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_table_get(s : ChemmolreprcanonicalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalTable::get(self : ChemmolreprcanonicalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_table_set(s : ChemmolreprcanonicalTable, i : Int, v : Double) -> ChemmolreprcanonicalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalTable::set(self : ChemmolreprcanonicalTable, i : Int, v : Double) -> ChemmolreprcanonicalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_table_sum(s : ChemmolreprcanonicalTable) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalTable::sum(self : ChemmolreprcanonicalTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_table_mean(s : ChemmolreprcanonicalTable) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalTable::mean(self : ChemmolreprcanonicalTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_table_scale(s : ChemmolreprcanonicalTable, f : Double) -> ChemmolreprcanonicalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalTable::scale(self : ChemmolreprcanonicalTable, f : Double) -> ChemmolreprcanonicalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_table_add(a : ChemmolreprcanonicalTable, b : ChemmolreprcanonicalTable) -> ChemmolreprcanonicalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalTable::add(self : ChemmolreprcanonicalTable, other : ChemmolreprcanonicalTable) -> ChemmolreprcanonicalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_table_copy(s : ChemmolreprcanonicalTable) -> ChemmolreprcanonicalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalTable::copy(self : ChemmolreprcanonicalTable) -> ChemmolreprcanonicalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_table_fill(s : ChemmolreprcanonicalTable, v : Double) -> ChemmolreprcanonicalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalTable::fill(self : ChemmolreprcanonicalTable, v : Double) -> ChemmolreprcanonicalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_table_min(s : ChemmolreprcanonicalTable) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalTable::min(self : ChemmolreprcanonicalTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_table_max(s : ChemmolreprcanonicalTable) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalTable::max(self : ChemmolreprcanonicalTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_table_to_string(s : ChemmolreprcanonicalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalTable::to_string(self : ChemmolreprcanonicalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalGraphN {
@@ -453,45 +453,45 @@ pub fn chem_mol_repr_canonical_graphn_make(size : Int) -> ChemmolreprcanonicalGr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_graphn_len(s : ChemmolreprcanonicalGraphN) -> Int { s.size }
+pub fn ChemmolreprcanonicalGraphN::len(self : ChemmolreprcanonicalGraphN) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_graphn_get(s : ChemmolreprcanonicalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalGraphN::get(self : ChemmolreprcanonicalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_graphn_set(s : ChemmolreprcanonicalGraphN, i : Int, v : Double) -> ChemmolreprcanonicalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalGraphN::set(self : ChemmolreprcanonicalGraphN, i : Int, v : Double) -> ChemmolreprcanonicalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_graphn_sum(s : ChemmolreprcanonicalGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalGraphN::sum(self : ChemmolreprcanonicalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_graphn_mean(s : ChemmolreprcanonicalGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalGraphN::mean(self : ChemmolreprcanonicalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_graphn_scale(s : ChemmolreprcanonicalGraphN, f : Double) -> ChemmolreprcanonicalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalGraphN::scale(self : ChemmolreprcanonicalGraphN, f : Double) -> ChemmolreprcanonicalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_graphn_add(a : ChemmolreprcanonicalGraphN, b : ChemmolreprcanonicalGraphN) -> ChemmolreprcanonicalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalGraphN::add(self : ChemmolreprcanonicalGraphN, other : ChemmolreprcanonicalGraphN) -> ChemmolreprcanonicalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_graphn_copy(s : ChemmolreprcanonicalGraphN) -> ChemmolreprcanonicalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalGraphN::copy(self : ChemmolreprcanonicalGraphN) -> ChemmolreprcanonicalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_graphn_fill(s : ChemmolreprcanonicalGraphN, v : Double) -> ChemmolreprcanonicalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalGraphN::fill(self : ChemmolreprcanonicalGraphN, v : Double) -> ChemmolreprcanonicalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_graphn_min(s : ChemmolreprcanonicalGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalGraphN::min(self : ChemmolreprcanonicalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_graphn_max(s : ChemmolreprcanonicalGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalGraphN::max(self : ChemmolreprcanonicalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_graphn_to_string(s : ChemmolreprcanonicalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalGraphN::to_string(self : ChemmolreprcanonicalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalNode {
@@ -504,45 +504,45 @@ pub fn chem_mol_repr_canonical_node_make(size : Int) -> ChemmolreprcanonicalNode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_node_len(s : ChemmolreprcanonicalNode) -> Int { s.size }
+pub fn ChemmolreprcanonicalNode::len(self : ChemmolreprcanonicalNode) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_node_get(s : ChemmolreprcanonicalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalNode::get(self : ChemmolreprcanonicalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_node_set(s : ChemmolreprcanonicalNode, i : Int, v : Double) -> ChemmolreprcanonicalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalNode::set(self : ChemmolreprcanonicalNode, i : Int, v : Double) -> ChemmolreprcanonicalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_node_sum(s : ChemmolreprcanonicalNode) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalNode::sum(self : ChemmolreprcanonicalNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_node_mean(s : ChemmolreprcanonicalNode) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalNode::mean(self : ChemmolreprcanonicalNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_node_scale(s : ChemmolreprcanonicalNode, f : Double) -> ChemmolreprcanonicalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalNode::scale(self : ChemmolreprcanonicalNode, f : Double) -> ChemmolreprcanonicalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_node_add(a : ChemmolreprcanonicalNode, b : ChemmolreprcanonicalNode) -> ChemmolreprcanonicalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalNode::add(self : ChemmolreprcanonicalNode, other : ChemmolreprcanonicalNode) -> ChemmolreprcanonicalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_node_copy(s : ChemmolreprcanonicalNode) -> ChemmolreprcanonicalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalNode::copy(self : ChemmolreprcanonicalNode) -> ChemmolreprcanonicalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_node_fill(s : ChemmolreprcanonicalNode, v : Double) -> ChemmolreprcanonicalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalNode::fill(self : ChemmolreprcanonicalNode, v : Double) -> ChemmolreprcanonicalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_node_min(s : ChemmolreprcanonicalNode) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalNode::min(self : ChemmolreprcanonicalNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_node_max(s : ChemmolreprcanonicalNode) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalNode::max(self : ChemmolreprcanonicalNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_node_to_string(s : ChemmolreprcanonicalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalNode::to_string(self : ChemmolreprcanonicalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalEdge {
@@ -555,45 +555,45 @@ pub fn chem_mol_repr_canonical_edge_make(size : Int) -> ChemmolreprcanonicalEdge
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_edge_len(s : ChemmolreprcanonicalEdge) -> Int { s.size }
+pub fn ChemmolreprcanonicalEdge::len(self : ChemmolreprcanonicalEdge) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_edge_get(s : ChemmolreprcanonicalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalEdge::get(self : ChemmolreprcanonicalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_edge_set(s : ChemmolreprcanonicalEdge, i : Int, v : Double) -> ChemmolreprcanonicalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalEdge::set(self : ChemmolreprcanonicalEdge, i : Int, v : Double) -> ChemmolreprcanonicalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_edge_sum(s : ChemmolreprcanonicalEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalEdge::sum(self : ChemmolreprcanonicalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_edge_mean(s : ChemmolreprcanonicalEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalEdge::mean(self : ChemmolreprcanonicalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_edge_scale(s : ChemmolreprcanonicalEdge, f : Double) -> ChemmolreprcanonicalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalEdge::scale(self : ChemmolreprcanonicalEdge, f : Double) -> ChemmolreprcanonicalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_edge_add(a : ChemmolreprcanonicalEdge, b : ChemmolreprcanonicalEdge) -> ChemmolreprcanonicalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalEdge::add(self : ChemmolreprcanonicalEdge, other : ChemmolreprcanonicalEdge) -> ChemmolreprcanonicalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_edge_copy(s : ChemmolreprcanonicalEdge) -> ChemmolreprcanonicalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalEdge::copy(self : ChemmolreprcanonicalEdge) -> ChemmolreprcanonicalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_edge_fill(s : ChemmolreprcanonicalEdge, v : Double) -> ChemmolreprcanonicalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalEdge::fill(self : ChemmolreprcanonicalEdge, v : Double) -> ChemmolreprcanonicalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_edge_min(s : ChemmolreprcanonicalEdge) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalEdge::min(self : ChemmolreprcanonicalEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_edge_max(s : ChemmolreprcanonicalEdge) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalEdge::max(self : ChemmolreprcanonicalEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_edge_to_string(s : ChemmolreprcanonicalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalEdge::to_string(self : ChemmolreprcanonicalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalPath {
@@ -606,45 +606,45 @@ pub fn chem_mol_repr_canonical_path_make(size : Int) -> ChemmolreprcanonicalPath
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_path_len(s : ChemmolreprcanonicalPath) -> Int { s.size }
+pub fn ChemmolreprcanonicalPath::len(self : ChemmolreprcanonicalPath) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_path_get(s : ChemmolreprcanonicalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalPath::get(self : ChemmolreprcanonicalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_path_set(s : ChemmolreprcanonicalPath, i : Int, v : Double) -> ChemmolreprcanonicalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalPath::set(self : ChemmolreprcanonicalPath, i : Int, v : Double) -> ChemmolreprcanonicalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_path_sum(s : ChemmolreprcanonicalPath) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalPath::sum(self : ChemmolreprcanonicalPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_path_mean(s : ChemmolreprcanonicalPath) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalPath::mean(self : ChemmolreprcanonicalPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_path_scale(s : ChemmolreprcanonicalPath, f : Double) -> ChemmolreprcanonicalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalPath::scale(self : ChemmolreprcanonicalPath, f : Double) -> ChemmolreprcanonicalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_path_add(a : ChemmolreprcanonicalPath, b : ChemmolreprcanonicalPath) -> ChemmolreprcanonicalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalPath::add(self : ChemmolreprcanonicalPath, other : ChemmolreprcanonicalPath) -> ChemmolreprcanonicalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_path_copy(s : ChemmolreprcanonicalPath) -> ChemmolreprcanonicalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalPath::copy(self : ChemmolreprcanonicalPath) -> ChemmolreprcanonicalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_path_fill(s : ChemmolreprcanonicalPath, v : Double) -> ChemmolreprcanonicalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalPath::fill(self : ChemmolreprcanonicalPath, v : Double) -> ChemmolreprcanonicalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_path_min(s : ChemmolreprcanonicalPath) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalPath::min(self : ChemmolreprcanonicalPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_path_max(s : ChemmolreprcanonicalPath) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalPath::max(self : ChemmolreprcanonicalPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_path_to_string(s : ChemmolreprcanonicalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalPath::to_string(self : ChemmolreprcanonicalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalCluster {
@@ -657,45 +657,45 @@ pub fn chem_mol_repr_canonical_cluster_make(size : Int) -> ChemmolreprcanonicalC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_cluster_len(s : ChemmolreprcanonicalCluster) -> Int { s.size }
+pub fn ChemmolreprcanonicalCluster::len(self : ChemmolreprcanonicalCluster) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_cluster_get(s : ChemmolreprcanonicalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalCluster::get(self : ChemmolreprcanonicalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_cluster_set(s : ChemmolreprcanonicalCluster, i : Int, v : Double) -> ChemmolreprcanonicalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalCluster::set(self : ChemmolreprcanonicalCluster, i : Int, v : Double) -> ChemmolreprcanonicalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_cluster_sum(s : ChemmolreprcanonicalCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalCluster::sum(self : ChemmolreprcanonicalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_cluster_mean(s : ChemmolreprcanonicalCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalCluster::mean(self : ChemmolreprcanonicalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_cluster_scale(s : ChemmolreprcanonicalCluster, f : Double) -> ChemmolreprcanonicalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalCluster::scale(self : ChemmolreprcanonicalCluster, f : Double) -> ChemmolreprcanonicalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_cluster_add(a : ChemmolreprcanonicalCluster, b : ChemmolreprcanonicalCluster) -> ChemmolreprcanonicalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalCluster::add(self : ChemmolreprcanonicalCluster, other : ChemmolreprcanonicalCluster) -> ChemmolreprcanonicalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_cluster_copy(s : ChemmolreprcanonicalCluster) -> ChemmolreprcanonicalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalCluster::copy(self : ChemmolreprcanonicalCluster) -> ChemmolreprcanonicalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_cluster_fill(s : ChemmolreprcanonicalCluster, v : Double) -> ChemmolreprcanonicalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalCluster::fill(self : ChemmolreprcanonicalCluster, v : Double) -> ChemmolreprcanonicalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_cluster_min(s : ChemmolreprcanonicalCluster) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalCluster::min(self : ChemmolreprcanonicalCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_cluster_max(s : ChemmolreprcanonicalCluster) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalCluster::max(self : ChemmolreprcanonicalCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_cluster_to_string(s : ChemmolreprcanonicalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalCluster::to_string(self : ChemmolreprcanonicalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalModel {
@@ -708,45 +708,45 @@ pub fn chem_mol_repr_canonical_model_make(size : Int) -> ChemmolreprcanonicalMod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_model_len(s : ChemmolreprcanonicalModel) -> Int { s.size }
+pub fn ChemmolreprcanonicalModel::len(self : ChemmolreprcanonicalModel) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_model_get(s : ChemmolreprcanonicalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalModel::get(self : ChemmolreprcanonicalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_model_set(s : ChemmolreprcanonicalModel, i : Int, v : Double) -> ChemmolreprcanonicalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalModel::set(self : ChemmolreprcanonicalModel, i : Int, v : Double) -> ChemmolreprcanonicalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_model_sum(s : ChemmolreprcanonicalModel) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalModel::sum(self : ChemmolreprcanonicalModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_model_mean(s : ChemmolreprcanonicalModel) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalModel::mean(self : ChemmolreprcanonicalModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_model_scale(s : ChemmolreprcanonicalModel, f : Double) -> ChemmolreprcanonicalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalModel::scale(self : ChemmolreprcanonicalModel, f : Double) -> ChemmolreprcanonicalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_model_add(a : ChemmolreprcanonicalModel, b : ChemmolreprcanonicalModel) -> ChemmolreprcanonicalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalModel::add(self : ChemmolreprcanonicalModel, other : ChemmolreprcanonicalModel) -> ChemmolreprcanonicalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_model_copy(s : ChemmolreprcanonicalModel) -> ChemmolreprcanonicalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalModel::copy(self : ChemmolreprcanonicalModel) -> ChemmolreprcanonicalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_model_fill(s : ChemmolreprcanonicalModel, v : Double) -> ChemmolreprcanonicalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalModel::fill(self : ChemmolreprcanonicalModel, v : Double) -> ChemmolreprcanonicalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_model_min(s : ChemmolreprcanonicalModel) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalModel::min(self : ChemmolreprcanonicalModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_model_max(s : ChemmolreprcanonicalModel) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalModel::max(self : ChemmolreprcanonicalModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_model_to_string(s : ChemmolreprcanonicalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalModel::to_string(self : ChemmolreprcanonicalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalLayer {
@@ -759,45 +759,45 @@ pub fn chem_mol_repr_canonical_layer_make(size : Int) -> ChemmolreprcanonicalLay
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_layer_len(s : ChemmolreprcanonicalLayer) -> Int { s.size }
+pub fn ChemmolreprcanonicalLayer::len(self : ChemmolreprcanonicalLayer) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_layer_get(s : ChemmolreprcanonicalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalLayer::get(self : ChemmolreprcanonicalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_layer_set(s : ChemmolreprcanonicalLayer, i : Int, v : Double) -> ChemmolreprcanonicalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalLayer::set(self : ChemmolreprcanonicalLayer, i : Int, v : Double) -> ChemmolreprcanonicalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_layer_sum(s : ChemmolreprcanonicalLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalLayer::sum(self : ChemmolreprcanonicalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_layer_mean(s : ChemmolreprcanonicalLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalLayer::mean(self : ChemmolreprcanonicalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_layer_scale(s : ChemmolreprcanonicalLayer, f : Double) -> ChemmolreprcanonicalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalLayer::scale(self : ChemmolreprcanonicalLayer, f : Double) -> ChemmolreprcanonicalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_layer_add(a : ChemmolreprcanonicalLayer, b : ChemmolreprcanonicalLayer) -> ChemmolreprcanonicalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalLayer::add(self : ChemmolreprcanonicalLayer, other : ChemmolreprcanonicalLayer) -> ChemmolreprcanonicalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_layer_copy(s : ChemmolreprcanonicalLayer) -> ChemmolreprcanonicalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalLayer::copy(self : ChemmolreprcanonicalLayer) -> ChemmolreprcanonicalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_layer_fill(s : ChemmolreprcanonicalLayer, v : Double) -> ChemmolreprcanonicalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalLayer::fill(self : ChemmolreprcanonicalLayer, v : Double) -> ChemmolreprcanonicalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_layer_min(s : ChemmolreprcanonicalLayer) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalLayer::min(self : ChemmolreprcanonicalLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_layer_max(s : ChemmolreprcanonicalLayer) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalLayer::max(self : ChemmolreprcanonicalLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_layer_to_string(s : ChemmolreprcanonicalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalLayer::to_string(self : ChemmolreprcanonicalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalBuffer {
@@ -810,45 +810,45 @@ pub fn chem_mol_repr_canonical_buffer_make(size : Int) -> ChemmolreprcanonicalBu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_buffer_len(s : ChemmolreprcanonicalBuffer) -> Int { s.size }
+pub fn ChemmolreprcanonicalBuffer::len(self : ChemmolreprcanonicalBuffer) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_buffer_get(s : ChemmolreprcanonicalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalBuffer::get(self : ChemmolreprcanonicalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_buffer_set(s : ChemmolreprcanonicalBuffer, i : Int, v : Double) -> ChemmolreprcanonicalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalBuffer::set(self : ChemmolreprcanonicalBuffer, i : Int, v : Double) -> ChemmolreprcanonicalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_buffer_sum(s : ChemmolreprcanonicalBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalBuffer::sum(self : ChemmolreprcanonicalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_buffer_mean(s : ChemmolreprcanonicalBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalBuffer::mean(self : ChemmolreprcanonicalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_buffer_scale(s : ChemmolreprcanonicalBuffer, f : Double) -> ChemmolreprcanonicalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalBuffer::scale(self : ChemmolreprcanonicalBuffer, f : Double) -> ChemmolreprcanonicalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_buffer_add(a : ChemmolreprcanonicalBuffer, b : ChemmolreprcanonicalBuffer) -> ChemmolreprcanonicalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalBuffer::add(self : ChemmolreprcanonicalBuffer, other : ChemmolreprcanonicalBuffer) -> ChemmolreprcanonicalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_buffer_copy(s : ChemmolreprcanonicalBuffer) -> ChemmolreprcanonicalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalBuffer::copy(self : ChemmolreprcanonicalBuffer) -> ChemmolreprcanonicalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_buffer_fill(s : ChemmolreprcanonicalBuffer, v : Double) -> ChemmolreprcanonicalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalBuffer::fill(self : ChemmolreprcanonicalBuffer, v : Double) -> ChemmolreprcanonicalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_buffer_min(s : ChemmolreprcanonicalBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalBuffer::min(self : ChemmolreprcanonicalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_buffer_max(s : ChemmolreprcanonicalBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalBuffer::max(self : ChemmolreprcanonicalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_buffer_to_string(s : ChemmolreprcanonicalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalBuffer::to_string(self : ChemmolreprcanonicalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalCursor {
@@ -861,45 +861,45 @@ pub fn chem_mol_repr_canonical_cursor_make(size : Int) -> ChemmolreprcanonicalCu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_cursor_len(s : ChemmolreprcanonicalCursor) -> Int { s.size }
+pub fn ChemmolreprcanonicalCursor::len(self : ChemmolreprcanonicalCursor) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_cursor_get(s : ChemmolreprcanonicalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalCursor::get(self : ChemmolreprcanonicalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_cursor_set(s : ChemmolreprcanonicalCursor, i : Int, v : Double) -> ChemmolreprcanonicalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalCursor::set(self : ChemmolreprcanonicalCursor, i : Int, v : Double) -> ChemmolreprcanonicalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_cursor_sum(s : ChemmolreprcanonicalCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalCursor::sum(self : ChemmolreprcanonicalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_cursor_mean(s : ChemmolreprcanonicalCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalCursor::mean(self : ChemmolreprcanonicalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_cursor_scale(s : ChemmolreprcanonicalCursor, f : Double) -> ChemmolreprcanonicalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalCursor::scale(self : ChemmolreprcanonicalCursor, f : Double) -> ChemmolreprcanonicalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_cursor_add(a : ChemmolreprcanonicalCursor, b : ChemmolreprcanonicalCursor) -> ChemmolreprcanonicalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalCursor::add(self : ChemmolreprcanonicalCursor, other : ChemmolreprcanonicalCursor) -> ChemmolreprcanonicalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_cursor_copy(s : ChemmolreprcanonicalCursor) -> ChemmolreprcanonicalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalCursor::copy(self : ChemmolreprcanonicalCursor) -> ChemmolreprcanonicalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_cursor_fill(s : ChemmolreprcanonicalCursor, v : Double) -> ChemmolreprcanonicalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalCursor::fill(self : ChemmolreprcanonicalCursor, v : Double) -> ChemmolreprcanonicalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_cursor_min(s : ChemmolreprcanonicalCursor) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalCursor::min(self : ChemmolreprcanonicalCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_cursor_max(s : ChemmolreprcanonicalCursor) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalCursor::max(self : ChemmolreprcanonicalCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_cursor_to_string(s : ChemmolreprcanonicalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalCursor::to_string(self : ChemmolreprcanonicalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalView {
@@ -912,45 +912,45 @@ pub fn chem_mol_repr_canonical_view_make(size : Int) -> ChemmolreprcanonicalView
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_view_len(s : ChemmolreprcanonicalView) -> Int { s.size }
+pub fn ChemmolreprcanonicalView::len(self : ChemmolreprcanonicalView) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_view_get(s : ChemmolreprcanonicalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalView::get(self : ChemmolreprcanonicalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_view_set(s : ChemmolreprcanonicalView, i : Int, v : Double) -> ChemmolreprcanonicalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalView::set(self : ChemmolreprcanonicalView, i : Int, v : Double) -> ChemmolreprcanonicalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_view_sum(s : ChemmolreprcanonicalView) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalView::sum(self : ChemmolreprcanonicalView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_view_mean(s : ChemmolreprcanonicalView) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalView::mean(self : ChemmolreprcanonicalView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_view_scale(s : ChemmolreprcanonicalView, f : Double) -> ChemmolreprcanonicalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalView::scale(self : ChemmolreprcanonicalView, f : Double) -> ChemmolreprcanonicalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_view_add(a : ChemmolreprcanonicalView, b : ChemmolreprcanonicalView) -> ChemmolreprcanonicalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalView::add(self : ChemmolreprcanonicalView, other : ChemmolreprcanonicalView) -> ChemmolreprcanonicalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_view_copy(s : ChemmolreprcanonicalView) -> ChemmolreprcanonicalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalView::copy(self : ChemmolreprcanonicalView) -> ChemmolreprcanonicalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_view_fill(s : ChemmolreprcanonicalView, v : Double) -> ChemmolreprcanonicalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalView::fill(self : ChemmolreprcanonicalView, v : Double) -> ChemmolreprcanonicalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_view_min(s : ChemmolreprcanonicalView) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalView::min(self : ChemmolreprcanonicalView) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_view_max(s : ChemmolreprcanonicalView) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalView::max(self : ChemmolreprcanonicalView) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_view_to_string(s : ChemmolreprcanonicalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalView::to_string(self : ChemmolreprcanonicalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalRange {
@@ -963,45 +963,45 @@ pub fn chem_mol_repr_canonical_range_make(size : Int) -> ChemmolreprcanonicalRan
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_range_len(s : ChemmolreprcanonicalRange) -> Int { s.size }
+pub fn ChemmolreprcanonicalRange::len(self : ChemmolreprcanonicalRange) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_range_get(s : ChemmolreprcanonicalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalRange::get(self : ChemmolreprcanonicalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_range_set(s : ChemmolreprcanonicalRange, i : Int, v : Double) -> ChemmolreprcanonicalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalRange::set(self : ChemmolreprcanonicalRange, i : Int, v : Double) -> ChemmolreprcanonicalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_range_sum(s : ChemmolreprcanonicalRange) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalRange::sum(self : ChemmolreprcanonicalRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_range_mean(s : ChemmolreprcanonicalRange) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalRange::mean(self : ChemmolreprcanonicalRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_range_scale(s : ChemmolreprcanonicalRange, f : Double) -> ChemmolreprcanonicalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalRange::scale(self : ChemmolreprcanonicalRange, f : Double) -> ChemmolreprcanonicalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_range_add(a : ChemmolreprcanonicalRange, b : ChemmolreprcanonicalRange) -> ChemmolreprcanonicalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalRange::add(self : ChemmolreprcanonicalRange, other : ChemmolreprcanonicalRange) -> ChemmolreprcanonicalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_range_copy(s : ChemmolreprcanonicalRange) -> ChemmolreprcanonicalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalRange::copy(self : ChemmolreprcanonicalRange) -> ChemmolreprcanonicalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_range_fill(s : ChemmolreprcanonicalRange, v : Double) -> ChemmolreprcanonicalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalRange::fill(self : ChemmolreprcanonicalRange, v : Double) -> ChemmolreprcanonicalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_range_min(s : ChemmolreprcanonicalRange) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalRange::min(self : ChemmolreprcanonicalRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_range_max(s : ChemmolreprcanonicalRange) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalRange::max(self : ChemmolreprcanonicalRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_range_to_string(s : ChemmolreprcanonicalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalRange::to_string(self : ChemmolreprcanonicalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_mol_repr_canonical_slice_make(size : Int) -> ChemmolreprcanonicalSli
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_canonical_slice_len(s : ChemmolreprcanonicalSlice) -> Int { s.size }
+pub fn ChemmolreprcanonicalSlice::len(self : ChemmolreprcanonicalSlice) -> Int { self.size }
 
-pub fn chem_mol_repr_canonical_slice_get(s : ChemmolreprcanonicalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprcanonicalSlice::get(self : ChemmolreprcanonicalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_canonical_slice_set(s : ChemmolreprcanonicalSlice, i : Int, v : Double) -> ChemmolreprcanonicalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalSlice::set(self : ChemmolreprcanonicalSlice, i : Int, v : Double) -> ChemmolreprcanonicalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_slice_sum(s : ChemmolreprcanonicalSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprcanonicalSlice::sum(self : ChemmolreprcanonicalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_canonical_slice_mean(s : ChemmolreprcanonicalSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprcanonicalSlice::mean(self : ChemmolreprcanonicalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_canonical_slice_scale(s : ChemmolreprcanonicalSlice, f : Double) -> ChemmolreprcanonicalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalSlice::scale(self : ChemmolreprcanonicalSlice, f : Double) -> ChemmolreprcanonicalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_slice_add(a : ChemmolreprcanonicalSlice, b : ChemmolreprcanonicalSlice) -> ChemmolreprcanonicalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprcanonicalSlice::add(self : ChemmolreprcanonicalSlice, other : ChemmolreprcanonicalSlice) -> ChemmolreprcanonicalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_slice_copy(s : ChemmolreprcanonicalSlice) -> ChemmolreprcanonicalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalSlice::copy(self : ChemmolreprcanonicalSlice) -> ChemmolreprcanonicalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_slice_fill(s : ChemmolreprcanonicalSlice, v : Double) -> ChemmolreprcanonicalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprcanonicalSlice::fill(self : ChemmolreprcanonicalSlice, v : Double) -> ChemmolreprcanonicalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_canonical_slice_min(s : ChemmolreprcanonicalSlice) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprcanonicalSlice::min(self : ChemmolreprcanonicalSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_canonical_slice_max(s : ChemmolreprcanonicalSlice) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprcanonicalSlice::max(self : ChemmolreprcanonicalSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_canonical_slice_to_string(s : ChemmolreprcanonicalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprcanonicalSlice::to_string(self : ChemmolreprcanonicalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

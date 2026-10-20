@@ -351,45 +351,45 @@ pub fn math_approx_interp_frame_make(size : Int) -> MathapproxinterpFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_frame_len(s : MathapproxinterpFrame) -> Int { s.size }
+pub fn MathapproxinterpFrame::len(self : MathapproxinterpFrame) -> Int { self.size }
 
-pub fn math_approx_interp_frame_get(s : MathapproxinterpFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpFrame::get(self : MathapproxinterpFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_frame_set(s : MathapproxinterpFrame, i : Int, v : Double) -> MathapproxinterpFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpFrame::set(self : MathapproxinterpFrame, i : Int, v : Double) -> MathapproxinterpFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_frame_sum(s : MathapproxinterpFrame) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpFrame::sum(self : MathapproxinterpFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_frame_mean(s : MathapproxinterpFrame) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpFrame::mean(self : MathapproxinterpFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_frame_scale(s : MathapproxinterpFrame, f : Double) -> MathapproxinterpFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpFrame::scale(self : MathapproxinterpFrame, f : Double) -> MathapproxinterpFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_frame_add(a : MathapproxinterpFrame, b : MathapproxinterpFrame) -> MathapproxinterpFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpFrame::add(self : MathapproxinterpFrame, other : MathapproxinterpFrame) -> MathapproxinterpFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_frame_copy(s : MathapproxinterpFrame) -> MathapproxinterpFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpFrame::copy(self : MathapproxinterpFrame) -> MathapproxinterpFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_frame_fill(s : MathapproxinterpFrame, v : Double) -> MathapproxinterpFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpFrame::fill(self : MathapproxinterpFrame, v : Double) -> MathapproxinterpFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_frame_min(s : MathapproxinterpFrame) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpFrame::min(self : MathapproxinterpFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_frame_max(s : MathapproxinterpFrame) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpFrame::max(self : MathapproxinterpFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_frame_to_string(s : MathapproxinterpFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpFrame::to_string(self : MathapproxinterpFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpTable {
@@ -402,45 +402,45 @@ pub fn math_approx_interp_table_make(size : Int) -> MathapproxinterpTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_table_len(s : MathapproxinterpTable) -> Int { s.size }
+pub fn MathapproxinterpTable::len(self : MathapproxinterpTable) -> Int { self.size }
 
-pub fn math_approx_interp_table_get(s : MathapproxinterpTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpTable::get(self : MathapproxinterpTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_table_set(s : MathapproxinterpTable, i : Int, v : Double) -> MathapproxinterpTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpTable::set(self : MathapproxinterpTable, i : Int, v : Double) -> MathapproxinterpTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_table_sum(s : MathapproxinterpTable) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpTable::sum(self : MathapproxinterpTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_table_mean(s : MathapproxinterpTable) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpTable::mean(self : MathapproxinterpTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_table_scale(s : MathapproxinterpTable, f : Double) -> MathapproxinterpTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpTable::scale(self : MathapproxinterpTable, f : Double) -> MathapproxinterpTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_table_add(a : MathapproxinterpTable, b : MathapproxinterpTable) -> MathapproxinterpTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpTable::add(self : MathapproxinterpTable, other : MathapproxinterpTable) -> MathapproxinterpTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_table_copy(s : MathapproxinterpTable) -> MathapproxinterpTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpTable::copy(self : MathapproxinterpTable) -> MathapproxinterpTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_table_fill(s : MathapproxinterpTable, v : Double) -> MathapproxinterpTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpTable::fill(self : MathapproxinterpTable, v : Double) -> MathapproxinterpTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_table_min(s : MathapproxinterpTable) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpTable::min(self : MathapproxinterpTable) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_table_max(s : MathapproxinterpTable) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpTable::max(self : MathapproxinterpTable) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_table_to_string(s : MathapproxinterpTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpTable::to_string(self : MathapproxinterpTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpGraphN {
@@ -453,45 +453,45 @@ pub fn math_approx_interp_graphn_make(size : Int) -> MathapproxinterpGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_graphn_len(s : MathapproxinterpGraphN) -> Int { s.size }
+pub fn MathapproxinterpGraphN::len(self : MathapproxinterpGraphN) -> Int { self.size }
 
-pub fn math_approx_interp_graphn_get(s : MathapproxinterpGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpGraphN::get(self : MathapproxinterpGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_graphn_set(s : MathapproxinterpGraphN, i : Int, v : Double) -> MathapproxinterpGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpGraphN::set(self : MathapproxinterpGraphN, i : Int, v : Double) -> MathapproxinterpGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_graphn_sum(s : MathapproxinterpGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpGraphN::sum(self : MathapproxinterpGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_graphn_mean(s : MathapproxinterpGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpGraphN::mean(self : MathapproxinterpGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_graphn_scale(s : MathapproxinterpGraphN, f : Double) -> MathapproxinterpGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpGraphN::scale(self : MathapproxinterpGraphN, f : Double) -> MathapproxinterpGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_graphn_add(a : MathapproxinterpGraphN, b : MathapproxinterpGraphN) -> MathapproxinterpGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpGraphN::add(self : MathapproxinterpGraphN, other : MathapproxinterpGraphN) -> MathapproxinterpGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_graphn_copy(s : MathapproxinterpGraphN) -> MathapproxinterpGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpGraphN::copy(self : MathapproxinterpGraphN) -> MathapproxinterpGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_graphn_fill(s : MathapproxinterpGraphN, v : Double) -> MathapproxinterpGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpGraphN::fill(self : MathapproxinterpGraphN, v : Double) -> MathapproxinterpGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_graphn_min(s : MathapproxinterpGraphN) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpGraphN::min(self : MathapproxinterpGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_graphn_max(s : MathapproxinterpGraphN) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpGraphN::max(self : MathapproxinterpGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_graphn_to_string(s : MathapproxinterpGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpGraphN::to_string(self : MathapproxinterpGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpNode {
@@ -504,45 +504,45 @@ pub fn math_approx_interp_node_make(size : Int) -> MathapproxinterpNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_node_len(s : MathapproxinterpNode) -> Int { s.size }
+pub fn MathapproxinterpNode::len(self : MathapproxinterpNode) -> Int { self.size }
 
-pub fn math_approx_interp_node_get(s : MathapproxinterpNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpNode::get(self : MathapproxinterpNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_node_set(s : MathapproxinterpNode, i : Int, v : Double) -> MathapproxinterpNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpNode::set(self : MathapproxinterpNode, i : Int, v : Double) -> MathapproxinterpNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_node_sum(s : MathapproxinterpNode) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpNode::sum(self : MathapproxinterpNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_node_mean(s : MathapproxinterpNode) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpNode::mean(self : MathapproxinterpNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_node_scale(s : MathapproxinterpNode, f : Double) -> MathapproxinterpNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpNode::scale(self : MathapproxinterpNode, f : Double) -> MathapproxinterpNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_node_add(a : MathapproxinterpNode, b : MathapproxinterpNode) -> MathapproxinterpNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpNode::add(self : MathapproxinterpNode, other : MathapproxinterpNode) -> MathapproxinterpNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_node_copy(s : MathapproxinterpNode) -> MathapproxinterpNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpNode::copy(self : MathapproxinterpNode) -> MathapproxinterpNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_node_fill(s : MathapproxinterpNode, v : Double) -> MathapproxinterpNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpNode::fill(self : MathapproxinterpNode, v : Double) -> MathapproxinterpNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_node_min(s : MathapproxinterpNode) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpNode::min(self : MathapproxinterpNode) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_node_max(s : MathapproxinterpNode) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpNode::max(self : MathapproxinterpNode) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_node_to_string(s : MathapproxinterpNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpNode::to_string(self : MathapproxinterpNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpEdge {
@@ -555,45 +555,45 @@ pub fn math_approx_interp_edge_make(size : Int) -> MathapproxinterpEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_edge_len(s : MathapproxinterpEdge) -> Int { s.size }
+pub fn MathapproxinterpEdge::len(self : MathapproxinterpEdge) -> Int { self.size }
 
-pub fn math_approx_interp_edge_get(s : MathapproxinterpEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpEdge::get(self : MathapproxinterpEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_edge_set(s : MathapproxinterpEdge, i : Int, v : Double) -> MathapproxinterpEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpEdge::set(self : MathapproxinterpEdge, i : Int, v : Double) -> MathapproxinterpEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_edge_sum(s : MathapproxinterpEdge) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpEdge::sum(self : MathapproxinterpEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_edge_mean(s : MathapproxinterpEdge) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpEdge::mean(self : MathapproxinterpEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_edge_scale(s : MathapproxinterpEdge, f : Double) -> MathapproxinterpEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpEdge::scale(self : MathapproxinterpEdge, f : Double) -> MathapproxinterpEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_edge_add(a : MathapproxinterpEdge, b : MathapproxinterpEdge) -> MathapproxinterpEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpEdge::add(self : MathapproxinterpEdge, other : MathapproxinterpEdge) -> MathapproxinterpEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_edge_copy(s : MathapproxinterpEdge) -> MathapproxinterpEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpEdge::copy(self : MathapproxinterpEdge) -> MathapproxinterpEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_edge_fill(s : MathapproxinterpEdge, v : Double) -> MathapproxinterpEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpEdge::fill(self : MathapproxinterpEdge, v : Double) -> MathapproxinterpEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_edge_min(s : MathapproxinterpEdge) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpEdge::min(self : MathapproxinterpEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_edge_max(s : MathapproxinterpEdge) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpEdge::max(self : MathapproxinterpEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_edge_to_string(s : MathapproxinterpEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpEdge::to_string(self : MathapproxinterpEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpPath {
@@ -606,45 +606,45 @@ pub fn math_approx_interp_path_make(size : Int) -> MathapproxinterpPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_path_len(s : MathapproxinterpPath) -> Int { s.size }
+pub fn MathapproxinterpPath::len(self : MathapproxinterpPath) -> Int { self.size }
 
-pub fn math_approx_interp_path_get(s : MathapproxinterpPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpPath::get(self : MathapproxinterpPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_path_set(s : MathapproxinterpPath, i : Int, v : Double) -> MathapproxinterpPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpPath::set(self : MathapproxinterpPath, i : Int, v : Double) -> MathapproxinterpPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_path_sum(s : MathapproxinterpPath) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpPath::sum(self : MathapproxinterpPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_path_mean(s : MathapproxinterpPath) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpPath::mean(self : MathapproxinterpPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_path_scale(s : MathapproxinterpPath, f : Double) -> MathapproxinterpPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpPath::scale(self : MathapproxinterpPath, f : Double) -> MathapproxinterpPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_path_add(a : MathapproxinterpPath, b : MathapproxinterpPath) -> MathapproxinterpPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpPath::add(self : MathapproxinterpPath, other : MathapproxinterpPath) -> MathapproxinterpPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_path_copy(s : MathapproxinterpPath) -> MathapproxinterpPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpPath::copy(self : MathapproxinterpPath) -> MathapproxinterpPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_path_fill(s : MathapproxinterpPath, v : Double) -> MathapproxinterpPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpPath::fill(self : MathapproxinterpPath, v : Double) -> MathapproxinterpPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_path_min(s : MathapproxinterpPath) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpPath::min(self : MathapproxinterpPath) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_path_max(s : MathapproxinterpPath) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpPath::max(self : MathapproxinterpPath) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_path_to_string(s : MathapproxinterpPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpPath::to_string(self : MathapproxinterpPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpCluster {
@@ -657,45 +657,45 @@ pub fn math_approx_interp_cluster_make(size : Int) -> MathapproxinterpCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_cluster_len(s : MathapproxinterpCluster) -> Int { s.size }
+pub fn MathapproxinterpCluster::len(self : MathapproxinterpCluster) -> Int { self.size }
 
-pub fn math_approx_interp_cluster_get(s : MathapproxinterpCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpCluster::get(self : MathapproxinterpCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_cluster_set(s : MathapproxinterpCluster, i : Int, v : Double) -> MathapproxinterpCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpCluster::set(self : MathapproxinterpCluster, i : Int, v : Double) -> MathapproxinterpCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_cluster_sum(s : MathapproxinterpCluster) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpCluster::sum(self : MathapproxinterpCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_cluster_mean(s : MathapproxinterpCluster) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpCluster::mean(self : MathapproxinterpCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_cluster_scale(s : MathapproxinterpCluster, f : Double) -> MathapproxinterpCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpCluster::scale(self : MathapproxinterpCluster, f : Double) -> MathapproxinterpCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_cluster_add(a : MathapproxinterpCluster, b : MathapproxinterpCluster) -> MathapproxinterpCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpCluster::add(self : MathapproxinterpCluster, other : MathapproxinterpCluster) -> MathapproxinterpCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_cluster_copy(s : MathapproxinterpCluster) -> MathapproxinterpCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpCluster::copy(self : MathapproxinterpCluster) -> MathapproxinterpCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_cluster_fill(s : MathapproxinterpCluster, v : Double) -> MathapproxinterpCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpCluster::fill(self : MathapproxinterpCluster, v : Double) -> MathapproxinterpCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_cluster_min(s : MathapproxinterpCluster) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpCluster::min(self : MathapproxinterpCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_cluster_max(s : MathapproxinterpCluster) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpCluster::max(self : MathapproxinterpCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_cluster_to_string(s : MathapproxinterpCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpCluster::to_string(self : MathapproxinterpCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpModel {
@@ -708,45 +708,45 @@ pub fn math_approx_interp_model_make(size : Int) -> MathapproxinterpModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_model_len(s : MathapproxinterpModel) -> Int { s.size }
+pub fn MathapproxinterpModel::len(self : MathapproxinterpModel) -> Int { self.size }
 
-pub fn math_approx_interp_model_get(s : MathapproxinterpModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpModel::get(self : MathapproxinterpModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_model_set(s : MathapproxinterpModel, i : Int, v : Double) -> MathapproxinterpModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpModel::set(self : MathapproxinterpModel, i : Int, v : Double) -> MathapproxinterpModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_model_sum(s : MathapproxinterpModel) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpModel::sum(self : MathapproxinterpModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_model_mean(s : MathapproxinterpModel) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpModel::mean(self : MathapproxinterpModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_model_scale(s : MathapproxinterpModel, f : Double) -> MathapproxinterpModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpModel::scale(self : MathapproxinterpModel, f : Double) -> MathapproxinterpModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_model_add(a : MathapproxinterpModel, b : MathapproxinterpModel) -> MathapproxinterpModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpModel::add(self : MathapproxinterpModel, other : MathapproxinterpModel) -> MathapproxinterpModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_model_copy(s : MathapproxinterpModel) -> MathapproxinterpModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpModel::copy(self : MathapproxinterpModel) -> MathapproxinterpModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_model_fill(s : MathapproxinterpModel, v : Double) -> MathapproxinterpModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpModel::fill(self : MathapproxinterpModel, v : Double) -> MathapproxinterpModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_model_min(s : MathapproxinterpModel) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpModel::min(self : MathapproxinterpModel) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_model_max(s : MathapproxinterpModel) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpModel::max(self : MathapproxinterpModel) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_model_to_string(s : MathapproxinterpModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpModel::to_string(self : MathapproxinterpModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpLayer {
@@ -759,45 +759,45 @@ pub fn math_approx_interp_layer_make(size : Int) -> MathapproxinterpLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_layer_len(s : MathapproxinterpLayer) -> Int { s.size }
+pub fn MathapproxinterpLayer::len(self : MathapproxinterpLayer) -> Int { self.size }
 
-pub fn math_approx_interp_layer_get(s : MathapproxinterpLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpLayer::get(self : MathapproxinterpLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_layer_set(s : MathapproxinterpLayer, i : Int, v : Double) -> MathapproxinterpLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpLayer::set(self : MathapproxinterpLayer, i : Int, v : Double) -> MathapproxinterpLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_layer_sum(s : MathapproxinterpLayer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpLayer::sum(self : MathapproxinterpLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_layer_mean(s : MathapproxinterpLayer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpLayer::mean(self : MathapproxinterpLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_layer_scale(s : MathapproxinterpLayer, f : Double) -> MathapproxinterpLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpLayer::scale(self : MathapproxinterpLayer, f : Double) -> MathapproxinterpLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_layer_add(a : MathapproxinterpLayer, b : MathapproxinterpLayer) -> MathapproxinterpLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpLayer::add(self : MathapproxinterpLayer, other : MathapproxinterpLayer) -> MathapproxinterpLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_layer_copy(s : MathapproxinterpLayer) -> MathapproxinterpLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpLayer::copy(self : MathapproxinterpLayer) -> MathapproxinterpLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_layer_fill(s : MathapproxinterpLayer, v : Double) -> MathapproxinterpLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpLayer::fill(self : MathapproxinterpLayer, v : Double) -> MathapproxinterpLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_layer_min(s : MathapproxinterpLayer) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpLayer::min(self : MathapproxinterpLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_layer_max(s : MathapproxinterpLayer) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpLayer::max(self : MathapproxinterpLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_layer_to_string(s : MathapproxinterpLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpLayer::to_string(self : MathapproxinterpLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpBuffer {
@@ -810,45 +810,45 @@ pub fn math_approx_interp_buffer_make(size : Int) -> MathapproxinterpBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_buffer_len(s : MathapproxinterpBuffer) -> Int { s.size }
+pub fn MathapproxinterpBuffer::len(self : MathapproxinterpBuffer) -> Int { self.size }
 
-pub fn math_approx_interp_buffer_get(s : MathapproxinterpBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpBuffer::get(self : MathapproxinterpBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_buffer_set(s : MathapproxinterpBuffer, i : Int, v : Double) -> MathapproxinterpBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpBuffer::set(self : MathapproxinterpBuffer, i : Int, v : Double) -> MathapproxinterpBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_buffer_sum(s : MathapproxinterpBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpBuffer::sum(self : MathapproxinterpBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_buffer_mean(s : MathapproxinterpBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpBuffer::mean(self : MathapproxinterpBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_buffer_scale(s : MathapproxinterpBuffer, f : Double) -> MathapproxinterpBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpBuffer::scale(self : MathapproxinterpBuffer, f : Double) -> MathapproxinterpBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_buffer_add(a : MathapproxinterpBuffer, b : MathapproxinterpBuffer) -> MathapproxinterpBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpBuffer::add(self : MathapproxinterpBuffer, other : MathapproxinterpBuffer) -> MathapproxinterpBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_buffer_copy(s : MathapproxinterpBuffer) -> MathapproxinterpBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpBuffer::copy(self : MathapproxinterpBuffer) -> MathapproxinterpBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_buffer_fill(s : MathapproxinterpBuffer, v : Double) -> MathapproxinterpBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpBuffer::fill(self : MathapproxinterpBuffer, v : Double) -> MathapproxinterpBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_buffer_min(s : MathapproxinterpBuffer) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpBuffer::min(self : MathapproxinterpBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_buffer_max(s : MathapproxinterpBuffer) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpBuffer::max(self : MathapproxinterpBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_buffer_to_string(s : MathapproxinterpBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpBuffer::to_string(self : MathapproxinterpBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpCursor {
@@ -861,45 +861,45 @@ pub fn math_approx_interp_cursor_make(size : Int) -> MathapproxinterpCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_cursor_len(s : MathapproxinterpCursor) -> Int { s.size }
+pub fn MathapproxinterpCursor::len(self : MathapproxinterpCursor) -> Int { self.size }
 
-pub fn math_approx_interp_cursor_get(s : MathapproxinterpCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpCursor::get(self : MathapproxinterpCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_cursor_set(s : MathapproxinterpCursor, i : Int, v : Double) -> MathapproxinterpCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpCursor::set(self : MathapproxinterpCursor, i : Int, v : Double) -> MathapproxinterpCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_cursor_sum(s : MathapproxinterpCursor) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpCursor::sum(self : MathapproxinterpCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_cursor_mean(s : MathapproxinterpCursor) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpCursor::mean(self : MathapproxinterpCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_cursor_scale(s : MathapproxinterpCursor, f : Double) -> MathapproxinterpCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpCursor::scale(self : MathapproxinterpCursor, f : Double) -> MathapproxinterpCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_cursor_add(a : MathapproxinterpCursor, b : MathapproxinterpCursor) -> MathapproxinterpCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpCursor::add(self : MathapproxinterpCursor, other : MathapproxinterpCursor) -> MathapproxinterpCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_cursor_copy(s : MathapproxinterpCursor) -> MathapproxinterpCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpCursor::copy(self : MathapproxinterpCursor) -> MathapproxinterpCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_cursor_fill(s : MathapproxinterpCursor, v : Double) -> MathapproxinterpCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpCursor::fill(self : MathapproxinterpCursor, v : Double) -> MathapproxinterpCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_cursor_min(s : MathapproxinterpCursor) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpCursor::min(self : MathapproxinterpCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_cursor_max(s : MathapproxinterpCursor) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpCursor::max(self : MathapproxinterpCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_cursor_to_string(s : MathapproxinterpCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpCursor::to_string(self : MathapproxinterpCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpView {
@@ -912,45 +912,45 @@ pub fn math_approx_interp_view_make(size : Int) -> MathapproxinterpView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_view_len(s : MathapproxinterpView) -> Int { s.size }
+pub fn MathapproxinterpView::len(self : MathapproxinterpView) -> Int { self.size }
 
-pub fn math_approx_interp_view_get(s : MathapproxinterpView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpView::get(self : MathapproxinterpView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_view_set(s : MathapproxinterpView, i : Int, v : Double) -> MathapproxinterpView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpView::set(self : MathapproxinterpView, i : Int, v : Double) -> MathapproxinterpView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_view_sum(s : MathapproxinterpView) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpView::sum(self : MathapproxinterpView) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_view_mean(s : MathapproxinterpView) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpView::mean(self : MathapproxinterpView) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_view_scale(s : MathapproxinterpView, f : Double) -> MathapproxinterpView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpView::scale(self : MathapproxinterpView, f : Double) -> MathapproxinterpView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_view_add(a : MathapproxinterpView, b : MathapproxinterpView) -> MathapproxinterpView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpView::add(self : MathapproxinterpView, other : MathapproxinterpView) -> MathapproxinterpView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_view_copy(s : MathapproxinterpView) -> MathapproxinterpView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpView::copy(self : MathapproxinterpView) -> MathapproxinterpView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_view_fill(s : MathapproxinterpView, v : Double) -> MathapproxinterpView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpView::fill(self : MathapproxinterpView, v : Double) -> MathapproxinterpView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_view_min(s : MathapproxinterpView) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpView::min(self : MathapproxinterpView) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_view_max(s : MathapproxinterpView) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpView::max(self : MathapproxinterpView) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_view_to_string(s : MathapproxinterpView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpView::to_string(self : MathapproxinterpView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpRange {
@@ -963,45 +963,45 @@ pub fn math_approx_interp_range_make(size : Int) -> MathapproxinterpRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_range_len(s : MathapproxinterpRange) -> Int { s.size }
+pub fn MathapproxinterpRange::len(self : MathapproxinterpRange) -> Int { self.size }
 
-pub fn math_approx_interp_range_get(s : MathapproxinterpRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpRange::get(self : MathapproxinterpRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_range_set(s : MathapproxinterpRange, i : Int, v : Double) -> MathapproxinterpRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpRange::set(self : MathapproxinterpRange, i : Int, v : Double) -> MathapproxinterpRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_range_sum(s : MathapproxinterpRange) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpRange::sum(self : MathapproxinterpRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_range_mean(s : MathapproxinterpRange) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpRange::mean(self : MathapproxinterpRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_range_scale(s : MathapproxinterpRange, f : Double) -> MathapproxinterpRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpRange::scale(self : MathapproxinterpRange, f : Double) -> MathapproxinterpRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_range_add(a : MathapproxinterpRange, b : MathapproxinterpRange) -> MathapproxinterpRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpRange::add(self : MathapproxinterpRange, other : MathapproxinterpRange) -> MathapproxinterpRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_range_copy(s : MathapproxinterpRange) -> MathapproxinterpRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpRange::copy(self : MathapproxinterpRange) -> MathapproxinterpRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_range_fill(s : MathapproxinterpRange, v : Double) -> MathapproxinterpRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpRange::fill(self : MathapproxinterpRange, v : Double) -> MathapproxinterpRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_range_min(s : MathapproxinterpRange) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpRange::min(self : MathapproxinterpRange) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_range_max(s : MathapproxinterpRange) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpRange::max(self : MathapproxinterpRange) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_range_to_string(s : MathapproxinterpRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpRange::to_string(self : MathapproxinterpRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxinterpSlice {
@@ -1014,44 +1014,44 @@ pub fn math_approx_interp_slice_make(size : Int) -> MathapproxinterpSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_interp_slice_len(s : MathapproxinterpSlice) -> Int { s.size }
+pub fn MathapproxinterpSlice::len(self : MathapproxinterpSlice) -> Int { self.size }
 
-pub fn math_approx_interp_slice_get(s : MathapproxinterpSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxinterpSlice::get(self : MathapproxinterpSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_interp_slice_set(s : MathapproxinterpSlice, i : Int, v : Double) -> MathapproxinterpSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxinterpSlice::set(self : MathapproxinterpSlice, i : Int, v : Double) -> MathapproxinterpSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_slice_sum(s : MathapproxinterpSlice) -> Double { @_common.sum(s.data) }
+pub fn MathapproxinterpSlice::sum(self : MathapproxinterpSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_interp_slice_mean(s : MathapproxinterpSlice) -> Double { @_common.mean(s.data) }
+pub fn MathapproxinterpSlice::mean(self : MathapproxinterpSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_interp_slice_scale(s : MathapproxinterpSlice, f : Double) -> MathapproxinterpSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxinterpSlice::scale(self : MathapproxinterpSlice, f : Double) -> MathapproxinterpSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_slice_add(a : MathapproxinterpSlice, b : MathapproxinterpSlice) -> MathapproxinterpSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxinterpSlice::add(self : MathapproxinterpSlice, other : MathapproxinterpSlice) -> MathapproxinterpSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_interp_slice_copy(s : MathapproxinterpSlice) -> MathapproxinterpSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxinterpSlice::copy(self : MathapproxinterpSlice) -> MathapproxinterpSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_slice_fill(s : MathapproxinterpSlice, v : Double) -> MathapproxinterpSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxinterpSlice::fill(self : MathapproxinterpSlice, v : Double) -> MathapproxinterpSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_interp_slice_min(s : MathapproxinterpSlice) -> Double { @_common.min(s.data) }
+pub fn MathapproxinterpSlice::min(self : MathapproxinterpSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_interp_slice_max(s : MathapproxinterpSlice) -> Double { @_common.max(s.data) }
+pub fn MathapproxinterpSlice::max(self : MathapproxinterpSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_interp_slice_to_string(s : MathapproxinterpSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxinterpSlice::to_string(self : MathapproxinterpSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

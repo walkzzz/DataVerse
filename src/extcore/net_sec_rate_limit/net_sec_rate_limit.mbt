@@ -351,45 +351,45 @@ pub fn net_sec_rate_limit_frame_make(size : Int) -> NetsecratelimitFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_frame_len(s : NetsecratelimitFrame) -> Int { s.size }
+pub fn NetsecratelimitFrame::len(self : NetsecratelimitFrame) -> Int { self.size }
 
-pub fn net_sec_rate_limit_frame_get(s : NetsecratelimitFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitFrame::get(self : NetsecratelimitFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_frame_set(s : NetsecratelimitFrame, i : Int, v : Double) -> NetsecratelimitFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitFrame::set(self : NetsecratelimitFrame, i : Int, v : Double) -> NetsecratelimitFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_frame_sum(s : NetsecratelimitFrame) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitFrame::sum(self : NetsecratelimitFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_frame_mean(s : NetsecratelimitFrame) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitFrame::mean(self : NetsecratelimitFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_frame_scale(s : NetsecratelimitFrame, f : Double) -> NetsecratelimitFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitFrame::scale(self : NetsecratelimitFrame, f : Double) -> NetsecratelimitFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_frame_add(a : NetsecratelimitFrame, b : NetsecratelimitFrame) -> NetsecratelimitFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitFrame::add(self : NetsecratelimitFrame, other : NetsecratelimitFrame) -> NetsecratelimitFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_frame_copy(s : NetsecratelimitFrame) -> NetsecratelimitFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitFrame::copy(self : NetsecratelimitFrame) -> NetsecratelimitFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_frame_fill(s : NetsecratelimitFrame, v : Double) -> NetsecratelimitFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitFrame::fill(self : NetsecratelimitFrame, v : Double) -> NetsecratelimitFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_frame_min(s : NetsecratelimitFrame) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitFrame::min(self : NetsecratelimitFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_frame_max(s : NetsecratelimitFrame) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitFrame::max(self : NetsecratelimitFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_frame_to_string(s : NetsecratelimitFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitFrame::to_string(self : NetsecratelimitFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitTable {
@@ -402,45 +402,45 @@ pub fn net_sec_rate_limit_table_make(size : Int) -> NetsecratelimitTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_table_len(s : NetsecratelimitTable) -> Int { s.size }
+pub fn NetsecratelimitTable::len(self : NetsecratelimitTable) -> Int { self.size }
 
-pub fn net_sec_rate_limit_table_get(s : NetsecratelimitTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitTable::get(self : NetsecratelimitTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_table_set(s : NetsecratelimitTable, i : Int, v : Double) -> NetsecratelimitTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitTable::set(self : NetsecratelimitTable, i : Int, v : Double) -> NetsecratelimitTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_table_sum(s : NetsecratelimitTable) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitTable::sum(self : NetsecratelimitTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_table_mean(s : NetsecratelimitTable) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitTable::mean(self : NetsecratelimitTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_table_scale(s : NetsecratelimitTable, f : Double) -> NetsecratelimitTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitTable::scale(self : NetsecratelimitTable, f : Double) -> NetsecratelimitTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_table_add(a : NetsecratelimitTable, b : NetsecratelimitTable) -> NetsecratelimitTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitTable::add(self : NetsecratelimitTable, other : NetsecratelimitTable) -> NetsecratelimitTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_table_copy(s : NetsecratelimitTable) -> NetsecratelimitTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitTable::copy(self : NetsecratelimitTable) -> NetsecratelimitTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_table_fill(s : NetsecratelimitTable, v : Double) -> NetsecratelimitTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitTable::fill(self : NetsecratelimitTable, v : Double) -> NetsecratelimitTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_table_min(s : NetsecratelimitTable) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitTable::min(self : NetsecratelimitTable) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_table_max(s : NetsecratelimitTable) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitTable::max(self : NetsecratelimitTable) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_table_to_string(s : NetsecratelimitTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitTable::to_string(self : NetsecratelimitTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitGraphN {
@@ -453,45 +453,45 @@ pub fn net_sec_rate_limit_graphn_make(size : Int) -> NetsecratelimitGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_graphn_len(s : NetsecratelimitGraphN) -> Int { s.size }
+pub fn NetsecratelimitGraphN::len(self : NetsecratelimitGraphN) -> Int { self.size }
 
-pub fn net_sec_rate_limit_graphn_get(s : NetsecratelimitGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitGraphN::get(self : NetsecratelimitGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_graphn_set(s : NetsecratelimitGraphN, i : Int, v : Double) -> NetsecratelimitGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitGraphN::set(self : NetsecratelimitGraphN, i : Int, v : Double) -> NetsecratelimitGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_graphn_sum(s : NetsecratelimitGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitGraphN::sum(self : NetsecratelimitGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_graphn_mean(s : NetsecratelimitGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitGraphN::mean(self : NetsecratelimitGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_graphn_scale(s : NetsecratelimitGraphN, f : Double) -> NetsecratelimitGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitGraphN::scale(self : NetsecratelimitGraphN, f : Double) -> NetsecratelimitGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_graphn_add(a : NetsecratelimitGraphN, b : NetsecratelimitGraphN) -> NetsecratelimitGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitGraphN::add(self : NetsecratelimitGraphN, other : NetsecratelimitGraphN) -> NetsecratelimitGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_graphn_copy(s : NetsecratelimitGraphN) -> NetsecratelimitGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitGraphN::copy(self : NetsecratelimitGraphN) -> NetsecratelimitGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_graphn_fill(s : NetsecratelimitGraphN, v : Double) -> NetsecratelimitGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitGraphN::fill(self : NetsecratelimitGraphN, v : Double) -> NetsecratelimitGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_graphn_min(s : NetsecratelimitGraphN) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitGraphN::min(self : NetsecratelimitGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_graphn_max(s : NetsecratelimitGraphN) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitGraphN::max(self : NetsecratelimitGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_graphn_to_string(s : NetsecratelimitGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitGraphN::to_string(self : NetsecratelimitGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitNode {
@@ -504,45 +504,45 @@ pub fn net_sec_rate_limit_node_make(size : Int) -> NetsecratelimitNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_node_len(s : NetsecratelimitNode) -> Int { s.size }
+pub fn NetsecratelimitNode::len(self : NetsecratelimitNode) -> Int { self.size }
 
-pub fn net_sec_rate_limit_node_get(s : NetsecratelimitNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitNode::get(self : NetsecratelimitNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_node_set(s : NetsecratelimitNode, i : Int, v : Double) -> NetsecratelimitNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitNode::set(self : NetsecratelimitNode, i : Int, v : Double) -> NetsecratelimitNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_node_sum(s : NetsecratelimitNode) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitNode::sum(self : NetsecratelimitNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_node_mean(s : NetsecratelimitNode) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitNode::mean(self : NetsecratelimitNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_node_scale(s : NetsecratelimitNode, f : Double) -> NetsecratelimitNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitNode::scale(self : NetsecratelimitNode, f : Double) -> NetsecratelimitNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_node_add(a : NetsecratelimitNode, b : NetsecratelimitNode) -> NetsecratelimitNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitNode::add(self : NetsecratelimitNode, other : NetsecratelimitNode) -> NetsecratelimitNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_node_copy(s : NetsecratelimitNode) -> NetsecratelimitNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitNode::copy(self : NetsecratelimitNode) -> NetsecratelimitNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_node_fill(s : NetsecratelimitNode, v : Double) -> NetsecratelimitNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitNode::fill(self : NetsecratelimitNode, v : Double) -> NetsecratelimitNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_node_min(s : NetsecratelimitNode) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitNode::min(self : NetsecratelimitNode) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_node_max(s : NetsecratelimitNode) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitNode::max(self : NetsecratelimitNode) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_node_to_string(s : NetsecratelimitNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitNode::to_string(self : NetsecratelimitNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitEdge {
@@ -555,45 +555,45 @@ pub fn net_sec_rate_limit_edge_make(size : Int) -> NetsecratelimitEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_edge_len(s : NetsecratelimitEdge) -> Int { s.size }
+pub fn NetsecratelimitEdge::len(self : NetsecratelimitEdge) -> Int { self.size }
 
-pub fn net_sec_rate_limit_edge_get(s : NetsecratelimitEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitEdge::get(self : NetsecratelimitEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_edge_set(s : NetsecratelimitEdge, i : Int, v : Double) -> NetsecratelimitEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitEdge::set(self : NetsecratelimitEdge, i : Int, v : Double) -> NetsecratelimitEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_edge_sum(s : NetsecratelimitEdge) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitEdge::sum(self : NetsecratelimitEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_edge_mean(s : NetsecratelimitEdge) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitEdge::mean(self : NetsecratelimitEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_edge_scale(s : NetsecratelimitEdge, f : Double) -> NetsecratelimitEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitEdge::scale(self : NetsecratelimitEdge, f : Double) -> NetsecratelimitEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_edge_add(a : NetsecratelimitEdge, b : NetsecratelimitEdge) -> NetsecratelimitEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitEdge::add(self : NetsecratelimitEdge, other : NetsecratelimitEdge) -> NetsecratelimitEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_edge_copy(s : NetsecratelimitEdge) -> NetsecratelimitEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitEdge::copy(self : NetsecratelimitEdge) -> NetsecratelimitEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_edge_fill(s : NetsecratelimitEdge, v : Double) -> NetsecratelimitEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitEdge::fill(self : NetsecratelimitEdge, v : Double) -> NetsecratelimitEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_edge_min(s : NetsecratelimitEdge) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitEdge::min(self : NetsecratelimitEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_edge_max(s : NetsecratelimitEdge) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitEdge::max(self : NetsecratelimitEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_edge_to_string(s : NetsecratelimitEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitEdge::to_string(self : NetsecratelimitEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitPath {
@@ -606,45 +606,45 @@ pub fn net_sec_rate_limit_path_make(size : Int) -> NetsecratelimitPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_path_len(s : NetsecratelimitPath) -> Int { s.size }
+pub fn NetsecratelimitPath::len(self : NetsecratelimitPath) -> Int { self.size }
 
-pub fn net_sec_rate_limit_path_get(s : NetsecratelimitPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitPath::get(self : NetsecratelimitPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_path_set(s : NetsecratelimitPath, i : Int, v : Double) -> NetsecratelimitPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitPath::set(self : NetsecratelimitPath, i : Int, v : Double) -> NetsecratelimitPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_path_sum(s : NetsecratelimitPath) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitPath::sum(self : NetsecratelimitPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_path_mean(s : NetsecratelimitPath) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitPath::mean(self : NetsecratelimitPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_path_scale(s : NetsecratelimitPath, f : Double) -> NetsecratelimitPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitPath::scale(self : NetsecratelimitPath, f : Double) -> NetsecratelimitPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_path_add(a : NetsecratelimitPath, b : NetsecratelimitPath) -> NetsecratelimitPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitPath::add(self : NetsecratelimitPath, other : NetsecratelimitPath) -> NetsecratelimitPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_path_copy(s : NetsecratelimitPath) -> NetsecratelimitPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitPath::copy(self : NetsecratelimitPath) -> NetsecratelimitPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_path_fill(s : NetsecratelimitPath, v : Double) -> NetsecratelimitPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitPath::fill(self : NetsecratelimitPath, v : Double) -> NetsecratelimitPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_path_min(s : NetsecratelimitPath) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitPath::min(self : NetsecratelimitPath) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_path_max(s : NetsecratelimitPath) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitPath::max(self : NetsecratelimitPath) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_path_to_string(s : NetsecratelimitPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitPath::to_string(self : NetsecratelimitPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitCluster {
@@ -657,45 +657,45 @@ pub fn net_sec_rate_limit_cluster_make(size : Int) -> NetsecratelimitCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_cluster_len(s : NetsecratelimitCluster) -> Int { s.size }
+pub fn NetsecratelimitCluster::len(self : NetsecratelimitCluster) -> Int { self.size }
 
-pub fn net_sec_rate_limit_cluster_get(s : NetsecratelimitCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitCluster::get(self : NetsecratelimitCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_cluster_set(s : NetsecratelimitCluster, i : Int, v : Double) -> NetsecratelimitCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitCluster::set(self : NetsecratelimitCluster, i : Int, v : Double) -> NetsecratelimitCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_cluster_sum(s : NetsecratelimitCluster) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitCluster::sum(self : NetsecratelimitCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_cluster_mean(s : NetsecratelimitCluster) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitCluster::mean(self : NetsecratelimitCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_cluster_scale(s : NetsecratelimitCluster, f : Double) -> NetsecratelimitCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitCluster::scale(self : NetsecratelimitCluster, f : Double) -> NetsecratelimitCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_cluster_add(a : NetsecratelimitCluster, b : NetsecratelimitCluster) -> NetsecratelimitCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitCluster::add(self : NetsecratelimitCluster, other : NetsecratelimitCluster) -> NetsecratelimitCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_cluster_copy(s : NetsecratelimitCluster) -> NetsecratelimitCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitCluster::copy(self : NetsecratelimitCluster) -> NetsecratelimitCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_cluster_fill(s : NetsecratelimitCluster, v : Double) -> NetsecratelimitCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitCluster::fill(self : NetsecratelimitCluster, v : Double) -> NetsecratelimitCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_cluster_min(s : NetsecratelimitCluster) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitCluster::min(self : NetsecratelimitCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_cluster_max(s : NetsecratelimitCluster) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitCluster::max(self : NetsecratelimitCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_cluster_to_string(s : NetsecratelimitCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitCluster::to_string(self : NetsecratelimitCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitModel {
@@ -708,45 +708,45 @@ pub fn net_sec_rate_limit_model_make(size : Int) -> NetsecratelimitModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_model_len(s : NetsecratelimitModel) -> Int { s.size }
+pub fn NetsecratelimitModel::len(self : NetsecratelimitModel) -> Int { self.size }
 
-pub fn net_sec_rate_limit_model_get(s : NetsecratelimitModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitModel::get(self : NetsecratelimitModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_model_set(s : NetsecratelimitModel, i : Int, v : Double) -> NetsecratelimitModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitModel::set(self : NetsecratelimitModel, i : Int, v : Double) -> NetsecratelimitModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_model_sum(s : NetsecratelimitModel) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitModel::sum(self : NetsecratelimitModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_model_mean(s : NetsecratelimitModel) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitModel::mean(self : NetsecratelimitModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_model_scale(s : NetsecratelimitModel, f : Double) -> NetsecratelimitModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitModel::scale(self : NetsecratelimitModel, f : Double) -> NetsecratelimitModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_model_add(a : NetsecratelimitModel, b : NetsecratelimitModel) -> NetsecratelimitModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitModel::add(self : NetsecratelimitModel, other : NetsecratelimitModel) -> NetsecratelimitModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_model_copy(s : NetsecratelimitModel) -> NetsecratelimitModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitModel::copy(self : NetsecratelimitModel) -> NetsecratelimitModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_model_fill(s : NetsecratelimitModel, v : Double) -> NetsecratelimitModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitModel::fill(self : NetsecratelimitModel, v : Double) -> NetsecratelimitModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_model_min(s : NetsecratelimitModel) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitModel::min(self : NetsecratelimitModel) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_model_max(s : NetsecratelimitModel) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitModel::max(self : NetsecratelimitModel) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_model_to_string(s : NetsecratelimitModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitModel::to_string(self : NetsecratelimitModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitLayer {
@@ -759,45 +759,45 @@ pub fn net_sec_rate_limit_layer_make(size : Int) -> NetsecratelimitLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_layer_len(s : NetsecratelimitLayer) -> Int { s.size }
+pub fn NetsecratelimitLayer::len(self : NetsecratelimitLayer) -> Int { self.size }
 
-pub fn net_sec_rate_limit_layer_get(s : NetsecratelimitLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitLayer::get(self : NetsecratelimitLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_layer_set(s : NetsecratelimitLayer, i : Int, v : Double) -> NetsecratelimitLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitLayer::set(self : NetsecratelimitLayer, i : Int, v : Double) -> NetsecratelimitLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_layer_sum(s : NetsecratelimitLayer) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitLayer::sum(self : NetsecratelimitLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_layer_mean(s : NetsecratelimitLayer) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitLayer::mean(self : NetsecratelimitLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_layer_scale(s : NetsecratelimitLayer, f : Double) -> NetsecratelimitLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitLayer::scale(self : NetsecratelimitLayer, f : Double) -> NetsecratelimitLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_layer_add(a : NetsecratelimitLayer, b : NetsecratelimitLayer) -> NetsecratelimitLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitLayer::add(self : NetsecratelimitLayer, other : NetsecratelimitLayer) -> NetsecratelimitLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_layer_copy(s : NetsecratelimitLayer) -> NetsecratelimitLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitLayer::copy(self : NetsecratelimitLayer) -> NetsecratelimitLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_layer_fill(s : NetsecratelimitLayer, v : Double) -> NetsecratelimitLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitLayer::fill(self : NetsecratelimitLayer, v : Double) -> NetsecratelimitLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_layer_min(s : NetsecratelimitLayer) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitLayer::min(self : NetsecratelimitLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_layer_max(s : NetsecratelimitLayer) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitLayer::max(self : NetsecratelimitLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_layer_to_string(s : NetsecratelimitLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitLayer::to_string(self : NetsecratelimitLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitBuffer {
@@ -810,45 +810,45 @@ pub fn net_sec_rate_limit_buffer_make(size : Int) -> NetsecratelimitBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_buffer_len(s : NetsecratelimitBuffer) -> Int { s.size }
+pub fn NetsecratelimitBuffer::len(self : NetsecratelimitBuffer) -> Int { self.size }
 
-pub fn net_sec_rate_limit_buffer_get(s : NetsecratelimitBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitBuffer::get(self : NetsecratelimitBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_buffer_set(s : NetsecratelimitBuffer, i : Int, v : Double) -> NetsecratelimitBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitBuffer::set(self : NetsecratelimitBuffer, i : Int, v : Double) -> NetsecratelimitBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_buffer_sum(s : NetsecratelimitBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitBuffer::sum(self : NetsecratelimitBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_buffer_mean(s : NetsecratelimitBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitBuffer::mean(self : NetsecratelimitBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_buffer_scale(s : NetsecratelimitBuffer, f : Double) -> NetsecratelimitBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitBuffer::scale(self : NetsecratelimitBuffer, f : Double) -> NetsecratelimitBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_buffer_add(a : NetsecratelimitBuffer, b : NetsecratelimitBuffer) -> NetsecratelimitBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitBuffer::add(self : NetsecratelimitBuffer, other : NetsecratelimitBuffer) -> NetsecratelimitBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_buffer_copy(s : NetsecratelimitBuffer) -> NetsecratelimitBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitBuffer::copy(self : NetsecratelimitBuffer) -> NetsecratelimitBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_buffer_fill(s : NetsecratelimitBuffer, v : Double) -> NetsecratelimitBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitBuffer::fill(self : NetsecratelimitBuffer, v : Double) -> NetsecratelimitBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_buffer_min(s : NetsecratelimitBuffer) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitBuffer::min(self : NetsecratelimitBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_buffer_max(s : NetsecratelimitBuffer) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitBuffer::max(self : NetsecratelimitBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_buffer_to_string(s : NetsecratelimitBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitBuffer::to_string(self : NetsecratelimitBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitCursor {
@@ -861,45 +861,45 @@ pub fn net_sec_rate_limit_cursor_make(size : Int) -> NetsecratelimitCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_cursor_len(s : NetsecratelimitCursor) -> Int { s.size }
+pub fn NetsecratelimitCursor::len(self : NetsecratelimitCursor) -> Int { self.size }
 
-pub fn net_sec_rate_limit_cursor_get(s : NetsecratelimitCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitCursor::get(self : NetsecratelimitCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_cursor_set(s : NetsecratelimitCursor, i : Int, v : Double) -> NetsecratelimitCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitCursor::set(self : NetsecratelimitCursor, i : Int, v : Double) -> NetsecratelimitCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_cursor_sum(s : NetsecratelimitCursor) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitCursor::sum(self : NetsecratelimitCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_cursor_mean(s : NetsecratelimitCursor) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitCursor::mean(self : NetsecratelimitCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_cursor_scale(s : NetsecratelimitCursor, f : Double) -> NetsecratelimitCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitCursor::scale(self : NetsecratelimitCursor, f : Double) -> NetsecratelimitCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_cursor_add(a : NetsecratelimitCursor, b : NetsecratelimitCursor) -> NetsecratelimitCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitCursor::add(self : NetsecratelimitCursor, other : NetsecratelimitCursor) -> NetsecratelimitCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_cursor_copy(s : NetsecratelimitCursor) -> NetsecratelimitCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitCursor::copy(self : NetsecratelimitCursor) -> NetsecratelimitCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_cursor_fill(s : NetsecratelimitCursor, v : Double) -> NetsecratelimitCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitCursor::fill(self : NetsecratelimitCursor, v : Double) -> NetsecratelimitCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_cursor_min(s : NetsecratelimitCursor) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitCursor::min(self : NetsecratelimitCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_cursor_max(s : NetsecratelimitCursor) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitCursor::max(self : NetsecratelimitCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_cursor_to_string(s : NetsecratelimitCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitCursor::to_string(self : NetsecratelimitCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitView {
@@ -912,45 +912,45 @@ pub fn net_sec_rate_limit_view_make(size : Int) -> NetsecratelimitView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_view_len(s : NetsecratelimitView) -> Int { s.size }
+pub fn NetsecratelimitView::len(self : NetsecratelimitView) -> Int { self.size }
 
-pub fn net_sec_rate_limit_view_get(s : NetsecratelimitView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitView::get(self : NetsecratelimitView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_view_set(s : NetsecratelimitView, i : Int, v : Double) -> NetsecratelimitView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitView::set(self : NetsecratelimitView, i : Int, v : Double) -> NetsecratelimitView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_view_sum(s : NetsecratelimitView) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitView::sum(self : NetsecratelimitView) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_view_mean(s : NetsecratelimitView) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitView::mean(self : NetsecratelimitView) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_view_scale(s : NetsecratelimitView, f : Double) -> NetsecratelimitView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitView::scale(self : NetsecratelimitView, f : Double) -> NetsecratelimitView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_view_add(a : NetsecratelimitView, b : NetsecratelimitView) -> NetsecratelimitView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitView::add(self : NetsecratelimitView, other : NetsecratelimitView) -> NetsecratelimitView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_view_copy(s : NetsecratelimitView) -> NetsecratelimitView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitView::copy(self : NetsecratelimitView) -> NetsecratelimitView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_view_fill(s : NetsecratelimitView, v : Double) -> NetsecratelimitView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitView::fill(self : NetsecratelimitView, v : Double) -> NetsecratelimitView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_view_min(s : NetsecratelimitView) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitView::min(self : NetsecratelimitView) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_view_max(s : NetsecratelimitView) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitView::max(self : NetsecratelimitView) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_view_to_string(s : NetsecratelimitView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitView::to_string(self : NetsecratelimitView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitRange {
@@ -963,45 +963,45 @@ pub fn net_sec_rate_limit_range_make(size : Int) -> NetsecratelimitRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_range_len(s : NetsecratelimitRange) -> Int { s.size }
+pub fn NetsecratelimitRange::len(self : NetsecratelimitRange) -> Int { self.size }
 
-pub fn net_sec_rate_limit_range_get(s : NetsecratelimitRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitRange::get(self : NetsecratelimitRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_range_set(s : NetsecratelimitRange, i : Int, v : Double) -> NetsecratelimitRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitRange::set(self : NetsecratelimitRange, i : Int, v : Double) -> NetsecratelimitRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_range_sum(s : NetsecratelimitRange) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitRange::sum(self : NetsecratelimitRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_range_mean(s : NetsecratelimitRange) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitRange::mean(self : NetsecratelimitRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_range_scale(s : NetsecratelimitRange, f : Double) -> NetsecratelimitRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitRange::scale(self : NetsecratelimitRange, f : Double) -> NetsecratelimitRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_range_add(a : NetsecratelimitRange, b : NetsecratelimitRange) -> NetsecratelimitRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitRange::add(self : NetsecratelimitRange, other : NetsecratelimitRange) -> NetsecratelimitRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_range_copy(s : NetsecratelimitRange) -> NetsecratelimitRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitRange::copy(self : NetsecratelimitRange) -> NetsecratelimitRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_range_fill(s : NetsecratelimitRange, v : Double) -> NetsecratelimitRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitRange::fill(self : NetsecratelimitRange, v : Double) -> NetsecratelimitRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_range_min(s : NetsecratelimitRange) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitRange::min(self : NetsecratelimitRange) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_range_max(s : NetsecratelimitRange) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitRange::max(self : NetsecratelimitRange) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_range_to_string(s : NetsecratelimitRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitRange::to_string(self : NetsecratelimitRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitSlice {
@@ -1014,44 +1014,44 @@ pub fn net_sec_rate_limit_slice_make(size : Int) -> NetsecratelimitSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_rate_limit_slice_len(s : NetsecratelimitSlice) -> Int { s.size }
+pub fn NetsecratelimitSlice::len(self : NetsecratelimitSlice) -> Int { self.size }
 
-pub fn net_sec_rate_limit_slice_get(s : NetsecratelimitSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecratelimitSlice::get(self : NetsecratelimitSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_rate_limit_slice_set(s : NetsecratelimitSlice, i : Int, v : Double) -> NetsecratelimitSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecratelimitSlice::set(self : NetsecratelimitSlice, i : Int, v : Double) -> NetsecratelimitSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_slice_sum(s : NetsecratelimitSlice) -> Double { @_common.sum(s.data) }
+pub fn NetsecratelimitSlice::sum(self : NetsecratelimitSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_rate_limit_slice_mean(s : NetsecratelimitSlice) -> Double { @_common.mean(s.data) }
+pub fn NetsecratelimitSlice::mean(self : NetsecratelimitSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_rate_limit_slice_scale(s : NetsecratelimitSlice, f : Double) -> NetsecratelimitSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecratelimitSlice::scale(self : NetsecratelimitSlice, f : Double) -> NetsecratelimitSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_slice_add(a : NetsecratelimitSlice, b : NetsecratelimitSlice) -> NetsecratelimitSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecratelimitSlice::add(self : NetsecratelimitSlice, other : NetsecratelimitSlice) -> NetsecratelimitSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_slice_copy(s : NetsecratelimitSlice) -> NetsecratelimitSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecratelimitSlice::copy(self : NetsecratelimitSlice) -> NetsecratelimitSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_slice_fill(s : NetsecratelimitSlice, v : Double) -> NetsecratelimitSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecratelimitSlice::fill(self : NetsecratelimitSlice, v : Double) -> NetsecratelimitSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_rate_limit_slice_min(s : NetsecratelimitSlice) -> Double { @_common.min(s.data) }
+pub fn NetsecratelimitSlice::min(self : NetsecratelimitSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_rate_limit_slice_max(s : NetsecratelimitSlice) -> Double { @_common.max(s.data) }
+pub fn NetsecratelimitSlice::max(self : NetsecratelimitSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_rate_limit_slice_to_string(s : NetsecratelimitSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecratelimitSlice::to_string(self : NetsecratelimitSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

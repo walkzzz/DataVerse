@@ -351,45 +351,45 @@ pub fn ds_tree_bst_frame_make(size : Int) -> DstreebstFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_frame_len(s : DstreebstFrame) -> Int { s.size }
+pub fn DstreebstFrame::len(self : DstreebstFrame) -> Int { self.size }
 
-pub fn ds_tree_bst_frame_get(s : DstreebstFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstFrame::get(self : DstreebstFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_frame_set(s : DstreebstFrame, i : Int, v : Double) -> DstreebstFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstFrame::set(self : DstreebstFrame, i : Int, v : Double) -> DstreebstFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_frame_sum(s : DstreebstFrame) -> Double { @_common.sum(s.data) }
+pub fn DstreebstFrame::sum(self : DstreebstFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_frame_mean(s : DstreebstFrame) -> Double { @_common.mean(s.data) }
+pub fn DstreebstFrame::mean(self : DstreebstFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_frame_scale(s : DstreebstFrame, f : Double) -> DstreebstFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstFrame::scale(self : DstreebstFrame, f : Double) -> DstreebstFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_frame_add(a : DstreebstFrame, b : DstreebstFrame) -> DstreebstFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstFrame::add(self : DstreebstFrame, other : DstreebstFrame) -> DstreebstFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_frame_copy(s : DstreebstFrame) -> DstreebstFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstFrame::copy(self : DstreebstFrame) -> DstreebstFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_frame_fill(s : DstreebstFrame, v : Double) -> DstreebstFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstFrame::fill(self : DstreebstFrame, v : Double) -> DstreebstFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_frame_min(s : DstreebstFrame) -> Double { @_common.min(s.data) }
+pub fn DstreebstFrame::min(self : DstreebstFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_frame_max(s : DstreebstFrame) -> Double { @_common.max(s.data) }
+pub fn DstreebstFrame::max(self : DstreebstFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_frame_to_string(s : DstreebstFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstFrame::to_string(self : DstreebstFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstTable {
@@ -402,45 +402,45 @@ pub fn ds_tree_bst_table_make(size : Int) -> DstreebstTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_table_len(s : DstreebstTable) -> Int { s.size }
+pub fn DstreebstTable::len(self : DstreebstTable) -> Int { self.size }
 
-pub fn ds_tree_bst_table_get(s : DstreebstTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstTable::get(self : DstreebstTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_table_set(s : DstreebstTable, i : Int, v : Double) -> DstreebstTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstTable::set(self : DstreebstTable, i : Int, v : Double) -> DstreebstTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_table_sum(s : DstreebstTable) -> Double { @_common.sum(s.data) }
+pub fn DstreebstTable::sum(self : DstreebstTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_table_mean(s : DstreebstTable) -> Double { @_common.mean(s.data) }
+pub fn DstreebstTable::mean(self : DstreebstTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_table_scale(s : DstreebstTable, f : Double) -> DstreebstTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstTable::scale(self : DstreebstTable, f : Double) -> DstreebstTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_table_add(a : DstreebstTable, b : DstreebstTable) -> DstreebstTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstTable::add(self : DstreebstTable, other : DstreebstTable) -> DstreebstTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_table_copy(s : DstreebstTable) -> DstreebstTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstTable::copy(self : DstreebstTable) -> DstreebstTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_table_fill(s : DstreebstTable, v : Double) -> DstreebstTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstTable::fill(self : DstreebstTable, v : Double) -> DstreebstTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_table_min(s : DstreebstTable) -> Double { @_common.min(s.data) }
+pub fn DstreebstTable::min(self : DstreebstTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_table_max(s : DstreebstTable) -> Double { @_common.max(s.data) }
+pub fn DstreebstTable::max(self : DstreebstTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_table_to_string(s : DstreebstTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstTable::to_string(self : DstreebstTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstGraphN {
@@ -453,45 +453,45 @@ pub fn ds_tree_bst_graphn_make(size : Int) -> DstreebstGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_graphn_len(s : DstreebstGraphN) -> Int { s.size }
+pub fn DstreebstGraphN::len(self : DstreebstGraphN) -> Int { self.size }
 
-pub fn ds_tree_bst_graphn_get(s : DstreebstGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstGraphN::get(self : DstreebstGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_graphn_set(s : DstreebstGraphN, i : Int, v : Double) -> DstreebstGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstGraphN::set(self : DstreebstGraphN, i : Int, v : Double) -> DstreebstGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_graphn_sum(s : DstreebstGraphN) -> Double { @_common.sum(s.data) }
+pub fn DstreebstGraphN::sum(self : DstreebstGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_graphn_mean(s : DstreebstGraphN) -> Double { @_common.mean(s.data) }
+pub fn DstreebstGraphN::mean(self : DstreebstGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_graphn_scale(s : DstreebstGraphN, f : Double) -> DstreebstGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstGraphN::scale(self : DstreebstGraphN, f : Double) -> DstreebstGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_graphn_add(a : DstreebstGraphN, b : DstreebstGraphN) -> DstreebstGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstGraphN::add(self : DstreebstGraphN, other : DstreebstGraphN) -> DstreebstGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_graphn_copy(s : DstreebstGraphN) -> DstreebstGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstGraphN::copy(self : DstreebstGraphN) -> DstreebstGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_graphn_fill(s : DstreebstGraphN, v : Double) -> DstreebstGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstGraphN::fill(self : DstreebstGraphN, v : Double) -> DstreebstGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_graphn_min(s : DstreebstGraphN) -> Double { @_common.min(s.data) }
+pub fn DstreebstGraphN::min(self : DstreebstGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_graphn_max(s : DstreebstGraphN) -> Double { @_common.max(s.data) }
+pub fn DstreebstGraphN::max(self : DstreebstGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_graphn_to_string(s : DstreebstGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstGraphN::to_string(self : DstreebstGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstNode {
@@ -504,45 +504,45 @@ pub fn ds_tree_bst_node_make(size : Int) -> DstreebstNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_node_len(s : DstreebstNode) -> Int { s.size }
+pub fn DstreebstNode::len(self : DstreebstNode) -> Int { self.size }
 
-pub fn ds_tree_bst_node_get(s : DstreebstNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstNode::get(self : DstreebstNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_node_set(s : DstreebstNode, i : Int, v : Double) -> DstreebstNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstNode::set(self : DstreebstNode, i : Int, v : Double) -> DstreebstNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_node_sum(s : DstreebstNode) -> Double { @_common.sum(s.data) }
+pub fn DstreebstNode::sum(self : DstreebstNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_node_mean(s : DstreebstNode) -> Double { @_common.mean(s.data) }
+pub fn DstreebstNode::mean(self : DstreebstNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_node_scale(s : DstreebstNode, f : Double) -> DstreebstNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstNode::scale(self : DstreebstNode, f : Double) -> DstreebstNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_node_add(a : DstreebstNode, b : DstreebstNode) -> DstreebstNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstNode::add(self : DstreebstNode, other : DstreebstNode) -> DstreebstNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_node_copy(s : DstreebstNode) -> DstreebstNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstNode::copy(self : DstreebstNode) -> DstreebstNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_node_fill(s : DstreebstNode, v : Double) -> DstreebstNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstNode::fill(self : DstreebstNode, v : Double) -> DstreebstNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_node_min(s : DstreebstNode) -> Double { @_common.min(s.data) }
+pub fn DstreebstNode::min(self : DstreebstNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_node_max(s : DstreebstNode) -> Double { @_common.max(s.data) }
+pub fn DstreebstNode::max(self : DstreebstNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_node_to_string(s : DstreebstNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstNode::to_string(self : DstreebstNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstEdge {
@@ -555,45 +555,45 @@ pub fn ds_tree_bst_edge_make(size : Int) -> DstreebstEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_edge_len(s : DstreebstEdge) -> Int { s.size }
+pub fn DstreebstEdge::len(self : DstreebstEdge) -> Int { self.size }
 
-pub fn ds_tree_bst_edge_get(s : DstreebstEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstEdge::get(self : DstreebstEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_edge_set(s : DstreebstEdge, i : Int, v : Double) -> DstreebstEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstEdge::set(self : DstreebstEdge, i : Int, v : Double) -> DstreebstEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_edge_sum(s : DstreebstEdge) -> Double { @_common.sum(s.data) }
+pub fn DstreebstEdge::sum(self : DstreebstEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_edge_mean(s : DstreebstEdge) -> Double { @_common.mean(s.data) }
+pub fn DstreebstEdge::mean(self : DstreebstEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_edge_scale(s : DstreebstEdge, f : Double) -> DstreebstEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstEdge::scale(self : DstreebstEdge, f : Double) -> DstreebstEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_edge_add(a : DstreebstEdge, b : DstreebstEdge) -> DstreebstEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstEdge::add(self : DstreebstEdge, other : DstreebstEdge) -> DstreebstEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_edge_copy(s : DstreebstEdge) -> DstreebstEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstEdge::copy(self : DstreebstEdge) -> DstreebstEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_edge_fill(s : DstreebstEdge, v : Double) -> DstreebstEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstEdge::fill(self : DstreebstEdge, v : Double) -> DstreebstEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_edge_min(s : DstreebstEdge) -> Double { @_common.min(s.data) }
+pub fn DstreebstEdge::min(self : DstreebstEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_edge_max(s : DstreebstEdge) -> Double { @_common.max(s.data) }
+pub fn DstreebstEdge::max(self : DstreebstEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_edge_to_string(s : DstreebstEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstEdge::to_string(self : DstreebstEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstPath {
@@ -606,45 +606,45 @@ pub fn ds_tree_bst_path_make(size : Int) -> DstreebstPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_path_len(s : DstreebstPath) -> Int { s.size }
+pub fn DstreebstPath::len(self : DstreebstPath) -> Int { self.size }
 
-pub fn ds_tree_bst_path_get(s : DstreebstPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstPath::get(self : DstreebstPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_path_set(s : DstreebstPath, i : Int, v : Double) -> DstreebstPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstPath::set(self : DstreebstPath, i : Int, v : Double) -> DstreebstPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_path_sum(s : DstreebstPath) -> Double { @_common.sum(s.data) }
+pub fn DstreebstPath::sum(self : DstreebstPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_path_mean(s : DstreebstPath) -> Double { @_common.mean(s.data) }
+pub fn DstreebstPath::mean(self : DstreebstPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_path_scale(s : DstreebstPath, f : Double) -> DstreebstPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstPath::scale(self : DstreebstPath, f : Double) -> DstreebstPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_path_add(a : DstreebstPath, b : DstreebstPath) -> DstreebstPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstPath::add(self : DstreebstPath, other : DstreebstPath) -> DstreebstPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_path_copy(s : DstreebstPath) -> DstreebstPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstPath::copy(self : DstreebstPath) -> DstreebstPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_path_fill(s : DstreebstPath, v : Double) -> DstreebstPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstPath::fill(self : DstreebstPath, v : Double) -> DstreebstPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_path_min(s : DstreebstPath) -> Double { @_common.min(s.data) }
+pub fn DstreebstPath::min(self : DstreebstPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_path_max(s : DstreebstPath) -> Double { @_common.max(s.data) }
+pub fn DstreebstPath::max(self : DstreebstPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_path_to_string(s : DstreebstPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstPath::to_string(self : DstreebstPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstCluster {
@@ -657,45 +657,45 @@ pub fn ds_tree_bst_cluster_make(size : Int) -> DstreebstCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_cluster_len(s : DstreebstCluster) -> Int { s.size }
+pub fn DstreebstCluster::len(self : DstreebstCluster) -> Int { self.size }
 
-pub fn ds_tree_bst_cluster_get(s : DstreebstCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstCluster::get(self : DstreebstCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_cluster_set(s : DstreebstCluster, i : Int, v : Double) -> DstreebstCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstCluster::set(self : DstreebstCluster, i : Int, v : Double) -> DstreebstCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_cluster_sum(s : DstreebstCluster) -> Double { @_common.sum(s.data) }
+pub fn DstreebstCluster::sum(self : DstreebstCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_cluster_mean(s : DstreebstCluster) -> Double { @_common.mean(s.data) }
+pub fn DstreebstCluster::mean(self : DstreebstCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_cluster_scale(s : DstreebstCluster, f : Double) -> DstreebstCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstCluster::scale(self : DstreebstCluster, f : Double) -> DstreebstCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_cluster_add(a : DstreebstCluster, b : DstreebstCluster) -> DstreebstCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstCluster::add(self : DstreebstCluster, other : DstreebstCluster) -> DstreebstCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_cluster_copy(s : DstreebstCluster) -> DstreebstCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstCluster::copy(self : DstreebstCluster) -> DstreebstCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_cluster_fill(s : DstreebstCluster, v : Double) -> DstreebstCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstCluster::fill(self : DstreebstCluster, v : Double) -> DstreebstCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_cluster_min(s : DstreebstCluster) -> Double { @_common.min(s.data) }
+pub fn DstreebstCluster::min(self : DstreebstCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_cluster_max(s : DstreebstCluster) -> Double { @_common.max(s.data) }
+pub fn DstreebstCluster::max(self : DstreebstCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_cluster_to_string(s : DstreebstCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstCluster::to_string(self : DstreebstCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstModel {
@@ -708,45 +708,45 @@ pub fn ds_tree_bst_model_make(size : Int) -> DstreebstModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_model_len(s : DstreebstModel) -> Int { s.size }
+pub fn DstreebstModel::len(self : DstreebstModel) -> Int { self.size }
 
-pub fn ds_tree_bst_model_get(s : DstreebstModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstModel::get(self : DstreebstModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_model_set(s : DstreebstModel, i : Int, v : Double) -> DstreebstModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstModel::set(self : DstreebstModel, i : Int, v : Double) -> DstreebstModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_model_sum(s : DstreebstModel) -> Double { @_common.sum(s.data) }
+pub fn DstreebstModel::sum(self : DstreebstModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_model_mean(s : DstreebstModel) -> Double { @_common.mean(s.data) }
+pub fn DstreebstModel::mean(self : DstreebstModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_model_scale(s : DstreebstModel, f : Double) -> DstreebstModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstModel::scale(self : DstreebstModel, f : Double) -> DstreebstModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_model_add(a : DstreebstModel, b : DstreebstModel) -> DstreebstModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstModel::add(self : DstreebstModel, other : DstreebstModel) -> DstreebstModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_model_copy(s : DstreebstModel) -> DstreebstModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstModel::copy(self : DstreebstModel) -> DstreebstModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_model_fill(s : DstreebstModel, v : Double) -> DstreebstModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstModel::fill(self : DstreebstModel, v : Double) -> DstreebstModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_model_min(s : DstreebstModel) -> Double { @_common.min(s.data) }
+pub fn DstreebstModel::min(self : DstreebstModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_model_max(s : DstreebstModel) -> Double { @_common.max(s.data) }
+pub fn DstreebstModel::max(self : DstreebstModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_model_to_string(s : DstreebstModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstModel::to_string(self : DstreebstModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstLayer {
@@ -759,45 +759,45 @@ pub fn ds_tree_bst_layer_make(size : Int) -> DstreebstLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_layer_len(s : DstreebstLayer) -> Int { s.size }
+pub fn DstreebstLayer::len(self : DstreebstLayer) -> Int { self.size }
 
-pub fn ds_tree_bst_layer_get(s : DstreebstLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstLayer::get(self : DstreebstLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_layer_set(s : DstreebstLayer, i : Int, v : Double) -> DstreebstLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstLayer::set(self : DstreebstLayer, i : Int, v : Double) -> DstreebstLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_layer_sum(s : DstreebstLayer) -> Double { @_common.sum(s.data) }
+pub fn DstreebstLayer::sum(self : DstreebstLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_layer_mean(s : DstreebstLayer) -> Double { @_common.mean(s.data) }
+pub fn DstreebstLayer::mean(self : DstreebstLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_layer_scale(s : DstreebstLayer, f : Double) -> DstreebstLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstLayer::scale(self : DstreebstLayer, f : Double) -> DstreebstLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_layer_add(a : DstreebstLayer, b : DstreebstLayer) -> DstreebstLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstLayer::add(self : DstreebstLayer, other : DstreebstLayer) -> DstreebstLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_layer_copy(s : DstreebstLayer) -> DstreebstLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstLayer::copy(self : DstreebstLayer) -> DstreebstLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_layer_fill(s : DstreebstLayer, v : Double) -> DstreebstLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstLayer::fill(self : DstreebstLayer, v : Double) -> DstreebstLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_layer_min(s : DstreebstLayer) -> Double { @_common.min(s.data) }
+pub fn DstreebstLayer::min(self : DstreebstLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_layer_max(s : DstreebstLayer) -> Double { @_common.max(s.data) }
+pub fn DstreebstLayer::max(self : DstreebstLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_layer_to_string(s : DstreebstLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstLayer::to_string(self : DstreebstLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstBuffer {
@@ -810,45 +810,45 @@ pub fn ds_tree_bst_buffer_make(size : Int) -> DstreebstBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_buffer_len(s : DstreebstBuffer) -> Int { s.size }
+pub fn DstreebstBuffer::len(self : DstreebstBuffer) -> Int { self.size }
 
-pub fn ds_tree_bst_buffer_get(s : DstreebstBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstBuffer::get(self : DstreebstBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_buffer_set(s : DstreebstBuffer, i : Int, v : Double) -> DstreebstBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstBuffer::set(self : DstreebstBuffer, i : Int, v : Double) -> DstreebstBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_buffer_sum(s : DstreebstBuffer) -> Double { @_common.sum(s.data) }
+pub fn DstreebstBuffer::sum(self : DstreebstBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_buffer_mean(s : DstreebstBuffer) -> Double { @_common.mean(s.data) }
+pub fn DstreebstBuffer::mean(self : DstreebstBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_buffer_scale(s : DstreebstBuffer, f : Double) -> DstreebstBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstBuffer::scale(self : DstreebstBuffer, f : Double) -> DstreebstBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_buffer_add(a : DstreebstBuffer, b : DstreebstBuffer) -> DstreebstBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstBuffer::add(self : DstreebstBuffer, other : DstreebstBuffer) -> DstreebstBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_buffer_copy(s : DstreebstBuffer) -> DstreebstBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstBuffer::copy(self : DstreebstBuffer) -> DstreebstBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_buffer_fill(s : DstreebstBuffer, v : Double) -> DstreebstBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstBuffer::fill(self : DstreebstBuffer, v : Double) -> DstreebstBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_buffer_min(s : DstreebstBuffer) -> Double { @_common.min(s.data) }
+pub fn DstreebstBuffer::min(self : DstreebstBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_buffer_max(s : DstreebstBuffer) -> Double { @_common.max(s.data) }
+pub fn DstreebstBuffer::max(self : DstreebstBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_buffer_to_string(s : DstreebstBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstBuffer::to_string(self : DstreebstBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstCursor {
@@ -861,45 +861,45 @@ pub fn ds_tree_bst_cursor_make(size : Int) -> DstreebstCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_cursor_len(s : DstreebstCursor) -> Int { s.size }
+pub fn DstreebstCursor::len(self : DstreebstCursor) -> Int { self.size }
 
-pub fn ds_tree_bst_cursor_get(s : DstreebstCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstCursor::get(self : DstreebstCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_cursor_set(s : DstreebstCursor, i : Int, v : Double) -> DstreebstCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstCursor::set(self : DstreebstCursor, i : Int, v : Double) -> DstreebstCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_cursor_sum(s : DstreebstCursor) -> Double { @_common.sum(s.data) }
+pub fn DstreebstCursor::sum(self : DstreebstCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_cursor_mean(s : DstreebstCursor) -> Double { @_common.mean(s.data) }
+pub fn DstreebstCursor::mean(self : DstreebstCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_cursor_scale(s : DstreebstCursor, f : Double) -> DstreebstCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstCursor::scale(self : DstreebstCursor, f : Double) -> DstreebstCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_cursor_add(a : DstreebstCursor, b : DstreebstCursor) -> DstreebstCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstCursor::add(self : DstreebstCursor, other : DstreebstCursor) -> DstreebstCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_cursor_copy(s : DstreebstCursor) -> DstreebstCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstCursor::copy(self : DstreebstCursor) -> DstreebstCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_cursor_fill(s : DstreebstCursor, v : Double) -> DstreebstCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstCursor::fill(self : DstreebstCursor, v : Double) -> DstreebstCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_cursor_min(s : DstreebstCursor) -> Double { @_common.min(s.data) }
+pub fn DstreebstCursor::min(self : DstreebstCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_cursor_max(s : DstreebstCursor) -> Double { @_common.max(s.data) }
+pub fn DstreebstCursor::max(self : DstreebstCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_cursor_to_string(s : DstreebstCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstCursor::to_string(self : DstreebstCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstView {
@@ -912,45 +912,45 @@ pub fn ds_tree_bst_view_make(size : Int) -> DstreebstView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_view_len(s : DstreebstView) -> Int { s.size }
+pub fn DstreebstView::len(self : DstreebstView) -> Int { self.size }
 
-pub fn ds_tree_bst_view_get(s : DstreebstView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstView::get(self : DstreebstView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_view_set(s : DstreebstView, i : Int, v : Double) -> DstreebstView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstView::set(self : DstreebstView, i : Int, v : Double) -> DstreebstView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_view_sum(s : DstreebstView) -> Double { @_common.sum(s.data) }
+pub fn DstreebstView::sum(self : DstreebstView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_view_mean(s : DstreebstView) -> Double { @_common.mean(s.data) }
+pub fn DstreebstView::mean(self : DstreebstView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_view_scale(s : DstreebstView, f : Double) -> DstreebstView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstView::scale(self : DstreebstView, f : Double) -> DstreebstView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_view_add(a : DstreebstView, b : DstreebstView) -> DstreebstView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstView::add(self : DstreebstView, other : DstreebstView) -> DstreebstView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_view_copy(s : DstreebstView) -> DstreebstView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstView::copy(self : DstreebstView) -> DstreebstView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_view_fill(s : DstreebstView, v : Double) -> DstreebstView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstView::fill(self : DstreebstView, v : Double) -> DstreebstView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_view_min(s : DstreebstView) -> Double { @_common.min(s.data) }
+pub fn DstreebstView::min(self : DstreebstView) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_view_max(s : DstreebstView) -> Double { @_common.max(s.data) }
+pub fn DstreebstView::max(self : DstreebstView) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_view_to_string(s : DstreebstView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstView::to_string(self : DstreebstView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstRange {
@@ -963,45 +963,45 @@ pub fn ds_tree_bst_range_make(size : Int) -> DstreebstRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_range_len(s : DstreebstRange) -> Int { s.size }
+pub fn DstreebstRange::len(self : DstreebstRange) -> Int { self.size }
 
-pub fn ds_tree_bst_range_get(s : DstreebstRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstRange::get(self : DstreebstRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_range_set(s : DstreebstRange, i : Int, v : Double) -> DstreebstRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstRange::set(self : DstreebstRange, i : Int, v : Double) -> DstreebstRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_range_sum(s : DstreebstRange) -> Double { @_common.sum(s.data) }
+pub fn DstreebstRange::sum(self : DstreebstRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_range_mean(s : DstreebstRange) -> Double { @_common.mean(s.data) }
+pub fn DstreebstRange::mean(self : DstreebstRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_range_scale(s : DstreebstRange, f : Double) -> DstreebstRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstRange::scale(self : DstreebstRange, f : Double) -> DstreebstRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_range_add(a : DstreebstRange, b : DstreebstRange) -> DstreebstRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstRange::add(self : DstreebstRange, other : DstreebstRange) -> DstreebstRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_range_copy(s : DstreebstRange) -> DstreebstRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstRange::copy(self : DstreebstRange) -> DstreebstRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_range_fill(s : DstreebstRange, v : Double) -> DstreebstRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstRange::fill(self : DstreebstRange, v : Double) -> DstreebstRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_range_min(s : DstreebstRange) -> Double { @_common.min(s.data) }
+pub fn DstreebstRange::min(self : DstreebstRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_range_max(s : DstreebstRange) -> Double { @_common.max(s.data) }
+pub fn DstreebstRange::max(self : DstreebstRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_range_to_string(s : DstreebstRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstRange::to_string(self : DstreebstRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebstSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_tree_bst_slice_make(size : Int) -> DstreebstSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_bst_slice_len(s : DstreebstSlice) -> Int { s.size }
+pub fn DstreebstSlice::len(self : DstreebstSlice) -> Int { self.size }
 
-pub fn ds_tree_bst_slice_get(s : DstreebstSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebstSlice::get(self : DstreebstSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_bst_slice_set(s : DstreebstSlice, i : Int, v : Double) -> DstreebstSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebstSlice::set(self : DstreebstSlice, i : Int, v : Double) -> DstreebstSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_slice_sum(s : DstreebstSlice) -> Double { @_common.sum(s.data) }
+pub fn DstreebstSlice::sum(self : DstreebstSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_bst_slice_mean(s : DstreebstSlice) -> Double { @_common.mean(s.data) }
+pub fn DstreebstSlice::mean(self : DstreebstSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_bst_slice_scale(s : DstreebstSlice, f : Double) -> DstreebstSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebstSlice::scale(self : DstreebstSlice, f : Double) -> DstreebstSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_slice_add(a : DstreebstSlice, b : DstreebstSlice) -> DstreebstSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebstSlice::add(self : DstreebstSlice, other : DstreebstSlice) -> DstreebstSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_bst_slice_copy(s : DstreebstSlice) -> DstreebstSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebstSlice::copy(self : DstreebstSlice) -> DstreebstSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_slice_fill(s : DstreebstSlice, v : Double) -> DstreebstSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebstSlice::fill(self : DstreebstSlice, v : Double) -> DstreebstSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_bst_slice_min(s : DstreebstSlice) -> Double { @_common.min(s.data) }
+pub fn DstreebstSlice::min(self : DstreebstSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_bst_slice_max(s : DstreebstSlice) -> Double { @_common.max(s.data) }
+pub fn DstreebstSlice::max(self : DstreebstSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_bst_slice_to_string(s : DstreebstSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebstSlice::to_string(self : DstreebstSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

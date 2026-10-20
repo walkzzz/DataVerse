@@ -351,45 +351,45 @@ pub fn ds_heap_fibonacci_frame_make(size : Int) -> DsheapfibonacciFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_frame_len(s : DsheapfibonacciFrame) -> Int { s.size }
+pub fn DsheapfibonacciFrame::len(self : DsheapfibonacciFrame) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_frame_get(s : DsheapfibonacciFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciFrame::get(self : DsheapfibonacciFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_frame_set(s : DsheapfibonacciFrame, i : Int, v : Double) -> DsheapfibonacciFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciFrame::set(self : DsheapfibonacciFrame, i : Int, v : Double) -> DsheapfibonacciFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_frame_sum(s : DsheapfibonacciFrame) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciFrame::sum(self : DsheapfibonacciFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_frame_mean(s : DsheapfibonacciFrame) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciFrame::mean(self : DsheapfibonacciFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_frame_scale(s : DsheapfibonacciFrame, f : Double) -> DsheapfibonacciFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciFrame::scale(self : DsheapfibonacciFrame, f : Double) -> DsheapfibonacciFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_frame_add(a : DsheapfibonacciFrame, b : DsheapfibonacciFrame) -> DsheapfibonacciFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciFrame::add(self : DsheapfibonacciFrame, other : DsheapfibonacciFrame) -> DsheapfibonacciFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_frame_copy(s : DsheapfibonacciFrame) -> DsheapfibonacciFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciFrame::copy(self : DsheapfibonacciFrame) -> DsheapfibonacciFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_frame_fill(s : DsheapfibonacciFrame, v : Double) -> DsheapfibonacciFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciFrame::fill(self : DsheapfibonacciFrame, v : Double) -> DsheapfibonacciFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_frame_min(s : DsheapfibonacciFrame) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciFrame::min(self : DsheapfibonacciFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_frame_max(s : DsheapfibonacciFrame) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciFrame::max(self : DsheapfibonacciFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_frame_to_string(s : DsheapfibonacciFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciFrame::to_string(self : DsheapfibonacciFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciTable {
@@ -402,45 +402,45 @@ pub fn ds_heap_fibonacci_table_make(size : Int) -> DsheapfibonacciTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_table_len(s : DsheapfibonacciTable) -> Int { s.size }
+pub fn DsheapfibonacciTable::len(self : DsheapfibonacciTable) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_table_get(s : DsheapfibonacciTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciTable::get(self : DsheapfibonacciTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_table_set(s : DsheapfibonacciTable, i : Int, v : Double) -> DsheapfibonacciTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciTable::set(self : DsheapfibonacciTable, i : Int, v : Double) -> DsheapfibonacciTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_table_sum(s : DsheapfibonacciTable) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciTable::sum(self : DsheapfibonacciTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_table_mean(s : DsheapfibonacciTable) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciTable::mean(self : DsheapfibonacciTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_table_scale(s : DsheapfibonacciTable, f : Double) -> DsheapfibonacciTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciTable::scale(self : DsheapfibonacciTable, f : Double) -> DsheapfibonacciTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_table_add(a : DsheapfibonacciTable, b : DsheapfibonacciTable) -> DsheapfibonacciTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciTable::add(self : DsheapfibonacciTable, other : DsheapfibonacciTable) -> DsheapfibonacciTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_table_copy(s : DsheapfibonacciTable) -> DsheapfibonacciTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciTable::copy(self : DsheapfibonacciTable) -> DsheapfibonacciTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_table_fill(s : DsheapfibonacciTable, v : Double) -> DsheapfibonacciTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciTable::fill(self : DsheapfibonacciTable, v : Double) -> DsheapfibonacciTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_table_min(s : DsheapfibonacciTable) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciTable::min(self : DsheapfibonacciTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_table_max(s : DsheapfibonacciTable) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciTable::max(self : DsheapfibonacciTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_table_to_string(s : DsheapfibonacciTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciTable::to_string(self : DsheapfibonacciTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciGraphN {
@@ -453,45 +453,45 @@ pub fn ds_heap_fibonacci_graphn_make(size : Int) -> DsheapfibonacciGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_graphn_len(s : DsheapfibonacciGraphN) -> Int { s.size }
+pub fn DsheapfibonacciGraphN::len(self : DsheapfibonacciGraphN) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_graphn_get(s : DsheapfibonacciGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciGraphN::get(self : DsheapfibonacciGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_graphn_set(s : DsheapfibonacciGraphN, i : Int, v : Double) -> DsheapfibonacciGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciGraphN::set(self : DsheapfibonacciGraphN, i : Int, v : Double) -> DsheapfibonacciGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_graphn_sum(s : DsheapfibonacciGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciGraphN::sum(self : DsheapfibonacciGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_graphn_mean(s : DsheapfibonacciGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciGraphN::mean(self : DsheapfibonacciGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_graphn_scale(s : DsheapfibonacciGraphN, f : Double) -> DsheapfibonacciGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciGraphN::scale(self : DsheapfibonacciGraphN, f : Double) -> DsheapfibonacciGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_graphn_add(a : DsheapfibonacciGraphN, b : DsheapfibonacciGraphN) -> DsheapfibonacciGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciGraphN::add(self : DsheapfibonacciGraphN, other : DsheapfibonacciGraphN) -> DsheapfibonacciGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_graphn_copy(s : DsheapfibonacciGraphN) -> DsheapfibonacciGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciGraphN::copy(self : DsheapfibonacciGraphN) -> DsheapfibonacciGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_graphn_fill(s : DsheapfibonacciGraphN, v : Double) -> DsheapfibonacciGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciGraphN::fill(self : DsheapfibonacciGraphN, v : Double) -> DsheapfibonacciGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_graphn_min(s : DsheapfibonacciGraphN) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciGraphN::min(self : DsheapfibonacciGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_graphn_max(s : DsheapfibonacciGraphN) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciGraphN::max(self : DsheapfibonacciGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_graphn_to_string(s : DsheapfibonacciGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciGraphN::to_string(self : DsheapfibonacciGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciNode {
@@ -504,45 +504,45 @@ pub fn ds_heap_fibonacci_node_make(size : Int) -> DsheapfibonacciNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_node_len(s : DsheapfibonacciNode) -> Int { s.size }
+pub fn DsheapfibonacciNode::len(self : DsheapfibonacciNode) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_node_get(s : DsheapfibonacciNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciNode::get(self : DsheapfibonacciNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_node_set(s : DsheapfibonacciNode, i : Int, v : Double) -> DsheapfibonacciNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciNode::set(self : DsheapfibonacciNode, i : Int, v : Double) -> DsheapfibonacciNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_node_sum(s : DsheapfibonacciNode) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciNode::sum(self : DsheapfibonacciNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_node_mean(s : DsheapfibonacciNode) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciNode::mean(self : DsheapfibonacciNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_node_scale(s : DsheapfibonacciNode, f : Double) -> DsheapfibonacciNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciNode::scale(self : DsheapfibonacciNode, f : Double) -> DsheapfibonacciNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_node_add(a : DsheapfibonacciNode, b : DsheapfibonacciNode) -> DsheapfibonacciNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciNode::add(self : DsheapfibonacciNode, other : DsheapfibonacciNode) -> DsheapfibonacciNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_node_copy(s : DsheapfibonacciNode) -> DsheapfibonacciNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciNode::copy(self : DsheapfibonacciNode) -> DsheapfibonacciNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_node_fill(s : DsheapfibonacciNode, v : Double) -> DsheapfibonacciNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciNode::fill(self : DsheapfibonacciNode, v : Double) -> DsheapfibonacciNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_node_min(s : DsheapfibonacciNode) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciNode::min(self : DsheapfibonacciNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_node_max(s : DsheapfibonacciNode) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciNode::max(self : DsheapfibonacciNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_node_to_string(s : DsheapfibonacciNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciNode::to_string(self : DsheapfibonacciNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciEdge {
@@ -555,45 +555,45 @@ pub fn ds_heap_fibonacci_edge_make(size : Int) -> DsheapfibonacciEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_edge_len(s : DsheapfibonacciEdge) -> Int { s.size }
+pub fn DsheapfibonacciEdge::len(self : DsheapfibonacciEdge) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_edge_get(s : DsheapfibonacciEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciEdge::get(self : DsheapfibonacciEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_edge_set(s : DsheapfibonacciEdge, i : Int, v : Double) -> DsheapfibonacciEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciEdge::set(self : DsheapfibonacciEdge, i : Int, v : Double) -> DsheapfibonacciEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_edge_sum(s : DsheapfibonacciEdge) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciEdge::sum(self : DsheapfibonacciEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_edge_mean(s : DsheapfibonacciEdge) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciEdge::mean(self : DsheapfibonacciEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_edge_scale(s : DsheapfibonacciEdge, f : Double) -> DsheapfibonacciEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciEdge::scale(self : DsheapfibonacciEdge, f : Double) -> DsheapfibonacciEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_edge_add(a : DsheapfibonacciEdge, b : DsheapfibonacciEdge) -> DsheapfibonacciEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciEdge::add(self : DsheapfibonacciEdge, other : DsheapfibonacciEdge) -> DsheapfibonacciEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_edge_copy(s : DsheapfibonacciEdge) -> DsheapfibonacciEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciEdge::copy(self : DsheapfibonacciEdge) -> DsheapfibonacciEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_edge_fill(s : DsheapfibonacciEdge, v : Double) -> DsheapfibonacciEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciEdge::fill(self : DsheapfibonacciEdge, v : Double) -> DsheapfibonacciEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_edge_min(s : DsheapfibonacciEdge) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciEdge::min(self : DsheapfibonacciEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_edge_max(s : DsheapfibonacciEdge) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciEdge::max(self : DsheapfibonacciEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_edge_to_string(s : DsheapfibonacciEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciEdge::to_string(self : DsheapfibonacciEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciPath {
@@ -606,45 +606,45 @@ pub fn ds_heap_fibonacci_path_make(size : Int) -> DsheapfibonacciPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_path_len(s : DsheapfibonacciPath) -> Int { s.size }
+pub fn DsheapfibonacciPath::len(self : DsheapfibonacciPath) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_path_get(s : DsheapfibonacciPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciPath::get(self : DsheapfibonacciPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_path_set(s : DsheapfibonacciPath, i : Int, v : Double) -> DsheapfibonacciPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciPath::set(self : DsheapfibonacciPath, i : Int, v : Double) -> DsheapfibonacciPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_path_sum(s : DsheapfibonacciPath) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciPath::sum(self : DsheapfibonacciPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_path_mean(s : DsheapfibonacciPath) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciPath::mean(self : DsheapfibonacciPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_path_scale(s : DsheapfibonacciPath, f : Double) -> DsheapfibonacciPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciPath::scale(self : DsheapfibonacciPath, f : Double) -> DsheapfibonacciPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_path_add(a : DsheapfibonacciPath, b : DsheapfibonacciPath) -> DsheapfibonacciPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciPath::add(self : DsheapfibonacciPath, other : DsheapfibonacciPath) -> DsheapfibonacciPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_path_copy(s : DsheapfibonacciPath) -> DsheapfibonacciPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciPath::copy(self : DsheapfibonacciPath) -> DsheapfibonacciPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_path_fill(s : DsheapfibonacciPath, v : Double) -> DsheapfibonacciPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciPath::fill(self : DsheapfibonacciPath, v : Double) -> DsheapfibonacciPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_path_min(s : DsheapfibonacciPath) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciPath::min(self : DsheapfibonacciPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_path_max(s : DsheapfibonacciPath) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciPath::max(self : DsheapfibonacciPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_path_to_string(s : DsheapfibonacciPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciPath::to_string(self : DsheapfibonacciPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciCluster {
@@ -657,45 +657,45 @@ pub fn ds_heap_fibonacci_cluster_make(size : Int) -> DsheapfibonacciCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_cluster_len(s : DsheapfibonacciCluster) -> Int { s.size }
+pub fn DsheapfibonacciCluster::len(self : DsheapfibonacciCluster) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_cluster_get(s : DsheapfibonacciCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciCluster::get(self : DsheapfibonacciCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_cluster_set(s : DsheapfibonacciCluster, i : Int, v : Double) -> DsheapfibonacciCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciCluster::set(self : DsheapfibonacciCluster, i : Int, v : Double) -> DsheapfibonacciCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_cluster_sum(s : DsheapfibonacciCluster) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciCluster::sum(self : DsheapfibonacciCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_cluster_mean(s : DsheapfibonacciCluster) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciCluster::mean(self : DsheapfibonacciCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_cluster_scale(s : DsheapfibonacciCluster, f : Double) -> DsheapfibonacciCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciCluster::scale(self : DsheapfibonacciCluster, f : Double) -> DsheapfibonacciCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_cluster_add(a : DsheapfibonacciCluster, b : DsheapfibonacciCluster) -> DsheapfibonacciCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciCluster::add(self : DsheapfibonacciCluster, other : DsheapfibonacciCluster) -> DsheapfibonacciCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_cluster_copy(s : DsheapfibonacciCluster) -> DsheapfibonacciCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciCluster::copy(self : DsheapfibonacciCluster) -> DsheapfibonacciCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_cluster_fill(s : DsheapfibonacciCluster, v : Double) -> DsheapfibonacciCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciCluster::fill(self : DsheapfibonacciCluster, v : Double) -> DsheapfibonacciCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_cluster_min(s : DsheapfibonacciCluster) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciCluster::min(self : DsheapfibonacciCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_cluster_max(s : DsheapfibonacciCluster) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciCluster::max(self : DsheapfibonacciCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_cluster_to_string(s : DsheapfibonacciCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciCluster::to_string(self : DsheapfibonacciCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciModel {
@@ -708,45 +708,45 @@ pub fn ds_heap_fibonacci_model_make(size : Int) -> DsheapfibonacciModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_model_len(s : DsheapfibonacciModel) -> Int { s.size }
+pub fn DsheapfibonacciModel::len(self : DsheapfibonacciModel) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_model_get(s : DsheapfibonacciModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciModel::get(self : DsheapfibonacciModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_model_set(s : DsheapfibonacciModel, i : Int, v : Double) -> DsheapfibonacciModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciModel::set(self : DsheapfibonacciModel, i : Int, v : Double) -> DsheapfibonacciModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_model_sum(s : DsheapfibonacciModel) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciModel::sum(self : DsheapfibonacciModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_model_mean(s : DsheapfibonacciModel) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciModel::mean(self : DsheapfibonacciModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_model_scale(s : DsheapfibonacciModel, f : Double) -> DsheapfibonacciModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciModel::scale(self : DsheapfibonacciModel, f : Double) -> DsheapfibonacciModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_model_add(a : DsheapfibonacciModel, b : DsheapfibonacciModel) -> DsheapfibonacciModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciModel::add(self : DsheapfibonacciModel, other : DsheapfibonacciModel) -> DsheapfibonacciModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_model_copy(s : DsheapfibonacciModel) -> DsheapfibonacciModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciModel::copy(self : DsheapfibonacciModel) -> DsheapfibonacciModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_model_fill(s : DsheapfibonacciModel, v : Double) -> DsheapfibonacciModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciModel::fill(self : DsheapfibonacciModel, v : Double) -> DsheapfibonacciModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_model_min(s : DsheapfibonacciModel) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciModel::min(self : DsheapfibonacciModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_model_max(s : DsheapfibonacciModel) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciModel::max(self : DsheapfibonacciModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_model_to_string(s : DsheapfibonacciModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciModel::to_string(self : DsheapfibonacciModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciLayer {
@@ -759,45 +759,45 @@ pub fn ds_heap_fibonacci_layer_make(size : Int) -> DsheapfibonacciLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_layer_len(s : DsheapfibonacciLayer) -> Int { s.size }
+pub fn DsheapfibonacciLayer::len(self : DsheapfibonacciLayer) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_layer_get(s : DsheapfibonacciLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciLayer::get(self : DsheapfibonacciLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_layer_set(s : DsheapfibonacciLayer, i : Int, v : Double) -> DsheapfibonacciLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciLayer::set(self : DsheapfibonacciLayer, i : Int, v : Double) -> DsheapfibonacciLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_layer_sum(s : DsheapfibonacciLayer) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciLayer::sum(self : DsheapfibonacciLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_layer_mean(s : DsheapfibonacciLayer) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciLayer::mean(self : DsheapfibonacciLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_layer_scale(s : DsheapfibonacciLayer, f : Double) -> DsheapfibonacciLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciLayer::scale(self : DsheapfibonacciLayer, f : Double) -> DsheapfibonacciLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_layer_add(a : DsheapfibonacciLayer, b : DsheapfibonacciLayer) -> DsheapfibonacciLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciLayer::add(self : DsheapfibonacciLayer, other : DsheapfibonacciLayer) -> DsheapfibonacciLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_layer_copy(s : DsheapfibonacciLayer) -> DsheapfibonacciLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciLayer::copy(self : DsheapfibonacciLayer) -> DsheapfibonacciLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_layer_fill(s : DsheapfibonacciLayer, v : Double) -> DsheapfibonacciLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciLayer::fill(self : DsheapfibonacciLayer, v : Double) -> DsheapfibonacciLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_layer_min(s : DsheapfibonacciLayer) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciLayer::min(self : DsheapfibonacciLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_layer_max(s : DsheapfibonacciLayer) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciLayer::max(self : DsheapfibonacciLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_layer_to_string(s : DsheapfibonacciLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciLayer::to_string(self : DsheapfibonacciLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciBuffer {
@@ -810,45 +810,45 @@ pub fn ds_heap_fibonacci_buffer_make(size : Int) -> DsheapfibonacciBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_buffer_len(s : DsheapfibonacciBuffer) -> Int { s.size }
+pub fn DsheapfibonacciBuffer::len(self : DsheapfibonacciBuffer) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_buffer_get(s : DsheapfibonacciBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciBuffer::get(self : DsheapfibonacciBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_buffer_set(s : DsheapfibonacciBuffer, i : Int, v : Double) -> DsheapfibonacciBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciBuffer::set(self : DsheapfibonacciBuffer, i : Int, v : Double) -> DsheapfibonacciBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_buffer_sum(s : DsheapfibonacciBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciBuffer::sum(self : DsheapfibonacciBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_buffer_mean(s : DsheapfibonacciBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciBuffer::mean(self : DsheapfibonacciBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_buffer_scale(s : DsheapfibonacciBuffer, f : Double) -> DsheapfibonacciBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciBuffer::scale(self : DsheapfibonacciBuffer, f : Double) -> DsheapfibonacciBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_buffer_add(a : DsheapfibonacciBuffer, b : DsheapfibonacciBuffer) -> DsheapfibonacciBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciBuffer::add(self : DsheapfibonacciBuffer, other : DsheapfibonacciBuffer) -> DsheapfibonacciBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_buffer_copy(s : DsheapfibonacciBuffer) -> DsheapfibonacciBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciBuffer::copy(self : DsheapfibonacciBuffer) -> DsheapfibonacciBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_buffer_fill(s : DsheapfibonacciBuffer, v : Double) -> DsheapfibonacciBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciBuffer::fill(self : DsheapfibonacciBuffer, v : Double) -> DsheapfibonacciBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_buffer_min(s : DsheapfibonacciBuffer) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciBuffer::min(self : DsheapfibonacciBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_buffer_max(s : DsheapfibonacciBuffer) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciBuffer::max(self : DsheapfibonacciBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_buffer_to_string(s : DsheapfibonacciBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciBuffer::to_string(self : DsheapfibonacciBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciCursor {
@@ -861,45 +861,45 @@ pub fn ds_heap_fibonacci_cursor_make(size : Int) -> DsheapfibonacciCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_cursor_len(s : DsheapfibonacciCursor) -> Int { s.size }
+pub fn DsheapfibonacciCursor::len(self : DsheapfibonacciCursor) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_cursor_get(s : DsheapfibonacciCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciCursor::get(self : DsheapfibonacciCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_cursor_set(s : DsheapfibonacciCursor, i : Int, v : Double) -> DsheapfibonacciCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciCursor::set(self : DsheapfibonacciCursor, i : Int, v : Double) -> DsheapfibonacciCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_cursor_sum(s : DsheapfibonacciCursor) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciCursor::sum(self : DsheapfibonacciCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_cursor_mean(s : DsheapfibonacciCursor) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciCursor::mean(self : DsheapfibonacciCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_cursor_scale(s : DsheapfibonacciCursor, f : Double) -> DsheapfibonacciCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciCursor::scale(self : DsheapfibonacciCursor, f : Double) -> DsheapfibonacciCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_cursor_add(a : DsheapfibonacciCursor, b : DsheapfibonacciCursor) -> DsheapfibonacciCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciCursor::add(self : DsheapfibonacciCursor, other : DsheapfibonacciCursor) -> DsheapfibonacciCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_cursor_copy(s : DsheapfibonacciCursor) -> DsheapfibonacciCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciCursor::copy(self : DsheapfibonacciCursor) -> DsheapfibonacciCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_cursor_fill(s : DsheapfibonacciCursor, v : Double) -> DsheapfibonacciCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciCursor::fill(self : DsheapfibonacciCursor, v : Double) -> DsheapfibonacciCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_cursor_min(s : DsheapfibonacciCursor) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciCursor::min(self : DsheapfibonacciCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_cursor_max(s : DsheapfibonacciCursor) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciCursor::max(self : DsheapfibonacciCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_cursor_to_string(s : DsheapfibonacciCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciCursor::to_string(self : DsheapfibonacciCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciView {
@@ -912,45 +912,45 @@ pub fn ds_heap_fibonacci_view_make(size : Int) -> DsheapfibonacciView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_view_len(s : DsheapfibonacciView) -> Int { s.size }
+pub fn DsheapfibonacciView::len(self : DsheapfibonacciView) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_view_get(s : DsheapfibonacciView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciView::get(self : DsheapfibonacciView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_view_set(s : DsheapfibonacciView, i : Int, v : Double) -> DsheapfibonacciView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciView::set(self : DsheapfibonacciView, i : Int, v : Double) -> DsheapfibonacciView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_view_sum(s : DsheapfibonacciView) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciView::sum(self : DsheapfibonacciView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_view_mean(s : DsheapfibonacciView) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciView::mean(self : DsheapfibonacciView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_view_scale(s : DsheapfibonacciView, f : Double) -> DsheapfibonacciView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciView::scale(self : DsheapfibonacciView, f : Double) -> DsheapfibonacciView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_view_add(a : DsheapfibonacciView, b : DsheapfibonacciView) -> DsheapfibonacciView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciView::add(self : DsheapfibonacciView, other : DsheapfibonacciView) -> DsheapfibonacciView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_view_copy(s : DsheapfibonacciView) -> DsheapfibonacciView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciView::copy(self : DsheapfibonacciView) -> DsheapfibonacciView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_view_fill(s : DsheapfibonacciView, v : Double) -> DsheapfibonacciView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciView::fill(self : DsheapfibonacciView, v : Double) -> DsheapfibonacciView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_view_min(s : DsheapfibonacciView) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciView::min(self : DsheapfibonacciView) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_view_max(s : DsheapfibonacciView) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciView::max(self : DsheapfibonacciView) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_view_to_string(s : DsheapfibonacciView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciView::to_string(self : DsheapfibonacciView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciRange {
@@ -963,45 +963,45 @@ pub fn ds_heap_fibonacci_range_make(size : Int) -> DsheapfibonacciRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_range_len(s : DsheapfibonacciRange) -> Int { s.size }
+pub fn DsheapfibonacciRange::len(self : DsheapfibonacciRange) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_range_get(s : DsheapfibonacciRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciRange::get(self : DsheapfibonacciRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_range_set(s : DsheapfibonacciRange, i : Int, v : Double) -> DsheapfibonacciRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciRange::set(self : DsheapfibonacciRange, i : Int, v : Double) -> DsheapfibonacciRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_range_sum(s : DsheapfibonacciRange) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciRange::sum(self : DsheapfibonacciRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_range_mean(s : DsheapfibonacciRange) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciRange::mean(self : DsheapfibonacciRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_range_scale(s : DsheapfibonacciRange, f : Double) -> DsheapfibonacciRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciRange::scale(self : DsheapfibonacciRange, f : Double) -> DsheapfibonacciRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_range_add(a : DsheapfibonacciRange, b : DsheapfibonacciRange) -> DsheapfibonacciRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciRange::add(self : DsheapfibonacciRange, other : DsheapfibonacciRange) -> DsheapfibonacciRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_range_copy(s : DsheapfibonacciRange) -> DsheapfibonacciRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciRange::copy(self : DsheapfibonacciRange) -> DsheapfibonacciRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_range_fill(s : DsheapfibonacciRange, v : Double) -> DsheapfibonacciRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciRange::fill(self : DsheapfibonacciRange, v : Double) -> DsheapfibonacciRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_range_min(s : DsheapfibonacciRange) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciRange::min(self : DsheapfibonacciRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_range_max(s : DsheapfibonacciRange) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciRange::max(self : DsheapfibonacciRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_range_to_string(s : DsheapfibonacciRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciRange::to_string(self : DsheapfibonacciRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapfibonacciSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_heap_fibonacci_slice_make(size : Int) -> DsheapfibonacciSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_fibonacci_slice_len(s : DsheapfibonacciSlice) -> Int { s.size }
+pub fn DsheapfibonacciSlice::len(self : DsheapfibonacciSlice) -> Int { self.size }
 
-pub fn ds_heap_fibonacci_slice_get(s : DsheapfibonacciSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapfibonacciSlice::get(self : DsheapfibonacciSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_fibonacci_slice_set(s : DsheapfibonacciSlice, i : Int, v : Double) -> DsheapfibonacciSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapfibonacciSlice::set(self : DsheapfibonacciSlice, i : Int, v : Double) -> DsheapfibonacciSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_slice_sum(s : DsheapfibonacciSlice) -> Double { @_common.sum(s.data) }
+pub fn DsheapfibonacciSlice::sum(self : DsheapfibonacciSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_fibonacci_slice_mean(s : DsheapfibonacciSlice) -> Double { @_common.mean(s.data) }
+pub fn DsheapfibonacciSlice::mean(self : DsheapfibonacciSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_fibonacci_slice_scale(s : DsheapfibonacciSlice, f : Double) -> DsheapfibonacciSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciSlice::scale(self : DsheapfibonacciSlice, f : Double) -> DsheapfibonacciSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_slice_add(a : DsheapfibonacciSlice, b : DsheapfibonacciSlice) -> DsheapfibonacciSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapfibonacciSlice::add(self : DsheapfibonacciSlice, other : DsheapfibonacciSlice) -> DsheapfibonacciSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_slice_copy(s : DsheapfibonacciSlice) -> DsheapfibonacciSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciSlice::copy(self : DsheapfibonacciSlice) -> DsheapfibonacciSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_slice_fill(s : DsheapfibonacciSlice, v : Double) -> DsheapfibonacciSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapfibonacciSlice::fill(self : DsheapfibonacciSlice, v : Double) -> DsheapfibonacciSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_fibonacci_slice_min(s : DsheapfibonacciSlice) -> Double { @_common.min(s.data) }
+pub fn DsheapfibonacciSlice::min(self : DsheapfibonacciSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_fibonacci_slice_max(s : DsheapfibonacciSlice) -> Double { @_common.max(s.data) }
+pub fn DsheapfibonacciSlice::max(self : DsheapfibonacciSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_fibonacci_slice_to_string(s : DsheapfibonacciSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapfibonacciSlice::to_string(self : DsheapfibonacciSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

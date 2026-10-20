@@ -351,45 +351,45 @@ pub fn nlp_embed_gpt_frame_make(size : Int) -> NlpembedgptFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_frame_len(s : NlpembedgptFrame) -> Int { s.size }
+pub fn NlpembedgptFrame::len(self : NlpembedgptFrame) -> Int { self.size }
 
-pub fn nlp_embed_gpt_frame_get(s : NlpembedgptFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptFrame::get(self : NlpembedgptFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_frame_set(s : NlpembedgptFrame, i : Int, v : Double) -> NlpembedgptFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptFrame::set(self : NlpembedgptFrame, i : Int, v : Double) -> NlpembedgptFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_frame_sum(s : NlpembedgptFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptFrame::sum(self : NlpembedgptFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_frame_mean(s : NlpembedgptFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptFrame::mean(self : NlpembedgptFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_frame_scale(s : NlpembedgptFrame, f : Double) -> NlpembedgptFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptFrame::scale(self : NlpembedgptFrame, f : Double) -> NlpembedgptFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_frame_add(a : NlpembedgptFrame, b : NlpembedgptFrame) -> NlpembedgptFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptFrame::add(self : NlpembedgptFrame, other : NlpembedgptFrame) -> NlpembedgptFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_frame_copy(s : NlpembedgptFrame) -> NlpembedgptFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptFrame::copy(self : NlpembedgptFrame) -> NlpembedgptFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_frame_fill(s : NlpembedgptFrame, v : Double) -> NlpembedgptFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptFrame::fill(self : NlpembedgptFrame, v : Double) -> NlpembedgptFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_frame_min(s : NlpembedgptFrame) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptFrame::min(self : NlpembedgptFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_frame_max(s : NlpembedgptFrame) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptFrame::max(self : NlpembedgptFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_frame_to_string(s : NlpembedgptFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptFrame::to_string(self : NlpembedgptFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptTable {
@@ -402,45 +402,45 @@ pub fn nlp_embed_gpt_table_make(size : Int) -> NlpembedgptTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_table_len(s : NlpembedgptTable) -> Int { s.size }
+pub fn NlpembedgptTable::len(self : NlpembedgptTable) -> Int { self.size }
 
-pub fn nlp_embed_gpt_table_get(s : NlpembedgptTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptTable::get(self : NlpembedgptTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_table_set(s : NlpembedgptTable, i : Int, v : Double) -> NlpembedgptTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptTable::set(self : NlpembedgptTable, i : Int, v : Double) -> NlpembedgptTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_table_sum(s : NlpembedgptTable) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptTable::sum(self : NlpembedgptTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_table_mean(s : NlpembedgptTable) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptTable::mean(self : NlpembedgptTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_table_scale(s : NlpembedgptTable, f : Double) -> NlpembedgptTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptTable::scale(self : NlpembedgptTable, f : Double) -> NlpembedgptTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_table_add(a : NlpembedgptTable, b : NlpembedgptTable) -> NlpembedgptTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptTable::add(self : NlpembedgptTable, other : NlpembedgptTable) -> NlpembedgptTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_table_copy(s : NlpembedgptTable) -> NlpembedgptTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptTable::copy(self : NlpembedgptTable) -> NlpembedgptTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_table_fill(s : NlpembedgptTable, v : Double) -> NlpembedgptTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptTable::fill(self : NlpembedgptTable, v : Double) -> NlpembedgptTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_table_min(s : NlpembedgptTable) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptTable::min(self : NlpembedgptTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_table_max(s : NlpembedgptTable) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptTable::max(self : NlpembedgptTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_table_to_string(s : NlpembedgptTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptTable::to_string(self : NlpembedgptTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_embed_gpt_graphn_make(size : Int) -> NlpembedgptGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_graphn_len(s : NlpembedgptGraphN) -> Int { s.size }
+pub fn NlpembedgptGraphN::len(self : NlpembedgptGraphN) -> Int { self.size }
 
-pub fn nlp_embed_gpt_graphn_get(s : NlpembedgptGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptGraphN::get(self : NlpembedgptGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_graphn_set(s : NlpembedgptGraphN, i : Int, v : Double) -> NlpembedgptGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptGraphN::set(self : NlpembedgptGraphN, i : Int, v : Double) -> NlpembedgptGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_graphn_sum(s : NlpembedgptGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptGraphN::sum(self : NlpembedgptGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_graphn_mean(s : NlpembedgptGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptGraphN::mean(self : NlpembedgptGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_graphn_scale(s : NlpembedgptGraphN, f : Double) -> NlpembedgptGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptGraphN::scale(self : NlpembedgptGraphN, f : Double) -> NlpembedgptGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_graphn_add(a : NlpembedgptGraphN, b : NlpembedgptGraphN) -> NlpembedgptGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptGraphN::add(self : NlpembedgptGraphN, other : NlpembedgptGraphN) -> NlpembedgptGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_graphn_copy(s : NlpembedgptGraphN) -> NlpembedgptGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptGraphN::copy(self : NlpembedgptGraphN) -> NlpembedgptGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_graphn_fill(s : NlpembedgptGraphN, v : Double) -> NlpembedgptGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptGraphN::fill(self : NlpembedgptGraphN, v : Double) -> NlpembedgptGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_graphn_min(s : NlpembedgptGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptGraphN::min(self : NlpembedgptGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_graphn_max(s : NlpembedgptGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptGraphN::max(self : NlpembedgptGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_graphn_to_string(s : NlpembedgptGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptGraphN::to_string(self : NlpembedgptGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptNode {
@@ -504,45 +504,45 @@ pub fn nlp_embed_gpt_node_make(size : Int) -> NlpembedgptNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_node_len(s : NlpembedgptNode) -> Int { s.size }
+pub fn NlpembedgptNode::len(self : NlpembedgptNode) -> Int { self.size }
 
-pub fn nlp_embed_gpt_node_get(s : NlpembedgptNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptNode::get(self : NlpembedgptNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_node_set(s : NlpembedgptNode, i : Int, v : Double) -> NlpembedgptNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptNode::set(self : NlpembedgptNode, i : Int, v : Double) -> NlpembedgptNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_node_sum(s : NlpembedgptNode) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptNode::sum(self : NlpembedgptNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_node_mean(s : NlpembedgptNode) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptNode::mean(self : NlpembedgptNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_node_scale(s : NlpembedgptNode, f : Double) -> NlpembedgptNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptNode::scale(self : NlpembedgptNode, f : Double) -> NlpembedgptNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_node_add(a : NlpembedgptNode, b : NlpembedgptNode) -> NlpembedgptNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptNode::add(self : NlpembedgptNode, other : NlpembedgptNode) -> NlpembedgptNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_node_copy(s : NlpembedgptNode) -> NlpembedgptNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptNode::copy(self : NlpembedgptNode) -> NlpembedgptNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_node_fill(s : NlpembedgptNode, v : Double) -> NlpembedgptNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptNode::fill(self : NlpembedgptNode, v : Double) -> NlpembedgptNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_node_min(s : NlpembedgptNode) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptNode::min(self : NlpembedgptNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_node_max(s : NlpembedgptNode) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptNode::max(self : NlpembedgptNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_node_to_string(s : NlpembedgptNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptNode::to_string(self : NlpembedgptNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptEdge {
@@ -555,45 +555,45 @@ pub fn nlp_embed_gpt_edge_make(size : Int) -> NlpembedgptEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_edge_len(s : NlpembedgptEdge) -> Int { s.size }
+pub fn NlpembedgptEdge::len(self : NlpembedgptEdge) -> Int { self.size }
 
-pub fn nlp_embed_gpt_edge_get(s : NlpembedgptEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptEdge::get(self : NlpembedgptEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_edge_set(s : NlpembedgptEdge, i : Int, v : Double) -> NlpembedgptEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptEdge::set(self : NlpembedgptEdge, i : Int, v : Double) -> NlpembedgptEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_edge_sum(s : NlpembedgptEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptEdge::sum(self : NlpembedgptEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_edge_mean(s : NlpembedgptEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptEdge::mean(self : NlpembedgptEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_edge_scale(s : NlpembedgptEdge, f : Double) -> NlpembedgptEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptEdge::scale(self : NlpembedgptEdge, f : Double) -> NlpembedgptEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_edge_add(a : NlpembedgptEdge, b : NlpembedgptEdge) -> NlpembedgptEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptEdge::add(self : NlpembedgptEdge, other : NlpembedgptEdge) -> NlpembedgptEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_edge_copy(s : NlpembedgptEdge) -> NlpembedgptEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptEdge::copy(self : NlpembedgptEdge) -> NlpembedgptEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_edge_fill(s : NlpembedgptEdge, v : Double) -> NlpembedgptEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptEdge::fill(self : NlpembedgptEdge, v : Double) -> NlpembedgptEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_edge_min(s : NlpembedgptEdge) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptEdge::min(self : NlpembedgptEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_edge_max(s : NlpembedgptEdge) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptEdge::max(self : NlpembedgptEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_edge_to_string(s : NlpembedgptEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptEdge::to_string(self : NlpembedgptEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptPath {
@@ -606,45 +606,45 @@ pub fn nlp_embed_gpt_path_make(size : Int) -> NlpembedgptPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_path_len(s : NlpembedgptPath) -> Int { s.size }
+pub fn NlpembedgptPath::len(self : NlpembedgptPath) -> Int { self.size }
 
-pub fn nlp_embed_gpt_path_get(s : NlpembedgptPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptPath::get(self : NlpembedgptPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_path_set(s : NlpembedgptPath, i : Int, v : Double) -> NlpembedgptPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptPath::set(self : NlpembedgptPath, i : Int, v : Double) -> NlpembedgptPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_path_sum(s : NlpembedgptPath) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptPath::sum(self : NlpembedgptPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_path_mean(s : NlpembedgptPath) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptPath::mean(self : NlpembedgptPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_path_scale(s : NlpembedgptPath, f : Double) -> NlpembedgptPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptPath::scale(self : NlpembedgptPath, f : Double) -> NlpembedgptPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_path_add(a : NlpembedgptPath, b : NlpembedgptPath) -> NlpembedgptPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptPath::add(self : NlpembedgptPath, other : NlpembedgptPath) -> NlpembedgptPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_path_copy(s : NlpembedgptPath) -> NlpembedgptPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptPath::copy(self : NlpembedgptPath) -> NlpembedgptPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_path_fill(s : NlpembedgptPath, v : Double) -> NlpembedgptPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptPath::fill(self : NlpembedgptPath, v : Double) -> NlpembedgptPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_path_min(s : NlpembedgptPath) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptPath::min(self : NlpembedgptPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_path_max(s : NlpembedgptPath) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptPath::max(self : NlpembedgptPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_path_to_string(s : NlpembedgptPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptPath::to_string(self : NlpembedgptPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptCluster {
@@ -657,45 +657,45 @@ pub fn nlp_embed_gpt_cluster_make(size : Int) -> NlpembedgptCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_cluster_len(s : NlpembedgptCluster) -> Int { s.size }
+pub fn NlpembedgptCluster::len(self : NlpembedgptCluster) -> Int { self.size }
 
-pub fn nlp_embed_gpt_cluster_get(s : NlpembedgptCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptCluster::get(self : NlpembedgptCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_cluster_set(s : NlpembedgptCluster, i : Int, v : Double) -> NlpembedgptCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptCluster::set(self : NlpembedgptCluster, i : Int, v : Double) -> NlpembedgptCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_cluster_sum(s : NlpembedgptCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptCluster::sum(self : NlpembedgptCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_cluster_mean(s : NlpembedgptCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptCluster::mean(self : NlpembedgptCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_cluster_scale(s : NlpembedgptCluster, f : Double) -> NlpembedgptCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptCluster::scale(self : NlpembedgptCluster, f : Double) -> NlpembedgptCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_cluster_add(a : NlpembedgptCluster, b : NlpembedgptCluster) -> NlpembedgptCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptCluster::add(self : NlpembedgptCluster, other : NlpembedgptCluster) -> NlpembedgptCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_cluster_copy(s : NlpembedgptCluster) -> NlpembedgptCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptCluster::copy(self : NlpembedgptCluster) -> NlpembedgptCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_cluster_fill(s : NlpembedgptCluster, v : Double) -> NlpembedgptCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptCluster::fill(self : NlpembedgptCluster, v : Double) -> NlpembedgptCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_cluster_min(s : NlpembedgptCluster) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptCluster::min(self : NlpembedgptCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_cluster_max(s : NlpembedgptCluster) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptCluster::max(self : NlpembedgptCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_cluster_to_string(s : NlpembedgptCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptCluster::to_string(self : NlpembedgptCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptModel {
@@ -708,45 +708,45 @@ pub fn nlp_embed_gpt_model_make(size : Int) -> NlpembedgptModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_model_len(s : NlpembedgptModel) -> Int { s.size }
+pub fn NlpembedgptModel::len(self : NlpembedgptModel) -> Int { self.size }
 
-pub fn nlp_embed_gpt_model_get(s : NlpembedgptModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptModel::get(self : NlpembedgptModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_model_set(s : NlpembedgptModel, i : Int, v : Double) -> NlpembedgptModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptModel::set(self : NlpembedgptModel, i : Int, v : Double) -> NlpembedgptModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_model_sum(s : NlpembedgptModel) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptModel::sum(self : NlpembedgptModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_model_mean(s : NlpembedgptModel) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptModel::mean(self : NlpembedgptModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_model_scale(s : NlpembedgptModel, f : Double) -> NlpembedgptModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptModel::scale(self : NlpembedgptModel, f : Double) -> NlpembedgptModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_model_add(a : NlpembedgptModel, b : NlpembedgptModel) -> NlpembedgptModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptModel::add(self : NlpembedgptModel, other : NlpembedgptModel) -> NlpembedgptModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_model_copy(s : NlpembedgptModel) -> NlpembedgptModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptModel::copy(self : NlpembedgptModel) -> NlpembedgptModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_model_fill(s : NlpembedgptModel, v : Double) -> NlpembedgptModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptModel::fill(self : NlpembedgptModel, v : Double) -> NlpembedgptModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_model_min(s : NlpembedgptModel) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptModel::min(self : NlpembedgptModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_model_max(s : NlpembedgptModel) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptModel::max(self : NlpembedgptModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_model_to_string(s : NlpembedgptModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptModel::to_string(self : NlpembedgptModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptLayer {
@@ -759,45 +759,45 @@ pub fn nlp_embed_gpt_layer_make(size : Int) -> NlpembedgptLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_layer_len(s : NlpembedgptLayer) -> Int { s.size }
+pub fn NlpembedgptLayer::len(self : NlpembedgptLayer) -> Int { self.size }
 
-pub fn nlp_embed_gpt_layer_get(s : NlpembedgptLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptLayer::get(self : NlpembedgptLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_layer_set(s : NlpembedgptLayer, i : Int, v : Double) -> NlpembedgptLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptLayer::set(self : NlpembedgptLayer, i : Int, v : Double) -> NlpembedgptLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_layer_sum(s : NlpembedgptLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptLayer::sum(self : NlpembedgptLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_layer_mean(s : NlpembedgptLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptLayer::mean(self : NlpembedgptLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_layer_scale(s : NlpembedgptLayer, f : Double) -> NlpembedgptLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptLayer::scale(self : NlpembedgptLayer, f : Double) -> NlpembedgptLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_layer_add(a : NlpembedgptLayer, b : NlpembedgptLayer) -> NlpembedgptLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptLayer::add(self : NlpembedgptLayer, other : NlpembedgptLayer) -> NlpembedgptLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_layer_copy(s : NlpembedgptLayer) -> NlpembedgptLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptLayer::copy(self : NlpembedgptLayer) -> NlpembedgptLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_layer_fill(s : NlpembedgptLayer, v : Double) -> NlpembedgptLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptLayer::fill(self : NlpembedgptLayer, v : Double) -> NlpembedgptLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_layer_min(s : NlpembedgptLayer) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptLayer::min(self : NlpembedgptLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_layer_max(s : NlpembedgptLayer) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptLayer::max(self : NlpembedgptLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_layer_to_string(s : NlpembedgptLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptLayer::to_string(self : NlpembedgptLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_embed_gpt_buffer_make(size : Int) -> NlpembedgptBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_buffer_len(s : NlpembedgptBuffer) -> Int { s.size }
+pub fn NlpembedgptBuffer::len(self : NlpembedgptBuffer) -> Int { self.size }
 
-pub fn nlp_embed_gpt_buffer_get(s : NlpembedgptBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptBuffer::get(self : NlpembedgptBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_buffer_set(s : NlpembedgptBuffer, i : Int, v : Double) -> NlpembedgptBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptBuffer::set(self : NlpembedgptBuffer, i : Int, v : Double) -> NlpembedgptBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_buffer_sum(s : NlpembedgptBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptBuffer::sum(self : NlpembedgptBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_buffer_mean(s : NlpembedgptBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptBuffer::mean(self : NlpembedgptBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_buffer_scale(s : NlpembedgptBuffer, f : Double) -> NlpembedgptBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptBuffer::scale(self : NlpembedgptBuffer, f : Double) -> NlpembedgptBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_buffer_add(a : NlpembedgptBuffer, b : NlpembedgptBuffer) -> NlpembedgptBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptBuffer::add(self : NlpembedgptBuffer, other : NlpembedgptBuffer) -> NlpembedgptBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_buffer_copy(s : NlpembedgptBuffer) -> NlpembedgptBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptBuffer::copy(self : NlpembedgptBuffer) -> NlpembedgptBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_buffer_fill(s : NlpembedgptBuffer, v : Double) -> NlpembedgptBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptBuffer::fill(self : NlpembedgptBuffer, v : Double) -> NlpembedgptBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_buffer_min(s : NlpembedgptBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptBuffer::min(self : NlpembedgptBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_buffer_max(s : NlpembedgptBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptBuffer::max(self : NlpembedgptBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_buffer_to_string(s : NlpembedgptBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptBuffer::to_string(self : NlpembedgptBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptCursor {
@@ -861,45 +861,45 @@ pub fn nlp_embed_gpt_cursor_make(size : Int) -> NlpembedgptCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_cursor_len(s : NlpembedgptCursor) -> Int { s.size }
+pub fn NlpembedgptCursor::len(self : NlpembedgptCursor) -> Int { self.size }
 
-pub fn nlp_embed_gpt_cursor_get(s : NlpembedgptCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptCursor::get(self : NlpembedgptCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_cursor_set(s : NlpembedgptCursor, i : Int, v : Double) -> NlpembedgptCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptCursor::set(self : NlpembedgptCursor, i : Int, v : Double) -> NlpembedgptCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_cursor_sum(s : NlpembedgptCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptCursor::sum(self : NlpembedgptCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_cursor_mean(s : NlpembedgptCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptCursor::mean(self : NlpembedgptCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_cursor_scale(s : NlpembedgptCursor, f : Double) -> NlpembedgptCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptCursor::scale(self : NlpembedgptCursor, f : Double) -> NlpembedgptCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_cursor_add(a : NlpembedgptCursor, b : NlpembedgptCursor) -> NlpembedgptCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptCursor::add(self : NlpembedgptCursor, other : NlpembedgptCursor) -> NlpembedgptCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_cursor_copy(s : NlpembedgptCursor) -> NlpembedgptCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptCursor::copy(self : NlpembedgptCursor) -> NlpembedgptCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_cursor_fill(s : NlpembedgptCursor, v : Double) -> NlpembedgptCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptCursor::fill(self : NlpembedgptCursor, v : Double) -> NlpembedgptCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_cursor_min(s : NlpembedgptCursor) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptCursor::min(self : NlpembedgptCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_cursor_max(s : NlpembedgptCursor) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptCursor::max(self : NlpembedgptCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_cursor_to_string(s : NlpembedgptCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptCursor::to_string(self : NlpembedgptCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptView {
@@ -912,45 +912,45 @@ pub fn nlp_embed_gpt_view_make(size : Int) -> NlpembedgptView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_view_len(s : NlpembedgptView) -> Int { s.size }
+pub fn NlpembedgptView::len(self : NlpembedgptView) -> Int { self.size }
 
-pub fn nlp_embed_gpt_view_get(s : NlpembedgptView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptView::get(self : NlpembedgptView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_view_set(s : NlpembedgptView, i : Int, v : Double) -> NlpembedgptView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptView::set(self : NlpembedgptView, i : Int, v : Double) -> NlpembedgptView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_view_sum(s : NlpembedgptView) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptView::sum(self : NlpembedgptView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_view_mean(s : NlpembedgptView) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptView::mean(self : NlpembedgptView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_view_scale(s : NlpembedgptView, f : Double) -> NlpembedgptView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptView::scale(self : NlpembedgptView, f : Double) -> NlpembedgptView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_view_add(a : NlpembedgptView, b : NlpembedgptView) -> NlpembedgptView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptView::add(self : NlpembedgptView, other : NlpembedgptView) -> NlpembedgptView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_view_copy(s : NlpembedgptView) -> NlpembedgptView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptView::copy(self : NlpembedgptView) -> NlpembedgptView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_view_fill(s : NlpembedgptView, v : Double) -> NlpembedgptView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptView::fill(self : NlpembedgptView, v : Double) -> NlpembedgptView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_view_min(s : NlpembedgptView) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptView::min(self : NlpembedgptView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_view_max(s : NlpembedgptView) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptView::max(self : NlpembedgptView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_view_to_string(s : NlpembedgptView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptView::to_string(self : NlpembedgptView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptRange {
@@ -963,45 +963,45 @@ pub fn nlp_embed_gpt_range_make(size : Int) -> NlpembedgptRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_range_len(s : NlpembedgptRange) -> Int { s.size }
+pub fn NlpembedgptRange::len(self : NlpembedgptRange) -> Int { self.size }
 
-pub fn nlp_embed_gpt_range_get(s : NlpembedgptRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptRange::get(self : NlpembedgptRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_range_set(s : NlpembedgptRange, i : Int, v : Double) -> NlpembedgptRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptRange::set(self : NlpembedgptRange, i : Int, v : Double) -> NlpembedgptRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_range_sum(s : NlpembedgptRange) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptRange::sum(self : NlpembedgptRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_range_mean(s : NlpembedgptRange) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptRange::mean(self : NlpembedgptRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_range_scale(s : NlpembedgptRange, f : Double) -> NlpembedgptRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptRange::scale(self : NlpembedgptRange, f : Double) -> NlpembedgptRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_range_add(a : NlpembedgptRange, b : NlpembedgptRange) -> NlpembedgptRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptRange::add(self : NlpembedgptRange, other : NlpembedgptRange) -> NlpembedgptRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_range_copy(s : NlpembedgptRange) -> NlpembedgptRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptRange::copy(self : NlpembedgptRange) -> NlpembedgptRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_range_fill(s : NlpembedgptRange, v : Double) -> NlpembedgptRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptRange::fill(self : NlpembedgptRange, v : Double) -> NlpembedgptRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_range_min(s : NlpembedgptRange) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptRange::min(self : NlpembedgptRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_range_max(s : NlpembedgptRange) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptRange::max(self : NlpembedgptRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_range_to_string(s : NlpembedgptRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptRange::to_string(self : NlpembedgptRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgptSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_embed_gpt_slice_make(size : Int) -> NlpembedgptSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_gpt_slice_len(s : NlpembedgptSlice) -> Int { s.size }
+pub fn NlpembedgptSlice::len(self : NlpembedgptSlice) -> Int { self.size }
 
-pub fn nlp_embed_gpt_slice_get(s : NlpembedgptSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgptSlice::get(self : NlpembedgptSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_gpt_slice_set(s : NlpembedgptSlice, i : Int, v : Double) -> NlpembedgptSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgptSlice::set(self : NlpembedgptSlice, i : Int, v : Double) -> NlpembedgptSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_slice_sum(s : NlpembedgptSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgptSlice::sum(self : NlpembedgptSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_gpt_slice_mean(s : NlpembedgptSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgptSlice::mean(self : NlpembedgptSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_gpt_slice_scale(s : NlpembedgptSlice, f : Double) -> NlpembedgptSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgptSlice::scale(self : NlpembedgptSlice, f : Double) -> NlpembedgptSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_slice_add(a : NlpembedgptSlice, b : NlpembedgptSlice) -> NlpembedgptSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgptSlice::add(self : NlpembedgptSlice, other : NlpembedgptSlice) -> NlpembedgptSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_slice_copy(s : NlpembedgptSlice) -> NlpembedgptSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgptSlice::copy(self : NlpembedgptSlice) -> NlpembedgptSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_slice_fill(s : NlpembedgptSlice, v : Double) -> NlpembedgptSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgptSlice::fill(self : NlpembedgptSlice, v : Double) -> NlpembedgptSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_gpt_slice_min(s : NlpembedgptSlice) -> Double { @_common.min(s.data) }
+pub fn NlpembedgptSlice::min(self : NlpembedgptSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_gpt_slice_max(s : NlpembedgptSlice) -> Double { @_common.max(s.data) }
+pub fn NlpembedgptSlice::max(self : NlpembedgptSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_gpt_slice_to_string(s : NlpembedgptSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgptSlice::to_string(self : NlpembedgptSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn bio_phylo_parsimony_frame_make(size : Int) -> BiophyloparsimonyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_frame_len(s : BiophyloparsimonyFrame) -> Int { s.size }
+pub fn BiophyloparsimonyFrame::len(self : BiophyloparsimonyFrame) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_frame_get(s : BiophyloparsimonyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyFrame::get(self : BiophyloparsimonyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_frame_set(s : BiophyloparsimonyFrame, i : Int, v : Double) -> BiophyloparsimonyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyFrame::set(self : BiophyloparsimonyFrame, i : Int, v : Double) -> BiophyloparsimonyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_frame_sum(s : BiophyloparsimonyFrame) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyFrame::sum(self : BiophyloparsimonyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_frame_mean(s : BiophyloparsimonyFrame) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyFrame::mean(self : BiophyloparsimonyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_frame_scale(s : BiophyloparsimonyFrame, f : Double) -> BiophyloparsimonyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyFrame::scale(self : BiophyloparsimonyFrame, f : Double) -> BiophyloparsimonyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_frame_add(a : BiophyloparsimonyFrame, b : BiophyloparsimonyFrame) -> BiophyloparsimonyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyFrame::add(self : BiophyloparsimonyFrame, other : BiophyloparsimonyFrame) -> BiophyloparsimonyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_frame_copy(s : BiophyloparsimonyFrame) -> BiophyloparsimonyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyFrame::copy(self : BiophyloparsimonyFrame) -> BiophyloparsimonyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_frame_fill(s : BiophyloparsimonyFrame, v : Double) -> BiophyloparsimonyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyFrame::fill(self : BiophyloparsimonyFrame, v : Double) -> BiophyloparsimonyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_frame_min(s : BiophyloparsimonyFrame) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyFrame::min(self : BiophyloparsimonyFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_frame_max(s : BiophyloparsimonyFrame) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyFrame::max(self : BiophyloparsimonyFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_frame_to_string(s : BiophyloparsimonyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyFrame::to_string(self : BiophyloparsimonyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonyTable {
@@ -402,45 +402,45 @@ pub fn bio_phylo_parsimony_table_make(size : Int) -> BiophyloparsimonyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_table_len(s : BiophyloparsimonyTable) -> Int { s.size }
+pub fn BiophyloparsimonyTable::len(self : BiophyloparsimonyTable) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_table_get(s : BiophyloparsimonyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyTable::get(self : BiophyloparsimonyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_table_set(s : BiophyloparsimonyTable, i : Int, v : Double) -> BiophyloparsimonyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyTable::set(self : BiophyloparsimonyTable, i : Int, v : Double) -> BiophyloparsimonyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_table_sum(s : BiophyloparsimonyTable) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyTable::sum(self : BiophyloparsimonyTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_table_mean(s : BiophyloparsimonyTable) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyTable::mean(self : BiophyloparsimonyTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_table_scale(s : BiophyloparsimonyTable, f : Double) -> BiophyloparsimonyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyTable::scale(self : BiophyloparsimonyTable, f : Double) -> BiophyloparsimonyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_table_add(a : BiophyloparsimonyTable, b : BiophyloparsimonyTable) -> BiophyloparsimonyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyTable::add(self : BiophyloparsimonyTable, other : BiophyloparsimonyTable) -> BiophyloparsimonyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_table_copy(s : BiophyloparsimonyTable) -> BiophyloparsimonyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyTable::copy(self : BiophyloparsimonyTable) -> BiophyloparsimonyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_table_fill(s : BiophyloparsimonyTable, v : Double) -> BiophyloparsimonyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyTable::fill(self : BiophyloparsimonyTable, v : Double) -> BiophyloparsimonyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_table_min(s : BiophyloparsimonyTable) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyTable::min(self : BiophyloparsimonyTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_table_max(s : BiophyloparsimonyTable) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyTable::max(self : BiophyloparsimonyTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_table_to_string(s : BiophyloparsimonyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyTable::to_string(self : BiophyloparsimonyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonyGraphN {
@@ -453,45 +453,45 @@ pub fn bio_phylo_parsimony_graphn_make(size : Int) -> BiophyloparsimonyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_graphn_len(s : BiophyloparsimonyGraphN) -> Int { s.size }
+pub fn BiophyloparsimonyGraphN::len(self : BiophyloparsimonyGraphN) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_graphn_get(s : BiophyloparsimonyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyGraphN::get(self : BiophyloparsimonyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_graphn_set(s : BiophyloparsimonyGraphN, i : Int, v : Double) -> BiophyloparsimonyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyGraphN::set(self : BiophyloparsimonyGraphN, i : Int, v : Double) -> BiophyloparsimonyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_graphn_sum(s : BiophyloparsimonyGraphN) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyGraphN::sum(self : BiophyloparsimonyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_graphn_mean(s : BiophyloparsimonyGraphN) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyGraphN::mean(self : BiophyloparsimonyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_graphn_scale(s : BiophyloparsimonyGraphN, f : Double) -> BiophyloparsimonyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyGraphN::scale(self : BiophyloparsimonyGraphN, f : Double) -> BiophyloparsimonyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_graphn_add(a : BiophyloparsimonyGraphN, b : BiophyloparsimonyGraphN) -> BiophyloparsimonyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyGraphN::add(self : BiophyloparsimonyGraphN, other : BiophyloparsimonyGraphN) -> BiophyloparsimonyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_graphn_copy(s : BiophyloparsimonyGraphN) -> BiophyloparsimonyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyGraphN::copy(self : BiophyloparsimonyGraphN) -> BiophyloparsimonyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_graphn_fill(s : BiophyloparsimonyGraphN, v : Double) -> BiophyloparsimonyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyGraphN::fill(self : BiophyloparsimonyGraphN, v : Double) -> BiophyloparsimonyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_graphn_min(s : BiophyloparsimonyGraphN) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyGraphN::min(self : BiophyloparsimonyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_graphn_max(s : BiophyloparsimonyGraphN) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyGraphN::max(self : BiophyloparsimonyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_graphn_to_string(s : BiophyloparsimonyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyGraphN::to_string(self : BiophyloparsimonyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonyNode {
@@ -504,45 +504,45 @@ pub fn bio_phylo_parsimony_node_make(size : Int) -> BiophyloparsimonyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_node_len(s : BiophyloparsimonyNode) -> Int { s.size }
+pub fn BiophyloparsimonyNode::len(self : BiophyloparsimonyNode) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_node_get(s : BiophyloparsimonyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyNode::get(self : BiophyloparsimonyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_node_set(s : BiophyloparsimonyNode, i : Int, v : Double) -> BiophyloparsimonyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyNode::set(self : BiophyloparsimonyNode, i : Int, v : Double) -> BiophyloparsimonyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_node_sum(s : BiophyloparsimonyNode) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyNode::sum(self : BiophyloparsimonyNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_node_mean(s : BiophyloparsimonyNode) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyNode::mean(self : BiophyloparsimonyNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_node_scale(s : BiophyloparsimonyNode, f : Double) -> BiophyloparsimonyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyNode::scale(self : BiophyloparsimonyNode, f : Double) -> BiophyloparsimonyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_node_add(a : BiophyloparsimonyNode, b : BiophyloparsimonyNode) -> BiophyloparsimonyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyNode::add(self : BiophyloparsimonyNode, other : BiophyloparsimonyNode) -> BiophyloparsimonyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_node_copy(s : BiophyloparsimonyNode) -> BiophyloparsimonyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyNode::copy(self : BiophyloparsimonyNode) -> BiophyloparsimonyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_node_fill(s : BiophyloparsimonyNode, v : Double) -> BiophyloparsimonyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyNode::fill(self : BiophyloparsimonyNode, v : Double) -> BiophyloparsimonyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_node_min(s : BiophyloparsimonyNode) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyNode::min(self : BiophyloparsimonyNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_node_max(s : BiophyloparsimonyNode) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyNode::max(self : BiophyloparsimonyNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_node_to_string(s : BiophyloparsimonyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyNode::to_string(self : BiophyloparsimonyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonyEdge {
@@ -555,45 +555,45 @@ pub fn bio_phylo_parsimony_edge_make(size : Int) -> BiophyloparsimonyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_edge_len(s : BiophyloparsimonyEdge) -> Int { s.size }
+pub fn BiophyloparsimonyEdge::len(self : BiophyloparsimonyEdge) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_edge_get(s : BiophyloparsimonyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyEdge::get(self : BiophyloparsimonyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_edge_set(s : BiophyloparsimonyEdge, i : Int, v : Double) -> BiophyloparsimonyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyEdge::set(self : BiophyloparsimonyEdge, i : Int, v : Double) -> BiophyloparsimonyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_edge_sum(s : BiophyloparsimonyEdge) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyEdge::sum(self : BiophyloparsimonyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_edge_mean(s : BiophyloparsimonyEdge) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyEdge::mean(self : BiophyloparsimonyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_edge_scale(s : BiophyloparsimonyEdge, f : Double) -> BiophyloparsimonyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyEdge::scale(self : BiophyloparsimonyEdge, f : Double) -> BiophyloparsimonyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_edge_add(a : BiophyloparsimonyEdge, b : BiophyloparsimonyEdge) -> BiophyloparsimonyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyEdge::add(self : BiophyloparsimonyEdge, other : BiophyloparsimonyEdge) -> BiophyloparsimonyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_edge_copy(s : BiophyloparsimonyEdge) -> BiophyloparsimonyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyEdge::copy(self : BiophyloparsimonyEdge) -> BiophyloparsimonyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_edge_fill(s : BiophyloparsimonyEdge, v : Double) -> BiophyloparsimonyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyEdge::fill(self : BiophyloparsimonyEdge, v : Double) -> BiophyloparsimonyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_edge_min(s : BiophyloparsimonyEdge) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyEdge::min(self : BiophyloparsimonyEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_edge_max(s : BiophyloparsimonyEdge) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyEdge::max(self : BiophyloparsimonyEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_edge_to_string(s : BiophyloparsimonyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyEdge::to_string(self : BiophyloparsimonyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonyPath {
@@ -606,45 +606,45 @@ pub fn bio_phylo_parsimony_path_make(size : Int) -> BiophyloparsimonyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_path_len(s : BiophyloparsimonyPath) -> Int { s.size }
+pub fn BiophyloparsimonyPath::len(self : BiophyloparsimonyPath) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_path_get(s : BiophyloparsimonyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyPath::get(self : BiophyloparsimonyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_path_set(s : BiophyloparsimonyPath, i : Int, v : Double) -> BiophyloparsimonyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyPath::set(self : BiophyloparsimonyPath, i : Int, v : Double) -> BiophyloparsimonyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_path_sum(s : BiophyloparsimonyPath) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyPath::sum(self : BiophyloparsimonyPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_path_mean(s : BiophyloparsimonyPath) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyPath::mean(self : BiophyloparsimonyPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_path_scale(s : BiophyloparsimonyPath, f : Double) -> BiophyloparsimonyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyPath::scale(self : BiophyloparsimonyPath, f : Double) -> BiophyloparsimonyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_path_add(a : BiophyloparsimonyPath, b : BiophyloparsimonyPath) -> BiophyloparsimonyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyPath::add(self : BiophyloparsimonyPath, other : BiophyloparsimonyPath) -> BiophyloparsimonyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_path_copy(s : BiophyloparsimonyPath) -> BiophyloparsimonyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyPath::copy(self : BiophyloparsimonyPath) -> BiophyloparsimonyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_path_fill(s : BiophyloparsimonyPath, v : Double) -> BiophyloparsimonyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyPath::fill(self : BiophyloparsimonyPath, v : Double) -> BiophyloparsimonyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_path_min(s : BiophyloparsimonyPath) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyPath::min(self : BiophyloparsimonyPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_path_max(s : BiophyloparsimonyPath) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyPath::max(self : BiophyloparsimonyPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_path_to_string(s : BiophyloparsimonyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyPath::to_string(self : BiophyloparsimonyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonyCluster {
@@ -657,45 +657,45 @@ pub fn bio_phylo_parsimony_cluster_make(size : Int) -> BiophyloparsimonyCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_cluster_len(s : BiophyloparsimonyCluster) -> Int { s.size }
+pub fn BiophyloparsimonyCluster::len(self : BiophyloparsimonyCluster) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_cluster_get(s : BiophyloparsimonyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyCluster::get(self : BiophyloparsimonyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_cluster_set(s : BiophyloparsimonyCluster, i : Int, v : Double) -> BiophyloparsimonyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyCluster::set(self : BiophyloparsimonyCluster, i : Int, v : Double) -> BiophyloparsimonyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_cluster_sum(s : BiophyloparsimonyCluster) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyCluster::sum(self : BiophyloparsimonyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_cluster_mean(s : BiophyloparsimonyCluster) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyCluster::mean(self : BiophyloparsimonyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_cluster_scale(s : BiophyloparsimonyCluster, f : Double) -> BiophyloparsimonyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyCluster::scale(self : BiophyloparsimonyCluster, f : Double) -> BiophyloparsimonyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_cluster_add(a : BiophyloparsimonyCluster, b : BiophyloparsimonyCluster) -> BiophyloparsimonyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyCluster::add(self : BiophyloparsimonyCluster, other : BiophyloparsimonyCluster) -> BiophyloparsimonyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_cluster_copy(s : BiophyloparsimonyCluster) -> BiophyloparsimonyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyCluster::copy(self : BiophyloparsimonyCluster) -> BiophyloparsimonyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_cluster_fill(s : BiophyloparsimonyCluster, v : Double) -> BiophyloparsimonyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyCluster::fill(self : BiophyloparsimonyCluster, v : Double) -> BiophyloparsimonyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_cluster_min(s : BiophyloparsimonyCluster) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyCluster::min(self : BiophyloparsimonyCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_cluster_max(s : BiophyloparsimonyCluster) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyCluster::max(self : BiophyloparsimonyCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_cluster_to_string(s : BiophyloparsimonyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyCluster::to_string(self : BiophyloparsimonyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonyModel {
@@ -708,45 +708,45 @@ pub fn bio_phylo_parsimony_model_make(size : Int) -> BiophyloparsimonyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_model_len(s : BiophyloparsimonyModel) -> Int { s.size }
+pub fn BiophyloparsimonyModel::len(self : BiophyloparsimonyModel) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_model_get(s : BiophyloparsimonyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyModel::get(self : BiophyloparsimonyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_model_set(s : BiophyloparsimonyModel, i : Int, v : Double) -> BiophyloparsimonyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyModel::set(self : BiophyloparsimonyModel, i : Int, v : Double) -> BiophyloparsimonyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_model_sum(s : BiophyloparsimonyModel) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyModel::sum(self : BiophyloparsimonyModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_model_mean(s : BiophyloparsimonyModel) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyModel::mean(self : BiophyloparsimonyModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_model_scale(s : BiophyloparsimonyModel, f : Double) -> BiophyloparsimonyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyModel::scale(self : BiophyloparsimonyModel, f : Double) -> BiophyloparsimonyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_model_add(a : BiophyloparsimonyModel, b : BiophyloparsimonyModel) -> BiophyloparsimonyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyModel::add(self : BiophyloparsimonyModel, other : BiophyloparsimonyModel) -> BiophyloparsimonyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_model_copy(s : BiophyloparsimonyModel) -> BiophyloparsimonyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyModel::copy(self : BiophyloparsimonyModel) -> BiophyloparsimonyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_model_fill(s : BiophyloparsimonyModel, v : Double) -> BiophyloparsimonyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyModel::fill(self : BiophyloparsimonyModel, v : Double) -> BiophyloparsimonyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_model_min(s : BiophyloparsimonyModel) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyModel::min(self : BiophyloparsimonyModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_model_max(s : BiophyloparsimonyModel) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyModel::max(self : BiophyloparsimonyModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_model_to_string(s : BiophyloparsimonyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyModel::to_string(self : BiophyloparsimonyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonyLayer {
@@ -759,45 +759,45 @@ pub fn bio_phylo_parsimony_layer_make(size : Int) -> BiophyloparsimonyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_layer_len(s : BiophyloparsimonyLayer) -> Int { s.size }
+pub fn BiophyloparsimonyLayer::len(self : BiophyloparsimonyLayer) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_layer_get(s : BiophyloparsimonyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyLayer::get(self : BiophyloparsimonyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_layer_set(s : BiophyloparsimonyLayer, i : Int, v : Double) -> BiophyloparsimonyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyLayer::set(self : BiophyloparsimonyLayer, i : Int, v : Double) -> BiophyloparsimonyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_layer_sum(s : BiophyloparsimonyLayer) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyLayer::sum(self : BiophyloparsimonyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_layer_mean(s : BiophyloparsimonyLayer) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyLayer::mean(self : BiophyloparsimonyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_layer_scale(s : BiophyloparsimonyLayer, f : Double) -> BiophyloparsimonyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyLayer::scale(self : BiophyloparsimonyLayer, f : Double) -> BiophyloparsimonyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_layer_add(a : BiophyloparsimonyLayer, b : BiophyloparsimonyLayer) -> BiophyloparsimonyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyLayer::add(self : BiophyloparsimonyLayer, other : BiophyloparsimonyLayer) -> BiophyloparsimonyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_layer_copy(s : BiophyloparsimonyLayer) -> BiophyloparsimonyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyLayer::copy(self : BiophyloparsimonyLayer) -> BiophyloparsimonyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_layer_fill(s : BiophyloparsimonyLayer, v : Double) -> BiophyloparsimonyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyLayer::fill(self : BiophyloparsimonyLayer, v : Double) -> BiophyloparsimonyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_layer_min(s : BiophyloparsimonyLayer) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyLayer::min(self : BiophyloparsimonyLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_layer_max(s : BiophyloparsimonyLayer) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyLayer::max(self : BiophyloparsimonyLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_layer_to_string(s : BiophyloparsimonyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyLayer::to_string(self : BiophyloparsimonyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonyBuffer {
@@ -810,45 +810,45 @@ pub fn bio_phylo_parsimony_buffer_make(size : Int) -> BiophyloparsimonyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_buffer_len(s : BiophyloparsimonyBuffer) -> Int { s.size }
+pub fn BiophyloparsimonyBuffer::len(self : BiophyloparsimonyBuffer) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_buffer_get(s : BiophyloparsimonyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyBuffer::get(self : BiophyloparsimonyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_buffer_set(s : BiophyloparsimonyBuffer, i : Int, v : Double) -> BiophyloparsimonyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyBuffer::set(self : BiophyloparsimonyBuffer, i : Int, v : Double) -> BiophyloparsimonyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_buffer_sum(s : BiophyloparsimonyBuffer) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyBuffer::sum(self : BiophyloparsimonyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_buffer_mean(s : BiophyloparsimonyBuffer) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyBuffer::mean(self : BiophyloparsimonyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_buffer_scale(s : BiophyloparsimonyBuffer, f : Double) -> BiophyloparsimonyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyBuffer::scale(self : BiophyloparsimonyBuffer, f : Double) -> BiophyloparsimonyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_buffer_add(a : BiophyloparsimonyBuffer, b : BiophyloparsimonyBuffer) -> BiophyloparsimonyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyBuffer::add(self : BiophyloparsimonyBuffer, other : BiophyloparsimonyBuffer) -> BiophyloparsimonyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_buffer_copy(s : BiophyloparsimonyBuffer) -> BiophyloparsimonyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyBuffer::copy(self : BiophyloparsimonyBuffer) -> BiophyloparsimonyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_buffer_fill(s : BiophyloparsimonyBuffer, v : Double) -> BiophyloparsimonyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyBuffer::fill(self : BiophyloparsimonyBuffer, v : Double) -> BiophyloparsimonyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_buffer_min(s : BiophyloparsimonyBuffer) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyBuffer::min(self : BiophyloparsimonyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_buffer_max(s : BiophyloparsimonyBuffer) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyBuffer::max(self : BiophyloparsimonyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_buffer_to_string(s : BiophyloparsimonyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyBuffer::to_string(self : BiophyloparsimonyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonyCursor {
@@ -861,45 +861,45 @@ pub fn bio_phylo_parsimony_cursor_make(size : Int) -> BiophyloparsimonyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_cursor_len(s : BiophyloparsimonyCursor) -> Int { s.size }
+pub fn BiophyloparsimonyCursor::len(self : BiophyloparsimonyCursor) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_cursor_get(s : BiophyloparsimonyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyCursor::get(self : BiophyloparsimonyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_cursor_set(s : BiophyloparsimonyCursor, i : Int, v : Double) -> BiophyloparsimonyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyCursor::set(self : BiophyloparsimonyCursor, i : Int, v : Double) -> BiophyloparsimonyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_cursor_sum(s : BiophyloparsimonyCursor) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyCursor::sum(self : BiophyloparsimonyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_cursor_mean(s : BiophyloparsimonyCursor) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyCursor::mean(self : BiophyloparsimonyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_cursor_scale(s : BiophyloparsimonyCursor, f : Double) -> BiophyloparsimonyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyCursor::scale(self : BiophyloparsimonyCursor, f : Double) -> BiophyloparsimonyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_cursor_add(a : BiophyloparsimonyCursor, b : BiophyloparsimonyCursor) -> BiophyloparsimonyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyCursor::add(self : BiophyloparsimonyCursor, other : BiophyloparsimonyCursor) -> BiophyloparsimonyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_cursor_copy(s : BiophyloparsimonyCursor) -> BiophyloparsimonyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyCursor::copy(self : BiophyloparsimonyCursor) -> BiophyloparsimonyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_cursor_fill(s : BiophyloparsimonyCursor, v : Double) -> BiophyloparsimonyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyCursor::fill(self : BiophyloparsimonyCursor, v : Double) -> BiophyloparsimonyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_cursor_min(s : BiophyloparsimonyCursor) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyCursor::min(self : BiophyloparsimonyCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_cursor_max(s : BiophyloparsimonyCursor) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyCursor::max(self : BiophyloparsimonyCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_cursor_to_string(s : BiophyloparsimonyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyCursor::to_string(self : BiophyloparsimonyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonyView {
@@ -912,45 +912,45 @@ pub fn bio_phylo_parsimony_view_make(size : Int) -> BiophyloparsimonyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_view_len(s : BiophyloparsimonyView) -> Int { s.size }
+pub fn BiophyloparsimonyView::len(self : BiophyloparsimonyView) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_view_get(s : BiophyloparsimonyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyView::get(self : BiophyloparsimonyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_view_set(s : BiophyloparsimonyView, i : Int, v : Double) -> BiophyloparsimonyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyView::set(self : BiophyloparsimonyView, i : Int, v : Double) -> BiophyloparsimonyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_view_sum(s : BiophyloparsimonyView) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyView::sum(self : BiophyloparsimonyView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_view_mean(s : BiophyloparsimonyView) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyView::mean(self : BiophyloparsimonyView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_view_scale(s : BiophyloparsimonyView, f : Double) -> BiophyloparsimonyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyView::scale(self : BiophyloparsimonyView, f : Double) -> BiophyloparsimonyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_view_add(a : BiophyloparsimonyView, b : BiophyloparsimonyView) -> BiophyloparsimonyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyView::add(self : BiophyloparsimonyView, other : BiophyloparsimonyView) -> BiophyloparsimonyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_view_copy(s : BiophyloparsimonyView) -> BiophyloparsimonyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyView::copy(self : BiophyloparsimonyView) -> BiophyloparsimonyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_view_fill(s : BiophyloparsimonyView, v : Double) -> BiophyloparsimonyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyView::fill(self : BiophyloparsimonyView, v : Double) -> BiophyloparsimonyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_view_min(s : BiophyloparsimonyView) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyView::min(self : BiophyloparsimonyView) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_view_max(s : BiophyloparsimonyView) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyView::max(self : BiophyloparsimonyView) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_view_to_string(s : BiophyloparsimonyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyView::to_string(self : BiophyloparsimonyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonyRange {
@@ -963,45 +963,45 @@ pub fn bio_phylo_parsimony_range_make(size : Int) -> BiophyloparsimonyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_range_len(s : BiophyloparsimonyRange) -> Int { s.size }
+pub fn BiophyloparsimonyRange::len(self : BiophyloparsimonyRange) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_range_get(s : BiophyloparsimonyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonyRange::get(self : BiophyloparsimonyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_range_set(s : BiophyloparsimonyRange, i : Int, v : Double) -> BiophyloparsimonyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyRange::set(self : BiophyloparsimonyRange, i : Int, v : Double) -> BiophyloparsimonyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_range_sum(s : BiophyloparsimonyRange) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonyRange::sum(self : BiophyloparsimonyRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_range_mean(s : BiophyloparsimonyRange) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonyRange::mean(self : BiophyloparsimonyRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_range_scale(s : BiophyloparsimonyRange, f : Double) -> BiophyloparsimonyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyRange::scale(self : BiophyloparsimonyRange, f : Double) -> BiophyloparsimonyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_range_add(a : BiophyloparsimonyRange, b : BiophyloparsimonyRange) -> BiophyloparsimonyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonyRange::add(self : BiophyloparsimonyRange, other : BiophyloparsimonyRange) -> BiophyloparsimonyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_range_copy(s : BiophyloparsimonyRange) -> BiophyloparsimonyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyRange::copy(self : BiophyloparsimonyRange) -> BiophyloparsimonyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_range_fill(s : BiophyloparsimonyRange, v : Double) -> BiophyloparsimonyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonyRange::fill(self : BiophyloparsimonyRange, v : Double) -> BiophyloparsimonyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_range_min(s : BiophyloparsimonyRange) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonyRange::min(self : BiophyloparsimonyRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_range_max(s : BiophyloparsimonyRange) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonyRange::max(self : BiophyloparsimonyRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_range_to_string(s : BiophyloparsimonyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonyRange::to_string(self : BiophyloparsimonyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloparsimonySlice {
@@ -1014,44 +1014,44 @@ pub fn bio_phylo_parsimony_slice_make(size : Int) -> BiophyloparsimonySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_parsimony_slice_len(s : BiophyloparsimonySlice) -> Int { s.size }
+pub fn BiophyloparsimonySlice::len(self : BiophyloparsimonySlice) -> Int { self.size }
 
-pub fn bio_phylo_parsimony_slice_get(s : BiophyloparsimonySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloparsimonySlice::get(self : BiophyloparsimonySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_parsimony_slice_set(s : BiophyloparsimonySlice, i : Int, v : Double) -> BiophyloparsimonySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloparsimonySlice::set(self : BiophyloparsimonySlice, i : Int, v : Double) -> BiophyloparsimonySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_slice_sum(s : BiophyloparsimonySlice) -> Double { @_common.sum(s.data) }
+pub fn BiophyloparsimonySlice::sum(self : BiophyloparsimonySlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_parsimony_slice_mean(s : BiophyloparsimonySlice) -> Double { @_common.mean(s.data) }
+pub fn BiophyloparsimonySlice::mean(self : BiophyloparsimonySlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_parsimony_slice_scale(s : BiophyloparsimonySlice, f : Double) -> BiophyloparsimonySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonySlice::scale(self : BiophyloparsimonySlice, f : Double) -> BiophyloparsimonySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_slice_add(a : BiophyloparsimonySlice, b : BiophyloparsimonySlice) -> BiophyloparsimonySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloparsimonySlice::add(self : BiophyloparsimonySlice, other : BiophyloparsimonySlice) -> BiophyloparsimonySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_slice_copy(s : BiophyloparsimonySlice) -> BiophyloparsimonySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonySlice::copy(self : BiophyloparsimonySlice) -> BiophyloparsimonySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_slice_fill(s : BiophyloparsimonySlice, v : Double) -> BiophyloparsimonySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloparsimonySlice::fill(self : BiophyloparsimonySlice, v : Double) -> BiophyloparsimonySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_parsimony_slice_min(s : BiophyloparsimonySlice) -> Double { @_common.min(s.data) }
+pub fn BiophyloparsimonySlice::min(self : BiophyloparsimonySlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_parsimony_slice_max(s : BiophyloparsimonySlice) -> Double { @_common.max(s.data) }
+pub fn BiophyloparsimonySlice::max(self : BiophyloparsimonySlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_parsimony_slice_to_string(s : BiophyloparsimonySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloparsimonySlice::to_string(self : BiophyloparsimonySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

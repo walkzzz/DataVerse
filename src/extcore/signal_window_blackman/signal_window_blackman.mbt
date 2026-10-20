@@ -351,45 +351,45 @@ pub fn signal_window_blackman_frame_make(size : Int) -> SignalwindowblackmanFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_frame_len(s : SignalwindowblackmanFrame) -> Int { s.size }
+pub fn SignalwindowblackmanFrame::len(self : SignalwindowblackmanFrame) -> Int { self.size }
 
-pub fn signal_window_blackman_frame_get(s : SignalwindowblackmanFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanFrame::get(self : SignalwindowblackmanFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_frame_set(s : SignalwindowblackmanFrame, i : Int, v : Double) -> SignalwindowblackmanFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanFrame::set(self : SignalwindowblackmanFrame, i : Int, v : Double) -> SignalwindowblackmanFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_frame_sum(s : SignalwindowblackmanFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanFrame::sum(self : SignalwindowblackmanFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_frame_mean(s : SignalwindowblackmanFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanFrame::mean(self : SignalwindowblackmanFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_frame_scale(s : SignalwindowblackmanFrame, f : Double) -> SignalwindowblackmanFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanFrame::scale(self : SignalwindowblackmanFrame, f : Double) -> SignalwindowblackmanFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_frame_add(a : SignalwindowblackmanFrame, b : SignalwindowblackmanFrame) -> SignalwindowblackmanFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanFrame::add(self : SignalwindowblackmanFrame, other : SignalwindowblackmanFrame) -> SignalwindowblackmanFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_frame_copy(s : SignalwindowblackmanFrame) -> SignalwindowblackmanFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanFrame::copy(self : SignalwindowblackmanFrame) -> SignalwindowblackmanFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_frame_fill(s : SignalwindowblackmanFrame, v : Double) -> SignalwindowblackmanFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanFrame::fill(self : SignalwindowblackmanFrame, v : Double) -> SignalwindowblackmanFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_frame_min(s : SignalwindowblackmanFrame) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanFrame::min(self : SignalwindowblackmanFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_frame_max(s : SignalwindowblackmanFrame) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanFrame::max(self : SignalwindowblackmanFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_frame_to_string(s : SignalwindowblackmanFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanFrame::to_string(self : SignalwindowblackmanFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanTable {
@@ -402,45 +402,45 @@ pub fn signal_window_blackman_table_make(size : Int) -> SignalwindowblackmanTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_table_len(s : SignalwindowblackmanTable) -> Int { s.size }
+pub fn SignalwindowblackmanTable::len(self : SignalwindowblackmanTable) -> Int { self.size }
 
-pub fn signal_window_blackman_table_get(s : SignalwindowblackmanTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanTable::get(self : SignalwindowblackmanTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_table_set(s : SignalwindowblackmanTable, i : Int, v : Double) -> SignalwindowblackmanTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanTable::set(self : SignalwindowblackmanTable, i : Int, v : Double) -> SignalwindowblackmanTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_table_sum(s : SignalwindowblackmanTable) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanTable::sum(self : SignalwindowblackmanTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_table_mean(s : SignalwindowblackmanTable) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanTable::mean(self : SignalwindowblackmanTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_table_scale(s : SignalwindowblackmanTable, f : Double) -> SignalwindowblackmanTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanTable::scale(self : SignalwindowblackmanTable, f : Double) -> SignalwindowblackmanTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_table_add(a : SignalwindowblackmanTable, b : SignalwindowblackmanTable) -> SignalwindowblackmanTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanTable::add(self : SignalwindowblackmanTable, other : SignalwindowblackmanTable) -> SignalwindowblackmanTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_table_copy(s : SignalwindowblackmanTable) -> SignalwindowblackmanTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanTable::copy(self : SignalwindowblackmanTable) -> SignalwindowblackmanTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_table_fill(s : SignalwindowblackmanTable, v : Double) -> SignalwindowblackmanTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanTable::fill(self : SignalwindowblackmanTable, v : Double) -> SignalwindowblackmanTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_table_min(s : SignalwindowblackmanTable) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanTable::min(self : SignalwindowblackmanTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_table_max(s : SignalwindowblackmanTable) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanTable::max(self : SignalwindowblackmanTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_table_to_string(s : SignalwindowblackmanTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanTable::to_string(self : SignalwindowblackmanTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanGraphN {
@@ -453,45 +453,45 @@ pub fn signal_window_blackman_graphn_make(size : Int) -> SignalwindowblackmanGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_graphn_len(s : SignalwindowblackmanGraphN) -> Int { s.size }
+pub fn SignalwindowblackmanGraphN::len(self : SignalwindowblackmanGraphN) -> Int { self.size }
 
-pub fn signal_window_blackman_graphn_get(s : SignalwindowblackmanGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanGraphN::get(self : SignalwindowblackmanGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_graphn_set(s : SignalwindowblackmanGraphN, i : Int, v : Double) -> SignalwindowblackmanGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanGraphN::set(self : SignalwindowblackmanGraphN, i : Int, v : Double) -> SignalwindowblackmanGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_graphn_sum(s : SignalwindowblackmanGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanGraphN::sum(self : SignalwindowblackmanGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_graphn_mean(s : SignalwindowblackmanGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanGraphN::mean(self : SignalwindowblackmanGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_graphn_scale(s : SignalwindowblackmanGraphN, f : Double) -> SignalwindowblackmanGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanGraphN::scale(self : SignalwindowblackmanGraphN, f : Double) -> SignalwindowblackmanGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_graphn_add(a : SignalwindowblackmanGraphN, b : SignalwindowblackmanGraphN) -> SignalwindowblackmanGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanGraphN::add(self : SignalwindowblackmanGraphN, other : SignalwindowblackmanGraphN) -> SignalwindowblackmanGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_graphn_copy(s : SignalwindowblackmanGraphN) -> SignalwindowblackmanGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanGraphN::copy(self : SignalwindowblackmanGraphN) -> SignalwindowblackmanGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_graphn_fill(s : SignalwindowblackmanGraphN, v : Double) -> SignalwindowblackmanGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanGraphN::fill(self : SignalwindowblackmanGraphN, v : Double) -> SignalwindowblackmanGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_graphn_min(s : SignalwindowblackmanGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanGraphN::min(self : SignalwindowblackmanGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_graphn_max(s : SignalwindowblackmanGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanGraphN::max(self : SignalwindowblackmanGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_graphn_to_string(s : SignalwindowblackmanGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanGraphN::to_string(self : SignalwindowblackmanGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanNode {
@@ -504,45 +504,45 @@ pub fn signal_window_blackman_node_make(size : Int) -> SignalwindowblackmanNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_node_len(s : SignalwindowblackmanNode) -> Int { s.size }
+pub fn SignalwindowblackmanNode::len(self : SignalwindowblackmanNode) -> Int { self.size }
 
-pub fn signal_window_blackman_node_get(s : SignalwindowblackmanNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanNode::get(self : SignalwindowblackmanNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_node_set(s : SignalwindowblackmanNode, i : Int, v : Double) -> SignalwindowblackmanNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanNode::set(self : SignalwindowblackmanNode, i : Int, v : Double) -> SignalwindowblackmanNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_node_sum(s : SignalwindowblackmanNode) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanNode::sum(self : SignalwindowblackmanNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_node_mean(s : SignalwindowblackmanNode) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanNode::mean(self : SignalwindowblackmanNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_node_scale(s : SignalwindowblackmanNode, f : Double) -> SignalwindowblackmanNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanNode::scale(self : SignalwindowblackmanNode, f : Double) -> SignalwindowblackmanNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_node_add(a : SignalwindowblackmanNode, b : SignalwindowblackmanNode) -> SignalwindowblackmanNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanNode::add(self : SignalwindowblackmanNode, other : SignalwindowblackmanNode) -> SignalwindowblackmanNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_node_copy(s : SignalwindowblackmanNode) -> SignalwindowblackmanNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanNode::copy(self : SignalwindowblackmanNode) -> SignalwindowblackmanNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_node_fill(s : SignalwindowblackmanNode, v : Double) -> SignalwindowblackmanNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanNode::fill(self : SignalwindowblackmanNode, v : Double) -> SignalwindowblackmanNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_node_min(s : SignalwindowblackmanNode) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanNode::min(self : SignalwindowblackmanNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_node_max(s : SignalwindowblackmanNode) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanNode::max(self : SignalwindowblackmanNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_node_to_string(s : SignalwindowblackmanNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanNode::to_string(self : SignalwindowblackmanNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanEdge {
@@ -555,45 +555,45 @@ pub fn signal_window_blackman_edge_make(size : Int) -> SignalwindowblackmanEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_edge_len(s : SignalwindowblackmanEdge) -> Int { s.size }
+pub fn SignalwindowblackmanEdge::len(self : SignalwindowblackmanEdge) -> Int { self.size }
 
-pub fn signal_window_blackman_edge_get(s : SignalwindowblackmanEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanEdge::get(self : SignalwindowblackmanEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_edge_set(s : SignalwindowblackmanEdge, i : Int, v : Double) -> SignalwindowblackmanEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanEdge::set(self : SignalwindowblackmanEdge, i : Int, v : Double) -> SignalwindowblackmanEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_edge_sum(s : SignalwindowblackmanEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanEdge::sum(self : SignalwindowblackmanEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_edge_mean(s : SignalwindowblackmanEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanEdge::mean(self : SignalwindowblackmanEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_edge_scale(s : SignalwindowblackmanEdge, f : Double) -> SignalwindowblackmanEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanEdge::scale(self : SignalwindowblackmanEdge, f : Double) -> SignalwindowblackmanEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_edge_add(a : SignalwindowblackmanEdge, b : SignalwindowblackmanEdge) -> SignalwindowblackmanEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanEdge::add(self : SignalwindowblackmanEdge, other : SignalwindowblackmanEdge) -> SignalwindowblackmanEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_edge_copy(s : SignalwindowblackmanEdge) -> SignalwindowblackmanEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanEdge::copy(self : SignalwindowblackmanEdge) -> SignalwindowblackmanEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_edge_fill(s : SignalwindowblackmanEdge, v : Double) -> SignalwindowblackmanEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanEdge::fill(self : SignalwindowblackmanEdge, v : Double) -> SignalwindowblackmanEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_edge_min(s : SignalwindowblackmanEdge) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanEdge::min(self : SignalwindowblackmanEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_edge_max(s : SignalwindowblackmanEdge) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanEdge::max(self : SignalwindowblackmanEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_edge_to_string(s : SignalwindowblackmanEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanEdge::to_string(self : SignalwindowblackmanEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanPath {
@@ -606,45 +606,45 @@ pub fn signal_window_blackman_path_make(size : Int) -> SignalwindowblackmanPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_path_len(s : SignalwindowblackmanPath) -> Int { s.size }
+pub fn SignalwindowblackmanPath::len(self : SignalwindowblackmanPath) -> Int { self.size }
 
-pub fn signal_window_blackman_path_get(s : SignalwindowblackmanPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanPath::get(self : SignalwindowblackmanPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_path_set(s : SignalwindowblackmanPath, i : Int, v : Double) -> SignalwindowblackmanPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanPath::set(self : SignalwindowblackmanPath, i : Int, v : Double) -> SignalwindowblackmanPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_path_sum(s : SignalwindowblackmanPath) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanPath::sum(self : SignalwindowblackmanPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_path_mean(s : SignalwindowblackmanPath) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanPath::mean(self : SignalwindowblackmanPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_path_scale(s : SignalwindowblackmanPath, f : Double) -> SignalwindowblackmanPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanPath::scale(self : SignalwindowblackmanPath, f : Double) -> SignalwindowblackmanPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_path_add(a : SignalwindowblackmanPath, b : SignalwindowblackmanPath) -> SignalwindowblackmanPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanPath::add(self : SignalwindowblackmanPath, other : SignalwindowblackmanPath) -> SignalwindowblackmanPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_path_copy(s : SignalwindowblackmanPath) -> SignalwindowblackmanPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanPath::copy(self : SignalwindowblackmanPath) -> SignalwindowblackmanPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_path_fill(s : SignalwindowblackmanPath, v : Double) -> SignalwindowblackmanPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanPath::fill(self : SignalwindowblackmanPath, v : Double) -> SignalwindowblackmanPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_path_min(s : SignalwindowblackmanPath) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanPath::min(self : SignalwindowblackmanPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_path_max(s : SignalwindowblackmanPath) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanPath::max(self : SignalwindowblackmanPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_path_to_string(s : SignalwindowblackmanPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanPath::to_string(self : SignalwindowblackmanPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanCluster {
@@ -657,45 +657,45 @@ pub fn signal_window_blackman_cluster_make(size : Int) -> SignalwindowblackmanCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_cluster_len(s : SignalwindowblackmanCluster) -> Int { s.size }
+pub fn SignalwindowblackmanCluster::len(self : SignalwindowblackmanCluster) -> Int { self.size }
 
-pub fn signal_window_blackman_cluster_get(s : SignalwindowblackmanCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanCluster::get(self : SignalwindowblackmanCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_cluster_set(s : SignalwindowblackmanCluster, i : Int, v : Double) -> SignalwindowblackmanCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanCluster::set(self : SignalwindowblackmanCluster, i : Int, v : Double) -> SignalwindowblackmanCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_cluster_sum(s : SignalwindowblackmanCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanCluster::sum(self : SignalwindowblackmanCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_cluster_mean(s : SignalwindowblackmanCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanCluster::mean(self : SignalwindowblackmanCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_cluster_scale(s : SignalwindowblackmanCluster, f : Double) -> SignalwindowblackmanCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanCluster::scale(self : SignalwindowblackmanCluster, f : Double) -> SignalwindowblackmanCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_cluster_add(a : SignalwindowblackmanCluster, b : SignalwindowblackmanCluster) -> SignalwindowblackmanCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanCluster::add(self : SignalwindowblackmanCluster, other : SignalwindowblackmanCluster) -> SignalwindowblackmanCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_cluster_copy(s : SignalwindowblackmanCluster) -> SignalwindowblackmanCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanCluster::copy(self : SignalwindowblackmanCluster) -> SignalwindowblackmanCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_cluster_fill(s : SignalwindowblackmanCluster, v : Double) -> SignalwindowblackmanCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanCluster::fill(self : SignalwindowblackmanCluster, v : Double) -> SignalwindowblackmanCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_cluster_min(s : SignalwindowblackmanCluster) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanCluster::min(self : SignalwindowblackmanCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_cluster_max(s : SignalwindowblackmanCluster) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanCluster::max(self : SignalwindowblackmanCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_cluster_to_string(s : SignalwindowblackmanCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanCluster::to_string(self : SignalwindowblackmanCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanModel {
@@ -708,45 +708,45 @@ pub fn signal_window_blackman_model_make(size : Int) -> SignalwindowblackmanMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_model_len(s : SignalwindowblackmanModel) -> Int { s.size }
+pub fn SignalwindowblackmanModel::len(self : SignalwindowblackmanModel) -> Int { self.size }
 
-pub fn signal_window_blackman_model_get(s : SignalwindowblackmanModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanModel::get(self : SignalwindowblackmanModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_model_set(s : SignalwindowblackmanModel, i : Int, v : Double) -> SignalwindowblackmanModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanModel::set(self : SignalwindowblackmanModel, i : Int, v : Double) -> SignalwindowblackmanModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_model_sum(s : SignalwindowblackmanModel) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanModel::sum(self : SignalwindowblackmanModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_model_mean(s : SignalwindowblackmanModel) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanModel::mean(self : SignalwindowblackmanModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_model_scale(s : SignalwindowblackmanModel, f : Double) -> SignalwindowblackmanModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanModel::scale(self : SignalwindowblackmanModel, f : Double) -> SignalwindowblackmanModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_model_add(a : SignalwindowblackmanModel, b : SignalwindowblackmanModel) -> SignalwindowblackmanModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanModel::add(self : SignalwindowblackmanModel, other : SignalwindowblackmanModel) -> SignalwindowblackmanModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_model_copy(s : SignalwindowblackmanModel) -> SignalwindowblackmanModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanModel::copy(self : SignalwindowblackmanModel) -> SignalwindowblackmanModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_model_fill(s : SignalwindowblackmanModel, v : Double) -> SignalwindowblackmanModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanModel::fill(self : SignalwindowblackmanModel, v : Double) -> SignalwindowblackmanModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_model_min(s : SignalwindowblackmanModel) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanModel::min(self : SignalwindowblackmanModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_model_max(s : SignalwindowblackmanModel) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanModel::max(self : SignalwindowblackmanModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_model_to_string(s : SignalwindowblackmanModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanModel::to_string(self : SignalwindowblackmanModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanLayer {
@@ -759,45 +759,45 @@ pub fn signal_window_blackman_layer_make(size : Int) -> SignalwindowblackmanLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_layer_len(s : SignalwindowblackmanLayer) -> Int { s.size }
+pub fn SignalwindowblackmanLayer::len(self : SignalwindowblackmanLayer) -> Int { self.size }
 
-pub fn signal_window_blackman_layer_get(s : SignalwindowblackmanLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanLayer::get(self : SignalwindowblackmanLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_layer_set(s : SignalwindowblackmanLayer, i : Int, v : Double) -> SignalwindowblackmanLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanLayer::set(self : SignalwindowblackmanLayer, i : Int, v : Double) -> SignalwindowblackmanLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_layer_sum(s : SignalwindowblackmanLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanLayer::sum(self : SignalwindowblackmanLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_layer_mean(s : SignalwindowblackmanLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanLayer::mean(self : SignalwindowblackmanLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_layer_scale(s : SignalwindowblackmanLayer, f : Double) -> SignalwindowblackmanLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanLayer::scale(self : SignalwindowblackmanLayer, f : Double) -> SignalwindowblackmanLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_layer_add(a : SignalwindowblackmanLayer, b : SignalwindowblackmanLayer) -> SignalwindowblackmanLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanLayer::add(self : SignalwindowblackmanLayer, other : SignalwindowblackmanLayer) -> SignalwindowblackmanLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_layer_copy(s : SignalwindowblackmanLayer) -> SignalwindowblackmanLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanLayer::copy(self : SignalwindowblackmanLayer) -> SignalwindowblackmanLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_layer_fill(s : SignalwindowblackmanLayer, v : Double) -> SignalwindowblackmanLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanLayer::fill(self : SignalwindowblackmanLayer, v : Double) -> SignalwindowblackmanLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_layer_min(s : SignalwindowblackmanLayer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanLayer::min(self : SignalwindowblackmanLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_layer_max(s : SignalwindowblackmanLayer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanLayer::max(self : SignalwindowblackmanLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_layer_to_string(s : SignalwindowblackmanLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanLayer::to_string(self : SignalwindowblackmanLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanBuffer {
@@ -810,45 +810,45 @@ pub fn signal_window_blackman_buffer_make(size : Int) -> SignalwindowblackmanBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_buffer_len(s : SignalwindowblackmanBuffer) -> Int { s.size }
+pub fn SignalwindowblackmanBuffer::len(self : SignalwindowblackmanBuffer) -> Int { self.size }
 
-pub fn signal_window_blackman_buffer_get(s : SignalwindowblackmanBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanBuffer::get(self : SignalwindowblackmanBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_buffer_set(s : SignalwindowblackmanBuffer, i : Int, v : Double) -> SignalwindowblackmanBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanBuffer::set(self : SignalwindowblackmanBuffer, i : Int, v : Double) -> SignalwindowblackmanBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_buffer_sum(s : SignalwindowblackmanBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanBuffer::sum(self : SignalwindowblackmanBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_buffer_mean(s : SignalwindowblackmanBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanBuffer::mean(self : SignalwindowblackmanBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_buffer_scale(s : SignalwindowblackmanBuffer, f : Double) -> SignalwindowblackmanBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanBuffer::scale(self : SignalwindowblackmanBuffer, f : Double) -> SignalwindowblackmanBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_buffer_add(a : SignalwindowblackmanBuffer, b : SignalwindowblackmanBuffer) -> SignalwindowblackmanBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanBuffer::add(self : SignalwindowblackmanBuffer, other : SignalwindowblackmanBuffer) -> SignalwindowblackmanBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_buffer_copy(s : SignalwindowblackmanBuffer) -> SignalwindowblackmanBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanBuffer::copy(self : SignalwindowblackmanBuffer) -> SignalwindowblackmanBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_buffer_fill(s : SignalwindowblackmanBuffer, v : Double) -> SignalwindowblackmanBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanBuffer::fill(self : SignalwindowblackmanBuffer, v : Double) -> SignalwindowblackmanBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_buffer_min(s : SignalwindowblackmanBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanBuffer::min(self : SignalwindowblackmanBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_buffer_max(s : SignalwindowblackmanBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanBuffer::max(self : SignalwindowblackmanBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_buffer_to_string(s : SignalwindowblackmanBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanBuffer::to_string(self : SignalwindowblackmanBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanCursor {
@@ -861,45 +861,45 @@ pub fn signal_window_blackman_cursor_make(size : Int) -> SignalwindowblackmanCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_cursor_len(s : SignalwindowblackmanCursor) -> Int { s.size }
+pub fn SignalwindowblackmanCursor::len(self : SignalwindowblackmanCursor) -> Int { self.size }
 
-pub fn signal_window_blackman_cursor_get(s : SignalwindowblackmanCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanCursor::get(self : SignalwindowblackmanCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_cursor_set(s : SignalwindowblackmanCursor, i : Int, v : Double) -> SignalwindowblackmanCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanCursor::set(self : SignalwindowblackmanCursor, i : Int, v : Double) -> SignalwindowblackmanCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_cursor_sum(s : SignalwindowblackmanCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanCursor::sum(self : SignalwindowblackmanCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_cursor_mean(s : SignalwindowblackmanCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanCursor::mean(self : SignalwindowblackmanCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_cursor_scale(s : SignalwindowblackmanCursor, f : Double) -> SignalwindowblackmanCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanCursor::scale(self : SignalwindowblackmanCursor, f : Double) -> SignalwindowblackmanCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_cursor_add(a : SignalwindowblackmanCursor, b : SignalwindowblackmanCursor) -> SignalwindowblackmanCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanCursor::add(self : SignalwindowblackmanCursor, other : SignalwindowblackmanCursor) -> SignalwindowblackmanCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_cursor_copy(s : SignalwindowblackmanCursor) -> SignalwindowblackmanCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanCursor::copy(self : SignalwindowblackmanCursor) -> SignalwindowblackmanCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_cursor_fill(s : SignalwindowblackmanCursor, v : Double) -> SignalwindowblackmanCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanCursor::fill(self : SignalwindowblackmanCursor, v : Double) -> SignalwindowblackmanCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_cursor_min(s : SignalwindowblackmanCursor) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanCursor::min(self : SignalwindowblackmanCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_cursor_max(s : SignalwindowblackmanCursor) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanCursor::max(self : SignalwindowblackmanCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_cursor_to_string(s : SignalwindowblackmanCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanCursor::to_string(self : SignalwindowblackmanCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanView {
@@ -912,45 +912,45 @@ pub fn signal_window_blackman_view_make(size : Int) -> SignalwindowblackmanView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_view_len(s : SignalwindowblackmanView) -> Int { s.size }
+pub fn SignalwindowblackmanView::len(self : SignalwindowblackmanView) -> Int { self.size }
 
-pub fn signal_window_blackman_view_get(s : SignalwindowblackmanView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanView::get(self : SignalwindowblackmanView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_view_set(s : SignalwindowblackmanView, i : Int, v : Double) -> SignalwindowblackmanView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanView::set(self : SignalwindowblackmanView, i : Int, v : Double) -> SignalwindowblackmanView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_view_sum(s : SignalwindowblackmanView) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanView::sum(self : SignalwindowblackmanView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_view_mean(s : SignalwindowblackmanView) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanView::mean(self : SignalwindowblackmanView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_view_scale(s : SignalwindowblackmanView, f : Double) -> SignalwindowblackmanView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanView::scale(self : SignalwindowblackmanView, f : Double) -> SignalwindowblackmanView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_view_add(a : SignalwindowblackmanView, b : SignalwindowblackmanView) -> SignalwindowblackmanView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanView::add(self : SignalwindowblackmanView, other : SignalwindowblackmanView) -> SignalwindowblackmanView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_view_copy(s : SignalwindowblackmanView) -> SignalwindowblackmanView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanView::copy(self : SignalwindowblackmanView) -> SignalwindowblackmanView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_view_fill(s : SignalwindowblackmanView, v : Double) -> SignalwindowblackmanView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanView::fill(self : SignalwindowblackmanView, v : Double) -> SignalwindowblackmanView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_view_min(s : SignalwindowblackmanView) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanView::min(self : SignalwindowblackmanView) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_view_max(s : SignalwindowblackmanView) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanView::max(self : SignalwindowblackmanView) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_view_to_string(s : SignalwindowblackmanView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanView::to_string(self : SignalwindowblackmanView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanRange {
@@ -963,45 +963,45 @@ pub fn signal_window_blackman_range_make(size : Int) -> SignalwindowblackmanRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_range_len(s : SignalwindowblackmanRange) -> Int { s.size }
+pub fn SignalwindowblackmanRange::len(self : SignalwindowblackmanRange) -> Int { self.size }
 
-pub fn signal_window_blackman_range_get(s : SignalwindowblackmanRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanRange::get(self : SignalwindowblackmanRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_range_set(s : SignalwindowblackmanRange, i : Int, v : Double) -> SignalwindowblackmanRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanRange::set(self : SignalwindowblackmanRange, i : Int, v : Double) -> SignalwindowblackmanRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_range_sum(s : SignalwindowblackmanRange) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanRange::sum(self : SignalwindowblackmanRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_range_mean(s : SignalwindowblackmanRange) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanRange::mean(self : SignalwindowblackmanRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_range_scale(s : SignalwindowblackmanRange, f : Double) -> SignalwindowblackmanRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanRange::scale(self : SignalwindowblackmanRange, f : Double) -> SignalwindowblackmanRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_range_add(a : SignalwindowblackmanRange, b : SignalwindowblackmanRange) -> SignalwindowblackmanRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanRange::add(self : SignalwindowblackmanRange, other : SignalwindowblackmanRange) -> SignalwindowblackmanRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_range_copy(s : SignalwindowblackmanRange) -> SignalwindowblackmanRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanRange::copy(self : SignalwindowblackmanRange) -> SignalwindowblackmanRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_range_fill(s : SignalwindowblackmanRange, v : Double) -> SignalwindowblackmanRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanRange::fill(self : SignalwindowblackmanRange, v : Double) -> SignalwindowblackmanRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_range_min(s : SignalwindowblackmanRange) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanRange::min(self : SignalwindowblackmanRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_range_max(s : SignalwindowblackmanRange) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanRange::max(self : SignalwindowblackmanRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_range_to_string(s : SignalwindowblackmanRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanRange::to_string(self : SignalwindowblackmanRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowblackmanSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_window_blackman_slice_make(size : Int) -> SignalwindowblackmanSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_blackman_slice_len(s : SignalwindowblackmanSlice) -> Int { s.size }
+pub fn SignalwindowblackmanSlice::len(self : SignalwindowblackmanSlice) -> Int { self.size }
 
-pub fn signal_window_blackman_slice_get(s : SignalwindowblackmanSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowblackmanSlice::get(self : SignalwindowblackmanSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_blackman_slice_set(s : SignalwindowblackmanSlice, i : Int, v : Double) -> SignalwindowblackmanSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanSlice::set(self : SignalwindowblackmanSlice, i : Int, v : Double) -> SignalwindowblackmanSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_slice_sum(s : SignalwindowblackmanSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowblackmanSlice::sum(self : SignalwindowblackmanSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_blackman_slice_mean(s : SignalwindowblackmanSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowblackmanSlice::mean(self : SignalwindowblackmanSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_blackman_slice_scale(s : SignalwindowblackmanSlice, f : Double) -> SignalwindowblackmanSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanSlice::scale(self : SignalwindowblackmanSlice, f : Double) -> SignalwindowblackmanSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_slice_add(a : SignalwindowblackmanSlice, b : SignalwindowblackmanSlice) -> SignalwindowblackmanSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowblackmanSlice::add(self : SignalwindowblackmanSlice, other : SignalwindowblackmanSlice) -> SignalwindowblackmanSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_blackman_slice_copy(s : SignalwindowblackmanSlice) -> SignalwindowblackmanSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanSlice::copy(self : SignalwindowblackmanSlice) -> SignalwindowblackmanSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_slice_fill(s : SignalwindowblackmanSlice, v : Double) -> SignalwindowblackmanSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowblackmanSlice::fill(self : SignalwindowblackmanSlice, v : Double) -> SignalwindowblackmanSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_blackman_slice_min(s : SignalwindowblackmanSlice) -> Double { @_common.min(s.data) }
+pub fn SignalwindowblackmanSlice::min(self : SignalwindowblackmanSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_blackman_slice_max(s : SignalwindowblackmanSlice) -> Double { @_common.max(s.data) }
+pub fn SignalwindowblackmanSlice::max(self : SignalwindowblackmanSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_blackman_slice_to_string(s : SignalwindowblackmanSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowblackmanSlice::to_string(self : SignalwindowblackmanSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

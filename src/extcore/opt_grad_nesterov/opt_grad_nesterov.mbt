@@ -351,45 +351,45 @@ pub fn opt_grad_nesterov_frame_make(size : Int) -> OptgradnesterovFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_frame_len(s : OptgradnesterovFrame) -> Int { s.size }
+pub fn OptgradnesterovFrame::len(self : OptgradnesterovFrame) -> Int { self.size }
 
-pub fn opt_grad_nesterov_frame_get(s : OptgradnesterovFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovFrame::get(self : OptgradnesterovFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_frame_set(s : OptgradnesterovFrame, i : Int, v : Double) -> OptgradnesterovFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovFrame::set(self : OptgradnesterovFrame, i : Int, v : Double) -> OptgradnesterovFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_frame_sum(s : OptgradnesterovFrame) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovFrame::sum(self : OptgradnesterovFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_frame_mean(s : OptgradnesterovFrame) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovFrame::mean(self : OptgradnesterovFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_frame_scale(s : OptgradnesterovFrame, f : Double) -> OptgradnesterovFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovFrame::scale(self : OptgradnesterovFrame, f : Double) -> OptgradnesterovFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_frame_add(a : OptgradnesterovFrame, b : OptgradnesterovFrame) -> OptgradnesterovFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovFrame::add(self : OptgradnesterovFrame, other : OptgradnesterovFrame) -> OptgradnesterovFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_frame_copy(s : OptgradnesterovFrame) -> OptgradnesterovFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovFrame::copy(self : OptgradnesterovFrame) -> OptgradnesterovFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_frame_fill(s : OptgradnesterovFrame, v : Double) -> OptgradnesterovFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovFrame::fill(self : OptgradnesterovFrame, v : Double) -> OptgradnesterovFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_frame_min(s : OptgradnesterovFrame) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovFrame::min(self : OptgradnesterovFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_frame_max(s : OptgradnesterovFrame) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovFrame::max(self : OptgradnesterovFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_frame_to_string(s : OptgradnesterovFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovFrame::to_string(self : OptgradnesterovFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovTable {
@@ -402,45 +402,45 @@ pub fn opt_grad_nesterov_table_make(size : Int) -> OptgradnesterovTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_table_len(s : OptgradnesterovTable) -> Int { s.size }
+pub fn OptgradnesterovTable::len(self : OptgradnesterovTable) -> Int { self.size }
 
-pub fn opt_grad_nesterov_table_get(s : OptgradnesterovTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovTable::get(self : OptgradnesterovTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_table_set(s : OptgradnesterovTable, i : Int, v : Double) -> OptgradnesterovTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovTable::set(self : OptgradnesterovTable, i : Int, v : Double) -> OptgradnesterovTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_table_sum(s : OptgradnesterovTable) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovTable::sum(self : OptgradnesterovTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_table_mean(s : OptgradnesterovTable) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovTable::mean(self : OptgradnesterovTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_table_scale(s : OptgradnesterovTable, f : Double) -> OptgradnesterovTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovTable::scale(self : OptgradnesterovTable, f : Double) -> OptgradnesterovTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_table_add(a : OptgradnesterovTable, b : OptgradnesterovTable) -> OptgradnesterovTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovTable::add(self : OptgradnesterovTable, other : OptgradnesterovTable) -> OptgradnesterovTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_table_copy(s : OptgradnesterovTable) -> OptgradnesterovTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovTable::copy(self : OptgradnesterovTable) -> OptgradnesterovTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_table_fill(s : OptgradnesterovTable, v : Double) -> OptgradnesterovTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovTable::fill(self : OptgradnesterovTable, v : Double) -> OptgradnesterovTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_table_min(s : OptgradnesterovTable) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovTable::min(self : OptgradnesterovTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_table_max(s : OptgradnesterovTable) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovTable::max(self : OptgradnesterovTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_table_to_string(s : OptgradnesterovTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovTable::to_string(self : OptgradnesterovTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovGraphN {
@@ -453,45 +453,45 @@ pub fn opt_grad_nesterov_graphn_make(size : Int) -> OptgradnesterovGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_graphn_len(s : OptgradnesterovGraphN) -> Int { s.size }
+pub fn OptgradnesterovGraphN::len(self : OptgradnesterovGraphN) -> Int { self.size }
 
-pub fn opt_grad_nesterov_graphn_get(s : OptgradnesterovGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovGraphN::get(self : OptgradnesterovGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_graphn_set(s : OptgradnesterovGraphN, i : Int, v : Double) -> OptgradnesterovGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovGraphN::set(self : OptgradnesterovGraphN, i : Int, v : Double) -> OptgradnesterovGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_graphn_sum(s : OptgradnesterovGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovGraphN::sum(self : OptgradnesterovGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_graphn_mean(s : OptgradnesterovGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovGraphN::mean(self : OptgradnesterovGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_graphn_scale(s : OptgradnesterovGraphN, f : Double) -> OptgradnesterovGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovGraphN::scale(self : OptgradnesterovGraphN, f : Double) -> OptgradnesterovGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_graphn_add(a : OptgradnesterovGraphN, b : OptgradnesterovGraphN) -> OptgradnesterovGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovGraphN::add(self : OptgradnesterovGraphN, other : OptgradnesterovGraphN) -> OptgradnesterovGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_graphn_copy(s : OptgradnesterovGraphN) -> OptgradnesterovGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovGraphN::copy(self : OptgradnesterovGraphN) -> OptgradnesterovGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_graphn_fill(s : OptgradnesterovGraphN, v : Double) -> OptgradnesterovGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovGraphN::fill(self : OptgradnesterovGraphN, v : Double) -> OptgradnesterovGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_graphn_min(s : OptgradnesterovGraphN) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovGraphN::min(self : OptgradnesterovGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_graphn_max(s : OptgradnesterovGraphN) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovGraphN::max(self : OptgradnesterovGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_graphn_to_string(s : OptgradnesterovGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovGraphN::to_string(self : OptgradnesterovGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovNode {
@@ -504,45 +504,45 @@ pub fn opt_grad_nesterov_node_make(size : Int) -> OptgradnesterovNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_node_len(s : OptgradnesterovNode) -> Int { s.size }
+pub fn OptgradnesterovNode::len(self : OptgradnesterovNode) -> Int { self.size }
 
-pub fn opt_grad_nesterov_node_get(s : OptgradnesterovNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovNode::get(self : OptgradnesterovNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_node_set(s : OptgradnesterovNode, i : Int, v : Double) -> OptgradnesterovNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovNode::set(self : OptgradnesterovNode, i : Int, v : Double) -> OptgradnesterovNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_node_sum(s : OptgradnesterovNode) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovNode::sum(self : OptgradnesterovNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_node_mean(s : OptgradnesterovNode) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovNode::mean(self : OptgradnesterovNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_node_scale(s : OptgradnesterovNode, f : Double) -> OptgradnesterovNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovNode::scale(self : OptgradnesterovNode, f : Double) -> OptgradnesterovNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_node_add(a : OptgradnesterovNode, b : OptgradnesterovNode) -> OptgradnesterovNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovNode::add(self : OptgradnesterovNode, other : OptgradnesterovNode) -> OptgradnesterovNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_node_copy(s : OptgradnesterovNode) -> OptgradnesterovNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovNode::copy(self : OptgradnesterovNode) -> OptgradnesterovNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_node_fill(s : OptgradnesterovNode, v : Double) -> OptgradnesterovNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovNode::fill(self : OptgradnesterovNode, v : Double) -> OptgradnesterovNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_node_min(s : OptgradnesterovNode) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovNode::min(self : OptgradnesterovNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_node_max(s : OptgradnesterovNode) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovNode::max(self : OptgradnesterovNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_node_to_string(s : OptgradnesterovNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovNode::to_string(self : OptgradnesterovNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovEdge {
@@ -555,45 +555,45 @@ pub fn opt_grad_nesterov_edge_make(size : Int) -> OptgradnesterovEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_edge_len(s : OptgradnesterovEdge) -> Int { s.size }
+pub fn OptgradnesterovEdge::len(self : OptgradnesterovEdge) -> Int { self.size }
 
-pub fn opt_grad_nesterov_edge_get(s : OptgradnesterovEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovEdge::get(self : OptgradnesterovEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_edge_set(s : OptgradnesterovEdge, i : Int, v : Double) -> OptgradnesterovEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovEdge::set(self : OptgradnesterovEdge, i : Int, v : Double) -> OptgradnesterovEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_edge_sum(s : OptgradnesterovEdge) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovEdge::sum(self : OptgradnesterovEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_edge_mean(s : OptgradnesterovEdge) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovEdge::mean(self : OptgradnesterovEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_edge_scale(s : OptgradnesterovEdge, f : Double) -> OptgradnesterovEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovEdge::scale(self : OptgradnesterovEdge, f : Double) -> OptgradnesterovEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_edge_add(a : OptgradnesterovEdge, b : OptgradnesterovEdge) -> OptgradnesterovEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovEdge::add(self : OptgradnesterovEdge, other : OptgradnesterovEdge) -> OptgradnesterovEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_edge_copy(s : OptgradnesterovEdge) -> OptgradnesterovEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovEdge::copy(self : OptgradnesterovEdge) -> OptgradnesterovEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_edge_fill(s : OptgradnesterovEdge, v : Double) -> OptgradnesterovEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovEdge::fill(self : OptgradnesterovEdge, v : Double) -> OptgradnesterovEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_edge_min(s : OptgradnesterovEdge) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovEdge::min(self : OptgradnesterovEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_edge_max(s : OptgradnesterovEdge) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovEdge::max(self : OptgradnesterovEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_edge_to_string(s : OptgradnesterovEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovEdge::to_string(self : OptgradnesterovEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovPath {
@@ -606,45 +606,45 @@ pub fn opt_grad_nesterov_path_make(size : Int) -> OptgradnesterovPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_path_len(s : OptgradnesterovPath) -> Int { s.size }
+pub fn OptgradnesterovPath::len(self : OptgradnesterovPath) -> Int { self.size }
 
-pub fn opt_grad_nesterov_path_get(s : OptgradnesterovPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovPath::get(self : OptgradnesterovPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_path_set(s : OptgradnesterovPath, i : Int, v : Double) -> OptgradnesterovPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovPath::set(self : OptgradnesterovPath, i : Int, v : Double) -> OptgradnesterovPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_path_sum(s : OptgradnesterovPath) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovPath::sum(self : OptgradnesterovPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_path_mean(s : OptgradnesterovPath) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovPath::mean(self : OptgradnesterovPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_path_scale(s : OptgradnesterovPath, f : Double) -> OptgradnesterovPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovPath::scale(self : OptgradnesterovPath, f : Double) -> OptgradnesterovPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_path_add(a : OptgradnesterovPath, b : OptgradnesterovPath) -> OptgradnesterovPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovPath::add(self : OptgradnesterovPath, other : OptgradnesterovPath) -> OptgradnesterovPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_path_copy(s : OptgradnesterovPath) -> OptgradnesterovPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovPath::copy(self : OptgradnesterovPath) -> OptgradnesterovPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_path_fill(s : OptgradnesterovPath, v : Double) -> OptgradnesterovPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovPath::fill(self : OptgradnesterovPath, v : Double) -> OptgradnesterovPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_path_min(s : OptgradnesterovPath) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovPath::min(self : OptgradnesterovPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_path_max(s : OptgradnesterovPath) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovPath::max(self : OptgradnesterovPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_path_to_string(s : OptgradnesterovPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovPath::to_string(self : OptgradnesterovPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovCluster {
@@ -657,45 +657,45 @@ pub fn opt_grad_nesterov_cluster_make(size : Int) -> OptgradnesterovCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_cluster_len(s : OptgradnesterovCluster) -> Int { s.size }
+pub fn OptgradnesterovCluster::len(self : OptgradnesterovCluster) -> Int { self.size }
 
-pub fn opt_grad_nesterov_cluster_get(s : OptgradnesterovCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovCluster::get(self : OptgradnesterovCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_cluster_set(s : OptgradnesterovCluster, i : Int, v : Double) -> OptgradnesterovCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovCluster::set(self : OptgradnesterovCluster, i : Int, v : Double) -> OptgradnesterovCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_cluster_sum(s : OptgradnesterovCluster) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovCluster::sum(self : OptgradnesterovCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_cluster_mean(s : OptgradnesterovCluster) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovCluster::mean(self : OptgradnesterovCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_cluster_scale(s : OptgradnesterovCluster, f : Double) -> OptgradnesterovCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovCluster::scale(self : OptgradnesterovCluster, f : Double) -> OptgradnesterovCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_cluster_add(a : OptgradnesterovCluster, b : OptgradnesterovCluster) -> OptgradnesterovCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovCluster::add(self : OptgradnesterovCluster, other : OptgradnesterovCluster) -> OptgradnesterovCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_cluster_copy(s : OptgradnesterovCluster) -> OptgradnesterovCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovCluster::copy(self : OptgradnesterovCluster) -> OptgradnesterovCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_cluster_fill(s : OptgradnesterovCluster, v : Double) -> OptgradnesterovCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovCluster::fill(self : OptgradnesterovCluster, v : Double) -> OptgradnesterovCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_cluster_min(s : OptgradnesterovCluster) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovCluster::min(self : OptgradnesterovCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_cluster_max(s : OptgradnesterovCluster) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovCluster::max(self : OptgradnesterovCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_cluster_to_string(s : OptgradnesterovCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovCluster::to_string(self : OptgradnesterovCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovModel {
@@ -708,45 +708,45 @@ pub fn opt_grad_nesterov_model_make(size : Int) -> OptgradnesterovModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_model_len(s : OptgradnesterovModel) -> Int { s.size }
+pub fn OptgradnesterovModel::len(self : OptgradnesterovModel) -> Int { self.size }
 
-pub fn opt_grad_nesterov_model_get(s : OptgradnesterovModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovModel::get(self : OptgradnesterovModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_model_set(s : OptgradnesterovModel, i : Int, v : Double) -> OptgradnesterovModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovModel::set(self : OptgradnesterovModel, i : Int, v : Double) -> OptgradnesterovModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_model_sum(s : OptgradnesterovModel) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovModel::sum(self : OptgradnesterovModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_model_mean(s : OptgradnesterovModel) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovModel::mean(self : OptgradnesterovModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_model_scale(s : OptgradnesterovModel, f : Double) -> OptgradnesterovModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovModel::scale(self : OptgradnesterovModel, f : Double) -> OptgradnesterovModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_model_add(a : OptgradnesterovModel, b : OptgradnesterovModel) -> OptgradnesterovModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovModel::add(self : OptgradnesterovModel, other : OptgradnesterovModel) -> OptgradnesterovModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_model_copy(s : OptgradnesterovModel) -> OptgradnesterovModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovModel::copy(self : OptgradnesterovModel) -> OptgradnesterovModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_model_fill(s : OptgradnesterovModel, v : Double) -> OptgradnesterovModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovModel::fill(self : OptgradnesterovModel, v : Double) -> OptgradnesterovModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_model_min(s : OptgradnesterovModel) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovModel::min(self : OptgradnesterovModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_model_max(s : OptgradnesterovModel) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovModel::max(self : OptgradnesterovModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_model_to_string(s : OptgradnesterovModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovModel::to_string(self : OptgradnesterovModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovLayer {
@@ -759,45 +759,45 @@ pub fn opt_grad_nesterov_layer_make(size : Int) -> OptgradnesterovLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_layer_len(s : OptgradnesterovLayer) -> Int { s.size }
+pub fn OptgradnesterovLayer::len(self : OptgradnesterovLayer) -> Int { self.size }
 
-pub fn opt_grad_nesterov_layer_get(s : OptgradnesterovLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovLayer::get(self : OptgradnesterovLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_layer_set(s : OptgradnesterovLayer, i : Int, v : Double) -> OptgradnesterovLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovLayer::set(self : OptgradnesterovLayer, i : Int, v : Double) -> OptgradnesterovLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_layer_sum(s : OptgradnesterovLayer) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovLayer::sum(self : OptgradnesterovLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_layer_mean(s : OptgradnesterovLayer) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovLayer::mean(self : OptgradnesterovLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_layer_scale(s : OptgradnesterovLayer, f : Double) -> OptgradnesterovLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovLayer::scale(self : OptgradnesterovLayer, f : Double) -> OptgradnesterovLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_layer_add(a : OptgradnesterovLayer, b : OptgradnesterovLayer) -> OptgradnesterovLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovLayer::add(self : OptgradnesterovLayer, other : OptgradnesterovLayer) -> OptgradnesterovLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_layer_copy(s : OptgradnesterovLayer) -> OptgradnesterovLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovLayer::copy(self : OptgradnesterovLayer) -> OptgradnesterovLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_layer_fill(s : OptgradnesterovLayer, v : Double) -> OptgradnesterovLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovLayer::fill(self : OptgradnesterovLayer, v : Double) -> OptgradnesterovLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_layer_min(s : OptgradnesterovLayer) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovLayer::min(self : OptgradnesterovLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_layer_max(s : OptgradnesterovLayer) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovLayer::max(self : OptgradnesterovLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_layer_to_string(s : OptgradnesterovLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovLayer::to_string(self : OptgradnesterovLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovBuffer {
@@ -810,45 +810,45 @@ pub fn opt_grad_nesterov_buffer_make(size : Int) -> OptgradnesterovBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_buffer_len(s : OptgradnesterovBuffer) -> Int { s.size }
+pub fn OptgradnesterovBuffer::len(self : OptgradnesterovBuffer) -> Int { self.size }
 
-pub fn opt_grad_nesterov_buffer_get(s : OptgradnesterovBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovBuffer::get(self : OptgradnesterovBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_buffer_set(s : OptgradnesterovBuffer, i : Int, v : Double) -> OptgradnesterovBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovBuffer::set(self : OptgradnesterovBuffer, i : Int, v : Double) -> OptgradnesterovBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_buffer_sum(s : OptgradnesterovBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovBuffer::sum(self : OptgradnesterovBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_buffer_mean(s : OptgradnesterovBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovBuffer::mean(self : OptgradnesterovBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_buffer_scale(s : OptgradnesterovBuffer, f : Double) -> OptgradnesterovBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovBuffer::scale(self : OptgradnesterovBuffer, f : Double) -> OptgradnesterovBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_buffer_add(a : OptgradnesterovBuffer, b : OptgradnesterovBuffer) -> OptgradnesterovBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovBuffer::add(self : OptgradnesterovBuffer, other : OptgradnesterovBuffer) -> OptgradnesterovBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_buffer_copy(s : OptgradnesterovBuffer) -> OptgradnesterovBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovBuffer::copy(self : OptgradnesterovBuffer) -> OptgradnesterovBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_buffer_fill(s : OptgradnesterovBuffer, v : Double) -> OptgradnesterovBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovBuffer::fill(self : OptgradnesterovBuffer, v : Double) -> OptgradnesterovBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_buffer_min(s : OptgradnesterovBuffer) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovBuffer::min(self : OptgradnesterovBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_buffer_max(s : OptgradnesterovBuffer) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovBuffer::max(self : OptgradnesterovBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_buffer_to_string(s : OptgradnesterovBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovBuffer::to_string(self : OptgradnesterovBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovCursor {
@@ -861,45 +861,45 @@ pub fn opt_grad_nesterov_cursor_make(size : Int) -> OptgradnesterovCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_cursor_len(s : OptgradnesterovCursor) -> Int { s.size }
+pub fn OptgradnesterovCursor::len(self : OptgradnesterovCursor) -> Int { self.size }
 
-pub fn opt_grad_nesterov_cursor_get(s : OptgradnesterovCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovCursor::get(self : OptgradnesterovCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_cursor_set(s : OptgradnesterovCursor, i : Int, v : Double) -> OptgradnesterovCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovCursor::set(self : OptgradnesterovCursor, i : Int, v : Double) -> OptgradnesterovCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_cursor_sum(s : OptgradnesterovCursor) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovCursor::sum(self : OptgradnesterovCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_cursor_mean(s : OptgradnesterovCursor) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovCursor::mean(self : OptgradnesterovCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_cursor_scale(s : OptgradnesterovCursor, f : Double) -> OptgradnesterovCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovCursor::scale(self : OptgradnesterovCursor, f : Double) -> OptgradnesterovCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_cursor_add(a : OptgradnesterovCursor, b : OptgradnesterovCursor) -> OptgradnesterovCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovCursor::add(self : OptgradnesterovCursor, other : OptgradnesterovCursor) -> OptgradnesterovCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_cursor_copy(s : OptgradnesterovCursor) -> OptgradnesterovCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovCursor::copy(self : OptgradnesterovCursor) -> OptgradnesterovCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_cursor_fill(s : OptgradnesterovCursor, v : Double) -> OptgradnesterovCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovCursor::fill(self : OptgradnesterovCursor, v : Double) -> OptgradnesterovCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_cursor_min(s : OptgradnesterovCursor) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovCursor::min(self : OptgradnesterovCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_cursor_max(s : OptgradnesterovCursor) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovCursor::max(self : OptgradnesterovCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_cursor_to_string(s : OptgradnesterovCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovCursor::to_string(self : OptgradnesterovCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovView {
@@ -912,45 +912,45 @@ pub fn opt_grad_nesterov_view_make(size : Int) -> OptgradnesterovView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_view_len(s : OptgradnesterovView) -> Int { s.size }
+pub fn OptgradnesterovView::len(self : OptgradnesterovView) -> Int { self.size }
 
-pub fn opt_grad_nesterov_view_get(s : OptgradnesterovView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovView::get(self : OptgradnesterovView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_view_set(s : OptgradnesterovView, i : Int, v : Double) -> OptgradnesterovView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovView::set(self : OptgradnesterovView, i : Int, v : Double) -> OptgradnesterovView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_view_sum(s : OptgradnesterovView) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovView::sum(self : OptgradnesterovView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_view_mean(s : OptgradnesterovView) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovView::mean(self : OptgradnesterovView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_view_scale(s : OptgradnesterovView, f : Double) -> OptgradnesterovView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovView::scale(self : OptgradnesterovView, f : Double) -> OptgradnesterovView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_view_add(a : OptgradnesterovView, b : OptgradnesterovView) -> OptgradnesterovView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovView::add(self : OptgradnesterovView, other : OptgradnesterovView) -> OptgradnesterovView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_view_copy(s : OptgradnesterovView) -> OptgradnesterovView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovView::copy(self : OptgradnesterovView) -> OptgradnesterovView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_view_fill(s : OptgradnesterovView, v : Double) -> OptgradnesterovView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovView::fill(self : OptgradnesterovView, v : Double) -> OptgradnesterovView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_view_min(s : OptgradnesterovView) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovView::min(self : OptgradnesterovView) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_view_max(s : OptgradnesterovView) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovView::max(self : OptgradnesterovView) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_view_to_string(s : OptgradnesterovView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovView::to_string(self : OptgradnesterovView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovRange {
@@ -963,45 +963,45 @@ pub fn opt_grad_nesterov_range_make(size : Int) -> OptgradnesterovRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_range_len(s : OptgradnesterovRange) -> Int { s.size }
+pub fn OptgradnesterovRange::len(self : OptgradnesterovRange) -> Int { self.size }
 
-pub fn opt_grad_nesterov_range_get(s : OptgradnesterovRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovRange::get(self : OptgradnesterovRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_range_set(s : OptgradnesterovRange, i : Int, v : Double) -> OptgradnesterovRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovRange::set(self : OptgradnesterovRange, i : Int, v : Double) -> OptgradnesterovRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_range_sum(s : OptgradnesterovRange) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovRange::sum(self : OptgradnesterovRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_range_mean(s : OptgradnesterovRange) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovRange::mean(self : OptgradnesterovRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_range_scale(s : OptgradnesterovRange, f : Double) -> OptgradnesterovRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovRange::scale(self : OptgradnesterovRange, f : Double) -> OptgradnesterovRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_range_add(a : OptgradnesterovRange, b : OptgradnesterovRange) -> OptgradnesterovRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovRange::add(self : OptgradnesterovRange, other : OptgradnesterovRange) -> OptgradnesterovRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_range_copy(s : OptgradnesterovRange) -> OptgradnesterovRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovRange::copy(self : OptgradnesterovRange) -> OptgradnesterovRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_range_fill(s : OptgradnesterovRange, v : Double) -> OptgradnesterovRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovRange::fill(self : OptgradnesterovRange, v : Double) -> OptgradnesterovRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_range_min(s : OptgradnesterovRange) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovRange::min(self : OptgradnesterovRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_range_max(s : OptgradnesterovRange) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovRange::max(self : OptgradnesterovRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_range_to_string(s : OptgradnesterovRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovRange::to_string(self : OptgradnesterovRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_grad_nesterov_slice_make(size : Int) -> OptgradnesterovSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_nesterov_slice_len(s : OptgradnesterovSlice) -> Int { s.size }
+pub fn OptgradnesterovSlice::len(self : OptgradnesterovSlice) -> Int { self.size }
 
-pub fn opt_grad_nesterov_slice_get(s : OptgradnesterovSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradnesterovSlice::get(self : OptgradnesterovSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_nesterov_slice_set(s : OptgradnesterovSlice, i : Int, v : Double) -> OptgradnesterovSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradnesterovSlice::set(self : OptgradnesterovSlice, i : Int, v : Double) -> OptgradnesterovSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_slice_sum(s : OptgradnesterovSlice) -> Double { @_common.sum(s.data) }
+pub fn OptgradnesterovSlice::sum(self : OptgradnesterovSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_nesterov_slice_mean(s : OptgradnesterovSlice) -> Double { @_common.mean(s.data) }
+pub fn OptgradnesterovSlice::mean(self : OptgradnesterovSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_nesterov_slice_scale(s : OptgradnesterovSlice, f : Double) -> OptgradnesterovSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradnesterovSlice::scale(self : OptgradnesterovSlice, f : Double) -> OptgradnesterovSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_slice_add(a : OptgradnesterovSlice, b : OptgradnesterovSlice) -> OptgradnesterovSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradnesterovSlice::add(self : OptgradnesterovSlice, other : OptgradnesterovSlice) -> OptgradnesterovSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_slice_copy(s : OptgradnesterovSlice) -> OptgradnesterovSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradnesterovSlice::copy(self : OptgradnesterovSlice) -> OptgradnesterovSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_slice_fill(s : OptgradnesterovSlice, v : Double) -> OptgradnesterovSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradnesterovSlice::fill(self : OptgradnesterovSlice, v : Double) -> OptgradnesterovSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_nesterov_slice_min(s : OptgradnesterovSlice) -> Double { @_common.min(s.data) }
+pub fn OptgradnesterovSlice::min(self : OptgradnesterovSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_nesterov_slice_max(s : OptgradnesterovSlice) -> Double { @_common.max(s.data) }
+pub fn OptgradnesterovSlice::max(self : OptgradnesterovSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_nesterov_slice_to_string(s : OptgradnesterovSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradnesterovSlice::to_string(self : OptgradnesterovSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

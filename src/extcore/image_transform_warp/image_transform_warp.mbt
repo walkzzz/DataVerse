@@ -351,45 +351,45 @@ pub fn image_transform_warp_frame_make(size : Int) -> ImagetransformwarpFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_frame_len(s : ImagetransformwarpFrame) -> Int { s.size }
+pub fn ImagetransformwarpFrame::len(self : ImagetransformwarpFrame) -> Int { self.size }
 
-pub fn image_transform_warp_frame_get(s : ImagetransformwarpFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpFrame::get(self : ImagetransformwarpFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_frame_set(s : ImagetransformwarpFrame, i : Int, v : Double) -> ImagetransformwarpFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpFrame::set(self : ImagetransformwarpFrame, i : Int, v : Double) -> ImagetransformwarpFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_frame_sum(s : ImagetransformwarpFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpFrame::sum(self : ImagetransformwarpFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_frame_mean(s : ImagetransformwarpFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpFrame::mean(self : ImagetransformwarpFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_frame_scale(s : ImagetransformwarpFrame, f : Double) -> ImagetransformwarpFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpFrame::scale(self : ImagetransformwarpFrame, f : Double) -> ImagetransformwarpFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_frame_add(a : ImagetransformwarpFrame, b : ImagetransformwarpFrame) -> ImagetransformwarpFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpFrame::add(self : ImagetransformwarpFrame, other : ImagetransformwarpFrame) -> ImagetransformwarpFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_frame_copy(s : ImagetransformwarpFrame) -> ImagetransformwarpFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpFrame::copy(self : ImagetransformwarpFrame) -> ImagetransformwarpFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_frame_fill(s : ImagetransformwarpFrame, v : Double) -> ImagetransformwarpFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpFrame::fill(self : ImagetransformwarpFrame, v : Double) -> ImagetransformwarpFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_frame_min(s : ImagetransformwarpFrame) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpFrame::min(self : ImagetransformwarpFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_frame_max(s : ImagetransformwarpFrame) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpFrame::max(self : ImagetransformwarpFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_frame_to_string(s : ImagetransformwarpFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpFrame::to_string(self : ImagetransformwarpFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpTable {
@@ -402,45 +402,45 @@ pub fn image_transform_warp_table_make(size : Int) -> ImagetransformwarpTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_table_len(s : ImagetransformwarpTable) -> Int { s.size }
+pub fn ImagetransformwarpTable::len(self : ImagetransformwarpTable) -> Int { self.size }
 
-pub fn image_transform_warp_table_get(s : ImagetransformwarpTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpTable::get(self : ImagetransformwarpTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_table_set(s : ImagetransformwarpTable, i : Int, v : Double) -> ImagetransformwarpTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpTable::set(self : ImagetransformwarpTable, i : Int, v : Double) -> ImagetransformwarpTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_table_sum(s : ImagetransformwarpTable) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpTable::sum(self : ImagetransformwarpTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_table_mean(s : ImagetransformwarpTable) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpTable::mean(self : ImagetransformwarpTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_table_scale(s : ImagetransformwarpTable, f : Double) -> ImagetransformwarpTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpTable::scale(self : ImagetransformwarpTable, f : Double) -> ImagetransformwarpTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_table_add(a : ImagetransformwarpTable, b : ImagetransformwarpTable) -> ImagetransformwarpTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpTable::add(self : ImagetransformwarpTable, other : ImagetransformwarpTable) -> ImagetransformwarpTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_table_copy(s : ImagetransformwarpTable) -> ImagetransformwarpTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpTable::copy(self : ImagetransformwarpTable) -> ImagetransformwarpTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_table_fill(s : ImagetransformwarpTable, v : Double) -> ImagetransformwarpTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpTable::fill(self : ImagetransformwarpTable, v : Double) -> ImagetransformwarpTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_table_min(s : ImagetransformwarpTable) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpTable::min(self : ImagetransformwarpTable) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_table_max(s : ImagetransformwarpTable) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpTable::max(self : ImagetransformwarpTable) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_table_to_string(s : ImagetransformwarpTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpTable::to_string(self : ImagetransformwarpTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpGraphN {
@@ -453,45 +453,45 @@ pub fn image_transform_warp_graphn_make(size : Int) -> ImagetransformwarpGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_graphn_len(s : ImagetransformwarpGraphN) -> Int { s.size }
+pub fn ImagetransformwarpGraphN::len(self : ImagetransformwarpGraphN) -> Int { self.size }
 
-pub fn image_transform_warp_graphn_get(s : ImagetransformwarpGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpGraphN::get(self : ImagetransformwarpGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_graphn_set(s : ImagetransformwarpGraphN, i : Int, v : Double) -> ImagetransformwarpGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpGraphN::set(self : ImagetransformwarpGraphN, i : Int, v : Double) -> ImagetransformwarpGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_graphn_sum(s : ImagetransformwarpGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpGraphN::sum(self : ImagetransformwarpGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_graphn_mean(s : ImagetransformwarpGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpGraphN::mean(self : ImagetransformwarpGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_graphn_scale(s : ImagetransformwarpGraphN, f : Double) -> ImagetransformwarpGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpGraphN::scale(self : ImagetransformwarpGraphN, f : Double) -> ImagetransformwarpGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_graphn_add(a : ImagetransformwarpGraphN, b : ImagetransformwarpGraphN) -> ImagetransformwarpGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpGraphN::add(self : ImagetransformwarpGraphN, other : ImagetransformwarpGraphN) -> ImagetransformwarpGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_graphn_copy(s : ImagetransformwarpGraphN) -> ImagetransformwarpGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpGraphN::copy(self : ImagetransformwarpGraphN) -> ImagetransformwarpGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_graphn_fill(s : ImagetransformwarpGraphN, v : Double) -> ImagetransformwarpGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpGraphN::fill(self : ImagetransformwarpGraphN, v : Double) -> ImagetransformwarpGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_graphn_min(s : ImagetransformwarpGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpGraphN::min(self : ImagetransformwarpGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_graphn_max(s : ImagetransformwarpGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpGraphN::max(self : ImagetransformwarpGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_graphn_to_string(s : ImagetransformwarpGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpGraphN::to_string(self : ImagetransformwarpGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpNode {
@@ -504,45 +504,45 @@ pub fn image_transform_warp_node_make(size : Int) -> ImagetransformwarpNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_node_len(s : ImagetransformwarpNode) -> Int { s.size }
+pub fn ImagetransformwarpNode::len(self : ImagetransformwarpNode) -> Int { self.size }
 
-pub fn image_transform_warp_node_get(s : ImagetransformwarpNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpNode::get(self : ImagetransformwarpNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_node_set(s : ImagetransformwarpNode, i : Int, v : Double) -> ImagetransformwarpNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpNode::set(self : ImagetransformwarpNode, i : Int, v : Double) -> ImagetransformwarpNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_node_sum(s : ImagetransformwarpNode) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpNode::sum(self : ImagetransformwarpNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_node_mean(s : ImagetransformwarpNode) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpNode::mean(self : ImagetransformwarpNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_node_scale(s : ImagetransformwarpNode, f : Double) -> ImagetransformwarpNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpNode::scale(self : ImagetransformwarpNode, f : Double) -> ImagetransformwarpNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_node_add(a : ImagetransformwarpNode, b : ImagetransformwarpNode) -> ImagetransformwarpNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpNode::add(self : ImagetransformwarpNode, other : ImagetransformwarpNode) -> ImagetransformwarpNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_node_copy(s : ImagetransformwarpNode) -> ImagetransformwarpNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpNode::copy(self : ImagetransformwarpNode) -> ImagetransformwarpNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_node_fill(s : ImagetransformwarpNode, v : Double) -> ImagetransformwarpNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpNode::fill(self : ImagetransformwarpNode, v : Double) -> ImagetransformwarpNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_node_min(s : ImagetransformwarpNode) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpNode::min(self : ImagetransformwarpNode) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_node_max(s : ImagetransformwarpNode) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpNode::max(self : ImagetransformwarpNode) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_node_to_string(s : ImagetransformwarpNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpNode::to_string(self : ImagetransformwarpNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpEdge {
@@ -555,45 +555,45 @@ pub fn image_transform_warp_edge_make(size : Int) -> ImagetransformwarpEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_edge_len(s : ImagetransformwarpEdge) -> Int { s.size }
+pub fn ImagetransformwarpEdge::len(self : ImagetransformwarpEdge) -> Int { self.size }
 
-pub fn image_transform_warp_edge_get(s : ImagetransformwarpEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpEdge::get(self : ImagetransformwarpEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_edge_set(s : ImagetransformwarpEdge, i : Int, v : Double) -> ImagetransformwarpEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpEdge::set(self : ImagetransformwarpEdge, i : Int, v : Double) -> ImagetransformwarpEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_edge_sum(s : ImagetransformwarpEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpEdge::sum(self : ImagetransformwarpEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_edge_mean(s : ImagetransformwarpEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpEdge::mean(self : ImagetransformwarpEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_edge_scale(s : ImagetransformwarpEdge, f : Double) -> ImagetransformwarpEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpEdge::scale(self : ImagetransformwarpEdge, f : Double) -> ImagetransformwarpEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_edge_add(a : ImagetransformwarpEdge, b : ImagetransformwarpEdge) -> ImagetransformwarpEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpEdge::add(self : ImagetransformwarpEdge, other : ImagetransformwarpEdge) -> ImagetransformwarpEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_edge_copy(s : ImagetransformwarpEdge) -> ImagetransformwarpEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpEdge::copy(self : ImagetransformwarpEdge) -> ImagetransformwarpEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_edge_fill(s : ImagetransformwarpEdge, v : Double) -> ImagetransformwarpEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpEdge::fill(self : ImagetransformwarpEdge, v : Double) -> ImagetransformwarpEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_edge_min(s : ImagetransformwarpEdge) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpEdge::min(self : ImagetransformwarpEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_edge_max(s : ImagetransformwarpEdge) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpEdge::max(self : ImagetransformwarpEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_edge_to_string(s : ImagetransformwarpEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpEdge::to_string(self : ImagetransformwarpEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpPath {
@@ -606,45 +606,45 @@ pub fn image_transform_warp_path_make(size : Int) -> ImagetransformwarpPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_path_len(s : ImagetransformwarpPath) -> Int { s.size }
+pub fn ImagetransformwarpPath::len(self : ImagetransformwarpPath) -> Int { self.size }
 
-pub fn image_transform_warp_path_get(s : ImagetransformwarpPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpPath::get(self : ImagetransformwarpPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_path_set(s : ImagetransformwarpPath, i : Int, v : Double) -> ImagetransformwarpPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpPath::set(self : ImagetransformwarpPath, i : Int, v : Double) -> ImagetransformwarpPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_path_sum(s : ImagetransformwarpPath) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpPath::sum(self : ImagetransformwarpPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_path_mean(s : ImagetransformwarpPath) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpPath::mean(self : ImagetransformwarpPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_path_scale(s : ImagetransformwarpPath, f : Double) -> ImagetransformwarpPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpPath::scale(self : ImagetransformwarpPath, f : Double) -> ImagetransformwarpPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_path_add(a : ImagetransformwarpPath, b : ImagetransformwarpPath) -> ImagetransformwarpPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpPath::add(self : ImagetransformwarpPath, other : ImagetransformwarpPath) -> ImagetransformwarpPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_path_copy(s : ImagetransformwarpPath) -> ImagetransformwarpPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpPath::copy(self : ImagetransformwarpPath) -> ImagetransformwarpPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_path_fill(s : ImagetransformwarpPath, v : Double) -> ImagetransformwarpPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpPath::fill(self : ImagetransformwarpPath, v : Double) -> ImagetransformwarpPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_path_min(s : ImagetransformwarpPath) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpPath::min(self : ImagetransformwarpPath) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_path_max(s : ImagetransformwarpPath) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpPath::max(self : ImagetransformwarpPath) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_path_to_string(s : ImagetransformwarpPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpPath::to_string(self : ImagetransformwarpPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpCluster {
@@ -657,45 +657,45 @@ pub fn image_transform_warp_cluster_make(size : Int) -> ImagetransformwarpCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_cluster_len(s : ImagetransformwarpCluster) -> Int { s.size }
+pub fn ImagetransformwarpCluster::len(self : ImagetransformwarpCluster) -> Int { self.size }
 
-pub fn image_transform_warp_cluster_get(s : ImagetransformwarpCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpCluster::get(self : ImagetransformwarpCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_cluster_set(s : ImagetransformwarpCluster, i : Int, v : Double) -> ImagetransformwarpCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpCluster::set(self : ImagetransformwarpCluster, i : Int, v : Double) -> ImagetransformwarpCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_cluster_sum(s : ImagetransformwarpCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpCluster::sum(self : ImagetransformwarpCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_cluster_mean(s : ImagetransformwarpCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpCluster::mean(self : ImagetransformwarpCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_cluster_scale(s : ImagetransformwarpCluster, f : Double) -> ImagetransformwarpCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpCluster::scale(self : ImagetransformwarpCluster, f : Double) -> ImagetransformwarpCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_cluster_add(a : ImagetransformwarpCluster, b : ImagetransformwarpCluster) -> ImagetransformwarpCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpCluster::add(self : ImagetransformwarpCluster, other : ImagetransformwarpCluster) -> ImagetransformwarpCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_cluster_copy(s : ImagetransformwarpCluster) -> ImagetransformwarpCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpCluster::copy(self : ImagetransformwarpCluster) -> ImagetransformwarpCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_cluster_fill(s : ImagetransformwarpCluster, v : Double) -> ImagetransformwarpCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpCluster::fill(self : ImagetransformwarpCluster, v : Double) -> ImagetransformwarpCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_cluster_min(s : ImagetransformwarpCluster) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpCluster::min(self : ImagetransformwarpCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_cluster_max(s : ImagetransformwarpCluster) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpCluster::max(self : ImagetransformwarpCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_cluster_to_string(s : ImagetransformwarpCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpCluster::to_string(self : ImagetransformwarpCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpModel {
@@ -708,45 +708,45 @@ pub fn image_transform_warp_model_make(size : Int) -> ImagetransformwarpModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_model_len(s : ImagetransformwarpModel) -> Int { s.size }
+pub fn ImagetransformwarpModel::len(self : ImagetransformwarpModel) -> Int { self.size }
 
-pub fn image_transform_warp_model_get(s : ImagetransformwarpModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpModel::get(self : ImagetransformwarpModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_model_set(s : ImagetransformwarpModel, i : Int, v : Double) -> ImagetransformwarpModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpModel::set(self : ImagetransformwarpModel, i : Int, v : Double) -> ImagetransformwarpModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_model_sum(s : ImagetransformwarpModel) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpModel::sum(self : ImagetransformwarpModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_model_mean(s : ImagetransformwarpModel) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpModel::mean(self : ImagetransformwarpModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_model_scale(s : ImagetransformwarpModel, f : Double) -> ImagetransformwarpModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpModel::scale(self : ImagetransformwarpModel, f : Double) -> ImagetransformwarpModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_model_add(a : ImagetransformwarpModel, b : ImagetransformwarpModel) -> ImagetransformwarpModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpModel::add(self : ImagetransformwarpModel, other : ImagetransformwarpModel) -> ImagetransformwarpModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_model_copy(s : ImagetransformwarpModel) -> ImagetransformwarpModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpModel::copy(self : ImagetransformwarpModel) -> ImagetransformwarpModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_model_fill(s : ImagetransformwarpModel, v : Double) -> ImagetransformwarpModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpModel::fill(self : ImagetransformwarpModel, v : Double) -> ImagetransformwarpModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_model_min(s : ImagetransformwarpModel) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpModel::min(self : ImagetransformwarpModel) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_model_max(s : ImagetransformwarpModel) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpModel::max(self : ImagetransformwarpModel) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_model_to_string(s : ImagetransformwarpModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpModel::to_string(self : ImagetransformwarpModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpLayer {
@@ -759,45 +759,45 @@ pub fn image_transform_warp_layer_make(size : Int) -> ImagetransformwarpLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_layer_len(s : ImagetransformwarpLayer) -> Int { s.size }
+pub fn ImagetransformwarpLayer::len(self : ImagetransformwarpLayer) -> Int { self.size }
 
-pub fn image_transform_warp_layer_get(s : ImagetransformwarpLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpLayer::get(self : ImagetransformwarpLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_layer_set(s : ImagetransformwarpLayer, i : Int, v : Double) -> ImagetransformwarpLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpLayer::set(self : ImagetransformwarpLayer, i : Int, v : Double) -> ImagetransformwarpLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_layer_sum(s : ImagetransformwarpLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpLayer::sum(self : ImagetransformwarpLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_layer_mean(s : ImagetransformwarpLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpLayer::mean(self : ImagetransformwarpLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_layer_scale(s : ImagetransformwarpLayer, f : Double) -> ImagetransformwarpLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpLayer::scale(self : ImagetransformwarpLayer, f : Double) -> ImagetransformwarpLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_layer_add(a : ImagetransformwarpLayer, b : ImagetransformwarpLayer) -> ImagetransformwarpLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpLayer::add(self : ImagetransformwarpLayer, other : ImagetransformwarpLayer) -> ImagetransformwarpLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_layer_copy(s : ImagetransformwarpLayer) -> ImagetransformwarpLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpLayer::copy(self : ImagetransformwarpLayer) -> ImagetransformwarpLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_layer_fill(s : ImagetransformwarpLayer, v : Double) -> ImagetransformwarpLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpLayer::fill(self : ImagetransformwarpLayer, v : Double) -> ImagetransformwarpLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_layer_min(s : ImagetransformwarpLayer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpLayer::min(self : ImagetransformwarpLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_layer_max(s : ImagetransformwarpLayer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpLayer::max(self : ImagetransformwarpLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_layer_to_string(s : ImagetransformwarpLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpLayer::to_string(self : ImagetransformwarpLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpBuffer {
@@ -810,45 +810,45 @@ pub fn image_transform_warp_buffer_make(size : Int) -> ImagetransformwarpBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_buffer_len(s : ImagetransformwarpBuffer) -> Int { s.size }
+pub fn ImagetransformwarpBuffer::len(self : ImagetransformwarpBuffer) -> Int { self.size }
 
-pub fn image_transform_warp_buffer_get(s : ImagetransformwarpBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpBuffer::get(self : ImagetransformwarpBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_buffer_set(s : ImagetransformwarpBuffer, i : Int, v : Double) -> ImagetransformwarpBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpBuffer::set(self : ImagetransformwarpBuffer, i : Int, v : Double) -> ImagetransformwarpBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_buffer_sum(s : ImagetransformwarpBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpBuffer::sum(self : ImagetransformwarpBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_buffer_mean(s : ImagetransformwarpBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpBuffer::mean(self : ImagetransformwarpBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_buffer_scale(s : ImagetransformwarpBuffer, f : Double) -> ImagetransformwarpBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpBuffer::scale(self : ImagetransformwarpBuffer, f : Double) -> ImagetransformwarpBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_buffer_add(a : ImagetransformwarpBuffer, b : ImagetransformwarpBuffer) -> ImagetransformwarpBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpBuffer::add(self : ImagetransformwarpBuffer, other : ImagetransformwarpBuffer) -> ImagetransformwarpBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_buffer_copy(s : ImagetransformwarpBuffer) -> ImagetransformwarpBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpBuffer::copy(self : ImagetransformwarpBuffer) -> ImagetransformwarpBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_buffer_fill(s : ImagetransformwarpBuffer, v : Double) -> ImagetransformwarpBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpBuffer::fill(self : ImagetransformwarpBuffer, v : Double) -> ImagetransformwarpBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_buffer_min(s : ImagetransformwarpBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpBuffer::min(self : ImagetransformwarpBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_buffer_max(s : ImagetransformwarpBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpBuffer::max(self : ImagetransformwarpBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_buffer_to_string(s : ImagetransformwarpBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpBuffer::to_string(self : ImagetransformwarpBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpCursor {
@@ -861,45 +861,45 @@ pub fn image_transform_warp_cursor_make(size : Int) -> ImagetransformwarpCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_cursor_len(s : ImagetransformwarpCursor) -> Int { s.size }
+pub fn ImagetransformwarpCursor::len(self : ImagetransformwarpCursor) -> Int { self.size }
 
-pub fn image_transform_warp_cursor_get(s : ImagetransformwarpCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpCursor::get(self : ImagetransformwarpCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_cursor_set(s : ImagetransformwarpCursor, i : Int, v : Double) -> ImagetransformwarpCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpCursor::set(self : ImagetransformwarpCursor, i : Int, v : Double) -> ImagetransformwarpCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_cursor_sum(s : ImagetransformwarpCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpCursor::sum(self : ImagetransformwarpCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_cursor_mean(s : ImagetransformwarpCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpCursor::mean(self : ImagetransformwarpCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_cursor_scale(s : ImagetransformwarpCursor, f : Double) -> ImagetransformwarpCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpCursor::scale(self : ImagetransformwarpCursor, f : Double) -> ImagetransformwarpCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_cursor_add(a : ImagetransformwarpCursor, b : ImagetransformwarpCursor) -> ImagetransformwarpCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpCursor::add(self : ImagetransformwarpCursor, other : ImagetransformwarpCursor) -> ImagetransformwarpCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_cursor_copy(s : ImagetransformwarpCursor) -> ImagetransformwarpCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpCursor::copy(self : ImagetransformwarpCursor) -> ImagetransformwarpCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_cursor_fill(s : ImagetransformwarpCursor, v : Double) -> ImagetransformwarpCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpCursor::fill(self : ImagetransformwarpCursor, v : Double) -> ImagetransformwarpCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_cursor_min(s : ImagetransformwarpCursor) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpCursor::min(self : ImagetransformwarpCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_cursor_max(s : ImagetransformwarpCursor) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpCursor::max(self : ImagetransformwarpCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_cursor_to_string(s : ImagetransformwarpCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpCursor::to_string(self : ImagetransformwarpCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpView {
@@ -912,45 +912,45 @@ pub fn image_transform_warp_view_make(size : Int) -> ImagetransformwarpView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_view_len(s : ImagetransformwarpView) -> Int { s.size }
+pub fn ImagetransformwarpView::len(self : ImagetransformwarpView) -> Int { self.size }
 
-pub fn image_transform_warp_view_get(s : ImagetransformwarpView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpView::get(self : ImagetransformwarpView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_view_set(s : ImagetransformwarpView, i : Int, v : Double) -> ImagetransformwarpView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpView::set(self : ImagetransformwarpView, i : Int, v : Double) -> ImagetransformwarpView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_view_sum(s : ImagetransformwarpView) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpView::sum(self : ImagetransformwarpView) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_view_mean(s : ImagetransformwarpView) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpView::mean(self : ImagetransformwarpView) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_view_scale(s : ImagetransformwarpView, f : Double) -> ImagetransformwarpView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpView::scale(self : ImagetransformwarpView, f : Double) -> ImagetransformwarpView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_view_add(a : ImagetransformwarpView, b : ImagetransformwarpView) -> ImagetransformwarpView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpView::add(self : ImagetransformwarpView, other : ImagetransformwarpView) -> ImagetransformwarpView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_view_copy(s : ImagetransformwarpView) -> ImagetransformwarpView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpView::copy(self : ImagetransformwarpView) -> ImagetransformwarpView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_view_fill(s : ImagetransformwarpView, v : Double) -> ImagetransformwarpView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpView::fill(self : ImagetransformwarpView, v : Double) -> ImagetransformwarpView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_view_min(s : ImagetransformwarpView) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpView::min(self : ImagetransformwarpView) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_view_max(s : ImagetransformwarpView) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpView::max(self : ImagetransformwarpView) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_view_to_string(s : ImagetransformwarpView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpView::to_string(self : ImagetransformwarpView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpRange {
@@ -963,45 +963,45 @@ pub fn image_transform_warp_range_make(size : Int) -> ImagetransformwarpRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_range_len(s : ImagetransformwarpRange) -> Int { s.size }
+pub fn ImagetransformwarpRange::len(self : ImagetransformwarpRange) -> Int { self.size }
 
-pub fn image_transform_warp_range_get(s : ImagetransformwarpRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpRange::get(self : ImagetransformwarpRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_range_set(s : ImagetransformwarpRange, i : Int, v : Double) -> ImagetransformwarpRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpRange::set(self : ImagetransformwarpRange, i : Int, v : Double) -> ImagetransformwarpRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_range_sum(s : ImagetransformwarpRange) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpRange::sum(self : ImagetransformwarpRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_range_mean(s : ImagetransformwarpRange) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpRange::mean(self : ImagetransformwarpRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_range_scale(s : ImagetransformwarpRange, f : Double) -> ImagetransformwarpRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpRange::scale(self : ImagetransformwarpRange, f : Double) -> ImagetransformwarpRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_range_add(a : ImagetransformwarpRange, b : ImagetransformwarpRange) -> ImagetransformwarpRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpRange::add(self : ImagetransformwarpRange, other : ImagetransformwarpRange) -> ImagetransformwarpRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_range_copy(s : ImagetransformwarpRange) -> ImagetransformwarpRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpRange::copy(self : ImagetransformwarpRange) -> ImagetransformwarpRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_range_fill(s : ImagetransformwarpRange, v : Double) -> ImagetransformwarpRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpRange::fill(self : ImagetransformwarpRange, v : Double) -> ImagetransformwarpRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_range_min(s : ImagetransformwarpRange) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpRange::min(self : ImagetransformwarpRange) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_range_max(s : ImagetransformwarpRange) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpRange::max(self : ImagetransformwarpRange) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_range_to_string(s : ImagetransformwarpRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpRange::to_string(self : ImagetransformwarpRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpSlice {
@@ -1014,44 +1014,44 @@ pub fn image_transform_warp_slice_make(size : Int) -> ImagetransformwarpSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_warp_slice_len(s : ImagetransformwarpSlice) -> Int { s.size }
+pub fn ImagetransformwarpSlice::len(self : ImagetransformwarpSlice) -> Int { self.size }
 
-pub fn image_transform_warp_slice_get(s : ImagetransformwarpSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformwarpSlice::get(self : ImagetransformwarpSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_warp_slice_set(s : ImagetransformwarpSlice, i : Int, v : Double) -> ImagetransformwarpSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformwarpSlice::set(self : ImagetransformwarpSlice, i : Int, v : Double) -> ImagetransformwarpSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_slice_sum(s : ImagetransformwarpSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformwarpSlice::sum(self : ImagetransformwarpSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_warp_slice_mean(s : ImagetransformwarpSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformwarpSlice::mean(self : ImagetransformwarpSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_warp_slice_scale(s : ImagetransformwarpSlice, f : Double) -> ImagetransformwarpSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpSlice::scale(self : ImagetransformwarpSlice, f : Double) -> ImagetransformwarpSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_slice_add(a : ImagetransformwarpSlice, b : ImagetransformwarpSlice) -> ImagetransformwarpSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformwarpSlice::add(self : ImagetransformwarpSlice, other : ImagetransformwarpSlice) -> ImagetransformwarpSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_warp_slice_copy(s : ImagetransformwarpSlice) -> ImagetransformwarpSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpSlice::copy(self : ImagetransformwarpSlice) -> ImagetransformwarpSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_slice_fill(s : ImagetransformwarpSlice, v : Double) -> ImagetransformwarpSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformwarpSlice::fill(self : ImagetransformwarpSlice, v : Double) -> ImagetransformwarpSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_warp_slice_min(s : ImagetransformwarpSlice) -> Double { @_common.min(s.data) }
+pub fn ImagetransformwarpSlice::min(self : ImagetransformwarpSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_warp_slice_max(s : ImagetransformwarpSlice) -> Double { @_common.max(s.data) }
+pub fn ImagetransformwarpSlice::max(self : ImagetransformwarpSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_warp_slice_to_string(s : ImagetransformwarpSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformwarpSlice::to_string(self : ImagetransformwarpSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

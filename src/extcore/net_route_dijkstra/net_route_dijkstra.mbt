@@ -351,45 +351,45 @@ pub fn net_route_dijkstra_frame_make(size : Int) -> NetroutedijkstraFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_frame_len(s : NetroutedijkstraFrame) -> Int { s.size }
+pub fn NetroutedijkstraFrame::len(self : NetroutedijkstraFrame) -> Int { self.size }
 
-pub fn net_route_dijkstra_frame_get(s : NetroutedijkstraFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraFrame::get(self : NetroutedijkstraFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_frame_set(s : NetroutedijkstraFrame, i : Int, v : Double) -> NetroutedijkstraFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraFrame::set(self : NetroutedijkstraFrame, i : Int, v : Double) -> NetroutedijkstraFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_frame_sum(s : NetroutedijkstraFrame) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraFrame::sum(self : NetroutedijkstraFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_frame_mean(s : NetroutedijkstraFrame) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraFrame::mean(self : NetroutedijkstraFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_frame_scale(s : NetroutedijkstraFrame, f : Double) -> NetroutedijkstraFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraFrame::scale(self : NetroutedijkstraFrame, f : Double) -> NetroutedijkstraFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_frame_add(a : NetroutedijkstraFrame, b : NetroutedijkstraFrame) -> NetroutedijkstraFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraFrame::add(self : NetroutedijkstraFrame, other : NetroutedijkstraFrame) -> NetroutedijkstraFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_frame_copy(s : NetroutedijkstraFrame) -> NetroutedijkstraFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraFrame::copy(self : NetroutedijkstraFrame) -> NetroutedijkstraFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_frame_fill(s : NetroutedijkstraFrame, v : Double) -> NetroutedijkstraFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraFrame::fill(self : NetroutedijkstraFrame, v : Double) -> NetroutedijkstraFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_frame_min(s : NetroutedijkstraFrame) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraFrame::min(self : NetroutedijkstraFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_frame_max(s : NetroutedijkstraFrame) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraFrame::max(self : NetroutedijkstraFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_frame_to_string(s : NetroutedijkstraFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraFrame::to_string(self : NetroutedijkstraFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraTable {
@@ -402,45 +402,45 @@ pub fn net_route_dijkstra_table_make(size : Int) -> NetroutedijkstraTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_table_len(s : NetroutedijkstraTable) -> Int { s.size }
+pub fn NetroutedijkstraTable::len(self : NetroutedijkstraTable) -> Int { self.size }
 
-pub fn net_route_dijkstra_table_get(s : NetroutedijkstraTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraTable::get(self : NetroutedijkstraTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_table_set(s : NetroutedijkstraTable, i : Int, v : Double) -> NetroutedijkstraTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraTable::set(self : NetroutedijkstraTable, i : Int, v : Double) -> NetroutedijkstraTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_table_sum(s : NetroutedijkstraTable) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraTable::sum(self : NetroutedijkstraTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_table_mean(s : NetroutedijkstraTable) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraTable::mean(self : NetroutedijkstraTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_table_scale(s : NetroutedijkstraTable, f : Double) -> NetroutedijkstraTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraTable::scale(self : NetroutedijkstraTable, f : Double) -> NetroutedijkstraTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_table_add(a : NetroutedijkstraTable, b : NetroutedijkstraTable) -> NetroutedijkstraTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraTable::add(self : NetroutedijkstraTable, other : NetroutedijkstraTable) -> NetroutedijkstraTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_table_copy(s : NetroutedijkstraTable) -> NetroutedijkstraTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraTable::copy(self : NetroutedijkstraTable) -> NetroutedijkstraTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_table_fill(s : NetroutedijkstraTable, v : Double) -> NetroutedijkstraTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraTable::fill(self : NetroutedijkstraTable, v : Double) -> NetroutedijkstraTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_table_min(s : NetroutedijkstraTable) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraTable::min(self : NetroutedijkstraTable) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_table_max(s : NetroutedijkstraTable) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraTable::max(self : NetroutedijkstraTable) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_table_to_string(s : NetroutedijkstraTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraTable::to_string(self : NetroutedijkstraTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraGraphN {
@@ -453,45 +453,45 @@ pub fn net_route_dijkstra_graphn_make(size : Int) -> NetroutedijkstraGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_graphn_len(s : NetroutedijkstraGraphN) -> Int { s.size }
+pub fn NetroutedijkstraGraphN::len(self : NetroutedijkstraGraphN) -> Int { self.size }
 
-pub fn net_route_dijkstra_graphn_get(s : NetroutedijkstraGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraGraphN::get(self : NetroutedijkstraGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_graphn_set(s : NetroutedijkstraGraphN, i : Int, v : Double) -> NetroutedijkstraGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraGraphN::set(self : NetroutedijkstraGraphN, i : Int, v : Double) -> NetroutedijkstraGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_graphn_sum(s : NetroutedijkstraGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraGraphN::sum(self : NetroutedijkstraGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_graphn_mean(s : NetroutedijkstraGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraGraphN::mean(self : NetroutedijkstraGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_graphn_scale(s : NetroutedijkstraGraphN, f : Double) -> NetroutedijkstraGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraGraphN::scale(self : NetroutedijkstraGraphN, f : Double) -> NetroutedijkstraGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_graphn_add(a : NetroutedijkstraGraphN, b : NetroutedijkstraGraphN) -> NetroutedijkstraGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraGraphN::add(self : NetroutedijkstraGraphN, other : NetroutedijkstraGraphN) -> NetroutedijkstraGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_graphn_copy(s : NetroutedijkstraGraphN) -> NetroutedijkstraGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraGraphN::copy(self : NetroutedijkstraGraphN) -> NetroutedijkstraGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_graphn_fill(s : NetroutedijkstraGraphN, v : Double) -> NetroutedijkstraGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraGraphN::fill(self : NetroutedijkstraGraphN, v : Double) -> NetroutedijkstraGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_graphn_min(s : NetroutedijkstraGraphN) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraGraphN::min(self : NetroutedijkstraGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_graphn_max(s : NetroutedijkstraGraphN) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraGraphN::max(self : NetroutedijkstraGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_graphn_to_string(s : NetroutedijkstraGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraGraphN::to_string(self : NetroutedijkstraGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraNode {
@@ -504,45 +504,45 @@ pub fn net_route_dijkstra_node_make(size : Int) -> NetroutedijkstraNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_node_len(s : NetroutedijkstraNode) -> Int { s.size }
+pub fn NetroutedijkstraNode::len(self : NetroutedijkstraNode) -> Int { self.size }
 
-pub fn net_route_dijkstra_node_get(s : NetroutedijkstraNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraNode::get(self : NetroutedijkstraNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_node_set(s : NetroutedijkstraNode, i : Int, v : Double) -> NetroutedijkstraNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraNode::set(self : NetroutedijkstraNode, i : Int, v : Double) -> NetroutedijkstraNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_node_sum(s : NetroutedijkstraNode) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraNode::sum(self : NetroutedijkstraNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_node_mean(s : NetroutedijkstraNode) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraNode::mean(self : NetroutedijkstraNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_node_scale(s : NetroutedijkstraNode, f : Double) -> NetroutedijkstraNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraNode::scale(self : NetroutedijkstraNode, f : Double) -> NetroutedijkstraNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_node_add(a : NetroutedijkstraNode, b : NetroutedijkstraNode) -> NetroutedijkstraNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraNode::add(self : NetroutedijkstraNode, other : NetroutedijkstraNode) -> NetroutedijkstraNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_node_copy(s : NetroutedijkstraNode) -> NetroutedijkstraNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraNode::copy(self : NetroutedijkstraNode) -> NetroutedijkstraNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_node_fill(s : NetroutedijkstraNode, v : Double) -> NetroutedijkstraNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraNode::fill(self : NetroutedijkstraNode, v : Double) -> NetroutedijkstraNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_node_min(s : NetroutedijkstraNode) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraNode::min(self : NetroutedijkstraNode) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_node_max(s : NetroutedijkstraNode) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraNode::max(self : NetroutedijkstraNode) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_node_to_string(s : NetroutedijkstraNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraNode::to_string(self : NetroutedijkstraNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraEdge {
@@ -555,45 +555,45 @@ pub fn net_route_dijkstra_edge_make(size : Int) -> NetroutedijkstraEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_edge_len(s : NetroutedijkstraEdge) -> Int { s.size }
+pub fn NetroutedijkstraEdge::len(self : NetroutedijkstraEdge) -> Int { self.size }
 
-pub fn net_route_dijkstra_edge_get(s : NetroutedijkstraEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraEdge::get(self : NetroutedijkstraEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_edge_set(s : NetroutedijkstraEdge, i : Int, v : Double) -> NetroutedijkstraEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraEdge::set(self : NetroutedijkstraEdge, i : Int, v : Double) -> NetroutedijkstraEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_edge_sum(s : NetroutedijkstraEdge) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraEdge::sum(self : NetroutedijkstraEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_edge_mean(s : NetroutedijkstraEdge) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraEdge::mean(self : NetroutedijkstraEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_edge_scale(s : NetroutedijkstraEdge, f : Double) -> NetroutedijkstraEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraEdge::scale(self : NetroutedijkstraEdge, f : Double) -> NetroutedijkstraEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_edge_add(a : NetroutedijkstraEdge, b : NetroutedijkstraEdge) -> NetroutedijkstraEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraEdge::add(self : NetroutedijkstraEdge, other : NetroutedijkstraEdge) -> NetroutedijkstraEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_edge_copy(s : NetroutedijkstraEdge) -> NetroutedijkstraEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraEdge::copy(self : NetroutedijkstraEdge) -> NetroutedijkstraEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_edge_fill(s : NetroutedijkstraEdge, v : Double) -> NetroutedijkstraEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraEdge::fill(self : NetroutedijkstraEdge, v : Double) -> NetroutedijkstraEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_edge_min(s : NetroutedijkstraEdge) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraEdge::min(self : NetroutedijkstraEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_edge_max(s : NetroutedijkstraEdge) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraEdge::max(self : NetroutedijkstraEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_edge_to_string(s : NetroutedijkstraEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraEdge::to_string(self : NetroutedijkstraEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraPath {
@@ -606,45 +606,45 @@ pub fn net_route_dijkstra_path_make(size : Int) -> NetroutedijkstraPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_path_len(s : NetroutedijkstraPath) -> Int { s.size }
+pub fn NetroutedijkstraPath::len(self : NetroutedijkstraPath) -> Int { self.size }
 
-pub fn net_route_dijkstra_path_get(s : NetroutedijkstraPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraPath::get(self : NetroutedijkstraPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_path_set(s : NetroutedijkstraPath, i : Int, v : Double) -> NetroutedijkstraPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraPath::set(self : NetroutedijkstraPath, i : Int, v : Double) -> NetroutedijkstraPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_path_sum(s : NetroutedijkstraPath) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraPath::sum(self : NetroutedijkstraPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_path_mean(s : NetroutedijkstraPath) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraPath::mean(self : NetroutedijkstraPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_path_scale(s : NetroutedijkstraPath, f : Double) -> NetroutedijkstraPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraPath::scale(self : NetroutedijkstraPath, f : Double) -> NetroutedijkstraPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_path_add(a : NetroutedijkstraPath, b : NetroutedijkstraPath) -> NetroutedijkstraPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraPath::add(self : NetroutedijkstraPath, other : NetroutedijkstraPath) -> NetroutedijkstraPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_path_copy(s : NetroutedijkstraPath) -> NetroutedijkstraPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraPath::copy(self : NetroutedijkstraPath) -> NetroutedijkstraPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_path_fill(s : NetroutedijkstraPath, v : Double) -> NetroutedijkstraPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraPath::fill(self : NetroutedijkstraPath, v : Double) -> NetroutedijkstraPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_path_min(s : NetroutedijkstraPath) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraPath::min(self : NetroutedijkstraPath) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_path_max(s : NetroutedijkstraPath) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraPath::max(self : NetroutedijkstraPath) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_path_to_string(s : NetroutedijkstraPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraPath::to_string(self : NetroutedijkstraPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraCluster {
@@ -657,45 +657,45 @@ pub fn net_route_dijkstra_cluster_make(size : Int) -> NetroutedijkstraCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_cluster_len(s : NetroutedijkstraCluster) -> Int { s.size }
+pub fn NetroutedijkstraCluster::len(self : NetroutedijkstraCluster) -> Int { self.size }
 
-pub fn net_route_dijkstra_cluster_get(s : NetroutedijkstraCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraCluster::get(self : NetroutedijkstraCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_cluster_set(s : NetroutedijkstraCluster, i : Int, v : Double) -> NetroutedijkstraCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraCluster::set(self : NetroutedijkstraCluster, i : Int, v : Double) -> NetroutedijkstraCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_cluster_sum(s : NetroutedijkstraCluster) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraCluster::sum(self : NetroutedijkstraCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_cluster_mean(s : NetroutedijkstraCluster) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraCluster::mean(self : NetroutedijkstraCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_cluster_scale(s : NetroutedijkstraCluster, f : Double) -> NetroutedijkstraCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraCluster::scale(self : NetroutedijkstraCluster, f : Double) -> NetroutedijkstraCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_cluster_add(a : NetroutedijkstraCluster, b : NetroutedijkstraCluster) -> NetroutedijkstraCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraCluster::add(self : NetroutedijkstraCluster, other : NetroutedijkstraCluster) -> NetroutedijkstraCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_cluster_copy(s : NetroutedijkstraCluster) -> NetroutedijkstraCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraCluster::copy(self : NetroutedijkstraCluster) -> NetroutedijkstraCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_cluster_fill(s : NetroutedijkstraCluster, v : Double) -> NetroutedijkstraCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraCluster::fill(self : NetroutedijkstraCluster, v : Double) -> NetroutedijkstraCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_cluster_min(s : NetroutedijkstraCluster) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraCluster::min(self : NetroutedijkstraCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_cluster_max(s : NetroutedijkstraCluster) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraCluster::max(self : NetroutedijkstraCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_cluster_to_string(s : NetroutedijkstraCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraCluster::to_string(self : NetroutedijkstraCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraModel {
@@ -708,45 +708,45 @@ pub fn net_route_dijkstra_model_make(size : Int) -> NetroutedijkstraModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_model_len(s : NetroutedijkstraModel) -> Int { s.size }
+pub fn NetroutedijkstraModel::len(self : NetroutedijkstraModel) -> Int { self.size }
 
-pub fn net_route_dijkstra_model_get(s : NetroutedijkstraModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraModel::get(self : NetroutedijkstraModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_model_set(s : NetroutedijkstraModel, i : Int, v : Double) -> NetroutedijkstraModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraModel::set(self : NetroutedijkstraModel, i : Int, v : Double) -> NetroutedijkstraModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_model_sum(s : NetroutedijkstraModel) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraModel::sum(self : NetroutedijkstraModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_model_mean(s : NetroutedijkstraModel) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraModel::mean(self : NetroutedijkstraModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_model_scale(s : NetroutedijkstraModel, f : Double) -> NetroutedijkstraModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraModel::scale(self : NetroutedijkstraModel, f : Double) -> NetroutedijkstraModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_model_add(a : NetroutedijkstraModel, b : NetroutedijkstraModel) -> NetroutedijkstraModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraModel::add(self : NetroutedijkstraModel, other : NetroutedijkstraModel) -> NetroutedijkstraModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_model_copy(s : NetroutedijkstraModel) -> NetroutedijkstraModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraModel::copy(self : NetroutedijkstraModel) -> NetroutedijkstraModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_model_fill(s : NetroutedijkstraModel, v : Double) -> NetroutedijkstraModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraModel::fill(self : NetroutedijkstraModel, v : Double) -> NetroutedijkstraModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_model_min(s : NetroutedijkstraModel) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraModel::min(self : NetroutedijkstraModel) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_model_max(s : NetroutedijkstraModel) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraModel::max(self : NetroutedijkstraModel) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_model_to_string(s : NetroutedijkstraModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraModel::to_string(self : NetroutedijkstraModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraLayer {
@@ -759,45 +759,45 @@ pub fn net_route_dijkstra_layer_make(size : Int) -> NetroutedijkstraLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_layer_len(s : NetroutedijkstraLayer) -> Int { s.size }
+pub fn NetroutedijkstraLayer::len(self : NetroutedijkstraLayer) -> Int { self.size }
 
-pub fn net_route_dijkstra_layer_get(s : NetroutedijkstraLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraLayer::get(self : NetroutedijkstraLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_layer_set(s : NetroutedijkstraLayer, i : Int, v : Double) -> NetroutedijkstraLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraLayer::set(self : NetroutedijkstraLayer, i : Int, v : Double) -> NetroutedijkstraLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_layer_sum(s : NetroutedijkstraLayer) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraLayer::sum(self : NetroutedijkstraLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_layer_mean(s : NetroutedijkstraLayer) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraLayer::mean(self : NetroutedijkstraLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_layer_scale(s : NetroutedijkstraLayer, f : Double) -> NetroutedijkstraLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraLayer::scale(self : NetroutedijkstraLayer, f : Double) -> NetroutedijkstraLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_layer_add(a : NetroutedijkstraLayer, b : NetroutedijkstraLayer) -> NetroutedijkstraLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraLayer::add(self : NetroutedijkstraLayer, other : NetroutedijkstraLayer) -> NetroutedijkstraLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_layer_copy(s : NetroutedijkstraLayer) -> NetroutedijkstraLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraLayer::copy(self : NetroutedijkstraLayer) -> NetroutedijkstraLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_layer_fill(s : NetroutedijkstraLayer, v : Double) -> NetroutedijkstraLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraLayer::fill(self : NetroutedijkstraLayer, v : Double) -> NetroutedijkstraLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_layer_min(s : NetroutedijkstraLayer) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraLayer::min(self : NetroutedijkstraLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_layer_max(s : NetroutedijkstraLayer) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraLayer::max(self : NetroutedijkstraLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_layer_to_string(s : NetroutedijkstraLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraLayer::to_string(self : NetroutedijkstraLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraBuffer {
@@ -810,45 +810,45 @@ pub fn net_route_dijkstra_buffer_make(size : Int) -> NetroutedijkstraBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_buffer_len(s : NetroutedijkstraBuffer) -> Int { s.size }
+pub fn NetroutedijkstraBuffer::len(self : NetroutedijkstraBuffer) -> Int { self.size }
 
-pub fn net_route_dijkstra_buffer_get(s : NetroutedijkstraBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraBuffer::get(self : NetroutedijkstraBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_buffer_set(s : NetroutedijkstraBuffer, i : Int, v : Double) -> NetroutedijkstraBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraBuffer::set(self : NetroutedijkstraBuffer, i : Int, v : Double) -> NetroutedijkstraBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_buffer_sum(s : NetroutedijkstraBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraBuffer::sum(self : NetroutedijkstraBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_buffer_mean(s : NetroutedijkstraBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraBuffer::mean(self : NetroutedijkstraBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_buffer_scale(s : NetroutedijkstraBuffer, f : Double) -> NetroutedijkstraBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraBuffer::scale(self : NetroutedijkstraBuffer, f : Double) -> NetroutedijkstraBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_buffer_add(a : NetroutedijkstraBuffer, b : NetroutedijkstraBuffer) -> NetroutedijkstraBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraBuffer::add(self : NetroutedijkstraBuffer, other : NetroutedijkstraBuffer) -> NetroutedijkstraBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_buffer_copy(s : NetroutedijkstraBuffer) -> NetroutedijkstraBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraBuffer::copy(self : NetroutedijkstraBuffer) -> NetroutedijkstraBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_buffer_fill(s : NetroutedijkstraBuffer, v : Double) -> NetroutedijkstraBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraBuffer::fill(self : NetroutedijkstraBuffer, v : Double) -> NetroutedijkstraBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_buffer_min(s : NetroutedijkstraBuffer) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraBuffer::min(self : NetroutedijkstraBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_buffer_max(s : NetroutedijkstraBuffer) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraBuffer::max(self : NetroutedijkstraBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_buffer_to_string(s : NetroutedijkstraBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraBuffer::to_string(self : NetroutedijkstraBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraCursor {
@@ -861,45 +861,45 @@ pub fn net_route_dijkstra_cursor_make(size : Int) -> NetroutedijkstraCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_cursor_len(s : NetroutedijkstraCursor) -> Int { s.size }
+pub fn NetroutedijkstraCursor::len(self : NetroutedijkstraCursor) -> Int { self.size }
 
-pub fn net_route_dijkstra_cursor_get(s : NetroutedijkstraCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraCursor::get(self : NetroutedijkstraCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_cursor_set(s : NetroutedijkstraCursor, i : Int, v : Double) -> NetroutedijkstraCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraCursor::set(self : NetroutedijkstraCursor, i : Int, v : Double) -> NetroutedijkstraCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_cursor_sum(s : NetroutedijkstraCursor) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraCursor::sum(self : NetroutedijkstraCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_cursor_mean(s : NetroutedijkstraCursor) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraCursor::mean(self : NetroutedijkstraCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_cursor_scale(s : NetroutedijkstraCursor, f : Double) -> NetroutedijkstraCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraCursor::scale(self : NetroutedijkstraCursor, f : Double) -> NetroutedijkstraCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_cursor_add(a : NetroutedijkstraCursor, b : NetroutedijkstraCursor) -> NetroutedijkstraCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraCursor::add(self : NetroutedijkstraCursor, other : NetroutedijkstraCursor) -> NetroutedijkstraCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_cursor_copy(s : NetroutedijkstraCursor) -> NetroutedijkstraCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraCursor::copy(self : NetroutedijkstraCursor) -> NetroutedijkstraCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_cursor_fill(s : NetroutedijkstraCursor, v : Double) -> NetroutedijkstraCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraCursor::fill(self : NetroutedijkstraCursor, v : Double) -> NetroutedijkstraCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_cursor_min(s : NetroutedijkstraCursor) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraCursor::min(self : NetroutedijkstraCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_cursor_max(s : NetroutedijkstraCursor) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraCursor::max(self : NetroutedijkstraCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_cursor_to_string(s : NetroutedijkstraCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraCursor::to_string(self : NetroutedijkstraCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraView {
@@ -912,45 +912,45 @@ pub fn net_route_dijkstra_view_make(size : Int) -> NetroutedijkstraView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_view_len(s : NetroutedijkstraView) -> Int { s.size }
+pub fn NetroutedijkstraView::len(self : NetroutedijkstraView) -> Int { self.size }
 
-pub fn net_route_dijkstra_view_get(s : NetroutedijkstraView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraView::get(self : NetroutedijkstraView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_view_set(s : NetroutedijkstraView, i : Int, v : Double) -> NetroutedijkstraView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraView::set(self : NetroutedijkstraView, i : Int, v : Double) -> NetroutedijkstraView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_view_sum(s : NetroutedijkstraView) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraView::sum(self : NetroutedijkstraView) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_view_mean(s : NetroutedijkstraView) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraView::mean(self : NetroutedijkstraView) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_view_scale(s : NetroutedijkstraView, f : Double) -> NetroutedijkstraView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraView::scale(self : NetroutedijkstraView, f : Double) -> NetroutedijkstraView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_view_add(a : NetroutedijkstraView, b : NetroutedijkstraView) -> NetroutedijkstraView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraView::add(self : NetroutedijkstraView, other : NetroutedijkstraView) -> NetroutedijkstraView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_view_copy(s : NetroutedijkstraView) -> NetroutedijkstraView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraView::copy(self : NetroutedijkstraView) -> NetroutedijkstraView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_view_fill(s : NetroutedijkstraView, v : Double) -> NetroutedijkstraView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraView::fill(self : NetroutedijkstraView, v : Double) -> NetroutedijkstraView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_view_min(s : NetroutedijkstraView) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraView::min(self : NetroutedijkstraView) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_view_max(s : NetroutedijkstraView) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraView::max(self : NetroutedijkstraView) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_view_to_string(s : NetroutedijkstraView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraView::to_string(self : NetroutedijkstraView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraRange {
@@ -963,45 +963,45 @@ pub fn net_route_dijkstra_range_make(size : Int) -> NetroutedijkstraRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_range_len(s : NetroutedijkstraRange) -> Int { s.size }
+pub fn NetroutedijkstraRange::len(self : NetroutedijkstraRange) -> Int { self.size }
 
-pub fn net_route_dijkstra_range_get(s : NetroutedijkstraRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraRange::get(self : NetroutedijkstraRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_range_set(s : NetroutedijkstraRange, i : Int, v : Double) -> NetroutedijkstraRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraRange::set(self : NetroutedijkstraRange, i : Int, v : Double) -> NetroutedijkstraRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_range_sum(s : NetroutedijkstraRange) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraRange::sum(self : NetroutedijkstraRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_range_mean(s : NetroutedijkstraRange) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraRange::mean(self : NetroutedijkstraRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_range_scale(s : NetroutedijkstraRange, f : Double) -> NetroutedijkstraRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraRange::scale(self : NetroutedijkstraRange, f : Double) -> NetroutedijkstraRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_range_add(a : NetroutedijkstraRange, b : NetroutedijkstraRange) -> NetroutedijkstraRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraRange::add(self : NetroutedijkstraRange, other : NetroutedijkstraRange) -> NetroutedijkstraRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_range_copy(s : NetroutedijkstraRange) -> NetroutedijkstraRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraRange::copy(self : NetroutedijkstraRange) -> NetroutedijkstraRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_range_fill(s : NetroutedijkstraRange, v : Double) -> NetroutedijkstraRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraRange::fill(self : NetroutedijkstraRange, v : Double) -> NetroutedijkstraRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_range_min(s : NetroutedijkstraRange) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraRange::min(self : NetroutedijkstraRange) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_range_max(s : NetroutedijkstraRange) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraRange::max(self : NetroutedijkstraRange) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_range_to_string(s : NetroutedijkstraRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraRange::to_string(self : NetroutedijkstraRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutedijkstraSlice {
@@ -1014,44 +1014,44 @@ pub fn net_route_dijkstra_slice_make(size : Int) -> NetroutedijkstraSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_dijkstra_slice_len(s : NetroutedijkstraSlice) -> Int { s.size }
+pub fn NetroutedijkstraSlice::len(self : NetroutedijkstraSlice) -> Int { self.size }
 
-pub fn net_route_dijkstra_slice_get(s : NetroutedijkstraSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutedijkstraSlice::get(self : NetroutedijkstraSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_dijkstra_slice_set(s : NetroutedijkstraSlice, i : Int, v : Double) -> NetroutedijkstraSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutedijkstraSlice::set(self : NetroutedijkstraSlice, i : Int, v : Double) -> NetroutedijkstraSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_slice_sum(s : NetroutedijkstraSlice) -> Double { @_common.sum(s.data) }
+pub fn NetroutedijkstraSlice::sum(self : NetroutedijkstraSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_dijkstra_slice_mean(s : NetroutedijkstraSlice) -> Double { @_common.mean(s.data) }
+pub fn NetroutedijkstraSlice::mean(self : NetroutedijkstraSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_dijkstra_slice_scale(s : NetroutedijkstraSlice, f : Double) -> NetroutedijkstraSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraSlice::scale(self : NetroutedijkstraSlice, f : Double) -> NetroutedijkstraSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_slice_add(a : NetroutedijkstraSlice, b : NetroutedijkstraSlice) -> NetroutedijkstraSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutedijkstraSlice::add(self : NetroutedijkstraSlice, other : NetroutedijkstraSlice) -> NetroutedijkstraSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_slice_copy(s : NetroutedijkstraSlice) -> NetroutedijkstraSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraSlice::copy(self : NetroutedijkstraSlice) -> NetroutedijkstraSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_slice_fill(s : NetroutedijkstraSlice, v : Double) -> NetroutedijkstraSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutedijkstraSlice::fill(self : NetroutedijkstraSlice, v : Double) -> NetroutedijkstraSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_dijkstra_slice_min(s : NetroutedijkstraSlice) -> Double { @_common.min(s.data) }
+pub fn NetroutedijkstraSlice::min(self : NetroutedijkstraSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_route_dijkstra_slice_max(s : NetroutedijkstraSlice) -> Double { @_common.max(s.data) }
+pub fn NetroutedijkstraSlice::max(self : NetroutedijkstraSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_route_dijkstra_slice_to_string(s : NetroutedijkstraSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutedijkstraSlice::to_string(self : NetroutedijkstraSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn signal_window_hamming_frame_make(size : Int) -> SignalwindowhammingFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_frame_len(s : SignalwindowhammingFrame) -> Int { s.size }
+pub fn SignalwindowhammingFrame::len(self : SignalwindowhammingFrame) -> Int { self.size }
 
-pub fn signal_window_hamming_frame_get(s : SignalwindowhammingFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingFrame::get(self : SignalwindowhammingFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_frame_set(s : SignalwindowhammingFrame, i : Int, v : Double) -> SignalwindowhammingFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingFrame::set(self : SignalwindowhammingFrame, i : Int, v : Double) -> SignalwindowhammingFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_frame_sum(s : SignalwindowhammingFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingFrame::sum(self : SignalwindowhammingFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_frame_mean(s : SignalwindowhammingFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingFrame::mean(self : SignalwindowhammingFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_frame_scale(s : SignalwindowhammingFrame, f : Double) -> SignalwindowhammingFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingFrame::scale(self : SignalwindowhammingFrame, f : Double) -> SignalwindowhammingFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_frame_add(a : SignalwindowhammingFrame, b : SignalwindowhammingFrame) -> SignalwindowhammingFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingFrame::add(self : SignalwindowhammingFrame, other : SignalwindowhammingFrame) -> SignalwindowhammingFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_frame_copy(s : SignalwindowhammingFrame) -> SignalwindowhammingFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingFrame::copy(self : SignalwindowhammingFrame) -> SignalwindowhammingFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_frame_fill(s : SignalwindowhammingFrame, v : Double) -> SignalwindowhammingFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingFrame::fill(self : SignalwindowhammingFrame, v : Double) -> SignalwindowhammingFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_frame_min(s : SignalwindowhammingFrame) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingFrame::min(self : SignalwindowhammingFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_frame_max(s : SignalwindowhammingFrame) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingFrame::max(self : SignalwindowhammingFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_frame_to_string(s : SignalwindowhammingFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingFrame::to_string(self : SignalwindowhammingFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingTable {
@@ -402,45 +402,45 @@ pub fn signal_window_hamming_table_make(size : Int) -> SignalwindowhammingTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_table_len(s : SignalwindowhammingTable) -> Int { s.size }
+pub fn SignalwindowhammingTable::len(self : SignalwindowhammingTable) -> Int { self.size }
 
-pub fn signal_window_hamming_table_get(s : SignalwindowhammingTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingTable::get(self : SignalwindowhammingTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_table_set(s : SignalwindowhammingTable, i : Int, v : Double) -> SignalwindowhammingTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingTable::set(self : SignalwindowhammingTable, i : Int, v : Double) -> SignalwindowhammingTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_table_sum(s : SignalwindowhammingTable) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingTable::sum(self : SignalwindowhammingTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_table_mean(s : SignalwindowhammingTable) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingTable::mean(self : SignalwindowhammingTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_table_scale(s : SignalwindowhammingTable, f : Double) -> SignalwindowhammingTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingTable::scale(self : SignalwindowhammingTable, f : Double) -> SignalwindowhammingTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_table_add(a : SignalwindowhammingTable, b : SignalwindowhammingTable) -> SignalwindowhammingTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingTable::add(self : SignalwindowhammingTable, other : SignalwindowhammingTable) -> SignalwindowhammingTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_table_copy(s : SignalwindowhammingTable) -> SignalwindowhammingTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingTable::copy(self : SignalwindowhammingTable) -> SignalwindowhammingTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_table_fill(s : SignalwindowhammingTable, v : Double) -> SignalwindowhammingTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingTable::fill(self : SignalwindowhammingTable, v : Double) -> SignalwindowhammingTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_table_min(s : SignalwindowhammingTable) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingTable::min(self : SignalwindowhammingTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_table_max(s : SignalwindowhammingTable) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingTable::max(self : SignalwindowhammingTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_table_to_string(s : SignalwindowhammingTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingTable::to_string(self : SignalwindowhammingTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingGraphN {
@@ -453,45 +453,45 @@ pub fn signal_window_hamming_graphn_make(size : Int) -> SignalwindowhammingGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_graphn_len(s : SignalwindowhammingGraphN) -> Int { s.size }
+pub fn SignalwindowhammingGraphN::len(self : SignalwindowhammingGraphN) -> Int { self.size }
 
-pub fn signal_window_hamming_graphn_get(s : SignalwindowhammingGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingGraphN::get(self : SignalwindowhammingGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_graphn_set(s : SignalwindowhammingGraphN, i : Int, v : Double) -> SignalwindowhammingGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingGraphN::set(self : SignalwindowhammingGraphN, i : Int, v : Double) -> SignalwindowhammingGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_graphn_sum(s : SignalwindowhammingGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingGraphN::sum(self : SignalwindowhammingGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_graphn_mean(s : SignalwindowhammingGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingGraphN::mean(self : SignalwindowhammingGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_graphn_scale(s : SignalwindowhammingGraphN, f : Double) -> SignalwindowhammingGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingGraphN::scale(self : SignalwindowhammingGraphN, f : Double) -> SignalwindowhammingGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_graphn_add(a : SignalwindowhammingGraphN, b : SignalwindowhammingGraphN) -> SignalwindowhammingGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingGraphN::add(self : SignalwindowhammingGraphN, other : SignalwindowhammingGraphN) -> SignalwindowhammingGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_graphn_copy(s : SignalwindowhammingGraphN) -> SignalwindowhammingGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingGraphN::copy(self : SignalwindowhammingGraphN) -> SignalwindowhammingGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_graphn_fill(s : SignalwindowhammingGraphN, v : Double) -> SignalwindowhammingGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingGraphN::fill(self : SignalwindowhammingGraphN, v : Double) -> SignalwindowhammingGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_graphn_min(s : SignalwindowhammingGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingGraphN::min(self : SignalwindowhammingGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_graphn_max(s : SignalwindowhammingGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingGraphN::max(self : SignalwindowhammingGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_graphn_to_string(s : SignalwindowhammingGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingGraphN::to_string(self : SignalwindowhammingGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingNode {
@@ -504,45 +504,45 @@ pub fn signal_window_hamming_node_make(size : Int) -> SignalwindowhammingNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_node_len(s : SignalwindowhammingNode) -> Int { s.size }
+pub fn SignalwindowhammingNode::len(self : SignalwindowhammingNode) -> Int { self.size }
 
-pub fn signal_window_hamming_node_get(s : SignalwindowhammingNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingNode::get(self : SignalwindowhammingNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_node_set(s : SignalwindowhammingNode, i : Int, v : Double) -> SignalwindowhammingNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingNode::set(self : SignalwindowhammingNode, i : Int, v : Double) -> SignalwindowhammingNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_node_sum(s : SignalwindowhammingNode) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingNode::sum(self : SignalwindowhammingNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_node_mean(s : SignalwindowhammingNode) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingNode::mean(self : SignalwindowhammingNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_node_scale(s : SignalwindowhammingNode, f : Double) -> SignalwindowhammingNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingNode::scale(self : SignalwindowhammingNode, f : Double) -> SignalwindowhammingNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_node_add(a : SignalwindowhammingNode, b : SignalwindowhammingNode) -> SignalwindowhammingNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingNode::add(self : SignalwindowhammingNode, other : SignalwindowhammingNode) -> SignalwindowhammingNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_node_copy(s : SignalwindowhammingNode) -> SignalwindowhammingNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingNode::copy(self : SignalwindowhammingNode) -> SignalwindowhammingNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_node_fill(s : SignalwindowhammingNode, v : Double) -> SignalwindowhammingNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingNode::fill(self : SignalwindowhammingNode, v : Double) -> SignalwindowhammingNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_node_min(s : SignalwindowhammingNode) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingNode::min(self : SignalwindowhammingNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_node_max(s : SignalwindowhammingNode) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingNode::max(self : SignalwindowhammingNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_node_to_string(s : SignalwindowhammingNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingNode::to_string(self : SignalwindowhammingNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingEdge {
@@ -555,45 +555,45 @@ pub fn signal_window_hamming_edge_make(size : Int) -> SignalwindowhammingEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_edge_len(s : SignalwindowhammingEdge) -> Int { s.size }
+pub fn SignalwindowhammingEdge::len(self : SignalwindowhammingEdge) -> Int { self.size }
 
-pub fn signal_window_hamming_edge_get(s : SignalwindowhammingEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingEdge::get(self : SignalwindowhammingEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_edge_set(s : SignalwindowhammingEdge, i : Int, v : Double) -> SignalwindowhammingEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingEdge::set(self : SignalwindowhammingEdge, i : Int, v : Double) -> SignalwindowhammingEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_edge_sum(s : SignalwindowhammingEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingEdge::sum(self : SignalwindowhammingEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_edge_mean(s : SignalwindowhammingEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingEdge::mean(self : SignalwindowhammingEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_edge_scale(s : SignalwindowhammingEdge, f : Double) -> SignalwindowhammingEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingEdge::scale(self : SignalwindowhammingEdge, f : Double) -> SignalwindowhammingEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_edge_add(a : SignalwindowhammingEdge, b : SignalwindowhammingEdge) -> SignalwindowhammingEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingEdge::add(self : SignalwindowhammingEdge, other : SignalwindowhammingEdge) -> SignalwindowhammingEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_edge_copy(s : SignalwindowhammingEdge) -> SignalwindowhammingEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingEdge::copy(self : SignalwindowhammingEdge) -> SignalwindowhammingEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_edge_fill(s : SignalwindowhammingEdge, v : Double) -> SignalwindowhammingEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingEdge::fill(self : SignalwindowhammingEdge, v : Double) -> SignalwindowhammingEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_edge_min(s : SignalwindowhammingEdge) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingEdge::min(self : SignalwindowhammingEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_edge_max(s : SignalwindowhammingEdge) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingEdge::max(self : SignalwindowhammingEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_edge_to_string(s : SignalwindowhammingEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingEdge::to_string(self : SignalwindowhammingEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingPath {
@@ -606,45 +606,45 @@ pub fn signal_window_hamming_path_make(size : Int) -> SignalwindowhammingPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_path_len(s : SignalwindowhammingPath) -> Int { s.size }
+pub fn SignalwindowhammingPath::len(self : SignalwindowhammingPath) -> Int { self.size }
 
-pub fn signal_window_hamming_path_get(s : SignalwindowhammingPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingPath::get(self : SignalwindowhammingPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_path_set(s : SignalwindowhammingPath, i : Int, v : Double) -> SignalwindowhammingPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingPath::set(self : SignalwindowhammingPath, i : Int, v : Double) -> SignalwindowhammingPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_path_sum(s : SignalwindowhammingPath) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingPath::sum(self : SignalwindowhammingPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_path_mean(s : SignalwindowhammingPath) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingPath::mean(self : SignalwindowhammingPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_path_scale(s : SignalwindowhammingPath, f : Double) -> SignalwindowhammingPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingPath::scale(self : SignalwindowhammingPath, f : Double) -> SignalwindowhammingPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_path_add(a : SignalwindowhammingPath, b : SignalwindowhammingPath) -> SignalwindowhammingPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingPath::add(self : SignalwindowhammingPath, other : SignalwindowhammingPath) -> SignalwindowhammingPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_path_copy(s : SignalwindowhammingPath) -> SignalwindowhammingPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingPath::copy(self : SignalwindowhammingPath) -> SignalwindowhammingPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_path_fill(s : SignalwindowhammingPath, v : Double) -> SignalwindowhammingPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingPath::fill(self : SignalwindowhammingPath, v : Double) -> SignalwindowhammingPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_path_min(s : SignalwindowhammingPath) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingPath::min(self : SignalwindowhammingPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_path_max(s : SignalwindowhammingPath) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingPath::max(self : SignalwindowhammingPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_path_to_string(s : SignalwindowhammingPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingPath::to_string(self : SignalwindowhammingPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingCluster {
@@ -657,45 +657,45 @@ pub fn signal_window_hamming_cluster_make(size : Int) -> SignalwindowhammingClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_cluster_len(s : SignalwindowhammingCluster) -> Int { s.size }
+pub fn SignalwindowhammingCluster::len(self : SignalwindowhammingCluster) -> Int { self.size }
 
-pub fn signal_window_hamming_cluster_get(s : SignalwindowhammingCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingCluster::get(self : SignalwindowhammingCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_cluster_set(s : SignalwindowhammingCluster, i : Int, v : Double) -> SignalwindowhammingCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingCluster::set(self : SignalwindowhammingCluster, i : Int, v : Double) -> SignalwindowhammingCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_cluster_sum(s : SignalwindowhammingCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingCluster::sum(self : SignalwindowhammingCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_cluster_mean(s : SignalwindowhammingCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingCluster::mean(self : SignalwindowhammingCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_cluster_scale(s : SignalwindowhammingCluster, f : Double) -> SignalwindowhammingCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingCluster::scale(self : SignalwindowhammingCluster, f : Double) -> SignalwindowhammingCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_cluster_add(a : SignalwindowhammingCluster, b : SignalwindowhammingCluster) -> SignalwindowhammingCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingCluster::add(self : SignalwindowhammingCluster, other : SignalwindowhammingCluster) -> SignalwindowhammingCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_cluster_copy(s : SignalwindowhammingCluster) -> SignalwindowhammingCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingCluster::copy(self : SignalwindowhammingCluster) -> SignalwindowhammingCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_cluster_fill(s : SignalwindowhammingCluster, v : Double) -> SignalwindowhammingCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingCluster::fill(self : SignalwindowhammingCluster, v : Double) -> SignalwindowhammingCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_cluster_min(s : SignalwindowhammingCluster) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingCluster::min(self : SignalwindowhammingCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_cluster_max(s : SignalwindowhammingCluster) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingCluster::max(self : SignalwindowhammingCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_cluster_to_string(s : SignalwindowhammingCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingCluster::to_string(self : SignalwindowhammingCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingModel {
@@ -708,45 +708,45 @@ pub fn signal_window_hamming_model_make(size : Int) -> SignalwindowhammingModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_model_len(s : SignalwindowhammingModel) -> Int { s.size }
+pub fn SignalwindowhammingModel::len(self : SignalwindowhammingModel) -> Int { self.size }
 
-pub fn signal_window_hamming_model_get(s : SignalwindowhammingModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingModel::get(self : SignalwindowhammingModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_model_set(s : SignalwindowhammingModel, i : Int, v : Double) -> SignalwindowhammingModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingModel::set(self : SignalwindowhammingModel, i : Int, v : Double) -> SignalwindowhammingModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_model_sum(s : SignalwindowhammingModel) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingModel::sum(self : SignalwindowhammingModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_model_mean(s : SignalwindowhammingModel) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingModel::mean(self : SignalwindowhammingModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_model_scale(s : SignalwindowhammingModel, f : Double) -> SignalwindowhammingModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingModel::scale(self : SignalwindowhammingModel, f : Double) -> SignalwindowhammingModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_model_add(a : SignalwindowhammingModel, b : SignalwindowhammingModel) -> SignalwindowhammingModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingModel::add(self : SignalwindowhammingModel, other : SignalwindowhammingModel) -> SignalwindowhammingModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_model_copy(s : SignalwindowhammingModel) -> SignalwindowhammingModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingModel::copy(self : SignalwindowhammingModel) -> SignalwindowhammingModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_model_fill(s : SignalwindowhammingModel, v : Double) -> SignalwindowhammingModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingModel::fill(self : SignalwindowhammingModel, v : Double) -> SignalwindowhammingModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_model_min(s : SignalwindowhammingModel) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingModel::min(self : SignalwindowhammingModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_model_max(s : SignalwindowhammingModel) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingModel::max(self : SignalwindowhammingModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_model_to_string(s : SignalwindowhammingModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingModel::to_string(self : SignalwindowhammingModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingLayer {
@@ -759,45 +759,45 @@ pub fn signal_window_hamming_layer_make(size : Int) -> SignalwindowhammingLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_layer_len(s : SignalwindowhammingLayer) -> Int { s.size }
+pub fn SignalwindowhammingLayer::len(self : SignalwindowhammingLayer) -> Int { self.size }
 
-pub fn signal_window_hamming_layer_get(s : SignalwindowhammingLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingLayer::get(self : SignalwindowhammingLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_layer_set(s : SignalwindowhammingLayer, i : Int, v : Double) -> SignalwindowhammingLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingLayer::set(self : SignalwindowhammingLayer, i : Int, v : Double) -> SignalwindowhammingLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_layer_sum(s : SignalwindowhammingLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingLayer::sum(self : SignalwindowhammingLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_layer_mean(s : SignalwindowhammingLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingLayer::mean(self : SignalwindowhammingLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_layer_scale(s : SignalwindowhammingLayer, f : Double) -> SignalwindowhammingLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingLayer::scale(self : SignalwindowhammingLayer, f : Double) -> SignalwindowhammingLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_layer_add(a : SignalwindowhammingLayer, b : SignalwindowhammingLayer) -> SignalwindowhammingLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingLayer::add(self : SignalwindowhammingLayer, other : SignalwindowhammingLayer) -> SignalwindowhammingLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_layer_copy(s : SignalwindowhammingLayer) -> SignalwindowhammingLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingLayer::copy(self : SignalwindowhammingLayer) -> SignalwindowhammingLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_layer_fill(s : SignalwindowhammingLayer, v : Double) -> SignalwindowhammingLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingLayer::fill(self : SignalwindowhammingLayer, v : Double) -> SignalwindowhammingLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_layer_min(s : SignalwindowhammingLayer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingLayer::min(self : SignalwindowhammingLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_layer_max(s : SignalwindowhammingLayer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingLayer::max(self : SignalwindowhammingLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_layer_to_string(s : SignalwindowhammingLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingLayer::to_string(self : SignalwindowhammingLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingBuffer {
@@ -810,45 +810,45 @@ pub fn signal_window_hamming_buffer_make(size : Int) -> SignalwindowhammingBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_buffer_len(s : SignalwindowhammingBuffer) -> Int { s.size }
+pub fn SignalwindowhammingBuffer::len(self : SignalwindowhammingBuffer) -> Int { self.size }
 
-pub fn signal_window_hamming_buffer_get(s : SignalwindowhammingBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingBuffer::get(self : SignalwindowhammingBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_buffer_set(s : SignalwindowhammingBuffer, i : Int, v : Double) -> SignalwindowhammingBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingBuffer::set(self : SignalwindowhammingBuffer, i : Int, v : Double) -> SignalwindowhammingBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_buffer_sum(s : SignalwindowhammingBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingBuffer::sum(self : SignalwindowhammingBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_buffer_mean(s : SignalwindowhammingBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingBuffer::mean(self : SignalwindowhammingBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_buffer_scale(s : SignalwindowhammingBuffer, f : Double) -> SignalwindowhammingBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingBuffer::scale(self : SignalwindowhammingBuffer, f : Double) -> SignalwindowhammingBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_buffer_add(a : SignalwindowhammingBuffer, b : SignalwindowhammingBuffer) -> SignalwindowhammingBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingBuffer::add(self : SignalwindowhammingBuffer, other : SignalwindowhammingBuffer) -> SignalwindowhammingBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_buffer_copy(s : SignalwindowhammingBuffer) -> SignalwindowhammingBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingBuffer::copy(self : SignalwindowhammingBuffer) -> SignalwindowhammingBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_buffer_fill(s : SignalwindowhammingBuffer, v : Double) -> SignalwindowhammingBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingBuffer::fill(self : SignalwindowhammingBuffer, v : Double) -> SignalwindowhammingBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_buffer_min(s : SignalwindowhammingBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingBuffer::min(self : SignalwindowhammingBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_buffer_max(s : SignalwindowhammingBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingBuffer::max(self : SignalwindowhammingBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_buffer_to_string(s : SignalwindowhammingBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingBuffer::to_string(self : SignalwindowhammingBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingCursor {
@@ -861,45 +861,45 @@ pub fn signal_window_hamming_cursor_make(size : Int) -> SignalwindowhammingCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_cursor_len(s : SignalwindowhammingCursor) -> Int { s.size }
+pub fn SignalwindowhammingCursor::len(self : SignalwindowhammingCursor) -> Int { self.size }
 
-pub fn signal_window_hamming_cursor_get(s : SignalwindowhammingCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingCursor::get(self : SignalwindowhammingCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_cursor_set(s : SignalwindowhammingCursor, i : Int, v : Double) -> SignalwindowhammingCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingCursor::set(self : SignalwindowhammingCursor, i : Int, v : Double) -> SignalwindowhammingCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_cursor_sum(s : SignalwindowhammingCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingCursor::sum(self : SignalwindowhammingCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_cursor_mean(s : SignalwindowhammingCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingCursor::mean(self : SignalwindowhammingCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_cursor_scale(s : SignalwindowhammingCursor, f : Double) -> SignalwindowhammingCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingCursor::scale(self : SignalwindowhammingCursor, f : Double) -> SignalwindowhammingCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_cursor_add(a : SignalwindowhammingCursor, b : SignalwindowhammingCursor) -> SignalwindowhammingCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingCursor::add(self : SignalwindowhammingCursor, other : SignalwindowhammingCursor) -> SignalwindowhammingCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_cursor_copy(s : SignalwindowhammingCursor) -> SignalwindowhammingCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingCursor::copy(self : SignalwindowhammingCursor) -> SignalwindowhammingCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_cursor_fill(s : SignalwindowhammingCursor, v : Double) -> SignalwindowhammingCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingCursor::fill(self : SignalwindowhammingCursor, v : Double) -> SignalwindowhammingCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_cursor_min(s : SignalwindowhammingCursor) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingCursor::min(self : SignalwindowhammingCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_cursor_max(s : SignalwindowhammingCursor) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingCursor::max(self : SignalwindowhammingCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_cursor_to_string(s : SignalwindowhammingCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingCursor::to_string(self : SignalwindowhammingCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingView {
@@ -912,45 +912,45 @@ pub fn signal_window_hamming_view_make(size : Int) -> SignalwindowhammingView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_view_len(s : SignalwindowhammingView) -> Int { s.size }
+pub fn SignalwindowhammingView::len(self : SignalwindowhammingView) -> Int { self.size }
 
-pub fn signal_window_hamming_view_get(s : SignalwindowhammingView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingView::get(self : SignalwindowhammingView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_view_set(s : SignalwindowhammingView, i : Int, v : Double) -> SignalwindowhammingView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingView::set(self : SignalwindowhammingView, i : Int, v : Double) -> SignalwindowhammingView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_view_sum(s : SignalwindowhammingView) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingView::sum(self : SignalwindowhammingView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_view_mean(s : SignalwindowhammingView) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingView::mean(self : SignalwindowhammingView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_view_scale(s : SignalwindowhammingView, f : Double) -> SignalwindowhammingView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingView::scale(self : SignalwindowhammingView, f : Double) -> SignalwindowhammingView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_view_add(a : SignalwindowhammingView, b : SignalwindowhammingView) -> SignalwindowhammingView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingView::add(self : SignalwindowhammingView, other : SignalwindowhammingView) -> SignalwindowhammingView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_view_copy(s : SignalwindowhammingView) -> SignalwindowhammingView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingView::copy(self : SignalwindowhammingView) -> SignalwindowhammingView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_view_fill(s : SignalwindowhammingView, v : Double) -> SignalwindowhammingView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingView::fill(self : SignalwindowhammingView, v : Double) -> SignalwindowhammingView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_view_min(s : SignalwindowhammingView) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingView::min(self : SignalwindowhammingView) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_view_max(s : SignalwindowhammingView) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingView::max(self : SignalwindowhammingView) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_view_to_string(s : SignalwindowhammingView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingView::to_string(self : SignalwindowhammingView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingRange {
@@ -963,45 +963,45 @@ pub fn signal_window_hamming_range_make(size : Int) -> SignalwindowhammingRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_range_len(s : SignalwindowhammingRange) -> Int { s.size }
+pub fn SignalwindowhammingRange::len(self : SignalwindowhammingRange) -> Int { self.size }
 
-pub fn signal_window_hamming_range_get(s : SignalwindowhammingRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingRange::get(self : SignalwindowhammingRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_range_set(s : SignalwindowhammingRange, i : Int, v : Double) -> SignalwindowhammingRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingRange::set(self : SignalwindowhammingRange, i : Int, v : Double) -> SignalwindowhammingRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_range_sum(s : SignalwindowhammingRange) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingRange::sum(self : SignalwindowhammingRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_range_mean(s : SignalwindowhammingRange) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingRange::mean(self : SignalwindowhammingRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_range_scale(s : SignalwindowhammingRange, f : Double) -> SignalwindowhammingRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingRange::scale(self : SignalwindowhammingRange, f : Double) -> SignalwindowhammingRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_range_add(a : SignalwindowhammingRange, b : SignalwindowhammingRange) -> SignalwindowhammingRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingRange::add(self : SignalwindowhammingRange, other : SignalwindowhammingRange) -> SignalwindowhammingRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_range_copy(s : SignalwindowhammingRange) -> SignalwindowhammingRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingRange::copy(self : SignalwindowhammingRange) -> SignalwindowhammingRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_range_fill(s : SignalwindowhammingRange, v : Double) -> SignalwindowhammingRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingRange::fill(self : SignalwindowhammingRange, v : Double) -> SignalwindowhammingRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_range_min(s : SignalwindowhammingRange) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingRange::min(self : SignalwindowhammingRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_range_max(s : SignalwindowhammingRange) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingRange::max(self : SignalwindowhammingRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_range_to_string(s : SignalwindowhammingRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingRange::to_string(self : SignalwindowhammingRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowhammingSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_window_hamming_slice_make(size : Int) -> SignalwindowhammingSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_hamming_slice_len(s : SignalwindowhammingSlice) -> Int { s.size }
+pub fn SignalwindowhammingSlice::len(self : SignalwindowhammingSlice) -> Int { self.size }
 
-pub fn signal_window_hamming_slice_get(s : SignalwindowhammingSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowhammingSlice::get(self : SignalwindowhammingSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_hamming_slice_set(s : SignalwindowhammingSlice, i : Int, v : Double) -> SignalwindowhammingSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowhammingSlice::set(self : SignalwindowhammingSlice, i : Int, v : Double) -> SignalwindowhammingSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_slice_sum(s : SignalwindowhammingSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowhammingSlice::sum(self : SignalwindowhammingSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_hamming_slice_mean(s : SignalwindowhammingSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowhammingSlice::mean(self : SignalwindowhammingSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_hamming_slice_scale(s : SignalwindowhammingSlice, f : Double) -> SignalwindowhammingSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingSlice::scale(self : SignalwindowhammingSlice, f : Double) -> SignalwindowhammingSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_slice_add(a : SignalwindowhammingSlice, b : SignalwindowhammingSlice) -> SignalwindowhammingSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowhammingSlice::add(self : SignalwindowhammingSlice, other : SignalwindowhammingSlice) -> SignalwindowhammingSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_hamming_slice_copy(s : SignalwindowhammingSlice) -> SignalwindowhammingSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingSlice::copy(self : SignalwindowhammingSlice) -> SignalwindowhammingSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_slice_fill(s : SignalwindowhammingSlice, v : Double) -> SignalwindowhammingSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowhammingSlice::fill(self : SignalwindowhammingSlice, v : Double) -> SignalwindowhammingSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_hamming_slice_min(s : SignalwindowhammingSlice) -> Double { @_common.min(s.data) }
+pub fn SignalwindowhammingSlice::min(self : SignalwindowhammingSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_hamming_slice_max(s : SignalwindowhammingSlice) -> Double { @_common.max(s.data) }
+pub fn SignalwindowhammingSlice::max(self : SignalwindowhammingSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_hamming_slice_to_string(s : SignalwindowhammingSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowhammingSlice::to_string(self : SignalwindowhammingSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

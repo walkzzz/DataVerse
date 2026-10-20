@@ -351,45 +351,45 @@ pub fn math_approx_wavelet_frame_make(size : Int) -> MathapproxwaveletFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_frame_len(s : MathapproxwaveletFrame) -> Int { s.size }
+pub fn MathapproxwaveletFrame::len(self : MathapproxwaveletFrame) -> Int { self.size }
 
-pub fn math_approx_wavelet_frame_get(s : MathapproxwaveletFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletFrame::get(self : MathapproxwaveletFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_frame_set(s : MathapproxwaveletFrame, i : Int, v : Double) -> MathapproxwaveletFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletFrame::set(self : MathapproxwaveletFrame, i : Int, v : Double) -> MathapproxwaveletFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_frame_sum(s : MathapproxwaveletFrame) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletFrame::sum(self : MathapproxwaveletFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_frame_mean(s : MathapproxwaveletFrame) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletFrame::mean(self : MathapproxwaveletFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_frame_scale(s : MathapproxwaveletFrame, f : Double) -> MathapproxwaveletFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletFrame::scale(self : MathapproxwaveletFrame, f : Double) -> MathapproxwaveletFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_frame_add(a : MathapproxwaveletFrame, b : MathapproxwaveletFrame) -> MathapproxwaveletFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletFrame::add(self : MathapproxwaveletFrame, other : MathapproxwaveletFrame) -> MathapproxwaveletFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_frame_copy(s : MathapproxwaveletFrame) -> MathapproxwaveletFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletFrame::copy(self : MathapproxwaveletFrame) -> MathapproxwaveletFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_frame_fill(s : MathapproxwaveletFrame, v : Double) -> MathapproxwaveletFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletFrame::fill(self : MathapproxwaveletFrame, v : Double) -> MathapproxwaveletFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_frame_min(s : MathapproxwaveletFrame) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletFrame::min(self : MathapproxwaveletFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_frame_max(s : MathapproxwaveletFrame) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletFrame::max(self : MathapproxwaveletFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_frame_to_string(s : MathapproxwaveletFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletFrame::to_string(self : MathapproxwaveletFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletTable {
@@ -402,45 +402,45 @@ pub fn math_approx_wavelet_table_make(size : Int) -> MathapproxwaveletTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_table_len(s : MathapproxwaveletTable) -> Int { s.size }
+pub fn MathapproxwaveletTable::len(self : MathapproxwaveletTable) -> Int { self.size }
 
-pub fn math_approx_wavelet_table_get(s : MathapproxwaveletTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletTable::get(self : MathapproxwaveletTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_table_set(s : MathapproxwaveletTable, i : Int, v : Double) -> MathapproxwaveletTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletTable::set(self : MathapproxwaveletTable, i : Int, v : Double) -> MathapproxwaveletTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_table_sum(s : MathapproxwaveletTable) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletTable::sum(self : MathapproxwaveletTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_table_mean(s : MathapproxwaveletTable) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletTable::mean(self : MathapproxwaveletTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_table_scale(s : MathapproxwaveletTable, f : Double) -> MathapproxwaveletTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletTable::scale(self : MathapproxwaveletTable, f : Double) -> MathapproxwaveletTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_table_add(a : MathapproxwaveletTable, b : MathapproxwaveletTable) -> MathapproxwaveletTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletTable::add(self : MathapproxwaveletTable, other : MathapproxwaveletTable) -> MathapproxwaveletTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_table_copy(s : MathapproxwaveletTable) -> MathapproxwaveletTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletTable::copy(self : MathapproxwaveletTable) -> MathapproxwaveletTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_table_fill(s : MathapproxwaveletTable, v : Double) -> MathapproxwaveletTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletTable::fill(self : MathapproxwaveletTable, v : Double) -> MathapproxwaveletTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_table_min(s : MathapproxwaveletTable) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletTable::min(self : MathapproxwaveletTable) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_table_max(s : MathapproxwaveletTable) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletTable::max(self : MathapproxwaveletTable) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_table_to_string(s : MathapproxwaveletTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletTable::to_string(self : MathapproxwaveletTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletGraphN {
@@ -453,45 +453,45 @@ pub fn math_approx_wavelet_graphn_make(size : Int) -> MathapproxwaveletGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_graphn_len(s : MathapproxwaveletGraphN) -> Int { s.size }
+pub fn MathapproxwaveletGraphN::len(self : MathapproxwaveletGraphN) -> Int { self.size }
 
-pub fn math_approx_wavelet_graphn_get(s : MathapproxwaveletGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletGraphN::get(self : MathapproxwaveletGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_graphn_set(s : MathapproxwaveletGraphN, i : Int, v : Double) -> MathapproxwaveletGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletGraphN::set(self : MathapproxwaveletGraphN, i : Int, v : Double) -> MathapproxwaveletGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_graphn_sum(s : MathapproxwaveletGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletGraphN::sum(self : MathapproxwaveletGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_graphn_mean(s : MathapproxwaveletGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletGraphN::mean(self : MathapproxwaveletGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_graphn_scale(s : MathapproxwaveletGraphN, f : Double) -> MathapproxwaveletGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletGraphN::scale(self : MathapproxwaveletGraphN, f : Double) -> MathapproxwaveletGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_graphn_add(a : MathapproxwaveletGraphN, b : MathapproxwaveletGraphN) -> MathapproxwaveletGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletGraphN::add(self : MathapproxwaveletGraphN, other : MathapproxwaveletGraphN) -> MathapproxwaveletGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_graphn_copy(s : MathapproxwaveletGraphN) -> MathapproxwaveletGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletGraphN::copy(self : MathapproxwaveletGraphN) -> MathapproxwaveletGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_graphn_fill(s : MathapproxwaveletGraphN, v : Double) -> MathapproxwaveletGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletGraphN::fill(self : MathapproxwaveletGraphN, v : Double) -> MathapproxwaveletGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_graphn_min(s : MathapproxwaveletGraphN) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletGraphN::min(self : MathapproxwaveletGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_graphn_max(s : MathapproxwaveletGraphN) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletGraphN::max(self : MathapproxwaveletGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_graphn_to_string(s : MathapproxwaveletGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletGraphN::to_string(self : MathapproxwaveletGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletNode {
@@ -504,45 +504,45 @@ pub fn math_approx_wavelet_node_make(size : Int) -> MathapproxwaveletNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_node_len(s : MathapproxwaveletNode) -> Int { s.size }
+pub fn MathapproxwaveletNode::len(self : MathapproxwaveletNode) -> Int { self.size }
 
-pub fn math_approx_wavelet_node_get(s : MathapproxwaveletNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletNode::get(self : MathapproxwaveletNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_node_set(s : MathapproxwaveletNode, i : Int, v : Double) -> MathapproxwaveletNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletNode::set(self : MathapproxwaveletNode, i : Int, v : Double) -> MathapproxwaveletNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_node_sum(s : MathapproxwaveletNode) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletNode::sum(self : MathapproxwaveletNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_node_mean(s : MathapproxwaveletNode) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletNode::mean(self : MathapproxwaveletNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_node_scale(s : MathapproxwaveletNode, f : Double) -> MathapproxwaveletNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletNode::scale(self : MathapproxwaveletNode, f : Double) -> MathapproxwaveletNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_node_add(a : MathapproxwaveletNode, b : MathapproxwaveletNode) -> MathapproxwaveletNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletNode::add(self : MathapproxwaveletNode, other : MathapproxwaveletNode) -> MathapproxwaveletNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_node_copy(s : MathapproxwaveletNode) -> MathapproxwaveletNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletNode::copy(self : MathapproxwaveletNode) -> MathapproxwaveletNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_node_fill(s : MathapproxwaveletNode, v : Double) -> MathapproxwaveletNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletNode::fill(self : MathapproxwaveletNode, v : Double) -> MathapproxwaveletNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_node_min(s : MathapproxwaveletNode) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletNode::min(self : MathapproxwaveletNode) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_node_max(s : MathapproxwaveletNode) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletNode::max(self : MathapproxwaveletNode) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_node_to_string(s : MathapproxwaveletNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletNode::to_string(self : MathapproxwaveletNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletEdge {
@@ -555,45 +555,45 @@ pub fn math_approx_wavelet_edge_make(size : Int) -> MathapproxwaveletEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_edge_len(s : MathapproxwaveletEdge) -> Int { s.size }
+pub fn MathapproxwaveletEdge::len(self : MathapproxwaveletEdge) -> Int { self.size }
 
-pub fn math_approx_wavelet_edge_get(s : MathapproxwaveletEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletEdge::get(self : MathapproxwaveletEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_edge_set(s : MathapproxwaveletEdge, i : Int, v : Double) -> MathapproxwaveletEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletEdge::set(self : MathapproxwaveletEdge, i : Int, v : Double) -> MathapproxwaveletEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_edge_sum(s : MathapproxwaveletEdge) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletEdge::sum(self : MathapproxwaveletEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_edge_mean(s : MathapproxwaveletEdge) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletEdge::mean(self : MathapproxwaveletEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_edge_scale(s : MathapproxwaveletEdge, f : Double) -> MathapproxwaveletEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletEdge::scale(self : MathapproxwaveletEdge, f : Double) -> MathapproxwaveletEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_edge_add(a : MathapproxwaveletEdge, b : MathapproxwaveletEdge) -> MathapproxwaveletEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletEdge::add(self : MathapproxwaveletEdge, other : MathapproxwaveletEdge) -> MathapproxwaveletEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_edge_copy(s : MathapproxwaveletEdge) -> MathapproxwaveletEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletEdge::copy(self : MathapproxwaveletEdge) -> MathapproxwaveletEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_edge_fill(s : MathapproxwaveletEdge, v : Double) -> MathapproxwaveletEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletEdge::fill(self : MathapproxwaveletEdge, v : Double) -> MathapproxwaveletEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_edge_min(s : MathapproxwaveletEdge) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletEdge::min(self : MathapproxwaveletEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_edge_max(s : MathapproxwaveletEdge) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletEdge::max(self : MathapproxwaveletEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_edge_to_string(s : MathapproxwaveletEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletEdge::to_string(self : MathapproxwaveletEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletPath {
@@ -606,45 +606,45 @@ pub fn math_approx_wavelet_path_make(size : Int) -> MathapproxwaveletPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_path_len(s : MathapproxwaveletPath) -> Int { s.size }
+pub fn MathapproxwaveletPath::len(self : MathapproxwaveletPath) -> Int { self.size }
 
-pub fn math_approx_wavelet_path_get(s : MathapproxwaveletPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletPath::get(self : MathapproxwaveletPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_path_set(s : MathapproxwaveletPath, i : Int, v : Double) -> MathapproxwaveletPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletPath::set(self : MathapproxwaveletPath, i : Int, v : Double) -> MathapproxwaveletPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_path_sum(s : MathapproxwaveletPath) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletPath::sum(self : MathapproxwaveletPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_path_mean(s : MathapproxwaveletPath) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletPath::mean(self : MathapproxwaveletPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_path_scale(s : MathapproxwaveletPath, f : Double) -> MathapproxwaveletPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletPath::scale(self : MathapproxwaveletPath, f : Double) -> MathapproxwaveletPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_path_add(a : MathapproxwaveletPath, b : MathapproxwaveletPath) -> MathapproxwaveletPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletPath::add(self : MathapproxwaveletPath, other : MathapproxwaveletPath) -> MathapproxwaveletPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_path_copy(s : MathapproxwaveletPath) -> MathapproxwaveletPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletPath::copy(self : MathapproxwaveletPath) -> MathapproxwaveletPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_path_fill(s : MathapproxwaveletPath, v : Double) -> MathapproxwaveletPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletPath::fill(self : MathapproxwaveletPath, v : Double) -> MathapproxwaveletPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_path_min(s : MathapproxwaveletPath) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletPath::min(self : MathapproxwaveletPath) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_path_max(s : MathapproxwaveletPath) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletPath::max(self : MathapproxwaveletPath) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_path_to_string(s : MathapproxwaveletPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletPath::to_string(self : MathapproxwaveletPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletCluster {
@@ -657,45 +657,45 @@ pub fn math_approx_wavelet_cluster_make(size : Int) -> MathapproxwaveletCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_cluster_len(s : MathapproxwaveletCluster) -> Int { s.size }
+pub fn MathapproxwaveletCluster::len(self : MathapproxwaveletCluster) -> Int { self.size }
 
-pub fn math_approx_wavelet_cluster_get(s : MathapproxwaveletCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletCluster::get(self : MathapproxwaveletCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_cluster_set(s : MathapproxwaveletCluster, i : Int, v : Double) -> MathapproxwaveletCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletCluster::set(self : MathapproxwaveletCluster, i : Int, v : Double) -> MathapproxwaveletCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_cluster_sum(s : MathapproxwaveletCluster) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletCluster::sum(self : MathapproxwaveletCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_cluster_mean(s : MathapproxwaveletCluster) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletCluster::mean(self : MathapproxwaveletCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_cluster_scale(s : MathapproxwaveletCluster, f : Double) -> MathapproxwaveletCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletCluster::scale(self : MathapproxwaveletCluster, f : Double) -> MathapproxwaveletCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_cluster_add(a : MathapproxwaveletCluster, b : MathapproxwaveletCluster) -> MathapproxwaveletCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletCluster::add(self : MathapproxwaveletCluster, other : MathapproxwaveletCluster) -> MathapproxwaveletCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_cluster_copy(s : MathapproxwaveletCluster) -> MathapproxwaveletCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletCluster::copy(self : MathapproxwaveletCluster) -> MathapproxwaveletCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_cluster_fill(s : MathapproxwaveletCluster, v : Double) -> MathapproxwaveletCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletCluster::fill(self : MathapproxwaveletCluster, v : Double) -> MathapproxwaveletCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_cluster_min(s : MathapproxwaveletCluster) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletCluster::min(self : MathapproxwaveletCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_cluster_max(s : MathapproxwaveletCluster) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletCluster::max(self : MathapproxwaveletCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_cluster_to_string(s : MathapproxwaveletCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletCluster::to_string(self : MathapproxwaveletCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletModel {
@@ -708,45 +708,45 @@ pub fn math_approx_wavelet_model_make(size : Int) -> MathapproxwaveletModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_model_len(s : MathapproxwaveletModel) -> Int { s.size }
+pub fn MathapproxwaveletModel::len(self : MathapproxwaveletModel) -> Int { self.size }
 
-pub fn math_approx_wavelet_model_get(s : MathapproxwaveletModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletModel::get(self : MathapproxwaveletModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_model_set(s : MathapproxwaveletModel, i : Int, v : Double) -> MathapproxwaveletModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletModel::set(self : MathapproxwaveletModel, i : Int, v : Double) -> MathapproxwaveletModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_model_sum(s : MathapproxwaveletModel) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletModel::sum(self : MathapproxwaveletModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_model_mean(s : MathapproxwaveletModel) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletModel::mean(self : MathapproxwaveletModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_model_scale(s : MathapproxwaveletModel, f : Double) -> MathapproxwaveletModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletModel::scale(self : MathapproxwaveletModel, f : Double) -> MathapproxwaveletModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_model_add(a : MathapproxwaveletModel, b : MathapproxwaveletModel) -> MathapproxwaveletModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletModel::add(self : MathapproxwaveletModel, other : MathapproxwaveletModel) -> MathapproxwaveletModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_model_copy(s : MathapproxwaveletModel) -> MathapproxwaveletModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletModel::copy(self : MathapproxwaveletModel) -> MathapproxwaveletModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_model_fill(s : MathapproxwaveletModel, v : Double) -> MathapproxwaveletModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletModel::fill(self : MathapproxwaveletModel, v : Double) -> MathapproxwaveletModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_model_min(s : MathapproxwaveletModel) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletModel::min(self : MathapproxwaveletModel) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_model_max(s : MathapproxwaveletModel) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletModel::max(self : MathapproxwaveletModel) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_model_to_string(s : MathapproxwaveletModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletModel::to_string(self : MathapproxwaveletModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletLayer {
@@ -759,45 +759,45 @@ pub fn math_approx_wavelet_layer_make(size : Int) -> MathapproxwaveletLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_layer_len(s : MathapproxwaveletLayer) -> Int { s.size }
+pub fn MathapproxwaveletLayer::len(self : MathapproxwaveletLayer) -> Int { self.size }
 
-pub fn math_approx_wavelet_layer_get(s : MathapproxwaveletLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletLayer::get(self : MathapproxwaveletLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_layer_set(s : MathapproxwaveletLayer, i : Int, v : Double) -> MathapproxwaveletLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletLayer::set(self : MathapproxwaveletLayer, i : Int, v : Double) -> MathapproxwaveletLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_layer_sum(s : MathapproxwaveletLayer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletLayer::sum(self : MathapproxwaveletLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_layer_mean(s : MathapproxwaveletLayer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletLayer::mean(self : MathapproxwaveletLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_layer_scale(s : MathapproxwaveletLayer, f : Double) -> MathapproxwaveletLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletLayer::scale(self : MathapproxwaveletLayer, f : Double) -> MathapproxwaveletLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_layer_add(a : MathapproxwaveletLayer, b : MathapproxwaveletLayer) -> MathapproxwaveletLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletLayer::add(self : MathapproxwaveletLayer, other : MathapproxwaveletLayer) -> MathapproxwaveletLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_layer_copy(s : MathapproxwaveletLayer) -> MathapproxwaveletLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletLayer::copy(self : MathapproxwaveletLayer) -> MathapproxwaveletLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_layer_fill(s : MathapproxwaveletLayer, v : Double) -> MathapproxwaveletLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletLayer::fill(self : MathapproxwaveletLayer, v : Double) -> MathapproxwaveletLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_layer_min(s : MathapproxwaveletLayer) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletLayer::min(self : MathapproxwaveletLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_layer_max(s : MathapproxwaveletLayer) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletLayer::max(self : MathapproxwaveletLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_layer_to_string(s : MathapproxwaveletLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletLayer::to_string(self : MathapproxwaveletLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletBuffer {
@@ -810,45 +810,45 @@ pub fn math_approx_wavelet_buffer_make(size : Int) -> MathapproxwaveletBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_buffer_len(s : MathapproxwaveletBuffer) -> Int { s.size }
+pub fn MathapproxwaveletBuffer::len(self : MathapproxwaveletBuffer) -> Int { self.size }
 
-pub fn math_approx_wavelet_buffer_get(s : MathapproxwaveletBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletBuffer::get(self : MathapproxwaveletBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_buffer_set(s : MathapproxwaveletBuffer, i : Int, v : Double) -> MathapproxwaveletBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletBuffer::set(self : MathapproxwaveletBuffer, i : Int, v : Double) -> MathapproxwaveletBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_buffer_sum(s : MathapproxwaveletBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletBuffer::sum(self : MathapproxwaveletBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_buffer_mean(s : MathapproxwaveletBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletBuffer::mean(self : MathapproxwaveletBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_buffer_scale(s : MathapproxwaveletBuffer, f : Double) -> MathapproxwaveletBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletBuffer::scale(self : MathapproxwaveletBuffer, f : Double) -> MathapproxwaveletBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_buffer_add(a : MathapproxwaveletBuffer, b : MathapproxwaveletBuffer) -> MathapproxwaveletBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletBuffer::add(self : MathapproxwaveletBuffer, other : MathapproxwaveletBuffer) -> MathapproxwaveletBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_buffer_copy(s : MathapproxwaveletBuffer) -> MathapproxwaveletBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletBuffer::copy(self : MathapproxwaveletBuffer) -> MathapproxwaveletBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_buffer_fill(s : MathapproxwaveletBuffer, v : Double) -> MathapproxwaveletBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletBuffer::fill(self : MathapproxwaveletBuffer, v : Double) -> MathapproxwaveletBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_buffer_min(s : MathapproxwaveletBuffer) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletBuffer::min(self : MathapproxwaveletBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_buffer_max(s : MathapproxwaveletBuffer) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletBuffer::max(self : MathapproxwaveletBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_buffer_to_string(s : MathapproxwaveletBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletBuffer::to_string(self : MathapproxwaveletBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletCursor {
@@ -861,45 +861,45 @@ pub fn math_approx_wavelet_cursor_make(size : Int) -> MathapproxwaveletCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_cursor_len(s : MathapproxwaveletCursor) -> Int { s.size }
+pub fn MathapproxwaveletCursor::len(self : MathapproxwaveletCursor) -> Int { self.size }
 
-pub fn math_approx_wavelet_cursor_get(s : MathapproxwaveletCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletCursor::get(self : MathapproxwaveletCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_cursor_set(s : MathapproxwaveletCursor, i : Int, v : Double) -> MathapproxwaveletCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletCursor::set(self : MathapproxwaveletCursor, i : Int, v : Double) -> MathapproxwaveletCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_cursor_sum(s : MathapproxwaveletCursor) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletCursor::sum(self : MathapproxwaveletCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_cursor_mean(s : MathapproxwaveletCursor) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletCursor::mean(self : MathapproxwaveletCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_cursor_scale(s : MathapproxwaveletCursor, f : Double) -> MathapproxwaveletCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletCursor::scale(self : MathapproxwaveletCursor, f : Double) -> MathapproxwaveletCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_cursor_add(a : MathapproxwaveletCursor, b : MathapproxwaveletCursor) -> MathapproxwaveletCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletCursor::add(self : MathapproxwaveletCursor, other : MathapproxwaveletCursor) -> MathapproxwaveletCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_cursor_copy(s : MathapproxwaveletCursor) -> MathapproxwaveletCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletCursor::copy(self : MathapproxwaveletCursor) -> MathapproxwaveletCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_cursor_fill(s : MathapproxwaveletCursor, v : Double) -> MathapproxwaveletCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletCursor::fill(self : MathapproxwaveletCursor, v : Double) -> MathapproxwaveletCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_cursor_min(s : MathapproxwaveletCursor) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletCursor::min(self : MathapproxwaveletCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_cursor_max(s : MathapproxwaveletCursor) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletCursor::max(self : MathapproxwaveletCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_cursor_to_string(s : MathapproxwaveletCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletCursor::to_string(self : MathapproxwaveletCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletView {
@@ -912,45 +912,45 @@ pub fn math_approx_wavelet_view_make(size : Int) -> MathapproxwaveletView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_view_len(s : MathapproxwaveletView) -> Int { s.size }
+pub fn MathapproxwaveletView::len(self : MathapproxwaveletView) -> Int { self.size }
 
-pub fn math_approx_wavelet_view_get(s : MathapproxwaveletView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletView::get(self : MathapproxwaveletView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_view_set(s : MathapproxwaveletView, i : Int, v : Double) -> MathapproxwaveletView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletView::set(self : MathapproxwaveletView, i : Int, v : Double) -> MathapproxwaveletView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_view_sum(s : MathapproxwaveletView) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletView::sum(self : MathapproxwaveletView) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_view_mean(s : MathapproxwaveletView) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletView::mean(self : MathapproxwaveletView) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_view_scale(s : MathapproxwaveletView, f : Double) -> MathapproxwaveletView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletView::scale(self : MathapproxwaveletView, f : Double) -> MathapproxwaveletView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_view_add(a : MathapproxwaveletView, b : MathapproxwaveletView) -> MathapproxwaveletView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletView::add(self : MathapproxwaveletView, other : MathapproxwaveletView) -> MathapproxwaveletView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_view_copy(s : MathapproxwaveletView) -> MathapproxwaveletView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletView::copy(self : MathapproxwaveletView) -> MathapproxwaveletView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_view_fill(s : MathapproxwaveletView, v : Double) -> MathapproxwaveletView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletView::fill(self : MathapproxwaveletView, v : Double) -> MathapproxwaveletView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_view_min(s : MathapproxwaveletView) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletView::min(self : MathapproxwaveletView) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_view_max(s : MathapproxwaveletView) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletView::max(self : MathapproxwaveletView) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_view_to_string(s : MathapproxwaveletView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletView::to_string(self : MathapproxwaveletView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletRange {
@@ -963,45 +963,45 @@ pub fn math_approx_wavelet_range_make(size : Int) -> MathapproxwaveletRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_range_len(s : MathapproxwaveletRange) -> Int { s.size }
+pub fn MathapproxwaveletRange::len(self : MathapproxwaveletRange) -> Int { self.size }
 
-pub fn math_approx_wavelet_range_get(s : MathapproxwaveletRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletRange::get(self : MathapproxwaveletRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_range_set(s : MathapproxwaveletRange, i : Int, v : Double) -> MathapproxwaveletRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletRange::set(self : MathapproxwaveletRange, i : Int, v : Double) -> MathapproxwaveletRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_range_sum(s : MathapproxwaveletRange) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletRange::sum(self : MathapproxwaveletRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_range_mean(s : MathapproxwaveletRange) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletRange::mean(self : MathapproxwaveletRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_range_scale(s : MathapproxwaveletRange, f : Double) -> MathapproxwaveletRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletRange::scale(self : MathapproxwaveletRange, f : Double) -> MathapproxwaveletRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_range_add(a : MathapproxwaveletRange, b : MathapproxwaveletRange) -> MathapproxwaveletRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletRange::add(self : MathapproxwaveletRange, other : MathapproxwaveletRange) -> MathapproxwaveletRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_range_copy(s : MathapproxwaveletRange) -> MathapproxwaveletRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletRange::copy(self : MathapproxwaveletRange) -> MathapproxwaveletRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_range_fill(s : MathapproxwaveletRange, v : Double) -> MathapproxwaveletRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletRange::fill(self : MathapproxwaveletRange, v : Double) -> MathapproxwaveletRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_range_min(s : MathapproxwaveletRange) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletRange::min(self : MathapproxwaveletRange) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_range_max(s : MathapproxwaveletRange) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletRange::max(self : MathapproxwaveletRange) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_range_to_string(s : MathapproxwaveletRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletRange::to_string(self : MathapproxwaveletRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxwaveletSlice {
@@ -1014,44 +1014,44 @@ pub fn math_approx_wavelet_slice_make(size : Int) -> MathapproxwaveletSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_wavelet_slice_len(s : MathapproxwaveletSlice) -> Int { s.size }
+pub fn MathapproxwaveletSlice::len(self : MathapproxwaveletSlice) -> Int { self.size }
 
-pub fn math_approx_wavelet_slice_get(s : MathapproxwaveletSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxwaveletSlice::get(self : MathapproxwaveletSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_wavelet_slice_set(s : MathapproxwaveletSlice, i : Int, v : Double) -> MathapproxwaveletSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxwaveletSlice::set(self : MathapproxwaveletSlice, i : Int, v : Double) -> MathapproxwaveletSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_slice_sum(s : MathapproxwaveletSlice) -> Double { @_common.sum(s.data) }
+pub fn MathapproxwaveletSlice::sum(self : MathapproxwaveletSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_wavelet_slice_mean(s : MathapproxwaveletSlice) -> Double { @_common.mean(s.data) }
+pub fn MathapproxwaveletSlice::mean(self : MathapproxwaveletSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_wavelet_slice_scale(s : MathapproxwaveletSlice, f : Double) -> MathapproxwaveletSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletSlice::scale(self : MathapproxwaveletSlice, f : Double) -> MathapproxwaveletSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_slice_add(a : MathapproxwaveletSlice, b : MathapproxwaveletSlice) -> MathapproxwaveletSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxwaveletSlice::add(self : MathapproxwaveletSlice, other : MathapproxwaveletSlice) -> MathapproxwaveletSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_slice_copy(s : MathapproxwaveletSlice) -> MathapproxwaveletSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletSlice::copy(self : MathapproxwaveletSlice) -> MathapproxwaveletSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_slice_fill(s : MathapproxwaveletSlice, v : Double) -> MathapproxwaveletSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxwaveletSlice::fill(self : MathapproxwaveletSlice, v : Double) -> MathapproxwaveletSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_wavelet_slice_min(s : MathapproxwaveletSlice) -> Double { @_common.min(s.data) }
+pub fn MathapproxwaveletSlice::min(self : MathapproxwaveletSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_wavelet_slice_max(s : MathapproxwaveletSlice) -> Double { @_common.max(s.data) }
+pub fn MathapproxwaveletSlice::max(self : MathapproxwaveletSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_wavelet_slice_to_string(s : MathapproxwaveletSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxwaveletSlice::to_string(self : MathapproxwaveletSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

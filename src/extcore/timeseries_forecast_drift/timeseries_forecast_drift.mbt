@@ -351,45 +351,45 @@ pub fn timeseries_forecast_drift_frame_make(size : Int) -> Timeseriesforecastdri
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_frame_len(s : TimeseriesforecastdriftFrame) -> Int { s.size }
+pub fn TimeseriesforecastdriftFrame::len(self : TimeseriesforecastdriftFrame) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_frame_get(s : TimeseriesforecastdriftFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftFrame::get(self : TimeseriesforecastdriftFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_frame_set(s : TimeseriesforecastdriftFrame, i : Int, v : Double) -> TimeseriesforecastdriftFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftFrame::set(self : TimeseriesforecastdriftFrame, i : Int, v : Double) -> TimeseriesforecastdriftFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_frame_sum(s : TimeseriesforecastdriftFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftFrame::sum(self : TimeseriesforecastdriftFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_frame_mean(s : TimeseriesforecastdriftFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftFrame::mean(self : TimeseriesforecastdriftFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_frame_scale(s : TimeseriesforecastdriftFrame, f : Double) -> TimeseriesforecastdriftFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftFrame::scale(self : TimeseriesforecastdriftFrame, f : Double) -> TimeseriesforecastdriftFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_frame_add(a : TimeseriesforecastdriftFrame, b : TimeseriesforecastdriftFrame) -> TimeseriesforecastdriftFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftFrame::add(self : TimeseriesforecastdriftFrame, other : TimeseriesforecastdriftFrame) -> TimeseriesforecastdriftFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_frame_copy(s : TimeseriesforecastdriftFrame) -> TimeseriesforecastdriftFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftFrame::copy(self : TimeseriesforecastdriftFrame) -> TimeseriesforecastdriftFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_frame_fill(s : TimeseriesforecastdriftFrame, v : Double) -> TimeseriesforecastdriftFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftFrame::fill(self : TimeseriesforecastdriftFrame, v : Double) -> TimeseriesforecastdriftFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_frame_min(s : TimeseriesforecastdriftFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftFrame::min(self : TimeseriesforecastdriftFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_frame_max(s : TimeseriesforecastdriftFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftFrame::max(self : TimeseriesforecastdriftFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_frame_to_string(s : TimeseriesforecastdriftFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftFrame::to_string(self : TimeseriesforecastdriftFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftTable {
@@ -402,45 +402,45 @@ pub fn timeseries_forecast_drift_table_make(size : Int) -> Timeseriesforecastdri
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_table_len(s : TimeseriesforecastdriftTable) -> Int { s.size }
+pub fn TimeseriesforecastdriftTable::len(self : TimeseriesforecastdriftTable) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_table_get(s : TimeseriesforecastdriftTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftTable::get(self : TimeseriesforecastdriftTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_table_set(s : TimeseriesforecastdriftTable, i : Int, v : Double) -> TimeseriesforecastdriftTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftTable::set(self : TimeseriesforecastdriftTable, i : Int, v : Double) -> TimeseriesforecastdriftTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_table_sum(s : TimeseriesforecastdriftTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftTable::sum(self : TimeseriesforecastdriftTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_table_mean(s : TimeseriesforecastdriftTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftTable::mean(self : TimeseriesforecastdriftTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_table_scale(s : TimeseriesforecastdriftTable, f : Double) -> TimeseriesforecastdriftTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftTable::scale(self : TimeseriesforecastdriftTable, f : Double) -> TimeseriesforecastdriftTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_table_add(a : TimeseriesforecastdriftTable, b : TimeseriesforecastdriftTable) -> TimeseriesforecastdriftTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftTable::add(self : TimeseriesforecastdriftTable, other : TimeseriesforecastdriftTable) -> TimeseriesforecastdriftTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_table_copy(s : TimeseriesforecastdriftTable) -> TimeseriesforecastdriftTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftTable::copy(self : TimeseriesforecastdriftTable) -> TimeseriesforecastdriftTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_table_fill(s : TimeseriesforecastdriftTable, v : Double) -> TimeseriesforecastdriftTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftTable::fill(self : TimeseriesforecastdriftTable, v : Double) -> TimeseriesforecastdriftTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_table_min(s : TimeseriesforecastdriftTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftTable::min(self : TimeseriesforecastdriftTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_table_max(s : TimeseriesforecastdriftTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftTable::max(self : TimeseriesforecastdriftTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_table_to_string(s : TimeseriesforecastdriftTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftTable::to_string(self : TimeseriesforecastdriftTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_forecast_drift_graphn_make(size : Int) -> Timeseriesforecastdr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_graphn_len(s : TimeseriesforecastdriftGraphN) -> Int { s.size }
+pub fn TimeseriesforecastdriftGraphN::len(self : TimeseriesforecastdriftGraphN) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_graphn_get(s : TimeseriesforecastdriftGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftGraphN::get(self : TimeseriesforecastdriftGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_graphn_set(s : TimeseriesforecastdriftGraphN, i : Int, v : Double) -> TimeseriesforecastdriftGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftGraphN::set(self : TimeseriesforecastdriftGraphN, i : Int, v : Double) -> TimeseriesforecastdriftGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_graphn_sum(s : TimeseriesforecastdriftGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftGraphN::sum(self : TimeseriesforecastdriftGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_graphn_mean(s : TimeseriesforecastdriftGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftGraphN::mean(self : TimeseriesforecastdriftGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_graphn_scale(s : TimeseriesforecastdriftGraphN, f : Double) -> TimeseriesforecastdriftGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftGraphN::scale(self : TimeseriesforecastdriftGraphN, f : Double) -> TimeseriesforecastdriftGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_graphn_add(a : TimeseriesforecastdriftGraphN, b : TimeseriesforecastdriftGraphN) -> TimeseriesforecastdriftGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftGraphN::add(self : TimeseriesforecastdriftGraphN, other : TimeseriesforecastdriftGraphN) -> TimeseriesforecastdriftGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_graphn_copy(s : TimeseriesforecastdriftGraphN) -> TimeseriesforecastdriftGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftGraphN::copy(self : TimeseriesforecastdriftGraphN) -> TimeseriesforecastdriftGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_graphn_fill(s : TimeseriesforecastdriftGraphN, v : Double) -> TimeseriesforecastdriftGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftGraphN::fill(self : TimeseriesforecastdriftGraphN, v : Double) -> TimeseriesforecastdriftGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_graphn_min(s : TimeseriesforecastdriftGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftGraphN::min(self : TimeseriesforecastdriftGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_graphn_max(s : TimeseriesforecastdriftGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftGraphN::max(self : TimeseriesforecastdriftGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_graphn_to_string(s : TimeseriesforecastdriftGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftGraphN::to_string(self : TimeseriesforecastdriftGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftNode {
@@ -504,45 +504,45 @@ pub fn timeseries_forecast_drift_node_make(size : Int) -> Timeseriesforecastdrif
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_node_len(s : TimeseriesforecastdriftNode) -> Int { s.size }
+pub fn TimeseriesforecastdriftNode::len(self : TimeseriesforecastdriftNode) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_node_get(s : TimeseriesforecastdriftNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftNode::get(self : TimeseriesforecastdriftNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_node_set(s : TimeseriesforecastdriftNode, i : Int, v : Double) -> TimeseriesforecastdriftNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftNode::set(self : TimeseriesforecastdriftNode, i : Int, v : Double) -> TimeseriesforecastdriftNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_node_sum(s : TimeseriesforecastdriftNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftNode::sum(self : TimeseriesforecastdriftNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_node_mean(s : TimeseriesforecastdriftNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftNode::mean(self : TimeseriesforecastdriftNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_node_scale(s : TimeseriesforecastdriftNode, f : Double) -> TimeseriesforecastdriftNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftNode::scale(self : TimeseriesforecastdriftNode, f : Double) -> TimeseriesforecastdriftNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_node_add(a : TimeseriesforecastdriftNode, b : TimeseriesforecastdriftNode) -> TimeseriesforecastdriftNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftNode::add(self : TimeseriesforecastdriftNode, other : TimeseriesforecastdriftNode) -> TimeseriesforecastdriftNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_node_copy(s : TimeseriesforecastdriftNode) -> TimeseriesforecastdriftNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftNode::copy(self : TimeseriesforecastdriftNode) -> TimeseriesforecastdriftNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_node_fill(s : TimeseriesforecastdriftNode, v : Double) -> TimeseriesforecastdriftNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftNode::fill(self : TimeseriesforecastdriftNode, v : Double) -> TimeseriesforecastdriftNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_node_min(s : TimeseriesforecastdriftNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftNode::min(self : TimeseriesforecastdriftNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_node_max(s : TimeseriesforecastdriftNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftNode::max(self : TimeseriesforecastdriftNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_node_to_string(s : TimeseriesforecastdriftNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftNode::to_string(self : TimeseriesforecastdriftNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_forecast_drift_edge_make(size : Int) -> Timeseriesforecastdrif
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_edge_len(s : TimeseriesforecastdriftEdge) -> Int { s.size }
+pub fn TimeseriesforecastdriftEdge::len(self : TimeseriesforecastdriftEdge) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_edge_get(s : TimeseriesforecastdriftEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftEdge::get(self : TimeseriesforecastdriftEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_edge_set(s : TimeseriesforecastdriftEdge, i : Int, v : Double) -> TimeseriesforecastdriftEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftEdge::set(self : TimeseriesforecastdriftEdge, i : Int, v : Double) -> TimeseriesforecastdriftEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_edge_sum(s : TimeseriesforecastdriftEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftEdge::sum(self : TimeseriesforecastdriftEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_edge_mean(s : TimeseriesforecastdriftEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftEdge::mean(self : TimeseriesforecastdriftEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_edge_scale(s : TimeseriesforecastdriftEdge, f : Double) -> TimeseriesforecastdriftEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftEdge::scale(self : TimeseriesforecastdriftEdge, f : Double) -> TimeseriesforecastdriftEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_edge_add(a : TimeseriesforecastdriftEdge, b : TimeseriesforecastdriftEdge) -> TimeseriesforecastdriftEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftEdge::add(self : TimeseriesforecastdriftEdge, other : TimeseriesforecastdriftEdge) -> TimeseriesforecastdriftEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_edge_copy(s : TimeseriesforecastdriftEdge) -> TimeseriesforecastdriftEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftEdge::copy(self : TimeseriesforecastdriftEdge) -> TimeseriesforecastdriftEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_edge_fill(s : TimeseriesforecastdriftEdge, v : Double) -> TimeseriesforecastdriftEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftEdge::fill(self : TimeseriesforecastdriftEdge, v : Double) -> TimeseriesforecastdriftEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_edge_min(s : TimeseriesforecastdriftEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftEdge::min(self : TimeseriesforecastdriftEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_edge_max(s : TimeseriesforecastdriftEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftEdge::max(self : TimeseriesforecastdriftEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_edge_to_string(s : TimeseriesforecastdriftEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftEdge::to_string(self : TimeseriesforecastdriftEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftPath {
@@ -606,45 +606,45 @@ pub fn timeseries_forecast_drift_path_make(size : Int) -> Timeseriesforecastdrif
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_path_len(s : TimeseriesforecastdriftPath) -> Int { s.size }
+pub fn TimeseriesforecastdriftPath::len(self : TimeseriesforecastdriftPath) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_path_get(s : TimeseriesforecastdriftPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftPath::get(self : TimeseriesforecastdriftPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_path_set(s : TimeseriesforecastdriftPath, i : Int, v : Double) -> TimeseriesforecastdriftPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftPath::set(self : TimeseriesforecastdriftPath, i : Int, v : Double) -> TimeseriesforecastdriftPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_path_sum(s : TimeseriesforecastdriftPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftPath::sum(self : TimeseriesforecastdriftPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_path_mean(s : TimeseriesforecastdriftPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftPath::mean(self : TimeseriesforecastdriftPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_path_scale(s : TimeseriesforecastdriftPath, f : Double) -> TimeseriesforecastdriftPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftPath::scale(self : TimeseriesforecastdriftPath, f : Double) -> TimeseriesforecastdriftPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_path_add(a : TimeseriesforecastdriftPath, b : TimeseriesforecastdriftPath) -> TimeseriesforecastdriftPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftPath::add(self : TimeseriesforecastdriftPath, other : TimeseriesforecastdriftPath) -> TimeseriesforecastdriftPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_path_copy(s : TimeseriesforecastdriftPath) -> TimeseriesforecastdriftPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftPath::copy(self : TimeseriesforecastdriftPath) -> TimeseriesforecastdriftPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_path_fill(s : TimeseriesforecastdriftPath, v : Double) -> TimeseriesforecastdriftPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftPath::fill(self : TimeseriesforecastdriftPath, v : Double) -> TimeseriesforecastdriftPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_path_min(s : TimeseriesforecastdriftPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftPath::min(self : TimeseriesforecastdriftPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_path_max(s : TimeseriesforecastdriftPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftPath::max(self : TimeseriesforecastdriftPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_path_to_string(s : TimeseriesforecastdriftPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftPath::to_string(self : TimeseriesforecastdriftPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_forecast_drift_cluster_make(size : Int) -> Timeseriesforecastd
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_cluster_len(s : TimeseriesforecastdriftCluster) -> Int { s.size }
+pub fn TimeseriesforecastdriftCluster::len(self : TimeseriesforecastdriftCluster) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_cluster_get(s : TimeseriesforecastdriftCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftCluster::get(self : TimeseriesforecastdriftCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_cluster_set(s : TimeseriesforecastdriftCluster, i : Int, v : Double) -> TimeseriesforecastdriftCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftCluster::set(self : TimeseriesforecastdriftCluster, i : Int, v : Double) -> TimeseriesforecastdriftCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_cluster_sum(s : TimeseriesforecastdriftCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftCluster::sum(self : TimeseriesforecastdriftCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_cluster_mean(s : TimeseriesforecastdriftCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftCluster::mean(self : TimeseriesforecastdriftCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_cluster_scale(s : TimeseriesforecastdriftCluster, f : Double) -> TimeseriesforecastdriftCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftCluster::scale(self : TimeseriesforecastdriftCluster, f : Double) -> TimeseriesforecastdriftCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_cluster_add(a : TimeseriesforecastdriftCluster, b : TimeseriesforecastdriftCluster) -> TimeseriesforecastdriftCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftCluster::add(self : TimeseriesforecastdriftCluster, other : TimeseriesforecastdriftCluster) -> TimeseriesforecastdriftCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_cluster_copy(s : TimeseriesforecastdriftCluster) -> TimeseriesforecastdriftCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftCluster::copy(self : TimeseriesforecastdriftCluster) -> TimeseriesforecastdriftCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_cluster_fill(s : TimeseriesforecastdriftCluster, v : Double) -> TimeseriesforecastdriftCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftCluster::fill(self : TimeseriesforecastdriftCluster, v : Double) -> TimeseriesforecastdriftCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_cluster_min(s : TimeseriesforecastdriftCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftCluster::min(self : TimeseriesforecastdriftCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_cluster_max(s : TimeseriesforecastdriftCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftCluster::max(self : TimeseriesforecastdriftCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_cluster_to_string(s : TimeseriesforecastdriftCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftCluster::to_string(self : TimeseriesforecastdriftCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftModel {
@@ -708,45 +708,45 @@ pub fn timeseries_forecast_drift_model_make(size : Int) -> Timeseriesforecastdri
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_model_len(s : TimeseriesforecastdriftModel) -> Int { s.size }
+pub fn TimeseriesforecastdriftModel::len(self : TimeseriesforecastdriftModel) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_model_get(s : TimeseriesforecastdriftModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftModel::get(self : TimeseriesforecastdriftModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_model_set(s : TimeseriesforecastdriftModel, i : Int, v : Double) -> TimeseriesforecastdriftModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftModel::set(self : TimeseriesforecastdriftModel, i : Int, v : Double) -> TimeseriesforecastdriftModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_model_sum(s : TimeseriesforecastdriftModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftModel::sum(self : TimeseriesforecastdriftModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_model_mean(s : TimeseriesforecastdriftModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftModel::mean(self : TimeseriesforecastdriftModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_model_scale(s : TimeseriesforecastdriftModel, f : Double) -> TimeseriesforecastdriftModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftModel::scale(self : TimeseriesforecastdriftModel, f : Double) -> TimeseriesforecastdriftModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_model_add(a : TimeseriesforecastdriftModel, b : TimeseriesforecastdriftModel) -> TimeseriesforecastdriftModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftModel::add(self : TimeseriesforecastdriftModel, other : TimeseriesforecastdriftModel) -> TimeseriesforecastdriftModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_model_copy(s : TimeseriesforecastdriftModel) -> TimeseriesforecastdriftModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftModel::copy(self : TimeseriesforecastdriftModel) -> TimeseriesforecastdriftModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_model_fill(s : TimeseriesforecastdriftModel, v : Double) -> TimeseriesforecastdriftModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftModel::fill(self : TimeseriesforecastdriftModel, v : Double) -> TimeseriesforecastdriftModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_model_min(s : TimeseriesforecastdriftModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftModel::min(self : TimeseriesforecastdriftModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_model_max(s : TimeseriesforecastdriftModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftModel::max(self : TimeseriesforecastdriftModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_model_to_string(s : TimeseriesforecastdriftModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftModel::to_string(self : TimeseriesforecastdriftModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_forecast_drift_layer_make(size : Int) -> Timeseriesforecastdri
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_layer_len(s : TimeseriesforecastdriftLayer) -> Int { s.size }
+pub fn TimeseriesforecastdriftLayer::len(self : TimeseriesforecastdriftLayer) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_layer_get(s : TimeseriesforecastdriftLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftLayer::get(self : TimeseriesforecastdriftLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_layer_set(s : TimeseriesforecastdriftLayer, i : Int, v : Double) -> TimeseriesforecastdriftLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftLayer::set(self : TimeseriesforecastdriftLayer, i : Int, v : Double) -> TimeseriesforecastdriftLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_layer_sum(s : TimeseriesforecastdriftLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftLayer::sum(self : TimeseriesforecastdriftLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_layer_mean(s : TimeseriesforecastdriftLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftLayer::mean(self : TimeseriesforecastdriftLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_layer_scale(s : TimeseriesforecastdriftLayer, f : Double) -> TimeseriesforecastdriftLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftLayer::scale(self : TimeseriesforecastdriftLayer, f : Double) -> TimeseriesforecastdriftLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_layer_add(a : TimeseriesforecastdriftLayer, b : TimeseriesforecastdriftLayer) -> TimeseriesforecastdriftLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftLayer::add(self : TimeseriesforecastdriftLayer, other : TimeseriesforecastdriftLayer) -> TimeseriesforecastdriftLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_layer_copy(s : TimeseriesforecastdriftLayer) -> TimeseriesforecastdriftLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftLayer::copy(self : TimeseriesforecastdriftLayer) -> TimeseriesforecastdriftLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_layer_fill(s : TimeseriesforecastdriftLayer, v : Double) -> TimeseriesforecastdriftLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftLayer::fill(self : TimeseriesforecastdriftLayer, v : Double) -> TimeseriesforecastdriftLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_layer_min(s : TimeseriesforecastdriftLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftLayer::min(self : TimeseriesforecastdriftLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_layer_max(s : TimeseriesforecastdriftLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftLayer::max(self : TimeseriesforecastdriftLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_layer_to_string(s : TimeseriesforecastdriftLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftLayer::to_string(self : TimeseriesforecastdriftLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_forecast_drift_buffer_make(size : Int) -> Timeseriesforecastdr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_buffer_len(s : TimeseriesforecastdriftBuffer) -> Int { s.size }
+pub fn TimeseriesforecastdriftBuffer::len(self : TimeseriesforecastdriftBuffer) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_buffer_get(s : TimeseriesforecastdriftBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftBuffer::get(self : TimeseriesforecastdriftBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_buffer_set(s : TimeseriesforecastdriftBuffer, i : Int, v : Double) -> TimeseriesforecastdriftBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftBuffer::set(self : TimeseriesforecastdriftBuffer, i : Int, v : Double) -> TimeseriesforecastdriftBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_buffer_sum(s : TimeseriesforecastdriftBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftBuffer::sum(self : TimeseriesforecastdriftBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_buffer_mean(s : TimeseriesforecastdriftBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftBuffer::mean(self : TimeseriesforecastdriftBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_buffer_scale(s : TimeseriesforecastdriftBuffer, f : Double) -> TimeseriesforecastdriftBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftBuffer::scale(self : TimeseriesforecastdriftBuffer, f : Double) -> TimeseriesforecastdriftBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_buffer_add(a : TimeseriesforecastdriftBuffer, b : TimeseriesforecastdriftBuffer) -> TimeseriesforecastdriftBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftBuffer::add(self : TimeseriesforecastdriftBuffer, other : TimeseriesforecastdriftBuffer) -> TimeseriesforecastdriftBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_buffer_copy(s : TimeseriesforecastdriftBuffer) -> TimeseriesforecastdriftBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftBuffer::copy(self : TimeseriesforecastdriftBuffer) -> TimeseriesforecastdriftBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_buffer_fill(s : TimeseriesforecastdriftBuffer, v : Double) -> TimeseriesforecastdriftBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftBuffer::fill(self : TimeseriesforecastdriftBuffer, v : Double) -> TimeseriesforecastdriftBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_buffer_min(s : TimeseriesforecastdriftBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftBuffer::min(self : TimeseriesforecastdriftBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_buffer_max(s : TimeseriesforecastdriftBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftBuffer::max(self : TimeseriesforecastdriftBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_buffer_to_string(s : TimeseriesforecastdriftBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftBuffer::to_string(self : TimeseriesforecastdriftBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_forecast_drift_cursor_make(size : Int) -> Timeseriesforecastdr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_cursor_len(s : TimeseriesforecastdriftCursor) -> Int { s.size }
+pub fn TimeseriesforecastdriftCursor::len(self : TimeseriesforecastdriftCursor) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_cursor_get(s : TimeseriesforecastdriftCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftCursor::get(self : TimeseriesforecastdriftCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_cursor_set(s : TimeseriesforecastdriftCursor, i : Int, v : Double) -> TimeseriesforecastdriftCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftCursor::set(self : TimeseriesforecastdriftCursor, i : Int, v : Double) -> TimeseriesforecastdriftCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_cursor_sum(s : TimeseriesforecastdriftCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftCursor::sum(self : TimeseriesforecastdriftCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_cursor_mean(s : TimeseriesforecastdriftCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftCursor::mean(self : TimeseriesforecastdriftCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_cursor_scale(s : TimeseriesforecastdriftCursor, f : Double) -> TimeseriesforecastdriftCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftCursor::scale(self : TimeseriesforecastdriftCursor, f : Double) -> TimeseriesforecastdriftCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_cursor_add(a : TimeseriesforecastdriftCursor, b : TimeseriesforecastdriftCursor) -> TimeseriesforecastdriftCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftCursor::add(self : TimeseriesforecastdriftCursor, other : TimeseriesforecastdriftCursor) -> TimeseriesforecastdriftCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_cursor_copy(s : TimeseriesforecastdriftCursor) -> TimeseriesforecastdriftCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftCursor::copy(self : TimeseriesforecastdriftCursor) -> TimeseriesforecastdriftCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_cursor_fill(s : TimeseriesforecastdriftCursor, v : Double) -> TimeseriesforecastdriftCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftCursor::fill(self : TimeseriesforecastdriftCursor, v : Double) -> TimeseriesforecastdriftCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_cursor_min(s : TimeseriesforecastdriftCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftCursor::min(self : TimeseriesforecastdriftCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_cursor_max(s : TimeseriesforecastdriftCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftCursor::max(self : TimeseriesforecastdriftCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_cursor_to_string(s : TimeseriesforecastdriftCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftCursor::to_string(self : TimeseriesforecastdriftCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftView {
@@ -912,45 +912,45 @@ pub fn timeseries_forecast_drift_view_make(size : Int) -> Timeseriesforecastdrif
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_view_len(s : TimeseriesforecastdriftView) -> Int { s.size }
+pub fn TimeseriesforecastdriftView::len(self : TimeseriesforecastdriftView) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_view_get(s : TimeseriesforecastdriftView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftView::get(self : TimeseriesforecastdriftView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_view_set(s : TimeseriesforecastdriftView, i : Int, v : Double) -> TimeseriesforecastdriftView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftView::set(self : TimeseriesforecastdriftView, i : Int, v : Double) -> TimeseriesforecastdriftView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_view_sum(s : TimeseriesforecastdriftView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftView::sum(self : TimeseriesforecastdriftView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_view_mean(s : TimeseriesforecastdriftView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftView::mean(self : TimeseriesforecastdriftView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_view_scale(s : TimeseriesforecastdriftView, f : Double) -> TimeseriesforecastdriftView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftView::scale(self : TimeseriesforecastdriftView, f : Double) -> TimeseriesforecastdriftView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_view_add(a : TimeseriesforecastdriftView, b : TimeseriesforecastdriftView) -> TimeseriesforecastdriftView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftView::add(self : TimeseriesforecastdriftView, other : TimeseriesforecastdriftView) -> TimeseriesforecastdriftView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_view_copy(s : TimeseriesforecastdriftView) -> TimeseriesforecastdriftView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftView::copy(self : TimeseriesforecastdriftView) -> TimeseriesforecastdriftView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_view_fill(s : TimeseriesforecastdriftView, v : Double) -> TimeseriesforecastdriftView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftView::fill(self : TimeseriesforecastdriftView, v : Double) -> TimeseriesforecastdriftView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_view_min(s : TimeseriesforecastdriftView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftView::min(self : TimeseriesforecastdriftView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_view_max(s : TimeseriesforecastdriftView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftView::max(self : TimeseriesforecastdriftView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_view_to_string(s : TimeseriesforecastdriftView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftView::to_string(self : TimeseriesforecastdriftView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftRange {
@@ -963,45 +963,45 @@ pub fn timeseries_forecast_drift_range_make(size : Int) -> Timeseriesforecastdri
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_range_len(s : TimeseriesforecastdriftRange) -> Int { s.size }
+pub fn TimeseriesforecastdriftRange::len(self : TimeseriesforecastdriftRange) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_range_get(s : TimeseriesforecastdriftRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftRange::get(self : TimeseriesforecastdriftRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_range_set(s : TimeseriesforecastdriftRange, i : Int, v : Double) -> TimeseriesforecastdriftRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftRange::set(self : TimeseriesforecastdriftRange, i : Int, v : Double) -> TimeseriesforecastdriftRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_range_sum(s : TimeseriesforecastdriftRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftRange::sum(self : TimeseriesforecastdriftRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_range_mean(s : TimeseriesforecastdriftRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftRange::mean(self : TimeseriesforecastdriftRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_range_scale(s : TimeseriesforecastdriftRange, f : Double) -> TimeseriesforecastdriftRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftRange::scale(self : TimeseriesforecastdriftRange, f : Double) -> TimeseriesforecastdriftRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_range_add(a : TimeseriesforecastdriftRange, b : TimeseriesforecastdriftRange) -> TimeseriesforecastdriftRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftRange::add(self : TimeseriesforecastdriftRange, other : TimeseriesforecastdriftRange) -> TimeseriesforecastdriftRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_range_copy(s : TimeseriesforecastdriftRange) -> TimeseriesforecastdriftRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftRange::copy(self : TimeseriesforecastdriftRange) -> TimeseriesforecastdriftRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_range_fill(s : TimeseriesforecastdriftRange, v : Double) -> TimeseriesforecastdriftRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftRange::fill(self : TimeseriesforecastdriftRange, v : Double) -> TimeseriesforecastdriftRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_range_min(s : TimeseriesforecastdriftRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftRange::min(self : TimeseriesforecastdriftRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_range_max(s : TimeseriesforecastdriftRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftRange::max(self : TimeseriesforecastdriftRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_range_to_string(s : TimeseriesforecastdriftRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftRange::to_string(self : TimeseriesforecastdriftRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastdriftSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_forecast_drift_slice_make(size : Int) -> Timeseriesforecastdri
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_drift_slice_len(s : TimeseriesforecastdriftSlice) -> Int { s.size }
+pub fn TimeseriesforecastdriftSlice::len(self : TimeseriesforecastdriftSlice) -> Int { self.size }
 
-pub fn timeseries_forecast_drift_slice_get(s : TimeseriesforecastdriftSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastdriftSlice::get(self : TimeseriesforecastdriftSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_drift_slice_set(s : TimeseriesforecastdriftSlice, i : Int, v : Double) -> TimeseriesforecastdriftSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftSlice::set(self : TimeseriesforecastdriftSlice, i : Int, v : Double) -> TimeseriesforecastdriftSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_slice_sum(s : TimeseriesforecastdriftSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastdriftSlice::sum(self : TimeseriesforecastdriftSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_drift_slice_mean(s : TimeseriesforecastdriftSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastdriftSlice::mean(self : TimeseriesforecastdriftSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_drift_slice_scale(s : TimeseriesforecastdriftSlice, f : Double) -> TimeseriesforecastdriftSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftSlice::scale(self : TimeseriesforecastdriftSlice, f : Double) -> TimeseriesforecastdriftSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_slice_add(a : TimeseriesforecastdriftSlice, b : TimeseriesforecastdriftSlice) -> TimeseriesforecastdriftSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastdriftSlice::add(self : TimeseriesforecastdriftSlice, other : TimeseriesforecastdriftSlice) -> TimeseriesforecastdriftSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_slice_copy(s : TimeseriesforecastdriftSlice) -> TimeseriesforecastdriftSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftSlice::copy(self : TimeseriesforecastdriftSlice) -> TimeseriesforecastdriftSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_slice_fill(s : TimeseriesforecastdriftSlice, v : Double) -> TimeseriesforecastdriftSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastdriftSlice::fill(self : TimeseriesforecastdriftSlice, v : Double) -> TimeseriesforecastdriftSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_drift_slice_min(s : TimeseriesforecastdriftSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastdriftSlice::min(self : TimeseriesforecastdriftSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_drift_slice_max(s : TimeseriesforecastdriftSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastdriftSlice::max(self : TimeseriesforecastdriftSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_drift_slice_to_string(s : TimeseriesforecastdriftSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastdriftSlice::to_string(self : TimeseriesforecastdriftSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn nlp_embed_universal_frame_make(size : Int) -> NlpembeduniversalFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_frame_len(s : NlpembeduniversalFrame) -> Int { s.size }
+pub fn NlpembeduniversalFrame::len(self : NlpembeduniversalFrame) -> Int { self.size }
 
-pub fn nlp_embed_universal_frame_get(s : NlpembeduniversalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalFrame::get(self : NlpembeduniversalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_frame_set(s : NlpembeduniversalFrame, i : Int, v : Double) -> NlpembeduniversalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalFrame::set(self : NlpembeduniversalFrame, i : Int, v : Double) -> NlpembeduniversalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_frame_sum(s : NlpembeduniversalFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalFrame::sum(self : NlpembeduniversalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_frame_mean(s : NlpembeduniversalFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalFrame::mean(self : NlpembeduniversalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_frame_scale(s : NlpembeduniversalFrame, f : Double) -> NlpembeduniversalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalFrame::scale(self : NlpembeduniversalFrame, f : Double) -> NlpembeduniversalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_frame_add(a : NlpembeduniversalFrame, b : NlpembeduniversalFrame) -> NlpembeduniversalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalFrame::add(self : NlpembeduniversalFrame, other : NlpembeduniversalFrame) -> NlpembeduniversalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_frame_copy(s : NlpembeduniversalFrame) -> NlpembeduniversalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalFrame::copy(self : NlpembeduniversalFrame) -> NlpembeduniversalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_frame_fill(s : NlpembeduniversalFrame, v : Double) -> NlpembeduniversalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalFrame::fill(self : NlpembeduniversalFrame, v : Double) -> NlpembeduniversalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_frame_min(s : NlpembeduniversalFrame) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalFrame::min(self : NlpembeduniversalFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_frame_max(s : NlpembeduniversalFrame) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalFrame::max(self : NlpembeduniversalFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_frame_to_string(s : NlpembeduniversalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalFrame::to_string(self : NlpembeduniversalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalTable {
@@ -402,45 +402,45 @@ pub fn nlp_embed_universal_table_make(size : Int) -> NlpembeduniversalTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_table_len(s : NlpembeduniversalTable) -> Int { s.size }
+pub fn NlpembeduniversalTable::len(self : NlpembeduniversalTable) -> Int { self.size }
 
-pub fn nlp_embed_universal_table_get(s : NlpembeduniversalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalTable::get(self : NlpembeduniversalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_table_set(s : NlpembeduniversalTable, i : Int, v : Double) -> NlpembeduniversalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalTable::set(self : NlpembeduniversalTable, i : Int, v : Double) -> NlpembeduniversalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_table_sum(s : NlpembeduniversalTable) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalTable::sum(self : NlpembeduniversalTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_table_mean(s : NlpembeduniversalTable) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalTable::mean(self : NlpembeduniversalTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_table_scale(s : NlpembeduniversalTable, f : Double) -> NlpembeduniversalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalTable::scale(self : NlpembeduniversalTable, f : Double) -> NlpembeduniversalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_table_add(a : NlpembeduniversalTable, b : NlpembeduniversalTable) -> NlpembeduniversalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalTable::add(self : NlpembeduniversalTable, other : NlpembeduniversalTable) -> NlpembeduniversalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_table_copy(s : NlpembeduniversalTable) -> NlpembeduniversalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalTable::copy(self : NlpembeduniversalTable) -> NlpembeduniversalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_table_fill(s : NlpembeduniversalTable, v : Double) -> NlpembeduniversalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalTable::fill(self : NlpembeduniversalTable, v : Double) -> NlpembeduniversalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_table_min(s : NlpembeduniversalTable) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalTable::min(self : NlpembeduniversalTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_table_max(s : NlpembeduniversalTable) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalTable::max(self : NlpembeduniversalTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_table_to_string(s : NlpembeduniversalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalTable::to_string(self : NlpembeduniversalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_embed_universal_graphn_make(size : Int) -> NlpembeduniversalGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_graphn_len(s : NlpembeduniversalGraphN) -> Int { s.size }
+pub fn NlpembeduniversalGraphN::len(self : NlpembeduniversalGraphN) -> Int { self.size }
 
-pub fn nlp_embed_universal_graphn_get(s : NlpembeduniversalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalGraphN::get(self : NlpembeduniversalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_graphn_set(s : NlpembeduniversalGraphN, i : Int, v : Double) -> NlpembeduniversalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalGraphN::set(self : NlpembeduniversalGraphN, i : Int, v : Double) -> NlpembeduniversalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_graphn_sum(s : NlpembeduniversalGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalGraphN::sum(self : NlpembeduniversalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_graphn_mean(s : NlpembeduniversalGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalGraphN::mean(self : NlpembeduniversalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_graphn_scale(s : NlpembeduniversalGraphN, f : Double) -> NlpembeduniversalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalGraphN::scale(self : NlpembeduniversalGraphN, f : Double) -> NlpembeduniversalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_graphn_add(a : NlpembeduniversalGraphN, b : NlpembeduniversalGraphN) -> NlpembeduniversalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalGraphN::add(self : NlpembeduniversalGraphN, other : NlpembeduniversalGraphN) -> NlpembeduniversalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_graphn_copy(s : NlpembeduniversalGraphN) -> NlpembeduniversalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalGraphN::copy(self : NlpembeduniversalGraphN) -> NlpembeduniversalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_graphn_fill(s : NlpembeduniversalGraphN, v : Double) -> NlpembeduniversalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalGraphN::fill(self : NlpembeduniversalGraphN, v : Double) -> NlpembeduniversalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_graphn_min(s : NlpembeduniversalGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalGraphN::min(self : NlpembeduniversalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_graphn_max(s : NlpembeduniversalGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalGraphN::max(self : NlpembeduniversalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_graphn_to_string(s : NlpembeduniversalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalGraphN::to_string(self : NlpembeduniversalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalNode {
@@ -504,45 +504,45 @@ pub fn nlp_embed_universal_node_make(size : Int) -> NlpembeduniversalNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_node_len(s : NlpembeduniversalNode) -> Int { s.size }
+pub fn NlpembeduniversalNode::len(self : NlpembeduniversalNode) -> Int { self.size }
 
-pub fn nlp_embed_universal_node_get(s : NlpembeduniversalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalNode::get(self : NlpembeduniversalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_node_set(s : NlpembeduniversalNode, i : Int, v : Double) -> NlpembeduniversalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalNode::set(self : NlpembeduniversalNode, i : Int, v : Double) -> NlpembeduniversalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_node_sum(s : NlpembeduniversalNode) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalNode::sum(self : NlpembeduniversalNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_node_mean(s : NlpembeduniversalNode) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalNode::mean(self : NlpembeduniversalNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_node_scale(s : NlpembeduniversalNode, f : Double) -> NlpembeduniversalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalNode::scale(self : NlpembeduniversalNode, f : Double) -> NlpembeduniversalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_node_add(a : NlpembeduniversalNode, b : NlpembeduniversalNode) -> NlpembeduniversalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalNode::add(self : NlpembeduniversalNode, other : NlpembeduniversalNode) -> NlpembeduniversalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_node_copy(s : NlpembeduniversalNode) -> NlpembeduniversalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalNode::copy(self : NlpembeduniversalNode) -> NlpembeduniversalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_node_fill(s : NlpembeduniversalNode, v : Double) -> NlpembeduniversalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalNode::fill(self : NlpembeduniversalNode, v : Double) -> NlpembeduniversalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_node_min(s : NlpembeduniversalNode) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalNode::min(self : NlpembeduniversalNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_node_max(s : NlpembeduniversalNode) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalNode::max(self : NlpembeduniversalNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_node_to_string(s : NlpembeduniversalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalNode::to_string(self : NlpembeduniversalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalEdge {
@@ -555,45 +555,45 @@ pub fn nlp_embed_universal_edge_make(size : Int) -> NlpembeduniversalEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_edge_len(s : NlpembeduniversalEdge) -> Int { s.size }
+pub fn NlpembeduniversalEdge::len(self : NlpembeduniversalEdge) -> Int { self.size }
 
-pub fn nlp_embed_universal_edge_get(s : NlpembeduniversalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalEdge::get(self : NlpembeduniversalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_edge_set(s : NlpembeduniversalEdge, i : Int, v : Double) -> NlpembeduniversalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalEdge::set(self : NlpembeduniversalEdge, i : Int, v : Double) -> NlpembeduniversalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_edge_sum(s : NlpembeduniversalEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalEdge::sum(self : NlpembeduniversalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_edge_mean(s : NlpembeduniversalEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalEdge::mean(self : NlpembeduniversalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_edge_scale(s : NlpembeduniversalEdge, f : Double) -> NlpembeduniversalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalEdge::scale(self : NlpembeduniversalEdge, f : Double) -> NlpembeduniversalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_edge_add(a : NlpembeduniversalEdge, b : NlpembeduniversalEdge) -> NlpembeduniversalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalEdge::add(self : NlpembeduniversalEdge, other : NlpembeduniversalEdge) -> NlpembeduniversalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_edge_copy(s : NlpembeduniversalEdge) -> NlpembeduniversalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalEdge::copy(self : NlpembeduniversalEdge) -> NlpembeduniversalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_edge_fill(s : NlpembeduniversalEdge, v : Double) -> NlpembeduniversalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalEdge::fill(self : NlpembeduniversalEdge, v : Double) -> NlpembeduniversalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_edge_min(s : NlpembeduniversalEdge) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalEdge::min(self : NlpembeduniversalEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_edge_max(s : NlpembeduniversalEdge) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalEdge::max(self : NlpembeduniversalEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_edge_to_string(s : NlpembeduniversalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalEdge::to_string(self : NlpembeduniversalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalPath {
@@ -606,45 +606,45 @@ pub fn nlp_embed_universal_path_make(size : Int) -> NlpembeduniversalPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_path_len(s : NlpembeduniversalPath) -> Int { s.size }
+pub fn NlpembeduniversalPath::len(self : NlpembeduniversalPath) -> Int { self.size }
 
-pub fn nlp_embed_universal_path_get(s : NlpembeduniversalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalPath::get(self : NlpembeduniversalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_path_set(s : NlpembeduniversalPath, i : Int, v : Double) -> NlpembeduniversalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalPath::set(self : NlpembeduniversalPath, i : Int, v : Double) -> NlpembeduniversalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_path_sum(s : NlpembeduniversalPath) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalPath::sum(self : NlpembeduniversalPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_path_mean(s : NlpembeduniversalPath) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalPath::mean(self : NlpembeduniversalPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_path_scale(s : NlpembeduniversalPath, f : Double) -> NlpembeduniversalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalPath::scale(self : NlpembeduniversalPath, f : Double) -> NlpembeduniversalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_path_add(a : NlpembeduniversalPath, b : NlpembeduniversalPath) -> NlpembeduniversalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalPath::add(self : NlpembeduniversalPath, other : NlpembeduniversalPath) -> NlpembeduniversalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_path_copy(s : NlpembeduniversalPath) -> NlpembeduniversalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalPath::copy(self : NlpembeduniversalPath) -> NlpembeduniversalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_path_fill(s : NlpembeduniversalPath, v : Double) -> NlpembeduniversalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalPath::fill(self : NlpembeduniversalPath, v : Double) -> NlpembeduniversalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_path_min(s : NlpembeduniversalPath) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalPath::min(self : NlpembeduniversalPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_path_max(s : NlpembeduniversalPath) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalPath::max(self : NlpembeduniversalPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_path_to_string(s : NlpembeduniversalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalPath::to_string(self : NlpembeduniversalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalCluster {
@@ -657,45 +657,45 @@ pub fn nlp_embed_universal_cluster_make(size : Int) -> NlpembeduniversalCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_cluster_len(s : NlpembeduniversalCluster) -> Int { s.size }
+pub fn NlpembeduniversalCluster::len(self : NlpembeduniversalCluster) -> Int { self.size }
 
-pub fn nlp_embed_universal_cluster_get(s : NlpembeduniversalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalCluster::get(self : NlpembeduniversalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_cluster_set(s : NlpembeduniversalCluster, i : Int, v : Double) -> NlpembeduniversalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalCluster::set(self : NlpembeduniversalCluster, i : Int, v : Double) -> NlpembeduniversalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_cluster_sum(s : NlpembeduniversalCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalCluster::sum(self : NlpembeduniversalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_cluster_mean(s : NlpembeduniversalCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalCluster::mean(self : NlpembeduniversalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_cluster_scale(s : NlpembeduniversalCluster, f : Double) -> NlpembeduniversalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalCluster::scale(self : NlpembeduniversalCluster, f : Double) -> NlpembeduniversalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_cluster_add(a : NlpembeduniversalCluster, b : NlpembeduniversalCluster) -> NlpembeduniversalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalCluster::add(self : NlpembeduniversalCluster, other : NlpembeduniversalCluster) -> NlpembeduniversalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_cluster_copy(s : NlpembeduniversalCluster) -> NlpembeduniversalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalCluster::copy(self : NlpembeduniversalCluster) -> NlpembeduniversalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_cluster_fill(s : NlpembeduniversalCluster, v : Double) -> NlpembeduniversalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalCluster::fill(self : NlpembeduniversalCluster, v : Double) -> NlpembeduniversalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_cluster_min(s : NlpembeduniversalCluster) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalCluster::min(self : NlpembeduniversalCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_cluster_max(s : NlpembeduniversalCluster) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalCluster::max(self : NlpembeduniversalCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_cluster_to_string(s : NlpembeduniversalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalCluster::to_string(self : NlpembeduniversalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalModel {
@@ -708,45 +708,45 @@ pub fn nlp_embed_universal_model_make(size : Int) -> NlpembeduniversalModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_model_len(s : NlpembeduniversalModel) -> Int { s.size }
+pub fn NlpembeduniversalModel::len(self : NlpembeduniversalModel) -> Int { self.size }
 
-pub fn nlp_embed_universal_model_get(s : NlpembeduniversalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalModel::get(self : NlpembeduniversalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_model_set(s : NlpembeduniversalModel, i : Int, v : Double) -> NlpembeduniversalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalModel::set(self : NlpembeduniversalModel, i : Int, v : Double) -> NlpembeduniversalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_model_sum(s : NlpembeduniversalModel) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalModel::sum(self : NlpembeduniversalModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_model_mean(s : NlpembeduniversalModel) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalModel::mean(self : NlpembeduniversalModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_model_scale(s : NlpembeduniversalModel, f : Double) -> NlpembeduniversalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalModel::scale(self : NlpembeduniversalModel, f : Double) -> NlpembeduniversalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_model_add(a : NlpembeduniversalModel, b : NlpembeduniversalModel) -> NlpembeduniversalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalModel::add(self : NlpembeduniversalModel, other : NlpembeduniversalModel) -> NlpembeduniversalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_model_copy(s : NlpembeduniversalModel) -> NlpembeduniversalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalModel::copy(self : NlpembeduniversalModel) -> NlpembeduniversalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_model_fill(s : NlpembeduniversalModel, v : Double) -> NlpembeduniversalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalModel::fill(self : NlpembeduniversalModel, v : Double) -> NlpembeduniversalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_model_min(s : NlpembeduniversalModel) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalModel::min(self : NlpembeduniversalModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_model_max(s : NlpembeduniversalModel) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalModel::max(self : NlpembeduniversalModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_model_to_string(s : NlpembeduniversalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalModel::to_string(self : NlpembeduniversalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalLayer {
@@ -759,45 +759,45 @@ pub fn nlp_embed_universal_layer_make(size : Int) -> NlpembeduniversalLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_layer_len(s : NlpembeduniversalLayer) -> Int { s.size }
+pub fn NlpembeduniversalLayer::len(self : NlpembeduniversalLayer) -> Int { self.size }
 
-pub fn nlp_embed_universal_layer_get(s : NlpembeduniversalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalLayer::get(self : NlpembeduniversalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_layer_set(s : NlpembeduniversalLayer, i : Int, v : Double) -> NlpembeduniversalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalLayer::set(self : NlpembeduniversalLayer, i : Int, v : Double) -> NlpembeduniversalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_layer_sum(s : NlpembeduniversalLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalLayer::sum(self : NlpembeduniversalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_layer_mean(s : NlpembeduniversalLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalLayer::mean(self : NlpembeduniversalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_layer_scale(s : NlpembeduniversalLayer, f : Double) -> NlpembeduniversalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalLayer::scale(self : NlpembeduniversalLayer, f : Double) -> NlpembeduniversalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_layer_add(a : NlpembeduniversalLayer, b : NlpembeduniversalLayer) -> NlpembeduniversalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalLayer::add(self : NlpembeduniversalLayer, other : NlpembeduniversalLayer) -> NlpembeduniversalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_layer_copy(s : NlpembeduniversalLayer) -> NlpembeduniversalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalLayer::copy(self : NlpembeduniversalLayer) -> NlpembeduniversalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_layer_fill(s : NlpembeduniversalLayer, v : Double) -> NlpembeduniversalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalLayer::fill(self : NlpembeduniversalLayer, v : Double) -> NlpembeduniversalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_layer_min(s : NlpembeduniversalLayer) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalLayer::min(self : NlpembeduniversalLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_layer_max(s : NlpembeduniversalLayer) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalLayer::max(self : NlpembeduniversalLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_layer_to_string(s : NlpembeduniversalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalLayer::to_string(self : NlpembeduniversalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_embed_universal_buffer_make(size : Int) -> NlpembeduniversalBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_buffer_len(s : NlpembeduniversalBuffer) -> Int { s.size }
+pub fn NlpembeduniversalBuffer::len(self : NlpembeduniversalBuffer) -> Int { self.size }
 
-pub fn nlp_embed_universal_buffer_get(s : NlpembeduniversalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalBuffer::get(self : NlpembeduniversalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_buffer_set(s : NlpembeduniversalBuffer, i : Int, v : Double) -> NlpembeduniversalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalBuffer::set(self : NlpembeduniversalBuffer, i : Int, v : Double) -> NlpembeduniversalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_buffer_sum(s : NlpembeduniversalBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalBuffer::sum(self : NlpembeduniversalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_buffer_mean(s : NlpembeduniversalBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalBuffer::mean(self : NlpembeduniversalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_buffer_scale(s : NlpembeduniversalBuffer, f : Double) -> NlpembeduniversalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalBuffer::scale(self : NlpembeduniversalBuffer, f : Double) -> NlpembeduniversalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_buffer_add(a : NlpembeduniversalBuffer, b : NlpembeduniversalBuffer) -> NlpembeduniversalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalBuffer::add(self : NlpembeduniversalBuffer, other : NlpembeduniversalBuffer) -> NlpembeduniversalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_buffer_copy(s : NlpembeduniversalBuffer) -> NlpembeduniversalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalBuffer::copy(self : NlpembeduniversalBuffer) -> NlpembeduniversalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_buffer_fill(s : NlpembeduniversalBuffer, v : Double) -> NlpembeduniversalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalBuffer::fill(self : NlpembeduniversalBuffer, v : Double) -> NlpembeduniversalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_buffer_min(s : NlpembeduniversalBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalBuffer::min(self : NlpembeduniversalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_buffer_max(s : NlpembeduniversalBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalBuffer::max(self : NlpembeduniversalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_buffer_to_string(s : NlpembeduniversalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalBuffer::to_string(self : NlpembeduniversalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalCursor {
@@ -861,45 +861,45 @@ pub fn nlp_embed_universal_cursor_make(size : Int) -> NlpembeduniversalCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_cursor_len(s : NlpembeduniversalCursor) -> Int { s.size }
+pub fn NlpembeduniversalCursor::len(self : NlpembeduniversalCursor) -> Int { self.size }
 
-pub fn nlp_embed_universal_cursor_get(s : NlpembeduniversalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalCursor::get(self : NlpembeduniversalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_cursor_set(s : NlpembeduniversalCursor, i : Int, v : Double) -> NlpembeduniversalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalCursor::set(self : NlpembeduniversalCursor, i : Int, v : Double) -> NlpembeduniversalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_cursor_sum(s : NlpembeduniversalCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalCursor::sum(self : NlpembeduniversalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_cursor_mean(s : NlpembeduniversalCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalCursor::mean(self : NlpembeduniversalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_cursor_scale(s : NlpembeduniversalCursor, f : Double) -> NlpembeduniversalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalCursor::scale(self : NlpembeduniversalCursor, f : Double) -> NlpembeduniversalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_cursor_add(a : NlpembeduniversalCursor, b : NlpembeduniversalCursor) -> NlpembeduniversalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalCursor::add(self : NlpembeduniversalCursor, other : NlpembeduniversalCursor) -> NlpembeduniversalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_cursor_copy(s : NlpembeduniversalCursor) -> NlpembeduniversalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalCursor::copy(self : NlpembeduniversalCursor) -> NlpembeduniversalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_cursor_fill(s : NlpembeduniversalCursor, v : Double) -> NlpembeduniversalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalCursor::fill(self : NlpembeduniversalCursor, v : Double) -> NlpembeduniversalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_cursor_min(s : NlpembeduniversalCursor) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalCursor::min(self : NlpembeduniversalCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_cursor_max(s : NlpembeduniversalCursor) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalCursor::max(self : NlpembeduniversalCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_cursor_to_string(s : NlpembeduniversalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalCursor::to_string(self : NlpembeduniversalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalView {
@@ -912,45 +912,45 @@ pub fn nlp_embed_universal_view_make(size : Int) -> NlpembeduniversalView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_view_len(s : NlpembeduniversalView) -> Int { s.size }
+pub fn NlpembeduniversalView::len(self : NlpembeduniversalView) -> Int { self.size }
 
-pub fn nlp_embed_universal_view_get(s : NlpembeduniversalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalView::get(self : NlpembeduniversalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_view_set(s : NlpembeduniversalView, i : Int, v : Double) -> NlpembeduniversalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalView::set(self : NlpembeduniversalView, i : Int, v : Double) -> NlpembeduniversalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_view_sum(s : NlpembeduniversalView) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalView::sum(self : NlpembeduniversalView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_view_mean(s : NlpembeduniversalView) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalView::mean(self : NlpembeduniversalView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_view_scale(s : NlpembeduniversalView, f : Double) -> NlpembeduniversalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalView::scale(self : NlpembeduniversalView, f : Double) -> NlpembeduniversalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_view_add(a : NlpembeduniversalView, b : NlpembeduniversalView) -> NlpembeduniversalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalView::add(self : NlpembeduniversalView, other : NlpembeduniversalView) -> NlpembeduniversalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_view_copy(s : NlpembeduniversalView) -> NlpembeduniversalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalView::copy(self : NlpembeduniversalView) -> NlpembeduniversalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_view_fill(s : NlpembeduniversalView, v : Double) -> NlpembeduniversalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalView::fill(self : NlpembeduniversalView, v : Double) -> NlpembeduniversalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_view_min(s : NlpembeduniversalView) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalView::min(self : NlpembeduniversalView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_view_max(s : NlpembeduniversalView) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalView::max(self : NlpembeduniversalView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_view_to_string(s : NlpembeduniversalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalView::to_string(self : NlpembeduniversalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalRange {
@@ -963,45 +963,45 @@ pub fn nlp_embed_universal_range_make(size : Int) -> NlpembeduniversalRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_range_len(s : NlpembeduniversalRange) -> Int { s.size }
+pub fn NlpembeduniversalRange::len(self : NlpembeduniversalRange) -> Int { self.size }
 
-pub fn nlp_embed_universal_range_get(s : NlpembeduniversalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalRange::get(self : NlpembeduniversalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_range_set(s : NlpembeduniversalRange, i : Int, v : Double) -> NlpembeduniversalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalRange::set(self : NlpembeduniversalRange, i : Int, v : Double) -> NlpembeduniversalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_range_sum(s : NlpembeduniversalRange) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalRange::sum(self : NlpembeduniversalRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_range_mean(s : NlpembeduniversalRange) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalRange::mean(self : NlpembeduniversalRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_range_scale(s : NlpembeduniversalRange, f : Double) -> NlpembeduniversalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalRange::scale(self : NlpembeduniversalRange, f : Double) -> NlpembeduniversalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_range_add(a : NlpembeduniversalRange, b : NlpembeduniversalRange) -> NlpembeduniversalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalRange::add(self : NlpembeduniversalRange, other : NlpembeduniversalRange) -> NlpembeduniversalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_range_copy(s : NlpembeduniversalRange) -> NlpembeduniversalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalRange::copy(self : NlpembeduniversalRange) -> NlpembeduniversalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_range_fill(s : NlpembeduniversalRange, v : Double) -> NlpembeduniversalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalRange::fill(self : NlpembeduniversalRange, v : Double) -> NlpembeduniversalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_range_min(s : NlpembeduniversalRange) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalRange::min(self : NlpembeduniversalRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_range_max(s : NlpembeduniversalRange) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalRange::max(self : NlpembeduniversalRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_range_to_string(s : NlpembeduniversalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalRange::to_string(self : NlpembeduniversalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembeduniversalSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_embed_universal_slice_make(size : Int) -> NlpembeduniversalSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_universal_slice_len(s : NlpembeduniversalSlice) -> Int { s.size }
+pub fn NlpembeduniversalSlice::len(self : NlpembeduniversalSlice) -> Int { self.size }
 
-pub fn nlp_embed_universal_slice_get(s : NlpembeduniversalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembeduniversalSlice::get(self : NlpembeduniversalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_universal_slice_set(s : NlpembeduniversalSlice, i : Int, v : Double) -> NlpembeduniversalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembeduniversalSlice::set(self : NlpembeduniversalSlice, i : Int, v : Double) -> NlpembeduniversalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_slice_sum(s : NlpembeduniversalSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpembeduniversalSlice::sum(self : NlpembeduniversalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_universal_slice_mean(s : NlpembeduniversalSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpembeduniversalSlice::mean(self : NlpembeduniversalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_universal_slice_scale(s : NlpembeduniversalSlice, f : Double) -> NlpembeduniversalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalSlice::scale(self : NlpembeduniversalSlice, f : Double) -> NlpembeduniversalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_slice_add(a : NlpembeduniversalSlice, b : NlpembeduniversalSlice) -> NlpembeduniversalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembeduniversalSlice::add(self : NlpembeduniversalSlice, other : NlpembeduniversalSlice) -> NlpembeduniversalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_slice_copy(s : NlpembeduniversalSlice) -> NlpembeduniversalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalSlice::copy(self : NlpembeduniversalSlice) -> NlpembeduniversalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_slice_fill(s : NlpembeduniversalSlice, v : Double) -> NlpembeduniversalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembeduniversalSlice::fill(self : NlpembeduniversalSlice, v : Double) -> NlpembeduniversalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_universal_slice_min(s : NlpembeduniversalSlice) -> Double { @_common.min(s.data) }
+pub fn NlpembeduniversalSlice::min(self : NlpembeduniversalSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_universal_slice_max(s : NlpembeduniversalSlice) -> Double { @_common.max(s.data) }
+pub fn NlpembeduniversalSlice::max(self : NlpembeduniversalSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_universal_slice_to_string(s : NlpembeduniversalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembeduniversalSlice::to_string(self : NlpembeduniversalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

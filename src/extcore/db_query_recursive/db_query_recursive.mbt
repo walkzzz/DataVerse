@@ -351,45 +351,45 @@ pub fn db_query_recursive_frame_make(size : Int) -> DbqueryrecursiveFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_frame_len(s : DbqueryrecursiveFrame) -> Int { s.size }
+pub fn DbqueryrecursiveFrame::len(self : DbqueryrecursiveFrame) -> Int { self.size }
 
-pub fn db_query_recursive_frame_get(s : DbqueryrecursiveFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveFrame::get(self : DbqueryrecursiveFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_frame_set(s : DbqueryrecursiveFrame, i : Int, v : Double) -> DbqueryrecursiveFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveFrame::set(self : DbqueryrecursiveFrame, i : Int, v : Double) -> DbqueryrecursiveFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_frame_sum(s : DbqueryrecursiveFrame) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveFrame::sum(self : DbqueryrecursiveFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_frame_mean(s : DbqueryrecursiveFrame) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveFrame::mean(self : DbqueryrecursiveFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_frame_scale(s : DbqueryrecursiveFrame, f : Double) -> DbqueryrecursiveFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveFrame::scale(self : DbqueryrecursiveFrame, f : Double) -> DbqueryrecursiveFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_frame_add(a : DbqueryrecursiveFrame, b : DbqueryrecursiveFrame) -> DbqueryrecursiveFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveFrame::add(self : DbqueryrecursiveFrame, other : DbqueryrecursiveFrame) -> DbqueryrecursiveFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_frame_copy(s : DbqueryrecursiveFrame) -> DbqueryrecursiveFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveFrame::copy(self : DbqueryrecursiveFrame) -> DbqueryrecursiveFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_frame_fill(s : DbqueryrecursiveFrame, v : Double) -> DbqueryrecursiveFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveFrame::fill(self : DbqueryrecursiveFrame, v : Double) -> DbqueryrecursiveFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_frame_min(s : DbqueryrecursiveFrame) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveFrame::min(self : DbqueryrecursiveFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_frame_max(s : DbqueryrecursiveFrame) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveFrame::max(self : DbqueryrecursiveFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_frame_to_string(s : DbqueryrecursiveFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveFrame::to_string(self : DbqueryrecursiveFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveTable {
@@ -402,45 +402,45 @@ pub fn db_query_recursive_table_make(size : Int) -> DbqueryrecursiveTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_table_len(s : DbqueryrecursiveTable) -> Int { s.size }
+pub fn DbqueryrecursiveTable::len(self : DbqueryrecursiveTable) -> Int { self.size }
 
-pub fn db_query_recursive_table_get(s : DbqueryrecursiveTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveTable::get(self : DbqueryrecursiveTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_table_set(s : DbqueryrecursiveTable, i : Int, v : Double) -> DbqueryrecursiveTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveTable::set(self : DbqueryrecursiveTable, i : Int, v : Double) -> DbqueryrecursiveTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_table_sum(s : DbqueryrecursiveTable) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveTable::sum(self : DbqueryrecursiveTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_table_mean(s : DbqueryrecursiveTable) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveTable::mean(self : DbqueryrecursiveTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_table_scale(s : DbqueryrecursiveTable, f : Double) -> DbqueryrecursiveTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveTable::scale(self : DbqueryrecursiveTable, f : Double) -> DbqueryrecursiveTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_table_add(a : DbqueryrecursiveTable, b : DbqueryrecursiveTable) -> DbqueryrecursiveTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveTable::add(self : DbqueryrecursiveTable, other : DbqueryrecursiveTable) -> DbqueryrecursiveTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_table_copy(s : DbqueryrecursiveTable) -> DbqueryrecursiveTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveTable::copy(self : DbqueryrecursiveTable) -> DbqueryrecursiveTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_table_fill(s : DbqueryrecursiveTable, v : Double) -> DbqueryrecursiveTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveTable::fill(self : DbqueryrecursiveTable, v : Double) -> DbqueryrecursiveTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_table_min(s : DbqueryrecursiveTable) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveTable::min(self : DbqueryrecursiveTable) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_table_max(s : DbqueryrecursiveTable) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveTable::max(self : DbqueryrecursiveTable) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_table_to_string(s : DbqueryrecursiveTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveTable::to_string(self : DbqueryrecursiveTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveGraphN {
@@ -453,45 +453,45 @@ pub fn db_query_recursive_graphn_make(size : Int) -> DbqueryrecursiveGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_graphn_len(s : DbqueryrecursiveGraphN) -> Int { s.size }
+pub fn DbqueryrecursiveGraphN::len(self : DbqueryrecursiveGraphN) -> Int { self.size }
 
-pub fn db_query_recursive_graphn_get(s : DbqueryrecursiveGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveGraphN::get(self : DbqueryrecursiveGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_graphn_set(s : DbqueryrecursiveGraphN, i : Int, v : Double) -> DbqueryrecursiveGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveGraphN::set(self : DbqueryrecursiveGraphN, i : Int, v : Double) -> DbqueryrecursiveGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_graphn_sum(s : DbqueryrecursiveGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveGraphN::sum(self : DbqueryrecursiveGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_graphn_mean(s : DbqueryrecursiveGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveGraphN::mean(self : DbqueryrecursiveGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_graphn_scale(s : DbqueryrecursiveGraphN, f : Double) -> DbqueryrecursiveGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveGraphN::scale(self : DbqueryrecursiveGraphN, f : Double) -> DbqueryrecursiveGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_graphn_add(a : DbqueryrecursiveGraphN, b : DbqueryrecursiveGraphN) -> DbqueryrecursiveGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveGraphN::add(self : DbqueryrecursiveGraphN, other : DbqueryrecursiveGraphN) -> DbqueryrecursiveGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_graphn_copy(s : DbqueryrecursiveGraphN) -> DbqueryrecursiveGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveGraphN::copy(self : DbqueryrecursiveGraphN) -> DbqueryrecursiveGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_graphn_fill(s : DbqueryrecursiveGraphN, v : Double) -> DbqueryrecursiveGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveGraphN::fill(self : DbqueryrecursiveGraphN, v : Double) -> DbqueryrecursiveGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_graphn_min(s : DbqueryrecursiveGraphN) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveGraphN::min(self : DbqueryrecursiveGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_graphn_max(s : DbqueryrecursiveGraphN) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveGraphN::max(self : DbqueryrecursiveGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_graphn_to_string(s : DbqueryrecursiveGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveGraphN::to_string(self : DbqueryrecursiveGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveNode {
@@ -504,45 +504,45 @@ pub fn db_query_recursive_node_make(size : Int) -> DbqueryrecursiveNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_node_len(s : DbqueryrecursiveNode) -> Int { s.size }
+pub fn DbqueryrecursiveNode::len(self : DbqueryrecursiveNode) -> Int { self.size }
 
-pub fn db_query_recursive_node_get(s : DbqueryrecursiveNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveNode::get(self : DbqueryrecursiveNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_node_set(s : DbqueryrecursiveNode, i : Int, v : Double) -> DbqueryrecursiveNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveNode::set(self : DbqueryrecursiveNode, i : Int, v : Double) -> DbqueryrecursiveNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_node_sum(s : DbqueryrecursiveNode) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveNode::sum(self : DbqueryrecursiveNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_node_mean(s : DbqueryrecursiveNode) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveNode::mean(self : DbqueryrecursiveNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_node_scale(s : DbqueryrecursiveNode, f : Double) -> DbqueryrecursiveNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveNode::scale(self : DbqueryrecursiveNode, f : Double) -> DbqueryrecursiveNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_node_add(a : DbqueryrecursiveNode, b : DbqueryrecursiveNode) -> DbqueryrecursiveNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveNode::add(self : DbqueryrecursiveNode, other : DbqueryrecursiveNode) -> DbqueryrecursiveNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_node_copy(s : DbqueryrecursiveNode) -> DbqueryrecursiveNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveNode::copy(self : DbqueryrecursiveNode) -> DbqueryrecursiveNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_node_fill(s : DbqueryrecursiveNode, v : Double) -> DbqueryrecursiveNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveNode::fill(self : DbqueryrecursiveNode, v : Double) -> DbqueryrecursiveNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_node_min(s : DbqueryrecursiveNode) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveNode::min(self : DbqueryrecursiveNode) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_node_max(s : DbqueryrecursiveNode) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveNode::max(self : DbqueryrecursiveNode) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_node_to_string(s : DbqueryrecursiveNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveNode::to_string(self : DbqueryrecursiveNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveEdge {
@@ -555,45 +555,45 @@ pub fn db_query_recursive_edge_make(size : Int) -> DbqueryrecursiveEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_edge_len(s : DbqueryrecursiveEdge) -> Int { s.size }
+pub fn DbqueryrecursiveEdge::len(self : DbqueryrecursiveEdge) -> Int { self.size }
 
-pub fn db_query_recursive_edge_get(s : DbqueryrecursiveEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveEdge::get(self : DbqueryrecursiveEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_edge_set(s : DbqueryrecursiveEdge, i : Int, v : Double) -> DbqueryrecursiveEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveEdge::set(self : DbqueryrecursiveEdge, i : Int, v : Double) -> DbqueryrecursiveEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_edge_sum(s : DbqueryrecursiveEdge) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveEdge::sum(self : DbqueryrecursiveEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_edge_mean(s : DbqueryrecursiveEdge) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveEdge::mean(self : DbqueryrecursiveEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_edge_scale(s : DbqueryrecursiveEdge, f : Double) -> DbqueryrecursiveEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveEdge::scale(self : DbqueryrecursiveEdge, f : Double) -> DbqueryrecursiveEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_edge_add(a : DbqueryrecursiveEdge, b : DbqueryrecursiveEdge) -> DbqueryrecursiveEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveEdge::add(self : DbqueryrecursiveEdge, other : DbqueryrecursiveEdge) -> DbqueryrecursiveEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_edge_copy(s : DbqueryrecursiveEdge) -> DbqueryrecursiveEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveEdge::copy(self : DbqueryrecursiveEdge) -> DbqueryrecursiveEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_edge_fill(s : DbqueryrecursiveEdge, v : Double) -> DbqueryrecursiveEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveEdge::fill(self : DbqueryrecursiveEdge, v : Double) -> DbqueryrecursiveEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_edge_min(s : DbqueryrecursiveEdge) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveEdge::min(self : DbqueryrecursiveEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_edge_max(s : DbqueryrecursiveEdge) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveEdge::max(self : DbqueryrecursiveEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_edge_to_string(s : DbqueryrecursiveEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveEdge::to_string(self : DbqueryrecursiveEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursivePath {
@@ -606,45 +606,45 @@ pub fn db_query_recursive_path_make(size : Int) -> DbqueryrecursivePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_path_len(s : DbqueryrecursivePath) -> Int { s.size }
+pub fn DbqueryrecursivePath::len(self : DbqueryrecursivePath) -> Int { self.size }
 
-pub fn db_query_recursive_path_get(s : DbqueryrecursivePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursivePath::get(self : DbqueryrecursivePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_path_set(s : DbqueryrecursivePath, i : Int, v : Double) -> DbqueryrecursivePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursivePath::set(self : DbqueryrecursivePath, i : Int, v : Double) -> DbqueryrecursivePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_path_sum(s : DbqueryrecursivePath) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursivePath::sum(self : DbqueryrecursivePath) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_path_mean(s : DbqueryrecursivePath) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursivePath::mean(self : DbqueryrecursivePath) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_path_scale(s : DbqueryrecursivePath, f : Double) -> DbqueryrecursivePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursivePath::scale(self : DbqueryrecursivePath, f : Double) -> DbqueryrecursivePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_path_add(a : DbqueryrecursivePath, b : DbqueryrecursivePath) -> DbqueryrecursivePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursivePath::add(self : DbqueryrecursivePath, other : DbqueryrecursivePath) -> DbqueryrecursivePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_path_copy(s : DbqueryrecursivePath) -> DbqueryrecursivePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursivePath::copy(self : DbqueryrecursivePath) -> DbqueryrecursivePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_path_fill(s : DbqueryrecursivePath, v : Double) -> DbqueryrecursivePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursivePath::fill(self : DbqueryrecursivePath, v : Double) -> DbqueryrecursivePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_path_min(s : DbqueryrecursivePath) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursivePath::min(self : DbqueryrecursivePath) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_path_max(s : DbqueryrecursivePath) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursivePath::max(self : DbqueryrecursivePath) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_path_to_string(s : DbqueryrecursivePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursivePath::to_string(self : DbqueryrecursivePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveCluster {
@@ -657,45 +657,45 @@ pub fn db_query_recursive_cluster_make(size : Int) -> DbqueryrecursiveCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_cluster_len(s : DbqueryrecursiveCluster) -> Int { s.size }
+pub fn DbqueryrecursiveCluster::len(self : DbqueryrecursiveCluster) -> Int { self.size }
 
-pub fn db_query_recursive_cluster_get(s : DbqueryrecursiveCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveCluster::get(self : DbqueryrecursiveCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_cluster_set(s : DbqueryrecursiveCluster, i : Int, v : Double) -> DbqueryrecursiveCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveCluster::set(self : DbqueryrecursiveCluster, i : Int, v : Double) -> DbqueryrecursiveCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_cluster_sum(s : DbqueryrecursiveCluster) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveCluster::sum(self : DbqueryrecursiveCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_cluster_mean(s : DbqueryrecursiveCluster) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveCluster::mean(self : DbqueryrecursiveCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_cluster_scale(s : DbqueryrecursiveCluster, f : Double) -> DbqueryrecursiveCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveCluster::scale(self : DbqueryrecursiveCluster, f : Double) -> DbqueryrecursiveCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_cluster_add(a : DbqueryrecursiveCluster, b : DbqueryrecursiveCluster) -> DbqueryrecursiveCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveCluster::add(self : DbqueryrecursiveCluster, other : DbqueryrecursiveCluster) -> DbqueryrecursiveCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_cluster_copy(s : DbqueryrecursiveCluster) -> DbqueryrecursiveCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveCluster::copy(self : DbqueryrecursiveCluster) -> DbqueryrecursiveCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_cluster_fill(s : DbqueryrecursiveCluster, v : Double) -> DbqueryrecursiveCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveCluster::fill(self : DbqueryrecursiveCluster, v : Double) -> DbqueryrecursiveCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_cluster_min(s : DbqueryrecursiveCluster) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveCluster::min(self : DbqueryrecursiveCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_cluster_max(s : DbqueryrecursiveCluster) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveCluster::max(self : DbqueryrecursiveCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_cluster_to_string(s : DbqueryrecursiveCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveCluster::to_string(self : DbqueryrecursiveCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveModel {
@@ -708,45 +708,45 @@ pub fn db_query_recursive_model_make(size : Int) -> DbqueryrecursiveModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_model_len(s : DbqueryrecursiveModel) -> Int { s.size }
+pub fn DbqueryrecursiveModel::len(self : DbqueryrecursiveModel) -> Int { self.size }
 
-pub fn db_query_recursive_model_get(s : DbqueryrecursiveModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveModel::get(self : DbqueryrecursiveModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_model_set(s : DbqueryrecursiveModel, i : Int, v : Double) -> DbqueryrecursiveModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveModel::set(self : DbqueryrecursiveModel, i : Int, v : Double) -> DbqueryrecursiveModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_model_sum(s : DbqueryrecursiveModel) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveModel::sum(self : DbqueryrecursiveModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_model_mean(s : DbqueryrecursiveModel) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveModel::mean(self : DbqueryrecursiveModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_model_scale(s : DbqueryrecursiveModel, f : Double) -> DbqueryrecursiveModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveModel::scale(self : DbqueryrecursiveModel, f : Double) -> DbqueryrecursiveModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_model_add(a : DbqueryrecursiveModel, b : DbqueryrecursiveModel) -> DbqueryrecursiveModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveModel::add(self : DbqueryrecursiveModel, other : DbqueryrecursiveModel) -> DbqueryrecursiveModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_model_copy(s : DbqueryrecursiveModel) -> DbqueryrecursiveModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveModel::copy(self : DbqueryrecursiveModel) -> DbqueryrecursiveModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_model_fill(s : DbqueryrecursiveModel, v : Double) -> DbqueryrecursiveModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveModel::fill(self : DbqueryrecursiveModel, v : Double) -> DbqueryrecursiveModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_model_min(s : DbqueryrecursiveModel) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveModel::min(self : DbqueryrecursiveModel) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_model_max(s : DbqueryrecursiveModel) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveModel::max(self : DbqueryrecursiveModel) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_model_to_string(s : DbqueryrecursiveModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveModel::to_string(self : DbqueryrecursiveModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveLayer {
@@ -759,45 +759,45 @@ pub fn db_query_recursive_layer_make(size : Int) -> DbqueryrecursiveLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_layer_len(s : DbqueryrecursiveLayer) -> Int { s.size }
+pub fn DbqueryrecursiveLayer::len(self : DbqueryrecursiveLayer) -> Int { self.size }
 
-pub fn db_query_recursive_layer_get(s : DbqueryrecursiveLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveLayer::get(self : DbqueryrecursiveLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_layer_set(s : DbqueryrecursiveLayer, i : Int, v : Double) -> DbqueryrecursiveLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveLayer::set(self : DbqueryrecursiveLayer, i : Int, v : Double) -> DbqueryrecursiveLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_layer_sum(s : DbqueryrecursiveLayer) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveLayer::sum(self : DbqueryrecursiveLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_layer_mean(s : DbqueryrecursiveLayer) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveLayer::mean(self : DbqueryrecursiveLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_layer_scale(s : DbqueryrecursiveLayer, f : Double) -> DbqueryrecursiveLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveLayer::scale(self : DbqueryrecursiveLayer, f : Double) -> DbqueryrecursiveLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_layer_add(a : DbqueryrecursiveLayer, b : DbqueryrecursiveLayer) -> DbqueryrecursiveLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveLayer::add(self : DbqueryrecursiveLayer, other : DbqueryrecursiveLayer) -> DbqueryrecursiveLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_layer_copy(s : DbqueryrecursiveLayer) -> DbqueryrecursiveLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveLayer::copy(self : DbqueryrecursiveLayer) -> DbqueryrecursiveLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_layer_fill(s : DbqueryrecursiveLayer, v : Double) -> DbqueryrecursiveLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveLayer::fill(self : DbqueryrecursiveLayer, v : Double) -> DbqueryrecursiveLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_layer_min(s : DbqueryrecursiveLayer) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveLayer::min(self : DbqueryrecursiveLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_layer_max(s : DbqueryrecursiveLayer) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveLayer::max(self : DbqueryrecursiveLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_layer_to_string(s : DbqueryrecursiveLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveLayer::to_string(self : DbqueryrecursiveLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveBuffer {
@@ -810,45 +810,45 @@ pub fn db_query_recursive_buffer_make(size : Int) -> DbqueryrecursiveBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_buffer_len(s : DbqueryrecursiveBuffer) -> Int { s.size }
+pub fn DbqueryrecursiveBuffer::len(self : DbqueryrecursiveBuffer) -> Int { self.size }
 
-pub fn db_query_recursive_buffer_get(s : DbqueryrecursiveBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveBuffer::get(self : DbqueryrecursiveBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_buffer_set(s : DbqueryrecursiveBuffer, i : Int, v : Double) -> DbqueryrecursiveBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveBuffer::set(self : DbqueryrecursiveBuffer, i : Int, v : Double) -> DbqueryrecursiveBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_buffer_sum(s : DbqueryrecursiveBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveBuffer::sum(self : DbqueryrecursiveBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_buffer_mean(s : DbqueryrecursiveBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveBuffer::mean(self : DbqueryrecursiveBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_buffer_scale(s : DbqueryrecursiveBuffer, f : Double) -> DbqueryrecursiveBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveBuffer::scale(self : DbqueryrecursiveBuffer, f : Double) -> DbqueryrecursiveBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_buffer_add(a : DbqueryrecursiveBuffer, b : DbqueryrecursiveBuffer) -> DbqueryrecursiveBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveBuffer::add(self : DbqueryrecursiveBuffer, other : DbqueryrecursiveBuffer) -> DbqueryrecursiveBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_buffer_copy(s : DbqueryrecursiveBuffer) -> DbqueryrecursiveBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveBuffer::copy(self : DbqueryrecursiveBuffer) -> DbqueryrecursiveBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_buffer_fill(s : DbqueryrecursiveBuffer, v : Double) -> DbqueryrecursiveBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveBuffer::fill(self : DbqueryrecursiveBuffer, v : Double) -> DbqueryrecursiveBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_buffer_min(s : DbqueryrecursiveBuffer) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveBuffer::min(self : DbqueryrecursiveBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_buffer_max(s : DbqueryrecursiveBuffer) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveBuffer::max(self : DbqueryrecursiveBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_buffer_to_string(s : DbqueryrecursiveBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveBuffer::to_string(self : DbqueryrecursiveBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveCursor {
@@ -861,45 +861,45 @@ pub fn db_query_recursive_cursor_make(size : Int) -> DbqueryrecursiveCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_cursor_len(s : DbqueryrecursiveCursor) -> Int { s.size }
+pub fn DbqueryrecursiveCursor::len(self : DbqueryrecursiveCursor) -> Int { self.size }
 
-pub fn db_query_recursive_cursor_get(s : DbqueryrecursiveCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveCursor::get(self : DbqueryrecursiveCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_cursor_set(s : DbqueryrecursiveCursor, i : Int, v : Double) -> DbqueryrecursiveCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveCursor::set(self : DbqueryrecursiveCursor, i : Int, v : Double) -> DbqueryrecursiveCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_cursor_sum(s : DbqueryrecursiveCursor) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveCursor::sum(self : DbqueryrecursiveCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_cursor_mean(s : DbqueryrecursiveCursor) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveCursor::mean(self : DbqueryrecursiveCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_cursor_scale(s : DbqueryrecursiveCursor, f : Double) -> DbqueryrecursiveCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveCursor::scale(self : DbqueryrecursiveCursor, f : Double) -> DbqueryrecursiveCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_cursor_add(a : DbqueryrecursiveCursor, b : DbqueryrecursiveCursor) -> DbqueryrecursiveCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveCursor::add(self : DbqueryrecursiveCursor, other : DbqueryrecursiveCursor) -> DbqueryrecursiveCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_cursor_copy(s : DbqueryrecursiveCursor) -> DbqueryrecursiveCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveCursor::copy(self : DbqueryrecursiveCursor) -> DbqueryrecursiveCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_cursor_fill(s : DbqueryrecursiveCursor, v : Double) -> DbqueryrecursiveCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveCursor::fill(self : DbqueryrecursiveCursor, v : Double) -> DbqueryrecursiveCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_cursor_min(s : DbqueryrecursiveCursor) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveCursor::min(self : DbqueryrecursiveCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_cursor_max(s : DbqueryrecursiveCursor) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveCursor::max(self : DbqueryrecursiveCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_cursor_to_string(s : DbqueryrecursiveCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveCursor::to_string(self : DbqueryrecursiveCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveView {
@@ -912,45 +912,45 @@ pub fn db_query_recursive_view_make(size : Int) -> DbqueryrecursiveView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_view_len(s : DbqueryrecursiveView) -> Int { s.size }
+pub fn DbqueryrecursiveView::len(self : DbqueryrecursiveView) -> Int { self.size }
 
-pub fn db_query_recursive_view_get(s : DbqueryrecursiveView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveView::get(self : DbqueryrecursiveView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_view_set(s : DbqueryrecursiveView, i : Int, v : Double) -> DbqueryrecursiveView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveView::set(self : DbqueryrecursiveView, i : Int, v : Double) -> DbqueryrecursiveView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_view_sum(s : DbqueryrecursiveView) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveView::sum(self : DbqueryrecursiveView) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_view_mean(s : DbqueryrecursiveView) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveView::mean(self : DbqueryrecursiveView) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_view_scale(s : DbqueryrecursiveView, f : Double) -> DbqueryrecursiveView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveView::scale(self : DbqueryrecursiveView, f : Double) -> DbqueryrecursiveView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_view_add(a : DbqueryrecursiveView, b : DbqueryrecursiveView) -> DbqueryrecursiveView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveView::add(self : DbqueryrecursiveView, other : DbqueryrecursiveView) -> DbqueryrecursiveView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_view_copy(s : DbqueryrecursiveView) -> DbqueryrecursiveView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveView::copy(self : DbqueryrecursiveView) -> DbqueryrecursiveView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_view_fill(s : DbqueryrecursiveView, v : Double) -> DbqueryrecursiveView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveView::fill(self : DbqueryrecursiveView, v : Double) -> DbqueryrecursiveView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_view_min(s : DbqueryrecursiveView) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveView::min(self : DbqueryrecursiveView) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_view_max(s : DbqueryrecursiveView) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveView::max(self : DbqueryrecursiveView) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_view_to_string(s : DbqueryrecursiveView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveView::to_string(self : DbqueryrecursiveView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveRange {
@@ -963,45 +963,45 @@ pub fn db_query_recursive_range_make(size : Int) -> DbqueryrecursiveRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_range_len(s : DbqueryrecursiveRange) -> Int { s.size }
+pub fn DbqueryrecursiveRange::len(self : DbqueryrecursiveRange) -> Int { self.size }
 
-pub fn db_query_recursive_range_get(s : DbqueryrecursiveRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveRange::get(self : DbqueryrecursiveRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_range_set(s : DbqueryrecursiveRange, i : Int, v : Double) -> DbqueryrecursiveRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveRange::set(self : DbqueryrecursiveRange, i : Int, v : Double) -> DbqueryrecursiveRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_range_sum(s : DbqueryrecursiveRange) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveRange::sum(self : DbqueryrecursiveRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_range_mean(s : DbqueryrecursiveRange) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveRange::mean(self : DbqueryrecursiveRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_range_scale(s : DbqueryrecursiveRange, f : Double) -> DbqueryrecursiveRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveRange::scale(self : DbqueryrecursiveRange, f : Double) -> DbqueryrecursiveRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_range_add(a : DbqueryrecursiveRange, b : DbqueryrecursiveRange) -> DbqueryrecursiveRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveRange::add(self : DbqueryrecursiveRange, other : DbqueryrecursiveRange) -> DbqueryrecursiveRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_range_copy(s : DbqueryrecursiveRange) -> DbqueryrecursiveRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveRange::copy(self : DbqueryrecursiveRange) -> DbqueryrecursiveRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_range_fill(s : DbqueryrecursiveRange, v : Double) -> DbqueryrecursiveRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveRange::fill(self : DbqueryrecursiveRange, v : Double) -> DbqueryrecursiveRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_range_min(s : DbqueryrecursiveRange) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveRange::min(self : DbqueryrecursiveRange) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_range_max(s : DbqueryrecursiveRange) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveRange::max(self : DbqueryrecursiveRange) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_range_to_string(s : DbqueryrecursiveRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveRange::to_string(self : DbqueryrecursiveRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveSlice {
@@ -1014,44 +1014,44 @@ pub fn db_query_recursive_slice_make(size : Int) -> DbqueryrecursiveSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_recursive_slice_len(s : DbqueryrecursiveSlice) -> Int { s.size }
+pub fn DbqueryrecursiveSlice::len(self : DbqueryrecursiveSlice) -> Int { self.size }
 
-pub fn db_query_recursive_slice_get(s : DbqueryrecursiveSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryrecursiveSlice::get(self : DbqueryrecursiveSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_recursive_slice_set(s : DbqueryrecursiveSlice, i : Int, v : Double) -> DbqueryrecursiveSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveSlice::set(self : DbqueryrecursiveSlice, i : Int, v : Double) -> DbqueryrecursiveSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_slice_sum(s : DbqueryrecursiveSlice) -> Double { @_common.sum(s.data) }
+pub fn DbqueryrecursiveSlice::sum(self : DbqueryrecursiveSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_recursive_slice_mean(s : DbqueryrecursiveSlice) -> Double { @_common.mean(s.data) }
+pub fn DbqueryrecursiveSlice::mean(self : DbqueryrecursiveSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_recursive_slice_scale(s : DbqueryrecursiveSlice, f : Double) -> DbqueryrecursiveSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveSlice::scale(self : DbqueryrecursiveSlice, f : Double) -> DbqueryrecursiveSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_slice_add(a : DbqueryrecursiveSlice, b : DbqueryrecursiveSlice) -> DbqueryrecursiveSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryrecursiveSlice::add(self : DbqueryrecursiveSlice, other : DbqueryrecursiveSlice) -> DbqueryrecursiveSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_recursive_slice_copy(s : DbqueryrecursiveSlice) -> DbqueryrecursiveSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveSlice::copy(self : DbqueryrecursiveSlice) -> DbqueryrecursiveSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_slice_fill(s : DbqueryrecursiveSlice, v : Double) -> DbqueryrecursiveSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryrecursiveSlice::fill(self : DbqueryrecursiveSlice, v : Double) -> DbqueryrecursiveSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_recursive_slice_min(s : DbqueryrecursiveSlice) -> Double { @_common.min(s.data) }
+pub fn DbqueryrecursiveSlice::min(self : DbqueryrecursiveSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_query_recursive_slice_max(s : DbqueryrecursiveSlice) -> Double { @_common.max(s.data) }
+pub fn DbqueryrecursiveSlice::max(self : DbqueryrecursiveSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_query_recursive_slice_to_string(s : DbqueryrecursiveSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryrecursiveSlice::to_string(self : DbqueryrecursiveSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ds_hash_perfect_frame_make(size : Int) -> DshashperfectFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_frame_len(s : DshashperfectFrame) -> Int { s.size }
+pub fn DshashperfectFrame::len(self : DshashperfectFrame) -> Int { self.size }
 
-pub fn ds_hash_perfect_frame_get(s : DshashperfectFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectFrame::get(self : DshashperfectFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_frame_set(s : DshashperfectFrame, i : Int, v : Double) -> DshashperfectFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectFrame::set(self : DshashperfectFrame, i : Int, v : Double) -> DshashperfectFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_frame_sum(s : DshashperfectFrame) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectFrame::sum(self : DshashperfectFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_frame_mean(s : DshashperfectFrame) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectFrame::mean(self : DshashperfectFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_frame_scale(s : DshashperfectFrame, f : Double) -> DshashperfectFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectFrame::scale(self : DshashperfectFrame, f : Double) -> DshashperfectFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_frame_add(a : DshashperfectFrame, b : DshashperfectFrame) -> DshashperfectFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectFrame::add(self : DshashperfectFrame, other : DshashperfectFrame) -> DshashperfectFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_frame_copy(s : DshashperfectFrame) -> DshashperfectFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectFrame::copy(self : DshashperfectFrame) -> DshashperfectFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_frame_fill(s : DshashperfectFrame, v : Double) -> DshashperfectFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectFrame::fill(self : DshashperfectFrame, v : Double) -> DshashperfectFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_frame_min(s : DshashperfectFrame) -> Double { @_common.min(s.data) }
+pub fn DshashperfectFrame::min(self : DshashperfectFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_frame_max(s : DshashperfectFrame) -> Double { @_common.max(s.data) }
+pub fn DshashperfectFrame::max(self : DshashperfectFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_frame_to_string(s : DshashperfectFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectFrame::to_string(self : DshashperfectFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectTable {
@@ -402,45 +402,45 @@ pub fn ds_hash_perfect_table_make(size : Int) -> DshashperfectTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_table_len(s : DshashperfectTable) -> Int { s.size }
+pub fn DshashperfectTable::len(self : DshashperfectTable) -> Int { self.size }
 
-pub fn ds_hash_perfect_table_get(s : DshashperfectTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectTable::get(self : DshashperfectTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_table_set(s : DshashperfectTable, i : Int, v : Double) -> DshashperfectTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectTable::set(self : DshashperfectTable, i : Int, v : Double) -> DshashperfectTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_table_sum(s : DshashperfectTable) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectTable::sum(self : DshashperfectTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_table_mean(s : DshashperfectTable) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectTable::mean(self : DshashperfectTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_table_scale(s : DshashperfectTable, f : Double) -> DshashperfectTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectTable::scale(self : DshashperfectTable, f : Double) -> DshashperfectTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_table_add(a : DshashperfectTable, b : DshashperfectTable) -> DshashperfectTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectTable::add(self : DshashperfectTable, other : DshashperfectTable) -> DshashperfectTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_table_copy(s : DshashperfectTable) -> DshashperfectTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectTable::copy(self : DshashperfectTable) -> DshashperfectTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_table_fill(s : DshashperfectTable, v : Double) -> DshashperfectTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectTable::fill(self : DshashperfectTable, v : Double) -> DshashperfectTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_table_min(s : DshashperfectTable) -> Double { @_common.min(s.data) }
+pub fn DshashperfectTable::min(self : DshashperfectTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_table_max(s : DshashperfectTable) -> Double { @_common.max(s.data) }
+pub fn DshashperfectTable::max(self : DshashperfectTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_table_to_string(s : DshashperfectTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectTable::to_string(self : DshashperfectTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectGraphN {
@@ -453,45 +453,45 @@ pub fn ds_hash_perfect_graphn_make(size : Int) -> DshashperfectGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_graphn_len(s : DshashperfectGraphN) -> Int { s.size }
+pub fn DshashperfectGraphN::len(self : DshashperfectGraphN) -> Int { self.size }
 
-pub fn ds_hash_perfect_graphn_get(s : DshashperfectGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectGraphN::get(self : DshashperfectGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_graphn_set(s : DshashperfectGraphN, i : Int, v : Double) -> DshashperfectGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectGraphN::set(self : DshashperfectGraphN, i : Int, v : Double) -> DshashperfectGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_graphn_sum(s : DshashperfectGraphN) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectGraphN::sum(self : DshashperfectGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_graphn_mean(s : DshashperfectGraphN) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectGraphN::mean(self : DshashperfectGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_graphn_scale(s : DshashperfectGraphN, f : Double) -> DshashperfectGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectGraphN::scale(self : DshashperfectGraphN, f : Double) -> DshashperfectGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_graphn_add(a : DshashperfectGraphN, b : DshashperfectGraphN) -> DshashperfectGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectGraphN::add(self : DshashperfectGraphN, other : DshashperfectGraphN) -> DshashperfectGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_graphn_copy(s : DshashperfectGraphN) -> DshashperfectGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectGraphN::copy(self : DshashperfectGraphN) -> DshashperfectGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_graphn_fill(s : DshashperfectGraphN, v : Double) -> DshashperfectGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectGraphN::fill(self : DshashperfectGraphN, v : Double) -> DshashperfectGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_graphn_min(s : DshashperfectGraphN) -> Double { @_common.min(s.data) }
+pub fn DshashperfectGraphN::min(self : DshashperfectGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_graphn_max(s : DshashperfectGraphN) -> Double { @_common.max(s.data) }
+pub fn DshashperfectGraphN::max(self : DshashperfectGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_graphn_to_string(s : DshashperfectGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectGraphN::to_string(self : DshashperfectGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectNode {
@@ -504,45 +504,45 @@ pub fn ds_hash_perfect_node_make(size : Int) -> DshashperfectNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_node_len(s : DshashperfectNode) -> Int { s.size }
+pub fn DshashperfectNode::len(self : DshashperfectNode) -> Int { self.size }
 
-pub fn ds_hash_perfect_node_get(s : DshashperfectNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectNode::get(self : DshashperfectNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_node_set(s : DshashperfectNode, i : Int, v : Double) -> DshashperfectNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectNode::set(self : DshashperfectNode, i : Int, v : Double) -> DshashperfectNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_node_sum(s : DshashperfectNode) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectNode::sum(self : DshashperfectNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_node_mean(s : DshashperfectNode) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectNode::mean(self : DshashperfectNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_node_scale(s : DshashperfectNode, f : Double) -> DshashperfectNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectNode::scale(self : DshashperfectNode, f : Double) -> DshashperfectNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_node_add(a : DshashperfectNode, b : DshashperfectNode) -> DshashperfectNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectNode::add(self : DshashperfectNode, other : DshashperfectNode) -> DshashperfectNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_node_copy(s : DshashperfectNode) -> DshashperfectNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectNode::copy(self : DshashperfectNode) -> DshashperfectNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_node_fill(s : DshashperfectNode, v : Double) -> DshashperfectNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectNode::fill(self : DshashperfectNode, v : Double) -> DshashperfectNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_node_min(s : DshashperfectNode) -> Double { @_common.min(s.data) }
+pub fn DshashperfectNode::min(self : DshashperfectNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_node_max(s : DshashperfectNode) -> Double { @_common.max(s.data) }
+pub fn DshashperfectNode::max(self : DshashperfectNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_node_to_string(s : DshashperfectNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectNode::to_string(self : DshashperfectNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectEdge {
@@ -555,45 +555,45 @@ pub fn ds_hash_perfect_edge_make(size : Int) -> DshashperfectEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_edge_len(s : DshashperfectEdge) -> Int { s.size }
+pub fn DshashperfectEdge::len(self : DshashperfectEdge) -> Int { self.size }
 
-pub fn ds_hash_perfect_edge_get(s : DshashperfectEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectEdge::get(self : DshashperfectEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_edge_set(s : DshashperfectEdge, i : Int, v : Double) -> DshashperfectEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectEdge::set(self : DshashperfectEdge, i : Int, v : Double) -> DshashperfectEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_edge_sum(s : DshashperfectEdge) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectEdge::sum(self : DshashperfectEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_edge_mean(s : DshashperfectEdge) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectEdge::mean(self : DshashperfectEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_edge_scale(s : DshashperfectEdge, f : Double) -> DshashperfectEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectEdge::scale(self : DshashperfectEdge, f : Double) -> DshashperfectEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_edge_add(a : DshashperfectEdge, b : DshashperfectEdge) -> DshashperfectEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectEdge::add(self : DshashperfectEdge, other : DshashperfectEdge) -> DshashperfectEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_edge_copy(s : DshashperfectEdge) -> DshashperfectEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectEdge::copy(self : DshashperfectEdge) -> DshashperfectEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_edge_fill(s : DshashperfectEdge, v : Double) -> DshashperfectEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectEdge::fill(self : DshashperfectEdge, v : Double) -> DshashperfectEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_edge_min(s : DshashperfectEdge) -> Double { @_common.min(s.data) }
+pub fn DshashperfectEdge::min(self : DshashperfectEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_edge_max(s : DshashperfectEdge) -> Double { @_common.max(s.data) }
+pub fn DshashperfectEdge::max(self : DshashperfectEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_edge_to_string(s : DshashperfectEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectEdge::to_string(self : DshashperfectEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectPath {
@@ -606,45 +606,45 @@ pub fn ds_hash_perfect_path_make(size : Int) -> DshashperfectPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_path_len(s : DshashperfectPath) -> Int { s.size }
+pub fn DshashperfectPath::len(self : DshashperfectPath) -> Int { self.size }
 
-pub fn ds_hash_perfect_path_get(s : DshashperfectPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectPath::get(self : DshashperfectPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_path_set(s : DshashperfectPath, i : Int, v : Double) -> DshashperfectPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectPath::set(self : DshashperfectPath, i : Int, v : Double) -> DshashperfectPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_path_sum(s : DshashperfectPath) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectPath::sum(self : DshashperfectPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_path_mean(s : DshashperfectPath) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectPath::mean(self : DshashperfectPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_path_scale(s : DshashperfectPath, f : Double) -> DshashperfectPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectPath::scale(self : DshashperfectPath, f : Double) -> DshashperfectPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_path_add(a : DshashperfectPath, b : DshashperfectPath) -> DshashperfectPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectPath::add(self : DshashperfectPath, other : DshashperfectPath) -> DshashperfectPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_path_copy(s : DshashperfectPath) -> DshashperfectPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectPath::copy(self : DshashperfectPath) -> DshashperfectPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_path_fill(s : DshashperfectPath, v : Double) -> DshashperfectPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectPath::fill(self : DshashperfectPath, v : Double) -> DshashperfectPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_path_min(s : DshashperfectPath) -> Double { @_common.min(s.data) }
+pub fn DshashperfectPath::min(self : DshashperfectPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_path_max(s : DshashperfectPath) -> Double { @_common.max(s.data) }
+pub fn DshashperfectPath::max(self : DshashperfectPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_path_to_string(s : DshashperfectPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectPath::to_string(self : DshashperfectPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectCluster {
@@ -657,45 +657,45 @@ pub fn ds_hash_perfect_cluster_make(size : Int) -> DshashperfectCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_cluster_len(s : DshashperfectCluster) -> Int { s.size }
+pub fn DshashperfectCluster::len(self : DshashperfectCluster) -> Int { self.size }
 
-pub fn ds_hash_perfect_cluster_get(s : DshashperfectCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectCluster::get(self : DshashperfectCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_cluster_set(s : DshashperfectCluster, i : Int, v : Double) -> DshashperfectCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectCluster::set(self : DshashperfectCluster, i : Int, v : Double) -> DshashperfectCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_cluster_sum(s : DshashperfectCluster) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectCluster::sum(self : DshashperfectCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_cluster_mean(s : DshashperfectCluster) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectCluster::mean(self : DshashperfectCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_cluster_scale(s : DshashperfectCluster, f : Double) -> DshashperfectCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectCluster::scale(self : DshashperfectCluster, f : Double) -> DshashperfectCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_cluster_add(a : DshashperfectCluster, b : DshashperfectCluster) -> DshashperfectCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectCluster::add(self : DshashperfectCluster, other : DshashperfectCluster) -> DshashperfectCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_cluster_copy(s : DshashperfectCluster) -> DshashperfectCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectCluster::copy(self : DshashperfectCluster) -> DshashperfectCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_cluster_fill(s : DshashperfectCluster, v : Double) -> DshashperfectCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectCluster::fill(self : DshashperfectCluster, v : Double) -> DshashperfectCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_cluster_min(s : DshashperfectCluster) -> Double { @_common.min(s.data) }
+pub fn DshashperfectCluster::min(self : DshashperfectCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_cluster_max(s : DshashperfectCluster) -> Double { @_common.max(s.data) }
+pub fn DshashperfectCluster::max(self : DshashperfectCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_cluster_to_string(s : DshashperfectCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectCluster::to_string(self : DshashperfectCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectModel {
@@ -708,45 +708,45 @@ pub fn ds_hash_perfect_model_make(size : Int) -> DshashperfectModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_model_len(s : DshashperfectModel) -> Int { s.size }
+pub fn DshashperfectModel::len(self : DshashperfectModel) -> Int { self.size }
 
-pub fn ds_hash_perfect_model_get(s : DshashperfectModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectModel::get(self : DshashperfectModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_model_set(s : DshashperfectModel, i : Int, v : Double) -> DshashperfectModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectModel::set(self : DshashperfectModel, i : Int, v : Double) -> DshashperfectModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_model_sum(s : DshashperfectModel) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectModel::sum(self : DshashperfectModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_model_mean(s : DshashperfectModel) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectModel::mean(self : DshashperfectModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_model_scale(s : DshashperfectModel, f : Double) -> DshashperfectModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectModel::scale(self : DshashperfectModel, f : Double) -> DshashperfectModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_model_add(a : DshashperfectModel, b : DshashperfectModel) -> DshashperfectModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectModel::add(self : DshashperfectModel, other : DshashperfectModel) -> DshashperfectModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_model_copy(s : DshashperfectModel) -> DshashperfectModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectModel::copy(self : DshashperfectModel) -> DshashperfectModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_model_fill(s : DshashperfectModel, v : Double) -> DshashperfectModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectModel::fill(self : DshashperfectModel, v : Double) -> DshashperfectModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_model_min(s : DshashperfectModel) -> Double { @_common.min(s.data) }
+pub fn DshashperfectModel::min(self : DshashperfectModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_model_max(s : DshashperfectModel) -> Double { @_common.max(s.data) }
+pub fn DshashperfectModel::max(self : DshashperfectModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_model_to_string(s : DshashperfectModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectModel::to_string(self : DshashperfectModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectLayer {
@@ -759,45 +759,45 @@ pub fn ds_hash_perfect_layer_make(size : Int) -> DshashperfectLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_layer_len(s : DshashperfectLayer) -> Int { s.size }
+pub fn DshashperfectLayer::len(self : DshashperfectLayer) -> Int { self.size }
 
-pub fn ds_hash_perfect_layer_get(s : DshashperfectLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectLayer::get(self : DshashperfectLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_layer_set(s : DshashperfectLayer, i : Int, v : Double) -> DshashperfectLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectLayer::set(self : DshashperfectLayer, i : Int, v : Double) -> DshashperfectLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_layer_sum(s : DshashperfectLayer) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectLayer::sum(self : DshashperfectLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_layer_mean(s : DshashperfectLayer) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectLayer::mean(self : DshashperfectLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_layer_scale(s : DshashperfectLayer, f : Double) -> DshashperfectLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectLayer::scale(self : DshashperfectLayer, f : Double) -> DshashperfectLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_layer_add(a : DshashperfectLayer, b : DshashperfectLayer) -> DshashperfectLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectLayer::add(self : DshashperfectLayer, other : DshashperfectLayer) -> DshashperfectLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_layer_copy(s : DshashperfectLayer) -> DshashperfectLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectLayer::copy(self : DshashperfectLayer) -> DshashperfectLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_layer_fill(s : DshashperfectLayer, v : Double) -> DshashperfectLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectLayer::fill(self : DshashperfectLayer, v : Double) -> DshashperfectLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_layer_min(s : DshashperfectLayer) -> Double { @_common.min(s.data) }
+pub fn DshashperfectLayer::min(self : DshashperfectLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_layer_max(s : DshashperfectLayer) -> Double { @_common.max(s.data) }
+pub fn DshashperfectLayer::max(self : DshashperfectLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_layer_to_string(s : DshashperfectLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectLayer::to_string(self : DshashperfectLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectBuffer {
@@ -810,45 +810,45 @@ pub fn ds_hash_perfect_buffer_make(size : Int) -> DshashperfectBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_buffer_len(s : DshashperfectBuffer) -> Int { s.size }
+pub fn DshashperfectBuffer::len(self : DshashperfectBuffer) -> Int { self.size }
 
-pub fn ds_hash_perfect_buffer_get(s : DshashperfectBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectBuffer::get(self : DshashperfectBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_buffer_set(s : DshashperfectBuffer, i : Int, v : Double) -> DshashperfectBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectBuffer::set(self : DshashperfectBuffer, i : Int, v : Double) -> DshashperfectBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_buffer_sum(s : DshashperfectBuffer) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectBuffer::sum(self : DshashperfectBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_buffer_mean(s : DshashperfectBuffer) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectBuffer::mean(self : DshashperfectBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_buffer_scale(s : DshashperfectBuffer, f : Double) -> DshashperfectBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectBuffer::scale(self : DshashperfectBuffer, f : Double) -> DshashperfectBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_buffer_add(a : DshashperfectBuffer, b : DshashperfectBuffer) -> DshashperfectBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectBuffer::add(self : DshashperfectBuffer, other : DshashperfectBuffer) -> DshashperfectBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_buffer_copy(s : DshashperfectBuffer) -> DshashperfectBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectBuffer::copy(self : DshashperfectBuffer) -> DshashperfectBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_buffer_fill(s : DshashperfectBuffer, v : Double) -> DshashperfectBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectBuffer::fill(self : DshashperfectBuffer, v : Double) -> DshashperfectBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_buffer_min(s : DshashperfectBuffer) -> Double { @_common.min(s.data) }
+pub fn DshashperfectBuffer::min(self : DshashperfectBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_buffer_max(s : DshashperfectBuffer) -> Double { @_common.max(s.data) }
+pub fn DshashperfectBuffer::max(self : DshashperfectBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_buffer_to_string(s : DshashperfectBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectBuffer::to_string(self : DshashperfectBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectCursor {
@@ -861,45 +861,45 @@ pub fn ds_hash_perfect_cursor_make(size : Int) -> DshashperfectCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_cursor_len(s : DshashperfectCursor) -> Int { s.size }
+pub fn DshashperfectCursor::len(self : DshashperfectCursor) -> Int { self.size }
 
-pub fn ds_hash_perfect_cursor_get(s : DshashperfectCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectCursor::get(self : DshashperfectCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_cursor_set(s : DshashperfectCursor, i : Int, v : Double) -> DshashperfectCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectCursor::set(self : DshashperfectCursor, i : Int, v : Double) -> DshashperfectCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_cursor_sum(s : DshashperfectCursor) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectCursor::sum(self : DshashperfectCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_cursor_mean(s : DshashperfectCursor) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectCursor::mean(self : DshashperfectCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_cursor_scale(s : DshashperfectCursor, f : Double) -> DshashperfectCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectCursor::scale(self : DshashperfectCursor, f : Double) -> DshashperfectCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_cursor_add(a : DshashperfectCursor, b : DshashperfectCursor) -> DshashperfectCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectCursor::add(self : DshashperfectCursor, other : DshashperfectCursor) -> DshashperfectCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_cursor_copy(s : DshashperfectCursor) -> DshashperfectCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectCursor::copy(self : DshashperfectCursor) -> DshashperfectCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_cursor_fill(s : DshashperfectCursor, v : Double) -> DshashperfectCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectCursor::fill(self : DshashperfectCursor, v : Double) -> DshashperfectCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_cursor_min(s : DshashperfectCursor) -> Double { @_common.min(s.data) }
+pub fn DshashperfectCursor::min(self : DshashperfectCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_cursor_max(s : DshashperfectCursor) -> Double { @_common.max(s.data) }
+pub fn DshashperfectCursor::max(self : DshashperfectCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_cursor_to_string(s : DshashperfectCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectCursor::to_string(self : DshashperfectCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectView {
@@ -912,45 +912,45 @@ pub fn ds_hash_perfect_view_make(size : Int) -> DshashperfectView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_view_len(s : DshashperfectView) -> Int { s.size }
+pub fn DshashperfectView::len(self : DshashperfectView) -> Int { self.size }
 
-pub fn ds_hash_perfect_view_get(s : DshashperfectView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectView::get(self : DshashperfectView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_view_set(s : DshashperfectView, i : Int, v : Double) -> DshashperfectView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectView::set(self : DshashperfectView, i : Int, v : Double) -> DshashperfectView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_view_sum(s : DshashperfectView) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectView::sum(self : DshashperfectView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_view_mean(s : DshashperfectView) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectView::mean(self : DshashperfectView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_view_scale(s : DshashperfectView, f : Double) -> DshashperfectView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectView::scale(self : DshashperfectView, f : Double) -> DshashperfectView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_view_add(a : DshashperfectView, b : DshashperfectView) -> DshashperfectView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectView::add(self : DshashperfectView, other : DshashperfectView) -> DshashperfectView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_view_copy(s : DshashperfectView) -> DshashperfectView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectView::copy(self : DshashperfectView) -> DshashperfectView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_view_fill(s : DshashperfectView, v : Double) -> DshashperfectView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectView::fill(self : DshashperfectView, v : Double) -> DshashperfectView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_view_min(s : DshashperfectView) -> Double { @_common.min(s.data) }
+pub fn DshashperfectView::min(self : DshashperfectView) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_view_max(s : DshashperfectView) -> Double { @_common.max(s.data) }
+pub fn DshashperfectView::max(self : DshashperfectView) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_view_to_string(s : DshashperfectView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectView::to_string(self : DshashperfectView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectRange {
@@ -963,45 +963,45 @@ pub fn ds_hash_perfect_range_make(size : Int) -> DshashperfectRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_range_len(s : DshashperfectRange) -> Int { s.size }
+pub fn DshashperfectRange::len(self : DshashperfectRange) -> Int { self.size }
 
-pub fn ds_hash_perfect_range_get(s : DshashperfectRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectRange::get(self : DshashperfectRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_range_set(s : DshashperfectRange, i : Int, v : Double) -> DshashperfectRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectRange::set(self : DshashperfectRange, i : Int, v : Double) -> DshashperfectRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_range_sum(s : DshashperfectRange) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectRange::sum(self : DshashperfectRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_range_mean(s : DshashperfectRange) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectRange::mean(self : DshashperfectRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_range_scale(s : DshashperfectRange, f : Double) -> DshashperfectRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectRange::scale(self : DshashperfectRange, f : Double) -> DshashperfectRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_range_add(a : DshashperfectRange, b : DshashperfectRange) -> DshashperfectRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectRange::add(self : DshashperfectRange, other : DshashperfectRange) -> DshashperfectRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_range_copy(s : DshashperfectRange) -> DshashperfectRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectRange::copy(self : DshashperfectRange) -> DshashperfectRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_range_fill(s : DshashperfectRange, v : Double) -> DshashperfectRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectRange::fill(self : DshashperfectRange, v : Double) -> DshashperfectRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_range_min(s : DshashperfectRange) -> Double { @_common.min(s.data) }
+pub fn DshashperfectRange::min(self : DshashperfectRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_range_max(s : DshashperfectRange) -> Double { @_common.max(s.data) }
+pub fn DshashperfectRange::max(self : DshashperfectRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_range_to_string(s : DshashperfectRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectRange::to_string(self : DshashperfectRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashperfectSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_hash_perfect_slice_make(size : Int) -> DshashperfectSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_perfect_slice_len(s : DshashperfectSlice) -> Int { s.size }
+pub fn DshashperfectSlice::len(self : DshashperfectSlice) -> Int { self.size }
 
-pub fn ds_hash_perfect_slice_get(s : DshashperfectSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashperfectSlice::get(self : DshashperfectSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_perfect_slice_set(s : DshashperfectSlice, i : Int, v : Double) -> DshashperfectSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashperfectSlice::set(self : DshashperfectSlice, i : Int, v : Double) -> DshashperfectSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_slice_sum(s : DshashperfectSlice) -> Double { @_common.sum(s.data) }
+pub fn DshashperfectSlice::sum(self : DshashperfectSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_perfect_slice_mean(s : DshashperfectSlice) -> Double { @_common.mean(s.data) }
+pub fn DshashperfectSlice::mean(self : DshashperfectSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_perfect_slice_scale(s : DshashperfectSlice, f : Double) -> DshashperfectSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashperfectSlice::scale(self : DshashperfectSlice, f : Double) -> DshashperfectSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_slice_add(a : DshashperfectSlice, b : DshashperfectSlice) -> DshashperfectSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashperfectSlice::add(self : DshashperfectSlice, other : DshashperfectSlice) -> DshashperfectSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_slice_copy(s : DshashperfectSlice) -> DshashperfectSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashperfectSlice::copy(self : DshashperfectSlice) -> DshashperfectSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_slice_fill(s : DshashperfectSlice, v : Double) -> DshashperfectSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashperfectSlice::fill(self : DshashperfectSlice, v : Double) -> DshashperfectSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_perfect_slice_min(s : DshashperfectSlice) -> Double { @_common.min(s.data) }
+pub fn DshashperfectSlice::min(self : DshashperfectSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_perfect_slice_max(s : DshashperfectSlice) -> Double { @_common.max(s.data) }
+pub fn DshashperfectSlice::max(self : DshashperfectSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_perfect_slice_to_string(s : DshashperfectSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashperfectSlice::to_string(self : DshashperfectSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

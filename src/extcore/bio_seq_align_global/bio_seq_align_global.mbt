@@ -351,45 +351,45 @@ pub fn bio_seq_align_global_frame_make(size : Int) -> BioseqalignglobalFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_frame_len(s : BioseqalignglobalFrame) -> Int { s.size }
+pub fn BioseqalignglobalFrame::len(self : BioseqalignglobalFrame) -> Int { self.size }
 
-pub fn bio_seq_align_global_frame_get(s : BioseqalignglobalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalFrame::get(self : BioseqalignglobalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_frame_set(s : BioseqalignglobalFrame, i : Int, v : Double) -> BioseqalignglobalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalFrame::set(self : BioseqalignglobalFrame, i : Int, v : Double) -> BioseqalignglobalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_frame_sum(s : BioseqalignglobalFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalFrame::sum(self : BioseqalignglobalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_frame_mean(s : BioseqalignglobalFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalFrame::mean(self : BioseqalignglobalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_frame_scale(s : BioseqalignglobalFrame, f : Double) -> BioseqalignglobalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalFrame::scale(self : BioseqalignglobalFrame, f : Double) -> BioseqalignglobalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_frame_add(a : BioseqalignglobalFrame, b : BioseqalignglobalFrame) -> BioseqalignglobalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalFrame::add(self : BioseqalignglobalFrame, other : BioseqalignglobalFrame) -> BioseqalignglobalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_frame_copy(s : BioseqalignglobalFrame) -> BioseqalignglobalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalFrame::copy(self : BioseqalignglobalFrame) -> BioseqalignglobalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_frame_fill(s : BioseqalignglobalFrame, v : Double) -> BioseqalignglobalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalFrame::fill(self : BioseqalignglobalFrame, v : Double) -> BioseqalignglobalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_frame_min(s : BioseqalignglobalFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalFrame::min(self : BioseqalignglobalFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_frame_max(s : BioseqalignglobalFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalFrame::max(self : BioseqalignglobalFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_frame_to_string(s : BioseqalignglobalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalFrame::to_string(self : BioseqalignglobalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_align_global_table_make(size : Int) -> BioseqalignglobalTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_table_len(s : BioseqalignglobalTable) -> Int { s.size }
+pub fn BioseqalignglobalTable::len(self : BioseqalignglobalTable) -> Int { self.size }
 
-pub fn bio_seq_align_global_table_get(s : BioseqalignglobalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalTable::get(self : BioseqalignglobalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_table_set(s : BioseqalignglobalTable, i : Int, v : Double) -> BioseqalignglobalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalTable::set(self : BioseqalignglobalTable, i : Int, v : Double) -> BioseqalignglobalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_table_sum(s : BioseqalignglobalTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalTable::sum(self : BioseqalignglobalTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_table_mean(s : BioseqalignglobalTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalTable::mean(self : BioseqalignglobalTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_table_scale(s : BioseqalignglobalTable, f : Double) -> BioseqalignglobalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalTable::scale(self : BioseqalignglobalTable, f : Double) -> BioseqalignglobalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_table_add(a : BioseqalignglobalTable, b : BioseqalignglobalTable) -> BioseqalignglobalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalTable::add(self : BioseqalignglobalTable, other : BioseqalignglobalTable) -> BioseqalignglobalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_table_copy(s : BioseqalignglobalTable) -> BioseqalignglobalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalTable::copy(self : BioseqalignglobalTable) -> BioseqalignglobalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_table_fill(s : BioseqalignglobalTable, v : Double) -> BioseqalignglobalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalTable::fill(self : BioseqalignglobalTable, v : Double) -> BioseqalignglobalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_table_min(s : BioseqalignglobalTable) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalTable::min(self : BioseqalignglobalTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_table_max(s : BioseqalignglobalTable) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalTable::max(self : BioseqalignglobalTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_table_to_string(s : BioseqalignglobalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalTable::to_string(self : BioseqalignglobalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_align_global_graphn_make(size : Int) -> BioseqalignglobalGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_graphn_len(s : BioseqalignglobalGraphN) -> Int { s.size }
+pub fn BioseqalignglobalGraphN::len(self : BioseqalignglobalGraphN) -> Int { self.size }
 
-pub fn bio_seq_align_global_graphn_get(s : BioseqalignglobalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalGraphN::get(self : BioseqalignglobalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_graphn_set(s : BioseqalignglobalGraphN, i : Int, v : Double) -> BioseqalignglobalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalGraphN::set(self : BioseqalignglobalGraphN, i : Int, v : Double) -> BioseqalignglobalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_graphn_sum(s : BioseqalignglobalGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalGraphN::sum(self : BioseqalignglobalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_graphn_mean(s : BioseqalignglobalGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalGraphN::mean(self : BioseqalignglobalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_graphn_scale(s : BioseqalignglobalGraphN, f : Double) -> BioseqalignglobalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalGraphN::scale(self : BioseqalignglobalGraphN, f : Double) -> BioseqalignglobalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_graphn_add(a : BioseqalignglobalGraphN, b : BioseqalignglobalGraphN) -> BioseqalignglobalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalGraphN::add(self : BioseqalignglobalGraphN, other : BioseqalignglobalGraphN) -> BioseqalignglobalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_graphn_copy(s : BioseqalignglobalGraphN) -> BioseqalignglobalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalGraphN::copy(self : BioseqalignglobalGraphN) -> BioseqalignglobalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_graphn_fill(s : BioseqalignglobalGraphN, v : Double) -> BioseqalignglobalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalGraphN::fill(self : BioseqalignglobalGraphN, v : Double) -> BioseqalignglobalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_graphn_min(s : BioseqalignglobalGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalGraphN::min(self : BioseqalignglobalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_graphn_max(s : BioseqalignglobalGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalGraphN::max(self : BioseqalignglobalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_graphn_to_string(s : BioseqalignglobalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalGraphN::to_string(self : BioseqalignglobalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_align_global_node_make(size : Int) -> BioseqalignglobalNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_node_len(s : BioseqalignglobalNode) -> Int { s.size }
+pub fn BioseqalignglobalNode::len(self : BioseqalignglobalNode) -> Int { self.size }
 
-pub fn bio_seq_align_global_node_get(s : BioseqalignglobalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalNode::get(self : BioseqalignglobalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_node_set(s : BioseqalignglobalNode, i : Int, v : Double) -> BioseqalignglobalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalNode::set(self : BioseqalignglobalNode, i : Int, v : Double) -> BioseqalignglobalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_node_sum(s : BioseqalignglobalNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalNode::sum(self : BioseqalignglobalNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_node_mean(s : BioseqalignglobalNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalNode::mean(self : BioseqalignglobalNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_node_scale(s : BioseqalignglobalNode, f : Double) -> BioseqalignglobalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalNode::scale(self : BioseqalignglobalNode, f : Double) -> BioseqalignglobalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_node_add(a : BioseqalignglobalNode, b : BioseqalignglobalNode) -> BioseqalignglobalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalNode::add(self : BioseqalignglobalNode, other : BioseqalignglobalNode) -> BioseqalignglobalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_node_copy(s : BioseqalignglobalNode) -> BioseqalignglobalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalNode::copy(self : BioseqalignglobalNode) -> BioseqalignglobalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_node_fill(s : BioseqalignglobalNode, v : Double) -> BioseqalignglobalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalNode::fill(self : BioseqalignglobalNode, v : Double) -> BioseqalignglobalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_node_min(s : BioseqalignglobalNode) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalNode::min(self : BioseqalignglobalNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_node_max(s : BioseqalignglobalNode) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalNode::max(self : BioseqalignglobalNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_node_to_string(s : BioseqalignglobalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalNode::to_string(self : BioseqalignglobalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_align_global_edge_make(size : Int) -> BioseqalignglobalEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_edge_len(s : BioseqalignglobalEdge) -> Int { s.size }
+pub fn BioseqalignglobalEdge::len(self : BioseqalignglobalEdge) -> Int { self.size }
 
-pub fn bio_seq_align_global_edge_get(s : BioseqalignglobalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalEdge::get(self : BioseqalignglobalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_edge_set(s : BioseqalignglobalEdge, i : Int, v : Double) -> BioseqalignglobalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalEdge::set(self : BioseqalignglobalEdge, i : Int, v : Double) -> BioseqalignglobalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_edge_sum(s : BioseqalignglobalEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalEdge::sum(self : BioseqalignglobalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_edge_mean(s : BioseqalignglobalEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalEdge::mean(self : BioseqalignglobalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_edge_scale(s : BioseqalignglobalEdge, f : Double) -> BioseqalignglobalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalEdge::scale(self : BioseqalignglobalEdge, f : Double) -> BioseqalignglobalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_edge_add(a : BioseqalignglobalEdge, b : BioseqalignglobalEdge) -> BioseqalignglobalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalEdge::add(self : BioseqalignglobalEdge, other : BioseqalignglobalEdge) -> BioseqalignglobalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_edge_copy(s : BioseqalignglobalEdge) -> BioseqalignglobalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalEdge::copy(self : BioseqalignglobalEdge) -> BioseqalignglobalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_edge_fill(s : BioseqalignglobalEdge, v : Double) -> BioseqalignglobalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalEdge::fill(self : BioseqalignglobalEdge, v : Double) -> BioseqalignglobalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_edge_min(s : BioseqalignglobalEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalEdge::min(self : BioseqalignglobalEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_edge_max(s : BioseqalignglobalEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalEdge::max(self : BioseqalignglobalEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_edge_to_string(s : BioseqalignglobalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalEdge::to_string(self : BioseqalignglobalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalPath {
@@ -606,45 +606,45 @@ pub fn bio_seq_align_global_path_make(size : Int) -> BioseqalignglobalPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_path_len(s : BioseqalignglobalPath) -> Int { s.size }
+pub fn BioseqalignglobalPath::len(self : BioseqalignglobalPath) -> Int { self.size }
 
-pub fn bio_seq_align_global_path_get(s : BioseqalignglobalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalPath::get(self : BioseqalignglobalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_path_set(s : BioseqalignglobalPath, i : Int, v : Double) -> BioseqalignglobalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalPath::set(self : BioseqalignglobalPath, i : Int, v : Double) -> BioseqalignglobalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_path_sum(s : BioseqalignglobalPath) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalPath::sum(self : BioseqalignglobalPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_path_mean(s : BioseqalignglobalPath) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalPath::mean(self : BioseqalignglobalPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_path_scale(s : BioseqalignglobalPath, f : Double) -> BioseqalignglobalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalPath::scale(self : BioseqalignglobalPath, f : Double) -> BioseqalignglobalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_path_add(a : BioseqalignglobalPath, b : BioseqalignglobalPath) -> BioseqalignglobalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalPath::add(self : BioseqalignglobalPath, other : BioseqalignglobalPath) -> BioseqalignglobalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_path_copy(s : BioseqalignglobalPath) -> BioseqalignglobalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalPath::copy(self : BioseqalignglobalPath) -> BioseqalignglobalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_path_fill(s : BioseqalignglobalPath, v : Double) -> BioseqalignglobalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalPath::fill(self : BioseqalignglobalPath, v : Double) -> BioseqalignglobalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_path_min(s : BioseqalignglobalPath) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalPath::min(self : BioseqalignglobalPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_path_max(s : BioseqalignglobalPath) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalPath::max(self : BioseqalignglobalPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_path_to_string(s : BioseqalignglobalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalPath::to_string(self : BioseqalignglobalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_align_global_cluster_make(size : Int) -> BioseqalignglobalCluster
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_cluster_len(s : BioseqalignglobalCluster) -> Int { s.size }
+pub fn BioseqalignglobalCluster::len(self : BioseqalignglobalCluster) -> Int { self.size }
 
-pub fn bio_seq_align_global_cluster_get(s : BioseqalignglobalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalCluster::get(self : BioseqalignglobalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_cluster_set(s : BioseqalignglobalCluster, i : Int, v : Double) -> BioseqalignglobalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalCluster::set(self : BioseqalignglobalCluster, i : Int, v : Double) -> BioseqalignglobalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_cluster_sum(s : BioseqalignglobalCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalCluster::sum(self : BioseqalignglobalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_cluster_mean(s : BioseqalignglobalCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalCluster::mean(self : BioseqalignglobalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_cluster_scale(s : BioseqalignglobalCluster, f : Double) -> BioseqalignglobalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalCluster::scale(self : BioseqalignglobalCluster, f : Double) -> BioseqalignglobalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_cluster_add(a : BioseqalignglobalCluster, b : BioseqalignglobalCluster) -> BioseqalignglobalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalCluster::add(self : BioseqalignglobalCluster, other : BioseqalignglobalCluster) -> BioseqalignglobalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_cluster_copy(s : BioseqalignglobalCluster) -> BioseqalignglobalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalCluster::copy(self : BioseqalignglobalCluster) -> BioseqalignglobalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_cluster_fill(s : BioseqalignglobalCluster, v : Double) -> BioseqalignglobalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalCluster::fill(self : BioseqalignglobalCluster, v : Double) -> BioseqalignglobalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_cluster_min(s : BioseqalignglobalCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalCluster::min(self : BioseqalignglobalCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_cluster_max(s : BioseqalignglobalCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalCluster::max(self : BioseqalignglobalCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_cluster_to_string(s : BioseqalignglobalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalCluster::to_string(self : BioseqalignglobalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_align_global_model_make(size : Int) -> BioseqalignglobalModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_model_len(s : BioseqalignglobalModel) -> Int { s.size }
+pub fn BioseqalignglobalModel::len(self : BioseqalignglobalModel) -> Int { self.size }
 
-pub fn bio_seq_align_global_model_get(s : BioseqalignglobalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalModel::get(self : BioseqalignglobalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_model_set(s : BioseqalignglobalModel, i : Int, v : Double) -> BioseqalignglobalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalModel::set(self : BioseqalignglobalModel, i : Int, v : Double) -> BioseqalignglobalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_model_sum(s : BioseqalignglobalModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalModel::sum(self : BioseqalignglobalModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_model_mean(s : BioseqalignglobalModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalModel::mean(self : BioseqalignglobalModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_model_scale(s : BioseqalignglobalModel, f : Double) -> BioseqalignglobalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalModel::scale(self : BioseqalignglobalModel, f : Double) -> BioseqalignglobalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_model_add(a : BioseqalignglobalModel, b : BioseqalignglobalModel) -> BioseqalignglobalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalModel::add(self : BioseqalignglobalModel, other : BioseqalignglobalModel) -> BioseqalignglobalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_model_copy(s : BioseqalignglobalModel) -> BioseqalignglobalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalModel::copy(self : BioseqalignglobalModel) -> BioseqalignglobalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_model_fill(s : BioseqalignglobalModel, v : Double) -> BioseqalignglobalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalModel::fill(self : BioseqalignglobalModel, v : Double) -> BioseqalignglobalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_model_min(s : BioseqalignglobalModel) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalModel::min(self : BioseqalignglobalModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_model_max(s : BioseqalignglobalModel) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalModel::max(self : BioseqalignglobalModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_model_to_string(s : BioseqalignglobalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalModel::to_string(self : BioseqalignglobalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_align_global_layer_make(size : Int) -> BioseqalignglobalLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_layer_len(s : BioseqalignglobalLayer) -> Int { s.size }
+pub fn BioseqalignglobalLayer::len(self : BioseqalignglobalLayer) -> Int { self.size }
 
-pub fn bio_seq_align_global_layer_get(s : BioseqalignglobalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalLayer::get(self : BioseqalignglobalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_layer_set(s : BioseqalignglobalLayer, i : Int, v : Double) -> BioseqalignglobalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalLayer::set(self : BioseqalignglobalLayer, i : Int, v : Double) -> BioseqalignglobalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_layer_sum(s : BioseqalignglobalLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalLayer::sum(self : BioseqalignglobalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_layer_mean(s : BioseqalignglobalLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalLayer::mean(self : BioseqalignglobalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_layer_scale(s : BioseqalignglobalLayer, f : Double) -> BioseqalignglobalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalLayer::scale(self : BioseqalignglobalLayer, f : Double) -> BioseqalignglobalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_layer_add(a : BioseqalignglobalLayer, b : BioseqalignglobalLayer) -> BioseqalignglobalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalLayer::add(self : BioseqalignglobalLayer, other : BioseqalignglobalLayer) -> BioseqalignglobalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_layer_copy(s : BioseqalignglobalLayer) -> BioseqalignglobalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalLayer::copy(self : BioseqalignglobalLayer) -> BioseqalignglobalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_layer_fill(s : BioseqalignglobalLayer, v : Double) -> BioseqalignglobalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalLayer::fill(self : BioseqalignglobalLayer, v : Double) -> BioseqalignglobalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_layer_min(s : BioseqalignglobalLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalLayer::min(self : BioseqalignglobalLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_layer_max(s : BioseqalignglobalLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalLayer::max(self : BioseqalignglobalLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_layer_to_string(s : BioseqalignglobalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalLayer::to_string(self : BioseqalignglobalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_align_global_buffer_make(size : Int) -> BioseqalignglobalBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_buffer_len(s : BioseqalignglobalBuffer) -> Int { s.size }
+pub fn BioseqalignglobalBuffer::len(self : BioseqalignglobalBuffer) -> Int { self.size }
 
-pub fn bio_seq_align_global_buffer_get(s : BioseqalignglobalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalBuffer::get(self : BioseqalignglobalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_buffer_set(s : BioseqalignglobalBuffer, i : Int, v : Double) -> BioseqalignglobalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalBuffer::set(self : BioseqalignglobalBuffer, i : Int, v : Double) -> BioseqalignglobalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_buffer_sum(s : BioseqalignglobalBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalBuffer::sum(self : BioseqalignglobalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_buffer_mean(s : BioseqalignglobalBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalBuffer::mean(self : BioseqalignglobalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_buffer_scale(s : BioseqalignglobalBuffer, f : Double) -> BioseqalignglobalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalBuffer::scale(self : BioseqalignglobalBuffer, f : Double) -> BioseqalignglobalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_buffer_add(a : BioseqalignglobalBuffer, b : BioseqalignglobalBuffer) -> BioseqalignglobalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalBuffer::add(self : BioseqalignglobalBuffer, other : BioseqalignglobalBuffer) -> BioseqalignglobalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_buffer_copy(s : BioseqalignglobalBuffer) -> BioseqalignglobalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalBuffer::copy(self : BioseqalignglobalBuffer) -> BioseqalignglobalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_buffer_fill(s : BioseqalignglobalBuffer, v : Double) -> BioseqalignglobalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalBuffer::fill(self : BioseqalignglobalBuffer, v : Double) -> BioseqalignglobalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_buffer_min(s : BioseqalignglobalBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalBuffer::min(self : BioseqalignglobalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_buffer_max(s : BioseqalignglobalBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalBuffer::max(self : BioseqalignglobalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_buffer_to_string(s : BioseqalignglobalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalBuffer::to_string(self : BioseqalignglobalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_align_global_cursor_make(size : Int) -> BioseqalignglobalCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_cursor_len(s : BioseqalignglobalCursor) -> Int { s.size }
+pub fn BioseqalignglobalCursor::len(self : BioseqalignglobalCursor) -> Int { self.size }
 
-pub fn bio_seq_align_global_cursor_get(s : BioseqalignglobalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalCursor::get(self : BioseqalignglobalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_cursor_set(s : BioseqalignglobalCursor, i : Int, v : Double) -> BioseqalignglobalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalCursor::set(self : BioseqalignglobalCursor, i : Int, v : Double) -> BioseqalignglobalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_cursor_sum(s : BioseqalignglobalCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalCursor::sum(self : BioseqalignglobalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_cursor_mean(s : BioseqalignglobalCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalCursor::mean(self : BioseqalignglobalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_cursor_scale(s : BioseqalignglobalCursor, f : Double) -> BioseqalignglobalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalCursor::scale(self : BioseqalignglobalCursor, f : Double) -> BioseqalignglobalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_cursor_add(a : BioseqalignglobalCursor, b : BioseqalignglobalCursor) -> BioseqalignglobalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalCursor::add(self : BioseqalignglobalCursor, other : BioseqalignglobalCursor) -> BioseqalignglobalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_cursor_copy(s : BioseqalignglobalCursor) -> BioseqalignglobalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalCursor::copy(self : BioseqalignglobalCursor) -> BioseqalignglobalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_cursor_fill(s : BioseqalignglobalCursor, v : Double) -> BioseqalignglobalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalCursor::fill(self : BioseqalignglobalCursor, v : Double) -> BioseqalignglobalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_cursor_min(s : BioseqalignglobalCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalCursor::min(self : BioseqalignglobalCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_cursor_max(s : BioseqalignglobalCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalCursor::max(self : BioseqalignglobalCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_cursor_to_string(s : BioseqalignglobalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalCursor::to_string(self : BioseqalignglobalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalView {
@@ -912,45 +912,45 @@ pub fn bio_seq_align_global_view_make(size : Int) -> BioseqalignglobalView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_view_len(s : BioseqalignglobalView) -> Int { s.size }
+pub fn BioseqalignglobalView::len(self : BioseqalignglobalView) -> Int { self.size }
 
-pub fn bio_seq_align_global_view_get(s : BioseqalignglobalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalView::get(self : BioseqalignglobalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_view_set(s : BioseqalignglobalView, i : Int, v : Double) -> BioseqalignglobalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalView::set(self : BioseqalignglobalView, i : Int, v : Double) -> BioseqalignglobalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_view_sum(s : BioseqalignglobalView) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalView::sum(self : BioseqalignglobalView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_view_mean(s : BioseqalignglobalView) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalView::mean(self : BioseqalignglobalView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_view_scale(s : BioseqalignglobalView, f : Double) -> BioseqalignglobalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalView::scale(self : BioseqalignglobalView, f : Double) -> BioseqalignglobalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_view_add(a : BioseqalignglobalView, b : BioseqalignglobalView) -> BioseqalignglobalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalView::add(self : BioseqalignglobalView, other : BioseqalignglobalView) -> BioseqalignglobalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_view_copy(s : BioseqalignglobalView) -> BioseqalignglobalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalView::copy(self : BioseqalignglobalView) -> BioseqalignglobalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_view_fill(s : BioseqalignglobalView, v : Double) -> BioseqalignglobalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalView::fill(self : BioseqalignglobalView, v : Double) -> BioseqalignglobalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_view_min(s : BioseqalignglobalView) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalView::min(self : BioseqalignglobalView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_view_max(s : BioseqalignglobalView) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalView::max(self : BioseqalignglobalView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_view_to_string(s : BioseqalignglobalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalView::to_string(self : BioseqalignglobalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_align_global_range_make(size : Int) -> BioseqalignglobalRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_range_len(s : BioseqalignglobalRange) -> Int { s.size }
+pub fn BioseqalignglobalRange::len(self : BioseqalignglobalRange) -> Int { self.size }
 
-pub fn bio_seq_align_global_range_get(s : BioseqalignglobalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalRange::get(self : BioseqalignglobalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_range_set(s : BioseqalignglobalRange, i : Int, v : Double) -> BioseqalignglobalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalRange::set(self : BioseqalignglobalRange, i : Int, v : Double) -> BioseqalignglobalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_range_sum(s : BioseqalignglobalRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalRange::sum(self : BioseqalignglobalRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_range_mean(s : BioseqalignglobalRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalRange::mean(self : BioseqalignglobalRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_range_scale(s : BioseqalignglobalRange, f : Double) -> BioseqalignglobalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalRange::scale(self : BioseqalignglobalRange, f : Double) -> BioseqalignglobalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_range_add(a : BioseqalignglobalRange, b : BioseqalignglobalRange) -> BioseqalignglobalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalRange::add(self : BioseqalignglobalRange, other : BioseqalignglobalRange) -> BioseqalignglobalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_range_copy(s : BioseqalignglobalRange) -> BioseqalignglobalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalRange::copy(self : BioseqalignglobalRange) -> BioseqalignglobalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_range_fill(s : BioseqalignglobalRange, v : Double) -> BioseqalignglobalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalRange::fill(self : BioseqalignglobalRange, v : Double) -> BioseqalignglobalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_range_min(s : BioseqalignglobalRange) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalRange::min(self : BioseqalignglobalRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_range_max(s : BioseqalignglobalRange) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalRange::max(self : BioseqalignglobalRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_range_to_string(s : BioseqalignglobalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalRange::to_string(self : BioseqalignglobalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignglobalSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_align_global_slice_make(size : Int) -> BioseqalignglobalSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_global_slice_len(s : BioseqalignglobalSlice) -> Int { s.size }
+pub fn BioseqalignglobalSlice::len(self : BioseqalignglobalSlice) -> Int { self.size }
 
-pub fn bio_seq_align_global_slice_get(s : BioseqalignglobalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignglobalSlice::get(self : BioseqalignglobalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_global_slice_set(s : BioseqalignglobalSlice, i : Int, v : Double) -> BioseqalignglobalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignglobalSlice::set(self : BioseqalignglobalSlice, i : Int, v : Double) -> BioseqalignglobalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_slice_sum(s : BioseqalignglobalSlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignglobalSlice::sum(self : BioseqalignglobalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_global_slice_mean(s : BioseqalignglobalSlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignglobalSlice::mean(self : BioseqalignglobalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_global_slice_scale(s : BioseqalignglobalSlice, f : Double) -> BioseqalignglobalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalSlice::scale(self : BioseqalignglobalSlice, f : Double) -> BioseqalignglobalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_slice_add(a : BioseqalignglobalSlice, b : BioseqalignglobalSlice) -> BioseqalignglobalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignglobalSlice::add(self : BioseqalignglobalSlice, other : BioseqalignglobalSlice) -> BioseqalignglobalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_slice_copy(s : BioseqalignglobalSlice) -> BioseqalignglobalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalSlice::copy(self : BioseqalignglobalSlice) -> BioseqalignglobalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_slice_fill(s : BioseqalignglobalSlice, v : Double) -> BioseqalignglobalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignglobalSlice::fill(self : BioseqalignglobalSlice, v : Double) -> BioseqalignglobalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_global_slice_min(s : BioseqalignglobalSlice) -> Double { @_common.min(s.data) }
+pub fn BioseqalignglobalSlice::min(self : BioseqalignglobalSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_global_slice_max(s : BioseqalignglobalSlice) -> Double { @_common.max(s.data) }
+pub fn BioseqalignglobalSlice::max(self : BioseqalignglobalSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_global_slice_to_string(s : BioseqalignglobalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignglobalSlice::to_string(self : BioseqalignglobalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

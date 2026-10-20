@@ -351,45 +351,45 @@ pub fn ml_ensemble_boosting_frame_make(size : Int) -> MlensembleboostingFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_frame_len(s : MlensembleboostingFrame) -> Int { s.size }
+pub fn MlensembleboostingFrame::len(self : MlensembleboostingFrame) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_frame_get(s : MlensembleboostingFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingFrame::get(self : MlensembleboostingFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_frame_set(s : MlensembleboostingFrame, i : Int, v : Double) -> MlensembleboostingFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingFrame::set(self : MlensembleboostingFrame, i : Int, v : Double) -> MlensembleboostingFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_frame_sum(s : MlensembleboostingFrame) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingFrame::sum(self : MlensembleboostingFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_frame_mean(s : MlensembleboostingFrame) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingFrame::mean(self : MlensembleboostingFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_frame_scale(s : MlensembleboostingFrame, f : Double) -> MlensembleboostingFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingFrame::scale(self : MlensembleboostingFrame, f : Double) -> MlensembleboostingFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_frame_add(a : MlensembleboostingFrame, b : MlensembleboostingFrame) -> MlensembleboostingFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingFrame::add(self : MlensembleboostingFrame, other : MlensembleboostingFrame) -> MlensembleboostingFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_frame_copy(s : MlensembleboostingFrame) -> MlensembleboostingFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingFrame::copy(self : MlensembleboostingFrame) -> MlensembleboostingFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_frame_fill(s : MlensembleboostingFrame, v : Double) -> MlensembleboostingFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingFrame::fill(self : MlensembleboostingFrame, v : Double) -> MlensembleboostingFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_frame_min(s : MlensembleboostingFrame) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingFrame::min(self : MlensembleboostingFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_frame_max(s : MlensembleboostingFrame) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingFrame::max(self : MlensembleboostingFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_frame_to_string(s : MlensembleboostingFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingFrame::to_string(self : MlensembleboostingFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingTable {
@@ -402,45 +402,45 @@ pub fn ml_ensemble_boosting_table_make(size : Int) -> MlensembleboostingTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_table_len(s : MlensembleboostingTable) -> Int { s.size }
+pub fn MlensembleboostingTable::len(self : MlensembleboostingTable) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_table_get(s : MlensembleboostingTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingTable::get(self : MlensembleboostingTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_table_set(s : MlensembleboostingTable, i : Int, v : Double) -> MlensembleboostingTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingTable::set(self : MlensembleboostingTable, i : Int, v : Double) -> MlensembleboostingTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_table_sum(s : MlensembleboostingTable) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingTable::sum(self : MlensembleboostingTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_table_mean(s : MlensembleboostingTable) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingTable::mean(self : MlensembleboostingTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_table_scale(s : MlensembleboostingTable, f : Double) -> MlensembleboostingTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingTable::scale(self : MlensembleboostingTable, f : Double) -> MlensembleboostingTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_table_add(a : MlensembleboostingTable, b : MlensembleboostingTable) -> MlensembleboostingTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingTable::add(self : MlensembleboostingTable, other : MlensembleboostingTable) -> MlensembleboostingTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_table_copy(s : MlensembleboostingTable) -> MlensembleboostingTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingTable::copy(self : MlensembleboostingTable) -> MlensembleboostingTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_table_fill(s : MlensembleboostingTable, v : Double) -> MlensembleboostingTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingTable::fill(self : MlensembleboostingTable, v : Double) -> MlensembleboostingTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_table_min(s : MlensembleboostingTable) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingTable::min(self : MlensembleboostingTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_table_max(s : MlensembleboostingTable) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingTable::max(self : MlensembleboostingTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_table_to_string(s : MlensembleboostingTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingTable::to_string(self : MlensembleboostingTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingGraphN {
@@ -453,45 +453,45 @@ pub fn ml_ensemble_boosting_graphn_make(size : Int) -> MlensembleboostingGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_graphn_len(s : MlensembleboostingGraphN) -> Int { s.size }
+pub fn MlensembleboostingGraphN::len(self : MlensembleboostingGraphN) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_graphn_get(s : MlensembleboostingGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingGraphN::get(self : MlensembleboostingGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_graphn_set(s : MlensembleboostingGraphN, i : Int, v : Double) -> MlensembleboostingGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingGraphN::set(self : MlensembleboostingGraphN, i : Int, v : Double) -> MlensembleboostingGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_graphn_sum(s : MlensembleboostingGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingGraphN::sum(self : MlensembleboostingGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_graphn_mean(s : MlensembleboostingGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingGraphN::mean(self : MlensembleboostingGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_graphn_scale(s : MlensembleboostingGraphN, f : Double) -> MlensembleboostingGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingGraphN::scale(self : MlensembleboostingGraphN, f : Double) -> MlensembleboostingGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_graphn_add(a : MlensembleboostingGraphN, b : MlensembleboostingGraphN) -> MlensembleboostingGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingGraphN::add(self : MlensembleboostingGraphN, other : MlensembleboostingGraphN) -> MlensembleboostingGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_graphn_copy(s : MlensembleboostingGraphN) -> MlensembleboostingGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingGraphN::copy(self : MlensembleboostingGraphN) -> MlensembleboostingGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_graphn_fill(s : MlensembleboostingGraphN, v : Double) -> MlensembleboostingGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingGraphN::fill(self : MlensembleboostingGraphN, v : Double) -> MlensembleboostingGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_graphn_min(s : MlensembleboostingGraphN) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingGraphN::min(self : MlensembleboostingGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_graphn_max(s : MlensembleboostingGraphN) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingGraphN::max(self : MlensembleboostingGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_graphn_to_string(s : MlensembleboostingGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingGraphN::to_string(self : MlensembleboostingGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingNode {
@@ -504,45 +504,45 @@ pub fn ml_ensemble_boosting_node_make(size : Int) -> MlensembleboostingNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_node_len(s : MlensembleboostingNode) -> Int { s.size }
+pub fn MlensembleboostingNode::len(self : MlensembleboostingNode) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_node_get(s : MlensembleboostingNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingNode::get(self : MlensembleboostingNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_node_set(s : MlensembleboostingNode, i : Int, v : Double) -> MlensembleboostingNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingNode::set(self : MlensembleboostingNode, i : Int, v : Double) -> MlensembleboostingNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_node_sum(s : MlensembleboostingNode) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingNode::sum(self : MlensembleboostingNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_node_mean(s : MlensembleboostingNode) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingNode::mean(self : MlensembleboostingNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_node_scale(s : MlensembleboostingNode, f : Double) -> MlensembleboostingNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingNode::scale(self : MlensembleboostingNode, f : Double) -> MlensembleboostingNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_node_add(a : MlensembleboostingNode, b : MlensembleboostingNode) -> MlensembleboostingNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingNode::add(self : MlensembleboostingNode, other : MlensembleboostingNode) -> MlensembleboostingNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_node_copy(s : MlensembleboostingNode) -> MlensembleboostingNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingNode::copy(self : MlensembleboostingNode) -> MlensembleboostingNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_node_fill(s : MlensembleboostingNode, v : Double) -> MlensembleboostingNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingNode::fill(self : MlensembleboostingNode, v : Double) -> MlensembleboostingNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_node_min(s : MlensembleboostingNode) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingNode::min(self : MlensembleboostingNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_node_max(s : MlensembleboostingNode) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingNode::max(self : MlensembleboostingNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_node_to_string(s : MlensembleboostingNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingNode::to_string(self : MlensembleboostingNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingEdge {
@@ -555,45 +555,45 @@ pub fn ml_ensemble_boosting_edge_make(size : Int) -> MlensembleboostingEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_edge_len(s : MlensembleboostingEdge) -> Int { s.size }
+pub fn MlensembleboostingEdge::len(self : MlensembleboostingEdge) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_edge_get(s : MlensembleboostingEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingEdge::get(self : MlensembleboostingEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_edge_set(s : MlensembleboostingEdge, i : Int, v : Double) -> MlensembleboostingEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingEdge::set(self : MlensembleboostingEdge, i : Int, v : Double) -> MlensembleboostingEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_edge_sum(s : MlensembleboostingEdge) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingEdge::sum(self : MlensembleboostingEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_edge_mean(s : MlensembleboostingEdge) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingEdge::mean(self : MlensembleboostingEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_edge_scale(s : MlensembleboostingEdge, f : Double) -> MlensembleboostingEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingEdge::scale(self : MlensembleboostingEdge, f : Double) -> MlensembleboostingEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_edge_add(a : MlensembleboostingEdge, b : MlensembleboostingEdge) -> MlensembleboostingEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingEdge::add(self : MlensembleboostingEdge, other : MlensembleboostingEdge) -> MlensembleboostingEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_edge_copy(s : MlensembleboostingEdge) -> MlensembleboostingEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingEdge::copy(self : MlensembleboostingEdge) -> MlensembleboostingEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_edge_fill(s : MlensembleboostingEdge, v : Double) -> MlensembleboostingEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingEdge::fill(self : MlensembleboostingEdge, v : Double) -> MlensembleboostingEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_edge_min(s : MlensembleboostingEdge) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingEdge::min(self : MlensembleboostingEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_edge_max(s : MlensembleboostingEdge) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingEdge::max(self : MlensembleboostingEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_edge_to_string(s : MlensembleboostingEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingEdge::to_string(self : MlensembleboostingEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingPath {
@@ -606,45 +606,45 @@ pub fn ml_ensemble_boosting_path_make(size : Int) -> MlensembleboostingPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_path_len(s : MlensembleboostingPath) -> Int { s.size }
+pub fn MlensembleboostingPath::len(self : MlensembleboostingPath) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_path_get(s : MlensembleboostingPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingPath::get(self : MlensembleboostingPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_path_set(s : MlensembleboostingPath, i : Int, v : Double) -> MlensembleboostingPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingPath::set(self : MlensembleboostingPath, i : Int, v : Double) -> MlensembleboostingPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_path_sum(s : MlensembleboostingPath) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingPath::sum(self : MlensembleboostingPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_path_mean(s : MlensembleboostingPath) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingPath::mean(self : MlensembleboostingPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_path_scale(s : MlensembleboostingPath, f : Double) -> MlensembleboostingPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingPath::scale(self : MlensembleboostingPath, f : Double) -> MlensembleboostingPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_path_add(a : MlensembleboostingPath, b : MlensembleboostingPath) -> MlensembleboostingPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingPath::add(self : MlensembleboostingPath, other : MlensembleboostingPath) -> MlensembleboostingPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_path_copy(s : MlensembleboostingPath) -> MlensembleboostingPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingPath::copy(self : MlensembleboostingPath) -> MlensembleboostingPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_path_fill(s : MlensembleboostingPath, v : Double) -> MlensembleboostingPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingPath::fill(self : MlensembleboostingPath, v : Double) -> MlensembleboostingPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_path_min(s : MlensembleboostingPath) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingPath::min(self : MlensembleboostingPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_path_max(s : MlensembleboostingPath) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingPath::max(self : MlensembleboostingPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_path_to_string(s : MlensembleboostingPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingPath::to_string(self : MlensembleboostingPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingCluster {
@@ -657,45 +657,45 @@ pub fn ml_ensemble_boosting_cluster_make(size : Int) -> MlensembleboostingCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_cluster_len(s : MlensembleboostingCluster) -> Int { s.size }
+pub fn MlensembleboostingCluster::len(self : MlensembleboostingCluster) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_cluster_get(s : MlensembleboostingCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingCluster::get(self : MlensembleboostingCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_cluster_set(s : MlensembleboostingCluster, i : Int, v : Double) -> MlensembleboostingCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingCluster::set(self : MlensembleboostingCluster, i : Int, v : Double) -> MlensembleboostingCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_cluster_sum(s : MlensembleboostingCluster) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingCluster::sum(self : MlensembleboostingCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_cluster_mean(s : MlensembleboostingCluster) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingCluster::mean(self : MlensembleboostingCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_cluster_scale(s : MlensembleboostingCluster, f : Double) -> MlensembleboostingCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingCluster::scale(self : MlensembleboostingCluster, f : Double) -> MlensembleboostingCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_cluster_add(a : MlensembleboostingCluster, b : MlensembleboostingCluster) -> MlensembleboostingCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingCluster::add(self : MlensembleboostingCluster, other : MlensembleboostingCluster) -> MlensembleboostingCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_cluster_copy(s : MlensembleboostingCluster) -> MlensembleboostingCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingCluster::copy(self : MlensembleboostingCluster) -> MlensembleboostingCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_cluster_fill(s : MlensembleboostingCluster, v : Double) -> MlensembleboostingCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingCluster::fill(self : MlensembleboostingCluster, v : Double) -> MlensembleboostingCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_cluster_min(s : MlensembleboostingCluster) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingCluster::min(self : MlensembleboostingCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_cluster_max(s : MlensembleboostingCluster) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingCluster::max(self : MlensembleboostingCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_cluster_to_string(s : MlensembleboostingCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingCluster::to_string(self : MlensembleboostingCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingModel {
@@ -708,45 +708,45 @@ pub fn ml_ensemble_boosting_model_make(size : Int) -> MlensembleboostingModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_model_len(s : MlensembleboostingModel) -> Int { s.size }
+pub fn MlensembleboostingModel::len(self : MlensembleboostingModel) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_model_get(s : MlensembleboostingModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingModel::get(self : MlensembleboostingModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_model_set(s : MlensembleboostingModel, i : Int, v : Double) -> MlensembleboostingModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingModel::set(self : MlensembleboostingModel, i : Int, v : Double) -> MlensembleboostingModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_model_sum(s : MlensembleboostingModel) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingModel::sum(self : MlensembleboostingModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_model_mean(s : MlensembleboostingModel) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingModel::mean(self : MlensembleboostingModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_model_scale(s : MlensembleboostingModel, f : Double) -> MlensembleboostingModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingModel::scale(self : MlensembleboostingModel, f : Double) -> MlensembleboostingModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_model_add(a : MlensembleboostingModel, b : MlensembleboostingModel) -> MlensembleboostingModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingModel::add(self : MlensembleboostingModel, other : MlensembleboostingModel) -> MlensembleboostingModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_model_copy(s : MlensembleboostingModel) -> MlensembleboostingModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingModel::copy(self : MlensembleboostingModel) -> MlensembleboostingModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_model_fill(s : MlensembleboostingModel, v : Double) -> MlensembleboostingModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingModel::fill(self : MlensembleboostingModel, v : Double) -> MlensembleboostingModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_model_min(s : MlensembleboostingModel) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingModel::min(self : MlensembleboostingModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_model_max(s : MlensembleboostingModel) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingModel::max(self : MlensembleboostingModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_model_to_string(s : MlensembleboostingModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingModel::to_string(self : MlensembleboostingModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingLayer {
@@ -759,45 +759,45 @@ pub fn ml_ensemble_boosting_layer_make(size : Int) -> MlensembleboostingLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_layer_len(s : MlensembleboostingLayer) -> Int { s.size }
+pub fn MlensembleboostingLayer::len(self : MlensembleboostingLayer) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_layer_get(s : MlensembleboostingLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingLayer::get(self : MlensembleboostingLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_layer_set(s : MlensembleboostingLayer, i : Int, v : Double) -> MlensembleboostingLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingLayer::set(self : MlensembleboostingLayer, i : Int, v : Double) -> MlensembleboostingLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_layer_sum(s : MlensembleboostingLayer) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingLayer::sum(self : MlensembleboostingLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_layer_mean(s : MlensembleboostingLayer) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingLayer::mean(self : MlensembleboostingLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_layer_scale(s : MlensembleboostingLayer, f : Double) -> MlensembleboostingLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingLayer::scale(self : MlensembleboostingLayer, f : Double) -> MlensembleboostingLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_layer_add(a : MlensembleboostingLayer, b : MlensembleboostingLayer) -> MlensembleboostingLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingLayer::add(self : MlensembleboostingLayer, other : MlensembleboostingLayer) -> MlensembleboostingLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_layer_copy(s : MlensembleboostingLayer) -> MlensembleboostingLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingLayer::copy(self : MlensembleboostingLayer) -> MlensembleboostingLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_layer_fill(s : MlensembleboostingLayer, v : Double) -> MlensembleboostingLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingLayer::fill(self : MlensembleboostingLayer, v : Double) -> MlensembleboostingLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_layer_min(s : MlensembleboostingLayer) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingLayer::min(self : MlensembleboostingLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_layer_max(s : MlensembleboostingLayer) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingLayer::max(self : MlensembleboostingLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_layer_to_string(s : MlensembleboostingLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingLayer::to_string(self : MlensembleboostingLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingBuffer {
@@ -810,45 +810,45 @@ pub fn ml_ensemble_boosting_buffer_make(size : Int) -> MlensembleboostingBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_buffer_len(s : MlensembleboostingBuffer) -> Int { s.size }
+pub fn MlensembleboostingBuffer::len(self : MlensembleboostingBuffer) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_buffer_get(s : MlensembleboostingBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingBuffer::get(self : MlensembleboostingBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_buffer_set(s : MlensembleboostingBuffer, i : Int, v : Double) -> MlensembleboostingBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingBuffer::set(self : MlensembleboostingBuffer, i : Int, v : Double) -> MlensembleboostingBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_buffer_sum(s : MlensembleboostingBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingBuffer::sum(self : MlensembleboostingBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_buffer_mean(s : MlensembleboostingBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingBuffer::mean(self : MlensembleboostingBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_buffer_scale(s : MlensembleboostingBuffer, f : Double) -> MlensembleboostingBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingBuffer::scale(self : MlensembleboostingBuffer, f : Double) -> MlensembleboostingBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_buffer_add(a : MlensembleboostingBuffer, b : MlensembleboostingBuffer) -> MlensembleboostingBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingBuffer::add(self : MlensembleboostingBuffer, other : MlensembleboostingBuffer) -> MlensembleboostingBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_buffer_copy(s : MlensembleboostingBuffer) -> MlensembleboostingBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingBuffer::copy(self : MlensembleboostingBuffer) -> MlensembleboostingBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_buffer_fill(s : MlensembleboostingBuffer, v : Double) -> MlensembleboostingBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingBuffer::fill(self : MlensembleboostingBuffer, v : Double) -> MlensembleboostingBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_buffer_min(s : MlensembleboostingBuffer) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingBuffer::min(self : MlensembleboostingBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_buffer_max(s : MlensembleboostingBuffer) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingBuffer::max(self : MlensembleboostingBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_buffer_to_string(s : MlensembleboostingBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingBuffer::to_string(self : MlensembleboostingBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingCursor {
@@ -861,45 +861,45 @@ pub fn ml_ensemble_boosting_cursor_make(size : Int) -> MlensembleboostingCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_cursor_len(s : MlensembleboostingCursor) -> Int { s.size }
+pub fn MlensembleboostingCursor::len(self : MlensembleboostingCursor) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_cursor_get(s : MlensembleboostingCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingCursor::get(self : MlensembleboostingCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_cursor_set(s : MlensembleboostingCursor, i : Int, v : Double) -> MlensembleboostingCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingCursor::set(self : MlensembleboostingCursor, i : Int, v : Double) -> MlensembleboostingCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_cursor_sum(s : MlensembleboostingCursor) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingCursor::sum(self : MlensembleboostingCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_cursor_mean(s : MlensembleboostingCursor) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingCursor::mean(self : MlensembleboostingCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_cursor_scale(s : MlensembleboostingCursor, f : Double) -> MlensembleboostingCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingCursor::scale(self : MlensembleboostingCursor, f : Double) -> MlensembleboostingCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_cursor_add(a : MlensembleboostingCursor, b : MlensembleboostingCursor) -> MlensembleboostingCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingCursor::add(self : MlensembleboostingCursor, other : MlensembleboostingCursor) -> MlensembleboostingCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_cursor_copy(s : MlensembleboostingCursor) -> MlensembleboostingCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingCursor::copy(self : MlensembleboostingCursor) -> MlensembleboostingCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_cursor_fill(s : MlensembleboostingCursor, v : Double) -> MlensembleboostingCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingCursor::fill(self : MlensembleboostingCursor, v : Double) -> MlensembleboostingCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_cursor_min(s : MlensembleboostingCursor) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingCursor::min(self : MlensembleboostingCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_cursor_max(s : MlensembleboostingCursor) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingCursor::max(self : MlensembleboostingCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_cursor_to_string(s : MlensembleboostingCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingCursor::to_string(self : MlensembleboostingCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingView {
@@ -912,45 +912,45 @@ pub fn ml_ensemble_boosting_view_make(size : Int) -> MlensembleboostingView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_view_len(s : MlensembleboostingView) -> Int { s.size }
+pub fn MlensembleboostingView::len(self : MlensembleboostingView) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_view_get(s : MlensembleboostingView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingView::get(self : MlensembleboostingView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_view_set(s : MlensembleboostingView, i : Int, v : Double) -> MlensembleboostingView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingView::set(self : MlensembleboostingView, i : Int, v : Double) -> MlensembleboostingView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_view_sum(s : MlensembleboostingView) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingView::sum(self : MlensembleboostingView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_view_mean(s : MlensembleboostingView) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingView::mean(self : MlensembleboostingView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_view_scale(s : MlensembleboostingView, f : Double) -> MlensembleboostingView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingView::scale(self : MlensembleboostingView, f : Double) -> MlensembleboostingView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_view_add(a : MlensembleboostingView, b : MlensembleboostingView) -> MlensembleboostingView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingView::add(self : MlensembleboostingView, other : MlensembleboostingView) -> MlensembleboostingView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_view_copy(s : MlensembleboostingView) -> MlensembleboostingView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingView::copy(self : MlensembleboostingView) -> MlensembleboostingView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_view_fill(s : MlensembleboostingView, v : Double) -> MlensembleboostingView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingView::fill(self : MlensembleboostingView, v : Double) -> MlensembleboostingView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_view_min(s : MlensembleboostingView) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingView::min(self : MlensembleboostingView) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_view_max(s : MlensembleboostingView) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingView::max(self : MlensembleboostingView) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_view_to_string(s : MlensembleboostingView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingView::to_string(self : MlensembleboostingView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingRange {
@@ -963,45 +963,45 @@ pub fn ml_ensemble_boosting_range_make(size : Int) -> MlensembleboostingRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_range_len(s : MlensembleboostingRange) -> Int { s.size }
+pub fn MlensembleboostingRange::len(self : MlensembleboostingRange) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_range_get(s : MlensembleboostingRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingRange::get(self : MlensembleboostingRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_range_set(s : MlensembleboostingRange, i : Int, v : Double) -> MlensembleboostingRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingRange::set(self : MlensembleboostingRange, i : Int, v : Double) -> MlensembleboostingRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_range_sum(s : MlensembleboostingRange) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingRange::sum(self : MlensembleboostingRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_range_mean(s : MlensembleboostingRange) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingRange::mean(self : MlensembleboostingRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_range_scale(s : MlensembleboostingRange, f : Double) -> MlensembleboostingRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingRange::scale(self : MlensembleboostingRange, f : Double) -> MlensembleboostingRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_range_add(a : MlensembleboostingRange, b : MlensembleboostingRange) -> MlensembleboostingRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingRange::add(self : MlensembleboostingRange, other : MlensembleboostingRange) -> MlensembleboostingRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_range_copy(s : MlensembleboostingRange) -> MlensembleboostingRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingRange::copy(self : MlensembleboostingRange) -> MlensembleboostingRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_range_fill(s : MlensembleboostingRange, v : Double) -> MlensembleboostingRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingRange::fill(self : MlensembleboostingRange, v : Double) -> MlensembleboostingRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_range_min(s : MlensembleboostingRange) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingRange::min(self : MlensembleboostingRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_range_max(s : MlensembleboostingRange) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingRange::max(self : MlensembleboostingRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_range_to_string(s : MlensembleboostingRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingRange::to_string(self : MlensembleboostingRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleboostingSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_ensemble_boosting_slice_make(size : Int) -> MlensembleboostingSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_boosting_slice_len(s : MlensembleboostingSlice) -> Int { s.size }
+pub fn MlensembleboostingSlice::len(self : MlensembleboostingSlice) -> Int { self.size }
 
-pub fn ml_ensemble_boosting_slice_get(s : MlensembleboostingSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleboostingSlice::get(self : MlensembleboostingSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_boosting_slice_set(s : MlensembleboostingSlice, i : Int, v : Double) -> MlensembleboostingSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleboostingSlice::set(self : MlensembleboostingSlice, i : Int, v : Double) -> MlensembleboostingSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_slice_sum(s : MlensembleboostingSlice) -> Double { @_common.sum(s.data) }
+pub fn MlensembleboostingSlice::sum(self : MlensembleboostingSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_boosting_slice_mean(s : MlensembleboostingSlice) -> Double { @_common.mean(s.data) }
+pub fn MlensembleboostingSlice::mean(self : MlensembleboostingSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_boosting_slice_scale(s : MlensembleboostingSlice, f : Double) -> MlensembleboostingSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleboostingSlice::scale(self : MlensembleboostingSlice, f : Double) -> MlensembleboostingSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_slice_add(a : MlensembleboostingSlice, b : MlensembleboostingSlice) -> MlensembleboostingSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleboostingSlice::add(self : MlensembleboostingSlice, other : MlensembleboostingSlice) -> MlensembleboostingSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_slice_copy(s : MlensembleboostingSlice) -> MlensembleboostingSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleboostingSlice::copy(self : MlensembleboostingSlice) -> MlensembleboostingSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_slice_fill(s : MlensembleboostingSlice, v : Double) -> MlensembleboostingSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleboostingSlice::fill(self : MlensembleboostingSlice, v : Double) -> MlensembleboostingSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_boosting_slice_min(s : MlensembleboostingSlice) -> Double { @_common.min(s.data) }
+pub fn MlensembleboostingSlice::min(self : MlensembleboostingSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_boosting_slice_max(s : MlensembleboostingSlice) -> Double { @_common.max(s.data) }
+pub fn MlensembleboostingSlice::max(self : MlensembleboostingSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_boosting_slice_to_string(s : MlensembleboostingSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleboostingSlice::to_string(self : MlensembleboostingSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

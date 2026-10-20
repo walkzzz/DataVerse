@@ -351,45 +351,45 @@ pub fn nlp_embed_sent2vec_frame_make(size : Int) -> Nlpembedsent2vecFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_frame_len(s : Nlpembedsent2vecFrame) -> Int { s.size }
+pub fn Nlpembedsent2vecFrame::len(self : Nlpembedsent2vecFrame) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_frame_get(s : Nlpembedsent2vecFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecFrame::get(self : Nlpembedsent2vecFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_frame_set(s : Nlpembedsent2vecFrame, i : Int, v : Double) -> Nlpembedsent2vecFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecFrame::set(self : Nlpembedsent2vecFrame, i : Int, v : Double) -> Nlpembedsent2vecFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_frame_sum(s : Nlpembedsent2vecFrame) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecFrame::sum(self : Nlpembedsent2vecFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_frame_mean(s : Nlpembedsent2vecFrame) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecFrame::mean(self : Nlpembedsent2vecFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_frame_scale(s : Nlpembedsent2vecFrame, f : Double) -> Nlpembedsent2vecFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecFrame::scale(self : Nlpembedsent2vecFrame, f : Double) -> Nlpembedsent2vecFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_frame_add(a : Nlpembedsent2vecFrame, b : Nlpembedsent2vecFrame) -> Nlpembedsent2vecFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecFrame::add(self : Nlpembedsent2vecFrame, other : Nlpembedsent2vecFrame) -> Nlpembedsent2vecFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_frame_copy(s : Nlpembedsent2vecFrame) -> Nlpembedsent2vecFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecFrame::copy(self : Nlpembedsent2vecFrame) -> Nlpembedsent2vecFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_frame_fill(s : Nlpembedsent2vecFrame, v : Double) -> Nlpembedsent2vecFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecFrame::fill(self : Nlpembedsent2vecFrame, v : Double) -> Nlpembedsent2vecFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_frame_min(s : Nlpembedsent2vecFrame) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecFrame::min(self : Nlpembedsent2vecFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_frame_max(s : Nlpembedsent2vecFrame) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecFrame::max(self : Nlpembedsent2vecFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_frame_to_string(s : Nlpembedsent2vecFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecFrame::to_string(self : Nlpembedsent2vecFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecTable {
@@ -402,45 +402,45 @@ pub fn nlp_embed_sent2vec_table_make(size : Int) -> Nlpembedsent2vecTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_table_len(s : Nlpembedsent2vecTable) -> Int { s.size }
+pub fn Nlpembedsent2vecTable::len(self : Nlpembedsent2vecTable) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_table_get(s : Nlpembedsent2vecTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecTable::get(self : Nlpembedsent2vecTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_table_set(s : Nlpembedsent2vecTable, i : Int, v : Double) -> Nlpembedsent2vecTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecTable::set(self : Nlpembedsent2vecTable, i : Int, v : Double) -> Nlpembedsent2vecTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_table_sum(s : Nlpembedsent2vecTable) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecTable::sum(self : Nlpembedsent2vecTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_table_mean(s : Nlpembedsent2vecTable) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecTable::mean(self : Nlpembedsent2vecTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_table_scale(s : Nlpembedsent2vecTable, f : Double) -> Nlpembedsent2vecTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecTable::scale(self : Nlpembedsent2vecTable, f : Double) -> Nlpembedsent2vecTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_table_add(a : Nlpembedsent2vecTable, b : Nlpembedsent2vecTable) -> Nlpembedsent2vecTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecTable::add(self : Nlpembedsent2vecTable, other : Nlpembedsent2vecTable) -> Nlpembedsent2vecTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_table_copy(s : Nlpembedsent2vecTable) -> Nlpembedsent2vecTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecTable::copy(self : Nlpembedsent2vecTable) -> Nlpembedsent2vecTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_table_fill(s : Nlpembedsent2vecTable, v : Double) -> Nlpembedsent2vecTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecTable::fill(self : Nlpembedsent2vecTable, v : Double) -> Nlpembedsent2vecTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_table_min(s : Nlpembedsent2vecTable) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecTable::min(self : Nlpembedsent2vecTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_table_max(s : Nlpembedsent2vecTable) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecTable::max(self : Nlpembedsent2vecTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_table_to_string(s : Nlpembedsent2vecTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecTable::to_string(self : Nlpembedsent2vecTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_embed_sent2vec_graphn_make(size : Int) -> Nlpembedsent2vecGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_graphn_len(s : Nlpembedsent2vecGraphN) -> Int { s.size }
+pub fn Nlpembedsent2vecGraphN::len(self : Nlpembedsent2vecGraphN) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_graphn_get(s : Nlpembedsent2vecGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecGraphN::get(self : Nlpembedsent2vecGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_graphn_set(s : Nlpembedsent2vecGraphN, i : Int, v : Double) -> Nlpembedsent2vecGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecGraphN::set(self : Nlpembedsent2vecGraphN, i : Int, v : Double) -> Nlpembedsent2vecGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_graphn_sum(s : Nlpembedsent2vecGraphN) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecGraphN::sum(self : Nlpembedsent2vecGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_graphn_mean(s : Nlpembedsent2vecGraphN) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecGraphN::mean(self : Nlpembedsent2vecGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_graphn_scale(s : Nlpembedsent2vecGraphN, f : Double) -> Nlpembedsent2vecGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecGraphN::scale(self : Nlpembedsent2vecGraphN, f : Double) -> Nlpembedsent2vecGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_graphn_add(a : Nlpembedsent2vecGraphN, b : Nlpembedsent2vecGraphN) -> Nlpembedsent2vecGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecGraphN::add(self : Nlpembedsent2vecGraphN, other : Nlpembedsent2vecGraphN) -> Nlpembedsent2vecGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_graphn_copy(s : Nlpembedsent2vecGraphN) -> Nlpembedsent2vecGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecGraphN::copy(self : Nlpembedsent2vecGraphN) -> Nlpembedsent2vecGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_graphn_fill(s : Nlpembedsent2vecGraphN, v : Double) -> Nlpembedsent2vecGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecGraphN::fill(self : Nlpembedsent2vecGraphN, v : Double) -> Nlpembedsent2vecGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_graphn_min(s : Nlpembedsent2vecGraphN) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecGraphN::min(self : Nlpembedsent2vecGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_graphn_max(s : Nlpembedsent2vecGraphN) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecGraphN::max(self : Nlpembedsent2vecGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_graphn_to_string(s : Nlpembedsent2vecGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecGraphN::to_string(self : Nlpembedsent2vecGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecNode {
@@ -504,45 +504,45 @@ pub fn nlp_embed_sent2vec_node_make(size : Int) -> Nlpembedsent2vecNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_node_len(s : Nlpembedsent2vecNode) -> Int { s.size }
+pub fn Nlpembedsent2vecNode::len(self : Nlpembedsent2vecNode) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_node_get(s : Nlpembedsent2vecNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecNode::get(self : Nlpembedsent2vecNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_node_set(s : Nlpembedsent2vecNode, i : Int, v : Double) -> Nlpembedsent2vecNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecNode::set(self : Nlpembedsent2vecNode, i : Int, v : Double) -> Nlpembedsent2vecNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_node_sum(s : Nlpembedsent2vecNode) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecNode::sum(self : Nlpembedsent2vecNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_node_mean(s : Nlpembedsent2vecNode) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecNode::mean(self : Nlpembedsent2vecNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_node_scale(s : Nlpembedsent2vecNode, f : Double) -> Nlpembedsent2vecNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecNode::scale(self : Nlpembedsent2vecNode, f : Double) -> Nlpembedsent2vecNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_node_add(a : Nlpembedsent2vecNode, b : Nlpembedsent2vecNode) -> Nlpembedsent2vecNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecNode::add(self : Nlpembedsent2vecNode, other : Nlpembedsent2vecNode) -> Nlpembedsent2vecNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_node_copy(s : Nlpembedsent2vecNode) -> Nlpembedsent2vecNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecNode::copy(self : Nlpembedsent2vecNode) -> Nlpembedsent2vecNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_node_fill(s : Nlpembedsent2vecNode, v : Double) -> Nlpembedsent2vecNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecNode::fill(self : Nlpembedsent2vecNode, v : Double) -> Nlpembedsent2vecNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_node_min(s : Nlpembedsent2vecNode) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecNode::min(self : Nlpembedsent2vecNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_node_max(s : Nlpembedsent2vecNode) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecNode::max(self : Nlpembedsent2vecNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_node_to_string(s : Nlpembedsent2vecNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecNode::to_string(self : Nlpembedsent2vecNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecEdge {
@@ -555,45 +555,45 @@ pub fn nlp_embed_sent2vec_edge_make(size : Int) -> Nlpembedsent2vecEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_edge_len(s : Nlpembedsent2vecEdge) -> Int { s.size }
+pub fn Nlpembedsent2vecEdge::len(self : Nlpembedsent2vecEdge) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_edge_get(s : Nlpembedsent2vecEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecEdge::get(self : Nlpembedsent2vecEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_edge_set(s : Nlpembedsent2vecEdge, i : Int, v : Double) -> Nlpembedsent2vecEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecEdge::set(self : Nlpembedsent2vecEdge, i : Int, v : Double) -> Nlpembedsent2vecEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_edge_sum(s : Nlpembedsent2vecEdge) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecEdge::sum(self : Nlpembedsent2vecEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_edge_mean(s : Nlpembedsent2vecEdge) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecEdge::mean(self : Nlpembedsent2vecEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_edge_scale(s : Nlpembedsent2vecEdge, f : Double) -> Nlpembedsent2vecEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecEdge::scale(self : Nlpembedsent2vecEdge, f : Double) -> Nlpembedsent2vecEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_edge_add(a : Nlpembedsent2vecEdge, b : Nlpembedsent2vecEdge) -> Nlpembedsent2vecEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecEdge::add(self : Nlpembedsent2vecEdge, other : Nlpembedsent2vecEdge) -> Nlpembedsent2vecEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_edge_copy(s : Nlpembedsent2vecEdge) -> Nlpembedsent2vecEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecEdge::copy(self : Nlpembedsent2vecEdge) -> Nlpembedsent2vecEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_edge_fill(s : Nlpembedsent2vecEdge, v : Double) -> Nlpembedsent2vecEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecEdge::fill(self : Nlpembedsent2vecEdge, v : Double) -> Nlpembedsent2vecEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_edge_min(s : Nlpembedsent2vecEdge) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecEdge::min(self : Nlpembedsent2vecEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_edge_max(s : Nlpembedsent2vecEdge) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecEdge::max(self : Nlpembedsent2vecEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_edge_to_string(s : Nlpembedsent2vecEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecEdge::to_string(self : Nlpembedsent2vecEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecPath {
@@ -606,45 +606,45 @@ pub fn nlp_embed_sent2vec_path_make(size : Int) -> Nlpembedsent2vecPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_path_len(s : Nlpembedsent2vecPath) -> Int { s.size }
+pub fn Nlpembedsent2vecPath::len(self : Nlpembedsent2vecPath) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_path_get(s : Nlpembedsent2vecPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecPath::get(self : Nlpembedsent2vecPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_path_set(s : Nlpembedsent2vecPath, i : Int, v : Double) -> Nlpembedsent2vecPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecPath::set(self : Nlpembedsent2vecPath, i : Int, v : Double) -> Nlpembedsent2vecPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_path_sum(s : Nlpembedsent2vecPath) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecPath::sum(self : Nlpembedsent2vecPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_path_mean(s : Nlpembedsent2vecPath) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecPath::mean(self : Nlpembedsent2vecPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_path_scale(s : Nlpembedsent2vecPath, f : Double) -> Nlpembedsent2vecPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecPath::scale(self : Nlpembedsent2vecPath, f : Double) -> Nlpembedsent2vecPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_path_add(a : Nlpembedsent2vecPath, b : Nlpembedsent2vecPath) -> Nlpembedsent2vecPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecPath::add(self : Nlpembedsent2vecPath, other : Nlpembedsent2vecPath) -> Nlpembedsent2vecPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_path_copy(s : Nlpembedsent2vecPath) -> Nlpembedsent2vecPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecPath::copy(self : Nlpembedsent2vecPath) -> Nlpembedsent2vecPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_path_fill(s : Nlpembedsent2vecPath, v : Double) -> Nlpembedsent2vecPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecPath::fill(self : Nlpembedsent2vecPath, v : Double) -> Nlpembedsent2vecPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_path_min(s : Nlpembedsent2vecPath) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecPath::min(self : Nlpembedsent2vecPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_path_max(s : Nlpembedsent2vecPath) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecPath::max(self : Nlpembedsent2vecPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_path_to_string(s : Nlpembedsent2vecPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecPath::to_string(self : Nlpembedsent2vecPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecCluster {
@@ -657,45 +657,45 @@ pub fn nlp_embed_sent2vec_cluster_make(size : Int) -> Nlpembedsent2vecCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_cluster_len(s : Nlpembedsent2vecCluster) -> Int { s.size }
+pub fn Nlpembedsent2vecCluster::len(self : Nlpembedsent2vecCluster) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_cluster_get(s : Nlpembedsent2vecCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecCluster::get(self : Nlpembedsent2vecCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_cluster_set(s : Nlpembedsent2vecCluster, i : Int, v : Double) -> Nlpembedsent2vecCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecCluster::set(self : Nlpembedsent2vecCluster, i : Int, v : Double) -> Nlpembedsent2vecCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_cluster_sum(s : Nlpembedsent2vecCluster) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecCluster::sum(self : Nlpembedsent2vecCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_cluster_mean(s : Nlpembedsent2vecCluster) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecCluster::mean(self : Nlpembedsent2vecCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_cluster_scale(s : Nlpembedsent2vecCluster, f : Double) -> Nlpembedsent2vecCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecCluster::scale(self : Nlpembedsent2vecCluster, f : Double) -> Nlpembedsent2vecCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_cluster_add(a : Nlpembedsent2vecCluster, b : Nlpembedsent2vecCluster) -> Nlpembedsent2vecCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecCluster::add(self : Nlpembedsent2vecCluster, other : Nlpembedsent2vecCluster) -> Nlpembedsent2vecCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_cluster_copy(s : Nlpembedsent2vecCluster) -> Nlpembedsent2vecCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecCluster::copy(self : Nlpembedsent2vecCluster) -> Nlpembedsent2vecCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_cluster_fill(s : Nlpembedsent2vecCluster, v : Double) -> Nlpembedsent2vecCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecCluster::fill(self : Nlpembedsent2vecCluster, v : Double) -> Nlpembedsent2vecCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_cluster_min(s : Nlpembedsent2vecCluster) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecCluster::min(self : Nlpembedsent2vecCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_cluster_max(s : Nlpembedsent2vecCluster) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecCluster::max(self : Nlpembedsent2vecCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_cluster_to_string(s : Nlpembedsent2vecCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecCluster::to_string(self : Nlpembedsent2vecCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecModel {
@@ -708,45 +708,45 @@ pub fn nlp_embed_sent2vec_model_make(size : Int) -> Nlpembedsent2vecModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_model_len(s : Nlpembedsent2vecModel) -> Int { s.size }
+pub fn Nlpembedsent2vecModel::len(self : Nlpembedsent2vecModel) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_model_get(s : Nlpembedsent2vecModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecModel::get(self : Nlpembedsent2vecModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_model_set(s : Nlpembedsent2vecModel, i : Int, v : Double) -> Nlpembedsent2vecModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecModel::set(self : Nlpembedsent2vecModel, i : Int, v : Double) -> Nlpembedsent2vecModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_model_sum(s : Nlpembedsent2vecModel) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecModel::sum(self : Nlpembedsent2vecModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_model_mean(s : Nlpembedsent2vecModel) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecModel::mean(self : Nlpembedsent2vecModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_model_scale(s : Nlpembedsent2vecModel, f : Double) -> Nlpembedsent2vecModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecModel::scale(self : Nlpembedsent2vecModel, f : Double) -> Nlpembedsent2vecModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_model_add(a : Nlpembedsent2vecModel, b : Nlpembedsent2vecModel) -> Nlpembedsent2vecModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecModel::add(self : Nlpembedsent2vecModel, other : Nlpembedsent2vecModel) -> Nlpembedsent2vecModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_model_copy(s : Nlpembedsent2vecModel) -> Nlpembedsent2vecModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecModel::copy(self : Nlpembedsent2vecModel) -> Nlpembedsent2vecModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_model_fill(s : Nlpembedsent2vecModel, v : Double) -> Nlpembedsent2vecModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecModel::fill(self : Nlpembedsent2vecModel, v : Double) -> Nlpembedsent2vecModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_model_min(s : Nlpembedsent2vecModel) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecModel::min(self : Nlpembedsent2vecModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_model_max(s : Nlpembedsent2vecModel) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecModel::max(self : Nlpembedsent2vecModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_model_to_string(s : Nlpembedsent2vecModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecModel::to_string(self : Nlpembedsent2vecModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecLayer {
@@ -759,45 +759,45 @@ pub fn nlp_embed_sent2vec_layer_make(size : Int) -> Nlpembedsent2vecLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_layer_len(s : Nlpembedsent2vecLayer) -> Int { s.size }
+pub fn Nlpembedsent2vecLayer::len(self : Nlpembedsent2vecLayer) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_layer_get(s : Nlpembedsent2vecLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecLayer::get(self : Nlpembedsent2vecLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_layer_set(s : Nlpembedsent2vecLayer, i : Int, v : Double) -> Nlpembedsent2vecLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecLayer::set(self : Nlpembedsent2vecLayer, i : Int, v : Double) -> Nlpembedsent2vecLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_layer_sum(s : Nlpembedsent2vecLayer) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecLayer::sum(self : Nlpembedsent2vecLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_layer_mean(s : Nlpembedsent2vecLayer) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecLayer::mean(self : Nlpembedsent2vecLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_layer_scale(s : Nlpembedsent2vecLayer, f : Double) -> Nlpembedsent2vecLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecLayer::scale(self : Nlpembedsent2vecLayer, f : Double) -> Nlpembedsent2vecLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_layer_add(a : Nlpembedsent2vecLayer, b : Nlpembedsent2vecLayer) -> Nlpembedsent2vecLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecLayer::add(self : Nlpembedsent2vecLayer, other : Nlpembedsent2vecLayer) -> Nlpembedsent2vecLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_layer_copy(s : Nlpembedsent2vecLayer) -> Nlpembedsent2vecLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecLayer::copy(self : Nlpembedsent2vecLayer) -> Nlpembedsent2vecLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_layer_fill(s : Nlpembedsent2vecLayer, v : Double) -> Nlpembedsent2vecLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecLayer::fill(self : Nlpembedsent2vecLayer, v : Double) -> Nlpembedsent2vecLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_layer_min(s : Nlpembedsent2vecLayer) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecLayer::min(self : Nlpembedsent2vecLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_layer_max(s : Nlpembedsent2vecLayer) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecLayer::max(self : Nlpembedsent2vecLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_layer_to_string(s : Nlpembedsent2vecLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecLayer::to_string(self : Nlpembedsent2vecLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_embed_sent2vec_buffer_make(size : Int) -> Nlpembedsent2vecBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_buffer_len(s : Nlpembedsent2vecBuffer) -> Int { s.size }
+pub fn Nlpembedsent2vecBuffer::len(self : Nlpembedsent2vecBuffer) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_buffer_get(s : Nlpembedsent2vecBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecBuffer::get(self : Nlpembedsent2vecBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_buffer_set(s : Nlpembedsent2vecBuffer, i : Int, v : Double) -> Nlpembedsent2vecBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecBuffer::set(self : Nlpembedsent2vecBuffer, i : Int, v : Double) -> Nlpembedsent2vecBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_buffer_sum(s : Nlpembedsent2vecBuffer) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecBuffer::sum(self : Nlpembedsent2vecBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_buffer_mean(s : Nlpembedsent2vecBuffer) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecBuffer::mean(self : Nlpembedsent2vecBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_buffer_scale(s : Nlpembedsent2vecBuffer, f : Double) -> Nlpembedsent2vecBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecBuffer::scale(self : Nlpembedsent2vecBuffer, f : Double) -> Nlpembedsent2vecBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_buffer_add(a : Nlpembedsent2vecBuffer, b : Nlpembedsent2vecBuffer) -> Nlpembedsent2vecBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecBuffer::add(self : Nlpembedsent2vecBuffer, other : Nlpembedsent2vecBuffer) -> Nlpembedsent2vecBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_buffer_copy(s : Nlpembedsent2vecBuffer) -> Nlpembedsent2vecBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecBuffer::copy(self : Nlpembedsent2vecBuffer) -> Nlpembedsent2vecBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_buffer_fill(s : Nlpembedsent2vecBuffer, v : Double) -> Nlpembedsent2vecBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecBuffer::fill(self : Nlpembedsent2vecBuffer, v : Double) -> Nlpembedsent2vecBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_buffer_min(s : Nlpembedsent2vecBuffer) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecBuffer::min(self : Nlpembedsent2vecBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_buffer_max(s : Nlpembedsent2vecBuffer) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecBuffer::max(self : Nlpembedsent2vecBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_buffer_to_string(s : Nlpembedsent2vecBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecBuffer::to_string(self : Nlpembedsent2vecBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecCursor {
@@ -861,45 +861,45 @@ pub fn nlp_embed_sent2vec_cursor_make(size : Int) -> Nlpembedsent2vecCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_cursor_len(s : Nlpembedsent2vecCursor) -> Int { s.size }
+pub fn Nlpembedsent2vecCursor::len(self : Nlpembedsent2vecCursor) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_cursor_get(s : Nlpembedsent2vecCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecCursor::get(self : Nlpembedsent2vecCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_cursor_set(s : Nlpembedsent2vecCursor, i : Int, v : Double) -> Nlpembedsent2vecCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecCursor::set(self : Nlpembedsent2vecCursor, i : Int, v : Double) -> Nlpembedsent2vecCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_cursor_sum(s : Nlpembedsent2vecCursor) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecCursor::sum(self : Nlpembedsent2vecCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_cursor_mean(s : Nlpembedsent2vecCursor) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecCursor::mean(self : Nlpembedsent2vecCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_cursor_scale(s : Nlpembedsent2vecCursor, f : Double) -> Nlpembedsent2vecCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecCursor::scale(self : Nlpembedsent2vecCursor, f : Double) -> Nlpembedsent2vecCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_cursor_add(a : Nlpembedsent2vecCursor, b : Nlpembedsent2vecCursor) -> Nlpembedsent2vecCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecCursor::add(self : Nlpembedsent2vecCursor, other : Nlpembedsent2vecCursor) -> Nlpembedsent2vecCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_cursor_copy(s : Nlpembedsent2vecCursor) -> Nlpembedsent2vecCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecCursor::copy(self : Nlpembedsent2vecCursor) -> Nlpembedsent2vecCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_cursor_fill(s : Nlpembedsent2vecCursor, v : Double) -> Nlpembedsent2vecCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecCursor::fill(self : Nlpembedsent2vecCursor, v : Double) -> Nlpembedsent2vecCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_cursor_min(s : Nlpembedsent2vecCursor) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecCursor::min(self : Nlpembedsent2vecCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_cursor_max(s : Nlpembedsent2vecCursor) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecCursor::max(self : Nlpembedsent2vecCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_cursor_to_string(s : Nlpembedsent2vecCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecCursor::to_string(self : Nlpembedsent2vecCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecView {
@@ -912,45 +912,45 @@ pub fn nlp_embed_sent2vec_view_make(size : Int) -> Nlpembedsent2vecView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_view_len(s : Nlpembedsent2vecView) -> Int { s.size }
+pub fn Nlpembedsent2vecView::len(self : Nlpembedsent2vecView) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_view_get(s : Nlpembedsent2vecView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecView::get(self : Nlpembedsent2vecView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_view_set(s : Nlpembedsent2vecView, i : Int, v : Double) -> Nlpembedsent2vecView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecView::set(self : Nlpembedsent2vecView, i : Int, v : Double) -> Nlpembedsent2vecView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_view_sum(s : Nlpembedsent2vecView) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecView::sum(self : Nlpembedsent2vecView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_view_mean(s : Nlpembedsent2vecView) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecView::mean(self : Nlpembedsent2vecView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_view_scale(s : Nlpembedsent2vecView, f : Double) -> Nlpembedsent2vecView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecView::scale(self : Nlpembedsent2vecView, f : Double) -> Nlpembedsent2vecView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_view_add(a : Nlpembedsent2vecView, b : Nlpembedsent2vecView) -> Nlpembedsent2vecView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecView::add(self : Nlpembedsent2vecView, other : Nlpembedsent2vecView) -> Nlpembedsent2vecView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_view_copy(s : Nlpembedsent2vecView) -> Nlpembedsent2vecView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecView::copy(self : Nlpembedsent2vecView) -> Nlpembedsent2vecView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_view_fill(s : Nlpembedsent2vecView, v : Double) -> Nlpembedsent2vecView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecView::fill(self : Nlpembedsent2vecView, v : Double) -> Nlpembedsent2vecView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_view_min(s : Nlpembedsent2vecView) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecView::min(self : Nlpembedsent2vecView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_view_max(s : Nlpembedsent2vecView) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecView::max(self : Nlpembedsent2vecView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_view_to_string(s : Nlpembedsent2vecView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecView::to_string(self : Nlpembedsent2vecView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecRange {
@@ -963,45 +963,45 @@ pub fn nlp_embed_sent2vec_range_make(size : Int) -> Nlpembedsent2vecRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_range_len(s : Nlpembedsent2vecRange) -> Int { s.size }
+pub fn Nlpembedsent2vecRange::len(self : Nlpembedsent2vecRange) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_range_get(s : Nlpembedsent2vecRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecRange::get(self : Nlpembedsent2vecRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_range_set(s : Nlpembedsent2vecRange, i : Int, v : Double) -> Nlpembedsent2vecRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecRange::set(self : Nlpembedsent2vecRange, i : Int, v : Double) -> Nlpembedsent2vecRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_range_sum(s : Nlpembedsent2vecRange) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecRange::sum(self : Nlpembedsent2vecRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_range_mean(s : Nlpembedsent2vecRange) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecRange::mean(self : Nlpembedsent2vecRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_range_scale(s : Nlpembedsent2vecRange, f : Double) -> Nlpembedsent2vecRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecRange::scale(self : Nlpembedsent2vecRange, f : Double) -> Nlpembedsent2vecRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_range_add(a : Nlpembedsent2vecRange, b : Nlpembedsent2vecRange) -> Nlpembedsent2vecRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecRange::add(self : Nlpembedsent2vecRange, other : Nlpembedsent2vecRange) -> Nlpembedsent2vecRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_range_copy(s : Nlpembedsent2vecRange) -> Nlpembedsent2vecRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecRange::copy(self : Nlpembedsent2vecRange) -> Nlpembedsent2vecRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_range_fill(s : Nlpembedsent2vecRange, v : Double) -> Nlpembedsent2vecRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecRange::fill(self : Nlpembedsent2vecRange, v : Double) -> Nlpembedsent2vecRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_range_min(s : Nlpembedsent2vecRange) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecRange::min(self : Nlpembedsent2vecRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_range_max(s : Nlpembedsent2vecRange) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecRange::max(self : Nlpembedsent2vecRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_range_to_string(s : Nlpembedsent2vecRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecRange::to_string(self : Nlpembedsent2vecRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Nlpembedsent2vecSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_embed_sent2vec_slice_make(size : Int) -> Nlpembedsent2vecSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_sent2vec_slice_len(s : Nlpembedsent2vecSlice) -> Int { s.size }
+pub fn Nlpembedsent2vecSlice::len(self : Nlpembedsent2vecSlice) -> Int { self.size }
 
-pub fn nlp_embed_sent2vec_slice_get(s : Nlpembedsent2vecSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Nlpembedsent2vecSlice::get(self : Nlpembedsent2vecSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_sent2vec_slice_set(s : Nlpembedsent2vecSlice, i : Int, v : Double) -> Nlpembedsent2vecSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecSlice::set(self : Nlpembedsent2vecSlice, i : Int, v : Double) -> Nlpembedsent2vecSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_slice_sum(s : Nlpembedsent2vecSlice) -> Double { @_common.sum(s.data) }
+pub fn Nlpembedsent2vecSlice::sum(self : Nlpembedsent2vecSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_sent2vec_slice_mean(s : Nlpembedsent2vecSlice) -> Double { @_common.mean(s.data) }
+pub fn Nlpembedsent2vecSlice::mean(self : Nlpembedsent2vecSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_sent2vec_slice_scale(s : Nlpembedsent2vecSlice, f : Double) -> Nlpembedsent2vecSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecSlice::scale(self : Nlpembedsent2vecSlice, f : Double) -> Nlpembedsent2vecSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_slice_add(a : Nlpembedsent2vecSlice, b : Nlpembedsent2vecSlice) -> Nlpembedsent2vecSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Nlpembedsent2vecSlice::add(self : Nlpembedsent2vecSlice, other : Nlpembedsent2vecSlice) -> Nlpembedsent2vecSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_slice_copy(s : Nlpembedsent2vecSlice) -> Nlpembedsent2vecSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecSlice::copy(self : Nlpembedsent2vecSlice) -> Nlpembedsent2vecSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_slice_fill(s : Nlpembedsent2vecSlice, v : Double) -> Nlpembedsent2vecSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Nlpembedsent2vecSlice::fill(self : Nlpembedsent2vecSlice, v : Double) -> Nlpembedsent2vecSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_sent2vec_slice_min(s : Nlpembedsent2vecSlice) -> Double { @_common.min(s.data) }
+pub fn Nlpembedsent2vecSlice::min(self : Nlpembedsent2vecSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_sent2vec_slice_max(s : Nlpembedsent2vecSlice) -> Double { @_common.max(s.data) }
+pub fn Nlpembedsent2vecSlice::max(self : Nlpembedsent2vecSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_sent2vec_slice_to_string(s : Nlpembedsent2vecSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Nlpembedsent2vecSlice::to_string(self : Nlpembedsent2vecSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

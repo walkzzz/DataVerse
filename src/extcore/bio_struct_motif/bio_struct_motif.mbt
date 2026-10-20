@@ -351,45 +351,45 @@ pub fn bio_struct_motif_frame_make(size : Int) -> BiostructmotifFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_frame_len(s : BiostructmotifFrame) -> Int { s.size }
+pub fn BiostructmotifFrame::len(self : BiostructmotifFrame) -> Int { self.size }
 
-pub fn bio_struct_motif_frame_get(s : BiostructmotifFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifFrame::get(self : BiostructmotifFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_frame_set(s : BiostructmotifFrame, i : Int, v : Double) -> BiostructmotifFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifFrame::set(self : BiostructmotifFrame, i : Int, v : Double) -> BiostructmotifFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_frame_sum(s : BiostructmotifFrame) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifFrame::sum(self : BiostructmotifFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_frame_mean(s : BiostructmotifFrame) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifFrame::mean(self : BiostructmotifFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_frame_scale(s : BiostructmotifFrame, f : Double) -> BiostructmotifFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifFrame::scale(self : BiostructmotifFrame, f : Double) -> BiostructmotifFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_frame_add(a : BiostructmotifFrame, b : BiostructmotifFrame) -> BiostructmotifFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifFrame::add(self : BiostructmotifFrame, other : BiostructmotifFrame) -> BiostructmotifFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_frame_copy(s : BiostructmotifFrame) -> BiostructmotifFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifFrame::copy(self : BiostructmotifFrame) -> BiostructmotifFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_frame_fill(s : BiostructmotifFrame, v : Double) -> BiostructmotifFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifFrame::fill(self : BiostructmotifFrame, v : Double) -> BiostructmotifFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_frame_min(s : BiostructmotifFrame) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifFrame::min(self : BiostructmotifFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_frame_max(s : BiostructmotifFrame) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifFrame::max(self : BiostructmotifFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_frame_to_string(s : BiostructmotifFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifFrame::to_string(self : BiostructmotifFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifTable {
@@ -402,45 +402,45 @@ pub fn bio_struct_motif_table_make(size : Int) -> BiostructmotifTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_table_len(s : BiostructmotifTable) -> Int { s.size }
+pub fn BiostructmotifTable::len(self : BiostructmotifTable) -> Int { self.size }
 
-pub fn bio_struct_motif_table_get(s : BiostructmotifTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifTable::get(self : BiostructmotifTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_table_set(s : BiostructmotifTable, i : Int, v : Double) -> BiostructmotifTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifTable::set(self : BiostructmotifTable, i : Int, v : Double) -> BiostructmotifTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_table_sum(s : BiostructmotifTable) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifTable::sum(self : BiostructmotifTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_table_mean(s : BiostructmotifTable) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifTable::mean(self : BiostructmotifTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_table_scale(s : BiostructmotifTable, f : Double) -> BiostructmotifTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifTable::scale(self : BiostructmotifTable, f : Double) -> BiostructmotifTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_table_add(a : BiostructmotifTable, b : BiostructmotifTable) -> BiostructmotifTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifTable::add(self : BiostructmotifTable, other : BiostructmotifTable) -> BiostructmotifTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_table_copy(s : BiostructmotifTable) -> BiostructmotifTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifTable::copy(self : BiostructmotifTable) -> BiostructmotifTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_table_fill(s : BiostructmotifTable, v : Double) -> BiostructmotifTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifTable::fill(self : BiostructmotifTable, v : Double) -> BiostructmotifTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_table_min(s : BiostructmotifTable) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifTable::min(self : BiostructmotifTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_table_max(s : BiostructmotifTable) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifTable::max(self : BiostructmotifTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_table_to_string(s : BiostructmotifTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifTable::to_string(self : BiostructmotifTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifGraphN {
@@ -453,45 +453,45 @@ pub fn bio_struct_motif_graphn_make(size : Int) -> BiostructmotifGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_graphn_len(s : BiostructmotifGraphN) -> Int { s.size }
+pub fn BiostructmotifGraphN::len(self : BiostructmotifGraphN) -> Int { self.size }
 
-pub fn bio_struct_motif_graphn_get(s : BiostructmotifGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifGraphN::get(self : BiostructmotifGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_graphn_set(s : BiostructmotifGraphN, i : Int, v : Double) -> BiostructmotifGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifGraphN::set(self : BiostructmotifGraphN, i : Int, v : Double) -> BiostructmotifGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_graphn_sum(s : BiostructmotifGraphN) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifGraphN::sum(self : BiostructmotifGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_graphn_mean(s : BiostructmotifGraphN) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifGraphN::mean(self : BiostructmotifGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_graphn_scale(s : BiostructmotifGraphN, f : Double) -> BiostructmotifGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifGraphN::scale(self : BiostructmotifGraphN, f : Double) -> BiostructmotifGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_graphn_add(a : BiostructmotifGraphN, b : BiostructmotifGraphN) -> BiostructmotifGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifGraphN::add(self : BiostructmotifGraphN, other : BiostructmotifGraphN) -> BiostructmotifGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_graphn_copy(s : BiostructmotifGraphN) -> BiostructmotifGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifGraphN::copy(self : BiostructmotifGraphN) -> BiostructmotifGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_graphn_fill(s : BiostructmotifGraphN, v : Double) -> BiostructmotifGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifGraphN::fill(self : BiostructmotifGraphN, v : Double) -> BiostructmotifGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_graphn_min(s : BiostructmotifGraphN) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifGraphN::min(self : BiostructmotifGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_graphn_max(s : BiostructmotifGraphN) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifGraphN::max(self : BiostructmotifGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_graphn_to_string(s : BiostructmotifGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifGraphN::to_string(self : BiostructmotifGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifNode {
@@ -504,45 +504,45 @@ pub fn bio_struct_motif_node_make(size : Int) -> BiostructmotifNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_node_len(s : BiostructmotifNode) -> Int { s.size }
+pub fn BiostructmotifNode::len(self : BiostructmotifNode) -> Int { self.size }
 
-pub fn bio_struct_motif_node_get(s : BiostructmotifNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifNode::get(self : BiostructmotifNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_node_set(s : BiostructmotifNode, i : Int, v : Double) -> BiostructmotifNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifNode::set(self : BiostructmotifNode, i : Int, v : Double) -> BiostructmotifNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_node_sum(s : BiostructmotifNode) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifNode::sum(self : BiostructmotifNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_node_mean(s : BiostructmotifNode) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifNode::mean(self : BiostructmotifNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_node_scale(s : BiostructmotifNode, f : Double) -> BiostructmotifNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifNode::scale(self : BiostructmotifNode, f : Double) -> BiostructmotifNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_node_add(a : BiostructmotifNode, b : BiostructmotifNode) -> BiostructmotifNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifNode::add(self : BiostructmotifNode, other : BiostructmotifNode) -> BiostructmotifNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_node_copy(s : BiostructmotifNode) -> BiostructmotifNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifNode::copy(self : BiostructmotifNode) -> BiostructmotifNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_node_fill(s : BiostructmotifNode, v : Double) -> BiostructmotifNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifNode::fill(self : BiostructmotifNode, v : Double) -> BiostructmotifNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_node_min(s : BiostructmotifNode) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifNode::min(self : BiostructmotifNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_node_max(s : BiostructmotifNode) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifNode::max(self : BiostructmotifNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_node_to_string(s : BiostructmotifNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifNode::to_string(self : BiostructmotifNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifEdge {
@@ -555,45 +555,45 @@ pub fn bio_struct_motif_edge_make(size : Int) -> BiostructmotifEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_edge_len(s : BiostructmotifEdge) -> Int { s.size }
+pub fn BiostructmotifEdge::len(self : BiostructmotifEdge) -> Int { self.size }
 
-pub fn bio_struct_motif_edge_get(s : BiostructmotifEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifEdge::get(self : BiostructmotifEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_edge_set(s : BiostructmotifEdge, i : Int, v : Double) -> BiostructmotifEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifEdge::set(self : BiostructmotifEdge, i : Int, v : Double) -> BiostructmotifEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_edge_sum(s : BiostructmotifEdge) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifEdge::sum(self : BiostructmotifEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_edge_mean(s : BiostructmotifEdge) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifEdge::mean(self : BiostructmotifEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_edge_scale(s : BiostructmotifEdge, f : Double) -> BiostructmotifEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifEdge::scale(self : BiostructmotifEdge, f : Double) -> BiostructmotifEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_edge_add(a : BiostructmotifEdge, b : BiostructmotifEdge) -> BiostructmotifEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifEdge::add(self : BiostructmotifEdge, other : BiostructmotifEdge) -> BiostructmotifEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_edge_copy(s : BiostructmotifEdge) -> BiostructmotifEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifEdge::copy(self : BiostructmotifEdge) -> BiostructmotifEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_edge_fill(s : BiostructmotifEdge, v : Double) -> BiostructmotifEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifEdge::fill(self : BiostructmotifEdge, v : Double) -> BiostructmotifEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_edge_min(s : BiostructmotifEdge) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifEdge::min(self : BiostructmotifEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_edge_max(s : BiostructmotifEdge) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifEdge::max(self : BiostructmotifEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_edge_to_string(s : BiostructmotifEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifEdge::to_string(self : BiostructmotifEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifPath {
@@ -606,45 +606,45 @@ pub fn bio_struct_motif_path_make(size : Int) -> BiostructmotifPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_path_len(s : BiostructmotifPath) -> Int { s.size }
+pub fn BiostructmotifPath::len(self : BiostructmotifPath) -> Int { self.size }
 
-pub fn bio_struct_motif_path_get(s : BiostructmotifPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifPath::get(self : BiostructmotifPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_path_set(s : BiostructmotifPath, i : Int, v : Double) -> BiostructmotifPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifPath::set(self : BiostructmotifPath, i : Int, v : Double) -> BiostructmotifPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_path_sum(s : BiostructmotifPath) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifPath::sum(self : BiostructmotifPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_path_mean(s : BiostructmotifPath) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifPath::mean(self : BiostructmotifPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_path_scale(s : BiostructmotifPath, f : Double) -> BiostructmotifPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifPath::scale(self : BiostructmotifPath, f : Double) -> BiostructmotifPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_path_add(a : BiostructmotifPath, b : BiostructmotifPath) -> BiostructmotifPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifPath::add(self : BiostructmotifPath, other : BiostructmotifPath) -> BiostructmotifPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_path_copy(s : BiostructmotifPath) -> BiostructmotifPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifPath::copy(self : BiostructmotifPath) -> BiostructmotifPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_path_fill(s : BiostructmotifPath, v : Double) -> BiostructmotifPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifPath::fill(self : BiostructmotifPath, v : Double) -> BiostructmotifPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_path_min(s : BiostructmotifPath) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifPath::min(self : BiostructmotifPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_path_max(s : BiostructmotifPath) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifPath::max(self : BiostructmotifPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_path_to_string(s : BiostructmotifPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifPath::to_string(self : BiostructmotifPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifCluster {
@@ -657,45 +657,45 @@ pub fn bio_struct_motif_cluster_make(size : Int) -> BiostructmotifCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_cluster_len(s : BiostructmotifCluster) -> Int { s.size }
+pub fn BiostructmotifCluster::len(self : BiostructmotifCluster) -> Int { self.size }
 
-pub fn bio_struct_motif_cluster_get(s : BiostructmotifCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifCluster::get(self : BiostructmotifCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_cluster_set(s : BiostructmotifCluster, i : Int, v : Double) -> BiostructmotifCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifCluster::set(self : BiostructmotifCluster, i : Int, v : Double) -> BiostructmotifCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_cluster_sum(s : BiostructmotifCluster) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifCluster::sum(self : BiostructmotifCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_cluster_mean(s : BiostructmotifCluster) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifCluster::mean(self : BiostructmotifCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_cluster_scale(s : BiostructmotifCluster, f : Double) -> BiostructmotifCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifCluster::scale(self : BiostructmotifCluster, f : Double) -> BiostructmotifCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_cluster_add(a : BiostructmotifCluster, b : BiostructmotifCluster) -> BiostructmotifCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifCluster::add(self : BiostructmotifCluster, other : BiostructmotifCluster) -> BiostructmotifCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_cluster_copy(s : BiostructmotifCluster) -> BiostructmotifCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifCluster::copy(self : BiostructmotifCluster) -> BiostructmotifCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_cluster_fill(s : BiostructmotifCluster, v : Double) -> BiostructmotifCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifCluster::fill(self : BiostructmotifCluster, v : Double) -> BiostructmotifCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_cluster_min(s : BiostructmotifCluster) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifCluster::min(self : BiostructmotifCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_cluster_max(s : BiostructmotifCluster) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifCluster::max(self : BiostructmotifCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_cluster_to_string(s : BiostructmotifCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifCluster::to_string(self : BiostructmotifCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifModel {
@@ -708,45 +708,45 @@ pub fn bio_struct_motif_model_make(size : Int) -> BiostructmotifModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_model_len(s : BiostructmotifModel) -> Int { s.size }
+pub fn BiostructmotifModel::len(self : BiostructmotifModel) -> Int { self.size }
 
-pub fn bio_struct_motif_model_get(s : BiostructmotifModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifModel::get(self : BiostructmotifModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_model_set(s : BiostructmotifModel, i : Int, v : Double) -> BiostructmotifModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifModel::set(self : BiostructmotifModel, i : Int, v : Double) -> BiostructmotifModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_model_sum(s : BiostructmotifModel) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifModel::sum(self : BiostructmotifModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_model_mean(s : BiostructmotifModel) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifModel::mean(self : BiostructmotifModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_model_scale(s : BiostructmotifModel, f : Double) -> BiostructmotifModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifModel::scale(self : BiostructmotifModel, f : Double) -> BiostructmotifModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_model_add(a : BiostructmotifModel, b : BiostructmotifModel) -> BiostructmotifModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifModel::add(self : BiostructmotifModel, other : BiostructmotifModel) -> BiostructmotifModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_model_copy(s : BiostructmotifModel) -> BiostructmotifModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifModel::copy(self : BiostructmotifModel) -> BiostructmotifModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_model_fill(s : BiostructmotifModel, v : Double) -> BiostructmotifModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifModel::fill(self : BiostructmotifModel, v : Double) -> BiostructmotifModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_model_min(s : BiostructmotifModel) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifModel::min(self : BiostructmotifModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_model_max(s : BiostructmotifModel) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifModel::max(self : BiostructmotifModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_model_to_string(s : BiostructmotifModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifModel::to_string(self : BiostructmotifModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifLayer {
@@ -759,45 +759,45 @@ pub fn bio_struct_motif_layer_make(size : Int) -> BiostructmotifLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_layer_len(s : BiostructmotifLayer) -> Int { s.size }
+pub fn BiostructmotifLayer::len(self : BiostructmotifLayer) -> Int { self.size }
 
-pub fn bio_struct_motif_layer_get(s : BiostructmotifLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifLayer::get(self : BiostructmotifLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_layer_set(s : BiostructmotifLayer, i : Int, v : Double) -> BiostructmotifLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifLayer::set(self : BiostructmotifLayer, i : Int, v : Double) -> BiostructmotifLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_layer_sum(s : BiostructmotifLayer) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifLayer::sum(self : BiostructmotifLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_layer_mean(s : BiostructmotifLayer) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifLayer::mean(self : BiostructmotifLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_layer_scale(s : BiostructmotifLayer, f : Double) -> BiostructmotifLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifLayer::scale(self : BiostructmotifLayer, f : Double) -> BiostructmotifLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_layer_add(a : BiostructmotifLayer, b : BiostructmotifLayer) -> BiostructmotifLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifLayer::add(self : BiostructmotifLayer, other : BiostructmotifLayer) -> BiostructmotifLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_layer_copy(s : BiostructmotifLayer) -> BiostructmotifLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifLayer::copy(self : BiostructmotifLayer) -> BiostructmotifLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_layer_fill(s : BiostructmotifLayer, v : Double) -> BiostructmotifLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifLayer::fill(self : BiostructmotifLayer, v : Double) -> BiostructmotifLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_layer_min(s : BiostructmotifLayer) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifLayer::min(self : BiostructmotifLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_layer_max(s : BiostructmotifLayer) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifLayer::max(self : BiostructmotifLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_layer_to_string(s : BiostructmotifLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifLayer::to_string(self : BiostructmotifLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifBuffer {
@@ -810,45 +810,45 @@ pub fn bio_struct_motif_buffer_make(size : Int) -> BiostructmotifBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_buffer_len(s : BiostructmotifBuffer) -> Int { s.size }
+pub fn BiostructmotifBuffer::len(self : BiostructmotifBuffer) -> Int { self.size }
 
-pub fn bio_struct_motif_buffer_get(s : BiostructmotifBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifBuffer::get(self : BiostructmotifBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_buffer_set(s : BiostructmotifBuffer, i : Int, v : Double) -> BiostructmotifBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifBuffer::set(self : BiostructmotifBuffer, i : Int, v : Double) -> BiostructmotifBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_buffer_sum(s : BiostructmotifBuffer) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifBuffer::sum(self : BiostructmotifBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_buffer_mean(s : BiostructmotifBuffer) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifBuffer::mean(self : BiostructmotifBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_buffer_scale(s : BiostructmotifBuffer, f : Double) -> BiostructmotifBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifBuffer::scale(self : BiostructmotifBuffer, f : Double) -> BiostructmotifBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_buffer_add(a : BiostructmotifBuffer, b : BiostructmotifBuffer) -> BiostructmotifBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifBuffer::add(self : BiostructmotifBuffer, other : BiostructmotifBuffer) -> BiostructmotifBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_buffer_copy(s : BiostructmotifBuffer) -> BiostructmotifBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifBuffer::copy(self : BiostructmotifBuffer) -> BiostructmotifBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_buffer_fill(s : BiostructmotifBuffer, v : Double) -> BiostructmotifBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifBuffer::fill(self : BiostructmotifBuffer, v : Double) -> BiostructmotifBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_buffer_min(s : BiostructmotifBuffer) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifBuffer::min(self : BiostructmotifBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_buffer_max(s : BiostructmotifBuffer) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifBuffer::max(self : BiostructmotifBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_buffer_to_string(s : BiostructmotifBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifBuffer::to_string(self : BiostructmotifBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifCursor {
@@ -861,45 +861,45 @@ pub fn bio_struct_motif_cursor_make(size : Int) -> BiostructmotifCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_cursor_len(s : BiostructmotifCursor) -> Int { s.size }
+pub fn BiostructmotifCursor::len(self : BiostructmotifCursor) -> Int { self.size }
 
-pub fn bio_struct_motif_cursor_get(s : BiostructmotifCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifCursor::get(self : BiostructmotifCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_cursor_set(s : BiostructmotifCursor, i : Int, v : Double) -> BiostructmotifCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifCursor::set(self : BiostructmotifCursor, i : Int, v : Double) -> BiostructmotifCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_cursor_sum(s : BiostructmotifCursor) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifCursor::sum(self : BiostructmotifCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_cursor_mean(s : BiostructmotifCursor) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifCursor::mean(self : BiostructmotifCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_cursor_scale(s : BiostructmotifCursor, f : Double) -> BiostructmotifCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifCursor::scale(self : BiostructmotifCursor, f : Double) -> BiostructmotifCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_cursor_add(a : BiostructmotifCursor, b : BiostructmotifCursor) -> BiostructmotifCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifCursor::add(self : BiostructmotifCursor, other : BiostructmotifCursor) -> BiostructmotifCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_cursor_copy(s : BiostructmotifCursor) -> BiostructmotifCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifCursor::copy(self : BiostructmotifCursor) -> BiostructmotifCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_cursor_fill(s : BiostructmotifCursor, v : Double) -> BiostructmotifCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifCursor::fill(self : BiostructmotifCursor, v : Double) -> BiostructmotifCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_cursor_min(s : BiostructmotifCursor) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifCursor::min(self : BiostructmotifCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_cursor_max(s : BiostructmotifCursor) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifCursor::max(self : BiostructmotifCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_cursor_to_string(s : BiostructmotifCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifCursor::to_string(self : BiostructmotifCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifView {
@@ -912,45 +912,45 @@ pub fn bio_struct_motif_view_make(size : Int) -> BiostructmotifView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_view_len(s : BiostructmotifView) -> Int { s.size }
+pub fn BiostructmotifView::len(self : BiostructmotifView) -> Int { self.size }
 
-pub fn bio_struct_motif_view_get(s : BiostructmotifView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifView::get(self : BiostructmotifView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_view_set(s : BiostructmotifView, i : Int, v : Double) -> BiostructmotifView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifView::set(self : BiostructmotifView, i : Int, v : Double) -> BiostructmotifView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_view_sum(s : BiostructmotifView) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifView::sum(self : BiostructmotifView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_view_mean(s : BiostructmotifView) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifView::mean(self : BiostructmotifView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_view_scale(s : BiostructmotifView, f : Double) -> BiostructmotifView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifView::scale(self : BiostructmotifView, f : Double) -> BiostructmotifView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_view_add(a : BiostructmotifView, b : BiostructmotifView) -> BiostructmotifView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifView::add(self : BiostructmotifView, other : BiostructmotifView) -> BiostructmotifView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_view_copy(s : BiostructmotifView) -> BiostructmotifView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifView::copy(self : BiostructmotifView) -> BiostructmotifView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_view_fill(s : BiostructmotifView, v : Double) -> BiostructmotifView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifView::fill(self : BiostructmotifView, v : Double) -> BiostructmotifView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_view_min(s : BiostructmotifView) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifView::min(self : BiostructmotifView) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_view_max(s : BiostructmotifView) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifView::max(self : BiostructmotifView) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_view_to_string(s : BiostructmotifView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifView::to_string(self : BiostructmotifView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifRange {
@@ -963,45 +963,45 @@ pub fn bio_struct_motif_range_make(size : Int) -> BiostructmotifRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_range_len(s : BiostructmotifRange) -> Int { s.size }
+pub fn BiostructmotifRange::len(self : BiostructmotifRange) -> Int { self.size }
 
-pub fn bio_struct_motif_range_get(s : BiostructmotifRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifRange::get(self : BiostructmotifRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_range_set(s : BiostructmotifRange, i : Int, v : Double) -> BiostructmotifRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifRange::set(self : BiostructmotifRange, i : Int, v : Double) -> BiostructmotifRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_range_sum(s : BiostructmotifRange) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifRange::sum(self : BiostructmotifRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_range_mean(s : BiostructmotifRange) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifRange::mean(self : BiostructmotifRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_range_scale(s : BiostructmotifRange, f : Double) -> BiostructmotifRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifRange::scale(self : BiostructmotifRange, f : Double) -> BiostructmotifRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_range_add(a : BiostructmotifRange, b : BiostructmotifRange) -> BiostructmotifRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifRange::add(self : BiostructmotifRange, other : BiostructmotifRange) -> BiostructmotifRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_range_copy(s : BiostructmotifRange) -> BiostructmotifRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifRange::copy(self : BiostructmotifRange) -> BiostructmotifRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_range_fill(s : BiostructmotifRange, v : Double) -> BiostructmotifRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifRange::fill(self : BiostructmotifRange, v : Double) -> BiostructmotifRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_range_min(s : BiostructmotifRange) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifRange::min(self : BiostructmotifRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_range_max(s : BiostructmotifRange) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifRange::max(self : BiostructmotifRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_range_to_string(s : BiostructmotifRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifRange::to_string(self : BiostructmotifRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructmotifSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_struct_motif_slice_make(size : Int) -> BiostructmotifSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_motif_slice_len(s : BiostructmotifSlice) -> Int { s.size }
+pub fn BiostructmotifSlice::len(self : BiostructmotifSlice) -> Int { self.size }
 
-pub fn bio_struct_motif_slice_get(s : BiostructmotifSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructmotifSlice::get(self : BiostructmotifSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_motif_slice_set(s : BiostructmotifSlice, i : Int, v : Double) -> BiostructmotifSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructmotifSlice::set(self : BiostructmotifSlice, i : Int, v : Double) -> BiostructmotifSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_slice_sum(s : BiostructmotifSlice) -> Double { @_common.sum(s.data) }
+pub fn BiostructmotifSlice::sum(self : BiostructmotifSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_motif_slice_mean(s : BiostructmotifSlice) -> Double { @_common.mean(s.data) }
+pub fn BiostructmotifSlice::mean(self : BiostructmotifSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_motif_slice_scale(s : BiostructmotifSlice, f : Double) -> BiostructmotifSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructmotifSlice::scale(self : BiostructmotifSlice, f : Double) -> BiostructmotifSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_slice_add(a : BiostructmotifSlice, b : BiostructmotifSlice) -> BiostructmotifSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructmotifSlice::add(self : BiostructmotifSlice, other : BiostructmotifSlice) -> BiostructmotifSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_motif_slice_copy(s : BiostructmotifSlice) -> BiostructmotifSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructmotifSlice::copy(self : BiostructmotifSlice) -> BiostructmotifSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_slice_fill(s : BiostructmotifSlice, v : Double) -> BiostructmotifSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructmotifSlice::fill(self : BiostructmotifSlice, v : Double) -> BiostructmotifSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_motif_slice_min(s : BiostructmotifSlice) -> Double { @_common.min(s.data) }
+pub fn BiostructmotifSlice::min(self : BiostructmotifSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_motif_slice_max(s : BiostructmotifSlice) -> Double { @_common.max(s.data) }
+pub fn BiostructmotifSlice::max(self : BiostructmotifSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_motif_slice_to_string(s : BiostructmotifSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructmotifSlice::to_string(self : BiostructmotifSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn geo_dist_manhattan_frame_make(size : Int) -> GeodistmanhattanFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_frame_len(s : GeodistmanhattanFrame) -> Int { s.size }
+pub fn GeodistmanhattanFrame::len(self : GeodistmanhattanFrame) -> Int { self.size }
 
-pub fn geo_dist_manhattan_frame_get(s : GeodistmanhattanFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanFrame::get(self : GeodistmanhattanFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_frame_set(s : GeodistmanhattanFrame, i : Int, v : Double) -> GeodistmanhattanFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanFrame::set(self : GeodistmanhattanFrame, i : Int, v : Double) -> GeodistmanhattanFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_frame_sum(s : GeodistmanhattanFrame) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanFrame::sum(self : GeodistmanhattanFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_frame_mean(s : GeodistmanhattanFrame) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanFrame::mean(self : GeodistmanhattanFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_frame_scale(s : GeodistmanhattanFrame, f : Double) -> GeodistmanhattanFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanFrame::scale(self : GeodistmanhattanFrame, f : Double) -> GeodistmanhattanFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_frame_add(a : GeodistmanhattanFrame, b : GeodistmanhattanFrame) -> GeodistmanhattanFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanFrame::add(self : GeodistmanhattanFrame, other : GeodistmanhattanFrame) -> GeodistmanhattanFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_frame_copy(s : GeodistmanhattanFrame) -> GeodistmanhattanFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanFrame::copy(self : GeodistmanhattanFrame) -> GeodistmanhattanFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_frame_fill(s : GeodistmanhattanFrame, v : Double) -> GeodistmanhattanFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanFrame::fill(self : GeodistmanhattanFrame, v : Double) -> GeodistmanhattanFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_frame_min(s : GeodistmanhattanFrame) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanFrame::min(self : GeodistmanhattanFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_frame_max(s : GeodistmanhattanFrame) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanFrame::max(self : GeodistmanhattanFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_frame_to_string(s : GeodistmanhattanFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanFrame::to_string(self : GeodistmanhattanFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanTable {
@@ -402,45 +402,45 @@ pub fn geo_dist_manhattan_table_make(size : Int) -> GeodistmanhattanTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_table_len(s : GeodistmanhattanTable) -> Int { s.size }
+pub fn GeodistmanhattanTable::len(self : GeodistmanhattanTable) -> Int { self.size }
 
-pub fn geo_dist_manhattan_table_get(s : GeodistmanhattanTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanTable::get(self : GeodistmanhattanTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_table_set(s : GeodistmanhattanTable, i : Int, v : Double) -> GeodistmanhattanTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanTable::set(self : GeodistmanhattanTable, i : Int, v : Double) -> GeodistmanhattanTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_table_sum(s : GeodistmanhattanTable) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanTable::sum(self : GeodistmanhattanTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_table_mean(s : GeodistmanhattanTable) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanTable::mean(self : GeodistmanhattanTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_table_scale(s : GeodistmanhattanTable, f : Double) -> GeodistmanhattanTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanTable::scale(self : GeodistmanhattanTable, f : Double) -> GeodistmanhattanTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_table_add(a : GeodistmanhattanTable, b : GeodistmanhattanTable) -> GeodistmanhattanTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanTable::add(self : GeodistmanhattanTable, other : GeodistmanhattanTable) -> GeodistmanhattanTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_table_copy(s : GeodistmanhattanTable) -> GeodistmanhattanTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanTable::copy(self : GeodistmanhattanTable) -> GeodistmanhattanTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_table_fill(s : GeodistmanhattanTable, v : Double) -> GeodistmanhattanTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanTable::fill(self : GeodistmanhattanTable, v : Double) -> GeodistmanhattanTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_table_min(s : GeodistmanhattanTable) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanTable::min(self : GeodistmanhattanTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_table_max(s : GeodistmanhattanTable) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanTable::max(self : GeodistmanhattanTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_table_to_string(s : GeodistmanhattanTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanTable::to_string(self : GeodistmanhattanTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanGraphN {
@@ -453,45 +453,45 @@ pub fn geo_dist_manhattan_graphn_make(size : Int) -> GeodistmanhattanGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_graphn_len(s : GeodistmanhattanGraphN) -> Int { s.size }
+pub fn GeodistmanhattanGraphN::len(self : GeodistmanhattanGraphN) -> Int { self.size }
 
-pub fn geo_dist_manhattan_graphn_get(s : GeodistmanhattanGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanGraphN::get(self : GeodistmanhattanGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_graphn_set(s : GeodistmanhattanGraphN, i : Int, v : Double) -> GeodistmanhattanGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanGraphN::set(self : GeodistmanhattanGraphN, i : Int, v : Double) -> GeodistmanhattanGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_graphn_sum(s : GeodistmanhattanGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanGraphN::sum(self : GeodistmanhattanGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_graphn_mean(s : GeodistmanhattanGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanGraphN::mean(self : GeodistmanhattanGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_graphn_scale(s : GeodistmanhattanGraphN, f : Double) -> GeodistmanhattanGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanGraphN::scale(self : GeodistmanhattanGraphN, f : Double) -> GeodistmanhattanGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_graphn_add(a : GeodistmanhattanGraphN, b : GeodistmanhattanGraphN) -> GeodistmanhattanGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanGraphN::add(self : GeodistmanhattanGraphN, other : GeodistmanhattanGraphN) -> GeodistmanhattanGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_graphn_copy(s : GeodistmanhattanGraphN) -> GeodistmanhattanGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanGraphN::copy(self : GeodistmanhattanGraphN) -> GeodistmanhattanGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_graphn_fill(s : GeodistmanhattanGraphN, v : Double) -> GeodistmanhattanGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanGraphN::fill(self : GeodistmanhattanGraphN, v : Double) -> GeodistmanhattanGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_graphn_min(s : GeodistmanhattanGraphN) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanGraphN::min(self : GeodistmanhattanGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_graphn_max(s : GeodistmanhattanGraphN) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanGraphN::max(self : GeodistmanhattanGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_graphn_to_string(s : GeodistmanhattanGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanGraphN::to_string(self : GeodistmanhattanGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanNode {
@@ -504,45 +504,45 @@ pub fn geo_dist_manhattan_node_make(size : Int) -> GeodistmanhattanNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_node_len(s : GeodistmanhattanNode) -> Int { s.size }
+pub fn GeodistmanhattanNode::len(self : GeodistmanhattanNode) -> Int { self.size }
 
-pub fn geo_dist_manhattan_node_get(s : GeodistmanhattanNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanNode::get(self : GeodistmanhattanNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_node_set(s : GeodistmanhattanNode, i : Int, v : Double) -> GeodistmanhattanNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanNode::set(self : GeodistmanhattanNode, i : Int, v : Double) -> GeodistmanhattanNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_node_sum(s : GeodistmanhattanNode) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanNode::sum(self : GeodistmanhattanNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_node_mean(s : GeodistmanhattanNode) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanNode::mean(self : GeodistmanhattanNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_node_scale(s : GeodistmanhattanNode, f : Double) -> GeodistmanhattanNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanNode::scale(self : GeodistmanhattanNode, f : Double) -> GeodistmanhattanNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_node_add(a : GeodistmanhattanNode, b : GeodistmanhattanNode) -> GeodistmanhattanNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanNode::add(self : GeodistmanhattanNode, other : GeodistmanhattanNode) -> GeodistmanhattanNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_node_copy(s : GeodistmanhattanNode) -> GeodistmanhattanNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanNode::copy(self : GeodistmanhattanNode) -> GeodistmanhattanNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_node_fill(s : GeodistmanhattanNode, v : Double) -> GeodistmanhattanNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanNode::fill(self : GeodistmanhattanNode, v : Double) -> GeodistmanhattanNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_node_min(s : GeodistmanhattanNode) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanNode::min(self : GeodistmanhattanNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_node_max(s : GeodistmanhattanNode) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanNode::max(self : GeodistmanhattanNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_node_to_string(s : GeodistmanhattanNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanNode::to_string(self : GeodistmanhattanNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanEdge {
@@ -555,45 +555,45 @@ pub fn geo_dist_manhattan_edge_make(size : Int) -> GeodistmanhattanEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_edge_len(s : GeodistmanhattanEdge) -> Int { s.size }
+pub fn GeodistmanhattanEdge::len(self : GeodistmanhattanEdge) -> Int { self.size }
 
-pub fn geo_dist_manhattan_edge_get(s : GeodistmanhattanEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanEdge::get(self : GeodistmanhattanEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_edge_set(s : GeodistmanhattanEdge, i : Int, v : Double) -> GeodistmanhattanEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanEdge::set(self : GeodistmanhattanEdge, i : Int, v : Double) -> GeodistmanhattanEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_edge_sum(s : GeodistmanhattanEdge) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanEdge::sum(self : GeodistmanhattanEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_edge_mean(s : GeodistmanhattanEdge) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanEdge::mean(self : GeodistmanhattanEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_edge_scale(s : GeodistmanhattanEdge, f : Double) -> GeodistmanhattanEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanEdge::scale(self : GeodistmanhattanEdge, f : Double) -> GeodistmanhattanEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_edge_add(a : GeodistmanhattanEdge, b : GeodistmanhattanEdge) -> GeodistmanhattanEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanEdge::add(self : GeodistmanhattanEdge, other : GeodistmanhattanEdge) -> GeodistmanhattanEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_edge_copy(s : GeodistmanhattanEdge) -> GeodistmanhattanEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanEdge::copy(self : GeodistmanhattanEdge) -> GeodistmanhattanEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_edge_fill(s : GeodistmanhattanEdge, v : Double) -> GeodistmanhattanEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanEdge::fill(self : GeodistmanhattanEdge, v : Double) -> GeodistmanhattanEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_edge_min(s : GeodistmanhattanEdge) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanEdge::min(self : GeodistmanhattanEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_edge_max(s : GeodistmanhattanEdge) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanEdge::max(self : GeodistmanhattanEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_edge_to_string(s : GeodistmanhattanEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanEdge::to_string(self : GeodistmanhattanEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanPath {
@@ -606,45 +606,45 @@ pub fn geo_dist_manhattan_path_make(size : Int) -> GeodistmanhattanPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_path_len(s : GeodistmanhattanPath) -> Int { s.size }
+pub fn GeodistmanhattanPath::len(self : GeodistmanhattanPath) -> Int { self.size }
 
-pub fn geo_dist_manhattan_path_get(s : GeodistmanhattanPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanPath::get(self : GeodistmanhattanPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_path_set(s : GeodistmanhattanPath, i : Int, v : Double) -> GeodistmanhattanPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanPath::set(self : GeodistmanhattanPath, i : Int, v : Double) -> GeodistmanhattanPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_path_sum(s : GeodistmanhattanPath) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanPath::sum(self : GeodistmanhattanPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_path_mean(s : GeodistmanhattanPath) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanPath::mean(self : GeodistmanhattanPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_path_scale(s : GeodistmanhattanPath, f : Double) -> GeodistmanhattanPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanPath::scale(self : GeodistmanhattanPath, f : Double) -> GeodistmanhattanPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_path_add(a : GeodistmanhattanPath, b : GeodistmanhattanPath) -> GeodistmanhattanPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanPath::add(self : GeodistmanhattanPath, other : GeodistmanhattanPath) -> GeodistmanhattanPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_path_copy(s : GeodistmanhattanPath) -> GeodistmanhattanPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanPath::copy(self : GeodistmanhattanPath) -> GeodistmanhattanPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_path_fill(s : GeodistmanhattanPath, v : Double) -> GeodistmanhattanPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanPath::fill(self : GeodistmanhattanPath, v : Double) -> GeodistmanhattanPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_path_min(s : GeodistmanhattanPath) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanPath::min(self : GeodistmanhattanPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_path_max(s : GeodistmanhattanPath) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanPath::max(self : GeodistmanhattanPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_path_to_string(s : GeodistmanhattanPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanPath::to_string(self : GeodistmanhattanPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanCluster {
@@ -657,45 +657,45 @@ pub fn geo_dist_manhattan_cluster_make(size : Int) -> GeodistmanhattanCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_cluster_len(s : GeodistmanhattanCluster) -> Int { s.size }
+pub fn GeodistmanhattanCluster::len(self : GeodistmanhattanCluster) -> Int { self.size }
 
-pub fn geo_dist_manhattan_cluster_get(s : GeodistmanhattanCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanCluster::get(self : GeodistmanhattanCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_cluster_set(s : GeodistmanhattanCluster, i : Int, v : Double) -> GeodistmanhattanCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanCluster::set(self : GeodistmanhattanCluster, i : Int, v : Double) -> GeodistmanhattanCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_cluster_sum(s : GeodistmanhattanCluster) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanCluster::sum(self : GeodistmanhattanCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_cluster_mean(s : GeodistmanhattanCluster) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanCluster::mean(self : GeodistmanhattanCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_cluster_scale(s : GeodistmanhattanCluster, f : Double) -> GeodistmanhattanCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanCluster::scale(self : GeodistmanhattanCluster, f : Double) -> GeodistmanhattanCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_cluster_add(a : GeodistmanhattanCluster, b : GeodistmanhattanCluster) -> GeodistmanhattanCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanCluster::add(self : GeodistmanhattanCluster, other : GeodistmanhattanCluster) -> GeodistmanhattanCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_cluster_copy(s : GeodistmanhattanCluster) -> GeodistmanhattanCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanCluster::copy(self : GeodistmanhattanCluster) -> GeodistmanhattanCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_cluster_fill(s : GeodistmanhattanCluster, v : Double) -> GeodistmanhattanCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanCluster::fill(self : GeodistmanhattanCluster, v : Double) -> GeodistmanhattanCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_cluster_min(s : GeodistmanhattanCluster) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanCluster::min(self : GeodistmanhattanCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_cluster_max(s : GeodistmanhattanCluster) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanCluster::max(self : GeodistmanhattanCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_cluster_to_string(s : GeodistmanhattanCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanCluster::to_string(self : GeodistmanhattanCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanModel {
@@ -708,45 +708,45 @@ pub fn geo_dist_manhattan_model_make(size : Int) -> GeodistmanhattanModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_model_len(s : GeodistmanhattanModel) -> Int { s.size }
+pub fn GeodistmanhattanModel::len(self : GeodistmanhattanModel) -> Int { self.size }
 
-pub fn geo_dist_manhattan_model_get(s : GeodistmanhattanModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanModel::get(self : GeodistmanhattanModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_model_set(s : GeodistmanhattanModel, i : Int, v : Double) -> GeodistmanhattanModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanModel::set(self : GeodistmanhattanModel, i : Int, v : Double) -> GeodistmanhattanModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_model_sum(s : GeodistmanhattanModel) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanModel::sum(self : GeodistmanhattanModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_model_mean(s : GeodistmanhattanModel) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanModel::mean(self : GeodistmanhattanModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_model_scale(s : GeodistmanhattanModel, f : Double) -> GeodistmanhattanModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanModel::scale(self : GeodistmanhattanModel, f : Double) -> GeodistmanhattanModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_model_add(a : GeodistmanhattanModel, b : GeodistmanhattanModel) -> GeodistmanhattanModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanModel::add(self : GeodistmanhattanModel, other : GeodistmanhattanModel) -> GeodistmanhattanModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_model_copy(s : GeodistmanhattanModel) -> GeodistmanhattanModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanModel::copy(self : GeodistmanhattanModel) -> GeodistmanhattanModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_model_fill(s : GeodistmanhattanModel, v : Double) -> GeodistmanhattanModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanModel::fill(self : GeodistmanhattanModel, v : Double) -> GeodistmanhattanModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_model_min(s : GeodistmanhattanModel) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanModel::min(self : GeodistmanhattanModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_model_max(s : GeodistmanhattanModel) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanModel::max(self : GeodistmanhattanModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_model_to_string(s : GeodistmanhattanModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanModel::to_string(self : GeodistmanhattanModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanLayer {
@@ -759,45 +759,45 @@ pub fn geo_dist_manhattan_layer_make(size : Int) -> GeodistmanhattanLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_layer_len(s : GeodistmanhattanLayer) -> Int { s.size }
+pub fn GeodistmanhattanLayer::len(self : GeodistmanhattanLayer) -> Int { self.size }
 
-pub fn geo_dist_manhattan_layer_get(s : GeodistmanhattanLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanLayer::get(self : GeodistmanhattanLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_layer_set(s : GeodistmanhattanLayer, i : Int, v : Double) -> GeodistmanhattanLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanLayer::set(self : GeodistmanhattanLayer, i : Int, v : Double) -> GeodistmanhattanLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_layer_sum(s : GeodistmanhattanLayer) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanLayer::sum(self : GeodistmanhattanLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_layer_mean(s : GeodistmanhattanLayer) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanLayer::mean(self : GeodistmanhattanLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_layer_scale(s : GeodistmanhattanLayer, f : Double) -> GeodistmanhattanLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanLayer::scale(self : GeodistmanhattanLayer, f : Double) -> GeodistmanhattanLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_layer_add(a : GeodistmanhattanLayer, b : GeodistmanhattanLayer) -> GeodistmanhattanLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanLayer::add(self : GeodistmanhattanLayer, other : GeodistmanhattanLayer) -> GeodistmanhattanLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_layer_copy(s : GeodistmanhattanLayer) -> GeodistmanhattanLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanLayer::copy(self : GeodistmanhattanLayer) -> GeodistmanhattanLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_layer_fill(s : GeodistmanhattanLayer, v : Double) -> GeodistmanhattanLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanLayer::fill(self : GeodistmanhattanLayer, v : Double) -> GeodistmanhattanLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_layer_min(s : GeodistmanhattanLayer) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanLayer::min(self : GeodistmanhattanLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_layer_max(s : GeodistmanhattanLayer) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanLayer::max(self : GeodistmanhattanLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_layer_to_string(s : GeodistmanhattanLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanLayer::to_string(self : GeodistmanhattanLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanBuffer {
@@ -810,45 +810,45 @@ pub fn geo_dist_manhattan_buffer_make(size : Int) -> GeodistmanhattanBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_buffer_len(s : GeodistmanhattanBuffer) -> Int { s.size }
+pub fn GeodistmanhattanBuffer::len(self : GeodistmanhattanBuffer) -> Int { self.size }
 
-pub fn geo_dist_manhattan_buffer_get(s : GeodistmanhattanBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanBuffer::get(self : GeodistmanhattanBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_buffer_set(s : GeodistmanhattanBuffer, i : Int, v : Double) -> GeodistmanhattanBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanBuffer::set(self : GeodistmanhattanBuffer, i : Int, v : Double) -> GeodistmanhattanBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_buffer_sum(s : GeodistmanhattanBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanBuffer::sum(self : GeodistmanhattanBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_buffer_mean(s : GeodistmanhattanBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanBuffer::mean(self : GeodistmanhattanBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_buffer_scale(s : GeodistmanhattanBuffer, f : Double) -> GeodistmanhattanBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanBuffer::scale(self : GeodistmanhattanBuffer, f : Double) -> GeodistmanhattanBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_buffer_add(a : GeodistmanhattanBuffer, b : GeodistmanhattanBuffer) -> GeodistmanhattanBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanBuffer::add(self : GeodistmanhattanBuffer, other : GeodistmanhattanBuffer) -> GeodistmanhattanBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_buffer_copy(s : GeodistmanhattanBuffer) -> GeodistmanhattanBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanBuffer::copy(self : GeodistmanhattanBuffer) -> GeodistmanhattanBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_buffer_fill(s : GeodistmanhattanBuffer, v : Double) -> GeodistmanhattanBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanBuffer::fill(self : GeodistmanhattanBuffer, v : Double) -> GeodistmanhattanBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_buffer_min(s : GeodistmanhattanBuffer) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanBuffer::min(self : GeodistmanhattanBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_buffer_max(s : GeodistmanhattanBuffer) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanBuffer::max(self : GeodistmanhattanBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_buffer_to_string(s : GeodistmanhattanBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanBuffer::to_string(self : GeodistmanhattanBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanCursor {
@@ -861,45 +861,45 @@ pub fn geo_dist_manhattan_cursor_make(size : Int) -> GeodistmanhattanCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_cursor_len(s : GeodistmanhattanCursor) -> Int { s.size }
+pub fn GeodistmanhattanCursor::len(self : GeodistmanhattanCursor) -> Int { self.size }
 
-pub fn geo_dist_manhattan_cursor_get(s : GeodistmanhattanCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanCursor::get(self : GeodistmanhattanCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_cursor_set(s : GeodistmanhattanCursor, i : Int, v : Double) -> GeodistmanhattanCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanCursor::set(self : GeodistmanhattanCursor, i : Int, v : Double) -> GeodistmanhattanCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_cursor_sum(s : GeodistmanhattanCursor) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanCursor::sum(self : GeodistmanhattanCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_cursor_mean(s : GeodistmanhattanCursor) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanCursor::mean(self : GeodistmanhattanCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_cursor_scale(s : GeodistmanhattanCursor, f : Double) -> GeodistmanhattanCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanCursor::scale(self : GeodistmanhattanCursor, f : Double) -> GeodistmanhattanCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_cursor_add(a : GeodistmanhattanCursor, b : GeodistmanhattanCursor) -> GeodistmanhattanCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanCursor::add(self : GeodistmanhattanCursor, other : GeodistmanhattanCursor) -> GeodistmanhattanCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_cursor_copy(s : GeodistmanhattanCursor) -> GeodistmanhattanCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanCursor::copy(self : GeodistmanhattanCursor) -> GeodistmanhattanCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_cursor_fill(s : GeodistmanhattanCursor, v : Double) -> GeodistmanhattanCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanCursor::fill(self : GeodistmanhattanCursor, v : Double) -> GeodistmanhattanCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_cursor_min(s : GeodistmanhattanCursor) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanCursor::min(self : GeodistmanhattanCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_cursor_max(s : GeodistmanhattanCursor) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanCursor::max(self : GeodistmanhattanCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_cursor_to_string(s : GeodistmanhattanCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanCursor::to_string(self : GeodistmanhattanCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanView {
@@ -912,45 +912,45 @@ pub fn geo_dist_manhattan_view_make(size : Int) -> GeodistmanhattanView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_view_len(s : GeodistmanhattanView) -> Int { s.size }
+pub fn GeodistmanhattanView::len(self : GeodistmanhattanView) -> Int { self.size }
 
-pub fn geo_dist_manhattan_view_get(s : GeodistmanhattanView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanView::get(self : GeodistmanhattanView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_view_set(s : GeodistmanhattanView, i : Int, v : Double) -> GeodistmanhattanView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanView::set(self : GeodistmanhattanView, i : Int, v : Double) -> GeodistmanhattanView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_view_sum(s : GeodistmanhattanView) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanView::sum(self : GeodistmanhattanView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_view_mean(s : GeodistmanhattanView) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanView::mean(self : GeodistmanhattanView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_view_scale(s : GeodistmanhattanView, f : Double) -> GeodistmanhattanView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanView::scale(self : GeodistmanhattanView, f : Double) -> GeodistmanhattanView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_view_add(a : GeodistmanhattanView, b : GeodistmanhattanView) -> GeodistmanhattanView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanView::add(self : GeodistmanhattanView, other : GeodistmanhattanView) -> GeodistmanhattanView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_view_copy(s : GeodistmanhattanView) -> GeodistmanhattanView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanView::copy(self : GeodistmanhattanView) -> GeodistmanhattanView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_view_fill(s : GeodistmanhattanView, v : Double) -> GeodistmanhattanView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanView::fill(self : GeodistmanhattanView, v : Double) -> GeodistmanhattanView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_view_min(s : GeodistmanhattanView) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanView::min(self : GeodistmanhattanView) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_view_max(s : GeodistmanhattanView) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanView::max(self : GeodistmanhattanView) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_view_to_string(s : GeodistmanhattanView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanView::to_string(self : GeodistmanhattanView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanRange {
@@ -963,45 +963,45 @@ pub fn geo_dist_manhattan_range_make(size : Int) -> GeodistmanhattanRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_range_len(s : GeodistmanhattanRange) -> Int { s.size }
+pub fn GeodistmanhattanRange::len(self : GeodistmanhattanRange) -> Int { self.size }
 
-pub fn geo_dist_manhattan_range_get(s : GeodistmanhattanRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanRange::get(self : GeodistmanhattanRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_range_set(s : GeodistmanhattanRange, i : Int, v : Double) -> GeodistmanhattanRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanRange::set(self : GeodistmanhattanRange, i : Int, v : Double) -> GeodistmanhattanRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_range_sum(s : GeodistmanhattanRange) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanRange::sum(self : GeodistmanhattanRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_range_mean(s : GeodistmanhattanRange) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanRange::mean(self : GeodistmanhattanRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_range_scale(s : GeodistmanhattanRange, f : Double) -> GeodistmanhattanRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanRange::scale(self : GeodistmanhattanRange, f : Double) -> GeodistmanhattanRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_range_add(a : GeodistmanhattanRange, b : GeodistmanhattanRange) -> GeodistmanhattanRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanRange::add(self : GeodistmanhattanRange, other : GeodistmanhattanRange) -> GeodistmanhattanRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_range_copy(s : GeodistmanhattanRange) -> GeodistmanhattanRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanRange::copy(self : GeodistmanhattanRange) -> GeodistmanhattanRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_range_fill(s : GeodistmanhattanRange, v : Double) -> GeodistmanhattanRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanRange::fill(self : GeodistmanhattanRange, v : Double) -> GeodistmanhattanRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_range_min(s : GeodistmanhattanRange) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanRange::min(self : GeodistmanhattanRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_range_max(s : GeodistmanhattanRange) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanRange::max(self : GeodistmanhattanRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_range_to_string(s : GeodistmanhattanRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanRange::to_string(self : GeodistmanhattanRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistmanhattanSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_dist_manhattan_slice_make(size : Int) -> GeodistmanhattanSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_manhattan_slice_len(s : GeodistmanhattanSlice) -> Int { s.size }
+pub fn GeodistmanhattanSlice::len(self : GeodistmanhattanSlice) -> Int { self.size }
 
-pub fn geo_dist_manhattan_slice_get(s : GeodistmanhattanSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistmanhattanSlice::get(self : GeodistmanhattanSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_manhattan_slice_set(s : GeodistmanhattanSlice, i : Int, v : Double) -> GeodistmanhattanSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistmanhattanSlice::set(self : GeodistmanhattanSlice, i : Int, v : Double) -> GeodistmanhattanSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_slice_sum(s : GeodistmanhattanSlice) -> Double { @_common.sum(s.data) }
+pub fn GeodistmanhattanSlice::sum(self : GeodistmanhattanSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_manhattan_slice_mean(s : GeodistmanhattanSlice) -> Double { @_common.mean(s.data) }
+pub fn GeodistmanhattanSlice::mean(self : GeodistmanhattanSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_manhattan_slice_scale(s : GeodistmanhattanSlice, f : Double) -> GeodistmanhattanSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanSlice::scale(self : GeodistmanhattanSlice, f : Double) -> GeodistmanhattanSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_slice_add(a : GeodistmanhattanSlice, b : GeodistmanhattanSlice) -> GeodistmanhattanSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistmanhattanSlice::add(self : GeodistmanhattanSlice, other : GeodistmanhattanSlice) -> GeodistmanhattanSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_slice_copy(s : GeodistmanhattanSlice) -> GeodistmanhattanSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanSlice::copy(self : GeodistmanhattanSlice) -> GeodistmanhattanSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_slice_fill(s : GeodistmanhattanSlice, v : Double) -> GeodistmanhattanSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistmanhattanSlice::fill(self : GeodistmanhattanSlice, v : Double) -> GeodistmanhattanSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_manhattan_slice_min(s : GeodistmanhattanSlice) -> Double { @_common.min(s.data) }
+pub fn GeodistmanhattanSlice::min(self : GeodistmanhattanSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_manhattan_slice_max(s : GeodistmanhattanSlice) -> Double { @_common.max(s.data) }
+pub fn GeodistmanhattanSlice::max(self : GeodistmanhattanSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_manhattan_slice_to_string(s : GeodistmanhattanSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistmanhattanSlice::to_string(self : GeodistmanhattanSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

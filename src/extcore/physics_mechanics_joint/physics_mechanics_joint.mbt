@@ -351,45 +351,45 @@ pub fn physics_mechanics_joint_frame_make(size : Int) -> PhysicsmechanicsjointFr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_frame_len(s : PhysicsmechanicsjointFrame) -> Int { s.size }
+pub fn PhysicsmechanicsjointFrame::len(self : PhysicsmechanicsjointFrame) -> Int { self.size }
 
-pub fn physics_mechanics_joint_frame_get(s : PhysicsmechanicsjointFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointFrame::get(self : PhysicsmechanicsjointFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_frame_set(s : PhysicsmechanicsjointFrame, i : Int, v : Double) -> PhysicsmechanicsjointFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointFrame::set(self : PhysicsmechanicsjointFrame, i : Int, v : Double) -> PhysicsmechanicsjointFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_frame_sum(s : PhysicsmechanicsjointFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointFrame::sum(self : PhysicsmechanicsjointFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_frame_mean(s : PhysicsmechanicsjointFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointFrame::mean(self : PhysicsmechanicsjointFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_frame_scale(s : PhysicsmechanicsjointFrame, f : Double) -> PhysicsmechanicsjointFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointFrame::scale(self : PhysicsmechanicsjointFrame, f : Double) -> PhysicsmechanicsjointFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_frame_add(a : PhysicsmechanicsjointFrame, b : PhysicsmechanicsjointFrame) -> PhysicsmechanicsjointFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointFrame::add(self : PhysicsmechanicsjointFrame, other : PhysicsmechanicsjointFrame) -> PhysicsmechanicsjointFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_frame_copy(s : PhysicsmechanicsjointFrame) -> PhysicsmechanicsjointFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointFrame::copy(self : PhysicsmechanicsjointFrame) -> PhysicsmechanicsjointFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_frame_fill(s : PhysicsmechanicsjointFrame, v : Double) -> PhysicsmechanicsjointFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointFrame::fill(self : PhysicsmechanicsjointFrame, v : Double) -> PhysicsmechanicsjointFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_frame_min(s : PhysicsmechanicsjointFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointFrame::min(self : PhysicsmechanicsjointFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_frame_max(s : PhysicsmechanicsjointFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointFrame::max(self : PhysicsmechanicsjointFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_frame_to_string(s : PhysicsmechanicsjointFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointFrame::to_string(self : PhysicsmechanicsjointFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointTable {
@@ -402,45 +402,45 @@ pub fn physics_mechanics_joint_table_make(size : Int) -> PhysicsmechanicsjointTa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_table_len(s : PhysicsmechanicsjointTable) -> Int { s.size }
+pub fn PhysicsmechanicsjointTable::len(self : PhysicsmechanicsjointTable) -> Int { self.size }
 
-pub fn physics_mechanics_joint_table_get(s : PhysicsmechanicsjointTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointTable::get(self : PhysicsmechanicsjointTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_table_set(s : PhysicsmechanicsjointTable, i : Int, v : Double) -> PhysicsmechanicsjointTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointTable::set(self : PhysicsmechanicsjointTable, i : Int, v : Double) -> PhysicsmechanicsjointTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_table_sum(s : PhysicsmechanicsjointTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointTable::sum(self : PhysicsmechanicsjointTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_table_mean(s : PhysicsmechanicsjointTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointTable::mean(self : PhysicsmechanicsjointTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_table_scale(s : PhysicsmechanicsjointTable, f : Double) -> PhysicsmechanicsjointTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointTable::scale(self : PhysicsmechanicsjointTable, f : Double) -> PhysicsmechanicsjointTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_table_add(a : PhysicsmechanicsjointTable, b : PhysicsmechanicsjointTable) -> PhysicsmechanicsjointTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointTable::add(self : PhysicsmechanicsjointTable, other : PhysicsmechanicsjointTable) -> PhysicsmechanicsjointTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_table_copy(s : PhysicsmechanicsjointTable) -> PhysicsmechanicsjointTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointTable::copy(self : PhysicsmechanicsjointTable) -> PhysicsmechanicsjointTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_table_fill(s : PhysicsmechanicsjointTable, v : Double) -> PhysicsmechanicsjointTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointTable::fill(self : PhysicsmechanicsjointTable, v : Double) -> PhysicsmechanicsjointTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_table_min(s : PhysicsmechanicsjointTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointTable::min(self : PhysicsmechanicsjointTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_table_max(s : PhysicsmechanicsjointTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointTable::max(self : PhysicsmechanicsjointTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_table_to_string(s : PhysicsmechanicsjointTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointTable::to_string(self : PhysicsmechanicsjointTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointGraphN {
@@ -453,45 +453,45 @@ pub fn physics_mechanics_joint_graphn_make(size : Int) -> PhysicsmechanicsjointG
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_graphn_len(s : PhysicsmechanicsjointGraphN) -> Int { s.size }
+pub fn PhysicsmechanicsjointGraphN::len(self : PhysicsmechanicsjointGraphN) -> Int { self.size }
 
-pub fn physics_mechanics_joint_graphn_get(s : PhysicsmechanicsjointGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointGraphN::get(self : PhysicsmechanicsjointGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_graphn_set(s : PhysicsmechanicsjointGraphN, i : Int, v : Double) -> PhysicsmechanicsjointGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointGraphN::set(self : PhysicsmechanicsjointGraphN, i : Int, v : Double) -> PhysicsmechanicsjointGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_graphn_sum(s : PhysicsmechanicsjointGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointGraphN::sum(self : PhysicsmechanicsjointGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_graphn_mean(s : PhysicsmechanicsjointGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointGraphN::mean(self : PhysicsmechanicsjointGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_graphn_scale(s : PhysicsmechanicsjointGraphN, f : Double) -> PhysicsmechanicsjointGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointGraphN::scale(self : PhysicsmechanicsjointGraphN, f : Double) -> PhysicsmechanicsjointGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_graphn_add(a : PhysicsmechanicsjointGraphN, b : PhysicsmechanicsjointGraphN) -> PhysicsmechanicsjointGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointGraphN::add(self : PhysicsmechanicsjointGraphN, other : PhysicsmechanicsjointGraphN) -> PhysicsmechanicsjointGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_graphn_copy(s : PhysicsmechanicsjointGraphN) -> PhysicsmechanicsjointGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointGraphN::copy(self : PhysicsmechanicsjointGraphN) -> PhysicsmechanicsjointGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_graphn_fill(s : PhysicsmechanicsjointGraphN, v : Double) -> PhysicsmechanicsjointGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointGraphN::fill(self : PhysicsmechanicsjointGraphN, v : Double) -> PhysicsmechanicsjointGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_graphn_min(s : PhysicsmechanicsjointGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointGraphN::min(self : PhysicsmechanicsjointGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_graphn_max(s : PhysicsmechanicsjointGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointGraphN::max(self : PhysicsmechanicsjointGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_graphn_to_string(s : PhysicsmechanicsjointGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointGraphN::to_string(self : PhysicsmechanicsjointGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointNode {
@@ -504,45 +504,45 @@ pub fn physics_mechanics_joint_node_make(size : Int) -> PhysicsmechanicsjointNod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_node_len(s : PhysicsmechanicsjointNode) -> Int { s.size }
+pub fn PhysicsmechanicsjointNode::len(self : PhysicsmechanicsjointNode) -> Int { self.size }
 
-pub fn physics_mechanics_joint_node_get(s : PhysicsmechanicsjointNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointNode::get(self : PhysicsmechanicsjointNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_node_set(s : PhysicsmechanicsjointNode, i : Int, v : Double) -> PhysicsmechanicsjointNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointNode::set(self : PhysicsmechanicsjointNode, i : Int, v : Double) -> PhysicsmechanicsjointNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_node_sum(s : PhysicsmechanicsjointNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointNode::sum(self : PhysicsmechanicsjointNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_node_mean(s : PhysicsmechanicsjointNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointNode::mean(self : PhysicsmechanicsjointNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_node_scale(s : PhysicsmechanicsjointNode, f : Double) -> PhysicsmechanicsjointNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointNode::scale(self : PhysicsmechanicsjointNode, f : Double) -> PhysicsmechanicsjointNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_node_add(a : PhysicsmechanicsjointNode, b : PhysicsmechanicsjointNode) -> PhysicsmechanicsjointNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointNode::add(self : PhysicsmechanicsjointNode, other : PhysicsmechanicsjointNode) -> PhysicsmechanicsjointNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_node_copy(s : PhysicsmechanicsjointNode) -> PhysicsmechanicsjointNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointNode::copy(self : PhysicsmechanicsjointNode) -> PhysicsmechanicsjointNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_node_fill(s : PhysicsmechanicsjointNode, v : Double) -> PhysicsmechanicsjointNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointNode::fill(self : PhysicsmechanicsjointNode, v : Double) -> PhysicsmechanicsjointNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_node_min(s : PhysicsmechanicsjointNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointNode::min(self : PhysicsmechanicsjointNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_node_max(s : PhysicsmechanicsjointNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointNode::max(self : PhysicsmechanicsjointNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_node_to_string(s : PhysicsmechanicsjointNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointNode::to_string(self : PhysicsmechanicsjointNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointEdge {
@@ -555,45 +555,45 @@ pub fn physics_mechanics_joint_edge_make(size : Int) -> PhysicsmechanicsjointEdg
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_edge_len(s : PhysicsmechanicsjointEdge) -> Int { s.size }
+pub fn PhysicsmechanicsjointEdge::len(self : PhysicsmechanicsjointEdge) -> Int { self.size }
 
-pub fn physics_mechanics_joint_edge_get(s : PhysicsmechanicsjointEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointEdge::get(self : PhysicsmechanicsjointEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_edge_set(s : PhysicsmechanicsjointEdge, i : Int, v : Double) -> PhysicsmechanicsjointEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointEdge::set(self : PhysicsmechanicsjointEdge, i : Int, v : Double) -> PhysicsmechanicsjointEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_edge_sum(s : PhysicsmechanicsjointEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointEdge::sum(self : PhysicsmechanicsjointEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_edge_mean(s : PhysicsmechanicsjointEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointEdge::mean(self : PhysicsmechanicsjointEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_edge_scale(s : PhysicsmechanicsjointEdge, f : Double) -> PhysicsmechanicsjointEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointEdge::scale(self : PhysicsmechanicsjointEdge, f : Double) -> PhysicsmechanicsjointEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_edge_add(a : PhysicsmechanicsjointEdge, b : PhysicsmechanicsjointEdge) -> PhysicsmechanicsjointEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointEdge::add(self : PhysicsmechanicsjointEdge, other : PhysicsmechanicsjointEdge) -> PhysicsmechanicsjointEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_edge_copy(s : PhysicsmechanicsjointEdge) -> PhysicsmechanicsjointEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointEdge::copy(self : PhysicsmechanicsjointEdge) -> PhysicsmechanicsjointEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_edge_fill(s : PhysicsmechanicsjointEdge, v : Double) -> PhysicsmechanicsjointEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointEdge::fill(self : PhysicsmechanicsjointEdge, v : Double) -> PhysicsmechanicsjointEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_edge_min(s : PhysicsmechanicsjointEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointEdge::min(self : PhysicsmechanicsjointEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_edge_max(s : PhysicsmechanicsjointEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointEdge::max(self : PhysicsmechanicsjointEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_edge_to_string(s : PhysicsmechanicsjointEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointEdge::to_string(self : PhysicsmechanicsjointEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointPath {
@@ -606,45 +606,45 @@ pub fn physics_mechanics_joint_path_make(size : Int) -> PhysicsmechanicsjointPat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_path_len(s : PhysicsmechanicsjointPath) -> Int { s.size }
+pub fn PhysicsmechanicsjointPath::len(self : PhysicsmechanicsjointPath) -> Int { self.size }
 
-pub fn physics_mechanics_joint_path_get(s : PhysicsmechanicsjointPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointPath::get(self : PhysicsmechanicsjointPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_path_set(s : PhysicsmechanicsjointPath, i : Int, v : Double) -> PhysicsmechanicsjointPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointPath::set(self : PhysicsmechanicsjointPath, i : Int, v : Double) -> PhysicsmechanicsjointPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_path_sum(s : PhysicsmechanicsjointPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointPath::sum(self : PhysicsmechanicsjointPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_path_mean(s : PhysicsmechanicsjointPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointPath::mean(self : PhysicsmechanicsjointPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_path_scale(s : PhysicsmechanicsjointPath, f : Double) -> PhysicsmechanicsjointPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointPath::scale(self : PhysicsmechanicsjointPath, f : Double) -> PhysicsmechanicsjointPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_path_add(a : PhysicsmechanicsjointPath, b : PhysicsmechanicsjointPath) -> PhysicsmechanicsjointPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointPath::add(self : PhysicsmechanicsjointPath, other : PhysicsmechanicsjointPath) -> PhysicsmechanicsjointPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_path_copy(s : PhysicsmechanicsjointPath) -> PhysicsmechanicsjointPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointPath::copy(self : PhysicsmechanicsjointPath) -> PhysicsmechanicsjointPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_path_fill(s : PhysicsmechanicsjointPath, v : Double) -> PhysicsmechanicsjointPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointPath::fill(self : PhysicsmechanicsjointPath, v : Double) -> PhysicsmechanicsjointPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_path_min(s : PhysicsmechanicsjointPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointPath::min(self : PhysicsmechanicsjointPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_path_max(s : PhysicsmechanicsjointPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointPath::max(self : PhysicsmechanicsjointPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_path_to_string(s : PhysicsmechanicsjointPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointPath::to_string(self : PhysicsmechanicsjointPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointCluster {
@@ -657,45 +657,45 @@ pub fn physics_mechanics_joint_cluster_make(size : Int) -> Physicsmechanicsjoint
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_cluster_len(s : PhysicsmechanicsjointCluster) -> Int { s.size }
+pub fn PhysicsmechanicsjointCluster::len(self : PhysicsmechanicsjointCluster) -> Int { self.size }
 
-pub fn physics_mechanics_joint_cluster_get(s : PhysicsmechanicsjointCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointCluster::get(self : PhysicsmechanicsjointCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_cluster_set(s : PhysicsmechanicsjointCluster, i : Int, v : Double) -> PhysicsmechanicsjointCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointCluster::set(self : PhysicsmechanicsjointCluster, i : Int, v : Double) -> PhysicsmechanicsjointCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_cluster_sum(s : PhysicsmechanicsjointCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointCluster::sum(self : PhysicsmechanicsjointCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_cluster_mean(s : PhysicsmechanicsjointCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointCluster::mean(self : PhysicsmechanicsjointCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_cluster_scale(s : PhysicsmechanicsjointCluster, f : Double) -> PhysicsmechanicsjointCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointCluster::scale(self : PhysicsmechanicsjointCluster, f : Double) -> PhysicsmechanicsjointCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_cluster_add(a : PhysicsmechanicsjointCluster, b : PhysicsmechanicsjointCluster) -> PhysicsmechanicsjointCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointCluster::add(self : PhysicsmechanicsjointCluster, other : PhysicsmechanicsjointCluster) -> PhysicsmechanicsjointCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_cluster_copy(s : PhysicsmechanicsjointCluster) -> PhysicsmechanicsjointCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointCluster::copy(self : PhysicsmechanicsjointCluster) -> PhysicsmechanicsjointCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_cluster_fill(s : PhysicsmechanicsjointCluster, v : Double) -> PhysicsmechanicsjointCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointCluster::fill(self : PhysicsmechanicsjointCluster, v : Double) -> PhysicsmechanicsjointCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_cluster_min(s : PhysicsmechanicsjointCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointCluster::min(self : PhysicsmechanicsjointCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_cluster_max(s : PhysicsmechanicsjointCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointCluster::max(self : PhysicsmechanicsjointCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_cluster_to_string(s : PhysicsmechanicsjointCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointCluster::to_string(self : PhysicsmechanicsjointCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointModel {
@@ -708,45 +708,45 @@ pub fn physics_mechanics_joint_model_make(size : Int) -> PhysicsmechanicsjointMo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_model_len(s : PhysicsmechanicsjointModel) -> Int { s.size }
+pub fn PhysicsmechanicsjointModel::len(self : PhysicsmechanicsjointModel) -> Int { self.size }
 
-pub fn physics_mechanics_joint_model_get(s : PhysicsmechanicsjointModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointModel::get(self : PhysicsmechanicsjointModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_model_set(s : PhysicsmechanicsjointModel, i : Int, v : Double) -> PhysicsmechanicsjointModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointModel::set(self : PhysicsmechanicsjointModel, i : Int, v : Double) -> PhysicsmechanicsjointModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_model_sum(s : PhysicsmechanicsjointModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointModel::sum(self : PhysicsmechanicsjointModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_model_mean(s : PhysicsmechanicsjointModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointModel::mean(self : PhysicsmechanicsjointModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_model_scale(s : PhysicsmechanicsjointModel, f : Double) -> PhysicsmechanicsjointModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointModel::scale(self : PhysicsmechanicsjointModel, f : Double) -> PhysicsmechanicsjointModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_model_add(a : PhysicsmechanicsjointModel, b : PhysicsmechanicsjointModel) -> PhysicsmechanicsjointModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointModel::add(self : PhysicsmechanicsjointModel, other : PhysicsmechanicsjointModel) -> PhysicsmechanicsjointModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_model_copy(s : PhysicsmechanicsjointModel) -> PhysicsmechanicsjointModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointModel::copy(self : PhysicsmechanicsjointModel) -> PhysicsmechanicsjointModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_model_fill(s : PhysicsmechanicsjointModel, v : Double) -> PhysicsmechanicsjointModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointModel::fill(self : PhysicsmechanicsjointModel, v : Double) -> PhysicsmechanicsjointModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_model_min(s : PhysicsmechanicsjointModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointModel::min(self : PhysicsmechanicsjointModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_model_max(s : PhysicsmechanicsjointModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointModel::max(self : PhysicsmechanicsjointModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_model_to_string(s : PhysicsmechanicsjointModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointModel::to_string(self : PhysicsmechanicsjointModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointLayer {
@@ -759,45 +759,45 @@ pub fn physics_mechanics_joint_layer_make(size : Int) -> PhysicsmechanicsjointLa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_layer_len(s : PhysicsmechanicsjointLayer) -> Int { s.size }
+pub fn PhysicsmechanicsjointLayer::len(self : PhysicsmechanicsjointLayer) -> Int { self.size }
 
-pub fn physics_mechanics_joint_layer_get(s : PhysicsmechanicsjointLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointLayer::get(self : PhysicsmechanicsjointLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_layer_set(s : PhysicsmechanicsjointLayer, i : Int, v : Double) -> PhysicsmechanicsjointLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointLayer::set(self : PhysicsmechanicsjointLayer, i : Int, v : Double) -> PhysicsmechanicsjointLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_layer_sum(s : PhysicsmechanicsjointLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointLayer::sum(self : PhysicsmechanicsjointLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_layer_mean(s : PhysicsmechanicsjointLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointLayer::mean(self : PhysicsmechanicsjointLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_layer_scale(s : PhysicsmechanicsjointLayer, f : Double) -> PhysicsmechanicsjointLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointLayer::scale(self : PhysicsmechanicsjointLayer, f : Double) -> PhysicsmechanicsjointLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_layer_add(a : PhysicsmechanicsjointLayer, b : PhysicsmechanicsjointLayer) -> PhysicsmechanicsjointLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointLayer::add(self : PhysicsmechanicsjointLayer, other : PhysicsmechanicsjointLayer) -> PhysicsmechanicsjointLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_layer_copy(s : PhysicsmechanicsjointLayer) -> PhysicsmechanicsjointLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointLayer::copy(self : PhysicsmechanicsjointLayer) -> PhysicsmechanicsjointLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_layer_fill(s : PhysicsmechanicsjointLayer, v : Double) -> PhysicsmechanicsjointLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointLayer::fill(self : PhysicsmechanicsjointLayer, v : Double) -> PhysicsmechanicsjointLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_layer_min(s : PhysicsmechanicsjointLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointLayer::min(self : PhysicsmechanicsjointLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_layer_max(s : PhysicsmechanicsjointLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointLayer::max(self : PhysicsmechanicsjointLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_layer_to_string(s : PhysicsmechanicsjointLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointLayer::to_string(self : PhysicsmechanicsjointLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointBuffer {
@@ -810,45 +810,45 @@ pub fn physics_mechanics_joint_buffer_make(size : Int) -> PhysicsmechanicsjointB
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_buffer_len(s : PhysicsmechanicsjointBuffer) -> Int { s.size }
+pub fn PhysicsmechanicsjointBuffer::len(self : PhysicsmechanicsjointBuffer) -> Int { self.size }
 
-pub fn physics_mechanics_joint_buffer_get(s : PhysicsmechanicsjointBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointBuffer::get(self : PhysicsmechanicsjointBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_buffer_set(s : PhysicsmechanicsjointBuffer, i : Int, v : Double) -> PhysicsmechanicsjointBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointBuffer::set(self : PhysicsmechanicsjointBuffer, i : Int, v : Double) -> PhysicsmechanicsjointBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_buffer_sum(s : PhysicsmechanicsjointBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointBuffer::sum(self : PhysicsmechanicsjointBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_buffer_mean(s : PhysicsmechanicsjointBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointBuffer::mean(self : PhysicsmechanicsjointBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_buffer_scale(s : PhysicsmechanicsjointBuffer, f : Double) -> PhysicsmechanicsjointBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointBuffer::scale(self : PhysicsmechanicsjointBuffer, f : Double) -> PhysicsmechanicsjointBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_buffer_add(a : PhysicsmechanicsjointBuffer, b : PhysicsmechanicsjointBuffer) -> PhysicsmechanicsjointBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointBuffer::add(self : PhysicsmechanicsjointBuffer, other : PhysicsmechanicsjointBuffer) -> PhysicsmechanicsjointBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_buffer_copy(s : PhysicsmechanicsjointBuffer) -> PhysicsmechanicsjointBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointBuffer::copy(self : PhysicsmechanicsjointBuffer) -> PhysicsmechanicsjointBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_buffer_fill(s : PhysicsmechanicsjointBuffer, v : Double) -> PhysicsmechanicsjointBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointBuffer::fill(self : PhysicsmechanicsjointBuffer, v : Double) -> PhysicsmechanicsjointBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_buffer_min(s : PhysicsmechanicsjointBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointBuffer::min(self : PhysicsmechanicsjointBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_buffer_max(s : PhysicsmechanicsjointBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointBuffer::max(self : PhysicsmechanicsjointBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_buffer_to_string(s : PhysicsmechanicsjointBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointBuffer::to_string(self : PhysicsmechanicsjointBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointCursor {
@@ -861,45 +861,45 @@ pub fn physics_mechanics_joint_cursor_make(size : Int) -> PhysicsmechanicsjointC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_cursor_len(s : PhysicsmechanicsjointCursor) -> Int { s.size }
+pub fn PhysicsmechanicsjointCursor::len(self : PhysicsmechanicsjointCursor) -> Int { self.size }
 
-pub fn physics_mechanics_joint_cursor_get(s : PhysicsmechanicsjointCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointCursor::get(self : PhysicsmechanicsjointCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_cursor_set(s : PhysicsmechanicsjointCursor, i : Int, v : Double) -> PhysicsmechanicsjointCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointCursor::set(self : PhysicsmechanicsjointCursor, i : Int, v : Double) -> PhysicsmechanicsjointCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_cursor_sum(s : PhysicsmechanicsjointCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointCursor::sum(self : PhysicsmechanicsjointCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_cursor_mean(s : PhysicsmechanicsjointCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointCursor::mean(self : PhysicsmechanicsjointCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_cursor_scale(s : PhysicsmechanicsjointCursor, f : Double) -> PhysicsmechanicsjointCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointCursor::scale(self : PhysicsmechanicsjointCursor, f : Double) -> PhysicsmechanicsjointCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_cursor_add(a : PhysicsmechanicsjointCursor, b : PhysicsmechanicsjointCursor) -> PhysicsmechanicsjointCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointCursor::add(self : PhysicsmechanicsjointCursor, other : PhysicsmechanicsjointCursor) -> PhysicsmechanicsjointCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_cursor_copy(s : PhysicsmechanicsjointCursor) -> PhysicsmechanicsjointCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointCursor::copy(self : PhysicsmechanicsjointCursor) -> PhysicsmechanicsjointCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_cursor_fill(s : PhysicsmechanicsjointCursor, v : Double) -> PhysicsmechanicsjointCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointCursor::fill(self : PhysicsmechanicsjointCursor, v : Double) -> PhysicsmechanicsjointCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_cursor_min(s : PhysicsmechanicsjointCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointCursor::min(self : PhysicsmechanicsjointCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_cursor_max(s : PhysicsmechanicsjointCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointCursor::max(self : PhysicsmechanicsjointCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_cursor_to_string(s : PhysicsmechanicsjointCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointCursor::to_string(self : PhysicsmechanicsjointCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointView {
@@ -912,45 +912,45 @@ pub fn physics_mechanics_joint_view_make(size : Int) -> PhysicsmechanicsjointVie
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_view_len(s : PhysicsmechanicsjointView) -> Int { s.size }
+pub fn PhysicsmechanicsjointView::len(self : PhysicsmechanicsjointView) -> Int { self.size }
 
-pub fn physics_mechanics_joint_view_get(s : PhysicsmechanicsjointView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointView::get(self : PhysicsmechanicsjointView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_view_set(s : PhysicsmechanicsjointView, i : Int, v : Double) -> PhysicsmechanicsjointView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointView::set(self : PhysicsmechanicsjointView, i : Int, v : Double) -> PhysicsmechanicsjointView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_view_sum(s : PhysicsmechanicsjointView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointView::sum(self : PhysicsmechanicsjointView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_view_mean(s : PhysicsmechanicsjointView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointView::mean(self : PhysicsmechanicsjointView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_view_scale(s : PhysicsmechanicsjointView, f : Double) -> PhysicsmechanicsjointView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointView::scale(self : PhysicsmechanicsjointView, f : Double) -> PhysicsmechanicsjointView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_view_add(a : PhysicsmechanicsjointView, b : PhysicsmechanicsjointView) -> PhysicsmechanicsjointView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointView::add(self : PhysicsmechanicsjointView, other : PhysicsmechanicsjointView) -> PhysicsmechanicsjointView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_view_copy(s : PhysicsmechanicsjointView) -> PhysicsmechanicsjointView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointView::copy(self : PhysicsmechanicsjointView) -> PhysicsmechanicsjointView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_view_fill(s : PhysicsmechanicsjointView, v : Double) -> PhysicsmechanicsjointView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointView::fill(self : PhysicsmechanicsjointView, v : Double) -> PhysicsmechanicsjointView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_view_min(s : PhysicsmechanicsjointView) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointView::min(self : PhysicsmechanicsjointView) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_view_max(s : PhysicsmechanicsjointView) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointView::max(self : PhysicsmechanicsjointView) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_view_to_string(s : PhysicsmechanicsjointView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointView::to_string(self : PhysicsmechanicsjointView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointRange {
@@ -963,45 +963,45 @@ pub fn physics_mechanics_joint_range_make(size : Int) -> PhysicsmechanicsjointRa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_range_len(s : PhysicsmechanicsjointRange) -> Int { s.size }
+pub fn PhysicsmechanicsjointRange::len(self : PhysicsmechanicsjointRange) -> Int { self.size }
 
-pub fn physics_mechanics_joint_range_get(s : PhysicsmechanicsjointRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointRange::get(self : PhysicsmechanicsjointRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_range_set(s : PhysicsmechanicsjointRange, i : Int, v : Double) -> PhysicsmechanicsjointRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointRange::set(self : PhysicsmechanicsjointRange, i : Int, v : Double) -> PhysicsmechanicsjointRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_range_sum(s : PhysicsmechanicsjointRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointRange::sum(self : PhysicsmechanicsjointRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_range_mean(s : PhysicsmechanicsjointRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointRange::mean(self : PhysicsmechanicsjointRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_range_scale(s : PhysicsmechanicsjointRange, f : Double) -> PhysicsmechanicsjointRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointRange::scale(self : PhysicsmechanicsjointRange, f : Double) -> PhysicsmechanicsjointRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_range_add(a : PhysicsmechanicsjointRange, b : PhysicsmechanicsjointRange) -> PhysicsmechanicsjointRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointRange::add(self : PhysicsmechanicsjointRange, other : PhysicsmechanicsjointRange) -> PhysicsmechanicsjointRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_range_copy(s : PhysicsmechanicsjointRange) -> PhysicsmechanicsjointRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointRange::copy(self : PhysicsmechanicsjointRange) -> PhysicsmechanicsjointRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_range_fill(s : PhysicsmechanicsjointRange, v : Double) -> PhysicsmechanicsjointRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointRange::fill(self : PhysicsmechanicsjointRange, v : Double) -> PhysicsmechanicsjointRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_range_min(s : PhysicsmechanicsjointRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointRange::min(self : PhysicsmechanicsjointRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_range_max(s : PhysicsmechanicsjointRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointRange::max(self : PhysicsmechanicsjointRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_range_to_string(s : PhysicsmechanicsjointRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointRange::to_string(self : PhysicsmechanicsjointRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_mechanics_joint_slice_make(size : Int) -> PhysicsmechanicsjointSl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_joint_slice_len(s : PhysicsmechanicsjointSlice) -> Int { s.size }
+pub fn PhysicsmechanicsjointSlice::len(self : PhysicsmechanicsjointSlice) -> Int { self.size }
 
-pub fn physics_mechanics_joint_slice_get(s : PhysicsmechanicsjointSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsjointSlice::get(self : PhysicsmechanicsjointSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_joint_slice_set(s : PhysicsmechanicsjointSlice, i : Int, v : Double) -> PhysicsmechanicsjointSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointSlice::set(self : PhysicsmechanicsjointSlice, i : Int, v : Double) -> PhysicsmechanicsjointSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_slice_sum(s : PhysicsmechanicsjointSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsjointSlice::sum(self : PhysicsmechanicsjointSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_joint_slice_mean(s : PhysicsmechanicsjointSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsjointSlice::mean(self : PhysicsmechanicsjointSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_joint_slice_scale(s : PhysicsmechanicsjointSlice, f : Double) -> PhysicsmechanicsjointSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointSlice::scale(self : PhysicsmechanicsjointSlice, f : Double) -> PhysicsmechanicsjointSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_slice_add(a : PhysicsmechanicsjointSlice, b : PhysicsmechanicsjointSlice) -> PhysicsmechanicsjointSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsjointSlice::add(self : PhysicsmechanicsjointSlice, other : PhysicsmechanicsjointSlice) -> PhysicsmechanicsjointSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_slice_copy(s : PhysicsmechanicsjointSlice) -> PhysicsmechanicsjointSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointSlice::copy(self : PhysicsmechanicsjointSlice) -> PhysicsmechanicsjointSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_slice_fill(s : PhysicsmechanicsjointSlice, v : Double) -> PhysicsmechanicsjointSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsjointSlice::fill(self : PhysicsmechanicsjointSlice, v : Double) -> PhysicsmechanicsjointSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_joint_slice_min(s : PhysicsmechanicsjointSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsjointSlice::min(self : PhysicsmechanicsjointSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_joint_slice_max(s : PhysicsmechanicsjointSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsjointSlice::max(self : PhysicsmechanicsjointSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_joint_slice_to_string(s : PhysicsmechanicsjointSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsjointSlice::to_string(self : PhysicsmechanicsjointSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

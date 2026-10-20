@@ -351,45 +351,45 @@ pub fn net_route_bgp_frame_make(size : Int) -> NetroutebgpFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_frame_len(s : NetroutebgpFrame) -> Int { s.size }
+pub fn NetroutebgpFrame::len(self : NetroutebgpFrame) -> Int { self.size }
 
-pub fn net_route_bgp_frame_get(s : NetroutebgpFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpFrame::get(self : NetroutebgpFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_frame_set(s : NetroutebgpFrame, i : Int, v : Double) -> NetroutebgpFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpFrame::set(self : NetroutebgpFrame, i : Int, v : Double) -> NetroutebgpFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_frame_sum(s : NetroutebgpFrame) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpFrame::sum(self : NetroutebgpFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_frame_mean(s : NetroutebgpFrame) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpFrame::mean(self : NetroutebgpFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_frame_scale(s : NetroutebgpFrame, f : Double) -> NetroutebgpFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpFrame::scale(self : NetroutebgpFrame, f : Double) -> NetroutebgpFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_frame_add(a : NetroutebgpFrame, b : NetroutebgpFrame) -> NetroutebgpFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpFrame::add(self : NetroutebgpFrame, other : NetroutebgpFrame) -> NetroutebgpFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_frame_copy(s : NetroutebgpFrame) -> NetroutebgpFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpFrame::copy(self : NetroutebgpFrame) -> NetroutebgpFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_frame_fill(s : NetroutebgpFrame, v : Double) -> NetroutebgpFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpFrame::fill(self : NetroutebgpFrame, v : Double) -> NetroutebgpFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_frame_min(s : NetroutebgpFrame) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpFrame::min(self : NetroutebgpFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_frame_max(s : NetroutebgpFrame) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpFrame::max(self : NetroutebgpFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_frame_to_string(s : NetroutebgpFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpFrame::to_string(self : NetroutebgpFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpTable {
@@ -402,45 +402,45 @@ pub fn net_route_bgp_table_make(size : Int) -> NetroutebgpTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_table_len(s : NetroutebgpTable) -> Int { s.size }
+pub fn NetroutebgpTable::len(self : NetroutebgpTable) -> Int { self.size }
 
-pub fn net_route_bgp_table_get(s : NetroutebgpTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpTable::get(self : NetroutebgpTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_table_set(s : NetroutebgpTable, i : Int, v : Double) -> NetroutebgpTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpTable::set(self : NetroutebgpTable, i : Int, v : Double) -> NetroutebgpTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_table_sum(s : NetroutebgpTable) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpTable::sum(self : NetroutebgpTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_table_mean(s : NetroutebgpTable) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpTable::mean(self : NetroutebgpTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_table_scale(s : NetroutebgpTable, f : Double) -> NetroutebgpTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpTable::scale(self : NetroutebgpTable, f : Double) -> NetroutebgpTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_table_add(a : NetroutebgpTable, b : NetroutebgpTable) -> NetroutebgpTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpTable::add(self : NetroutebgpTable, other : NetroutebgpTable) -> NetroutebgpTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_table_copy(s : NetroutebgpTable) -> NetroutebgpTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpTable::copy(self : NetroutebgpTable) -> NetroutebgpTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_table_fill(s : NetroutebgpTable, v : Double) -> NetroutebgpTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpTable::fill(self : NetroutebgpTable, v : Double) -> NetroutebgpTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_table_min(s : NetroutebgpTable) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpTable::min(self : NetroutebgpTable) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_table_max(s : NetroutebgpTable) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpTable::max(self : NetroutebgpTable) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_table_to_string(s : NetroutebgpTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpTable::to_string(self : NetroutebgpTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpGraphN {
@@ -453,45 +453,45 @@ pub fn net_route_bgp_graphn_make(size : Int) -> NetroutebgpGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_graphn_len(s : NetroutebgpGraphN) -> Int { s.size }
+pub fn NetroutebgpGraphN::len(self : NetroutebgpGraphN) -> Int { self.size }
 
-pub fn net_route_bgp_graphn_get(s : NetroutebgpGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpGraphN::get(self : NetroutebgpGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_graphn_set(s : NetroutebgpGraphN, i : Int, v : Double) -> NetroutebgpGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpGraphN::set(self : NetroutebgpGraphN, i : Int, v : Double) -> NetroutebgpGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_graphn_sum(s : NetroutebgpGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpGraphN::sum(self : NetroutebgpGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_graphn_mean(s : NetroutebgpGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpGraphN::mean(self : NetroutebgpGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_graphn_scale(s : NetroutebgpGraphN, f : Double) -> NetroutebgpGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpGraphN::scale(self : NetroutebgpGraphN, f : Double) -> NetroutebgpGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_graphn_add(a : NetroutebgpGraphN, b : NetroutebgpGraphN) -> NetroutebgpGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpGraphN::add(self : NetroutebgpGraphN, other : NetroutebgpGraphN) -> NetroutebgpGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_graphn_copy(s : NetroutebgpGraphN) -> NetroutebgpGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpGraphN::copy(self : NetroutebgpGraphN) -> NetroutebgpGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_graphn_fill(s : NetroutebgpGraphN, v : Double) -> NetroutebgpGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpGraphN::fill(self : NetroutebgpGraphN, v : Double) -> NetroutebgpGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_graphn_min(s : NetroutebgpGraphN) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpGraphN::min(self : NetroutebgpGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_graphn_max(s : NetroutebgpGraphN) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpGraphN::max(self : NetroutebgpGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_graphn_to_string(s : NetroutebgpGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpGraphN::to_string(self : NetroutebgpGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpNode {
@@ -504,45 +504,45 @@ pub fn net_route_bgp_node_make(size : Int) -> NetroutebgpNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_node_len(s : NetroutebgpNode) -> Int { s.size }
+pub fn NetroutebgpNode::len(self : NetroutebgpNode) -> Int { self.size }
 
-pub fn net_route_bgp_node_get(s : NetroutebgpNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpNode::get(self : NetroutebgpNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_node_set(s : NetroutebgpNode, i : Int, v : Double) -> NetroutebgpNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpNode::set(self : NetroutebgpNode, i : Int, v : Double) -> NetroutebgpNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_node_sum(s : NetroutebgpNode) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpNode::sum(self : NetroutebgpNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_node_mean(s : NetroutebgpNode) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpNode::mean(self : NetroutebgpNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_node_scale(s : NetroutebgpNode, f : Double) -> NetroutebgpNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpNode::scale(self : NetroutebgpNode, f : Double) -> NetroutebgpNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_node_add(a : NetroutebgpNode, b : NetroutebgpNode) -> NetroutebgpNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpNode::add(self : NetroutebgpNode, other : NetroutebgpNode) -> NetroutebgpNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_node_copy(s : NetroutebgpNode) -> NetroutebgpNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpNode::copy(self : NetroutebgpNode) -> NetroutebgpNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_node_fill(s : NetroutebgpNode, v : Double) -> NetroutebgpNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpNode::fill(self : NetroutebgpNode, v : Double) -> NetroutebgpNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_node_min(s : NetroutebgpNode) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpNode::min(self : NetroutebgpNode) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_node_max(s : NetroutebgpNode) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpNode::max(self : NetroutebgpNode) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_node_to_string(s : NetroutebgpNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpNode::to_string(self : NetroutebgpNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpEdge {
@@ -555,45 +555,45 @@ pub fn net_route_bgp_edge_make(size : Int) -> NetroutebgpEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_edge_len(s : NetroutebgpEdge) -> Int { s.size }
+pub fn NetroutebgpEdge::len(self : NetroutebgpEdge) -> Int { self.size }
 
-pub fn net_route_bgp_edge_get(s : NetroutebgpEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpEdge::get(self : NetroutebgpEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_edge_set(s : NetroutebgpEdge, i : Int, v : Double) -> NetroutebgpEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpEdge::set(self : NetroutebgpEdge, i : Int, v : Double) -> NetroutebgpEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_edge_sum(s : NetroutebgpEdge) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpEdge::sum(self : NetroutebgpEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_edge_mean(s : NetroutebgpEdge) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpEdge::mean(self : NetroutebgpEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_edge_scale(s : NetroutebgpEdge, f : Double) -> NetroutebgpEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpEdge::scale(self : NetroutebgpEdge, f : Double) -> NetroutebgpEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_edge_add(a : NetroutebgpEdge, b : NetroutebgpEdge) -> NetroutebgpEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpEdge::add(self : NetroutebgpEdge, other : NetroutebgpEdge) -> NetroutebgpEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_edge_copy(s : NetroutebgpEdge) -> NetroutebgpEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpEdge::copy(self : NetroutebgpEdge) -> NetroutebgpEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_edge_fill(s : NetroutebgpEdge, v : Double) -> NetroutebgpEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpEdge::fill(self : NetroutebgpEdge, v : Double) -> NetroutebgpEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_edge_min(s : NetroutebgpEdge) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpEdge::min(self : NetroutebgpEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_edge_max(s : NetroutebgpEdge) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpEdge::max(self : NetroutebgpEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_edge_to_string(s : NetroutebgpEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpEdge::to_string(self : NetroutebgpEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpPath {
@@ -606,45 +606,45 @@ pub fn net_route_bgp_path_make(size : Int) -> NetroutebgpPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_path_len(s : NetroutebgpPath) -> Int { s.size }
+pub fn NetroutebgpPath::len(self : NetroutebgpPath) -> Int { self.size }
 
-pub fn net_route_bgp_path_get(s : NetroutebgpPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpPath::get(self : NetroutebgpPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_path_set(s : NetroutebgpPath, i : Int, v : Double) -> NetroutebgpPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpPath::set(self : NetroutebgpPath, i : Int, v : Double) -> NetroutebgpPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_path_sum(s : NetroutebgpPath) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpPath::sum(self : NetroutebgpPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_path_mean(s : NetroutebgpPath) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpPath::mean(self : NetroutebgpPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_path_scale(s : NetroutebgpPath, f : Double) -> NetroutebgpPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpPath::scale(self : NetroutebgpPath, f : Double) -> NetroutebgpPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_path_add(a : NetroutebgpPath, b : NetroutebgpPath) -> NetroutebgpPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpPath::add(self : NetroutebgpPath, other : NetroutebgpPath) -> NetroutebgpPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_path_copy(s : NetroutebgpPath) -> NetroutebgpPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpPath::copy(self : NetroutebgpPath) -> NetroutebgpPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_path_fill(s : NetroutebgpPath, v : Double) -> NetroutebgpPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpPath::fill(self : NetroutebgpPath, v : Double) -> NetroutebgpPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_path_min(s : NetroutebgpPath) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpPath::min(self : NetroutebgpPath) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_path_max(s : NetroutebgpPath) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpPath::max(self : NetroutebgpPath) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_path_to_string(s : NetroutebgpPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpPath::to_string(self : NetroutebgpPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpCluster {
@@ -657,45 +657,45 @@ pub fn net_route_bgp_cluster_make(size : Int) -> NetroutebgpCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_cluster_len(s : NetroutebgpCluster) -> Int { s.size }
+pub fn NetroutebgpCluster::len(self : NetroutebgpCluster) -> Int { self.size }
 
-pub fn net_route_bgp_cluster_get(s : NetroutebgpCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpCluster::get(self : NetroutebgpCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_cluster_set(s : NetroutebgpCluster, i : Int, v : Double) -> NetroutebgpCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpCluster::set(self : NetroutebgpCluster, i : Int, v : Double) -> NetroutebgpCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_cluster_sum(s : NetroutebgpCluster) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpCluster::sum(self : NetroutebgpCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_cluster_mean(s : NetroutebgpCluster) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpCluster::mean(self : NetroutebgpCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_cluster_scale(s : NetroutebgpCluster, f : Double) -> NetroutebgpCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpCluster::scale(self : NetroutebgpCluster, f : Double) -> NetroutebgpCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_cluster_add(a : NetroutebgpCluster, b : NetroutebgpCluster) -> NetroutebgpCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpCluster::add(self : NetroutebgpCluster, other : NetroutebgpCluster) -> NetroutebgpCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_cluster_copy(s : NetroutebgpCluster) -> NetroutebgpCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpCluster::copy(self : NetroutebgpCluster) -> NetroutebgpCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_cluster_fill(s : NetroutebgpCluster, v : Double) -> NetroutebgpCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpCluster::fill(self : NetroutebgpCluster, v : Double) -> NetroutebgpCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_cluster_min(s : NetroutebgpCluster) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpCluster::min(self : NetroutebgpCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_cluster_max(s : NetroutebgpCluster) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpCluster::max(self : NetroutebgpCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_cluster_to_string(s : NetroutebgpCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpCluster::to_string(self : NetroutebgpCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpModel {
@@ -708,45 +708,45 @@ pub fn net_route_bgp_model_make(size : Int) -> NetroutebgpModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_model_len(s : NetroutebgpModel) -> Int { s.size }
+pub fn NetroutebgpModel::len(self : NetroutebgpModel) -> Int { self.size }
 
-pub fn net_route_bgp_model_get(s : NetroutebgpModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpModel::get(self : NetroutebgpModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_model_set(s : NetroutebgpModel, i : Int, v : Double) -> NetroutebgpModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpModel::set(self : NetroutebgpModel, i : Int, v : Double) -> NetroutebgpModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_model_sum(s : NetroutebgpModel) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpModel::sum(self : NetroutebgpModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_model_mean(s : NetroutebgpModel) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpModel::mean(self : NetroutebgpModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_model_scale(s : NetroutebgpModel, f : Double) -> NetroutebgpModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpModel::scale(self : NetroutebgpModel, f : Double) -> NetroutebgpModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_model_add(a : NetroutebgpModel, b : NetroutebgpModel) -> NetroutebgpModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpModel::add(self : NetroutebgpModel, other : NetroutebgpModel) -> NetroutebgpModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_model_copy(s : NetroutebgpModel) -> NetroutebgpModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpModel::copy(self : NetroutebgpModel) -> NetroutebgpModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_model_fill(s : NetroutebgpModel, v : Double) -> NetroutebgpModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpModel::fill(self : NetroutebgpModel, v : Double) -> NetroutebgpModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_model_min(s : NetroutebgpModel) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpModel::min(self : NetroutebgpModel) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_model_max(s : NetroutebgpModel) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpModel::max(self : NetroutebgpModel) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_model_to_string(s : NetroutebgpModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpModel::to_string(self : NetroutebgpModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpLayer {
@@ -759,45 +759,45 @@ pub fn net_route_bgp_layer_make(size : Int) -> NetroutebgpLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_layer_len(s : NetroutebgpLayer) -> Int { s.size }
+pub fn NetroutebgpLayer::len(self : NetroutebgpLayer) -> Int { self.size }
 
-pub fn net_route_bgp_layer_get(s : NetroutebgpLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpLayer::get(self : NetroutebgpLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_layer_set(s : NetroutebgpLayer, i : Int, v : Double) -> NetroutebgpLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpLayer::set(self : NetroutebgpLayer, i : Int, v : Double) -> NetroutebgpLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_layer_sum(s : NetroutebgpLayer) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpLayer::sum(self : NetroutebgpLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_layer_mean(s : NetroutebgpLayer) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpLayer::mean(self : NetroutebgpLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_layer_scale(s : NetroutebgpLayer, f : Double) -> NetroutebgpLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpLayer::scale(self : NetroutebgpLayer, f : Double) -> NetroutebgpLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_layer_add(a : NetroutebgpLayer, b : NetroutebgpLayer) -> NetroutebgpLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpLayer::add(self : NetroutebgpLayer, other : NetroutebgpLayer) -> NetroutebgpLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_layer_copy(s : NetroutebgpLayer) -> NetroutebgpLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpLayer::copy(self : NetroutebgpLayer) -> NetroutebgpLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_layer_fill(s : NetroutebgpLayer, v : Double) -> NetroutebgpLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpLayer::fill(self : NetroutebgpLayer, v : Double) -> NetroutebgpLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_layer_min(s : NetroutebgpLayer) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpLayer::min(self : NetroutebgpLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_layer_max(s : NetroutebgpLayer) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpLayer::max(self : NetroutebgpLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_layer_to_string(s : NetroutebgpLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpLayer::to_string(self : NetroutebgpLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpBuffer {
@@ -810,45 +810,45 @@ pub fn net_route_bgp_buffer_make(size : Int) -> NetroutebgpBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_buffer_len(s : NetroutebgpBuffer) -> Int { s.size }
+pub fn NetroutebgpBuffer::len(self : NetroutebgpBuffer) -> Int { self.size }
 
-pub fn net_route_bgp_buffer_get(s : NetroutebgpBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpBuffer::get(self : NetroutebgpBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_buffer_set(s : NetroutebgpBuffer, i : Int, v : Double) -> NetroutebgpBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpBuffer::set(self : NetroutebgpBuffer, i : Int, v : Double) -> NetroutebgpBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_buffer_sum(s : NetroutebgpBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpBuffer::sum(self : NetroutebgpBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_buffer_mean(s : NetroutebgpBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpBuffer::mean(self : NetroutebgpBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_buffer_scale(s : NetroutebgpBuffer, f : Double) -> NetroutebgpBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpBuffer::scale(self : NetroutebgpBuffer, f : Double) -> NetroutebgpBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_buffer_add(a : NetroutebgpBuffer, b : NetroutebgpBuffer) -> NetroutebgpBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpBuffer::add(self : NetroutebgpBuffer, other : NetroutebgpBuffer) -> NetroutebgpBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_buffer_copy(s : NetroutebgpBuffer) -> NetroutebgpBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpBuffer::copy(self : NetroutebgpBuffer) -> NetroutebgpBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_buffer_fill(s : NetroutebgpBuffer, v : Double) -> NetroutebgpBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpBuffer::fill(self : NetroutebgpBuffer, v : Double) -> NetroutebgpBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_buffer_min(s : NetroutebgpBuffer) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpBuffer::min(self : NetroutebgpBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_buffer_max(s : NetroutebgpBuffer) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpBuffer::max(self : NetroutebgpBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_buffer_to_string(s : NetroutebgpBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpBuffer::to_string(self : NetroutebgpBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpCursor {
@@ -861,45 +861,45 @@ pub fn net_route_bgp_cursor_make(size : Int) -> NetroutebgpCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_cursor_len(s : NetroutebgpCursor) -> Int { s.size }
+pub fn NetroutebgpCursor::len(self : NetroutebgpCursor) -> Int { self.size }
 
-pub fn net_route_bgp_cursor_get(s : NetroutebgpCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpCursor::get(self : NetroutebgpCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_cursor_set(s : NetroutebgpCursor, i : Int, v : Double) -> NetroutebgpCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpCursor::set(self : NetroutebgpCursor, i : Int, v : Double) -> NetroutebgpCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_cursor_sum(s : NetroutebgpCursor) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpCursor::sum(self : NetroutebgpCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_cursor_mean(s : NetroutebgpCursor) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpCursor::mean(self : NetroutebgpCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_cursor_scale(s : NetroutebgpCursor, f : Double) -> NetroutebgpCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpCursor::scale(self : NetroutebgpCursor, f : Double) -> NetroutebgpCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_cursor_add(a : NetroutebgpCursor, b : NetroutebgpCursor) -> NetroutebgpCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpCursor::add(self : NetroutebgpCursor, other : NetroutebgpCursor) -> NetroutebgpCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_cursor_copy(s : NetroutebgpCursor) -> NetroutebgpCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpCursor::copy(self : NetroutebgpCursor) -> NetroutebgpCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_cursor_fill(s : NetroutebgpCursor, v : Double) -> NetroutebgpCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpCursor::fill(self : NetroutebgpCursor, v : Double) -> NetroutebgpCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_cursor_min(s : NetroutebgpCursor) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpCursor::min(self : NetroutebgpCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_cursor_max(s : NetroutebgpCursor) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpCursor::max(self : NetroutebgpCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_cursor_to_string(s : NetroutebgpCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpCursor::to_string(self : NetroutebgpCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpView {
@@ -912,45 +912,45 @@ pub fn net_route_bgp_view_make(size : Int) -> NetroutebgpView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_view_len(s : NetroutebgpView) -> Int { s.size }
+pub fn NetroutebgpView::len(self : NetroutebgpView) -> Int { self.size }
 
-pub fn net_route_bgp_view_get(s : NetroutebgpView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpView::get(self : NetroutebgpView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_view_set(s : NetroutebgpView, i : Int, v : Double) -> NetroutebgpView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpView::set(self : NetroutebgpView, i : Int, v : Double) -> NetroutebgpView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_view_sum(s : NetroutebgpView) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpView::sum(self : NetroutebgpView) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_view_mean(s : NetroutebgpView) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpView::mean(self : NetroutebgpView) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_view_scale(s : NetroutebgpView, f : Double) -> NetroutebgpView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpView::scale(self : NetroutebgpView, f : Double) -> NetroutebgpView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_view_add(a : NetroutebgpView, b : NetroutebgpView) -> NetroutebgpView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpView::add(self : NetroutebgpView, other : NetroutebgpView) -> NetroutebgpView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_view_copy(s : NetroutebgpView) -> NetroutebgpView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpView::copy(self : NetroutebgpView) -> NetroutebgpView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_view_fill(s : NetroutebgpView, v : Double) -> NetroutebgpView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpView::fill(self : NetroutebgpView, v : Double) -> NetroutebgpView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_view_min(s : NetroutebgpView) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpView::min(self : NetroutebgpView) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_view_max(s : NetroutebgpView) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpView::max(self : NetroutebgpView) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_view_to_string(s : NetroutebgpView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpView::to_string(self : NetroutebgpView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpRange {
@@ -963,45 +963,45 @@ pub fn net_route_bgp_range_make(size : Int) -> NetroutebgpRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_range_len(s : NetroutebgpRange) -> Int { s.size }
+pub fn NetroutebgpRange::len(self : NetroutebgpRange) -> Int { self.size }
 
-pub fn net_route_bgp_range_get(s : NetroutebgpRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpRange::get(self : NetroutebgpRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_range_set(s : NetroutebgpRange, i : Int, v : Double) -> NetroutebgpRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpRange::set(self : NetroutebgpRange, i : Int, v : Double) -> NetroutebgpRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_range_sum(s : NetroutebgpRange) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpRange::sum(self : NetroutebgpRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_range_mean(s : NetroutebgpRange) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpRange::mean(self : NetroutebgpRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_range_scale(s : NetroutebgpRange, f : Double) -> NetroutebgpRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpRange::scale(self : NetroutebgpRange, f : Double) -> NetroutebgpRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_range_add(a : NetroutebgpRange, b : NetroutebgpRange) -> NetroutebgpRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpRange::add(self : NetroutebgpRange, other : NetroutebgpRange) -> NetroutebgpRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_range_copy(s : NetroutebgpRange) -> NetroutebgpRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpRange::copy(self : NetroutebgpRange) -> NetroutebgpRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_range_fill(s : NetroutebgpRange, v : Double) -> NetroutebgpRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpRange::fill(self : NetroutebgpRange, v : Double) -> NetroutebgpRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_range_min(s : NetroutebgpRange) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpRange::min(self : NetroutebgpRange) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_range_max(s : NetroutebgpRange) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpRange::max(self : NetroutebgpRange) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_range_to_string(s : NetroutebgpRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpRange::to_string(self : NetroutebgpRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpSlice {
@@ -1014,44 +1014,44 @@ pub fn net_route_bgp_slice_make(size : Int) -> NetroutebgpSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bgp_slice_len(s : NetroutebgpSlice) -> Int { s.size }
+pub fn NetroutebgpSlice::len(self : NetroutebgpSlice) -> Int { self.size }
 
-pub fn net_route_bgp_slice_get(s : NetroutebgpSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebgpSlice::get(self : NetroutebgpSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bgp_slice_set(s : NetroutebgpSlice, i : Int, v : Double) -> NetroutebgpSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebgpSlice::set(self : NetroutebgpSlice, i : Int, v : Double) -> NetroutebgpSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_slice_sum(s : NetroutebgpSlice) -> Double { @_common.sum(s.data) }
+pub fn NetroutebgpSlice::sum(self : NetroutebgpSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bgp_slice_mean(s : NetroutebgpSlice) -> Double { @_common.mean(s.data) }
+pub fn NetroutebgpSlice::mean(self : NetroutebgpSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bgp_slice_scale(s : NetroutebgpSlice, f : Double) -> NetroutebgpSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebgpSlice::scale(self : NetroutebgpSlice, f : Double) -> NetroutebgpSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_slice_add(a : NetroutebgpSlice, b : NetroutebgpSlice) -> NetroutebgpSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebgpSlice::add(self : NetroutebgpSlice, other : NetroutebgpSlice) -> NetroutebgpSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bgp_slice_copy(s : NetroutebgpSlice) -> NetroutebgpSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebgpSlice::copy(self : NetroutebgpSlice) -> NetroutebgpSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_slice_fill(s : NetroutebgpSlice, v : Double) -> NetroutebgpSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebgpSlice::fill(self : NetroutebgpSlice, v : Double) -> NetroutebgpSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bgp_slice_min(s : NetroutebgpSlice) -> Double { @_common.min(s.data) }
+pub fn NetroutebgpSlice::min(self : NetroutebgpSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bgp_slice_max(s : NetroutebgpSlice) -> Double { @_common.max(s.data) }
+pub fn NetroutebgpSlice::max(self : NetroutebgpSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bgp_slice_to_string(s : NetroutebgpSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebgpSlice::to_string(self : NetroutebgpSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

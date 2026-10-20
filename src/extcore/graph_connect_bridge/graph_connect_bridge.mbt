@@ -351,45 +351,45 @@ pub fn graph_connect_bridge_frame_make(size : Int) -> GraphconnectbridgeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_frame_len(s : GraphconnectbridgeFrame) -> Int { s.size }
+pub fn GraphconnectbridgeFrame::len(self : GraphconnectbridgeFrame) -> Int { self.size }
 
-pub fn graph_connect_bridge_frame_get(s : GraphconnectbridgeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeFrame::get(self : GraphconnectbridgeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_frame_set(s : GraphconnectbridgeFrame, i : Int, v : Double) -> GraphconnectbridgeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeFrame::set(self : GraphconnectbridgeFrame, i : Int, v : Double) -> GraphconnectbridgeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_frame_sum(s : GraphconnectbridgeFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeFrame::sum(self : GraphconnectbridgeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_frame_mean(s : GraphconnectbridgeFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeFrame::mean(self : GraphconnectbridgeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_frame_scale(s : GraphconnectbridgeFrame, f : Double) -> GraphconnectbridgeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeFrame::scale(self : GraphconnectbridgeFrame, f : Double) -> GraphconnectbridgeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_frame_add(a : GraphconnectbridgeFrame, b : GraphconnectbridgeFrame) -> GraphconnectbridgeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeFrame::add(self : GraphconnectbridgeFrame, other : GraphconnectbridgeFrame) -> GraphconnectbridgeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_frame_copy(s : GraphconnectbridgeFrame) -> GraphconnectbridgeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeFrame::copy(self : GraphconnectbridgeFrame) -> GraphconnectbridgeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_frame_fill(s : GraphconnectbridgeFrame, v : Double) -> GraphconnectbridgeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeFrame::fill(self : GraphconnectbridgeFrame, v : Double) -> GraphconnectbridgeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_frame_min(s : GraphconnectbridgeFrame) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeFrame::min(self : GraphconnectbridgeFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_frame_max(s : GraphconnectbridgeFrame) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeFrame::max(self : GraphconnectbridgeFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_frame_to_string(s : GraphconnectbridgeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeFrame::to_string(self : GraphconnectbridgeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgeTable {
@@ -402,45 +402,45 @@ pub fn graph_connect_bridge_table_make(size : Int) -> GraphconnectbridgeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_table_len(s : GraphconnectbridgeTable) -> Int { s.size }
+pub fn GraphconnectbridgeTable::len(self : GraphconnectbridgeTable) -> Int { self.size }
 
-pub fn graph_connect_bridge_table_get(s : GraphconnectbridgeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeTable::get(self : GraphconnectbridgeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_table_set(s : GraphconnectbridgeTable, i : Int, v : Double) -> GraphconnectbridgeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeTable::set(self : GraphconnectbridgeTable, i : Int, v : Double) -> GraphconnectbridgeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_table_sum(s : GraphconnectbridgeTable) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeTable::sum(self : GraphconnectbridgeTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_table_mean(s : GraphconnectbridgeTable) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeTable::mean(self : GraphconnectbridgeTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_table_scale(s : GraphconnectbridgeTable, f : Double) -> GraphconnectbridgeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeTable::scale(self : GraphconnectbridgeTable, f : Double) -> GraphconnectbridgeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_table_add(a : GraphconnectbridgeTable, b : GraphconnectbridgeTable) -> GraphconnectbridgeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeTable::add(self : GraphconnectbridgeTable, other : GraphconnectbridgeTable) -> GraphconnectbridgeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_table_copy(s : GraphconnectbridgeTable) -> GraphconnectbridgeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeTable::copy(self : GraphconnectbridgeTable) -> GraphconnectbridgeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_table_fill(s : GraphconnectbridgeTable, v : Double) -> GraphconnectbridgeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeTable::fill(self : GraphconnectbridgeTable, v : Double) -> GraphconnectbridgeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_table_min(s : GraphconnectbridgeTable) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeTable::min(self : GraphconnectbridgeTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_table_max(s : GraphconnectbridgeTable) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeTable::max(self : GraphconnectbridgeTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_table_to_string(s : GraphconnectbridgeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeTable::to_string(self : GraphconnectbridgeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgeGraphN {
@@ -453,45 +453,45 @@ pub fn graph_connect_bridge_graphn_make(size : Int) -> GraphconnectbridgeGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_graphn_len(s : GraphconnectbridgeGraphN) -> Int { s.size }
+pub fn GraphconnectbridgeGraphN::len(self : GraphconnectbridgeGraphN) -> Int { self.size }
 
-pub fn graph_connect_bridge_graphn_get(s : GraphconnectbridgeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeGraphN::get(self : GraphconnectbridgeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_graphn_set(s : GraphconnectbridgeGraphN, i : Int, v : Double) -> GraphconnectbridgeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeGraphN::set(self : GraphconnectbridgeGraphN, i : Int, v : Double) -> GraphconnectbridgeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_graphn_sum(s : GraphconnectbridgeGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeGraphN::sum(self : GraphconnectbridgeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_graphn_mean(s : GraphconnectbridgeGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeGraphN::mean(self : GraphconnectbridgeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_graphn_scale(s : GraphconnectbridgeGraphN, f : Double) -> GraphconnectbridgeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeGraphN::scale(self : GraphconnectbridgeGraphN, f : Double) -> GraphconnectbridgeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_graphn_add(a : GraphconnectbridgeGraphN, b : GraphconnectbridgeGraphN) -> GraphconnectbridgeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeGraphN::add(self : GraphconnectbridgeGraphN, other : GraphconnectbridgeGraphN) -> GraphconnectbridgeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_graphn_copy(s : GraphconnectbridgeGraphN) -> GraphconnectbridgeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeGraphN::copy(self : GraphconnectbridgeGraphN) -> GraphconnectbridgeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_graphn_fill(s : GraphconnectbridgeGraphN, v : Double) -> GraphconnectbridgeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeGraphN::fill(self : GraphconnectbridgeGraphN, v : Double) -> GraphconnectbridgeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_graphn_min(s : GraphconnectbridgeGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeGraphN::min(self : GraphconnectbridgeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_graphn_max(s : GraphconnectbridgeGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeGraphN::max(self : GraphconnectbridgeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_graphn_to_string(s : GraphconnectbridgeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeGraphN::to_string(self : GraphconnectbridgeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgeNode {
@@ -504,45 +504,45 @@ pub fn graph_connect_bridge_node_make(size : Int) -> GraphconnectbridgeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_node_len(s : GraphconnectbridgeNode) -> Int { s.size }
+pub fn GraphconnectbridgeNode::len(self : GraphconnectbridgeNode) -> Int { self.size }
 
-pub fn graph_connect_bridge_node_get(s : GraphconnectbridgeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeNode::get(self : GraphconnectbridgeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_node_set(s : GraphconnectbridgeNode, i : Int, v : Double) -> GraphconnectbridgeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeNode::set(self : GraphconnectbridgeNode, i : Int, v : Double) -> GraphconnectbridgeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_node_sum(s : GraphconnectbridgeNode) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeNode::sum(self : GraphconnectbridgeNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_node_mean(s : GraphconnectbridgeNode) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeNode::mean(self : GraphconnectbridgeNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_node_scale(s : GraphconnectbridgeNode, f : Double) -> GraphconnectbridgeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeNode::scale(self : GraphconnectbridgeNode, f : Double) -> GraphconnectbridgeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_node_add(a : GraphconnectbridgeNode, b : GraphconnectbridgeNode) -> GraphconnectbridgeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeNode::add(self : GraphconnectbridgeNode, other : GraphconnectbridgeNode) -> GraphconnectbridgeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_node_copy(s : GraphconnectbridgeNode) -> GraphconnectbridgeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeNode::copy(self : GraphconnectbridgeNode) -> GraphconnectbridgeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_node_fill(s : GraphconnectbridgeNode, v : Double) -> GraphconnectbridgeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeNode::fill(self : GraphconnectbridgeNode, v : Double) -> GraphconnectbridgeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_node_min(s : GraphconnectbridgeNode) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeNode::min(self : GraphconnectbridgeNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_node_max(s : GraphconnectbridgeNode) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeNode::max(self : GraphconnectbridgeNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_node_to_string(s : GraphconnectbridgeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeNode::to_string(self : GraphconnectbridgeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgeEdge {
@@ -555,45 +555,45 @@ pub fn graph_connect_bridge_edge_make(size : Int) -> GraphconnectbridgeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_edge_len(s : GraphconnectbridgeEdge) -> Int { s.size }
+pub fn GraphconnectbridgeEdge::len(self : GraphconnectbridgeEdge) -> Int { self.size }
 
-pub fn graph_connect_bridge_edge_get(s : GraphconnectbridgeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeEdge::get(self : GraphconnectbridgeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_edge_set(s : GraphconnectbridgeEdge, i : Int, v : Double) -> GraphconnectbridgeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeEdge::set(self : GraphconnectbridgeEdge, i : Int, v : Double) -> GraphconnectbridgeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_edge_sum(s : GraphconnectbridgeEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeEdge::sum(self : GraphconnectbridgeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_edge_mean(s : GraphconnectbridgeEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeEdge::mean(self : GraphconnectbridgeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_edge_scale(s : GraphconnectbridgeEdge, f : Double) -> GraphconnectbridgeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeEdge::scale(self : GraphconnectbridgeEdge, f : Double) -> GraphconnectbridgeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_edge_add(a : GraphconnectbridgeEdge, b : GraphconnectbridgeEdge) -> GraphconnectbridgeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeEdge::add(self : GraphconnectbridgeEdge, other : GraphconnectbridgeEdge) -> GraphconnectbridgeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_edge_copy(s : GraphconnectbridgeEdge) -> GraphconnectbridgeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeEdge::copy(self : GraphconnectbridgeEdge) -> GraphconnectbridgeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_edge_fill(s : GraphconnectbridgeEdge, v : Double) -> GraphconnectbridgeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeEdge::fill(self : GraphconnectbridgeEdge, v : Double) -> GraphconnectbridgeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_edge_min(s : GraphconnectbridgeEdge) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeEdge::min(self : GraphconnectbridgeEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_edge_max(s : GraphconnectbridgeEdge) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeEdge::max(self : GraphconnectbridgeEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_edge_to_string(s : GraphconnectbridgeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeEdge::to_string(self : GraphconnectbridgeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgePath {
@@ -606,45 +606,45 @@ pub fn graph_connect_bridge_path_make(size : Int) -> GraphconnectbridgePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_path_len(s : GraphconnectbridgePath) -> Int { s.size }
+pub fn GraphconnectbridgePath::len(self : GraphconnectbridgePath) -> Int { self.size }
 
-pub fn graph_connect_bridge_path_get(s : GraphconnectbridgePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgePath::get(self : GraphconnectbridgePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_path_set(s : GraphconnectbridgePath, i : Int, v : Double) -> GraphconnectbridgePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgePath::set(self : GraphconnectbridgePath, i : Int, v : Double) -> GraphconnectbridgePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_path_sum(s : GraphconnectbridgePath) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgePath::sum(self : GraphconnectbridgePath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_path_mean(s : GraphconnectbridgePath) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgePath::mean(self : GraphconnectbridgePath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_path_scale(s : GraphconnectbridgePath, f : Double) -> GraphconnectbridgePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgePath::scale(self : GraphconnectbridgePath, f : Double) -> GraphconnectbridgePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_path_add(a : GraphconnectbridgePath, b : GraphconnectbridgePath) -> GraphconnectbridgePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgePath::add(self : GraphconnectbridgePath, other : GraphconnectbridgePath) -> GraphconnectbridgePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_path_copy(s : GraphconnectbridgePath) -> GraphconnectbridgePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgePath::copy(self : GraphconnectbridgePath) -> GraphconnectbridgePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_path_fill(s : GraphconnectbridgePath, v : Double) -> GraphconnectbridgePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgePath::fill(self : GraphconnectbridgePath, v : Double) -> GraphconnectbridgePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_path_min(s : GraphconnectbridgePath) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgePath::min(self : GraphconnectbridgePath) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_path_max(s : GraphconnectbridgePath) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgePath::max(self : GraphconnectbridgePath) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_path_to_string(s : GraphconnectbridgePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgePath::to_string(self : GraphconnectbridgePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgeCluster {
@@ -657,45 +657,45 @@ pub fn graph_connect_bridge_cluster_make(size : Int) -> GraphconnectbridgeCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_cluster_len(s : GraphconnectbridgeCluster) -> Int { s.size }
+pub fn GraphconnectbridgeCluster::len(self : GraphconnectbridgeCluster) -> Int { self.size }
 
-pub fn graph_connect_bridge_cluster_get(s : GraphconnectbridgeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeCluster::get(self : GraphconnectbridgeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_cluster_set(s : GraphconnectbridgeCluster, i : Int, v : Double) -> GraphconnectbridgeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeCluster::set(self : GraphconnectbridgeCluster, i : Int, v : Double) -> GraphconnectbridgeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_cluster_sum(s : GraphconnectbridgeCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeCluster::sum(self : GraphconnectbridgeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_cluster_mean(s : GraphconnectbridgeCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeCluster::mean(self : GraphconnectbridgeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_cluster_scale(s : GraphconnectbridgeCluster, f : Double) -> GraphconnectbridgeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeCluster::scale(self : GraphconnectbridgeCluster, f : Double) -> GraphconnectbridgeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_cluster_add(a : GraphconnectbridgeCluster, b : GraphconnectbridgeCluster) -> GraphconnectbridgeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeCluster::add(self : GraphconnectbridgeCluster, other : GraphconnectbridgeCluster) -> GraphconnectbridgeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_cluster_copy(s : GraphconnectbridgeCluster) -> GraphconnectbridgeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeCluster::copy(self : GraphconnectbridgeCluster) -> GraphconnectbridgeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_cluster_fill(s : GraphconnectbridgeCluster, v : Double) -> GraphconnectbridgeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeCluster::fill(self : GraphconnectbridgeCluster, v : Double) -> GraphconnectbridgeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_cluster_min(s : GraphconnectbridgeCluster) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeCluster::min(self : GraphconnectbridgeCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_cluster_max(s : GraphconnectbridgeCluster) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeCluster::max(self : GraphconnectbridgeCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_cluster_to_string(s : GraphconnectbridgeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeCluster::to_string(self : GraphconnectbridgeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgeModel {
@@ -708,45 +708,45 @@ pub fn graph_connect_bridge_model_make(size : Int) -> GraphconnectbridgeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_model_len(s : GraphconnectbridgeModel) -> Int { s.size }
+pub fn GraphconnectbridgeModel::len(self : GraphconnectbridgeModel) -> Int { self.size }
 
-pub fn graph_connect_bridge_model_get(s : GraphconnectbridgeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeModel::get(self : GraphconnectbridgeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_model_set(s : GraphconnectbridgeModel, i : Int, v : Double) -> GraphconnectbridgeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeModel::set(self : GraphconnectbridgeModel, i : Int, v : Double) -> GraphconnectbridgeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_model_sum(s : GraphconnectbridgeModel) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeModel::sum(self : GraphconnectbridgeModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_model_mean(s : GraphconnectbridgeModel) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeModel::mean(self : GraphconnectbridgeModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_model_scale(s : GraphconnectbridgeModel, f : Double) -> GraphconnectbridgeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeModel::scale(self : GraphconnectbridgeModel, f : Double) -> GraphconnectbridgeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_model_add(a : GraphconnectbridgeModel, b : GraphconnectbridgeModel) -> GraphconnectbridgeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeModel::add(self : GraphconnectbridgeModel, other : GraphconnectbridgeModel) -> GraphconnectbridgeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_model_copy(s : GraphconnectbridgeModel) -> GraphconnectbridgeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeModel::copy(self : GraphconnectbridgeModel) -> GraphconnectbridgeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_model_fill(s : GraphconnectbridgeModel, v : Double) -> GraphconnectbridgeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeModel::fill(self : GraphconnectbridgeModel, v : Double) -> GraphconnectbridgeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_model_min(s : GraphconnectbridgeModel) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeModel::min(self : GraphconnectbridgeModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_model_max(s : GraphconnectbridgeModel) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeModel::max(self : GraphconnectbridgeModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_model_to_string(s : GraphconnectbridgeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeModel::to_string(self : GraphconnectbridgeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgeLayer {
@@ -759,45 +759,45 @@ pub fn graph_connect_bridge_layer_make(size : Int) -> GraphconnectbridgeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_layer_len(s : GraphconnectbridgeLayer) -> Int { s.size }
+pub fn GraphconnectbridgeLayer::len(self : GraphconnectbridgeLayer) -> Int { self.size }
 
-pub fn graph_connect_bridge_layer_get(s : GraphconnectbridgeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeLayer::get(self : GraphconnectbridgeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_layer_set(s : GraphconnectbridgeLayer, i : Int, v : Double) -> GraphconnectbridgeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeLayer::set(self : GraphconnectbridgeLayer, i : Int, v : Double) -> GraphconnectbridgeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_layer_sum(s : GraphconnectbridgeLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeLayer::sum(self : GraphconnectbridgeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_layer_mean(s : GraphconnectbridgeLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeLayer::mean(self : GraphconnectbridgeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_layer_scale(s : GraphconnectbridgeLayer, f : Double) -> GraphconnectbridgeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeLayer::scale(self : GraphconnectbridgeLayer, f : Double) -> GraphconnectbridgeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_layer_add(a : GraphconnectbridgeLayer, b : GraphconnectbridgeLayer) -> GraphconnectbridgeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeLayer::add(self : GraphconnectbridgeLayer, other : GraphconnectbridgeLayer) -> GraphconnectbridgeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_layer_copy(s : GraphconnectbridgeLayer) -> GraphconnectbridgeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeLayer::copy(self : GraphconnectbridgeLayer) -> GraphconnectbridgeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_layer_fill(s : GraphconnectbridgeLayer, v : Double) -> GraphconnectbridgeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeLayer::fill(self : GraphconnectbridgeLayer, v : Double) -> GraphconnectbridgeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_layer_min(s : GraphconnectbridgeLayer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeLayer::min(self : GraphconnectbridgeLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_layer_max(s : GraphconnectbridgeLayer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeLayer::max(self : GraphconnectbridgeLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_layer_to_string(s : GraphconnectbridgeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeLayer::to_string(self : GraphconnectbridgeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgeBuffer {
@@ -810,45 +810,45 @@ pub fn graph_connect_bridge_buffer_make(size : Int) -> GraphconnectbridgeBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_buffer_len(s : GraphconnectbridgeBuffer) -> Int { s.size }
+pub fn GraphconnectbridgeBuffer::len(self : GraphconnectbridgeBuffer) -> Int { self.size }
 
-pub fn graph_connect_bridge_buffer_get(s : GraphconnectbridgeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeBuffer::get(self : GraphconnectbridgeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_buffer_set(s : GraphconnectbridgeBuffer, i : Int, v : Double) -> GraphconnectbridgeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeBuffer::set(self : GraphconnectbridgeBuffer, i : Int, v : Double) -> GraphconnectbridgeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_buffer_sum(s : GraphconnectbridgeBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeBuffer::sum(self : GraphconnectbridgeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_buffer_mean(s : GraphconnectbridgeBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeBuffer::mean(self : GraphconnectbridgeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_buffer_scale(s : GraphconnectbridgeBuffer, f : Double) -> GraphconnectbridgeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeBuffer::scale(self : GraphconnectbridgeBuffer, f : Double) -> GraphconnectbridgeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_buffer_add(a : GraphconnectbridgeBuffer, b : GraphconnectbridgeBuffer) -> GraphconnectbridgeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeBuffer::add(self : GraphconnectbridgeBuffer, other : GraphconnectbridgeBuffer) -> GraphconnectbridgeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_buffer_copy(s : GraphconnectbridgeBuffer) -> GraphconnectbridgeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeBuffer::copy(self : GraphconnectbridgeBuffer) -> GraphconnectbridgeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_buffer_fill(s : GraphconnectbridgeBuffer, v : Double) -> GraphconnectbridgeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeBuffer::fill(self : GraphconnectbridgeBuffer, v : Double) -> GraphconnectbridgeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_buffer_min(s : GraphconnectbridgeBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeBuffer::min(self : GraphconnectbridgeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_buffer_max(s : GraphconnectbridgeBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeBuffer::max(self : GraphconnectbridgeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_buffer_to_string(s : GraphconnectbridgeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeBuffer::to_string(self : GraphconnectbridgeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgeCursor {
@@ -861,45 +861,45 @@ pub fn graph_connect_bridge_cursor_make(size : Int) -> GraphconnectbridgeCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_cursor_len(s : GraphconnectbridgeCursor) -> Int { s.size }
+pub fn GraphconnectbridgeCursor::len(self : GraphconnectbridgeCursor) -> Int { self.size }
 
-pub fn graph_connect_bridge_cursor_get(s : GraphconnectbridgeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeCursor::get(self : GraphconnectbridgeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_cursor_set(s : GraphconnectbridgeCursor, i : Int, v : Double) -> GraphconnectbridgeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeCursor::set(self : GraphconnectbridgeCursor, i : Int, v : Double) -> GraphconnectbridgeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_cursor_sum(s : GraphconnectbridgeCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeCursor::sum(self : GraphconnectbridgeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_cursor_mean(s : GraphconnectbridgeCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeCursor::mean(self : GraphconnectbridgeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_cursor_scale(s : GraphconnectbridgeCursor, f : Double) -> GraphconnectbridgeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeCursor::scale(self : GraphconnectbridgeCursor, f : Double) -> GraphconnectbridgeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_cursor_add(a : GraphconnectbridgeCursor, b : GraphconnectbridgeCursor) -> GraphconnectbridgeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeCursor::add(self : GraphconnectbridgeCursor, other : GraphconnectbridgeCursor) -> GraphconnectbridgeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_cursor_copy(s : GraphconnectbridgeCursor) -> GraphconnectbridgeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeCursor::copy(self : GraphconnectbridgeCursor) -> GraphconnectbridgeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_cursor_fill(s : GraphconnectbridgeCursor, v : Double) -> GraphconnectbridgeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeCursor::fill(self : GraphconnectbridgeCursor, v : Double) -> GraphconnectbridgeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_cursor_min(s : GraphconnectbridgeCursor) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeCursor::min(self : GraphconnectbridgeCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_cursor_max(s : GraphconnectbridgeCursor) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeCursor::max(self : GraphconnectbridgeCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_cursor_to_string(s : GraphconnectbridgeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeCursor::to_string(self : GraphconnectbridgeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgeView {
@@ -912,45 +912,45 @@ pub fn graph_connect_bridge_view_make(size : Int) -> GraphconnectbridgeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_view_len(s : GraphconnectbridgeView) -> Int { s.size }
+pub fn GraphconnectbridgeView::len(self : GraphconnectbridgeView) -> Int { self.size }
 
-pub fn graph_connect_bridge_view_get(s : GraphconnectbridgeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeView::get(self : GraphconnectbridgeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_view_set(s : GraphconnectbridgeView, i : Int, v : Double) -> GraphconnectbridgeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeView::set(self : GraphconnectbridgeView, i : Int, v : Double) -> GraphconnectbridgeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_view_sum(s : GraphconnectbridgeView) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeView::sum(self : GraphconnectbridgeView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_view_mean(s : GraphconnectbridgeView) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeView::mean(self : GraphconnectbridgeView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_view_scale(s : GraphconnectbridgeView, f : Double) -> GraphconnectbridgeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeView::scale(self : GraphconnectbridgeView, f : Double) -> GraphconnectbridgeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_view_add(a : GraphconnectbridgeView, b : GraphconnectbridgeView) -> GraphconnectbridgeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeView::add(self : GraphconnectbridgeView, other : GraphconnectbridgeView) -> GraphconnectbridgeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_view_copy(s : GraphconnectbridgeView) -> GraphconnectbridgeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeView::copy(self : GraphconnectbridgeView) -> GraphconnectbridgeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_view_fill(s : GraphconnectbridgeView, v : Double) -> GraphconnectbridgeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeView::fill(self : GraphconnectbridgeView, v : Double) -> GraphconnectbridgeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_view_min(s : GraphconnectbridgeView) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeView::min(self : GraphconnectbridgeView) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_view_max(s : GraphconnectbridgeView) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeView::max(self : GraphconnectbridgeView) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_view_to_string(s : GraphconnectbridgeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeView::to_string(self : GraphconnectbridgeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgeRange {
@@ -963,45 +963,45 @@ pub fn graph_connect_bridge_range_make(size : Int) -> GraphconnectbridgeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_range_len(s : GraphconnectbridgeRange) -> Int { s.size }
+pub fn GraphconnectbridgeRange::len(self : GraphconnectbridgeRange) -> Int { self.size }
 
-pub fn graph_connect_bridge_range_get(s : GraphconnectbridgeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeRange::get(self : GraphconnectbridgeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_range_set(s : GraphconnectbridgeRange, i : Int, v : Double) -> GraphconnectbridgeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeRange::set(self : GraphconnectbridgeRange, i : Int, v : Double) -> GraphconnectbridgeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_range_sum(s : GraphconnectbridgeRange) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeRange::sum(self : GraphconnectbridgeRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_range_mean(s : GraphconnectbridgeRange) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeRange::mean(self : GraphconnectbridgeRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_range_scale(s : GraphconnectbridgeRange, f : Double) -> GraphconnectbridgeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeRange::scale(self : GraphconnectbridgeRange, f : Double) -> GraphconnectbridgeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_range_add(a : GraphconnectbridgeRange, b : GraphconnectbridgeRange) -> GraphconnectbridgeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeRange::add(self : GraphconnectbridgeRange, other : GraphconnectbridgeRange) -> GraphconnectbridgeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_range_copy(s : GraphconnectbridgeRange) -> GraphconnectbridgeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeRange::copy(self : GraphconnectbridgeRange) -> GraphconnectbridgeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_range_fill(s : GraphconnectbridgeRange, v : Double) -> GraphconnectbridgeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeRange::fill(self : GraphconnectbridgeRange, v : Double) -> GraphconnectbridgeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_range_min(s : GraphconnectbridgeRange) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeRange::min(self : GraphconnectbridgeRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_range_max(s : GraphconnectbridgeRange) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeRange::max(self : GraphconnectbridgeRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_range_to_string(s : GraphconnectbridgeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeRange::to_string(self : GraphconnectbridgeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbridgeSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_connect_bridge_slice_make(size : Int) -> GraphconnectbridgeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_bridge_slice_len(s : GraphconnectbridgeSlice) -> Int { s.size }
+pub fn GraphconnectbridgeSlice::len(self : GraphconnectbridgeSlice) -> Int { self.size }
 
-pub fn graph_connect_bridge_slice_get(s : GraphconnectbridgeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbridgeSlice::get(self : GraphconnectbridgeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_bridge_slice_set(s : GraphconnectbridgeSlice, i : Int, v : Double) -> GraphconnectbridgeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeSlice::set(self : GraphconnectbridgeSlice, i : Int, v : Double) -> GraphconnectbridgeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_slice_sum(s : GraphconnectbridgeSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbridgeSlice::sum(self : GraphconnectbridgeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_bridge_slice_mean(s : GraphconnectbridgeSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbridgeSlice::mean(self : GraphconnectbridgeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_bridge_slice_scale(s : GraphconnectbridgeSlice, f : Double) -> GraphconnectbridgeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeSlice::scale(self : GraphconnectbridgeSlice, f : Double) -> GraphconnectbridgeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_slice_add(a : GraphconnectbridgeSlice, b : GraphconnectbridgeSlice) -> GraphconnectbridgeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbridgeSlice::add(self : GraphconnectbridgeSlice, other : GraphconnectbridgeSlice) -> GraphconnectbridgeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_slice_copy(s : GraphconnectbridgeSlice) -> GraphconnectbridgeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeSlice::copy(self : GraphconnectbridgeSlice) -> GraphconnectbridgeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_slice_fill(s : GraphconnectbridgeSlice, v : Double) -> GraphconnectbridgeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbridgeSlice::fill(self : GraphconnectbridgeSlice, v : Double) -> GraphconnectbridgeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_bridge_slice_min(s : GraphconnectbridgeSlice) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbridgeSlice::min(self : GraphconnectbridgeSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_bridge_slice_max(s : GraphconnectbridgeSlice) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbridgeSlice::max(self : GraphconnectbridgeSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_bridge_slice_to_string(s : GraphconnectbridgeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbridgeSlice::to_string(self : GraphconnectbridgeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

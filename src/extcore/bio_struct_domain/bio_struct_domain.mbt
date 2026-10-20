@@ -351,45 +351,45 @@ pub fn bio_struct_domain_frame_make(size : Int) -> BiostructdomainFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_frame_len(s : BiostructdomainFrame) -> Int { s.size }
+pub fn BiostructdomainFrame::len(self : BiostructdomainFrame) -> Int { self.size }
 
-pub fn bio_struct_domain_frame_get(s : BiostructdomainFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainFrame::get(self : BiostructdomainFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_frame_set(s : BiostructdomainFrame, i : Int, v : Double) -> BiostructdomainFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainFrame::set(self : BiostructdomainFrame, i : Int, v : Double) -> BiostructdomainFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_frame_sum(s : BiostructdomainFrame) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainFrame::sum(self : BiostructdomainFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_frame_mean(s : BiostructdomainFrame) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainFrame::mean(self : BiostructdomainFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_frame_scale(s : BiostructdomainFrame, f : Double) -> BiostructdomainFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainFrame::scale(self : BiostructdomainFrame, f : Double) -> BiostructdomainFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_frame_add(a : BiostructdomainFrame, b : BiostructdomainFrame) -> BiostructdomainFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainFrame::add(self : BiostructdomainFrame, other : BiostructdomainFrame) -> BiostructdomainFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_frame_copy(s : BiostructdomainFrame) -> BiostructdomainFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainFrame::copy(self : BiostructdomainFrame) -> BiostructdomainFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_frame_fill(s : BiostructdomainFrame, v : Double) -> BiostructdomainFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainFrame::fill(self : BiostructdomainFrame, v : Double) -> BiostructdomainFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_frame_min(s : BiostructdomainFrame) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainFrame::min(self : BiostructdomainFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_frame_max(s : BiostructdomainFrame) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainFrame::max(self : BiostructdomainFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_frame_to_string(s : BiostructdomainFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainFrame::to_string(self : BiostructdomainFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainTable {
@@ -402,45 +402,45 @@ pub fn bio_struct_domain_table_make(size : Int) -> BiostructdomainTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_table_len(s : BiostructdomainTable) -> Int { s.size }
+pub fn BiostructdomainTable::len(self : BiostructdomainTable) -> Int { self.size }
 
-pub fn bio_struct_domain_table_get(s : BiostructdomainTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainTable::get(self : BiostructdomainTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_table_set(s : BiostructdomainTable, i : Int, v : Double) -> BiostructdomainTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainTable::set(self : BiostructdomainTable, i : Int, v : Double) -> BiostructdomainTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_table_sum(s : BiostructdomainTable) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainTable::sum(self : BiostructdomainTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_table_mean(s : BiostructdomainTable) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainTable::mean(self : BiostructdomainTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_table_scale(s : BiostructdomainTable, f : Double) -> BiostructdomainTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainTable::scale(self : BiostructdomainTable, f : Double) -> BiostructdomainTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_table_add(a : BiostructdomainTable, b : BiostructdomainTable) -> BiostructdomainTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainTable::add(self : BiostructdomainTable, other : BiostructdomainTable) -> BiostructdomainTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_table_copy(s : BiostructdomainTable) -> BiostructdomainTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainTable::copy(self : BiostructdomainTable) -> BiostructdomainTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_table_fill(s : BiostructdomainTable, v : Double) -> BiostructdomainTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainTable::fill(self : BiostructdomainTable, v : Double) -> BiostructdomainTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_table_min(s : BiostructdomainTable) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainTable::min(self : BiostructdomainTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_table_max(s : BiostructdomainTable) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainTable::max(self : BiostructdomainTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_table_to_string(s : BiostructdomainTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainTable::to_string(self : BiostructdomainTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainGraphN {
@@ -453,45 +453,45 @@ pub fn bio_struct_domain_graphn_make(size : Int) -> BiostructdomainGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_graphn_len(s : BiostructdomainGraphN) -> Int { s.size }
+pub fn BiostructdomainGraphN::len(self : BiostructdomainGraphN) -> Int { self.size }
 
-pub fn bio_struct_domain_graphn_get(s : BiostructdomainGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainGraphN::get(self : BiostructdomainGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_graphn_set(s : BiostructdomainGraphN, i : Int, v : Double) -> BiostructdomainGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainGraphN::set(self : BiostructdomainGraphN, i : Int, v : Double) -> BiostructdomainGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_graphn_sum(s : BiostructdomainGraphN) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainGraphN::sum(self : BiostructdomainGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_graphn_mean(s : BiostructdomainGraphN) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainGraphN::mean(self : BiostructdomainGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_graphn_scale(s : BiostructdomainGraphN, f : Double) -> BiostructdomainGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainGraphN::scale(self : BiostructdomainGraphN, f : Double) -> BiostructdomainGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_graphn_add(a : BiostructdomainGraphN, b : BiostructdomainGraphN) -> BiostructdomainGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainGraphN::add(self : BiostructdomainGraphN, other : BiostructdomainGraphN) -> BiostructdomainGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_graphn_copy(s : BiostructdomainGraphN) -> BiostructdomainGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainGraphN::copy(self : BiostructdomainGraphN) -> BiostructdomainGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_graphn_fill(s : BiostructdomainGraphN, v : Double) -> BiostructdomainGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainGraphN::fill(self : BiostructdomainGraphN, v : Double) -> BiostructdomainGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_graphn_min(s : BiostructdomainGraphN) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainGraphN::min(self : BiostructdomainGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_graphn_max(s : BiostructdomainGraphN) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainGraphN::max(self : BiostructdomainGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_graphn_to_string(s : BiostructdomainGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainGraphN::to_string(self : BiostructdomainGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainNode {
@@ -504,45 +504,45 @@ pub fn bio_struct_domain_node_make(size : Int) -> BiostructdomainNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_node_len(s : BiostructdomainNode) -> Int { s.size }
+pub fn BiostructdomainNode::len(self : BiostructdomainNode) -> Int { self.size }
 
-pub fn bio_struct_domain_node_get(s : BiostructdomainNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainNode::get(self : BiostructdomainNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_node_set(s : BiostructdomainNode, i : Int, v : Double) -> BiostructdomainNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainNode::set(self : BiostructdomainNode, i : Int, v : Double) -> BiostructdomainNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_node_sum(s : BiostructdomainNode) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainNode::sum(self : BiostructdomainNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_node_mean(s : BiostructdomainNode) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainNode::mean(self : BiostructdomainNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_node_scale(s : BiostructdomainNode, f : Double) -> BiostructdomainNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainNode::scale(self : BiostructdomainNode, f : Double) -> BiostructdomainNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_node_add(a : BiostructdomainNode, b : BiostructdomainNode) -> BiostructdomainNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainNode::add(self : BiostructdomainNode, other : BiostructdomainNode) -> BiostructdomainNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_node_copy(s : BiostructdomainNode) -> BiostructdomainNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainNode::copy(self : BiostructdomainNode) -> BiostructdomainNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_node_fill(s : BiostructdomainNode, v : Double) -> BiostructdomainNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainNode::fill(self : BiostructdomainNode, v : Double) -> BiostructdomainNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_node_min(s : BiostructdomainNode) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainNode::min(self : BiostructdomainNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_node_max(s : BiostructdomainNode) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainNode::max(self : BiostructdomainNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_node_to_string(s : BiostructdomainNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainNode::to_string(self : BiostructdomainNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainEdge {
@@ -555,45 +555,45 @@ pub fn bio_struct_domain_edge_make(size : Int) -> BiostructdomainEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_edge_len(s : BiostructdomainEdge) -> Int { s.size }
+pub fn BiostructdomainEdge::len(self : BiostructdomainEdge) -> Int { self.size }
 
-pub fn bio_struct_domain_edge_get(s : BiostructdomainEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainEdge::get(self : BiostructdomainEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_edge_set(s : BiostructdomainEdge, i : Int, v : Double) -> BiostructdomainEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainEdge::set(self : BiostructdomainEdge, i : Int, v : Double) -> BiostructdomainEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_edge_sum(s : BiostructdomainEdge) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainEdge::sum(self : BiostructdomainEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_edge_mean(s : BiostructdomainEdge) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainEdge::mean(self : BiostructdomainEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_edge_scale(s : BiostructdomainEdge, f : Double) -> BiostructdomainEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainEdge::scale(self : BiostructdomainEdge, f : Double) -> BiostructdomainEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_edge_add(a : BiostructdomainEdge, b : BiostructdomainEdge) -> BiostructdomainEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainEdge::add(self : BiostructdomainEdge, other : BiostructdomainEdge) -> BiostructdomainEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_edge_copy(s : BiostructdomainEdge) -> BiostructdomainEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainEdge::copy(self : BiostructdomainEdge) -> BiostructdomainEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_edge_fill(s : BiostructdomainEdge, v : Double) -> BiostructdomainEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainEdge::fill(self : BiostructdomainEdge, v : Double) -> BiostructdomainEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_edge_min(s : BiostructdomainEdge) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainEdge::min(self : BiostructdomainEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_edge_max(s : BiostructdomainEdge) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainEdge::max(self : BiostructdomainEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_edge_to_string(s : BiostructdomainEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainEdge::to_string(self : BiostructdomainEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainPath {
@@ -606,45 +606,45 @@ pub fn bio_struct_domain_path_make(size : Int) -> BiostructdomainPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_path_len(s : BiostructdomainPath) -> Int { s.size }
+pub fn BiostructdomainPath::len(self : BiostructdomainPath) -> Int { self.size }
 
-pub fn bio_struct_domain_path_get(s : BiostructdomainPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainPath::get(self : BiostructdomainPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_path_set(s : BiostructdomainPath, i : Int, v : Double) -> BiostructdomainPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainPath::set(self : BiostructdomainPath, i : Int, v : Double) -> BiostructdomainPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_path_sum(s : BiostructdomainPath) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainPath::sum(self : BiostructdomainPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_path_mean(s : BiostructdomainPath) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainPath::mean(self : BiostructdomainPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_path_scale(s : BiostructdomainPath, f : Double) -> BiostructdomainPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainPath::scale(self : BiostructdomainPath, f : Double) -> BiostructdomainPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_path_add(a : BiostructdomainPath, b : BiostructdomainPath) -> BiostructdomainPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainPath::add(self : BiostructdomainPath, other : BiostructdomainPath) -> BiostructdomainPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_path_copy(s : BiostructdomainPath) -> BiostructdomainPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainPath::copy(self : BiostructdomainPath) -> BiostructdomainPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_path_fill(s : BiostructdomainPath, v : Double) -> BiostructdomainPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainPath::fill(self : BiostructdomainPath, v : Double) -> BiostructdomainPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_path_min(s : BiostructdomainPath) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainPath::min(self : BiostructdomainPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_path_max(s : BiostructdomainPath) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainPath::max(self : BiostructdomainPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_path_to_string(s : BiostructdomainPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainPath::to_string(self : BiostructdomainPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainCluster {
@@ -657,45 +657,45 @@ pub fn bio_struct_domain_cluster_make(size : Int) -> BiostructdomainCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_cluster_len(s : BiostructdomainCluster) -> Int { s.size }
+pub fn BiostructdomainCluster::len(self : BiostructdomainCluster) -> Int { self.size }
 
-pub fn bio_struct_domain_cluster_get(s : BiostructdomainCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainCluster::get(self : BiostructdomainCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_cluster_set(s : BiostructdomainCluster, i : Int, v : Double) -> BiostructdomainCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainCluster::set(self : BiostructdomainCluster, i : Int, v : Double) -> BiostructdomainCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_cluster_sum(s : BiostructdomainCluster) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainCluster::sum(self : BiostructdomainCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_cluster_mean(s : BiostructdomainCluster) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainCluster::mean(self : BiostructdomainCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_cluster_scale(s : BiostructdomainCluster, f : Double) -> BiostructdomainCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainCluster::scale(self : BiostructdomainCluster, f : Double) -> BiostructdomainCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_cluster_add(a : BiostructdomainCluster, b : BiostructdomainCluster) -> BiostructdomainCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainCluster::add(self : BiostructdomainCluster, other : BiostructdomainCluster) -> BiostructdomainCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_cluster_copy(s : BiostructdomainCluster) -> BiostructdomainCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainCluster::copy(self : BiostructdomainCluster) -> BiostructdomainCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_cluster_fill(s : BiostructdomainCluster, v : Double) -> BiostructdomainCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainCluster::fill(self : BiostructdomainCluster, v : Double) -> BiostructdomainCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_cluster_min(s : BiostructdomainCluster) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainCluster::min(self : BiostructdomainCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_cluster_max(s : BiostructdomainCluster) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainCluster::max(self : BiostructdomainCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_cluster_to_string(s : BiostructdomainCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainCluster::to_string(self : BiostructdomainCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainModel {
@@ -708,45 +708,45 @@ pub fn bio_struct_domain_model_make(size : Int) -> BiostructdomainModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_model_len(s : BiostructdomainModel) -> Int { s.size }
+pub fn BiostructdomainModel::len(self : BiostructdomainModel) -> Int { self.size }
 
-pub fn bio_struct_domain_model_get(s : BiostructdomainModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainModel::get(self : BiostructdomainModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_model_set(s : BiostructdomainModel, i : Int, v : Double) -> BiostructdomainModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainModel::set(self : BiostructdomainModel, i : Int, v : Double) -> BiostructdomainModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_model_sum(s : BiostructdomainModel) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainModel::sum(self : BiostructdomainModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_model_mean(s : BiostructdomainModel) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainModel::mean(self : BiostructdomainModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_model_scale(s : BiostructdomainModel, f : Double) -> BiostructdomainModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainModel::scale(self : BiostructdomainModel, f : Double) -> BiostructdomainModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_model_add(a : BiostructdomainModel, b : BiostructdomainModel) -> BiostructdomainModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainModel::add(self : BiostructdomainModel, other : BiostructdomainModel) -> BiostructdomainModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_model_copy(s : BiostructdomainModel) -> BiostructdomainModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainModel::copy(self : BiostructdomainModel) -> BiostructdomainModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_model_fill(s : BiostructdomainModel, v : Double) -> BiostructdomainModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainModel::fill(self : BiostructdomainModel, v : Double) -> BiostructdomainModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_model_min(s : BiostructdomainModel) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainModel::min(self : BiostructdomainModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_model_max(s : BiostructdomainModel) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainModel::max(self : BiostructdomainModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_model_to_string(s : BiostructdomainModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainModel::to_string(self : BiostructdomainModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainLayer {
@@ -759,45 +759,45 @@ pub fn bio_struct_domain_layer_make(size : Int) -> BiostructdomainLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_layer_len(s : BiostructdomainLayer) -> Int { s.size }
+pub fn BiostructdomainLayer::len(self : BiostructdomainLayer) -> Int { self.size }
 
-pub fn bio_struct_domain_layer_get(s : BiostructdomainLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainLayer::get(self : BiostructdomainLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_layer_set(s : BiostructdomainLayer, i : Int, v : Double) -> BiostructdomainLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainLayer::set(self : BiostructdomainLayer, i : Int, v : Double) -> BiostructdomainLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_layer_sum(s : BiostructdomainLayer) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainLayer::sum(self : BiostructdomainLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_layer_mean(s : BiostructdomainLayer) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainLayer::mean(self : BiostructdomainLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_layer_scale(s : BiostructdomainLayer, f : Double) -> BiostructdomainLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainLayer::scale(self : BiostructdomainLayer, f : Double) -> BiostructdomainLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_layer_add(a : BiostructdomainLayer, b : BiostructdomainLayer) -> BiostructdomainLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainLayer::add(self : BiostructdomainLayer, other : BiostructdomainLayer) -> BiostructdomainLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_layer_copy(s : BiostructdomainLayer) -> BiostructdomainLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainLayer::copy(self : BiostructdomainLayer) -> BiostructdomainLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_layer_fill(s : BiostructdomainLayer, v : Double) -> BiostructdomainLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainLayer::fill(self : BiostructdomainLayer, v : Double) -> BiostructdomainLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_layer_min(s : BiostructdomainLayer) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainLayer::min(self : BiostructdomainLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_layer_max(s : BiostructdomainLayer) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainLayer::max(self : BiostructdomainLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_layer_to_string(s : BiostructdomainLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainLayer::to_string(self : BiostructdomainLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainBuffer {
@@ -810,45 +810,45 @@ pub fn bio_struct_domain_buffer_make(size : Int) -> BiostructdomainBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_buffer_len(s : BiostructdomainBuffer) -> Int { s.size }
+pub fn BiostructdomainBuffer::len(self : BiostructdomainBuffer) -> Int { self.size }
 
-pub fn bio_struct_domain_buffer_get(s : BiostructdomainBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainBuffer::get(self : BiostructdomainBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_buffer_set(s : BiostructdomainBuffer, i : Int, v : Double) -> BiostructdomainBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainBuffer::set(self : BiostructdomainBuffer, i : Int, v : Double) -> BiostructdomainBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_buffer_sum(s : BiostructdomainBuffer) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainBuffer::sum(self : BiostructdomainBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_buffer_mean(s : BiostructdomainBuffer) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainBuffer::mean(self : BiostructdomainBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_buffer_scale(s : BiostructdomainBuffer, f : Double) -> BiostructdomainBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainBuffer::scale(self : BiostructdomainBuffer, f : Double) -> BiostructdomainBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_buffer_add(a : BiostructdomainBuffer, b : BiostructdomainBuffer) -> BiostructdomainBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainBuffer::add(self : BiostructdomainBuffer, other : BiostructdomainBuffer) -> BiostructdomainBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_buffer_copy(s : BiostructdomainBuffer) -> BiostructdomainBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainBuffer::copy(self : BiostructdomainBuffer) -> BiostructdomainBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_buffer_fill(s : BiostructdomainBuffer, v : Double) -> BiostructdomainBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainBuffer::fill(self : BiostructdomainBuffer, v : Double) -> BiostructdomainBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_buffer_min(s : BiostructdomainBuffer) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainBuffer::min(self : BiostructdomainBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_buffer_max(s : BiostructdomainBuffer) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainBuffer::max(self : BiostructdomainBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_buffer_to_string(s : BiostructdomainBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainBuffer::to_string(self : BiostructdomainBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainCursor {
@@ -861,45 +861,45 @@ pub fn bio_struct_domain_cursor_make(size : Int) -> BiostructdomainCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_cursor_len(s : BiostructdomainCursor) -> Int { s.size }
+pub fn BiostructdomainCursor::len(self : BiostructdomainCursor) -> Int { self.size }
 
-pub fn bio_struct_domain_cursor_get(s : BiostructdomainCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainCursor::get(self : BiostructdomainCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_cursor_set(s : BiostructdomainCursor, i : Int, v : Double) -> BiostructdomainCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainCursor::set(self : BiostructdomainCursor, i : Int, v : Double) -> BiostructdomainCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_cursor_sum(s : BiostructdomainCursor) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainCursor::sum(self : BiostructdomainCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_cursor_mean(s : BiostructdomainCursor) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainCursor::mean(self : BiostructdomainCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_cursor_scale(s : BiostructdomainCursor, f : Double) -> BiostructdomainCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainCursor::scale(self : BiostructdomainCursor, f : Double) -> BiostructdomainCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_cursor_add(a : BiostructdomainCursor, b : BiostructdomainCursor) -> BiostructdomainCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainCursor::add(self : BiostructdomainCursor, other : BiostructdomainCursor) -> BiostructdomainCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_cursor_copy(s : BiostructdomainCursor) -> BiostructdomainCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainCursor::copy(self : BiostructdomainCursor) -> BiostructdomainCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_cursor_fill(s : BiostructdomainCursor, v : Double) -> BiostructdomainCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainCursor::fill(self : BiostructdomainCursor, v : Double) -> BiostructdomainCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_cursor_min(s : BiostructdomainCursor) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainCursor::min(self : BiostructdomainCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_cursor_max(s : BiostructdomainCursor) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainCursor::max(self : BiostructdomainCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_cursor_to_string(s : BiostructdomainCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainCursor::to_string(self : BiostructdomainCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainView {
@@ -912,45 +912,45 @@ pub fn bio_struct_domain_view_make(size : Int) -> BiostructdomainView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_view_len(s : BiostructdomainView) -> Int { s.size }
+pub fn BiostructdomainView::len(self : BiostructdomainView) -> Int { self.size }
 
-pub fn bio_struct_domain_view_get(s : BiostructdomainView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainView::get(self : BiostructdomainView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_view_set(s : BiostructdomainView, i : Int, v : Double) -> BiostructdomainView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainView::set(self : BiostructdomainView, i : Int, v : Double) -> BiostructdomainView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_view_sum(s : BiostructdomainView) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainView::sum(self : BiostructdomainView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_view_mean(s : BiostructdomainView) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainView::mean(self : BiostructdomainView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_view_scale(s : BiostructdomainView, f : Double) -> BiostructdomainView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainView::scale(self : BiostructdomainView, f : Double) -> BiostructdomainView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_view_add(a : BiostructdomainView, b : BiostructdomainView) -> BiostructdomainView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainView::add(self : BiostructdomainView, other : BiostructdomainView) -> BiostructdomainView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_view_copy(s : BiostructdomainView) -> BiostructdomainView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainView::copy(self : BiostructdomainView) -> BiostructdomainView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_view_fill(s : BiostructdomainView, v : Double) -> BiostructdomainView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainView::fill(self : BiostructdomainView, v : Double) -> BiostructdomainView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_view_min(s : BiostructdomainView) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainView::min(self : BiostructdomainView) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_view_max(s : BiostructdomainView) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainView::max(self : BiostructdomainView) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_view_to_string(s : BiostructdomainView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainView::to_string(self : BiostructdomainView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainRange {
@@ -963,45 +963,45 @@ pub fn bio_struct_domain_range_make(size : Int) -> BiostructdomainRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_range_len(s : BiostructdomainRange) -> Int { s.size }
+pub fn BiostructdomainRange::len(self : BiostructdomainRange) -> Int { self.size }
 
-pub fn bio_struct_domain_range_get(s : BiostructdomainRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainRange::get(self : BiostructdomainRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_range_set(s : BiostructdomainRange, i : Int, v : Double) -> BiostructdomainRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainRange::set(self : BiostructdomainRange, i : Int, v : Double) -> BiostructdomainRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_range_sum(s : BiostructdomainRange) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainRange::sum(self : BiostructdomainRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_range_mean(s : BiostructdomainRange) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainRange::mean(self : BiostructdomainRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_range_scale(s : BiostructdomainRange, f : Double) -> BiostructdomainRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainRange::scale(self : BiostructdomainRange, f : Double) -> BiostructdomainRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_range_add(a : BiostructdomainRange, b : BiostructdomainRange) -> BiostructdomainRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainRange::add(self : BiostructdomainRange, other : BiostructdomainRange) -> BiostructdomainRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_range_copy(s : BiostructdomainRange) -> BiostructdomainRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainRange::copy(self : BiostructdomainRange) -> BiostructdomainRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_range_fill(s : BiostructdomainRange, v : Double) -> BiostructdomainRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainRange::fill(self : BiostructdomainRange, v : Double) -> BiostructdomainRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_range_min(s : BiostructdomainRange) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainRange::min(self : BiostructdomainRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_range_max(s : BiostructdomainRange) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainRange::max(self : BiostructdomainRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_range_to_string(s : BiostructdomainRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainRange::to_string(self : BiostructdomainRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructdomainSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_struct_domain_slice_make(size : Int) -> BiostructdomainSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_domain_slice_len(s : BiostructdomainSlice) -> Int { s.size }
+pub fn BiostructdomainSlice::len(self : BiostructdomainSlice) -> Int { self.size }
 
-pub fn bio_struct_domain_slice_get(s : BiostructdomainSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructdomainSlice::get(self : BiostructdomainSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_domain_slice_set(s : BiostructdomainSlice, i : Int, v : Double) -> BiostructdomainSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructdomainSlice::set(self : BiostructdomainSlice, i : Int, v : Double) -> BiostructdomainSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_slice_sum(s : BiostructdomainSlice) -> Double { @_common.sum(s.data) }
+pub fn BiostructdomainSlice::sum(self : BiostructdomainSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_domain_slice_mean(s : BiostructdomainSlice) -> Double { @_common.mean(s.data) }
+pub fn BiostructdomainSlice::mean(self : BiostructdomainSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_domain_slice_scale(s : BiostructdomainSlice, f : Double) -> BiostructdomainSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructdomainSlice::scale(self : BiostructdomainSlice, f : Double) -> BiostructdomainSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_slice_add(a : BiostructdomainSlice, b : BiostructdomainSlice) -> BiostructdomainSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructdomainSlice::add(self : BiostructdomainSlice, other : BiostructdomainSlice) -> BiostructdomainSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_domain_slice_copy(s : BiostructdomainSlice) -> BiostructdomainSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructdomainSlice::copy(self : BiostructdomainSlice) -> BiostructdomainSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_slice_fill(s : BiostructdomainSlice, v : Double) -> BiostructdomainSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructdomainSlice::fill(self : BiostructdomainSlice, v : Double) -> BiostructdomainSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_domain_slice_min(s : BiostructdomainSlice) -> Double { @_common.min(s.data) }
+pub fn BiostructdomainSlice::min(self : BiostructdomainSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_domain_slice_max(s : BiostructdomainSlice) -> Double { @_common.max(s.data) }
+pub fn BiostructdomainSlice::max(self : BiostructdomainSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_domain_slice_to_string(s : BiostructdomainSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructdomainSlice::to_string(self : BiostructdomainSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn physics_em_magnetostatic_frame_make(size : Int) -> Physicsemmagnetostatic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_frame_len(s : PhysicsemmagnetostaticFrame) -> Int { s.size }
+pub fn PhysicsemmagnetostaticFrame::len(self : PhysicsemmagnetostaticFrame) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_frame_get(s : PhysicsemmagnetostaticFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticFrame::get(self : PhysicsemmagnetostaticFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_frame_set(s : PhysicsemmagnetostaticFrame, i : Int, v : Double) -> PhysicsemmagnetostaticFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticFrame::set(self : PhysicsemmagnetostaticFrame, i : Int, v : Double) -> PhysicsemmagnetostaticFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_frame_sum(s : PhysicsemmagnetostaticFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticFrame::sum(self : PhysicsemmagnetostaticFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_frame_mean(s : PhysicsemmagnetostaticFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticFrame::mean(self : PhysicsemmagnetostaticFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_frame_scale(s : PhysicsemmagnetostaticFrame, f : Double) -> PhysicsemmagnetostaticFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticFrame::scale(self : PhysicsemmagnetostaticFrame, f : Double) -> PhysicsemmagnetostaticFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_frame_add(a : PhysicsemmagnetostaticFrame, b : PhysicsemmagnetostaticFrame) -> PhysicsemmagnetostaticFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticFrame::add(self : PhysicsemmagnetostaticFrame, other : PhysicsemmagnetostaticFrame) -> PhysicsemmagnetostaticFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_frame_copy(s : PhysicsemmagnetostaticFrame) -> PhysicsemmagnetostaticFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticFrame::copy(self : PhysicsemmagnetostaticFrame) -> PhysicsemmagnetostaticFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_frame_fill(s : PhysicsemmagnetostaticFrame, v : Double) -> PhysicsemmagnetostaticFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticFrame::fill(self : PhysicsemmagnetostaticFrame, v : Double) -> PhysicsemmagnetostaticFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_frame_min(s : PhysicsemmagnetostaticFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticFrame::min(self : PhysicsemmagnetostaticFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_frame_max(s : PhysicsemmagnetostaticFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticFrame::max(self : PhysicsemmagnetostaticFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_frame_to_string(s : PhysicsemmagnetostaticFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticFrame::to_string(self : PhysicsemmagnetostaticFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticTable {
@@ -402,45 +402,45 @@ pub fn physics_em_magnetostatic_table_make(size : Int) -> Physicsemmagnetostatic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_table_len(s : PhysicsemmagnetostaticTable) -> Int { s.size }
+pub fn PhysicsemmagnetostaticTable::len(self : PhysicsemmagnetostaticTable) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_table_get(s : PhysicsemmagnetostaticTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticTable::get(self : PhysicsemmagnetostaticTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_table_set(s : PhysicsemmagnetostaticTable, i : Int, v : Double) -> PhysicsemmagnetostaticTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticTable::set(self : PhysicsemmagnetostaticTable, i : Int, v : Double) -> PhysicsemmagnetostaticTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_table_sum(s : PhysicsemmagnetostaticTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticTable::sum(self : PhysicsemmagnetostaticTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_table_mean(s : PhysicsemmagnetostaticTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticTable::mean(self : PhysicsemmagnetostaticTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_table_scale(s : PhysicsemmagnetostaticTable, f : Double) -> PhysicsemmagnetostaticTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticTable::scale(self : PhysicsemmagnetostaticTable, f : Double) -> PhysicsemmagnetostaticTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_table_add(a : PhysicsemmagnetostaticTable, b : PhysicsemmagnetostaticTable) -> PhysicsemmagnetostaticTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticTable::add(self : PhysicsemmagnetostaticTable, other : PhysicsemmagnetostaticTable) -> PhysicsemmagnetostaticTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_table_copy(s : PhysicsemmagnetostaticTable) -> PhysicsemmagnetostaticTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticTable::copy(self : PhysicsemmagnetostaticTable) -> PhysicsemmagnetostaticTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_table_fill(s : PhysicsemmagnetostaticTable, v : Double) -> PhysicsemmagnetostaticTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticTable::fill(self : PhysicsemmagnetostaticTable, v : Double) -> PhysicsemmagnetostaticTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_table_min(s : PhysicsemmagnetostaticTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticTable::min(self : PhysicsemmagnetostaticTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_table_max(s : PhysicsemmagnetostaticTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticTable::max(self : PhysicsemmagnetostaticTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_table_to_string(s : PhysicsemmagnetostaticTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticTable::to_string(self : PhysicsemmagnetostaticTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticGraphN {
@@ -453,45 +453,45 @@ pub fn physics_em_magnetostatic_graphn_make(size : Int) -> Physicsemmagnetostati
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_graphn_len(s : PhysicsemmagnetostaticGraphN) -> Int { s.size }
+pub fn PhysicsemmagnetostaticGraphN::len(self : PhysicsemmagnetostaticGraphN) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_graphn_get(s : PhysicsemmagnetostaticGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticGraphN::get(self : PhysicsemmagnetostaticGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_graphn_set(s : PhysicsemmagnetostaticGraphN, i : Int, v : Double) -> PhysicsemmagnetostaticGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticGraphN::set(self : PhysicsemmagnetostaticGraphN, i : Int, v : Double) -> PhysicsemmagnetostaticGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_graphn_sum(s : PhysicsemmagnetostaticGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticGraphN::sum(self : PhysicsemmagnetostaticGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_graphn_mean(s : PhysicsemmagnetostaticGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticGraphN::mean(self : PhysicsemmagnetostaticGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_graphn_scale(s : PhysicsemmagnetostaticGraphN, f : Double) -> PhysicsemmagnetostaticGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticGraphN::scale(self : PhysicsemmagnetostaticGraphN, f : Double) -> PhysicsemmagnetostaticGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_graphn_add(a : PhysicsemmagnetostaticGraphN, b : PhysicsemmagnetostaticGraphN) -> PhysicsemmagnetostaticGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticGraphN::add(self : PhysicsemmagnetostaticGraphN, other : PhysicsemmagnetostaticGraphN) -> PhysicsemmagnetostaticGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_graphn_copy(s : PhysicsemmagnetostaticGraphN) -> PhysicsemmagnetostaticGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticGraphN::copy(self : PhysicsemmagnetostaticGraphN) -> PhysicsemmagnetostaticGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_graphn_fill(s : PhysicsemmagnetostaticGraphN, v : Double) -> PhysicsemmagnetostaticGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticGraphN::fill(self : PhysicsemmagnetostaticGraphN, v : Double) -> PhysicsemmagnetostaticGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_graphn_min(s : PhysicsemmagnetostaticGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticGraphN::min(self : PhysicsemmagnetostaticGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_graphn_max(s : PhysicsemmagnetostaticGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticGraphN::max(self : PhysicsemmagnetostaticGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_graphn_to_string(s : PhysicsemmagnetostaticGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticGraphN::to_string(self : PhysicsemmagnetostaticGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticNode {
@@ -504,45 +504,45 @@ pub fn physics_em_magnetostatic_node_make(size : Int) -> PhysicsemmagnetostaticN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_node_len(s : PhysicsemmagnetostaticNode) -> Int { s.size }
+pub fn PhysicsemmagnetostaticNode::len(self : PhysicsemmagnetostaticNode) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_node_get(s : PhysicsemmagnetostaticNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticNode::get(self : PhysicsemmagnetostaticNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_node_set(s : PhysicsemmagnetostaticNode, i : Int, v : Double) -> PhysicsemmagnetostaticNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticNode::set(self : PhysicsemmagnetostaticNode, i : Int, v : Double) -> PhysicsemmagnetostaticNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_node_sum(s : PhysicsemmagnetostaticNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticNode::sum(self : PhysicsemmagnetostaticNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_node_mean(s : PhysicsemmagnetostaticNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticNode::mean(self : PhysicsemmagnetostaticNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_node_scale(s : PhysicsemmagnetostaticNode, f : Double) -> PhysicsemmagnetostaticNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticNode::scale(self : PhysicsemmagnetostaticNode, f : Double) -> PhysicsemmagnetostaticNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_node_add(a : PhysicsemmagnetostaticNode, b : PhysicsemmagnetostaticNode) -> PhysicsemmagnetostaticNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticNode::add(self : PhysicsemmagnetostaticNode, other : PhysicsemmagnetostaticNode) -> PhysicsemmagnetostaticNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_node_copy(s : PhysicsemmagnetostaticNode) -> PhysicsemmagnetostaticNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticNode::copy(self : PhysicsemmagnetostaticNode) -> PhysicsemmagnetostaticNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_node_fill(s : PhysicsemmagnetostaticNode, v : Double) -> PhysicsemmagnetostaticNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticNode::fill(self : PhysicsemmagnetostaticNode, v : Double) -> PhysicsemmagnetostaticNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_node_min(s : PhysicsemmagnetostaticNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticNode::min(self : PhysicsemmagnetostaticNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_node_max(s : PhysicsemmagnetostaticNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticNode::max(self : PhysicsemmagnetostaticNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_node_to_string(s : PhysicsemmagnetostaticNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticNode::to_string(self : PhysicsemmagnetostaticNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticEdge {
@@ -555,45 +555,45 @@ pub fn physics_em_magnetostatic_edge_make(size : Int) -> PhysicsemmagnetostaticE
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_edge_len(s : PhysicsemmagnetostaticEdge) -> Int { s.size }
+pub fn PhysicsemmagnetostaticEdge::len(self : PhysicsemmagnetostaticEdge) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_edge_get(s : PhysicsemmagnetostaticEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticEdge::get(self : PhysicsemmagnetostaticEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_edge_set(s : PhysicsemmagnetostaticEdge, i : Int, v : Double) -> PhysicsemmagnetostaticEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticEdge::set(self : PhysicsemmagnetostaticEdge, i : Int, v : Double) -> PhysicsemmagnetostaticEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_edge_sum(s : PhysicsemmagnetostaticEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticEdge::sum(self : PhysicsemmagnetostaticEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_edge_mean(s : PhysicsemmagnetostaticEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticEdge::mean(self : PhysicsemmagnetostaticEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_edge_scale(s : PhysicsemmagnetostaticEdge, f : Double) -> PhysicsemmagnetostaticEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticEdge::scale(self : PhysicsemmagnetostaticEdge, f : Double) -> PhysicsemmagnetostaticEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_edge_add(a : PhysicsemmagnetostaticEdge, b : PhysicsemmagnetostaticEdge) -> PhysicsemmagnetostaticEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticEdge::add(self : PhysicsemmagnetostaticEdge, other : PhysicsemmagnetostaticEdge) -> PhysicsemmagnetostaticEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_edge_copy(s : PhysicsemmagnetostaticEdge) -> PhysicsemmagnetostaticEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticEdge::copy(self : PhysicsemmagnetostaticEdge) -> PhysicsemmagnetostaticEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_edge_fill(s : PhysicsemmagnetostaticEdge, v : Double) -> PhysicsemmagnetostaticEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticEdge::fill(self : PhysicsemmagnetostaticEdge, v : Double) -> PhysicsemmagnetostaticEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_edge_min(s : PhysicsemmagnetostaticEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticEdge::min(self : PhysicsemmagnetostaticEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_edge_max(s : PhysicsemmagnetostaticEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticEdge::max(self : PhysicsemmagnetostaticEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_edge_to_string(s : PhysicsemmagnetostaticEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticEdge::to_string(self : PhysicsemmagnetostaticEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticPath {
@@ -606,45 +606,45 @@ pub fn physics_em_magnetostatic_path_make(size : Int) -> PhysicsemmagnetostaticP
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_path_len(s : PhysicsemmagnetostaticPath) -> Int { s.size }
+pub fn PhysicsemmagnetostaticPath::len(self : PhysicsemmagnetostaticPath) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_path_get(s : PhysicsemmagnetostaticPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticPath::get(self : PhysicsemmagnetostaticPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_path_set(s : PhysicsemmagnetostaticPath, i : Int, v : Double) -> PhysicsemmagnetostaticPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticPath::set(self : PhysicsemmagnetostaticPath, i : Int, v : Double) -> PhysicsemmagnetostaticPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_path_sum(s : PhysicsemmagnetostaticPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticPath::sum(self : PhysicsemmagnetostaticPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_path_mean(s : PhysicsemmagnetostaticPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticPath::mean(self : PhysicsemmagnetostaticPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_path_scale(s : PhysicsemmagnetostaticPath, f : Double) -> PhysicsemmagnetostaticPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticPath::scale(self : PhysicsemmagnetostaticPath, f : Double) -> PhysicsemmagnetostaticPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_path_add(a : PhysicsemmagnetostaticPath, b : PhysicsemmagnetostaticPath) -> PhysicsemmagnetostaticPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticPath::add(self : PhysicsemmagnetostaticPath, other : PhysicsemmagnetostaticPath) -> PhysicsemmagnetostaticPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_path_copy(s : PhysicsemmagnetostaticPath) -> PhysicsemmagnetostaticPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticPath::copy(self : PhysicsemmagnetostaticPath) -> PhysicsemmagnetostaticPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_path_fill(s : PhysicsemmagnetostaticPath, v : Double) -> PhysicsemmagnetostaticPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticPath::fill(self : PhysicsemmagnetostaticPath, v : Double) -> PhysicsemmagnetostaticPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_path_min(s : PhysicsemmagnetostaticPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticPath::min(self : PhysicsemmagnetostaticPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_path_max(s : PhysicsemmagnetostaticPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticPath::max(self : PhysicsemmagnetostaticPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_path_to_string(s : PhysicsemmagnetostaticPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticPath::to_string(self : PhysicsemmagnetostaticPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticCluster {
@@ -657,45 +657,45 @@ pub fn physics_em_magnetostatic_cluster_make(size : Int) -> Physicsemmagnetostat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_cluster_len(s : PhysicsemmagnetostaticCluster) -> Int { s.size }
+pub fn PhysicsemmagnetostaticCluster::len(self : PhysicsemmagnetostaticCluster) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_cluster_get(s : PhysicsemmagnetostaticCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticCluster::get(self : PhysicsemmagnetostaticCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_cluster_set(s : PhysicsemmagnetostaticCluster, i : Int, v : Double) -> PhysicsemmagnetostaticCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticCluster::set(self : PhysicsemmagnetostaticCluster, i : Int, v : Double) -> PhysicsemmagnetostaticCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_cluster_sum(s : PhysicsemmagnetostaticCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticCluster::sum(self : PhysicsemmagnetostaticCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_cluster_mean(s : PhysicsemmagnetostaticCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticCluster::mean(self : PhysicsemmagnetostaticCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_cluster_scale(s : PhysicsemmagnetostaticCluster, f : Double) -> PhysicsemmagnetostaticCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticCluster::scale(self : PhysicsemmagnetostaticCluster, f : Double) -> PhysicsemmagnetostaticCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_cluster_add(a : PhysicsemmagnetostaticCluster, b : PhysicsemmagnetostaticCluster) -> PhysicsemmagnetostaticCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticCluster::add(self : PhysicsemmagnetostaticCluster, other : PhysicsemmagnetostaticCluster) -> PhysicsemmagnetostaticCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_cluster_copy(s : PhysicsemmagnetostaticCluster) -> PhysicsemmagnetostaticCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticCluster::copy(self : PhysicsemmagnetostaticCluster) -> PhysicsemmagnetostaticCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_cluster_fill(s : PhysicsemmagnetostaticCluster, v : Double) -> PhysicsemmagnetostaticCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticCluster::fill(self : PhysicsemmagnetostaticCluster, v : Double) -> PhysicsemmagnetostaticCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_cluster_min(s : PhysicsemmagnetostaticCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticCluster::min(self : PhysicsemmagnetostaticCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_cluster_max(s : PhysicsemmagnetostaticCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticCluster::max(self : PhysicsemmagnetostaticCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_cluster_to_string(s : PhysicsemmagnetostaticCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticCluster::to_string(self : PhysicsemmagnetostaticCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticModel {
@@ -708,45 +708,45 @@ pub fn physics_em_magnetostatic_model_make(size : Int) -> Physicsemmagnetostatic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_model_len(s : PhysicsemmagnetostaticModel) -> Int { s.size }
+pub fn PhysicsemmagnetostaticModel::len(self : PhysicsemmagnetostaticModel) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_model_get(s : PhysicsemmagnetostaticModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticModel::get(self : PhysicsemmagnetostaticModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_model_set(s : PhysicsemmagnetostaticModel, i : Int, v : Double) -> PhysicsemmagnetostaticModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticModel::set(self : PhysicsemmagnetostaticModel, i : Int, v : Double) -> PhysicsemmagnetostaticModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_model_sum(s : PhysicsemmagnetostaticModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticModel::sum(self : PhysicsemmagnetostaticModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_model_mean(s : PhysicsemmagnetostaticModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticModel::mean(self : PhysicsemmagnetostaticModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_model_scale(s : PhysicsemmagnetostaticModel, f : Double) -> PhysicsemmagnetostaticModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticModel::scale(self : PhysicsemmagnetostaticModel, f : Double) -> PhysicsemmagnetostaticModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_model_add(a : PhysicsemmagnetostaticModel, b : PhysicsemmagnetostaticModel) -> PhysicsemmagnetostaticModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticModel::add(self : PhysicsemmagnetostaticModel, other : PhysicsemmagnetostaticModel) -> PhysicsemmagnetostaticModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_model_copy(s : PhysicsemmagnetostaticModel) -> PhysicsemmagnetostaticModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticModel::copy(self : PhysicsemmagnetostaticModel) -> PhysicsemmagnetostaticModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_model_fill(s : PhysicsemmagnetostaticModel, v : Double) -> PhysicsemmagnetostaticModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticModel::fill(self : PhysicsemmagnetostaticModel, v : Double) -> PhysicsemmagnetostaticModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_model_min(s : PhysicsemmagnetostaticModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticModel::min(self : PhysicsemmagnetostaticModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_model_max(s : PhysicsemmagnetostaticModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticModel::max(self : PhysicsemmagnetostaticModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_model_to_string(s : PhysicsemmagnetostaticModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticModel::to_string(self : PhysicsemmagnetostaticModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticLayer {
@@ -759,45 +759,45 @@ pub fn physics_em_magnetostatic_layer_make(size : Int) -> Physicsemmagnetostatic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_layer_len(s : PhysicsemmagnetostaticLayer) -> Int { s.size }
+pub fn PhysicsemmagnetostaticLayer::len(self : PhysicsemmagnetostaticLayer) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_layer_get(s : PhysicsemmagnetostaticLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticLayer::get(self : PhysicsemmagnetostaticLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_layer_set(s : PhysicsemmagnetostaticLayer, i : Int, v : Double) -> PhysicsemmagnetostaticLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticLayer::set(self : PhysicsemmagnetostaticLayer, i : Int, v : Double) -> PhysicsemmagnetostaticLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_layer_sum(s : PhysicsemmagnetostaticLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticLayer::sum(self : PhysicsemmagnetostaticLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_layer_mean(s : PhysicsemmagnetostaticLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticLayer::mean(self : PhysicsemmagnetostaticLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_layer_scale(s : PhysicsemmagnetostaticLayer, f : Double) -> PhysicsemmagnetostaticLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticLayer::scale(self : PhysicsemmagnetostaticLayer, f : Double) -> PhysicsemmagnetostaticLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_layer_add(a : PhysicsemmagnetostaticLayer, b : PhysicsemmagnetostaticLayer) -> PhysicsemmagnetostaticLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticLayer::add(self : PhysicsemmagnetostaticLayer, other : PhysicsemmagnetostaticLayer) -> PhysicsemmagnetostaticLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_layer_copy(s : PhysicsemmagnetostaticLayer) -> PhysicsemmagnetostaticLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticLayer::copy(self : PhysicsemmagnetostaticLayer) -> PhysicsemmagnetostaticLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_layer_fill(s : PhysicsemmagnetostaticLayer, v : Double) -> PhysicsemmagnetostaticLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticLayer::fill(self : PhysicsemmagnetostaticLayer, v : Double) -> PhysicsemmagnetostaticLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_layer_min(s : PhysicsemmagnetostaticLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticLayer::min(self : PhysicsemmagnetostaticLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_layer_max(s : PhysicsemmagnetostaticLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticLayer::max(self : PhysicsemmagnetostaticLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_layer_to_string(s : PhysicsemmagnetostaticLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticLayer::to_string(self : PhysicsemmagnetostaticLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticBuffer {
@@ -810,45 +810,45 @@ pub fn physics_em_magnetostatic_buffer_make(size : Int) -> Physicsemmagnetostati
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_buffer_len(s : PhysicsemmagnetostaticBuffer) -> Int { s.size }
+pub fn PhysicsemmagnetostaticBuffer::len(self : PhysicsemmagnetostaticBuffer) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_buffer_get(s : PhysicsemmagnetostaticBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticBuffer::get(self : PhysicsemmagnetostaticBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_buffer_set(s : PhysicsemmagnetostaticBuffer, i : Int, v : Double) -> PhysicsemmagnetostaticBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticBuffer::set(self : PhysicsemmagnetostaticBuffer, i : Int, v : Double) -> PhysicsemmagnetostaticBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_buffer_sum(s : PhysicsemmagnetostaticBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticBuffer::sum(self : PhysicsemmagnetostaticBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_buffer_mean(s : PhysicsemmagnetostaticBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticBuffer::mean(self : PhysicsemmagnetostaticBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_buffer_scale(s : PhysicsemmagnetostaticBuffer, f : Double) -> PhysicsemmagnetostaticBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticBuffer::scale(self : PhysicsemmagnetostaticBuffer, f : Double) -> PhysicsemmagnetostaticBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_buffer_add(a : PhysicsemmagnetostaticBuffer, b : PhysicsemmagnetostaticBuffer) -> PhysicsemmagnetostaticBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticBuffer::add(self : PhysicsemmagnetostaticBuffer, other : PhysicsemmagnetostaticBuffer) -> PhysicsemmagnetostaticBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_buffer_copy(s : PhysicsemmagnetostaticBuffer) -> PhysicsemmagnetostaticBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticBuffer::copy(self : PhysicsemmagnetostaticBuffer) -> PhysicsemmagnetostaticBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_buffer_fill(s : PhysicsemmagnetostaticBuffer, v : Double) -> PhysicsemmagnetostaticBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticBuffer::fill(self : PhysicsemmagnetostaticBuffer, v : Double) -> PhysicsemmagnetostaticBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_buffer_min(s : PhysicsemmagnetostaticBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticBuffer::min(self : PhysicsemmagnetostaticBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_buffer_max(s : PhysicsemmagnetostaticBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticBuffer::max(self : PhysicsemmagnetostaticBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_buffer_to_string(s : PhysicsemmagnetostaticBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticBuffer::to_string(self : PhysicsemmagnetostaticBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticCursor {
@@ -861,45 +861,45 @@ pub fn physics_em_magnetostatic_cursor_make(size : Int) -> Physicsemmagnetostati
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_cursor_len(s : PhysicsemmagnetostaticCursor) -> Int { s.size }
+pub fn PhysicsemmagnetostaticCursor::len(self : PhysicsemmagnetostaticCursor) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_cursor_get(s : PhysicsemmagnetostaticCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticCursor::get(self : PhysicsemmagnetostaticCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_cursor_set(s : PhysicsemmagnetostaticCursor, i : Int, v : Double) -> PhysicsemmagnetostaticCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticCursor::set(self : PhysicsemmagnetostaticCursor, i : Int, v : Double) -> PhysicsemmagnetostaticCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_cursor_sum(s : PhysicsemmagnetostaticCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticCursor::sum(self : PhysicsemmagnetostaticCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_cursor_mean(s : PhysicsemmagnetostaticCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticCursor::mean(self : PhysicsemmagnetostaticCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_cursor_scale(s : PhysicsemmagnetostaticCursor, f : Double) -> PhysicsemmagnetostaticCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticCursor::scale(self : PhysicsemmagnetostaticCursor, f : Double) -> PhysicsemmagnetostaticCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_cursor_add(a : PhysicsemmagnetostaticCursor, b : PhysicsemmagnetostaticCursor) -> PhysicsemmagnetostaticCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticCursor::add(self : PhysicsemmagnetostaticCursor, other : PhysicsemmagnetostaticCursor) -> PhysicsemmagnetostaticCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_cursor_copy(s : PhysicsemmagnetostaticCursor) -> PhysicsemmagnetostaticCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticCursor::copy(self : PhysicsemmagnetostaticCursor) -> PhysicsemmagnetostaticCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_cursor_fill(s : PhysicsemmagnetostaticCursor, v : Double) -> PhysicsemmagnetostaticCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticCursor::fill(self : PhysicsemmagnetostaticCursor, v : Double) -> PhysicsemmagnetostaticCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_cursor_min(s : PhysicsemmagnetostaticCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticCursor::min(self : PhysicsemmagnetostaticCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_cursor_max(s : PhysicsemmagnetostaticCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticCursor::max(self : PhysicsemmagnetostaticCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_cursor_to_string(s : PhysicsemmagnetostaticCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticCursor::to_string(self : PhysicsemmagnetostaticCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticView {
@@ -912,45 +912,45 @@ pub fn physics_em_magnetostatic_view_make(size : Int) -> PhysicsemmagnetostaticV
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_view_len(s : PhysicsemmagnetostaticView) -> Int { s.size }
+pub fn PhysicsemmagnetostaticView::len(self : PhysicsemmagnetostaticView) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_view_get(s : PhysicsemmagnetostaticView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticView::get(self : PhysicsemmagnetostaticView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_view_set(s : PhysicsemmagnetostaticView, i : Int, v : Double) -> PhysicsemmagnetostaticView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticView::set(self : PhysicsemmagnetostaticView, i : Int, v : Double) -> PhysicsemmagnetostaticView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_view_sum(s : PhysicsemmagnetostaticView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticView::sum(self : PhysicsemmagnetostaticView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_view_mean(s : PhysicsemmagnetostaticView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticView::mean(self : PhysicsemmagnetostaticView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_view_scale(s : PhysicsemmagnetostaticView, f : Double) -> PhysicsemmagnetostaticView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticView::scale(self : PhysicsemmagnetostaticView, f : Double) -> PhysicsemmagnetostaticView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_view_add(a : PhysicsemmagnetostaticView, b : PhysicsemmagnetostaticView) -> PhysicsemmagnetostaticView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticView::add(self : PhysicsemmagnetostaticView, other : PhysicsemmagnetostaticView) -> PhysicsemmagnetostaticView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_view_copy(s : PhysicsemmagnetostaticView) -> PhysicsemmagnetostaticView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticView::copy(self : PhysicsemmagnetostaticView) -> PhysicsemmagnetostaticView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_view_fill(s : PhysicsemmagnetostaticView, v : Double) -> PhysicsemmagnetostaticView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticView::fill(self : PhysicsemmagnetostaticView, v : Double) -> PhysicsemmagnetostaticView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_view_min(s : PhysicsemmagnetostaticView) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticView::min(self : PhysicsemmagnetostaticView) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_view_max(s : PhysicsemmagnetostaticView) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticView::max(self : PhysicsemmagnetostaticView) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_view_to_string(s : PhysicsemmagnetostaticView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticView::to_string(self : PhysicsemmagnetostaticView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticRange {
@@ -963,45 +963,45 @@ pub fn physics_em_magnetostatic_range_make(size : Int) -> Physicsemmagnetostatic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_range_len(s : PhysicsemmagnetostaticRange) -> Int { s.size }
+pub fn PhysicsemmagnetostaticRange::len(self : PhysicsemmagnetostaticRange) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_range_get(s : PhysicsemmagnetostaticRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticRange::get(self : PhysicsemmagnetostaticRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_range_set(s : PhysicsemmagnetostaticRange, i : Int, v : Double) -> PhysicsemmagnetostaticRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticRange::set(self : PhysicsemmagnetostaticRange, i : Int, v : Double) -> PhysicsemmagnetostaticRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_range_sum(s : PhysicsemmagnetostaticRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticRange::sum(self : PhysicsemmagnetostaticRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_range_mean(s : PhysicsemmagnetostaticRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticRange::mean(self : PhysicsemmagnetostaticRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_range_scale(s : PhysicsemmagnetostaticRange, f : Double) -> PhysicsemmagnetostaticRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticRange::scale(self : PhysicsemmagnetostaticRange, f : Double) -> PhysicsemmagnetostaticRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_range_add(a : PhysicsemmagnetostaticRange, b : PhysicsemmagnetostaticRange) -> PhysicsemmagnetostaticRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticRange::add(self : PhysicsemmagnetostaticRange, other : PhysicsemmagnetostaticRange) -> PhysicsemmagnetostaticRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_range_copy(s : PhysicsemmagnetostaticRange) -> PhysicsemmagnetostaticRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticRange::copy(self : PhysicsemmagnetostaticRange) -> PhysicsemmagnetostaticRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_range_fill(s : PhysicsemmagnetostaticRange, v : Double) -> PhysicsemmagnetostaticRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticRange::fill(self : PhysicsemmagnetostaticRange, v : Double) -> PhysicsemmagnetostaticRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_range_min(s : PhysicsemmagnetostaticRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticRange::min(self : PhysicsemmagnetostaticRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_range_max(s : PhysicsemmagnetostaticRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticRange::max(self : PhysicsemmagnetostaticRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_range_to_string(s : PhysicsemmagnetostaticRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticRange::to_string(self : PhysicsemmagnetostaticRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmagnetostaticSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_em_magnetostatic_slice_make(size : Int) -> Physicsemmagnetostatic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_magnetostatic_slice_len(s : PhysicsemmagnetostaticSlice) -> Int { s.size }
+pub fn PhysicsemmagnetostaticSlice::len(self : PhysicsemmagnetostaticSlice) -> Int { self.size }
 
-pub fn physics_em_magnetostatic_slice_get(s : PhysicsemmagnetostaticSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmagnetostaticSlice::get(self : PhysicsemmagnetostaticSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_magnetostatic_slice_set(s : PhysicsemmagnetostaticSlice, i : Int, v : Double) -> PhysicsemmagnetostaticSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticSlice::set(self : PhysicsemmagnetostaticSlice, i : Int, v : Double) -> PhysicsemmagnetostaticSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_slice_sum(s : PhysicsemmagnetostaticSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmagnetostaticSlice::sum(self : PhysicsemmagnetostaticSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_magnetostatic_slice_mean(s : PhysicsemmagnetostaticSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmagnetostaticSlice::mean(self : PhysicsemmagnetostaticSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_magnetostatic_slice_scale(s : PhysicsemmagnetostaticSlice, f : Double) -> PhysicsemmagnetostaticSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticSlice::scale(self : PhysicsemmagnetostaticSlice, f : Double) -> PhysicsemmagnetostaticSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_slice_add(a : PhysicsemmagnetostaticSlice, b : PhysicsemmagnetostaticSlice) -> PhysicsemmagnetostaticSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmagnetostaticSlice::add(self : PhysicsemmagnetostaticSlice, other : PhysicsemmagnetostaticSlice) -> PhysicsemmagnetostaticSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_slice_copy(s : PhysicsemmagnetostaticSlice) -> PhysicsemmagnetostaticSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticSlice::copy(self : PhysicsemmagnetostaticSlice) -> PhysicsemmagnetostaticSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_slice_fill(s : PhysicsemmagnetostaticSlice, v : Double) -> PhysicsemmagnetostaticSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmagnetostaticSlice::fill(self : PhysicsemmagnetostaticSlice, v : Double) -> PhysicsemmagnetostaticSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_magnetostatic_slice_min(s : PhysicsemmagnetostaticSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmagnetostaticSlice::min(self : PhysicsemmagnetostaticSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_magnetostatic_slice_max(s : PhysicsemmagnetostaticSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmagnetostaticSlice::max(self : PhysicsemmagnetostaticSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_magnetostatic_slice_to_string(s : PhysicsemmagnetostaticSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmagnetostaticSlice::to_string(self : PhysicsemmagnetostaticSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

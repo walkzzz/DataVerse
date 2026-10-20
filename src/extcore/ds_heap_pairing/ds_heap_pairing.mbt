@@ -351,45 +351,45 @@ pub fn ds_heap_pairing_frame_make(size : Int) -> DsheappairingFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_frame_len(s : DsheappairingFrame) -> Int { s.size }
+pub fn DsheappairingFrame::len(self : DsheappairingFrame) -> Int { self.size }
 
-pub fn ds_heap_pairing_frame_get(s : DsheappairingFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingFrame::get(self : DsheappairingFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_frame_set(s : DsheappairingFrame, i : Int, v : Double) -> DsheappairingFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingFrame::set(self : DsheappairingFrame, i : Int, v : Double) -> DsheappairingFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_frame_sum(s : DsheappairingFrame) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingFrame::sum(self : DsheappairingFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_frame_mean(s : DsheappairingFrame) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingFrame::mean(self : DsheappairingFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_frame_scale(s : DsheappairingFrame, f : Double) -> DsheappairingFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingFrame::scale(self : DsheappairingFrame, f : Double) -> DsheappairingFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_frame_add(a : DsheappairingFrame, b : DsheappairingFrame) -> DsheappairingFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingFrame::add(self : DsheappairingFrame, other : DsheappairingFrame) -> DsheappairingFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_frame_copy(s : DsheappairingFrame) -> DsheappairingFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingFrame::copy(self : DsheappairingFrame) -> DsheappairingFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_frame_fill(s : DsheappairingFrame, v : Double) -> DsheappairingFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingFrame::fill(self : DsheappairingFrame, v : Double) -> DsheappairingFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_frame_min(s : DsheappairingFrame) -> Double { @_common.min(s.data) }
+pub fn DsheappairingFrame::min(self : DsheappairingFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_frame_max(s : DsheappairingFrame) -> Double { @_common.max(s.data) }
+pub fn DsheappairingFrame::max(self : DsheappairingFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_frame_to_string(s : DsheappairingFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingFrame::to_string(self : DsheappairingFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingTable {
@@ -402,45 +402,45 @@ pub fn ds_heap_pairing_table_make(size : Int) -> DsheappairingTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_table_len(s : DsheappairingTable) -> Int { s.size }
+pub fn DsheappairingTable::len(self : DsheappairingTable) -> Int { self.size }
 
-pub fn ds_heap_pairing_table_get(s : DsheappairingTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingTable::get(self : DsheappairingTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_table_set(s : DsheappairingTable, i : Int, v : Double) -> DsheappairingTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingTable::set(self : DsheappairingTable, i : Int, v : Double) -> DsheappairingTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_table_sum(s : DsheappairingTable) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingTable::sum(self : DsheappairingTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_table_mean(s : DsheappairingTable) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingTable::mean(self : DsheappairingTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_table_scale(s : DsheappairingTable, f : Double) -> DsheappairingTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingTable::scale(self : DsheappairingTable, f : Double) -> DsheappairingTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_table_add(a : DsheappairingTable, b : DsheappairingTable) -> DsheappairingTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingTable::add(self : DsheappairingTable, other : DsheappairingTable) -> DsheappairingTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_table_copy(s : DsheappairingTable) -> DsheappairingTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingTable::copy(self : DsheappairingTable) -> DsheappairingTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_table_fill(s : DsheappairingTable, v : Double) -> DsheappairingTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingTable::fill(self : DsheappairingTable, v : Double) -> DsheappairingTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_table_min(s : DsheappairingTable) -> Double { @_common.min(s.data) }
+pub fn DsheappairingTable::min(self : DsheappairingTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_table_max(s : DsheappairingTable) -> Double { @_common.max(s.data) }
+pub fn DsheappairingTable::max(self : DsheappairingTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_table_to_string(s : DsheappairingTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingTable::to_string(self : DsheappairingTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingGraphN {
@@ -453,45 +453,45 @@ pub fn ds_heap_pairing_graphn_make(size : Int) -> DsheappairingGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_graphn_len(s : DsheappairingGraphN) -> Int { s.size }
+pub fn DsheappairingGraphN::len(self : DsheappairingGraphN) -> Int { self.size }
 
-pub fn ds_heap_pairing_graphn_get(s : DsheappairingGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingGraphN::get(self : DsheappairingGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_graphn_set(s : DsheappairingGraphN, i : Int, v : Double) -> DsheappairingGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingGraphN::set(self : DsheappairingGraphN, i : Int, v : Double) -> DsheappairingGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_graphn_sum(s : DsheappairingGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingGraphN::sum(self : DsheappairingGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_graphn_mean(s : DsheappairingGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingGraphN::mean(self : DsheappairingGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_graphn_scale(s : DsheappairingGraphN, f : Double) -> DsheappairingGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingGraphN::scale(self : DsheappairingGraphN, f : Double) -> DsheappairingGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_graphn_add(a : DsheappairingGraphN, b : DsheappairingGraphN) -> DsheappairingGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingGraphN::add(self : DsheappairingGraphN, other : DsheappairingGraphN) -> DsheappairingGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_graphn_copy(s : DsheappairingGraphN) -> DsheappairingGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingGraphN::copy(self : DsheappairingGraphN) -> DsheappairingGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_graphn_fill(s : DsheappairingGraphN, v : Double) -> DsheappairingGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingGraphN::fill(self : DsheappairingGraphN, v : Double) -> DsheappairingGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_graphn_min(s : DsheappairingGraphN) -> Double { @_common.min(s.data) }
+pub fn DsheappairingGraphN::min(self : DsheappairingGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_graphn_max(s : DsheappairingGraphN) -> Double { @_common.max(s.data) }
+pub fn DsheappairingGraphN::max(self : DsheappairingGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_graphn_to_string(s : DsheappairingGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingGraphN::to_string(self : DsheappairingGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingNode {
@@ -504,45 +504,45 @@ pub fn ds_heap_pairing_node_make(size : Int) -> DsheappairingNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_node_len(s : DsheappairingNode) -> Int { s.size }
+pub fn DsheappairingNode::len(self : DsheappairingNode) -> Int { self.size }
 
-pub fn ds_heap_pairing_node_get(s : DsheappairingNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingNode::get(self : DsheappairingNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_node_set(s : DsheappairingNode, i : Int, v : Double) -> DsheappairingNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingNode::set(self : DsheappairingNode, i : Int, v : Double) -> DsheappairingNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_node_sum(s : DsheappairingNode) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingNode::sum(self : DsheappairingNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_node_mean(s : DsheappairingNode) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingNode::mean(self : DsheappairingNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_node_scale(s : DsheappairingNode, f : Double) -> DsheappairingNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingNode::scale(self : DsheappairingNode, f : Double) -> DsheappairingNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_node_add(a : DsheappairingNode, b : DsheappairingNode) -> DsheappairingNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingNode::add(self : DsheappairingNode, other : DsheappairingNode) -> DsheappairingNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_node_copy(s : DsheappairingNode) -> DsheappairingNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingNode::copy(self : DsheappairingNode) -> DsheappairingNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_node_fill(s : DsheappairingNode, v : Double) -> DsheappairingNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingNode::fill(self : DsheappairingNode, v : Double) -> DsheappairingNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_node_min(s : DsheappairingNode) -> Double { @_common.min(s.data) }
+pub fn DsheappairingNode::min(self : DsheappairingNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_node_max(s : DsheappairingNode) -> Double { @_common.max(s.data) }
+pub fn DsheappairingNode::max(self : DsheappairingNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_node_to_string(s : DsheappairingNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingNode::to_string(self : DsheappairingNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingEdge {
@@ -555,45 +555,45 @@ pub fn ds_heap_pairing_edge_make(size : Int) -> DsheappairingEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_edge_len(s : DsheappairingEdge) -> Int { s.size }
+pub fn DsheappairingEdge::len(self : DsheappairingEdge) -> Int { self.size }
 
-pub fn ds_heap_pairing_edge_get(s : DsheappairingEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingEdge::get(self : DsheappairingEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_edge_set(s : DsheappairingEdge, i : Int, v : Double) -> DsheappairingEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingEdge::set(self : DsheappairingEdge, i : Int, v : Double) -> DsheappairingEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_edge_sum(s : DsheappairingEdge) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingEdge::sum(self : DsheappairingEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_edge_mean(s : DsheappairingEdge) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingEdge::mean(self : DsheappairingEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_edge_scale(s : DsheappairingEdge, f : Double) -> DsheappairingEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingEdge::scale(self : DsheappairingEdge, f : Double) -> DsheappairingEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_edge_add(a : DsheappairingEdge, b : DsheappairingEdge) -> DsheappairingEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingEdge::add(self : DsheappairingEdge, other : DsheappairingEdge) -> DsheappairingEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_edge_copy(s : DsheappairingEdge) -> DsheappairingEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingEdge::copy(self : DsheappairingEdge) -> DsheappairingEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_edge_fill(s : DsheappairingEdge, v : Double) -> DsheappairingEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingEdge::fill(self : DsheappairingEdge, v : Double) -> DsheappairingEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_edge_min(s : DsheappairingEdge) -> Double { @_common.min(s.data) }
+pub fn DsheappairingEdge::min(self : DsheappairingEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_edge_max(s : DsheappairingEdge) -> Double { @_common.max(s.data) }
+pub fn DsheappairingEdge::max(self : DsheappairingEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_edge_to_string(s : DsheappairingEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingEdge::to_string(self : DsheappairingEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingPath {
@@ -606,45 +606,45 @@ pub fn ds_heap_pairing_path_make(size : Int) -> DsheappairingPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_path_len(s : DsheappairingPath) -> Int { s.size }
+pub fn DsheappairingPath::len(self : DsheappairingPath) -> Int { self.size }
 
-pub fn ds_heap_pairing_path_get(s : DsheappairingPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingPath::get(self : DsheappairingPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_path_set(s : DsheappairingPath, i : Int, v : Double) -> DsheappairingPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingPath::set(self : DsheappairingPath, i : Int, v : Double) -> DsheappairingPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_path_sum(s : DsheappairingPath) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingPath::sum(self : DsheappairingPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_path_mean(s : DsheappairingPath) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingPath::mean(self : DsheappairingPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_path_scale(s : DsheappairingPath, f : Double) -> DsheappairingPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingPath::scale(self : DsheappairingPath, f : Double) -> DsheappairingPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_path_add(a : DsheappairingPath, b : DsheappairingPath) -> DsheappairingPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingPath::add(self : DsheappairingPath, other : DsheappairingPath) -> DsheappairingPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_path_copy(s : DsheappairingPath) -> DsheappairingPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingPath::copy(self : DsheappairingPath) -> DsheappairingPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_path_fill(s : DsheappairingPath, v : Double) -> DsheappairingPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingPath::fill(self : DsheappairingPath, v : Double) -> DsheappairingPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_path_min(s : DsheappairingPath) -> Double { @_common.min(s.data) }
+pub fn DsheappairingPath::min(self : DsheappairingPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_path_max(s : DsheappairingPath) -> Double { @_common.max(s.data) }
+pub fn DsheappairingPath::max(self : DsheappairingPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_path_to_string(s : DsheappairingPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingPath::to_string(self : DsheappairingPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingCluster {
@@ -657,45 +657,45 @@ pub fn ds_heap_pairing_cluster_make(size : Int) -> DsheappairingCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_cluster_len(s : DsheappairingCluster) -> Int { s.size }
+pub fn DsheappairingCluster::len(self : DsheappairingCluster) -> Int { self.size }
 
-pub fn ds_heap_pairing_cluster_get(s : DsheappairingCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingCluster::get(self : DsheappairingCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_cluster_set(s : DsheappairingCluster, i : Int, v : Double) -> DsheappairingCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingCluster::set(self : DsheappairingCluster, i : Int, v : Double) -> DsheappairingCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_cluster_sum(s : DsheappairingCluster) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingCluster::sum(self : DsheappairingCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_cluster_mean(s : DsheappairingCluster) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingCluster::mean(self : DsheappairingCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_cluster_scale(s : DsheappairingCluster, f : Double) -> DsheappairingCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingCluster::scale(self : DsheappairingCluster, f : Double) -> DsheappairingCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_cluster_add(a : DsheappairingCluster, b : DsheappairingCluster) -> DsheappairingCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingCluster::add(self : DsheappairingCluster, other : DsheappairingCluster) -> DsheappairingCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_cluster_copy(s : DsheappairingCluster) -> DsheappairingCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingCluster::copy(self : DsheappairingCluster) -> DsheappairingCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_cluster_fill(s : DsheappairingCluster, v : Double) -> DsheappairingCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingCluster::fill(self : DsheappairingCluster, v : Double) -> DsheappairingCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_cluster_min(s : DsheappairingCluster) -> Double { @_common.min(s.data) }
+pub fn DsheappairingCluster::min(self : DsheappairingCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_cluster_max(s : DsheappairingCluster) -> Double { @_common.max(s.data) }
+pub fn DsheappairingCluster::max(self : DsheappairingCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_cluster_to_string(s : DsheappairingCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingCluster::to_string(self : DsheappairingCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingModel {
@@ -708,45 +708,45 @@ pub fn ds_heap_pairing_model_make(size : Int) -> DsheappairingModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_model_len(s : DsheappairingModel) -> Int { s.size }
+pub fn DsheappairingModel::len(self : DsheappairingModel) -> Int { self.size }
 
-pub fn ds_heap_pairing_model_get(s : DsheappairingModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingModel::get(self : DsheappairingModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_model_set(s : DsheappairingModel, i : Int, v : Double) -> DsheappairingModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingModel::set(self : DsheappairingModel, i : Int, v : Double) -> DsheappairingModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_model_sum(s : DsheappairingModel) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingModel::sum(self : DsheappairingModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_model_mean(s : DsheappairingModel) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingModel::mean(self : DsheappairingModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_model_scale(s : DsheappairingModel, f : Double) -> DsheappairingModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingModel::scale(self : DsheappairingModel, f : Double) -> DsheappairingModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_model_add(a : DsheappairingModel, b : DsheappairingModel) -> DsheappairingModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingModel::add(self : DsheappairingModel, other : DsheappairingModel) -> DsheappairingModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_model_copy(s : DsheappairingModel) -> DsheappairingModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingModel::copy(self : DsheappairingModel) -> DsheappairingModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_model_fill(s : DsheappairingModel, v : Double) -> DsheappairingModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingModel::fill(self : DsheappairingModel, v : Double) -> DsheappairingModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_model_min(s : DsheappairingModel) -> Double { @_common.min(s.data) }
+pub fn DsheappairingModel::min(self : DsheappairingModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_model_max(s : DsheappairingModel) -> Double { @_common.max(s.data) }
+pub fn DsheappairingModel::max(self : DsheappairingModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_model_to_string(s : DsheappairingModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingModel::to_string(self : DsheappairingModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingLayer {
@@ -759,45 +759,45 @@ pub fn ds_heap_pairing_layer_make(size : Int) -> DsheappairingLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_layer_len(s : DsheappairingLayer) -> Int { s.size }
+pub fn DsheappairingLayer::len(self : DsheappairingLayer) -> Int { self.size }
 
-pub fn ds_heap_pairing_layer_get(s : DsheappairingLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingLayer::get(self : DsheappairingLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_layer_set(s : DsheappairingLayer, i : Int, v : Double) -> DsheappairingLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingLayer::set(self : DsheappairingLayer, i : Int, v : Double) -> DsheappairingLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_layer_sum(s : DsheappairingLayer) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingLayer::sum(self : DsheappairingLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_layer_mean(s : DsheappairingLayer) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingLayer::mean(self : DsheappairingLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_layer_scale(s : DsheappairingLayer, f : Double) -> DsheappairingLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingLayer::scale(self : DsheappairingLayer, f : Double) -> DsheappairingLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_layer_add(a : DsheappairingLayer, b : DsheappairingLayer) -> DsheappairingLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingLayer::add(self : DsheappairingLayer, other : DsheappairingLayer) -> DsheappairingLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_layer_copy(s : DsheappairingLayer) -> DsheappairingLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingLayer::copy(self : DsheappairingLayer) -> DsheappairingLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_layer_fill(s : DsheappairingLayer, v : Double) -> DsheappairingLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingLayer::fill(self : DsheappairingLayer, v : Double) -> DsheappairingLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_layer_min(s : DsheappairingLayer) -> Double { @_common.min(s.data) }
+pub fn DsheappairingLayer::min(self : DsheappairingLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_layer_max(s : DsheappairingLayer) -> Double { @_common.max(s.data) }
+pub fn DsheappairingLayer::max(self : DsheappairingLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_layer_to_string(s : DsheappairingLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingLayer::to_string(self : DsheappairingLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingBuffer {
@@ -810,45 +810,45 @@ pub fn ds_heap_pairing_buffer_make(size : Int) -> DsheappairingBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_buffer_len(s : DsheappairingBuffer) -> Int { s.size }
+pub fn DsheappairingBuffer::len(self : DsheappairingBuffer) -> Int { self.size }
 
-pub fn ds_heap_pairing_buffer_get(s : DsheappairingBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingBuffer::get(self : DsheappairingBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_buffer_set(s : DsheappairingBuffer, i : Int, v : Double) -> DsheappairingBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingBuffer::set(self : DsheappairingBuffer, i : Int, v : Double) -> DsheappairingBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_buffer_sum(s : DsheappairingBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingBuffer::sum(self : DsheappairingBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_buffer_mean(s : DsheappairingBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingBuffer::mean(self : DsheappairingBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_buffer_scale(s : DsheappairingBuffer, f : Double) -> DsheappairingBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingBuffer::scale(self : DsheappairingBuffer, f : Double) -> DsheappairingBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_buffer_add(a : DsheappairingBuffer, b : DsheappairingBuffer) -> DsheappairingBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingBuffer::add(self : DsheappairingBuffer, other : DsheappairingBuffer) -> DsheappairingBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_buffer_copy(s : DsheappairingBuffer) -> DsheappairingBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingBuffer::copy(self : DsheappairingBuffer) -> DsheappairingBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_buffer_fill(s : DsheappairingBuffer, v : Double) -> DsheappairingBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingBuffer::fill(self : DsheappairingBuffer, v : Double) -> DsheappairingBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_buffer_min(s : DsheappairingBuffer) -> Double { @_common.min(s.data) }
+pub fn DsheappairingBuffer::min(self : DsheappairingBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_buffer_max(s : DsheappairingBuffer) -> Double { @_common.max(s.data) }
+pub fn DsheappairingBuffer::max(self : DsheappairingBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_buffer_to_string(s : DsheappairingBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingBuffer::to_string(self : DsheappairingBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingCursor {
@@ -861,45 +861,45 @@ pub fn ds_heap_pairing_cursor_make(size : Int) -> DsheappairingCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_cursor_len(s : DsheappairingCursor) -> Int { s.size }
+pub fn DsheappairingCursor::len(self : DsheappairingCursor) -> Int { self.size }
 
-pub fn ds_heap_pairing_cursor_get(s : DsheappairingCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingCursor::get(self : DsheappairingCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_cursor_set(s : DsheappairingCursor, i : Int, v : Double) -> DsheappairingCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingCursor::set(self : DsheappairingCursor, i : Int, v : Double) -> DsheappairingCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_cursor_sum(s : DsheappairingCursor) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingCursor::sum(self : DsheappairingCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_cursor_mean(s : DsheappairingCursor) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingCursor::mean(self : DsheappairingCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_cursor_scale(s : DsheappairingCursor, f : Double) -> DsheappairingCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingCursor::scale(self : DsheappairingCursor, f : Double) -> DsheappairingCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_cursor_add(a : DsheappairingCursor, b : DsheappairingCursor) -> DsheappairingCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingCursor::add(self : DsheappairingCursor, other : DsheappairingCursor) -> DsheappairingCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_cursor_copy(s : DsheappairingCursor) -> DsheappairingCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingCursor::copy(self : DsheappairingCursor) -> DsheappairingCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_cursor_fill(s : DsheappairingCursor, v : Double) -> DsheappairingCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingCursor::fill(self : DsheappairingCursor, v : Double) -> DsheappairingCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_cursor_min(s : DsheappairingCursor) -> Double { @_common.min(s.data) }
+pub fn DsheappairingCursor::min(self : DsheappairingCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_cursor_max(s : DsheappairingCursor) -> Double { @_common.max(s.data) }
+pub fn DsheappairingCursor::max(self : DsheappairingCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_cursor_to_string(s : DsheappairingCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingCursor::to_string(self : DsheappairingCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingView {
@@ -912,45 +912,45 @@ pub fn ds_heap_pairing_view_make(size : Int) -> DsheappairingView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_view_len(s : DsheappairingView) -> Int { s.size }
+pub fn DsheappairingView::len(self : DsheappairingView) -> Int { self.size }
 
-pub fn ds_heap_pairing_view_get(s : DsheappairingView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingView::get(self : DsheappairingView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_view_set(s : DsheappairingView, i : Int, v : Double) -> DsheappairingView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingView::set(self : DsheappairingView, i : Int, v : Double) -> DsheappairingView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_view_sum(s : DsheappairingView) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingView::sum(self : DsheappairingView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_view_mean(s : DsheappairingView) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingView::mean(self : DsheappairingView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_view_scale(s : DsheappairingView, f : Double) -> DsheappairingView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingView::scale(self : DsheappairingView, f : Double) -> DsheappairingView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_view_add(a : DsheappairingView, b : DsheappairingView) -> DsheappairingView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingView::add(self : DsheappairingView, other : DsheappairingView) -> DsheappairingView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_view_copy(s : DsheappairingView) -> DsheappairingView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingView::copy(self : DsheappairingView) -> DsheappairingView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_view_fill(s : DsheappairingView, v : Double) -> DsheappairingView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingView::fill(self : DsheappairingView, v : Double) -> DsheappairingView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_view_min(s : DsheappairingView) -> Double { @_common.min(s.data) }
+pub fn DsheappairingView::min(self : DsheappairingView) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_view_max(s : DsheappairingView) -> Double { @_common.max(s.data) }
+pub fn DsheappairingView::max(self : DsheappairingView) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_view_to_string(s : DsheappairingView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingView::to_string(self : DsheappairingView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingRange {
@@ -963,45 +963,45 @@ pub fn ds_heap_pairing_range_make(size : Int) -> DsheappairingRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_range_len(s : DsheappairingRange) -> Int { s.size }
+pub fn DsheappairingRange::len(self : DsheappairingRange) -> Int { self.size }
 
-pub fn ds_heap_pairing_range_get(s : DsheappairingRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingRange::get(self : DsheappairingRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_range_set(s : DsheappairingRange, i : Int, v : Double) -> DsheappairingRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingRange::set(self : DsheappairingRange, i : Int, v : Double) -> DsheappairingRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_range_sum(s : DsheappairingRange) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingRange::sum(self : DsheappairingRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_range_mean(s : DsheappairingRange) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingRange::mean(self : DsheappairingRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_range_scale(s : DsheappairingRange, f : Double) -> DsheappairingRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingRange::scale(self : DsheappairingRange, f : Double) -> DsheappairingRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_range_add(a : DsheappairingRange, b : DsheappairingRange) -> DsheappairingRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingRange::add(self : DsheappairingRange, other : DsheappairingRange) -> DsheappairingRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_range_copy(s : DsheappairingRange) -> DsheappairingRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingRange::copy(self : DsheappairingRange) -> DsheappairingRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_range_fill(s : DsheappairingRange, v : Double) -> DsheappairingRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingRange::fill(self : DsheappairingRange, v : Double) -> DsheappairingRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_range_min(s : DsheappairingRange) -> Double { @_common.min(s.data) }
+pub fn DsheappairingRange::min(self : DsheappairingRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_range_max(s : DsheappairingRange) -> Double { @_common.max(s.data) }
+pub fn DsheappairingRange::max(self : DsheappairingRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_range_to_string(s : DsheappairingRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingRange::to_string(self : DsheappairingRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheappairingSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_heap_pairing_slice_make(size : Int) -> DsheappairingSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_pairing_slice_len(s : DsheappairingSlice) -> Int { s.size }
+pub fn DsheappairingSlice::len(self : DsheappairingSlice) -> Int { self.size }
 
-pub fn ds_heap_pairing_slice_get(s : DsheappairingSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheappairingSlice::get(self : DsheappairingSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_pairing_slice_set(s : DsheappairingSlice, i : Int, v : Double) -> DsheappairingSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheappairingSlice::set(self : DsheappairingSlice, i : Int, v : Double) -> DsheappairingSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_slice_sum(s : DsheappairingSlice) -> Double { @_common.sum(s.data) }
+pub fn DsheappairingSlice::sum(self : DsheappairingSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_pairing_slice_mean(s : DsheappairingSlice) -> Double { @_common.mean(s.data) }
+pub fn DsheappairingSlice::mean(self : DsheappairingSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_pairing_slice_scale(s : DsheappairingSlice, f : Double) -> DsheappairingSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheappairingSlice::scale(self : DsheappairingSlice, f : Double) -> DsheappairingSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_slice_add(a : DsheappairingSlice, b : DsheappairingSlice) -> DsheappairingSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheappairingSlice::add(self : DsheappairingSlice, other : DsheappairingSlice) -> DsheappairingSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_slice_copy(s : DsheappairingSlice) -> DsheappairingSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheappairingSlice::copy(self : DsheappairingSlice) -> DsheappairingSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_slice_fill(s : DsheappairingSlice, v : Double) -> DsheappairingSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheappairingSlice::fill(self : DsheappairingSlice, v : Double) -> DsheappairingSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_pairing_slice_min(s : DsheappairingSlice) -> Double { @_common.min(s.data) }
+pub fn DsheappairingSlice::min(self : DsheappairingSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_pairing_slice_max(s : DsheappairingSlice) -> Double { @_common.max(s.data) }
+pub fn DsheappairingSlice::max(self : DsheappairingSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_pairing_slice_to_string(s : DsheappairingSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheappairingSlice::to_string(self : DsheappairingSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

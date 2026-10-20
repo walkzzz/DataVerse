@@ -351,45 +351,45 @@ pub fn ml_metric_roc_frame_make(size : Int) -> MlmetricrocFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_frame_len(s : MlmetricrocFrame) -> Int { s.size }
+pub fn MlmetricrocFrame::len(self : MlmetricrocFrame) -> Int { self.size }
 
-pub fn ml_metric_roc_frame_get(s : MlmetricrocFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocFrame::get(self : MlmetricrocFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_frame_set(s : MlmetricrocFrame, i : Int, v : Double) -> MlmetricrocFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocFrame::set(self : MlmetricrocFrame, i : Int, v : Double) -> MlmetricrocFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_frame_sum(s : MlmetricrocFrame) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocFrame::sum(self : MlmetricrocFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_frame_mean(s : MlmetricrocFrame) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocFrame::mean(self : MlmetricrocFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_frame_scale(s : MlmetricrocFrame, f : Double) -> MlmetricrocFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocFrame::scale(self : MlmetricrocFrame, f : Double) -> MlmetricrocFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_frame_add(a : MlmetricrocFrame, b : MlmetricrocFrame) -> MlmetricrocFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocFrame::add(self : MlmetricrocFrame, other : MlmetricrocFrame) -> MlmetricrocFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_frame_copy(s : MlmetricrocFrame) -> MlmetricrocFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocFrame::copy(self : MlmetricrocFrame) -> MlmetricrocFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_frame_fill(s : MlmetricrocFrame, v : Double) -> MlmetricrocFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocFrame::fill(self : MlmetricrocFrame, v : Double) -> MlmetricrocFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_frame_min(s : MlmetricrocFrame) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocFrame::min(self : MlmetricrocFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_frame_max(s : MlmetricrocFrame) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocFrame::max(self : MlmetricrocFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_frame_to_string(s : MlmetricrocFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocFrame::to_string(self : MlmetricrocFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocTable {
@@ -402,45 +402,45 @@ pub fn ml_metric_roc_table_make(size : Int) -> MlmetricrocTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_table_len(s : MlmetricrocTable) -> Int { s.size }
+pub fn MlmetricrocTable::len(self : MlmetricrocTable) -> Int { self.size }
 
-pub fn ml_metric_roc_table_get(s : MlmetricrocTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocTable::get(self : MlmetricrocTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_table_set(s : MlmetricrocTable, i : Int, v : Double) -> MlmetricrocTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocTable::set(self : MlmetricrocTable, i : Int, v : Double) -> MlmetricrocTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_table_sum(s : MlmetricrocTable) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocTable::sum(self : MlmetricrocTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_table_mean(s : MlmetricrocTable) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocTable::mean(self : MlmetricrocTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_table_scale(s : MlmetricrocTable, f : Double) -> MlmetricrocTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocTable::scale(self : MlmetricrocTable, f : Double) -> MlmetricrocTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_table_add(a : MlmetricrocTable, b : MlmetricrocTable) -> MlmetricrocTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocTable::add(self : MlmetricrocTable, other : MlmetricrocTable) -> MlmetricrocTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_table_copy(s : MlmetricrocTable) -> MlmetricrocTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocTable::copy(self : MlmetricrocTable) -> MlmetricrocTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_table_fill(s : MlmetricrocTable, v : Double) -> MlmetricrocTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocTable::fill(self : MlmetricrocTable, v : Double) -> MlmetricrocTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_table_min(s : MlmetricrocTable) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocTable::min(self : MlmetricrocTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_table_max(s : MlmetricrocTable) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocTable::max(self : MlmetricrocTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_table_to_string(s : MlmetricrocTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocTable::to_string(self : MlmetricrocTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocGraphN {
@@ -453,45 +453,45 @@ pub fn ml_metric_roc_graphn_make(size : Int) -> MlmetricrocGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_graphn_len(s : MlmetricrocGraphN) -> Int { s.size }
+pub fn MlmetricrocGraphN::len(self : MlmetricrocGraphN) -> Int { self.size }
 
-pub fn ml_metric_roc_graphn_get(s : MlmetricrocGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocGraphN::get(self : MlmetricrocGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_graphn_set(s : MlmetricrocGraphN, i : Int, v : Double) -> MlmetricrocGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocGraphN::set(self : MlmetricrocGraphN, i : Int, v : Double) -> MlmetricrocGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_graphn_sum(s : MlmetricrocGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocGraphN::sum(self : MlmetricrocGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_graphn_mean(s : MlmetricrocGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocGraphN::mean(self : MlmetricrocGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_graphn_scale(s : MlmetricrocGraphN, f : Double) -> MlmetricrocGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocGraphN::scale(self : MlmetricrocGraphN, f : Double) -> MlmetricrocGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_graphn_add(a : MlmetricrocGraphN, b : MlmetricrocGraphN) -> MlmetricrocGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocGraphN::add(self : MlmetricrocGraphN, other : MlmetricrocGraphN) -> MlmetricrocGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_graphn_copy(s : MlmetricrocGraphN) -> MlmetricrocGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocGraphN::copy(self : MlmetricrocGraphN) -> MlmetricrocGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_graphn_fill(s : MlmetricrocGraphN, v : Double) -> MlmetricrocGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocGraphN::fill(self : MlmetricrocGraphN, v : Double) -> MlmetricrocGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_graphn_min(s : MlmetricrocGraphN) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocGraphN::min(self : MlmetricrocGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_graphn_max(s : MlmetricrocGraphN) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocGraphN::max(self : MlmetricrocGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_graphn_to_string(s : MlmetricrocGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocGraphN::to_string(self : MlmetricrocGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocNode {
@@ -504,45 +504,45 @@ pub fn ml_metric_roc_node_make(size : Int) -> MlmetricrocNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_node_len(s : MlmetricrocNode) -> Int { s.size }
+pub fn MlmetricrocNode::len(self : MlmetricrocNode) -> Int { self.size }
 
-pub fn ml_metric_roc_node_get(s : MlmetricrocNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocNode::get(self : MlmetricrocNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_node_set(s : MlmetricrocNode, i : Int, v : Double) -> MlmetricrocNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocNode::set(self : MlmetricrocNode, i : Int, v : Double) -> MlmetricrocNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_node_sum(s : MlmetricrocNode) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocNode::sum(self : MlmetricrocNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_node_mean(s : MlmetricrocNode) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocNode::mean(self : MlmetricrocNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_node_scale(s : MlmetricrocNode, f : Double) -> MlmetricrocNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocNode::scale(self : MlmetricrocNode, f : Double) -> MlmetricrocNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_node_add(a : MlmetricrocNode, b : MlmetricrocNode) -> MlmetricrocNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocNode::add(self : MlmetricrocNode, other : MlmetricrocNode) -> MlmetricrocNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_node_copy(s : MlmetricrocNode) -> MlmetricrocNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocNode::copy(self : MlmetricrocNode) -> MlmetricrocNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_node_fill(s : MlmetricrocNode, v : Double) -> MlmetricrocNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocNode::fill(self : MlmetricrocNode, v : Double) -> MlmetricrocNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_node_min(s : MlmetricrocNode) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocNode::min(self : MlmetricrocNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_node_max(s : MlmetricrocNode) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocNode::max(self : MlmetricrocNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_node_to_string(s : MlmetricrocNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocNode::to_string(self : MlmetricrocNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocEdge {
@@ -555,45 +555,45 @@ pub fn ml_metric_roc_edge_make(size : Int) -> MlmetricrocEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_edge_len(s : MlmetricrocEdge) -> Int { s.size }
+pub fn MlmetricrocEdge::len(self : MlmetricrocEdge) -> Int { self.size }
 
-pub fn ml_metric_roc_edge_get(s : MlmetricrocEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocEdge::get(self : MlmetricrocEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_edge_set(s : MlmetricrocEdge, i : Int, v : Double) -> MlmetricrocEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocEdge::set(self : MlmetricrocEdge, i : Int, v : Double) -> MlmetricrocEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_edge_sum(s : MlmetricrocEdge) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocEdge::sum(self : MlmetricrocEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_edge_mean(s : MlmetricrocEdge) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocEdge::mean(self : MlmetricrocEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_edge_scale(s : MlmetricrocEdge, f : Double) -> MlmetricrocEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocEdge::scale(self : MlmetricrocEdge, f : Double) -> MlmetricrocEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_edge_add(a : MlmetricrocEdge, b : MlmetricrocEdge) -> MlmetricrocEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocEdge::add(self : MlmetricrocEdge, other : MlmetricrocEdge) -> MlmetricrocEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_edge_copy(s : MlmetricrocEdge) -> MlmetricrocEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocEdge::copy(self : MlmetricrocEdge) -> MlmetricrocEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_edge_fill(s : MlmetricrocEdge, v : Double) -> MlmetricrocEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocEdge::fill(self : MlmetricrocEdge, v : Double) -> MlmetricrocEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_edge_min(s : MlmetricrocEdge) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocEdge::min(self : MlmetricrocEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_edge_max(s : MlmetricrocEdge) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocEdge::max(self : MlmetricrocEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_edge_to_string(s : MlmetricrocEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocEdge::to_string(self : MlmetricrocEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocPath {
@@ -606,45 +606,45 @@ pub fn ml_metric_roc_path_make(size : Int) -> MlmetricrocPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_path_len(s : MlmetricrocPath) -> Int { s.size }
+pub fn MlmetricrocPath::len(self : MlmetricrocPath) -> Int { self.size }
 
-pub fn ml_metric_roc_path_get(s : MlmetricrocPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocPath::get(self : MlmetricrocPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_path_set(s : MlmetricrocPath, i : Int, v : Double) -> MlmetricrocPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocPath::set(self : MlmetricrocPath, i : Int, v : Double) -> MlmetricrocPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_path_sum(s : MlmetricrocPath) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocPath::sum(self : MlmetricrocPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_path_mean(s : MlmetricrocPath) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocPath::mean(self : MlmetricrocPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_path_scale(s : MlmetricrocPath, f : Double) -> MlmetricrocPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocPath::scale(self : MlmetricrocPath, f : Double) -> MlmetricrocPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_path_add(a : MlmetricrocPath, b : MlmetricrocPath) -> MlmetricrocPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocPath::add(self : MlmetricrocPath, other : MlmetricrocPath) -> MlmetricrocPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_path_copy(s : MlmetricrocPath) -> MlmetricrocPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocPath::copy(self : MlmetricrocPath) -> MlmetricrocPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_path_fill(s : MlmetricrocPath, v : Double) -> MlmetricrocPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocPath::fill(self : MlmetricrocPath, v : Double) -> MlmetricrocPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_path_min(s : MlmetricrocPath) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocPath::min(self : MlmetricrocPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_path_max(s : MlmetricrocPath) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocPath::max(self : MlmetricrocPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_path_to_string(s : MlmetricrocPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocPath::to_string(self : MlmetricrocPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocCluster {
@@ -657,45 +657,45 @@ pub fn ml_metric_roc_cluster_make(size : Int) -> MlmetricrocCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_cluster_len(s : MlmetricrocCluster) -> Int { s.size }
+pub fn MlmetricrocCluster::len(self : MlmetricrocCluster) -> Int { self.size }
 
-pub fn ml_metric_roc_cluster_get(s : MlmetricrocCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocCluster::get(self : MlmetricrocCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_cluster_set(s : MlmetricrocCluster, i : Int, v : Double) -> MlmetricrocCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocCluster::set(self : MlmetricrocCluster, i : Int, v : Double) -> MlmetricrocCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_cluster_sum(s : MlmetricrocCluster) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocCluster::sum(self : MlmetricrocCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_cluster_mean(s : MlmetricrocCluster) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocCluster::mean(self : MlmetricrocCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_cluster_scale(s : MlmetricrocCluster, f : Double) -> MlmetricrocCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocCluster::scale(self : MlmetricrocCluster, f : Double) -> MlmetricrocCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_cluster_add(a : MlmetricrocCluster, b : MlmetricrocCluster) -> MlmetricrocCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocCluster::add(self : MlmetricrocCluster, other : MlmetricrocCluster) -> MlmetricrocCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_cluster_copy(s : MlmetricrocCluster) -> MlmetricrocCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocCluster::copy(self : MlmetricrocCluster) -> MlmetricrocCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_cluster_fill(s : MlmetricrocCluster, v : Double) -> MlmetricrocCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocCluster::fill(self : MlmetricrocCluster, v : Double) -> MlmetricrocCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_cluster_min(s : MlmetricrocCluster) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocCluster::min(self : MlmetricrocCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_cluster_max(s : MlmetricrocCluster) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocCluster::max(self : MlmetricrocCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_cluster_to_string(s : MlmetricrocCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocCluster::to_string(self : MlmetricrocCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocModel {
@@ -708,45 +708,45 @@ pub fn ml_metric_roc_model_make(size : Int) -> MlmetricrocModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_model_len(s : MlmetricrocModel) -> Int { s.size }
+pub fn MlmetricrocModel::len(self : MlmetricrocModel) -> Int { self.size }
 
-pub fn ml_metric_roc_model_get(s : MlmetricrocModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocModel::get(self : MlmetricrocModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_model_set(s : MlmetricrocModel, i : Int, v : Double) -> MlmetricrocModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocModel::set(self : MlmetricrocModel, i : Int, v : Double) -> MlmetricrocModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_model_sum(s : MlmetricrocModel) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocModel::sum(self : MlmetricrocModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_model_mean(s : MlmetricrocModel) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocModel::mean(self : MlmetricrocModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_model_scale(s : MlmetricrocModel, f : Double) -> MlmetricrocModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocModel::scale(self : MlmetricrocModel, f : Double) -> MlmetricrocModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_model_add(a : MlmetricrocModel, b : MlmetricrocModel) -> MlmetricrocModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocModel::add(self : MlmetricrocModel, other : MlmetricrocModel) -> MlmetricrocModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_model_copy(s : MlmetricrocModel) -> MlmetricrocModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocModel::copy(self : MlmetricrocModel) -> MlmetricrocModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_model_fill(s : MlmetricrocModel, v : Double) -> MlmetricrocModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocModel::fill(self : MlmetricrocModel, v : Double) -> MlmetricrocModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_model_min(s : MlmetricrocModel) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocModel::min(self : MlmetricrocModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_model_max(s : MlmetricrocModel) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocModel::max(self : MlmetricrocModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_model_to_string(s : MlmetricrocModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocModel::to_string(self : MlmetricrocModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocLayer {
@@ -759,45 +759,45 @@ pub fn ml_metric_roc_layer_make(size : Int) -> MlmetricrocLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_layer_len(s : MlmetricrocLayer) -> Int { s.size }
+pub fn MlmetricrocLayer::len(self : MlmetricrocLayer) -> Int { self.size }
 
-pub fn ml_metric_roc_layer_get(s : MlmetricrocLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocLayer::get(self : MlmetricrocLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_layer_set(s : MlmetricrocLayer, i : Int, v : Double) -> MlmetricrocLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocLayer::set(self : MlmetricrocLayer, i : Int, v : Double) -> MlmetricrocLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_layer_sum(s : MlmetricrocLayer) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocLayer::sum(self : MlmetricrocLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_layer_mean(s : MlmetricrocLayer) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocLayer::mean(self : MlmetricrocLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_layer_scale(s : MlmetricrocLayer, f : Double) -> MlmetricrocLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocLayer::scale(self : MlmetricrocLayer, f : Double) -> MlmetricrocLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_layer_add(a : MlmetricrocLayer, b : MlmetricrocLayer) -> MlmetricrocLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocLayer::add(self : MlmetricrocLayer, other : MlmetricrocLayer) -> MlmetricrocLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_layer_copy(s : MlmetricrocLayer) -> MlmetricrocLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocLayer::copy(self : MlmetricrocLayer) -> MlmetricrocLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_layer_fill(s : MlmetricrocLayer, v : Double) -> MlmetricrocLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocLayer::fill(self : MlmetricrocLayer, v : Double) -> MlmetricrocLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_layer_min(s : MlmetricrocLayer) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocLayer::min(self : MlmetricrocLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_layer_max(s : MlmetricrocLayer) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocLayer::max(self : MlmetricrocLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_layer_to_string(s : MlmetricrocLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocLayer::to_string(self : MlmetricrocLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocBuffer {
@@ -810,45 +810,45 @@ pub fn ml_metric_roc_buffer_make(size : Int) -> MlmetricrocBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_buffer_len(s : MlmetricrocBuffer) -> Int { s.size }
+pub fn MlmetricrocBuffer::len(self : MlmetricrocBuffer) -> Int { self.size }
 
-pub fn ml_metric_roc_buffer_get(s : MlmetricrocBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocBuffer::get(self : MlmetricrocBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_buffer_set(s : MlmetricrocBuffer, i : Int, v : Double) -> MlmetricrocBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocBuffer::set(self : MlmetricrocBuffer, i : Int, v : Double) -> MlmetricrocBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_buffer_sum(s : MlmetricrocBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocBuffer::sum(self : MlmetricrocBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_buffer_mean(s : MlmetricrocBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocBuffer::mean(self : MlmetricrocBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_buffer_scale(s : MlmetricrocBuffer, f : Double) -> MlmetricrocBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocBuffer::scale(self : MlmetricrocBuffer, f : Double) -> MlmetricrocBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_buffer_add(a : MlmetricrocBuffer, b : MlmetricrocBuffer) -> MlmetricrocBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocBuffer::add(self : MlmetricrocBuffer, other : MlmetricrocBuffer) -> MlmetricrocBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_buffer_copy(s : MlmetricrocBuffer) -> MlmetricrocBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocBuffer::copy(self : MlmetricrocBuffer) -> MlmetricrocBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_buffer_fill(s : MlmetricrocBuffer, v : Double) -> MlmetricrocBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocBuffer::fill(self : MlmetricrocBuffer, v : Double) -> MlmetricrocBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_buffer_min(s : MlmetricrocBuffer) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocBuffer::min(self : MlmetricrocBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_buffer_max(s : MlmetricrocBuffer) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocBuffer::max(self : MlmetricrocBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_buffer_to_string(s : MlmetricrocBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocBuffer::to_string(self : MlmetricrocBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocCursor {
@@ -861,45 +861,45 @@ pub fn ml_metric_roc_cursor_make(size : Int) -> MlmetricrocCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_cursor_len(s : MlmetricrocCursor) -> Int { s.size }
+pub fn MlmetricrocCursor::len(self : MlmetricrocCursor) -> Int { self.size }
 
-pub fn ml_metric_roc_cursor_get(s : MlmetricrocCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocCursor::get(self : MlmetricrocCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_cursor_set(s : MlmetricrocCursor, i : Int, v : Double) -> MlmetricrocCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocCursor::set(self : MlmetricrocCursor, i : Int, v : Double) -> MlmetricrocCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_cursor_sum(s : MlmetricrocCursor) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocCursor::sum(self : MlmetricrocCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_cursor_mean(s : MlmetricrocCursor) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocCursor::mean(self : MlmetricrocCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_cursor_scale(s : MlmetricrocCursor, f : Double) -> MlmetricrocCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocCursor::scale(self : MlmetricrocCursor, f : Double) -> MlmetricrocCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_cursor_add(a : MlmetricrocCursor, b : MlmetricrocCursor) -> MlmetricrocCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocCursor::add(self : MlmetricrocCursor, other : MlmetricrocCursor) -> MlmetricrocCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_cursor_copy(s : MlmetricrocCursor) -> MlmetricrocCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocCursor::copy(self : MlmetricrocCursor) -> MlmetricrocCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_cursor_fill(s : MlmetricrocCursor, v : Double) -> MlmetricrocCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocCursor::fill(self : MlmetricrocCursor, v : Double) -> MlmetricrocCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_cursor_min(s : MlmetricrocCursor) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocCursor::min(self : MlmetricrocCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_cursor_max(s : MlmetricrocCursor) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocCursor::max(self : MlmetricrocCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_cursor_to_string(s : MlmetricrocCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocCursor::to_string(self : MlmetricrocCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocView {
@@ -912,45 +912,45 @@ pub fn ml_metric_roc_view_make(size : Int) -> MlmetricrocView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_view_len(s : MlmetricrocView) -> Int { s.size }
+pub fn MlmetricrocView::len(self : MlmetricrocView) -> Int { self.size }
 
-pub fn ml_metric_roc_view_get(s : MlmetricrocView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocView::get(self : MlmetricrocView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_view_set(s : MlmetricrocView, i : Int, v : Double) -> MlmetricrocView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocView::set(self : MlmetricrocView, i : Int, v : Double) -> MlmetricrocView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_view_sum(s : MlmetricrocView) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocView::sum(self : MlmetricrocView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_view_mean(s : MlmetricrocView) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocView::mean(self : MlmetricrocView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_view_scale(s : MlmetricrocView, f : Double) -> MlmetricrocView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocView::scale(self : MlmetricrocView, f : Double) -> MlmetricrocView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_view_add(a : MlmetricrocView, b : MlmetricrocView) -> MlmetricrocView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocView::add(self : MlmetricrocView, other : MlmetricrocView) -> MlmetricrocView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_view_copy(s : MlmetricrocView) -> MlmetricrocView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocView::copy(self : MlmetricrocView) -> MlmetricrocView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_view_fill(s : MlmetricrocView, v : Double) -> MlmetricrocView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocView::fill(self : MlmetricrocView, v : Double) -> MlmetricrocView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_view_min(s : MlmetricrocView) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocView::min(self : MlmetricrocView) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_view_max(s : MlmetricrocView) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocView::max(self : MlmetricrocView) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_view_to_string(s : MlmetricrocView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocView::to_string(self : MlmetricrocView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocRange {
@@ -963,45 +963,45 @@ pub fn ml_metric_roc_range_make(size : Int) -> MlmetricrocRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_range_len(s : MlmetricrocRange) -> Int { s.size }
+pub fn MlmetricrocRange::len(self : MlmetricrocRange) -> Int { self.size }
 
-pub fn ml_metric_roc_range_get(s : MlmetricrocRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocRange::get(self : MlmetricrocRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_range_set(s : MlmetricrocRange, i : Int, v : Double) -> MlmetricrocRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocRange::set(self : MlmetricrocRange, i : Int, v : Double) -> MlmetricrocRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_range_sum(s : MlmetricrocRange) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocRange::sum(self : MlmetricrocRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_range_mean(s : MlmetricrocRange) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocRange::mean(self : MlmetricrocRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_range_scale(s : MlmetricrocRange, f : Double) -> MlmetricrocRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocRange::scale(self : MlmetricrocRange, f : Double) -> MlmetricrocRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_range_add(a : MlmetricrocRange, b : MlmetricrocRange) -> MlmetricrocRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocRange::add(self : MlmetricrocRange, other : MlmetricrocRange) -> MlmetricrocRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_range_copy(s : MlmetricrocRange) -> MlmetricrocRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocRange::copy(self : MlmetricrocRange) -> MlmetricrocRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_range_fill(s : MlmetricrocRange, v : Double) -> MlmetricrocRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocRange::fill(self : MlmetricrocRange, v : Double) -> MlmetricrocRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_range_min(s : MlmetricrocRange) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocRange::min(self : MlmetricrocRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_range_max(s : MlmetricrocRange) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocRange::max(self : MlmetricrocRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_range_to_string(s : MlmetricrocRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocRange::to_string(self : MlmetricrocRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricrocSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_metric_roc_slice_make(size : Int) -> MlmetricrocSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_roc_slice_len(s : MlmetricrocSlice) -> Int { s.size }
+pub fn MlmetricrocSlice::len(self : MlmetricrocSlice) -> Int { self.size }
 
-pub fn ml_metric_roc_slice_get(s : MlmetricrocSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricrocSlice::get(self : MlmetricrocSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_roc_slice_set(s : MlmetricrocSlice, i : Int, v : Double) -> MlmetricrocSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricrocSlice::set(self : MlmetricrocSlice, i : Int, v : Double) -> MlmetricrocSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_slice_sum(s : MlmetricrocSlice) -> Double { @_common.sum(s.data) }
+pub fn MlmetricrocSlice::sum(self : MlmetricrocSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_roc_slice_mean(s : MlmetricrocSlice) -> Double { @_common.mean(s.data) }
+pub fn MlmetricrocSlice::mean(self : MlmetricrocSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_roc_slice_scale(s : MlmetricrocSlice, f : Double) -> MlmetricrocSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricrocSlice::scale(self : MlmetricrocSlice, f : Double) -> MlmetricrocSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_slice_add(a : MlmetricrocSlice, b : MlmetricrocSlice) -> MlmetricrocSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricrocSlice::add(self : MlmetricrocSlice, other : MlmetricrocSlice) -> MlmetricrocSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_roc_slice_copy(s : MlmetricrocSlice) -> MlmetricrocSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricrocSlice::copy(self : MlmetricrocSlice) -> MlmetricrocSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_slice_fill(s : MlmetricrocSlice, v : Double) -> MlmetricrocSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricrocSlice::fill(self : MlmetricrocSlice, v : Double) -> MlmetricrocSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_roc_slice_min(s : MlmetricrocSlice) -> Double { @_common.min(s.data) }
+pub fn MlmetricrocSlice::min(self : MlmetricrocSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_roc_slice_max(s : MlmetricrocSlice) -> Double { @_common.max(s.data) }
+pub fn MlmetricrocSlice::max(self : MlmetricrocSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_roc_slice_to_string(s : MlmetricrocSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricrocSlice::to_string(self : MlmetricrocSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

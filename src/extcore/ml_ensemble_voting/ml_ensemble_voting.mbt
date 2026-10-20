@@ -351,45 +351,45 @@ pub fn ml_ensemble_voting_frame_make(size : Int) -> MlensemblevotingFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_frame_len(s : MlensemblevotingFrame) -> Int { s.size }
+pub fn MlensemblevotingFrame::len(self : MlensemblevotingFrame) -> Int { self.size }
 
-pub fn ml_ensemble_voting_frame_get(s : MlensemblevotingFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingFrame::get(self : MlensemblevotingFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_frame_set(s : MlensemblevotingFrame, i : Int, v : Double) -> MlensemblevotingFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingFrame::set(self : MlensemblevotingFrame, i : Int, v : Double) -> MlensemblevotingFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_frame_sum(s : MlensemblevotingFrame) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingFrame::sum(self : MlensemblevotingFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_frame_mean(s : MlensemblevotingFrame) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingFrame::mean(self : MlensemblevotingFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_frame_scale(s : MlensemblevotingFrame, f : Double) -> MlensemblevotingFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingFrame::scale(self : MlensemblevotingFrame, f : Double) -> MlensemblevotingFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_frame_add(a : MlensemblevotingFrame, b : MlensemblevotingFrame) -> MlensemblevotingFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingFrame::add(self : MlensemblevotingFrame, other : MlensemblevotingFrame) -> MlensemblevotingFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_frame_copy(s : MlensemblevotingFrame) -> MlensemblevotingFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingFrame::copy(self : MlensemblevotingFrame) -> MlensemblevotingFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_frame_fill(s : MlensemblevotingFrame, v : Double) -> MlensemblevotingFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingFrame::fill(self : MlensemblevotingFrame, v : Double) -> MlensemblevotingFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_frame_min(s : MlensemblevotingFrame) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingFrame::min(self : MlensemblevotingFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_frame_max(s : MlensemblevotingFrame) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingFrame::max(self : MlensemblevotingFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_frame_to_string(s : MlensemblevotingFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingFrame::to_string(self : MlensemblevotingFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingTable {
@@ -402,45 +402,45 @@ pub fn ml_ensemble_voting_table_make(size : Int) -> MlensemblevotingTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_table_len(s : MlensemblevotingTable) -> Int { s.size }
+pub fn MlensemblevotingTable::len(self : MlensemblevotingTable) -> Int { self.size }
 
-pub fn ml_ensemble_voting_table_get(s : MlensemblevotingTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingTable::get(self : MlensemblevotingTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_table_set(s : MlensemblevotingTable, i : Int, v : Double) -> MlensemblevotingTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingTable::set(self : MlensemblevotingTable, i : Int, v : Double) -> MlensemblevotingTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_table_sum(s : MlensemblevotingTable) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingTable::sum(self : MlensemblevotingTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_table_mean(s : MlensemblevotingTable) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingTable::mean(self : MlensemblevotingTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_table_scale(s : MlensemblevotingTable, f : Double) -> MlensemblevotingTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingTable::scale(self : MlensemblevotingTable, f : Double) -> MlensemblevotingTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_table_add(a : MlensemblevotingTable, b : MlensemblevotingTable) -> MlensemblevotingTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingTable::add(self : MlensemblevotingTable, other : MlensemblevotingTable) -> MlensemblevotingTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_table_copy(s : MlensemblevotingTable) -> MlensemblevotingTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingTable::copy(self : MlensemblevotingTable) -> MlensemblevotingTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_table_fill(s : MlensemblevotingTable, v : Double) -> MlensemblevotingTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingTable::fill(self : MlensemblevotingTable, v : Double) -> MlensemblevotingTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_table_min(s : MlensemblevotingTable) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingTable::min(self : MlensemblevotingTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_table_max(s : MlensemblevotingTable) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingTable::max(self : MlensemblevotingTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_table_to_string(s : MlensemblevotingTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingTable::to_string(self : MlensemblevotingTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingGraphN {
@@ -453,45 +453,45 @@ pub fn ml_ensemble_voting_graphn_make(size : Int) -> MlensemblevotingGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_graphn_len(s : MlensemblevotingGraphN) -> Int { s.size }
+pub fn MlensemblevotingGraphN::len(self : MlensemblevotingGraphN) -> Int { self.size }
 
-pub fn ml_ensemble_voting_graphn_get(s : MlensemblevotingGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingGraphN::get(self : MlensemblevotingGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_graphn_set(s : MlensemblevotingGraphN, i : Int, v : Double) -> MlensemblevotingGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingGraphN::set(self : MlensemblevotingGraphN, i : Int, v : Double) -> MlensemblevotingGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_graphn_sum(s : MlensemblevotingGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingGraphN::sum(self : MlensemblevotingGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_graphn_mean(s : MlensemblevotingGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingGraphN::mean(self : MlensemblevotingGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_graphn_scale(s : MlensemblevotingGraphN, f : Double) -> MlensemblevotingGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingGraphN::scale(self : MlensemblevotingGraphN, f : Double) -> MlensemblevotingGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_graphn_add(a : MlensemblevotingGraphN, b : MlensemblevotingGraphN) -> MlensemblevotingGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingGraphN::add(self : MlensemblevotingGraphN, other : MlensemblevotingGraphN) -> MlensemblevotingGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_graphn_copy(s : MlensemblevotingGraphN) -> MlensemblevotingGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingGraphN::copy(self : MlensemblevotingGraphN) -> MlensemblevotingGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_graphn_fill(s : MlensemblevotingGraphN, v : Double) -> MlensemblevotingGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingGraphN::fill(self : MlensemblevotingGraphN, v : Double) -> MlensemblevotingGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_graphn_min(s : MlensemblevotingGraphN) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingGraphN::min(self : MlensemblevotingGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_graphn_max(s : MlensemblevotingGraphN) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingGraphN::max(self : MlensemblevotingGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_graphn_to_string(s : MlensemblevotingGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingGraphN::to_string(self : MlensemblevotingGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingNode {
@@ -504,45 +504,45 @@ pub fn ml_ensemble_voting_node_make(size : Int) -> MlensemblevotingNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_node_len(s : MlensemblevotingNode) -> Int { s.size }
+pub fn MlensemblevotingNode::len(self : MlensemblevotingNode) -> Int { self.size }
 
-pub fn ml_ensemble_voting_node_get(s : MlensemblevotingNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingNode::get(self : MlensemblevotingNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_node_set(s : MlensemblevotingNode, i : Int, v : Double) -> MlensemblevotingNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingNode::set(self : MlensemblevotingNode, i : Int, v : Double) -> MlensemblevotingNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_node_sum(s : MlensemblevotingNode) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingNode::sum(self : MlensemblevotingNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_node_mean(s : MlensemblevotingNode) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingNode::mean(self : MlensemblevotingNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_node_scale(s : MlensemblevotingNode, f : Double) -> MlensemblevotingNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingNode::scale(self : MlensemblevotingNode, f : Double) -> MlensemblevotingNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_node_add(a : MlensemblevotingNode, b : MlensemblevotingNode) -> MlensemblevotingNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingNode::add(self : MlensemblevotingNode, other : MlensemblevotingNode) -> MlensemblevotingNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_node_copy(s : MlensemblevotingNode) -> MlensemblevotingNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingNode::copy(self : MlensemblevotingNode) -> MlensemblevotingNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_node_fill(s : MlensemblevotingNode, v : Double) -> MlensemblevotingNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingNode::fill(self : MlensemblevotingNode, v : Double) -> MlensemblevotingNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_node_min(s : MlensemblevotingNode) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingNode::min(self : MlensemblevotingNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_node_max(s : MlensemblevotingNode) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingNode::max(self : MlensemblevotingNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_node_to_string(s : MlensemblevotingNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingNode::to_string(self : MlensemblevotingNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingEdge {
@@ -555,45 +555,45 @@ pub fn ml_ensemble_voting_edge_make(size : Int) -> MlensemblevotingEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_edge_len(s : MlensemblevotingEdge) -> Int { s.size }
+pub fn MlensemblevotingEdge::len(self : MlensemblevotingEdge) -> Int { self.size }
 
-pub fn ml_ensemble_voting_edge_get(s : MlensemblevotingEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingEdge::get(self : MlensemblevotingEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_edge_set(s : MlensemblevotingEdge, i : Int, v : Double) -> MlensemblevotingEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingEdge::set(self : MlensemblevotingEdge, i : Int, v : Double) -> MlensemblevotingEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_edge_sum(s : MlensemblevotingEdge) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingEdge::sum(self : MlensemblevotingEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_edge_mean(s : MlensemblevotingEdge) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingEdge::mean(self : MlensemblevotingEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_edge_scale(s : MlensemblevotingEdge, f : Double) -> MlensemblevotingEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingEdge::scale(self : MlensemblevotingEdge, f : Double) -> MlensemblevotingEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_edge_add(a : MlensemblevotingEdge, b : MlensemblevotingEdge) -> MlensemblevotingEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingEdge::add(self : MlensemblevotingEdge, other : MlensemblevotingEdge) -> MlensemblevotingEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_edge_copy(s : MlensemblevotingEdge) -> MlensemblevotingEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingEdge::copy(self : MlensemblevotingEdge) -> MlensemblevotingEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_edge_fill(s : MlensemblevotingEdge, v : Double) -> MlensemblevotingEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingEdge::fill(self : MlensemblevotingEdge, v : Double) -> MlensemblevotingEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_edge_min(s : MlensemblevotingEdge) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingEdge::min(self : MlensemblevotingEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_edge_max(s : MlensemblevotingEdge) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingEdge::max(self : MlensemblevotingEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_edge_to_string(s : MlensemblevotingEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingEdge::to_string(self : MlensemblevotingEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingPath {
@@ -606,45 +606,45 @@ pub fn ml_ensemble_voting_path_make(size : Int) -> MlensemblevotingPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_path_len(s : MlensemblevotingPath) -> Int { s.size }
+pub fn MlensemblevotingPath::len(self : MlensemblevotingPath) -> Int { self.size }
 
-pub fn ml_ensemble_voting_path_get(s : MlensemblevotingPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingPath::get(self : MlensemblevotingPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_path_set(s : MlensemblevotingPath, i : Int, v : Double) -> MlensemblevotingPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingPath::set(self : MlensemblevotingPath, i : Int, v : Double) -> MlensemblevotingPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_path_sum(s : MlensemblevotingPath) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingPath::sum(self : MlensemblevotingPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_path_mean(s : MlensemblevotingPath) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingPath::mean(self : MlensemblevotingPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_path_scale(s : MlensemblevotingPath, f : Double) -> MlensemblevotingPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingPath::scale(self : MlensemblevotingPath, f : Double) -> MlensemblevotingPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_path_add(a : MlensemblevotingPath, b : MlensemblevotingPath) -> MlensemblevotingPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingPath::add(self : MlensemblevotingPath, other : MlensemblevotingPath) -> MlensemblevotingPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_path_copy(s : MlensemblevotingPath) -> MlensemblevotingPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingPath::copy(self : MlensemblevotingPath) -> MlensemblevotingPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_path_fill(s : MlensemblevotingPath, v : Double) -> MlensemblevotingPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingPath::fill(self : MlensemblevotingPath, v : Double) -> MlensemblevotingPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_path_min(s : MlensemblevotingPath) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingPath::min(self : MlensemblevotingPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_path_max(s : MlensemblevotingPath) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingPath::max(self : MlensemblevotingPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_path_to_string(s : MlensemblevotingPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingPath::to_string(self : MlensemblevotingPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingCluster {
@@ -657,45 +657,45 @@ pub fn ml_ensemble_voting_cluster_make(size : Int) -> MlensemblevotingCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_cluster_len(s : MlensemblevotingCluster) -> Int { s.size }
+pub fn MlensemblevotingCluster::len(self : MlensemblevotingCluster) -> Int { self.size }
 
-pub fn ml_ensemble_voting_cluster_get(s : MlensemblevotingCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingCluster::get(self : MlensemblevotingCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_cluster_set(s : MlensemblevotingCluster, i : Int, v : Double) -> MlensemblevotingCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingCluster::set(self : MlensemblevotingCluster, i : Int, v : Double) -> MlensemblevotingCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_cluster_sum(s : MlensemblevotingCluster) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingCluster::sum(self : MlensemblevotingCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_cluster_mean(s : MlensemblevotingCluster) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingCluster::mean(self : MlensemblevotingCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_cluster_scale(s : MlensemblevotingCluster, f : Double) -> MlensemblevotingCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingCluster::scale(self : MlensemblevotingCluster, f : Double) -> MlensemblevotingCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_cluster_add(a : MlensemblevotingCluster, b : MlensemblevotingCluster) -> MlensemblevotingCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingCluster::add(self : MlensemblevotingCluster, other : MlensemblevotingCluster) -> MlensemblevotingCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_cluster_copy(s : MlensemblevotingCluster) -> MlensemblevotingCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingCluster::copy(self : MlensemblevotingCluster) -> MlensemblevotingCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_cluster_fill(s : MlensemblevotingCluster, v : Double) -> MlensemblevotingCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingCluster::fill(self : MlensemblevotingCluster, v : Double) -> MlensemblevotingCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_cluster_min(s : MlensemblevotingCluster) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingCluster::min(self : MlensemblevotingCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_cluster_max(s : MlensemblevotingCluster) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingCluster::max(self : MlensemblevotingCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_cluster_to_string(s : MlensemblevotingCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingCluster::to_string(self : MlensemblevotingCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingModel {
@@ -708,45 +708,45 @@ pub fn ml_ensemble_voting_model_make(size : Int) -> MlensemblevotingModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_model_len(s : MlensemblevotingModel) -> Int { s.size }
+pub fn MlensemblevotingModel::len(self : MlensemblevotingModel) -> Int { self.size }
 
-pub fn ml_ensemble_voting_model_get(s : MlensemblevotingModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingModel::get(self : MlensemblevotingModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_model_set(s : MlensemblevotingModel, i : Int, v : Double) -> MlensemblevotingModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingModel::set(self : MlensemblevotingModel, i : Int, v : Double) -> MlensemblevotingModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_model_sum(s : MlensemblevotingModel) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingModel::sum(self : MlensemblevotingModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_model_mean(s : MlensemblevotingModel) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingModel::mean(self : MlensemblevotingModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_model_scale(s : MlensemblevotingModel, f : Double) -> MlensemblevotingModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingModel::scale(self : MlensemblevotingModel, f : Double) -> MlensemblevotingModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_model_add(a : MlensemblevotingModel, b : MlensemblevotingModel) -> MlensemblevotingModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingModel::add(self : MlensemblevotingModel, other : MlensemblevotingModel) -> MlensemblevotingModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_model_copy(s : MlensemblevotingModel) -> MlensemblevotingModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingModel::copy(self : MlensemblevotingModel) -> MlensemblevotingModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_model_fill(s : MlensemblevotingModel, v : Double) -> MlensemblevotingModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingModel::fill(self : MlensemblevotingModel, v : Double) -> MlensemblevotingModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_model_min(s : MlensemblevotingModel) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingModel::min(self : MlensemblevotingModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_model_max(s : MlensemblevotingModel) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingModel::max(self : MlensemblevotingModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_model_to_string(s : MlensemblevotingModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingModel::to_string(self : MlensemblevotingModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingLayer {
@@ -759,45 +759,45 @@ pub fn ml_ensemble_voting_layer_make(size : Int) -> MlensemblevotingLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_layer_len(s : MlensemblevotingLayer) -> Int { s.size }
+pub fn MlensemblevotingLayer::len(self : MlensemblevotingLayer) -> Int { self.size }
 
-pub fn ml_ensemble_voting_layer_get(s : MlensemblevotingLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingLayer::get(self : MlensemblevotingLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_layer_set(s : MlensemblevotingLayer, i : Int, v : Double) -> MlensemblevotingLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingLayer::set(self : MlensemblevotingLayer, i : Int, v : Double) -> MlensemblevotingLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_layer_sum(s : MlensemblevotingLayer) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingLayer::sum(self : MlensemblevotingLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_layer_mean(s : MlensemblevotingLayer) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingLayer::mean(self : MlensemblevotingLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_layer_scale(s : MlensemblevotingLayer, f : Double) -> MlensemblevotingLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingLayer::scale(self : MlensemblevotingLayer, f : Double) -> MlensemblevotingLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_layer_add(a : MlensemblevotingLayer, b : MlensemblevotingLayer) -> MlensemblevotingLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingLayer::add(self : MlensemblevotingLayer, other : MlensemblevotingLayer) -> MlensemblevotingLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_layer_copy(s : MlensemblevotingLayer) -> MlensemblevotingLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingLayer::copy(self : MlensemblevotingLayer) -> MlensemblevotingLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_layer_fill(s : MlensemblevotingLayer, v : Double) -> MlensemblevotingLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingLayer::fill(self : MlensemblevotingLayer, v : Double) -> MlensemblevotingLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_layer_min(s : MlensemblevotingLayer) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingLayer::min(self : MlensemblevotingLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_layer_max(s : MlensemblevotingLayer) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingLayer::max(self : MlensemblevotingLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_layer_to_string(s : MlensemblevotingLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingLayer::to_string(self : MlensemblevotingLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingBuffer {
@@ -810,45 +810,45 @@ pub fn ml_ensemble_voting_buffer_make(size : Int) -> MlensemblevotingBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_buffer_len(s : MlensemblevotingBuffer) -> Int { s.size }
+pub fn MlensemblevotingBuffer::len(self : MlensemblevotingBuffer) -> Int { self.size }
 
-pub fn ml_ensemble_voting_buffer_get(s : MlensemblevotingBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingBuffer::get(self : MlensemblevotingBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_buffer_set(s : MlensemblevotingBuffer, i : Int, v : Double) -> MlensemblevotingBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingBuffer::set(self : MlensemblevotingBuffer, i : Int, v : Double) -> MlensemblevotingBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_buffer_sum(s : MlensemblevotingBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingBuffer::sum(self : MlensemblevotingBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_buffer_mean(s : MlensemblevotingBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingBuffer::mean(self : MlensemblevotingBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_buffer_scale(s : MlensemblevotingBuffer, f : Double) -> MlensemblevotingBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingBuffer::scale(self : MlensemblevotingBuffer, f : Double) -> MlensemblevotingBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_buffer_add(a : MlensemblevotingBuffer, b : MlensemblevotingBuffer) -> MlensemblevotingBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingBuffer::add(self : MlensemblevotingBuffer, other : MlensemblevotingBuffer) -> MlensemblevotingBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_buffer_copy(s : MlensemblevotingBuffer) -> MlensemblevotingBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingBuffer::copy(self : MlensemblevotingBuffer) -> MlensemblevotingBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_buffer_fill(s : MlensemblevotingBuffer, v : Double) -> MlensemblevotingBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingBuffer::fill(self : MlensemblevotingBuffer, v : Double) -> MlensemblevotingBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_buffer_min(s : MlensemblevotingBuffer) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingBuffer::min(self : MlensemblevotingBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_buffer_max(s : MlensemblevotingBuffer) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingBuffer::max(self : MlensemblevotingBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_buffer_to_string(s : MlensemblevotingBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingBuffer::to_string(self : MlensemblevotingBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingCursor {
@@ -861,45 +861,45 @@ pub fn ml_ensemble_voting_cursor_make(size : Int) -> MlensemblevotingCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_cursor_len(s : MlensemblevotingCursor) -> Int { s.size }
+pub fn MlensemblevotingCursor::len(self : MlensemblevotingCursor) -> Int { self.size }
 
-pub fn ml_ensemble_voting_cursor_get(s : MlensemblevotingCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingCursor::get(self : MlensemblevotingCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_cursor_set(s : MlensemblevotingCursor, i : Int, v : Double) -> MlensemblevotingCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingCursor::set(self : MlensemblevotingCursor, i : Int, v : Double) -> MlensemblevotingCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_cursor_sum(s : MlensemblevotingCursor) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingCursor::sum(self : MlensemblevotingCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_cursor_mean(s : MlensemblevotingCursor) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingCursor::mean(self : MlensemblevotingCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_cursor_scale(s : MlensemblevotingCursor, f : Double) -> MlensemblevotingCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingCursor::scale(self : MlensemblevotingCursor, f : Double) -> MlensemblevotingCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_cursor_add(a : MlensemblevotingCursor, b : MlensemblevotingCursor) -> MlensemblevotingCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingCursor::add(self : MlensemblevotingCursor, other : MlensemblevotingCursor) -> MlensemblevotingCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_cursor_copy(s : MlensemblevotingCursor) -> MlensemblevotingCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingCursor::copy(self : MlensemblevotingCursor) -> MlensemblevotingCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_cursor_fill(s : MlensemblevotingCursor, v : Double) -> MlensemblevotingCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingCursor::fill(self : MlensemblevotingCursor, v : Double) -> MlensemblevotingCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_cursor_min(s : MlensemblevotingCursor) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingCursor::min(self : MlensemblevotingCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_cursor_max(s : MlensemblevotingCursor) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingCursor::max(self : MlensemblevotingCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_cursor_to_string(s : MlensemblevotingCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingCursor::to_string(self : MlensemblevotingCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingView {
@@ -912,45 +912,45 @@ pub fn ml_ensemble_voting_view_make(size : Int) -> MlensemblevotingView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_view_len(s : MlensemblevotingView) -> Int { s.size }
+pub fn MlensemblevotingView::len(self : MlensemblevotingView) -> Int { self.size }
 
-pub fn ml_ensemble_voting_view_get(s : MlensemblevotingView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingView::get(self : MlensemblevotingView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_view_set(s : MlensemblevotingView, i : Int, v : Double) -> MlensemblevotingView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingView::set(self : MlensemblevotingView, i : Int, v : Double) -> MlensemblevotingView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_view_sum(s : MlensemblevotingView) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingView::sum(self : MlensemblevotingView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_view_mean(s : MlensemblevotingView) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingView::mean(self : MlensemblevotingView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_view_scale(s : MlensemblevotingView, f : Double) -> MlensemblevotingView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingView::scale(self : MlensemblevotingView, f : Double) -> MlensemblevotingView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_view_add(a : MlensemblevotingView, b : MlensemblevotingView) -> MlensemblevotingView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingView::add(self : MlensemblevotingView, other : MlensemblevotingView) -> MlensemblevotingView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_view_copy(s : MlensemblevotingView) -> MlensemblevotingView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingView::copy(self : MlensemblevotingView) -> MlensemblevotingView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_view_fill(s : MlensemblevotingView, v : Double) -> MlensemblevotingView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingView::fill(self : MlensemblevotingView, v : Double) -> MlensemblevotingView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_view_min(s : MlensemblevotingView) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingView::min(self : MlensemblevotingView) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_view_max(s : MlensemblevotingView) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingView::max(self : MlensemblevotingView) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_view_to_string(s : MlensemblevotingView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingView::to_string(self : MlensemblevotingView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingRange {
@@ -963,45 +963,45 @@ pub fn ml_ensemble_voting_range_make(size : Int) -> MlensemblevotingRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_range_len(s : MlensemblevotingRange) -> Int { s.size }
+pub fn MlensemblevotingRange::len(self : MlensemblevotingRange) -> Int { self.size }
 
-pub fn ml_ensemble_voting_range_get(s : MlensemblevotingRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingRange::get(self : MlensemblevotingRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_range_set(s : MlensemblevotingRange, i : Int, v : Double) -> MlensemblevotingRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingRange::set(self : MlensemblevotingRange, i : Int, v : Double) -> MlensemblevotingRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_range_sum(s : MlensemblevotingRange) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingRange::sum(self : MlensemblevotingRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_range_mean(s : MlensemblevotingRange) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingRange::mean(self : MlensemblevotingRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_range_scale(s : MlensemblevotingRange, f : Double) -> MlensemblevotingRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingRange::scale(self : MlensemblevotingRange, f : Double) -> MlensemblevotingRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_range_add(a : MlensemblevotingRange, b : MlensemblevotingRange) -> MlensemblevotingRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingRange::add(self : MlensemblevotingRange, other : MlensemblevotingRange) -> MlensemblevotingRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_range_copy(s : MlensemblevotingRange) -> MlensemblevotingRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingRange::copy(self : MlensemblevotingRange) -> MlensemblevotingRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_range_fill(s : MlensemblevotingRange, v : Double) -> MlensemblevotingRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingRange::fill(self : MlensemblevotingRange, v : Double) -> MlensemblevotingRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_range_min(s : MlensemblevotingRange) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingRange::min(self : MlensemblevotingRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_range_max(s : MlensemblevotingRange) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingRange::max(self : MlensemblevotingRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_range_to_string(s : MlensemblevotingRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingRange::to_string(self : MlensemblevotingRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblevotingSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_ensemble_voting_slice_make(size : Int) -> MlensemblevotingSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_voting_slice_len(s : MlensemblevotingSlice) -> Int { s.size }
+pub fn MlensemblevotingSlice::len(self : MlensemblevotingSlice) -> Int { self.size }
 
-pub fn ml_ensemble_voting_slice_get(s : MlensemblevotingSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblevotingSlice::get(self : MlensemblevotingSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_voting_slice_set(s : MlensemblevotingSlice, i : Int, v : Double) -> MlensemblevotingSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblevotingSlice::set(self : MlensemblevotingSlice, i : Int, v : Double) -> MlensemblevotingSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_slice_sum(s : MlensemblevotingSlice) -> Double { @_common.sum(s.data) }
+pub fn MlensemblevotingSlice::sum(self : MlensemblevotingSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_voting_slice_mean(s : MlensemblevotingSlice) -> Double { @_common.mean(s.data) }
+pub fn MlensemblevotingSlice::mean(self : MlensemblevotingSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_voting_slice_scale(s : MlensemblevotingSlice, f : Double) -> MlensemblevotingSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblevotingSlice::scale(self : MlensemblevotingSlice, f : Double) -> MlensemblevotingSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_slice_add(a : MlensemblevotingSlice, b : MlensemblevotingSlice) -> MlensemblevotingSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblevotingSlice::add(self : MlensemblevotingSlice, other : MlensemblevotingSlice) -> MlensemblevotingSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_slice_copy(s : MlensemblevotingSlice) -> MlensemblevotingSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblevotingSlice::copy(self : MlensemblevotingSlice) -> MlensemblevotingSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_slice_fill(s : MlensemblevotingSlice, v : Double) -> MlensemblevotingSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblevotingSlice::fill(self : MlensemblevotingSlice, v : Double) -> MlensemblevotingSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_voting_slice_min(s : MlensemblevotingSlice) -> Double { @_common.min(s.data) }
+pub fn MlensemblevotingSlice::min(self : MlensemblevotingSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_voting_slice_max(s : MlensemblevotingSlice) -> Double { @_common.max(s.data) }
+pub fn MlensemblevotingSlice::max(self : MlensemblevotingSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_voting_slice_to_string(s : MlensemblevotingSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblevotingSlice::to_string(self : MlensemblevotingSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

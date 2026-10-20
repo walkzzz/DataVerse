@@ -351,45 +351,45 @@ pub fn chem_mol_props_stereo_frame_make(size : Int) -> ChemmolpropsstereoFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_frame_len(s : ChemmolpropsstereoFrame) -> Int { s.size }
+pub fn ChemmolpropsstereoFrame::len(self : ChemmolpropsstereoFrame) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_frame_get(s : ChemmolpropsstereoFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoFrame::get(self : ChemmolpropsstereoFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_frame_set(s : ChemmolpropsstereoFrame, i : Int, v : Double) -> ChemmolpropsstereoFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoFrame::set(self : ChemmolpropsstereoFrame, i : Int, v : Double) -> ChemmolpropsstereoFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_frame_sum(s : ChemmolpropsstereoFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoFrame::sum(self : ChemmolpropsstereoFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_frame_mean(s : ChemmolpropsstereoFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoFrame::mean(self : ChemmolpropsstereoFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_frame_scale(s : ChemmolpropsstereoFrame, f : Double) -> ChemmolpropsstereoFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoFrame::scale(self : ChemmolpropsstereoFrame, f : Double) -> ChemmolpropsstereoFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_frame_add(a : ChemmolpropsstereoFrame, b : ChemmolpropsstereoFrame) -> ChemmolpropsstereoFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoFrame::add(self : ChemmolpropsstereoFrame, other : ChemmolpropsstereoFrame) -> ChemmolpropsstereoFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_frame_copy(s : ChemmolpropsstereoFrame) -> ChemmolpropsstereoFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoFrame::copy(self : ChemmolpropsstereoFrame) -> ChemmolpropsstereoFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_frame_fill(s : ChemmolpropsstereoFrame, v : Double) -> ChemmolpropsstereoFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoFrame::fill(self : ChemmolpropsstereoFrame, v : Double) -> ChemmolpropsstereoFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_frame_min(s : ChemmolpropsstereoFrame) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoFrame::min(self : ChemmolpropsstereoFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_frame_max(s : ChemmolpropsstereoFrame) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoFrame::max(self : ChemmolpropsstereoFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_frame_to_string(s : ChemmolpropsstereoFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoFrame::to_string(self : ChemmolpropsstereoFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoTable {
@@ -402,45 +402,45 @@ pub fn chem_mol_props_stereo_table_make(size : Int) -> ChemmolpropsstereoTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_table_len(s : ChemmolpropsstereoTable) -> Int { s.size }
+pub fn ChemmolpropsstereoTable::len(self : ChemmolpropsstereoTable) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_table_get(s : ChemmolpropsstereoTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoTable::get(self : ChemmolpropsstereoTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_table_set(s : ChemmolpropsstereoTable, i : Int, v : Double) -> ChemmolpropsstereoTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoTable::set(self : ChemmolpropsstereoTable, i : Int, v : Double) -> ChemmolpropsstereoTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_table_sum(s : ChemmolpropsstereoTable) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoTable::sum(self : ChemmolpropsstereoTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_table_mean(s : ChemmolpropsstereoTable) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoTable::mean(self : ChemmolpropsstereoTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_table_scale(s : ChemmolpropsstereoTable, f : Double) -> ChemmolpropsstereoTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoTable::scale(self : ChemmolpropsstereoTable, f : Double) -> ChemmolpropsstereoTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_table_add(a : ChemmolpropsstereoTable, b : ChemmolpropsstereoTable) -> ChemmolpropsstereoTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoTable::add(self : ChemmolpropsstereoTable, other : ChemmolpropsstereoTable) -> ChemmolpropsstereoTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_table_copy(s : ChemmolpropsstereoTable) -> ChemmolpropsstereoTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoTable::copy(self : ChemmolpropsstereoTable) -> ChemmolpropsstereoTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_table_fill(s : ChemmolpropsstereoTable, v : Double) -> ChemmolpropsstereoTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoTable::fill(self : ChemmolpropsstereoTable, v : Double) -> ChemmolpropsstereoTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_table_min(s : ChemmolpropsstereoTable) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoTable::min(self : ChemmolpropsstereoTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_table_max(s : ChemmolpropsstereoTable) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoTable::max(self : ChemmolpropsstereoTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_table_to_string(s : ChemmolpropsstereoTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoTable::to_string(self : ChemmolpropsstereoTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoGraphN {
@@ -453,45 +453,45 @@ pub fn chem_mol_props_stereo_graphn_make(size : Int) -> ChemmolpropsstereoGraphN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_graphn_len(s : ChemmolpropsstereoGraphN) -> Int { s.size }
+pub fn ChemmolpropsstereoGraphN::len(self : ChemmolpropsstereoGraphN) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_graphn_get(s : ChemmolpropsstereoGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoGraphN::get(self : ChemmolpropsstereoGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_graphn_set(s : ChemmolpropsstereoGraphN, i : Int, v : Double) -> ChemmolpropsstereoGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoGraphN::set(self : ChemmolpropsstereoGraphN, i : Int, v : Double) -> ChemmolpropsstereoGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_graphn_sum(s : ChemmolpropsstereoGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoGraphN::sum(self : ChemmolpropsstereoGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_graphn_mean(s : ChemmolpropsstereoGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoGraphN::mean(self : ChemmolpropsstereoGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_graphn_scale(s : ChemmolpropsstereoGraphN, f : Double) -> ChemmolpropsstereoGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoGraphN::scale(self : ChemmolpropsstereoGraphN, f : Double) -> ChemmolpropsstereoGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_graphn_add(a : ChemmolpropsstereoGraphN, b : ChemmolpropsstereoGraphN) -> ChemmolpropsstereoGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoGraphN::add(self : ChemmolpropsstereoGraphN, other : ChemmolpropsstereoGraphN) -> ChemmolpropsstereoGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_graphn_copy(s : ChemmolpropsstereoGraphN) -> ChemmolpropsstereoGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoGraphN::copy(self : ChemmolpropsstereoGraphN) -> ChemmolpropsstereoGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_graphn_fill(s : ChemmolpropsstereoGraphN, v : Double) -> ChemmolpropsstereoGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoGraphN::fill(self : ChemmolpropsstereoGraphN, v : Double) -> ChemmolpropsstereoGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_graphn_min(s : ChemmolpropsstereoGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoGraphN::min(self : ChemmolpropsstereoGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_graphn_max(s : ChemmolpropsstereoGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoGraphN::max(self : ChemmolpropsstereoGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_graphn_to_string(s : ChemmolpropsstereoGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoGraphN::to_string(self : ChemmolpropsstereoGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoNode {
@@ -504,45 +504,45 @@ pub fn chem_mol_props_stereo_node_make(size : Int) -> ChemmolpropsstereoNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_node_len(s : ChemmolpropsstereoNode) -> Int { s.size }
+pub fn ChemmolpropsstereoNode::len(self : ChemmolpropsstereoNode) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_node_get(s : ChemmolpropsstereoNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoNode::get(self : ChemmolpropsstereoNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_node_set(s : ChemmolpropsstereoNode, i : Int, v : Double) -> ChemmolpropsstereoNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoNode::set(self : ChemmolpropsstereoNode, i : Int, v : Double) -> ChemmolpropsstereoNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_node_sum(s : ChemmolpropsstereoNode) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoNode::sum(self : ChemmolpropsstereoNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_node_mean(s : ChemmolpropsstereoNode) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoNode::mean(self : ChemmolpropsstereoNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_node_scale(s : ChemmolpropsstereoNode, f : Double) -> ChemmolpropsstereoNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoNode::scale(self : ChemmolpropsstereoNode, f : Double) -> ChemmolpropsstereoNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_node_add(a : ChemmolpropsstereoNode, b : ChemmolpropsstereoNode) -> ChemmolpropsstereoNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoNode::add(self : ChemmolpropsstereoNode, other : ChemmolpropsstereoNode) -> ChemmolpropsstereoNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_node_copy(s : ChemmolpropsstereoNode) -> ChemmolpropsstereoNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoNode::copy(self : ChemmolpropsstereoNode) -> ChemmolpropsstereoNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_node_fill(s : ChemmolpropsstereoNode, v : Double) -> ChemmolpropsstereoNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoNode::fill(self : ChemmolpropsstereoNode, v : Double) -> ChemmolpropsstereoNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_node_min(s : ChemmolpropsstereoNode) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoNode::min(self : ChemmolpropsstereoNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_node_max(s : ChemmolpropsstereoNode) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoNode::max(self : ChemmolpropsstereoNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_node_to_string(s : ChemmolpropsstereoNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoNode::to_string(self : ChemmolpropsstereoNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoEdge {
@@ -555,45 +555,45 @@ pub fn chem_mol_props_stereo_edge_make(size : Int) -> ChemmolpropsstereoEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_edge_len(s : ChemmolpropsstereoEdge) -> Int { s.size }
+pub fn ChemmolpropsstereoEdge::len(self : ChemmolpropsstereoEdge) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_edge_get(s : ChemmolpropsstereoEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoEdge::get(self : ChemmolpropsstereoEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_edge_set(s : ChemmolpropsstereoEdge, i : Int, v : Double) -> ChemmolpropsstereoEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoEdge::set(self : ChemmolpropsstereoEdge, i : Int, v : Double) -> ChemmolpropsstereoEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_edge_sum(s : ChemmolpropsstereoEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoEdge::sum(self : ChemmolpropsstereoEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_edge_mean(s : ChemmolpropsstereoEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoEdge::mean(self : ChemmolpropsstereoEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_edge_scale(s : ChemmolpropsstereoEdge, f : Double) -> ChemmolpropsstereoEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoEdge::scale(self : ChemmolpropsstereoEdge, f : Double) -> ChemmolpropsstereoEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_edge_add(a : ChemmolpropsstereoEdge, b : ChemmolpropsstereoEdge) -> ChemmolpropsstereoEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoEdge::add(self : ChemmolpropsstereoEdge, other : ChemmolpropsstereoEdge) -> ChemmolpropsstereoEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_edge_copy(s : ChemmolpropsstereoEdge) -> ChemmolpropsstereoEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoEdge::copy(self : ChemmolpropsstereoEdge) -> ChemmolpropsstereoEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_edge_fill(s : ChemmolpropsstereoEdge, v : Double) -> ChemmolpropsstereoEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoEdge::fill(self : ChemmolpropsstereoEdge, v : Double) -> ChemmolpropsstereoEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_edge_min(s : ChemmolpropsstereoEdge) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoEdge::min(self : ChemmolpropsstereoEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_edge_max(s : ChemmolpropsstereoEdge) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoEdge::max(self : ChemmolpropsstereoEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_edge_to_string(s : ChemmolpropsstereoEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoEdge::to_string(self : ChemmolpropsstereoEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoPath {
@@ -606,45 +606,45 @@ pub fn chem_mol_props_stereo_path_make(size : Int) -> ChemmolpropsstereoPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_path_len(s : ChemmolpropsstereoPath) -> Int { s.size }
+pub fn ChemmolpropsstereoPath::len(self : ChemmolpropsstereoPath) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_path_get(s : ChemmolpropsstereoPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoPath::get(self : ChemmolpropsstereoPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_path_set(s : ChemmolpropsstereoPath, i : Int, v : Double) -> ChemmolpropsstereoPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoPath::set(self : ChemmolpropsstereoPath, i : Int, v : Double) -> ChemmolpropsstereoPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_path_sum(s : ChemmolpropsstereoPath) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoPath::sum(self : ChemmolpropsstereoPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_path_mean(s : ChemmolpropsstereoPath) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoPath::mean(self : ChemmolpropsstereoPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_path_scale(s : ChemmolpropsstereoPath, f : Double) -> ChemmolpropsstereoPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoPath::scale(self : ChemmolpropsstereoPath, f : Double) -> ChemmolpropsstereoPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_path_add(a : ChemmolpropsstereoPath, b : ChemmolpropsstereoPath) -> ChemmolpropsstereoPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoPath::add(self : ChemmolpropsstereoPath, other : ChemmolpropsstereoPath) -> ChemmolpropsstereoPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_path_copy(s : ChemmolpropsstereoPath) -> ChemmolpropsstereoPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoPath::copy(self : ChemmolpropsstereoPath) -> ChemmolpropsstereoPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_path_fill(s : ChemmolpropsstereoPath, v : Double) -> ChemmolpropsstereoPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoPath::fill(self : ChemmolpropsstereoPath, v : Double) -> ChemmolpropsstereoPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_path_min(s : ChemmolpropsstereoPath) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoPath::min(self : ChemmolpropsstereoPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_path_max(s : ChemmolpropsstereoPath) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoPath::max(self : ChemmolpropsstereoPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_path_to_string(s : ChemmolpropsstereoPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoPath::to_string(self : ChemmolpropsstereoPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoCluster {
@@ -657,45 +657,45 @@ pub fn chem_mol_props_stereo_cluster_make(size : Int) -> ChemmolpropsstereoClust
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_cluster_len(s : ChemmolpropsstereoCluster) -> Int { s.size }
+pub fn ChemmolpropsstereoCluster::len(self : ChemmolpropsstereoCluster) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_cluster_get(s : ChemmolpropsstereoCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoCluster::get(self : ChemmolpropsstereoCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_cluster_set(s : ChemmolpropsstereoCluster, i : Int, v : Double) -> ChemmolpropsstereoCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoCluster::set(self : ChemmolpropsstereoCluster, i : Int, v : Double) -> ChemmolpropsstereoCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_cluster_sum(s : ChemmolpropsstereoCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoCluster::sum(self : ChemmolpropsstereoCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_cluster_mean(s : ChemmolpropsstereoCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoCluster::mean(self : ChemmolpropsstereoCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_cluster_scale(s : ChemmolpropsstereoCluster, f : Double) -> ChemmolpropsstereoCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoCluster::scale(self : ChemmolpropsstereoCluster, f : Double) -> ChemmolpropsstereoCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_cluster_add(a : ChemmolpropsstereoCluster, b : ChemmolpropsstereoCluster) -> ChemmolpropsstereoCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoCluster::add(self : ChemmolpropsstereoCluster, other : ChemmolpropsstereoCluster) -> ChemmolpropsstereoCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_cluster_copy(s : ChemmolpropsstereoCluster) -> ChemmolpropsstereoCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoCluster::copy(self : ChemmolpropsstereoCluster) -> ChemmolpropsstereoCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_cluster_fill(s : ChemmolpropsstereoCluster, v : Double) -> ChemmolpropsstereoCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoCluster::fill(self : ChemmolpropsstereoCluster, v : Double) -> ChemmolpropsstereoCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_cluster_min(s : ChemmolpropsstereoCluster) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoCluster::min(self : ChemmolpropsstereoCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_cluster_max(s : ChemmolpropsstereoCluster) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoCluster::max(self : ChemmolpropsstereoCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_cluster_to_string(s : ChemmolpropsstereoCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoCluster::to_string(self : ChemmolpropsstereoCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoModel {
@@ -708,45 +708,45 @@ pub fn chem_mol_props_stereo_model_make(size : Int) -> ChemmolpropsstereoModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_model_len(s : ChemmolpropsstereoModel) -> Int { s.size }
+pub fn ChemmolpropsstereoModel::len(self : ChemmolpropsstereoModel) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_model_get(s : ChemmolpropsstereoModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoModel::get(self : ChemmolpropsstereoModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_model_set(s : ChemmolpropsstereoModel, i : Int, v : Double) -> ChemmolpropsstereoModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoModel::set(self : ChemmolpropsstereoModel, i : Int, v : Double) -> ChemmolpropsstereoModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_model_sum(s : ChemmolpropsstereoModel) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoModel::sum(self : ChemmolpropsstereoModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_model_mean(s : ChemmolpropsstereoModel) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoModel::mean(self : ChemmolpropsstereoModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_model_scale(s : ChemmolpropsstereoModel, f : Double) -> ChemmolpropsstereoModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoModel::scale(self : ChemmolpropsstereoModel, f : Double) -> ChemmolpropsstereoModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_model_add(a : ChemmolpropsstereoModel, b : ChemmolpropsstereoModel) -> ChemmolpropsstereoModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoModel::add(self : ChemmolpropsstereoModel, other : ChemmolpropsstereoModel) -> ChemmolpropsstereoModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_model_copy(s : ChemmolpropsstereoModel) -> ChemmolpropsstereoModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoModel::copy(self : ChemmolpropsstereoModel) -> ChemmolpropsstereoModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_model_fill(s : ChemmolpropsstereoModel, v : Double) -> ChemmolpropsstereoModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoModel::fill(self : ChemmolpropsstereoModel, v : Double) -> ChemmolpropsstereoModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_model_min(s : ChemmolpropsstereoModel) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoModel::min(self : ChemmolpropsstereoModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_model_max(s : ChemmolpropsstereoModel) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoModel::max(self : ChemmolpropsstereoModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_model_to_string(s : ChemmolpropsstereoModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoModel::to_string(self : ChemmolpropsstereoModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoLayer {
@@ -759,45 +759,45 @@ pub fn chem_mol_props_stereo_layer_make(size : Int) -> ChemmolpropsstereoLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_layer_len(s : ChemmolpropsstereoLayer) -> Int { s.size }
+pub fn ChemmolpropsstereoLayer::len(self : ChemmolpropsstereoLayer) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_layer_get(s : ChemmolpropsstereoLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoLayer::get(self : ChemmolpropsstereoLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_layer_set(s : ChemmolpropsstereoLayer, i : Int, v : Double) -> ChemmolpropsstereoLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoLayer::set(self : ChemmolpropsstereoLayer, i : Int, v : Double) -> ChemmolpropsstereoLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_layer_sum(s : ChemmolpropsstereoLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoLayer::sum(self : ChemmolpropsstereoLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_layer_mean(s : ChemmolpropsstereoLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoLayer::mean(self : ChemmolpropsstereoLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_layer_scale(s : ChemmolpropsstereoLayer, f : Double) -> ChemmolpropsstereoLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoLayer::scale(self : ChemmolpropsstereoLayer, f : Double) -> ChemmolpropsstereoLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_layer_add(a : ChemmolpropsstereoLayer, b : ChemmolpropsstereoLayer) -> ChemmolpropsstereoLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoLayer::add(self : ChemmolpropsstereoLayer, other : ChemmolpropsstereoLayer) -> ChemmolpropsstereoLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_layer_copy(s : ChemmolpropsstereoLayer) -> ChemmolpropsstereoLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoLayer::copy(self : ChemmolpropsstereoLayer) -> ChemmolpropsstereoLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_layer_fill(s : ChemmolpropsstereoLayer, v : Double) -> ChemmolpropsstereoLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoLayer::fill(self : ChemmolpropsstereoLayer, v : Double) -> ChemmolpropsstereoLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_layer_min(s : ChemmolpropsstereoLayer) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoLayer::min(self : ChemmolpropsstereoLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_layer_max(s : ChemmolpropsstereoLayer) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoLayer::max(self : ChemmolpropsstereoLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_layer_to_string(s : ChemmolpropsstereoLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoLayer::to_string(self : ChemmolpropsstereoLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoBuffer {
@@ -810,45 +810,45 @@ pub fn chem_mol_props_stereo_buffer_make(size : Int) -> ChemmolpropsstereoBuffer
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_buffer_len(s : ChemmolpropsstereoBuffer) -> Int { s.size }
+pub fn ChemmolpropsstereoBuffer::len(self : ChemmolpropsstereoBuffer) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_buffer_get(s : ChemmolpropsstereoBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoBuffer::get(self : ChemmolpropsstereoBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_buffer_set(s : ChemmolpropsstereoBuffer, i : Int, v : Double) -> ChemmolpropsstereoBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoBuffer::set(self : ChemmolpropsstereoBuffer, i : Int, v : Double) -> ChemmolpropsstereoBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_buffer_sum(s : ChemmolpropsstereoBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoBuffer::sum(self : ChemmolpropsstereoBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_buffer_mean(s : ChemmolpropsstereoBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoBuffer::mean(self : ChemmolpropsstereoBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_buffer_scale(s : ChemmolpropsstereoBuffer, f : Double) -> ChemmolpropsstereoBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoBuffer::scale(self : ChemmolpropsstereoBuffer, f : Double) -> ChemmolpropsstereoBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_buffer_add(a : ChemmolpropsstereoBuffer, b : ChemmolpropsstereoBuffer) -> ChemmolpropsstereoBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoBuffer::add(self : ChemmolpropsstereoBuffer, other : ChemmolpropsstereoBuffer) -> ChemmolpropsstereoBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_buffer_copy(s : ChemmolpropsstereoBuffer) -> ChemmolpropsstereoBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoBuffer::copy(self : ChemmolpropsstereoBuffer) -> ChemmolpropsstereoBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_buffer_fill(s : ChemmolpropsstereoBuffer, v : Double) -> ChemmolpropsstereoBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoBuffer::fill(self : ChemmolpropsstereoBuffer, v : Double) -> ChemmolpropsstereoBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_buffer_min(s : ChemmolpropsstereoBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoBuffer::min(self : ChemmolpropsstereoBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_buffer_max(s : ChemmolpropsstereoBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoBuffer::max(self : ChemmolpropsstereoBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_buffer_to_string(s : ChemmolpropsstereoBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoBuffer::to_string(self : ChemmolpropsstereoBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoCursor {
@@ -861,45 +861,45 @@ pub fn chem_mol_props_stereo_cursor_make(size : Int) -> ChemmolpropsstereoCursor
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_cursor_len(s : ChemmolpropsstereoCursor) -> Int { s.size }
+pub fn ChemmolpropsstereoCursor::len(self : ChemmolpropsstereoCursor) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_cursor_get(s : ChemmolpropsstereoCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoCursor::get(self : ChemmolpropsstereoCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_cursor_set(s : ChemmolpropsstereoCursor, i : Int, v : Double) -> ChemmolpropsstereoCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoCursor::set(self : ChemmolpropsstereoCursor, i : Int, v : Double) -> ChemmolpropsstereoCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_cursor_sum(s : ChemmolpropsstereoCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoCursor::sum(self : ChemmolpropsstereoCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_cursor_mean(s : ChemmolpropsstereoCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoCursor::mean(self : ChemmolpropsstereoCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_cursor_scale(s : ChemmolpropsstereoCursor, f : Double) -> ChemmolpropsstereoCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoCursor::scale(self : ChemmolpropsstereoCursor, f : Double) -> ChemmolpropsstereoCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_cursor_add(a : ChemmolpropsstereoCursor, b : ChemmolpropsstereoCursor) -> ChemmolpropsstereoCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoCursor::add(self : ChemmolpropsstereoCursor, other : ChemmolpropsstereoCursor) -> ChemmolpropsstereoCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_cursor_copy(s : ChemmolpropsstereoCursor) -> ChemmolpropsstereoCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoCursor::copy(self : ChemmolpropsstereoCursor) -> ChemmolpropsstereoCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_cursor_fill(s : ChemmolpropsstereoCursor, v : Double) -> ChemmolpropsstereoCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoCursor::fill(self : ChemmolpropsstereoCursor, v : Double) -> ChemmolpropsstereoCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_cursor_min(s : ChemmolpropsstereoCursor) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoCursor::min(self : ChemmolpropsstereoCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_cursor_max(s : ChemmolpropsstereoCursor) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoCursor::max(self : ChemmolpropsstereoCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_cursor_to_string(s : ChemmolpropsstereoCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoCursor::to_string(self : ChemmolpropsstereoCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoView {
@@ -912,45 +912,45 @@ pub fn chem_mol_props_stereo_view_make(size : Int) -> ChemmolpropsstereoView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_view_len(s : ChemmolpropsstereoView) -> Int { s.size }
+pub fn ChemmolpropsstereoView::len(self : ChemmolpropsstereoView) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_view_get(s : ChemmolpropsstereoView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoView::get(self : ChemmolpropsstereoView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_view_set(s : ChemmolpropsstereoView, i : Int, v : Double) -> ChemmolpropsstereoView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoView::set(self : ChemmolpropsstereoView, i : Int, v : Double) -> ChemmolpropsstereoView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_view_sum(s : ChemmolpropsstereoView) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoView::sum(self : ChemmolpropsstereoView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_view_mean(s : ChemmolpropsstereoView) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoView::mean(self : ChemmolpropsstereoView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_view_scale(s : ChemmolpropsstereoView, f : Double) -> ChemmolpropsstereoView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoView::scale(self : ChemmolpropsstereoView, f : Double) -> ChemmolpropsstereoView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_view_add(a : ChemmolpropsstereoView, b : ChemmolpropsstereoView) -> ChemmolpropsstereoView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoView::add(self : ChemmolpropsstereoView, other : ChemmolpropsstereoView) -> ChemmolpropsstereoView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_view_copy(s : ChemmolpropsstereoView) -> ChemmolpropsstereoView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoView::copy(self : ChemmolpropsstereoView) -> ChemmolpropsstereoView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_view_fill(s : ChemmolpropsstereoView, v : Double) -> ChemmolpropsstereoView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoView::fill(self : ChemmolpropsstereoView, v : Double) -> ChemmolpropsstereoView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_view_min(s : ChemmolpropsstereoView) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoView::min(self : ChemmolpropsstereoView) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_view_max(s : ChemmolpropsstereoView) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoView::max(self : ChemmolpropsstereoView) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_view_to_string(s : ChemmolpropsstereoView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoView::to_string(self : ChemmolpropsstereoView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoRange {
@@ -963,45 +963,45 @@ pub fn chem_mol_props_stereo_range_make(size : Int) -> ChemmolpropsstereoRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_range_len(s : ChemmolpropsstereoRange) -> Int { s.size }
+pub fn ChemmolpropsstereoRange::len(self : ChemmolpropsstereoRange) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_range_get(s : ChemmolpropsstereoRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoRange::get(self : ChemmolpropsstereoRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_range_set(s : ChemmolpropsstereoRange, i : Int, v : Double) -> ChemmolpropsstereoRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoRange::set(self : ChemmolpropsstereoRange, i : Int, v : Double) -> ChemmolpropsstereoRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_range_sum(s : ChemmolpropsstereoRange) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoRange::sum(self : ChemmolpropsstereoRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_range_mean(s : ChemmolpropsstereoRange) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoRange::mean(self : ChemmolpropsstereoRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_range_scale(s : ChemmolpropsstereoRange, f : Double) -> ChemmolpropsstereoRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoRange::scale(self : ChemmolpropsstereoRange, f : Double) -> ChemmolpropsstereoRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_range_add(a : ChemmolpropsstereoRange, b : ChemmolpropsstereoRange) -> ChemmolpropsstereoRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoRange::add(self : ChemmolpropsstereoRange, other : ChemmolpropsstereoRange) -> ChemmolpropsstereoRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_range_copy(s : ChemmolpropsstereoRange) -> ChemmolpropsstereoRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoRange::copy(self : ChemmolpropsstereoRange) -> ChemmolpropsstereoRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_range_fill(s : ChemmolpropsstereoRange, v : Double) -> ChemmolpropsstereoRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoRange::fill(self : ChemmolpropsstereoRange, v : Double) -> ChemmolpropsstereoRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_range_min(s : ChemmolpropsstereoRange) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoRange::min(self : ChemmolpropsstereoRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_range_max(s : ChemmolpropsstereoRange) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoRange::max(self : ChemmolpropsstereoRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_range_to_string(s : ChemmolpropsstereoRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoRange::to_string(self : ChemmolpropsstereoRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsstereoSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_mol_props_stereo_slice_make(size : Int) -> ChemmolpropsstereoSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_stereo_slice_len(s : ChemmolpropsstereoSlice) -> Int { s.size }
+pub fn ChemmolpropsstereoSlice::len(self : ChemmolpropsstereoSlice) -> Int { self.size }
 
-pub fn chem_mol_props_stereo_slice_get(s : ChemmolpropsstereoSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsstereoSlice::get(self : ChemmolpropsstereoSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_stereo_slice_set(s : ChemmolpropsstereoSlice, i : Int, v : Double) -> ChemmolpropsstereoSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoSlice::set(self : ChemmolpropsstereoSlice, i : Int, v : Double) -> ChemmolpropsstereoSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_slice_sum(s : ChemmolpropsstereoSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsstereoSlice::sum(self : ChemmolpropsstereoSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_stereo_slice_mean(s : ChemmolpropsstereoSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsstereoSlice::mean(self : ChemmolpropsstereoSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_stereo_slice_scale(s : ChemmolpropsstereoSlice, f : Double) -> ChemmolpropsstereoSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoSlice::scale(self : ChemmolpropsstereoSlice, f : Double) -> ChemmolpropsstereoSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_slice_add(a : ChemmolpropsstereoSlice, b : ChemmolpropsstereoSlice) -> ChemmolpropsstereoSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsstereoSlice::add(self : ChemmolpropsstereoSlice, other : ChemmolpropsstereoSlice) -> ChemmolpropsstereoSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_slice_copy(s : ChemmolpropsstereoSlice) -> ChemmolpropsstereoSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoSlice::copy(self : ChemmolpropsstereoSlice) -> ChemmolpropsstereoSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_slice_fill(s : ChemmolpropsstereoSlice, v : Double) -> ChemmolpropsstereoSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsstereoSlice::fill(self : ChemmolpropsstereoSlice, v : Double) -> ChemmolpropsstereoSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_stereo_slice_min(s : ChemmolpropsstereoSlice) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsstereoSlice::min(self : ChemmolpropsstereoSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_stereo_slice_max(s : ChemmolpropsstereoSlice) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsstereoSlice::max(self : ChemmolpropsstereoSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_stereo_slice_to_string(s : ChemmolpropsstereoSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsstereoSlice::to_string(self : ChemmolpropsstereoSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

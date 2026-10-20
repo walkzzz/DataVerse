@@ -351,45 +351,45 @@ pub fn graph_flow_evacuation_frame_make(size : Int) -> GraphflowevacuationFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_frame_len(s : GraphflowevacuationFrame) -> Int { s.size }
+pub fn GraphflowevacuationFrame::len(self : GraphflowevacuationFrame) -> Int { self.size }
 
-pub fn graph_flow_evacuation_frame_get(s : GraphflowevacuationFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationFrame::get(self : GraphflowevacuationFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_frame_set(s : GraphflowevacuationFrame, i : Int, v : Double) -> GraphflowevacuationFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationFrame::set(self : GraphflowevacuationFrame, i : Int, v : Double) -> GraphflowevacuationFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_frame_sum(s : GraphflowevacuationFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationFrame::sum(self : GraphflowevacuationFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_frame_mean(s : GraphflowevacuationFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationFrame::mean(self : GraphflowevacuationFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_frame_scale(s : GraphflowevacuationFrame, f : Double) -> GraphflowevacuationFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationFrame::scale(self : GraphflowevacuationFrame, f : Double) -> GraphflowevacuationFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_frame_add(a : GraphflowevacuationFrame, b : GraphflowevacuationFrame) -> GraphflowevacuationFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationFrame::add(self : GraphflowevacuationFrame, other : GraphflowevacuationFrame) -> GraphflowevacuationFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_frame_copy(s : GraphflowevacuationFrame) -> GraphflowevacuationFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationFrame::copy(self : GraphflowevacuationFrame) -> GraphflowevacuationFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_frame_fill(s : GraphflowevacuationFrame, v : Double) -> GraphflowevacuationFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationFrame::fill(self : GraphflowevacuationFrame, v : Double) -> GraphflowevacuationFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_frame_min(s : GraphflowevacuationFrame) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationFrame::min(self : GraphflowevacuationFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_frame_max(s : GraphflowevacuationFrame) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationFrame::max(self : GraphflowevacuationFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_frame_to_string(s : GraphflowevacuationFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationFrame::to_string(self : GraphflowevacuationFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationTable {
@@ -402,45 +402,45 @@ pub fn graph_flow_evacuation_table_make(size : Int) -> GraphflowevacuationTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_table_len(s : GraphflowevacuationTable) -> Int { s.size }
+pub fn GraphflowevacuationTable::len(self : GraphflowevacuationTable) -> Int { self.size }
 
-pub fn graph_flow_evacuation_table_get(s : GraphflowevacuationTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationTable::get(self : GraphflowevacuationTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_table_set(s : GraphflowevacuationTable, i : Int, v : Double) -> GraphflowevacuationTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationTable::set(self : GraphflowevacuationTable, i : Int, v : Double) -> GraphflowevacuationTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_table_sum(s : GraphflowevacuationTable) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationTable::sum(self : GraphflowevacuationTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_table_mean(s : GraphflowevacuationTable) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationTable::mean(self : GraphflowevacuationTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_table_scale(s : GraphflowevacuationTable, f : Double) -> GraphflowevacuationTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationTable::scale(self : GraphflowevacuationTable, f : Double) -> GraphflowevacuationTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_table_add(a : GraphflowevacuationTable, b : GraphflowevacuationTable) -> GraphflowevacuationTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationTable::add(self : GraphflowevacuationTable, other : GraphflowevacuationTable) -> GraphflowevacuationTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_table_copy(s : GraphflowevacuationTable) -> GraphflowevacuationTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationTable::copy(self : GraphflowevacuationTable) -> GraphflowevacuationTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_table_fill(s : GraphflowevacuationTable, v : Double) -> GraphflowevacuationTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationTable::fill(self : GraphflowevacuationTable, v : Double) -> GraphflowevacuationTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_table_min(s : GraphflowevacuationTable) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationTable::min(self : GraphflowevacuationTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_table_max(s : GraphflowevacuationTable) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationTable::max(self : GraphflowevacuationTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_table_to_string(s : GraphflowevacuationTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationTable::to_string(self : GraphflowevacuationTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationGraphN {
@@ -453,45 +453,45 @@ pub fn graph_flow_evacuation_graphn_make(size : Int) -> GraphflowevacuationGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_graphn_len(s : GraphflowevacuationGraphN) -> Int { s.size }
+pub fn GraphflowevacuationGraphN::len(self : GraphflowevacuationGraphN) -> Int { self.size }
 
-pub fn graph_flow_evacuation_graphn_get(s : GraphflowevacuationGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationGraphN::get(self : GraphflowevacuationGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_graphn_set(s : GraphflowevacuationGraphN, i : Int, v : Double) -> GraphflowevacuationGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationGraphN::set(self : GraphflowevacuationGraphN, i : Int, v : Double) -> GraphflowevacuationGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_graphn_sum(s : GraphflowevacuationGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationGraphN::sum(self : GraphflowevacuationGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_graphn_mean(s : GraphflowevacuationGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationGraphN::mean(self : GraphflowevacuationGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_graphn_scale(s : GraphflowevacuationGraphN, f : Double) -> GraphflowevacuationGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationGraphN::scale(self : GraphflowevacuationGraphN, f : Double) -> GraphflowevacuationGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_graphn_add(a : GraphflowevacuationGraphN, b : GraphflowevacuationGraphN) -> GraphflowevacuationGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationGraphN::add(self : GraphflowevacuationGraphN, other : GraphflowevacuationGraphN) -> GraphflowevacuationGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_graphn_copy(s : GraphflowevacuationGraphN) -> GraphflowevacuationGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationGraphN::copy(self : GraphflowevacuationGraphN) -> GraphflowevacuationGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_graphn_fill(s : GraphflowevacuationGraphN, v : Double) -> GraphflowevacuationGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationGraphN::fill(self : GraphflowevacuationGraphN, v : Double) -> GraphflowevacuationGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_graphn_min(s : GraphflowevacuationGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationGraphN::min(self : GraphflowevacuationGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_graphn_max(s : GraphflowevacuationGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationGraphN::max(self : GraphflowevacuationGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_graphn_to_string(s : GraphflowevacuationGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationGraphN::to_string(self : GraphflowevacuationGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationNode {
@@ -504,45 +504,45 @@ pub fn graph_flow_evacuation_node_make(size : Int) -> GraphflowevacuationNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_node_len(s : GraphflowevacuationNode) -> Int { s.size }
+pub fn GraphflowevacuationNode::len(self : GraphflowevacuationNode) -> Int { self.size }
 
-pub fn graph_flow_evacuation_node_get(s : GraphflowevacuationNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationNode::get(self : GraphflowevacuationNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_node_set(s : GraphflowevacuationNode, i : Int, v : Double) -> GraphflowevacuationNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationNode::set(self : GraphflowevacuationNode, i : Int, v : Double) -> GraphflowevacuationNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_node_sum(s : GraphflowevacuationNode) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationNode::sum(self : GraphflowevacuationNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_node_mean(s : GraphflowevacuationNode) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationNode::mean(self : GraphflowevacuationNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_node_scale(s : GraphflowevacuationNode, f : Double) -> GraphflowevacuationNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationNode::scale(self : GraphflowevacuationNode, f : Double) -> GraphflowevacuationNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_node_add(a : GraphflowevacuationNode, b : GraphflowevacuationNode) -> GraphflowevacuationNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationNode::add(self : GraphflowevacuationNode, other : GraphflowevacuationNode) -> GraphflowevacuationNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_node_copy(s : GraphflowevacuationNode) -> GraphflowevacuationNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationNode::copy(self : GraphflowevacuationNode) -> GraphflowevacuationNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_node_fill(s : GraphflowevacuationNode, v : Double) -> GraphflowevacuationNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationNode::fill(self : GraphflowevacuationNode, v : Double) -> GraphflowevacuationNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_node_min(s : GraphflowevacuationNode) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationNode::min(self : GraphflowevacuationNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_node_max(s : GraphflowevacuationNode) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationNode::max(self : GraphflowevacuationNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_node_to_string(s : GraphflowevacuationNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationNode::to_string(self : GraphflowevacuationNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationEdge {
@@ -555,45 +555,45 @@ pub fn graph_flow_evacuation_edge_make(size : Int) -> GraphflowevacuationEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_edge_len(s : GraphflowevacuationEdge) -> Int { s.size }
+pub fn GraphflowevacuationEdge::len(self : GraphflowevacuationEdge) -> Int { self.size }
 
-pub fn graph_flow_evacuation_edge_get(s : GraphflowevacuationEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationEdge::get(self : GraphflowevacuationEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_edge_set(s : GraphflowevacuationEdge, i : Int, v : Double) -> GraphflowevacuationEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationEdge::set(self : GraphflowevacuationEdge, i : Int, v : Double) -> GraphflowevacuationEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_edge_sum(s : GraphflowevacuationEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationEdge::sum(self : GraphflowevacuationEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_edge_mean(s : GraphflowevacuationEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationEdge::mean(self : GraphflowevacuationEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_edge_scale(s : GraphflowevacuationEdge, f : Double) -> GraphflowevacuationEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationEdge::scale(self : GraphflowevacuationEdge, f : Double) -> GraphflowevacuationEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_edge_add(a : GraphflowevacuationEdge, b : GraphflowevacuationEdge) -> GraphflowevacuationEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationEdge::add(self : GraphflowevacuationEdge, other : GraphflowevacuationEdge) -> GraphflowevacuationEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_edge_copy(s : GraphflowevacuationEdge) -> GraphflowevacuationEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationEdge::copy(self : GraphflowevacuationEdge) -> GraphflowevacuationEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_edge_fill(s : GraphflowevacuationEdge, v : Double) -> GraphflowevacuationEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationEdge::fill(self : GraphflowevacuationEdge, v : Double) -> GraphflowevacuationEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_edge_min(s : GraphflowevacuationEdge) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationEdge::min(self : GraphflowevacuationEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_edge_max(s : GraphflowevacuationEdge) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationEdge::max(self : GraphflowevacuationEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_edge_to_string(s : GraphflowevacuationEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationEdge::to_string(self : GraphflowevacuationEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationPath {
@@ -606,45 +606,45 @@ pub fn graph_flow_evacuation_path_make(size : Int) -> GraphflowevacuationPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_path_len(s : GraphflowevacuationPath) -> Int { s.size }
+pub fn GraphflowevacuationPath::len(self : GraphflowevacuationPath) -> Int { self.size }
 
-pub fn graph_flow_evacuation_path_get(s : GraphflowevacuationPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationPath::get(self : GraphflowevacuationPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_path_set(s : GraphflowevacuationPath, i : Int, v : Double) -> GraphflowevacuationPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationPath::set(self : GraphflowevacuationPath, i : Int, v : Double) -> GraphflowevacuationPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_path_sum(s : GraphflowevacuationPath) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationPath::sum(self : GraphflowevacuationPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_path_mean(s : GraphflowevacuationPath) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationPath::mean(self : GraphflowevacuationPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_path_scale(s : GraphflowevacuationPath, f : Double) -> GraphflowevacuationPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationPath::scale(self : GraphflowevacuationPath, f : Double) -> GraphflowevacuationPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_path_add(a : GraphflowevacuationPath, b : GraphflowevacuationPath) -> GraphflowevacuationPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationPath::add(self : GraphflowevacuationPath, other : GraphflowevacuationPath) -> GraphflowevacuationPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_path_copy(s : GraphflowevacuationPath) -> GraphflowevacuationPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationPath::copy(self : GraphflowevacuationPath) -> GraphflowevacuationPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_path_fill(s : GraphflowevacuationPath, v : Double) -> GraphflowevacuationPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationPath::fill(self : GraphflowevacuationPath, v : Double) -> GraphflowevacuationPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_path_min(s : GraphflowevacuationPath) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationPath::min(self : GraphflowevacuationPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_path_max(s : GraphflowevacuationPath) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationPath::max(self : GraphflowevacuationPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_path_to_string(s : GraphflowevacuationPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationPath::to_string(self : GraphflowevacuationPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationCluster {
@@ -657,45 +657,45 @@ pub fn graph_flow_evacuation_cluster_make(size : Int) -> GraphflowevacuationClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_cluster_len(s : GraphflowevacuationCluster) -> Int { s.size }
+pub fn GraphflowevacuationCluster::len(self : GraphflowevacuationCluster) -> Int { self.size }
 
-pub fn graph_flow_evacuation_cluster_get(s : GraphflowevacuationCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationCluster::get(self : GraphflowevacuationCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_cluster_set(s : GraphflowevacuationCluster, i : Int, v : Double) -> GraphflowevacuationCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationCluster::set(self : GraphflowevacuationCluster, i : Int, v : Double) -> GraphflowevacuationCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_cluster_sum(s : GraphflowevacuationCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationCluster::sum(self : GraphflowevacuationCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_cluster_mean(s : GraphflowevacuationCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationCluster::mean(self : GraphflowevacuationCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_cluster_scale(s : GraphflowevacuationCluster, f : Double) -> GraphflowevacuationCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationCluster::scale(self : GraphflowevacuationCluster, f : Double) -> GraphflowevacuationCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_cluster_add(a : GraphflowevacuationCluster, b : GraphflowevacuationCluster) -> GraphflowevacuationCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationCluster::add(self : GraphflowevacuationCluster, other : GraphflowevacuationCluster) -> GraphflowevacuationCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_cluster_copy(s : GraphflowevacuationCluster) -> GraphflowevacuationCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationCluster::copy(self : GraphflowevacuationCluster) -> GraphflowevacuationCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_cluster_fill(s : GraphflowevacuationCluster, v : Double) -> GraphflowevacuationCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationCluster::fill(self : GraphflowevacuationCluster, v : Double) -> GraphflowevacuationCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_cluster_min(s : GraphflowevacuationCluster) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationCluster::min(self : GraphflowevacuationCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_cluster_max(s : GraphflowevacuationCluster) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationCluster::max(self : GraphflowevacuationCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_cluster_to_string(s : GraphflowevacuationCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationCluster::to_string(self : GraphflowevacuationCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationModel {
@@ -708,45 +708,45 @@ pub fn graph_flow_evacuation_model_make(size : Int) -> GraphflowevacuationModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_model_len(s : GraphflowevacuationModel) -> Int { s.size }
+pub fn GraphflowevacuationModel::len(self : GraphflowevacuationModel) -> Int { self.size }
 
-pub fn graph_flow_evacuation_model_get(s : GraphflowevacuationModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationModel::get(self : GraphflowevacuationModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_model_set(s : GraphflowevacuationModel, i : Int, v : Double) -> GraphflowevacuationModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationModel::set(self : GraphflowevacuationModel, i : Int, v : Double) -> GraphflowevacuationModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_model_sum(s : GraphflowevacuationModel) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationModel::sum(self : GraphflowevacuationModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_model_mean(s : GraphflowevacuationModel) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationModel::mean(self : GraphflowevacuationModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_model_scale(s : GraphflowevacuationModel, f : Double) -> GraphflowevacuationModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationModel::scale(self : GraphflowevacuationModel, f : Double) -> GraphflowevacuationModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_model_add(a : GraphflowevacuationModel, b : GraphflowevacuationModel) -> GraphflowevacuationModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationModel::add(self : GraphflowevacuationModel, other : GraphflowevacuationModel) -> GraphflowevacuationModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_model_copy(s : GraphflowevacuationModel) -> GraphflowevacuationModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationModel::copy(self : GraphflowevacuationModel) -> GraphflowevacuationModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_model_fill(s : GraphflowevacuationModel, v : Double) -> GraphflowevacuationModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationModel::fill(self : GraphflowevacuationModel, v : Double) -> GraphflowevacuationModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_model_min(s : GraphflowevacuationModel) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationModel::min(self : GraphflowevacuationModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_model_max(s : GraphflowevacuationModel) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationModel::max(self : GraphflowevacuationModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_model_to_string(s : GraphflowevacuationModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationModel::to_string(self : GraphflowevacuationModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationLayer {
@@ -759,45 +759,45 @@ pub fn graph_flow_evacuation_layer_make(size : Int) -> GraphflowevacuationLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_layer_len(s : GraphflowevacuationLayer) -> Int { s.size }
+pub fn GraphflowevacuationLayer::len(self : GraphflowevacuationLayer) -> Int { self.size }
 
-pub fn graph_flow_evacuation_layer_get(s : GraphflowevacuationLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationLayer::get(self : GraphflowevacuationLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_layer_set(s : GraphflowevacuationLayer, i : Int, v : Double) -> GraphflowevacuationLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationLayer::set(self : GraphflowevacuationLayer, i : Int, v : Double) -> GraphflowevacuationLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_layer_sum(s : GraphflowevacuationLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationLayer::sum(self : GraphflowevacuationLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_layer_mean(s : GraphflowevacuationLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationLayer::mean(self : GraphflowevacuationLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_layer_scale(s : GraphflowevacuationLayer, f : Double) -> GraphflowevacuationLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationLayer::scale(self : GraphflowevacuationLayer, f : Double) -> GraphflowevacuationLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_layer_add(a : GraphflowevacuationLayer, b : GraphflowevacuationLayer) -> GraphflowevacuationLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationLayer::add(self : GraphflowevacuationLayer, other : GraphflowevacuationLayer) -> GraphflowevacuationLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_layer_copy(s : GraphflowevacuationLayer) -> GraphflowevacuationLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationLayer::copy(self : GraphflowevacuationLayer) -> GraphflowevacuationLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_layer_fill(s : GraphflowevacuationLayer, v : Double) -> GraphflowevacuationLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationLayer::fill(self : GraphflowevacuationLayer, v : Double) -> GraphflowevacuationLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_layer_min(s : GraphflowevacuationLayer) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationLayer::min(self : GraphflowevacuationLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_layer_max(s : GraphflowevacuationLayer) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationLayer::max(self : GraphflowevacuationLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_layer_to_string(s : GraphflowevacuationLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationLayer::to_string(self : GraphflowevacuationLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationBuffer {
@@ -810,45 +810,45 @@ pub fn graph_flow_evacuation_buffer_make(size : Int) -> GraphflowevacuationBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_buffer_len(s : GraphflowevacuationBuffer) -> Int { s.size }
+pub fn GraphflowevacuationBuffer::len(self : GraphflowevacuationBuffer) -> Int { self.size }
 
-pub fn graph_flow_evacuation_buffer_get(s : GraphflowevacuationBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationBuffer::get(self : GraphflowevacuationBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_buffer_set(s : GraphflowevacuationBuffer, i : Int, v : Double) -> GraphflowevacuationBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationBuffer::set(self : GraphflowevacuationBuffer, i : Int, v : Double) -> GraphflowevacuationBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_buffer_sum(s : GraphflowevacuationBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationBuffer::sum(self : GraphflowevacuationBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_buffer_mean(s : GraphflowevacuationBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationBuffer::mean(self : GraphflowevacuationBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_buffer_scale(s : GraphflowevacuationBuffer, f : Double) -> GraphflowevacuationBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationBuffer::scale(self : GraphflowevacuationBuffer, f : Double) -> GraphflowevacuationBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_buffer_add(a : GraphflowevacuationBuffer, b : GraphflowevacuationBuffer) -> GraphflowevacuationBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationBuffer::add(self : GraphflowevacuationBuffer, other : GraphflowevacuationBuffer) -> GraphflowevacuationBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_buffer_copy(s : GraphflowevacuationBuffer) -> GraphflowevacuationBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationBuffer::copy(self : GraphflowevacuationBuffer) -> GraphflowevacuationBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_buffer_fill(s : GraphflowevacuationBuffer, v : Double) -> GraphflowevacuationBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationBuffer::fill(self : GraphflowevacuationBuffer, v : Double) -> GraphflowevacuationBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_buffer_min(s : GraphflowevacuationBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationBuffer::min(self : GraphflowevacuationBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_buffer_max(s : GraphflowevacuationBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationBuffer::max(self : GraphflowevacuationBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_buffer_to_string(s : GraphflowevacuationBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationBuffer::to_string(self : GraphflowevacuationBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationCursor {
@@ -861,45 +861,45 @@ pub fn graph_flow_evacuation_cursor_make(size : Int) -> GraphflowevacuationCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_cursor_len(s : GraphflowevacuationCursor) -> Int { s.size }
+pub fn GraphflowevacuationCursor::len(self : GraphflowevacuationCursor) -> Int { self.size }
 
-pub fn graph_flow_evacuation_cursor_get(s : GraphflowevacuationCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationCursor::get(self : GraphflowevacuationCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_cursor_set(s : GraphflowevacuationCursor, i : Int, v : Double) -> GraphflowevacuationCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationCursor::set(self : GraphflowevacuationCursor, i : Int, v : Double) -> GraphflowevacuationCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_cursor_sum(s : GraphflowevacuationCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationCursor::sum(self : GraphflowevacuationCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_cursor_mean(s : GraphflowevacuationCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationCursor::mean(self : GraphflowevacuationCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_cursor_scale(s : GraphflowevacuationCursor, f : Double) -> GraphflowevacuationCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationCursor::scale(self : GraphflowevacuationCursor, f : Double) -> GraphflowevacuationCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_cursor_add(a : GraphflowevacuationCursor, b : GraphflowevacuationCursor) -> GraphflowevacuationCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationCursor::add(self : GraphflowevacuationCursor, other : GraphflowevacuationCursor) -> GraphflowevacuationCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_cursor_copy(s : GraphflowevacuationCursor) -> GraphflowevacuationCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationCursor::copy(self : GraphflowevacuationCursor) -> GraphflowevacuationCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_cursor_fill(s : GraphflowevacuationCursor, v : Double) -> GraphflowevacuationCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationCursor::fill(self : GraphflowevacuationCursor, v : Double) -> GraphflowevacuationCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_cursor_min(s : GraphflowevacuationCursor) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationCursor::min(self : GraphflowevacuationCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_cursor_max(s : GraphflowevacuationCursor) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationCursor::max(self : GraphflowevacuationCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_cursor_to_string(s : GraphflowevacuationCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationCursor::to_string(self : GraphflowevacuationCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationView {
@@ -912,45 +912,45 @@ pub fn graph_flow_evacuation_view_make(size : Int) -> GraphflowevacuationView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_view_len(s : GraphflowevacuationView) -> Int { s.size }
+pub fn GraphflowevacuationView::len(self : GraphflowevacuationView) -> Int { self.size }
 
-pub fn graph_flow_evacuation_view_get(s : GraphflowevacuationView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationView::get(self : GraphflowevacuationView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_view_set(s : GraphflowevacuationView, i : Int, v : Double) -> GraphflowevacuationView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationView::set(self : GraphflowevacuationView, i : Int, v : Double) -> GraphflowevacuationView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_view_sum(s : GraphflowevacuationView) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationView::sum(self : GraphflowevacuationView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_view_mean(s : GraphflowevacuationView) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationView::mean(self : GraphflowevacuationView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_view_scale(s : GraphflowevacuationView, f : Double) -> GraphflowevacuationView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationView::scale(self : GraphflowevacuationView, f : Double) -> GraphflowevacuationView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_view_add(a : GraphflowevacuationView, b : GraphflowevacuationView) -> GraphflowevacuationView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationView::add(self : GraphflowevacuationView, other : GraphflowevacuationView) -> GraphflowevacuationView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_view_copy(s : GraphflowevacuationView) -> GraphflowevacuationView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationView::copy(self : GraphflowevacuationView) -> GraphflowevacuationView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_view_fill(s : GraphflowevacuationView, v : Double) -> GraphflowevacuationView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationView::fill(self : GraphflowevacuationView, v : Double) -> GraphflowevacuationView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_view_min(s : GraphflowevacuationView) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationView::min(self : GraphflowevacuationView) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_view_max(s : GraphflowevacuationView) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationView::max(self : GraphflowevacuationView) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_view_to_string(s : GraphflowevacuationView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationView::to_string(self : GraphflowevacuationView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationRange {
@@ -963,45 +963,45 @@ pub fn graph_flow_evacuation_range_make(size : Int) -> GraphflowevacuationRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_range_len(s : GraphflowevacuationRange) -> Int { s.size }
+pub fn GraphflowevacuationRange::len(self : GraphflowevacuationRange) -> Int { self.size }
 
-pub fn graph_flow_evacuation_range_get(s : GraphflowevacuationRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationRange::get(self : GraphflowevacuationRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_range_set(s : GraphflowevacuationRange, i : Int, v : Double) -> GraphflowevacuationRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationRange::set(self : GraphflowevacuationRange, i : Int, v : Double) -> GraphflowevacuationRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_range_sum(s : GraphflowevacuationRange) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationRange::sum(self : GraphflowevacuationRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_range_mean(s : GraphflowevacuationRange) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationRange::mean(self : GraphflowevacuationRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_range_scale(s : GraphflowevacuationRange, f : Double) -> GraphflowevacuationRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationRange::scale(self : GraphflowevacuationRange, f : Double) -> GraphflowevacuationRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_range_add(a : GraphflowevacuationRange, b : GraphflowevacuationRange) -> GraphflowevacuationRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationRange::add(self : GraphflowevacuationRange, other : GraphflowevacuationRange) -> GraphflowevacuationRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_range_copy(s : GraphflowevacuationRange) -> GraphflowevacuationRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationRange::copy(self : GraphflowevacuationRange) -> GraphflowevacuationRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_range_fill(s : GraphflowevacuationRange, v : Double) -> GraphflowevacuationRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationRange::fill(self : GraphflowevacuationRange, v : Double) -> GraphflowevacuationRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_range_min(s : GraphflowevacuationRange) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationRange::min(self : GraphflowevacuationRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_range_max(s : GraphflowevacuationRange) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationRange::max(self : GraphflowevacuationRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_range_to_string(s : GraphflowevacuationRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationRange::to_string(self : GraphflowevacuationRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_flow_evacuation_slice_make(size : Int) -> GraphflowevacuationSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_evacuation_slice_len(s : GraphflowevacuationSlice) -> Int { s.size }
+pub fn GraphflowevacuationSlice::len(self : GraphflowevacuationSlice) -> Int { self.size }
 
-pub fn graph_flow_evacuation_slice_get(s : GraphflowevacuationSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowevacuationSlice::get(self : GraphflowevacuationSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_evacuation_slice_set(s : GraphflowevacuationSlice, i : Int, v : Double) -> GraphflowevacuationSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowevacuationSlice::set(self : GraphflowevacuationSlice, i : Int, v : Double) -> GraphflowevacuationSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_slice_sum(s : GraphflowevacuationSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphflowevacuationSlice::sum(self : GraphflowevacuationSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_evacuation_slice_mean(s : GraphflowevacuationSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphflowevacuationSlice::mean(self : GraphflowevacuationSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_evacuation_slice_scale(s : GraphflowevacuationSlice, f : Double) -> GraphflowevacuationSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationSlice::scale(self : GraphflowevacuationSlice, f : Double) -> GraphflowevacuationSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_slice_add(a : GraphflowevacuationSlice, b : GraphflowevacuationSlice) -> GraphflowevacuationSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowevacuationSlice::add(self : GraphflowevacuationSlice, other : GraphflowevacuationSlice) -> GraphflowevacuationSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_slice_copy(s : GraphflowevacuationSlice) -> GraphflowevacuationSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationSlice::copy(self : GraphflowevacuationSlice) -> GraphflowevacuationSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_slice_fill(s : GraphflowevacuationSlice, v : Double) -> GraphflowevacuationSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowevacuationSlice::fill(self : GraphflowevacuationSlice, v : Double) -> GraphflowevacuationSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_evacuation_slice_min(s : GraphflowevacuationSlice) -> Double { @_common.min(s.data) }
+pub fn GraphflowevacuationSlice::min(self : GraphflowevacuationSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_evacuation_slice_max(s : GraphflowevacuationSlice) -> Double { @_common.max(s.data) }
+pub fn GraphflowevacuationSlice::max(self : GraphflowevacuationSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_evacuation_slice_to_string(s : GraphflowevacuationSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowevacuationSlice::to_string(self : GraphflowevacuationSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

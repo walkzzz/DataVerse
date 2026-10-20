@@ -351,45 +351,45 @@ pub fn finance_portfolio_robust_frame_make(size : Int) -> Financeportfoliorobust
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_frame_len(s : FinanceportfoliorobustFrame) -> Int { s.size }
+pub fn FinanceportfoliorobustFrame::len(self : FinanceportfoliorobustFrame) -> Int { self.size }
 
-pub fn finance_portfolio_robust_frame_get(s : FinanceportfoliorobustFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustFrame::get(self : FinanceportfoliorobustFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_frame_set(s : FinanceportfoliorobustFrame, i : Int, v : Double) -> FinanceportfoliorobustFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustFrame::set(self : FinanceportfoliorobustFrame, i : Int, v : Double) -> FinanceportfoliorobustFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_frame_sum(s : FinanceportfoliorobustFrame) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustFrame::sum(self : FinanceportfoliorobustFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_frame_mean(s : FinanceportfoliorobustFrame) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustFrame::mean(self : FinanceportfoliorobustFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_frame_scale(s : FinanceportfoliorobustFrame, f : Double) -> FinanceportfoliorobustFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustFrame::scale(self : FinanceportfoliorobustFrame, f : Double) -> FinanceportfoliorobustFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_frame_add(a : FinanceportfoliorobustFrame, b : FinanceportfoliorobustFrame) -> FinanceportfoliorobustFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustFrame::add(self : FinanceportfoliorobustFrame, other : FinanceportfoliorobustFrame) -> FinanceportfoliorobustFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_frame_copy(s : FinanceportfoliorobustFrame) -> FinanceportfoliorobustFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustFrame::copy(self : FinanceportfoliorobustFrame) -> FinanceportfoliorobustFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_frame_fill(s : FinanceportfoliorobustFrame, v : Double) -> FinanceportfoliorobustFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustFrame::fill(self : FinanceportfoliorobustFrame, v : Double) -> FinanceportfoliorobustFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_frame_min(s : FinanceportfoliorobustFrame) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustFrame::min(self : FinanceportfoliorobustFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_frame_max(s : FinanceportfoliorobustFrame) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustFrame::max(self : FinanceportfoliorobustFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_frame_to_string(s : FinanceportfoliorobustFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustFrame::to_string(self : FinanceportfoliorobustFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustTable {
@@ -402,45 +402,45 @@ pub fn finance_portfolio_robust_table_make(size : Int) -> Financeportfoliorobust
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_table_len(s : FinanceportfoliorobustTable) -> Int { s.size }
+pub fn FinanceportfoliorobustTable::len(self : FinanceportfoliorobustTable) -> Int { self.size }
 
-pub fn finance_portfolio_robust_table_get(s : FinanceportfoliorobustTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustTable::get(self : FinanceportfoliorobustTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_table_set(s : FinanceportfoliorobustTable, i : Int, v : Double) -> FinanceportfoliorobustTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustTable::set(self : FinanceportfoliorobustTable, i : Int, v : Double) -> FinanceportfoliorobustTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_table_sum(s : FinanceportfoliorobustTable) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustTable::sum(self : FinanceportfoliorobustTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_table_mean(s : FinanceportfoliorobustTable) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustTable::mean(self : FinanceportfoliorobustTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_table_scale(s : FinanceportfoliorobustTable, f : Double) -> FinanceportfoliorobustTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustTable::scale(self : FinanceportfoliorobustTable, f : Double) -> FinanceportfoliorobustTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_table_add(a : FinanceportfoliorobustTable, b : FinanceportfoliorobustTable) -> FinanceportfoliorobustTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustTable::add(self : FinanceportfoliorobustTable, other : FinanceportfoliorobustTable) -> FinanceportfoliorobustTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_table_copy(s : FinanceportfoliorobustTable) -> FinanceportfoliorobustTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustTable::copy(self : FinanceportfoliorobustTable) -> FinanceportfoliorobustTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_table_fill(s : FinanceportfoliorobustTable, v : Double) -> FinanceportfoliorobustTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustTable::fill(self : FinanceportfoliorobustTable, v : Double) -> FinanceportfoliorobustTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_table_min(s : FinanceportfoliorobustTable) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustTable::min(self : FinanceportfoliorobustTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_table_max(s : FinanceportfoliorobustTable) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustTable::max(self : FinanceportfoliorobustTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_table_to_string(s : FinanceportfoliorobustTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustTable::to_string(self : FinanceportfoliorobustTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustGraphN {
@@ -453,45 +453,45 @@ pub fn finance_portfolio_robust_graphn_make(size : Int) -> Financeportfoliorobus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_graphn_len(s : FinanceportfoliorobustGraphN) -> Int { s.size }
+pub fn FinanceportfoliorobustGraphN::len(self : FinanceportfoliorobustGraphN) -> Int { self.size }
 
-pub fn finance_portfolio_robust_graphn_get(s : FinanceportfoliorobustGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustGraphN::get(self : FinanceportfoliorobustGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_graphn_set(s : FinanceportfoliorobustGraphN, i : Int, v : Double) -> FinanceportfoliorobustGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustGraphN::set(self : FinanceportfoliorobustGraphN, i : Int, v : Double) -> FinanceportfoliorobustGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_graphn_sum(s : FinanceportfoliorobustGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustGraphN::sum(self : FinanceportfoliorobustGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_graphn_mean(s : FinanceportfoliorobustGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustGraphN::mean(self : FinanceportfoliorobustGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_graphn_scale(s : FinanceportfoliorobustGraphN, f : Double) -> FinanceportfoliorobustGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustGraphN::scale(self : FinanceportfoliorobustGraphN, f : Double) -> FinanceportfoliorobustGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_graphn_add(a : FinanceportfoliorobustGraphN, b : FinanceportfoliorobustGraphN) -> FinanceportfoliorobustGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustGraphN::add(self : FinanceportfoliorobustGraphN, other : FinanceportfoliorobustGraphN) -> FinanceportfoliorobustGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_graphn_copy(s : FinanceportfoliorobustGraphN) -> FinanceportfoliorobustGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustGraphN::copy(self : FinanceportfoliorobustGraphN) -> FinanceportfoliorobustGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_graphn_fill(s : FinanceportfoliorobustGraphN, v : Double) -> FinanceportfoliorobustGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustGraphN::fill(self : FinanceportfoliorobustGraphN, v : Double) -> FinanceportfoliorobustGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_graphn_min(s : FinanceportfoliorobustGraphN) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustGraphN::min(self : FinanceportfoliorobustGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_graphn_max(s : FinanceportfoliorobustGraphN) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustGraphN::max(self : FinanceportfoliorobustGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_graphn_to_string(s : FinanceportfoliorobustGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustGraphN::to_string(self : FinanceportfoliorobustGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustNode {
@@ -504,45 +504,45 @@ pub fn finance_portfolio_robust_node_make(size : Int) -> FinanceportfoliorobustN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_node_len(s : FinanceportfoliorobustNode) -> Int { s.size }
+pub fn FinanceportfoliorobustNode::len(self : FinanceportfoliorobustNode) -> Int { self.size }
 
-pub fn finance_portfolio_robust_node_get(s : FinanceportfoliorobustNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustNode::get(self : FinanceportfoliorobustNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_node_set(s : FinanceportfoliorobustNode, i : Int, v : Double) -> FinanceportfoliorobustNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustNode::set(self : FinanceportfoliorobustNode, i : Int, v : Double) -> FinanceportfoliorobustNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_node_sum(s : FinanceportfoliorobustNode) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustNode::sum(self : FinanceportfoliorobustNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_node_mean(s : FinanceportfoliorobustNode) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustNode::mean(self : FinanceportfoliorobustNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_node_scale(s : FinanceportfoliorobustNode, f : Double) -> FinanceportfoliorobustNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustNode::scale(self : FinanceportfoliorobustNode, f : Double) -> FinanceportfoliorobustNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_node_add(a : FinanceportfoliorobustNode, b : FinanceportfoliorobustNode) -> FinanceportfoliorobustNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustNode::add(self : FinanceportfoliorobustNode, other : FinanceportfoliorobustNode) -> FinanceportfoliorobustNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_node_copy(s : FinanceportfoliorobustNode) -> FinanceportfoliorobustNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustNode::copy(self : FinanceportfoliorobustNode) -> FinanceportfoliorobustNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_node_fill(s : FinanceportfoliorobustNode, v : Double) -> FinanceportfoliorobustNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustNode::fill(self : FinanceportfoliorobustNode, v : Double) -> FinanceportfoliorobustNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_node_min(s : FinanceportfoliorobustNode) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustNode::min(self : FinanceportfoliorobustNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_node_max(s : FinanceportfoliorobustNode) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustNode::max(self : FinanceportfoliorobustNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_node_to_string(s : FinanceportfoliorobustNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustNode::to_string(self : FinanceportfoliorobustNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustEdge {
@@ -555,45 +555,45 @@ pub fn finance_portfolio_robust_edge_make(size : Int) -> FinanceportfoliorobustE
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_edge_len(s : FinanceportfoliorobustEdge) -> Int { s.size }
+pub fn FinanceportfoliorobustEdge::len(self : FinanceportfoliorobustEdge) -> Int { self.size }
 
-pub fn finance_portfolio_robust_edge_get(s : FinanceportfoliorobustEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustEdge::get(self : FinanceportfoliorobustEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_edge_set(s : FinanceportfoliorobustEdge, i : Int, v : Double) -> FinanceportfoliorobustEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustEdge::set(self : FinanceportfoliorobustEdge, i : Int, v : Double) -> FinanceportfoliorobustEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_edge_sum(s : FinanceportfoliorobustEdge) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustEdge::sum(self : FinanceportfoliorobustEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_edge_mean(s : FinanceportfoliorobustEdge) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustEdge::mean(self : FinanceportfoliorobustEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_edge_scale(s : FinanceportfoliorobustEdge, f : Double) -> FinanceportfoliorobustEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustEdge::scale(self : FinanceportfoliorobustEdge, f : Double) -> FinanceportfoliorobustEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_edge_add(a : FinanceportfoliorobustEdge, b : FinanceportfoliorobustEdge) -> FinanceportfoliorobustEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustEdge::add(self : FinanceportfoliorobustEdge, other : FinanceportfoliorobustEdge) -> FinanceportfoliorobustEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_edge_copy(s : FinanceportfoliorobustEdge) -> FinanceportfoliorobustEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustEdge::copy(self : FinanceportfoliorobustEdge) -> FinanceportfoliorobustEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_edge_fill(s : FinanceportfoliorobustEdge, v : Double) -> FinanceportfoliorobustEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustEdge::fill(self : FinanceportfoliorobustEdge, v : Double) -> FinanceportfoliorobustEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_edge_min(s : FinanceportfoliorobustEdge) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustEdge::min(self : FinanceportfoliorobustEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_edge_max(s : FinanceportfoliorobustEdge) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustEdge::max(self : FinanceportfoliorobustEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_edge_to_string(s : FinanceportfoliorobustEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustEdge::to_string(self : FinanceportfoliorobustEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustPath {
@@ -606,45 +606,45 @@ pub fn finance_portfolio_robust_path_make(size : Int) -> FinanceportfoliorobustP
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_path_len(s : FinanceportfoliorobustPath) -> Int { s.size }
+pub fn FinanceportfoliorobustPath::len(self : FinanceportfoliorobustPath) -> Int { self.size }
 
-pub fn finance_portfolio_robust_path_get(s : FinanceportfoliorobustPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustPath::get(self : FinanceportfoliorobustPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_path_set(s : FinanceportfoliorobustPath, i : Int, v : Double) -> FinanceportfoliorobustPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustPath::set(self : FinanceportfoliorobustPath, i : Int, v : Double) -> FinanceportfoliorobustPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_path_sum(s : FinanceportfoliorobustPath) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustPath::sum(self : FinanceportfoliorobustPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_path_mean(s : FinanceportfoliorobustPath) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustPath::mean(self : FinanceportfoliorobustPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_path_scale(s : FinanceportfoliorobustPath, f : Double) -> FinanceportfoliorobustPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustPath::scale(self : FinanceportfoliorobustPath, f : Double) -> FinanceportfoliorobustPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_path_add(a : FinanceportfoliorobustPath, b : FinanceportfoliorobustPath) -> FinanceportfoliorobustPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustPath::add(self : FinanceportfoliorobustPath, other : FinanceportfoliorobustPath) -> FinanceportfoliorobustPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_path_copy(s : FinanceportfoliorobustPath) -> FinanceportfoliorobustPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustPath::copy(self : FinanceportfoliorobustPath) -> FinanceportfoliorobustPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_path_fill(s : FinanceportfoliorobustPath, v : Double) -> FinanceportfoliorobustPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustPath::fill(self : FinanceportfoliorobustPath, v : Double) -> FinanceportfoliorobustPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_path_min(s : FinanceportfoliorobustPath) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustPath::min(self : FinanceportfoliorobustPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_path_max(s : FinanceportfoliorobustPath) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustPath::max(self : FinanceportfoliorobustPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_path_to_string(s : FinanceportfoliorobustPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustPath::to_string(self : FinanceportfoliorobustPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustCluster {
@@ -657,45 +657,45 @@ pub fn finance_portfolio_robust_cluster_make(size : Int) -> Financeportfoliorobu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_cluster_len(s : FinanceportfoliorobustCluster) -> Int { s.size }
+pub fn FinanceportfoliorobustCluster::len(self : FinanceportfoliorobustCluster) -> Int { self.size }
 
-pub fn finance_portfolio_robust_cluster_get(s : FinanceportfoliorobustCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustCluster::get(self : FinanceportfoliorobustCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_cluster_set(s : FinanceportfoliorobustCluster, i : Int, v : Double) -> FinanceportfoliorobustCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustCluster::set(self : FinanceportfoliorobustCluster, i : Int, v : Double) -> FinanceportfoliorobustCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_cluster_sum(s : FinanceportfoliorobustCluster) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustCluster::sum(self : FinanceportfoliorobustCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_cluster_mean(s : FinanceportfoliorobustCluster) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustCluster::mean(self : FinanceportfoliorobustCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_cluster_scale(s : FinanceportfoliorobustCluster, f : Double) -> FinanceportfoliorobustCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustCluster::scale(self : FinanceportfoliorobustCluster, f : Double) -> FinanceportfoliorobustCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_cluster_add(a : FinanceportfoliorobustCluster, b : FinanceportfoliorobustCluster) -> FinanceportfoliorobustCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustCluster::add(self : FinanceportfoliorobustCluster, other : FinanceportfoliorobustCluster) -> FinanceportfoliorobustCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_cluster_copy(s : FinanceportfoliorobustCluster) -> FinanceportfoliorobustCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustCluster::copy(self : FinanceportfoliorobustCluster) -> FinanceportfoliorobustCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_cluster_fill(s : FinanceportfoliorobustCluster, v : Double) -> FinanceportfoliorobustCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustCluster::fill(self : FinanceportfoliorobustCluster, v : Double) -> FinanceportfoliorobustCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_cluster_min(s : FinanceportfoliorobustCluster) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustCluster::min(self : FinanceportfoliorobustCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_cluster_max(s : FinanceportfoliorobustCluster) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustCluster::max(self : FinanceportfoliorobustCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_cluster_to_string(s : FinanceportfoliorobustCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustCluster::to_string(self : FinanceportfoliorobustCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustModel {
@@ -708,45 +708,45 @@ pub fn finance_portfolio_robust_model_make(size : Int) -> Financeportfoliorobust
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_model_len(s : FinanceportfoliorobustModel) -> Int { s.size }
+pub fn FinanceportfoliorobustModel::len(self : FinanceportfoliorobustModel) -> Int { self.size }
 
-pub fn finance_portfolio_robust_model_get(s : FinanceportfoliorobustModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustModel::get(self : FinanceportfoliorobustModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_model_set(s : FinanceportfoliorobustModel, i : Int, v : Double) -> FinanceportfoliorobustModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustModel::set(self : FinanceportfoliorobustModel, i : Int, v : Double) -> FinanceportfoliorobustModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_model_sum(s : FinanceportfoliorobustModel) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustModel::sum(self : FinanceportfoliorobustModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_model_mean(s : FinanceportfoliorobustModel) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustModel::mean(self : FinanceportfoliorobustModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_model_scale(s : FinanceportfoliorobustModel, f : Double) -> FinanceportfoliorobustModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustModel::scale(self : FinanceportfoliorobustModel, f : Double) -> FinanceportfoliorobustModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_model_add(a : FinanceportfoliorobustModel, b : FinanceportfoliorobustModel) -> FinanceportfoliorobustModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustModel::add(self : FinanceportfoliorobustModel, other : FinanceportfoliorobustModel) -> FinanceportfoliorobustModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_model_copy(s : FinanceportfoliorobustModel) -> FinanceportfoliorobustModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustModel::copy(self : FinanceportfoliorobustModel) -> FinanceportfoliorobustModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_model_fill(s : FinanceportfoliorobustModel, v : Double) -> FinanceportfoliorobustModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustModel::fill(self : FinanceportfoliorobustModel, v : Double) -> FinanceportfoliorobustModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_model_min(s : FinanceportfoliorobustModel) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustModel::min(self : FinanceportfoliorobustModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_model_max(s : FinanceportfoliorobustModel) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustModel::max(self : FinanceportfoliorobustModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_model_to_string(s : FinanceportfoliorobustModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustModel::to_string(self : FinanceportfoliorobustModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustLayer {
@@ -759,45 +759,45 @@ pub fn finance_portfolio_robust_layer_make(size : Int) -> Financeportfoliorobust
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_layer_len(s : FinanceportfoliorobustLayer) -> Int { s.size }
+pub fn FinanceportfoliorobustLayer::len(self : FinanceportfoliorobustLayer) -> Int { self.size }
 
-pub fn finance_portfolio_robust_layer_get(s : FinanceportfoliorobustLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustLayer::get(self : FinanceportfoliorobustLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_layer_set(s : FinanceportfoliorobustLayer, i : Int, v : Double) -> FinanceportfoliorobustLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustLayer::set(self : FinanceportfoliorobustLayer, i : Int, v : Double) -> FinanceportfoliorobustLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_layer_sum(s : FinanceportfoliorobustLayer) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustLayer::sum(self : FinanceportfoliorobustLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_layer_mean(s : FinanceportfoliorobustLayer) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustLayer::mean(self : FinanceportfoliorobustLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_layer_scale(s : FinanceportfoliorobustLayer, f : Double) -> FinanceportfoliorobustLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustLayer::scale(self : FinanceportfoliorobustLayer, f : Double) -> FinanceportfoliorobustLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_layer_add(a : FinanceportfoliorobustLayer, b : FinanceportfoliorobustLayer) -> FinanceportfoliorobustLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustLayer::add(self : FinanceportfoliorobustLayer, other : FinanceportfoliorobustLayer) -> FinanceportfoliorobustLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_layer_copy(s : FinanceportfoliorobustLayer) -> FinanceportfoliorobustLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustLayer::copy(self : FinanceportfoliorobustLayer) -> FinanceportfoliorobustLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_layer_fill(s : FinanceportfoliorobustLayer, v : Double) -> FinanceportfoliorobustLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustLayer::fill(self : FinanceportfoliorobustLayer, v : Double) -> FinanceportfoliorobustLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_layer_min(s : FinanceportfoliorobustLayer) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustLayer::min(self : FinanceportfoliorobustLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_layer_max(s : FinanceportfoliorobustLayer) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustLayer::max(self : FinanceportfoliorobustLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_layer_to_string(s : FinanceportfoliorobustLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustLayer::to_string(self : FinanceportfoliorobustLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustBuffer {
@@ -810,45 +810,45 @@ pub fn finance_portfolio_robust_buffer_make(size : Int) -> Financeportfoliorobus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_buffer_len(s : FinanceportfoliorobustBuffer) -> Int { s.size }
+pub fn FinanceportfoliorobustBuffer::len(self : FinanceportfoliorobustBuffer) -> Int { self.size }
 
-pub fn finance_portfolio_robust_buffer_get(s : FinanceportfoliorobustBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustBuffer::get(self : FinanceportfoliorobustBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_buffer_set(s : FinanceportfoliorobustBuffer, i : Int, v : Double) -> FinanceportfoliorobustBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustBuffer::set(self : FinanceportfoliorobustBuffer, i : Int, v : Double) -> FinanceportfoliorobustBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_buffer_sum(s : FinanceportfoliorobustBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustBuffer::sum(self : FinanceportfoliorobustBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_buffer_mean(s : FinanceportfoliorobustBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustBuffer::mean(self : FinanceportfoliorobustBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_buffer_scale(s : FinanceportfoliorobustBuffer, f : Double) -> FinanceportfoliorobustBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustBuffer::scale(self : FinanceportfoliorobustBuffer, f : Double) -> FinanceportfoliorobustBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_buffer_add(a : FinanceportfoliorobustBuffer, b : FinanceportfoliorobustBuffer) -> FinanceportfoliorobustBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustBuffer::add(self : FinanceportfoliorobustBuffer, other : FinanceportfoliorobustBuffer) -> FinanceportfoliorobustBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_buffer_copy(s : FinanceportfoliorobustBuffer) -> FinanceportfoliorobustBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustBuffer::copy(self : FinanceportfoliorobustBuffer) -> FinanceportfoliorobustBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_buffer_fill(s : FinanceportfoliorobustBuffer, v : Double) -> FinanceportfoliorobustBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustBuffer::fill(self : FinanceportfoliorobustBuffer, v : Double) -> FinanceportfoliorobustBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_buffer_min(s : FinanceportfoliorobustBuffer) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustBuffer::min(self : FinanceportfoliorobustBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_buffer_max(s : FinanceportfoliorobustBuffer) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustBuffer::max(self : FinanceportfoliorobustBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_buffer_to_string(s : FinanceportfoliorobustBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustBuffer::to_string(self : FinanceportfoliorobustBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustCursor {
@@ -861,45 +861,45 @@ pub fn finance_portfolio_robust_cursor_make(size : Int) -> Financeportfoliorobus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_cursor_len(s : FinanceportfoliorobustCursor) -> Int { s.size }
+pub fn FinanceportfoliorobustCursor::len(self : FinanceportfoliorobustCursor) -> Int { self.size }
 
-pub fn finance_portfolio_robust_cursor_get(s : FinanceportfoliorobustCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustCursor::get(self : FinanceportfoliorobustCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_cursor_set(s : FinanceportfoliorobustCursor, i : Int, v : Double) -> FinanceportfoliorobustCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustCursor::set(self : FinanceportfoliorobustCursor, i : Int, v : Double) -> FinanceportfoliorobustCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_cursor_sum(s : FinanceportfoliorobustCursor) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustCursor::sum(self : FinanceportfoliorobustCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_cursor_mean(s : FinanceportfoliorobustCursor) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustCursor::mean(self : FinanceportfoliorobustCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_cursor_scale(s : FinanceportfoliorobustCursor, f : Double) -> FinanceportfoliorobustCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustCursor::scale(self : FinanceportfoliorobustCursor, f : Double) -> FinanceportfoliorobustCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_cursor_add(a : FinanceportfoliorobustCursor, b : FinanceportfoliorobustCursor) -> FinanceportfoliorobustCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustCursor::add(self : FinanceportfoliorobustCursor, other : FinanceportfoliorobustCursor) -> FinanceportfoliorobustCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_cursor_copy(s : FinanceportfoliorobustCursor) -> FinanceportfoliorobustCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustCursor::copy(self : FinanceportfoliorobustCursor) -> FinanceportfoliorobustCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_cursor_fill(s : FinanceportfoliorobustCursor, v : Double) -> FinanceportfoliorobustCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustCursor::fill(self : FinanceportfoliorobustCursor, v : Double) -> FinanceportfoliorobustCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_cursor_min(s : FinanceportfoliorobustCursor) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustCursor::min(self : FinanceportfoliorobustCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_cursor_max(s : FinanceportfoliorobustCursor) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustCursor::max(self : FinanceportfoliorobustCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_cursor_to_string(s : FinanceportfoliorobustCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustCursor::to_string(self : FinanceportfoliorobustCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustView {
@@ -912,45 +912,45 @@ pub fn finance_portfolio_robust_view_make(size : Int) -> FinanceportfoliorobustV
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_view_len(s : FinanceportfoliorobustView) -> Int { s.size }
+pub fn FinanceportfoliorobustView::len(self : FinanceportfoliorobustView) -> Int { self.size }
 
-pub fn finance_portfolio_robust_view_get(s : FinanceportfoliorobustView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustView::get(self : FinanceportfoliorobustView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_view_set(s : FinanceportfoliorobustView, i : Int, v : Double) -> FinanceportfoliorobustView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustView::set(self : FinanceportfoliorobustView, i : Int, v : Double) -> FinanceportfoliorobustView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_view_sum(s : FinanceportfoliorobustView) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustView::sum(self : FinanceportfoliorobustView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_view_mean(s : FinanceportfoliorobustView) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustView::mean(self : FinanceportfoliorobustView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_view_scale(s : FinanceportfoliorobustView, f : Double) -> FinanceportfoliorobustView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustView::scale(self : FinanceportfoliorobustView, f : Double) -> FinanceportfoliorobustView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_view_add(a : FinanceportfoliorobustView, b : FinanceportfoliorobustView) -> FinanceportfoliorobustView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustView::add(self : FinanceportfoliorobustView, other : FinanceportfoliorobustView) -> FinanceportfoliorobustView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_view_copy(s : FinanceportfoliorobustView) -> FinanceportfoliorobustView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustView::copy(self : FinanceportfoliorobustView) -> FinanceportfoliorobustView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_view_fill(s : FinanceportfoliorobustView, v : Double) -> FinanceportfoliorobustView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustView::fill(self : FinanceportfoliorobustView, v : Double) -> FinanceportfoliorobustView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_view_min(s : FinanceportfoliorobustView) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustView::min(self : FinanceportfoliorobustView) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_view_max(s : FinanceportfoliorobustView) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustView::max(self : FinanceportfoliorobustView) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_view_to_string(s : FinanceportfoliorobustView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustView::to_string(self : FinanceportfoliorobustView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustRange {
@@ -963,45 +963,45 @@ pub fn finance_portfolio_robust_range_make(size : Int) -> Financeportfoliorobust
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_range_len(s : FinanceportfoliorobustRange) -> Int { s.size }
+pub fn FinanceportfoliorobustRange::len(self : FinanceportfoliorobustRange) -> Int { self.size }
 
-pub fn finance_portfolio_robust_range_get(s : FinanceportfoliorobustRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustRange::get(self : FinanceportfoliorobustRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_range_set(s : FinanceportfoliorobustRange, i : Int, v : Double) -> FinanceportfoliorobustRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustRange::set(self : FinanceportfoliorobustRange, i : Int, v : Double) -> FinanceportfoliorobustRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_range_sum(s : FinanceportfoliorobustRange) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustRange::sum(self : FinanceportfoliorobustRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_range_mean(s : FinanceportfoliorobustRange) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustRange::mean(self : FinanceportfoliorobustRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_range_scale(s : FinanceportfoliorobustRange, f : Double) -> FinanceportfoliorobustRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustRange::scale(self : FinanceportfoliorobustRange, f : Double) -> FinanceportfoliorobustRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_range_add(a : FinanceportfoliorobustRange, b : FinanceportfoliorobustRange) -> FinanceportfoliorobustRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustRange::add(self : FinanceportfoliorobustRange, other : FinanceportfoliorobustRange) -> FinanceportfoliorobustRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_range_copy(s : FinanceportfoliorobustRange) -> FinanceportfoliorobustRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustRange::copy(self : FinanceportfoliorobustRange) -> FinanceportfoliorobustRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_range_fill(s : FinanceportfoliorobustRange, v : Double) -> FinanceportfoliorobustRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustRange::fill(self : FinanceportfoliorobustRange, v : Double) -> FinanceportfoliorobustRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_range_min(s : FinanceportfoliorobustRange) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustRange::min(self : FinanceportfoliorobustRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_range_max(s : FinanceportfoliorobustRange) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustRange::max(self : FinanceportfoliorobustRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_range_to_string(s : FinanceportfoliorobustRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustRange::to_string(self : FinanceportfoliorobustRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliorobustSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_portfolio_robust_slice_make(size : Int) -> Financeportfoliorobust
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_robust_slice_len(s : FinanceportfoliorobustSlice) -> Int { s.size }
+pub fn FinanceportfoliorobustSlice::len(self : FinanceportfoliorobustSlice) -> Int { self.size }
 
-pub fn finance_portfolio_robust_slice_get(s : FinanceportfoliorobustSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliorobustSlice::get(self : FinanceportfoliorobustSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_robust_slice_set(s : FinanceportfoliorobustSlice, i : Int, v : Double) -> FinanceportfoliorobustSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustSlice::set(self : FinanceportfoliorobustSlice, i : Int, v : Double) -> FinanceportfoliorobustSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_slice_sum(s : FinanceportfoliorobustSlice) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliorobustSlice::sum(self : FinanceportfoliorobustSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_robust_slice_mean(s : FinanceportfoliorobustSlice) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliorobustSlice::mean(self : FinanceportfoliorobustSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_robust_slice_scale(s : FinanceportfoliorobustSlice, f : Double) -> FinanceportfoliorobustSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustSlice::scale(self : FinanceportfoliorobustSlice, f : Double) -> FinanceportfoliorobustSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_slice_add(a : FinanceportfoliorobustSlice, b : FinanceportfoliorobustSlice) -> FinanceportfoliorobustSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliorobustSlice::add(self : FinanceportfoliorobustSlice, other : FinanceportfoliorobustSlice) -> FinanceportfoliorobustSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_slice_copy(s : FinanceportfoliorobustSlice) -> FinanceportfoliorobustSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustSlice::copy(self : FinanceportfoliorobustSlice) -> FinanceportfoliorobustSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_slice_fill(s : FinanceportfoliorobustSlice, v : Double) -> FinanceportfoliorobustSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliorobustSlice::fill(self : FinanceportfoliorobustSlice, v : Double) -> FinanceportfoliorobustSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_robust_slice_min(s : FinanceportfoliorobustSlice) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliorobustSlice::min(self : FinanceportfoliorobustSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_robust_slice_max(s : FinanceportfoliorobustSlice) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliorobustSlice::max(self : FinanceportfoliorobustSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_robust_slice_to_string(s : FinanceportfoliorobustSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliorobustSlice::to_string(self : FinanceportfoliorobustSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

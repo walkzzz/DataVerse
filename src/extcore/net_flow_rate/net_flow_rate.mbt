@@ -351,45 +351,45 @@ pub fn net_flow_rate_frame_make(size : Int) -> NetflowrateFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_frame_len(s : NetflowrateFrame) -> Int { s.size }
+pub fn NetflowrateFrame::len(self : NetflowrateFrame) -> Int { self.size }
 
-pub fn net_flow_rate_frame_get(s : NetflowrateFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateFrame::get(self : NetflowrateFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_frame_set(s : NetflowrateFrame, i : Int, v : Double) -> NetflowrateFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateFrame::set(self : NetflowrateFrame, i : Int, v : Double) -> NetflowrateFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_frame_sum(s : NetflowrateFrame) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateFrame::sum(self : NetflowrateFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_frame_mean(s : NetflowrateFrame) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateFrame::mean(self : NetflowrateFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_frame_scale(s : NetflowrateFrame, f : Double) -> NetflowrateFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateFrame::scale(self : NetflowrateFrame, f : Double) -> NetflowrateFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_frame_add(a : NetflowrateFrame, b : NetflowrateFrame) -> NetflowrateFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateFrame::add(self : NetflowrateFrame, other : NetflowrateFrame) -> NetflowrateFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_frame_copy(s : NetflowrateFrame) -> NetflowrateFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateFrame::copy(self : NetflowrateFrame) -> NetflowrateFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_frame_fill(s : NetflowrateFrame, v : Double) -> NetflowrateFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateFrame::fill(self : NetflowrateFrame, v : Double) -> NetflowrateFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_frame_min(s : NetflowrateFrame) -> Double { @_common.min(s.data) }
+pub fn NetflowrateFrame::min(self : NetflowrateFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_frame_max(s : NetflowrateFrame) -> Double { @_common.max(s.data) }
+pub fn NetflowrateFrame::max(self : NetflowrateFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_frame_to_string(s : NetflowrateFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateFrame::to_string(self : NetflowrateFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowrateTable {
@@ -402,45 +402,45 @@ pub fn net_flow_rate_table_make(size : Int) -> NetflowrateTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_table_len(s : NetflowrateTable) -> Int { s.size }
+pub fn NetflowrateTable::len(self : NetflowrateTable) -> Int { self.size }
 
-pub fn net_flow_rate_table_get(s : NetflowrateTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateTable::get(self : NetflowrateTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_table_set(s : NetflowrateTable, i : Int, v : Double) -> NetflowrateTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateTable::set(self : NetflowrateTable, i : Int, v : Double) -> NetflowrateTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_table_sum(s : NetflowrateTable) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateTable::sum(self : NetflowrateTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_table_mean(s : NetflowrateTable) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateTable::mean(self : NetflowrateTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_table_scale(s : NetflowrateTable, f : Double) -> NetflowrateTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateTable::scale(self : NetflowrateTable, f : Double) -> NetflowrateTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_table_add(a : NetflowrateTable, b : NetflowrateTable) -> NetflowrateTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateTable::add(self : NetflowrateTable, other : NetflowrateTable) -> NetflowrateTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_table_copy(s : NetflowrateTable) -> NetflowrateTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateTable::copy(self : NetflowrateTable) -> NetflowrateTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_table_fill(s : NetflowrateTable, v : Double) -> NetflowrateTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateTable::fill(self : NetflowrateTable, v : Double) -> NetflowrateTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_table_min(s : NetflowrateTable) -> Double { @_common.min(s.data) }
+pub fn NetflowrateTable::min(self : NetflowrateTable) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_table_max(s : NetflowrateTable) -> Double { @_common.max(s.data) }
+pub fn NetflowrateTable::max(self : NetflowrateTable) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_table_to_string(s : NetflowrateTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateTable::to_string(self : NetflowrateTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowrateGraphN {
@@ -453,45 +453,45 @@ pub fn net_flow_rate_graphn_make(size : Int) -> NetflowrateGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_graphn_len(s : NetflowrateGraphN) -> Int { s.size }
+pub fn NetflowrateGraphN::len(self : NetflowrateGraphN) -> Int { self.size }
 
-pub fn net_flow_rate_graphn_get(s : NetflowrateGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateGraphN::get(self : NetflowrateGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_graphn_set(s : NetflowrateGraphN, i : Int, v : Double) -> NetflowrateGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateGraphN::set(self : NetflowrateGraphN, i : Int, v : Double) -> NetflowrateGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_graphn_sum(s : NetflowrateGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateGraphN::sum(self : NetflowrateGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_graphn_mean(s : NetflowrateGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateGraphN::mean(self : NetflowrateGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_graphn_scale(s : NetflowrateGraphN, f : Double) -> NetflowrateGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateGraphN::scale(self : NetflowrateGraphN, f : Double) -> NetflowrateGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_graphn_add(a : NetflowrateGraphN, b : NetflowrateGraphN) -> NetflowrateGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateGraphN::add(self : NetflowrateGraphN, other : NetflowrateGraphN) -> NetflowrateGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_graphn_copy(s : NetflowrateGraphN) -> NetflowrateGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateGraphN::copy(self : NetflowrateGraphN) -> NetflowrateGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_graphn_fill(s : NetflowrateGraphN, v : Double) -> NetflowrateGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateGraphN::fill(self : NetflowrateGraphN, v : Double) -> NetflowrateGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_graphn_min(s : NetflowrateGraphN) -> Double { @_common.min(s.data) }
+pub fn NetflowrateGraphN::min(self : NetflowrateGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_graphn_max(s : NetflowrateGraphN) -> Double { @_common.max(s.data) }
+pub fn NetflowrateGraphN::max(self : NetflowrateGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_graphn_to_string(s : NetflowrateGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateGraphN::to_string(self : NetflowrateGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowrateNode {
@@ -504,45 +504,45 @@ pub fn net_flow_rate_node_make(size : Int) -> NetflowrateNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_node_len(s : NetflowrateNode) -> Int { s.size }
+pub fn NetflowrateNode::len(self : NetflowrateNode) -> Int { self.size }
 
-pub fn net_flow_rate_node_get(s : NetflowrateNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateNode::get(self : NetflowrateNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_node_set(s : NetflowrateNode, i : Int, v : Double) -> NetflowrateNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateNode::set(self : NetflowrateNode, i : Int, v : Double) -> NetflowrateNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_node_sum(s : NetflowrateNode) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateNode::sum(self : NetflowrateNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_node_mean(s : NetflowrateNode) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateNode::mean(self : NetflowrateNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_node_scale(s : NetflowrateNode, f : Double) -> NetflowrateNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateNode::scale(self : NetflowrateNode, f : Double) -> NetflowrateNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_node_add(a : NetflowrateNode, b : NetflowrateNode) -> NetflowrateNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateNode::add(self : NetflowrateNode, other : NetflowrateNode) -> NetflowrateNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_node_copy(s : NetflowrateNode) -> NetflowrateNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateNode::copy(self : NetflowrateNode) -> NetflowrateNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_node_fill(s : NetflowrateNode, v : Double) -> NetflowrateNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateNode::fill(self : NetflowrateNode, v : Double) -> NetflowrateNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_node_min(s : NetflowrateNode) -> Double { @_common.min(s.data) }
+pub fn NetflowrateNode::min(self : NetflowrateNode) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_node_max(s : NetflowrateNode) -> Double { @_common.max(s.data) }
+pub fn NetflowrateNode::max(self : NetflowrateNode) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_node_to_string(s : NetflowrateNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateNode::to_string(self : NetflowrateNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowrateEdge {
@@ -555,45 +555,45 @@ pub fn net_flow_rate_edge_make(size : Int) -> NetflowrateEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_edge_len(s : NetflowrateEdge) -> Int { s.size }
+pub fn NetflowrateEdge::len(self : NetflowrateEdge) -> Int { self.size }
 
-pub fn net_flow_rate_edge_get(s : NetflowrateEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateEdge::get(self : NetflowrateEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_edge_set(s : NetflowrateEdge, i : Int, v : Double) -> NetflowrateEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateEdge::set(self : NetflowrateEdge, i : Int, v : Double) -> NetflowrateEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_edge_sum(s : NetflowrateEdge) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateEdge::sum(self : NetflowrateEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_edge_mean(s : NetflowrateEdge) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateEdge::mean(self : NetflowrateEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_edge_scale(s : NetflowrateEdge, f : Double) -> NetflowrateEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateEdge::scale(self : NetflowrateEdge, f : Double) -> NetflowrateEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_edge_add(a : NetflowrateEdge, b : NetflowrateEdge) -> NetflowrateEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateEdge::add(self : NetflowrateEdge, other : NetflowrateEdge) -> NetflowrateEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_edge_copy(s : NetflowrateEdge) -> NetflowrateEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateEdge::copy(self : NetflowrateEdge) -> NetflowrateEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_edge_fill(s : NetflowrateEdge, v : Double) -> NetflowrateEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateEdge::fill(self : NetflowrateEdge, v : Double) -> NetflowrateEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_edge_min(s : NetflowrateEdge) -> Double { @_common.min(s.data) }
+pub fn NetflowrateEdge::min(self : NetflowrateEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_edge_max(s : NetflowrateEdge) -> Double { @_common.max(s.data) }
+pub fn NetflowrateEdge::max(self : NetflowrateEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_edge_to_string(s : NetflowrateEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateEdge::to_string(self : NetflowrateEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowratePath {
@@ -606,45 +606,45 @@ pub fn net_flow_rate_path_make(size : Int) -> NetflowratePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_path_len(s : NetflowratePath) -> Int { s.size }
+pub fn NetflowratePath::len(self : NetflowratePath) -> Int { self.size }
 
-pub fn net_flow_rate_path_get(s : NetflowratePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowratePath::get(self : NetflowratePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_path_set(s : NetflowratePath, i : Int, v : Double) -> NetflowratePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowratePath::set(self : NetflowratePath, i : Int, v : Double) -> NetflowratePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_path_sum(s : NetflowratePath) -> Double { @_common.sum(s.data) }
+pub fn NetflowratePath::sum(self : NetflowratePath) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_path_mean(s : NetflowratePath) -> Double { @_common.mean(s.data) }
+pub fn NetflowratePath::mean(self : NetflowratePath) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_path_scale(s : NetflowratePath, f : Double) -> NetflowratePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowratePath::scale(self : NetflowratePath, f : Double) -> NetflowratePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_path_add(a : NetflowratePath, b : NetflowratePath) -> NetflowratePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowratePath::add(self : NetflowratePath, other : NetflowratePath) -> NetflowratePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_path_copy(s : NetflowratePath) -> NetflowratePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowratePath::copy(self : NetflowratePath) -> NetflowratePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_path_fill(s : NetflowratePath, v : Double) -> NetflowratePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowratePath::fill(self : NetflowratePath, v : Double) -> NetflowratePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_path_min(s : NetflowratePath) -> Double { @_common.min(s.data) }
+pub fn NetflowratePath::min(self : NetflowratePath) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_path_max(s : NetflowratePath) -> Double { @_common.max(s.data) }
+pub fn NetflowratePath::max(self : NetflowratePath) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_path_to_string(s : NetflowratePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowratePath::to_string(self : NetflowratePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowrateCluster {
@@ -657,45 +657,45 @@ pub fn net_flow_rate_cluster_make(size : Int) -> NetflowrateCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_cluster_len(s : NetflowrateCluster) -> Int { s.size }
+pub fn NetflowrateCluster::len(self : NetflowrateCluster) -> Int { self.size }
 
-pub fn net_flow_rate_cluster_get(s : NetflowrateCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateCluster::get(self : NetflowrateCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_cluster_set(s : NetflowrateCluster, i : Int, v : Double) -> NetflowrateCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateCluster::set(self : NetflowrateCluster, i : Int, v : Double) -> NetflowrateCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_cluster_sum(s : NetflowrateCluster) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateCluster::sum(self : NetflowrateCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_cluster_mean(s : NetflowrateCluster) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateCluster::mean(self : NetflowrateCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_cluster_scale(s : NetflowrateCluster, f : Double) -> NetflowrateCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateCluster::scale(self : NetflowrateCluster, f : Double) -> NetflowrateCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_cluster_add(a : NetflowrateCluster, b : NetflowrateCluster) -> NetflowrateCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateCluster::add(self : NetflowrateCluster, other : NetflowrateCluster) -> NetflowrateCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_cluster_copy(s : NetflowrateCluster) -> NetflowrateCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateCluster::copy(self : NetflowrateCluster) -> NetflowrateCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_cluster_fill(s : NetflowrateCluster, v : Double) -> NetflowrateCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateCluster::fill(self : NetflowrateCluster, v : Double) -> NetflowrateCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_cluster_min(s : NetflowrateCluster) -> Double { @_common.min(s.data) }
+pub fn NetflowrateCluster::min(self : NetflowrateCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_cluster_max(s : NetflowrateCluster) -> Double { @_common.max(s.data) }
+pub fn NetflowrateCluster::max(self : NetflowrateCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_cluster_to_string(s : NetflowrateCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateCluster::to_string(self : NetflowrateCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowrateModel {
@@ -708,45 +708,45 @@ pub fn net_flow_rate_model_make(size : Int) -> NetflowrateModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_model_len(s : NetflowrateModel) -> Int { s.size }
+pub fn NetflowrateModel::len(self : NetflowrateModel) -> Int { self.size }
 
-pub fn net_flow_rate_model_get(s : NetflowrateModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateModel::get(self : NetflowrateModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_model_set(s : NetflowrateModel, i : Int, v : Double) -> NetflowrateModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateModel::set(self : NetflowrateModel, i : Int, v : Double) -> NetflowrateModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_model_sum(s : NetflowrateModel) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateModel::sum(self : NetflowrateModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_model_mean(s : NetflowrateModel) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateModel::mean(self : NetflowrateModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_model_scale(s : NetflowrateModel, f : Double) -> NetflowrateModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateModel::scale(self : NetflowrateModel, f : Double) -> NetflowrateModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_model_add(a : NetflowrateModel, b : NetflowrateModel) -> NetflowrateModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateModel::add(self : NetflowrateModel, other : NetflowrateModel) -> NetflowrateModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_model_copy(s : NetflowrateModel) -> NetflowrateModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateModel::copy(self : NetflowrateModel) -> NetflowrateModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_model_fill(s : NetflowrateModel, v : Double) -> NetflowrateModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateModel::fill(self : NetflowrateModel, v : Double) -> NetflowrateModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_model_min(s : NetflowrateModel) -> Double { @_common.min(s.data) }
+pub fn NetflowrateModel::min(self : NetflowrateModel) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_model_max(s : NetflowrateModel) -> Double { @_common.max(s.data) }
+pub fn NetflowrateModel::max(self : NetflowrateModel) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_model_to_string(s : NetflowrateModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateModel::to_string(self : NetflowrateModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowrateLayer {
@@ -759,45 +759,45 @@ pub fn net_flow_rate_layer_make(size : Int) -> NetflowrateLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_layer_len(s : NetflowrateLayer) -> Int { s.size }
+pub fn NetflowrateLayer::len(self : NetflowrateLayer) -> Int { self.size }
 
-pub fn net_flow_rate_layer_get(s : NetflowrateLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateLayer::get(self : NetflowrateLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_layer_set(s : NetflowrateLayer, i : Int, v : Double) -> NetflowrateLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateLayer::set(self : NetflowrateLayer, i : Int, v : Double) -> NetflowrateLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_layer_sum(s : NetflowrateLayer) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateLayer::sum(self : NetflowrateLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_layer_mean(s : NetflowrateLayer) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateLayer::mean(self : NetflowrateLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_layer_scale(s : NetflowrateLayer, f : Double) -> NetflowrateLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateLayer::scale(self : NetflowrateLayer, f : Double) -> NetflowrateLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_layer_add(a : NetflowrateLayer, b : NetflowrateLayer) -> NetflowrateLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateLayer::add(self : NetflowrateLayer, other : NetflowrateLayer) -> NetflowrateLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_layer_copy(s : NetflowrateLayer) -> NetflowrateLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateLayer::copy(self : NetflowrateLayer) -> NetflowrateLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_layer_fill(s : NetflowrateLayer, v : Double) -> NetflowrateLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateLayer::fill(self : NetflowrateLayer, v : Double) -> NetflowrateLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_layer_min(s : NetflowrateLayer) -> Double { @_common.min(s.data) }
+pub fn NetflowrateLayer::min(self : NetflowrateLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_layer_max(s : NetflowrateLayer) -> Double { @_common.max(s.data) }
+pub fn NetflowrateLayer::max(self : NetflowrateLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_layer_to_string(s : NetflowrateLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateLayer::to_string(self : NetflowrateLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowrateBuffer {
@@ -810,45 +810,45 @@ pub fn net_flow_rate_buffer_make(size : Int) -> NetflowrateBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_buffer_len(s : NetflowrateBuffer) -> Int { s.size }
+pub fn NetflowrateBuffer::len(self : NetflowrateBuffer) -> Int { self.size }
 
-pub fn net_flow_rate_buffer_get(s : NetflowrateBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateBuffer::get(self : NetflowrateBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_buffer_set(s : NetflowrateBuffer, i : Int, v : Double) -> NetflowrateBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateBuffer::set(self : NetflowrateBuffer, i : Int, v : Double) -> NetflowrateBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_buffer_sum(s : NetflowrateBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateBuffer::sum(self : NetflowrateBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_buffer_mean(s : NetflowrateBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateBuffer::mean(self : NetflowrateBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_buffer_scale(s : NetflowrateBuffer, f : Double) -> NetflowrateBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateBuffer::scale(self : NetflowrateBuffer, f : Double) -> NetflowrateBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_buffer_add(a : NetflowrateBuffer, b : NetflowrateBuffer) -> NetflowrateBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateBuffer::add(self : NetflowrateBuffer, other : NetflowrateBuffer) -> NetflowrateBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_buffer_copy(s : NetflowrateBuffer) -> NetflowrateBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateBuffer::copy(self : NetflowrateBuffer) -> NetflowrateBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_buffer_fill(s : NetflowrateBuffer, v : Double) -> NetflowrateBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateBuffer::fill(self : NetflowrateBuffer, v : Double) -> NetflowrateBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_buffer_min(s : NetflowrateBuffer) -> Double { @_common.min(s.data) }
+pub fn NetflowrateBuffer::min(self : NetflowrateBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_buffer_max(s : NetflowrateBuffer) -> Double { @_common.max(s.data) }
+pub fn NetflowrateBuffer::max(self : NetflowrateBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_buffer_to_string(s : NetflowrateBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateBuffer::to_string(self : NetflowrateBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowrateCursor {
@@ -861,45 +861,45 @@ pub fn net_flow_rate_cursor_make(size : Int) -> NetflowrateCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_cursor_len(s : NetflowrateCursor) -> Int { s.size }
+pub fn NetflowrateCursor::len(self : NetflowrateCursor) -> Int { self.size }
 
-pub fn net_flow_rate_cursor_get(s : NetflowrateCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateCursor::get(self : NetflowrateCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_cursor_set(s : NetflowrateCursor, i : Int, v : Double) -> NetflowrateCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateCursor::set(self : NetflowrateCursor, i : Int, v : Double) -> NetflowrateCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_cursor_sum(s : NetflowrateCursor) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateCursor::sum(self : NetflowrateCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_cursor_mean(s : NetflowrateCursor) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateCursor::mean(self : NetflowrateCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_cursor_scale(s : NetflowrateCursor, f : Double) -> NetflowrateCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateCursor::scale(self : NetflowrateCursor, f : Double) -> NetflowrateCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_cursor_add(a : NetflowrateCursor, b : NetflowrateCursor) -> NetflowrateCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateCursor::add(self : NetflowrateCursor, other : NetflowrateCursor) -> NetflowrateCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_cursor_copy(s : NetflowrateCursor) -> NetflowrateCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateCursor::copy(self : NetflowrateCursor) -> NetflowrateCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_cursor_fill(s : NetflowrateCursor, v : Double) -> NetflowrateCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateCursor::fill(self : NetflowrateCursor, v : Double) -> NetflowrateCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_cursor_min(s : NetflowrateCursor) -> Double { @_common.min(s.data) }
+pub fn NetflowrateCursor::min(self : NetflowrateCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_cursor_max(s : NetflowrateCursor) -> Double { @_common.max(s.data) }
+pub fn NetflowrateCursor::max(self : NetflowrateCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_cursor_to_string(s : NetflowrateCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateCursor::to_string(self : NetflowrateCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowrateView {
@@ -912,45 +912,45 @@ pub fn net_flow_rate_view_make(size : Int) -> NetflowrateView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_view_len(s : NetflowrateView) -> Int { s.size }
+pub fn NetflowrateView::len(self : NetflowrateView) -> Int { self.size }
 
-pub fn net_flow_rate_view_get(s : NetflowrateView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateView::get(self : NetflowrateView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_view_set(s : NetflowrateView, i : Int, v : Double) -> NetflowrateView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateView::set(self : NetflowrateView, i : Int, v : Double) -> NetflowrateView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_view_sum(s : NetflowrateView) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateView::sum(self : NetflowrateView) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_view_mean(s : NetflowrateView) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateView::mean(self : NetflowrateView) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_view_scale(s : NetflowrateView, f : Double) -> NetflowrateView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateView::scale(self : NetflowrateView, f : Double) -> NetflowrateView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_view_add(a : NetflowrateView, b : NetflowrateView) -> NetflowrateView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateView::add(self : NetflowrateView, other : NetflowrateView) -> NetflowrateView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_view_copy(s : NetflowrateView) -> NetflowrateView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateView::copy(self : NetflowrateView) -> NetflowrateView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_view_fill(s : NetflowrateView, v : Double) -> NetflowrateView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateView::fill(self : NetflowrateView, v : Double) -> NetflowrateView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_view_min(s : NetflowrateView) -> Double { @_common.min(s.data) }
+pub fn NetflowrateView::min(self : NetflowrateView) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_view_max(s : NetflowrateView) -> Double { @_common.max(s.data) }
+pub fn NetflowrateView::max(self : NetflowrateView) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_view_to_string(s : NetflowrateView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateView::to_string(self : NetflowrateView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowrateRange {
@@ -963,45 +963,45 @@ pub fn net_flow_rate_range_make(size : Int) -> NetflowrateRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_range_len(s : NetflowrateRange) -> Int { s.size }
+pub fn NetflowrateRange::len(self : NetflowrateRange) -> Int { self.size }
 
-pub fn net_flow_rate_range_get(s : NetflowrateRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateRange::get(self : NetflowrateRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_range_set(s : NetflowrateRange, i : Int, v : Double) -> NetflowrateRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateRange::set(self : NetflowrateRange, i : Int, v : Double) -> NetflowrateRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_range_sum(s : NetflowrateRange) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateRange::sum(self : NetflowrateRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_range_mean(s : NetflowrateRange) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateRange::mean(self : NetflowrateRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_range_scale(s : NetflowrateRange, f : Double) -> NetflowrateRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateRange::scale(self : NetflowrateRange, f : Double) -> NetflowrateRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_range_add(a : NetflowrateRange, b : NetflowrateRange) -> NetflowrateRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateRange::add(self : NetflowrateRange, other : NetflowrateRange) -> NetflowrateRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_range_copy(s : NetflowrateRange) -> NetflowrateRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateRange::copy(self : NetflowrateRange) -> NetflowrateRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_range_fill(s : NetflowrateRange, v : Double) -> NetflowrateRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateRange::fill(self : NetflowrateRange, v : Double) -> NetflowrateRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_range_min(s : NetflowrateRange) -> Double { @_common.min(s.data) }
+pub fn NetflowrateRange::min(self : NetflowrateRange) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_range_max(s : NetflowrateRange) -> Double { @_common.max(s.data) }
+pub fn NetflowrateRange::max(self : NetflowrateRange) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_range_to_string(s : NetflowrateRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateRange::to_string(self : NetflowrateRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowrateSlice {
@@ -1014,44 +1014,44 @@ pub fn net_flow_rate_slice_make(size : Int) -> NetflowrateSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_rate_slice_len(s : NetflowrateSlice) -> Int { s.size }
+pub fn NetflowrateSlice::len(self : NetflowrateSlice) -> Int { self.size }
 
-pub fn net_flow_rate_slice_get(s : NetflowrateSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowrateSlice::get(self : NetflowrateSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_rate_slice_set(s : NetflowrateSlice, i : Int, v : Double) -> NetflowrateSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowrateSlice::set(self : NetflowrateSlice, i : Int, v : Double) -> NetflowrateSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_slice_sum(s : NetflowrateSlice) -> Double { @_common.sum(s.data) }
+pub fn NetflowrateSlice::sum(self : NetflowrateSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_rate_slice_mean(s : NetflowrateSlice) -> Double { @_common.mean(s.data) }
+pub fn NetflowrateSlice::mean(self : NetflowrateSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_rate_slice_scale(s : NetflowrateSlice, f : Double) -> NetflowrateSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowrateSlice::scale(self : NetflowrateSlice, f : Double) -> NetflowrateSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_slice_add(a : NetflowrateSlice, b : NetflowrateSlice) -> NetflowrateSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowrateSlice::add(self : NetflowrateSlice, other : NetflowrateSlice) -> NetflowrateSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_rate_slice_copy(s : NetflowrateSlice) -> NetflowrateSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowrateSlice::copy(self : NetflowrateSlice) -> NetflowrateSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_slice_fill(s : NetflowrateSlice, v : Double) -> NetflowrateSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowrateSlice::fill(self : NetflowrateSlice, v : Double) -> NetflowrateSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_rate_slice_min(s : NetflowrateSlice) -> Double { @_common.min(s.data) }
+pub fn NetflowrateSlice::min(self : NetflowrateSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_rate_slice_max(s : NetflowrateSlice) -> Double { @_common.max(s.data) }
+pub fn NetflowrateSlice::max(self : NetflowrateSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_rate_slice_to_string(s : NetflowrateSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowrateSlice::to_string(self : NetflowrateSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

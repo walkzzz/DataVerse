@@ -351,45 +351,45 @@ pub fn nlp_pos_brill_frame_make(size : Int) -> NlpposbrillFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_frame_len(s : NlpposbrillFrame) -> Int { s.size }
+pub fn NlpposbrillFrame::len(self : NlpposbrillFrame) -> Int { self.size }
 
-pub fn nlp_pos_brill_frame_get(s : NlpposbrillFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillFrame::get(self : NlpposbrillFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_frame_set(s : NlpposbrillFrame, i : Int, v : Double) -> NlpposbrillFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillFrame::set(self : NlpposbrillFrame, i : Int, v : Double) -> NlpposbrillFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_frame_sum(s : NlpposbrillFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillFrame::sum(self : NlpposbrillFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_frame_mean(s : NlpposbrillFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillFrame::mean(self : NlpposbrillFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_frame_scale(s : NlpposbrillFrame, f : Double) -> NlpposbrillFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillFrame::scale(self : NlpposbrillFrame, f : Double) -> NlpposbrillFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_frame_add(a : NlpposbrillFrame, b : NlpposbrillFrame) -> NlpposbrillFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillFrame::add(self : NlpposbrillFrame, other : NlpposbrillFrame) -> NlpposbrillFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_frame_copy(s : NlpposbrillFrame) -> NlpposbrillFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillFrame::copy(self : NlpposbrillFrame) -> NlpposbrillFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_frame_fill(s : NlpposbrillFrame, v : Double) -> NlpposbrillFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillFrame::fill(self : NlpposbrillFrame, v : Double) -> NlpposbrillFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_frame_min(s : NlpposbrillFrame) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillFrame::min(self : NlpposbrillFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_frame_max(s : NlpposbrillFrame) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillFrame::max(self : NlpposbrillFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_frame_to_string(s : NlpposbrillFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillFrame::to_string(self : NlpposbrillFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillTable {
@@ -402,45 +402,45 @@ pub fn nlp_pos_brill_table_make(size : Int) -> NlpposbrillTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_table_len(s : NlpposbrillTable) -> Int { s.size }
+pub fn NlpposbrillTable::len(self : NlpposbrillTable) -> Int { self.size }
 
-pub fn nlp_pos_brill_table_get(s : NlpposbrillTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillTable::get(self : NlpposbrillTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_table_set(s : NlpposbrillTable, i : Int, v : Double) -> NlpposbrillTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillTable::set(self : NlpposbrillTable, i : Int, v : Double) -> NlpposbrillTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_table_sum(s : NlpposbrillTable) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillTable::sum(self : NlpposbrillTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_table_mean(s : NlpposbrillTable) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillTable::mean(self : NlpposbrillTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_table_scale(s : NlpposbrillTable, f : Double) -> NlpposbrillTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillTable::scale(self : NlpposbrillTable, f : Double) -> NlpposbrillTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_table_add(a : NlpposbrillTable, b : NlpposbrillTable) -> NlpposbrillTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillTable::add(self : NlpposbrillTable, other : NlpposbrillTable) -> NlpposbrillTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_table_copy(s : NlpposbrillTable) -> NlpposbrillTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillTable::copy(self : NlpposbrillTable) -> NlpposbrillTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_table_fill(s : NlpposbrillTable, v : Double) -> NlpposbrillTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillTable::fill(self : NlpposbrillTable, v : Double) -> NlpposbrillTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_table_min(s : NlpposbrillTable) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillTable::min(self : NlpposbrillTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_table_max(s : NlpposbrillTable) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillTable::max(self : NlpposbrillTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_table_to_string(s : NlpposbrillTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillTable::to_string(self : NlpposbrillTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_pos_brill_graphn_make(size : Int) -> NlpposbrillGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_graphn_len(s : NlpposbrillGraphN) -> Int { s.size }
+pub fn NlpposbrillGraphN::len(self : NlpposbrillGraphN) -> Int { self.size }
 
-pub fn nlp_pos_brill_graphn_get(s : NlpposbrillGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillGraphN::get(self : NlpposbrillGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_graphn_set(s : NlpposbrillGraphN, i : Int, v : Double) -> NlpposbrillGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillGraphN::set(self : NlpposbrillGraphN, i : Int, v : Double) -> NlpposbrillGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_graphn_sum(s : NlpposbrillGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillGraphN::sum(self : NlpposbrillGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_graphn_mean(s : NlpposbrillGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillGraphN::mean(self : NlpposbrillGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_graphn_scale(s : NlpposbrillGraphN, f : Double) -> NlpposbrillGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillGraphN::scale(self : NlpposbrillGraphN, f : Double) -> NlpposbrillGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_graphn_add(a : NlpposbrillGraphN, b : NlpposbrillGraphN) -> NlpposbrillGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillGraphN::add(self : NlpposbrillGraphN, other : NlpposbrillGraphN) -> NlpposbrillGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_graphn_copy(s : NlpposbrillGraphN) -> NlpposbrillGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillGraphN::copy(self : NlpposbrillGraphN) -> NlpposbrillGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_graphn_fill(s : NlpposbrillGraphN, v : Double) -> NlpposbrillGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillGraphN::fill(self : NlpposbrillGraphN, v : Double) -> NlpposbrillGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_graphn_min(s : NlpposbrillGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillGraphN::min(self : NlpposbrillGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_graphn_max(s : NlpposbrillGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillGraphN::max(self : NlpposbrillGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_graphn_to_string(s : NlpposbrillGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillGraphN::to_string(self : NlpposbrillGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillNode {
@@ -504,45 +504,45 @@ pub fn nlp_pos_brill_node_make(size : Int) -> NlpposbrillNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_node_len(s : NlpposbrillNode) -> Int { s.size }
+pub fn NlpposbrillNode::len(self : NlpposbrillNode) -> Int { self.size }
 
-pub fn nlp_pos_brill_node_get(s : NlpposbrillNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillNode::get(self : NlpposbrillNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_node_set(s : NlpposbrillNode, i : Int, v : Double) -> NlpposbrillNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillNode::set(self : NlpposbrillNode, i : Int, v : Double) -> NlpposbrillNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_node_sum(s : NlpposbrillNode) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillNode::sum(self : NlpposbrillNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_node_mean(s : NlpposbrillNode) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillNode::mean(self : NlpposbrillNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_node_scale(s : NlpposbrillNode, f : Double) -> NlpposbrillNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillNode::scale(self : NlpposbrillNode, f : Double) -> NlpposbrillNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_node_add(a : NlpposbrillNode, b : NlpposbrillNode) -> NlpposbrillNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillNode::add(self : NlpposbrillNode, other : NlpposbrillNode) -> NlpposbrillNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_node_copy(s : NlpposbrillNode) -> NlpposbrillNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillNode::copy(self : NlpposbrillNode) -> NlpposbrillNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_node_fill(s : NlpposbrillNode, v : Double) -> NlpposbrillNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillNode::fill(self : NlpposbrillNode, v : Double) -> NlpposbrillNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_node_min(s : NlpposbrillNode) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillNode::min(self : NlpposbrillNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_node_max(s : NlpposbrillNode) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillNode::max(self : NlpposbrillNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_node_to_string(s : NlpposbrillNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillNode::to_string(self : NlpposbrillNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillEdge {
@@ -555,45 +555,45 @@ pub fn nlp_pos_brill_edge_make(size : Int) -> NlpposbrillEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_edge_len(s : NlpposbrillEdge) -> Int { s.size }
+pub fn NlpposbrillEdge::len(self : NlpposbrillEdge) -> Int { self.size }
 
-pub fn nlp_pos_brill_edge_get(s : NlpposbrillEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillEdge::get(self : NlpposbrillEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_edge_set(s : NlpposbrillEdge, i : Int, v : Double) -> NlpposbrillEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillEdge::set(self : NlpposbrillEdge, i : Int, v : Double) -> NlpposbrillEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_edge_sum(s : NlpposbrillEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillEdge::sum(self : NlpposbrillEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_edge_mean(s : NlpposbrillEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillEdge::mean(self : NlpposbrillEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_edge_scale(s : NlpposbrillEdge, f : Double) -> NlpposbrillEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillEdge::scale(self : NlpposbrillEdge, f : Double) -> NlpposbrillEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_edge_add(a : NlpposbrillEdge, b : NlpposbrillEdge) -> NlpposbrillEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillEdge::add(self : NlpposbrillEdge, other : NlpposbrillEdge) -> NlpposbrillEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_edge_copy(s : NlpposbrillEdge) -> NlpposbrillEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillEdge::copy(self : NlpposbrillEdge) -> NlpposbrillEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_edge_fill(s : NlpposbrillEdge, v : Double) -> NlpposbrillEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillEdge::fill(self : NlpposbrillEdge, v : Double) -> NlpposbrillEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_edge_min(s : NlpposbrillEdge) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillEdge::min(self : NlpposbrillEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_edge_max(s : NlpposbrillEdge) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillEdge::max(self : NlpposbrillEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_edge_to_string(s : NlpposbrillEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillEdge::to_string(self : NlpposbrillEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillPath {
@@ -606,45 +606,45 @@ pub fn nlp_pos_brill_path_make(size : Int) -> NlpposbrillPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_path_len(s : NlpposbrillPath) -> Int { s.size }
+pub fn NlpposbrillPath::len(self : NlpposbrillPath) -> Int { self.size }
 
-pub fn nlp_pos_brill_path_get(s : NlpposbrillPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillPath::get(self : NlpposbrillPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_path_set(s : NlpposbrillPath, i : Int, v : Double) -> NlpposbrillPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillPath::set(self : NlpposbrillPath, i : Int, v : Double) -> NlpposbrillPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_path_sum(s : NlpposbrillPath) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillPath::sum(self : NlpposbrillPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_path_mean(s : NlpposbrillPath) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillPath::mean(self : NlpposbrillPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_path_scale(s : NlpposbrillPath, f : Double) -> NlpposbrillPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillPath::scale(self : NlpposbrillPath, f : Double) -> NlpposbrillPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_path_add(a : NlpposbrillPath, b : NlpposbrillPath) -> NlpposbrillPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillPath::add(self : NlpposbrillPath, other : NlpposbrillPath) -> NlpposbrillPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_path_copy(s : NlpposbrillPath) -> NlpposbrillPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillPath::copy(self : NlpposbrillPath) -> NlpposbrillPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_path_fill(s : NlpposbrillPath, v : Double) -> NlpposbrillPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillPath::fill(self : NlpposbrillPath, v : Double) -> NlpposbrillPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_path_min(s : NlpposbrillPath) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillPath::min(self : NlpposbrillPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_path_max(s : NlpposbrillPath) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillPath::max(self : NlpposbrillPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_path_to_string(s : NlpposbrillPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillPath::to_string(self : NlpposbrillPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillCluster {
@@ -657,45 +657,45 @@ pub fn nlp_pos_brill_cluster_make(size : Int) -> NlpposbrillCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_cluster_len(s : NlpposbrillCluster) -> Int { s.size }
+pub fn NlpposbrillCluster::len(self : NlpposbrillCluster) -> Int { self.size }
 
-pub fn nlp_pos_brill_cluster_get(s : NlpposbrillCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillCluster::get(self : NlpposbrillCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_cluster_set(s : NlpposbrillCluster, i : Int, v : Double) -> NlpposbrillCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillCluster::set(self : NlpposbrillCluster, i : Int, v : Double) -> NlpposbrillCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_cluster_sum(s : NlpposbrillCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillCluster::sum(self : NlpposbrillCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_cluster_mean(s : NlpposbrillCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillCluster::mean(self : NlpposbrillCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_cluster_scale(s : NlpposbrillCluster, f : Double) -> NlpposbrillCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillCluster::scale(self : NlpposbrillCluster, f : Double) -> NlpposbrillCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_cluster_add(a : NlpposbrillCluster, b : NlpposbrillCluster) -> NlpposbrillCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillCluster::add(self : NlpposbrillCluster, other : NlpposbrillCluster) -> NlpposbrillCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_cluster_copy(s : NlpposbrillCluster) -> NlpposbrillCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillCluster::copy(self : NlpposbrillCluster) -> NlpposbrillCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_cluster_fill(s : NlpposbrillCluster, v : Double) -> NlpposbrillCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillCluster::fill(self : NlpposbrillCluster, v : Double) -> NlpposbrillCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_cluster_min(s : NlpposbrillCluster) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillCluster::min(self : NlpposbrillCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_cluster_max(s : NlpposbrillCluster) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillCluster::max(self : NlpposbrillCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_cluster_to_string(s : NlpposbrillCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillCluster::to_string(self : NlpposbrillCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillModel {
@@ -708,45 +708,45 @@ pub fn nlp_pos_brill_model_make(size : Int) -> NlpposbrillModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_model_len(s : NlpposbrillModel) -> Int { s.size }
+pub fn NlpposbrillModel::len(self : NlpposbrillModel) -> Int { self.size }
 
-pub fn nlp_pos_brill_model_get(s : NlpposbrillModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillModel::get(self : NlpposbrillModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_model_set(s : NlpposbrillModel, i : Int, v : Double) -> NlpposbrillModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillModel::set(self : NlpposbrillModel, i : Int, v : Double) -> NlpposbrillModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_model_sum(s : NlpposbrillModel) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillModel::sum(self : NlpposbrillModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_model_mean(s : NlpposbrillModel) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillModel::mean(self : NlpposbrillModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_model_scale(s : NlpposbrillModel, f : Double) -> NlpposbrillModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillModel::scale(self : NlpposbrillModel, f : Double) -> NlpposbrillModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_model_add(a : NlpposbrillModel, b : NlpposbrillModel) -> NlpposbrillModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillModel::add(self : NlpposbrillModel, other : NlpposbrillModel) -> NlpposbrillModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_model_copy(s : NlpposbrillModel) -> NlpposbrillModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillModel::copy(self : NlpposbrillModel) -> NlpposbrillModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_model_fill(s : NlpposbrillModel, v : Double) -> NlpposbrillModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillModel::fill(self : NlpposbrillModel, v : Double) -> NlpposbrillModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_model_min(s : NlpposbrillModel) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillModel::min(self : NlpposbrillModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_model_max(s : NlpposbrillModel) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillModel::max(self : NlpposbrillModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_model_to_string(s : NlpposbrillModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillModel::to_string(self : NlpposbrillModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillLayer {
@@ -759,45 +759,45 @@ pub fn nlp_pos_brill_layer_make(size : Int) -> NlpposbrillLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_layer_len(s : NlpposbrillLayer) -> Int { s.size }
+pub fn NlpposbrillLayer::len(self : NlpposbrillLayer) -> Int { self.size }
 
-pub fn nlp_pos_brill_layer_get(s : NlpposbrillLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillLayer::get(self : NlpposbrillLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_layer_set(s : NlpposbrillLayer, i : Int, v : Double) -> NlpposbrillLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillLayer::set(self : NlpposbrillLayer, i : Int, v : Double) -> NlpposbrillLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_layer_sum(s : NlpposbrillLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillLayer::sum(self : NlpposbrillLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_layer_mean(s : NlpposbrillLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillLayer::mean(self : NlpposbrillLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_layer_scale(s : NlpposbrillLayer, f : Double) -> NlpposbrillLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillLayer::scale(self : NlpposbrillLayer, f : Double) -> NlpposbrillLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_layer_add(a : NlpposbrillLayer, b : NlpposbrillLayer) -> NlpposbrillLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillLayer::add(self : NlpposbrillLayer, other : NlpposbrillLayer) -> NlpposbrillLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_layer_copy(s : NlpposbrillLayer) -> NlpposbrillLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillLayer::copy(self : NlpposbrillLayer) -> NlpposbrillLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_layer_fill(s : NlpposbrillLayer, v : Double) -> NlpposbrillLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillLayer::fill(self : NlpposbrillLayer, v : Double) -> NlpposbrillLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_layer_min(s : NlpposbrillLayer) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillLayer::min(self : NlpposbrillLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_layer_max(s : NlpposbrillLayer) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillLayer::max(self : NlpposbrillLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_layer_to_string(s : NlpposbrillLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillLayer::to_string(self : NlpposbrillLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_pos_brill_buffer_make(size : Int) -> NlpposbrillBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_buffer_len(s : NlpposbrillBuffer) -> Int { s.size }
+pub fn NlpposbrillBuffer::len(self : NlpposbrillBuffer) -> Int { self.size }
 
-pub fn nlp_pos_brill_buffer_get(s : NlpposbrillBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillBuffer::get(self : NlpposbrillBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_buffer_set(s : NlpposbrillBuffer, i : Int, v : Double) -> NlpposbrillBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillBuffer::set(self : NlpposbrillBuffer, i : Int, v : Double) -> NlpposbrillBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_buffer_sum(s : NlpposbrillBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillBuffer::sum(self : NlpposbrillBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_buffer_mean(s : NlpposbrillBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillBuffer::mean(self : NlpposbrillBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_buffer_scale(s : NlpposbrillBuffer, f : Double) -> NlpposbrillBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillBuffer::scale(self : NlpposbrillBuffer, f : Double) -> NlpposbrillBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_buffer_add(a : NlpposbrillBuffer, b : NlpposbrillBuffer) -> NlpposbrillBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillBuffer::add(self : NlpposbrillBuffer, other : NlpposbrillBuffer) -> NlpposbrillBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_buffer_copy(s : NlpposbrillBuffer) -> NlpposbrillBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillBuffer::copy(self : NlpposbrillBuffer) -> NlpposbrillBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_buffer_fill(s : NlpposbrillBuffer, v : Double) -> NlpposbrillBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillBuffer::fill(self : NlpposbrillBuffer, v : Double) -> NlpposbrillBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_buffer_min(s : NlpposbrillBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillBuffer::min(self : NlpposbrillBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_buffer_max(s : NlpposbrillBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillBuffer::max(self : NlpposbrillBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_buffer_to_string(s : NlpposbrillBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillBuffer::to_string(self : NlpposbrillBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillCursor {
@@ -861,45 +861,45 @@ pub fn nlp_pos_brill_cursor_make(size : Int) -> NlpposbrillCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_cursor_len(s : NlpposbrillCursor) -> Int { s.size }
+pub fn NlpposbrillCursor::len(self : NlpposbrillCursor) -> Int { self.size }
 
-pub fn nlp_pos_brill_cursor_get(s : NlpposbrillCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillCursor::get(self : NlpposbrillCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_cursor_set(s : NlpposbrillCursor, i : Int, v : Double) -> NlpposbrillCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillCursor::set(self : NlpposbrillCursor, i : Int, v : Double) -> NlpposbrillCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_cursor_sum(s : NlpposbrillCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillCursor::sum(self : NlpposbrillCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_cursor_mean(s : NlpposbrillCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillCursor::mean(self : NlpposbrillCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_cursor_scale(s : NlpposbrillCursor, f : Double) -> NlpposbrillCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillCursor::scale(self : NlpposbrillCursor, f : Double) -> NlpposbrillCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_cursor_add(a : NlpposbrillCursor, b : NlpposbrillCursor) -> NlpposbrillCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillCursor::add(self : NlpposbrillCursor, other : NlpposbrillCursor) -> NlpposbrillCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_cursor_copy(s : NlpposbrillCursor) -> NlpposbrillCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillCursor::copy(self : NlpposbrillCursor) -> NlpposbrillCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_cursor_fill(s : NlpposbrillCursor, v : Double) -> NlpposbrillCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillCursor::fill(self : NlpposbrillCursor, v : Double) -> NlpposbrillCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_cursor_min(s : NlpposbrillCursor) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillCursor::min(self : NlpposbrillCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_cursor_max(s : NlpposbrillCursor) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillCursor::max(self : NlpposbrillCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_cursor_to_string(s : NlpposbrillCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillCursor::to_string(self : NlpposbrillCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillView {
@@ -912,45 +912,45 @@ pub fn nlp_pos_brill_view_make(size : Int) -> NlpposbrillView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_view_len(s : NlpposbrillView) -> Int { s.size }
+pub fn NlpposbrillView::len(self : NlpposbrillView) -> Int { self.size }
 
-pub fn nlp_pos_brill_view_get(s : NlpposbrillView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillView::get(self : NlpposbrillView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_view_set(s : NlpposbrillView, i : Int, v : Double) -> NlpposbrillView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillView::set(self : NlpposbrillView, i : Int, v : Double) -> NlpposbrillView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_view_sum(s : NlpposbrillView) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillView::sum(self : NlpposbrillView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_view_mean(s : NlpposbrillView) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillView::mean(self : NlpposbrillView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_view_scale(s : NlpposbrillView, f : Double) -> NlpposbrillView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillView::scale(self : NlpposbrillView, f : Double) -> NlpposbrillView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_view_add(a : NlpposbrillView, b : NlpposbrillView) -> NlpposbrillView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillView::add(self : NlpposbrillView, other : NlpposbrillView) -> NlpposbrillView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_view_copy(s : NlpposbrillView) -> NlpposbrillView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillView::copy(self : NlpposbrillView) -> NlpposbrillView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_view_fill(s : NlpposbrillView, v : Double) -> NlpposbrillView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillView::fill(self : NlpposbrillView, v : Double) -> NlpposbrillView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_view_min(s : NlpposbrillView) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillView::min(self : NlpposbrillView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_view_max(s : NlpposbrillView) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillView::max(self : NlpposbrillView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_view_to_string(s : NlpposbrillView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillView::to_string(self : NlpposbrillView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillRange {
@@ -963,45 +963,45 @@ pub fn nlp_pos_brill_range_make(size : Int) -> NlpposbrillRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_range_len(s : NlpposbrillRange) -> Int { s.size }
+pub fn NlpposbrillRange::len(self : NlpposbrillRange) -> Int { self.size }
 
-pub fn nlp_pos_brill_range_get(s : NlpposbrillRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillRange::get(self : NlpposbrillRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_range_set(s : NlpposbrillRange, i : Int, v : Double) -> NlpposbrillRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillRange::set(self : NlpposbrillRange, i : Int, v : Double) -> NlpposbrillRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_range_sum(s : NlpposbrillRange) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillRange::sum(self : NlpposbrillRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_range_mean(s : NlpposbrillRange) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillRange::mean(self : NlpposbrillRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_range_scale(s : NlpposbrillRange, f : Double) -> NlpposbrillRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillRange::scale(self : NlpposbrillRange, f : Double) -> NlpposbrillRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_range_add(a : NlpposbrillRange, b : NlpposbrillRange) -> NlpposbrillRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillRange::add(self : NlpposbrillRange, other : NlpposbrillRange) -> NlpposbrillRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_range_copy(s : NlpposbrillRange) -> NlpposbrillRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillRange::copy(self : NlpposbrillRange) -> NlpposbrillRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_range_fill(s : NlpposbrillRange, v : Double) -> NlpposbrillRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillRange::fill(self : NlpposbrillRange, v : Double) -> NlpposbrillRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_range_min(s : NlpposbrillRange) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillRange::min(self : NlpposbrillRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_range_max(s : NlpposbrillRange) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillRange::max(self : NlpposbrillRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_range_to_string(s : NlpposbrillRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillRange::to_string(self : NlpposbrillRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_pos_brill_slice_make(size : Int) -> NlpposbrillSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_brill_slice_len(s : NlpposbrillSlice) -> Int { s.size }
+pub fn NlpposbrillSlice::len(self : NlpposbrillSlice) -> Int { self.size }
 
-pub fn nlp_pos_brill_slice_get(s : NlpposbrillSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposbrillSlice::get(self : NlpposbrillSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_brill_slice_set(s : NlpposbrillSlice, i : Int, v : Double) -> NlpposbrillSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposbrillSlice::set(self : NlpposbrillSlice, i : Int, v : Double) -> NlpposbrillSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_slice_sum(s : NlpposbrillSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpposbrillSlice::sum(self : NlpposbrillSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_brill_slice_mean(s : NlpposbrillSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpposbrillSlice::mean(self : NlpposbrillSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_brill_slice_scale(s : NlpposbrillSlice, f : Double) -> NlpposbrillSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposbrillSlice::scale(self : NlpposbrillSlice, f : Double) -> NlpposbrillSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_slice_add(a : NlpposbrillSlice, b : NlpposbrillSlice) -> NlpposbrillSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposbrillSlice::add(self : NlpposbrillSlice, other : NlpposbrillSlice) -> NlpposbrillSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_slice_copy(s : NlpposbrillSlice) -> NlpposbrillSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposbrillSlice::copy(self : NlpposbrillSlice) -> NlpposbrillSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_slice_fill(s : NlpposbrillSlice, v : Double) -> NlpposbrillSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposbrillSlice::fill(self : NlpposbrillSlice, v : Double) -> NlpposbrillSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_brill_slice_min(s : NlpposbrillSlice) -> Double { @_common.min(s.data) }
+pub fn NlpposbrillSlice::min(self : NlpposbrillSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_brill_slice_max(s : NlpposbrillSlice) -> Double { @_common.max(s.data) }
+pub fn NlpposbrillSlice::max(self : NlpposbrillSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_brill_slice_to_string(s : NlpposbrillSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposbrillSlice::to_string(self : NlpposbrillSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

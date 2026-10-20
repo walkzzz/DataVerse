@@ -351,45 +351,45 @@ pub fn geo_proj_mercator_frame_make(size : Int) -> GeoprojmercatorFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_frame_len(s : GeoprojmercatorFrame) -> Int { s.size }
+pub fn GeoprojmercatorFrame::len(self : GeoprojmercatorFrame) -> Int { self.size }
 
-pub fn geo_proj_mercator_frame_get(s : GeoprojmercatorFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorFrame::get(self : GeoprojmercatorFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_frame_set(s : GeoprojmercatorFrame, i : Int, v : Double) -> GeoprojmercatorFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorFrame::set(self : GeoprojmercatorFrame, i : Int, v : Double) -> GeoprojmercatorFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_frame_sum(s : GeoprojmercatorFrame) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorFrame::sum(self : GeoprojmercatorFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_frame_mean(s : GeoprojmercatorFrame) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorFrame::mean(self : GeoprojmercatorFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_frame_scale(s : GeoprojmercatorFrame, f : Double) -> GeoprojmercatorFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorFrame::scale(self : GeoprojmercatorFrame, f : Double) -> GeoprojmercatorFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_frame_add(a : GeoprojmercatorFrame, b : GeoprojmercatorFrame) -> GeoprojmercatorFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorFrame::add(self : GeoprojmercatorFrame, other : GeoprojmercatorFrame) -> GeoprojmercatorFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_frame_copy(s : GeoprojmercatorFrame) -> GeoprojmercatorFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorFrame::copy(self : GeoprojmercatorFrame) -> GeoprojmercatorFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_frame_fill(s : GeoprojmercatorFrame, v : Double) -> GeoprojmercatorFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorFrame::fill(self : GeoprojmercatorFrame, v : Double) -> GeoprojmercatorFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_frame_min(s : GeoprojmercatorFrame) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorFrame::min(self : GeoprojmercatorFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_frame_max(s : GeoprojmercatorFrame) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorFrame::max(self : GeoprojmercatorFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_frame_to_string(s : GeoprojmercatorFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorFrame::to_string(self : GeoprojmercatorFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorTable {
@@ -402,45 +402,45 @@ pub fn geo_proj_mercator_table_make(size : Int) -> GeoprojmercatorTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_table_len(s : GeoprojmercatorTable) -> Int { s.size }
+pub fn GeoprojmercatorTable::len(self : GeoprojmercatorTable) -> Int { self.size }
 
-pub fn geo_proj_mercator_table_get(s : GeoprojmercatorTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorTable::get(self : GeoprojmercatorTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_table_set(s : GeoprojmercatorTable, i : Int, v : Double) -> GeoprojmercatorTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorTable::set(self : GeoprojmercatorTable, i : Int, v : Double) -> GeoprojmercatorTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_table_sum(s : GeoprojmercatorTable) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorTable::sum(self : GeoprojmercatorTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_table_mean(s : GeoprojmercatorTable) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorTable::mean(self : GeoprojmercatorTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_table_scale(s : GeoprojmercatorTable, f : Double) -> GeoprojmercatorTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorTable::scale(self : GeoprojmercatorTable, f : Double) -> GeoprojmercatorTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_table_add(a : GeoprojmercatorTable, b : GeoprojmercatorTable) -> GeoprojmercatorTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorTable::add(self : GeoprojmercatorTable, other : GeoprojmercatorTable) -> GeoprojmercatorTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_table_copy(s : GeoprojmercatorTable) -> GeoprojmercatorTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorTable::copy(self : GeoprojmercatorTable) -> GeoprojmercatorTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_table_fill(s : GeoprojmercatorTable, v : Double) -> GeoprojmercatorTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorTable::fill(self : GeoprojmercatorTable, v : Double) -> GeoprojmercatorTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_table_min(s : GeoprojmercatorTable) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorTable::min(self : GeoprojmercatorTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_table_max(s : GeoprojmercatorTable) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorTable::max(self : GeoprojmercatorTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_table_to_string(s : GeoprojmercatorTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorTable::to_string(self : GeoprojmercatorTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorGraphN {
@@ -453,45 +453,45 @@ pub fn geo_proj_mercator_graphn_make(size : Int) -> GeoprojmercatorGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_graphn_len(s : GeoprojmercatorGraphN) -> Int { s.size }
+pub fn GeoprojmercatorGraphN::len(self : GeoprojmercatorGraphN) -> Int { self.size }
 
-pub fn geo_proj_mercator_graphn_get(s : GeoprojmercatorGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorGraphN::get(self : GeoprojmercatorGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_graphn_set(s : GeoprojmercatorGraphN, i : Int, v : Double) -> GeoprojmercatorGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorGraphN::set(self : GeoprojmercatorGraphN, i : Int, v : Double) -> GeoprojmercatorGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_graphn_sum(s : GeoprojmercatorGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorGraphN::sum(self : GeoprojmercatorGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_graphn_mean(s : GeoprojmercatorGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorGraphN::mean(self : GeoprojmercatorGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_graphn_scale(s : GeoprojmercatorGraphN, f : Double) -> GeoprojmercatorGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorGraphN::scale(self : GeoprojmercatorGraphN, f : Double) -> GeoprojmercatorGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_graphn_add(a : GeoprojmercatorGraphN, b : GeoprojmercatorGraphN) -> GeoprojmercatorGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorGraphN::add(self : GeoprojmercatorGraphN, other : GeoprojmercatorGraphN) -> GeoprojmercatorGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_graphn_copy(s : GeoprojmercatorGraphN) -> GeoprojmercatorGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorGraphN::copy(self : GeoprojmercatorGraphN) -> GeoprojmercatorGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_graphn_fill(s : GeoprojmercatorGraphN, v : Double) -> GeoprojmercatorGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorGraphN::fill(self : GeoprojmercatorGraphN, v : Double) -> GeoprojmercatorGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_graphn_min(s : GeoprojmercatorGraphN) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorGraphN::min(self : GeoprojmercatorGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_graphn_max(s : GeoprojmercatorGraphN) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorGraphN::max(self : GeoprojmercatorGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_graphn_to_string(s : GeoprojmercatorGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorGraphN::to_string(self : GeoprojmercatorGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorNode {
@@ -504,45 +504,45 @@ pub fn geo_proj_mercator_node_make(size : Int) -> GeoprojmercatorNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_node_len(s : GeoprojmercatorNode) -> Int { s.size }
+pub fn GeoprojmercatorNode::len(self : GeoprojmercatorNode) -> Int { self.size }
 
-pub fn geo_proj_mercator_node_get(s : GeoprojmercatorNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorNode::get(self : GeoprojmercatorNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_node_set(s : GeoprojmercatorNode, i : Int, v : Double) -> GeoprojmercatorNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorNode::set(self : GeoprojmercatorNode, i : Int, v : Double) -> GeoprojmercatorNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_node_sum(s : GeoprojmercatorNode) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorNode::sum(self : GeoprojmercatorNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_node_mean(s : GeoprojmercatorNode) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorNode::mean(self : GeoprojmercatorNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_node_scale(s : GeoprojmercatorNode, f : Double) -> GeoprojmercatorNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorNode::scale(self : GeoprojmercatorNode, f : Double) -> GeoprojmercatorNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_node_add(a : GeoprojmercatorNode, b : GeoprojmercatorNode) -> GeoprojmercatorNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorNode::add(self : GeoprojmercatorNode, other : GeoprojmercatorNode) -> GeoprojmercatorNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_node_copy(s : GeoprojmercatorNode) -> GeoprojmercatorNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorNode::copy(self : GeoprojmercatorNode) -> GeoprojmercatorNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_node_fill(s : GeoprojmercatorNode, v : Double) -> GeoprojmercatorNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorNode::fill(self : GeoprojmercatorNode, v : Double) -> GeoprojmercatorNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_node_min(s : GeoprojmercatorNode) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorNode::min(self : GeoprojmercatorNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_node_max(s : GeoprojmercatorNode) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorNode::max(self : GeoprojmercatorNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_node_to_string(s : GeoprojmercatorNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorNode::to_string(self : GeoprojmercatorNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorEdge {
@@ -555,45 +555,45 @@ pub fn geo_proj_mercator_edge_make(size : Int) -> GeoprojmercatorEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_edge_len(s : GeoprojmercatorEdge) -> Int { s.size }
+pub fn GeoprojmercatorEdge::len(self : GeoprojmercatorEdge) -> Int { self.size }
 
-pub fn geo_proj_mercator_edge_get(s : GeoprojmercatorEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorEdge::get(self : GeoprojmercatorEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_edge_set(s : GeoprojmercatorEdge, i : Int, v : Double) -> GeoprojmercatorEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorEdge::set(self : GeoprojmercatorEdge, i : Int, v : Double) -> GeoprojmercatorEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_edge_sum(s : GeoprojmercatorEdge) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorEdge::sum(self : GeoprojmercatorEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_edge_mean(s : GeoprojmercatorEdge) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorEdge::mean(self : GeoprojmercatorEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_edge_scale(s : GeoprojmercatorEdge, f : Double) -> GeoprojmercatorEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorEdge::scale(self : GeoprojmercatorEdge, f : Double) -> GeoprojmercatorEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_edge_add(a : GeoprojmercatorEdge, b : GeoprojmercatorEdge) -> GeoprojmercatorEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorEdge::add(self : GeoprojmercatorEdge, other : GeoprojmercatorEdge) -> GeoprojmercatorEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_edge_copy(s : GeoprojmercatorEdge) -> GeoprojmercatorEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorEdge::copy(self : GeoprojmercatorEdge) -> GeoprojmercatorEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_edge_fill(s : GeoprojmercatorEdge, v : Double) -> GeoprojmercatorEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorEdge::fill(self : GeoprojmercatorEdge, v : Double) -> GeoprojmercatorEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_edge_min(s : GeoprojmercatorEdge) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorEdge::min(self : GeoprojmercatorEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_edge_max(s : GeoprojmercatorEdge) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorEdge::max(self : GeoprojmercatorEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_edge_to_string(s : GeoprojmercatorEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorEdge::to_string(self : GeoprojmercatorEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorPath {
@@ -606,45 +606,45 @@ pub fn geo_proj_mercator_path_make(size : Int) -> GeoprojmercatorPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_path_len(s : GeoprojmercatorPath) -> Int { s.size }
+pub fn GeoprojmercatorPath::len(self : GeoprojmercatorPath) -> Int { self.size }
 
-pub fn geo_proj_mercator_path_get(s : GeoprojmercatorPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorPath::get(self : GeoprojmercatorPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_path_set(s : GeoprojmercatorPath, i : Int, v : Double) -> GeoprojmercatorPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorPath::set(self : GeoprojmercatorPath, i : Int, v : Double) -> GeoprojmercatorPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_path_sum(s : GeoprojmercatorPath) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorPath::sum(self : GeoprojmercatorPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_path_mean(s : GeoprojmercatorPath) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorPath::mean(self : GeoprojmercatorPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_path_scale(s : GeoprojmercatorPath, f : Double) -> GeoprojmercatorPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorPath::scale(self : GeoprojmercatorPath, f : Double) -> GeoprojmercatorPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_path_add(a : GeoprojmercatorPath, b : GeoprojmercatorPath) -> GeoprojmercatorPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorPath::add(self : GeoprojmercatorPath, other : GeoprojmercatorPath) -> GeoprojmercatorPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_path_copy(s : GeoprojmercatorPath) -> GeoprojmercatorPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorPath::copy(self : GeoprojmercatorPath) -> GeoprojmercatorPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_path_fill(s : GeoprojmercatorPath, v : Double) -> GeoprojmercatorPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorPath::fill(self : GeoprojmercatorPath, v : Double) -> GeoprojmercatorPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_path_min(s : GeoprojmercatorPath) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorPath::min(self : GeoprojmercatorPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_path_max(s : GeoprojmercatorPath) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorPath::max(self : GeoprojmercatorPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_path_to_string(s : GeoprojmercatorPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorPath::to_string(self : GeoprojmercatorPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorCluster {
@@ -657,45 +657,45 @@ pub fn geo_proj_mercator_cluster_make(size : Int) -> GeoprojmercatorCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_cluster_len(s : GeoprojmercatorCluster) -> Int { s.size }
+pub fn GeoprojmercatorCluster::len(self : GeoprojmercatorCluster) -> Int { self.size }
 
-pub fn geo_proj_mercator_cluster_get(s : GeoprojmercatorCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorCluster::get(self : GeoprojmercatorCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_cluster_set(s : GeoprojmercatorCluster, i : Int, v : Double) -> GeoprojmercatorCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorCluster::set(self : GeoprojmercatorCluster, i : Int, v : Double) -> GeoprojmercatorCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_cluster_sum(s : GeoprojmercatorCluster) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorCluster::sum(self : GeoprojmercatorCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_cluster_mean(s : GeoprojmercatorCluster) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorCluster::mean(self : GeoprojmercatorCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_cluster_scale(s : GeoprojmercatorCluster, f : Double) -> GeoprojmercatorCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorCluster::scale(self : GeoprojmercatorCluster, f : Double) -> GeoprojmercatorCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_cluster_add(a : GeoprojmercatorCluster, b : GeoprojmercatorCluster) -> GeoprojmercatorCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorCluster::add(self : GeoprojmercatorCluster, other : GeoprojmercatorCluster) -> GeoprojmercatorCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_cluster_copy(s : GeoprojmercatorCluster) -> GeoprojmercatorCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorCluster::copy(self : GeoprojmercatorCluster) -> GeoprojmercatorCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_cluster_fill(s : GeoprojmercatorCluster, v : Double) -> GeoprojmercatorCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorCluster::fill(self : GeoprojmercatorCluster, v : Double) -> GeoprojmercatorCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_cluster_min(s : GeoprojmercatorCluster) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorCluster::min(self : GeoprojmercatorCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_cluster_max(s : GeoprojmercatorCluster) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorCluster::max(self : GeoprojmercatorCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_cluster_to_string(s : GeoprojmercatorCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorCluster::to_string(self : GeoprojmercatorCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorModel {
@@ -708,45 +708,45 @@ pub fn geo_proj_mercator_model_make(size : Int) -> GeoprojmercatorModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_model_len(s : GeoprojmercatorModel) -> Int { s.size }
+pub fn GeoprojmercatorModel::len(self : GeoprojmercatorModel) -> Int { self.size }
 
-pub fn geo_proj_mercator_model_get(s : GeoprojmercatorModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorModel::get(self : GeoprojmercatorModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_model_set(s : GeoprojmercatorModel, i : Int, v : Double) -> GeoprojmercatorModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorModel::set(self : GeoprojmercatorModel, i : Int, v : Double) -> GeoprojmercatorModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_model_sum(s : GeoprojmercatorModel) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorModel::sum(self : GeoprojmercatorModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_model_mean(s : GeoprojmercatorModel) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorModel::mean(self : GeoprojmercatorModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_model_scale(s : GeoprojmercatorModel, f : Double) -> GeoprojmercatorModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorModel::scale(self : GeoprojmercatorModel, f : Double) -> GeoprojmercatorModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_model_add(a : GeoprojmercatorModel, b : GeoprojmercatorModel) -> GeoprojmercatorModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorModel::add(self : GeoprojmercatorModel, other : GeoprojmercatorModel) -> GeoprojmercatorModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_model_copy(s : GeoprojmercatorModel) -> GeoprojmercatorModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorModel::copy(self : GeoprojmercatorModel) -> GeoprojmercatorModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_model_fill(s : GeoprojmercatorModel, v : Double) -> GeoprojmercatorModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorModel::fill(self : GeoprojmercatorModel, v : Double) -> GeoprojmercatorModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_model_min(s : GeoprojmercatorModel) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorModel::min(self : GeoprojmercatorModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_model_max(s : GeoprojmercatorModel) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorModel::max(self : GeoprojmercatorModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_model_to_string(s : GeoprojmercatorModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorModel::to_string(self : GeoprojmercatorModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorLayer {
@@ -759,45 +759,45 @@ pub fn geo_proj_mercator_layer_make(size : Int) -> GeoprojmercatorLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_layer_len(s : GeoprojmercatorLayer) -> Int { s.size }
+pub fn GeoprojmercatorLayer::len(self : GeoprojmercatorLayer) -> Int { self.size }
 
-pub fn geo_proj_mercator_layer_get(s : GeoprojmercatorLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorLayer::get(self : GeoprojmercatorLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_layer_set(s : GeoprojmercatorLayer, i : Int, v : Double) -> GeoprojmercatorLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorLayer::set(self : GeoprojmercatorLayer, i : Int, v : Double) -> GeoprojmercatorLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_layer_sum(s : GeoprojmercatorLayer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorLayer::sum(self : GeoprojmercatorLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_layer_mean(s : GeoprojmercatorLayer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorLayer::mean(self : GeoprojmercatorLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_layer_scale(s : GeoprojmercatorLayer, f : Double) -> GeoprojmercatorLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorLayer::scale(self : GeoprojmercatorLayer, f : Double) -> GeoprojmercatorLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_layer_add(a : GeoprojmercatorLayer, b : GeoprojmercatorLayer) -> GeoprojmercatorLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorLayer::add(self : GeoprojmercatorLayer, other : GeoprojmercatorLayer) -> GeoprojmercatorLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_layer_copy(s : GeoprojmercatorLayer) -> GeoprojmercatorLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorLayer::copy(self : GeoprojmercatorLayer) -> GeoprojmercatorLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_layer_fill(s : GeoprojmercatorLayer, v : Double) -> GeoprojmercatorLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorLayer::fill(self : GeoprojmercatorLayer, v : Double) -> GeoprojmercatorLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_layer_min(s : GeoprojmercatorLayer) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorLayer::min(self : GeoprojmercatorLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_layer_max(s : GeoprojmercatorLayer) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorLayer::max(self : GeoprojmercatorLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_layer_to_string(s : GeoprojmercatorLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorLayer::to_string(self : GeoprojmercatorLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorBuffer {
@@ -810,45 +810,45 @@ pub fn geo_proj_mercator_buffer_make(size : Int) -> GeoprojmercatorBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_buffer_len(s : GeoprojmercatorBuffer) -> Int { s.size }
+pub fn GeoprojmercatorBuffer::len(self : GeoprojmercatorBuffer) -> Int { self.size }
 
-pub fn geo_proj_mercator_buffer_get(s : GeoprojmercatorBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorBuffer::get(self : GeoprojmercatorBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_buffer_set(s : GeoprojmercatorBuffer, i : Int, v : Double) -> GeoprojmercatorBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorBuffer::set(self : GeoprojmercatorBuffer, i : Int, v : Double) -> GeoprojmercatorBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_buffer_sum(s : GeoprojmercatorBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorBuffer::sum(self : GeoprojmercatorBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_buffer_mean(s : GeoprojmercatorBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorBuffer::mean(self : GeoprojmercatorBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_buffer_scale(s : GeoprojmercatorBuffer, f : Double) -> GeoprojmercatorBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorBuffer::scale(self : GeoprojmercatorBuffer, f : Double) -> GeoprojmercatorBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_buffer_add(a : GeoprojmercatorBuffer, b : GeoprojmercatorBuffer) -> GeoprojmercatorBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorBuffer::add(self : GeoprojmercatorBuffer, other : GeoprojmercatorBuffer) -> GeoprojmercatorBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_buffer_copy(s : GeoprojmercatorBuffer) -> GeoprojmercatorBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorBuffer::copy(self : GeoprojmercatorBuffer) -> GeoprojmercatorBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_buffer_fill(s : GeoprojmercatorBuffer, v : Double) -> GeoprojmercatorBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorBuffer::fill(self : GeoprojmercatorBuffer, v : Double) -> GeoprojmercatorBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_buffer_min(s : GeoprojmercatorBuffer) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorBuffer::min(self : GeoprojmercatorBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_buffer_max(s : GeoprojmercatorBuffer) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorBuffer::max(self : GeoprojmercatorBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_buffer_to_string(s : GeoprojmercatorBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorBuffer::to_string(self : GeoprojmercatorBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorCursor {
@@ -861,45 +861,45 @@ pub fn geo_proj_mercator_cursor_make(size : Int) -> GeoprojmercatorCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_cursor_len(s : GeoprojmercatorCursor) -> Int { s.size }
+pub fn GeoprojmercatorCursor::len(self : GeoprojmercatorCursor) -> Int { self.size }
 
-pub fn geo_proj_mercator_cursor_get(s : GeoprojmercatorCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorCursor::get(self : GeoprojmercatorCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_cursor_set(s : GeoprojmercatorCursor, i : Int, v : Double) -> GeoprojmercatorCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorCursor::set(self : GeoprojmercatorCursor, i : Int, v : Double) -> GeoprojmercatorCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_cursor_sum(s : GeoprojmercatorCursor) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorCursor::sum(self : GeoprojmercatorCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_cursor_mean(s : GeoprojmercatorCursor) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorCursor::mean(self : GeoprojmercatorCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_cursor_scale(s : GeoprojmercatorCursor, f : Double) -> GeoprojmercatorCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorCursor::scale(self : GeoprojmercatorCursor, f : Double) -> GeoprojmercatorCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_cursor_add(a : GeoprojmercatorCursor, b : GeoprojmercatorCursor) -> GeoprojmercatorCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorCursor::add(self : GeoprojmercatorCursor, other : GeoprojmercatorCursor) -> GeoprojmercatorCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_cursor_copy(s : GeoprojmercatorCursor) -> GeoprojmercatorCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorCursor::copy(self : GeoprojmercatorCursor) -> GeoprojmercatorCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_cursor_fill(s : GeoprojmercatorCursor, v : Double) -> GeoprojmercatorCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorCursor::fill(self : GeoprojmercatorCursor, v : Double) -> GeoprojmercatorCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_cursor_min(s : GeoprojmercatorCursor) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorCursor::min(self : GeoprojmercatorCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_cursor_max(s : GeoprojmercatorCursor) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorCursor::max(self : GeoprojmercatorCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_cursor_to_string(s : GeoprojmercatorCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorCursor::to_string(self : GeoprojmercatorCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorView {
@@ -912,45 +912,45 @@ pub fn geo_proj_mercator_view_make(size : Int) -> GeoprojmercatorView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_view_len(s : GeoprojmercatorView) -> Int { s.size }
+pub fn GeoprojmercatorView::len(self : GeoprojmercatorView) -> Int { self.size }
 
-pub fn geo_proj_mercator_view_get(s : GeoprojmercatorView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorView::get(self : GeoprojmercatorView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_view_set(s : GeoprojmercatorView, i : Int, v : Double) -> GeoprojmercatorView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorView::set(self : GeoprojmercatorView, i : Int, v : Double) -> GeoprojmercatorView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_view_sum(s : GeoprojmercatorView) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorView::sum(self : GeoprojmercatorView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_view_mean(s : GeoprojmercatorView) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorView::mean(self : GeoprojmercatorView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_view_scale(s : GeoprojmercatorView, f : Double) -> GeoprojmercatorView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorView::scale(self : GeoprojmercatorView, f : Double) -> GeoprojmercatorView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_view_add(a : GeoprojmercatorView, b : GeoprojmercatorView) -> GeoprojmercatorView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorView::add(self : GeoprojmercatorView, other : GeoprojmercatorView) -> GeoprojmercatorView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_view_copy(s : GeoprojmercatorView) -> GeoprojmercatorView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorView::copy(self : GeoprojmercatorView) -> GeoprojmercatorView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_view_fill(s : GeoprojmercatorView, v : Double) -> GeoprojmercatorView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorView::fill(self : GeoprojmercatorView, v : Double) -> GeoprojmercatorView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_view_min(s : GeoprojmercatorView) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorView::min(self : GeoprojmercatorView) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_view_max(s : GeoprojmercatorView) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorView::max(self : GeoprojmercatorView) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_view_to_string(s : GeoprojmercatorView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorView::to_string(self : GeoprojmercatorView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorRange {
@@ -963,45 +963,45 @@ pub fn geo_proj_mercator_range_make(size : Int) -> GeoprojmercatorRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_range_len(s : GeoprojmercatorRange) -> Int { s.size }
+pub fn GeoprojmercatorRange::len(self : GeoprojmercatorRange) -> Int { self.size }
 
-pub fn geo_proj_mercator_range_get(s : GeoprojmercatorRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorRange::get(self : GeoprojmercatorRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_range_set(s : GeoprojmercatorRange, i : Int, v : Double) -> GeoprojmercatorRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorRange::set(self : GeoprojmercatorRange, i : Int, v : Double) -> GeoprojmercatorRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_range_sum(s : GeoprojmercatorRange) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorRange::sum(self : GeoprojmercatorRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_range_mean(s : GeoprojmercatorRange) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorRange::mean(self : GeoprojmercatorRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_range_scale(s : GeoprojmercatorRange, f : Double) -> GeoprojmercatorRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorRange::scale(self : GeoprojmercatorRange, f : Double) -> GeoprojmercatorRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_range_add(a : GeoprojmercatorRange, b : GeoprojmercatorRange) -> GeoprojmercatorRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorRange::add(self : GeoprojmercatorRange, other : GeoprojmercatorRange) -> GeoprojmercatorRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_range_copy(s : GeoprojmercatorRange) -> GeoprojmercatorRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorRange::copy(self : GeoprojmercatorRange) -> GeoprojmercatorRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_range_fill(s : GeoprojmercatorRange, v : Double) -> GeoprojmercatorRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorRange::fill(self : GeoprojmercatorRange, v : Double) -> GeoprojmercatorRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_range_min(s : GeoprojmercatorRange) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorRange::min(self : GeoprojmercatorRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_range_max(s : GeoprojmercatorRange) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorRange::max(self : GeoprojmercatorRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_range_to_string(s : GeoprojmercatorRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorRange::to_string(self : GeoprojmercatorRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojmercatorSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_proj_mercator_slice_make(size : Int) -> GeoprojmercatorSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_mercator_slice_len(s : GeoprojmercatorSlice) -> Int { s.size }
+pub fn GeoprojmercatorSlice::len(self : GeoprojmercatorSlice) -> Int { self.size }
 
-pub fn geo_proj_mercator_slice_get(s : GeoprojmercatorSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojmercatorSlice::get(self : GeoprojmercatorSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_mercator_slice_set(s : GeoprojmercatorSlice, i : Int, v : Double) -> GeoprojmercatorSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojmercatorSlice::set(self : GeoprojmercatorSlice, i : Int, v : Double) -> GeoprojmercatorSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_slice_sum(s : GeoprojmercatorSlice) -> Double { @_common.sum(s.data) }
+pub fn GeoprojmercatorSlice::sum(self : GeoprojmercatorSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_mercator_slice_mean(s : GeoprojmercatorSlice) -> Double { @_common.mean(s.data) }
+pub fn GeoprojmercatorSlice::mean(self : GeoprojmercatorSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_mercator_slice_scale(s : GeoprojmercatorSlice, f : Double) -> GeoprojmercatorSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorSlice::scale(self : GeoprojmercatorSlice, f : Double) -> GeoprojmercatorSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_slice_add(a : GeoprojmercatorSlice, b : GeoprojmercatorSlice) -> GeoprojmercatorSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojmercatorSlice::add(self : GeoprojmercatorSlice, other : GeoprojmercatorSlice) -> GeoprojmercatorSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_slice_copy(s : GeoprojmercatorSlice) -> GeoprojmercatorSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorSlice::copy(self : GeoprojmercatorSlice) -> GeoprojmercatorSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_slice_fill(s : GeoprojmercatorSlice, v : Double) -> GeoprojmercatorSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojmercatorSlice::fill(self : GeoprojmercatorSlice, v : Double) -> GeoprojmercatorSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_mercator_slice_min(s : GeoprojmercatorSlice) -> Double { @_common.min(s.data) }
+pub fn GeoprojmercatorSlice::min(self : GeoprojmercatorSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_mercator_slice_max(s : GeoprojmercatorSlice) -> Double { @_common.max(s.data) }
+pub fn GeoprojmercatorSlice::max(self : GeoprojmercatorSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_mercator_slice_to_string(s : GeoprojmercatorSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojmercatorSlice::to_string(self : GeoprojmercatorSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

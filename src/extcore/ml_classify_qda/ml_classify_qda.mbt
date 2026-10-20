@@ -351,45 +351,45 @@ pub fn ml_classify_qda_frame_make(size : Int) -> MlclassifyqdaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_frame_len(s : MlclassifyqdaFrame) -> Int { s.size }
+pub fn MlclassifyqdaFrame::len(self : MlclassifyqdaFrame) -> Int { self.size }
 
-pub fn ml_classify_qda_frame_get(s : MlclassifyqdaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaFrame::get(self : MlclassifyqdaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_frame_set(s : MlclassifyqdaFrame, i : Int, v : Double) -> MlclassifyqdaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaFrame::set(self : MlclassifyqdaFrame, i : Int, v : Double) -> MlclassifyqdaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_frame_sum(s : MlclassifyqdaFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaFrame::sum(self : MlclassifyqdaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_frame_mean(s : MlclassifyqdaFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaFrame::mean(self : MlclassifyqdaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_frame_scale(s : MlclassifyqdaFrame, f : Double) -> MlclassifyqdaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaFrame::scale(self : MlclassifyqdaFrame, f : Double) -> MlclassifyqdaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_frame_add(a : MlclassifyqdaFrame, b : MlclassifyqdaFrame) -> MlclassifyqdaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaFrame::add(self : MlclassifyqdaFrame, other : MlclassifyqdaFrame) -> MlclassifyqdaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_frame_copy(s : MlclassifyqdaFrame) -> MlclassifyqdaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaFrame::copy(self : MlclassifyqdaFrame) -> MlclassifyqdaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_frame_fill(s : MlclassifyqdaFrame, v : Double) -> MlclassifyqdaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaFrame::fill(self : MlclassifyqdaFrame, v : Double) -> MlclassifyqdaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_frame_min(s : MlclassifyqdaFrame) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaFrame::min(self : MlclassifyqdaFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_frame_max(s : MlclassifyqdaFrame) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaFrame::max(self : MlclassifyqdaFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_frame_to_string(s : MlclassifyqdaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaFrame::to_string(self : MlclassifyqdaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaTable {
@@ -402,45 +402,45 @@ pub fn ml_classify_qda_table_make(size : Int) -> MlclassifyqdaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_table_len(s : MlclassifyqdaTable) -> Int { s.size }
+pub fn MlclassifyqdaTable::len(self : MlclassifyqdaTable) -> Int { self.size }
 
-pub fn ml_classify_qda_table_get(s : MlclassifyqdaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaTable::get(self : MlclassifyqdaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_table_set(s : MlclassifyqdaTable, i : Int, v : Double) -> MlclassifyqdaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaTable::set(self : MlclassifyqdaTable, i : Int, v : Double) -> MlclassifyqdaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_table_sum(s : MlclassifyqdaTable) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaTable::sum(self : MlclassifyqdaTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_table_mean(s : MlclassifyqdaTable) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaTable::mean(self : MlclassifyqdaTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_table_scale(s : MlclassifyqdaTable, f : Double) -> MlclassifyqdaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaTable::scale(self : MlclassifyqdaTable, f : Double) -> MlclassifyqdaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_table_add(a : MlclassifyqdaTable, b : MlclassifyqdaTable) -> MlclassifyqdaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaTable::add(self : MlclassifyqdaTable, other : MlclassifyqdaTable) -> MlclassifyqdaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_table_copy(s : MlclassifyqdaTable) -> MlclassifyqdaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaTable::copy(self : MlclassifyqdaTable) -> MlclassifyqdaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_table_fill(s : MlclassifyqdaTable, v : Double) -> MlclassifyqdaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaTable::fill(self : MlclassifyqdaTable, v : Double) -> MlclassifyqdaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_table_min(s : MlclassifyqdaTable) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaTable::min(self : MlclassifyqdaTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_table_max(s : MlclassifyqdaTable) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaTable::max(self : MlclassifyqdaTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_table_to_string(s : MlclassifyqdaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaTable::to_string(self : MlclassifyqdaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaGraphN {
@@ -453,45 +453,45 @@ pub fn ml_classify_qda_graphn_make(size : Int) -> MlclassifyqdaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_graphn_len(s : MlclassifyqdaGraphN) -> Int { s.size }
+pub fn MlclassifyqdaGraphN::len(self : MlclassifyqdaGraphN) -> Int { self.size }
 
-pub fn ml_classify_qda_graphn_get(s : MlclassifyqdaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaGraphN::get(self : MlclassifyqdaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_graphn_set(s : MlclassifyqdaGraphN, i : Int, v : Double) -> MlclassifyqdaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaGraphN::set(self : MlclassifyqdaGraphN, i : Int, v : Double) -> MlclassifyqdaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_graphn_sum(s : MlclassifyqdaGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaGraphN::sum(self : MlclassifyqdaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_graphn_mean(s : MlclassifyqdaGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaGraphN::mean(self : MlclassifyqdaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_graphn_scale(s : MlclassifyqdaGraphN, f : Double) -> MlclassifyqdaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaGraphN::scale(self : MlclassifyqdaGraphN, f : Double) -> MlclassifyqdaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_graphn_add(a : MlclassifyqdaGraphN, b : MlclassifyqdaGraphN) -> MlclassifyqdaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaGraphN::add(self : MlclassifyqdaGraphN, other : MlclassifyqdaGraphN) -> MlclassifyqdaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_graphn_copy(s : MlclassifyqdaGraphN) -> MlclassifyqdaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaGraphN::copy(self : MlclassifyqdaGraphN) -> MlclassifyqdaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_graphn_fill(s : MlclassifyqdaGraphN, v : Double) -> MlclassifyqdaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaGraphN::fill(self : MlclassifyqdaGraphN, v : Double) -> MlclassifyqdaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_graphn_min(s : MlclassifyqdaGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaGraphN::min(self : MlclassifyqdaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_graphn_max(s : MlclassifyqdaGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaGraphN::max(self : MlclassifyqdaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_graphn_to_string(s : MlclassifyqdaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaGraphN::to_string(self : MlclassifyqdaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaNode {
@@ -504,45 +504,45 @@ pub fn ml_classify_qda_node_make(size : Int) -> MlclassifyqdaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_node_len(s : MlclassifyqdaNode) -> Int { s.size }
+pub fn MlclassifyqdaNode::len(self : MlclassifyqdaNode) -> Int { self.size }
 
-pub fn ml_classify_qda_node_get(s : MlclassifyqdaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaNode::get(self : MlclassifyqdaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_node_set(s : MlclassifyqdaNode, i : Int, v : Double) -> MlclassifyqdaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaNode::set(self : MlclassifyqdaNode, i : Int, v : Double) -> MlclassifyqdaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_node_sum(s : MlclassifyqdaNode) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaNode::sum(self : MlclassifyqdaNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_node_mean(s : MlclassifyqdaNode) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaNode::mean(self : MlclassifyqdaNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_node_scale(s : MlclassifyqdaNode, f : Double) -> MlclassifyqdaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaNode::scale(self : MlclassifyqdaNode, f : Double) -> MlclassifyqdaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_node_add(a : MlclassifyqdaNode, b : MlclassifyqdaNode) -> MlclassifyqdaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaNode::add(self : MlclassifyqdaNode, other : MlclassifyqdaNode) -> MlclassifyqdaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_node_copy(s : MlclassifyqdaNode) -> MlclassifyqdaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaNode::copy(self : MlclassifyqdaNode) -> MlclassifyqdaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_node_fill(s : MlclassifyqdaNode, v : Double) -> MlclassifyqdaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaNode::fill(self : MlclassifyqdaNode, v : Double) -> MlclassifyqdaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_node_min(s : MlclassifyqdaNode) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaNode::min(self : MlclassifyqdaNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_node_max(s : MlclassifyqdaNode) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaNode::max(self : MlclassifyqdaNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_node_to_string(s : MlclassifyqdaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaNode::to_string(self : MlclassifyqdaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaEdge {
@@ -555,45 +555,45 @@ pub fn ml_classify_qda_edge_make(size : Int) -> MlclassifyqdaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_edge_len(s : MlclassifyqdaEdge) -> Int { s.size }
+pub fn MlclassifyqdaEdge::len(self : MlclassifyqdaEdge) -> Int { self.size }
 
-pub fn ml_classify_qda_edge_get(s : MlclassifyqdaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaEdge::get(self : MlclassifyqdaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_edge_set(s : MlclassifyqdaEdge, i : Int, v : Double) -> MlclassifyqdaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaEdge::set(self : MlclassifyqdaEdge, i : Int, v : Double) -> MlclassifyqdaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_edge_sum(s : MlclassifyqdaEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaEdge::sum(self : MlclassifyqdaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_edge_mean(s : MlclassifyqdaEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaEdge::mean(self : MlclassifyqdaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_edge_scale(s : MlclassifyqdaEdge, f : Double) -> MlclassifyqdaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaEdge::scale(self : MlclassifyqdaEdge, f : Double) -> MlclassifyqdaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_edge_add(a : MlclassifyqdaEdge, b : MlclassifyqdaEdge) -> MlclassifyqdaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaEdge::add(self : MlclassifyqdaEdge, other : MlclassifyqdaEdge) -> MlclassifyqdaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_edge_copy(s : MlclassifyqdaEdge) -> MlclassifyqdaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaEdge::copy(self : MlclassifyqdaEdge) -> MlclassifyqdaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_edge_fill(s : MlclassifyqdaEdge, v : Double) -> MlclassifyqdaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaEdge::fill(self : MlclassifyqdaEdge, v : Double) -> MlclassifyqdaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_edge_min(s : MlclassifyqdaEdge) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaEdge::min(self : MlclassifyqdaEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_edge_max(s : MlclassifyqdaEdge) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaEdge::max(self : MlclassifyqdaEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_edge_to_string(s : MlclassifyqdaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaEdge::to_string(self : MlclassifyqdaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaPath {
@@ -606,45 +606,45 @@ pub fn ml_classify_qda_path_make(size : Int) -> MlclassifyqdaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_path_len(s : MlclassifyqdaPath) -> Int { s.size }
+pub fn MlclassifyqdaPath::len(self : MlclassifyqdaPath) -> Int { self.size }
 
-pub fn ml_classify_qda_path_get(s : MlclassifyqdaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaPath::get(self : MlclassifyqdaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_path_set(s : MlclassifyqdaPath, i : Int, v : Double) -> MlclassifyqdaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaPath::set(self : MlclassifyqdaPath, i : Int, v : Double) -> MlclassifyqdaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_path_sum(s : MlclassifyqdaPath) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaPath::sum(self : MlclassifyqdaPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_path_mean(s : MlclassifyqdaPath) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaPath::mean(self : MlclassifyqdaPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_path_scale(s : MlclassifyqdaPath, f : Double) -> MlclassifyqdaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaPath::scale(self : MlclassifyqdaPath, f : Double) -> MlclassifyqdaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_path_add(a : MlclassifyqdaPath, b : MlclassifyqdaPath) -> MlclassifyqdaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaPath::add(self : MlclassifyqdaPath, other : MlclassifyqdaPath) -> MlclassifyqdaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_path_copy(s : MlclassifyqdaPath) -> MlclassifyqdaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaPath::copy(self : MlclassifyqdaPath) -> MlclassifyqdaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_path_fill(s : MlclassifyqdaPath, v : Double) -> MlclassifyqdaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaPath::fill(self : MlclassifyqdaPath, v : Double) -> MlclassifyqdaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_path_min(s : MlclassifyqdaPath) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaPath::min(self : MlclassifyqdaPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_path_max(s : MlclassifyqdaPath) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaPath::max(self : MlclassifyqdaPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_path_to_string(s : MlclassifyqdaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaPath::to_string(self : MlclassifyqdaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaCluster {
@@ -657,45 +657,45 @@ pub fn ml_classify_qda_cluster_make(size : Int) -> MlclassifyqdaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_cluster_len(s : MlclassifyqdaCluster) -> Int { s.size }
+pub fn MlclassifyqdaCluster::len(self : MlclassifyqdaCluster) -> Int { self.size }
 
-pub fn ml_classify_qda_cluster_get(s : MlclassifyqdaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaCluster::get(self : MlclassifyqdaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_cluster_set(s : MlclassifyqdaCluster, i : Int, v : Double) -> MlclassifyqdaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaCluster::set(self : MlclassifyqdaCluster, i : Int, v : Double) -> MlclassifyqdaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_cluster_sum(s : MlclassifyqdaCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaCluster::sum(self : MlclassifyqdaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_cluster_mean(s : MlclassifyqdaCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaCluster::mean(self : MlclassifyqdaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_cluster_scale(s : MlclassifyqdaCluster, f : Double) -> MlclassifyqdaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaCluster::scale(self : MlclassifyqdaCluster, f : Double) -> MlclassifyqdaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_cluster_add(a : MlclassifyqdaCluster, b : MlclassifyqdaCluster) -> MlclassifyqdaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaCluster::add(self : MlclassifyqdaCluster, other : MlclassifyqdaCluster) -> MlclassifyqdaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_cluster_copy(s : MlclassifyqdaCluster) -> MlclassifyqdaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaCluster::copy(self : MlclassifyqdaCluster) -> MlclassifyqdaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_cluster_fill(s : MlclassifyqdaCluster, v : Double) -> MlclassifyqdaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaCluster::fill(self : MlclassifyqdaCluster, v : Double) -> MlclassifyqdaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_cluster_min(s : MlclassifyqdaCluster) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaCluster::min(self : MlclassifyqdaCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_cluster_max(s : MlclassifyqdaCluster) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaCluster::max(self : MlclassifyqdaCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_cluster_to_string(s : MlclassifyqdaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaCluster::to_string(self : MlclassifyqdaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaModel {
@@ -708,45 +708,45 @@ pub fn ml_classify_qda_model_make(size : Int) -> MlclassifyqdaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_model_len(s : MlclassifyqdaModel) -> Int { s.size }
+pub fn MlclassifyqdaModel::len(self : MlclassifyqdaModel) -> Int { self.size }
 
-pub fn ml_classify_qda_model_get(s : MlclassifyqdaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaModel::get(self : MlclassifyqdaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_model_set(s : MlclassifyqdaModel, i : Int, v : Double) -> MlclassifyqdaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaModel::set(self : MlclassifyqdaModel, i : Int, v : Double) -> MlclassifyqdaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_model_sum(s : MlclassifyqdaModel) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaModel::sum(self : MlclassifyqdaModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_model_mean(s : MlclassifyqdaModel) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaModel::mean(self : MlclassifyqdaModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_model_scale(s : MlclassifyqdaModel, f : Double) -> MlclassifyqdaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaModel::scale(self : MlclassifyqdaModel, f : Double) -> MlclassifyqdaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_model_add(a : MlclassifyqdaModel, b : MlclassifyqdaModel) -> MlclassifyqdaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaModel::add(self : MlclassifyqdaModel, other : MlclassifyqdaModel) -> MlclassifyqdaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_model_copy(s : MlclassifyqdaModel) -> MlclassifyqdaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaModel::copy(self : MlclassifyqdaModel) -> MlclassifyqdaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_model_fill(s : MlclassifyqdaModel, v : Double) -> MlclassifyqdaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaModel::fill(self : MlclassifyqdaModel, v : Double) -> MlclassifyqdaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_model_min(s : MlclassifyqdaModel) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaModel::min(self : MlclassifyqdaModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_model_max(s : MlclassifyqdaModel) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaModel::max(self : MlclassifyqdaModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_model_to_string(s : MlclassifyqdaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaModel::to_string(self : MlclassifyqdaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaLayer {
@@ -759,45 +759,45 @@ pub fn ml_classify_qda_layer_make(size : Int) -> MlclassifyqdaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_layer_len(s : MlclassifyqdaLayer) -> Int { s.size }
+pub fn MlclassifyqdaLayer::len(self : MlclassifyqdaLayer) -> Int { self.size }
 
-pub fn ml_classify_qda_layer_get(s : MlclassifyqdaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaLayer::get(self : MlclassifyqdaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_layer_set(s : MlclassifyqdaLayer, i : Int, v : Double) -> MlclassifyqdaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaLayer::set(self : MlclassifyqdaLayer, i : Int, v : Double) -> MlclassifyqdaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_layer_sum(s : MlclassifyqdaLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaLayer::sum(self : MlclassifyqdaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_layer_mean(s : MlclassifyqdaLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaLayer::mean(self : MlclassifyqdaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_layer_scale(s : MlclassifyqdaLayer, f : Double) -> MlclassifyqdaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaLayer::scale(self : MlclassifyqdaLayer, f : Double) -> MlclassifyqdaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_layer_add(a : MlclassifyqdaLayer, b : MlclassifyqdaLayer) -> MlclassifyqdaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaLayer::add(self : MlclassifyqdaLayer, other : MlclassifyqdaLayer) -> MlclassifyqdaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_layer_copy(s : MlclassifyqdaLayer) -> MlclassifyqdaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaLayer::copy(self : MlclassifyqdaLayer) -> MlclassifyqdaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_layer_fill(s : MlclassifyqdaLayer, v : Double) -> MlclassifyqdaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaLayer::fill(self : MlclassifyqdaLayer, v : Double) -> MlclassifyqdaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_layer_min(s : MlclassifyqdaLayer) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaLayer::min(self : MlclassifyqdaLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_layer_max(s : MlclassifyqdaLayer) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaLayer::max(self : MlclassifyqdaLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_layer_to_string(s : MlclassifyqdaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaLayer::to_string(self : MlclassifyqdaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaBuffer {
@@ -810,45 +810,45 @@ pub fn ml_classify_qda_buffer_make(size : Int) -> MlclassifyqdaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_buffer_len(s : MlclassifyqdaBuffer) -> Int { s.size }
+pub fn MlclassifyqdaBuffer::len(self : MlclassifyqdaBuffer) -> Int { self.size }
 
-pub fn ml_classify_qda_buffer_get(s : MlclassifyqdaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaBuffer::get(self : MlclassifyqdaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_buffer_set(s : MlclassifyqdaBuffer, i : Int, v : Double) -> MlclassifyqdaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaBuffer::set(self : MlclassifyqdaBuffer, i : Int, v : Double) -> MlclassifyqdaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_buffer_sum(s : MlclassifyqdaBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaBuffer::sum(self : MlclassifyqdaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_buffer_mean(s : MlclassifyqdaBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaBuffer::mean(self : MlclassifyqdaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_buffer_scale(s : MlclassifyqdaBuffer, f : Double) -> MlclassifyqdaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaBuffer::scale(self : MlclassifyqdaBuffer, f : Double) -> MlclassifyqdaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_buffer_add(a : MlclassifyqdaBuffer, b : MlclassifyqdaBuffer) -> MlclassifyqdaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaBuffer::add(self : MlclassifyqdaBuffer, other : MlclassifyqdaBuffer) -> MlclassifyqdaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_buffer_copy(s : MlclassifyqdaBuffer) -> MlclassifyqdaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaBuffer::copy(self : MlclassifyqdaBuffer) -> MlclassifyqdaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_buffer_fill(s : MlclassifyqdaBuffer, v : Double) -> MlclassifyqdaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaBuffer::fill(self : MlclassifyqdaBuffer, v : Double) -> MlclassifyqdaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_buffer_min(s : MlclassifyqdaBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaBuffer::min(self : MlclassifyqdaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_buffer_max(s : MlclassifyqdaBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaBuffer::max(self : MlclassifyqdaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_buffer_to_string(s : MlclassifyqdaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaBuffer::to_string(self : MlclassifyqdaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaCursor {
@@ -861,45 +861,45 @@ pub fn ml_classify_qda_cursor_make(size : Int) -> MlclassifyqdaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_cursor_len(s : MlclassifyqdaCursor) -> Int { s.size }
+pub fn MlclassifyqdaCursor::len(self : MlclassifyqdaCursor) -> Int { self.size }
 
-pub fn ml_classify_qda_cursor_get(s : MlclassifyqdaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaCursor::get(self : MlclassifyqdaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_cursor_set(s : MlclassifyqdaCursor, i : Int, v : Double) -> MlclassifyqdaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaCursor::set(self : MlclassifyqdaCursor, i : Int, v : Double) -> MlclassifyqdaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_cursor_sum(s : MlclassifyqdaCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaCursor::sum(self : MlclassifyqdaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_cursor_mean(s : MlclassifyqdaCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaCursor::mean(self : MlclassifyqdaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_cursor_scale(s : MlclassifyqdaCursor, f : Double) -> MlclassifyqdaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaCursor::scale(self : MlclassifyqdaCursor, f : Double) -> MlclassifyqdaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_cursor_add(a : MlclassifyqdaCursor, b : MlclassifyqdaCursor) -> MlclassifyqdaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaCursor::add(self : MlclassifyqdaCursor, other : MlclassifyqdaCursor) -> MlclassifyqdaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_cursor_copy(s : MlclassifyqdaCursor) -> MlclassifyqdaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaCursor::copy(self : MlclassifyqdaCursor) -> MlclassifyqdaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_cursor_fill(s : MlclassifyqdaCursor, v : Double) -> MlclassifyqdaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaCursor::fill(self : MlclassifyqdaCursor, v : Double) -> MlclassifyqdaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_cursor_min(s : MlclassifyqdaCursor) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaCursor::min(self : MlclassifyqdaCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_cursor_max(s : MlclassifyqdaCursor) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaCursor::max(self : MlclassifyqdaCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_cursor_to_string(s : MlclassifyqdaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaCursor::to_string(self : MlclassifyqdaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaView {
@@ -912,45 +912,45 @@ pub fn ml_classify_qda_view_make(size : Int) -> MlclassifyqdaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_view_len(s : MlclassifyqdaView) -> Int { s.size }
+pub fn MlclassifyqdaView::len(self : MlclassifyqdaView) -> Int { self.size }
 
-pub fn ml_classify_qda_view_get(s : MlclassifyqdaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaView::get(self : MlclassifyqdaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_view_set(s : MlclassifyqdaView, i : Int, v : Double) -> MlclassifyqdaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaView::set(self : MlclassifyqdaView, i : Int, v : Double) -> MlclassifyqdaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_view_sum(s : MlclassifyqdaView) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaView::sum(self : MlclassifyqdaView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_view_mean(s : MlclassifyqdaView) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaView::mean(self : MlclassifyqdaView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_view_scale(s : MlclassifyqdaView, f : Double) -> MlclassifyqdaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaView::scale(self : MlclassifyqdaView, f : Double) -> MlclassifyqdaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_view_add(a : MlclassifyqdaView, b : MlclassifyqdaView) -> MlclassifyqdaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaView::add(self : MlclassifyqdaView, other : MlclassifyqdaView) -> MlclassifyqdaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_view_copy(s : MlclassifyqdaView) -> MlclassifyqdaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaView::copy(self : MlclassifyqdaView) -> MlclassifyqdaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_view_fill(s : MlclassifyqdaView, v : Double) -> MlclassifyqdaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaView::fill(self : MlclassifyqdaView, v : Double) -> MlclassifyqdaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_view_min(s : MlclassifyqdaView) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaView::min(self : MlclassifyqdaView) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_view_max(s : MlclassifyqdaView) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaView::max(self : MlclassifyqdaView) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_view_to_string(s : MlclassifyqdaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaView::to_string(self : MlclassifyqdaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaRange {
@@ -963,45 +963,45 @@ pub fn ml_classify_qda_range_make(size : Int) -> MlclassifyqdaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_range_len(s : MlclassifyqdaRange) -> Int { s.size }
+pub fn MlclassifyqdaRange::len(self : MlclassifyqdaRange) -> Int { self.size }
 
-pub fn ml_classify_qda_range_get(s : MlclassifyqdaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaRange::get(self : MlclassifyqdaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_range_set(s : MlclassifyqdaRange, i : Int, v : Double) -> MlclassifyqdaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaRange::set(self : MlclassifyqdaRange, i : Int, v : Double) -> MlclassifyqdaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_range_sum(s : MlclassifyqdaRange) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaRange::sum(self : MlclassifyqdaRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_range_mean(s : MlclassifyqdaRange) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaRange::mean(self : MlclassifyqdaRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_range_scale(s : MlclassifyqdaRange, f : Double) -> MlclassifyqdaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaRange::scale(self : MlclassifyqdaRange, f : Double) -> MlclassifyqdaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_range_add(a : MlclassifyqdaRange, b : MlclassifyqdaRange) -> MlclassifyqdaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaRange::add(self : MlclassifyqdaRange, other : MlclassifyqdaRange) -> MlclassifyqdaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_range_copy(s : MlclassifyqdaRange) -> MlclassifyqdaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaRange::copy(self : MlclassifyqdaRange) -> MlclassifyqdaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_range_fill(s : MlclassifyqdaRange, v : Double) -> MlclassifyqdaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaRange::fill(self : MlclassifyqdaRange, v : Double) -> MlclassifyqdaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_range_min(s : MlclassifyqdaRange) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaRange::min(self : MlclassifyqdaRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_range_max(s : MlclassifyqdaRange) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaRange::max(self : MlclassifyqdaRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_range_to_string(s : MlclassifyqdaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaRange::to_string(self : MlclassifyqdaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyqdaSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_classify_qda_slice_make(size : Int) -> MlclassifyqdaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_qda_slice_len(s : MlclassifyqdaSlice) -> Int { s.size }
+pub fn MlclassifyqdaSlice::len(self : MlclassifyqdaSlice) -> Int { self.size }
 
-pub fn ml_classify_qda_slice_get(s : MlclassifyqdaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyqdaSlice::get(self : MlclassifyqdaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_qda_slice_set(s : MlclassifyqdaSlice, i : Int, v : Double) -> MlclassifyqdaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyqdaSlice::set(self : MlclassifyqdaSlice, i : Int, v : Double) -> MlclassifyqdaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_slice_sum(s : MlclassifyqdaSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyqdaSlice::sum(self : MlclassifyqdaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_qda_slice_mean(s : MlclassifyqdaSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyqdaSlice::mean(self : MlclassifyqdaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_qda_slice_scale(s : MlclassifyqdaSlice, f : Double) -> MlclassifyqdaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaSlice::scale(self : MlclassifyqdaSlice, f : Double) -> MlclassifyqdaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_slice_add(a : MlclassifyqdaSlice, b : MlclassifyqdaSlice) -> MlclassifyqdaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyqdaSlice::add(self : MlclassifyqdaSlice, other : MlclassifyqdaSlice) -> MlclassifyqdaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_qda_slice_copy(s : MlclassifyqdaSlice) -> MlclassifyqdaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaSlice::copy(self : MlclassifyqdaSlice) -> MlclassifyqdaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_slice_fill(s : MlclassifyqdaSlice, v : Double) -> MlclassifyqdaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyqdaSlice::fill(self : MlclassifyqdaSlice, v : Double) -> MlclassifyqdaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_qda_slice_min(s : MlclassifyqdaSlice) -> Double { @_common.min(s.data) }
+pub fn MlclassifyqdaSlice::min(self : MlclassifyqdaSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_qda_slice_max(s : MlclassifyqdaSlice) -> Double { @_common.max(s.data) }
+pub fn MlclassifyqdaSlice::max(self : MlclassifyqdaSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_qda_slice_to_string(s : MlclassifyqdaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyqdaSlice::to_string(self : MlclassifyqdaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

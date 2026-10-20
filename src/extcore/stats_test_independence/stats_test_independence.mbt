@@ -351,45 +351,45 @@ pub fn stats_test_independence_frame_make(size : Int) -> StatstestindependenceFr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_frame_len(s : StatstestindependenceFrame) -> Int { s.size }
+pub fn StatstestindependenceFrame::len(self : StatstestindependenceFrame) -> Int { self.size }
 
-pub fn stats_test_independence_frame_get(s : StatstestindependenceFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceFrame::get(self : StatstestindependenceFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_frame_set(s : StatstestindependenceFrame, i : Int, v : Double) -> StatstestindependenceFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceFrame::set(self : StatstestindependenceFrame, i : Int, v : Double) -> StatstestindependenceFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_frame_sum(s : StatstestindependenceFrame) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceFrame::sum(self : StatstestindependenceFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_frame_mean(s : StatstestindependenceFrame) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceFrame::mean(self : StatstestindependenceFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_frame_scale(s : StatstestindependenceFrame, f : Double) -> StatstestindependenceFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceFrame::scale(self : StatstestindependenceFrame, f : Double) -> StatstestindependenceFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_frame_add(a : StatstestindependenceFrame, b : StatstestindependenceFrame) -> StatstestindependenceFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceFrame::add(self : StatstestindependenceFrame, other : StatstestindependenceFrame) -> StatstestindependenceFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_frame_copy(s : StatstestindependenceFrame) -> StatstestindependenceFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceFrame::copy(self : StatstestindependenceFrame) -> StatstestindependenceFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_frame_fill(s : StatstestindependenceFrame, v : Double) -> StatstestindependenceFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceFrame::fill(self : StatstestindependenceFrame, v : Double) -> StatstestindependenceFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_frame_min(s : StatstestindependenceFrame) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceFrame::min(self : StatstestindependenceFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_frame_max(s : StatstestindependenceFrame) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceFrame::max(self : StatstestindependenceFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_frame_to_string(s : StatstestindependenceFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceFrame::to_string(self : StatstestindependenceFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceTable {
@@ -402,45 +402,45 @@ pub fn stats_test_independence_table_make(size : Int) -> StatstestindependenceTa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_table_len(s : StatstestindependenceTable) -> Int { s.size }
+pub fn StatstestindependenceTable::len(self : StatstestindependenceTable) -> Int { self.size }
 
-pub fn stats_test_independence_table_get(s : StatstestindependenceTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceTable::get(self : StatstestindependenceTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_table_set(s : StatstestindependenceTable, i : Int, v : Double) -> StatstestindependenceTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceTable::set(self : StatstestindependenceTable, i : Int, v : Double) -> StatstestindependenceTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_table_sum(s : StatstestindependenceTable) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceTable::sum(self : StatstestindependenceTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_table_mean(s : StatstestindependenceTable) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceTable::mean(self : StatstestindependenceTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_table_scale(s : StatstestindependenceTable, f : Double) -> StatstestindependenceTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceTable::scale(self : StatstestindependenceTable, f : Double) -> StatstestindependenceTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_table_add(a : StatstestindependenceTable, b : StatstestindependenceTable) -> StatstestindependenceTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceTable::add(self : StatstestindependenceTable, other : StatstestindependenceTable) -> StatstestindependenceTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_table_copy(s : StatstestindependenceTable) -> StatstestindependenceTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceTable::copy(self : StatstestindependenceTable) -> StatstestindependenceTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_table_fill(s : StatstestindependenceTable, v : Double) -> StatstestindependenceTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceTable::fill(self : StatstestindependenceTable, v : Double) -> StatstestindependenceTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_table_min(s : StatstestindependenceTable) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceTable::min(self : StatstestindependenceTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_table_max(s : StatstestindependenceTable) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceTable::max(self : StatstestindependenceTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_table_to_string(s : StatstestindependenceTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceTable::to_string(self : StatstestindependenceTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceGraphN {
@@ -453,45 +453,45 @@ pub fn stats_test_independence_graphn_make(size : Int) -> StatstestindependenceG
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_graphn_len(s : StatstestindependenceGraphN) -> Int { s.size }
+pub fn StatstestindependenceGraphN::len(self : StatstestindependenceGraphN) -> Int { self.size }
 
-pub fn stats_test_independence_graphn_get(s : StatstestindependenceGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceGraphN::get(self : StatstestindependenceGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_graphn_set(s : StatstestindependenceGraphN, i : Int, v : Double) -> StatstestindependenceGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceGraphN::set(self : StatstestindependenceGraphN, i : Int, v : Double) -> StatstestindependenceGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_graphn_sum(s : StatstestindependenceGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceGraphN::sum(self : StatstestindependenceGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_graphn_mean(s : StatstestindependenceGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceGraphN::mean(self : StatstestindependenceGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_graphn_scale(s : StatstestindependenceGraphN, f : Double) -> StatstestindependenceGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceGraphN::scale(self : StatstestindependenceGraphN, f : Double) -> StatstestindependenceGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_graphn_add(a : StatstestindependenceGraphN, b : StatstestindependenceGraphN) -> StatstestindependenceGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceGraphN::add(self : StatstestindependenceGraphN, other : StatstestindependenceGraphN) -> StatstestindependenceGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_graphn_copy(s : StatstestindependenceGraphN) -> StatstestindependenceGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceGraphN::copy(self : StatstestindependenceGraphN) -> StatstestindependenceGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_graphn_fill(s : StatstestindependenceGraphN, v : Double) -> StatstestindependenceGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceGraphN::fill(self : StatstestindependenceGraphN, v : Double) -> StatstestindependenceGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_graphn_min(s : StatstestindependenceGraphN) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceGraphN::min(self : StatstestindependenceGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_graphn_max(s : StatstestindependenceGraphN) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceGraphN::max(self : StatstestindependenceGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_graphn_to_string(s : StatstestindependenceGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceGraphN::to_string(self : StatstestindependenceGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceNode {
@@ -504,45 +504,45 @@ pub fn stats_test_independence_node_make(size : Int) -> StatstestindependenceNod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_node_len(s : StatstestindependenceNode) -> Int { s.size }
+pub fn StatstestindependenceNode::len(self : StatstestindependenceNode) -> Int { self.size }
 
-pub fn stats_test_independence_node_get(s : StatstestindependenceNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceNode::get(self : StatstestindependenceNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_node_set(s : StatstestindependenceNode, i : Int, v : Double) -> StatstestindependenceNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceNode::set(self : StatstestindependenceNode, i : Int, v : Double) -> StatstestindependenceNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_node_sum(s : StatstestindependenceNode) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceNode::sum(self : StatstestindependenceNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_node_mean(s : StatstestindependenceNode) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceNode::mean(self : StatstestindependenceNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_node_scale(s : StatstestindependenceNode, f : Double) -> StatstestindependenceNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceNode::scale(self : StatstestindependenceNode, f : Double) -> StatstestindependenceNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_node_add(a : StatstestindependenceNode, b : StatstestindependenceNode) -> StatstestindependenceNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceNode::add(self : StatstestindependenceNode, other : StatstestindependenceNode) -> StatstestindependenceNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_node_copy(s : StatstestindependenceNode) -> StatstestindependenceNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceNode::copy(self : StatstestindependenceNode) -> StatstestindependenceNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_node_fill(s : StatstestindependenceNode, v : Double) -> StatstestindependenceNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceNode::fill(self : StatstestindependenceNode, v : Double) -> StatstestindependenceNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_node_min(s : StatstestindependenceNode) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceNode::min(self : StatstestindependenceNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_node_max(s : StatstestindependenceNode) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceNode::max(self : StatstestindependenceNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_node_to_string(s : StatstestindependenceNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceNode::to_string(self : StatstestindependenceNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceEdge {
@@ -555,45 +555,45 @@ pub fn stats_test_independence_edge_make(size : Int) -> StatstestindependenceEdg
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_edge_len(s : StatstestindependenceEdge) -> Int { s.size }
+pub fn StatstestindependenceEdge::len(self : StatstestindependenceEdge) -> Int { self.size }
 
-pub fn stats_test_independence_edge_get(s : StatstestindependenceEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceEdge::get(self : StatstestindependenceEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_edge_set(s : StatstestindependenceEdge, i : Int, v : Double) -> StatstestindependenceEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceEdge::set(self : StatstestindependenceEdge, i : Int, v : Double) -> StatstestindependenceEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_edge_sum(s : StatstestindependenceEdge) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceEdge::sum(self : StatstestindependenceEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_edge_mean(s : StatstestindependenceEdge) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceEdge::mean(self : StatstestindependenceEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_edge_scale(s : StatstestindependenceEdge, f : Double) -> StatstestindependenceEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceEdge::scale(self : StatstestindependenceEdge, f : Double) -> StatstestindependenceEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_edge_add(a : StatstestindependenceEdge, b : StatstestindependenceEdge) -> StatstestindependenceEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceEdge::add(self : StatstestindependenceEdge, other : StatstestindependenceEdge) -> StatstestindependenceEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_edge_copy(s : StatstestindependenceEdge) -> StatstestindependenceEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceEdge::copy(self : StatstestindependenceEdge) -> StatstestindependenceEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_edge_fill(s : StatstestindependenceEdge, v : Double) -> StatstestindependenceEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceEdge::fill(self : StatstestindependenceEdge, v : Double) -> StatstestindependenceEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_edge_min(s : StatstestindependenceEdge) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceEdge::min(self : StatstestindependenceEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_edge_max(s : StatstestindependenceEdge) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceEdge::max(self : StatstestindependenceEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_edge_to_string(s : StatstestindependenceEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceEdge::to_string(self : StatstestindependenceEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependencePath {
@@ -606,45 +606,45 @@ pub fn stats_test_independence_path_make(size : Int) -> StatstestindependencePat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_path_len(s : StatstestindependencePath) -> Int { s.size }
+pub fn StatstestindependencePath::len(self : StatstestindependencePath) -> Int { self.size }
 
-pub fn stats_test_independence_path_get(s : StatstestindependencePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependencePath::get(self : StatstestindependencePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_path_set(s : StatstestindependencePath, i : Int, v : Double) -> StatstestindependencePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependencePath::set(self : StatstestindependencePath, i : Int, v : Double) -> StatstestindependencePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_path_sum(s : StatstestindependencePath) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependencePath::sum(self : StatstestindependencePath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_path_mean(s : StatstestindependencePath) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependencePath::mean(self : StatstestindependencePath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_path_scale(s : StatstestindependencePath, f : Double) -> StatstestindependencePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependencePath::scale(self : StatstestindependencePath, f : Double) -> StatstestindependencePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_path_add(a : StatstestindependencePath, b : StatstestindependencePath) -> StatstestindependencePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependencePath::add(self : StatstestindependencePath, other : StatstestindependencePath) -> StatstestindependencePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_path_copy(s : StatstestindependencePath) -> StatstestindependencePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependencePath::copy(self : StatstestindependencePath) -> StatstestindependencePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_path_fill(s : StatstestindependencePath, v : Double) -> StatstestindependencePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependencePath::fill(self : StatstestindependencePath, v : Double) -> StatstestindependencePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_path_min(s : StatstestindependencePath) -> Double { @_common.min(s.data) }
+pub fn StatstestindependencePath::min(self : StatstestindependencePath) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_path_max(s : StatstestindependencePath) -> Double { @_common.max(s.data) }
+pub fn StatstestindependencePath::max(self : StatstestindependencePath) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_path_to_string(s : StatstestindependencePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependencePath::to_string(self : StatstestindependencePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceCluster {
@@ -657,45 +657,45 @@ pub fn stats_test_independence_cluster_make(size : Int) -> Statstestindependence
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_cluster_len(s : StatstestindependenceCluster) -> Int { s.size }
+pub fn StatstestindependenceCluster::len(self : StatstestindependenceCluster) -> Int { self.size }
 
-pub fn stats_test_independence_cluster_get(s : StatstestindependenceCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceCluster::get(self : StatstestindependenceCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_cluster_set(s : StatstestindependenceCluster, i : Int, v : Double) -> StatstestindependenceCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceCluster::set(self : StatstestindependenceCluster, i : Int, v : Double) -> StatstestindependenceCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_cluster_sum(s : StatstestindependenceCluster) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceCluster::sum(self : StatstestindependenceCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_cluster_mean(s : StatstestindependenceCluster) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceCluster::mean(self : StatstestindependenceCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_cluster_scale(s : StatstestindependenceCluster, f : Double) -> StatstestindependenceCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceCluster::scale(self : StatstestindependenceCluster, f : Double) -> StatstestindependenceCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_cluster_add(a : StatstestindependenceCluster, b : StatstestindependenceCluster) -> StatstestindependenceCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceCluster::add(self : StatstestindependenceCluster, other : StatstestindependenceCluster) -> StatstestindependenceCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_cluster_copy(s : StatstestindependenceCluster) -> StatstestindependenceCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceCluster::copy(self : StatstestindependenceCluster) -> StatstestindependenceCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_cluster_fill(s : StatstestindependenceCluster, v : Double) -> StatstestindependenceCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceCluster::fill(self : StatstestindependenceCluster, v : Double) -> StatstestindependenceCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_cluster_min(s : StatstestindependenceCluster) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceCluster::min(self : StatstestindependenceCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_cluster_max(s : StatstestindependenceCluster) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceCluster::max(self : StatstestindependenceCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_cluster_to_string(s : StatstestindependenceCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceCluster::to_string(self : StatstestindependenceCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceModel {
@@ -708,45 +708,45 @@ pub fn stats_test_independence_model_make(size : Int) -> StatstestindependenceMo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_model_len(s : StatstestindependenceModel) -> Int { s.size }
+pub fn StatstestindependenceModel::len(self : StatstestindependenceModel) -> Int { self.size }
 
-pub fn stats_test_independence_model_get(s : StatstestindependenceModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceModel::get(self : StatstestindependenceModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_model_set(s : StatstestindependenceModel, i : Int, v : Double) -> StatstestindependenceModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceModel::set(self : StatstestindependenceModel, i : Int, v : Double) -> StatstestindependenceModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_model_sum(s : StatstestindependenceModel) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceModel::sum(self : StatstestindependenceModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_model_mean(s : StatstestindependenceModel) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceModel::mean(self : StatstestindependenceModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_model_scale(s : StatstestindependenceModel, f : Double) -> StatstestindependenceModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceModel::scale(self : StatstestindependenceModel, f : Double) -> StatstestindependenceModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_model_add(a : StatstestindependenceModel, b : StatstestindependenceModel) -> StatstestindependenceModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceModel::add(self : StatstestindependenceModel, other : StatstestindependenceModel) -> StatstestindependenceModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_model_copy(s : StatstestindependenceModel) -> StatstestindependenceModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceModel::copy(self : StatstestindependenceModel) -> StatstestindependenceModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_model_fill(s : StatstestindependenceModel, v : Double) -> StatstestindependenceModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceModel::fill(self : StatstestindependenceModel, v : Double) -> StatstestindependenceModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_model_min(s : StatstestindependenceModel) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceModel::min(self : StatstestindependenceModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_model_max(s : StatstestindependenceModel) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceModel::max(self : StatstestindependenceModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_model_to_string(s : StatstestindependenceModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceModel::to_string(self : StatstestindependenceModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceLayer {
@@ -759,45 +759,45 @@ pub fn stats_test_independence_layer_make(size : Int) -> StatstestindependenceLa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_layer_len(s : StatstestindependenceLayer) -> Int { s.size }
+pub fn StatstestindependenceLayer::len(self : StatstestindependenceLayer) -> Int { self.size }
 
-pub fn stats_test_independence_layer_get(s : StatstestindependenceLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceLayer::get(self : StatstestindependenceLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_layer_set(s : StatstestindependenceLayer, i : Int, v : Double) -> StatstestindependenceLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceLayer::set(self : StatstestindependenceLayer, i : Int, v : Double) -> StatstestindependenceLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_layer_sum(s : StatstestindependenceLayer) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceLayer::sum(self : StatstestindependenceLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_layer_mean(s : StatstestindependenceLayer) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceLayer::mean(self : StatstestindependenceLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_layer_scale(s : StatstestindependenceLayer, f : Double) -> StatstestindependenceLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceLayer::scale(self : StatstestindependenceLayer, f : Double) -> StatstestindependenceLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_layer_add(a : StatstestindependenceLayer, b : StatstestindependenceLayer) -> StatstestindependenceLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceLayer::add(self : StatstestindependenceLayer, other : StatstestindependenceLayer) -> StatstestindependenceLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_layer_copy(s : StatstestindependenceLayer) -> StatstestindependenceLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceLayer::copy(self : StatstestindependenceLayer) -> StatstestindependenceLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_layer_fill(s : StatstestindependenceLayer, v : Double) -> StatstestindependenceLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceLayer::fill(self : StatstestindependenceLayer, v : Double) -> StatstestindependenceLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_layer_min(s : StatstestindependenceLayer) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceLayer::min(self : StatstestindependenceLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_layer_max(s : StatstestindependenceLayer) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceLayer::max(self : StatstestindependenceLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_layer_to_string(s : StatstestindependenceLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceLayer::to_string(self : StatstestindependenceLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceBuffer {
@@ -810,45 +810,45 @@ pub fn stats_test_independence_buffer_make(size : Int) -> StatstestindependenceB
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_buffer_len(s : StatstestindependenceBuffer) -> Int { s.size }
+pub fn StatstestindependenceBuffer::len(self : StatstestindependenceBuffer) -> Int { self.size }
 
-pub fn stats_test_independence_buffer_get(s : StatstestindependenceBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceBuffer::get(self : StatstestindependenceBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_buffer_set(s : StatstestindependenceBuffer, i : Int, v : Double) -> StatstestindependenceBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceBuffer::set(self : StatstestindependenceBuffer, i : Int, v : Double) -> StatstestindependenceBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_buffer_sum(s : StatstestindependenceBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceBuffer::sum(self : StatstestindependenceBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_buffer_mean(s : StatstestindependenceBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceBuffer::mean(self : StatstestindependenceBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_buffer_scale(s : StatstestindependenceBuffer, f : Double) -> StatstestindependenceBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceBuffer::scale(self : StatstestindependenceBuffer, f : Double) -> StatstestindependenceBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_buffer_add(a : StatstestindependenceBuffer, b : StatstestindependenceBuffer) -> StatstestindependenceBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceBuffer::add(self : StatstestindependenceBuffer, other : StatstestindependenceBuffer) -> StatstestindependenceBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_buffer_copy(s : StatstestindependenceBuffer) -> StatstestindependenceBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceBuffer::copy(self : StatstestindependenceBuffer) -> StatstestindependenceBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_buffer_fill(s : StatstestindependenceBuffer, v : Double) -> StatstestindependenceBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceBuffer::fill(self : StatstestindependenceBuffer, v : Double) -> StatstestindependenceBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_buffer_min(s : StatstestindependenceBuffer) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceBuffer::min(self : StatstestindependenceBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_buffer_max(s : StatstestindependenceBuffer) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceBuffer::max(self : StatstestindependenceBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_buffer_to_string(s : StatstestindependenceBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceBuffer::to_string(self : StatstestindependenceBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceCursor {
@@ -861,45 +861,45 @@ pub fn stats_test_independence_cursor_make(size : Int) -> StatstestindependenceC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_cursor_len(s : StatstestindependenceCursor) -> Int { s.size }
+pub fn StatstestindependenceCursor::len(self : StatstestindependenceCursor) -> Int { self.size }
 
-pub fn stats_test_independence_cursor_get(s : StatstestindependenceCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceCursor::get(self : StatstestindependenceCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_cursor_set(s : StatstestindependenceCursor, i : Int, v : Double) -> StatstestindependenceCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceCursor::set(self : StatstestindependenceCursor, i : Int, v : Double) -> StatstestindependenceCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_cursor_sum(s : StatstestindependenceCursor) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceCursor::sum(self : StatstestindependenceCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_cursor_mean(s : StatstestindependenceCursor) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceCursor::mean(self : StatstestindependenceCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_cursor_scale(s : StatstestindependenceCursor, f : Double) -> StatstestindependenceCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceCursor::scale(self : StatstestindependenceCursor, f : Double) -> StatstestindependenceCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_cursor_add(a : StatstestindependenceCursor, b : StatstestindependenceCursor) -> StatstestindependenceCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceCursor::add(self : StatstestindependenceCursor, other : StatstestindependenceCursor) -> StatstestindependenceCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_cursor_copy(s : StatstestindependenceCursor) -> StatstestindependenceCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceCursor::copy(self : StatstestindependenceCursor) -> StatstestindependenceCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_cursor_fill(s : StatstestindependenceCursor, v : Double) -> StatstestindependenceCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceCursor::fill(self : StatstestindependenceCursor, v : Double) -> StatstestindependenceCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_cursor_min(s : StatstestindependenceCursor) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceCursor::min(self : StatstestindependenceCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_cursor_max(s : StatstestindependenceCursor) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceCursor::max(self : StatstestindependenceCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_cursor_to_string(s : StatstestindependenceCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceCursor::to_string(self : StatstestindependenceCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceView {
@@ -912,45 +912,45 @@ pub fn stats_test_independence_view_make(size : Int) -> StatstestindependenceVie
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_view_len(s : StatstestindependenceView) -> Int { s.size }
+pub fn StatstestindependenceView::len(self : StatstestindependenceView) -> Int { self.size }
 
-pub fn stats_test_independence_view_get(s : StatstestindependenceView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceView::get(self : StatstestindependenceView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_view_set(s : StatstestindependenceView, i : Int, v : Double) -> StatstestindependenceView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceView::set(self : StatstestindependenceView, i : Int, v : Double) -> StatstestindependenceView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_view_sum(s : StatstestindependenceView) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceView::sum(self : StatstestindependenceView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_view_mean(s : StatstestindependenceView) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceView::mean(self : StatstestindependenceView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_view_scale(s : StatstestindependenceView, f : Double) -> StatstestindependenceView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceView::scale(self : StatstestindependenceView, f : Double) -> StatstestindependenceView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_view_add(a : StatstestindependenceView, b : StatstestindependenceView) -> StatstestindependenceView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceView::add(self : StatstestindependenceView, other : StatstestindependenceView) -> StatstestindependenceView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_view_copy(s : StatstestindependenceView) -> StatstestindependenceView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceView::copy(self : StatstestindependenceView) -> StatstestindependenceView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_view_fill(s : StatstestindependenceView, v : Double) -> StatstestindependenceView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceView::fill(self : StatstestindependenceView, v : Double) -> StatstestindependenceView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_view_min(s : StatstestindependenceView) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceView::min(self : StatstestindependenceView) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_view_max(s : StatstestindependenceView) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceView::max(self : StatstestindependenceView) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_view_to_string(s : StatstestindependenceView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceView::to_string(self : StatstestindependenceView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceRange {
@@ -963,45 +963,45 @@ pub fn stats_test_independence_range_make(size : Int) -> StatstestindependenceRa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_range_len(s : StatstestindependenceRange) -> Int { s.size }
+pub fn StatstestindependenceRange::len(self : StatstestindependenceRange) -> Int { self.size }
 
-pub fn stats_test_independence_range_get(s : StatstestindependenceRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceRange::get(self : StatstestindependenceRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_range_set(s : StatstestindependenceRange, i : Int, v : Double) -> StatstestindependenceRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceRange::set(self : StatstestindependenceRange, i : Int, v : Double) -> StatstestindependenceRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_range_sum(s : StatstestindependenceRange) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceRange::sum(self : StatstestindependenceRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_range_mean(s : StatstestindependenceRange) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceRange::mean(self : StatstestindependenceRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_range_scale(s : StatstestindependenceRange, f : Double) -> StatstestindependenceRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceRange::scale(self : StatstestindependenceRange, f : Double) -> StatstestindependenceRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_range_add(a : StatstestindependenceRange, b : StatstestindependenceRange) -> StatstestindependenceRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceRange::add(self : StatstestindependenceRange, other : StatstestindependenceRange) -> StatstestindependenceRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_range_copy(s : StatstestindependenceRange) -> StatstestindependenceRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceRange::copy(self : StatstestindependenceRange) -> StatstestindependenceRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_range_fill(s : StatstestindependenceRange, v : Double) -> StatstestindependenceRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceRange::fill(self : StatstestindependenceRange, v : Double) -> StatstestindependenceRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_range_min(s : StatstestindependenceRange) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceRange::min(self : StatstestindependenceRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_range_max(s : StatstestindependenceRange) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceRange::max(self : StatstestindependenceRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_range_to_string(s : StatstestindependenceRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceRange::to_string(self : StatstestindependenceRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_test_independence_slice_make(size : Int) -> StatstestindependenceSl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_independence_slice_len(s : StatstestindependenceSlice) -> Int { s.size }
+pub fn StatstestindependenceSlice::len(self : StatstestindependenceSlice) -> Int { self.size }
 
-pub fn stats_test_independence_slice_get(s : StatstestindependenceSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestindependenceSlice::get(self : StatstestindependenceSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_independence_slice_set(s : StatstestindependenceSlice, i : Int, v : Double) -> StatstestindependenceSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestindependenceSlice::set(self : StatstestindependenceSlice, i : Int, v : Double) -> StatstestindependenceSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_slice_sum(s : StatstestindependenceSlice) -> Double { @_common.sum(s.data) }
+pub fn StatstestindependenceSlice::sum(self : StatstestindependenceSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_independence_slice_mean(s : StatstestindependenceSlice) -> Double { @_common.mean(s.data) }
+pub fn StatstestindependenceSlice::mean(self : StatstestindependenceSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_independence_slice_scale(s : StatstestindependenceSlice, f : Double) -> StatstestindependenceSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestindependenceSlice::scale(self : StatstestindependenceSlice, f : Double) -> StatstestindependenceSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_slice_add(a : StatstestindependenceSlice, b : StatstestindependenceSlice) -> StatstestindependenceSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestindependenceSlice::add(self : StatstestindependenceSlice, other : StatstestindependenceSlice) -> StatstestindependenceSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_independence_slice_copy(s : StatstestindependenceSlice) -> StatstestindependenceSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestindependenceSlice::copy(self : StatstestindependenceSlice) -> StatstestindependenceSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_slice_fill(s : StatstestindependenceSlice, v : Double) -> StatstestindependenceSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestindependenceSlice::fill(self : StatstestindependenceSlice, v : Double) -> StatstestindependenceSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_independence_slice_min(s : StatstestindependenceSlice) -> Double { @_common.min(s.data) }
+pub fn StatstestindependenceSlice::min(self : StatstestindependenceSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_independence_slice_max(s : StatstestindependenceSlice) -> Double { @_common.max(s.data) }
+pub fn StatstestindependenceSlice::max(self : StatstestindependenceSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_independence_slice_to_string(s : StatstestindependenceSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestindependenceSlice::to_string(self : StatstestindependenceSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

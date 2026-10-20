@@ -351,45 +351,45 @@ pub fn ds_tree_suffix_frame_make(size : Int) -> DstreesuffixFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_frame_len(s : DstreesuffixFrame) -> Int { s.size }
+pub fn DstreesuffixFrame::len(self : DstreesuffixFrame) -> Int { self.size }
 
-pub fn ds_tree_suffix_frame_get(s : DstreesuffixFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixFrame::get(self : DstreesuffixFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_frame_set(s : DstreesuffixFrame, i : Int, v : Double) -> DstreesuffixFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixFrame::set(self : DstreesuffixFrame, i : Int, v : Double) -> DstreesuffixFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_frame_sum(s : DstreesuffixFrame) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixFrame::sum(self : DstreesuffixFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_frame_mean(s : DstreesuffixFrame) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixFrame::mean(self : DstreesuffixFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_frame_scale(s : DstreesuffixFrame, f : Double) -> DstreesuffixFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixFrame::scale(self : DstreesuffixFrame, f : Double) -> DstreesuffixFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_frame_add(a : DstreesuffixFrame, b : DstreesuffixFrame) -> DstreesuffixFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixFrame::add(self : DstreesuffixFrame, other : DstreesuffixFrame) -> DstreesuffixFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_frame_copy(s : DstreesuffixFrame) -> DstreesuffixFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixFrame::copy(self : DstreesuffixFrame) -> DstreesuffixFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_frame_fill(s : DstreesuffixFrame, v : Double) -> DstreesuffixFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixFrame::fill(self : DstreesuffixFrame, v : Double) -> DstreesuffixFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_frame_min(s : DstreesuffixFrame) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixFrame::min(self : DstreesuffixFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_frame_max(s : DstreesuffixFrame) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixFrame::max(self : DstreesuffixFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_frame_to_string(s : DstreesuffixFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixFrame::to_string(self : DstreesuffixFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixTable {
@@ -402,45 +402,45 @@ pub fn ds_tree_suffix_table_make(size : Int) -> DstreesuffixTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_table_len(s : DstreesuffixTable) -> Int { s.size }
+pub fn DstreesuffixTable::len(self : DstreesuffixTable) -> Int { self.size }
 
-pub fn ds_tree_suffix_table_get(s : DstreesuffixTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixTable::get(self : DstreesuffixTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_table_set(s : DstreesuffixTable, i : Int, v : Double) -> DstreesuffixTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixTable::set(self : DstreesuffixTable, i : Int, v : Double) -> DstreesuffixTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_table_sum(s : DstreesuffixTable) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixTable::sum(self : DstreesuffixTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_table_mean(s : DstreesuffixTable) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixTable::mean(self : DstreesuffixTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_table_scale(s : DstreesuffixTable, f : Double) -> DstreesuffixTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixTable::scale(self : DstreesuffixTable, f : Double) -> DstreesuffixTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_table_add(a : DstreesuffixTable, b : DstreesuffixTable) -> DstreesuffixTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixTable::add(self : DstreesuffixTable, other : DstreesuffixTable) -> DstreesuffixTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_table_copy(s : DstreesuffixTable) -> DstreesuffixTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixTable::copy(self : DstreesuffixTable) -> DstreesuffixTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_table_fill(s : DstreesuffixTable, v : Double) -> DstreesuffixTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixTable::fill(self : DstreesuffixTable, v : Double) -> DstreesuffixTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_table_min(s : DstreesuffixTable) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixTable::min(self : DstreesuffixTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_table_max(s : DstreesuffixTable) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixTable::max(self : DstreesuffixTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_table_to_string(s : DstreesuffixTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixTable::to_string(self : DstreesuffixTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixGraphN {
@@ -453,45 +453,45 @@ pub fn ds_tree_suffix_graphn_make(size : Int) -> DstreesuffixGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_graphn_len(s : DstreesuffixGraphN) -> Int { s.size }
+pub fn DstreesuffixGraphN::len(self : DstreesuffixGraphN) -> Int { self.size }
 
-pub fn ds_tree_suffix_graphn_get(s : DstreesuffixGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixGraphN::get(self : DstreesuffixGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_graphn_set(s : DstreesuffixGraphN, i : Int, v : Double) -> DstreesuffixGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixGraphN::set(self : DstreesuffixGraphN, i : Int, v : Double) -> DstreesuffixGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_graphn_sum(s : DstreesuffixGraphN) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixGraphN::sum(self : DstreesuffixGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_graphn_mean(s : DstreesuffixGraphN) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixGraphN::mean(self : DstreesuffixGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_graphn_scale(s : DstreesuffixGraphN, f : Double) -> DstreesuffixGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixGraphN::scale(self : DstreesuffixGraphN, f : Double) -> DstreesuffixGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_graphn_add(a : DstreesuffixGraphN, b : DstreesuffixGraphN) -> DstreesuffixGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixGraphN::add(self : DstreesuffixGraphN, other : DstreesuffixGraphN) -> DstreesuffixGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_graphn_copy(s : DstreesuffixGraphN) -> DstreesuffixGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixGraphN::copy(self : DstreesuffixGraphN) -> DstreesuffixGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_graphn_fill(s : DstreesuffixGraphN, v : Double) -> DstreesuffixGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixGraphN::fill(self : DstreesuffixGraphN, v : Double) -> DstreesuffixGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_graphn_min(s : DstreesuffixGraphN) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixGraphN::min(self : DstreesuffixGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_graphn_max(s : DstreesuffixGraphN) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixGraphN::max(self : DstreesuffixGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_graphn_to_string(s : DstreesuffixGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixGraphN::to_string(self : DstreesuffixGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixNode {
@@ -504,45 +504,45 @@ pub fn ds_tree_suffix_node_make(size : Int) -> DstreesuffixNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_node_len(s : DstreesuffixNode) -> Int { s.size }
+pub fn DstreesuffixNode::len(self : DstreesuffixNode) -> Int { self.size }
 
-pub fn ds_tree_suffix_node_get(s : DstreesuffixNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixNode::get(self : DstreesuffixNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_node_set(s : DstreesuffixNode, i : Int, v : Double) -> DstreesuffixNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixNode::set(self : DstreesuffixNode, i : Int, v : Double) -> DstreesuffixNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_node_sum(s : DstreesuffixNode) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixNode::sum(self : DstreesuffixNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_node_mean(s : DstreesuffixNode) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixNode::mean(self : DstreesuffixNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_node_scale(s : DstreesuffixNode, f : Double) -> DstreesuffixNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixNode::scale(self : DstreesuffixNode, f : Double) -> DstreesuffixNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_node_add(a : DstreesuffixNode, b : DstreesuffixNode) -> DstreesuffixNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixNode::add(self : DstreesuffixNode, other : DstreesuffixNode) -> DstreesuffixNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_node_copy(s : DstreesuffixNode) -> DstreesuffixNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixNode::copy(self : DstreesuffixNode) -> DstreesuffixNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_node_fill(s : DstreesuffixNode, v : Double) -> DstreesuffixNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixNode::fill(self : DstreesuffixNode, v : Double) -> DstreesuffixNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_node_min(s : DstreesuffixNode) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixNode::min(self : DstreesuffixNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_node_max(s : DstreesuffixNode) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixNode::max(self : DstreesuffixNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_node_to_string(s : DstreesuffixNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixNode::to_string(self : DstreesuffixNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixEdge {
@@ -555,45 +555,45 @@ pub fn ds_tree_suffix_edge_make(size : Int) -> DstreesuffixEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_edge_len(s : DstreesuffixEdge) -> Int { s.size }
+pub fn DstreesuffixEdge::len(self : DstreesuffixEdge) -> Int { self.size }
 
-pub fn ds_tree_suffix_edge_get(s : DstreesuffixEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixEdge::get(self : DstreesuffixEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_edge_set(s : DstreesuffixEdge, i : Int, v : Double) -> DstreesuffixEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixEdge::set(self : DstreesuffixEdge, i : Int, v : Double) -> DstreesuffixEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_edge_sum(s : DstreesuffixEdge) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixEdge::sum(self : DstreesuffixEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_edge_mean(s : DstreesuffixEdge) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixEdge::mean(self : DstreesuffixEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_edge_scale(s : DstreesuffixEdge, f : Double) -> DstreesuffixEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixEdge::scale(self : DstreesuffixEdge, f : Double) -> DstreesuffixEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_edge_add(a : DstreesuffixEdge, b : DstreesuffixEdge) -> DstreesuffixEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixEdge::add(self : DstreesuffixEdge, other : DstreesuffixEdge) -> DstreesuffixEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_edge_copy(s : DstreesuffixEdge) -> DstreesuffixEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixEdge::copy(self : DstreesuffixEdge) -> DstreesuffixEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_edge_fill(s : DstreesuffixEdge, v : Double) -> DstreesuffixEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixEdge::fill(self : DstreesuffixEdge, v : Double) -> DstreesuffixEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_edge_min(s : DstreesuffixEdge) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixEdge::min(self : DstreesuffixEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_edge_max(s : DstreesuffixEdge) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixEdge::max(self : DstreesuffixEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_edge_to_string(s : DstreesuffixEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixEdge::to_string(self : DstreesuffixEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixPath {
@@ -606,45 +606,45 @@ pub fn ds_tree_suffix_path_make(size : Int) -> DstreesuffixPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_path_len(s : DstreesuffixPath) -> Int { s.size }
+pub fn DstreesuffixPath::len(self : DstreesuffixPath) -> Int { self.size }
 
-pub fn ds_tree_suffix_path_get(s : DstreesuffixPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixPath::get(self : DstreesuffixPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_path_set(s : DstreesuffixPath, i : Int, v : Double) -> DstreesuffixPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixPath::set(self : DstreesuffixPath, i : Int, v : Double) -> DstreesuffixPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_path_sum(s : DstreesuffixPath) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixPath::sum(self : DstreesuffixPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_path_mean(s : DstreesuffixPath) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixPath::mean(self : DstreesuffixPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_path_scale(s : DstreesuffixPath, f : Double) -> DstreesuffixPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixPath::scale(self : DstreesuffixPath, f : Double) -> DstreesuffixPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_path_add(a : DstreesuffixPath, b : DstreesuffixPath) -> DstreesuffixPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixPath::add(self : DstreesuffixPath, other : DstreesuffixPath) -> DstreesuffixPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_path_copy(s : DstreesuffixPath) -> DstreesuffixPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixPath::copy(self : DstreesuffixPath) -> DstreesuffixPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_path_fill(s : DstreesuffixPath, v : Double) -> DstreesuffixPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixPath::fill(self : DstreesuffixPath, v : Double) -> DstreesuffixPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_path_min(s : DstreesuffixPath) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixPath::min(self : DstreesuffixPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_path_max(s : DstreesuffixPath) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixPath::max(self : DstreesuffixPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_path_to_string(s : DstreesuffixPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixPath::to_string(self : DstreesuffixPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixCluster {
@@ -657,45 +657,45 @@ pub fn ds_tree_suffix_cluster_make(size : Int) -> DstreesuffixCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_cluster_len(s : DstreesuffixCluster) -> Int { s.size }
+pub fn DstreesuffixCluster::len(self : DstreesuffixCluster) -> Int { self.size }
 
-pub fn ds_tree_suffix_cluster_get(s : DstreesuffixCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixCluster::get(self : DstreesuffixCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_cluster_set(s : DstreesuffixCluster, i : Int, v : Double) -> DstreesuffixCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixCluster::set(self : DstreesuffixCluster, i : Int, v : Double) -> DstreesuffixCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_cluster_sum(s : DstreesuffixCluster) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixCluster::sum(self : DstreesuffixCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_cluster_mean(s : DstreesuffixCluster) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixCluster::mean(self : DstreesuffixCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_cluster_scale(s : DstreesuffixCluster, f : Double) -> DstreesuffixCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixCluster::scale(self : DstreesuffixCluster, f : Double) -> DstreesuffixCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_cluster_add(a : DstreesuffixCluster, b : DstreesuffixCluster) -> DstreesuffixCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixCluster::add(self : DstreesuffixCluster, other : DstreesuffixCluster) -> DstreesuffixCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_cluster_copy(s : DstreesuffixCluster) -> DstreesuffixCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixCluster::copy(self : DstreesuffixCluster) -> DstreesuffixCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_cluster_fill(s : DstreesuffixCluster, v : Double) -> DstreesuffixCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixCluster::fill(self : DstreesuffixCluster, v : Double) -> DstreesuffixCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_cluster_min(s : DstreesuffixCluster) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixCluster::min(self : DstreesuffixCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_cluster_max(s : DstreesuffixCluster) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixCluster::max(self : DstreesuffixCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_cluster_to_string(s : DstreesuffixCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixCluster::to_string(self : DstreesuffixCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixModel {
@@ -708,45 +708,45 @@ pub fn ds_tree_suffix_model_make(size : Int) -> DstreesuffixModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_model_len(s : DstreesuffixModel) -> Int { s.size }
+pub fn DstreesuffixModel::len(self : DstreesuffixModel) -> Int { self.size }
 
-pub fn ds_tree_suffix_model_get(s : DstreesuffixModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixModel::get(self : DstreesuffixModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_model_set(s : DstreesuffixModel, i : Int, v : Double) -> DstreesuffixModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixModel::set(self : DstreesuffixModel, i : Int, v : Double) -> DstreesuffixModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_model_sum(s : DstreesuffixModel) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixModel::sum(self : DstreesuffixModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_model_mean(s : DstreesuffixModel) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixModel::mean(self : DstreesuffixModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_model_scale(s : DstreesuffixModel, f : Double) -> DstreesuffixModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixModel::scale(self : DstreesuffixModel, f : Double) -> DstreesuffixModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_model_add(a : DstreesuffixModel, b : DstreesuffixModel) -> DstreesuffixModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixModel::add(self : DstreesuffixModel, other : DstreesuffixModel) -> DstreesuffixModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_model_copy(s : DstreesuffixModel) -> DstreesuffixModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixModel::copy(self : DstreesuffixModel) -> DstreesuffixModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_model_fill(s : DstreesuffixModel, v : Double) -> DstreesuffixModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixModel::fill(self : DstreesuffixModel, v : Double) -> DstreesuffixModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_model_min(s : DstreesuffixModel) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixModel::min(self : DstreesuffixModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_model_max(s : DstreesuffixModel) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixModel::max(self : DstreesuffixModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_model_to_string(s : DstreesuffixModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixModel::to_string(self : DstreesuffixModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixLayer {
@@ -759,45 +759,45 @@ pub fn ds_tree_suffix_layer_make(size : Int) -> DstreesuffixLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_layer_len(s : DstreesuffixLayer) -> Int { s.size }
+pub fn DstreesuffixLayer::len(self : DstreesuffixLayer) -> Int { self.size }
 
-pub fn ds_tree_suffix_layer_get(s : DstreesuffixLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixLayer::get(self : DstreesuffixLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_layer_set(s : DstreesuffixLayer, i : Int, v : Double) -> DstreesuffixLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixLayer::set(self : DstreesuffixLayer, i : Int, v : Double) -> DstreesuffixLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_layer_sum(s : DstreesuffixLayer) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixLayer::sum(self : DstreesuffixLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_layer_mean(s : DstreesuffixLayer) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixLayer::mean(self : DstreesuffixLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_layer_scale(s : DstreesuffixLayer, f : Double) -> DstreesuffixLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixLayer::scale(self : DstreesuffixLayer, f : Double) -> DstreesuffixLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_layer_add(a : DstreesuffixLayer, b : DstreesuffixLayer) -> DstreesuffixLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixLayer::add(self : DstreesuffixLayer, other : DstreesuffixLayer) -> DstreesuffixLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_layer_copy(s : DstreesuffixLayer) -> DstreesuffixLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixLayer::copy(self : DstreesuffixLayer) -> DstreesuffixLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_layer_fill(s : DstreesuffixLayer, v : Double) -> DstreesuffixLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixLayer::fill(self : DstreesuffixLayer, v : Double) -> DstreesuffixLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_layer_min(s : DstreesuffixLayer) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixLayer::min(self : DstreesuffixLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_layer_max(s : DstreesuffixLayer) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixLayer::max(self : DstreesuffixLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_layer_to_string(s : DstreesuffixLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixLayer::to_string(self : DstreesuffixLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixBuffer {
@@ -810,45 +810,45 @@ pub fn ds_tree_suffix_buffer_make(size : Int) -> DstreesuffixBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_buffer_len(s : DstreesuffixBuffer) -> Int { s.size }
+pub fn DstreesuffixBuffer::len(self : DstreesuffixBuffer) -> Int { self.size }
 
-pub fn ds_tree_suffix_buffer_get(s : DstreesuffixBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixBuffer::get(self : DstreesuffixBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_buffer_set(s : DstreesuffixBuffer, i : Int, v : Double) -> DstreesuffixBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixBuffer::set(self : DstreesuffixBuffer, i : Int, v : Double) -> DstreesuffixBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_buffer_sum(s : DstreesuffixBuffer) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixBuffer::sum(self : DstreesuffixBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_buffer_mean(s : DstreesuffixBuffer) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixBuffer::mean(self : DstreesuffixBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_buffer_scale(s : DstreesuffixBuffer, f : Double) -> DstreesuffixBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixBuffer::scale(self : DstreesuffixBuffer, f : Double) -> DstreesuffixBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_buffer_add(a : DstreesuffixBuffer, b : DstreesuffixBuffer) -> DstreesuffixBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixBuffer::add(self : DstreesuffixBuffer, other : DstreesuffixBuffer) -> DstreesuffixBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_buffer_copy(s : DstreesuffixBuffer) -> DstreesuffixBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixBuffer::copy(self : DstreesuffixBuffer) -> DstreesuffixBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_buffer_fill(s : DstreesuffixBuffer, v : Double) -> DstreesuffixBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixBuffer::fill(self : DstreesuffixBuffer, v : Double) -> DstreesuffixBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_buffer_min(s : DstreesuffixBuffer) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixBuffer::min(self : DstreesuffixBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_buffer_max(s : DstreesuffixBuffer) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixBuffer::max(self : DstreesuffixBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_buffer_to_string(s : DstreesuffixBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixBuffer::to_string(self : DstreesuffixBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixCursor {
@@ -861,45 +861,45 @@ pub fn ds_tree_suffix_cursor_make(size : Int) -> DstreesuffixCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_cursor_len(s : DstreesuffixCursor) -> Int { s.size }
+pub fn DstreesuffixCursor::len(self : DstreesuffixCursor) -> Int { self.size }
 
-pub fn ds_tree_suffix_cursor_get(s : DstreesuffixCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixCursor::get(self : DstreesuffixCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_cursor_set(s : DstreesuffixCursor, i : Int, v : Double) -> DstreesuffixCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixCursor::set(self : DstreesuffixCursor, i : Int, v : Double) -> DstreesuffixCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_cursor_sum(s : DstreesuffixCursor) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixCursor::sum(self : DstreesuffixCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_cursor_mean(s : DstreesuffixCursor) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixCursor::mean(self : DstreesuffixCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_cursor_scale(s : DstreesuffixCursor, f : Double) -> DstreesuffixCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixCursor::scale(self : DstreesuffixCursor, f : Double) -> DstreesuffixCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_cursor_add(a : DstreesuffixCursor, b : DstreesuffixCursor) -> DstreesuffixCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixCursor::add(self : DstreesuffixCursor, other : DstreesuffixCursor) -> DstreesuffixCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_cursor_copy(s : DstreesuffixCursor) -> DstreesuffixCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixCursor::copy(self : DstreesuffixCursor) -> DstreesuffixCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_cursor_fill(s : DstreesuffixCursor, v : Double) -> DstreesuffixCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixCursor::fill(self : DstreesuffixCursor, v : Double) -> DstreesuffixCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_cursor_min(s : DstreesuffixCursor) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixCursor::min(self : DstreesuffixCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_cursor_max(s : DstreesuffixCursor) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixCursor::max(self : DstreesuffixCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_cursor_to_string(s : DstreesuffixCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixCursor::to_string(self : DstreesuffixCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixView {
@@ -912,45 +912,45 @@ pub fn ds_tree_suffix_view_make(size : Int) -> DstreesuffixView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_view_len(s : DstreesuffixView) -> Int { s.size }
+pub fn DstreesuffixView::len(self : DstreesuffixView) -> Int { self.size }
 
-pub fn ds_tree_suffix_view_get(s : DstreesuffixView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixView::get(self : DstreesuffixView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_view_set(s : DstreesuffixView, i : Int, v : Double) -> DstreesuffixView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixView::set(self : DstreesuffixView, i : Int, v : Double) -> DstreesuffixView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_view_sum(s : DstreesuffixView) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixView::sum(self : DstreesuffixView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_view_mean(s : DstreesuffixView) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixView::mean(self : DstreesuffixView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_view_scale(s : DstreesuffixView, f : Double) -> DstreesuffixView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixView::scale(self : DstreesuffixView, f : Double) -> DstreesuffixView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_view_add(a : DstreesuffixView, b : DstreesuffixView) -> DstreesuffixView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixView::add(self : DstreesuffixView, other : DstreesuffixView) -> DstreesuffixView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_view_copy(s : DstreesuffixView) -> DstreesuffixView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixView::copy(self : DstreesuffixView) -> DstreesuffixView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_view_fill(s : DstreesuffixView, v : Double) -> DstreesuffixView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixView::fill(self : DstreesuffixView, v : Double) -> DstreesuffixView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_view_min(s : DstreesuffixView) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixView::min(self : DstreesuffixView) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_view_max(s : DstreesuffixView) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixView::max(self : DstreesuffixView) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_view_to_string(s : DstreesuffixView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixView::to_string(self : DstreesuffixView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixRange {
@@ -963,45 +963,45 @@ pub fn ds_tree_suffix_range_make(size : Int) -> DstreesuffixRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_range_len(s : DstreesuffixRange) -> Int { s.size }
+pub fn DstreesuffixRange::len(self : DstreesuffixRange) -> Int { self.size }
 
-pub fn ds_tree_suffix_range_get(s : DstreesuffixRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixRange::get(self : DstreesuffixRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_range_set(s : DstreesuffixRange, i : Int, v : Double) -> DstreesuffixRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixRange::set(self : DstreesuffixRange, i : Int, v : Double) -> DstreesuffixRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_range_sum(s : DstreesuffixRange) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixRange::sum(self : DstreesuffixRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_range_mean(s : DstreesuffixRange) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixRange::mean(self : DstreesuffixRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_range_scale(s : DstreesuffixRange, f : Double) -> DstreesuffixRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixRange::scale(self : DstreesuffixRange, f : Double) -> DstreesuffixRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_range_add(a : DstreesuffixRange, b : DstreesuffixRange) -> DstreesuffixRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixRange::add(self : DstreesuffixRange, other : DstreesuffixRange) -> DstreesuffixRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_range_copy(s : DstreesuffixRange) -> DstreesuffixRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixRange::copy(self : DstreesuffixRange) -> DstreesuffixRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_range_fill(s : DstreesuffixRange, v : Double) -> DstreesuffixRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixRange::fill(self : DstreesuffixRange, v : Double) -> DstreesuffixRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_range_min(s : DstreesuffixRange) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixRange::min(self : DstreesuffixRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_range_max(s : DstreesuffixRange) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixRange::max(self : DstreesuffixRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_range_to_string(s : DstreesuffixRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixRange::to_string(self : DstreesuffixRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreesuffixSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_tree_suffix_slice_make(size : Int) -> DstreesuffixSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_suffix_slice_len(s : DstreesuffixSlice) -> Int { s.size }
+pub fn DstreesuffixSlice::len(self : DstreesuffixSlice) -> Int { self.size }
 
-pub fn ds_tree_suffix_slice_get(s : DstreesuffixSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreesuffixSlice::get(self : DstreesuffixSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_suffix_slice_set(s : DstreesuffixSlice, i : Int, v : Double) -> DstreesuffixSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreesuffixSlice::set(self : DstreesuffixSlice, i : Int, v : Double) -> DstreesuffixSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_slice_sum(s : DstreesuffixSlice) -> Double { @_common.sum(s.data) }
+pub fn DstreesuffixSlice::sum(self : DstreesuffixSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_suffix_slice_mean(s : DstreesuffixSlice) -> Double { @_common.mean(s.data) }
+pub fn DstreesuffixSlice::mean(self : DstreesuffixSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_suffix_slice_scale(s : DstreesuffixSlice, f : Double) -> DstreesuffixSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreesuffixSlice::scale(self : DstreesuffixSlice, f : Double) -> DstreesuffixSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_slice_add(a : DstreesuffixSlice, b : DstreesuffixSlice) -> DstreesuffixSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreesuffixSlice::add(self : DstreesuffixSlice, other : DstreesuffixSlice) -> DstreesuffixSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_slice_copy(s : DstreesuffixSlice) -> DstreesuffixSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreesuffixSlice::copy(self : DstreesuffixSlice) -> DstreesuffixSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_slice_fill(s : DstreesuffixSlice, v : Double) -> DstreesuffixSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreesuffixSlice::fill(self : DstreesuffixSlice, v : Double) -> DstreesuffixSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_suffix_slice_min(s : DstreesuffixSlice) -> Double { @_common.min(s.data) }
+pub fn DstreesuffixSlice::min(self : DstreesuffixSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_suffix_slice_max(s : DstreesuffixSlice) -> Double { @_common.max(s.data) }
+pub fn DstreesuffixSlice::max(self : DstreesuffixSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_suffix_slice_to_string(s : DstreesuffixSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreesuffixSlice::to_string(self : DstreesuffixSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

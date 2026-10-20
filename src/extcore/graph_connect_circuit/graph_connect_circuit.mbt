@@ -351,45 +351,45 @@ pub fn graph_connect_circuit_frame_make(size : Int) -> GraphconnectcircuitFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_frame_len(s : GraphconnectcircuitFrame) -> Int { s.size }
+pub fn GraphconnectcircuitFrame::len(self : GraphconnectcircuitFrame) -> Int { self.size }
 
-pub fn graph_connect_circuit_frame_get(s : GraphconnectcircuitFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitFrame::get(self : GraphconnectcircuitFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_frame_set(s : GraphconnectcircuitFrame, i : Int, v : Double) -> GraphconnectcircuitFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitFrame::set(self : GraphconnectcircuitFrame, i : Int, v : Double) -> GraphconnectcircuitFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_frame_sum(s : GraphconnectcircuitFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitFrame::sum(self : GraphconnectcircuitFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_frame_mean(s : GraphconnectcircuitFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitFrame::mean(self : GraphconnectcircuitFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_frame_scale(s : GraphconnectcircuitFrame, f : Double) -> GraphconnectcircuitFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitFrame::scale(self : GraphconnectcircuitFrame, f : Double) -> GraphconnectcircuitFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_frame_add(a : GraphconnectcircuitFrame, b : GraphconnectcircuitFrame) -> GraphconnectcircuitFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitFrame::add(self : GraphconnectcircuitFrame, other : GraphconnectcircuitFrame) -> GraphconnectcircuitFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_frame_copy(s : GraphconnectcircuitFrame) -> GraphconnectcircuitFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitFrame::copy(self : GraphconnectcircuitFrame) -> GraphconnectcircuitFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_frame_fill(s : GraphconnectcircuitFrame, v : Double) -> GraphconnectcircuitFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitFrame::fill(self : GraphconnectcircuitFrame, v : Double) -> GraphconnectcircuitFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_frame_min(s : GraphconnectcircuitFrame) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitFrame::min(self : GraphconnectcircuitFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_frame_max(s : GraphconnectcircuitFrame) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitFrame::max(self : GraphconnectcircuitFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_frame_to_string(s : GraphconnectcircuitFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitFrame::to_string(self : GraphconnectcircuitFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitTable {
@@ -402,45 +402,45 @@ pub fn graph_connect_circuit_table_make(size : Int) -> GraphconnectcircuitTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_table_len(s : GraphconnectcircuitTable) -> Int { s.size }
+pub fn GraphconnectcircuitTable::len(self : GraphconnectcircuitTable) -> Int { self.size }
 
-pub fn graph_connect_circuit_table_get(s : GraphconnectcircuitTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitTable::get(self : GraphconnectcircuitTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_table_set(s : GraphconnectcircuitTable, i : Int, v : Double) -> GraphconnectcircuitTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitTable::set(self : GraphconnectcircuitTable, i : Int, v : Double) -> GraphconnectcircuitTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_table_sum(s : GraphconnectcircuitTable) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitTable::sum(self : GraphconnectcircuitTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_table_mean(s : GraphconnectcircuitTable) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitTable::mean(self : GraphconnectcircuitTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_table_scale(s : GraphconnectcircuitTable, f : Double) -> GraphconnectcircuitTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitTable::scale(self : GraphconnectcircuitTable, f : Double) -> GraphconnectcircuitTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_table_add(a : GraphconnectcircuitTable, b : GraphconnectcircuitTable) -> GraphconnectcircuitTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitTable::add(self : GraphconnectcircuitTable, other : GraphconnectcircuitTable) -> GraphconnectcircuitTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_table_copy(s : GraphconnectcircuitTable) -> GraphconnectcircuitTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitTable::copy(self : GraphconnectcircuitTable) -> GraphconnectcircuitTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_table_fill(s : GraphconnectcircuitTable, v : Double) -> GraphconnectcircuitTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitTable::fill(self : GraphconnectcircuitTable, v : Double) -> GraphconnectcircuitTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_table_min(s : GraphconnectcircuitTable) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitTable::min(self : GraphconnectcircuitTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_table_max(s : GraphconnectcircuitTable) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitTable::max(self : GraphconnectcircuitTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_table_to_string(s : GraphconnectcircuitTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitTable::to_string(self : GraphconnectcircuitTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitGraphN {
@@ -453,45 +453,45 @@ pub fn graph_connect_circuit_graphn_make(size : Int) -> GraphconnectcircuitGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_graphn_len(s : GraphconnectcircuitGraphN) -> Int { s.size }
+pub fn GraphconnectcircuitGraphN::len(self : GraphconnectcircuitGraphN) -> Int { self.size }
 
-pub fn graph_connect_circuit_graphn_get(s : GraphconnectcircuitGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitGraphN::get(self : GraphconnectcircuitGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_graphn_set(s : GraphconnectcircuitGraphN, i : Int, v : Double) -> GraphconnectcircuitGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitGraphN::set(self : GraphconnectcircuitGraphN, i : Int, v : Double) -> GraphconnectcircuitGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_graphn_sum(s : GraphconnectcircuitGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitGraphN::sum(self : GraphconnectcircuitGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_graphn_mean(s : GraphconnectcircuitGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitGraphN::mean(self : GraphconnectcircuitGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_graphn_scale(s : GraphconnectcircuitGraphN, f : Double) -> GraphconnectcircuitGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitGraphN::scale(self : GraphconnectcircuitGraphN, f : Double) -> GraphconnectcircuitGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_graphn_add(a : GraphconnectcircuitGraphN, b : GraphconnectcircuitGraphN) -> GraphconnectcircuitGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitGraphN::add(self : GraphconnectcircuitGraphN, other : GraphconnectcircuitGraphN) -> GraphconnectcircuitGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_graphn_copy(s : GraphconnectcircuitGraphN) -> GraphconnectcircuitGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitGraphN::copy(self : GraphconnectcircuitGraphN) -> GraphconnectcircuitGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_graphn_fill(s : GraphconnectcircuitGraphN, v : Double) -> GraphconnectcircuitGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitGraphN::fill(self : GraphconnectcircuitGraphN, v : Double) -> GraphconnectcircuitGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_graphn_min(s : GraphconnectcircuitGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitGraphN::min(self : GraphconnectcircuitGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_graphn_max(s : GraphconnectcircuitGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitGraphN::max(self : GraphconnectcircuitGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_graphn_to_string(s : GraphconnectcircuitGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitGraphN::to_string(self : GraphconnectcircuitGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitNode {
@@ -504,45 +504,45 @@ pub fn graph_connect_circuit_node_make(size : Int) -> GraphconnectcircuitNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_node_len(s : GraphconnectcircuitNode) -> Int { s.size }
+pub fn GraphconnectcircuitNode::len(self : GraphconnectcircuitNode) -> Int { self.size }
 
-pub fn graph_connect_circuit_node_get(s : GraphconnectcircuitNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitNode::get(self : GraphconnectcircuitNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_node_set(s : GraphconnectcircuitNode, i : Int, v : Double) -> GraphconnectcircuitNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitNode::set(self : GraphconnectcircuitNode, i : Int, v : Double) -> GraphconnectcircuitNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_node_sum(s : GraphconnectcircuitNode) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitNode::sum(self : GraphconnectcircuitNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_node_mean(s : GraphconnectcircuitNode) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitNode::mean(self : GraphconnectcircuitNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_node_scale(s : GraphconnectcircuitNode, f : Double) -> GraphconnectcircuitNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitNode::scale(self : GraphconnectcircuitNode, f : Double) -> GraphconnectcircuitNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_node_add(a : GraphconnectcircuitNode, b : GraphconnectcircuitNode) -> GraphconnectcircuitNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitNode::add(self : GraphconnectcircuitNode, other : GraphconnectcircuitNode) -> GraphconnectcircuitNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_node_copy(s : GraphconnectcircuitNode) -> GraphconnectcircuitNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitNode::copy(self : GraphconnectcircuitNode) -> GraphconnectcircuitNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_node_fill(s : GraphconnectcircuitNode, v : Double) -> GraphconnectcircuitNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitNode::fill(self : GraphconnectcircuitNode, v : Double) -> GraphconnectcircuitNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_node_min(s : GraphconnectcircuitNode) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitNode::min(self : GraphconnectcircuitNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_node_max(s : GraphconnectcircuitNode) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitNode::max(self : GraphconnectcircuitNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_node_to_string(s : GraphconnectcircuitNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitNode::to_string(self : GraphconnectcircuitNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitEdge {
@@ -555,45 +555,45 @@ pub fn graph_connect_circuit_edge_make(size : Int) -> GraphconnectcircuitEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_edge_len(s : GraphconnectcircuitEdge) -> Int { s.size }
+pub fn GraphconnectcircuitEdge::len(self : GraphconnectcircuitEdge) -> Int { self.size }
 
-pub fn graph_connect_circuit_edge_get(s : GraphconnectcircuitEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitEdge::get(self : GraphconnectcircuitEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_edge_set(s : GraphconnectcircuitEdge, i : Int, v : Double) -> GraphconnectcircuitEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitEdge::set(self : GraphconnectcircuitEdge, i : Int, v : Double) -> GraphconnectcircuitEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_edge_sum(s : GraphconnectcircuitEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitEdge::sum(self : GraphconnectcircuitEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_edge_mean(s : GraphconnectcircuitEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitEdge::mean(self : GraphconnectcircuitEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_edge_scale(s : GraphconnectcircuitEdge, f : Double) -> GraphconnectcircuitEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitEdge::scale(self : GraphconnectcircuitEdge, f : Double) -> GraphconnectcircuitEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_edge_add(a : GraphconnectcircuitEdge, b : GraphconnectcircuitEdge) -> GraphconnectcircuitEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitEdge::add(self : GraphconnectcircuitEdge, other : GraphconnectcircuitEdge) -> GraphconnectcircuitEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_edge_copy(s : GraphconnectcircuitEdge) -> GraphconnectcircuitEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitEdge::copy(self : GraphconnectcircuitEdge) -> GraphconnectcircuitEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_edge_fill(s : GraphconnectcircuitEdge, v : Double) -> GraphconnectcircuitEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitEdge::fill(self : GraphconnectcircuitEdge, v : Double) -> GraphconnectcircuitEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_edge_min(s : GraphconnectcircuitEdge) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitEdge::min(self : GraphconnectcircuitEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_edge_max(s : GraphconnectcircuitEdge) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitEdge::max(self : GraphconnectcircuitEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_edge_to_string(s : GraphconnectcircuitEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitEdge::to_string(self : GraphconnectcircuitEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitPath {
@@ -606,45 +606,45 @@ pub fn graph_connect_circuit_path_make(size : Int) -> GraphconnectcircuitPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_path_len(s : GraphconnectcircuitPath) -> Int { s.size }
+pub fn GraphconnectcircuitPath::len(self : GraphconnectcircuitPath) -> Int { self.size }
 
-pub fn graph_connect_circuit_path_get(s : GraphconnectcircuitPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitPath::get(self : GraphconnectcircuitPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_path_set(s : GraphconnectcircuitPath, i : Int, v : Double) -> GraphconnectcircuitPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitPath::set(self : GraphconnectcircuitPath, i : Int, v : Double) -> GraphconnectcircuitPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_path_sum(s : GraphconnectcircuitPath) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitPath::sum(self : GraphconnectcircuitPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_path_mean(s : GraphconnectcircuitPath) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitPath::mean(self : GraphconnectcircuitPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_path_scale(s : GraphconnectcircuitPath, f : Double) -> GraphconnectcircuitPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitPath::scale(self : GraphconnectcircuitPath, f : Double) -> GraphconnectcircuitPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_path_add(a : GraphconnectcircuitPath, b : GraphconnectcircuitPath) -> GraphconnectcircuitPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitPath::add(self : GraphconnectcircuitPath, other : GraphconnectcircuitPath) -> GraphconnectcircuitPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_path_copy(s : GraphconnectcircuitPath) -> GraphconnectcircuitPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitPath::copy(self : GraphconnectcircuitPath) -> GraphconnectcircuitPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_path_fill(s : GraphconnectcircuitPath, v : Double) -> GraphconnectcircuitPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitPath::fill(self : GraphconnectcircuitPath, v : Double) -> GraphconnectcircuitPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_path_min(s : GraphconnectcircuitPath) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitPath::min(self : GraphconnectcircuitPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_path_max(s : GraphconnectcircuitPath) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitPath::max(self : GraphconnectcircuitPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_path_to_string(s : GraphconnectcircuitPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitPath::to_string(self : GraphconnectcircuitPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitCluster {
@@ -657,45 +657,45 @@ pub fn graph_connect_circuit_cluster_make(size : Int) -> GraphconnectcircuitClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_cluster_len(s : GraphconnectcircuitCluster) -> Int { s.size }
+pub fn GraphconnectcircuitCluster::len(self : GraphconnectcircuitCluster) -> Int { self.size }
 
-pub fn graph_connect_circuit_cluster_get(s : GraphconnectcircuitCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitCluster::get(self : GraphconnectcircuitCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_cluster_set(s : GraphconnectcircuitCluster, i : Int, v : Double) -> GraphconnectcircuitCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitCluster::set(self : GraphconnectcircuitCluster, i : Int, v : Double) -> GraphconnectcircuitCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_cluster_sum(s : GraphconnectcircuitCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitCluster::sum(self : GraphconnectcircuitCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_cluster_mean(s : GraphconnectcircuitCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitCluster::mean(self : GraphconnectcircuitCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_cluster_scale(s : GraphconnectcircuitCluster, f : Double) -> GraphconnectcircuitCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitCluster::scale(self : GraphconnectcircuitCluster, f : Double) -> GraphconnectcircuitCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_cluster_add(a : GraphconnectcircuitCluster, b : GraphconnectcircuitCluster) -> GraphconnectcircuitCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitCluster::add(self : GraphconnectcircuitCluster, other : GraphconnectcircuitCluster) -> GraphconnectcircuitCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_cluster_copy(s : GraphconnectcircuitCluster) -> GraphconnectcircuitCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitCluster::copy(self : GraphconnectcircuitCluster) -> GraphconnectcircuitCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_cluster_fill(s : GraphconnectcircuitCluster, v : Double) -> GraphconnectcircuitCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitCluster::fill(self : GraphconnectcircuitCluster, v : Double) -> GraphconnectcircuitCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_cluster_min(s : GraphconnectcircuitCluster) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitCluster::min(self : GraphconnectcircuitCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_cluster_max(s : GraphconnectcircuitCluster) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitCluster::max(self : GraphconnectcircuitCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_cluster_to_string(s : GraphconnectcircuitCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitCluster::to_string(self : GraphconnectcircuitCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitModel {
@@ -708,45 +708,45 @@ pub fn graph_connect_circuit_model_make(size : Int) -> GraphconnectcircuitModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_model_len(s : GraphconnectcircuitModel) -> Int { s.size }
+pub fn GraphconnectcircuitModel::len(self : GraphconnectcircuitModel) -> Int { self.size }
 
-pub fn graph_connect_circuit_model_get(s : GraphconnectcircuitModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitModel::get(self : GraphconnectcircuitModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_model_set(s : GraphconnectcircuitModel, i : Int, v : Double) -> GraphconnectcircuitModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitModel::set(self : GraphconnectcircuitModel, i : Int, v : Double) -> GraphconnectcircuitModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_model_sum(s : GraphconnectcircuitModel) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitModel::sum(self : GraphconnectcircuitModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_model_mean(s : GraphconnectcircuitModel) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitModel::mean(self : GraphconnectcircuitModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_model_scale(s : GraphconnectcircuitModel, f : Double) -> GraphconnectcircuitModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitModel::scale(self : GraphconnectcircuitModel, f : Double) -> GraphconnectcircuitModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_model_add(a : GraphconnectcircuitModel, b : GraphconnectcircuitModel) -> GraphconnectcircuitModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitModel::add(self : GraphconnectcircuitModel, other : GraphconnectcircuitModel) -> GraphconnectcircuitModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_model_copy(s : GraphconnectcircuitModel) -> GraphconnectcircuitModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitModel::copy(self : GraphconnectcircuitModel) -> GraphconnectcircuitModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_model_fill(s : GraphconnectcircuitModel, v : Double) -> GraphconnectcircuitModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitModel::fill(self : GraphconnectcircuitModel, v : Double) -> GraphconnectcircuitModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_model_min(s : GraphconnectcircuitModel) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitModel::min(self : GraphconnectcircuitModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_model_max(s : GraphconnectcircuitModel) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitModel::max(self : GraphconnectcircuitModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_model_to_string(s : GraphconnectcircuitModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitModel::to_string(self : GraphconnectcircuitModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitLayer {
@@ -759,45 +759,45 @@ pub fn graph_connect_circuit_layer_make(size : Int) -> GraphconnectcircuitLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_layer_len(s : GraphconnectcircuitLayer) -> Int { s.size }
+pub fn GraphconnectcircuitLayer::len(self : GraphconnectcircuitLayer) -> Int { self.size }
 
-pub fn graph_connect_circuit_layer_get(s : GraphconnectcircuitLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitLayer::get(self : GraphconnectcircuitLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_layer_set(s : GraphconnectcircuitLayer, i : Int, v : Double) -> GraphconnectcircuitLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitLayer::set(self : GraphconnectcircuitLayer, i : Int, v : Double) -> GraphconnectcircuitLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_layer_sum(s : GraphconnectcircuitLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitLayer::sum(self : GraphconnectcircuitLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_layer_mean(s : GraphconnectcircuitLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitLayer::mean(self : GraphconnectcircuitLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_layer_scale(s : GraphconnectcircuitLayer, f : Double) -> GraphconnectcircuitLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitLayer::scale(self : GraphconnectcircuitLayer, f : Double) -> GraphconnectcircuitLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_layer_add(a : GraphconnectcircuitLayer, b : GraphconnectcircuitLayer) -> GraphconnectcircuitLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitLayer::add(self : GraphconnectcircuitLayer, other : GraphconnectcircuitLayer) -> GraphconnectcircuitLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_layer_copy(s : GraphconnectcircuitLayer) -> GraphconnectcircuitLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitLayer::copy(self : GraphconnectcircuitLayer) -> GraphconnectcircuitLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_layer_fill(s : GraphconnectcircuitLayer, v : Double) -> GraphconnectcircuitLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitLayer::fill(self : GraphconnectcircuitLayer, v : Double) -> GraphconnectcircuitLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_layer_min(s : GraphconnectcircuitLayer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitLayer::min(self : GraphconnectcircuitLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_layer_max(s : GraphconnectcircuitLayer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitLayer::max(self : GraphconnectcircuitLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_layer_to_string(s : GraphconnectcircuitLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitLayer::to_string(self : GraphconnectcircuitLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitBuffer {
@@ -810,45 +810,45 @@ pub fn graph_connect_circuit_buffer_make(size : Int) -> GraphconnectcircuitBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_buffer_len(s : GraphconnectcircuitBuffer) -> Int { s.size }
+pub fn GraphconnectcircuitBuffer::len(self : GraphconnectcircuitBuffer) -> Int { self.size }
 
-pub fn graph_connect_circuit_buffer_get(s : GraphconnectcircuitBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitBuffer::get(self : GraphconnectcircuitBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_buffer_set(s : GraphconnectcircuitBuffer, i : Int, v : Double) -> GraphconnectcircuitBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitBuffer::set(self : GraphconnectcircuitBuffer, i : Int, v : Double) -> GraphconnectcircuitBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_buffer_sum(s : GraphconnectcircuitBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitBuffer::sum(self : GraphconnectcircuitBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_buffer_mean(s : GraphconnectcircuitBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitBuffer::mean(self : GraphconnectcircuitBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_buffer_scale(s : GraphconnectcircuitBuffer, f : Double) -> GraphconnectcircuitBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitBuffer::scale(self : GraphconnectcircuitBuffer, f : Double) -> GraphconnectcircuitBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_buffer_add(a : GraphconnectcircuitBuffer, b : GraphconnectcircuitBuffer) -> GraphconnectcircuitBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitBuffer::add(self : GraphconnectcircuitBuffer, other : GraphconnectcircuitBuffer) -> GraphconnectcircuitBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_buffer_copy(s : GraphconnectcircuitBuffer) -> GraphconnectcircuitBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitBuffer::copy(self : GraphconnectcircuitBuffer) -> GraphconnectcircuitBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_buffer_fill(s : GraphconnectcircuitBuffer, v : Double) -> GraphconnectcircuitBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitBuffer::fill(self : GraphconnectcircuitBuffer, v : Double) -> GraphconnectcircuitBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_buffer_min(s : GraphconnectcircuitBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitBuffer::min(self : GraphconnectcircuitBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_buffer_max(s : GraphconnectcircuitBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitBuffer::max(self : GraphconnectcircuitBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_buffer_to_string(s : GraphconnectcircuitBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitBuffer::to_string(self : GraphconnectcircuitBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitCursor {
@@ -861,45 +861,45 @@ pub fn graph_connect_circuit_cursor_make(size : Int) -> GraphconnectcircuitCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_cursor_len(s : GraphconnectcircuitCursor) -> Int { s.size }
+pub fn GraphconnectcircuitCursor::len(self : GraphconnectcircuitCursor) -> Int { self.size }
 
-pub fn graph_connect_circuit_cursor_get(s : GraphconnectcircuitCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitCursor::get(self : GraphconnectcircuitCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_cursor_set(s : GraphconnectcircuitCursor, i : Int, v : Double) -> GraphconnectcircuitCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitCursor::set(self : GraphconnectcircuitCursor, i : Int, v : Double) -> GraphconnectcircuitCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_cursor_sum(s : GraphconnectcircuitCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitCursor::sum(self : GraphconnectcircuitCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_cursor_mean(s : GraphconnectcircuitCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitCursor::mean(self : GraphconnectcircuitCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_cursor_scale(s : GraphconnectcircuitCursor, f : Double) -> GraphconnectcircuitCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitCursor::scale(self : GraphconnectcircuitCursor, f : Double) -> GraphconnectcircuitCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_cursor_add(a : GraphconnectcircuitCursor, b : GraphconnectcircuitCursor) -> GraphconnectcircuitCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitCursor::add(self : GraphconnectcircuitCursor, other : GraphconnectcircuitCursor) -> GraphconnectcircuitCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_cursor_copy(s : GraphconnectcircuitCursor) -> GraphconnectcircuitCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitCursor::copy(self : GraphconnectcircuitCursor) -> GraphconnectcircuitCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_cursor_fill(s : GraphconnectcircuitCursor, v : Double) -> GraphconnectcircuitCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitCursor::fill(self : GraphconnectcircuitCursor, v : Double) -> GraphconnectcircuitCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_cursor_min(s : GraphconnectcircuitCursor) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitCursor::min(self : GraphconnectcircuitCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_cursor_max(s : GraphconnectcircuitCursor) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitCursor::max(self : GraphconnectcircuitCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_cursor_to_string(s : GraphconnectcircuitCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitCursor::to_string(self : GraphconnectcircuitCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitView {
@@ -912,45 +912,45 @@ pub fn graph_connect_circuit_view_make(size : Int) -> GraphconnectcircuitView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_view_len(s : GraphconnectcircuitView) -> Int { s.size }
+pub fn GraphconnectcircuitView::len(self : GraphconnectcircuitView) -> Int { self.size }
 
-pub fn graph_connect_circuit_view_get(s : GraphconnectcircuitView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitView::get(self : GraphconnectcircuitView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_view_set(s : GraphconnectcircuitView, i : Int, v : Double) -> GraphconnectcircuitView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitView::set(self : GraphconnectcircuitView, i : Int, v : Double) -> GraphconnectcircuitView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_view_sum(s : GraphconnectcircuitView) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitView::sum(self : GraphconnectcircuitView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_view_mean(s : GraphconnectcircuitView) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitView::mean(self : GraphconnectcircuitView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_view_scale(s : GraphconnectcircuitView, f : Double) -> GraphconnectcircuitView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitView::scale(self : GraphconnectcircuitView, f : Double) -> GraphconnectcircuitView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_view_add(a : GraphconnectcircuitView, b : GraphconnectcircuitView) -> GraphconnectcircuitView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitView::add(self : GraphconnectcircuitView, other : GraphconnectcircuitView) -> GraphconnectcircuitView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_view_copy(s : GraphconnectcircuitView) -> GraphconnectcircuitView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitView::copy(self : GraphconnectcircuitView) -> GraphconnectcircuitView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_view_fill(s : GraphconnectcircuitView, v : Double) -> GraphconnectcircuitView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitView::fill(self : GraphconnectcircuitView, v : Double) -> GraphconnectcircuitView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_view_min(s : GraphconnectcircuitView) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitView::min(self : GraphconnectcircuitView) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_view_max(s : GraphconnectcircuitView) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitView::max(self : GraphconnectcircuitView) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_view_to_string(s : GraphconnectcircuitView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitView::to_string(self : GraphconnectcircuitView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitRange {
@@ -963,45 +963,45 @@ pub fn graph_connect_circuit_range_make(size : Int) -> GraphconnectcircuitRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_range_len(s : GraphconnectcircuitRange) -> Int { s.size }
+pub fn GraphconnectcircuitRange::len(self : GraphconnectcircuitRange) -> Int { self.size }
 
-pub fn graph_connect_circuit_range_get(s : GraphconnectcircuitRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitRange::get(self : GraphconnectcircuitRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_range_set(s : GraphconnectcircuitRange, i : Int, v : Double) -> GraphconnectcircuitRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitRange::set(self : GraphconnectcircuitRange, i : Int, v : Double) -> GraphconnectcircuitRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_range_sum(s : GraphconnectcircuitRange) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitRange::sum(self : GraphconnectcircuitRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_range_mean(s : GraphconnectcircuitRange) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitRange::mean(self : GraphconnectcircuitRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_range_scale(s : GraphconnectcircuitRange, f : Double) -> GraphconnectcircuitRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitRange::scale(self : GraphconnectcircuitRange, f : Double) -> GraphconnectcircuitRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_range_add(a : GraphconnectcircuitRange, b : GraphconnectcircuitRange) -> GraphconnectcircuitRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitRange::add(self : GraphconnectcircuitRange, other : GraphconnectcircuitRange) -> GraphconnectcircuitRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_range_copy(s : GraphconnectcircuitRange) -> GraphconnectcircuitRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitRange::copy(self : GraphconnectcircuitRange) -> GraphconnectcircuitRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_range_fill(s : GraphconnectcircuitRange, v : Double) -> GraphconnectcircuitRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitRange::fill(self : GraphconnectcircuitRange, v : Double) -> GraphconnectcircuitRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_range_min(s : GraphconnectcircuitRange) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitRange::min(self : GraphconnectcircuitRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_range_max(s : GraphconnectcircuitRange) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitRange::max(self : GraphconnectcircuitRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_range_to_string(s : GraphconnectcircuitRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitRange::to_string(self : GraphconnectcircuitRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcircuitSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_connect_circuit_slice_make(size : Int) -> GraphconnectcircuitSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_circuit_slice_len(s : GraphconnectcircuitSlice) -> Int { s.size }
+pub fn GraphconnectcircuitSlice::len(self : GraphconnectcircuitSlice) -> Int { self.size }
 
-pub fn graph_connect_circuit_slice_get(s : GraphconnectcircuitSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcircuitSlice::get(self : GraphconnectcircuitSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_circuit_slice_set(s : GraphconnectcircuitSlice, i : Int, v : Double) -> GraphconnectcircuitSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitSlice::set(self : GraphconnectcircuitSlice, i : Int, v : Double) -> GraphconnectcircuitSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_slice_sum(s : GraphconnectcircuitSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcircuitSlice::sum(self : GraphconnectcircuitSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_circuit_slice_mean(s : GraphconnectcircuitSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcircuitSlice::mean(self : GraphconnectcircuitSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_circuit_slice_scale(s : GraphconnectcircuitSlice, f : Double) -> GraphconnectcircuitSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitSlice::scale(self : GraphconnectcircuitSlice, f : Double) -> GraphconnectcircuitSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_slice_add(a : GraphconnectcircuitSlice, b : GraphconnectcircuitSlice) -> GraphconnectcircuitSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcircuitSlice::add(self : GraphconnectcircuitSlice, other : GraphconnectcircuitSlice) -> GraphconnectcircuitSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_slice_copy(s : GraphconnectcircuitSlice) -> GraphconnectcircuitSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitSlice::copy(self : GraphconnectcircuitSlice) -> GraphconnectcircuitSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_slice_fill(s : GraphconnectcircuitSlice, v : Double) -> GraphconnectcircuitSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcircuitSlice::fill(self : GraphconnectcircuitSlice, v : Double) -> GraphconnectcircuitSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_circuit_slice_min(s : GraphconnectcircuitSlice) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcircuitSlice::min(self : GraphconnectcircuitSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_circuit_slice_max(s : GraphconnectcircuitSlice) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcircuitSlice::max(self : GraphconnectcircuitSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_circuit_slice_to_string(s : GraphconnectcircuitSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcircuitSlice::to_string(self : GraphconnectcircuitSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn stats_dist_binomial_frame_make(size : Int) -> StatsdistbinomialFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_frame_len(s : StatsdistbinomialFrame) -> Int { s.size }
+pub fn StatsdistbinomialFrame::len(self : StatsdistbinomialFrame) -> Int { self.size }
 
-pub fn stats_dist_binomial_frame_get(s : StatsdistbinomialFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialFrame::get(self : StatsdistbinomialFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_frame_set(s : StatsdistbinomialFrame, i : Int, v : Double) -> StatsdistbinomialFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialFrame::set(self : StatsdistbinomialFrame, i : Int, v : Double) -> StatsdistbinomialFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_frame_sum(s : StatsdistbinomialFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialFrame::sum(self : StatsdistbinomialFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_frame_mean(s : StatsdistbinomialFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialFrame::mean(self : StatsdistbinomialFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_frame_scale(s : StatsdistbinomialFrame, f : Double) -> StatsdistbinomialFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialFrame::scale(self : StatsdistbinomialFrame, f : Double) -> StatsdistbinomialFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_frame_add(a : StatsdistbinomialFrame, b : StatsdistbinomialFrame) -> StatsdistbinomialFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialFrame::add(self : StatsdistbinomialFrame, other : StatsdistbinomialFrame) -> StatsdistbinomialFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_frame_copy(s : StatsdistbinomialFrame) -> StatsdistbinomialFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialFrame::copy(self : StatsdistbinomialFrame) -> StatsdistbinomialFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_frame_fill(s : StatsdistbinomialFrame, v : Double) -> StatsdistbinomialFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialFrame::fill(self : StatsdistbinomialFrame, v : Double) -> StatsdistbinomialFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_frame_min(s : StatsdistbinomialFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialFrame::min(self : StatsdistbinomialFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_frame_max(s : StatsdistbinomialFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialFrame::max(self : StatsdistbinomialFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_frame_to_string(s : StatsdistbinomialFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialFrame::to_string(self : StatsdistbinomialFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialTable {
@@ -402,45 +402,45 @@ pub fn stats_dist_binomial_table_make(size : Int) -> StatsdistbinomialTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_table_len(s : StatsdistbinomialTable) -> Int { s.size }
+pub fn StatsdistbinomialTable::len(self : StatsdistbinomialTable) -> Int { self.size }
 
-pub fn stats_dist_binomial_table_get(s : StatsdistbinomialTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialTable::get(self : StatsdistbinomialTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_table_set(s : StatsdistbinomialTable, i : Int, v : Double) -> StatsdistbinomialTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialTable::set(self : StatsdistbinomialTable, i : Int, v : Double) -> StatsdistbinomialTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_table_sum(s : StatsdistbinomialTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialTable::sum(self : StatsdistbinomialTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_table_mean(s : StatsdistbinomialTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialTable::mean(self : StatsdistbinomialTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_table_scale(s : StatsdistbinomialTable, f : Double) -> StatsdistbinomialTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialTable::scale(self : StatsdistbinomialTable, f : Double) -> StatsdistbinomialTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_table_add(a : StatsdistbinomialTable, b : StatsdistbinomialTable) -> StatsdistbinomialTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialTable::add(self : StatsdistbinomialTable, other : StatsdistbinomialTable) -> StatsdistbinomialTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_table_copy(s : StatsdistbinomialTable) -> StatsdistbinomialTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialTable::copy(self : StatsdistbinomialTable) -> StatsdistbinomialTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_table_fill(s : StatsdistbinomialTable, v : Double) -> StatsdistbinomialTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialTable::fill(self : StatsdistbinomialTable, v : Double) -> StatsdistbinomialTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_table_min(s : StatsdistbinomialTable) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialTable::min(self : StatsdistbinomialTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_table_max(s : StatsdistbinomialTable) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialTable::max(self : StatsdistbinomialTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_table_to_string(s : StatsdistbinomialTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialTable::to_string(self : StatsdistbinomialTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialGraphN {
@@ -453,45 +453,45 @@ pub fn stats_dist_binomial_graphn_make(size : Int) -> StatsdistbinomialGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_graphn_len(s : StatsdistbinomialGraphN) -> Int { s.size }
+pub fn StatsdistbinomialGraphN::len(self : StatsdistbinomialGraphN) -> Int { self.size }
 
-pub fn stats_dist_binomial_graphn_get(s : StatsdistbinomialGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialGraphN::get(self : StatsdistbinomialGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_graphn_set(s : StatsdistbinomialGraphN, i : Int, v : Double) -> StatsdistbinomialGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialGraphN::set(self : StatsdistbinomialGraphN, i : Int, v : Double) -> StatsdistbinomialGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_graphn_sum(s : StatsdistbinomialGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialGraphN::sum(self : StatsdistbinomialGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_graphn_mean(s : StatsdistbinomialGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialGraphN::mean(self : StatsdistbinomialGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_graphn_scale(s : StatsdistbinomialGraphN, f : Double) -> StatsdistbinomialGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialGraphN::scale(self : StatsdistbinomialGraphN, f : Double) -> StatsdistbinomialGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_graphn_add(a : StatsdistbinomialGraphN, b : StatsdistbinomialGraphN) -> StatsdistbinomialGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialGraphN::add(self : StatsdistbinomialGraphN, other : StatsdistbinomialGraphN) -> StatsdistbinomialGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_graphn_copy(s : StatsdistbinomialGraphN) -> StatsdistbinomialGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialGraphN::copy(self : StatsdistbinomialGraphN) -> StatsdistbinomialGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_graphn_fill(s : StatsdistbinomialGraphN, v : Double) -> StatsdistbinomialGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialGraphN::fill(self : StatsdistbinomialGraphN, v : Double) -> StatsdistbinomialGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_graphn_min(s : StatsdistbinomialGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialGraphN::min(self : StatsdistbinomialGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_graphn_max(s : StatsdistbinomialGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialGraphN::max(self : StatsdistbinomialGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_graphn_to_string(s : StatsdistbinomialGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialGraphN::to_string(self : StatsdistbinomialGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialNode {
@@ -504,45 +504,45 @@ pub fn stats_dist_binomial_node_make(size : Int) -> StatsdistbinomialNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_node_len(s : StatsdistbinomialNode) -> Int { s.size }
+pub fn StatsdistbinomialNode::len(self : StatsdistbinomialNode) -> Int { self.size }
 
-pub fn stats_dist_binomial_node_get(s : StatsdistbinomialNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialNode::get(self : StatsdistbinomialNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_node_set(s : StatsdistbinomialNode, i : Int, v : Double) -> StatsdistbinomialNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialNode::set(self : StatsdistbinomialNode, i : Int, v : Double) -> StatsdistbinomialNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_node_sum(s : StatsdistbinomialNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialNode::sum(self : StatsdistbinomialNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_node_mean(s : StatsdistbinomialNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialNode::mean(self : StatsdistbinomialNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_node_scale(s : StatsdistbinomialNode, f : Double) -> StatsdistbinomialNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialNode::scale(self : StatsdistbinomialNode, f : Double) -> StatsdistbinomialNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_node_add(a : StatsdistbinomialNode, b : StatsdistbinomialNode) -> StatsdistbinomialNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialNode::add(self : StatsdistbinomialNode, other : StatsdistbinomialNode) -> StatsdistbinomialNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_node_copy(s : StatsdistbinomialNode) -> StatsdistbinomialNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialNode::copy(self : StatsdistbinomialNode) -> StatsdistbinomialNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_node_fill(s : StatsdistbinomialNode, v : Double) -> StatsdistbinomialNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialNode::fill(self : StatsdistbinomialNode, v : Double) -> StatsdistbinomialNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_node_min(s : StatsdistbinomialNode) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialNode::min(self : StatsdistbinomialNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_node_max(s : StatsdistbinomialNode) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialNode::max(self : StatsdistbinomialNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_node_to_string(s : StatsdistbinomialNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialNode::to_string(self : StatsdistbinomialNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialEdge {
@@ -555,45 +555,45 @@ pub fn stats_dist_binomial_edge_make(size : Int) -> StatsdistbinomialEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_edge_len(s : StatsdistbinomialEdge) -> Int { s.size }
+pub fn StatsdistbinomialEdge::len(self : StatsdistbinomialEdge) -> Int { self.size }
 
-pub fn stats_dist_binomial_edge_get(s : StatsdistbinomialEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialEdge::get(self : StatsdistbinomialEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_edge_set(s : StatsdistbinomialEdge, i : Int, v : Double) -> StatsdistbinomialEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialEdge::set(self : StatsdistbinomialEdge, i : Int, v : Double) -> StatsdistbinomialEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_edge_sum(s : StatsdistbinomialEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialEdge::sum(self : StatsdistbinomialEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_edge_mean(s : StatsdistbinomialEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialEdge::mean(self : StatsdistbinomialEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_edge_scale(s : StatsdistbinomialEdge, f : Double) -> StatsdistbinomialEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialEdge::scale(self : StatsdistbinomialEdge, f : Double) -> StatsdistbinomialEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_edge_add(a : StatsdistbinomialEdge, b : StatsdistbinomialEdge) -> StatsdistbinomialEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialEdge::add(self : StatsdistbinomialEdge, other : StatsdistbinomialEdge) -> StatsdistbinomialEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_edge_copy(s : StatsdistbinomialEdge) -> StatsdistbinomialEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialEdge::copy(self : StatsdistbinomialEdge) -> StatsdistbinomialEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_edge_fill(s : StatsdistbinomialEdge, v : Double) -> StatsdistbinomialEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialEdge::fill(self : StatsdistbinomialEdge, v : Double) -> StatsdistbinomialEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_edge_min(s : StatsdistbinomialEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialEdge::min(self : StatsdistbinomialEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_edge_max(s : StatsdistbinomialEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialEdge::max(self : StatsdistbinomialEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_edge_to_string(s : StatsdistbinomialEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialEdge::to_string(self : StatsdistbinomialEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialPath {
@@ -606,45 +606,45 @@ pub fn stats_dist_binomial_path_make(size : Int) -> StatsdistbinomialPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_path_len(s : StatsdistbinomialPath) -> Int { s.size }
+pub fn StatsdistbinomialPath::len(self : StatsdistbinomialPath) -> Int { self.size }
 
-pub fn stats_dist_binomial_path_get(s : StatsdistbinomialPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialPath::get(self : StatsdistbinomialPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_path_set(s : StatsdistbinomialPath, i : Int, v : Double) -> StatsdistbinomialPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialPath::set(self : StatsdistbinomialPath, i : Int, v : Double) -> StatsdistbinomialPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_path_sum(s : StatsdistbinomialPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialPath::sum(self : StatsdistbinomialPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_path_mean(s : StatsdistbinomialPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialPath::mean(self : StatsdistbinomialPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_path_scale(s : StatsdistbinomialPath, f : Double) -> StatsdistbinomialPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialPath::scale(self : StatsdistbinomialPath, f : Double) -> StatsdistbinomialPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_path_add(a : StatsdistbinomialPath, b : StatsdistbinomialPath) -> StatsdistbinomialPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialPath::add(self : StatsdistbinomialPath, other : StatsdistbinomialPath) -> StatsdistbinomialPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_path_copy(s : StatsdistbinomialPath) -> StatsdistbinomialPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialPath::copy(self : StatsdistbinomialPath) -> StatsdistbinomialPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_path_fill(s : StatsdistbinomialPath, v : Double) -> StatsdistbinomialPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialPath::fill(self : StatsdistbinomialPath, v : Double) -> StatsdistbinomialPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_path_min(s : StatsdistbinomialPath) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialPath::min(self : StatsdistbinomialPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_path_max(s : StatsdistbinomialPath) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialPath::max(self : StatsdistbinomialPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_path_to_string(s : StatsdistbinomialPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialPath::to_string(self : StatsdistbinomialPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialCluster {
@@ -657,45 +657,45 @@ pub fn stats_dist_binomial_cluster_make(size : Int) -> StatsdistbinomialCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_cluster_len(s : StatsdistbinomialCluster) -> Int { s.size }
+pub fn StatsdistbinomialCluster::len(self : StatsdistbinomialCluster) -> Int { self.size }
 
-pub fn stats_dist_binomial_cluster_get(s : StatsdistbinomialCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialCluster::get(self : StatsdistbinomialCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_cluster_set(s : StatsdistbinomialCluster, i : Int, v : Double) -> StatsdistbinomialCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialCluster::set(self : StatsdistbinomialCluster, i : Int, v : Double) -> StatsdistbinomialCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_cluster_sum(s : StatsdistbinomialCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialCluster::sum(self : StatsdistbinomialCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_cluster_mean(s : StatsdistbinomialCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialCluster::mean(self : StatsdistbinomialCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_cluster_scale(s : StatsdistbinomialCluster, f : Double) -> StatsdistbinomialCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialCluster::scale(self : StatsdistbinomialCluster, f : Double) -> StatsdistbinomialCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_cluster_add(a : StatsdistbinomialCluster, b : StatsdistbinomialCluster) -> StatsdistbinomialCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialCluster::add(self : StatsdistbinomialCluster, other : StatsdistbinomialCluster) -> StatsdistbinomialCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_cluster_copy(s : StatsdistbinomialCluster) -> StatsdistbinomialCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialCluster::copy(self : StatsdistbinomialCluster) -> StatsdistbinomialCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_cluster_fill(s : StatsdistbinomialCluster, v : Double) -> StatsdistbinomialCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialCluster::fill(self : StatsdistbinomialCluster, v : Double) -> StatsdistbinomialCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_cluster_min(s : StatsdistbinomialCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialCluster::min(self : StatsdistbinomialCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_cluster_max(s : StatsdistbinomialCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialCluster::max(self : StatsdistbinomialCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_cluster_to_string(s : StatsdistbinomialCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialCluster::to_string(self : StatsdistbinomialCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialModel {
@@ -708,45 +708,45 @@ pub fn stats_dist_binomial_model_make(size : Int) -> StatsdistbinomialModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_model_len(s : StatsdistbinomialModel) -> Int { s.size }
+pub fn StatsdistbinomialModel::len(self : StatsdistbinomialModel) -> Int { self.size }
 
-pub fn stats_dist_binomial_model_get(s : StatsdistbinomialModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialModel::get(self : StatsdistbinomialModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_model_set(s : StatsdistbinomialModel, i : Int, v : Double) -> StatsdistbinomialModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialModel::set(self : StatsdistbinomialModel, i : Int, v : Double) -> StatsdistbinomialModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_model_sum(s : StatsdistbinomialModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialModel::sum(self : StatsdistbinomialModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_model_mean(s : StatsdistbinomialModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialModel::mean(self : StatsdistbinomialModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_model_scale(s : StatsdistbinomialModel, f : Double) -> StatsdistbinomialModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialModel::scale(self : StatsdistbinomialModel, f : Double) -> StatsdistbinomialModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_model_add(a : StatsdistbinomialModel, b : StatsdistbinomialModel) -> StatsdistbinomialModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialModel::add(self : StatsdistbinomialModel, other : StatsdistbinomialModel) -> StatsdistbinomialModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_model_copy(s : StatsdistbinomialModel) -> StatsdistbinomialModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialModel::copy(self : StatsdistbinomialModel) -> StatsdistbinomialModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_model_fill(s : StatsdistbinomialModel, v : Double) -> StatsdistbinomialModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialModel::fill(self : StatsdistbinomialModel, v : Double) -> StatsdistbinomialModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_model_min(s : StatsdistbinomialModel) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialModel::min(self : StatsdistbinomialModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_model_max(s : StatsdistbinomialModel) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialModel::max(self : StatsdistbinomialModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_model_to_string(s : StatsdistbinomialModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialModel::to_string(self : StatsdistbinomialModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialLayer {
@@ -759,45 +759,45 @@ pub fn stats_dist_binomial_layer_make(size : Int) -> StatsdistbinomialLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_layer_len(s : StatsdistbinomialLayer) -> Int { s.size }
+pub fn StatsdistbinomialLayer::len(self : StatsdistbinomialLayer) -> Int { self.size }
 
-pub fn stats_dist_binomial_layer_get(s : StatsdistbinomialLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialLayer::get(self : StatsdistbinomialLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_layer_set(s : StatsdistbinomialLayer, i : Int, v : Double) -> StatsdistbinomialLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialLayer::set(self : StatsdistbinomialLayer, i : Int, v : Double) -> StatsdistbinomialLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_layer_sum(s : StatsdistbinomialLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialLayer::sum(self : StatsdistbinomialLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_layer_mean(s : StatsdistbinomialLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialLayer::mean(self : StatsdistbinomialLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_layer_scale(s : StatsdistbinomialLayer, f : Double) -> StatsdistbinomialLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialLayer::scale(self : StatsdistbinomialLayer, f : Double) -> StatsdistbinomialLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_layer_add(a : StatsdistbinomialLayer, b : StatsdistbinomialLayer) -> StatsdistbinomialLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialLayer::add(self : StatsdistbinomialLayer, other : StatsdistbinomialLayer) -> StatsdistbinomialLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_layer_copy(s : StatsdistbinomialLayer) -> StatsdistbinomialLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialLayer::copy(self : StatsdistbinomialLayer) -> StatsdistbinomialLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_layer_fill(s : StatsdistbinomialLayer, v : Double) -> StatsdistbinomialLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialLayer::fill(self : StatsdistbinomialLayer, v : Double) -> StatsdistbinomialLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_layer_min(s : StatsdistbinomialLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialLayer::min(self : StatsdistbinomialLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_layer_max(s : StatsdistbinomialLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialLayer::max(self : StatsdistbinomialLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_layer_to_string(s : StatsdistbinomialLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialLayer::to_string(self : StatsdistbinomialLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialBuffer {
@@ -810,45 +810,45 @@ pub fn stats_dist_binomial_buffer_make(size : Int) -> StatsdistbinomialBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_buffer_len(s : StatsdistbinomialBuffer) -> Int { s.size }
+pub fn StatsdistbinomialBuffer::len(self : StatsdistbinomialBuffer) -> Int { self.size }
 
-pub fn stats_dist_binomial_buffer_get(s : StatsdistbinomialBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialBuffer::get(self : StatsdistbinomialBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_buffer_set(s : StatsdistbinomialBuffer, i : Int, v : Double) -> StatsdistbinomialBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialBuffer::set(self : StatsdistbinomialBuffer, i : Int, v : Double) -> StatsdistbinomialBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_buffer_sum(s : StatsdistbinomialBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialBuffer::sum(self : StatsdistbinomialBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_buffer_mean(s : StatsdistbinomialBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialBuffer::mean(self : StatsdistbinomialBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_buffer_scale(s : StatsdistbinomialBuffer, f : Double) -> StatsdistbinomialBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialBuffer::scale(self : StatsdistbinomialBuffer, f : Double) -> StatsdistbinomialBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_buffer_add(a : StatsdistbinomialBuffer, b : StatsdistbinomialBuffer) -> StatsdistbinomialBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialBuffer::add(self : StatsdistbinomialBuffer, other : StatsdistbinomialBuffer) -> StatsdistbinomialBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_buffer_copy(s : StatsdistbinomialBuffer) -> StatsdistbinomialBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialBuffer::copy(self : StatsdistbinomialBuffer) -> StatsdistbinomialBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_buffer_fill(s : StatsdistbinomialBuffer, v : Double) -> StatsdistbinomialBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialBuffer::fill(self : StatsdistbinomialBuffer, v : Double) -> StatsdistbinomialBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_buffer_min(s : StatsdistbinomialBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialBuffer::min(self : StatsdistbinomialBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_buffer_max(s : StatsdistbinomialBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialBuffer::max(self : StatsdistbinomialBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_buffer_to_string(s : StatsdistbinomialBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialBuffer::to_string(self : StatsdistbinomialBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialCursor {
@@ -861,45 +861,45 @@ pub fn stats_dist_binomial_cursor_make(size : Int) -> StatsdistbinomialCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_cursor_len(s : StatsdistbinomialCursor) -> Int { s.size }
+pub fn StatsdistbinomialCursor::len(self : StatsdistbinomialCursor) -> Int { self.size }
 
-pub fn stats_dist_binomial_cursor_get(s : StatsdistbinomialCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialCursor::get(self : StatsdistbinomialCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_cursor_set(s : StatsdistbinomialCursor, i : Int, v : Double) -> StatsdistbinomialCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialCursor::set(self : StatsdistbinomialCursor, i : Int, v : Double) -> StatsdistbinomialCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_cursor_sum(s : StatsdistbinomialCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialCursor::sum(self : StatsdistbinomialCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_cursor_mean(s : StatsdistbinomialCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialCursor::mean(self : StatsdistbinomialCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_cursor_scale(s : StatsdistbinomialCursor, f : Double) -> StatsdistbinomialCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialCursor::scale(self : StatsdistbinomialCursor, f : Double) -> StatsdistbinomialCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_cursor_add(a : StatsdistbinomialCursor, b : StatsdistbinomialCursor) -> StatsdistbinomialCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialCursor::add(self : StatsdistbinomialCursor, other : StatsdistbinomialCursor) -> StatsdistbinomialCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_cursor_copy(s : StatsdistbinomialCursor) -> StatsdistbinomialCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialCursor::copy(self : StatsdistbinomialCursor) -> StatsdistbinomialCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_cursor_fill(s : StatsdistbinomialCursor, v : Double) -> StatsdistbinomialCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialCursor::fill(self : StatsdistbinomialCursor, v : Double) -> StatsdistbinomialCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_cursor_min(s : StatsdistbinomialCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialCursor::min(self : StatsdistbinomialCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_cursor_max(s : StatsdistbinomialCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialCursor::max(self : StatsdistbinomialCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_cursor_to_string(s : StatsdistbinomialCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialCursor::to_string(self : StatsdistbinomialCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialView {
@@ -912,45 +912,45 @@ pub fn stats_dist_binomial_view_make(size : Int) -> StatsdistbinomialView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_view_len(s : StatsdistbinomialView) -> Int { s.size }
+pub fn StatsdistbinomialView::len(self : StatsdistbinomialView) -> Int { self.size }
 
-pub fn stats_dist_binomial_view_get(s : StatsdistbinomialView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialView::get(self : StatsdistbinomialView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_view_set(s : StatsdistbinomialView, i : Int, v : Double) -> StatsdistbinomialView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialView::set(self : StatsdistbinomialView, i : Int, v : Double) -> StatsdistbinomialView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_view_sum(s : StatsdistbinomialView) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialView::sum(self : StatsdistbinomialView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_view_mean(s : StatsdistbinomialView) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialView::mean(self : StatsdistbinomialView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_view_scale(s : StatsdistbinomialView, f : Double) -> StatsdistbinomialView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialView::scale(self : StatsdistbinomialView, f : Double) -> StatsdistbinomialView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_view_add(a : StatsdistbinomialView, b : StatsdistbinomialView) -> StatsdistbinomialView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialView::add(self : StatsdistbinomialView, other : StatsdistbinomialView) -> StatsdistbinomialView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_view_copy(s : StatsdistbinomialView) -> StatsdistbinomialView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialView::copy(self : StatsdistbinomialView) -> StatsdistbinomialView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_view_fill(s : StatsdistbinomialView, v : Double) -> StatsdistbinomialView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialView::fill(self : StatsdistbinomialView, v : Double) -> StatsdistbinomialView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_view_min(s : StatsdistbinomialView) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialView::min(self : StatsdistbinomialView) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_view_max(s : StatsdistbinomialView) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialView::max(self : StatsdistbinomialView) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_view_to_string(s : StatsdistbinomialView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialView::to_string(self : StatsdistbinomialView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialRange {
@@ -963,45 +963,45 @@ pub fn stats_dist_binomial_range_make(size : Int) -> StatsdistbinomialRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_range_len(s : StatsdistbinomialRange) -> Int { s.size }
+pub fn StatsdistbinomialRange::len(self : StatsdistbinomialRange) -> Int { self.size }
 
-pub fn stats_dist_binomial_range_get(s : StatsdistbinomialRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialRange::get(self : StatsdistbinomialRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_range_set(s : StatsdistbinomialRange, i : Int, v : Double) -> StatsdistbinomialRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialRange::set(self : StatsdistbinomialRange, i : Int, v : Double) -> StatsdistbinomialRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_range_sum(s : StatsdistbinomialRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialRange::sum(self : StatsdistbinomialRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_range_mean(s : StatsdistbinomialRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialRange::mean(self : StatsdistbinomialRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_range_scale(s : StatsdistbinomialRange, f : Double) -> StatsdistbinomialRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialRange::scale(self : StatsdistbinomialRange, f : Double) -> StatsdistbinomialRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_range_add(a : StatsdistbinomialRange, b : StatsdistbinomialRange) -> StatsdistbinomialRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialRange::add(self : StatsdistbinomialRange, other : StatsdistbinomialRange) -> StatsdistbinomialRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_range_copy(s : StatsdistbinomialRange) -> StatsdistbinomialRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialRange::copy(self : StatsdistbinomialRange) -> StatsdistbinomialRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_range_fill(s : StatsdistbinomialRange, v : Double) -> StatsdistbinomialRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialRange::fill(self : StatsdistbinomialRange, v : Double) -> StatsdistbinomialRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_range_min(s : StatsdistbinomialRange) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialRange::min(self : StatsdistbinomialRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_range_max(s : StatsdistbinomialRange) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialRange::max(self : StatsdistbinomialRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_range_to_string(s : StatsdistbinomialRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialRange::to_string(self : StatsdistbinomialRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbinomialSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_dist_binomial_slice_make(size : Int) -> StatsdistbinomialSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_binomial_slice_len(s : StatsdistbinomialSlice) -> Int { s.size }
+pub fn StatsdistbinomialSlice::len(self : StatsdistbinomialSlice) -> Int { self.size }
 
-pub fn stats_dist_binomial_slice_get(s : StatsdistbinomialSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbinomialSlice::get(self : StatsdistbinomialSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_binomial_slice_set(s : StatsdistbinomialSlice, i : Int, v : Double) -> StatsdistbinomialSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbinomialSlice::set(self : StatsdistbinomialSlice, i : Int, v : Double) -> StatsdistbinomialSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_slice_sum(s : StatsdistbinomialSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbinomialSlice::sum(self : StatsdistbinomialSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_binomial_slice_mean(s : StatsdistbinomialSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbinomialSlice::mean(self : StatsdistbinomialSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_binomial_slice_scale(s : StatsdistbinomialSlice, f : Double) -> StatsdistbinomialSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialSlice::scale(self : StatsdistbinomialSlice, f : Double) -> StatsdistbinomialSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_slice_add(a : StatsdistbinomialSlice, b : StatsdistbinomialSlice) -> StatsdistbinomialSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbinomialSlice::add(self : StatsdistbinomialSlice, other : StatsdistbinomialSlice) -> StatsdistbinomialSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_slice_copy(s : StatsdistbinomialSlice) -> StatsdistbinomialSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialSlice::copy(self : StatsdistbinomialSlice) -> StatsdistbinomialSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_slice_fill(s : StatsdistbinomialSlice, v : Double) -> StatsdistbinomialSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbinomialSlice::fill(self : StatsdistbinomialSlice, v : Double) -> StatsdistbinomialSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_binomial_slice_min(s : StatsdistbinomialSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdistbinomialSlice::min(self : StatsdistbinomialSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_binomial_slice_max(s : StatsdistbinomialSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdistbinomialSlice::max(self : StatsdistbinomialSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_binomial_slice_to_string(s : StatsdistbinomialSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbinomialSlice::to_string(self : StatsdistbinomialSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

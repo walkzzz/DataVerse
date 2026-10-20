@@ -351,45 +351,45 @@ pub fn bio_struct_symmetry_frame_make(size : Int) -> BiostructsymmetryFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_frame_len(s : BiostructsymmetryFrame) -> Int { s.size }
+pub fn BiostructsymmetryFrame::len(self : BiostructsymmetryFrame) -> Int { self.size }
 
-pub fn bio_struct_symmetry_frame_get(s : BiostructsymmetryFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryFrame::get(self : BiostructsymmetryFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_frame_set(s : BiostructsymmetryFrame, i : Int, v : Double) -> BiostructsymmetryFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryFrame::set(self : BiostructsymmetryFrame, i : Int, v : Double) -> BiostructsymmetryFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_frame_sum(s : BiostructsymmetryFrame) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryFrame::sum(self : BiostructsymmetryFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_frame_mean(s : BiostructsymmetryFrame) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryFrame::mean(self : BiostructsymmetryFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_frame_scale(s : BiostructsymmetryFrame, f : Double) -> BiostructsymmetryFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryFrame::scale(self : BiostructsymmetryFrame, f : Double) -> BiostructsymmetryFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_frame_add(a : BiostructsymmetryFrame, b : BiostructsymmetryFrame) -> BiostructsymmetryFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryFrame::add(self : BiostructsymmetryFrame, other : BiostructsymmetryFrame) -> BiostructsymmetryFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_frame_copy(s : BiostructsymmetryFrame) -> BiostructsymmetryFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryFrame::copy(self : BiostructsymmetryFrame) -> BiostructsymmetryFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_frame_fill(s : BiostructsymmetryFrame, v : Double) -> BiostructsymmetryFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryFrame::fill(self : BiostructsymmetryFrame, v : Double) -> BiostructsymmetryFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_frame_min(s : BiostructsymmetryFrame) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryFrame::min(self : BiostructsymmetryFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_frame_max(s : BiostructsymmetryFrame) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryFrame::max(self : BiostructsymmetryFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_frame_to_string(s : BiostructsymmetryFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryFrame::to_string(self : BiostructsymmetryFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetryTable {
@@ -402,45 +402,45 @@ pub fn bio_struct_symmetry_table_make(size : Int) -> BiostructsymmetryTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_table_len(s : BiostructsymmetryTable) -> Int { s.size }
+pub fn BiostructsymmetryTable::len(self : BiostructsymmetryTable) -> Int { self.size }
 
-pub fn bio_struct_symmetry_table_get(s : BiostructsymmetryTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryTable::get(self : BiostructsymmetryTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_table_set(s : BiostructsymmetryTable, i : Int, v : Double) -> BiostructsymmetryTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryTable::set(self : BiostructsymmetryTable, i : Int, v : Double) -> BiostructsymmetryTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_table_sum(s : BiostructsymmetryTable) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryTable::sum(self : BiostructsymmetryTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_table_mean(s : BiostructsymmetryTable) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryTable::mean(self : BiostructsymmetryTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_table_scale(s : BiostructsymmetryTable, f : Double) -> BiostructsymmetryTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryTable::scale(self : BiostructsymmetryTable, f : Double) -> BiostructsymmetryTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_table_add(a : BiostructsymmetryTable, b : BiostructsymmetryTable) -> BiostructsymmetryTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryTable::add(self : BiostructsymmetryTable, other : BiostructsymmetryTable) -> BiostructsymmetryTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_table_copy(s : BiostructsymmetryTable) -> BiostructsymmetryTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryTable::copy(self : BiostructsymmetryTable) -> BiostructsymmetryTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_table_fill(s : BiostructsymmetryTable, v : Double) -> BiostructsymmetryTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryTable::fill(self : BiostructsymmetryTable, v : Double) -> BiostructsymmetryTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_table_min(s : BiostructsymmetryTable) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryTable::min(self : BiostructsymmetryTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_table_max(s : BiostructsymmetryTable) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryTable::max(self : BiostructsymmetryTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_table_to_string(s : BiostructsymmetryTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryTable::to_string(self : BiostructsymmetryTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetryGraphN {
@@ -453,45 +453,45 @@ pub fn bio_struct_symmetry_graphn_make(size : Int) -> BiostructsymmetryGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_graphn_len(s : BiostructsymmetryGraphN) -> Int { s.size }
+pub fn BiostructsymmetryGraphN::len(self : BiostructsymmetryGraphN) -> Int { self.size }
 
-pub fn bio_struct_symmetry_graphn_get(s : BiostructsymmetryGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryGraphN::get(self : BiostructsymmetryGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_graphn_set(s : BiostructsymmetryGraphN, i : Int, v : Double) -> BiostructsymmetryGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryGraphN::set(self : BiostructsymmetryGraphN, i : Int, v : Double) -> BiostructsymmetryGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_graphn_sum(s : BiostructsymmetryGraphN) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryGraphN::sum(self : BiostructsymmetryGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_graphn_mean(s : BiostructsymmetryGraphN) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryGraphN::mean(self : BiostructsymmetryGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_graphn_scale(s : BiostructsymmetryGraphN, f : Double) -> BiostructsymmetryGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryGraphN::scale(self : BiostructsymmetryGraphN, f : Double) -> BiostructsymmetryGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_graphn_add(a : BiostructsymmetryGraphN, b : BiostructsymmetryGraphN) -> BiostructsymmetryGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryGraphN::add(self : BiostructsymmetryGraphN, other : BiostructsymmetryGraphN) -> BiostructsymmetryGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_graphn_copy(s : BiostructsymmetryGraphN) -> BiostructsymmetryGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryGraphN::copy(self : BiostructsymmetryGraphN) -> BiostructsymmetryGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_graphn_fill(s : BiostructsymmetryGraphN, v : Double) -> BiostructsymmetryGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryGraphN::fill(self : BiostructsymmetryGraphN, v : Double) -> BiostructsymmetryGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_graphn_min(s : BiostructsymmetryGraphN) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryGraphN::min(self : BiostructsymmetryGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_graphn_max(s : BiostructsymmetryGraphN) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryGraphN::max(self : BiostructsymmetryGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_graphn_to_string(s : BiostructsymmetryGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryGraphN::to_string(self : BiostructsymmetryGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetryNode {
@@ -504,45 +504,45 @@ pub fn bio_struct_symmetry_node_make(size : Int) -> BiostructsymmetryNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_node_len(s : BiostructsymmetryNode) -> Int { s.size }
+pub fn BiostructsymmetryNode::len(self : BiostructsymmetryNode) -> Int { self.size }
 
-pub fn bio_struct_symmetry_node_get(s : BiostructsymmetryNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryNode::get(self : BiostructsymmetryNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_node_set(s : BiostructsymmetryNode, i : Int, v : Double) -> BiostructsymmetryNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryNode::set(self : BiostructsymmetryNode, i : Int, v : Double) -> BiostructsymmetryNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_node_sum(s : BiostructsymmetryNode) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryNode::sum(self : BiostructsymmetryNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_node_mean(s : BiostructsymmetryNode) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryNode::mean(self : BiostructsymmetryNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_node_scale(s : BiostructsymmetryNode, f : Double) -> BiostructsymmetryNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryNode::scale(self : BiostructsymmetryNode, f : Double) -> BiostructsymmetryNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_node_add(a : BiostructsymmetryNode, b : BiostructsymmetryNode) -> BiostructsymmetryNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryNode::add(self : BiostructsymmetryNode, other : BiostructsymmetryNode) -> BiostructsymmetryNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_node_copy(s : BiostructsymmetryNode) -> BiostructsymmetryNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryNode::copy(self : BiostructsymmetryNode) -> BiostructsymmetryNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_node_fill(s : BiostructsymmetryNode, v : Double) -> BiostructsymmetryNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryNode::fill(self : BiostructsymmetryNode, v : Double) -> BiostructsymmetryNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_node_min(s : BiostructsymmetryNode) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryNode::min(self : BiostructsymmetryNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_node_max(s : BiostructsymmetryNode) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryNode::max(self : BiostructsymmetryNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_node_to_string(s : BiostructsymmetryNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryNode::to_string(self : BiostructsymmetryNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetryEdge {
@@ -555,45 +555,45 @@ pub fn bio_struct_symmetry_edge_make(size : Int) -> BiostructsymmetryEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_edge_len(s : BiostructsymmetryEdge) -> Int { s.size }
+pub fn BiostructsymmetryEdge::len(self : BiostructsymmetryEdge) -> Int { self.size }
 
-pub fn bio_struct_symmetry_edge_get(s : BiostructsymmetryEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryEdge::get(self : BiostructsymmetryEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_edge_set(s : BiostructsymmetryEdge, i : Int, v : Double) -> BiostructsymmetryEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryEdge::set(self : BiostructsymmetryEdge, i : Int, v : Double) -> BiostructsymmetryEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_edge_sum(s : BiostructsymmetryEdge) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryEdge::sum(self : BiostructsymmetryEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_edge_mean(s : BiostructsymmetryEdge) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryEdge::mean(self : BiostructsymmetryEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_edge_scale(s : BiostructsymmetryEdge, f : Double) -> BiostructsymmetryEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryEdge::scale(self : BiostructsymmetryEdge, f : Double) -> BiostructsymmetryEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_edge_add(a : BiostructsymmetryEdge, b : BiostructsymmetryEdge) -> BiostructsymmetryEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryEdge::add(self : BiostructsymmetryEdge, other : BiostructsymmetryEdge) -> BiostructsymmetryEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_edge_copy(s : BiostructsymmetryEdge) -> BiostructsymmetryEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryEdge::copy(self : BiostructsymmetryEdge) -> BiostructsymmetryEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_edge_fill(s : BiostructsymmetryEdge, v : Double) -> BiostructsymmetryEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryEdge::fill(self : BiostructsymmetryEdge, v : Double) -> BiostructsymmetryEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_edge_min(s : BiostructsymmetryEdge) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryEdge::min(self : BiostructsymmetryEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_edge_max(s : BiostructsymmetryEdge) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryEdge::max(self : BiostructsymmetryEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_edge_to_string(s : BiostructsymmetryEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryEdge::to_string(self : BiostructsymmetryEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetryPath {
@@ -606,45 +606,45 @@ pub fn bio_struct_symmetry_path_make(size : Int) -> BiostructsymmetryPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_path_len(s : BiostructsymmetryPath) -> Int { s.size }
+pub fn BiostructsymmetryPath::len(self : BiostructsymmetryPath) -> Int { self.size }
 
-pub fn bio_struct_symmetry_path_get(s : BiostructsymmetryPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryPath::get(self : BiostructsymmetryPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_path_set(s : BiostructsymmetryPath, i : Int, v : Double) -> BiostructsymmetryPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryPath::set(self : BiostructsymmetryPath, i : Int, v : Double) -> BiostructsymmetryPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_path_sum(s : BiostructsymmetryPath) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryPath::sum(self : BiostructsymmetryPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_path_mean(s : BiostructsymmetryPath) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryPath::mean(self : BiostructsymmetryPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_path_scale(s : BiostructsymmetryPath, f : Double) -> BiostructsymmetryPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryPath::scale(self : BiostructsymmetryPath, f : Double) -> BiostructsymmetryPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_path_add(a : BiostructsymmetryPath, b : BiostructsymmetryPath) -> BiostructsymmetryPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryPath::add(self : BiostructsymmetryPath, other : BiostructsymmetryPath) -> BiostructsymmetryPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_path_copy(s : BiostructsymmetryPath) -> BiostructsymmetryPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryPath::copy(self : BiostructsymmetryPath) -> BiostructsymmetryPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_path_fill(s : BiostructsymmetryPath, v : Double) -> BiostructsymmetryPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryPath::fill(self : BiostructsymmetryPath, v : Double) -> BiostructsymmetryPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_path_min(s : BiostructsymmetryPath) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryPath::min(self : BiostructsymmetryPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_path_max(s : BiostructsymmetryPath) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryPath::max(self : BiostructsymmetryPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_path_to_string(s : BiostructsymmetryPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryPath::to_string(self : BiostructsymmetryPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetryCluster {
@@ -657,45 +657,45 @@ pub fn bio_struct_symmetry_cluster_make(size : Int) -> BiostructsymmetryCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_cluster_len(s : BiostructsymmetryCluster) -> Int { s.size }
+pub fn BiostructsymmetryCluster::len(self : BiostructsymmetryCluster) -> Int { self.size }
 
-pub fn bio_struct_symmetry_cluster_get(s : BiostructsymmetryCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryCluster::get(self : BiostructsymmetryCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_cluster_set(s : BiostructsymmetryCluster, i : Int, v : Double) -> BiostructsymmetryCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryCluster::set(self : BiostructsymmetryCluster, i : Int, v : Double) -> BiostructsymmetryCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_cluster_sum(s : BiostructsymmetryCluster) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryCluster::sum(self : BiostructsymmetryCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_cluster_mean(s : BiostructsymmetryCluster) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryCluster::mean(self : BiostructsymmetryCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_cluster_scale(s : BiostructsymmetryCluster, f : Double) -> BiostructsymmetryCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryCluster::scale(self : BiostructsymmetryCluster, f : Double) -> BiostructsymmetryCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_cluster_add(a : BiostructsymmetryCluster, b : BiostructsymmetryCluster) -> BiostructsymmetryCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryCluster::add(self : BiostructsymmetryCluster, other : BiostructsymmetryCluster) -> BiostructsymmetryCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_cluster_copy(s : BiostructsymmetryCluster) -> BiostructsymmetryCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryCluster::copy(self : BiostructsymmetryCluster) -> BiostructsymmetryCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_cluster_fill(s : BiostructsymmetryCluster, v : Double) -> BiostructsymmetryCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryCluster::fill(self : BiostructsymmetryCluster, v : Double) -> BiostructsymmetryCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_cluster_min(s : BiostructsymmetryCluster) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryCluster::min(self : BiostructsymmetryCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_cluster_max(s : BiostructsymmetryCluster) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryCluster::max(self : BiostructsymmetryCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_cluster_to_string(s : BiostructsymmetryCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryCluster::to_string(self : BiostructsymmetryCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetryModel {
@@ -708,45 +708,45 @@ pub fn bio_struct_symmetry_model_make(size : Int) -> BiostructsymmetryModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_model_len(s : BiostructsymmetryModel) -> Int { s.size }
+pub fn BiostructsymmetryModel::len(self : BiostructsymmetryModel) -> Int { self.size }
 
-pub fn bio_struct_symmetry_model_get(s : BiostructsymmetryModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryModel::get(self : BiostructsymmetryModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_model_set(s : BiostructsymmetryModel, i : Int, v : Double) -> BiostructsymmetryModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryModel::set(self : BiostructsymmetryModel, i : Int, v : Double) -> BiostructsymmetryModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_model_sum(s : BiostructsymmetryModel) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryModel::sum(self : BiostructsymmetryModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_model_mean(s : BiostructsymmetryModel) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryModel::mean(self : BiostructsymmetryModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_model_scale(s : BiostructsymmetryModel, f : Double) -> BiostructsymmetryModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryModel::scale(self : BiostructsymmetryModel, f : Double) -> BiostructsymmetryModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_model_add(a : BiostructsymmetryModel, b : BiostructsymmetryModel) -> BiostructsymmetryModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryModel::add(self : BiostructsymmetryModel, other : BiostructsymmetryModel) -> BiostructsymmetryModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_model_copy(s : BiostructsymmetryModel) -> BiostructsymmetryModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryModel::copy(self : BiostructsymmetryModel) -> BiostructsymmetryModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_model_fill(s : BiostructsymmetryModel, v : Double) -> BiostructsymmetryModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryModel::fill(self : BiostructsymmetryModel, v : Double) -> BiostructsymmetryModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_model_min(s : BiostructsymmetryModel) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryModel::min(self : BiostructsymmetryModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_model_max(s : BiostructsymmetryModel) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryModel::max(self : BiostructsymmetryModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_model_to_string(s : BiostructsymmetryModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryModel::to_string(self : BiostructsymmetryModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetryLayer {
@@ -759,45 +759,45 @@ pub fn bio_struct_symmetry_layer_make(size : Int) -> BiostructsymmetryLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_layer_len(s : BiostructsymmetryLayer) -> Int { s.size }
+pub fn BiostructsymmetryLayer::len(self : BiostructsymmetryLayer) -> Int { self.size }
 
-pub fn bio_struct_symmetry_layer_get(s : BiostructsymmetryLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryLayer::get(self : BiostructsymmetryLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_layer_set(s : BiostructsymmetryLayer, i : Int, v : Double) -> BiostructsymmetryLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryLayer::set(self : BiostructsymmetryLayer, i : Int, v : Double) -> BiostructsymmetryLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_layer_sum(s : BiostructsymmetryLayer) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryLayer::sum(self : BiostructsymmetryLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_layer_mean(s : BiostructsymmetryLayer) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryLayer::mean(self : BiostructsymmetryLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_layer_scale(s : BiostructsymmetryLayer, f : Double) -> BiostructsymmetryLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryLayer::scale(self : BiostructsymmetryLayer, f : Double) -> BiostructsymmetryLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_layer_add(a : BiostructsymmetryLayer, b : BiostructsymmetryLayer) -> BiostructsymmetryLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryLayer::add(self : BiostructsymmetryLayer, other : BiostructsymmetryLayer) -> BiostructsymmetryLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_layer_copy(s : BiostructsymmetryLayer) -> BiostructsymmetryLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryLayer::copy(self : BiostructsymmetryLayer) -> BiostructsymmetryLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_layer_fill(s : BiostructsymmetryLayer, v : Double) -> BiostructsymmetryLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryLayer::fill(self : BiostructsymmetryLayer, v : Double) -> BiostructsymmetryLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_layer_min(s : BiostructsymmetryLayer) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryLayer::min(self : BiostructsymmetryLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_layer_max(s : BiostructsymmetryLayer) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryLayer::max(self : BiostructsymmetryLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_layer_to_string(s : BiostructsymmetryLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryLayer::to_string(self : BiostructsymmetryLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetryBuffer {
@@ -810,45 +810,45 @@ pub fn bio_struct_symmetry_buffer_make(size : Int) -> BiostructsymmetryBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_buffer_len(s : BiostructsymmetryBuffer) -> Int { s.size }
+pub fn BiostructsymmetryBuffer::len(self : BiostructsymmetryBuffer) -> Int { self.size }
 
-pub fn bio_struct_symmetry_buffer_get(s : BiostructsymmetryBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryBuffer::get(self : BiostructsymmetryBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_buffer_set(s : BiostructsymmetryBuffer, i : Int, v : Double) -> BiostructsymmetryBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryBuffer::set(self : BiostructsymmetryBuffer, i : Int, v : Double) -> BiostructsymmetryBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_buffer_sum(s : BiostructsymmetryBuffer) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryBuffer::sum(self : BiostructsymmetryBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_buffer_mean(s : BiostructsymmetryBuffer) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryBuffer::mean(self : BiostructsymmetryBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_buffer_scale(s : BiostructsymmetryBuffer, f : Double) -> BiostructsymmetryBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryBuffer::scale(self : BiostructsymmetryBuffer, f : Double) -> BiostructsymmetryBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_buffer_add(a : BiostructsymmetryBuffer, b : BiostructsymmetryBuffer) -> BiostructsymmetryBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryBuffer::add(self : BiostructsymmetryBuffer, other : BiostructsymmetryBuffer) -> BiostructsymmetryBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_buffer_copy(s : BiostructsymmetryBuffer) -> BiostructsymmetryBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryBuffer::copy(self : BiostructsymmetryBuffer) -> BiostructsymmetryBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_buffer_fill(s : BiostructsymmetryBuffer, v : Double) -> BiostructsymmetryBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryBuffer::fill(self : BiostructsymmetryBuffer, v : Double) -> BiostructsymmetryBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_buffer_min(s : BiostructsymmetryBuffer) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryBuffer::min(self : BiostructsymmetryBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_buffer_max(s : BiostructsymmetryBuffer) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryBuffer::max(self : BiostructsymmetryBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_buffer_to_string(s : BiostructsymmetryBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryBuffer::to_string(self : BiostructsymmetryBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetryCursor {
@@ -861,45 +861,45 @@ pub fn bio_struct_symmetry_cursor_make(size : Int) -> BiostructsymmetryCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_cursor_len(s : BiostructsymmetryCursor) -> Int { s.size }
+pub fn BiostructsymmetryCursor::len(self : BiostructsymmetryCursor) -> Int { self.size }
 
-pub fn bio_struct_symmetry_cursor_get(s : BiostructsymmetryCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryCursor::get(self : BiostructsymmetryCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_cursor_set(s : BiostructsymmetryCursor, i : Int, v : Double) -> BiostructsymmetryCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryCursor::set(self : BiostructsymmetryCursor, i : Int, v : Double) -> BiostructsymmetryCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_cursor_sum(s : BiostructsymmetryCursor) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryCursor::sum(self : BiostructsymmetryCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_cursor_mean(s : BiostructsymmetryCursor) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryCursor::mean(self : BiostructsymmetryCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_cursor_scale(s : BiostructsymmetryCursor, f : Double) -> BiostructsymmetryCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryCursor::scale(self : BiostructsymmetryCursor, f : Double) -> BiostructsymmetryCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_cursor_add(a : BiostructsymmetryCursor, b : BiostructsymmetryCursor) -> BiostructsymmetryCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryCursor::add(self : BiostructsymmetryCursor, other : BiostructsymmetryCursor) -> BiostructsymmetryCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_cursor_copy(s : BiostructsymmetryCursor) -> BiostructsymmetryCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryCursor::copy(self : BiostructsymmetryCursor) -> BiostructsymmetryCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_cursor_fill(s : BiostructsymmetryCursor, v : Double) -> BiostructsymmetryCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryCursor::fill(self : BiostructsymmetryCursor, v : Double) -> BiostructsymmetryCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_cursor_min(s : BiostructsymmetryCursor) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryCursor::min(self : BiostructsymmetryCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_cursor_max(s : BiostructsymmetryCursor) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryCursor::max(self : BiostructsymmetryCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_cursor_to_string(s : BiostructsymmetryCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryCursor::to_string(self : BiostructsymmetryCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetryView {
@@ -912,45 +912,45 @@ pub fn bio_struct_symmetry_view_make(size : Int) -> BiostructsymmetryView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_view_len(s : BiostructsymmetryView) -> Int { s.size }
+pub fn BiostructsymmetryView::len(self : BiostructsymmetryView) -> Int { self.size }
 
-pub fn bio_struct_symmetry_view_get(s : BiostructsymmetryView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryView::get(self : BiostructsymmetryView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_view_set(s : BiostructsymmetryView, i : Int, v : Double) -> BiostructsymmetryView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryView::set(self : BiostructsymmetryView, i : Int, v : Double) -> BiostructsymmetryView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_view_sum(s : BiostructsymmetryView) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryView::sum(self : BiostructsymmetryView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_view_mean(s : BiostructsymmetryView) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryView::mean(self : BiostructsymmetryView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_view_scale(s : BiostructsymmetryView, f : Double) -> BiostructsymmetryView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryView::scale(self : BiostructsymmetryView, f : Double) -> BiostructsymmetryView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_view_add(a : BiostructsymmetryView, b : BiostructsymmetryView) -> BiostructsymmetryView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryView::add(self : BiostructsymmetryView, other : BiostructsymmetryView) -> BiostructsymmetryView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_view_copy(s : BiostructsymmetryView) -> BiostructsymmetryView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryView::copy(self : BiostructsymmetryView) -> BiostructsymmetryView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_view_fill(s : BiostructsymmetryView, v : Double) -> BiostructsymmetryView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryView::fill(self : BiostructsymmetryView, v : Double) -> BiostructsymmetryView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_view_min(s : BiostructsymmetryView) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryView::min(self : BiostructsymmetryView) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_view_max(s : BiostructsymmetryView) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryView::max(self : BiostructsymmetryView) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_view_to_string(s : BiostructsymmetryView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryView::to_string(self : BiostructsymmetryView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetryRange {
@@ -963,45 +963,45 @@ pub fn bio_struct_symmetry_range_make(size : Int) -> BiostructsymmetryRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_range_len(s : BiostructsymmetryRange) -> Int { s.size }
+pub fn BiostructsymmetryRange::len(self : BiostructsymmetryRange) -> Int { self.size }
 
-pub fn bio_struct_symmetry_range_get(s : BiostructsymmetryRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetryRange::get(self : BiostructsymmetryRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_range_set(s : BiostructsymmetryRange, i : Int, v : Double) -> BiostructsymmetryRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetryRange::set(self : BiostructsymmetryRange, i : Int, v : Double) -> BiostructsymmetryRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_range_sum(s : BiostructsymmetryRange) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetryRange::sum(self : BiostructsymmetryRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_range_mean(s : BiostructsymmetryRange) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetryRange::mean(self : BiostructsymmetryRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_range_scale(s : BiostructsymmetryRange, f : Double) -> BiostructsymmetryRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryRange::scale(self : BiostructsymmetryRange, f : Double) -> BiostructsymmetryRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_range_add(a : BiostructsymmetryRange, b : BiostructsymmetryRange) -> BiostructsymmetryRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetryRange::add(self : BiostructsymmetryRange, other : BiostructsymmetryRange) -> BiostructsymmetryRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_range_copy(s : BiostructsymmetryRange) -> BiostructsymmetryRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryRange::copy(self : BiostructsymmetryRange) -> BiostructsymmetryRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_range_fill(s : BiostructsymmetryRange, v : Double) -> BiostructsymmetryRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetryRange::fill(self : BiostructsymmetryRange, v : Double) -> BiostructsymmetryRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_range_min(s : BiostructsymmetryRange) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetryRange::min(self : BiostructsymmetryRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_range_max(s : BiostructsymmetryRange) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetryRange::max(self : BiostructsymmetryRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_range_to_string(s : BiostructsymmetryRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetryRange::to_string(self : BiostructsymmetryRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsymmetrySlice {
@@ -1014,44 +1014,44 @@ pub fn bio_struct_symmetry_slice_make(size : Int) -> BiostructsymmetrySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_symmetry_slice_len(s : BiostructsymmetrySlice) -> Int { s.size }
+pub fn BiostructsymmetrySlice::len(self : BiostructsymmetrySlice) -> Int { self.size }
 
-pub fn bio_struct_symmetry_slice_get(s : BiostructsymmetrySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsymmetrySlice::get(self : BiostructsymmetrySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_symmetry_slice_set(s : BiostructsymmetrySlice, i : Int, v : Double) -> BiostructsymmetrySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsymmetrySlice::set(self : BiostructsymmetrySlice, i : Int, v : Double) -> BiostructsymmetrySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_slice_sum(s : BiostructsymmetrySlice) -> Double { @_common.sum(s.data) }
+pub fn BiostructsymmetrySlice::sum(self : BiostructsymmetrySlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_symmetry_slice_mean(s : BiostructsymmetrySlice) -> Double { @_common.mean(s.data) }
+pub fn BiostructsymmetrySlice::mean(self : BiostructsymmetrySlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_symmetry_slice_scale(s : BiostructsymmetrySlice, f : Double) -> BiostructsymmetrySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsymmetrySlice::scale(self : BiostructsymmetrySlice, f : Double) -> BiostructsymmetrySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_slice_add(a : BiostructsymmetrySlice, b : BiostructsymmetrySlice) -> BiostructsymmetrySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsymmetrySlice::add(self : BiostructsymmetrySlice, other : BiostructsymmetrySlice) -> BiostructsymmetrySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_slice_copy(s : BiostructsymmetrySlice) -> BiostructsymmetrySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsymmetrySlice::copy(self : BiostructsymmetrySlice) -> BiostructsymmetrySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_slice_fill(s : BiostructsymmetrySlice, v : Double) -> BiostructsymmetrySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsymmetrySlice::fill(self : BiostructsymmetrySlice, v : Double) -> BiostructsymmetrySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_symmetry_slice_min(s : BiostructsymmetrySlice) -> Double { @_common.min(s.data) }
+pub fn BiostructsymmetrySlice::min(self : BiostructsymmetrySlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_symmetry_slice_max(s : BiostructsymmetrySlice) -> Double { @_common.max(s.data) }
+pub fn BiostructsymmetrySlice::max(self : BiostructsymmetrySlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_symmetry_slice_to_string(s : BiostructsymmetrySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsymmetrySlice::to_string(self : BiostructsymmetrySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

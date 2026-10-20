@@ -351,45 +351,45 @@ pub fn physics_em_mom_frame_make(size : Int) -> PhysicsemmomFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_frame_len(s : PhysicsemmomFrame) -> Int { s.size }
+pub fn PhysicsemmomFrame::len(self : PhysicsemmomFrame) -> Int { self.size }
 
-pub fn physics_em_mom_frame_get(s : PhysicsemmomFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomFrame::get(self : PhysicsemmomFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_frame_set(s : PhysicsemmomFrame, i : Int, v : Double) -> PhysicsemmomFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomFrame::set(self : PhysicsemmomFrame, i : Int, v : Double) -> PhysicsemmomFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_frame_sum(s : PhysicsemmomFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomFrame::sum(self : PhysicsemmomFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_frame_mean(s : PhysicsemmomFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomFrame::mean(self : PhysicsemmomFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_frame_scale(s : PhysicsemmomFrame, f : Double) -> PhysicsemmomFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomFrame::scale(self : PhysicsemmomFrame, f : Double) -> PhysicsemmomFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_frame_add(a : PhysicsemmomFrame, b : PhysicsemmomFrame) -> PhysicsemmomFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomFrame::add(self : PhysicsemmomFrame, other : PhysicsemmomFrame) -> PhysicsemmomFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_frame_copy(s : PhysicsemmomFrame) -> PhysicsemmomFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomFrame::copy(self : PhysicsemmomFrame) -> PhysicsemmomFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_frame_fill(s : PhysicsemmomFrame, v : Double) -> PhysicsemmomFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomFrame::fill(self : PhysicsemmomFrame, v : Double) -> PhysicsemmomFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_frame_min(s : PhysicsemmomFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomFrame::min(self : PhysicsemmomFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_frame_max(s : PhysicsemmomFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomFrame::max(self : PhysicsemmomFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_frame_to_string(s : PhysicsemmomFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomFrame::to_string(self : PhysicsemmomFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomTable {
@@ -402,45 +402,45 @@ pub fn physics_em_mom_table_make(size : Int) -> PhysicsemmomTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_table_len(s : PhysicsemmomTable) -> Int { s.size }
+pub fn PhysicsemmomTable::len(self : PhysicsemmomTable) -> Int { self.size }
 
-pub fn physics_em_mom_table_get(s : PhysicsemmomTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomTable::get(self : PhysicsemmomTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_table_set(s : PhysicsemmomTable, i : Int, v : Double) -> PhysicsemmomTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomTable::set(self : PhysicsemmomTable, i : Int, v : Double) -> PhysicsemmomTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_table_sum(s : PhysicsemmomTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomTable::sum(self : PhysicsemmomTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_table_mean(s : PhysicsemmomTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomTable::mean(self : PhysicsemmomTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_table_scale(s : PhysicsemmomTable, f : Double) -> PhysicsemmomTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomTable::scale(self : PhysicsemmomTable, f : Double) -> PhysicsemmomTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_table_add(a : PhysicsemmomTable, b : PhysicsemmomTable) -> PhysicsemmomTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomTable::add(self : PhysicsemmomTable, other : PhysicsemmomTable) -> PhysicsemmomTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_table_copy(s : PhysicsemmomTable) -> PhysicsemmomTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomTable::copy(self : PhysicsemmomTable) -> PhysicsemmomTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_table_fill(s : PhysicsemmomTable, v : Double) -> PhysicsemmomTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomTable::fill(self : PhysicsemmomTable, v : Double) -> PhysicsemmomTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_table_min(s : PhysicsemmomTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomTable::min(self : PhysicsemmomTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_table_max(s : PhysicsemmomTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomTable::max(self : PhysicsemmomTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_table_to_string(s : PhysicsemmomTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomTable::to_string(self : PhysicsemmomTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomGraphN {
@@ -453,45 +453,45 @@ pub fn physics_em_mom_graphn_make(size : Int) -> PhysicsemmomGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_graphn_len(s : PhysicsemmomGraphN) -> Int { s.size }
+pub fn PhysicsemmomGraphN::len(self : PhysicsemmomGraphN) -> Int { self.size }
 
-pub fn physics_em_mom_graphn_get(s : PhysicsemmomGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomGraphN::get(self : PhysicsemmomGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_graphn_set(s : PhysicsemmomGraphN, i : Int, v : Double) -> PhysicsemmomGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomGraphN::set(self : PhysicsemmomGraphN, i : Int, v : Double) -> PhysicsemmomGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_graphn_sum(s : PhysicsemmomGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomGraphN::sum(self : PhysicsemmomGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_graphn_mean(s : PhysicsemmomGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomGraphN::mean(self : PhysicsemmomGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_graphn_scale(s : PhysicsemmomGraphN, f : Double) -> PhysicsemmomGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomGraphN::scale(self : PhysicsemmomGraphN, f : Double) -> PhysicsemmomGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_graphn_add(a : PhysicsemmomGraphN, b : PhysicsemmomGraphN) -> PhysicsemmomGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomGraphN::add(self : PhysicsemmomGraphN, other : PhysicsemmomGraphN) -> PhysicsemmomGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_graphn_copy(s : PhysicsemmomGraphN) -> PhysicsemmomGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomGraphN::copy(self : PhysicsemmomGraphN) -> PhysicsemmomGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_graphn_fill(s : PhysicsemmomGraphN, v : Double) -> PhysicsemmomGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomGraphN::fill(self : PhysicsemmomGraphN, v : Double) -> PhysicsemmomGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_graphn_min(s : PhysicsemmomGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomGraphN::min(self : PhysicsemmomGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_graphn_max(s : PhysicsemmomGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomGraphN::max(self : PhysicsemmomGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_graphn_to_string(s : PhysicsemmomGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomGraphN::to_string(self : PhysicsemmomGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomNode {
@@ -504,45 +504,45 @@ pub fn physics_em_mom_node_make(size : Int) -> PhysicsemmomNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_node_len(s : PhysicsemmomNode) -> Int { s.size }
+pub fn PhysicsemmomNode::len(self : PhysicsemmomNode) -> Int { self.size }
 
-pub fn physics_em_mom_node_get(s : PhysicsemmomNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomNode::get(self : PhysicsemmomNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_node_set(s : PhysicsemmomNode, i : Int, v : Double) -> PhysicsemmomNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomNode::set(self : PhysicsemmomNode, i : Int, v : Double) -> PhysicsemmomNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_node_sum(s : PhysicsemmomNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomNode::sum(self : PhysicsemmomNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_node_mean(s : PhysicsemmomNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomNode::mean(self : PhysicsemmomNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_node_scale(s : PhysicsemmomNode, f : Double) -> PhysicsemmomNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomNode::scale(self : PhysicsemmomNode, f : Double) -> PhysicsemmomNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_node_add(a : PhysicsemmomNode, b : PhysicsemmomNode) -> PhysicsemmomNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomNode::add(self : PhysicsemmomNode, other : PhysicsemmomNode) -> PhysicsemmomNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_node_copy(s : PhysicsemmomNode) -> PhysicsemmomNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomNode::copy(self : PhysicsemmomNode) -> PhysicsemmomNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_node_fill(s : PhysicsemmomNode, v : Double) -> PhysicsemmomNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomNode::fill(self : PhysicsemmomNode, v : Double) -> PhysicsemmomNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_node_min(s : PhysicsemmomNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomNode::min(self : PhysicsemmomNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_node_max(s : PhysicsemmomNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomNode::max(self : PhysicsemmomNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_node_to_string(s : PhysicsemmomNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomNode::to_string(self : PhysicsemmomNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomEdge {
@@ -555,45 +555,45 @@ pub fn physics_em_mom_edge_make(size : Int) -> PhysicsemmomEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_edge_len(s : PhysicsemmomEdge) -> Int { s.size }
+pub fn PhysicsemmomEdge::len(self : PhysicsemmomEdge) -> Int { self.size }
 
-pub fn physics_em_mom_edge_get(s : PhysicsemmomEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomEdge::get(self : PhysicsemmomEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_edge_set(s : PhysicsemmomEdge, i : Int, v : Double) -> PhysicsemmomEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomEdge::set(self : PhysicsemmomEdge, i : Int, v : Double) -> PhysicsemmomEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_edge_sum(s : PhysicsemmomEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomEdge::sum(self : PhysicsemmomEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_edge_mean(s : PhysicsemmomEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomEdge::mean(self : PhysicsemmomEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_edge_scale(s : PhysicsemmomEdge, f : Double) -> PhysicsemmomEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomEdge::scale(self : PhysicsemmomEdge, f : Double) -> PhysicsemmomEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_edge_add(a : PhysicsemmomEdge, b : PhysicsemmomEdge) -> PhysicsemmomEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomEdge::add(self : PhysicsemmomEdge, other : PhysicsemmomEdge) -> PhysicsemmomEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_edge_copy(s : PhysicsemmomEdge) -> PhysicsemmomEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomEdge::copy(self : PhysicsemmomEdge) -> PhysicsemmomEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_edge_fill(s : PhysicsemmomEdge, v : Double) -> PhysicsemmomEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomEdge::fill(self : PhysicsemmomEdge, v : Double) -> PhysicsemmomEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_edge_min(s : PhysicsemmomEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomEdge::min(self : PhysicsemmomEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_edge_max(s : PhysicsemmomEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomEdge::max(self : PhysicsemmomEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_edge_to_string(s : PhysicsemmomEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomEdge::to_string(self : PhysicsemmomEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomPath {
@@ -606,45 +606,45 @@ pub fn physics_em_mom_path_make(size : Int) -> PhysicsemmomPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_path_len(s : PhysicsemmomPath) -> Int { s.size }
+pub fn PhysicsemmomPath::len(self : PhysicsemmomPath) -> Int { self.size }
 
-pub fn physics_em_mom_path_get(s : PhysicsemmomPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomPath::get(self : PhysicsemmomPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_path_set(s : PhysicsemmomPath, i : Int, v : Double) -> PhysicsemmomPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomPath::set(self : PhysicsemmomPath, i : Int, v : Double) -> PhysicsemmomPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_path_sum(s : PhysicsemmomPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomPath::sum(self : PhysicsemmomPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_path_mean(s : PhysicsemmomPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomPath::mean(self : PhysicsemmomPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_path_scale(s : PhysicsemmomPath, f : Double) -> PhysicsemmomPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomPath::scale(self : PhysicsemmomPath, f : Double) -> PhysicsemmomPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_path_add(a : PhysicsemmomPath, b : PhysicsemmomPath) -> PhysicsemmomPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomPath::add(self : PhysicsemmomPath, other : PhysicsemmomPath) -> PhysicsemmomPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_path_copy(s : PhysicsemmomPath) -> PhysicsemmomPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomPath::copy(self : PhysicsemmomPath) -> PhysicsemmomPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_path_fill(s : PhysicsemmomPath, v : Double) -> PhysicsemmomPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomPath::fill(self : PhysicsemmomPath, v : Double) -> PhysicsemmomPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_path_min(s : PhysicsemmomPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomPath::min(self : PhysicsemmomPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_path_max(s : PhysicsemmomPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomPath::max(self : PhysicsemmomPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_path_to_string(s : PhysicsemmomPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomPath::to_string(self : PhysicsemmomPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomCluster {
@@ -657,45 +657,45 @@ pub fn physics_em_mom_cluster_make(size : Int) -> PhysicsemmomCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_cluster_len(s : PhysicsemmomCluster) -> Int { s.size }
+pub fn PhysicsemmomCluster::len(self : PhysicsemmomCluster) -> Int { self.size }
 
-pub fn physics_em_mom_cluster_get(s : PhysicsemmomCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomCluster::get(self : PhysicsemmomCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_cluster_set(s : PhysicsemmomCluster, i : Int, v : Double) -> PhysicsemmomCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomCluster::set(self : PhysicsemmomCluster, i : Int, v : Double) -> PhysicsemmomCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_cluster_sum(s : PhysicsemmomCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomCluster::sum(self : PhysicsemmomCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_cluster_mean(s : PhysicsemmomCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomCluster::mean(self : PhysicsemmomCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_cluster_scale(s : PhysicsemmomCluster, f : Double) -> PhysicsemmomCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomCluster::scale(self : PhysicsemmomCluster, f : Double) -> PhysicsemmomCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_cluster_add(a : PhysicsemmomCluster, b : PhysicsemmomCluster) -> PhysicsemmomCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomCluster::add(self : PhysicsemmomCluster, other : PhysicsemmomCluster) -> PhysicsemmomCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_cluster_copy(s : PhysicsemmomCluster) -> PhysicsemmomCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomCluster::copy(self : PhysicsemmomCluster) -> PhysicsemmomCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_cluster_fill(s : PhysicsemmomCluster, v : Double) -> PhysicsemmomCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomCluster::fill(self : PhysicsemmomCluster, v : Double) -> PhysicsemmomCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_cluster_min(s : PhysicsemmomCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomCluster::min(self : PhysicsemmomCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_cluster_max(s : PhysicsemmomCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomCluster::max(self : PhysicsemmomCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_cluster_to_string(s : PhysicsemmomCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomCluster::to_string(self : PhysicsemmomCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomModel {
@@ -708,45 +708,45 @@ pub fn physics_em_mom_model_make(size : Int) -> PhysicsemmomModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_model_len(s : PhysicsemmomModel) -> Int { s.size }
+pub fn PhysicsemmomModel::len(self : PhysicsemmomModel) -> Int { self.size }
 
-pub fn physics_em_mom_model_get(s : PhysicsemmomModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomModel::get(self : PhysicsemmomModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_model_set(s : PhysicsemmomModel, i : Int, v : Double) -> PhysicsemmomModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomModel::set(self : PhysicsemmomModel, i : Int, v : Double) -> PhysicsemmomModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_model_sum(s : PhysicsemmomModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomModel::sum(self : PhysicsemmomModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_model_mean(s : PhysicsemmomModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomModel::mean(self : PhysicsemmomModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_model_scale(s : PhysicsemmomModel, f : Double) -> PhysicsemmomModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomModel::scale(self : PhysicsemmomModel, f : Double) -> PhysicsemmomModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_model_add(a : PhysicsemmomModel, b : PhysicsemmomModel) -> PhysicsemmomModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomModel::add(self : PhysicsemmomModel, other : PhysicsemmomModel) -> PhysicsemmomModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_model_copy(s : PhysicsemmomModel) -> PhysicsemmomModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomModel::copy(self : PhysicsemmomModel) -> PhysicsemmomModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_model_fill(s : PhysicsemmomModel, v : Double) -> PhysicsemmomModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomModel::fill(self : PhysicsemmomModel, v : Double) -> PhysicsemmomModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_model_min(s : PhysicsemmomModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomModel::min(self : PhysicsemmomModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_model_max(s : PhysicsemmomModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomModel::max(self : PhysicsemmomModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_model_to_string(s : PhysicsemmomModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomModel::to_string(self : PhysicsemmomModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomLayer {
@@ -759,45 +759,45 @@ pub fn physics_em_mom_layer_make(size : Int) -> PhysicsemmomLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_layer_len(s : PhysicsemmomLayer) -> Int { s.size }
+pub fn PhysicsemmomLayer::len(self : PhysicsemmomLayer) -> Int { self.size }
 
-pub fn physics_em_mom_layer_get(s : PhysicsemmomLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomLayer::get(self : PhysicsemmomLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_layer_set(s : PhysicsemmomLayer, i : Int, v : Double) -> PhysicsemmomLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomLayer::set(self : PhysicsemmomLayer, i : Int, v : Double) -> PhysicsemmomLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_layer_sum(s : PhysicsemmomLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomLayer::sum(self : PhysicsemmomLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_layer_mean(s : PhysicsemmomLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomLayer::mean(self : PhysicsemmomLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_layer_scale(s : PhysicsemmomLayer, f : Double) -> PhysicsemmomLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomLayer::scale(self : PhysicsemmomLayer, f : Double) -> PhysicsemmomLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_layer_add(a : PhysicsemmomLayer, b : PhysicsemmomLayer) -> PhysicsemmomLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomLayer::add(self : PhysicsemmomLayer, other : PhysicsemmomLayer) -> PhysicsemmomLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_layer_copy(s : PhysicsemmomLayer) -> PhysicsemmomLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomLayer::copy(self : PhysicsemmomLayer) -> PhysicsemmomLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_layer_fill(s : PhysicsemmomLayer, v : Double) -> PhysicsemmomLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomLayer::fill(self : PhysicsemmomLayer, v : Double) -> PhysicsemmomLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_layer_min(s : PhysicsemmomLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomLayer::min(self : PhysicsemmomLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_layer_max(s : PhysicsemmomLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomLayer::max(self : PhysicsemmomLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_layer_to_string(s : PhysicsemmomLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomLayer::to_string(self : PhysicsemmomLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomBuffer {
@@ -810,45 +810,45 @@ pub fn physics_em_mom_buffer_make(size : Int) -> PhysicsemmomBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_buffer_len(s : PhysicsemmomBuffer) -> Int { s.size }
+pub fn PhysicsemmomBuffer::len(self : PhysicsemmomBuffer) -> Int { self.size }
 
-pub fn physics_em_mom_buffer_get(s : PhysicsemmomBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomBuffer::get(self : PhysicsemmomBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_buffer_set(s : PhysicsemmomBuffer, i : Int, v : Double) -> PhysicsemmomBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomBuffer::set(self : PhysicsemmomBuffer, i : Int, v : Double) -> PhysicsemmomBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_buffer_sum(s : PhysicsemmomBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomBuffer::sum(self : PhysicsemmomBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_buffer_mean(s : PhysicsemmomBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomBuffer::mean(self : PhysicsemmomBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_buffer_scale(s : PhysicsemmomBuffer, f : Double) -> PhysicsemmomBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomBuffer::scale(self : PhysicsemmomBuffer, f : Double) -> PhysicsemmomBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_buffer_add(a : PhysicsemmomBuffer, b : PhysicsemmomBuffer) -> PhysicsemmomBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomBuffer::add(self : PhysicsemmomBuffer, other : PhysicsemmomBuffer) -> PhysicsemmomBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_buffer_copy(s : PhysicsemmomBuffer) -> PhysicsemmomBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomBuffer::copy(self : PhysicsemmomBuffer) -> PhysicsemmomBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_buffer_fill(s : PhysicsemmomBuffer, v : Double) -> PhysicsemmomBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomBuffer::fill(self : PhysicsemmomBuffer, v : Double) -> PhysicsemmomBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_buffer_min(s : PhysicsemmomBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomBuffer::min(self : PhysicsemmomBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_buffer_max(s : PhysicsemmomBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomBuffer::max(self : PhysicsemmomBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_buffer_to_string(s : PhysicsemmomBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomBuffer::to_string(self : PhysicsemmomBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomCursor {
@@ -861,45 +861,45 @@ pub fn physics_em_mom_cursor_make(size : Int) -> PhysicsemmomCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_cursor_len(s : PhysicsemmomCursor) -> Int { s.size }
+pub fn PhysicsemmomCursor::len(self : PhysicsemmomCursor) -> Int { self.size }
 
-pub fn physics_em_mom_cursor_get(s : PhysicsemmomCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomCursor::get(self : PhysicsemmomCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_cursor_set(s : PhysicsemmomCursor, i : Int, v : Double) -> PhysicsemmomCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomCursor::set(self : PhysicsemmomCursor, i : Int, v : Double) -> PhysicsemmomCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_cursor_sum(s : PhysicsemmomCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomCursor::sum(self : PhysicsemmomCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_cursor_mean(s : PhysicsemmomCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomCursor::mean(self : PhysicsemmomCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_cursor_scale(s : PhysicsemmomCursor, f : Double) -> PhysicsemmomCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomCursor::scale(self : PhysicsemmomCursor, f : Double) -> PhysicsemmomCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_cursor_add(a : PhysicsemmomCursor, b : PhysicsemmomCursor) -> PhysicsemmomCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomCursor::add(self : PhysicsemmomCursor, other : PhysicsemmomCursor) -> PhysicsemmomCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_cursor_copy(s : PhysicsemmomCursor) -> PhysicsemmomCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomCursor::copy(self : PhysicsemmomCursor) -> PhysicsemmomCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_cursor_fill(s : PhysicsemmomCursor, v : Double) -> PhysicsemmomCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomCursor::fill(self : PhysicsemmomCursor, v : Double) -> PhysicsemmomCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_cursor_min(s : PhysicsemmomCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomCursor::min(self : PhysicsemmomCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_cursor_max(s : PhysicsemmomCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomCursor::max(self : PhysicsemmomCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_cursor_to_string(s : PhysicsemmomCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomCursor::to_string(self : PhysicsemmomCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomView {
@@ -912,45 +912,45 @@ pub fn physics_em_mom_view_make(size : Int) -> PhysicsemmomView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_view_len(s : PhysicsemmomView) -> Int { s.size }
+pub fn PhysicsemmomView::len(self : PhysicsemmomView) -> Int { self.size }
 
-pub fn physics_em_mom_view_get(s : PhysicsemmomView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomView::get(self : PhysicsemmomView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_view_set(s : PhysicsemmomView, i : Int, v : Double) -> PhysicsemmomView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomView::set(self : PhysicsemmomView, i : Int, v : Double) -> PhysicsemmomView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_view_sum(s : PhysicsemmomView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomView::sum(self : PhysicsemmomView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_view_mean(s : PhysicsemmomView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomView::mean(self : PhysicsemmomView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_view_scale(s : PhysicsemmomView, f : Double) -> PhysicsemmomView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomView::scale(self : PhysicsemmomView, f : Double) -> PhysicsemmomView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_view_add(a : PhysicsemmomView, b : PhysicsemmomView) -> PhysicsemmomView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomView::add(self : PhysicsemmomView, other : PhysicsemmomView) -> PhysicsemmomView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_view_copy(s : PhysicsemmomView) -> PhysicsemmomView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomView::copy(self : PhysicsemmomView) -> PhysicsemmomView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_view_fill(s : PhysicsemmomView, v : Double) -> PhysicsemmomView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomView::fill(self : PhysicsemmomView, v : Double) -> PhysicsemmomView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_view_min(s : PhysicsemmomView) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomView::min(self : PhysicsemmomView) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_view_max(s : PhysicsemmomView) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomView::max(self : PhysicsemmomView) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_view_to_string(s : PhysicsemmomView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomView::to_string(self : PhysicsemmomView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomRange {
@@ -963,45 +963,45 @@ pub fn physics_em_mom_range_make(size : Int) -> PhysicsemmomRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_range_len(s : PhysicsemmomRange) -> Int { s.size }
+pub fn PhysicsemmomRange::len(self : PhysicsemmomRange) -> Int { self.size }
 
-pub fn physics_em_mom_range_get(s : PhysicsemmomRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomRange::get(self : PhysicsemmomRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_range_set(s : PhysicsemmomRange, i : Int, v : Double) -> PhysicsemmomRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomRange::set(self : PhysicsemmomRange, i : Int, v : Double) -> PhysicsemmomRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_range_sum(s : PhysicsemmomRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomRange::sum(self : PhysicsemmomRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_range_mean(s : PhysicsemmomRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomRange::mean(self : PhysicsemmomRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_range_scale(s : PhysicsemmomRange, f : Double) -> PhysicsemmomRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomRange::scale(self : PhysicsemmomRange, f : Double) -> PhysicsemmomRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_range_add(a : PhysicsemmomRange, b : PhysicsemmomRange) -> PhysicsemmomRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomRange::add(self : PhysicsemmomRange, other : PhysicsemmomRange) -> PhysicsemmomRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_range_copy(s : PhysicsemmomRange) -> PhysicsemmomRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomRange::copy(self : PhysicsemmomRange) -> PhysicsemmomRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_range_fill(s : PhysicsemmomRange, v : Double) -> PhysicsemmomRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomRange::fill(self : PhysicsemmomRange, v : Double) -> PhysicsemmomRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_range_min(s : PhysicsemmomRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomRange::min(self : PhysicsemmomRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_range_max(s : PhysicsemmomRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomRange::max(self : PhysicsemmomRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_range_to_string(s : PhysicsemmomRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomRange::to_string(self : PhysicsemmomRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmomSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_em_mom_slice_make(size : Int) -> PhysicsemmomSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_mom_slice_len(s : PhysicsemmomSlice) -> Int { s.size }
+pub fn PhysicsemmomSlice::len(self : PhysicsemmomSlice) -> Int { self.size }
 
-pub fn physics_em_mom_slice_get(s : PhysicsemmomSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmomSlice::get(self : PhysicsemmomSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_mom_slice_set(s : PhysicsemmomSlice, i : Int, v : Double) -> PhysicsemmomSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmomSlice::set(self : PhysicsemmomSlice, i : Int, v : Double) -> PhysicsemmomSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_slice_sum(s : PhysicsemmomSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmomSlice::sum(self : PhysicsemmomSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_mom_slice_mean(s : PhysicsemmomSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmomSlice::mean(self : PhysicsemmomSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_mom_slice_scale(s : PhysicsemmomSlice, f : Double) -> PhysicsemmomSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmomSlice::scale(self : PhysicsemmomSlice, f : Double) -> PhysicsemmomSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_slice_add(a : PhysicsemmomSlice, b : PhysicsemmomSlice) -> PhysicsemmomSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmomSlice::add(self : PhysicsemmomSlice, other : PhysicsemmomSlice) -> PhysicsemmomSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_mom_slice_copy(s : PhysicsemmomSlice) -> PhysicsemmomSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmomSlice::copy(self : PhysicsemmomSlice) -> PhysicsemmomSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_slice_fill(s : PhysicsemmomSlice, v : Double) -> PhysicsemmomSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmomSlice::fill(self : PhysicsemmomSlice, v : Double) -> PhysicsemmomSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_mom_slice_min(s : PhysicsemmomSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmomSlice::min(self : PhysicsemmomSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_mom_slice_max(s : PhysicsemmomSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmomSlice::max(self : PhysicsemmomSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_mom_slice_to_string(s : PhysicsemmomSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmomSlice::to_string(self : PhysicsemmomSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

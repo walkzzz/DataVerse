@@ -351,45 +351,45 @@ pub fn db_index_vector_frame_make(size : Int) -> DbindexvectorFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_frame_len(s : DbindexvectorFrame) -> Int { s.size }
+pub fn DbindexvectorFrame::len(self : DbindexvectorFrame) -> Int { self.size }
 
-pub fn db_index_vector_frame_get(s : DbindexvectorFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorFrame::get(self : DbindexvectorFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_frame_set(s : DbindexvectorFrame, i : Int, v : Double) -> DbindexvectorFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorFrame::set(self : DbindexvectorFrame, i : Int, v : Double) -> DbindexvectorFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_frame_sum(s : DbindexvectorFrame) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorFrame::sum(self : DbindexvectorFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_frame_mean(s : DbindexvectorFrame) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorFrame::mean(self : DbindexvectorFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_frame_scale(s : DbindexvectorFrame, f : Double) -> DbindexvectorFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorFrame::scale(self : DbindexvectorFrame, f : Double) -> DbindexvectorFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_frame_add(a : DbindexvectorFrame, b : DbindexvectorFrame) -> DbindexvectorFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorFrame::add(self : DbindexvectorFrame, other : DbindexvectorFrame) -> DbindexvectorFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_frame_copy(s : DbindexvectorFrame) -> DbindexvectorFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorFrame::copy(self : DbindexvectorFrame) -> DbindexvectorFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_frame_fill(s : DbindexvectorFrame, v : Double) -> DbindexvectorFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorFrame::fill(self : DbindexvectorFrame, v : Double) -> DbindexvectorFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_frame_min(s : DbindexvectorFrame) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorFrame::min(self : DbindexvectorFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_frame_max(s : DbindexvectorFrame) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorFrame::max(self : DbindexvectorFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_frame_to_string(s : DbindexvectorFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorFrame::to_string(self : DbindexvectorFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorTable {
@@ -402,45 +402,45 @@ pub fn db_index_vector_table_make(size : Int) -> DbindexvectorTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_table_len(s : DbindexvectorTable) -> Int { s.size }
+pub fn DbindexvectorTable::len(self : DbindexvectorTable) -> Int { self.size }
 
-pub fn db_index_vector_table_get(s : DbindexvectorTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorTable::get(self : DbindexvectorTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_table_set(s : DbindexvectorTable, i : Int, v : Double) -> DbindexvectorTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorTable::set(self : DbindexvectorTable, i : Int, v : Double) -> DbindexvectorTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_table_sum(s : DbindexvectorTable) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorTable::sum(self : DbindexvectorTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_table_mean(s : DbindexvectorTable) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorTable::mean(self : DbindexvectorTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_table_scale(s : DbindexvectorTable, f : Double) -> DbindexvectorTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorTable::scale(self : DbindexvectorTable, f : Double) -> DbindexvectorTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_table_add(a : DbindexvectorTable, b : DbindexvectorTable) -> DbindexvectorTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorTable::add(self : DbindexvectorTable, other : DbindexvectorTable) -> DbindexvectorTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_table_copy(s : DbindexvectorTable) -> DbindexvectorTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorTable::copy(self : DbindexvectorTable) -> DbindexvectorTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_table_fill(s : DbindexvectorTable, v : Double) -> DbindexvectorTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorTable::fill(self : DbindexvectorTable, v : Double) -> DbindexvectorTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_table_min(s : DbindexvectorTable) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorTable::min(self : DbindexvectorTable) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_table_max(s : DbindexvectorTable) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorTable::max(self : DbindexvectorTable) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_table_to_string(s : DbindexvectorTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorTable::to_string(self : DbindexvectorTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorGraphN {
@@ -453,45 +453,45 @@ pub fn db_index_vector_graphn_make(size : Int) -> DbindexvectorGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_graphn_len(s : DbindexvectorGraphN) -> Int { s.size }
+pub fn DbindexvectorGraphN::len(self : DbindexvectorGraphN) -> Int { self.size }
 
-pub fn db_index_vector_graphn_get(s : DbindexvectorGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorGraphN::get(self : DbindexvectorGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_graphn_set(s : DbindexvectorGraphN, i : Int, v : Double) -> DbindexvectorGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorGraphN::set(self : DbindexvectorGraphN, i : Int, v : Double) -> DbindexvectorGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_graphn_sum(s : DbindexvectorGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorGraphN::sum(self : DbindexvectorGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_graphn_mean(s : DbindexvectorGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorGraphN::mean(self : DbindexvectorGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_graphn_scale(s : DbindexvectorGraphN, f : Double) -> DbindexvectorGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorGraphN::scale(self : DbindexvectorGraphN, f : Double) -> DbindexvectorGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_graphn_add(a : DbindexvectorGraphN, b : DbindexvectorGraphN) -> DbindexvectorGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorGraphN::add(self : DbindexvectorGraphN, other : DbindexvectorGraphN) -> DbindexvectorGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_graphn_copy(s : DbindexvectorGraphN) -> DbindexvectorGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorGraphN::copy(self : DbindexvectorGraphN) -> DbindexvectorGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_graphn_fill(s : DbindexvectorGraphN, v : Double) -> DbindexvectorGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorGraphN::fill(self : DbindexvectorGraphN, v : Double) -> DbindexvectorGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_graphn_min(s : DbindexvectorGraphN) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorGraphN::min(self : DbindexvectorGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_graphn_max(s : DbindexvectorGraphN) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorGraphN::max(self : DbindexvectorGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_graphn_to_string(s : DbindexvectorGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorGraphN::to_string(self : DbindexvectorGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorNode {
@@ -504,45 +504,45 @@ pub fn db_index_vector_node_make(size : Int) -> DbindexvectorNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_node_len(s : DbindexvectorNode) -> Int { s.size }
+pub fn DbindexvectorNode::len(self : DbindexvectorNode) -> Int { self.size }
 
-pub fn db_index_vector_node_get(s : DbindexvectorNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorNode::get(self : DbindexvectorNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_node_set(s : DbindexvectorNode, i : Int, v : Double) -> DbindexvectorNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorNode::set(self : DbindexvectorNode, i : Int, v : Double) -> DbindexvectorNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_node_sum(s : DbindexvectorNode) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorNode::sum(self : DbindexvectorNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_node_mean(s : DbindexvectorNode) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorNode::mean(self : DbindexvectorNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_node_scale(s : DbindexvectorNode, f : Double) -> DbindexvectorNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorNode::scale(self : DbindexvectorNode, f : Double) -> DbindexvectorNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_node_add(a : DbindexvectorNode, b : DbindexvectorNode) -> DbindexvectorNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorNode::add(self : DbindexvectorNode, other : DbindexvectorNode) -> DbindexvectorNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_node_copy(s : DbindexvectorNode) -> DbindexvectorNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorNode::copy(self : DbindexvectorNode) -> DbindexvectorNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_node_fill(s : DbindexvectorNode, v : Double) -> DbindexvectorNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorNode::fill(self : DbindexvectorNode, v : Double) -> DbindexvectorNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_node_min(s : DbindexvectorNode) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorNode::min(self : DbindexvectorNode) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_node_max(s : DbindexvectorNode) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorNode::max(self : DbindexvectorNode) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_node_to_string(s : DbindexvectorNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorNode::to_string(self : DbindexvectorNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorEdge {
@@ -555,45 +555,45 @@ pub fn db_index_vector_edge_make(size : Int) -> DbindexvectorEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_edge_len(s : DbindexvectorEdge) -> Int { s.size }
+pub fn DbindexvectorEdge::len(self : DbindexvectorEdge) -> Int { self.size }
 
-pub fn db_index_vector_edge_get(s : DbindexvectorEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorEdge::get(self : DbindexvectorEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_edge_set(s : DbindexvectorEdge, i : Int, v : Double) -> DbindexvectorEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorEdge::set(self : DbindexvectorEdge, i : Int, v : Double) -> DbindexvectorEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_edge_sum(s : DbindexvectorEdge) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorEdge::sum(self : DbindexvectorEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_edge_mean(s : DbindexvectorEdge) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorEdge::mean(self : DbindexvectorEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_edge_scale(s : DbindexvectorEdge, f : Double) -> DbindexvectorEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorEdge::scale(self : DbindexvectorEdge, f : Double) -> DbindexvectorEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_edge_add(a : DbindexvectorEdge, b : DbindexvectorEdge) -> DbindexvectorEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorEdge::add(self : DbindexvectorEdge, other : DbindexvectorEdge) -> DbindexvectorEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_edge_copy(s : DbindexvectorEdge) -> DbindexvectorEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorEdge::copy(self : DbindexvectorEdge) -> DbindexvectorEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_edge_fill(s : DbindexvectorEdge, v : Double) -> DbindexvectorEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorEdge::fill(self : DbindexvectorEdge, v : Double) -> DbindexvectorEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_edge_min(s : DbindexvectorEdge) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorEdge::min(self : DbindexvectorEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_edge_max(s : DbindexvectorEdge) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorEdge::max(self : DbindexvectorEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_edge_to_string(s : DbindexvectorEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorEdge::to_string(self : DbindexvectorEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorPath {
@@ -606,45 +606,45 @@ pub fn db_index_vector_path_make(size : Int) -> DbindexvectorPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_path_len(s : DbindexvectorPath) -> Int { s.size }
+pub fn DbindexvectorPath::len(self : DbindexvectorPath) -> Int { self.size }
 
-pub fn db_index_vector_path_get(s : DbindexvectorPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorPath::get(self : DbindexvectorPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_path_set(s : DbindexvectorPath, i : Int, v : Double) -> DbindexvectorPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorPath::set(self : DbindexvectorPath, i : Int, v : Double) -> DbindexvectorPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_path_sum(s : DbindexvectorPath) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorPath::sum(self : DbindexvectorPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_path_mean(s : DbindexvectorPath) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorPath::mean(self : DbindexvectorPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_path_scale(s : DbindexvectorPath, f : Double) -> DbindexvectorPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorPath::scale(self : DbindexvectorPath, f : Double) -> DbindexvectorPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_path_add(a : DbindexvectorPath, b : DbindexvectorPath) -> DbindexvectorPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorPath::add(self : DbindexvectorPath, other : DbindexvectorPath) -> DbindexvectorPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_path_copy(s : DbindexvectorPath) -> DbindexvectorPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorPath::copy(self : DbindexvectorPath) -> DbindexvectorPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_path_fill(s : DbindexvectorPath, v : Double) -> DbindexvectorPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorPath::fill(self : DbindexvectorPath, v : Double) -> DbindexvectorPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_path_min(s : DbindexvectorPath) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorPath::min(self : DbindexvectorPath) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_path_max(s : DbindexvectorPath) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorPath::max(self : DbindexvectorPath) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_path_to_string(s : DbindexvectorPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorPath::to_string(self : DbindexvectorPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorCluster {
@@ -657,45 +657,45 @@ pub fn db_index_vector_cluster_make(size : Int) -> DbindexvectorCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_cluster_len(s : DbindexvectorCluster) -> Int { s.size }
+pub fn DbindexvectorCluster::len(self : DbindexvectorCluster) -> Int { self.size }
 
-pub fn db_index_vector_cluster_get(s : DbindexvectorCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorCluster::get(self : DbindexvectorCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_cluster_set(s : DbindexvectorCluster, i : Int, v : Double) -> DbindexvectorCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorCluster::set(self : DbindexvectorCluster, i : Int, v : Double) -> DbindexvectorCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_cluster_sum(s : DbindexvectorCluster) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorCluster::sum(self : DbindexvectorCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_cluster_mean(s : DbindexvectorCluster) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorCluster::mean(self : DbindexvectorCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_cluster_scale(s : DbindexvectorCluster, f : Double) -> DbindexvectorCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorCluster::scale(self : DbindexvectorCluster, f : Double) -> DbindexvectorCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_cluster_add(a : DbindexvectorCluster, b : DbindexvectorCluster) -> DbindexvectorCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorCluster::add(self : DbindexvectorCluster, other : DbindexvectorCluster) -> DbindexvectorCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_cluster_copy(s : DbindexvectorCluster) -> DbindexvectorCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorCluster::copy(self : DbindexvectorCluster) -> DbindexvectorCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_cluster_fill(s : DbindexvectorCluster, v : Double) -> DbindexvectorCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorCluster::fill(self : DbindexvectorCluster, v : Double) -> DbindexvectorCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_cluster_min(s : DbindexvectorCluster) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorCluster::min(self : DbindexvectorCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_cluster_max(s : DbindexvectorCluster) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorCluster::max(self : DbindexvectorCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_cluster_to_string(s : DbindexvectorCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorCluster::to_string(self : DbindexvectorCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorModel {
@@ -708,45 +708,45 @@ pub fn db_index_vector_model_make(size : Int) -> DbindexvectorModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_model_len(s : DbindexvectorModel) -> Int { s.size }
+pub fn DbindexvectorModel::len(self : DbindexvectorModel) -> Int { self.size }
 
-pub fn db_index_vector_model_get(s : DbindexvectorModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorModel::get(self : DbindexvectorModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_model_set(s : DbindexvectorModel, i : Int, v : Double) -> DbindexvectorModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorModel::set(self : DbindexvectorModel, i : Int, v : Double) -> DbindexvectorModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_model_sum(s : DbindexvectorModel) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorModel::sum(self : DbindexvectorModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_model_mean(s : DbindexvectorModel) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorModel::mean(self : DbindexvectorModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_model_scale(s : DbindexvectorModel, f : Double) -> DbindexvectorModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorModel::scale(self : DbindexvectorModel, f : Double) -> DbindexvectorModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_model_add(a : DbindexvectorModel, b : DbindexvectorModel) -> DbindexvectorModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorModel::add(self : DbindexvectorModel, other : DbindexvectorModel) -> DbindexvectorModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_model_copy(s : DbindexvectorModel) -> DbindexvectorModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorModel::copy(self : DbindexvectorModel) -> DbindexvectorModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_model_fill(s : DbindexvectorModel, v : Double) -> DbindexvectorModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorModel::fill(self : DbindexvectorModel, v : Double) -> DbindexvectorModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_model_min(s : DbindexvectorModel) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorModel::min(self : DbindexvectorModel) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_model_max(s : DbindexvectorModel) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorModel::max(self : DbindexvectorModel) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_model_to_string(s : DbindexvectorModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorModel::to_string(self : DbindexvectorModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorLayer {
@@ -759,45 +759,45 @@ pub fn db_index_vector_layer_make(size : Int) -> DbindexvectorLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_layer_len(s : DbindexvectorLayer) -> Int { s.size }
+pub fn DbindexvectorLayer::len(self : DbindexvectorLayer) -> Int { self.size }
 
-pub fn db_index_vector_layer_get(s : DbindexvectorLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorLayer::get(self : DbindexvectorLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_layer_set(s : DbindexvectorLayer, i : Int, v : Double) -> DbindexvectorLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorLayer::set(self : DbindexvectorLayer, i : Int, v : Double) -> DbindexvectorLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_layer_sum(s : DbindexvectorLayer) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorLayer::sum(self : DbindexvectorLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_layer_mean(s : DbindexvectorLayer) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorLayer::mean(self : DbindexvectorLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_layer_scale(s : DbindexvectorLayer, f : Double) -> DbindexvectorLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorLayer::scale(self : DbindexvectorLayer, f : Double) -> DbindexvectorLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_layer_add(a : DbindexvectorLayer, b : DbindexvectorLayer) -> DbindexvectorLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorLayer::add(self : DbindexvectorLayer, other : DbindexvectorLayer) -> DbindexvectorLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_layer_copy(s : DbindexvectorLayer) -> DbindexvectorLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorLayer::copy(self : DbindexvectorLayer) -> DbindexvectorLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_layer_fill(s : DbindexvectorLayer, v : Double) -> DbindexvectorLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorLayer::fill(self : DbindexvectorLayer, v : Double) -> DbindexvectorLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_layer_min(s : DbindexvectorLayer) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorLayer::min(self : DbindexvectorLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_layer_max(s : DbindexvectorLayer) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorLayer::max(self : DbindexvectorLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_layer_to_string(s : DbindexvectorLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorLayer::to_string(self : DbindexvectorLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorBuffer {
@@ -810,45 +810,45 @@ pub fn db_index_vector_buffer_make(size : Int) -> DbindexvectorBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_buffer_len(s : DbindexvectorBuffer) -> Int { s.size }
+pub fn DbindexvectorBuffer::len(self : DbindexvectorBuffer) -> Int { self.size }
 
-pub fn db_index_vector_buffer_get(s : DbindexvectorBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorBuffer::get(self : DbindexvectorBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_buffer_set(s : DbindexvectorBuffer, i : Int, v : Double) -> DbindexvectorBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorBuffer::set(self : DbindexvectorBuffer, i : Int, v : Double) -> DbindexvectorBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_buffer_sum(s : DbindexvectorBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorBuffer::sum(self : DbindexvectorBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_buffer_mean(s : DbindexvectorBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorBuffer::mean(self : DbindexvectorBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_buffer_scale(s : DbindexvectorBuffer, f : Double) -> DbindexvectorBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorBuffer::scale(self : DbindexvectorBuffer, f : Double) -> DbindexvectorBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_buffer_add(a : DbindexvectorBuffer, b : DbindexvectorBuffer) -> DbindexvectorBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorBuffer::add(self : DbindexvectorBuffer, other : DbindexvectorBuffer) -> DbindexvectorBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_buffer_copy(s : DbindexvectorBuffer) -> DbindexvectorBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorBuffer::copy(self : DbindexvectorBuffer) -> DbindexvectorBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_buffer_fill(s : DbindexvectorBuffer, v : Double) -> DbindexvectorBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorBuffer::fill(self : DbindexvectorBuffer, v : Double) -> DbindexvectorBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_buffer_min(s : DbindexvectorBuffer) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorBuffer::min(self : DbindexvectorBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_buffer_max(s : DbindexvectorBuffer) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorBuffer::max(self : DbindexvectorBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_buffer_to_string(s : DbindexvectorBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorBuffer::to_string(self : DbindexvectorBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorCursor {
@@ -861,45 +861,45 @@ pub fn db_index_vector_cursor_make(size : Int) -> DbindexvectorCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_cursor_len(s : DbindexvectorCursor) -> Int { s.size }
+pub fn DbindexvectorCursor::len(self : DbindexvectorCursor) -> Int { self.size }
 
-pub fn db_index_vector_cursor_get(s : DbindexvectorCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorCursor::get(self : DbindexvectorCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_cursor_set(s : DbindexvectorCursor, i : Int, v : Double) -> DbindexvectorCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorCursor::set(self : DbindexvectorCursor, i : Int, v : Double) -> DbindexvectorCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_cursor_sum(s : DbindexvectorCursor) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorCursor::sum(self : DbindexvectorCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_cursor_mean(s : DbindexvectorCursor) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorCursor::mean(self : DbindexvectorCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_cursor_scale(s : DbindexvectorCursor, f : Double) -> DbindexvectorCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorCursor::scale(self : DbindexvectorCursor, f : Double) -> DbindexvectorCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_cursor_add(a : DbindexvectorCursor, b : DbindexvectorCursor) -> DbindexvectorCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorCursor::add(self : DbindexvectorCursor, other : DbindexvectorCursor) -> DbindexvectorCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_cursor_copy(s : DbindexvectorCursor) -> DbindexvectorCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorCursor::copy(self : DbindexvectorCursor) -> DbindexvectorCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_cursor_fill(s : DbindexvectorCursor, v : Double) -> DbindexvectorCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorCursor::fill(self : DbindexvectorCursor, v : Double) -> DbindexvectorCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_cursor_min(s : DbindexvectorCursor) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorCursor::min(self : DbindexvectorCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_cursor_max(s : DbindexvectorCursor) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorCursor::max(self : DbindexvectorCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_cursor_to_string(s : DbindexvectorCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorCursor::to_string(self : DbindexvectorCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorView {
@@ -912,45 +912,45 @@ pub fn db_index_vector_view_make(size : Int) -> DbindexvectorView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_view_len(s : DbindexvectorView) -> Int { s.size }
+pub fn DbindexvectorView::len(self : DbindexvectorView) -> Int { self.size }
 
-pub fn db_index_vector_view_get(s : DbindexvectorView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorView::get(self : DbindexvectorView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_view_set(s : DbindexvectorView, i : Int, v : Double) -> DbindexvectorView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorView::set(self : DbindexvectorView, i : Int, v : Double) -> DbindexvectorView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_view_sum(s : DbindexvectorView) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorView::sum(self : DbindexvectorView) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_view_mean(s : DbindexvectorView) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorView::mean(self : DbindexvectorView) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_view_scale(s : DbindexvectorView, f : Double) -> DbindexvectorView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorView::scale(self : DbindexvectorView, f : Double) -> DbindexvectorView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_view_add(a : DbindexvectorView, b : DbindexvectorView) -> DbindexvectorView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorView::add(self : DbindexvectorView, other : DbindexvectorView) -> DbindexvectorView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_view_copy(s : DbindexvectorView) -> DbindexvectorView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorView::copy(self : DbindexvectorView) -> DbindexvectorView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_view_fill(s : DbindexvectorView, v : Double) -> DbindexvectorView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorView::fill(self : DbindexvectorView, v : Double) -> DbindexvectorView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_view_min(s : DbindexvectorView) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorView::min(self : DbindexvectorView) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_view_max(s : DbindexvectorView) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorView::max(self : DbindexvectorView) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_view_to_string(s : DbindexvectorView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorView::to_string(self : DbindexvectorView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorRange {
@@ -963,45 +963,45 @@ pub fn db_index_vector_range_make(size : Int) -> DbindexvectorRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_range_len(s : DbindexvectorRange) -> Int { s.size }
+pub fn DbindexvectorRange::len(self : DbindexvectorRange) -> Int { self.size }
 
-pub fn db_index_vector_range_get(s : DbindexvectorRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorRange::get(self : DbindexvectorRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_range_set(s : DbindexvectorRange, i : Int, v : Double) -> DbindexvectorRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorRange::set(self : DbindexvectorRange, i : Int, v : Double) -> DbindexvectorRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_range_sum(s : DbindexvectorRange) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorRange::sum(self : DbindexvectorRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_range_mean(s : DbindexvectorRange) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorRange::mean(self : DbindexvectorRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_range_scale(s : DbindexvectorRange, f : Double) -> DbindexvectorRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorRange::scale(self : DbindexvectorRange, f : Double) -> DbindexvectorRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_range_add(a : DbindexvectorRange, b : DbindexvectorRange) -> DbindexvectorRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorRange::add(self : DbindexvectorRange, other : DbindexvectorRange) -> DbindexvectorRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_range_copy(s : DbindexvectorRange) -> DbindexvectorRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorRange::copy(self : DbindexvectorRange) -> DbindexvectorRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_range_fill(s : DbindexvectorRange, v : Double) -> DbindexvectorRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorRange::fill(self : DbindexvectorRange, v : Double) -> DbindexvectorRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_range_min(s : DbindexvectorRange) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorRange::min(self : DbindexvectorRange) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_range_max(s : DbindexvectorRange) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorRange::max(self : DbindexvectorRange) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_range_to_string(s : DbindexvectorRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorRange::to_string(self : DbindexvectorRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexvectorSlice {
@@ -1014,44 +1014,44 @@ pub fn db_index_vector_slice_make(size : Int) -> DbindexvectorSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_vector_slice_len(s : DbindexvectorSlice) -> Int { s.size }
+pub fn DbindexvectorSlice::len(self : DbindexvectorSlice) -> Int { self.size }
 
-pub fn db_index_vector_slice_get(s : DbindexvectorSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexvectorSlice::get(self : DbindexvectorSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_vector_slice_set(s : DbindexvectorSlice, i : Int, v : Double) -> DbindexvectorSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexvectorSlice::set(self : DbindexvectorSlice, i : Int, v : Double) -> DbindexvectorSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_slice_sum(s : DbindexvectorSlice) -> Double { @_common.sum(s.data) }
+pub fn DbindexvectorSlice::sum(self : DbindexvectorSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_vector_slice_mean(s : DbindexvectorSlice) -> Double { @_common.mean(s.data) }
+pub fn DbindexvectorSlice::mean(self : DbindexvectorSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_vector_slice_scale(s : DbindexvectorSlice, f : Double) -> DbindexvectorSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexvectorSlice::scale(self : DbindexvectorSlice, f : Double) -> DbindexvectorSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_slice_add(a : DbindexvectorSlice, b : DbindexvectorSlice) -> DbindexvectorSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexvectorSlice::add(self : DbindexvectorSlice, other : DbindexvectorSlice) -> DbindexvectorSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_vector_slice_copy(s : DbindexvectorSlice) -> DbindexvectorSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexvectorSlice::copy(self : DbindexvectorSlice) -> DbindexvectorSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_slice_fill(s : DbindexvectorSlice, v : Double) -> DbindexvectorSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexvectorSlice::fill(self : DbindexvectorSlice, v : Double) -> DbindexvectorSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_vector_slice_min(s : DbindexvectorSlice) -> Double { @_common.min(s.data) }
+pub fn DbindexvectorSlice::min(self : DbindexvectorSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_index_vector_slice_max(s : DbindexvectorSlice) -> Double { @_common.max(s.data) }
+pub fn DbindexvectorSlice::max(self : DbindexvectorSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_index_vector_slice_to_string(s : DbindexvectorSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexvectorSlice::to_string(self : DbindexvectorSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ml_neural_attention_frame_make(size : Int) -> MlneuralattentionFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_frame_len(s : MlneuralattentionFrame) -> Int { s.size }
+pub fn MlneuralattentionFrame::len(self : MlneuralattentionFrame) -> Int { self.size }
 
-pub fn ml_neural_attention_frame_get(s : MlneuralattentionFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionFrame::get(self : MlneuralattentionFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_frame_set(s : MlneuralattentionFrame, i : Int, v : Double) -> MlneuralattentionFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionFrame::set(self : MlneuralattentionFrame, i : Int, v : Double) -> MlneuralattentionFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_frame_sum(s : MlneuralattentionFrame) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionFrame::sum(self : MlneuralattentionFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_frame_mean(s : MlneuralattentionFrame) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionFrame::mean(self : MlneuralattentionFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_frame_scale(s : MlneuralattentionFrame, f : Double) -> MlneuralattentionFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionFrame::scale(self : MlneuralattentionFrame, f : Double) -> MlneuralattentionFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_frame_add(a : MlneuralattentionFrame, b : MlneuralattentionFrame) -> MlneuralattentionFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionFrame::add(self : MlneuralattentionFrame, other : MlneuralattentionFrame) -> MlneuralattentionFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_frame_copy(s : MlneuralattentionFrame) -> MlneuralattentionFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionFrame::copy(self : MlneuralattentionFrame) -> MlneuralattentionFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_frame_fill(s : MlneuralattentionFrame, v : Double) -> MlneuralattentionFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionFrame::fill(self : MlneuralattentionFrame, v : Double) -> MlneuralattentionFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_frame_min(s : MlneuralattentionFrame) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionFrame::min(self : MlneuralattentionFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_frame_max(s : MlneuralattentionFrame) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionFrame::max(self : MlneuralattentionFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_frame_to_string(s : MlneuralattentionFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionFrame::to_string(self : MlneuralattentionFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionTable {
@@ -402,45 +402,45 @@ pub fn ml_neural_attention_table_make(size : Int) -> MlneuralattentionTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_table_len(s : MlneuralattentionTable) -> Int { s.size }
+pub fn MlneuralattentionTable::len(self : MlneuralattentionTable) -> Int { self.size }
 
-pub fn ml_neural_attention_table_get(s : MlneuralattentionTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionTable::get(self : MlneuralattentionTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_table_set(s : MlneuralattentionTable, i : Int, v : Double) -> MlneuralattentionTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionTable::set(self : MlneuralattentionTable, i : Int, v : Double) -> MlneuralattentionTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_table_sum(s : MlneuralattentionTable) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionTable::sum(self : MlneuralattentionTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_table_mean(s : MlneuralattentionTable) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionTable::mean(self : MlneuralattentionTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_table_scale(s : MlneuralattentionTable, f : Double) -> MlneuralattentionTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionTable::scale(self : MlneuralattentionTable, f : Double) -> MlneuralattentionTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_table_add(a : MlneuralattentionTable, b : MlneuralattentionTable) -> MlneuralattentionTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionTable::add(self : MlneuralattentionTable, other : MlneuralattentionTable) -> MlneuralattentionTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_table_copy(s : MlneuralattentionTable) -> MlneuralattentionTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionTable::copy(self : MlneuralattentionTable) -> MlneuralattentionTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_table_fill(s : MlneuralattentionTable, v : Double) -> MlneuralattentionTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionTable::fill(self : MlneuralattentionTable, v : Double) -> MlneuralattentionTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_table_min(s : MlneuralattentionTable) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionTable::min(self : MlneuralattentionTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_table_max(s : MlneuralattentionTable) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionTable::max(self : MlneuralattentionTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_table_to_string(s : MlneuralattentionTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionTable::to_string(self : MlneuralattentionTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionGraphN {
@@ -453,45 +453,45 @@ pub fn ml_neural_attention_graphn_make(size : Int) -> MlneuralattentionGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_graphn_len(s : MlneuralattentionGraphN) -> Int { s.size }
+pub fn MlneuralattentionGraphN::len(self : MlneuralattentionGraphN) -> Int { self.size }
 
-pub fn ml_neural_attention_graphn_get(s : MlneuralattentionGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionGraphN::get(self : MlneuralattentionGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_graphn_set(s : MlneuralattentionGraphN, i : Int, v : Double) -> MlneuralattentionGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionGraphN::set(self : MlneuralattentionGraphN, i : Int, v : Double) -> MlneuralattentionGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_graphn_sum(s : MlneuralattentionGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionGraphN::sum(self : MlneuralattentionGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_graphn_mean(s : MlneuralattentionGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionGraphN::mean(self : MlneuralattentionGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_graphn_scale(s : MlneuralattentionGraphN, f : Double) -> MlneuralattentionGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionGraphN::scale(self : MlneuralattentionGraphN, f : Double) -> MlneuralattentionGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_graphn_add(a : MlneuralattentionGraphN, b : MlneuralattentionGraphN) -> MlneuralattentionGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionGraphN::add(self : MlneuralattentionGraphN, other : MlneuralattentionGraphN) -> MlneuralattentionGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_graphn_copy(s : MlneuralattentionGraphN) -> MlneuralattentionGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionGraphN::copy(self : MlneuralattentionGraphN) -> MlneuralattentionGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_graphn_fill(s : MlneuralattentionGraphN, v : Double) -> MlneuralattentionGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionGraphN::fill(self : MlneuralattentionGraphN, v : Double) -> MlneuralattentionGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_graphn_min(s : MlneuralattentionGraphN) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionGraphN::min(self : MlneuralattentionGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_graphn_max(s : MlneuralattentionGraphN) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionGraphN::max(self : MlneuralattentionGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_graphn_to_string(s : MlneuralattentionGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionGraphN::to_string(self : MlneuralattentionGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionNode {
@@ -504,45 +504,45 @@ pub fn ml_neural_attention_node_make(size : Int) -> MlneuralattentionNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_node_len(s : MlneuralattentionNode) -> Int { s.size }
+pub fn MlneuralattentionNode::len(self : MlneuralattentionNode) -> Int { self.size }
 
-pub fn ml_neural_attention_node_get(s : MlneuralattentionNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionNode::get(self : MlneuralattentionNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_node_set(s : MlneuralattentionNode, i : Int, v : Double) -> MlneuralattentionNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionNode::set(self : MlneuralattentionNode, i : Int, v : Double) -> MlneuralattentionNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_node_sum(s : MlneuralattentionNode) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionNode::sum(self : MlneuralattentionNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_node_mean(s : MlneuralattentionNode) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionNode::mean(self : MlneuralattentionNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_node_scale(s : MlneuralattentionNode, f : Double) -> MlneuralattentionNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionNode::scale(self : MlneuralattentionNode, f : Double) -> MlneuralattentionNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_node_add(a : MlneuralattentionNode, b : MlneuralattentionNode) -> MlneuralattentionNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionNode::add(self : MlneuralattentionNode, other : MlneuralattentionNode) -> MlneuralattentionNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_node_copy(s : MlneuralattentionNode) -> MlneuralattentionNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionNode::copy(self : MlneuralattentionNode) -> MlneuralattentionNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_node_fill(s : MlneuralattentionNode, v : Double) -> MlneuralattentionNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionNode::fill(self : MlneuralattentionNode, v : Double) -> MlneuralattentionNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_node_min(s : MlneuralattentionNode) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionNode::min(self : MlneuralattentionNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_node_max(s : MlneuralattentionNode) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionNode::max(self : MlneuralattentionNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_node_to_string(s : MlneuralattentionNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionNode::to_string(self : MlneuralattentionNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionEdge {
@@ -555,45 +555,45 @@ pub fn ml_neural_attention_edge_make(size : Int) -> MlneuralattentionEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_edge_len(s : MlneuralattentionEdge) -> Int { s.size }
+pub fn MlneuralattentionEdge::len(self : MlneuralattentionEdge) -> Int { self.size }
 
-pub fn ml_neural_attention_edge_get(s : MlneuralattentionEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionEdge::get(self : MlneuralattentionEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_edge_set(s : MlneuralattentionEdge, i : Int, v : Double) -> MlneuralattentionEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionEdge::set(self : MlneuralattentionEdge, i : Int, v : Double) -> MlneuralattentionEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_edge_sum(s : MlneuralattentionEdge) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionEdge::sum(self : MlneuralattentionEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_edge_mean(s : MlneuralattentionEdge) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionEdge::mean(self : MlneuralattentionEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_edge_scale(s : MlneuralattentionEdge, f : Double) -> MlneuralattentionEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionEdge::scale(self : MlneuralattentionEdge, f : Double) -> MlneuralattentionEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_edge_add(a : MlneuralattentionEdge, b : MlneuralattentionEdge) -> MlneuralattentionEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionEdge::add(self : MlneuralattentionEdge, other : MlneuralattentionEdge) -> MlneuralattentionEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_edge_copy(s : MlneuralattentionEdge) -> MlneuralattentionEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionEdge::copy(self : MlneuralattentionEdge) -> MlneuralattentionEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_edge_fill(s : MlneuralattentionEdge, v : Double) -> MlneuralattentionEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionEdge::fill(self : MlneuralattentionEdge, v : Double) -> MlneuralattentionEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_edge_min(s : MlneuralattentionEdge) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionEdge::min(self : MlneuralattentionEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_edge_max(s : MlneuralattentionEdge) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionEdge::max(self : MlneuralattentionEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_edge_to_string(s : MlneuralattentionEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionEdge::to_string(self : MlneuralattentionEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionPath {
@@ -606,45 +606,45 @@ pub fn ml_neural_attention_path_make(size : Int) -> MlneuralattentionPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_path_len(s : MlneuralattentionPath) -> Int { s.size }
+pub fn MlneuralattentionPath::len(self : MlneuralattentionPath) -> Int { self.size }
 
-pub fn ml_neural_attention_path_get(s : MlneuralattentionPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionPath::get(self : MlneuralattentionPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_path_set(s : MlneuralattentionPath, i : Int, v : Double) -> MlneuralattentionPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionPath::set(self : MlneuralattentionPath, i : Int, v : Double) -> MlneuralattentionPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_path_sum(s : MlneuralattentionPath) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionPath::sum(self : MlneuralattentionPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_path_mean(s : MlneuralattentionPath) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionPath::mean(self : MlneuralattentionPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_path_scale(s : MlneuralattentionPath, f : Double) -> MlneuralattentionPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionPath::scale(self : MlneuralattentionPath, f : Double) -> MlneuralattentionPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_path_add(a : MlneuralattentionPath, b : MlneuralattentionPath) -> MlneuralattentionPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionPath::add(self : MlneuralattentionPath, other : MlneuralattentionPath) -> MlneuralattentionPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_path_copy(s : MlneuralattentionPath) -> MlneuralattentionPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionPath::copy(self : MlneuralattentionPath) -> MlneuralattentionPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_path_fill(s : MlneuralattentionPath, v : Double) -> MlneuralattentionPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionPath::fill(self : MlneuralattentionPath, v : Double) -> MlneuralattentionPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_path_min(s : MlneuralattentionPath) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionPath::min(self : MlneuralattentionPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_path_max(s : MlneuralattentionPath) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionPath::max(self : MlneuralattentionPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_path_to_string(s : MlneuralattentionPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionPath::to_string(self : MlneuralattentionPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionCluster {
@@ -657,45 +657,45 @@ pub fn ml_neural_attention_cluster_make(size : Int) -> MlneuralattentionCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_cluster_len(s : MlneuralattentionCluster) -> Int { s.size }
+pub fn MlneuralattentionCluster::len(self : MlneuralattentionCluster) -> Int { self.size }
 
-pub fn ml_neural_attention_cluster_get(s : MlneuralattentionCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionCluster::get(self : MlneuralattentionCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_cluster_set(s : MlneuralattentionCluster, i : Int, v : Double) -> MlneuralattentionCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionCluster::set(self : MlneuralattentionCluster, i : Int, v : Double) -> MlneuralattentionCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_cluster_sum(s : MlneuralattentionCluster) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionCluster::sum(self : MlneuralattentionCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_cluster_mean(s : MlneuralattentionCluster) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionCluster::mean(self : MlneuralattentionCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_cluster_scale(s : MlneuralattentionCluster, f : Double) -> MlneuralattentionCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionCluster::scale(self : MlneuralattentionCluster, f : Double) -> MlneuralattentionCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_cluster_add(a : MlneuralattentionCluster, b : MlneuralattentionCluster) -> MlneuralattentionCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionCluster::add(self : MlneuralattentionCluster, other : MlneuralattentionCluster) -> MlneuralattentionCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_cluster_copy(s : MlneuralattentionCluster) -> MlneuralattentionCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionCluster::copy(self : MlneuralattentionCluster) -> MlneuralattentionCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_cluster_fill(s : MlneuralattentionCluster, v : Double) -> MlneuralattentionCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionCluster::fill(self : MlneuralattentionCluster, v : Double) -> MlneuralattentionCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_cluster_min(s : MlneuralattentionCluster) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionCluster::min(self : MlneuralattentionCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_cluster_max(s : MlneuralattentionCluster) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionCluster::max(self : MlneuralattentionCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_cluster_to_string(s : MlneuralattentionCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionCluster::to_string(self : MlneuralattentionCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionModel {
@@ -708,45 +708,45 @@ pub fn ml_neural_attention_model_make(size : Int) -> MlneuralattentionModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_model_len(s : MlneuralattentionModel) -> Int { s.size }
+pub fn MlneuralattentionModel::len(self : MlneuralattentionModel) -> Int { self.size }
 
-pub fn ml_neural_attention_model_get(s : MlneuralattentionModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionModel::get(self : MlneuralattentionModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_model_set(s : MlneuralattentionModel, i : Int, v : Double) -> MlneuralattentionModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionModel::set(self : MlneuralattentionModel, i : Int, v : Double) -> MlneuralattentionModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_model_sum(s : MlneuralattentionModel) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionModel::sum(self : MlneuralattentionModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_model_mean(s : MlneuralattentionModel) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionModel::mean(self : MlneuralattentionModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_model_scale(s : MlneuralattentionModel, f : Double) -> MlneuralattentionModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionModel::scale(self : MlneuralattentionModel, f : Double) -> MlneuralattentionModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_model_add(a : MlneuralattentionModel, b : MlneuralattentionModel) -> MlneuralattentionModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionModel::add(self : MlneuralattentionModel, other : MlneuralattentionModel) -> MlneuralattentionModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_model_copy(s : MlneuralattentionModel) -> MlneuralattentionModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionModel::copy(self : MlneuralattentionModel) -> MlneuralattentionModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_model_fill(s : MlneuralattentionModel, v : Double) -> MlneuralattentionModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionModel::fill(self : MlneuralattentionModel, v : Double) -> MlneuralattentionModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_model_min(s : MlneuralattentionModel) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionModel::min(self : MlneuralattentionModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_model_max(s : MlneuralattentionModel) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionModel::max(self : MlneuralattentionModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_model_to_string(s : MlneuralattentionModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionModel::to_string(self : MlneuralattentionModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionLayer {
@@ -759,45 +759,45 @@ pub fn ml_neural_attention_layer_make(size : Int) -> MlneuralattentionLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_layer_len(s : MlneuralattentionLayer) -> Int { s.size }
+pub fn MlneuralattentionLayer::len(self : MlneuralattentionLayer) -> Int { self.size }
 
-pub fn ml_neural_attention_layer_get(s : MlneuralattentionLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionLayer::get(self : MlneuralattentionLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_layer_set(s : MlneuralattentionLayer, i : Int, v : Double) -> MlneuralattentionLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionLayer::set(self : MlneuralattentionLayer, i : Int, v : Double) -> MlneuralattentionLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_layer_sum(s : MlneuralattentionLayer) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionLayer::sum(self : MlneuralattentionLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_layer_mean(s : MlneuralattentionLayer) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionLayer::mean(self : MlneuralattentionLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_layer_scale(s : MlneuralattentionLayer, f : Double) -> MlneuralattentionLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionLayer::scale(self : MlneuralattentionLayer, f : Double) -> MlneuralattentionLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_layer_add(a : MlneuralattentionLayer, b : MlneuralattentionLayer) -> MlneuralattentionLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionLayer::add(self : MlneuralattentionLayer, other : MlneuralattentionLayer) -> MlneuralattentionLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_layer_copy(s : MlneuralattentionLayer) -> MlneuralattentionLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionLayer::copy(self : MlneuralattentionLayer) -> MlneuralattentionLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_layer_fill(s : MlneuralattentionLayer, v : Double) -> MlneuralattentionLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionLayer::fill(self : MlneuralattentionLayer, v : Double) -> MlneuralattentionLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_layer_min(s : MlneuralattentionLayer) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionLayer::min(self : MlneuralattentionLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_layer_max(s : MlneuralattentionLayer) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionLayer::max(self : MlneuralattentionLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_layer_to_string(s : MlneuralattentionLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionLayer::to_string(self : MlneuralattentionLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionBuffer {
@@ -810,45 +810,45 @@ pub fn ml_neural_attention_buffer_make(size : Int) -> MlneuralattentionBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_buffer_len(s : MlneuralattentionBuffer) -> Int { s.size }
+pub fn MlneuralattentionBuffer::len(self : MlneuralattentionBuffer) -> Int { self.size }
 
-pub fn ml_neural_attention_buffer_get(s : MlneuralattentionBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionBuffer::get(self : MlneuralattentionBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_buffer_set(s : MlneuralattentionBuffer, i : Int, v : Double) -> MlneuralattentionBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionBuffer::set(self : MlneuralattentionBuffer, i : Int, v : Double) -> MlneuralattentionBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_buffer_sum(s : MlneuralattentionBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionBuffer::sum(self : MlneuralattentionBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_buffer_mean(s : MlneuralattentionBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionBuffer::mean(self : MlneuralattentionBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_buffer_scale(s : MlneuralattentionBuffer, f : Double) -> MlneuralattentionBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionBuffer::scale(self : MlneuralattentionBuffer, f : Double) -> MlneuralattentionBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_buffer_add(a : MlneuralattentionBuffer, b : MlneuralattentionBuffer) -> MlneuralattentionBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionBuffer::add(self : MlneuralattentionBuffer, other : MlneuralattentionBuffer) -> MlneuralattentionBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_buffer_copy(s : MlneuralattentionBuffer) -> MlneuralattentionBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionBuffer::copy(self : MlneuralattentionBuffer) -> MlneuralattentionBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_buffer_fill(s : MlneuralattentionBuffer, v : Double) -> MlneuralattentionBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionBuffer::fill(self : MlneuralattentionBuffer, v : Double) -> MlneuralattentionBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_buffer_min(s : MlneuralattentionBuffer) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionBuffer::min(self : MlneuralattentionBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_buffer_max(s : MlneuralattentionBuffer) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionBuffer::max(self : MlneuralattentionBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_buffer_to_string(s : MlneuralattentionBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionBuffer::to_string(self : MlneuralattentionBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionCursor {
@@ -861,45 +861,45 @@ pub fn ml_neural_attention_cursor_make(size : Int) -> MlneuralattentionCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_cursor_len(s : MlneuralattentionCursor) -> Int { s.size }
+pub fn MlneuralattentionCursor::len(self : MlneuralattentionCursor) -> Int { self.size }
 
-pub fn ml_neural_attention_cursor_get(s : MlneuralattentionCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionCursor::get(self : MlneuralattentionCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_cursor_set(s : MlneuralattentionCursor, i : Int, v : Double) -> MlneuralattentionCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionCursor::set(self : MlneuralattentionCursor, i : Int, v : Double) -> MlneuralattentionCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_cursor_sum(s : MlneuralattentionCursor) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionCursor::sum(self : MlneuralattentionCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_cursor_mean(s : MlneuralattentionCursor) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionCursor::mean(self : MlneuralattentionCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_cursor_scale(s : MlneuralattentionCursor, f : Double) -> MlneuralattentionCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionCursor::scale(self : MlneuralattentionCursor, f : Double) -> MlneuralattentionCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_cursor_add(a : MlneuralattentionCursor, b : MlneuralattentionCursor) -> MlneuralattentionCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionCursor::add(self : MlneuralattentionCursor, other : MlneuralattentionCursor) -> MlneuralattentionCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_cursor_copy(s : MlneuralattentionCursor) -> MlneuralattentionCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionCursor::copy(self : MlneuralattentionCursor) -> MlneuralattentionCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_cursor_fill(s : MlneuralattentionCursor, v : Double) -> MlneuralattentionCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionCursor::fill(self : MlneuralattentionCursor, v : Double) -> MlneuralattentionCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_cursor_min(s : MlneuralattentionCursor) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionCursor::min(self : MlneuralattentionCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_cursor_max(s : MlneuralattentionCursor) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionCursor::max(self : MlneuralattentionCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_cursor_to_string(s : MlneuralattentionCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionCursor::to_string(self : MlneuralattentionCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionView {
@@ -912,45 +912,45 @@ pub fn ml_neural_attention_view_make(size : Int) -> MlneuralattentionView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_view_len(s : MlneuralattentionView) -> Int { s.size }
+pub fn MlneuralattentionView::len(self : MlneuralattentionView) -> Int { self.size }
 
-pub fn ml_neural_attention_view_get(s : MlneuralattentionView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionView::get(self : MlneuralattentionView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_view_set(s : MlneuralattentionView, i : Int, v : Double) -> MlneuralattentionView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionView::set(self : MlneuralattentionView, i : Int, v : Double) -> MlneuralattentionView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_view_sum(s : MlneuralattentionView) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionView::sum(self : MlneuralattentionView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_view_mean(s : MlneuralattentionView) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionView::mean(self : MlneuralattentionView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_view_scale(s : MlneuralattentionView, f : Double) -> MlneuralattentionView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionView::scale(self : MlneuralattentionView, f : Double) -> MlneuralattentionView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_view_add(a : MlneuralattentionView, b : MlneuralattentionView) -> MlneuralattentionView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionView::add(self : MlneuralattentionView, other : MlneuralattentionView) -> MlneuralattentionView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_view_copy(s : MlneuralattentionView) -> MlneuralattentionView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionView::copy(self : MlneuralattentionView) -> MlneuralattentionView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_view_fill(s : MlneuralattentionView, v : Double) -> MlneuralattentionView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionView::fill(self : MlneuralattentionView, v : Double) -> MlneuralattentionView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_view_min(s : MlneuralattentionView) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionView::min(self : MlneuralattentionView) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_view_max(s : MlneuralattentionView) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionView::max(self : MlneuralattentionView) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_view_to_string(s : MlneuralattentionView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionView::to_string(self : MlneuralattentionView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionRange {
@@ -963,45 +963,45 @@ pub fn ml_neural_attention_range_make(size : Int) -> MlneuralattentionRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_range_len(s : MlneuralattentionRange) -> Int { s.size }
+pub fn MlneuralattentionRange::len(self : MlneuralattentionRange) -> Int { self.size }
 
-pub fn ml_neural_attention_range_get(s : MlneuralattentionRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionRange::get(self : MlneuralattentionRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_range_set(s : MlneuralattentionRange, i : Int, v : Double) -> MlneuralattentionRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionRange::set(self : MlneuralattentionRange, i : Int, v : Double) -> MlneuralattentionRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_range_sum(s : MlneuralattentionRange) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionRange::sum(self : MlneuralattentionRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_range_mean(s : MlneuralattentionRange) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionRange::mean(self : MlneuralattentionRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_range_scale(s : MlneuralattentionRange, f : Double) -> MlneuralattentionRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionRange::scale(self : MlneuralattentionRange, f : Double) -> MlneuralattentionRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_range_add(a : MlneuralattentionRange, b : MlneuralattentionRange) -> MlneuralattentionRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionRange::add(self : MlneuralattentionRange, other : MlneuralattentionRange) -> MlneuralattentionRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_range_copy(s : MlneuralattentionRange) -> MlneuralattentionRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionRange::copy(self : MlneuralattentionRange) -> MlneuralattentionRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_range_fill(s : MlneuralattentionRange, v : Double) -> MlneuralattentionRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionRange::fill(self : MlneuralattentionRange, v : Double) -> MlneuralattentionRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_range_min(s : MlneuralattentionRange) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionRange::min(self : MlneuralattentionRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_range_max(s : MlneuralattentionRange) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionRange::max(self : MlneuralattentionRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_range_to_string(s : MlneuralattentionRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionRange::to_string(self : MlneuralattentionRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralattentionSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_neural_attention_slice_make(size : Int) -> MlneuralattentionSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_attention_slice_len(s : MlneuralattentionSlice) -> Int { s.size }
+pub fn MlneuralattentionSlice::len(self : MlneuralattentionSlice) -> Int { self.size }
 
-pub fn ml_neural_attention_slice_get(s : MlneuralattentionSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralattentionSlice::get(self : MlneuralattentionSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_attention_slice_set(s : MlneuralattentionSlice, i : Int, v : Double) -> MlneuralattentionSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralattentionSlice::set(self : MlneuralattentionSlice, i : Int, v : Double) -> MlneuralattentionSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_slice_sum(s : MlneuralattentionSlice) -> Double { @_common.sum(s.data) }
+pub fn MlneuralattentionSlice::sum(self : MlneuralattentionSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_attention_slice_mean(s : MlneuralattentionSlice) -> Double { @_common.mean(s.data) }
+pub fn MlneuralattentionSlice::mean(self : MlneuralattentionSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_attention_slice_scale(s : MlneuralattentionSlice, f : Double) -> MlneuralattentionSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralattentionSlice::scale(self : MlneuralattentionSlice, f : Double) -> MlneuralattentionSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_slice_add(a : MlneuralattentionSlice, b : MlneuralattentionSlice) -> MlneuralattentionSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralattentionSlice::add(self : MlneuralattentionSlice, other : MlneuralattentionSlice) -> MlneuralattentionSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_attention_slice_copy(s : MlneuralattentionSlice) -> MlneuralattentionSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralattentionSlice::copy(self : MlneuralattentionSlice) -> MlneuralattentionSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_slice_fill(s : MlneuralattentionSlice, v : Double) -> MlneuralattentionSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralattentionSlice::fill(self : MlneuralattentionSlice, v : Double) -> MlneuralattentionSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_attention_slice_min(s : MlneuralattentionSlice) -> Double { @_common.min(s.data) }
+pub fn MlneuralattentionSlice::min(self : MlneuralattentionSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_attention_slice_max(s : MlneuralattentionSlice) -> Double { @_common.max(s.data) }
+pub fn MlneuralattentionSlice::max(self : MlneuralattentionSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_attention_slice_to_string(s : MlneuralattentionSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralattentionSlice::to_string(self : MlneuralattentionSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

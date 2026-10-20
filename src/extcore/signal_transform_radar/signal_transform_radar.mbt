@@ -351,45 +351,45 @@ pub fn signal_transform_radar_frame_make(size : Int) -> SignaltransformradarFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_frame_len(s : SignaltransformradarFrame) -> Int { s.size }
+pub fn SignaltransformradarFrame::len(self : SignaltransformradarFrame) -> Int { self.size }
 
-pub fn signal_transform_radar_frame_get(s : SignaltransformradarFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarFrame::get(self : SignaltransformradarFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_frame_set(s : SignaltransformradarFrame, i : Int, v : Double) -> SignaltransformradarFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarFrame::set(self : SignaltransformradarFrame, i : Int, v : Double) -> SignaltransformradarFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_frame_sum(s : SignaltransformradarFrame) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarFrame::sum(self : SignaltransformradarFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_frame_mean(s : SignaltransformradarFrame) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarFrame::mean(self : SignaltransformradarFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_frame_scale(s : SignaltransformradarFrame, f : Double) -> SignaltransformradarFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarFrame::scale(self : SignaltransformradarFrame, f : Double) -> SignaltransformradarFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_frame_add(a : SignaltransformradarFrame, b : SignaltransformradarFrame) -> SignaltransformradarFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarFrame::add(self : SignaltransformradarFrame, other : SignaltransformradarFrame) -> SignaltransformradarFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_frame_copy(s : SignaltransformradarFrame) -> SignaltransformradarFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarFrame::copy(self : SignaltransformradarFrame) -> SignaltransformradarFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_frame_fill(s : SignaltransformradarFrame, v : Double) -> SignaltransformradarFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarFrame::fill(self : SignaltransformradarFrame, v : Double) -> SignaltransformradarFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_frame_min(s : SignaltransformradarFrame) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarFrame::min(self : SignaltransformradarFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_frame_max(s : SignaltransformradarFrame) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarFrame::max(self : SignaltransformradarFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_frame_to_string(s : SignaltransformradarFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarFrame::to_string(self : SignaltransformradarFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarTable {
@@ -402,45 +402,45 @@ pub fn signal_transform_radar_table_make(size : Int) -> SignaltransformradarTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_table_len(s : SignaltransformradarTable) -> Int { s.size }
+pub fn SignaltransformradarTable::len(self : SignaltransformradarTable) -> Int { self.size }
 
-pub fn signal_transform_radar_table_get(s : SignaltransformradarTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarTable::get(self : SignaltransformradarTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_table_set(s : SignaltransformradarTable, i : Int, v : Double) -> SignaltransformradarTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarTable::set(self : SignaltransformradarTable, i : Int, v : Double) -> SignaltransformradarTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_table_sum(s : SignaltransformradarTable) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarTable::sum(self : SignaltransformradarTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_table_mean(s : SignaltransformradarTable) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarTable::mean(self : SignaltransformradarTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_table_scale(s : SignaltransformradarTable, f : Double) -> SignaltransformradarTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarTable::scale(self : SignaltransformradarTable, f : Double) -> SignaltransformradarTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_table_add(a : SignaltransformradarTable, b : SignaltransformradarTable) -> SignaltransformradarTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarTable::add(self : SignaltransformradarTable, other : SignaltransformradarTable) -> SignaltransformradarTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_table_copy(s : SignaltransformradarTable) -> SignaltransformradarTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarTable::copy(self : SignaltransformradarTable) -> SignaltransformradarTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_table_fill(s : SignaltransformradarTable, v : Double) -> SignaltransformradarTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarTable::fill(self : SignaltransformradarTable, v : Double) -> SignaltransformradarTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_table_min(s : SignaltransformradarTable) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarTable::min(self : SignaltransformradarTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_table_max(s : SignaltransformradarTable) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarTable::max(self : SignaltransformradarTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_table_to_string(s : SignaltransformradarTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarTable::to_string(self : SignaltransformradarTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarGraphN {
@@ -453,45 +453,45 @@ pub fn signal_transform_radar_graphn_make(size : Int) -> SignaltransformradarGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_graphn_len(s : SignaltransformradarGraphN) -> Int { s.size }
+pub fn SignaltransformradarGraphN::len(self : SignaltransformradarGraphN) -> Int { self.size }
 
-pub fn signal_transform_radar_graphn_get(s : SignaltransformradarGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarGraphN::get(self : SignaltransformradarGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_graphn_set(s : SignaltransformradarGraphN, i : Int, v : Double) -> SignaltransformradarGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarGraphN::set(self : SignaltransformradarGraphN, i : Int, v : Double) -> SignaltransformradarGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_graphn_sum(s : SignaltransformradarGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarGraphN::sum(self : SignaltransformradarGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_graphn_mean(s : SignaltransformradarGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarGraphN::mean(self : SignaltransformradarGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_graphn_scale(s : SignaltransformradarGraphN, f : Double) -> SignaltransformradarGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarGraphN::scale(self : SignaltransformradarGraphN, f : Double) -> SignaltransformradarGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_graphn_add(a : SignaltransformradarGraphN, b : SignaltransformradarGraphN) -> SignaltransformradarGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarGraphN::add(self : SignaltransformradarGraphN, other : SignaltransformradarGraphN) -> SignaltransformradarGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_graphn_copy(s : SignaltransformradarGraphN) -> SignaltransformradarGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarGraphN::copy(self : SignaltransformradarGraphN) -> SignaltransformradarGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_graphn_fill(s : SignaltransformradarGraphN, v : Double) -> SignaltransformradarGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarGraphN::fill(self : SignaltransformradarGraphN, v : Double) -> SignaltransformradarGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_graphn_min(s : SignaltransformradarGraphN) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarGraphN::min(self : SignaltransformradarGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_graphn_max(s : SignaltransformradarGraphN) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarGraphN::max(self : SignaltransformradarGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_graphn_to_string(s : SignaltransformradarGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarGraphN::to_string(self : SignaltransformradarGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarNode {
@@ -504,45 +504,45 @@ pub fn signal_transform_radar_node_make(size : Int) -> SignaltransformradarNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_node_len(s : SignaltransformradarNode) -> Int { s.size }
+pub fn SignaltransformradarNode::len(self : SignaltransformradarNode) -> Int { self.size }
 
-pub fn signal_transform_radar_node_get(s : SignaltransformradarNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarNode::get(self : SignaltransformradarNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_node_set(s : SignaltransformradarNode, i : Int, v : Double) -> SignaltransformradarNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarNode::set(self : SignaltransformradarNode, i : Int, v : Double) -> SignaltransformradarNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_node_sum(s : SignaltransformradarNode) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarNode::sum(self : SignaltransformradarNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_node_mean(s : SignaltransformradarNode) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarNode::mean(self : SignaltransformradarNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_node_scale(s : SignaltransformradarNode, f : Double) -> SignaltransformradarNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarNode::scale(self : SignaltransformradarNode, f : Double) -> SignaltransformradarNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_node_add(a : SignaltransformradarNode, b : SignaltransformradarNode) -> SignaltransformradarNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarNode::add(self : SignaltransformradarNode, other : SignaltransformradarNode) -> SignaltransformradarNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_node_copy(s : SignaltransformradarNode) -> SignaltransformradarNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarNode::copy(self : SignaltransformradarNode) -> SignaltransformradarNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_node_fill(s : SignaltransformradarNode, v : Double) -> SignaltransformradarNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarNode::fill(self : SignaltransformradarNode, v : Double) -> SignaltransformradarNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_node_min(s : SignaltransformradarNode) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarNode::min(self : SignaltransformradarNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_node_max(s : SignaltransformradarNode) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarNode::max(self : SignaltransformradarNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_node_to_string(s : SignaltransformradarNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarNode::to_string(self : SignaltransformradarNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarEdge {
@@ -555,45 +555,45 @@ pub fn signal_transform_radar_edge_make(size : Int) -> SignaltransformradarEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_edge_len(s : SignaltransformradarEdge) -> Int { s.size }
+pub fn SignaltransformradarEdge::len(self : SignaltransformradarEdge) -> Int { self.size }
 
-pub fn signal_transform_radar_edge_get(s : SignaltransformradarEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarEdge::get(self : SignaltransformradarEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_edge_set(s : SignaltransformradarEdge, i : Int, v : Double) -> SignaltransformradarEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarEdge::set(self : SignaltransformradarEdge, i : Int, v : Double) -> SignaltransformradarEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_edge_sum(s : SignaltransformradarEdge) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarEdge::sum(self : SignaltransformradarEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_edge_mean(s : SignaltransformradarEdge) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarEdge::mean(self : SignaltransformradarEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_edge_scale(s : SignaltransformradarEdge, f : Double) -> SignaltransformradarEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarEdge::scale(self : SignaltransformradarEdge, f : Double) -> SignaltransformradarEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_edge_add(a : SignaltransformradarEdge, b : SignaltransformradarEdge) -> SignaltransformradarEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarEdge::add(self : SignaltransformradarEdge, other : SignaltransformradarEdge) -> SignaltransformradarEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_edge_copy(s : SignaltransformradarEdge) -> SignaltransformradarEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarEdge::copy(self : SignaltransformradarEdge) -> SignaltransformradarEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_edge_fill(s : SignaltransformradarEdge, v : Double) -> SignaltransformradarEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarEdge::fill(self : SignaltransformradarEdge, v : Double) -> SignaltransformradarEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_edge_min(s : SignaltransformradarEdge) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarEdge::min(self : SignaltransformradarEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_edge_max(s : SignaltransformradarEdge) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarEdge::max(self : SignaltransformradarEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_edge_to_string(s : SignaltransformradarEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarEdge::to_string(self : SignaltransformradarEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarPath {
@@ -606,45 +606,45 @@ pub fn signal_transform_radar_path_make(size : Int) -> SignaltransformradarPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_path_len(s : SignaltransformradarPath) -> Int { s.size }
+pub fn SignaltransformradarPath::len(self : SignaltransformradarPath) -> Int { self.size }
 
-pub fn signal_transform_radar_path_get(s : SignaltransformradarPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarPath::get(self : SignaltransformradarPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_path_set(s : SignaltransformradarPath, i : Int, v : Double) -> SignaltransformradarPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarPath::set(self : SignaltransformradarPath, i : Int, v : Double) -> SignaltransformradarPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_path_sum(s : SignaltransformradarPath) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarPath::sum(self : SignaltransformradarPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_path_mean(s : SignaltransformradarPath) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarPath::mean(self : SignaltransformradarPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_path_scale(s : SignaltransformradarPath, f : Double) -> SignaltransformradarPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarPath::scale(self : SignaltransformradarPath, f : Double) -> SignaltransformradarPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_path_add(a : SignaltransformradarPath, b : SignaltransformradarPath) -> SignaltransformradarPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarPath::add(self : SignaltransformradarPath, other : SignaltransformradarPath) -> SignaltransformradarPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_path_copy(s : SignaltransformradarPath) -> SignaltransformradarPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarPath::copy(self : SignaltransformradarPath) -> SignaltransformradarPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_path_fill(s : SignaltransformradarPath, v : Double) -> SignaltransformradarPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarPath::fill(self : SignaltransformradarPath, v : Double) -> SignaltransformradarPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_path_min(s : SignaltransformradarPath) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarPath::min(self : SignaltransformradarPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_path_max(s : SignaltransformradarPath) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarPath::max(self : SignaltransformradarPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_path_to_string(s : SignaltransformradarPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarPath::to_string(self : SignaltransformradarPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarCluster {
@@ -657,45 +657,45 @@ pub fn signal_transform_radar_cluster_make(size : Int) -> SignaltransformradarCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_cluster_len(s : SignaltransformradarCluster) -> Int { s.size }
+pub fn SignaltransformradarCluster::len(self : SignaltransformradarCluster) -> Int { self.size }
 
-pub fn signal_transform_radar_cluster_get(s : SignaltransformradarCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarCluster::get(self : SignaltransformradarCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_cluster_set(s : SignaltransformradarCluster, i : Int, v : Double) -> SignaltransformradarCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarCluster::set(self : SignaltransformradarCluster, i : Int, v : Double) -> SignaltransformradarCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_cluster_sum(s : SignaltransformradarCluster) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarCluster::sum(self : SignaltransformradarCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_cluster_mean(s : SignaltransformradarCluster) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarCluster::mean(self : SignaltransformradarCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_cluster_scale(s : SignaltransformradarCluster, f : Double) -> SignaltransformradarCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarCluster::scale(self : SignaltransformradarCluster, f : Double) -> SignaltransformradarCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_cluster_add(a : SignaltransformradarCluster, b : SignaltransformradarCluster) -> SignaltransformradarCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarCluster::add(self : SignaltransformradarCluster, other : SignaltransformradarCluster) -> SignaltransformradarCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_cluster_copy(s : SignaltransformradarCluster) -> SignaltransformradarCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarCluster::copy(self : SignaltransformradarCluster) -> SignaltransformradarCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_cluster_fill(s : SignaltransformradarCluster, v : Double) -> SignaltransformradarCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarCluster::fill(self : SignaltransformradarCluster, v : Double) -> SignaltransformradarCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_cluster_min(s : SignaltransformradarCluster) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarCluster::min(self : SignaltransformradarCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_cluster_max(s : SignaltransformradarCluster) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarCluster::max(self : SignaltransformradarCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_cluster_to_string(s : SignaltransformradarCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarCluster::to_string(self : SignaltransformradarCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarModel {
@@ -708,45 +708,45 @@ pub fn signal_transform_radar_model_make(size : Int) -> SignaltransformradarMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_model_len(s : SignaltransformradarModel) -> Int { s.size }
+pub fn SignaltransformradarModel::len(self : SignaltransformradarModel) -> Int { self.size }
 
-pub fn signal_transform_radar_model_get(s : SignaltransformradarModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarModel::get(self : SignaltransformradarModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_model_set(s : SignaltransformradarModel, i : Int, v : Double) -> SignaltransformradarModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarModel::set(self : SignaltransformradarModel, i : Int, v : Double) -> SignaltransformradarModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_model_sum(s : SignaltransformradarModel) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarModel::sum(self : SignaltransformradarModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_model_mean(s : SignaltransformradarModel) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarModel::mean(self : SignaltransformradarModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_model_scale(s : SignaltransformradarModel, f : Double) -> SignaltransformradarModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarModel::scale(self : SignaltransformradarModel, f : Double) -> SignaltransformradarModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_model_add(a : SignaltransformradarModel, b : SignaltransformradarModel) -> SignaltransformradarModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarModel::add(self : SignaltransformradarModel, other : SignaltransformradarModel) -> SignaltransformradarModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_model_copy(s : SignaltransformradarModel) -> SignaltransformradarModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarModel::copy(self : SignaltransformradarModel) -> SignaltransformradarModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_model_fill(s : SignaltransformradarModel, v : Double) -> SignaltransformradarModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarModel::fill(self : SignaltransformradarModel, v : Double) -> SignaltransformradarModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_model_min(s : SignaltransformradarModel) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarModel::min(self : SignaltransformradarModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_model_max(s : SignaltransformradarModel) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarModel::max(self : SignaltransformradarModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_model_to_string(s : SignaltransformradarModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarModel::to_string(self : SignaltransformradarModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarLayer {
@@ -759,45 +759,45 @@ pub fn signal_transform_radar_layer_make(size : Int) -> SignaltransformradarLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_layer_len(s : SignaltransformradarLayer) -> Int { s.size }
+pub fn SignaltransformradarLayer::len(self : SignaltransformradarLayer) -> Int { self.size }
 
-pub fn signal_transform_radar_layer_get(s : SignaltransformradarLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarLayer::get(self : SignaltransformradarLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_layer_set(s : SignaltransformradarLayer, i : Int, v : Double) -> SignaltransformradarLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarLayer::set(self : SignaltransformradarLayer, i : Int, v : Double) -> SignaltransformradarLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_layer_sum(s : SignaltransformradarLayer) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarLayer::sum(self : SignaltransformradarLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_layer_mean(s : SignaltransformradarLayer) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarLayer::mean(self : SignaltransformradarLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_layer_scale(s : SignaltransformradarLayer, f : Double) -> SignaltransformradarLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarLayer::scale(self : SignaltransformradarLayer, f : Double) -> SignaltransformradarLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_layer_add(a : SignaltransformradarLayer, b : SignaltransformradarLayer) -> SignaltransformradarLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarLayer::add(self : SignaltransformradarLayer, other : SignaltransformradarLayer) -> SignaltransformradarLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_layer_copy(s : SignaltransformradarLayer) -> SignaltransformradarLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarLayer::copy(self : SignaltransformradarLayer) -> SignaltransformradarLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_layer_fill(s : SignaltransformradarLayer, v : Double) -> SignaltransformradarLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarLayer::fill(self : SignaltransformradarLayer, v : Double) -> SignaltransformradarLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_layer_min(s : SignaltransformradarLayer) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarLayer::min(self : SignaltransformradarLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_layer_max(s : SignaltransformradarLayer) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarLayer::max(self : SignaltransformradarLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_layer_to_string(s : SignaltransformradarLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarLayer::to_string(self : SignaltransformradarLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarBuffer {
@@ -810,45 +810,45 @@ pub fn signal_transform_radar_buffer_make(size : Int) -> SignaltransformradarBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_buffer_len(s : SignaltransformradarBuffer) -> Int { s.size }
+pub fn SignaltransformradarBuffer::len(self : SignaltransformradarBuffer) -> Int { self.size }
 
-pub fn signal_transform_radar_buffer_get(s : SignaltransformradarBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarBuffer::get(self : SignaltransformradarBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_buffer_set(s : SignaltransformradarBuffer, i : Int, v : Double) -> SignaltransformradarBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarBuffer::set(self : SignaltransformradarBuffer, i : Int, v : Double) -> SignaltransformradarBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_buffer_sum(s : SignaltransformradarBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarBuffer::sum(self : SignaltransformradarBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_buffer_mean(s : SignaltransformradarBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarBuffer::mean(self : SignaltransformradarBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_buffer_scale(s : SignaltransformradarBuffer, f : Double) -> SignaltransformradarBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarBuffer::scale(self : SignaltransformradarBuffer, f : Double) -> SignaltransformradarBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_buffer_add(a : SignaltransformradarBuffer, b : SignaltransformradarBuffer) -> SignaltransformradarBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarBuffer::add(self : SignaltransformradarBuffer, other : SignaltransformradarBuffer) -> SignaltransformradarBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_buffer_copy(s : SignaltransformradarBuffer) -> SignaltransformradarBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarBuffer::copy(self : SignaltransformradarBuffer) -> SignaltransformradarBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_buffer_fill(s : SignaltransformradarBuffer, v : Double) -> SignaltransformradarBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarBuffer::fill(self : SignaltransformradarBuffer, v : Double) -> SignaltransformradarBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_buffer_min(s : SignaltransformradarBuffer) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarBuffer::min(self : SignaltransformradarBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_buffer_max(s : SignaltransformradarBuffer) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarBuffer::max(self : SignaltransformradarBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_buffer_to_string(s : SignaltransformradarBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarBuffer::to_string(self : SignaltransformradarBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarCursor {
@@ -861,45 +861,45 @@ pub fn signal_transform_radar_cursor_make(size : Int) -> SignaltransformradarCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_cursor_len(s : SignaltransformradarCursor) -> Int { s.size }
+pub fn SignaltransformradarCursor::len(self : SignaltransformradarCursor) -> Int { self.size }
 
-pub fn signal_transform_radar_cursor_get(s : SignaltransformradarCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarCursor::get(self : SignaltransformradarCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_cursor_set(s : SignaltransformradarCursor, i : Int, v : Double) -> SignaltransformradarCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarCursor::set(self : SignaltransformradarCursor, i : Int, v : Double) -> SignaltransformradarCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_cursor_sum(s : SignaltransformradarCursor) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarCursor::sum(self : SignaltransformradarCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_cursor_mean(s : SignaltransformradarCursor) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarCursor::mean(self : SignaltransformradarCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_cursor_scale(s : SignaltransformradarCursor, f : Double) -> SignaltransformradarCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarCursor::scale(self : SignaltransformradarCursor, f : Double) -> SignaltransformradarCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_cursor_add(a : SignaltransformradarCursor, b : SignaltransformradarCursor) -> SignaltransformradarCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarCursor::add(self : SignaltransformradarCursor, other : SignaltransformradarCursor) -> SignaltransformradarCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_cursor_copy(s : SignaltransformradarCursor) -> SignaltransformradarCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarCursor::copy(self : SignaltransformradarCursor) -> SignaltransformradarCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_cursor_fill(s : SignaltransformradarCursor, v : Double) -> SignaltransformradarCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarCursor::fill(self : SignaltransformradarCursor, v : Double) -> SignaltransformradarCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_cursor_min(s : SignaltransformradarCursor) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarCursor::min(self : SignaltransformradarCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_cursor_max(s : SignaltransformradarCursor) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarCursor::max(self : SignaltransformradarCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_cursor_to_string(s : SignaltransformradarCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarCursor::to_string(self : SignaltransformradarCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarView {
@@ -912,45 +912,45 @@ pub fn signal_transform_radar_view_make(size : Int) -> SignaltransformradarView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_view_len(s : SignaltransformradarView) -> Int { s.size }
+pub fn SignaltransformradarView::len(self : SignaltransformradarView) -> Int { self.size }
 
-pub fn signal_transform_radar_view_get(s : SignaltransformradarView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarView::get(self : SignaltransformradarView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_view_set(s : SignaltransformradarView, i : Int, v : Double) -> SignaltransformradarView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarView::set(self : SignaltransformradarView, i : Int, v : Double) -> SignaltransformradarView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_view_sum(s : SignaltransformradarView) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarView::sum(self : SignaltransformradarView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_view_mean(s : SignaltransformradarView) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarView::mean(self : SignaltransformradarView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_view_scale(s : SignaltransformradarView, f : Double) -> SignaltransformradarView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarView::scale(self : SignaltransformradarView, f : Double) -> SignaltransformradarView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_view_add(a : SignaltransformradarView, b : SignaltransformradarView) -> SignaltransformradarView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarView::add(self : SignaltransformradarView, other : SignaltransformradarView) -> SignaltransformradarView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_view_copy(s : SignaltransformradarView) -> SignaltransformradarView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarView::copy(self : SignaltransformradarView) -> SignaltransformradarView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_view_fill(s : SignaltransformradarView, v : Double) -> SignaltransformradarView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarView::fill(self : SignaltransformradarView, v : Double) -> SignaltransformradarView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_view_min(s : SignaltransformradarView) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarView::min(self : SignaltransformradarView) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_view_max(s : SignaltransformradarView) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarView::max(self : SignaltransformradarView) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_view_to_string(s : SignaltransformradarView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarView::to_string(self : SignaltransformradarView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarRange {
@@ -963,45 +963,45 @@ pub fn signal_transform_radar_range_make(size : Int) -> SignaltransformradarRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_range_len(s : SignaltransformradarRange) -> Int { s.size }
+pub fn SignaltransformradarRange::len(self : SignaltransformradarRange) -> Int { self.size }
 
-pub fn signal_transform_radar_range_get(s : SignaltransformradarRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarRange::get(self : SignaltransformradarRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_range_set(s : SignaltransformradarRange, i : Int, v : Double) -> SignaltransformradarRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarRange::set(self : SignaltransformradarRange, i : Int, v : Double) -> SignaltransformradarRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_range_sum(s : SignaltransformradarRange) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarRange::sum(self : SignaltransformradarRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_range_mean(s : SignaltransformradarRange) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarRange::mean(self : SignaltransformradarRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_range_scale(s : SignaltransformradarRange, f : Double) -> SignaltransformradarRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarRange::scale(self : SignaltransformradarRange, f : Double) -> SignaltransformradarRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_range_add(a : SignaltransformradarRange, b : SignaltransformradarRange) -> SignaltransformradarRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarRange::add(self : SignaltransformradarRange, other : SignaltransformradarRange) -> SignaltransformradarRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_range_copy(s : SignaltransformradarRange) -> SignaltransformradarRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarRange::copy(self : SignaltransformradarRange) -> SignaltransformradarRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_range_fill(s : SignaltransformradarRange, v : Double) -> SignaltransformradarRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarRange::fill(self : SignaltransformradarRange, v : Double) -> SignaltransformradarRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_range_min(s : SignaltransformradarRange) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarRange::min(self : SignaltransformradarRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_range_max(s : SignaltransformradarRange) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarRange::max(self : SignaltransformradarRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_range_to_string(s : SignaltransformradarRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarRange::to_string(self : SignaltransformradarRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformradarSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_transform_radar_slice_make(size : Int) -> SignaltransformradarSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_radar_slice_len(s : SignaltransformradarSlice) -> Int { s.size }
+pub fn SignaltransformradarSlice::len(self : SignaltransformradarSlice) -> Int { self.size }
 
-pub fn signal_transform_radar_slice_get(s : SignaltransformradarSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformradarSlice::get(self : SignaltransformradarSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_radar_slice_set(s : SignaltransformradarSlice, i : Int, v : Double) -> SignaltransformradarSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformradarSlice::set(self : SignaltransformradarSlice, i : Int, v : Double) -> SignaltransformradarSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_slice_sum(s : SignaltransformradarSlice) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformradarSlice::sum(self : SignaltransformradarSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_radar_slice_mean(s : SignaltransformradarSlice) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformradarSlice::mean(self : SignaltransformradarSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_radar_slice_scale(s : SignaltransformradarSlice, f : Double) -> SignaltransformradarSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformradarSlice::scale(self : SignaltransformradarSlice, f : Double) -> SignaltransformradarSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_slice_add(a : SignaltransformradarSlice, b : SignaltransformradarSlice) -> SignaltransformradarSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformradarSlice::add(self : SignaltransformradarSlice, other : SignaltransformradarSlice) -> SignaltransformradarSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_radar_slice_copy(s : SignaltransformradarSlice) -> SignaltransformradarSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformradarSlice::copy(self : SignaltransformradarSlice) -> SignaltransformradarSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_slice_fill(s : SignaltransformradarSlice, v : Double) -> SignaltransformradarSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformradarSlice::fill(self : SignaltransformradarSlice, v : Double) -> SignaltransformradarSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_radar_slice_min(s : SignaltransformradarSlice) -> Double { @_common.min(s.data) }
+pub fn SignaltransformradarSlice::min(self : SignaltransformradarSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_radar_slice_max(s : SignaltransformradarSlice) -> Double { @_common.max(s.data) }
+pub fn SignaltransformradarSlice::max(self : SignaltransformradarSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_radar_slice_to_string(s : SignaltransformradarSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformradarSlice::to_string(self : SignaltransformradarSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

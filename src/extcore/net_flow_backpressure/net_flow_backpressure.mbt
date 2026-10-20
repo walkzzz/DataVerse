@@ -351,45 +351,45 @@ pub fn net_flow_backpressure_frame_make(size : Int) -> NetflowbackpressureFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_frame_len(s : NetflowbackpressureFrame) -> Int { s.size }
+pub fn NetflowbackpressureFrame::len(self : NetflowbackpressureFrame) -> Int { self.size }
 
-pub fn net_flow_backpressure_frame_get(s : NetflowbackpressureFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureFrame::get(self : NetflowbackpressureFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_frame_set(s : NetflowbackpressureFrame, i : Int, v : Double) -> NetflowbackpressureFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureFrame::set(self : NetflowbackpressureFrame, i : Int, v : Double) -> NetflowbackpressureFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_frame_sum(s : NetflowbackpressureFrame) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureFrame::sum(self : NetflowbackpressureFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_frame_mean(s : NetflowbackpressureFrame) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureFrame::mean(self : NetflowbackpressureFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_frame_scale(s : NetflowbackpressureFrame, f : Double) -> NetflowbackpressureFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureFrame::scale(self : NetflowbackpressureFrame, f : Double) -> NetflowbackpressureFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_frame_add(a : NetflowbackpressureFrame, b : NetflowbackpressureFrame) -> NetflowbackpressureFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureFrame::add(self : NetflowbackpressureFrame, other : NetflowbackpressureFrame) -> NetflowbackpressureFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_frame_copy(s : NetflowbackpressureFrame) -> NetflowbackpressureFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureFrame::copy(self : NetflowbackpressureFrame) -> NetflowbackpressureFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_frame_fill(s : NetflowbackpressureFrame, v : Double) -> NetflowbackpressureFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureFrame::fill(self : NetflowbackpressureFrame, v : Double) -> NetflowbackpressureFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_frame_min(s : NetflowbackpressureFrame) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureFrame::min(self : NetflowbackpressureFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_frame_max(s : NetflowbackpressureFrame) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureFrame::max(self : NetflowbackpressureFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_frame_to_string(s : NetflowbackpressureFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureFrame::to_string(self : NetflowbackpressureFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressureTable {
@@ -402,45 +402,45 @@ pub fn net_flow_backpressure_table_make(size : Int) -> NetflowbackpressureTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_table_len(s : NetflowbackpressureTable) -> Int { s.size }
+pub fn NetflowbackpressureTable::len(self : NetflowbackpressureTable) -> Int { self.size }
 
-pub fn net_flow_backpressure_table_get(s : NetflowbackpressureTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureTable::get(self : NetflowbackpressureTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_table_set(s : NetflowbackpressureTable, i : Int, v : Double) -> NetflowbackpressureTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureTable::set(self : NetflowbackpressureTable, i : Int, v : Double) -> NetflowbackpressureTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_table_sum(s : NetflowbackpressureTable) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureTable::sum(self : NetflowbackpressureTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_table_mean(s : NetflowbackpressureTable) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureTable::mean(self : NetflowbackpressureTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_table_scale(s : NetflowbackpressureTable, f : Double) -> NetflowbackpressureTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureTable::scale(self : NetflowbackpressureTable, f : Double) -> NetflowbackpressureTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_table_add(a : NetflowbackpressureTable, b : NetflowbackpressureTable) -> NetflowbackpressureTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureTable::add(self : NetflowbackpressureTable, other : NetflowbackpressureTable) -> NetflowbackpressureTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_table_copy(s : NetflowbackpressureTable) -> NetflowbackpressureTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureTable::copy(self : NetflowbackpressureTable) -> NetflowbackpressureTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_table_fill(s : NetflowbackpressureTable, v : Double) -> NetflowbackpressureTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureTable::fill(self : NetflowbackpressureTable, v : Double) -> NetflowbackpressureTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_table_min(s : NetflowbackpressureTable) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureTable::min(self : NetflowbackpressureTable) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_table_max(s : NetflowbackpressureTable) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureTable::max(self : NetflowbackpressureTable) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_table_to_string(s : NetflowbackpressureTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureTable::to_string(self : NetflowbackpressureTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressureGraphN {
@@ -453,45 +453,45 @@ pub fn net_flow_backpressure_graphn_make(size : Int) -> NetflowbackpressureGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_graphn_len(s : NetflowbackpressureGraphN) -> Int { s.size }
+pub fn NetflowbackpressureGraphN::len(self : NetflowbackpressureGraphN) -> Int { self.size }
 
-pub fn net_flow_backpressure_graphn_get(s : NetflowbackpressureGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureGraphN::get(self : NetflowbackpressureGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_graphn_set(s : NetflowbackpressureGraphN, i : Int, v : Double) -> NetflowbackpressureGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureGraphN::set(self : NetflowbackpressureGraphN, i : Int, v : Double) -> NetflowbackpressureGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_graphn_sum(s : NetflowbackpressureGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureGraphN::sum(self : NetflowbackpressureGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_graphn_mean(s : NetflowbackpressureGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureGraphN::mean(self : NetflowbackpressureGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_graphn_scale(s : NetflowbackpressureGraphN, f : Double) -> NetflowbackpressureGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureGraphN::scale(self : NetflowbackpressureGraphN, f : Double) -> NetflowbackpressureGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_graphn_add(a : NetflowbackpressureGraphN, b : NetflowbackpressureGraphN) -> NetflowbackpressureGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureGraphN::add(self : NetflowbackpressureGraphN, other : NetflowbackpressureGraphN) -> NetflowbackpressureGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_graphn_copy(s : NetflowbackpressureGraphN) -> NetflowbackpressureGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureGraphN::copy(self : NetflowbackpressureGraphN) -> NetflowbackpressureGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_graphn_fill(s : NetflowbackpressureGraphN, v : Double) -> NetflowbackpressureGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureGraphN::fill(self : NetflowbackpressureGraphN, v : Double) -> NetflowbackpressureGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_graphn_min(s : NetflowbackpressureGraphN) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureGraphN::min(self : NetflowbackpressureGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_graphn_max(s : NetflowbackpressureGraphN) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureGraphN::max(self : NetflowbackpressureGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_graphn_to_string(s : NetflowbackpressureGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureGraphN::to_string(self : NetflowbackpressureGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressureNode {
@@ -504,45 +504,45 @@ pub fn net_flow_backpressure_node_make(size : Int) -> NetflowbackpressureNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_node_len(s : NetflowbackpressureNode) -> Int { s.size }
+pub fn NetflowbackpressureNode::len(self : NetflowbackpressureNode) -> Int { self.size }
 
-pub fn net_flow_backpressure_node_get(s : NetflowbackpressureNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureNode::get(self : NetflowbackpressureNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_node_set(s : NetflowbackpressureNode, i : Int, v : Double) -> NetflowbackpressureNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureNode::set(self : NetflowbackpressureNode, i : Int, v : Double) -> NetflowbackpressureNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_node_sum(s : NetflowbackpressureNode) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureNode::sum(self : NetflowbackpressureNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_node_mean(s : NetflowbackpressureNode) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureNode::mean(self : NetflowbackpressureNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_node_scale(s : NetflowbackpressureNode, f : Double) -> NetflowbackpressureNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureNode::scale(self : NetflowbackpressureNode, f : Double) -> NetflowbackpressureNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_node_add(a : NetflowbackpressureNode, b : NetflowbackpressureNode) -> NetflowbackpressureNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureNode::add(self : NetflowbackpressureNode, other : NetflowbackpressureNode) -> NetflowbackpressureNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_node_copy(s : NetflowbackpressureNode) -> NetflowbackpressureNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureNode::copy(self : NetflowbackpressureNode) -> NetflowbackpressureNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_node_fill(s : NetflowbackpressureNode, v : Double) -> NetflowbackpressureNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureNode::fill(self : NetflowbackpressureNode, v : Double) -> NetflowbackpressureNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_node_min(s : NetflowbackpressureNode) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureNode::min(self : NetflowbackpressureNode) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_node_max(s : NetflowbackpressureNode) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureNode::max(self : NetflowbackpressureNode) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_node_to_string(s : NetflowbackpressureNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureNode::to_string(self : NetflowbackpressureNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressureEdge {
@@ -555,45 +555,45 @@ pub fn net_flow_backpressure_edge_make(size : Int) -> NetflowbackpressureEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_edge_len(s : NetflowbackpressureEdge) -> Int { s.size }
+pub fn NetflowbackpressureEdge::len(self : NetflowbackpressureEdge) -> Int { self.size }
 
-pub fn net_flow_backpressure_edge_get(s : NetflowbackpressureEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureEdge::get(self : NetflowbackpressureEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_edge_set(s : NetflowbackpressureEdge, i : Int, v : Double) -> NetflowbackpressureEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureEdge::set(self : NetflowbackpressureEdge, i : Int, v : Double) -> NetflowbackpressureEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_edge_sum(s : NetflowbackpressureEdge) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureEdge::sum(self : NetflowbackpressureEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_edge_mean(s : NetflowbackpressureEdge) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureEdge::mean(self : NetflowbackpressureEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_edge_scale(s : NetflowbackpressureEdge, f : Double) -> NetflowbackpressureEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureEdge::scale(self : NetflowbackpressureEdge, f : Double) -> NetflowbackpressureEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_edge_add(a : NetflowbackpressureEdge, b : NetflowbackpressureEdge) -> NetflowbackpressureEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureEdge::add(self : NetflowbackpressureEdge, other : NetflowbackpressureEdge) -> NetflowbackpressureEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_edge_copy(s : NetflowbackpressureEdge) -> NetflowbackpressureEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureEdge::copy(self : NetflowbackpressureEdge) -> NetflowbackpressureEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_edge_fill(s : NetflowbackpressureEdge, v : Double) -> NetflowbackpressureEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureEdge::fill(self : NetflowbackpressureEdge, v : Double) -> NetflowbackpressureEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_edge_min(s : NetflowbackpressureEdge) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureEdge::min(self : NetflowbackpressureEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_edge_max(s : NetflowbackpressureEdge) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureEdge::max(self : NetflowbackpressureEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_edge_to_string(s : NetflowbackpressureEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureEdge::to_string(self : NetflowbackpressureEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressurePath {
@@ -606,45 +606,45 @@ pub fn net_flow_backpressure_path_make(size : Int) -> NetflowbackpressurePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_path_len(s : NetflowbackpressurePath) -> Int { s.size }
+pub fn NetflowbackpressurePath::len(self : NetflowbackpressurePath) -> Int { self.size }
 
-pub fn net_flow_backpressure_path_get(s : NetflowbackpressurePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressurePath::get(self : NetflowbackpressurePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_path_set(s : NetflowbackpressurePath, i : Int, v : Double) -> NetflowbackpressurePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressurePath::set(self : NetflowbackpressurePath, i : Int, v : Double) -> NetflowbackpressurePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_path_sum(s : NetflowbackpressurePath) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressurePath::sum(self : NetflowbackpressurePath) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_path_mean(s : NetflowbackpressurePath) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressurePath::mean(self : NetflowbackpressurePath) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_path_scale(s : NetflowbackpressurePath, f : Double) -> NetflowbackpressurePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressurePath::scale(self : NetflowbackpressurePath, f : Double) -> NetflowbackpressurePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_path_add(a : NetflowbackpressurePath, b : NetflowbackpressurePath) -> NetflowbackpressurePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressurePath::add(self : NetflowbackpressurePath, other : NetflowbackpressurePath) -> NetflowbackpressurePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_path_copy(s : NetflowbackpressurePath) -> NetflowbackpressurePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressurePath::copy(self : NetflowbackpressurePath) -> NetflowbackpressurePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_path_fill(s : NetflowbackpressurePath, v : Double) -> NetflowbackpressurePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressurePath::fill(self : NetflowbackpressurePath, v : Double) -> NetflowbackpressurePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_path_min(s : NetflowbackpressurePath) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressurePath::min(self : NetflowbackpressurePath) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_path_max(s : NetflowbackpressurePath) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressurePath::max(self : NetflowbackpressurePath) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_path_to_string(s : NetflowbackpressurePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressurePath::to_string(self : NetflowbackpressurePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressureCluster {
@@ -657,45 +657,45 @@ pub fn net_flow_backpressure_cluster_make(size : Int) -> NetflowbackpressureClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_cluster_len(s : NetflowbackpressureCluster) -> Int { s.size }
+pub fn NetflowbackpressureCluster::len(self : NetflowbackpressureCluster) -> Int { self.size }
 
-pub fn net_flow_backpressure_cluster_get(s : NetflowbackpressureCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureCluster::get(self : NetflowbackpressureCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_cluster_set(s : NetflowbackpressureCluster, i : Int, v : Double) -> NetflowbackpressureCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureCluster::set(self : NetflowbackpressureCluster, i : Int, v : Double) -> NetflowbackpressureCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_cluster_sum(s : NetflowbackpressureCluster) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureCluster::sum(self : NetflowbackpressureCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_cluster_mean(s : NetflowbackpressureCluster) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureCluster::mean(self : NetflowbackpressureCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_cluster_scale(s : NetflowbackpressureCluster, f : Double) -> NetflowbackpressureCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureCluster::scale(self : NetflowbackpressureCluster, f : Double) -> NetflowbackpressureCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_cluster_add(a : NetflowbackpressureCluster, b : NetflowbackpressureCluster) -> NetflowbackpressureCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureCluster::add(self : NetflowbackpressureCluster, other : NetflowbackpressureCluster) -> NetflowbackpressureCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_cluster_copy(s : NetflowbackpressureCluster) -> NetflowbackpressureCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureCluster::copy(self : NetflowbackpressureCluster) -> NetflowbackpressureCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_cluster_fill(s : NetflowbackpressureCluster, v : Double) -> NetflowbackpressureCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureCluster::fill(self : NetflowbackpressureCluster, v : Double) -> NetflowbackpressureCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_cluster_min(s : NetflowbackpressureCluster) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureCluster::min(self : NetflowbackpressureCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_cluster_max(s : NetflowbackpressureCluster) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureCluster::max(self : NetflowbackpressureCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_cluster_to_string(s : NetflowbackpressureCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureCluster::to_string(self : NetflowbackpressureCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressureModel {
@@ -708,45 +708,45 @@ pub fn net_flow_backpressure_model_make(size : Int) -> NetflowbackpressureModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_model_len(s : NetflowbackpressureModel) -> Int { s.size }
+pub fn NetflowbackpressureModel::len(self : NetflowbackpressureModel) -> Int { self.size }
 
-pub fn net_flow_backpressure_model_get(s : NetflowbackpressureModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureModel::get(self : NetflowbackpressureModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_model_set(s : NetflowbackpressureModel, i : Int, v : Double) -> NetflowbackpressureModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureModel::set(self : NetflowbackpressureModel, i : Int, v : Double) -> NetflowbackpressureModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_model_sum(s : NetflowbackpressureModel) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureModel::sum(self : NetflowbackpressureModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_model_mean(s : NetflowbackpressureModel) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureModel::mean(self : NetflowbackpressureModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_model_scale(s : NetflowbackpressureModel, f : Double) -> NetflowbackpressureModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureModel::scale(self : NetflowbackpressureModel, f : Double) -> NetflowbackpressureModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_model_add(a : NetflowbackpressureModel, b : NetflowbackpressureModel) -> NetflowbackpressureModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureModel::add(self : NetflowbackpressureModel, other : NetflowbackpressureModel) -> NetflowbackpressureModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_model_copy(s : NetflowbackpressureModel) -> NetflowbackpressureModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureModel::copy(self : NetflowbackpressureModel) -> NetflowbackpressureModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_model_fill(s : NetflowbackpressureModel, v : Double) -> NetflowbackpressureModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureModel::fill(self : NetflowbackpressureModel, v : Double) -> NetflowbackpressureModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_model_min(s : NetflowbackpressureModel) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureModel::min(self : NetflowbackpressureModel) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_model_max(s : NetflowbackpressureModel) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureModel::max(self : NetflowbackpressureModel) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_model_to_string(s : NetflowbackpressureModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureModel::to_string(self : NetflowbackpressureModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressureLayer {
@@ -759,45 +759,45 @@ pub fn net_flow_backpressure_layer_make(size : Int) -> NetflowbackpressureLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_layer_len(s : NetflowbackpressureLayer) -> Int { s.size }
+pub fn NetflowbackpressureLayer::len(self : NetflowbackpressureLayer) -> Int { self.size }
 
-pub fn net_flow_backpressure_layer_get(s : NetflowbackpressureLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureLayer::get(self : NetflowbackpressureLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_layer_set(s : NetflowbackpressureLayer, i : Int, v : Double) -> NetflowbackpressureLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureLayer::set(self : NetflowbackpressureLayer, i : Int, v : Double) -> NetflowbackpressureLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_layer_sum(s : NetflowbackpressureLayer) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureLayer::sum(self : NetflowbackpressureLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_layer_mean(s : NetflowbackpressureLayer) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureLayer::mean(self : NetflowbackpressureLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_layer_scale(s : NetflowbackpressureLayer, f : Double) -> NetflowbackpressureLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureLayer::scale(self : NetflowbackpressureLayer, f : Double) -> NetflowbackpressureLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_layer_add(a : NetflowbackpressureLayer, b : NetflowbackpressureLayer) -> NetflowbackpressureLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureLayer::add(self : NetflowbackpressureLayer, other : NetflowbackpressureLayer) -> NetflowbackpressureLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_layer_copy(s : NetflowbackpressureLayer) -> NetflowbackpressureLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureLayer::copy(self : NetflowbackpressureLayer) -> NetflowbackpressureLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_layer_fill(s : NetflowbackpressureLayer, v : Double) -> NetflowbackpressureLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureLayer::fill(self : NetflowbackpressureLayer, v : Double) -> NetflowbackpressureLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_layer_min(s : NetflowbackpressureLayer) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureLayer::min(self : NetflowbackpressureLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_layer_max(s : NetflowbackpressureLayer) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureLayer::max(self : NetflowbackpressureLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_layer_to_string(s : NetflowbackpressureLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureLayer::to_string(self : NetflowbackpressureLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressureBuffer {
@@ -810,45 +810,45 @@ pub fn net_flow_backpressure_buffer_make(size : Int) -> NetflowbackpressureBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_buffer_len(s : NetflowbackpressureBuffer) -> Int { s.size }
+pub fn NetflowbackpressureBuffer::len(self : NetflowbackpressureBuffer) -> Int { self.size }
 
-pub fn net_flow_backpressure_buffer_get(s : NetflowbackpressureBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureBuffer::get(self : NetflowbackpressureBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_buffer_set(s : NetflowbackpressureBuffer, i : Int, v : Double) -> NetflowbackpressureBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureBuffer::set(self : NetflowbackpressureBuffer, i : Int, v : Double) -> NetflowbackpressureBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_buffer_sum(s : NetflowbackpressureBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureBuffer::sum(self : NetflowbackpressureBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_buffer_mean(s : NetflowbackpressureBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureBuffer::mean(self : NetflowbackpressureBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_buffer_scale(s : NetflowbackpressureBuffer, f : Double) -> NetflowbackpressureBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureBuffer::scale(self : NetflowbackpressureBuffer, f : Double) -> NetflowbackpressureBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_buffer_add(a : NetflowbackpressureBuffer, b : NetflowbackpressureBuffer) -> NetflowbackpressureBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureBuffer::add(self : NetflowbackpressureBuffer, other : NetflowbackpressureBuffer) -> NetflowbackpressureBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_buffer_copy(s : NetflowbackpressureBuffer) -> NetflowbackpressureBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureBuffer::copy(self : NetflowbackpressureBuffer) -> NetflowbackpressureBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_buffer_fill(s : NetflowbackpressureBuffer, v : Double) -> NetflowbackpressureBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureBuffer::fill(self : NetflowbackpressureBuffer, v : Double) -> NetflowbackpressureBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_buffer_min(s : NetflowbackpressureBuffer) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureBuffer::min(self : NetflowbackpressureBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_buffer_max(s : NetflowbackpressureBuffer) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureBuffer::max(self : NetflowbackpressureBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_buffer_to_string(s : NetflowbackpressureBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureBuffer::to_string(self : NetflowbackpressureBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressureCursor {
@@ -861,45 +861,45 @@ pub fn net_flow_backpressure_cursor_make(size : Int) -> NetflowbackpressureCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_cursor_len(s : NetflowbackpressureCursor) -> Int { s.size }
+pub fn NetflowbackpressureCursor::len(self : NetflowbackpressureCursor) -> Int { self.size }
 
-pub fn net_flow_backpressure_cursor_get(s : NetflowbackpressureCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureCursor::get(self : NetflowbackpressureCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_cursor_set(s : NetflowbackpressureCursor, i : Int, v : Double) -> NetflowbackpressureCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureCursor::set(self : NetflowbackpressureCursor, i : Int, v : Double) -> NetflowbackpressureCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_cursor_sum(s : NetflowbackpressureCursor) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureCursor::sum(self : NetflowbackpressureCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_cursor_mean(s : NetflowbackpressureCursor) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureCursor::mean(self : NetflowbackpressureCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_cursor_scale(s : NetflowbackpressureCursor, f : Double) -> NetflowbackpressureCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureCursor::scale(self : NetflowbackpressureCursor, f : Double) -> NetflowbackpressureCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_cursor_add(a : NetflowbackpressureCursor, b : NetflowbackpressureCursor) -> NetflowbackpressureCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureCursor::add(self : NetflowbackpressureCursor, other : NetflowbackpressureCursor) -> NetflowbackpressureCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_cursor_copy(s : NetflowbackpressureCursor) -> NetflowbackpressureCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureCursor::copy(self : NetflowbackpressureCursor) -> NetflowbackpressureCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_cursor_fill(s : NetflowbackpressureCursor, v : Double) -> NetflowbackpressureCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureCursor::fill(self : NetflowbackpressureCursor, v : Double) -> NetflowbackpressureCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_cursor_min(s : NetflowbackpressureCursor) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureCursor::min(self : NetflowbackpressureCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_cursor_max(s : NetflowbackpressureCursor) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureCursor::max(self : NetflowbackpressureCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_cursor_to_string(s : NetflowbackpressureCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureCursor::to_string(self : NetflowbackpressureCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressureView {
@@ -912,45 +912,45 @@ pub fn net_flow_backpressure_view_make(size : Int) -> NetflowbackpressureView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_view_len(s : NetflowbackpressureView) -> Int { s.size }
+pub fn NetflowbackpressureView::len(self : NetflowbackpressureView) -> Int { self.size }
 
-pub fn net_flow_backpressure_view_get(s : NetflowbackpressureView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureView::get(self : NetflowbackpressureView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_view_set(s : NetflowbackpressureView, i : Int, v : Double) -> NetflowbackpressureView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureView::set(self : NetflowbackpressureView, i : Int, v : Double) -> NetflowbackpressureView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_view_sum(s : NetflowbackpressureView) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureView::sum(self : NetflowbackpressureView) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_view_mean(s : NetflowbackpressureView) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureView::mean(self : NetflowbackpressureView) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_view_scale(s : NetflowbackpressureView, f : Double) -> NetflowbackpressureView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureView::scale(self : NetflowbackpressureView, f : Double) -> NetflowbackpressureView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_view_add(a : NetflowbackpressureView, b : NetflowbackpressureView) -> NetflowbackpressureView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureView::add(self : NetflowbackpressureView, other : NetflowbackpressureView) -> NetflowbackpressureView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_view_copy(s : NetflowbackpressureView) -> NetflowbackpressureView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureView::copy(self : NetflowbackpressureView) -> NetflowbackpressureView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_view_fill(s : NetflowbackpressureView, v : Double) -> NetflowbackpressureView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureView::fill(self : NetflowbackpressureView, v : Double) -> NetflowbackpressureView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_view_min(s : NetflowbackpressureView) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureView::min(self : NetflowbackpressureView) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_view_max(s : NetflowbackpressureView) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureView::max(self : NetflowbackpressureView) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_view_to_string(s : NetflowbackpressureView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureView::to_string(self : NetflowbackpressureView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressureRange {
@@ -963,45 +963,45 @@ pub fn net_flow_backpressure_range_make(size : Int) -> NetflowbackpressureRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_range_len(s : NetflowbackpressureRange) -> Int { s.size }
+pub fn NetflowbackpressureRange::len(self : NetflowbackpressureRange) -> Int { self.size }
 
-pub fn net_flow_backpressure_range_get(s : NetflowbackpressureRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureRange::get(self : NetflowbackpressureRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_range_set(s : NetflowbackpressureRange, i : Int, v : Double) -> NetflowbackpressureRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureRange::set(self : NetflowbackpressureRange, i : Int, v : Double) -> NetflowbackpressureRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_range_sum(s : NetflowbackpressureRange) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureRange::sum(self : NetflowbackpressureRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_range_mean(s : NetflowbackpressureRange) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureRange::mean(self : NetflowbackpressureRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_range_scale(s : NetflowbackpressureRange, f : Double) -> NetflowbackpressureRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureRange::scale(self : NetflowbackpressureRange, f : Double) -> NetflowbackpressureRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_range_add(a : NetflowbackpressureRange, b : NetflowbackpressureRange) -> NetflowbackpressureRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureRange::add(self : NetflowbackpressureRange, other : NetflowbackpressureRange) -> NetflowbackpressureRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_range_copy(s : NetflowbackpressureRange) -> NetflowbackpressureRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureRange::copy(self : NetflowbackpressureRange) -> NetflowbackpressureRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_range_fill(s : NetflowbackpressureRange, v : Double) -> NetflowbackpressureRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureRange::fill(self : NetflowbackpressureRange, v : Double) -> NetflowbackpressureRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_range_min(s : NetflowbackpressureRange) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureRange::min(self : NetflowbackpressureRange) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_range_max(s : NetflowbackpressureRange) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureRange::max(self : NetflowbackpressureRange) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_range_to_string(s : NetflowbackpressureRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureRange::to_string(self : NetflowbackpressureRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowbackpressureSlice {
@@ -1014,44 +1014,44 @@ pub fn net_flow_backpressure_slice_make(size : Int) -> NetflowbackpressureSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_backpressure_slice_len(s : NetflowbackpressureSlice) -> Int { s.size }
+pub fn NetflowbackpressureSlice::len(self : NetflowbackpressureSlice) -> Int { self.size }
 
-pub fn net_flow_backpressure_slice_get(s : NetflowbackpressureSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowbackpressureSlice::get(self : NetflowbackpressureSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_backpressure_slice_set(s : NetflowbackpressureSlice, i : Int, v : Double) -> NetflowbackpressureSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowbackpressureSlice::set(self : NetflowbackpressureSlice, i : Int, v : Double) -> NetflowbackpressureSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_slice_sum(s : NetflowbackpressureSlice) -> Double { @_common.sum(s.data) }
+pub fn NetflowbackpressureSlice::sum(self : NetflowbackpressureSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_backpressure_slice_mean(s : NetflowbackpressureSlice) -> Double { @_common.mean(s.data) }
+pub fn NetflowbackpressureSlice::mean(self : NetflowbackpressureSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_backpressure_slice_scale(s : NetflowbackpressureSlice, f : Double) -> NetflowbackpressureSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureSlice::scale(self : NetflowbackpressureSlice, f : Double) -> NetflowbackpressureSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_slice_add(a : NetflowbackpressureSlice, b : NetflowbackpressureSlice) -> NetflowbackpressureSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowbackpressureSlice::add(self : NetflowbackpressureSlice, other : NetflowbackpressureSlice) -> NetflowbackpressureSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_slice_copy(s : NetflowbackpressureSlice) -> NetflowbackpressureSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureSlice::copy(self : NetflowbackpressureSlice) -> NetflowbackpressureSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_slice_fill(s : NetflowbackpressureSlice, v : Double) -> NetflowbackpressureSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowbackpressureSlice::fill(self : NetflowbackpressureSlice, v : Double) -> NetflowbackpressureSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_backpressure_slice_min(s : NetflowbackpressureSlice) -> Double { @_common.min(s.data) }
+pub fn NetflowbackpressureSlice::min(self : NetflowbackpressureSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_backpressure_slice_max(s : NetflowbackpressureSlice) -> Double { @_common.max(s.data) }
+pub fn NetflowbackpressureSlice::max(self : NetflowbackpressureSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_backpressure_slice_to_string(s : NetflowbackpressureSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowbackpressureSlice::to_string(self : NetflowbackpressureSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

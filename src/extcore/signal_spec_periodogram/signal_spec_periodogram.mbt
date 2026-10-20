@@ -351,45 +351,45 @@ pub fn signal_spec_periodogram_frame_make(size : Int) -> SignalspecperiodogramFr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_frame_len(s : SignalspecperiodogramFrame) -> Int { s.size }
+pub fn SignalspecperiodogramFrame::len(self : SignalspecperiodogramFrame) -> Int { self.size }
 
-pub fn signal_spec_periodogram_frame_get(s : SignalspecperiodogramFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramFrame::get(self : SignalspecperiodogramFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_frame_set(s : SignalspecperiodogramFrame, i : Int, v : Double) -> SignalspecperiodogramFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramFrame::set(self : SignalspecperiodogramFrame, i : Int, v : Double) -> SignalspecperiodogramFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_frame_sum(s : SignalspecperiodogramFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramFrame::sum(self : SignalspecperiodogramFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_frame_mean(s : SignalspecperiodogramFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramFrame::mean(self : SignalspecperiodogramFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_frame_scale(s : SignalspecperiodogramFrame, f : Double) -> SignalspecperiodogramFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramFrame::scale(self : SignalspecperiodogramFrame, f : Double) -> SignalspecperiodogramFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_frame_add(a : SignalspecperiodogramFrame, b : SignalspecperiodogramFrame) -> SignalspecperiodogramFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramFrame::add(self : SignalspecperiodogramFrame, other : SignalspecperiodogramFrame) -> SignalspecperiodogramFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_frame_copy(s : SignalspecperiodogramFrame) -> SignalspecperiodogramFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramFrame::copy(self : SignalspecperiodogramFrame) -> SignalspecperiodogramFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_frame_fill(s : SignalspecperiodogramFrame, v : Double) -> SignalspecperiodogramFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramFrame::fill(self : SignalspecperiodogramFrame, v : Double) -> SignalspecperiodogramFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_frame_min(s : SignalspecperiodogramFrame) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramFrame::min(self : SignalspecperiodogramFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_frame_max(s : SignalspecperiodogramFrame) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramFrame::max(self : SignalspecperiodogramFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_frame_to_string(s : SignalspecperiodogramFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramFrame::to_string(self : SignalspecperiodogramFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramTable {
@@ -402,45 +402,45 @@ pub fn signal_spec_periodogram_table_make(size : Int) -> SignalspecperiodogramTa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_table_len(s : SignalspecperiodogramTable) -> Int { s.size }
+pub fn SignalspecperiodogramTable::len(self : SignalspecperiodogramTable) -> Int { self.size }
 
-pub fn signal_spec_periodogram_table_get(s : SignalspecperiodogramTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramTable::get(self : SignalspecperiodogramTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_table_set(s : SignalspecperiodogramTable, i : Int, v : Double) -> SignalspecperiodogramTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramTable::set(self : SignalspecperiodogramTable, i : Int, v : Double) -> SignalspecperiodogramTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_table_sum(s : SignalspecperiodogramTable) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramTable::sum(self : SignalspecperiodogramTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_table_mean(s : SignalspecperiodogramTable) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramTable::mean(self : SignalspecperiodogramTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_table_scale(s : SignalspecperiodogramTable, f : Double) -> SignalspecperiodogramTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramTable::scale(self : SignalspecperiodogramTable, f : Double) -> SignalspecperiodogramTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_table_add(a : SignalspecperiodogramTable, b : SignalspecperiodogramTable) -> SignalspecperiodogramTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramTable::add(self : SignalspecperiodogramTable, other : SignalspecperiodogramTable) -> SignalspecperiodogramTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_table_copy(s : SignalspecperiodogramTable) -> SignalspecperiodogramTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramTable::copy(self : SignalspecperiodogramTable) -> SignalspecperiodogramTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_table_fill(s : SignalspecperiodogramTable, v : Double) -> SignalspecperiodogramTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramTable::fill(self : SignalspecperiodogramTable, v : Double) -> SignalspecperiodogramTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_table_min(s : SignalspecperiodogramTable) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramTable::min(self : SignalspecperiodogramTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_table_max(s : SignalspecperiodogramTable) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramTable::max(self : SignalspecperiodogramTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_table_to_string(s : SignalspecperiodogramTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramTable::to_string(self : SignalspecperiodogramTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramGraphN {
@@ -453,45 +453,45 @@ pub fn signal_spec_periodogram_graphn_make(size : Int) -> SignalspecperiodogramG
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_graphn_len(s : SignalspecperiodogramGraphN) -> Int { s.size }
+pub fn SignalspecperiodogramGraphN::len(self : SignalspecperiodogramGraphN) -> Int { self.size }
 
-pub fn signal_spec_periodogram_graphn_get(s : SignalspecperiodogramGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramGraphN::get(self : SignalspecperiodogramGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_graphn_set(s : SignalspecperiodogramGraphN, i : Int, v : Double) -> SignalspecperiodogramGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramGraphN::set(self : SignalspecperiodogramGraphN, i : Int, v : Double) -> SignalspecperiodogramGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_graphn_sum(s : SignalspecperiodogramGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramGraphN::sum(self : SignalspecperiodogramGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_graphn_mean(s : SignalspecperiodogramGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramGraphN::mean(self : SignalspecperiodogramGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_graphn_scale(s : SignalspecperiodogramGraphN, f : Double) -> SignalspecperiodogramGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramGraphN::scale(self : SignalspecperiodogramGraphN, f : Double) -> SignalspecperiodogramGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_graphn_add(a : SignalspecperiodogramGraphN, b : SignalspecperiodogramGraphN) -> SignalspecperiodogramGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramGraphN::add(self : SignalspecperiodogramGraphN, other : SignalspecperiodogramGraphN) -> SignalspecperiodogramGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_graphn_copy(s : SignalspecperiodogramGraphN) -> SignalspecperiodogramGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramGraphN::copy(self : SignalspecperiodogramGraphN) -> SignalspecperiodogramGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_graphn_fill(s : SignalspecperiodogramGraphN, v : Double) -> SignalspecperiodogramGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramGraphN::fill(self : SignalspecperiodogramGraphN, v : Double) -> SignalspecperiodogramGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_graphn_min(s : SignalspecperiodogramGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramGraphN::min(self : SignalspecperiodogramGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_graphn_max(s : SignalspecperiodogramGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramGraphN::max(self : SignalspecperiodogramGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_graphn_to_string(s : SignalspecperiodogramGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramGraphN::to_string(self : SignalspecperiodogramGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramNode {
@@ -504,45 +504,45 @@ pub fn signal_spec_periodogram_node_make(size : Int) -> SignalspecperiodogramNod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_node_len(s : SignalspecperiodogramNode) -> Int { s.size }
+pub fn SignalspecperiodogramNode::len(self : SignalspecperiodogramNode) -> Int { self.size }
 
-pub fn signal_spec_periodogram_node_get(s : SignalspecperiodogramNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramNode::get(self : SignalspecperiodogramNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_node_set(s : SignalspecperiodogramNode, i : Int, v : Double) -> SignalspecperiodogramNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramNode::set(self : SignalspecperiodogramNode, i : Int, v : Double) -> SignalspecperiodogramNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_node_sum(s : SignalspecperiodogramNode) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramNode::sum(self : SignalspecperiodogramNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_node_mean(s : SignalspecperiodogramNode) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramNode::mean(self : SignalspecperiodogramNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_node_scale(s : SignalspecperiodogramNode, f : Double) -> SignalspecperiodogramNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramNode::scale(self : SignalspecperiodogramNode, f : Double) -> SignalspecperiodogramNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_node_add(a : SignalspecperiodogramNode, b : SignalspecperiodogramNode) -> SignalspecperiodogramNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramNode::add(self : SignalspecperiodogramNode, other : SignalspecperiodogramNode) -> SignalspecperiodogramNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_node_copy(s : SignalspecperiodogramNode) -> SignalspecperiodogramNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramNode::copy(self : SignalspecperiodogramNode) -> SignalspecperiodogramNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_node_fill(s : SignalspecperiodogramNode, v : Double) -> SignalspecperiodogramNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramNode::fill(self : SignalspecperiodogramNode, v : Double) -> SignalspecperiodogramNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_node_min(s : SignalspecperiodogramNode) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramNode::min(self : SignalspecperiodogramNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_node_max(s : SignalspecperiodogramNode) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramNode::max(self : SignalspecperiodogramNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_node_to_string(s : SignalspecperiodogramNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramNode::to_string(self : SignalspecperiodogramNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramEdge {
@@ -555,45 +555,45 @@ pub fn signal_spec_periodogram_edge_make(size : Int) -> SignalspecperiodogramEdg
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_edge_len(s : SignalspecperiodogramEdge) -> Int { s.size }
+pub fn SignalspecperiodogramEdge::len(self : SignalspecperiodogramEdge) -> Int { self.size }
 
-pub fn signal_spec_periodogram_edge_get(s : SignalspecperiodogramEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramEdge::get(self : SignalspecperiodogramEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_edge_set(s : SignalspecperiodogramEdge, i : Int, v : Double) -> SignalspecperiodogramEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramEdge::set(self : SignalspecperiodogramEdge, i : Int, v : Double) -> SignalspecperiodogramEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_edge_sum(s : SignalspecperiodogramEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramEdge::sum(self : SignalspecperiodogramEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_edge_mean(s : SignalspecperiodogramEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramEdge::mean(self : SignalspecperiodogramEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_edge_scale(s : SignalspecperiodogramEdge, f : Double) -> SignalspecperiodogramEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramEdge::scale(self : SignalspecperiodogramEdge, f : Double) -> SignalspecperiodogramEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_edge_add(a : SignalspecperiodogramEdge, b : SignalspecperiodogramEdge) -> SignalspecperiodogramEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramEdge::add(self : SignalspecperiodogramEdge, other : SignalspecperiodogramEdge) -> SignalspecperiodogramEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_edge_copy(s : SignalspecperiodogramEdge) -> SignalspecperiodogramEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramEdge::copy(self : SignalspecperiodogramEdge) -> SignalspecperiodogramEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_edge_fill(s : SignalspecperiodogramEdge, v : Double) -> SignalspecperiodogramEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramEdge::fill(self : SignalspecperiodogramEdge, v : Double) -> SignalspecperiodogramEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_edge_min(s : SignalspecperiodogramEdge) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramEdge::min(self : SignalspecperiodogramEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_edge_max(s : SignalspecperiodogramEdge) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramEdge::max(self : SignalspecperiodogramEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_edge_to_string(s : SignalspecperiodogramEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramEdge::to_string(self : SignalspecperiodogramEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramPath {
@@ -606,45 +606,45 @@ pub fn signal_spec_periodogram_path_make(size : Int) -> SignalspecperiodogramPat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_path_len(s : SignalspecperiodogramPath) -> Int { s.size }
+pub fn SignalspecperiodogramPath::len(self : SignalspecperiodogramPath) -> Int { self.size }
 
-pub fn signal_spec_periodogram_path_get(s : SignalspecperiodogramPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramPath::get(self : SignalspecperiodogramPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_path_set(s : SignalspecperiodogramPath, i : Int, v : Double) -> SignalspecperiodogramPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramPath::set(self : SignalspecperiodogramPath, i : Int, v : Double) -> SignalspecperiodogramPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_path_sum(s : SignalspecperiodogramPath) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramPath::sum(self : SignalspecperiodogramPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_path_mean(s : SignalspecperiodogramPath) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramPath::mean(self : SignalspecperiodogramPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_path_scale(s : SignalspecperiodogramPath, f : Double) -> SignalspecperiodogramPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramPath::scale(self : SignalspecperiodogramPath, f : Double) -> SignalspecperiodogramPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_path_add(a : SignalspecperiodogramPath, b : SignalspecperiodogramPath) -> SignalspecperiodogramPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramPath::add(self : SignalspecperiodogramPath, other : SignalspecperiodogramPath) -> SignalspecperiodogramPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_path_copy(s : SignalspecperiodogramPath) -> SignalspecperiodogramPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramPath::copy(self : SignalspecperiodogramPath) -> SignalspecperiodogramPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_path_fill(s : SignalspecperiodogramPath, v : Double) -> SignalspecperiodogramPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramPath::fill(self : SignalspecperiodogramPath, v : Double) -> SignalspecperiodogramPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_path_min(s : SignalspecperiodogramPath) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramPath::min(self : SignalspecperiodogramPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_path_max(s : SignalspecperiodogramPath) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramPath::max(self : SignalspecperiodogramPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_path_to_string(s : SignalspecperiodogramPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramPath::to_string(self : SignalspecperiodogramPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramCluster {
@@ -657,45 +657,45 @@ pub fn signal_spec_periodogram_cluster_make(size : Int) -> Signalspecperiodogram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_cluster_len(s : SignalspecperiodogramCluster) -> Int { s.size }
+pub fn SignalspecperiodogramCluster::len(self : SignalspecperiodogramCluster) -> Int { self.size }
 
-pub fn signal_spec_periodogram_cluster_get(s : SignalspecperiodogramCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramCluster::get(self : SignalspecperiodogramCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_cluster_set(s : SignalspecperiodogramCluster, i : Int, v : Double) -> SignalspecperiodogramCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramCluster::set(self : SignalspecperiodogramCluster, i : Int, v : Double) -> SignalspecperiodogramCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_cluster_sum(s : SignalspecperiodogramCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramCluster::sum(self : SignalspecperiodogramCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_cluster_mean(s : SignalspecperiodogramCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramCluster::mean(self : SignalspecperiodogramCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_cluster_scale(s : SignalspecperiodogramCluster, f : Double) -> SignalspecperiodogramCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramCluster::scale(self : SignalspecperiodogramCluster, f : Double) -> SignalspecperiodogramCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_cluster_add(a : SignalspecperiodogramCluster, b : SignalspecperiodogramCluster) -> SignalspecperiodogramCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramCluster::add(self : SignalspecperiodogramCluster, other : SignalspecperiodogramCluster) -> SignalspecperiodogramCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_cluster_copy(s : SignalspecperiodogramCluster) -> SignalspecperiodogramCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramCluster::copy(self : SignalspecperiodogramCluster) -> SignalspecperiodogramCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_cluster_fill(s : SignalspecperiodogramCluster, v : Double) -> SignalspecperiodogramCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramCluster::fill(self : SignalspecperiodogramCluster, v : Double) -> SignalspecperiodogramCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_cluster_min(s : SignalspecperiodogramCluster) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramCluster::min(self : SignalspecperiodogramCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_cluster_max(s : SignalspecperiodogramCluster) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramCluster::max(self : SignalspecperiodogramCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_cluster_to_string(s : SignalspecperiodogramCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramCluster::to_string(self : SignalspecperiodogramCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramModel {
@@ -708,45 +708,45 @@ pub fn signal_spec_periodogram_model_make(size : Int) -> SignalspecperiodogramMo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_model_len(s : SignalspecperiodogramModel) -> Int { s.size }
+pub fn SignalspecperiodogramModel::len(self : SignalspecperiodogramModel) -> Int { self.size }
 
-pub fn signal_spec_periodogram_model_get(s : SignalspecperiodogramModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramModel::get(self : SignalspecperiodogramModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_model_set(s : SignalspecperiodogramModel, i : Int, v : Double) -> SignalspecperiodogramModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramModel::set(self : SignalspecperiodogramModel, i : Int, v : Double) -> SignalspecperiodogramModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_model_sum(s : SignalspecperiodogramModel) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramModel::sum(self : SignalspecperiodogramModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_model_mean(s : SignalspecperiodogramModel) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramModel::mean(self : SignalspecperiodogramModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_model_scale(s : SignalspecperiodogramModel, f : Double) -> SignalspecperiodogramModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramModel::scale(self : SignalspecperiodogramModel, f : Double) -> SignalspecperiodogramModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_model_add(a : SignalspecperiodogramModel, b : SignalspecperiodogramModel) -> SignalspecperiodogramModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramModel::add(self : SignalspecperiodogramModel, other : SignalspecperiodogramModel) -> SignalspecperiodogramModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_model_copy(s : SignalspecperiodogramModel) -> SignalspecperiodogramModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramModel::copy(self : SignalspecperiodogramModel) -> SignalspecperiodogramModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_model_fill(s : SignalspecperiodogramModel, v : Double) -> SignalspecperiodogramModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramModel::fill(self : SignalspecperiodogramModel, v : Double) -> SignalspecperiodogramModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_model_min(s : SignalspecperiodogramModel) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramModel::min(self : SignalspecperiodogramModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_model_max(s : SignalspecperiodogramModel) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramModel::max(self : SignalspecperiodogramModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_model_to_string(s : SignalspecperiodogramModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramModel::to_string(self : SignalspecperiodogramModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramLayer {
@@ -759,45 +759,45 @@ pub fn signal_spec_periodogram_layer_make(size : Int) -> SignalspecperiodogramLa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_layer_len(s : SignalspecperiodogramLayer) -> Int { s.size }
+pub fn SignalspecperiodogramLayer::len(self : SignalspecperiodogramLayer) -> Int { self.size }
 
-pub fn signal_spec_periodogram_layer_get(s : SignalspecperiodogramLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramLayer::get(self : SignalspecperiodogramLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_layer_set(s : SignalspecperiodogramLayer, i : Int, v : Double) -> SignalspecperiodogramLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramLayer::set(self : SignalspecperiodogramLayer, i : Int, v : Double) -> SignalspecperiodogramLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_layer_sum(s : SignalspecperiodogramLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramLayer::sum(self : SignalspecperiodogramLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_layer_mean(s : SignalspecperiodogramLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramLayer::mean(self : SignalspecperiodogramLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_layer_scale(s : SignalspecperiodogramLayer, f : Double) -> SignalspecperiodogramLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramLayer::scale(self : SignalspecperiodogramLayer, f : Double) -> SignalspecperiodogramLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_layer_add(a : SignalspecperiodogramLayer, b : SignalspecperiodogramLayer) -> SignalspecperiodogramLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramLayer::add(self : SignalspecperiodogramLayer, other : SignalspecperiodogramLayer) -> SignalspecperiodogramLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_layer_copy(s : SignalspecperiodogramLayer) -> SignalspecperiodogramLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramLayer::copy(self : SignalspecperiodogramLayer) -> SignalspecperiodogramLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_layer_fill(s : SignalspecperiodogramLayer, v : Double) -> SignalspecperiodogramLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramLayer::fill(self : SignalspecperiodogramLayer, v : Double) -> SignalspecperiodogramLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_layer_min(s : SignalspecperiodogramLayer) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramLayer::min(self : SignalspecperiodogramLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_layer_max(s : SignalspecperiodogramLayer) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramLayer::max(self : SignalspecperiodogramLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_layer_to_string(s : SignalspecperiodogramLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramLayer::to_string(self : SignalspecperiodogramLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramBuffer {
@@ -810,45 +810,45 @@ pub fn signal_spec_periodogram_buffer_make(size : Int) -> SignalspecperiodogramB
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_buffer_len(s : SignalspecperiodogramBuffer) -> Int { s.size }
+pub fn SignalspecperiodogramBuffer::len(self : SignalspecperiodogramBuffer) -> Int { self.size }
 
-pub fn signal_spec_periodogram_buffer_get(s : SignalspecperiodogramBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramBuffer::get(self : SignalspecperiodogramBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_buffer_set(s : SignalspecperiodogramBuffer, i : Int, v : Double) -> SignalspecperiodogramBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramBuffer::set(self : SignalspecperiodogramBuffer, i : Int, v : Double) -> SignalspecperiodogramBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_buffer_sum(s : SignalspecperiodogramBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramBuffer::sum(self : SignalspecperiodogramBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_buffer_mean(s : SignalspecperiodogramBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramBuffer::mean(self : SignalspecperiodogramBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_buffer_scale(s : SignalspecperiodogramBuffer, f : Double) -> SignalspecperiodogramBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramBuffer::scale(self : SignalspecperiodogramBuffer, f : Double) -> SignalspecperiodogramBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_buffer_add(a : SignalspecperiodogramBuffer, b : SignalspecperiodogramBuffer) -> SignalspecperiodogramBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramBuffer::add(self : SignalspecperiodogramBuffer, other : SignalspecperiodogramBuffer) -> SignalspecperiodogramBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_buffer_copy(s : SignalspecperiodogramBuffer) -> SignalspecperiodogramBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramBuffer::copy(self : SignalspecperiodogramBuffer) -> SignalspecperiodogramBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_buffer_fill(s : SignalspecperiodogramBuffer, v : Double) -> SignalspecperiodogramBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramBuffer::fill(self : SignalspecperiodogramBuffer, v : Double) -> SignalspecperiodogramBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_buffer_min(s : SignalspecperiodogramBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramBuffer::min(self : SignalspecperiodogramBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_buffer_max(s : SignalspecperiodogramBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramBuffer::max(self : SignalspecperiodogramBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_buffer_to_string(s : SignalspecperiodogramBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramBuffer::to_string(self : SignalspecperiodogramBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramCursor {
@@ -861,45 +861,45 @@ pub fn signal_spec_periodogram_cursor_make(size : Int) -> SignalspecperiodogramC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_cursor_len(s : SignalspecperiodogramCursor) -> Int { s.size }
+pub fn SignalspecperiodogramCursor::len(self : SignalspecperiodogramCursor) -> Int { self.size }
 
-pub fn signal_spec_periodogram_cursor_get(s : SignalspecperiodogramCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramCursor::get(self : SignalspecperiodogramCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_cursor_set(s : SignalspecperiodogramCursor, i : Int, v : Double) -> SignalspecperiodogramCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramCursor::set(self : SignalspecperiodogramCursor, i : Int, v : Double) -> SignalspecperiodogramCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_cursor_sum(s : SignalspecperiodogramCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramCursor::sum(self : SignalspecperiodogramCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_cursor_mean(s : SignalspecperiodogramCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramCursor::mean(self : SignalspecperiodogramCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_cursor_scale(s : SignalspecperiodogramCursor, f : Double) -> SignalspecperiodogramCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramCursor::scale(self : SignalspecperiodogramCursor, f : Double) -> SignalspecperiodogramCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_cursor_add(a : SignalspecperiodogramCursor, b : SignalspecperiodogramCursor) -> SignalspecperiodogramCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramCursor::add(self : SignalspecperiodogramCursor, other : SignalspecperiodogramCursor) -> SignalspecperiodogramCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_cursor_copy(s : SignalspecperiodogramCursor) -> SignalspecperiodogramCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramCursor::copy(self : SignalspecperiodogramCursor) -> SignalspecperiodogramCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_cursor_fill(s : SignalspecperiodogramCursor, v : Double) -> SignalspecperiodogramCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramCursor::fill(self : SignalspecperiodogramCursor, v : Double) -> SignalspecperiodogramCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_cursor_min(s : SignalspecperiodogramCursor) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramCursor::min(self : SignalspecperiodogramCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_cursor_max(s : SignalspecperiodogramCursor) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramCursor::max(self : SignalspecperiodogramCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_cursor_to_string(s : SignalspecperiodogramCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramCursor::to_string(self : SignalspecperiodogramCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramView {
@@ -912,45 +912,45 @@ pub fn signal_spec_periodogram_view_make(size : Int) -> SignalspecperiodogramVie
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_view_len(s : SignalspecperiodogramView) -> Int { s.size }
+pub fn SignalspecperiodogramView::len(self : SignalspecperiodogramView) -> Int { self.size }
 
-pub fn signal_spec_periodogram_view_get(s : SignalspecperiodogramView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramView::get(self : SignalspecperiodogramView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_view_set(s : SignalspecperiodogramView, i : Int, v : Double) -> SignalspecperiodogramView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramView::set(self : SignalspecperiodogramView, i : Int, v : Double) -> SignalspecperiodogramView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_view_sum(s : SignalspecperiodogramView) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramView::sum(self : SignalspecperiodogramView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_view_mean(s : SignalspecperiodogramView) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramView::mean(self : SignalspecperiodogramView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_view_scale(s : SignalspecperiodogramView, f : Double) -> SignalspecperiodogramView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramView::scale(self : SignalspecperiodogramView, f : Double) -> SignalspecperiodogramView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_view_add(a : SignalspecperiodogramView, b : SignalspecperiodogramView) -> SignalspecperiodogramView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramView::add(self : SignalspecperiodogramView, other : SignalspecperiodogramView) -> SignalspecperiodogramView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_view_copy(s : SignalspecperiodogramView) -> SignalspecperiodogramView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramView::copy(self : SignalspecperiodogramView) -> SignalspecperiodogramView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_view_fill(s : SignalspecperiodogramView, v : Double) -> SignalspecperiodogramView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramView::fill(self : SignalspecperiodogramView, v : Double) -> SignalspecperiodogramView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_view_min(s : SignalspecperiodogramView) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramView::min(self : SignalspecperiodogramView) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_view_max(s : SignalspecperiodogramView) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramView::max(self : SignalspecperiodogramView) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_view_to_string(s : SignalspecperiodogramView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramView::to_string(self : SignalspecperiodogramView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramRange {
@@ -963,45 +963,45 @@ pub fn signal_spec_periodogram_range_make(size : Int) -> SignalspecperiodogramRa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_range_len(s : SignalspecperiodogramRange) -> Int { s.size }
+pub fn SignalspecperiodogramRange::len(self : SignalspecperiodogramRange) -> Int { self.size }
 
-pub fn signal_spec_periodogram_range_get(s : SignalspecperiodogramRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramRange::get(self : SignalspecperiodogramRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_range_set(s : SignalspecperiodogramRange, i : Int, v : Double) -> SignalspecperiodogramRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramRange::set(self : SignalspecperiodogramRange, i : Int, v : Double) -> SignalspecperiodogramRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_range_sum(s : SignalspecperiodogramRange) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramRange::sum(self : SignalspecperiodogramRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_range_mean(s : SignalspecperiodogramRange) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramRange::mean(self : SignalspecperiodogramRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_range_scale(s : SignalspecperiodogramRange, f : Double) -> SignalspecperiodogramRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramRange::scale(self : SignalspecperiodogramRange, f : Double) -> SignalspecperiodogramRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_range_add(a : SignalspecperiodogramRange, b : SignalspecperiodogramRange) -> SignalspecperiodogramRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramRange::add(self : SignalspecperiodogramRange, other : SignalspecperiodogramRange) -> SignalspecperiodogramRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_range_copy(s : SignalspecperiodogramRange) -> SignalspecperiodogramRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramRange::copy(self : SignalspecperiodogramRange) -> SignalspecperiodogramRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_range_fill(s : SignalspecperiodogramRange, v : Double) -> SignalspecperiodogramRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramRange::fill(self : SignalspecperiodogramRange, v : Double) -> SignalspecperiodogramRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_range_min(s : SignalspecperiodogramRange) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramRange::min(self : SignalspecperiodogramRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_range_max(s : SignalspecperiodogramRange) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramRange::max(self : SignalspecperiodogramRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_range_to_string(s : SignalspecperiodogramRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramRange::to_string(self : SignalspecperiodogramRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecperiodogramSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_spec_periodogram_slice_make(size : Int) -> SignalspecperiodogramSl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_periodogram_slice_len(s : SignalspecperiodogramSlice) -> Int { s.size }
+pub fn SignalspecperiodogramSlice::len(self : SignalspecperiodogramSlice) -> Int { self.size }
 
-pub fn signal_spec_periodogram_slice_get(s : SignalspecperiodogramSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecperiodogramSlice::get(self : SignalspecperiodogramSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_periodogram_slice_set(s : SignalspecperiodogramSlice, i : Int, v : Double) -> SignalspecperiodogramSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramSlice::set(self : SignalspecperiodogramSlice, i : Int, v : Double) -> SignalspecperiodogramSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_slice_sum(s : SignalspecperiodogramSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalspecperiodogramSlice::sum(self : SignalspecperiodogramSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_periodogram_slice_mean(s : SignalspecperiodogramSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalspecperiodogramSlice::mean(self : SignalspecperiodogramSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_periodogram_slice_scale(s : SignalspecperiodogramSlice, f : Double) -> SignalspecperiodogramSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramSlice::scale(self : SignalspecperiodogramSlice, f : Double) -> SignalspecperiodogramSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_slice_add(a : SignalspecperiodogramSlice, b : SignalspecperiodogramSlice) -> SignalspecperiodogramSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecperiodogramSlice::add(self : SignalspecperiodogramSlice, other : SignalspecperiodogramSlice) -> SignalspecperiodogramSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_slice_copy(s : SignalspecperiodogramSlice) -> SignalspecperiodogramSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramSlice::copy(self : SignalspecperiodogramSlice) -> SignalspecperiodogramSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_slice_fill(s : SignalspecperiodogramSlice, v : Double) -> SignalspecperiodogramSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecperiodogramSlice::fill(self : SignalspecperiodogramSlice, v : Double) -> SignalspecperiodogramSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_periodogram_slice_min(s : SignalspecperiodogramSlice) -> Double { @_common.min(s.data) }
+pub fn SignalspecperiodogramSlice::min(self : SignalspecperiodogramSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_periodogram_slice_max(s : SignalspecperiodogramSlice) -> Double { @_common.max(s.data) }
+pub fn SignalspecperiodogramSlice::max(self : SignalspecperiodogramSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_periodogram_slice_to_string(s : SignalspecperiodogramSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecperiodogramSlice::to_string(self : SignalspecperiodogramSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

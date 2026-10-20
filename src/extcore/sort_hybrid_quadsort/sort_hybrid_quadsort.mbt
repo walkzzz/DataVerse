@@ -351,45 +351,45 @@ pub fn sort_hybrid_quadsort_frame_make(size : Int) -> SorthybridquadsortFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_frame_len(s : SorthybridquadsortFrame) -> Int { s.size }
+pub fn SorthybridquadsortFrame::len(self : SorthybridquadsortFrame) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_frame_get(s : SorthybridquadsortFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortFrame::get(self : SorthybridquadsortFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_frame_set(s : SorthybridquadsortFrame, i : Int, v : Double) -> SorthybridquadsortFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortFrame::set(self : SorthybridquadsortFrame, i : Int, v : Double) -> SorthybridquadsortFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_frame_sum(s : SorthybridquadsortFrame) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortFrame::sum(self : SorthybridquadsortFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_frame_mean(s : SorthybridquadsortFrame) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortFrame::mean(self : SorthybridquadsortFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_frame_scale(s : SorthybridquadsortFrame, f : Double) -> SorthybridquadsortFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortFrame::scale(self : SorthybridquadsortFrame, f : Double) -> SorthybridquadsortFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_frame_add(a : SorthybridquadsortFrame, b : SorthybridquadsortFrame) -> SorthybridquadsortFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortFrame::add(self : SorthybridquadsortFrame, other : SorthybridquadsortFrame) -> SorthybridquadsortFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_frame_copy(s : SorthybridquadsortFrame) -> SorthybridquadsortFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortFrame::copy(self : SorthybridquadsortFrame) -> SorthybridquadsortFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_frame_fill(s : SorthybridquadsortFrame, v : Double) -> SorthybridquadsortFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortFrame::fill(self : SorthybridquadsortFrame, v : Double) -> SorthybridquadsortFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_frame_min(s : SorthybridquadsortFrame) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortFrame::min(self : SorthybridquadsortFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_frame_max(s : SorthybridquadsortFrame) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortFrame::max(self : SorthybridquadsortFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_frame_to_string(s : SorthybridquadsortFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortFrame::to_string(self : SorthybridquadsortFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortTable {
@@ -402,45 +402,45 @@ pub fn sort_hybrid_quadsort_table_make(size : Int) -> SorthybridquadsortTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_table_len(s : SorthybridquadsortTable) -> Int { s.size }
+pub fn SorthybridquadsortTable::len(self : SorthybridquadsortTable) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_table_get(s : SorthybridquadsortTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortTable::get(self : SorthybridquadsortTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_table_set(s : SorthybridquadsortTable, i : Int, v : Double) -> SorthybridquadsortTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortTable::set(self : SorthybridquadsortTable, i : Int, v : Double) -> SorthybridquadsortTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_table_sum(s : SorthybridquadsortTable) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortTable::sum(self : SorthybridquadsortTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_table_mean(s : SorthybridquadsortTable) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortTable::mean(self : SorthybridquadsortTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_table_scale(s : SorthybridquadsortTable, f : Double) -> SorthybridquadsortTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortTable::scale(self : SorthybridquadsortTable, f : Double) -> SorthybridquadsortTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_table_add(a : SorthybridquadsortTable, b : SorthybridquadsortTable) -> SorthybridquadsortTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortTable::add(self : SorthybridquadsortTable, other : SorthybridquadsortTable) -> SorthybridquadsortTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_table_copy(s : SorthybridquadsortTable) -> SorthybridquadsortTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortTable::copy(self : SorthybridquadsortTable) -> SorthybridquadsortTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_table_fill(s : SorthybridquadsortTable, v : Double) -> SorthybridquadsortTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortTable::fill(self : SorthybridquadsortTable, v : Double) -> SorthybridquadsortTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_table_min(s : SorthybridquadsortTable) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortTable::min(self : SorthybridquadsortTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_table_max(s : SorthybridquadsortTable) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortTable::max(self : SorthybridquadsortTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_table_to_string(s : SorthybridquadsortTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortTable::to_string(self : SorthybridquadsortTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortGraphN {
@@ -453,45 +453,45 @@ pub fn sort_hybrid_quadsort_graphn_make(size : Int) -> SorthybridquadsortGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_graphn_len(s : SorthybridquadsortGraphN) -> Int { s.size }
+pub fn SorthybridquadsortGraphN::len(self : SorthybridquadsortGraphN) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_graphn_get(s : SorthybridquadsortGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortGraphN::get(self : SorthybridquadsortGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_graphn_set(s : SorthybridquadsortGraphN, i : Int, v : Double) -> SorthybridquadsortGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortGraphN::set(self : SorthybridquadsortGraphN, i : Int, v : Double) -> SorthybridquadsortGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_graphn_sum(s : SorthybridquadsortGraphN) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortGraphN::sum(self : SorthybridquadsortGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_graphn_mean(s : SorthybridquadsortGraphN) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortGraphN::mean(self : SorthybridquadsortGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_graphn_scale(s : SorthybridquadsortGraphN, f : Double) -> SorthybridquadsortGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortGraphN::scale(self : SorthybridquadsortGraphN, f : Double) -> SorthybridquadsortGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_graphn_add(a : SorthybridquadsortGraphN, b : SorthybridquadsortGraphN) -> SorthybridquadsortGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortGraphN::add(self : SorthybridquadsortGraphN, other : SorthybridquadsortGraphN) -> SorthybridquadsortGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_graphn_copy(s : SorthybridquadsortGraphN) -> SorthybridquadsortGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortGraphN::copy(self : SorthybridquadsortGraphN) -> SorthybridquadsortGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_graphn_fill(s : SorthybridquadsortGraphN, v : Double) -> SorthybridquadsortGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortGraphN::fill(self : SorthybridquadsortGraphN, v : Double) -> SorthybridquadsortGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_graphn_min(s : SorthybridquadsortGraphN) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortGraphN::min(self : SorthybridquadsortGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_graphn_max(s : SorthybridquadsortGraphN) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortGraphN::max(self : SorthybridquadsortGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_graphn_to_string(s : SorthybridquadsortGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortGraphN::to_string(self : SorthybridquadsortGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortNode {
@@ -504,45 +504,45 @@ pub fn sort_hybrid_quadsort_node_make(size : Int) -> SorthybridquadsortNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_node_len(s : SorthybridquadsortNode) -> Int { s.size }
+pub fn SorthybridquadsortNode::len(self : SorthybridquadsortNode) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_node_get(s : SorthybridquadsortNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortNode::get(self : SorthybridquadsortNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_node_set(s : SorthybridquadsortNode, i : Int, v : Double) -> SorthybridquadsortNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortNode::set(self : SorthybridquadsortNode, i : Int, v : Double) -> SorthybridquadsortNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_node_sum(s : SorthybridquadsortNode) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortNode::sum(self : SorthybridquadsortNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_node_mean(s : SorthybridquadsortNode) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortNode::mean(self : SorthybridquadsortNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_node_scale(s : SorthybridquadsortNode, f : Double) -> SorthybridquadsortNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortNode::scale(self : SorthybridquadsortNode, f : Double) -> SorthybridquadsortNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_node_add(a : SorthybridquadsortNode, b : SorthybridquadsortNode) -> SorthybridquadsortNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortNode::add(self : SorthybridquadsortNode, other : SorthybridquadsortNode) -> SorthybridquadsortNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_node_copy(s : SorthybridquadsortNode) -> SorthybridquadsortNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortNode::copy(self : SorthybridquadsortNode) -> SorthybridquadsortNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_node_fill(s : SorthybridquadsortNode, v : Double) -> SorthybridquadsortNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortNode::fill(self : SorthybridquadsortNode, v : Double) -> SorthybridquadsortNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_node_min(s : SorthybridquadsortNode) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortNode::min(self : SorthybridquadsortNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_node_max(s : SorthybridquadsortNode) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortNode::max(self : SorthybridquadsortNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_node_to_string(s : SorthybridquadsortNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortNode::to_string(self : SorthybridquadsortNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortEdge {
@@ -555,45 +555,45 @@ pub fn sort_hybrid_quadsort_edge_make(size : Int) -> SorthybridquadsortEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_edge_len(s : SorthybridquadsortEdge) -> Int { s.size }
+pub fn SorthybridquadsortEdge::len(self : SorthybridquadsortEdge) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_edge_get(s : SorthybridquadsortEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortEdge::get(self : SorthybridquadsortEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_edge_set(s : SorthybridquadsortEdge, i : Int, v : Double) -> SorthybridquadsortEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortEdge::set(self : SorthybridquadsortEdge, i : Int, v : Double) -> SorthybridquadsortEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_edge_sum(s : SorthybridquadsortEdge) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortEdge::sum(self : SorthybridquadsortEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_edge_mean(s : SorthybridquadsortEdge) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortEdge::mean(self : SorthybridquadsortEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_edge_scale(s : SorthybridquadsortEdge, f : Double) -> SorthybridquadsortEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortEdge::scale(self : SorthybridquadsortEdge, f : Double) -> SorthybridquadsortEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_edge_add(a : SorthybridquadsortEdge, b : SorthybridquadsortEdge) -> SorthybridquadsortEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortEdge::add(self : SorthybridquadsortEdge, other : SorthybridquadsortEdge) -> SorthybridquadsortEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_edge_copy(s : SorthybridquadsortEdge) -> SorthybridquadsortEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortEdge::copy(self : SorthybridquadsortEdge) -> SorthybridquadsortEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_edge_fill(s : SorthybridquadsortEdge, v : Double) -> SorthybridquadsortEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortEdge::fill(self : SorthybridquadsortEdge, v : Double) -> SorthybridquadsortEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_edge_min(s : SorthybridquadsortEdge) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortEdge::min(self : SorthybridquadsortEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_edge_max(s : SorthybridquadsortEdge) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortEdge::max(self : SorthybridquadsortEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_edge_to_string(s : SorthybridquadsortEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortEdge::to_string(self : SorthybridquadsortEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortPath {
@@ -606,45 +606,45 @@ pub fn sort_hybrid_quadsort_path_make(size : Int) -> SorthybridquadsortPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_path_len(s : SorthybridquadsortPath) -> Int { s.size }
+pub fn SorthybridquadsortPath::len(self : SorthybridquadsortPath) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_path_get(s : SorthybridquadsortPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortPath::get(self : SorthybridquadsortPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_path_set(s : SorthybridquadsortPath, i : Int, v : Double) -> SorthybridquadsortPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortPath::set(self : SorthybridquadsortPath, i : Int, v : Double) -> SorthybridquadsortPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_path_sum(s : SorthybridquadsortPath) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortPath::sum(self : SorthybridquadsortPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_path_mean(s : SorthybridquadsortPath) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortPath::mean(self : SorthybridquadsortPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_path_scale(s : SorthybridquadsortPath, f : Double) -> SorthybridquadsortPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortPath::scale(self : SorthybridquadsortPath, f : Double) -> SorthybridquadsortPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_path_add(a : SorthybridquadsortPath, b : SorthybridquadsortPath) -> SorthybridquadsortPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortPath::add(self : SorthybridquadsortPath, other : SorthybridquadsortPath) -> SorthybridquadsortPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_path_copy(s : SorthybridquadsortPath) -> SorthybridquadsortPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortPath::copy(self : SorthybridquadsortPath) -> SorthybridquadsortPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_path_fill(s : SorthybridquadsortPath, v : Double) -> SorthybridquadsortPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortPath::fill(self : SorthybridquadsortPath, v : Double) -> SorthybridquadsortPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_path_min(s : SorthybridquadsortPath) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortPath::min(self : SorthybridquadsortPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_path_max(s : SorthybridquadsortPath) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortPath::max(self : SorthybridquadsortPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_path_to_string(s : SorthybridquadsortPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortPath::to_string(self : SorthybridquadsortPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortCluster {
@@ -657,45 +657,45 @@ pub fn sort_hybrid_quadsort_cluster_make(size : Int) -> SorthybridquadsortCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_cluster_len(s : SorthybridquadsortCluster) -> Int { s.size }
+pub fn SorthybridquadsortCluster::len(self : SorthybridquadsortCluster) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_cluster_get(s : SorthybridquadsortCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortCluster::get(self : SorthybridquadsortCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_cluster_set(s : SorthybridquadsortCluster, i : Int, v : Double) -> SorthybridquadsortCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortCluster::set(self : SorthybridquadsortCluster, i : Int, v : Double) -> SorthybridquadsortCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_cluster_sum(s : SorthybridquadsortCluster) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortCluster::sum(self : SorthybridquadsortCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_cluster_mean(s : SorthybridquadsortCluster) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortCluster::mean(self : SorthybridquadsortCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_cluster_scale(s : SorthybridquadsortCluster, f : Double) -> SorthybridquadsortCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortCluster::scale(self : SorthybridquadsortCluster, f : Double) -> SorthybridquadsortCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_cluster_add(a : SorthybridquadsortCluster, b : SorthybridquadsortCluster) -> SorthybridquadsortCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortCluster::add(self : SorthybridquadsortCluster, other : SorthybridquadsortCluster) -> SorthybridquadsortCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_cluster_copy(s : SorthybridquadsortCluster) -> SorthybridquadsortCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortCluster::copy(self : SorthybridquadsortCluster) -> SorthybridquadsortCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_cluster_fill(s : SorthybridquadsortCluster, v : Double) -> SorthybridquadsortCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortCluster::fill(self : SorthybridquadsortCluster, v : Double) -> SorthybridquadsortCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_cluster_min(s : SorthybridquadsortCluster) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortCluster::min(self : SorthybridquadsortCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_cluster_max(s : SorthybridquadsortCluster) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortCluster::max(self : SorthybridquadsortCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_cluster_to_string(s : SorthybridquadsortCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortCluster::to_string(self : SorthybridquadsortCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortModel {
@@ -708,45 +708,45 @@ pub fn sort_hybrid_quadsort_model_make(size : Int) -> SorthybridquadsortModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_model_len(s : SorthybridquadsortModel) -> Int { s.size }
+pub fn SorthybridquadsortModel::len(self : SorthybridquadsortModel) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_model_get(s : SorthybridquadsortModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortModel::get(self : SorthybridquadsortModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_model_set(s : SorthybridquadsortModel, i : Int, v : Double) -> SorthybridquadsortModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortModel::set(self : SorthybridquadsortModel, i : Int, v : Double) -> SorthybridquadsortModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_model_sum(s : SorthybridquadsortModel) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortModel::sum(self : SorthybridquadsortModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_model_mean(s : SorthybridquadsortModel) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortModel::mean(self : SorthybridquadsortModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_model_scale(s : SorthybridquadsortModel, f : Double) -> SorthybridquadsortModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortModel::scale(self : SorthybridquadsortModel, f : Double) -> SorthybridquadsortModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_model_add(a : SorthybridquadsortModel, b : SorthybridquadsortModel) -> SorthybridquadsortModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortModel::add(self : SorthybridquadsortModel, other : SorthybridquadsortModel) -> SorthybridquadsortModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_model_copy(s : SorthybridquadsortModel) -> SorthybridquadsortModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortModel::copy(self : SorthybridquadsortModel) -> SorthybridquadsortModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_model_fill(s : SorthybridquadsortModel, v : Double) -> SorthybridquadsortModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortModel::fill(self : SorthybridquadsortModel, v : Double) -> SorthybridquadsortModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_model_min(s : SorthybridquadsortModel) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortModel::min(self : SorthybridquadsortModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_model_max(s : SorthybridquadsortModel) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortModel::max(self : SorthybridquadsortModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_model_to_string(s : SorthybridquadsortModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortModel::to_string(self : SorthybridquadsortModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortLayer {
@@ -759,45 +759,45 @@ pub fn sort_hybrid_quadsort_layer_make(size : Int) -> SorthybridquadsortLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_layer_len(s : SorthybridquadsortLayer) -> Int { s.size }
+pub fn SorthybridquadsortLayer::len(self : SorthybridquadsortLayer) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_layer_get(s : SorthybridquadsortLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortLayer::get(self : SorthybridquadsortLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_layer_set(s : SorthybridquadsortLayer, i : Int, v : Double) -> SorthybridquadsortLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortLayer::set(self : SorthybridquadsortLayer, i : Int, v : Double) -> SorthybridquadsortLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_layer_sum(s : SorthybridquadsortLayer) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortLayer::sum(self : SorthybridquadsortLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_layer_mean(s : SorthybridquadsortLayer) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortLayer::mean(self : SorthybridquadsortLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_layer_scale(s : SorthybridquadsortLayer, f : Double) -> SorthybridquadsortLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortLayer::scale(self : SorthybridquadsortLayer, f : Double) -> SorthybridquadsortLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_layer_add(a : SorthybridquadsortLayer, b : SorthybridquadsortLayer) -> SorthybridquadsortLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortLayer::add(self : SorthybridquadsortLayer, other : SorthybridquadsortLayer) -> SorthybridquadsortLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_layer_copy(s : SorthybridquadsortLayer) -> SorthybridquadsortLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortLayer::copy(self : SorthybridquadsortLayer) -> SorthybridquadsortLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_layer_fill(s : SorthybridquadsortLayer, v : Double) -> SorthybridquadsortLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortLayer::fill(self : SorthybridquadsortLayer, v : Double) -> SorthybridquadsortLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_layer_min(s : SorthybridquadsortLayer) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortLayer::min(self : SorthybridquadsortLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_layer_max(s : SorthybridquadsortLayer) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortLayer::max(self : SorthybridquadsortLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_layer_to_string(s : SorthybridquadsortLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortLayer::to_string(self : SorthybridquadsortLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortBuffer {
@@ -810,45 +810,45 @@ pub fn sort_hybrid_quadsort_buffer_make(size : Int) -> SorthybridquadsortBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_buffer_len(s : SorthybridquadsortBuffer) -> Int { s.size }
+pub fn SorthybridquadsortBuffer::len(self : SorthybridquadsortBuffer) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_buffer_get(s : SorthybridquadsortBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortBuffer::get(self : SorthybridquadsortBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_buffer_set(s : SorthybridquadsortBuffer, i : Int, v : Double) -> SorthybridquadsortBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortBuffer::set(self : SorthybridquadsortBuffer, i : Int, v : Double) -> SorthybridquadsortBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_buffer_sum(s : SorthybridquadsortBuffer) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortBuffer::sum(self : SorthybridquadsortBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_buffer_mean(s : SorthybridquadsortBuffer) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortBuffer::mean(self : SorthybridquadsortBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_buffer_scale(s : SorthybridquadsortBuffer, f : Double) -> SorthybridquadsortBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortBuffer::scale(self : SorthybridquadsortBuffer, f : Double) -> SorthybridquadsortBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_buffer_add(a : SorthybridquadsortBuffer, b : SorthybridquadsortBuffer) -> SorthybridquadsortBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortBuffer::add(self : SorthybridquadsortBuffer, other : SorthybridquadsortBuffer) -> SorthybridquadsortBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_buffer_copy(s : SorthybridquadsortBuffer) -> SorthybridquadsortBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortBuffer::copy(self : SorthybridquadsortBuffer) -> SorthybridquadsortBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_buffer_fill(s : SorthybridquadsortBuffer, v : Double) -> SorthybridquadsortBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortBuffer::fill(self : SorthybridquadsortBuffer, v : Double) -> SorthybridquadsortBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_buffer_min(s : SorthybridquadsortBuffer) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortBuffer::min(self : SorthybridquadsortBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_buffer_max(s : SorthybridquadsortBuffer) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortBuffer::max(self : SorthybridquadsortBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_buffer_to_string(s : SorthybridquadsortBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortBuffer::to_string(self : SorthybridquadsortBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortCursor {
@@ -861,45 +861,45 @@ pub fn sort_hybrid_quadsort_cursor_make(size : Int) -> SorthybridquadsortCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_cursor_len(s : SorthybridquadsortCursor) -> Int { s.size }
+pub fn SorthybridquadsortCursor::len(self : SorthybridquadsortCursor) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_cursor_get(s : SorthybridquadsortCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortCursor::get(self : SorthybridquadsortCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_cursor_set(s : SorthybridquadsortCursor, i : Int, v : Double) -> SorthybridquadsortCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortCursor::set(self : SorthybridquadsortCursor, i : Int, v : Double) -> SorthybridquadsortCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_cursor_sum(s : SorthybridquadsortCursor) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortCursor::sum(self : SorthybridquadsortCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_cursor_mean(s : SorthybridquadsortCursor) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortCursor::mean(self : SorthybridquadsortCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_cursor_scale(s : SorthybridquadsortCursor, f : Double) -> SorthybridquadsortCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortCursor::scale(self : SorthybridquadsortCursor, f : Double) -> SorthybridquadsortCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_cursor_add(a : SorthybridquadsortCursor, b : SorthybridquadsortCursor) -> SorthybridquadsortCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortCursor::add(self : SorthybridquadsortCursor, other : SorthybridquadsortCursor) -> SorthybridquadsortCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_cursor_copy(s : SorthybridquadsortCursor) -> SorthybridquadsortCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortCursor::copy(self : SorthybridquadsortCursor) -> SorthybridquadsortCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_cursor_fill(s : SorthybridquadsortCursor, v : Double) -> SorthybridquadsortCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortCursor::fill(self : SorthybridquadsortCursor, v : Double) -> SorthybridquadsortCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_cursor_min(s : SorthybridquadsortCursor) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortCursor::min(self : SorthybridquadsortCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_cursor_max(s : SorthybridquadsortCursor) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortCursor::max(self : SorthybridquadsortCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_cursor_to_string(s : SorthybridquadsortCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortCursor::to_string(self : SorthybridquadsortCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortView {
@@ -912,45 +912,45 @@ pub fn sort_hybrid_quadsort_view_make(size : Int) -> SorthybridquadsortView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_view_len(s : SorthybridquadsortView) -> Int { s.size }
+pub fn SorthybridquadsortView::len(self : SorthybridquadsortView) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_view_get(s : SorthybridquadsortView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortView::get(self : SorthybridquadsortView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_view_set(s : SorthybridquadsortView, i : Int, v : Double) -> SorthybridquadsortView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortView::set(self : SorthybridquadsortView, i : Int, v : Double) -> SorthybridquadsortView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_view_sum(s : SorthybridquadsortView) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortView::sum(self : SorthybridquadsortView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_view_mean(s : SorthybridquadsortView) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortView::mean(self : SorthybridquadsortView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_view_scale(s : SorthybridquadsortView, f : Double) -> SorthybridquadsortView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortView::scale(self : SorthybridquadsortView, f : Double) -> SorthybridquadsortView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_view_add(a : SorthybridquadsortView, b : SorthybridquadsortView) -> SorthybridquadsortView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortView::add(self : SorthybridquadsortView, other : SorthybridquadsortView) -> SorthybridquadsortView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_view_copy(s : SorthybridquadsortView) -> SorthybridquadsortView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortView::copy(self : SorthybridquadsortView) -> SorthybridquadsortView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_view_fill(s : SorthybridquadsortView, v : Double) -> SorthybridquadsortView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortView::fill(self : SorthybridquadsortView, v : Double) -> SorthybridquadsortView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_view_min(s : SorthybridquadsortView) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortView::min(self : SorthybridquadsortView) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_view_max(s : SorthybridquadsortView) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortView::max(self : SorthybridquadsortView) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_view_to_string(s : SorthybridquadsortView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortView::to_string(self : SorthybridquadsortView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortRange {
@@ -963,45 +963,45 @@ pub fn sort_hybrid_quadsort_range_make(size : Int) -> SorthybridquadsortRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_range_len(s : SorthybridquadsortRange) -> Int { s.size }
+pub fn SorthybridquadsortRange::len(self : SorthybridquadsortRange) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_range_get(s : SorthybridquadsortRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortRange::get(self : SorthybridquadsortRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_range_set(s : SorthybridquadsortRange, i : Int, v : Double) -> SorthybridquadsortRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortRange::set(self : SorthybridquadsortRange, i : Int, v : Double) -> SorthybridquadsortRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_range_sum(s : SorthybridquadsortRange) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortRange::sum(self : SorthybridquadsortRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_range_mean(s : SorthybridquadsortRange) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortRange::mean(self : SorthybridquadsortRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_range_scale(s : SorthybridquadsortRange, f : Double) -> SorthybridquadsortRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortRange::scale(self : SorthybridquadsortRange, f : Double) -> SorthybridquadsortRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_range_add(a : SorthybridquadsortRange, b : SorthybridquadsortRange) -> SorthybridquadsortRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortRange::add(self : SorthybridquadsortRange, other : SorthybridquadsortRange) -> SorthybridquadsortRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_range_copy(s : SorthybridquadsortRange) -> SorthybridquadsortRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortRange::copy(self : SorthybridquadsortRange) -> SorthybridquadsortRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_range_fill(s : SorthybridquadsortRange, v : Double) -> SorthybridquadsortRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortRange::fill(self : SorthybridquadsortRange, v : Double) -> SorthybridquadsortRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_range_min(s : SorthybridquadsortRange) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortRange::min(self : SorthybridquadsortRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_range_max(s : SorthybridquadsortRange) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortRange::max(self : SorthybridquadsortRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_range_to_string(s : SorthybridquadsortRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortRange::to_string(self : SorthybridquadsortRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridquadsortSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_hybrid_quadsort_slice_make(size : Int) -> SorthybridquadsortSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_quadsort_slice_len(s : SorthybridquadsortSlice) -> Int { s.size }
+pub fn SorthybridquadsortSlice::len(self : SorthybridquadsortSlice) -> Int { self.size }
 
-pub fn sort_hybrid_quadsort_slice_get(s : SorthybridquadsortSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridquadsortSlice::get(self : SorthybridquadsortSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_quadsort_slice_set(s : SorthybridquadsortSlice, i : Int, v : Double) -> SorthybridquadsortSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridquadsortSlice::set(self : SorthybridquadsortSlice, i : Int, v : Double) -> SorthybridquadsortSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_slice_sum(s : SorthybridquadsortSlice) -> Double { @_common.sum(s.data) }
+pub fn SorthybridquadsortSlice::sum(self : SorthybridquadsortSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_quadsort_slice_mean(s : SorthybridquadsortSlice) -> Double { @_common.mean(s.data) }
+pub fn SorthybridquadsortSlice::mean(self : SorthybridquadsortSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_quadsort_slice_scale(s : SorthybridquadsortSlice, f : Double) -> SorthybridquadsortSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortSlice::scale(self : SorthybridquadsortSlice, f : Double) -> SorthybridquadsortSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_slice_add(a : SorthybridquadsortSlice, b : SorthybridquadsortSlice) -> SorthybridquadsortSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridquadsortSlice::add(self : SorthybridquadsortSlice, other : SorthybridquadsortSlice) -> SorthybridquadsortSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_slice_copy(s : SorthybridquadsortSlice) -> SorthybridquadsortSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortSlice::copy(self : SorthybridquadsortSlice) -> SorthybridquadsortSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_slice_fill(s : SorthybridquadsortSlice, v : Double) -> SorthybridquadsortSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridquadsortSlice::fill(self : SorthybridquadsortSlice, v : Double) -> SorthybridquadsortSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_quadsort_slice_min(s : SorthybridquadsortSlice) -> Double { @_common.min(s.data) }
+pub fn SorthybridquadsortSlice::min(self : SorthybridquadsortSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_quadsort_slice_max(s : SorthybridquadsortSlice) -> Double { @_common.max(s.data) }
+pub fn SorthybridquadsortSlice::max(self : SorthybridquadsortSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_quadsort_slice_to_string(s : SorthybridquadsortSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridquadsortSlice::to_string(self : SorthybridquadsortSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

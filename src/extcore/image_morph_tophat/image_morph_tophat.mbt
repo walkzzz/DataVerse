@@ -351,45 +351,45 @@ pub fn image_morph_tophat_frame_make(size : Int) -> ImagemorphtophatFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_frame_len(s : ImagemorphtophatFrame) -> Int { s.size }
+pub fn ImagemorphtophatFrame::len(self : ImagemorphtophatFrame) -> Int { self.size }
 
-pub fn image_morph_tophat_frame_get(s : ImagemorphtophatFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatFrame::get(self : ImagemorphtophatFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_frame_set(s : ImagemorphtophatFrame, i : Int, v : Double) -> ImagemorphtophatFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatFrame::set(self : ImagemorphtophatFrame, i : Int, v : Double) -> ImagemorphtophatFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_frame_sum(s : ImagemorphtophatFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatFrame::sum(self : ImagemorphtophatFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_frame_mean(s : ImagemorphtophatFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatFrame::mean(self : ImagemorphtophatFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_frame_scale(s : ImagemorphtophatFrame, f : Double) -> ImagemorphtophatFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatFrame::scale(self : ImagemorphtophatFrame, f : Double) -> ImagemorphtophatFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_frame_add(a : ImagemorphtophatFrame, b : ImagemorphtophatFrame) -> ImagemorphtophatFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatFrame::add(self : ImagemorphtophatFrame, other : ImagemorphtophatFrame) -> ImagemorphtophatFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_frame_copy(s : ImagemorphtophatFrame) -> ImagemorphtophatFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatFrame::copy(self : ImagemorphtophatFrame) -> ImagemorphtophatFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_frame_fill(s : ImagemorphtophatFrame, v : Double) -> ImagemorphtophatFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatFrame::fill(self : ImagemorphtophatFrame, v : Double) -> ImagemorphtophatFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_frame_min(s : ImagemorphtophatFrame) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatFrame::min(self : ImagemorphtophatFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_frame_max(s : ImagemorphtophatFrame) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatFrame::max(self : ImagemorphtophatFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_frame_to_string(s : ImagemorphtophatFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatFrame::to_string(self : ImagemorphtophatFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatTable {
@@ -402,45 +402,45 @@ pub fn image_morph_tophat_table_make(size : Int) -> ImagemorphtophatTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_table_len(s : ImagemorphtophatTable) -> Int { s.size }
+pub fn ImagemorphtophatTable::len(self : ImagemorphtophatTable) -> Int { self.size }
 
-pub fn image_morph_tophat_table_get(s : ImagemorphtophatTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatTable::get(self : ImagemorphtophatTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_table_set(s : ImagemorphtophatTable, i : Int, v : Double) -> ImagemorphtophatTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatTable::set(self : ImagemorphtophatTable, i : Int, v : Double) -> ImagemorphtophatTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_table_sum(s : ImagemorphtophatTable) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatTable::sum(self : ImagemorphtophatTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_table_mean(s : ImagemorphtophatTable) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatTable::mean(self : ImagemorphtophatTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_table_scale(s : ImagemorphtophatTable, f : Double) -> ImagemorphtophatTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatTable::scale(self : ImagemorphtophatTable, f : Double) -> ImagemorphtophatTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_table_add(a : ImagemorphtophatTable, b : ImagemorphtophatTable) -> ImagemorphtophatTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatTable::add(self : ImagemorphtophatTable, other : ImagemorphtophatTable) -> ImagemorphtophatTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_table_copy(s : ImagemorphtophatTable) -> ImagemorphtophatTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatTable::copy(self : ImagemorphtophatTable) -> ImagemorphtophatTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_table_fill(s : ImagemorphtophatTable, v : Double) -> ImagemorphtophatTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatTable::fill(self : ImagemorphtophatTable, v : Double) -> ImagemorphtophatTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_table_min(s : ImagemorphtophatTable) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatTable::min(self : ImagemorphtophatTable) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_table_max(s : ImagemorphtophatTable) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatTable::max(self : ImagemorphtophatTable) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_table_to_string(s : ImagemorphtophatTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatTable::to_string(self : ImagemorphtophatTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatGraphN {
@@ -453,45 +453,45 @@ pub fn image_morph_tophat_graphn_make(size : Int) -> ImagemorphtophatGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_graphn_len(s : ImagemorphtophatGraphN) -> Int { s.size }
+pub fn ImagemorphtophatGraphN::len(self : ImagemorphtophatGraphN) -> Int { self.size }
 
-pub fn image_morph_tophat_graphn_get(s : ImagemorphtophatGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatGraphN::get(self : ImagemorphtophatGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_graphn_set(s : ImagemorphtophatGraphN, i : Int, v : Double) -> ImagemorphtophatGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatGraphN::set(self : ImagemorphtophatGraphN, i : Int, v : Double) -> ImagemorphtophatGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_graphn_sum(s : ImagemorphtophatGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatGraphN::sum(self : ImagemorphtophatGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_graphn_mean(s : ImagemorphtophatGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatGraphN::mean(self : ImagemorphtophatGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_graphn_scale(s : ImagemorphtophatGraphN, f : Double) -> ImagemorphtophatGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatGraphN::scale(self : ImagemorphtophatGraphN, f : Double) -> ImagemorphtophatGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_graphn_add(a : ImagemorphtophatGraphN, b : ImagemorphtophatGraphN) -> ImagemorphtophatGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatGraphN::add(self : ImagemorphtophatGraphN, other : ImagemorphtophatGraphN) -> ImagemorphtophatGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_graphn_copy(s : ImagemorphtophatGraphN) -> ImagemorphtophatGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatGraphN::copy(self : ImagemorphtophatGraphN) -> ImagemorphtophatGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_graphn_fill(s : ImagemorphtophatGraphN, v : Double) -> ImagemorphtophatGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatGraphN::fill(self : ImagemorphtophatGraphN, v : Double) -> ImagemorphtophatGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_graphn_min(s : ImagemorphtophatGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatGraphN::min(self : ImagemorphtophatGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_graphn_max(s : ImagemorphtophatGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatGraphN::max(self : ImagemorphtophatGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_graphn_to_string(s : ImagemorphtophatGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatGraphN::to_string(self : ImagemorphtophatGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatNode {
@@ -504,45 +504,45 @@ pub fn image_morph_tophat_node_make(size : Int) -> ImagemorphtophatNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_node_len(s : ImagemorphtophatNode) -> Int { s.size }
+pub fn ImagemorphtophatNode::len(self : ImagemorphtophatNode) -> Int { self.size }
 
-pub fn image_morph_tophat_node_get(s : ImagemorphtophatNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatNode::get(self : ImagemorphtophatNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_node_set(s : ImagemorphtophatNode, i : Int, v : Double) -> ImagemorphtophatNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatNode::set(self : ImagemorphtophatNode, i : Int, v : Double) -> ImagemorphtophatNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_node_sum(s : ImagemorphtophatNode) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatNode::sum(self : ImagemorphtophatNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_node_mean(s : ImagemorphtophatNode) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatNode::mean(self : ImagemorphtophatNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_node_scale(s : ImagemorphtophatNode, f : Double) -> ImagemorphtophatNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatNode::scale(self : ImagemorphtophatNode, f : Double) -> ImagemorphtophatNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_node_add(a : ImagemorphtophatNode, b : ImagemorphtophatNode) -> ImagemorphtophatNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatNode::add(self : ImagemorphtophatNode, other : ImagemorphtophatNode) -> ImagemorphtophatNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_node_copy(s : ImagemorphtophatNode) -> ImagemorphtophatNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatNode::copy(self : ImagemorphtophatNode) -> ImagemorphtophatNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_node_fill(s : ImagemorphtophatNode, v : Double) -> ImagemorphtophatNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatNode::fill(self : ImagemorphtophatNode, v : Double) -> ImagemorphtophatNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_node_min(s : ImagemorphtophatNode) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatNode::min(self : ImagemorphtophatNode) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_node_max(s : ImagemorphtophatNode) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatNode::max(self : ImagemorphtophatNode) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_node_to_string(s : ImagemorphtophatNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatNode::to_string(self : ImagemorphtophatNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatEdge {
@@ -555,45 +555,45 @@ pub fn image_morph_tophat_edge_make(size : Int) -> ImagemorphtophatEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_edge_len(s : ImagemorphtophatEdge) -> Int { s.size }
+pub fn ImagemorphtophatEdge::len(self : ImagemorphtophatEdge) -> Int { self.size }
 
-pub fn image_morph_tophat_edge_get(s : ImagemorphtophatEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatEdge::get(self : ImagemorphtophatEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_edge_set(s : ImagemorphtophatEdge, i : Int, v : Double) -> ImagemorphtophatEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatEdge::set(self : ImagemorphtophatEdge, i : Int, v : Double) -> ImagemorphtophatEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_edge_sum(s : ImagemorphtophatEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatEdge::sum(self : ImagemorphtophatEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_edge_mean(s : ImagemorphtophatEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatEdge::mean(self : ImagemorphtophatEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_edge_scale(s : ImagemorphtophatEdge, f : Double) -> ImagemorphtophatEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatEdge::scale(self : ImagemorphtophatEdge, f : Double) -> ImagemorphtophatEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_edge_add(a : ImagemorphtophatEdge, b : ImagemorphtophatEdge) -> ImagemorphtophatEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatEdge::add(self : ImagemorphtophatEdge, other : ImagemorphtophatEdge) -> ImagemorphtophatEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_edge_copy(s : ImagemorphtophatEdge) -> ImagemorphtophatEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatEdge::copy(self : ImagemorphtophatEdge) -> ImagemorphtophatEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_edge_fill(s : ImagemorphtophatEdge, v : Double) -> ImagemorphtophatEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatEdge::fill(self : ImagemorphtophatEdge, v : Double) -> ImagemorphtophatEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_edge_min(s : ImagemorphtophatEdge) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatEdge::min(self : ImagemorphtophatEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_edge_max(s : ImagemorphtophatEdge) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatEdge::max(self : ImagemorphtophatEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_edge_to_string(s : ImagemorphtophatEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatEdge::to_string(self : ImagemorphtophatEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatPath {
@@ -606,45 +606,45 @@ pub fn image_morph_tophat_path_make(size : Int) -> ImagemorphtophatPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_path_len(s : ImagemorphtophatPath) -> Int { s.size }
+pub fn ImagemorphtophatPath::len(self : ImagemorphtophatPath) -> Int { self.size }
 
-pub fn image_morph_tophat_path_get(s : ImagemorphtophatPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatPath::get(self : ImagemorphtophatPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_path_set(s : ImagemorphtophatPath, i : Int, v : Double) -> ImagemorphtophatPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatPath::set(self : ImagemorphtophatPath, i : Int, v : Double) -> ImagemorphtophatPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_path_sum(s : ImagemorphtophatPath) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatPath::sum(self : ImagemorphtophatPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_path_mean(s : ImagemorphtophatPath) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatPath::mean(self : ImagemorphtophatPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_path_scale(s : ImagemorphtophatPath, f : Double) -> ImagemorphtophatPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatPath::scale(self : ImagemorphtophatPath, f : Double) -> ImagemorphtophatPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_path_add(a : ImagemorphtophatPath, b : ImagemorphtophatPath) -> ImagemorphtophatPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatPath::add(self : ImagemorphtophatPath, other : ImagemorphtophatPath) -> ImagemorphtophatPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_path_copy(s : ImagemorphtophatPath) -> ImagemorphtophatPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatPath::copy(self : ImagemorphtophatPath) -> ImagemorphtophatPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_path_fill(s : ImagemorphtophatPath, v : Double) -> ImagemorphtophatPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatPath::fill(self : ImagemorphtophatPath, v : Double) -> ImagemorphtophatPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_path_min(s : ImagemorphtophatPath) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatPath::min(self : ImagemorphtophatPath) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_path_max(s : ImagemorphtophatPath) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatPath::max(self : ImagemorphtophatPath) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_path_to_string(s : ImagemorphtophatPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatPath::to_string(self : ImagemorphtophatPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatCluster {
@@ -657,45 +657,45 @@ pub fn image_morph_tophat_cluster_make(size : Int) -> ImagemorphtophatCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_cluster_len(s : ImagemorphtophatCluster) -> Int { s.size }
+pub fn ImagemorphtophatCluster::len(self : ImagemorphtophatCluster) -> Int { self.size }
 
-pub fn image_morph_tophat_cluster_get(s : ImagemorphtophatCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatCluster::get(self : ImagemorphtophatCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_cluster_set(s : ImagemorphtophatCluster, i : Int, v : Double) -> ImagemorphtophatCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatCluster::set(self : ImagemorphtophatCluster, i : Int, v : Double) -> ImagemorphtophatCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_cluster_sum(s : ImagemorphtophatCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatCluster::sum(self : ImagemorphtophatCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_cluster_mean(s : ImagemorphtophatCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatCluster::mean(self : ImagemorphtophatCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_cluster_scale(s : ImagemorphtophatCluster, f : Double) -> ImagemorphtophatCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatCluster::scale(self : ImagemorphtophatCluster, f : Double) -> ImagemorphtophatCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_cluster_add(a : ImagemorphtophatCluster, b : ImagemorphtophatCluster) -> ImagemorphtophatCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatCluster::add(self : ImagemorphtophatCluster, other : ImagemorphtophatCluster) -> ImagemorphtophatCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_cluster_copy(s : ImagemorphtophatCluster) -> ImagemorphtophatCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatCluster::copy(self : ImagemorphtophatCluster) -> ImagemorphtophatCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_cluster_fill(s : ImagemorphtophatCluster, v : Double) -> ImagemorphtophatCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatCluster::fill(self : ImagemorphtophatCluster, v : Double) -> ImagemorphtophatCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_cluster_min(s : ImagemorphtophatCluster) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatCluster::min(self : ImagemorphtophatCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_cluster_max(s : ImagemorphtophatCluster) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatCluster::max(self : ImagemorphtophatCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_cluster_to_string(s : ImagemorphtophatCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatCluster::to_string(self : ImagemorphtophatCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatModel {
@@ -708,45 +708,45 @@ pub fn image_morph_tophat_model_make(size : Int) -> ImagemorphtophatModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_model_len(s : ImagemorphtophatModel) -> Int { s.size }
+pub fn ImagemorphtophatModel::len(self : ImagemorphtophatModel) -> Int { self.size }
 
-pub fn image_morph_tophat_model_get(s : ImagemorphtophatModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatModel::get(self : ImagemorphtophatModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_model_set(s : ImagemorphtophatModel, i : Int, v : Double) -> ImagemorphtophatModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatModel::set(self : ImagemorphtophatModel, i : Int, v : Double) -> ImagemorphtophatModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_model_sum(s : ImagemorphtophatModel) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatModel::sum(self : ImagemorphtophatModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_model_mean(s : ImagemorphtophatModel) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatModel::mean(self : ImagemorphtophatModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_model_scale(s : ImagemorphtophatModel, f : Double) -> ImagemorphtophatModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatModel::scale(self : ImagemorphtophatModel, f : Double) -> ImagemorphtophatModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_model_add(a : ImagemorphtophatModel, b : ImagemorphtophatModel) -> ImagemorphtophatModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatModel::add(self : ImagemorphtophatModel, other : ImagemorphtophatModel) -> ImagemorphtophatModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_model_copy(s : ImagemorphtophatModel) -> ImagemorphtophatModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatModel::copy(self : ImagemorphtophatModel) -> ImagemorphtophatModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_model_fill(s : ImagemorphtophatModel, v : Double) -> ImagemorphtophatModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatModel::fill(self : ImagemorphtophatModel, v : Double) -> ImagemorphtophatModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_model_min(s : ImagemorphtophatModel) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatModel::min(self : ImagemorphtophatModel) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_model_max(s : ImagemorphtophatModel) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatModel::max(self : ImagemorphtophatModel) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_model_to_string(s : ImagemorphtophatModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatModel::to_string(self : ImagemorphtophatModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatLayer {
@@ -759,45 +759,45 @@ pub fn image_morph_tophat_layer_make(size : Int) -> ImagemorphtophatLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_layer_len(s : ImagemorphtophatLayer) -> Int { s.size }
+pub fn ImagemorphtophatLayer::len(self : ImagemorphtophatLayer) -> Int { self.size }
 
-pub fn image_morph_tophat_layer_get(s : ImagemorphtophatLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatLayer::get(self : ImagemorphtophatLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_layer_set(s : ImagemorphtophatLayer, i : Int, v : Double) -> ImagemorphtophatLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatLayer::set(self : ImagemorphtophatLayer, i : Int, v : Double) -> ImagemorphtophatLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_layer_sum(s : ImagemorphtophatLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatLayer::sum(self : ImagemorphtophatLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_layer_mean(s : ImagemorphtophatLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatLayer::mean(self : ImagemorphtophatLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_layer_scale(s : ImagemorphtophatLayer, f : Double) -> ImagemorphtophatLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatLayer::scale(self : ImagemorphtophatLayer, f : Double) -> ImagemorphtophatLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_layer_add(a : ImagemorphtophatLayer, b : ImagemorphtophatLayer) -> ImagemorphtophatLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatLayer::add(self : ImagemorphtophatLayer, other : ImagemorphtophatLayer) -> ImagemorphtophatLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_layer_copy(s : ImagemorphtophatLayer) -> ImagemorphtophatLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatLayer::copy(self : ImagemorphtophatLayer) -> ImagemorphtophatLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_layer_fill(s : ImagemorphtophatLayer, v : Double) -> ImagemorphtophatLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatLayer::fill(self : ImagemorphtophatLayer, v : Double) -> ImagemorphtophatLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_layer_min(s : ImagemorphtophatLayer) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatLayer::min(self : ImagemorphtophatLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_layer_max(s : ImagemorphtophatLayer) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatLayer::max(self : ImagemorphtophatLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_layer_to_string(s : ImagemorphtophatLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatLayer::to_string(self : ImagemorphtophatLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatBuffer {
@@ -810,45 +810,45 @@ pub fn image_morph_tophat_buffer_make(size : Int) -> ImagemorphtophatBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_buffer_len(s : ImagemorphtophatBuffer) -> Int { s.size }
+pub fn ImagemorphtophatBuffer::len(self : ImagemorphtophatBuffer) -> Int { self.size }
 
-pub fn image_morph_tophat_buffer_get(s : ImagemorphtophatBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatBuffer::get(self : ImagemorphtophatBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_buffer_set(s : ImagemorphtophatBuffer, i : Int, v : Double) -> ImagemorphtophatBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatBuffer::set(self : ImagemorphtophatBuffer, i : Int, v : Double) -> ImagemorphtophatBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_buffer_sum(s : ImagemorphtophatBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatBuffer::sum(self : ImagemorphtophatBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_buffer_mean(s : ImagemorphtophatBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatBuffer::mean(self : ImagemorphtophatBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_buffer_scale(s : ImagemorphtophatBuffer, f : Double) -> ImagemorphtophatBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatBuffer::scale(self : ImagemorphtophatBuffer, f : Double) -> ImagemorphtophatBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_buffer_add(a : ImagemorphtophatBuffer, b : ImagemorphtophatBuffer) -> ImagemorphtophatBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatBuffer::add(self : ImagemorphtophatBuffer, other : ImagemorphtophatBuffer) -> ImagemorphtophatBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_buffer_copy(s : ImagemorphtophatBuffer) -> ImagemorphtophatBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatBuffer::copy(self : ImagemorphtophatBuffer) -> ImagemorphtophatBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_buffer_fill(s : ImagemorphtophatBuffer, v : Double) -> ImagemorphtophatBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatBuffer::fill(self : ImagemorphtophatBuffer, v : Double) -> ImagemorphtophatBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_buffer_min(s : ImagemorphtophatBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatBuffer::min(self : ImagemorphtophatBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_buffer_max(s : ImagemorphtophatBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatBuffer::max(self : ImagemorphtophatBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_buffer_to_string(s : ImagemorphtophatBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatBuffer::to_string(self : ImagemorphtophatBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatCursor {
@@ -861,45 +861,45 @@ pub fn image_morph_tophat_cursor_make(size : Int) -> ImagemorphtophatCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_cursor_len(s : ImagemorphtophatCursor) -> Int { s.size }
+pub fn ImagemorphtophatCursor::len(self : ImagemorphtophatCursor) -> Int { self.size }
 
-pub fn image_morph_tophat_cursor_get(s : ImagemorphtophatCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatCursor::get(self : ImagemorphtophatCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_cursor_set(s : ImagemorphtophatCursor, i : Int, v : Double) -> ImagemorphtophatCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatCursor::set(self : ImagemorphtophatCursor, i : Int, v : Double) -> ImagemorphtophatCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_cursor_sum(s : ImagemorphtophatCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatCursor::sum(self : ImagemorphtophatCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_cursor_mean(s : ImagemorphtophatCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatCursor::mean(self : ImagemorphtophatCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_cursor_scale(s : ImagemorphtophatCursor, f : Double) -> ImagemorphtophatCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatCursor::scale(self : ImagemorphtophatCursor, f : Double) -> ImagemorphtophatCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_cursor_add(a : ImagemorphtophatCursor, b : ImagemorphtophatCursor) -> ImagemorphtophatCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatCursor::add(self : ImagemorphtophatCursor, other : ImagemorphtophatCursor) -> ImagemorphtophatCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_cursor_copy(s : ImagemorphtophatCursor) -> ImagemorphtophatCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatCursor::copy(self : ImagemorphtophatCursor) -> ImagemorphtophatCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_cursor_fill(s : ImagemorphtophatCursor, v : Double) -> ImagemorphtophatCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatCursor::fill(self : ImagemorphtophatCursor, v : Double) -> ImagemorphtophatCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_cursor_min(s : ImagemorphtophatCursor) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatCursor::min(self : ImagemorphtophatCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_cursor_max(s : ImagemorphtophatCursor) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatCursor::max(self : ImagemorphtophatCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_cursor_to_string(s : ImagemorphtophatCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatCursor::to_string(self : ImagemorphtophatCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatView {
@@ -912,45 +912,45 @@ pub fn image_morph_tophat_view_make(size : Int) -> ImagemorphtophatView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_view_len(s : ImagemorphtophatView) -> Int { s.size }
+pub fn ImagemorphtophatView::len(self : ImagemorphtophatView) -> Int { self.size }
 
-pub fn image_morph_tophat_view_get(s : ImagemorphtophatView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatView::get(self : ImagemorphtophatView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_view_set(s : ImagemorphtophatView, i : Int, v : Double) -> ImagemorphtophatView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatView::set(self : ImagemorphtophatView, i : Int, v : Double) -> ImagemorphtophatView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_view_sum(s : ImagemorphtophatView) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatView::sum(self : ImagemorphtophatView) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_view_mean(s : ImagemorphtophatView) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatView::mean(self : ImagemorphtophatView) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_view_scale(s : ImagemorphtophatView, f : Double) -> ImagemorphtophatView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatView::scale(self : ImagemorphtophatView, f : Double) -> ImagemorphtophatView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_view_add(a : ImagemorphtophatView, b : ImagemorphtophatView) -> ImagemorphtophatView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatView::add(self : ImagemorphtophatView, other : ImagemorphtophatView) -> ImagemorphtophatView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_view_copy(s : ImagemorphtophatView) -> ImagemorphtophatView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatView::copy(self : ImagemorphtophatView) -> ImagemorphtophatView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_view_fill(s : ImagemorphtophatView, v : Double) -> ImagemorphtophatView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatView::fill(self : ImagemorphtophatView, v : Double) -> ImagemorphtophatView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_view_min(s : ImagemorphtophatView) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatView::min(self : ImagemorphtophatView) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_view_max(s : ImagemorphtophatView) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatView::max(self : ImagemorphtophatView) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_view_to_string(s : ImagemorphtophatView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatView::to_string(self : ImagemorphtophatView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatRange {
@@ -963,45 +963,45 @@ pub fn image_morph_tophat_range_make(size : Int) -> ImagemorphtophatRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_range_len(s : ImagemorphtophatRange) -> Int { s.size }
+pub fn ImagemorphtophatRange::len(self : ImagemorphtophatRange) -> Int { self.size }
 
-pub fn image_morph_tophat_range_get(s : ImagemorphtophatRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatRange::get(self : ImagemorphtophatRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_range_set(s : ImagemorphtophatRange, i : Int, v : Double) -> ImagemorphtophatRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatRange::set(self : ImagemorphtophatRange, i : Int, v : Double) -> ImagemorphtophatRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_range_sum(s : ImagemorphtophatRange) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatRange::sum(self : ImagemorphtophatRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_range_mean(s : ImagemorphtophatRange) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatRange::mean(self : ImagemorphtophatRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_range_scale(s : ImagemorphtophatRange, f : Double) -> ImagemorphtophatRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatRange::scale(self : ImagemorphtophatRange, f : Double) -> ImagemorphtophatRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_range_add(a : ImagemorphtophatRange, b : ImagemorphtophatRange) -> ImagemorphtophatRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatRange::add(self : ImagemorphtophatRange, other : ImagemorphtophatRange) -> ImagemorphtophatRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_range_copy(s : ImagemorphtophatRange) -> ImagemorphtophatRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatRange::copy(self : ImagemorphtophatRange) -> ImagemorphtophatRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_range_fill(s : ImagemorphtophatRange, v : Double) -> ImagemorphtophatRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatRange::fill(self : ImagemorphtophatRange, v : Double) -> ImagemorphtophatRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_range_min(s : ImagemorphtophatRange) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatRange::min(self : ImagemorphtophatRange) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_range_max(s : ImagemorphtophatRange) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatRange::max(self : ImagemorphtophatRange) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_range_to_string(s : ImagemorphtophatRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatRange::to_string(self : ImagemorphtophatRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphtophatSlice {
@@ -1014,44 +1014,44 @@ pub fn image_morph_tophat_slice_make(size : Int) -> ImagemorphtophatSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_tophat_slice_len(s : ImagemorphtophatSlice) -> Int { s.size }
+pub fn ImagemorphtophatSlice::len(self : ImagemorphtophatSlice) -> Int { self.size }
 
-pub fn image_morph_tophat_slice_get(s : ImagemorphtophatSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphtophatSlice::get(self : ImagemorphtophatSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_tophat_slice_set(s : ImagemorphtophatSlice, i : Int, v : Double) -> ImagemorphtophatSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphtophatSlice::set(self : ImagemorphtophatSlice, i : Int, v : Double) -> ImagemorphtophatSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_slice_sum(s : ImagemorphtophatSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphtophatSlice::sum(self : ImagemorphtophatSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_tophat_slice_mean(s : ImagemorphtophatSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphtophatSlice::mean(self : ImagemorphtophatSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_tophat_slice_scale(s : ImagemorphtophatSlice, f : Double) -> ImagemorphtophatSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatSlice::scale(self : ImagemorphtophatSlice, f : Double) -> ImagemorphtophatSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_slice_add(a : ImagemorphtophatSlice, b : ImagemorphtophatSlice) -> ImagemorphtophatSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphtophatSlice::add(self : ImagemorphtophatSlice, other : ImagemorphtophatSlice) -> ImagemorphtophatSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_tophat_slice_copy(s : ImagemorphtophatSlice) -> ImagemorphtophatSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatSlice::copy(self : ImagemorphtophatSlice) -> ImagemorphtophatSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_slice_fill(s : ImagemorphtophatSlice, v : Double) -> ImagemorphtophatSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphtophatSlice::fill(self : ImagemorphtophatSlice, v : Double) -> ImagemorphtophatSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_tophat_slice_min(s : ImagemorphtophatSlice) -> Double { @_common.min(s.data) }
+pub fn ImagemorphtophatSlice::min(self : ImagemorphtophatSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_tophat_slice_max(s : ImagemorphtophatSlice) -> Double { @_common.max(s.data) }
+pub fn ImagemorphtophatSlice::max(self : ImagemorphtophatSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_tophat_slice_to_string(s : ImagemorphtophatSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphtophatSlice::to_string(self : ImagemorphtophatSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

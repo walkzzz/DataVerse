@@ -351,45 +351,45 @@ pub fn finance_time_copula_frame_make(size : Int) -> FinancetimecopulaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_frame_len(s : FinancetimecopulaFrame) -> Int { s.size }
+pub fn FinancetimecopulaFrame::len(self : FinancetimecopulaFrame) -> Int { self.size }
 
-pub fn finance_time_copula_frame_get(s : FinancetimecopulaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaFrame::get(self : FinancetimecopulaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_frame_set(s : FinancetimecopulaFrame, i : Int, v : Double) -> FinancetimecopulaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaFrame::set(self : FinancetimecopulaFrame, i : Int, v : Double) -> FinancetimecopulaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_frame_sum(s : FinancetimecopulaFrame) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaFrame::sum(self : FinancetimecopulaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_frame_mean(s : FinancetimecopulaFrame) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaFrame::mean(self : FinancetimecopulaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_frame_scale(s : FinancetimecopulaFrame, f : Double) -> FinancetimecopulaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaFrame::scale(self : FinancetimecopulaFrame, f : Double) -> FinancetimecopulaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_frame_add(a : FinancetimecopulaFrame, b : FinancetimecopulaFrame) -> FinancetimecopulaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaFrame::add(self : FinancetimecopulaFrame, other : FinancetimecopulaFrame) -> FinancetimecopulaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_frame_copy(s : FinancetimecopulaFrame) -> FinancetimecopulaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaFrame::copy(self : FinancetimecopulaFrame) -> FinancetimecopulaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_frame_fill(s : FinancetimecopulaFrame, v : Double) -> FinancetimecopulaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaFrame::fill(self : FinancetimecopulaFrame, v : Double) -> FinancetimecopulaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_frame_min(s : FinancetimecopulaFrame) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaFrame::min(self : FinancetimecopulaFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_frame_max(s : FinancetimecopulaFrame) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaFrame::max(self : FinancetimecopulaFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_frame_to_string(s : FinancetimecopulaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaFrame::to_string(self : FinancetimecopulaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaTable {
@@ -402,45 +402,45 @@ pub fn finance_time_copula_table_make(size : Int) -> FinancetimecopulaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_table_len(s : FinancetimecopulaTable) -> Int { s.size }
+pub fn FinancetimecopulaTable::len(self : FinancetimecopulaTable) -> Int { self.size }
 
-pub fn finance_time_copula_table_get(s : FinancetimecopulaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaTable::get(self : FinancetimecopulaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_table_set(s : FinancetimecopulaTable, i : Int, v : Double) -> FinancetimecopulaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaTable::set(self : FinancetimecopulaTable, i : Int, v : Double) -> FinancetimecopulaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_table_sum(s : FinancetimecopulaTable) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaTable::sum(self : FinancetimecopulaTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_table_mean(s : FinancetimecopulaTable) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaTable::mean(self : FinancetimecopulaTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_table_scale(s : FinancetimecopulaTable, f : Double) -> FinancetimecopulaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaTable::scale(self : FinancetimecopulaTable, f : Double) -> FinancetimecopulaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_table_add(a : FinancetimecopulaTable, b : FinancetimecopulaTable) -> FinancetimecopulaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaTable::add(self : FinancetimecopulaTable, other : FinancetimecopulaTable) -> FinancetimecopulaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_table_copy(s : FinancetimecopulaTable) -> FinancetimecopulaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaTable::copy(self : FinancetimecopulaTable) -> FinancetimecopulaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_table_fill(s : FinancetimecopulaTable, v : Double) -> FinancetimecopulaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaTable::fill(self : FinancetimecopulaTable, v : Double) -> FinancetimecopulaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_table_min(s : FinancetimecopulaTable) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaTable::min(self : FinancetimecopulaTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_table_max(s : FinancetimecopulaTable) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaTable::max(self : FinancetimecopulaTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_table_to_string(s : FinancetimecopulaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaTable::to_string(self : FinancetimecopulaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaGraphN {
@@ -453,45 +453,45 @@ pub fn finance_time_copula_graphn_make(size : Int) -> FinancetimecopulaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_graphn_len(s : FinancetimecopulaGraphN) -> Int { s.size }
+pub fn FinancetimecopulaGraphN::len(self : FinancetimecopulaGraphN) -> Int { self.size }
 
-pub fn finance_time_copula_graphn_get(s : FinancetimecopulaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaGraphN::get(self : FinancetimecopulaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_graphn_set(s : FinancetimecopulaGraphN, i : Int, v : Double) -> FinancetimecopulaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaGraphN::set(self : FinancetimecopulaGraphN, i : Int, v : Double) -> FinancetimecopulaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_graphn_sum(s : FinancetimecopulaGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaGraphN::sum(self : FinancetimecopulaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_graphn_mean(s : FinancetimecopulaGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaGraphN::mean(self : FinancetimecopulaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_graphn_scale(s : FinancetimecopulaGraphN, f : Double) -> FinancetimecopulaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaGraphN::scale(self : FinancetimecopulaGraphN, f : Double) -> FinancetimecopulaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_graphn_add(a : FinancetimecopulaGraphN, b : FinancetimecopulaGraphN) -> FinancetimecopulaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaGraphN::add(self : FinancetimecopulaGraphN, other : FinancetimecopulaGraphN) -> FinancetimecopulaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_graphn_copy(s : FinancetimecopulaGraphN) -> FinancetimecopulaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaGraphN::copy(self : FinancetimecopulaGraphN) -> FinancetimecopulaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_graphn_fill(s : FinancetimecopulaGraphN, v : Double) -> FinancetimecopulaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaGraphN::fill(self : FinancetimecopulaGraphN, v : Double) -> FinancetimecopulaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_graphn_min(s : FinancetimecopulaGraphN) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaGraphN::min(self : FinancetimecopulaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_graphn_max(s : FinancetimecopulaGraphN) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaGraphN::max(self : FinancetimecopulaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_graphn_to_string(s : FinancetimecopulaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaGraphN::to_string(self : FinancetimecopulaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaNode {
@@ -504,45 +504,45 @@ pub fn finance_time_copula_node_make(size : Int) -> FinancetimecopulaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_node_len(s : FinancetimecopulaNode) -> Int { s.size }
+pub fn FinancetimecopulaNode::len(self : FinancetimecopulaNode) -> Int { self.size }
 
-pub fn finance_time_copula_node_get(s : FinancetimecopulaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaNode::get(self : FinancetimecopulaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_node_set(s : FinancetimecopulaNode, i : Int, v : Double) -> FinancetimecopulaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaNode::set(self : FinancetimecopulaNode, i : Int, v : Double) -> FinancetimecopulaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_node_sum(s : FinancetimecopulaNode) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaNode::sum(self : FinancetimecopulaNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_node_mean(s : FinancetimecopulaNode) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaNode::mean(self : FinancetimecopulaNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_node_scale(s : FinancetimecopulaNode, f : Double) -> FinancetimecopulaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaNode::scale(self : FinancetimecopulaNode, f : Double) -> FinancetimecopulaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_node_add(a : FinancetimecopulaNode, b : FinancetimecopulaNode) -> FinancetimecopulaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaNode::add(self : FinancetimecopulaNode, other : FinancetimecopulaNode) -> FinancetimecopulaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_node_copy(s : FinancetimecopulaNode) -> FinancetimecopulaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaNode::copy(self : FinancetimecopulaNode) -> FinancetimecopulaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_node_fill(s : FinancetimecopulaNode, v : Double) -> FinancetimecopulaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaNode::fill(self : FinancetimecopulaNode, v : Double) -> FinancetimecopulaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_node_min(s : FinancetimecopulaNode) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaNode::min(self : FinancetimecopulaNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_node_max(s : FinancetimecopulaNode) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaNode::max(self : FinancetimecopulaNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_node_to_string(s : FinancetimecopulaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaNode::to_string(self : FinancetimecopulaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaEdge {
@@ -555,45 +555,45 @@ pub fn finance_time_copula_edge_make(size : Int) -> FinancetimecopulaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_edge_len(s : FinancetimecopulaEdge) -> Int { s.size }
+pub fn FinancetimecopulaEdge::len(self : FinancetimecopulaEdge) -> Int { self.size }
 
-pub fn finance_time_copula_edge_get(s : FinancetimecopulaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaEdge::get(self : FinancetimecopulaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_edge_set(s : FinancetimecopulaEdge, i : Int, v : Double) -> FinancetimecopulaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaEdge::set(self : FinancetimecopulaEdge, i : Int, v : Double) -> FinancetimecopulaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_edge_sum(s : FinancetimecopulaEdge) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaEdge::sum(self : FinancetimecopulaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_edge_mean(s : FinancetimecopulaEdge) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaEdge::mean(self : FinancetimecopulaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_edge_scale(s : FinancetimecopulaEdge, f : Double) -> FinancetimecopulaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaEdge::scale(self : FinancetimecopulaEdge, f : Double) -> FinancetimecopulaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_edge_add(a : FinancetimecopulaEdge, b : FinancetimecopulaEdge) -> FinancetimecopulaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaEdge::add(self : FinancetimecopulaEdge, other : FinancetimecopulaEdge) -> FinancetimecopulaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_edge_copy(s : FinancetimecopulaEdge) -> FinancetimecopulaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaEdge::copy(self : FinancetimecopulaEdge) -> FinancetimecopulaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_edge_fill(s : FinancetimecopulaEdge, v : Double) -> FinancetimecopulaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaEdge::fill(self : FinancetimecopulaEdge, v : Double) -> FinancetimecopulaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_edge_min(s : FinancetimecopulaEdge) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaEdge::min(self : FinancetimecopulaEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_edge_max(s : FinancetimecopulaEdge) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaEdge::max(self : FinancetimecopulaEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_edge_to_string(s : FinancetimecopulaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaEdge::to_string(self : FinancetimecopulaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaPath {
@@ -606,45 +606,45 @@ pub fn finance_time_copula_path_make(size : Int) -> FinancetimecopulaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_path_len(s : FinancetimecopulaPath) -> Int { s.size }
+pub fn FinancetimecopulaPath::len(self : FinancetimecopulaPath) -> Int { self.size }
 
-pub fn finance_time_copula_path_get(s : FinancetimecopulaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaPath::get(self : FinancetimecopulaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_path_set(s : FinancetimecopulaPath, i : Int, v : Double) -> FinancetimecopulaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaPath::set(self : FinancetimecopulaPath, i : Int, v : Double) -> FinancetimecopulaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_path_sum(s : FinancetimecopulaPath) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaPath::sum(self : FinancetimecopulaPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_path_mean(s : FinancetimecopulaPath) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaPath::mean(self : FinancetimecopulaPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_path_scale(s : FinancetimecopulaPath, f : Double) -> FinancetimecopulaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaPath::scale(self : FinancetimecopulaPath, f : Double) -> FinancetimecopulaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_path_add(a : FinancetimecopulaPath, b : FinancetimecopulaPath) -> FinancetimecopulaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaPath::add(self : FinancetimecopulaPath, other : FinancetimecopulaPath) -> FinancetimecopulaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_path_copy(s : FinancetimecopulaPath) -> FinancetimecopulaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaPath::copy(self : FinancetimecopulaPath) -> FinancetimecopulaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_path_fill(s : FinancetimecopulaPath, v : Double) -> FinancetimecopulaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaPath::fill(self : FinancetimecopulaPath, v : Double) -> FinancetimecopulaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_path_min(s : FinancetimecopulaPath) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaPath::min(self : FinancetimecopulaPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_path_max(s : FinancetimecopulaPath) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaPath::max(self : FinancetimecopulaPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_path_to_string(s : FinancetimecopulaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaPath::to_string(self : FinancetimecopulaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaCluster {
@@ -657,45 +657,45 @@ pub fn finance_time_copula_cluster_make(size : Int) -> FinancetimecopulaCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_cluster_len(s : FinancetimecopulaCluster) -> Int { s.size }
+pub fn FinancetimecopulaCluster::len(self : FinancetimecopulaCluster) -> Int { self.size }
 
-pub fn finance_time_copula_cluster_get(s : FinancetimecopulaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaCluster::get(self : FinancetimecopulaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_cluster_set(s : FinancetimecopulaCluster, i : Int, v : Double) -> FinancetimecopulaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaCluster::set(self : FinancetimecopulaCluster, i : Int, v : Double) -> FinancetimecopulaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_cluster_sum(s : FinancetimecopulaCluster) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaCluster::sum(self : FinancetimecopulaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_cluster_mean(s : FinancetimecopulaCluster) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaCluster::mean(self : FinancetimecopulaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_cluster_scale(s : FinancetimecopulaCluster, f : Double) -> FinancetimecopulaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaCluster::scale(self : FinancetimecopulaCluster, f : Double) -> FinancetimecopulaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_cluster_add(a : FinancetimecopulaCluster, b : FinancetimecopulaCluster) -> FinancetimecopulaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaCluster::add(self : FinancetimecopulaCluster, other : FinancetimecopulaCluster) -> FinancetimecopulaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_cluster_copy(s : FinancetimecopulaCluster) -> FinancetimecopulaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaCluster::copy(self : FinancetimecopulaCluster) -> FinancetimecopulaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_cluster_fill(s : FinancetimecopulaCluster, v : Double) -> FinancetimecopulaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaCluster::fill(self : FinancetimecopulaCluster, v : Double) -> FinancetimecopulaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_cluster_min(s : FinancetimecopulaCluster) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaCluster::min(self : FinancetimecopulaCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_cluster_max(s : FinancetimecopulaCluster) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaCluster::max(self : FinancetimecopulaCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_cluster_to_string(s : FinancetimecopulaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaCluster::to_string(self : FinancetimecopulaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaModel {
@@ -708,45 +708,45 @@ pub fn finance_time_copula_model_make(size : Int) -> FinancetimecopulaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_model_len(s : FinancetimecopulaModel) -> Int { s.size }
+pub fn FinancetimecopulaModel::len(self : FinancetimecopulaModel) -> Int { self.size }
 
-pub fn finance_time_copula_model_get(s : FinancetimecopulaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaModel::get(self : FinancetimecopulaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_model_set(s : FinancetimecopulaModel, i : Int, v : Double) -> FinancetimecopulaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaModel::set(self : FinancetimecopulaModel, i : Int, v : Double) -> FinancetimecopulaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_model_sum(s : FinancetimecopulaModel) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaModel::sum(self : FinancetimecopulaModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_model_mean(s : FinancetimecopulaModel) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaModel::mean(self : FinancetimecopulaModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_model_scale(s : FinancetimecopulaModel, f : Double) -> FinancetimecopulaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaModel::scale(self : FinancetimecopulaModel, f : Double) -> FinancetimecopulaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_model_add(a : FinancetimecopulaModel, b : FinancetimecopulaModel) -> FinancetimecopulaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaModel::add(self : FinancetimecopulaModel, other : FinancetimecopulaModel) -> FinancetimecopulaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_model_copy(s : FinancetimecopulaModel) -> FinancetimecopulaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaModel::copy(self : FinancetimecopulaModel) -> FinancetimecopulaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_model_fill(s : FinancetimecopulaModel, v : Double) -> FinancetimecopulaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaModel::fill(self : FinancetimecopulaModel, v : Double) -> FinancetimecopulaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_model_min(s : FinancetimecopulaModel) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaModel::min(self : FinancetimecopulaModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_model_max(s : FinancetimecopulaModel) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaModel::max(self : FinancetimecopulaModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_model_to_string(s : FinancetimecopulaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaModel::to_string(self : FinancetimecopulaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaLayer {
@@ -759,45 +759,45 @@ pub fn finance_time_copula_layer_make(size : Int) -> FinancetimecopulaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_layer_len(s : FinancetimecopulaLayer) -> Int { s.size }
+pub fn FinancetimecopulaLayer::len(self : FinancetimecopulaLayer) -> Int { self.size }
 
-pub fn finance_time_copula_layer_get(s : FinancetimecopulaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaLayer::get(self : FinancetimecopulaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_layer_set(s : FinancetimecopulaLayer, i : Int, v : Double) -> FinancetimecopulaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaLayer::set(self : FinancetimecopulaLayer, i : Int, v : Double) -> FinancetimecopulaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_layer_sum(s : FinancetimecopulaLayer) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaLayer::sum(self : FinancetimecopulaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_layer_mean(s : FinancetimecopulaLayer) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaLayer::mean(self : FinancetimecopulaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_layer_scale(s : FinancetimecopulaLayer, f : Double) -> FinancetimecopulaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaLayer::scale(self : FinancetimecopulaLayer, f : Double) -> FinancetimecopulaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_layer_add(a : FinancetimecopulaLayer, b : FinancetimecopulaLayer) -> FinancetimecopulaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaLayer::add(self : FinancetimecopulaLayer, other : FinancetimecopulaLayer) -> FinancetimecopulaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_layer_copy(s : FinancetimecopulaLayer) -> FinancetimecopulaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaLayer::copy(self : FinancetimecopulaLayer) -> FinancetimecopulaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_layer_fill(s : FinancetimecopulaLayer, v : Double) -> FinancetimecopulaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaLayer::fill(self : FinancetimecopulaLayer, v : Double) -> FinancetimecopulaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_layer_min(s : FinancetimecopulaLayer) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaLayer::min(self : FinancetimecopulaLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_layer_max(s : FinancetimecopulaLayer) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaLayer::max(self : FinancetimecopulaLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_layer_to_string(s : FinancetimecopulaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaLayer::to_string(self : FinancetimecopulaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaBuffer {
@@ -810,45 +810,45 @@ pub fn finance_time_copula_buffer_make(size : Int) -> FinancetimecopulaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_buffer_len(s : FinancetimecopulaBuffer) -> Int { s.size }
+pub fn FinancetimecopulaBuffer::len(self : FinancetimecopulaBuffer) -> Int { self.size }
 
-pub fn finance_time_copula_buffer_get(s : FinancetimecopulaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaBuffer::get(self : FinancetimecopulaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_buffer_set(s : FinancetimecopulaBuffer, i : Int, v : Double) -> FinancetimecopulaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaBuffer::set(self : FinancetimecopulaBuffer, i : Int, v : Double) -> FinancetimecopulaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_buffer_sum(s : FinancetimecopulaBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaBuffer::sum(self : FinancetimecopulaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_buffer_mean(s : FinancetimecopulaBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaBuffer::mean(self : FinancetimecopulaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_buffer_scale(s : FinancetimecopulaBuffer, f : Double) -> FinancetimecopulaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaBuffer::scale(self : FinancetimecopulaBuffer, f : Double) -> FinancetimecopulaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_buffer_add(a : FinancetimecopulaBuffer, b : FinancetimecopulaBuffer) -> FinancetimecopulaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaBuffer::add(self : FinancetimecopulaBuffer, other : FinancetimecopulaBuffer) -> FinancetimecopulaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_buffer_copy(s : FinancetimecopulaBuffer) -> FinancetimecopulaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaBuffer::copy(self : FinancetimecopulaBuffer) -> FinancetimecopulaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_buffer_fill(s : FinancetimecopulaBuffer, v : Double) -> FinancetimecopulaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaBuffer::fill(self : FinancetimecopulaBuffer, v : Double) -> FinancetimecopulaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_buffer_min(s : FinancetimecopulaBuffer) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaBuffer::min(self : FinancetimecopulaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_buffer_max(s : FinancetimecopulaBuffer) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaBuffer::max(self : FinancetimecopulaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_buffer_to_string(s : FinancetimecopulaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaBuffer::to_string(self : FinancetimecopulaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaCursor {
@@ -861,45 +861,45 @@ pub fn finance_time_copula_cursor_make(size : Int) -> FinancetimecopulaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_cursor_len(s : FinancetimecopulaCursor) -> Int { s.size }
+pub fn FinancetimecopulaCursor::len(self : FinancetimecopulaCursor) -> Int { self.size }
 
-pub fn finance_time_copula_cursor_get(s : FinancetimecopulaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaCursor::get(self : FinancetimecopulaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_cursor_set(s : FinancetimecopulaCursor, i : Int, v : Double) -> FinancetimecopulaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaCursor::set(self : FinancetimecopulaCursor, i : Int, v : Double) -> FinancetimecopulaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_cursor_sum(s : FinancetimecopulaCursor) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaCursor::sum(self : FinancetimecopulaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_cursor_mean(s : FinancetimecopulaCursor) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaCursor::mean(self : FinancetimecopulaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_cursor_scale(s : FinancetimecopulaCursor, f : Double) -> FinancetimecopulaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaCursor::scale(self : FinancetimecopulaCursor, f : Double) -> FinancetimecopulaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_cursor_add(a : FinancetimecopulaCursor, b : FinancetimecopulaCursor) -> FinancetimecopulaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaCursor::add(self : FinancetimecopulaCursor, other : FinancetimecopulaCursor) -> FinancetimecopulaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_cursor_copy(s : FinancetimecopulaCursor) -> FinancetimecopulaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaCursor::copy(self : FinancetimecopulaCursor) -> FinancetimecopulaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_cursor_fill(s : FinancetimecopulaCursor, v : Double) -> FinancetimecopulaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaCursor::fill(self : FinancetimecopulaCursor, v : Double) -> FinancetimecopulaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_cursor_min(s : FinancetimecopulaCursor) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaCursor::min(self : FinancetimecopulaCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_cursor_max(s : FinancetimecopulaCursor) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaCursor::max(self : FinancetimecopulaCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_cursor_to_string(s : FinancetimecopulaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaCursor::to_string(self : FinancetimecopulaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaView {
@@ -912,45 +912,45 @@ pub fn finance_time_copula_view_make(size : Int) -> FinancetimecopulaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_view_len(s : FinancetimecopulaView) -> Int { s.size }
+pub fn FinancetimecopulaView::len(self : FinancetimecopulaView) -> Int { self.size }
 
-pub fn finance_time_copula_view_get(s : FinancetimecopulaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaView::get(self : FinancetimecopulaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_view_set(s : FinancetimecopulaView, i : Int, v : Double) -> FinancetimecopulaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaView::set(self : FinancetimecopulaView, i : Int, v : Double) -> FinancetimecopulaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_view_sum(s : FinancetimecopulaView) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaView::sum(self : FinancetimecopulaView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_view_mean(s : FinancetimecopulaView) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaView::mean(self : FinancetimecopulaView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_view_scale(s : FinancetimecopulaView, f : Double) -> FinancetimecopulaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaView::scale(self : FinancetimecopulaView, f : Double) -> FinancetimecopulaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_view_add(a : FinancetimecopulaView, b : FinancetimecopulaView) -> FinancetimecopulaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaView::add(self : FinancetimecopulaView, other : FinancetimecopulaView) -> FinancetimecopulaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_view_copy(s : FinancetimecopulaView) -> FinancetimecopulaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaView::copy(self : FinancetimecopulaView) -> FinancetimecopulaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_view_fill(s : FinancetimecopulaView, v : Double) -> FinancetimecopulaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaView::fill(self : FinancetimecopulaView, v : Double) -> FinancetimecopulaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_view_min(s : FinancetimecopulaView) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaView::min(self : FinancetimecopulaView) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_view_max(s : FinancetimecopulaView) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaView::max(self : FinancetimecopulaView) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_view_to_string(s : FinancetimecopulaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaView::to_string(self : FinancetimecopulaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaRange {
@@ -963,45 +963,45 @@ pub fn finance_time_copula_range_make(size : Int) -> FinancetimecopulaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_range_len(s : FinancetimecopulaRange) -> Int { s.size }
+pub fn FinancetimecopulaRange::len(self : FinancetimecopulaRange) -> Int { self.size }
 
-pub fn finance_time_copula_range_get(s : FinancetimecopulaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaRange::get(self : FinancetimecopulaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_range_set(s : FinancetimecopulaRange, i : Int, v : Double) -> FinancetimecopulaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaRange::set(self : FinancetimecopulaRange, i : Int, v : Double) -> FinancetimecopulaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_range_sum(s : FinancetimecopulaRange) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaRange::sum(self : FinancetimecopulaRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_range_mean(s : FinancetimecopulaRange) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaRange::mean(self : FinancetimecopulaRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_range_scale(s : FinancetimecopulaRange, f : Double) -> FinancetimecopulaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaRange::scale(self : FinancetimecopulaRange, f : Double) -> FinancetimecopulaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_range_add(a : FinancetimecopulaRange, b : FinancetimecopulaRange) -> FinancetimecopulaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaRange::add(self : FinancetimecopulaRange, other : FinancetimecopulaRange) -> FinancetimecopulaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_range_copy(s : FinancetimecopulaRange) -> FinancetimecopulaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaRange::copy(self : FinancetimecopulaRange) -> FinancetimecopulaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_range_fill(s : FinancetimecopulaRange, v : Double) -> FinancetimecopulaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaRange::fill(self : FinancetimecopulaRange, v : Double) -> FinancetimecopulaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_range_min(s : FinancetimecopulaRange) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaRange::min(self : FinancetimecopulaRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_range_max(s : FinancetimecopulaRange) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaRange::max(self : FinancetimecopulaRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_range_to_string(s : FinancetimecopulaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaRange::to_string(self : FinancetimecopulaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_time_copula_slice_make(size : Int) -> FinancetimecopulaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_copula_slice_len(s : FinancetimecopulaSlice) -> Int { s.size }
+pub fn FinancetimecopulaSlice::len(self : FinancetimecopulaSlice) -> Int { self.size }
 
-pub fn finance_time_copula_slice_get(s : FinancetimecopulaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecopulaSlice::get(self : FinancetimecopulaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_copula_slice_set(s : FinancetimecopulaSlice, i : Int, v : Double) -> FinancetimecopulaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecopulaSlice::set(self : FinancetimecopulaSlice, i : Int, v : Double) -> FinancetimecopulaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_slice_sum(s : FinancetimecopulaSlice) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecopulaSlice::sum(self : FinancetimecopulaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_copula_slice_mean(s : FinancetimecopulaSlice) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecopulaSlice::mean(self : FinancetimecopulaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_copula_slice_scale(s : FinancetimecopulaSlice, f : Double) -> FinancetimecopulaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaSlice::scale(self : FinancetimecopulaSlice, f : Double) -> FinancetimecopulaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_slice_add(a : FinancetimecopulaSlice, b : FinancetimecopulaSlice) -> FinancetimecopulaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecopulaSlice::add(self : FinancetimecopulaSlice, other : FinancetimecopulaSlice) -> FinancetimecopulaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_copula_slice_copy(s : FinancetimecopulaSlice) -> FinancetimecopulaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaSlice::copy(self : FinancetimecopulaSlice) -> FinancetimecopulaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_slice_fill(s : FinancetimecopulaSlice, v : Double) -> FinancetimecopulaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecopulaSlice::fill(self : FinancetimecopulaSlice, v : Double) -> FinancetimecopulaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_copula_slice_min(s : FinancetimecopulaSlice) -> Double { @_common.min(s.data) }
+pub fn FinancetimecopulaSlice::min(self : FinancetimecopulaSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_copula_slice_max(s : FinancetimecopulaSlice) -> Double { @_common.max(s.data) }
+pub fn FinancetimecopulaSlice::max(self : FinancetimecopulaSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_copula_slice_to_string(s : FinancetimecopulaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecopulaSlice::to_string(self : FinancetimecopulaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

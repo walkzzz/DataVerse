@@ -351,45 +351,45 @@ pub fn db_store_doc_frame_make(size : Int) -> DbstoredocFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_frame_len(s : DbstoredocFrame) -> Int { s.size }
+pub fn DbstoredocFrame::len(self : DbstoredocFrame) -> Int { self.size }
 
-pub fn db_store_doc_frame_get(s : DbstoredocFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocFrame::get(self : DbstoredocFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_frame_set(s : DbstoredocFrame, i : Int, v : Double) -> DbstoredocFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocFrame::set(self : DbstoredocFrame, i : Int, v : Double) -> DbstoredocFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_frame_sum(s : DbstoredocFrame) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocFrame::sum(self : DbstoredocFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_frame_mean(s : DbstoredocFrame) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocFrame::mean(self : DbstoredocFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_frame_scale(s : DbstoredocFrame, f : Double) -> DbstoredocFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocFrame::scale(self : DbstoredocFrame, f : Double) -> DbstoredocFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_frame_add(a : DbstoredocFrame, b : DbstoredocFrame) -> DbstoredocFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocFrame::add(self : DbstoredocFrame, other : DbstoredocFrame) -> DbstoredocFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_frame_copy(s : DbstoredocFrame) -> DbstoredocFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocFrame::copy(self : DbstoredocFrame) -> DbstoredocFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_frame_fill(s : DbstoredocFrame, v : Double) -> DbstoredocFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocFrame::fill(self : DbstoredocFrame, v : Double) -> DbstoredocFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_frame_min(s : DbstoredocFrame) -> Double { @_common.min(s.data) }
+pub fn DbstoredocFrame::min(self : DbstoredocFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_frame_max(s : DbstoredocFrame) -> Double { @_common.max(s.data) }
+pub fn DbstoredocFrame::max(self : DbstoredocFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_frame_to_string(s : DbstoredocFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocFrame::to_string(self : DbstoredocFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocTable {
@@ -402,45 +402,45 @@ pub fn db_store_doc_table_make(size : Int) -> DbstoredocTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_table_len(s : DbstoredocTable) -> Int { s.size }
+pub fn DbstoredocTable::len(self : DbstoredocTable) -> Int { self.size }
 
-pub fn db_store_doc_table_get(s : DbstoredocTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocTable::get(self : DbstoredocTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_table_set(s : DbstoredocTable, i : Int, v : Double) -> DbstoredocTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocTable::set(self : DbstoredocTable, i : Int, v : Double) -> DbstoredocTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_table_sum(s : DbstoredocTable) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocTable::sum(self : DbstoredocTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_table_mean(s : DbstoredocTable) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocTable::mean(self : DbstoredocTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_table_scale(s : DbstoredocTable, f : Double) -> DbstoredocTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocTable::scale(self : DbstoredocTable, f : Double) -> DbstoredocTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_table_add(a : DbstoredocTable, b : DbstoredocTable) -> DbstoredocTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocTable::add(self : DbstoredocTable, other : DbstoredocTable) -> DbstoredocTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_table_copy(s : DbstoredocTable) -> DbstoredocTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocTable::copy(self : DbstoredocTable) -> DbstoredocTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_table_fill(s : DbstoredocTable, v : Double) -> DbstoredocTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocTable::fill(self : DbstoredocTable, v : Double) -> DbstoredocTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_table_min(s : DbstoredocTable) -> Double { @_common.min(s.data) }
+pub fn DbstoredocTable::min(self : DbstoredocTable) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_table_max(s : DbstoredocTable) -> Double { @_common.max(s.data) }
+pub fn DbstoredocTable::max(self : DbstoredocTable) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_table_to_string(s : DbstoredocTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocTable::to_string(self : DbstoredocTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocGraphN {
@@ -453,45 +453,45 @@ pub fn db_store_doc_graphn_make(size : Int) -> DbstoredocGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_graphn_len(s : DbstoredocGraphN) -> Int { s.size }
+pub fn DbstoredocGraphN::len(self : DbstoredocGraphN) -> Int { self.size }
 
-pub fn db_store_doc_graphn_get(s : DbstoredocGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocGraphN::get(self : DbstoredocGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_graphn_set(s : DbstoredocGraphN, i : Int, v : Double) -> DbstoredocGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocGraphN::set(self : DbstoredocGraphN, i : Int, v : Double) -> DbstoredocGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_graphn_sum(s : DbstoredocGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocGraphN::sum(self : DbstoredocGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_graphn_mean(s : DbstoredocGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocGraphN::mean(self : DbstoredocGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_graphn_scale(s : DbstoredocGraphN, f : Double) -> DbstoredocGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocGraphN::scale(self : DbstoredocGraphN, f : Double) -> DbstoredocGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_graphn_add(a : DbstoredocGraphN, b : DbstoredocGraphN) -> DbstoredocGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocGraphN::add(self : DbstoredocGraphN, other : DbstoredocGraphN) -> DbstoredocGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_graphn_copy(s : DbstoredocGraphN) -> DbstoredocGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocGraphN::copy(self : DbstoredocGraphN) -> DbstoredocGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_graphn_fill(s : DbstoredocGraphN, v : Double) -> DbstoredocGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocGraphN::fill(self : DbstoredocGraphN, v : Double) -> DbstoredocGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_graphn_min(s : DbstoredocGraphN) -> Double { @_common.min(s.data) }
+pub fn DbstoredocGraphN::min(self : DbstoredocGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_graphn_max(s : DbstoredocGraphN) -> Double { @_common.max(s.data) }
+pub fn DbstoredocGraphN::max(self : DbstoredocGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_graphn_to_string(s : DbstoredocGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocGraphN::to_string(self : DbstoredocGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocNode {
@@ -504,45 +504,45 @@ pub fn db_store_doc_node_make(size : Int) -> DbstoredocNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_node_len(s : DbstoredocNode) -> Int { s.size }
+pub fn DbstoredocNode::len(self : DbstoredocNode) -> Int { self.size }
 
-pub fn db_store_doc_node_get(s : DbstoredocNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocNode::get(self : DbstoredocNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_node_set(s : DbstoredocNode, i : Int, v : Double) -> DbstoredocNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocNode::set(self : DbstoredocNode, i : Int, v : Double) -> DbstoredocNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_node_sum(s : DbstoredocNode) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocNode::sum(self : DbstoredocNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_node_mean(s : DbstoredocNode) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocNode::mean(self : DbstoredocNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_node_scale(s : DbstoredocNode, f : Double) -> DbstoredocNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocNode::scale(self : DbstoredocNode, f : Double) -> DbstoredocNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_node_add(a : DbstoredocNode, b : DbstoredocNode) -> DbstoredocNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocNode::add(self : DbstoredocNode, other : DbstoredocNode) -> DbstoredocNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_node_copy(s : DbstoredocNode) -> DbstoredocNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocNode::copy(self : DbstoredocNode) -> DbstoredocNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_node_fill(s : DbstoredocNode, v : Double) -> DbstoredocNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocNode::fill(self : DbstoredocNode, v : Double) -> DbstoredocNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_node_min(s : DbstoredocNode) -> Double { @_common.min(s.data) }
+pub fn DbstoredocNode::min(self : DbstoredocNode) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_node_max(s : DbstoredocNode) -> Double { @_common.max(s.data) }
+pub fn DbstoredocNode::max(self : DbstoredocNode) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_node_to_string(s : DbstoredocNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocNode::to_string(self : DbstoredocNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocEdge {
@@ -555,45 +555,45 @@ pub fn db_store_doc_edge_make(size : Int) -> DbstoredocEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_edge_len(s : DbstoredocEdge) -> Int { s.size }
+pub fn DbstoredocEdge::len(self : DbstoredocEdge) -> Int { self.size }
 
-pub fn db_store_doc_edge_get(s : DbstoredocEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocEdge::get(self : DbstoredocEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_edge_set(s : DbstoredocEdge, i : Int, v : Double) -> DbstoredocEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocEdge::set(self : DbstoredocEdge, i : Int, v : Double) -> DbstoredocEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_edge_sum(s : DbstoredocEdge) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocEdge::sum(self : DbstoredocEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_edge_mean(s : DbstoredocEdge) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocEdge::mean(self : DbstoredocEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_edge_scale(s : DbstoredocEdge, f : Double) -> DbstoredocEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocEdge::scale(self : DbstoredocEdge, f : Double) -> DbstoredocEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_edge_add(a : DbstoredocEdge, b : DbstoredocEdge) -> DbstoredocEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocEdge::add(self : DbstoredocEdge, other : DbstoredocEdge) -> DbstoredocEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_edge_copy(s : DbstoredocEdge) -> DbstoredocEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocEdge::copy(self : DbstoredocEdge) -> DbstoredocEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_edge_fill(s : DbstoredocEdge, v : Double) -> DbstoredocEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocEdge::fill(self : DbstoredocEdge, v : Double) -> DbstoredocEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_edge_min(s : DbstoredocEdge) -> Double { @_common.min(s.data) }
+pub fn DbstoredocEdge::min(self : DbstoredocEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_edge_max(s : DbstoredocEdge) -> Double { @_common.max(s.data) }
+pub fn DbstoredocEdge::max(self : DbstoredocEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_edge_to_string(s : DbstoredocEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocEdge::to_string(self : DbstoredocEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocPath {
@@ -606,45 +606,45 @@ pub fn db_store_doc_path_make(size : Int) -> DbstoredocPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_path_len(s : DbstoredocPath) -> Int { s.size }
+pub fn DbstoredocPath::len(self : DbstoredocPath) -> Int { self.size }
 
-pub fn db_store_doc_path_get(s : DbstoredocPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocPath::get(self : DbstoredocPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_path_set(s : DbstoredocPath, i : Int, v : Double) -> DbstoredocPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocPath::set(self : DbstoredocPath, i : Int, v : Double) -> DbstoredocPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_path_sum(s : DbstoredocPath) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocPath::sum(self : DbstoredocPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_path_mean(s : DbstoredocPath) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocPath::mean(self : DbstoredocPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_path_scale(s : DbstoredocPath, f : Double) -> DbstoredocPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocPath::scale(self : DbstoredocPath, f : Double) -> DbstoredocPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_path_add(a : DbstoredocPath, b : DbstoredocPath) -> DbstoredocPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocPath::add(self : DbstoredocPath, other : DbstoredocPath) -> DbstoredocPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_path_copy(s : DbstoredocPath) -> DbstoredocPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocPath::copy(self : DbstoredocPath) -> DbstoredocPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_path_fill(s : DbstoredocPath, v : Double) -> DbstoredocPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocPath::fill(self : DbstoredocPath, v : Double) -> DbstoredocPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_path_min(s : DbstoredocPath) -> Double { @_common.min(s.data) }
+pub fn DbstoredocPath::min(self : DbstoredocPath) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_path_max(s : DbstoredocPath) -> Double { @_common.max(s.data) }
+pub fn DbstoredocPath::max(self : DbstoredocPath) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_path_to_string(s : DbstoredocPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocPath::to_string(self : DbstoredocPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocCluster {
@@ -657,45 +657,45 @@ pub fn db_store_doc_cluster_make(size : Int) -> DbstoredocCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_cluster_len(s : DbstoredocCluster) -> Int { s.size }
+pub fn DbstoredocCluster::len(self : DbstoredocCluster) -> Int { self.size }
 
-pub fn db_store_doc_cluster_get(s : DbstoredocCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocCluster::get(self : DbstoredocCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_cluster_set(s : DbstoredocCluster, i : Int, v : Double) -> DbstoredocCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocCluster::set(self : DbstoredocCluster, i : Int, v : Double) -> DbstoredocCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_cluster_sum(s : DbstoredocCluster) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocCluster::sum(self : DbstoredocCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_cluster_mean(s : DbstoredocCluster) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocCluster::mean(self : DbstoredocCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_cluster_scale(s : DbstoredocCluster, f : Double) -> DbstoredocCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocCluster::scale(self : DbstoredocCluster, f : Double) -> DbstoredocCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_cluster_add(a : DbstoredocCluster, b : DbstoredocCluster) -> DbstoredocCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocCluster::add(self : DbstoredocCluster, other : DbstoredocCluster) -> DbstoredocCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_cluster_copy(s : DbstoredocCluster) -> DbstoredocCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocCluster::copy(self : DbstoredocCluster) -> DbstoredocCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_cluster_fill(s : DbstoredocCluster, v : Double) -> DbstoredocCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocCluster::fill(self : DbstoredocCluster, v : Double) -> DbstoredocCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_cluster_min(s : DbstoredocCluster) -> Double { @_common.min(s.data) }
+pub fn DbstoredocCluster::min(self : DbstoredocCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_cluster_max(s : DbstoredocCluster) -> Double { @_common.max(s.data) }
+pub fn DbstoredocCluster::max(self : DbstoredocCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_cluster_to_string(s : DbstoredocCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocCluster::to_string(self : DbstoredocCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocModel {
@@ -708,45 +708,45 @@ pub fn db_store_doc_model_make(size : Int) -> DbstoredocModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_model_len(s : DbstoredocModel) -> Int { s.size }
+pub fn DbstoredocModel::len(self : DbstoredocModel) -> Int { self.size }
 
-pub fn db_store_doc_model_get(s : DbstoredocModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocModel::get(self : DbstoredocModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_model_set(s : DbstoredocModel, i : Int, v : Double) -> DbstoredocModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocModel::set(self : DbstoredocModel, i : Int, v : Double) -> DbstoredocModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_model_sum(s : DbstoredocModel) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocModel::sum(self : DbstoredocModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_model_mean(s : DbstoredocModel) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocModel::mean(self : DbstoredocModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_model_scale(s : DbstoredocModel, f : Double) -> DbstoredocModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocModel::scale(self : DbstoredocModel, f : Double) -> DbstoredocModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_model_add(a : DbstoredocModel, b : DbstoredocModel) -> DbstoredocModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocModel::add(self : DbstoredocModel, other : DbstoredocModel) -> DbstoredocModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_model_copy(s : DbstoredocModel) -> DbstoredocModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocModel::copy(self : DbstoredocModel) -> DbstoredocModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_model_fill(s : DbstoredocModel, v : Double) -> DbstoredocModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocModel::fill(self : DbstoredocModel, v : Double) -> DbstoredocModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_model_min(s : DbstoredocModel) -> Double { @_common.min(s.data) }
+pub fn DbstoredocModel::min(self : DbstoredocModel) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_model_max(s : DbstoredocModel) -> Double { @_common.max(s.data) }
+pub fn DbstoredocModel::max(self : DbstoredocModel) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_model_to_string(s : DbstoredocModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocModel::to_string(self : DbstoredocModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocLayer {
@@ -759,45 +759,45 @@ pub fn db_store_doc_layer_make(size : Int) -> DbstoredocLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_layer_len(s : DbstoredocLayer) -> Int { s.size }
+pub fn DbstoredocLayer::len(self : DbstoredocLayer) -> Int { self.size }
 
-pub fn db_store_doc_layer_get(s : DbstoredocLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocLayer::get(self : DbstoredocLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_layer_set(s : DbstoredocLayer, i : Int, v : Double) -> DbstoredocLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocLayer::set(self : DbstoredocLayer, i : Int, v : Double) -> DbstoredocLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_layer_sum(s : DbstoredocLayer) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocLayer::sum(self : DbstoredocLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_layer_mean(s : DbstoredocLayer) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocLayer::mean(self : DbstoredocLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_layer_scale(s : DbstoredocLayer, f : Double) -> DbstoredocLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocLayer::scale(self : DbstoredocLayer, f : Double) -> DbstoredocLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_layer_add(a : DbstoredocLayer, b : DbstoredocLayer) -> DbstoredocLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocLayer::add(self : DbstoredocLayer, other : DbstoredocLayer) -> DbstoredocLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_layer_copy(s : DbstoredocLayer) -> DbstoredocLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocLayer::copy(self : DbstoredocLayer) -> DbstoredocLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_layer_fill(s : DbstoredocLayer, v : Double) -> DbstoredocLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocLayer::fill(self : DbstoredocLayer, v : Double) -> DbstoredocLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_layer_min(s : DbstoredocLayer) -> Double { @_common.min(s.data) }
+pub fn DbstoredocLayer::min(self : DbstoredocLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_layer_max(s : DbstoredocLayer) -> Double { @_common.max(s.data) }
+pub fn DbstoredocLayer::max(self : DbstoredocLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_layer_to_string(s : DbstoredocLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocLayer::to_string(self : DbstoredocLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocBuffer {
@@ -810,45 +810,45 @@ pub fn db_store_doc_buffer_make(size : Int) -> DbstoredocBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_buffer_len(s : DbstoredocBuffer) -> Int { s.size }
+pub fn DbstoredocBuffer::len(self : DbstoredocBuffer) -> Int { self.size }
 
-pub fn db_store_doc_buffer_get(s : DbstoredocBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocBuffer::get(self : DbstoredocBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_buffer_set(s : DbstoredocBuffer, i : Int, v : Double) -> DbstoredocBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocBuffer::set(self : DbstoredocBuffer, i : Int, v : Double) -> DbstoredocBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_buffer_sum(s : DbstoredocBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocBuffer::sum(self : DbstoredocBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_buffer_mean(s : DbstoredocBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocBuffer::mean(self : DbstoredocBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_buffer_scale(s : DbstoredocBuffer, f : Double) -> DbstoredocBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocBuffer::scale(self : DbstoredocBuffer, f : Double) -> DbstoredocBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_buffer_add(a : DbstoredocBuffer, b : DbstoredocBuffer) -> DbstoredocBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocBuffer::add(self : DbstoredocBuffer, other : DbstoredocBuffer) -> DbstoredocBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_buffer_copy(s : DbstoredocBuffer) -> DbstoredocBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocBuffer::copy(self : DbstoredocBuffer) -> DbstoredocBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_buffer_fill(s : DbstoredocBuffer, v : Double) -> DbstoredocBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocBuffer::fill(self : DbstoredocBuffer, v : Double) -> DbstoredocBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_buffer_min(s : DbstoredocBuffer) -> Double { @_common.min(s.data) }
+pub fn DbstoredocBuffer::min(self : DbstoredocBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_buffer_max(s : DbstoredocBuffer) -> Double { @_common.max(s.data) }
+pub fn DbstoredocBuffer::max(self : DbstoredocBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_buffer_to_string(s : DbstoredocBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocBuffer::to_string(self : DbstoredocBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocCursor {
@@ -861,45 +861,45 @@ pub fn db_store_doc_cursor_make(size : Int) -> DbstoredocCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_cursor_len(s : DbstoredocCursor) -> Int { s.size }
+pub fn DbstoredocCursor::len(self : DbstoredocCursor) -> Int { self.size }
 
-pub fn db_store_doc_cursor_get(s : DbstoredocCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocCursor::get(self : DbstoredocCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_cursor_set(s : DbstoredocCursor, i : Int, v : Double) -> DbstoredocCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocCursor::set(self : DbstoredocCursor, i : Int, v : Double) -> DbstoredocCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_cursor_sum(s : DbstoredocCursor) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocCursor::sum(self : DbstoredocCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_cursor_mean(s : DbstoredocCursor) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocCursor::mean(self : DbstoredocCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_cursor_scale(s : DbstoredocCursor, f : Double) -> DbstoredocCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocCursor::scale(self : DbstoredocCursor, f : Double) -> DbstoredocCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_cursor_add(a : DbstoredocCursor, b : DbstoredocCursor) -> DbstoredocCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocCursor::add(self : DbstoredocCursor, other : DbstoredocCursor) -> DbstoredocCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_cursor_copy(s : DbstoredocCursor) -> DbstoredocCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocCursor::copy(self : DbstoredocCursor) -> DbstoredocCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_cursor_fill(s : DbstoredocCursor, v : Double) -> DbstoredocCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocCursor::fill(self : DbstoredocCursor, v : Double) -> DbstoredocCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_cursor_min(s : DbstoredocCursor) -> Double { @_common.min(s.data) }
+pub fn DbstoredocCursor::min(self : DbstoredocCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_cursor_max(s : DbstoredocCursor) -> Double { @_common.max(s.data) }
+pub fn DbstoredocCursor::max(self : DbstoredocCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_cursor_to_string(s : DbstoredocCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocCursor::to_string(self : DbstoredocCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocView {
@@ -912,45 +912,45 @@ pub fn db_store_doc_view_make(size : Int) -> DbstoredocView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_view_len(s : DbstoredocView) -> Int { s.size }
+pub fn DbstoredocView::len(self : DbstoredocView) -> Int { self.size }
 
-pub fn db_store_doc_view_get(s : DbstoredocView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocView::get(self : DbstoredocView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_view_set(s : DbstoredocView, i : Int, v : Double) -> DbstoredocView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocView::set(self : DbstoredocView, i : Int, v : Double) -> DbstoredocView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_view_sum(s : DbstoredocView) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocView::sum(self : DbstoredocView) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_view_mean(s : DbstoredocView) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocView::mean(self : DbstoredocView) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_view_scale(s : DbstoredocView, f : Double) -> DbstoredocView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocView::scale(self : DbstoredocView, f : Double) -> DbstoredocView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_view_add(a : DbstoredocView, b : DbstoredocView) -> DbstoredocView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocView::add(self : DbstoredocView, other : DbstoredocView) -> DbstoredocView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_view_copy(s : DbstoredocView) -> DbstoredocView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocView::copy(self : DbstoredocView) -> DbstoredocView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_view_fill(s : DbstoredocView, v : Double) -> DbstoredocView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocView::fill(self : DbstoredocView, v : Double) -> DbstoredocView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_view_min(s : DbstoredocView) -> Double { @_common.min(s.data) }
+pub fn DbstoredocView::min(self : DbstoredocView) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_view_max(s : DbstoredocView) -> Double { @_common.max(s.data) }
+pub fn DbstoredocView::max(self : DbstoredocView) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_view_to_string(s : DbstoredocView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocView::to_string(self : DbstoredocView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocRange {
@@ -963,45 +963,45 @@ pub fn db_store_doc_range_make(size : Int) -> DbstoredocRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_range_len(s : DbstoredocRange) -> Int { s.size }
+pub fn DbstoredocRange::len(self : DbstoredocRange) -> Int { self.size }
 
-pub fn db_store_doc_range_get(s : DbstoredocRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocRange::get(self : DbstoredocRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_range_set(s : DbstoredocRange, i : Int, v : Double) -> DbstoredocRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocRange::set(self : DbstoredocRange, i : Int, v : Double) -> DbstoredocRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_range_sum(s : DbstoredocRange) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocRange::sum(self : DbstoredocRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_range_mean(s : DbstoredocRange) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocRange::mean(self : DbstoredocRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_range_scale(s : DbstoredocRange, f : Double) -> DbstoredocRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocRange::scale(self : DbstoredocRange, f : Double) -> DbstoredocRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_range_add(a : DbstoredocRange, b : DbstoredocRange) -> DbstoredocRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocRange::add(self : DbstoredocRange, other : DbstoredocRange) -> DbstoredocRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_range_copy(s : DbstoredocRange) -> DbstoredocRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocRange::copy(self : DbstoredocRange) -> DbstoredocRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_range_fill(s : DbstoredocRange, v : Double) -> DbstoredocRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocRange::fill(self : DbstoredocRange, v : Double) -> DbstoredocRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_range_min(s : DbstoredocRange) -> Double { @_common.min(s.data) }
+pub fn DbstoredocRange::min(self : DbstoredocRange) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_range_max(s : DbstoredocRange) -> Double { @_common.max(s.data) }
+pub fn DbstoredocRange::max(self : DbstoredocRange) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_range_to_string(s : DbstoredocRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocRange::to_string(self : DbstoredocRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoredocSlice {
@@ -1014,44 +1014,44 @@ pub fn db_store_doc_slice_make(size : Int) -> DbstoredocSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_doc_slice_len(s : DbstoredocSlice) -> Int { s.size }
+pub fn DbstoredocSlice::len(self : DbstoredocSlice) -> Int { self.size }
 
-pub fn db_store_doc_slice_get(s : DbstoredocSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoredocSlice::get(self : DbstoredocSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_doc_slice_set(s : DbstoredocSlice, i : Int, v : Double) -> DbstoredocSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoredocSlice::set(self : DbstoredocSlice, i : Int, v : Double) -> DbstoredocSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_slice_sum(s : DbstoredocSlice) -> Double { @_common.sum(s.data) }
+pub fn DbstoredocSlice::sum(self : DbstoredocSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_doc_slice_mean(s : DbstoredocSlice) -> Double { @_common.mean(s.data) }
+pub fn DbstoredocSlice::mean(self : DbstoredocSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_doc_slice_scale(s : DbstoredocSlice, f : Double) -> DbstoredocSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoredocSlice::scale(self : DbstoredocSlice, f : Double) -> DbstoredocSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_slice_add(a : DbstoredocSlice, b : DbstoredocSlice) -> DbstoredocSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoredocSlice::add(self : DbstoredocSlice, other : DbstoredocSlice) -> DbstoredocSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_doc_slice_copy(s : DbstoredocSlice) -> DbstoredocSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoredocSlice::copy(self : DbstoredocSlice) -> DbstoredocSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_slice_fill(s : DbstoredocSlice, v : Double) -> DbstoredocSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoredocSlice::fill(self : DbstoredocSlice, v : Double) -> DbstoredocSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_doc_slice_min(s : DbstoredocSlice) -> Double { @_common.min(s.data) }
+pub fn DbstoredocSlice::min(self : DbstoredocSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_store_doc_slice_max(s : DbstoredocSlice) -> Double { @_common.max(s.data) }
+pub fn DbstoredocSlice::max(self : DbstoredocSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_store_doc_slice_to_string(s : DbstoredocSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoredocSlice::to_string(self : DbstoredocSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

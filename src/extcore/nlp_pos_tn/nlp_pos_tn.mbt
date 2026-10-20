@@ -351,45 +351,45 @@ pub fn nlp_pos_tn_frame_make(size : Int) -> NlppostnFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_frame_len(s : NlppostnFrame) -> Int { s.size }
+pub fn NlppostnFrame::len(self : NlppostnFrame) -> Int { self.size }
 
-pub fn nlp_pos_tn_frame_get(s : NlppostnFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnFrame::get(self : NlppostnFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_frame_set(s : NlppostnFrame, i : Int, v : Double) -> NlppostnFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnFrame::set(self : NlppostnFrame, i : Int, v : Double) -> NlppostnFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_frame_sum(s : NlppostnFrame) -> Double { @_common.sum(s.data) }
+pub fn NlppostnFrame::sum(self : NlppostnFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_frame_mean(s : NlppostnFrame) -> Double { @_common.mean(s.data) }
+pub fn NlppostnFrame::mean(self : NlppostnFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_frame_scale(s : NlppostnFrame, f : Double) -> NlppostnFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnFrame::scale(self : NlppostnFrame, f : Double) -> NlppostnFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_frame_add(a : NlppostnFrame, b : NlppostnFrame) -> NlppostnFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnFrame::add(self : NlppostnFrame, other : NlppostnFrame) -> NlppostnFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_frame_copy(s : NlppostnFrame) -> NlppostnFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnFrame::copy(self : NlppostnFrame) -> NlppostnFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_frame_fill(s : NlppostnFrame, v : Double) -> NlppostnFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnFrame::fill(self : NlppostnFrame, v : Double) -> NlppostnFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_frame_min(s : NlppostnFrame) -> Double { @_common.min(s.data) }
+pub fn NlppostnFrame::min(self : NlppostnFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_frame_max(s : NlppostnFrame) -> Double { @_common.max(s.data) }
+pub fn NlppostnFrame::max(self : NlppostnFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_frame_to_string(s : NlppostnFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnFrame::to_string(self : NlppostnFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnTable {
@@ -402,45 +402,45 @@ pub fn nlp_pos_tn_table_make(size : Int) -> NlppostnTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_table_len(s : NlppostnTable) -> Int { s.size }
+pub fn NlppostnTable::len(self : NlppostnTable) -> Int { self.size }
 
-pub fn nlp_pos_tn_table_get(s : NlppostnTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnTable::get(self : NlppostnTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_table_set(s : NlppostnTable, i : Int, v : Double) -> NlppostnTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnTable::set(self : NlppostnTable, i : Int, v : Double) -> NlppostnTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_table_sum(s : NlppostnTable) -> Double { @_common.sum(s.data) }
+pub fn NlppostnTable::sum(self : NlppostnTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_table_mean(s : NlppostnTable) -> Double { @_common.mean(s.data) }
+pub fn NlppostnTable::mean(self : NlppostnTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_table_scale(s : NlppostnTable, f : Double) -> NlppostnTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnTable::scale(self : NlppostnTable, f : Double) -> NlppostnTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_table_add(a : NlppostnTable, b : NlppostnTable) -> NlppostnTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnTable::add(self : NlppostnTable, other : NlppostnTable) -> NlppostnTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_table_copy(s : NlppostnTable) -> NlppostnTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnTable::copy(self : NlppostnTable) -> NlppostnTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_table_fill(s : NlppostnTable, v : Double) -> NlppostnTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnTable::fill(self : NlppostnTable, v : Double) -> NlppostnTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_table_min(s : NlppostnTable) -> Double { @_common.min(s.data) }
+pub fn NlppostnTable::min(self : NlppostnTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_table_max(s : NlppostnTable) -> Double { @_common.max(s.data) }
+pub fn NlppostnTable::max(self : NlppostnTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_table_to_string(s : NlppostnTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnTable::to_string(self : NlppostnTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_pos_tn_graphn_make(size : Int) -> NlppostnGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_graphn_len(s : NlppostnGraphN) -> Int { s.size }
+pub fn NlppostnGraphN::len(self : NlppostnGraphN) -> Int { self.size }
 
-pub fn nlp_pos_tn_graphn_get(s : NlppostnGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnGraphN::get(self : NlppostnGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_graphn_set(s : NlppostnGraphN, i : Int, v : Double) -> NlppostnGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnGraphN::set(self : NlppostnGraphN, i : Int, v : Double) -> NlppostnGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_graphn_sum(s : NlppostnGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlppostnGraphN::sum(self : NlppostnGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_graphn_mean(s : NlppostnGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlppostnGraphN::mean(self : NlppostnGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_graphn_scale(s : NlppostnGraphN, f : Double) -> NlppostnGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnGraphN::scale(self : NlppostnGraphN, f : Double) -> NlppostnGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_graphn_add(a : NlppostnGraphN, b : NlppostnGraphN) -> NlppostnGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnGraphN::add(self : NlppostnGraphN, other : NlppostnGraphN) -> NlppostnGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_graphn_copy(s : NlppostnGraphN) -> NlppostnGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnGraphN::copy(self : NlppostnGraphN) -> NlppostnGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_graphn_fill(s : NlppostnGraphN, v : Double) -> NlppostnGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnGraphN::fill(self : NlppostnGraphN, v : Double) -> NlppostnGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_graphn_min(s : NlppostnGraphN) -> Double { @_common.min(s.data) }
+pub fn NlppostnGraphN::min(self : NlppostnGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_graphn_max(s : NlppostnGraphN) -> Double { @_common.max(s.data) }
+pub fn NlppostnGraphN::max(self : NlppostnGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_graphn_to_string(s : NlppostnGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnGraphN::to_string(self : NlppostnGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnNode {
@@ -504,45 +504,45 @@ pub fn nlp_pos_tn_node_make(size : Int) -> NlppostnNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_node_len(s : NlppostnNode) -> Int { s.size }
+pub fn NlppostnNode::len(self : NlppostnNode) -> Int { self.size }
 
-pub fn nlp_pos_tn_node_get(s : NlppostnNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnNode::get(self : NlppostnNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_node_set(s : NlppostnNode, i : Int, v : Double) -> NlppostnNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnNode::set(self : NlppostnNode, i : Int, v : Double) -> NlppostnNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_node_sum(s : NlppostnNode) -> Double { @_common.sum(s.data) }
+pub fn NlppostnNode::sum(self : NlppostnNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_node_mean(s : NlppostnNode) -> Double { @_common.mean(s.data) }
+pub fn NlppostnNode::mean(self : NlppostnNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_node_scale(s : NlppostnNode, f : Double) -> NlppostnNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnNode::scale(self : NlppostnNode, f : Double) -> NlppostnNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_node_add(a : NlppostnNode, b : NlppostnNode) -> NlppostnNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnNode::add(self : NlppostnNode, other : NlppostnNode) -> NlppostnNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_node_copy(s : NlppostnNode) -> NlppostnNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnNode::copy(self : NlppostnNode) -> NlppostnNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_node_fill(s : NlppostnNode, v : Double) -> NlppostnNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnNode::fill(self : NlppostnNode, v : Double) -> NlppostnNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_node_min(s : NlppostnNode) -> Double { @_common.min(s.data) }
+pub fn NlppostnNode::min(self : NlppostnNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_node_max(s : NlppostnNode) -> Double { @_common.max(s.data) }
+pub fn NlppostnNode::max(self : NlppostnNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_node_to_string(s : NlppostnNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnNode::to_string(self : NlppostnNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnEdge {
@@ -555,45 +555,45 @@ pub fn nlp_pos_tn_edge_make(size : Int) -> NlppostnEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_edge_len(s : NlppostnEdge) -> Int { s.size }
+pub fn NlppostnEdge::len(self : NlppostnEdge) -> Int { self.size }
 
-pub fn nlp_pos_tn_edge_get(s : NlppostnEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnEdge::get(self : NlppostnEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_edge_set(s : NlppostnEdge, i : Int, v : Double) -> NlppostnEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnEdge::set(self : NlppostnEdge, i : Int, v : Double) -> NlppostnEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_edge_sum(s : NlppostnEdge) -> Double { @_common.sum(s.data) }
+pub fn NlppostnEdge::sum(self : NlppostnEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_edge_mean(s : NlppostnEdge) -> Double { @_common.mean(s.data) }
+pub fn NlppostnEdge::mean(self : NlppostnEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_edge_scale(s : NlppostnEdge, f : Double) -> NlppostnEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnEdge::scale(self : NlppostnEdge, f : Double) -> NlppostnEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_edge_add(a : NlppostnEdge, b : NlppostnEdge) -> NlppostnEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnEdge::add(self : NlppostnEdge, other : NlppostnEdge) -> NlppostnEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_edge_copy(s : NlppostnEdge) -> NlppostnEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnEdge::copy(self : NlppostnEdge) -> NlppostnEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_edge_fill(s : NlppostnEdge, v : Double) -> NlppostnEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnEdge::fill(self : NlppostnEdge, v : Double) -> NlppostnEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_edge_min(s : NlppostnEdge) -> Double { @_common.min(s.data) }
+pub fn NlppostnEdge::min(self : NlppostnEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_edge_max(s : NlppostnEdge) -> Double { @_common.max(s.data) }
+pub fn NlppostnEdge::max(self : NlppostnEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_edge_to_string(s : NlppostnEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnEdge::to_string(self : NlppostnEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnPath {
@@ -606,45 +606,45 @@ pub fn nlp_pos_tn_path_make(size : Int) -> NlppostnPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_path_len(s : NlppostnPath) -> Int { s.size }
+pub fn NlppostnPath::len(self : NlppostnPath) -> Int { self.size }
 
-pub fn nlp_pos_tn_path_get(s : NlppostnPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnPath::get(self : NlppostnPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_path_set(s : NlppostnPath, i : Int, v : Double) -> NlppostnPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnPath::set(self : NlppostnPath, i : Int, v : Double) -> NlppostnPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_path_sum(s : NlppostnPath) -> Double { @_common.sum(s.data) }
+pub fn NlppostnPath::sum(self : NlppostnPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_path_mean(s : NlppostnPath) -> Double { @_common.mean(s.data) }
+pub fn NlppostnPath::mean(self : NlppostnPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_path_scale(s : NlppostnPath, f : Double) -> NlppostnPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnPath::scale(self : NlppostnPath, f : Double) -> NlppostnPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_path_add(a : NlppostnPath, b : NlppostnPath) -> NlppostnPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnPath::add(self : NlppostnPath, other : NlppostnPath) -> NlppostnPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_path_copy(s : NlppostnPath) -> NlppostnPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnPath::copy(self : NlppostnPath) -> NlppostnPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_path_fill(s : NlppostnPath, v : Double) -> NlppostnPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnPath::fill(self : NlppostnPath, v : Double) -> NlppostnPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_path_min(s : NlppostnPath) -> Double { @_common.min(s.data) }
+pub fn NlppostnPath::min(self : NlppostnPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_path_max(s : NlppostnPath) -> Double { @_common.max(s.data) }
+pub fn NlppostnPath::max(self : NlppostnPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_path_to_string(s : NlppostnPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnPath::to_string(self : NlppostnPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnCluster {
@@ -657,45 +657,45 @@ pub fn nlp_pos_tn_cluster_make(size : Int) -> NlppostnCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_cluster_len(s : NlppostnCluster) -> Int { s.size }
+pub fn NlppostnCluster::len(self : NlppostnCluster) -> Int { self.size }
 
-pub fn nlp_pos_tn_cluster_get(s : NlppostnCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnCluster::get(self : NlppostnCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_cluster_set(s : NlppostnCluster, i : Int, v : Double) -> NlppostnCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnCluster::set(self : NlppostnCluster, i : Int, v : Double) -> NlppostnCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_cluster_sum(s : NlppostnCluster) -> Double { @_common.sum(s.data) }
+pub fn NlppostnCluster::sum(self : NlppostnCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_cluster_mean(s : NlppostnCluster) -> Double { @_common.mean(s.data) }
+pub fn NlppostnCluster::mean(self : NlppostnCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_cluster_scale(s : NlppostnCluster, f : Double) -> NlppostnCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnCluster::scale(self : NlppostnCluster, f : Double) -> NlppostnCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_cluster_add(a : NlppostnCluster, b : NlppostnCluster) -> NlppostnCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnCluster::add(self : NlppostnCluster, other : NlppostnCluster) -> NlppostnCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_cluster_copy(s : NlppostnCluster) -> NlppostnCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnCluster::copy(self : NlppostnCluster) -> NlppostnCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_cluster_fill(s : NlppostnCluster, v : Double) -> NlppostnCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnCluster::fill(self : NlppostnCluster, v : Double) -> NlppostnCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_cluster_min(s : NlppostnCluster) -> Double { @_common.min(s.data) }
+pub fn NlppostnCluster::min(self : NlppostnCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_cluster_max(s : NlppostnCluster) -> Double { @_common.max(s.data) }
+pub fn NlppostnCluster::max(self : NlppostnCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_cluster_to_string(s : NlppostnCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnCluster::to_string(self : NlppostnCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnModel {
@@ -708,45 +708,45 @@ pub fn nlp_pos_tn_model_make(size : Int) -> NlppostnModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_model_len(s : NlppostnModel) -> Int { s.size }
+pub fn NlppostnModel::len(self : NlppostnModel) -> Int { self.size }
 
-pub fn nlp_pos_tn_model_get(s : NlppostnModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnModel::get(self : NlppostnModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_model_set(s : NlppostnModel, i : Int, v : Double) -> NlppostnModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnModel::set(self : NlppostnModel, i : Int, v : Double) -> NlppostnModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_model_sum(s : NlppostnModel) -> Double { @_common.sum(s.data) }
+pub fn NlppostnModel::sum(self : NlppostnModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_model_mean(s : NlppostnModel) -> Double { @_common.mean(s.data) }
+pub fn NlppostnModel::mean(self : NlppostnModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_model_scale(s : NlppostnModel, f : Double) -> NlppostnModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnModel::scale(self : NlppostnModel, f : Double) -> NlppostnModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_model_add(a : NlppostnModel, b : NlppostnModel) -> NlppostnModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnModel::add(self : NlppostnModel, other : NlppostnModel) -> NlppostnModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_model_copy(s : NlppostnModel) -> NlppostnModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnModel::copy(self : NlppostnModel) -> NlppostnModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_model_fill(s : NlppostnModel, v : Double) -> NlppostnModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnModel::fill(self : NlppostnModel, v : Double) -> NlppostnModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_model_min(s : NlppostnModel) -> Double { @_common.min(s.data) }
+pub fn NlppostnModel::min(self : NlppostnModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_model_max(s : NlppostnModel) -> Double { @_common.max(s.data) }
+pub fn NlppostnModel::max(self : NlppostnModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_model_to_string(s : NlppostnModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnModel::to_string(self : NlppostnModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnLayer {
@@ -759,45 +759,45 @@ pub fn nlp_pos_tn_layer_make(size : Int) -> NlppostnLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_layer_len(s : NlppostnLayer) -> Int { s.size }
+pub fn NlppostnLayer::len(self : NlppostnLayer) -> Int { self.size }
 
-pub fn nlp_pos_tn_layer_get(s : NlppostnLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnLayer::get(self : NlppostnLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_layer_set(s : NlppostnLayer, i : Int, v : Double) -> NlppostnLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnLayer::set(self : NlppostnLayer, i : Int, v : Double) -> NlppostnLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_layer_sum(s : NlppostnLayer) -> Double { @_common.sum(s.data) }
+pub fn NlppostnLayer::sum(self : NlppostnLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_layer_mean(s : NlppostnLayer) -> Double { @_common.mean(s.data) }
+pub fn NlppostnLayer::mean(self : NlppostnLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_layer_scale(s : NlppostnLayer, f : Double) -> NlppostnLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnLayer::scale(self : NlppostnLayer, f : Double) -> NlppostnLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_layer_add(a : NlppostnLayer, b : NlppostnLayer) -> NlppostnLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnLayer::add(self : NlppostnLayer, other : NlppostnLayer) -> NlppostnLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_layer_copy(s : NlppostnLayer) -> NlppostnLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnLayer::copy(self : NlppostnLayer) -> NlppostnLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_layer_fill(s : NlppostnLayer, v : Double) -> NlppostnLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnLayer::fill(self : NlppostnLayer, v : Double) -> NlppostnLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_layer_min(s : NlppostnLayer) -> Double { @_common.min(s.data) }
+pub fn NlppostnLayer::min(self : NlppostnLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_layer_max(s : NlppostnLayer) -> Double { @_common.max(s.data) }
+pub fn NlppostnLayer::max(self : NlppostnLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_layer_to_string(s : NlppostnLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnLayer::to_string(self : NlppostnLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_pos_tn_buffer_make(size : Int) -> NlppostnBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_buffer_len(s : NlppostnBuffer) -> Int { s.size }
+pub fn NlppostnBuffer::len(self : NlppostnBuffer) -> Int { self.size }
 
-pub fn nlp_pos_tn_buffer_get(s : NlppostnBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnBuffer::get(self : NlppostnBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_buffer_set(s : NlppostnBuffer, i : Int, v : Double) -> NlppostnBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnBuffer::set(self : NlppostnBuffer, i : Int, v : Double) -> NlppostnBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_buffer_sum(s : NlppostnBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlppostnBuffer::sum(self : NlppostnBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_buffer_mean(s : NlppostnBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlppostnBuffer::mean(self : NlppostnBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_buffer_scale(s : NlppostnBuffer, f : Double) -> NlppostnBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnBuffer::scale(self : NlppostnBuffer, f : Double) -> NlppostnBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_buffer_add(a : NlppostnBuffer, b : NlppostnBuffer) -> NlppostnBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnBuffer::add(self : NlppostnBuffer, other : NlppostnBuffer) -> NlppostnBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_buffer_copy(s : NlppostnBuffer) -> NlppostnBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnBuffer::copy(self : NlppostnBuffer) -> NlppostnBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_buffer_fill(s : NlppostnBuffer, v : Double) -> NlppostnBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnBuffer::fill(self : NlppostnBuffer, v : Double) -> NlppostnBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_buffer_min(s : NlppostnBuffer) -> Double { @_common.min(s.data) }
+pub fn NlppostnBuffer::min(self : NlppostnBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_buffer_max(s : NlppostnBuffer) -> Double { @_common.max(s.data) }
+pub fn NlppostnBuffer::max(self : NlppostnBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_buffer_to_string(s : NlppostnBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnBuffer::to_string(self : NlppostnBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnCursor {
@@ -861,45 +861,45 @@ pub fn nlp_pos_tn_cursor_make(size : Int) -> NlppostnCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_cursor_len(s : NlppostnCursor) -> Int { s.size }
+pub fn NlppostnCursor::len(self : NlppostnCursor) -> Int { self.size }
 
-pub fn nlp_pos_tn_cursor_get(s : NlppostnCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnCursor::get(self : NlppostnCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_cursor_set(s : NlppostnCursor, i : Int, v : Double) -> NlppostnCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnCursor::set(self : NlppostnCursor, i : Int, v : Double) -> NlppostnCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_cursor_sum(s : NlppostnCursor) -> Double { @_common.sum(s.data) }
+pub fn NlppostnCursor::sum(self : NlppostnCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_cursor_mean(s : NlppostnCursor) -> Double { @_common.mean(s.data) }
+pub fn NlppostnCursor::mean(self : NlppostnCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_cursor_scale(s : NlppostnCursor, f : Double) -> NlppostnCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnCursor::scale(self : NlppostnCursor, f : Double) -> NlppostnCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_cursor_add(a : NlppostnCursor, b : NlppostnCursor) -> NlppostnCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnCursor::add(self : NlppostnCursor, other : NlppostnCursor) -> NlppostnCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_cursor_copy(s : NlppostnCursor) -> NlppostnCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnCursor::copy(self : NlppostnCursor) -> NlppostnCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_cursor_fill(s : NlppostnCursor, v : Double) -> NlppostnCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnCursor::fill(self : NlppostnCursor, v : Double) -> NlppostnCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_cursor_min(s : NlppostnCursor) -> Double { @_common.min(s.data) }
+pub fn NlppostnCursor::min(self : NlppostnCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_cursor_max(s : NlppostnCursor) -> Double { @_common.max(s.data) }
+pub fn NlppostnCursor::max(self : NlppostnCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_cursor_to_string(s : NlppostnCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnCursor::to_string(self : NlppostnCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnView {
@@ -912,45 +912,45 @@ pub fn nlp_pos_tn_view_make(size : Int) -> NlppostnView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_view_len(s : NlppostnView) -> Int { s.size }
+pub fn NlppostnView::len(self : NlppostnView) -> Int { self.size }
 
-pub fn nlp_pos_tn_view_get(s : NlppostnView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnView::get(self : NlppostnView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_view_set(s : NlppostnView, i : Int, v : Double) -> NlppostnView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnView::set(self : NlppostnView, i : Int, v : Double) -> NlppostnView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_view_sum(s : NlppostnView) -> Double { @_common.sum(s.data) }
+pub fn NlppostnView::sum(self : NlppostnView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_view_mean(s : NlppostnView) -> Double { @_common.mean(s.data) }
+pub fn NlppostnView::mean(self : NlppostnView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_view_scale(s : NlppostnView, f : Double) -> NlppostnView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnView::scale(self : NlppostnView, f : Double) -> NlppostnView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_view_add(a : NlppostnView, b : NlppostnView) -> NlppostnView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnView::add(self : NlppostnView, other : NlppostnView) -> NlppostnView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_view_copy(s : NlppostnView) -> NlppostnView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnView::copy(self : NlppostnView) -> NlppostnView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_view_fill(s : NlppostnView, v : Double) -> NlppostnView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnView::fill(self : NlppostnView, v : Double) -> NlppostnView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_view_min(s : NlppostnView) -> Double { @_common.min(s.data) }
+pub fn NlppostnView::min(self : NlppostnView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_view_max(s : NlppostnView) -> Double { @_common.max(s.data) }
+pub fn NlppostnView::max(self : NlppostnView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_view_to_string(s : NlppostnView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnView::to_string(self : NlppostnView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnRange {
@@ -963,45 +963,45 @@ pub fn nlp_pos_tn_range_make(size : Int) -> NlppostnRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_range_len(s : NlppostnRange) -> Int { s.size }
+pub fn NlppostnRange::len(self : NlppostnRange) -> Int { self.size }
 
-pub fn nlp_pos_tn_range_get(s : NlppostnRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnRange::get(self : NlppostnRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_range_set(s : NlppostnRange, i : Int, v : Double) -> NlppostnRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnRange::set(self : NlppostnRange, i : Int, v : Double) -> NlppostnRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_range_sum(s : NlppostnRange) -> Double { @_common.sum(s.data) }
+pub fn NlppostnRange::sum(self : NlppostnRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_range_mean(s : NlppostnRange) -> Double { @_common.mean(s.data) }
+pub fn NlppostnRange::mean(self : NlppostnRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_range_scale(s : NlppostnRange, f : Double) -> NlppostnRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnRange::scale(self : NlppostnRange, f : Double) -> NlppostnRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_range_add(a : NlppostnRange, b : NlppostnRange) -> NlppostnRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnRange::add(self : NlppostnRange, other : NlppostnRange) -> NlppostnRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_range_copy(s : NlppostnRange) -> NlppostnRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnRange::copy(self : NlppostnRange) -> NlppostnRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_range_fill(s : NlppostnRange, v : Double) -> NlppostnRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnRange::fill(self : NlppostnRange, v : Double) -> NlppostnRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_range_min(s : NlppostnRange) -> Double { @_common.min(s.data) }
+pub fn NlppostnRange::min(self : NlppostnRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_range_max(s : NlppostnRange) -> Double { @_common.max(s.data) }
+pub fn NlppostnRange::max(self : NlppostnRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_range_to_string(s : NlppostnRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnRange::to_string(self : NlppostnRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlppostnSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_pos_tn_slice_make(size : Int) -> NlppostnSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_tn_slice_len(s : NlppostnSlice) -> Int { s.size }
+pub fn NlppostnSlice::len(self : NlppostnSlice) -> Int { self.size }
 
-pub fn nlp_pos_tn_slice_get(s : NlppostnSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlppostnSlice::get(self : NlppostnSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_tn_slice_set(s : NlppostnSlice, i : Int, v : Double) -> NlppostnSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlppostnSlice::set(self : NlppostnSlice, i : Int, v : Double) -> NlppostnSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_slice_sum(s : NlppostnSlice) -> Double { @_common.sum(s.data) }
+pub fn NlppostnSlice::sum(self : NlppostnSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_tn_slice_mean(s : NlppostnSlice) -> Double { @_common.mean(s.data) }
+pub fn NlppostnSlice::mean(self : NlppostnSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_tn_slice_scale(s : NlppostnSlice, f : Double) -> NlppostnSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlppostnSlice::scale(self : NlppostnSlice, f : Double) -> NlppostnSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_slice_add(a : NlppostnSlice, b : NlppostnSlice) -> NlppostnSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlppostnSlice::add(self : NlppostnSlice, other : NlppostnSlice) -> NlppostnSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_slice_copy(s : NlppostnSlice) -> NlppostnSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlppostnSlice::copy(self : NlppostnSlice) -> NlppostnSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_slice_fill(s : NlppostnSlice, v : Double) -> NlppostnSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlppostnSlice::fill(self : NlppostnSlice, v : Double) -> NlppostnSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_tn_slice_min(s : NlppostnSlice) -> Double { @_common.min(s.data) }
+pub fn NlppostnSlice::min(self : NlppostnSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_tn_slice_max(s : NlppostnSlice) -> Double { @_common.max(s.data) }
+pub fn NlppostnSlice::max(self : NlppostnSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_tn_slice_to_string(s : NlppostnSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlppostnSlice::to_string(self : NlppostnSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

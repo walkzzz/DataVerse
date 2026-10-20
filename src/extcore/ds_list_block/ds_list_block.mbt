@@ -351,45 +351,45 @@ pub fn ds_list_block_frame_make(size : Int) -> DslistblockFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_frame_len(s : DslistblockFrame) -> Int { s.size }
+pub fn DslistblockFrame::len(self : DslistblockFrame) -> Int { self.size }
 
-pub fn ds_list_block_frame_get(s : DslistblockFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockFrame::get(self : DslistblockFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_frame_set(s : DslistblockFrame, i : Int, v : Double) -> DslistblockFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockFrame::set(self : DslistblockFrame, i : Int, v : Double) -> DslistblockFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_frame_sum(s : DslistblockFrame) -> Double { @_common.sum(s.data) }
+pub fn DslistblockFrame::sum(self : DslistblockFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_frame_mean(s : DslistblockFrame) -> Double { @_common.mean(s.data) }
+pub fn DslistblockFrame::mean(self : DslistblockFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_frame_scale(s : DslistblockFrame, f : Double) -> DslistblockFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockFrame::scale(self : DslistblockFrame, f : Double) -> DslistblockFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_frame_add(a : DslistblockFrame, b : DslistblockFrame) -> DslistblockFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockFrame::add(self : DslistblockFrame, other : DslistblockFrame) -> DslistblockFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_frame_copy(s : DslistblockFrame) -> DslistblockFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockFrame::copy(self : DslistblockFrame) -> DslistblockFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_frame_fill(s : DslistblockFrame, v : Double) -> DslistblockFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockFrame::fill(self : DslistblockFrame, v : Double) -> DslistblockFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_frame_min(s : DslistblockFrame) -> Double { @_common.min(s.data) }
+pub fn DslistblockFrame::min(self : DslistblockFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_frame_max(s : DslistblockFrame) -> Double { @_common.max(s.data) }
+pub fn DslistblockFrame::max(self : DslistblockFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_frame_to_string(s : DslistblockFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockFrame::to_string(self : DslistblockFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockTable {
@@ -402,45 +402,45 @@ pub fn ds_list_block_table_make(size : Int) -> DslistblockTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_table_len(s : DslistblockTable) -> Int { s.size }
+pub fn DslistblockTable::len(self : DslistblockTable) -> Int { self.size }
 
-pub fn ds_list_block_table_get(s : DslistblockTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockTable::get(self : DslistblockTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_table_set(s : DslistblockTable, i : Int, v : Double) -> DslistblockTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockTable::set(self : DslistblockTable, i : Int, v : Double) -> DslistblockTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_table_sum(s : DslistblockTable) -> Double { @_common.sum(s.data) }
+pub fn DslistblockTable::sum(self : DslistblockTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_table_mean(s : DslistblockTable) -> Double { @_common.mean(s.data) }
+pub fn DslistblockTable::mean(self : DslistblockTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_table_scale(s : DslistblockTable, f : Double) -> DslistblockTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockTable::scale(self : DslistblockTable, f : Double) -> DslistblockTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_table_add(a : DslistblockTable, b : DslistblockTable) -> DslistblockTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockTable::add(self : DslistblockTable, other : DslistblockTable) -> DslistblockTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_table_copy(s : DslistblockTable) -> DslistblockTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockTable::copy(self : DslistblockTable) -> DslistblockTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_table_fill(s : DslistblockTable, v : Double) -> DslistblockTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockTable::fill(self : DslistblockTable, v : Double) -> DslistblockTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_table_min(s : DslistblockTable) -> Double { @_common.min(s.data) }
+pub fn DslistblockTable::min(self : DslistblockTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_table_max(s : DslistblockTable) -> Double { @_common.max(s.data) }
+pub fn DslistblockTable::max(self : DslistblockTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_table_to_string(s : DslistblockTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockTable::to_string(self : DslistblockTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockGraphN {
@@ -453,45 +453,45 @@ pub fn ds_list_block_graphn_make(size : Int) -> DslistblockGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_graphn_len(s : DslistblockGraphN) -> Int { s.size }
+pub fn DslistblockGraphN::len(self : DslistblockGraphN) -> Int { self.size }
 
-pub fn ds_list_block_graphn_get(s : DslistblockGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockGraphN::get(self : DslistblockGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_graphn_set(s : DslistblockGraphN, i : Int, v : Double) -> DslistblockGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockGraphN::set(self : DslistblockGraphN, i : Int, v : Double) -> DslistblockGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_graphn_sum(s : DslistblockGraphN) -> Double { @_common.sum(s.data) }
+pub fn DslistblockGraphN::sum(self : DslistblockGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_graphn_mean(s : DslistblockGraphN) -> Double { @_common.mean(s.data) }
+pub fn DslistblockGraphN::mean(self : DslistblockGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_graphn_scale(s : DslistblockGraphN, f : Double) -> DslistblockGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockGraphN::scale(self : DslistblockGraphN, f : Double) -> DslistblockGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_graphn_add(a : DslistblockGraphN, b : DslistblockGraphN) -> DslistblockGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockGraphN::add(self : DslistblockGraphN, other : DslistblockGraphN) -> DslistblockGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_graphn_copy(s : DslistblockGraphN) -> DslistblockGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockGraphN::copy(self : DslistblockGraphN) -> DslistblockGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_graphn_fill(s : DslistblockGraphN, v : Double) -> DslistblockGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockGraphN::fill(self : DslistblockGraphN, v : Double) -> DslistblockGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_graphn_min(s : DslistblockGraphN) -> Double { @_common.min(s.data) }
+pub fn DslistblockGraphN::min(self : DslistblockGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_graphn_max(s : DslistblockGraphN) -> Double { @_common.max(s.data) }
+pub fn DslistblockGraphN::max(self : DslistblockGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_graphn_to_string(s : DslistblockGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockGraphN::to_string(self : DslistblockGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockNode {
@@ -504,45 +504,45 @@ pub fn ds_list_block_node_make(size : Int) -> DslistblockNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_node_len(s : DslistblockNode) -> Int { s.size }
+pub fn DslistblockNode::len(self : DslistblockNode) -> Int { self.size }
 
-pub fn ds_list_block_node_get(s : DslistblockNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockNode::get(self : DslistblockNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_node_set(s : DslistblockNode, i : Int, v : Double) -> DslistblockNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockNode::set(self : DslistblockNode, i : Int, v : Double) -> DslistblockNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_node_sum(s : DslistblockNode) -> Double { @_common.sum(s.data) }
+pub fn DslistblockNode::sum(self : DslistblockNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_node_mean(s : DslistblockNode) -> Double { @_common.mean(s.data) }
+pub fn DslistblockNode::mean(self : DslistblockNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_node_scale(s : DslistblockNode, f : Double) -> DslistblockNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockNode::scale(self : DslistblockNode, f : Double) -> DslistblockNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_node_add(a : DslistblockNode, b : DslistblockNode) -> DslistblockNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockNode::add(self : DslistblockNode, other : DslistblockNode) -> DslistblockNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_node_copy(s : DslistblockNode) -> DslistblockNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockNode::copy(self : DslistblockNode) -> DslistblockNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_node_fill(s : DslistblockNode, v : Double) -> DslistblockNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockNode::fill(self : DslistblockNode, v : Double) -> DslistblockNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_node_min(s : DslistblockNode) -> Double { @_common.min(s.data) }
+pub fn DslistblockNode::min(self : DslistblockNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_node_max(s : DslistblockNode) -> Double { @_common.max(s.data) }
+pub fn DslistblockNode::max(self : DslistblockNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_node_to_string(s : DslistblockNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockNode::to_string(self : DslistblockNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockEdge {
@@ -555,45 +555,45 @@ pub fn ds_list_block_edge_make(size : Int) -> DslistblockEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_edge_len(s : DslistblockEdge) -> Int { s.size }
+pub fn DslistblockEdge::len(self : DslistblockEdge) -> Int { self.size }
 
-pub fn ds_list_block_edge_get(s : DslistblockEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockEdge::get(self : DslistblockEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_edge_set(s : DslistblockEdge, i : Int, v : Double) -> DslistblockEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockEdge::set(self : DslistblockEdge, i : Int, v : Double) -> DslistblockEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_edge_sum(s : DslistblockEdge) -> Double { @_common.sum(s.data) }
+pub fn DslistblockEdge::sum(self : DslistblockEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_edge_mean(s : DslistblockEdge) -> Double { @_common.mean(s.data) }
+pub fn DslistblockEdge::mean(self : DslistblockEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_edge_scale(s : DslistblockEdge, f : Double) -> DslistblockEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockEdge::scale(self : DslistblockEdge, f : Double) -> DslistblockEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_edge_add(a : DslistblockEdge, b : DslistblockEdge) -> DslistblockEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockEdge::add(self : DslistblockEdge, other : DslistblockEdge) -> DslistblockEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_edge_copy(s : DslistblockEdge) -> DslistblockEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockEdge::copy(self : DslistblockEdge) -> DslistblockEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_edge_fill(s : DslistblockEdge, v : Double) -> DslistblockEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockEdge::fill(self : DslistblockEdge, v : Double) -> DslistblockEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_edge_min(s : DslistblockEdge) -> Double { @_common.min(s.data) }
+pub fn DslistblockEdge::min(self : DslistblockEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_edge_max(s : DslistblockEdge) -> Double { @_common.max(s.data) }
+pub fn DslistblockEdge::max(self : DslistblockEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_edge_to_string(s : DslistblockEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockEdge::to_string(self : DslistblockEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockPath {
@@ -606,45 +606,45 @@ pub fn ds_list_block_path_make(size : Int) -> DslistblockPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_path_len(s : DslistblockPath) -> Int { s.size }
+pub fn DslistblockPath::len(self : DslistblockPath) -> Int { self.size }
 
-pub fn ds_list_block_path_get(s : DslistblockPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockPath::get(self : DslistblockPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_path_set(s : DslistblockPath, i : Int, v : Double) -> DslistblockPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockPath::set(self : DslistblockPath, i : Int, v : Double) -> DslistblockPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_path_sum(s : DslistblockPath) -> Double { @_common.sum(s.data) }
+pub fn DslistblockPath::sum(self : DslistblockPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_path_mean(s : DslistblockPath) -> Double { @_common.mean(s.data) }
+pub fn DslistblockPath::mean(self : DslistblockPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_path_scale(s : DslistblockPath, f : Double) -> DslistblockPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockPath::scale(self : DslistblockPath, f : Double) -> DslistblockPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_path_add(a : DslistblockPath, b : DslistblockPath) -> DslistblockPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockPath::add(self : DslistblockPath, other : DslistblockPath) -> DslistblockPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_path_copy(s : DslistblockPath) -> DslistblockPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockPath::copy(self : DslistblockPath) -> DslistblockPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_path_fill(s : DslistblockPath, v : Double) -> DslistblockPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockPath::fill(self : DslistblockPath, v : Double) -> DslistblockPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_path_min(s : DslistblockPath) -> Double { @_common.min(s.data) }
+pub fn DslistblockPath::min(self : DslistblockPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_path_max(s : DslistblockPath) -> Double { @_common.max(s.data) }
+pub fn DslistblockPath::max(self : DslistblockPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_path_to_string(s : DslistblockPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockPath::to_string(self : DslistblockPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockCluster {
@@ -657,45 +657,45 @@ pub fn ds_list_block_cluster_make(size : Int) -> DslistblockCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_cluster_len(s : DslistblockCluster) -> Int { s.size }
+pub fn DslistblockCluster::len(self : DslistblockCluster) -> Int { self.size }
 
-pub fn ds_list_block_cluster_get(s : DslistblockCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockCluster::get(self : DslistblockCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_cluster_set(s : DslistblockCluster, i : Int, v : Double) -> DslistblockCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockCluster::set(self : DslistblockCluster, i : Int, v : Double) -> DslistblockCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_cluster_sum(s : DslistblockCluster) -> Double { @_common.sum(s.data) }
+pub fn DslistblockCluster::sum(self : DslistblockCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_cluster_mean(s : DslistblockCluster) -> Double { @_common.mean(s.data) }
+pub fn DslistblockCluster::mean(self : DslistblockCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_cluster_scale(s : DslistblockCluster, f : Double) -> DslistblockCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockCluster::scale(self : DslistblockCluster, f : Double) -> DslistblockCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_cluster_add(a : DslistblockCluster, b : DslistblockCluster) -> DslistblockCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockCluster::add(self : DslistblockCluster, other : DslistblockCluster) -> DslistblockCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_cluster_copy(s : DslistblockCluster) -> DslistblockCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockCluster::copy(self : DslistblockCluster) -> DslistblockCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_cluster_fill(s : DslistblockCluster, v : Double) -> DslistblockCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockCluster::fill(self : DslistblockCluster, v : Double) -> DslistblockCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_cluster_min(s : DslistblockCluster) -> Double { @_common.min(s.data) }
+pub fn DslistblockCluster::min(self : DslistblockCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_cluster_max(s : DslistblockCluster) -> Double { @_common.max(s.data) }
+pub fn DslistblockCluster::max(self : DslistblockCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_cluster_to_string(s : DslistblockCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockCluster::to_string(self : DslistblockCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockModel {
@@ -708,45 +708,45 @@ pub fn ds_list_block_model_make(size : Int) -> DslistblockModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_model_len(s : DslistblockModel) -> Int { s.size }
+pub fn DslistblockModel::len(self : DslistblockModel) -> Int { self.size }
 
-pub fn ds_list_block_model_get(s : DslistblockModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockModel::get(self : DslistblockModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_model_set(s : DslistblockModel, i : Int, v : Double) -> DslistblockModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockModel::set(self : DslistblockModel, i : Int, v : Double) -> DslistblockModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_model_sum(s : DslistblockModel) -> Double { @_common.sum(s.data) }
+pub fn DslistblockModel::sum(self : DslistblockModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_model_mean(s : DslistblockModel) -> Double { @_common.mean(s.data) }
+pub fn DslistblockModel::mean(self : DslistblockModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_model_scale(s : DslistblockModel, f : Double) -> DslistblockModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockModel::scale(self : DslistblockModel, f : Double) -> DslistblockModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_model_add(a : DslistblockModel, b : DslistblockModel) -> DslistblockModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockModel::add(self : DslistblockModel, other : DslistblockModel) -> DslistblockModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_model_copy(s : DslistblockModel) -> DslistblockModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockModel::copy(self : DslistblockModel) -> DslistblockModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_model_fill(s : DslistblockModel, v : Double) -> DslistblockModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockModel::fill(self : DslistblockModel, v : Double) -> DslistblockModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_model_min(s : DslistblockModel) -> Double { @_common.min(s.data) }
+pub fn DslistblockModel::min(self : DslistblockModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_model_max(s : DslistblockModel) -> Double { @_common.max(s.data) }
+pub fn DslistblockModel::max(self : DslistblockModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_model_to_string(s : DslistblockModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockModel::to_string(self : DslistblockModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockLayer {
@@ -759,45 +759,45 @@ pub fn ds_list_block_layer_make(size : Int) -> DslistblockLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_layer_len(s : DslistblockLayer) -> Int { s.size }
+pub fn DslistblockLayer::len(self : DslistblockLayer) -> Int { self.size }
 
-pub fn ds_list_block_layer_get(s : DslistblockLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockLayer::get(self : DslistblockLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_layer_set(s : DslistblockLayer, i : Int, v : Double) -> DslistblockLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockLayer::set(self : DslistblockLayer, i : Int, v : Double) -> DslistblockLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_layer_sum(s : DslistblockLayer) -> Double { @_common.sum(s.data) }
+pub fn DslistblockLayer::sum(self : DslistblockLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_layer_mean(s : DslistblockLayer) -> Double { @_common.mean(s.data) }
+pub fn DslistblockLayer::mean(self : DslistblockLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_layer_scale(s : DslistblockLayer, f : Double) -> DslistblockLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockLayer::scale(self : DslistblockLayer, f : Double) -> DslistblockLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_layer_add(a : DslistblockLayer, b : DslistblockLayer) -> DslistblockLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockLayer::add(self : DslistblockLayer, other : DslistblockLayer) -> DslistblockLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_layer_copy(s : DslistblockLayer) -> DslistblockLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockLayer::copy(self : DslistblockLayer) -> DslistblockLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_layer_fill(s : DslistblockLayer, v : Double) -> DslistblockLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockLayer::fill(self : DslistblockLayer, v : Double) -> DslistblockLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_layer_min(s : DslistblockLayer) -> Double { @_common.min(s.data) }
+pub fn DslistblockLayer::min(self : DslistblockLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_layer_max(s : DslistblockLayer) -> Double { @_common.max(s.data) }
+pub fn DslistblockLayer::max(self : DslistblockLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_layer_to_string(s : DslistblockLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockLayer::to_string(self : DslistblockLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockBuffer {
@@ -810,45 +810,45 @@ pub fn ds_list_block_buffer_make(size : Int) -> DslistblockBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_buffer_len(s : DslistblockBuffer) -> Int { s.size }
+pub fn DslistblockBuffer::len(self : DslistblockBuffer) -> Int { self.size }
 
-pub fn ds_list_block_buffer_get(s : DslistblockBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockBuffer::get(self : DslistblockBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_buffer_set(s : DslistblockBuffer, i : Int, v : Double) -> DslistblockBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockBuffer::set(self : DslistblockBuffer, i : Int, v : Double) -> DslistblockBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_buffer_sum(s : DslistblockBuffer) -> Double { @_common.sum(s.data) }
+pub fn DslistblockBuffer::sum(self : DslistblockBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_buffer_mean(s : DslistblockBuffer) -> Double { @_common.mean(s.data) }
+pub fn DslistblockBuffer::mean(self : DslistblockBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_buffer_scale(s : DslistblockBuffer, f : Double) -> DslistblockBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockBuffer::scale(self : DslistblockBuffer, f : Double) -> DslistblockBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_buffer_add(a : DslistblockBuffer, b : DslistblockBuffer) -> DslistblockBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockBuffer::add(self : DslistblockBuffer, other : DslistblockBuffer) -> DslistblockBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_buffer_copy(s : DslistblockBuffer) -> DslistblockBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockBuffer::copy(self : DslistblockBuffer) -> DslistblockBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_buffer_fill(s : DslistblockBuffer, v : Double) -> DslistblockBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockBuffer::fill(self : DslistblockBuffer, v : Double) -> DslistblockBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_buffer_min(s : DslistblockBuffer) -> Double { @_common.min(s.data) }
+pub fn DslistblockBuffer::min(self : DslistblockBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_buffer_max(s : DslistblockBuffer) -> Double { @_common.max(s.data) }
+pub fn DslistblockBuffer::max(self : DslistblockBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_buffer_to_string(s : DslistblockBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockBuffer::to_string(self : DslistblockBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockCursor {
@@ -861,45 +861,45 @@ pub fn ds_list_block_cursor_make(size : Int) -> DslistblockCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_cursor_len(s : DslistblockCursor) -> Int { s.size }
+pub fn DslistblockCursor::len(self : DslistblockCursor) -> Int { self.size }
 
-pub fn ds_list_block_cursor_get(s : DslistblockCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockCursor::get(self : DslistblockCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_cursor_set(s : DslistblockCursor, i : Int, v : Double) -> DslistblockCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockCursor::set(self : DslistblockCursor, i : Int, v : Double) -> DslistblockCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_cursor_sum(s : DslistblockCursor) -> Double { @_common.sum(s.data) }
+pub fn DslistblockCursor::sum(self : DslistblockCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_cursor_mean(s : DslistblockCursor) -> Double { @_common.mean(s.data) }
+pub fn DslistblockCursor::mean(self : DslistblockCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_cursor_scale(s : DslistblockCursor, f : Double) -> DslistblockCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockCursor::scale(self : DslistblockCursor, f : Double) -> DslistblockCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_cursor_add(a : DslistblockCursor, b : DslistblockCursor) -> DslistblockCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockCursor::add(self : DslistblockCursor, other : DslistblockCursor) -> DslistblockCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_cursor_copy(s : DslistblockCursor) -> DslistblockCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockCursor::copy(self : DslistblockCursor) -> DslistblockCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_cursor_fill(s : DslistblockCursor, v : Double) -> DslistblockCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockCursor::fill(self : DslistblockCursor, v : Double) -> DslistblockCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_cursor_min(s : DslistblockCursor) -> Double { @_common.min(s.data) }
+pub fn DslistblockCursor::min(self : DslistblockCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_cursor_max(s : DslistblockCursor) -> Double { @_common.max(s.data) }
+pub fn DslistblockCursor::max(self : DslistblockCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_cursor_to_string(s : DslistblockCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockCursor::to_string(self : DslistblockCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockView {
@@ -912,45 +912,45 @@ pub fn ds_list_block_view_make(size : Int) -> DslistblockView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_view_len(s : DslistblockView) -> Int { s.size }
+pub fn DslistblockView::len(self : DslistblockView) -> Int { self.size }
 
-pub fn ds_list_block_view_get(s : DslistblockView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockView::get(self : DslistblockView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_view_set(s : DslistblockView, i : Int, v : Double) -> DslistblockView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockView::set(self : DslistblockView, i : Int, v : Double) -> DslistblockView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_view_sum(s : DslistblockView) -> Double { @_common.sum(s.data) }
+pub fn DslistblockView::sum(self : DslistblockView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_view_mean(s : DslistblockView) -> Double { @_common.mean(s.data) }
+pub fn DslistblockView::mean(self : DslistblockView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_view_scale(s : DslistblockView, f : Double) -> DslistblockView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockView::scale(self : DslistblockView, f : Double) -> DslistblockView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_view_add(a : DslistblockView, b : DslistblockView) -> DslistblockView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockView::add(self : DslistblockView, other : DslistblockView) -> DslistblockView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_view_copy(s : DslistblockView) -> DslistblockView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockView::copy(self : DslistblockView) -> DslistblockView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_view_fill(s : DslistblockView, v : Double) -> DslistblockView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockView::fill(self : DslistblockView, v : Double) -> DslistblockView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_view_min(s : DslistblockView) -> Double { @_common.min(s.data) }
+pub fn DslistblockView::min(self : DslistblockView) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_view_max(s : DslistblockView) -> Double { @_common.max(s.data) }
+pub fn DslistblockView::max(self : DslistblockView) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_view_to_string(s : DslistblockView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockView::to_string(self : DslistblockView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockRange {
@@ -963,45 +963,45 @@ pub fn ds_list_block_range_make(size : Int) -> DslistblockRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_range_len(s : DslistblockRange) -> Int { s.size }
+pub fn DslistblockRange::len(self : DslistblockRange) -> Int { self.size }
 
-pub fn ds_list_block_range_get(s : DslistblockRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockRange::get(self : DslistblockRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_range_set(s : DslistblockRange, i : Int, v : Double) -> DslistblockRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockRange::set(self : DslistblockRange, i : Int, v : Double) -> DslistblockRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_range_sum(s : DslistblockRange) -> Double { @_common.sum(s.data) }
+pub fn DslistblockRange::sum(self : DslistblockRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_range_mean(s : DslistblockRange) -> Double { @_common.mean(s.data) }
+pub fn DslistblockRange::mean(self : DslistblockRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_range_scale(s : DslistblockRange, f : Double) -> DslistblockRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockRange::scale(self : DslistblockRange, f : Double) -> DslistblockRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_range_add(a : DslistblockRange, b : DslistblockRange) -> DslistblockRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockRange::add(self : DslistblockRange, other : DslistblockRange) -> DslistblockRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_range_copy(s : DslistblockRange) -> DslistblockRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockRange::copy(self : DslistblockRange) -> DslistblockRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_range_fill(s : DslistblockRange, v : Double) -> DslistblockRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockRange::fill(self : DslistblockRange, v : Double) -> DslistblockRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_range_min(s : DslistblockRange) -> Double { @_common.min(s.data) }
+pub fn DslistblockRange::min(self : DslistblockRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_range_max(s : DslistblockRange) -> Double { @_common.max(s.data) }
+pub fn DslistblockRange::max(self : DslistblockRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_range_to_string(s : DslistblockRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockRange::to_string(self : DslistblockRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistblockSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_list_block_slice_make(size : Int) -> DslistblockSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_block_slice_len(s : DslistblockSlice) -> Int { s.size }
+pub fn DslistblockSlice::len(self : DslistblockSlice) -> Int { self.size }
 
-pub fn ds_list_block_slice_get(s : DslistblockSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistblockSlice::get(self : DslistblockSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_block_slice_set(s : DslistblockSlice, i : Int, v : Double) -> DslistblockSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistblockSlice::set(self : DslistblockSlice, i : Int, v : Double) -> DslistblockSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_slice_sum(s : DslistblockSlice) -> Double { @_common.sum(s.data) }
+pub fn DslistblockSlice::sum(self : DslistblockSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_block_slice_mean(s : DslistblockSlice) -> Double { @_common.mean(s.data) }
+pub fn DslistblockSlice::mean(self : DslistblockSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_block_slice_scale(s : DslistblockSlice, f : Double) -> DslistblockSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistblockSlice::scale(self : DslistblockSlice, f : Double) -> DslistblockSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_slice_add(a : DslistblockSlice, b : DslistblockSlice) -> DslistblockSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistblockSlice::add(self : DslistblockSlice, other : DslistblockSlice) -> DslistblockSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_block_slice_copy(s : DslistblockSlice) -> DslistblockSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistblockSlice::copy(self : DslistblockSlice) -> DslistblockSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_slice_fill(s : DslistblockSlice, v : Double) -> DslistblockSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistblockSlice::fill(self : DslistblockSlice, v : Double) -> DslistblockSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_block_slice_min(s : DslistblockSlice) -> Double { @_common.min(s.data) }
+pub fn DslistblockSlice::min(self : DslistblockSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_block_slice_max(s : DslistblockSlice) -> Double { @_common.max(s.data) }
+pub fn DslistblockSlice::max(self : DslistblockSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_block_slice_to_string(s : DslistblockSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistblockSlice::to_string(self : DslistblockSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

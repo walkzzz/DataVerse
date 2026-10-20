@@ -351,45 +351,45 @@ pub fn physics_fluid_compressible_frame_make(size : Int) -> Physicsfluidcompress
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_frame_len(s : PhysicsfluidcompressibleFrame) -> Int { s.size }
+pub fn PhysicsfluidcompressibleFrame::len(self : PhysicsfluidcompressibleFrame) -> Int { self.size }
 
-pub fn physics_fluid_compressible_frame_get(s : PhysicsfluidcompressibleFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleFrame::get(self : PhysicsfluidcompressibleFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_frame_set(s : PhysicsfluidcompressibleFrame, i : Int, v : Double) -> PhysicsfluidcompressibleFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleFrame::set(self : PhysicsfluidcompressibleFrame, i : Int, v : Double) -> PhysicsfluidcompressibleFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_frame_sum(s : PhysicsfluidcompressibleFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleFrame::sum(self : PhysicsfluidcompressibleFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_frame_mean(s : PhysicsfluidcompressibleFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleFrame::mean(self : PhysicsfluidcompressibleFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_frame_scale(s : PhysicsfluidcompressibleFrame, f : Double) -> PhysicsfluidcompressibleFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleFrame::scale(self : PhysicsfluidcompressibleFrame, f : Double) -> PhysicsfluidcompressibleFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_frame_add(a : PhysicsfluidcompressibleFrame, b : PhysicsfluidcompressibleFrame) -> PhysicsfluidcompressibleFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleFrame::add(self : PhysicsfluidcompressibleFrame, other : PhysicsfluidcompressibleFrame) -> PhysicsfluidcompressibleFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_frame_copy(s : PhysicsfluidcompressibleFrame) -> PhysicsfluidcompressibleFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleFrame::copy(self : PhysicsfluidcompressibleFrame) -> PhysicsfluidcompressibleFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_frame_fill(s : PhysicsfluidcompressibleFrame, v : Double) -> PhysicsfluidcompressibleFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleFrame::fill(self : PhysicsfluidcompressibleFrame, v : Double) -> PhysicsfluidcompressibleFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_frame_min(s : PhysicsfluidcompressibleFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleFrame::min(self : PhysicsfluidcompressibleFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_frame_max(s : PhysicsfluidcompressibleFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleFrame::max(self : PhysicsfluidcompressibleFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_frame_to_string(s : PhysicsfluidcompressibleFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleFrame::to_string(self : PhysicsfluidcompressibleFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressibleTable {
@@ -402,45 +402,45 @@ pub fn physics_fluid_compressible_table_make(size : Int) -> Physicsfluidcompress
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_table_len(s : PhysicsfluidcompressibleTable) -> Int { s.size }
+pub fn PhysicsfluidcompressibleTable::len(self : PhysicsfluidcompressibleTable) -> Int { self.size }
 
-pub fn physics_fluid_compressible_table_get(s : PhysicsfluidcompressibleTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleTable::get(self : PhysicsfluidcompressibleTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_table_set(s : PhysicsfluidcompressibleTable, i : Int, v : Double) -> PhysicsfluidcompressibleTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleTable::set(self : PhysicsfluidcompressibleTable, i : Int, v : Double) -> PhysicsfluidcompressibleTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_table_sum(s : PhysicsfluidcompressibleTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleTable::sum(self : PhysicsfluidcompressibleTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_table_mean(s : PhysicsfluidcompressibleTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleTable::mean(self : PhysicsfluidcompressibleTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_table_scale(s : PhysicsfluidcompressibleTable, f : Double) -> PhysicsfluidcompressibleTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleTable::scale(self : PhysicsfluidcompressibleTable, f : Double) -> PhysicsfluidcompressibleTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_table_add(a : PhysicsfluidcompressibleTable, b : PhysicsfluidcompressibleTable) -> PhysicsfluidcompressibleTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleTable::add(self : PhysicsfluidcompressibleTable, other : PhysicsfluidcompressibleTable) -> PhysicsfluidcompressibleTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_table_copy(s : PhysicsfluidcompressibleTable) -> PhysicsfluidcompressibleTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleTable::copy(self : PhysicsfluidcompressibleTable) -> PhysicsfluidcompressibleTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_table_fill(s : PhysicsfluidcompressibleTable, v : Double) -> PhysicsfluidcompressibleTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleTable::fill(self : PhysicsfluidcompressibleTable, v : Double) -> PhysicsfluidcompressibleTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_table_min(s : PhysicsfluidcompressibleTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleTable::min(self : PhysicsfluidcompressibleTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_table_max(s : PhysicsfluidcompressibleTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleTable::max(self : PhysicsfluidcompressibleTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_table_to_string(s : PhysicsfluidcompressibleTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleTable::to_string(self : PhysicsfluidcompressibleTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressibleGraphN {
@@ -453,45 +453,45 @@ pub fn physics_fluid_compressible_graphn_make(size : Int) -> Physicsfluidcompres
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_graphn_len(s : PhysicsfluidcompressibleGraphN) -> Int { s.size }
+pub fn PhysicsfluidcompressibleGraphN::len(self : PhysicsfluidcompressibleGraphN) -> Int { self.size }
 
-pub fn physics_fluid_compressible_graphn_get(s : PhysicsfluidcompressibleGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleGraphN::get(self : PhysicsfluidcompressibleGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_graphn_set(s : PhysicsfluidcompressibleGraphN, i : Int, v : Double) -> PhysicsfluidcompressibleGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleGraphN::set(self : PhysicsfluidcompressibleGraphN, i : Int, v : Double) -> PhysicsfluidcompressibleGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_graphn_sum(s : PhysicsfluidcompressibleGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleGraphN::sum(self : PhysicsfluidcompressibleGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_graphn_mean(s : PhysicsfluidcompressibleGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleGraphN::mean(self : PhysicsfluidcompressibleGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_graphn_scale(s : PhysicsfluidcompressibleGraphN, f : Double) -> PhysicsfluidcompressibleGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleGraphN::scale(self : PhysicsfluidcompressibleGraphN, f : Double) -> PhysicsfluidcompressibleGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_graphn_add(a : PhysicsfluidcompressibleGraphN, b : PhysicsfluidcompressibleGraphN) -> PhysicsfluidcompressibleGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleGraphN::add(self : PhysicsfluidcompressibleGraphN, other : PhysicsfluidcompressibleGraphN) -> PhysicsfluidcompressibleGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_graphn_copy(s : PhysicsfluidcompressibleGraphN) -> PhysicsfluidcompressibleGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleGraphN::copy(self : PhysicsfluidcompressibleGraphN) -> PhysicsfluidcompressibleGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_graphn_fill(s : PhysicsfluidcompressibleGraphN, v : Double) -> PhysicsfluidcompressibleGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleGraphN::fill(self : PhysicsfluidcompressibleGraphN, v : Double) -> PhysicsfluidcompressibleGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_graphn_min(s : PhysicsfluidcompressibleGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleGraphN::min(self : PhysicsfluidcompressibleGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_graphn_max(s : PhysicsfluidcompressibleGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleGraphN::max(self : PhysicsfluidcompressibleGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_graphn_to_string(s : PhysicsfluidcompressibleGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleGraphN::to_string(self : PhysicsfluidcompressibleGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressibleNode {
@@ -504,45 +504,45 @@ pub fn physics_fluid_compressible_node_make(size : Int) -> Physicsfluidcompressi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_node_len(s : PhysicsfluidcompressibleNode) -> Int { s.size }
+pub fn PhysicsfluidcompressibleNode::len(self : PhysicsfluidcompressibleNode) -> Int { self.size }
 
-pub fn physics_fluid_compressible_node_get(s : PhysicsfluidcompressibleNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleNode::get(self : PhysicsfluidcompressibleNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_node_set(s : PhysicsfluidcompressibleNode, i : Int, v : Double) -> PhysicsfluidcompressibleNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleNode::set(self : PhysicsfluidcompressibleNode, i : Int, v : Double) -> PhysicsfluidcompressibleNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_node_sum(s : PhysicsfluidcompressibleNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleNode::sum(self : PhysicsfluidcompressibleNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_node_mean(s : PhysicsfluidcompressibleNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleNode::mean(self : PhysicsfluidcompressibleNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_node_scale(s : PhysicsfluidcompressibleNode, f : Double) -> PhysicsfluidcompressibleNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleNode::scale(self : PhysicsfluidcompressibleNode, f : Double) -> PhysicsfluidcompressibleNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_node_add(a : PhysicsfluidcompressibleNode, b : PhysicsfluidcompressibleNode) -> PhysicsfluidcompressibleNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleNode::add(self : PhysicsfluidcompressibleNode, other : PhysicsfluidcompressibleNode) -> PhysicsfluidcompressibleNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_node_copy(s : PhysicsfluidcompressibleNode) -> PhysicsfluidcompressibleNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleNode::copy(self : PhysicsfluidcompressibleNode) -> PhysicsfluidcompressibleNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_node_fill(s : PhysicsfluidcompressibleNode, v : Double) -> PhysicsfluidcompressibleNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleNode::fill(self : PhysicsfluidcompressibleNode, v : Double) -> PhysicsfluidcompressibleNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_node_min(s : PhysicsfluidcompressibleNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleNode::min(self : PhysicsfluidcompressibleNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_node_max(s : PhysicsfluidcompressibleNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleNode::max(self : PhysicsfluidcompressibleNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_node_to_string(s : PhysicsfluidcompressibleNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleNode::to_string(self : PhysicsfluidcompressibleNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressibleEdge {
@@ -555,45 +555,45 @@ pub fn physics_fluid_compressible_edge_make(size : Int) -> Physicsfluidcompressi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_edge_len(s : PhysicsfluidcompressibleEdge) -> Int { s.size }
+pub fn PhysicsfluidcompressibleEdge::len(self : PhysicsfluidcompressibleEdge) -> Int { self.size }
 
-pub fn physics_fluid_compressible_edge_get(s : PhysicsfluidcompressibleEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleEdge::get(self : PhysicsfluidcompressibleEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_edge_set(s : PhysicsfluidcompressibleEdge, i : Int, v : Double) -> PhysicsfluidcompressibleEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleEdge::set(self : PhysicsfluidcompressibleEdge, i : Int, v : Double) -> PhysicsfluidcompressibleEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_edge_sum(s : PhysicsfluidcompressibleEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleEdge::sum(self : PhysicsfluidcompressibleEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_edge_mean(s : PhysicsfluidcompressibleEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleEdge::mean(self : PhysicsfluidcompressibleEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_edge_scale(s : PhysicsfluidcompressibleEdge, f : Double) -> PhysicsfluidcompressibleEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleEdge::scale(self : PhysicsfluidcompressibleEdge, f : Double) -> PhysicsfluidcompressibleEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_edge_add(a : PhysicsfluidcompressibleEdge, b : PhysicsfluidcompressibleEdge) -> PhysicsfluidcompressibleEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleEdge::add(self : PhysicsfluidcompressibleEdge, other : PhysicsfluidcompressibleEdge) -> PhysicsfluidcompressibleEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_edge_copy(s : PhysicsfluidcompressibleEdge) -> PhysicsfluidcompressibleEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleEdge::copy(self : PhysicsfluidcompressibleEdge) -> PhysicsfluidcompressibleEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_edge_fill(s : PhysicsfluidcompressibleEdge, v : Double) -> PhysicsfluidcompressibleEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleEdge::fill(self : PhysicsfluidcompressibleEdge, v : Double) -> PhysicsfluidcompressibleEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_edge_min(s : PhysicsfluidcompressibleEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleEdge::min(self : PhysicsfluidcompressibleEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_edge_max(s : PhysicsfluidcompressibleEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleEdge::max(self : PhysicsfluidcompressibleEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_edge_to_string(s : PhysicsfluidcompressibleEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleEdge::to_string(self : PhysicsfluidcompressibleEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressiblePath {
@@ -606,45 +606,45 @@ pub fn physics_fluid_compressible_path_make(size : Int) -> Physicsfluidcompressi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_path_len(s : PhysicsfluidcompressiblePath) -> Int { s.size }
+pub fn PhysicsfluidcompressiblePath::len(self : PhysicsfluidcompressiblePath) -> Int { self.size }
 
-pub fn physics_fluid_compressible_path_get(s : PhysicsfluidcompressiblePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressiblePath::get(self : PhysicsfluidcompressiblePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_path_set(s : PhysicsfluidcompressiblePath, i : Int, v : Double) -> PhysicsfluidcompressiblePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressiblePath::set(self : PhysicsfluidcompressiblePath, i : Int, v : Double) -> PhysicsfluidcompressiblePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_path_sum(s : PhysicsfluidcompressiblePath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressiblePath::sum(self : PhysicsfluidcompressiblePath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_path_mean(s : PhysicsfluidcompressiblePath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressiblePath::mean(self : PhysicsfluidcompressiblePath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_path_scale(s : PhysicsfluidcompressiblePath, f : Double) -> PhysicsfluidcompressiblePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressiblePath::scale(self : PhysicsfluidcompressiblePath, f : Double) -> PhysicsfluidcompressiblePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_path_add(a : PhysicsfluidcompressiblePath, b : PhysicsfluidcompressiblePath) -> PhysicsfluidcompressiblePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressiblePath::add(self : PhysicsfluidcompressiblePath, other : PhysicsfluidcompressiblePath) -> PhysicsfluidcompressiblePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_path_copy(s : PhysicsfluidcompressiblePath) -> PhysicsfluidcompressiblePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressiblePath::copy(self : PhysicsfluidcompressiblePath) -> PhysicsfluidcompressiblePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_path_fill(s : PhysicsfluidcompressiblePath, v : Double) -> PhysicsfluidcompressiblePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressiblePath::fill(self : PhysicsfluidcompressiblePath, v : Double) -> PhysicsfluidcompressiblePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_path_min(s : PhysicsfluidcompressiblePath) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressiblePath::min(self : PhysicsfluidcompressiblePath) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_path_max(s : PhysicsfluidcompressiblePath) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressiblePath::max(self : PhysicsfluidcompressiblePath) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_path_to_string(s : PhysicsfluidcompressiblePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressiblePath::to_string(self : PhysicsfluidcompressiblePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressibleCluster {
@@ -657,45 +657,45 @@ pub fn physics_fluid_compressible_cluster_make(size : Int) -> Physicsfluidcompre
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_cluster_len(s : PhysicsfluidcompressibleCluster) -> Int { s.size }
+pub fn PhysicsfluidcompressibleCluster::len(self : PhysicsfluidcompressibleCluster) -> Int { self.size }
 
-pub fn physics_fluid_compressible_cluster_get(s : PhysicsfluidcompressibleCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleCluster::get(self : PhysicsfluidcompressibleCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_cluster_set(s : PhysicsfluidcompressibleCluster, i : Int, v : Double) -> PhysicsfluidcompressibleCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleCluster::set(self : PhysicsfluidcompressibleCluster, i : Int, v : Double) -> PhysicsfluidcompressibleCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_cluster_sum(s : PhysicsfluidcompressibleCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleCluster::sum(self : PhysicsfluidcompressibleCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_cluster_mean(s : PhysicsfluidcompressibleCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleCluster::mean(self : PhysicsfluidcompressibleCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_cluster_scale(s : PhysicsfluidcompressibleCluster, f : Double) -> PhysicsfluidcompressibleCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleCluster::scale(self : PhysicsfluidcompressibleCluster, f : Double) -> PhysicsfluidcompressibleCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_cluster_add(a : PhysicsfluidcompressibleCluster, b : PhysicsfluidcompressibleCluster) -> PhysicsfluidcompressibleCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleCluster::add(self : PhysicsfluidcompressibleCluster, other : PhysicsfluidcompressibleCluster) -> PhysicsfluidcompressibleCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_cluster_copy(s : PhysicsfluidcompressibleCluster) -> PhysicsfluidcompressibleCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleCluster::copy(self : PhysicsfluidcompressibleCluster) -> PhysicsfluidcompressibleCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_cluster_fill(s : PhysicsfluidcompressibleCluster, v : Double) -> PhysicsfluidcompressibleCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleCluster::fill(self : PhysicsfluidcompressibleCluster, v : Double) -> PhysicsfluidcompressibleCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_cluster_min(s : PhysicsfluidcompressibleCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleCluster::min(self : PhysicsfluidcompressibleCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_cluster_max(s : PhysicsfluidcompressibleCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleCluster::max(self : PhysicsfluidcompressibleCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_cluster_to_string(s : PhysicsfluidcompressibleCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleCluster::to_string(self : PhysicsfluidcompressibleCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressibleModel {
@@ -708,45 +708,45 @@ pub fn physics_fluid_compressible_model_make(size : Int) -> Physicsfluidcompress
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_model_len(s : PhysicsfluidcompressibleModel) -> Int { s.size }
+pub fn PhysicsfluidcompressibleModel::len(self : PhysicsfluidcompressibleModel) -> Int { self.size }
 
-pub fn physics_fluid_compressible_model_get(s : PhysicsfluidcompressibleModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleModel::get(self : PhysicsfluidcompressibleModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_model_set(s : PhysicsfluidcompressibleModel, i : Int, v : Double) -> PhysicsfluidcompressibleModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleModel::set(self : PhysicsfluidcompressibleModel, i : Int, v : Double) -> PhysicsfluidcompressibleModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_model_sum(s : PhysicsfluidcompressibleModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleModel::sum(self : PhysicsfluidcompressibleModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_model_mean(s : PhysicsfluidcompressibleModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleModel::mean(self : PhysicsfluidcompressibleModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_model_scale(s : PhysicsfluidcompressibleModel, f : Double) -> PhysicsfluidcompressibleModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleModel::scale(self : PhysicsfluidcompressibleModel, f : Double) -> PhysicsfluidcompressibleModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_model_add(a : PhysicsfluidcompressibleModel, b : PhysicsfluidcompressibleModel) -> PhysicsfluidcompressibleModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleModel::add(self : PhysicsfluidcompressibleModel, other : PhysicsfluidcompressibleModel) -> PhysicsfluidcompressibleModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_model_copy(s : PhysicsfluidcompressibleModel) -> PhysicsfluidcompressibleModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleModel::copy(self : PhysicsfluidcompressibleModel) -> PhysicsfluidcompressibleModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_model_fill(s : PhysicsfluidcompressibleModel, v : Double) -> PhysicsfluidcompressibleModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleModel::fill(self : PhysicsfluidcompressibleModel, v : Double) -> PhysicsfluidcompressibleModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_model_min(s : PhysicsfluidcompressibleModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleModel::min(self : PhysicsfluidcompressibleModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_model_max(s : PhysicsfluidcompressibleModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleModel::max(self : PhysicsfluidcompressibleModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_model_to_string(s : PhysicsfluidcompressibleModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleModel::to_string(self : PhysicsfluidcompressibleModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressibleLayer {
@@ -759,45 +759,45 @@ pub fn physics_fluid_compressible_layer_make(size : Int) -> Physicsfluidcompress
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_layer_len(s : PhysicsfluidcompressibleLayer) -> Int { s.size }
+pub fn PhysicsfluidcompressibleLayer::len(self : PhysicsfluidcompressibleLayer) -> Int { self.size }
 
-pub fn physics_fluid_compressible_layer_get(s : PhysicsfluidcompressibleLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleLayer::get(self : PhysicsfluidcompressibleLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_layer_set(s : PhysicsfluidcompressibleLayer, i : Int, v : Double) -> PhysicsfluidcompressibleLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleLayer::set(self : PhysicsfluidcompressibleLayer, i : Int, v : Double) -> PhysicsfluidcompressibleLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_layer_sum(s : PhysicsfluidcompressibleLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleLayer::sum(self : PhysicsfluidcompressibleLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_layer_mean(s : PhysicsfluidcompressibleLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleLayer::mean(self : PhysicsfluidcompressibleLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_layer_scale(s : PhysicsfluidcompressibleLayer, f : Double) -> PhysicsfluidcompressibleLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleLayer::scale(self : PhysicsfluidcompressibleLayer, f : Double) -> PhysicsfluidcompressibleLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_layer_add(a : PhysicsfluidcompressibleLayer, b : PhysicsfluidcompressibleLayer) -> PhysicsfluidcompressibleLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleLayer::add(self : PhysicsfluidcompressibleLayer, other : PhysicsfluidcompressibleLayer) -> PhysicsfluidcompressibleLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_layer_copy(s : PhysicsfluidcompressibleLayer) -> PhysicsfluidcompressibleLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleLayer::copy(self : PhysicsfluidcompressibleLayer) -> PhysicsfluidcompressibleLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_layer_fill(s : PhysicsfluidcompressibleLayer, v : Double) -> PhysicsfluidcompressibleLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleLayer::fill(self : PhysicsfluidcompressibleLayer, v : Double) -> PhysicsfluidcompressibleLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_layer_min(s : PhysicsfluidcompressibleLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleLayer::min(self : PhysicsfluidcompressibleLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_layer_max(s : PhysicsfluidcompressibleLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleLayer::max(self : PhysicsfluidcompressibleLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_layer_to_string(s : PhysicsfluidcompressibleLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleLayer::to_string(self : PhysicsfluidcompressibleLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressibleBuffer {
@@ -810,45 +810,45 @@ pub fn physics_fluid_compressible_buffer_make(size : Int) -> Physicsfluidcompres
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_buffer_len(s : PhysicsfluidcompressibleBuffer) -> Int { s.size }
+pub fn PhysicsfluidcompressibleBuffer::len(self : PhysicsfluidcompressibleBuffer) -> Int { self.size }
 
-pub fn physics_fluid_compressible_buffer_get(s : PhysicsfluidcompressibleBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleBuffer::get(self : PhysicsfluidcompressibleBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_buffer_set(s : PhysicsfluidcompressibleBuffer, i : Int, v : Double) -> PhysicsfluidcompressibleBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleBuffer::set(self : PhysicsfluidcompressibleBuffer, i : Int, v : Double) -> PhysicsfluidcompressibleBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_buffer_sum(s : PhysicsfluidcompressibleBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleBuffer::sum(self : PhysicsfluidcompressibleBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_buffer_mean(s : PhysicsfluidcompressibleBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleBuffer::mean(self : PhysicsfluidcompressibleBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_buffer_scale(s : PhysicsfluidcompressibleBuffer, f : Double) -> PhysicsfluidcompressibleBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleBuffer::scale(self : PhysicsfluidcompressibleBuffer, f : Double) -> PhysicsfluidcompressibleBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_buffer_add(a : PhysicsfluidcompressibleBuffer, b : PhysicsfluidcompressibleBuffer) -> PhysicsfluidcompressibleBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleBuffer::add(self : PhysicsfluidcompressibleBuffer, other : PhysicsfluidcompressibleBuffer) -> PhysicsfluidcompressibleBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_buffer_copy(s : PhysicsfluidcompressibleBuffer) -> PhysicsfluidcompressibleBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleBuffer::copy(self : PhysicsfluidcompressibleBuffer) -> PhysicsfluidcompressibleBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_buffer_fill(s : PhysicsfluidcompressibleBuffer, v : Double) -> PhysicsfluidcompressibleBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleBuffer::fill(self : PhysicsfluidcompressibleBuffer, v : Double) -> PhysicsfluidcompressibleBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_buffer_min(s : PhysicsfluidcompressibleBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleBuffer::min(self : PhysicsfluidcompressibleBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_buffer_max(s : PhysicsfluidcompressibleBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleBuffer::max(self : PhysicsfluidcompressibleBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_buffer_to_string(s : PhysicsfluidcompressibleBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleBuffer::to_string(self : PhysicsfluidcompressibleBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressibleCursor {
@@ -861,45 +861,45 @@ pub fn physics_fluid_compressible_cursor_make(size : Int) -> Physicsfluidcompres
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_cursor_len(s : PhysicsfluidcompressibleCursor) -> Int { s.size }
+pub fn PhysicsfluidcompressibleCursor::len(self : PhysicsfluidcompressibleCursor) -> Int { self.size }
 
-pub fn physics_fluid_compressible_cursor_get(s : PhysicsfluidcompressibleCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleCursor::get(self : PhysicsfluidcompressibleCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_cursor_set(s : PhysicsfluidcompressibleCursor, i : Int, v : Double) -> PhysicsfluidcompressibleCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleCursor::set(self : PhysicsfluidcompressibleCursor, i : Int, v : Double) -> PhysicsfluidcompressibleCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_cursor_sum(s : PhysicsfluidcompressibleCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleCursor::sum(self : PhysicsfluidcompressibleCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_cursor_mean(s : PhysicsfluidcompressibleCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleCursor::mean(self : PhysicsfluidcompressibleCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_cursor_scale(s : PhysicsfluidcompressibleCursor, f : Double) -> PhysicsfluidcompressibleCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleCursor::scale(self : PhysicsfluidcompressibleCursor, f : Double) -> PhysicsfluidcompressibleCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_cursor_add(a : PhysicsfluidcompressibleCursor, b : PhysicsfluidcompressibleCursor) -> PhysicsfluidcompressibleCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleCursor::add(self : PhysicsfluidcompressibleCursor, other : PhysicsfluidcompressibleCursor) -> PhysicsfluidcompressibleCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_cursor_copy(s : PhysicsfluidcompressibleCursor) -> PhysicsfluidcompressibleCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleCursor::copy(self : PhysicsfluidcompressibleCursor) -> PhysicsfluidcompressibleCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_cursor_fill(s : PhysicsfluidcompressibleCursor, v : Double) -> PhysicsfluidcompressibleCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleCursor::fill(self : PhysicsfluidcompressibleCursor, v : Double) -> PhysicsfluidcompressibleCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_cursor_min(s : PhysicsfluidcompressibleCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleCursor::min(self : PhysicsfluidcompressibleCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_cursor_max(s : PhysicsfluidcompressibleCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleCursor::max(self : PhysicsfluidcompressibleCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_cursor_to_string(s : PhysicsfluidcompressibleCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleCursor::to_string(self : PhysicsfluidcompressibleCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressibleView {
@@ -912,45 +912,45 @@ pub fn physics_fluid_compressible_view_make(size : Int) -> Physicsfluidcompressi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_view_len(s : PhysicsfluidcompressibleView) -> Int { s.size }
+pub fn PhysicsfluidcompressibleView::len(self : PhysicsfluidcompressibleView) -> Int { self.size }
 
-pub fn physics_fluid_compressible_view_get(s : PhysicsfluidcompressibleView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleView::get(self : PhysicsfluidcompressibleView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_view_set(s : PhysicsfluidcompressibleView, i : Int, v : Double) -> PhysicsfluidcompressibleView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleView::set(self : PhysicsfluidcompressibleView, i : Int, v : Double) -> PhysicsfluidcompressibleView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_view_sum(s : PhysicsfluidcompressibleView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleView::sum(self : PhysicsfluidcompressibleView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_view_mean(s : PhysicsfluidcompressibleView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleView::mean(self : PhysicsfluidcompressibleView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_view_scale(s : PhysicsfluidcompressibleView, f : Double) -> PhysicsfluidcompressibleView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleView::scale(self : PhysicsfluidcompressibleView, f : Double) -> PhysicsfluidcompressibleView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_view_add(a : PhysicsfluidcompressibleView, b : PhysicsfluidcompressibleView) -> PhysicsfluidcompressibleView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleView::add(self : PhysicsfluidcompressibleView, other : PhysicsfluidcompressibleView) -> PhysicsfluidcompressibleView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_view_copy(s : PhysicsfluidcompressibleView) -> PhysicsfluidcompressibleView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleView::copy(self : PhysicsfluidcompressibleView) -> PhysicsfluidcompressibleView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_view_fill(s : PhysicsfluidcompressibleView, v : Double) -> PhysicsfluidcompressibleView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleView::fill(self : PhysicsfluidcompressibleView, v : Double) -> PhysicsfluidcompressibleView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_view_min(s : PhysicsfluidcompressibleView) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleView::min(self : PhysicsfluidcompressibleView) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_view_max(s : PhysicsfluidcompressibleView) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleView::max(self : PhysicsfluidcompressibleView) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_view_to_string(s : PhysicsfluidcompressibleView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleView::to_string(self : PhysicsfluidcompressibleView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressibleRange {
@@ -963,45 +963,45 @@ pub fn physics_fluid_compressible_range_make(size : Int) -> Physicsfluidcompress
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_range_len(s : PhysicsfluidcompressibleRange) -> Int { s.size }
+pub fn PhysicsfluidcompressibleRange::len(self : PhysicsfluidcompressibleRange) -> Int { self.size }
 
-pub fn physics_fluid_compressible_range_get(s : PhysicsfluidcompressibleRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleRange::get(self : PhysicsfluidcompressibleRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_range_set(s : PhysicsfluidcompressibleRange, i : Int, v : Double) -> PhysicsfluidcompressibleRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleRange::set(self : PhysicsfluidcompressibleRange, i : Int, v : Double) -> PhysicsfluidcompressibleRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_range_sum(s : PhysicsfluidcompressibleRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleRange::sum(self : PhysicsfluidcompressibleRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_range_mean(s : PhysicsfluidcompressibleRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleRange::mean(self : PhysicsfluidcompressibleRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_range_scale(s : PhysicsfluidcompressibleRange, f : Double) -> PhysicsfluidcompressibleRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleRange::scale(self : PhysicsfluidcompressibleRange, f : Double) -> PhysicsfluidcompressibleRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_range_add(a : PhysicsfluidcompressibleRange, b : PhysicsfluidcompressibleRange) -> PhysicsfluidcompressibleRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleRange::add(self : PhysicsfluidcompressibleRange, other : PhysicsfluidcompressibleRange) -> PhysicsfluidcompressibleRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_range_copy(s : PhysicsfluidcompressibleRange) -> PhysicsfluidcompressibleRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleRange::copy(self : PhysicsfluidcompressibleRange) -> PhysicsfluidcompressibleRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_range_fill(s : PhysicsfluidcompressibleRange, v : Double) -> PhysicsfluidcompressibleRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleRange::fill(self : PhysicsfluidcompressibleRange, v : Double) -> PhysicsfluidcompressibleRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_range_min(s : PhysicsfluidcompressibleRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleRange::min(self : PhysicsfluidcompressibleRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_range_max(s : PhysicsfluidcompressibleRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleRange::max(self : PhysicsfluidcompressibleRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_range_to_string(s : PhysicsfluidcompressibleRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleRange::to_string(self : PhysicsfluidcompressibleRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidcompressibleSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_fluid_compressible_slice_make(size : Int) -> Physicsfluidcompress
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_compressible_slice_len(s : PhysicsfluidcompressibleSlice) -> Int { s.size }
+pub fn PhysicsfluidcompressibleSlice::len(self : PhysicsfluidcompressibleSlice) -> Int { self.size }
 
-pub fn physics_fluid_compressible_slice_get(s : PhysicsfluidcompressibleSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidcompressibleSlice::get(self : PhysicsfluidcompressibleSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_compressible_slice_set(s : PhysicsfluidcompressibleSlice, i : Int, v : Double) -> PhysicsfluidcompressibleSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleSlice::set(self : PhysicsfluidcompressibleSlice, i : Int, v : Double) -> PhysicsfluidcompressibleSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_slice_sum(s : PhysicsfluidcompressibleSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidcompressibleSlice::sum(self : PhysicsfluidcompressibleSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_compressible_slice_mean(s : PhysicsfluidcompressibleSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidcompressibleSlice::mean(self : PhysicsfluidcompressibleSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_compressible_slice_scale(s : PhysicsfluidcompressibleSlice, f : Double) -> PhysicsfluidcompressibleSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleSlice::scale(self : PhysicsfluidcompressibleSlice, f : Double) -> PhysicsfluidcompressibleSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_slice_add(a : PhysicsfluidcompressibleSlice, b : PhysicsfluidcompressibleSlice) -> PhysicsfluidcompressibleSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidcompressibleSlice::add(self : PhysicsfluidcompressibleSlice, other : PhysicsfluidcompressibleSlice) -> PhysicsfluidcompressibleSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_slice_copy(s : PhysicsfluidcompressibleSlice) -> PhysicsfluidcompressibleSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleSlice::copy(self : PhysicsfluidcompressibleSlice) -> PhysicsfluidcompressibleSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_slice_fill(s : PhysicsfluidcompressibleSlice, v : Double) -> PhysicsfluidcompressibleSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidcompressibleSlice::fill(self : PhysicsfluidcompressibleSlice, v : Double) -> PhysicsfluidcompressibleSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_compressible_slice_min(s : PhysicsfluidcompressibleSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidcompressibleSlice::min(self : PhysicsfluidcompressibleSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_compressible_slice_max(s : PhysicsfluidcompressibleSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidcompressibleSlice::max(self : PhysicsfluidcompressibleSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_compressible_slice_to_string(s : PhysicsfluidcompressibleSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidcompressibleSlice::to_string(self : PhysicsfluidcompressibleSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

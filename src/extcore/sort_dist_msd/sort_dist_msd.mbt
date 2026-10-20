@@ -351,45 +351,45 @@ pub fn sort_dist_msd_frame_make(size : Int) -> SortdistmsdFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_frame_len(s : SortdistmsdFrame) -> Int { s.size }
+pub fn SortdistmsdFrame::len(self : SortdistmsdFrame) -> Int { self.size }
 
-pub fn sort_dist_msd_frame_get(s : SortdistmsdFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdFrame::get(self : SortdistmsdFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_frame_set(s : SortdistmsdFrame, i : Int, v : Double) -> SortdistmsdFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdFrame::set(self : SortdistmsdFrame, i : Int, v : Double) -> SortdistmsdFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_frame_sum(s : SortdistmsdFrame) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdFrame::sum(self : SortdistmsdFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_frame_mean(s : SortdistmsdFrame) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdFrame::mean(self : SortdistmsdFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_frame_scale(s : SortdistmsdFrame, f : Double) -> SortdistmsdFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdFrame::scale(self : SortdistmsdFrame, f : Double) -> SortdistmsdFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_frame_add(a : SortdistmsdFrame, b : SortdistmsdFrame) -> SortdistmsdFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdFrame::add(self : SortdistmsdFrame, other : SortdistmsdFrame) -> SortdistmsdFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_frame_copy(s : SortdistmsdFrame) -> SortdistmsdFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdFrame::copy(self : SortdistmsdFrame) -> SortdistmsdFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_frame_fill(s : SortdistmsdFrame, v : Double) -> SortdistmsdFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdFrame::fill(self : SortdistmsdFrame, v : Double) -> SortdistmsdFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_frame_min(s : SortdistmsdFrame) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdFrame::min(self : SortdistmsdFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_frame_max(s : SortdistmsdFrame) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdFrame::max(self : SortdistmsdFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_frame_to_string(s : SortdistmsdFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdFrame::to_string(self : SortdistmsdFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdTable {
@@ -402,45 +402,45 @@ pub fn sort_dist_msd_table_make(size : Int) -> SortdistmsdTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_table_len(s : SortdistmsdTable) -> Int { s.size }
+pub fn SortdistmsdTable::len(self : SortdistmsdTable) -> Int { self.size }
 
-pub fn sort_dist_msd_table_get(s : SortdistmsdTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdTable::get(self : SortdistmsdTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_table_set(s : SortdistmsdTable, i : Int, v : Double) -> SortdistmsdTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdTable::set(self : SortdistmsdTable, i : Int, v : Double) -> SortdistmsdTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_table_sum(s : SortdistmsdTable) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdTable::sum(self : SortdistmsdTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_table_mean(s : SortdistmsdTable) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdTable::mean(self : SortdistmsdTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_table_scale(s : SortdistmsdTable, f : Double) -> SortdistmsdTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdTable::scale(self : SortdistmsdTable, f : Double) -> SortdistmsdTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_table_add(a : SortdistmsdTable, b : SortdistmsdTable) -> SortdistmsdTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdTable::add(self : SortdistmsdTable, other : SortdistmsdTable) -> SortdistmsdTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_table_copy(s : SortdistmsdTable) -> SortdistmsdTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdTable::copy(self : SortdistmsdTable) -> SortdistmsdTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_table_fill(s : SortdistmsdTable, v : Double) -> SortdistmsdTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdTable::fill(self : SortdistmsdTable, v : Double) -> SortdistmsdTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_table_min(s : SortdistmsdTable) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdTable::min(self : SortdistmsdTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_table_max(s : SortdistmsdTable) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdTable::max(self : SortdistmsdTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_table_to_string(s : SortdistmsdTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdTable::to_string(self : SortdistmsdTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdGraphN {
@@ -453,45 +453,45 @@ pub fn sort_dist_msd_graphn_make(size : Int) -> SortdistmsdGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_graphn_len(s : SortdistmsdGraphN) -> Int { s.size }
+pub fn SortdistmsdGraphN::len(self : SortdistmsdGraphN) -> Int { self.size }
 
-pub fn sort_dist_msd_graphn_get(s : SortdistmsdGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdGraphN::get(self : SortdistmsdGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_graphn_set(s : SortdistmsdGraphN, i : Int, v : Double) -> SortdistmsdGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdGraphN::set(self : SortdistmsdGraphN, i : Int, v : Double) -> SortdistmsdGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_graphn_sum(s : SortdistmsdGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdGraphN::sum(self : SortdistmsdGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_graphn_mean(s : SortdistmsdGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdGraphN::mean(self : SortdistmsdGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_graphn_scale(s : SortdistmsdGraphN, f : Double) -> SortdistmsdGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdGraphN::scale(self : SortdistmsdGraphN, f : Double) -> SortdistmsdGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_graphn_add(a : SortdistmsdGraphN, b : SortdistmsdGraphN) -> SortdistmsdGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdGraphN::add(self : SortdistmsdGraphN, other : SortdistmsdGraphN) -> SortdistmsdGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_graphn_copy(s : SortdistmsdGraphN) -> SortdistmsdGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdGraphN::copy(self : SortdistmsdGraphN) -> SortdistmsdGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_graphn_fill(s : SortdistmsdGraphN, v : Double) -> SortdistmsdGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdGraphN::fill(self : SortdistmsdGraphN, v : Double) -> SortdistmsdGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_graphn_min(s : SortdistmsdGraphN) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdGraphN::min(self : SortdistmsdGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_graphn_max(s : SortdistmsdGraphN) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdGraphN::max(self : SortdistmsdGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_graphn_to_string(s : SortdistmsdGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdGraphN::to_string(self : SortdistmsdGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdNode {
@@ -504,45 +504,45 @@ pub fn sort_dist_msd_node_make(size : Int) -> SortdistmsdNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_node_len(s : SortdistmsdNode) -> Int { s.size }
+pub fn SortdistmsdNode::len(self : SortdistmsdNode) -> Int { self.size }
 
-pub fn sort_dist_msd_node_get(s : SortdistmsdNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdNode::get(self : SortdistmsdNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_node_set(s : SortdistmsdNode, i : Int, v : Double) -> SortdistmsdNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdNode::set(self : SortdistmsdNode, i : Int, v : Double) -> SortdistmsdNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_node_sum(s : SortdistmsdNode) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdNode::sum(self : SortdistmsdNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_node_mean(s : SortdistmsdNode) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdNode::mean(self : SortdistmsdNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_node_scale(s : SortdistmsdNode, f : Double) -> SortdistmsdNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdNode::scale(self : SortdistmsdNode, f : Double) -> SortdistmsdNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_node_add(a : SortdistmsdNode, b : SortdistmsdNode) -> SortdistmsdNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdNode::add(self : SortdistmsdNode, other : SortdistmsdNode) -> SortdistmsdNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_node_copy(s : SortdistmsdNode) -> SortdistmsdNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdNode::copy(self : SortdistmsdNode) -> SortdistmsdNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_node_fill(s : SortdistmsdNode, v : Double) -> SortdistmsdNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdNode::fill(self : SortdistmsdNode, v : Double) -> SortdistmsdNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_node_min(s : SortdistmsdNode) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdNode::min(self : SortdistmsdNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_node_max(s : SortdistmsdNode) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdNode::max(self : SortdistmsdNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_node_to_string(s : SortdistmsdNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdNode::to_string(self : SortdistmsdNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdEdge {
@@ -555,45 +555,45 @@ pub fn sort_dist_msd_edge_make(size : Int) -> SortdistmsdEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_edge_len(s : SortdistmsdEdge) -> Int { s.size }
+pub fn SortdistmsdEdge::len(self : SortdistmsdEdge) -> Int { self.size }
 
-pub fn sort_dist_msd_edge_get(s : SortdistmsdEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdEdge::get(self : SortdistmsdEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_edge_set(s : SortdistmsdEdge, i : Int, v : Double) -> SortdistmsdEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdEdge::set(self : SortdistmsdEdge, i : Int, v : Double) -> SortdistmsdEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_edge_sum(s : SortdistmsdEdge) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdEdge::sum(self : SortdistmsdEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_edge_mean(s : SortdistmsdEdge) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdEdge::mean(self : SortdistmsdEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_edge_scale(s : SortdistmsdEdge, f : Double) -> SortdistmsdEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdEdge::scale(self : SortdistmsdEdge, f : Double) -> SortdistmsdEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_edge_add(a : SortdistmsdEdge, b : SortdistmsdEdge) -> SortdistmsdEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdEdge::add(self : SortdistmsdEdge, other : SortdistmsdEdge) -> SortdistmsdEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_edge_copy(s : SortdistmsdEdge) -> SortdistmsdEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdEdge::copy(self : SortdistmsdEdge) -> SortdistmsdEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_edge_fill(s : SortdistmsdEdge, v : Double) -> SortdistmsdEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdEdge::fill(self : SortdistmsdEdge, v : Double) -> SortdistmsdEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_edge_min(s : SortdistmsdEdge) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdEdge::min(self : SortdistmsdEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_edge_max(s : SortdistmsdEdge) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdEdge::max(self : SortdistmsdEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_edge_to_string(s : SortdistmsdEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdEdge::to_string(self : SortdistmsdEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdPath {
@@ -606,45 +606,45 @@ pub fn sort_dist_msd_path_make(size : Int) -> SortdistmsdPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_path_len(s : SortdistmsdPath) -> Int { s.size }
+pub fn SortdistmsdPath::len(self : SortdistmsdPath) -> Int { self.size }
 
-pub fn sort_dist_msd_path_get(s : SortdistmsdPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdPath::get(self : SortdistmsdPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_path_set(s : SortdistmsdPath, i : Int, v : Double) -> SortdistmsdPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdPath::set(self : SortdistmsdPath, i : Int, v : Double) -> SortdistmsdPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_path_sum(s : SortdistmsdPath) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdPath::sum(self : SortdistmsdPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_path_mean(s : SortdistmsdPath) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdPath::mean(self : SortdistmsdPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_path_scale(s : SortdistmsdPath, f : Double) -> SortdistmsdPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdPath::scale(self : SortdistmsdPath, f : Double) -> SortdistmsdPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_path_add(a : SortdistmsdPath, b : SortdistmsdPath) -> SortdistmsdPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdPath::add(self : SortdistmsdPath, other : SortdistmsdPath) -> SortdistmsdPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_path_copy(s : SortdistmsdPath) -> SortdistmsdPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdPath::copy(self : SortdistmsdPath) -> SortdistmsdPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_path_fill(s : SortdistmsdPath, v : Double) -> SortdistmsdPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdPath::fill(self : SortdistmsdPath, v : Double) -> SortdistmsdPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_path_min(s : SortdistmsdPath) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdPath::min(self : SortdistmsdPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_path_max(s : SortdistmsdPath) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdPath::max(self : SortdistmsdPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_path_to_string(s : SortdistmsdPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdPath::to_string(self : SortdistmsdPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdCluster {
@@ -657,45 +657,45 @@ pub fn sort_dist_msd_cluster_make(size : Int) -> SortdistmsdCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_cluster_len(s : SortdistmsdCluster) -> Int { s.size }
+pub fn SortdistmsdCluster::len(self : SortdistmsdCluster) -> Int { self.size }
 
-pub fn sort_dist_msd_cluster_get(s : SortdistmsdCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdCluster::get(self : SortdistmsdCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_cluster_set(s : SortdistmsdCluster, i : Int, v : Double) -> SortdistmsdCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdCluster::set(self : SortdistmsdCluster, i : Int, v : Double) -> SortdistmsdCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_cluster_sum(s : SortdistmsdCluster) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdCluster::sum(self : SortdistmsdCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_cluster_mean(s : SortdistmsdCluster) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdCluster::mean(self : SortdistmsdCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_cluster_scale(s : SortdistmsdCluster, f : Double) -> SortdistmsdCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdCluster::scale(self : SortdistmsdCluster, f : Double) -> SortdistmsdCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_cluster_add(a : SortdistmsdCluster, b : SortdistmsdCluster) -> SortdistmsdCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdCluster::add(self : SortdistmsdCluster, other : SortdistmsdCluster) -> SortdistmsdCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_cluster_copy(s : SortdistmsdCluster) -> SortdistmsdCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdCluster::copy(self : SortdistmsdCluster) -> SortdistmsdCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_cluster_fill(s : SortdistmsdCluster, v : Double) -> SortdistmsdCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdCluster::fill(self : SortdistmsdCluster, v : Double) -> SortdistmsdCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_cluster_min(s : SortdistmsdCluster) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdCluster::min(self : SortdistmsdCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_cluster_max(s : SortdistmsdCluster) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdCluster::max(self : SortdistmsdCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_cluster_to_string(s : SortdistmsdCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdCluster::to_string(self : SortdistmsdCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdModel {
@@ -708,45 +708,45 @@ pub fn sort_dist_msd_model_make(size : Int) -> SortdistmsdModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_model_len(s : SortdistmsdModel) -> Int { s.size }
+pub fn SortdistmsdModel::len(self : SortdistmsdModel) -> Int { self.size }
 
-pub fn sort_dist_msd_model_get(s : SortdistmsdModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdModel::get(self : SortdistmsdModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_model_set(s : SortdistmsdModel, i : Int, v : Double) -> SortdistmsdModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdModel::set(self : SortdistmsdModel, i : Int, v : Double) -> SortdistmsdModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_model_sum(s : SortdistmsdModel) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdModel::sum(self : SortdistmsdModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_model_mean(s : SortdistmsdModel) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdModel::mean(self : SortdistmsdModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_model_scale(s : SortdistmsdModel, f : Double) -> SortdistmsdModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdModel::scale(self : SortdistmsdModel, f : Double) -> SortdistmsdModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_model_add(a : SortdistmsdModel, b : SortdistmsdModel) -> SortdistmsdModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdModel::add(self : SortdistmsdModel, other : SortdistmsdModel) -> SortdistmsdModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_model_copy(s : SortdistmsdModel) -> SortdistmsdModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdModel::copy(self : SortdistmsdModel) -> SortdistmsdModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_model_fill(s : SortdistmsdModel, v : Double) -> SortdistmsdModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdModel::fill(self : SortdistmsdModel, v : Double) -> SortdistmsdModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_model_min(s : SortdistmsdModel) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdModel::min(self : SortdistmsdModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_model_max(s : SortdistmsdModel) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdModel::max(self : SortdistmsdModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_model_to_string(s : SortdistmsdModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdModel::to_string(self : SortdistmsdModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdLayer {
@@ -759,45 +759,45 @@ pub fn sort_dist_msd_layer_make(size : Int) -> SortdistmsdLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_layer_len(s : SortdistmsdLayer) -> Int { s.size }
+pub fn SortdistmsdLayer::len(self : SortdistmsdLayer) -> Int { self.size }
 
-pub fn sort_dist_msd_layer_get(s : SortdistmsdLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdLayer::get(self : SortdistmsdLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_layer_set(s : SortdistmsdLayer, i : Int, v : Double) -> SortdistmsdLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdLayer::set(self : SortdistmsdLayer, i : Int, v : Double) -> SortdistmsdLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_layer_sum(s : SortdistmsdLayer) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdLayer::sum(self : SortdistmsdLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_layer_mean(s : SortdistmsdLayer) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdLayer::mean(self : SortdistmsdLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_layer_scale(s : SortdistmsdLayer, f : Double) -> SortdistmsdLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdLayer::scale(self : SortdistmsdLayer, f : Double) -> SortdistmsdLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_layer_add(a : SortdistmsdLayer, b : SortdistmsdLayer) -> SortdistmsdLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdLayer::add(self : SortdistmsdLayer, other : SortdistmsdLayer) -> SortdistmsdLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_layer_copy(s : SortdistmsdLayer) -> SortdistmsdLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdLayer::copy(self : SortdistmsdLayer) -> SortdistmsdLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_layer_fill(s : SortdistmsdLayer, v : Double) -> SortdistmsdLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdLayer::fill(self : SortdistmsdLayer, v : Double) -> SortdistmsdLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_layer_min(s : SortdistmsdLayer) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdLayer::min(self : SortdistmsdLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_layer_max(s : SortdistmsdLayer) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdLayer::max(self : SortdistmsdLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_layer_to_string(s : SortdistmsdLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdLayer::to_string(self : SortdistmsdLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdBuffer {
@@ -810,45 +810,45 @@ pub fn sort_dist_msd_buffer_make(size : Int) -> SortdistmsdBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_buffer_len(s : SortdistmsdBuffer) -> Int { s.size }
+pub fn SortdistmsdBuffer::len(self : SortdistmsdBuffer) -> Int { self.size }
 
-pub fn sort_dist_msd_buffer_get(s : SortdistmsdBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdBuffer::get(self : SortdistmsdBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_buffer_set(s : SortdistmsdBuffer, i : Int, v : Double) -> SortdistmsdBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdBuffer::set(self : SortdistmsdBuffer, i : Int, v : Double) -> SortdistmsdBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_buffer_sum(s : SortdistmsdBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdBuffer::sum(self : SortdistmsdBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_buffer_mean(s : SortdistmsdBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdBuffer::mean(self : SortdistmsdBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_buffer_scale(s : SortdistmsdBuffer, f : Double) -> SortdistmsdBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdBuffer::scale(self : SortdistmsdBuffer, f : Double) -> SortdistmsdBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_buffer_add(a : SortdistmsdBuffer, b : SortdistmsdBuffer) -> SortdistmsdBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdBuffer::add(self : SortdistmsdBuffer, other : SortdistmsdBuffer) -> SortdistmsdBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_buffer_copy(s : SortdistmsdBuffer) -> SortdistmsdBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdBuffer::copy(self : SortdistmsdBuffer) -> SortdistmsdBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_buffer_fill(s : SortdistmsdBuffer, v : Double) -> SortdistmsdBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdBuffer::fill(self : SortdistmsdBuffer, v : Double) -> SortdistmsdBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_buffer_min(s : SortdistmsdBuffer) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdBuffer::min(self : SortdistmsdBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_buffer_max(s : SortdistmsdBuffer) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdBuffer::max(self : SortdistmsdBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_buffer_to_string(s : SortdistmsdBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdBuffer::to_string(self : SortdistmsdBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdCursor {
@@ -861,45 +861,45 @@ pub fn sort_dist_msd_cursor_make(size : Int) -> SortdistmsdCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_cursor_len(s : SortdistmsdCursor) -> Int { s.size }
+pub fn SortdistmsdCursor::len(self : SortdistmsdCursor) -> Int { self.size }
 
-pub fn sort_dist_msd_cursor_get(s : SortdistmsdCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdCursor::get(self : SortdistmsdCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_cursor_set(s : SortdistmsdCursor, i : Int, v : Double) -> SortdistmsdCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdCursor::set(self : SortdistmsdCursor, i : Int, v : Double) -> SortdistmsdCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_cursor_sum(s : SortdistmsdCursor) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdCursor::sum(self : SortdistmsdCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_cursor_mean(s : SortdistmsdCursor) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdCursor::mean(self : SortdistmsdCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_cursor_scale(s : SortdistmsdCursor, f : Double) -> SortdistmsdCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdCursor::scale(self : SortdistmsdCursor, f : Double) -> SortdistmsdCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_cursor_add(a : SortdistmsdCursor, b : SortdistmsdCursor) -> SortdistmsdCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdCursor::add(self : SortdistmsdCursor, other : SortdistmsdCursor) -> SortdistmsdCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_cursor_copy(s : SortdistmsdCursor) -> SortdistmsdCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdCursor::copy(self : SortdistmsdCursor) -> SortdistmsdCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_cursor_fill(s : SortdistmsdCursor, v : Double) -> SortdistmsdCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdCursor::fill(self : SortdistmsdCursor, v : Double) -> SortdistmsdCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_cursor_min(s : SortdistmsdCursor) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdCursor::min(self : SortdistmsdCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_cursor_max(s : SortdistmsdCursor) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdCursor::max(self : SortdistmsdCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_cursor_to_string(s : SortdistmsdCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdCursor::to_string(self : SortdistmsdCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdView {
@@ -912,45 +912,45 @@ pub fn sort_dist_msd_view_make(size : Int) -> SortdistmsdView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_view_len(s : SortdistmsdView) -> Int { s.size }
+pub fn SortdistmsdView::len(self : SortdistmsdView) -> Int { self.size }
 
-pub fn sort_dist_msd_view_get(s : SortdistmsdView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdView::get(self : SortdistmsdView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_view_set(s : SortdistmsdView, i : Int, v : Double) -> SortdistmsdView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdView::set(self : SortdistmsdView, i : Int, v : Double) -> SortdistmsdView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_view_sum(s : SortdistmsdView) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdView::sum(self : SortdistmsdView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_view_mean(s : SortdistmsdView) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdView::mean(self : SortdistmsdView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_view_scale(s : SortdistmsdView, f : Double) -> SortdistmsdView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdView::scale(self : SortdistmsdView, f : Double) -> SortdistmsdView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_view_add(a : SortdistmsdView, b : SortdistmsdView) -> SortdistmsdView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdView::add(self : SortdistmsdView, other : SortdistmsdView) -> SortdistmsdView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_view_copy(s : SortdistmsdView) -> SortdistmsdView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdView::copy(self : SortdistmsdView) -> SortdistmsdView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_view_fill(s : SortdistmsdView, v : Double) -> SortdistmsdView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdView::fill(self : SortdistmsdView, v : Double) -> SortdistmsdView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_view_min(s : SortdistmsdView) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdView::min(self : SortdistmsdView) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_view_max(s : SortdistmsdView) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdView::max(self : SortdistmsdView) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_view_to_string(s : SortdistmsdView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdView::to_string(self : SortdistmsdView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdRange {
@@ -963,45 +963,45 @@ pub fn sort_dist_msd_range_make(size : Int) -> SortdistmsdRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_range_len(s : SortdistmsdRange) -> Int { s.size }
+pub fn SortdistmsdRange::len(self : SortdistmsdRange) -> Int { self.size }
 
-pub fn sort_dist_msd_range_get(s : SortdistmsdRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdRange::get(self : SortdistmsdRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_range_set(s : SortdistmsdRange, i : Int, v : Double) -> SortdistmsdRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdRange::set(self : SortdistmsdRange, i : Int, v : Double) -> SortdistmsdRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_range_sum(s : SortdistmsdRange) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdRange::sum(self : SortdistmsdRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_range_mean(s : SortdistmsdRange) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdRange::mean(self : SortdistmsdRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_range_scale(s : SortdistmsdRange, f : Double) -> SortdistmsdRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdRange::scale(self : SortdistmsdRange, f : Double) -> SortdistmsdRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_range_add(a : SortdistmsdRange, b : SortdistmsdRange) -> SortdistmsdRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdRange::add(self : SortdistmsdRange, other : SortdistmsdRange) -> SortdistmsdRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_range_copy(s : SortdistmsdRange) -> SortdistmsdRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdRange::copy(self : SortdistmsdRange) -> SortdistmsdRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_range_fill(s : SortdistmsdRange, v : Double) -> SortdistmsdRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdRange::fill(self : SortdistmsdRange, v : Double) -> SortdistmsdRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_range_min(s : SortdistmsdRange) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdRange::min(self : SortdistmsdRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_range_max(s : SortdistmsdRange) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdRange::max(self : SortdistmsdRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_range_to_string(s : SortdistmsdRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdRange::to_string(self : SortdistmsdRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_dist_msd_slice_make(size : Int) -> SortdistmsdSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_msd_slice_len(s : SortdistmsdSlice) -> Int { s.size }
+pub fn SortdistmsdSlice::len(self : SortdistmsdSlice) -> Int { self.size }
 
-pub fn sort_dist_msd_slice_get(s : SortdistmsdSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistmsdSlice::get(self : SortdistmsdSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_msd_slice_set(s : SortdistmsdSlice, i : Int, v : Double) -> SortdistmsdSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistmsdSlice::set(self : SortdistmsdSlice, i : Int, v : Double) -> SortdistmsdSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_slice_sum(s : SortdistmsdSlice) -> Double { @_common.sum(s.data) }
+pub fn SortdistmsdSlice::sum(self : SortdistmsdSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_msd_slice_mean(s : SortdistmsdSlice) -> Double { @_common.mean(s.data) }
+pub fn SortdistmsdSlice::mean(self : SortdistmsdSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_msd_slice_scale(s : SortdistmsdSlice, f : Double) -> SortdistmsdSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistmsdSlice::scale(self : SortdistmsdSlice, f : Double) -> SortdistmsdSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_slice_add(a : SortdistmsdSlice, b : SortdistmsdSlice) -> SortdistmsdSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistmsdSlice::add(self : SortdistmsdSlice, other : SortdistmsdSlice) -> SortdistmsdSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_msd_slice_copy(s : SortdistmsdSlice) -> SortdistmsdSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistmsdSlice::copy(self : SortdistmsdSlice) -> SortdistmsdSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_slice_fill(s : SortdistmsdSlice, v : Double) -> SortdistmsdSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistmsdSlice::fill(self : SortdistmsdSlice, v : Double) -> SortdistmsdSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_msd_slice_min(s : SortdistmsdSlice) -> Double { @_common.min(s.data) }
+pub fn SortdistmsdSlice::min(self : SortdistmsdSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_msd_slice_max(s : SortdistmsdSlice) -> Double { @_common.max(s.data) }
+pub fn SortdistmsdSlice::max(self : SortdistmsdSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_msd_slice_to_string(s : SortdistmsdSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistmsdSlice::to_string(self : SortdistmsdSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

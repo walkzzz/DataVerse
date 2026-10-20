@@ -351,45 +351,45 @@ pub fn opt_convex_l_bfgs_frame_make(size : Int) -> OptconvexlbfgsFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_frame_len(s : OptconvexlbfgsFrame) -> Int { s.size }
+pub fn OptconvexlbfgsFrame::len(self : OptconvexlbfgsFrame) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_frame_get(s : OptconvexlbfgsFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsFrame::get(self : OptconvexlbfgsFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_frame_set(s : OptconvexlbfgsFrame, i : Int, v : Double) -> OptconvexlbfgsFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsFrame::set(self : OptconvexlbfgsFrame, i : Int, v : Double) -> OptconvexlbfgsFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_frame_sum(s : OptconvexlbfgsFrame) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsFrame::sum(self : OptconvexlbfgsFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_frame_mean(s : OptconvexlbfgsFrame) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsFrame::mean(self : OptconvexlbfgsFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_frame_scale(s : OptconvexlbfgsFrame, f : Double) -> OptconvexlbfgsFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsFrame::scale(self : OptconvexlbfgsFrame, f : Double) -> OptconvexlbfgsFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_frame_add(a : OptconvexlbfgsFrame, b : OptconvexlbfgsFrame) -> OptconvexlbfgsFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsFrame::add(self : OptconvexlbfgsFrame, other : OptconvexlbfgsFrame) -> OptconvexlbfgsFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_frame_copy(s : OptconvexlbfgsFrame) -> OptconvexlbfgsFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsFrame::copy(self : OptconvexlbfgsFrame) -> OptconvexlbfgsFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_frame_fill(s : OptconvexlbfgsFrame, v : Double) -> OptconvexlbfgsFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsFrame::fill(self : OptconvexlbfgsFrame, v : Double) -> OptconvexlbfgsFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_frame_min(s : OptconvexlbfgsFrame) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsFrame::min(self : OptconvexlbfgsFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_frame_max(s : OptconvexlbfgsFrame) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsFrame::max(self : OptconvexlbfgsFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_frame_to_string(s : OptconvexlbfgsFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsFrame::to_string(self : OptconvexlbfgsFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsTable {
@@ -402,45 +402,45 @@ pub fn opt_convex_l_bfgs_table_make(size : Int) -> OptconvexlbfgsTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_table_len(s : OptconvexlbfgsTable) -> Int { s.size }
+pub fn OptconvexlbfgsTable::len(self : OptconvexlbfgsTable) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_table_get(s : OptconvexlbfgsTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsTable::get(self : OptconvexlbfgsTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_table_set(s : OptconvexlbfgsTable, i : Int, v : Double) -> OptconvexlbfgsTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsTable::set(self : OptconvexlbfgsTable, i : Int, v : Double) -> OptconvexlbfgsTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_table_sum(s : OptconvexlbfgsTable) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsTable::sum(self : OptconvexlbfgsTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_table_mean(s : OptconvexlbfgsTable) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsTable::mean(self : OptconvexlbfgsTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_table_scale(s : OptconvexlbfgsTable, f : Double) -> OptconvexlbfgsTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsTable::scale(self : OptconvexlbfgsTable, f : Double) -> OptconvexlbfgsTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_table_add(a : OptconvexlbfgsTable, b : OptconvexlbfgsTable) -> OptconvexlbfgsTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsTable::add(self : OptconvexlbfgsTable, other : OptconvexlbfgsTable) -> OptconvexlbfgsTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_table_copy(s : OptconvexlbfgsTable) -> OptconvexlbfgsTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsTable::copy(self : OptconvexlbfgsTable) -> OptconvexlbfgsTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_table_fill(s : OptconvexlbfgsTable, v : Double) -> OptconvexlbfgsTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsTable::fill(self : OptconvexlbfgsTable, v : Double) -> OptconvexlbfgsTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_table_min(s : OptconvexlbfgsTable) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsTable::min(self : OptconvexlbfgsTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_table_max(s : OptconvexlbfgsTable) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsTable::max(self : OptconvexlbfgsTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_table_to_string(s : OptconvexlbfgsTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsTable::to_string(self : OptconvexlbfgsTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsGraphN {
@@ -453,45 +453,45 @@ pub fn opt_convex_l_bfgs_graphn_make(size : Int) -> OptconvexlbfgsGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_graphn_len(s : OptconvexlbfgsGraphN) -> Int { s.size }
+pub fn OptconvexlbfgsGraphN::len(self : OptconvexlbfgsGraphN) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_graphn_get(s : OptconvexlbfgsGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsGraphN::get(self : OptconvexlbfgsGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_graphn_set(s : OptconvexlbfgsGraphN, i : Int, v : Double) -> OptconvexlbfgsGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsGraphN::set(self : OptconvexlbfgsGraphN, i : Int, v : Double) -> OptconvexlbfgsGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_graphn_sum(s : OptconvexlbfgsGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsGraphN::sum(self : OptconvexlbfgsGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_graphn_mean(s : OptconvexlbfgsGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsGraphN::mean(self : OptconvexlbfgsGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_graphn_scale(s : OptconvexlbfgsGraphN, f : Double) -> OptconvexlbfgsGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsGraphN::scale(self : OptconvexlbfgsGraphN, f : Double) -> OptconvexlbfgsGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_graphn_add(a : OptconvexlbfgsGraphN, b : OptconvexlbfgsGraphN) -> OptconvexlbfgsGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsGraphN::add(self : OptconvexlbfgsGraphN, other : OptconvexlbfgsGraphN) -> OptconvexlbfgsGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_graphn_copy(s : OptconvexlbfgsGraphN) -> OptconvexlbfgsGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsGraphN::copy(self : OptconvexlbfgsGraphN) -> OptconvexlbfgsGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_graphn_fill(s : OptconvexlbfgsGraphN, v : Double) -> OptconvexlbfgsGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsGraphN::fill(self : OptconvexlbfgsGraphN, v : Double) -> OptconvexlbfgsGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_graphn_min(s : OptconvexlbfgsGraphN) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsGraphN::min(self : OptconvexlbfgsGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_graphn_max(s : OptconvexlbfgsGraphN) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsGraphN::max(self : OptconvexlbfgsGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_graphn_to_string(s : OptconvexlbfgsGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsGraphN::to_string(self : OptconvexlbfgsGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsNode {
@@ -504,45 +504,45 @@ pub fn opt_convex_l_bfgs_node_make(size : Int) -> OptconvexlbfgsNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_node_len(s : OptconvexlbfgsNode) -> Int { s.size }
+pub fn OptconvexlbfgsNode::len(self : OptconvexlbfgsNode) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_node_get(s : OptconvexlbfgsNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsNode::get(self : OptconvexlbfgsNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_node_set(s : OptconvexlbfgsNode, i : Int, v : Double) -> OptconvexlbfgsNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsNode::set(self : OptconvexlbfgsNode, i : Int, v : Double) -> OptconvexlbfgsNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_node_sum(s : OptconvexlbfgsNode) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsNode::sum(self : OptconvexlbfgsNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_node_mean(s : OptconvexlbfgsNode) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsNode::mean(self : OptconvexlbfgsNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_node_scale(s : OptconvexlbfgsNode, f : Double) -> OptconvexlbfgsNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsNode::scale(self : OptconvexlbfgsNode, f : Double) -> OptconvexlbfgsNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_node_add(a : OptconvexlbfgsNode, b : OptconvexlbfgsNode) -> OptconvexlbfgsNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsNode::add(self : OptconvexlbfgsNode, other : OptconvexlbfgsNode) -> OptconvexlbfgsNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_node_copy(s : OptconvexlbfgsNode) -> OptconvexlbfgsNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsNode::copy(self : OptconvexlbfgsNode) -> OptconvexlbfgsNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_node_fill(s : OptconvexlbfgsNode, v : Double) -> OptconvexlbfgsNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsNode::fill(self : OptconvexlbfgsNode, v : Double) -> OptconvexlbfgsNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_node_min(s : OptconvexlbfgsNode) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsNode::min(self : OptconvexlbfgsNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_node_max(s : OptconvexlbfgsNode) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsNode::max(self : OptconvexlbfgsNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_node_to_string(s : OptconvexlbfgsNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsNode::to_string(self : OptconvexlbfgsNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsEdge {
@@ -555,45 +555,45 @@ pub fn opt_convex_l_bfgs_edge_make(size : Int) -> OptconvexlbfgsEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_edge_len(s : OptconvexlbfgsEdge) -> Int { s.size }
+pub fn OptconvexlbfgsEdge::len(self : OptconvexlbfgsEdge) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_edge_get(s : OptconvexlbfgsEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsEdge::get(self : OptconvexlbfgsEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_edge_set(s : OptconvexlbfgsEdge, i : Int, v : Double) -> OptconvexlbfgsEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsEdge::set(self : OptconvexlbfgsEdge, i : Int, v : Double) -> OptconvexlbfgsEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_edge_sum(s : OptconvexlbfgsEdge) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsEdge::sum(self : OptconvexlbfgsEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_edge_mean(s : OptconvexlbfgsEdge) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsEdge::mean(self : OptconvexlbfgsEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_edge_scale(s : OptconvexlbfgsEdge, f : Double) -> OptconvexlbfgsEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsEdge::scale(self : OptconvexlbfgsEdge, f : Double) -> OptconvexlbfgsEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_edge_add(a : OptconvexlbfgsEdge, b : OptconvexlbfgsEdge) -> OptconvexlbfgsEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsEdge::add(self : OptconvexlbfgsEdge, other : OptconvexlbfgsEdge) -> OptconvexlbfgsEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_edge_copy(s : OptconvexlbfgsEdge) -> OptconvexlbfgsEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsEdge::copy(self : OptconvexlbfgsEdge) -> OptconvexlbfgsEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_edge_fill(s : OptconvexlbfgsEdge, v : Double) -> OptconvexlbfgsEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsEdge::fill(self : OptconvexlbfgsEdge, v : Double) -> OptconvexlbfgsEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_edge_min(s : OptconvexlbfgsEdge) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsEdge::min(self : OptconvexlbfgsEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_edge_max(s : OptconvexlbfgsEdge) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsEdge::max(self : OptconvexlbfgsEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_edge_to_string(s : OptconvexlbfgsEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsEdge::to_string(self : OptconvexlbfgsEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsPath {
@@ -606,45 +606,45 @@ pub fn opt_convex_l_bfgs_path_make(size : Int) -> OptconvexlbfgsPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_path_len(s : OptconvexlbfgsPath) -> Int { s.size }
+pub fn OptconvexlbfgsPath::len(self : OptconvexlbfgsPath) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_path_get(s : OptconvexlbfgsPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsPath::get(self : OptconvexlbfgsPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_path_set(s : OptconvexlbfgsPath, i : Int, v : Double) -> OptconvexlbfgsPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsPath::set(self : OptconvexlbfgsPath, i : Int, v : Double) -> OptconvexlbfgsPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_path_sum(s : OptconvexlbfgsPath) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsPath::sum(self : OptconvexlbfgsPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_path_mean(s : OptconvexlbfgsPath) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsPath::mean(self : OptconvexlbfgsPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_path_scale(s : OptconvexlbfgsPath, f : Double) -> OptconvexlbfgsPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsPath::scale(self : OptconvexlbfgsPath, f : Double) -> OptconvexlbfgsPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_path_add(a : OptconvexlbfgsPath, b : OptconvexlbfgsPath) -> OptconvexlbfgsPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsPath::add(self : OptconvexlbfgsPath, other : OptconvexlbfgsPath) -> OptconvexlbfgsPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_path_copy(s : OptconvexlbfgsPath) -> OptconvexlbfgsPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsPath::copy(self : OptconvexlbfgsPath) -> OptconvexlbfgsPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_path_fill(s : OptconvexlbfgsPath, v : Double) -> OptconvexlbfgsPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsPath::fill(self : OptconvexlbfgsPath, v : Double) -> OptconvexlbfgsPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_path_min(s : OptconvexlbfgsPath) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsPath::min(self : OptconvexlbfgsPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_path_max(s : OptconvexlbfgsPath) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsPath::max(self : OptconvexlbfgsPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_path_to_string(s : OptconvexlbfgsPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsPath::to_string(self : OptconvexlbfgsPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsCluster {
@@ -657,45 +657,45 @@ pub fn opt_convex_l_bfgs_cluster_make(size : Int) -> OptconvexlbfgsCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_cluster_len(s : OptconvexlbfgsCluster) -> Int { s.size }
+pub fn OptconvexlbfgsCluster::len(self : OptconvexlbfgsCluster) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_cluster_get(s : OptconvexlbfgsCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsCluster::get(self : OptconvexlbfgsCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_cluster_set(s : OptconvexlbfgsCluster, i : Int, v : Double) -> OptconvexlbfgsCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsCluster::set(self : OptconvexlbfgsCluster, i : Int, v : Double) -> OptconvexlbfgsCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_cluster_sum(s : OptconvexlbfgsCluster) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsCluster::sum(self : OptconvexlbfgsCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_cluster_mean(s : OptconvexlbfgsCluster) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsCluster::mean(self : OptconvexlbfgsCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_cluster_scale(s : OptconvexlbfgsCluster, f : Double) -> OptconvexlbfgsCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsCluster::scale(self : OptconvexlbfgsCluster, f : Double) -> OptconvexlbfgsCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_cluster_add(a : OptconvexlbfgsCluster, b : OptconvexlbfgsCluster) -> OptconvexlbfgsCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsCluster::add(self : OptconvexlbfgsCluster, other : OptconvexlbfgsCluster) -> OptconvexlbfgsCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_cluster_copy(s : OptconvexlbfgsCluster) -> OptconvexlbfgsCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsCluster::copy(self : OptconvexlbfgsCluster) -> OptconvexlbfgsCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_cluster_fill(s : OptconvexlbfgsCluster, v : Double) -> OptconvexlbfgsCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsCluster::fill(self : OptconvexlbfgsCluster, v : Double) -> OptconvexlbfgsCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_cluster_min(s : OptconvexlbfgsCluster) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsCluster::min(self : OptconvexlbfgsCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_cluster_max(s : OptconvexlbfgsCluster) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsCluster::max(self : OptconvexlbfgsCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_cluster_to_string(s : OptconvexlbfgsCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsCluster::to_string(self : OptconvexlbfgsCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsModel {
@@ -708,45 +708,45 @@ pub fn opt_convex_l_bfgs_model_make(size : Int) -> OptconvexlbfgsModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_model_len(s : OptconvexlbfgsModel) -> Int { s.size }
+pub fn OptconvexlbfgsModel::len(self : OptconvexlbfgsModel) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_model_get(s : OptconvexlbfgsModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsModel::get(self : OptconvexlbfgsModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_model_set(s : OptconvexlbfgsModel, i : Int, v : Double) -> OptconvexlbfgsModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsModel::set(self : OptconvexlbfgsModel, i : Int, v : Double) -> OptconvexlbfgsModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_model_sum(s : OptconvexlbfgsModel) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsModel::sum(self : OptconvexlbfgsModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_model_mean(s : OptconvexlbfgsModel) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsModel::mean(self : OptconvexlbfgsModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_model_scale(s : OptconvexlbfgsModel, f : Double) -> OptconvexlbfgsModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsModel::scale(self : OptconvexlbfgsModel, f : Double) -> OptconvexlbfgsModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_model_add(a : OptconvexlbfgsModel, b : OptconvexlbfgsModel) -> OptconvexlbfgsModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsModel::add(self : OptconvexlbfgsModel, other : OptconvexlbfgsModel) -> OptconvexlbfgsModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_model_copy(s : OptconvexlbfgsModel) -> OptconvexlbfgsModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsModel::copy(self : OptconvexlbfgsModel) -> OptconvexlbfgsModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_model_fill(s : OptconvexlbfgsModel, v : Double) -> OptconvexlbfgsModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsModel::fill(self : OptconvexlbfgsModel, v : Double) -> OptconvexlbfgsModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_model_min(s : OptconvexlbfgsModel) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsModel::min(self : OptconvexlbfgsModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_model_max(s : OptconvexlbfgsModel) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsModel::max(self : OptconvexlbfgsModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_model_to_string(s : OptconvexlbfgsModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsModel::to_string(self : OptconvexlbfgsModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsLayer {
@@ -759,45 +759,45 @@ pub fn opt_convex_l_bfgs_layer_make(size : Int) -> OptconvexlbfgsLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_layer_len(s : OptconvexlbfgsLayer) -> Int { s.size }
+pub fn OptconvexlbfgsLayer::len(self : OptconvexlbfgsLayer) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_layer_get(s : OptconvexlbfgsLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsLayer::get(self : OptconvexlbfgsLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_layer_set(s : OptconvexlbfgsLayer, i : Int, v : Double) -> OptconvexlbfgsLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsLayer::set(self : OptconvexlbfgsLayer, i : Int, v : Double) -> OptconvexlbfgsLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_layer_sum(s : OptconvexlbfgsLayer) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsLayer::sum(self : OptconvexlbfgsLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_layer_mean(s : OptconvexlbfgsLayer) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsLayer::mean(self : OptconvexlbfgsLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_layer_scale(s : OptconvexlbfgsLayer, f : Double) -> OptconvexlbfgsLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsLayer::scale(self : OptconvexlbfgsLayer, f : Double) -> OptconvexlbfgsLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_layer_add(a : OptconvexlbfgsLayer, b : OptconvexlbfgsLayer) -> OptconvexlbfgsLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsLayer::add(self : OptconvexlbfgsLayer, other : OptconvexlbfgsLayer) -> OptconvexlbfgsLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_layer_copy(s : OptconvexlbfgsLayer) -> OptconvexlbfgsLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsLayer::copy(self : OptconvexlbfgsLayer) -> OptconvexlbfgsLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_layer_fill(s : OptconvexlbfgsLayer, v : Double) -> OptconvexlbfgsLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsLayer::fill(self : OptconvexlbfgsLayer, v : Double) -> OptconvexlbfgsLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_layer_min(s : OptconvexlbfgsLayer) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsLayer::min(self : OptconvexlbfgsLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_layer_max(s : OptconvexlbfgsLayer) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsLayer::max(self : OptconvexlbfgsLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_layer_to_string(s : OptconvexlbfgsLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsLayer::to_string(self : OptconvexlbfgsLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsBuffer {
@@ -810,45 +810,45 @@ pub fn opt_convex_l_bfgs_buffer_make(size : Int) -> OptconvexlbfgsBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_buffer_len(s : OptconvexlbfgsBuffer) -> Int { s.size }
+pub fn OptconvexlbfgsBuffer::len(self : OptconvexlbfgsBuffer) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_buffer_get(s : OptconvexlbfgsBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsBuffer::get(self : OptconvexlbfgsBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_buffer_set(s : OptconvexlbfgsBuffer, i : Int, v : Double) -> OptconvexlbfgsBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsBuffer::set(self : OptconvexlbfgsBuffer, i : Int, v : Double) -> OptconvexlbfgsBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_buffer_sum(s : OptconvexlbfgsBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsBuffer::sum(self : OptconvexlbfgsBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_buffer_mean(s : OptconvexlbfgsBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsBuffer::mean(self : OptconvexlbfgsBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_buffer_scale(s : OptconvexlbfgsBuffer, f : Double) -> OptconvexlbfgsBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsBuffer::scale(self : OptconvexlbfgsBuffer, f : Double) -> OptconvexlbfgsBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_buffer_add(a : OptconvexlbfgsBuffer, b : OptconvexlbfgsBuffer) -> OptconvexlbfgsBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsBuffer::add(self : OptconvexlbfgsBuffer, other : OptconvexlbfgsBuffer) -> OptconvexlbfgsBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_buffer_copy(s : OptconvexlbfgsBuffer) -> OptconvexlbfgsBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsBuffer::copy(self : OptconvexlbfgsBuffer) -> OptconvexlbfgsBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_buffer_fill(s : OptconvexlbfgsBuffer, v : Double) -> OptconvexlbfgsBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsBuffer::fill(self : OptconvexlbfgsBuffer, v : Double) -> OptconvexlbfgsBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_buffer_min(s : OptconvexlbfgsBuffer) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsBuffer::min(self : OptconvexlbfgsBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_buffer_max(s : OptconvexlbfgsBuffer) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsBuffer::max(self : OptconvexlbfgsBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_buffer_to_string(s : OptconvexlbfgsBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsBuffer::to_string(self : OptconvexlbfgsBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsCursor {
@@ -861,45 +861,45 @@ pub fn opt_convex_l_bfgs_cursor_make(size : Int) -> OptconvexlbfgsCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_cursor_len(s : OptconvexlbfgsCursor) -> Int { s.size }
+pub fn OptconvexlbfgsCursor::len(self : OptconvexlbfgsCursor) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_cursor_get(s : OptconvexlbfgsCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsCursor::get(self : OptconvexlbfgsCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_cursor_set(s : OptconvexlbfgsCursor, i : Int, v : Double) -> OptconvexlbfgsCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsCursor::set(self : OptconvexlbfgsCursor, i : Int, v : Double) -> OptconvexlbfgsCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_cursor_sum(s : OptconvexlbfgsCursor) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsCursor::sum(self : OptconvexlbfgsCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_cursor_mean(s : OptconvexlbfgsCursor) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsCursor::mean(self : OptconvexlbfgsCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_cursor_scale(s : OptconvexlbfgsCursor, f : Double) -> OptconvexlbfgsCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsCursor::scale(self : OptconvexlbfgsCursor, f : Double) -> OptconvexlbfgsCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_cursor_add(a : OptconvexlbfgsCursor, b : OptconvexlbfgsCursor) -> OptconvexlbfgsCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsCursor::add(self : OptconvexlbfgsCursor, other : OptconvexlbfgsCursor) -> OptconvexlbfgsCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_cursor_copy(s : OptconvexlbfgsCursor) -> OptconvexlbfgsCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsCursor::copy(self : OptconvexlbfgsCursor) -> OptconvexlbfgsCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_cursor_fill(s : OptconvexlbfgsCursor, v : Double) -> OptconvexlbfgsCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsCursor::fill(self : OptconvexlbfgsCursor, v : Double) -> OptconvexlbfgsCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_cursor_min(s : OptconvexlbfgsCursor) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsCursor::min(self : OptconvexlbfgsCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_cursor_max(s : OptconvexlbfgsCursor) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsCursor::max(self : OptconvexlbfgsCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_cursor_to_string(s : OptconvexlbfgsCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsCursor::to_string(self : OptconvexlbfgsCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsView {
@@ -912,45 +912,45 @@ pub fn opt_convex_l_bfgs_view_make(size : Int) -> OptconvexlbfgsView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_view_len(s : OptconvexlbfgsView) -> Int { s.size }
+pub fn OptconvexlbfgsView::len(self : OptconvexlbfgsView) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_view_get(s : OptconvexlbfgsView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsView::get(self : OptconvexlbfgsView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_view_set(s : OptconvexlbfgsView, i : Int, v : Double) -> OptconvexlbfgsView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsView::set(self : OptconvexlbfgsView, i : Int, v : Double) -> OptconvexlbfgsView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_view_sum(s : OptconvexlbfgsView) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsView::sum(self : OptconvexlbfgsView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_view_mean(s : OptconvexlbfgsView) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsView::mean(self : OptconvexlbfgsView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_view_scale(s : OptconvexlbfgsView, f : Double) -> OptconvexlbfgsView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsView::scale(self : OptconvexlbfgsView, f : Double) -> OptconvexlbfgsView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_view_add(a : OptconvexlbfgsView, b : OptconvexlbfgsView) -> OptconvexlbfgsView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsView::add(self : OptconvexlbfgsView, other : OptconvexlbfgsView) -> OptconvexlbfgsView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_view_copy(s : OptconvexlbfgsView) -> OptconvexlbfgsView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsView::copy(self : OptconvexlbfgsView) -> OptconvexlbfgsView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_view_fill(s : OptconvexlbfgsView, v : Double) -> OptconvexlbfgsView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsView::fill(self : OptconvexlbfgsView, v : Double) -> OptconvexlbfgsView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_view_min(s : OptconvexlbfgsView) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsView::min(self : OptconvexlbfgsView) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_view_max(s : OptconvexlbfgsView) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsView::max(self : OptconvexlbfgsView) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_view_to_string(s : OptconvexlbfgsView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsView::to_string(self : OptconvexlbfgsView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsRange {
@@ -963,45 +963,45 @@ pub fn opt_convex_l_bfgs_range_make(size : Int) -> OptconvexlbfgsRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_range_len(s : OptconvexlbfgsRange) -> Int { s.size }
+pub fn OptconvexlbfgsRange::len(self : OptconvexlbfgsRange) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_range_get(s : OptconvexlbfgsRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsRange::get(self : OptconvexlbfgsRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_range_set(s : OptconvexlbfgsRange, i : Int, v : Double) -> OptconvexlbfgsRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsRange::set(self : OptconvexlbfgsRange, i : Int, v : Double) -> OptconvexlbfgsRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_range_sum(s : OptconvexlbfgsRange) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsRange::sum(self : OptconvexlbfgsRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_range_mean(s : OptconvexlbfgsRange) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsRange::mean(self : OptconvexlbfgsRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_range_scale(s : OptconvexlbfgsRange, f : Double) -> OptconvexlbfgsRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsRange::scale(self : OptconvexlbfgsRange, f : Double) -> OptconvexlbfgsRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_range_add(a : OptconvexlbfgsRange, b : OptconvexlbfgsRange) -> OptconvexlbfgsRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsRange::add(self : OptconvexlbfgsRange, other : OptconvexlbfgsRange) -> OptconvexlbfgsRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_range_copy(s : OptconvexlbfgsRange) -> OptconvexlbfgsRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsRange::copy(self : OptconvexlbfgsRange) -> OptconvexlbfgsRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_range_fill(s : OptconvexlbfgsRange, v : Double) -> OptconvexlbfgsRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsRange::fill(self : OptconvexlbfgsRange, v : Double) -> OptconvexlbfgsRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_range_min(s : OptconvexlbfgsRange) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsRange::min(self : OptconvexlbfgsRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_range_max(s : OptconvexlbfgsRange) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsRange::max(self : OptconvexlbfgsRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_range_to_string(s : OptconvexlbfgsRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsRange::to_string(self : OptconvexlbfgsRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexlbfgsSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_convex_l_bfgs_slice_make(size : Int) -> OptconvexlbfgsSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_l_bfgs_slice_len(s : OptconvexlbfgsSlice) -> Int { s.size }
+pub fn OptconvexlbfgsSlice::len(self : OptconvexlbfgsSlice) -> Int { self.size }
 
-pub fn opt_convex_l_bfgs_slice_get(s : OptconvexlbfgsSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexlbfgsSlice::get(self : OptconvexlbfgsSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_l_bfgs_slice_set(s : OptconvexlbfgsSlice, i : Int, v : Double) -> OptconvexlbfgsSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsSlice::set(self : OptconvexlbfgsSlice, i : Int, v : Double) -> OptconvexlbfgsSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_slice_sum(s : OptconvexlbfgsSlice) -> Double { @_common.sum(s.data) }
+pub fn OptconvexlbfgsSlice::sum(self : OptconvexlbfgsSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_l_bfgs_slice_mean(s : OptconvexlbfgsSlice) -> Double { @_common.mean(s.data) }
+pub fn OptconvexlbfgsSlice::mean(self : OptconvexlbfgsSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_l_bfgs_slice_scale(s : OptconvexlbfgsSlice, f : Double) -> OptconvexlbfgsSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsSlice::scale(self : OptconvexlbfgsSlice, f : Double) -> OptconvexlbfgsSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_slice_add(a : OptconvexlbfgsSlice, b : OptconvexlbfgsSlice) -> OptconvexlbfgsSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexlbfgsSlice::add(self : OptconvexlbfgsSlice, other : OptconvexlbfgsSlice) -> OptconvexlbfgsSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_slice_copy(s : OptconvexlbfgsSlice) -> OptconvexlbfgsSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsSlice::copy(self : OptconvexlbfgsSlice) -> OptconvexlbfgsSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_slice_fill(s : OptconvexlbfgsSlice, v : Double) -> OptconvexlbfgsSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexlbfgsSlice::fill(self : OptconvexlbfgsSlice, v : Double) -> OptconvexlbfgsSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_l_bfgs_slice_min(s : OptconvexlbfgsSlice) -> Double { @_common.min(s.data) }
+pub fn OptconvexlbfgsSlice::min(self : OptconvexlbfgsSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_l_bfgs_slice_max(s : OptconvexlbfgsSlice) -> Double { @_common.max(s.data) }
+pub fn OptconvexlbfgsSlice::max(self : OptconvexlbfgsSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_l_bfgs_slice_to_string(s : OptconvexlbfgsSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexlbfgsSlice::to_string(self : OptconvexlbfgsSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

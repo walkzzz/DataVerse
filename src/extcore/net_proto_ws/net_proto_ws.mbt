@@ -351,45 +351,45 @@ pub fn net_proto_ws_frame_make(size : Int) -> NetprotowsFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_frame_len(s : NetprotowsFrame) -> Int { s.size }
+pub fn NetprotowsFrame::len(self : NetprotowsFrame) -> Int { self.size }
 
-pub fn net_proto_ws_frame_get(s : NetprotowsFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsFrame::get(self : NetprotowsFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_frame_set(s : NetprotowsFrame, i : Int, v : Double) -> NetprotowsFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsFrame::set(self : NetprotowsFrame, i : Int, v : Double) -> NetprotowsFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_frame_sum(s : NetprotowsFrame) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsFrame::sum(self : NetprotowsFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_frame_mean(s : NetprotowsFrame) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsFrame::mean(self : NetprotowsFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_frame_scale(s : NetprotowsFrame, f : Double) -> NetprotowsFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsFrame::scale(self : NetprotowsFrame, f : Double) -> NetprotowsFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_frame_add(a : NetprotowsFrame, b : NetprotowsFrame) -> NetprotowsFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsFrame::add(self : NetprotowsFrame, other : NetprotowsFrame) -> NetprotowsFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_frame_copy(s : NetprotowsFrame) -> NetprotowsFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsFrame::copy(self : NetprotowsFrame) -> NetprotowsFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_frame_fill(s : NetprotowsFrame, v : Double) -> NetprotowsFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsFrame::fill(self : NetprotowsFrame, v : Double) -> NetprotowsFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_frame_min(s : NetprotowsFrame) -> Double { @_common.min(s.data) }
+pub fn NetprotowsFrame::min(self : NetprotowsFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_frame_max(s : NetprotowsFrame) -> Double { @_common.max(s.data) }
+pub fn NetprotowsFrame::max(self : NetprotowsFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_frame_to_string(s : NetprotowsFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsFrame::to_string(self : NetprotowsFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsTable {
@@ -402,45 +402,45 @@ pub fn net_proto_ws_table_make(size : Int) -> NetprotowsTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_table_len(s : NetprotowsTable) -> Int { s.size }
+pub fn NetprotowsTable::len(self : NetprotowsTable) -> Int { self.size }
 
-pub fn net_proto_ws_table_get(s : NetprotowsTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsTable::get(self : NetprotowsTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_table_set(s : NetprotowsTable, i : Int, v : Double) -> NetprotowsTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsTable::set(self : NetprotowsTable, i : Int, v : Double) -> NetprotowsTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_table_sum(s : NetprotowsTable) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsTable::sum(self : NetprotowsTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_table_mean(s : NetprotowsTable) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsTable::mean(self : NetprotowsTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_table_scale(s : NetprotowsTable, f : Double) -> NetprotowsTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsTable::scale(self : NetprotowsTable, f : Double) -> NetprotowsTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_table_add(a : NetprotowsTable, b : NetprotowsTable) -> NetprotowsTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsTable::add(self : NetprotowsTable, other : NetprotowsTable) -> NetprotowsTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_table_copy(s : NetprotowsTable) -> NetprotowsTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsTable::copy(self : NetprotowsTable) -> NetprotowsTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_table_fill(s : NetprotowsTable, v : Double) -> NetprotowsTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsTable::fill(self : NetprotowsTable, v : Double) -> NetprotowsTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_table_min(s : NetprotowsTable) -> Double { @_common.min(s.data) }
+pub fn NetprotowsTable::min(self : NetprotowsTable) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_table_max(s : NetprotowsTable) -> Double { @_common.max(s.data) }
+pub fn NetprotowsTable::max(self : NetprotowsTable) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_table_to_string(s : NetprotowsTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsTable::to_string(self : NetprotowsTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsGraphN {
@@ -453,45 +453,45 @@ pub fn net_proto_ws_graphn_make(size : Int) -> NetprotowsGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_graphn_len(s : NetprotowsGraphN) -> Int { s.size }
+pub fn NetprotowsGraphN::len(self : NetprotowsGraphN) -> Int { self.size }
 
-pub fn net_proto_ws_graphn_get(s : NetprotowsGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsGraphN::get(self : NetprotowsGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_graphn_set(s : NetprotowsGraphN, i : Int, v : Double) -> NetprotowsGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsGraphN::set(self : NetprotowsGraphN, i : Int, v : Double) -> NetprotowsGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_graphn_sum(s : NetprotowsGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsGraphN::sum(self : NetprotowsGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_graphn_mean(s : NetprotowsGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsGraphN::mean(self : NetprotowsGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_graphn_scale(s : NetprotowsGraphN, f : Double) -> NetprotowsGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsGraphN::scale(self : NetprotowsGraphN, f : Double) -> NetprotowsGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_graphn_add(a : NetprotowsGraphN, b : NetprotowsGraphN) -> NetprotowsGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsGraphN::add(self : NetprotowsGraphN, other : NetprotowsGraphN) -> NetprotowsGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_graphn_copy(s : NetprotowsGraphN) -> NetprotowsGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsGraphN::copy(self : NetprotowsGraphN) -> NetprotowsGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_graphn_fill(s : NetprotowsGraphN, v : Double) -> NetprotowsGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsGraphN::fill(self : NetprotowsGraphN, v : Double) -> NetprotowsGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_graphn_min(s : NetprotowsGraphN) -> Double { @_common.min(s.data) }
+pub fn NetprotowsGraphN::min(self : NetprotowsGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_graphn_max(s : NetprotowsGraphN) -> Double { @_common.max(s.data) }
+pub fn NetprotowsGraphN::max(self : NetprotowsGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_graphn_to_string(s : NetprotowsGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsGraphN::to_string(self : NetprotowsGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsNode {
@@ -504,45 +504,45 @@ pub fn net_proto_ws_node_make(size : Int) -> NetprotowsNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_node_len(s : NetprotowsNode) -> Int { s.size }
+pub fn NetprotowsNode::len(self : NetprotowsNode) -> Int { self.size }
 
-pub fn net_proto_ws_node_get(s : NetprotowsNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsNode::get(self : NetprotowsNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_node_set(s : NetprotowsNode, i : Int, v : Double) -> NetprotowsNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsNode::set(self : NetprotowsNode, i : Int, v : Double) -> NetprotowsNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_node_sum(s : NetprotowsNode) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsNode::sum(self : NetprotowsNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_node_mean(s : NetprotowsNode) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsNode::mean(self : NetprotowsNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_node_scale(s : NetprotowsNode, f : Double) -> NetprotowsNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsNode::scale(self : NetprotowsNode, f : Double) -> NetprotowsNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_node_add(a : NetprotowsNode, b : NetprotowsNode) -> NetprotowsNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsNode::add(self : NetprotowsNode, other : NetprotowsNode) -> NetprotowsNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_node_copy(s : NetprotowsNode) -> NetprotowsNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsNode::copy(self : NetprotowsNode) -> NetprotowsNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_node_fill(s : NetprotowsNode, v : Double) -> NetprotowsNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsNode::fill(self : NetprotowsNode, v : Double) -> NetprotowsNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_node_min(s : NetprotowsNode) -> Double { @_common.min(s.data) }
+pub fn NetprotowsNode::min(self : NetprotowsNode) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_node_max(s : NetprotowsNode) -> Double { @_common.max(s.data) }
+pub fn NetprotowsNode::max(self : NetprotowsNode) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_node_to_string(s : NetprotowsNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsNode::to_string(self : NetprotowsNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsEdge {
@@ -555,45 +555,45 @@ pub fn net_proto_ws_edge_make(size : Int) -> NetprotowsEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_edge_len(s : NetprotowsEdge) -> Int { s.size }
+pub fn NetprotowsEdge::len(self : NetprotowsEdge) -> Int { self.size }
 
-pub fn net_proto_ws_edge_get(s : NetprotowsEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsEdge::get(self : NetprotowsEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_edge_set(s : NetprotowsEdge, i : Int, v : Double) -> NetprotowsEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsEdge::set(self : NetprotowsEdge, i : Int, v : Double) -> NetprotowsEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_edge_sum(s : NetprotowsEdge) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsEdge::sum(self : NetprotowsEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_edge_mean(s : NetprotowsEdge) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsEdge::mean(self : NetprotowsEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_edge_scale(s : NetprotowsEdge, f : Double) -> NetprotowsEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsEdge::scale(self : NetprotowsEdge, f : Double) -> NetprotowsEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_edge_add(a : NetprotowsEdge, b : NetprotowsEdge) -> NetprotowsEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsEdge::add(self : NetprotowsEdge, other : NetprotowsEdge) -> NetprotowsEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_edge_copy(s : NetprotowsEdge) -> NetprotowsEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsEdge::copy(self : NetprotowsEdge) -> NetprotowsEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_edge_fill(s : NetprotowsEdge, v : Double) -> NetprotowsEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsEdge::fill(self : NetprotowsEdge, v : Double) -> NetprotowsEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_edge_min(s : NetprotowsEdge) -> Double { @_common.min(s.data) }
+pub fn NetprotowsEdge::min(self : NetprotowsEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_edge_max(s : NetprotowsEdge) -> Double { @_common.max(s.data) }
+pub fn NetprotowsEdge::max(self : NetprotowsEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_edge_to_string(s : NetprotowsEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsEdge::to_string(self : NetprotowsEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsPath {
@@ -606,45 +606,45 @@ pub fn net_proto_ws_path_make(size : Int) -> NetprotowsPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_path_len(s : NetprotowsPath) -> Int { s.size }
+pub fn NetprotowsPath::len(self : NetprotowsPath) -> Int { self.size }
 
-pub fn net_proto_ws_path_get(s : NetprotowsPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsPath::get(self : NetprotowsPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_path_set(s : NetprotowsPath, i : Int, v : Double) -> NetprotowsPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsPath::set(self : NetprotowsPath, i : Int, v : Double) -> NetprotowsPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_path_sum(s : NetprotowsPath) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsPath::sum(self : NetprotowsPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_path_mean(s : NetprotowsPath) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsPath::mean(self : NetprotowsPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_path_scale(s : NetprotowsPath, f : Double) -> NetprotowsPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsPath::scale(self : NetprotowsPath, f : Double) -> NetprotowsPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_path_add(a : NetprotowsPath, b : NetprotowsPath) -> NetprotowsPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsPath::add(self : NetprotowsPath, other : NetprotowsPath) -> NetprotowsPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_path_copy(s : NetprotowsPath) -> NetprotowsPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsPath::copy(self : NetprotowsPath) -> NetprotowsPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_path_fill(s : NetprotowsPath, v : Double) -> NetprotowsPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsPath::fill(self : NetprotowsPath, v : Double) -> NetprotowsPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_path_min(s : NetprotowsPath) -> Double { @_common.min(s.data) }
+pub fn NetprotowsPath::min(self : NetprotowsPath) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_path_max(s : NetprotowsPath) -> Double { @_common.max(s.data) }
+pub fn NetprotowsPath::max(self : NetprotowsPath) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_path_to_string(s : NetprotowsPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsPath::to_string(self : NetprotowsPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsCluster {
@@ -657,45 +657,45 @@ pub fn net_proto_ws_cluster_make(size : Int) -> NetprotowsCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_cluster_len(s : NetprotowsCluster) -> Int { s.size }
+pub fn NetprotowsCluster::len(self : NetprotowsCluster) -> Int { self.size }
 
-pub fn net_proto_ws_cluster_get(s : NetprotowsCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsCluster::get(self : NetprotowsCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_cluster_set(s : NetprotowsCluster, i : Int, v : Double) -> NetprotowsCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsCluster::set(self : NetprotowsCluster, i : Int, v : Double) -> NetprotowsCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_cluster_sum(s : NetprotowsCluster) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsCluster::sum(self : NetprotowsCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_cluster_mean(s : NetprotowsCluster) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsCluster::mean(self : NetprotowsCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_cluster_scale(s : NetprotowsCluster, f : Double) -> NetprotowsCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsCluster::scale(self : NetprotowsCluster, f : Double) -> NetprotowsCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_cluster_add(a : NetprotowsCluster, b : NetprotowsCluster) -> NetprotowsCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsCluster::add(self : NetprotowsCluster, other : NetprotowsCluster) -> NetprotowsCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_cluster_copy(s : NetprotowsCluster) -> NetprotowsCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsCluster::copy(self : NetprotowsCluster) -> NetprotowsCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_cluster_fill(s : NetprotowsCluster, v : Double) -> NetprotowsCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsCluster::fill(self : NetprotowsCluster, v : Double) -> NetprotowsCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_cluster_min(s : NetprotowsCluster) -> Double { @_common.min(s.data) }
+pub fn NetprotowsCluster::min(self : NetprotowsCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_cluster_max(s : NetprotowsCluster) -> Double { @_common.max(s.data) }
+pub fn NetprotowsCluster::max(self : NetprotowsCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_cluster_to_string(s : NetprotowsCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsCluster::to_string(self : NetprotowsCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsModel {
@@ -708,45 +708,45 @@ pub fn net_proto_ws_model_make(size : Int) -> NetprotowsModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_model_len(s : NetprotowsModel) -> Int { s.size }
+pub fn NetprotowsModel::len(self : NetprotowsModel) -> Int { self.size }
 
-pub fn net_proto_ws_model_get(s : NetprotowsModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsModel::get(self : NetprotowsModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_model_set(s : NetprotowsModel, i : Int, v : Double) -> NetprotowsModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsModel::set(self : NetprotowsModel, i : Int, v : Double) -> NetprotowsModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_model_sum(s : NetprotowsModel) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsModel::sum(self : NetprotowsModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_model_mean(s : NetprotowsModel) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsModel::mean(self : NetprotowsModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_model_scale(s : NetprotowsModel, f : Double) -> NetprotowsModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsModel::scale(self : NetprotowsModel, f : Double) -> NetprotowsModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_model_add(a : NetprotowsModel, b : NetprotowsModel) -> NetprotowsModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsModel::add(self : NetprotowsModel, other : NetprotowsModel) -> NetprotowsModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_model_copy(s : NetprotowsModel) -> NetprotowsModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsModel::copy(self : NetprotowsModel) -> NetprotowsModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_model_fill(s : NetprotowsModel, v : Double) -> NetprotowsModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsModel::fill(self : NetprotowsModel, v : Double) -> NetprotowsModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_model_min(s : NetprotowsModel) -> Double { @_common.min(s.data) }
+pub fn NetprotowsModel::min(self : NetprotowsModel) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_model_max(s : NetprotowsModel) -> Double { @_common.max(s.data) }
+pub fn NetprotowsModel::max(self : NetprotowsModel) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_model_to_string(s : NetprotowsModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsModel::to_string(self : NetprotowsModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsLayer {
@@ -759,45 +759,45 @@ pub fn net_proto_ws_layer_make(size : Int) -> NetprotowsLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_layer_len(s : NetprotowsLayer) -> Int { s.size }
+pub fn NetprotowsLayer::len(self : NetprotowsLayer) -> Int { self.size }
 
-pub fn net_proto_ws_layer_get(s : NetprotowsLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsLayer::get(self : NetprotowsLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_layer_set(s : NetprotowsLayer, i : Int, v : Double) -> NetprotowsLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsLayer::set(self : NetprotowsLayer, i : Int, v : Double) -> NetprotowsLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_layer_sum(s : NetprotowsLayer) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsLayer::sum(self : NetprotowsLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_layer_mean(s : NetprotowsLayer) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsLayer::mean(self : NetprotowsLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_layer_scale(s : NetprotowsLayer, f : Double) -> NetprotowsLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsLayer::scale(self : NetprotowsLayer, f : Double) -> NetprotowsLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_layer_add(a : NetprotowsLayer, b : NetprotowsLayer) -> NetprotowsLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsLayer::add(self : NetprotowsLayer, other : NetprotowsLayer) -> NetprotowsLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_layer_copy(s : NetprotowsLayer) -> NetprotowsLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsLayer::copy(self : NetprotowsLayer) -> NetprotowsLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_layer_fill(s : NetprotowsLayer, v : Double) -> NetprotowsLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsLayer::fill(self : NetprotowsLayer, v : Double) -> NetprotowsLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_layer_min(s : NetprotowsLayer) -> Double { @_common.min(s.data) }
+pub fn NetprotowsLayer::min(self : NetprotowsLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_layer_max(s : NetprotowsLayer) -> Double { @_common.max(s.data) }
+pub fn NetprotowsLayer::max(self : NetprotowsLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_layer_to_string(s : NetprotowsLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsLayer::to_string(self : NetprotowsLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsBuffer {
@@ -810,45 +810,45 @@ pub fn net_proto_ws_buffer_make(size : Int) -> NetprotowsBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_buffer_len(s : NetprotowsBuffer) -> Int { s.size }
+pub fn NetprotowsBuffer::len(self : NetprotowsBuffer) -> Int { self.size }
 
-pub fn net_proto_ws_buffer_get(s : NetprotowsBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsBuffer::get(self : NetprotowsBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_buffer_set(s : NetprotowsBuffer, i : Int, v : Double) -> NetprotowsBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsBuffer::set(self : NetprotowsBuffer, i : Int, v : Double) -> NetprotowsBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_buffer_sum(s : NetprotowsBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsBuffer::sum(self : NetprotowsBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_buffer_mean(s : NetprotowsBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsBuffer::mean(self : NetprotowsBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_buffer_scale(s : NetprotowsBuffer, f : Double) -> NetprotowsBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsBuffer::scale(self : NetprotowsBuffer, f : Double) -> NetprotowsBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_buffer_add(a : NetprotowsBuffer, b : NetprotowsBuffer) -> NetprotowsBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsBuffer::add(self : NetprotowsBuffer, other : NetprotowsBuffer) -> NetprotowsBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_buffer_copy(s : NetprotowsBuffer) -> NetprotowsBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsBuffer::copy(self : NetprotowsBuffer) -> NetprotowsBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_buffer_fill(s : NetprotowsBuffer, v : Double) -> NetprotowsBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsBuffer::fill(self : NetprotowsBuffer, v : Double) -> NetprotowsBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_buffer_min(s : NetprotowsBuffer) -> Double { @_common.min(s.data) }
+pub fn NetprotowsBuffer::min(self : NetprotowsBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_buffer_max(s : NetprotowsBuffer) -> Double { @_common.max(s.data) }
+pub fn NetprotowsBuffer::max(self : NetprotowsBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_buffer_to_string(s : NetprotowsBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsBuffer::to_string(self : NetprotowsBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsCursor {
@@ -861,45 +861,45 @@ pub fn net_proto_ws_cursor_make(size : Int) -> NetprotowsCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_cursor_len(s : NetprotowsCursor) -> Int { s.size }
+pub fn NetprotowsCursor::len(self : NetprotowsCursor) -> Int { self.size }
 
-pub fn net_proto_ws_cursor_get(s : NetprotowsCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsCursor::get(self : NetprotowsCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_cursor_set(s : NetprotowsCursor, i : Int, v : Double) -> NetprotowsCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsCursor::set(self : NetprotowsCursor, i : Int, v : Double) -> NetprotowsCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_cursor_sum(s : NetprotowsCursor) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsCursor::sum(self : NetprotowsCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_cursor_mean(s : NetprotowsCursor) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsCursor::mean(self : NetprotowsCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_cursor_scale(s : NetprotowsCursor, f : Double) -> NetprotowsCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsCursor::scale(self : NetprotowsCursor, f : Double) -> NetprotowsCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_cursor_add(a : NetprotowsCursor, b : NetprotowsCursor) -> NetprotowsCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsCursor::add(self : NetprotowsCursor, other : NetprotowsCursor) -> NetprotowsCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_cursor_copy(s : NetprotowsCursor) -> NetprotowsCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsCursor::copy(self : NetprotowsCursor) -> NetprotowsCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_cursor_fill(s : NetprotowsCursor, v : Double) -> NetprotowsCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsCursor::fill(self : NetprotowsCursor, v : Double) -> NetprotowsCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_cursor_min(s : NetprotowsCursor) -> Double { @_common.min(s.data) }
+pub fn NetprotowsCursor::min(self : NetprotowsCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_cursor_max(s : NetprotowsCursor) -> Double { @_common.max(s.data) }
+pub fn NetprotowsCursor::max(self : NetprotowsCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_cursor_to_string(s : NetprotowsCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsCursor::to_string(self : NetprotowsCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsView {
@@ -912,45 +912,45 @@ pub fn net_proto_ws_view_make(size : Int) -> NetprotowsView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_view_len(s : NetprotowsView) -> Int { s.size }
+pub fn NetprotowsView::len(self : NetprotowsView) -> Int { self.size }
 
-pub fn net_proto_ws_view_get(s : NetprotowsView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsView::get(self : NetprotowsView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_view_set(s : NetprotowsView, i : Int, v : Double) -> NetprotowsView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsView::set(self : NetprotowsView, i : Int, v : Double) -> NetprotowsView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_view_sum(s : NetprotowsView) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsView::sum(self : NetprotowsView) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_view_mean(s : NetprotowsView) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsView::mean(self : NetprotowsView) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_view_scale(s : NetprotowsView, f : Double) -> NetprotowsView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsView::scale(self : NetprotowsView, f : Double) -> NetprotowsView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_view_add(a : NetprotowsView, b : NetprotowsView) -> NetprotowsView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsView::add(self : NetprotowsView, other : NetprotowsView) -> NetprotowsView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_view_copy(s : NetprotowsView) -> NetprotowsView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsView::copy(self : NetprotowsView) -> NetprotowsView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_view_fill(s : NetprotowsView, v : Double) -> NetprotowsView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsView::fill(self : NetprotowsView, v : Double) -> NetprotowsView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_view_min(s : NetprotowsView) -> Double { @_common.min(s.data) }
+pub fn NetprotowsView::min(self : NetprotowsView) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_view_max(s : NetprotowsView) -> Double { @_common.max(s.data) }
+pub fn NetprotowsView::max(self : NetprotowsView) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_view_to_string(s : NetprotowsView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsView::to_string(self : NetprotowsView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsRange {
@@ -963,45 +963,45 @@ pub fn net_proto_ws_range_make(size : Int) -> NetprotowsRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_range_len(s : NetprotowsRange) -> Int { s.size }
+pub fn NetprotowsRange::len(self : NetprotowsRange) -> Int { self.size }
 
-pub fn net_proto_ws_range_get(s : NetprotowsRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsRange::get(self : NetprotowsRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_range_set(s : NetprotowsRange, i : Int, v : Double) -> NetprotowsRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsRange::set(self : NetprotowsRange, i : Int, v : Double) -> NetprotowsRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_range_sum(s : NetprotowsRange) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsRange::sum(self : NetprotowsRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_range_mean(s : NetprotowsRange) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsRange::mean(self : NetprotowsRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_range_scale(s : NetprotowsRange, f : Double) -> NetprotowsRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsRange::scale(self : NetprotowsRange, f : Double) -> NetprotowsRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_range_add(a : NetprotowsRange, b : NetprotowsRange) -> NetprotowsRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsRange::add(self : NetprotowsRange, other : NetprotowsRange) -> NetprotowsRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_range_copy(s : NetprotowsRange) -> NetprotowsRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsRange::copy(self : NetprotowsRange) -> NetprotowsRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_range_fill(s : NetprotowsRange, v : Double) -> NetprotowsRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsRange::fill(self : NetprotowsRange, v : Double) -> NetprotowsRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_range_min(s : NetprotowsRange) -> Double { @_common.min(s.data) }
+pub fn NetprotowsRange::min(self : NetprotowsRange) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_range_max(s : NetprotowsRange) -> Double { @_common.max(s.data) }
+pub fn NetprotowsRange::max(self : NetprotowsRange) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_range_to_string(s : NetprotowsRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsRange::to_string(self : NetprotowsRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotowsSlice {
@@ -1014,44 +1014,44 @@ pub fn net_proto_ws_slice_make(size : Int) -> NetprotowsSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_ws_slice_len(s : NetprotowsSlice) -> Int { s.size }
+pub fn NetprotowsSlice::len(self : NetprotowsSlice) -> Int { self.size }
 
-pub fn net_proto_ws_slice_get(s : NetprotowsSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotowsSlice::get(self : NetprotowsSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_ws_slice_set(s : NetprotowsSlice, i : Int, v : Double) -> NetprotowsSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotowsSlice::set(self : NetprotowsSlice, i : Int, v : Double) -> NetprotowsSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_slice_sum(s : NetprotowsSlice) -> Double { @_common.sum(s.data) }
+pub fn NetprotowsSlice::sum(self : NetprotowsSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_ws_slice_mean(s : NetprotowsSlice) -> Double { @_common.mean(s.data) }
+pub fn NetprotowsSlice::mean(self : NetprotowsSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_ws_slice_scale(s : NetprotowsSlice, f : Double) -> NetprotowsSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotowsSlice::scale(self : NetprotowsSlice, f : Double) -> NetprotowsSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_slice_add(a : NetprotowsSlice, b : NetprotowsSlice) -> NetprotowsSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotowsSlice::add(self : NetprotowsSlice, other : NetprotowsSlice) -> NetprotowsSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_ws_slice_copy(s : NetprotowsSlice) -> NetprotowsSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotowsSlice::copy(self : NetprotowsSlice) -> NetprotowsSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_slice_fill(s : NetprotowsSlice, v : Double) -> NetprotowsSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotowsSlice::fill(self : NetprotowsSlice, v : Double) -> NetprotowsSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_ws_slice_min(s : NetprotowsSlice) -> Double { @_common.min(s.data) }
+pub fn NetprotowsSlice::min(self : NetprotowsSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_ws_slice_max(s : NetprotowsSlice) -> Double { @_common.max(s.data) }
+pub fn NetprotowsSlice::max(self : NetprotowsSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_ws_slice_to_string(s : NetprotowsSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotowsSlice::to_string(self : NetprotowsSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

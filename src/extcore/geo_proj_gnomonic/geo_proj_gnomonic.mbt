@@ -351,45 +351,45 @@ pub fn geo_proj_gnomonic_frame_make(size : Int) -> GeoprojgnomonicFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_frame_len(s : GeoprojgnomonicFrame) -> Int { s.size }
+pub fn GeoprojgnomonicFrame::len(self : GeoprojgnomonicFrame) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_frame_get(s : GeoprojgnomonicFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicFrame::get(self : GeoprojgnomonicFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_frame_set(s : GeoprojgnomonicFrame, i : Int, v : Double) -> GeoprojgnomonicFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicFrame::set(self : GeoprojgnomonicFrame, i : Int, v : Double) -> GeoprojgnomonicFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_frame_sum(s : GeoprojgnomonicFrame) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicFrame::sum(self : GeoprojgnomonicFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_frame_mean(s : GeoprojgnomonicFrame) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicFrame::mean(self : GeoprojgnomonicFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_frame_scale(s : GeoprojgnomonicFrame, f : Double) -> GeoprojgnomonicFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicFrame::scale(self : GeoprojgnomonicFrame, f : Double) -> GeoprojgnomonicFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_frame_add(a : GeoprojgnomonicFrame, b : GeoprojgnomonicFrame) -> GeoprojgnomonicFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicFrame::add(self : GeoprojgnomonicFrame, other : GeoprojgnomonicFrame) -> GeoprojgnomonicFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_frame_copy(s : GeoprojgnomonicFrame) -> GeoprojgnomonicFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicFrame::copy(self : GeoprojgnomonicFrame) -> GeoprojgnomonicFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_frame_fill(s : GeoprojgnomonicFrame, v : Double) -> GeoprojgnomonicFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicFrame::fill(self : GeoprojgnomonicFrame, v : Double) -> GeoprojgnomonicFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_frame_min(s : GeoprojgnomonicFrame) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicFrame::min(self : GeoprojgnomonicFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_frame_max(s : GeoprojgnomonicFrame) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicFrame::max(self : GeoprojgnomonicFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_frame_to_string(s : GeoprojgnomonicFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicFrame::to_string(self : GeoprojgnomonicFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicTable {
@@ -402,45 +402,45 @@ pub fn geo_proj_gnomonic_table_make(size : Int) -> GeoprojgnomonicTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_table_len(s : GeoprojgnomonicTable) -> Int { s.size }
+pub fn GeoprojgnomonicTable::len(self : GeoprojgnomonicTable) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_table_get(s : GeoprojgnomonicTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicTable::get(self : GeoprojgnomonicTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_table_set(s : GeoprojgnomonicTable, i : Int, v : Double) -> GeoprojgnomonicTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicTable::set(self : GeoprojgnomonicTable, i : Int, v : Double) -> GeoprojgnomonicTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_table_sum(s : GeoprojgnomonicTable) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicTable::sum(self : GeoprojgnomonicTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_table_mean(s : GeoprojgnomonicTable) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicTable::mean(self : GeoprojgnomonicTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_table_scale(s : GeoprojgnomonicTable, f : Double) -> GeoprojgnomonicTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicTable::scale(self : GeoprojgnomonicTable, f : Double) -> GeoprojgnomonicTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_table_add(a : GeoprojgnomonicTable, b : GeoprojgnomonicTable) -> GeoprojgnomonicTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicTable::add(self : GeoprojgnomonicTable, other : GeoprojgnomonicTable) -> GeoprojgnomonicTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_table_copy(s : GeoprojgnomonicTable) -> GeoprojgnomonicTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicTable::copy(self : GeoprojgnomonicTable) -> GeoprojgnomonicTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_table_fill(s : GeoprojgnomonicTable, v : Double) -> GeoprojgnomonicTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicTable::fill(self : GeoprojgnomonicTable, v : Double) -> GeoprojgnomonicTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_table_min(s : GeoprojgnomonicTable) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicTable::min(self : GeoprojgnomonicTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_table_max(s : GeoprojgnomonicTable) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicTable::max(self : GeoprojgnomonicTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_table_to_string(s : GeoprojgnomonicTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicTable::to_string(self : GeoprojgnomonicTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicGraphN {
@@ -453,45 +453,45 @@ pub fn geo_proj_gnomonic_graphn_make(size : Int) -> GeoprojgnomonicGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_graphn_len(s : GeoprojgnomonicGraphN) -> Int { s.size }
+pub fn GeoprojgnomonicGraphN::len(self : GeoprojgnomonicGraphN) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_graphn_get(s : GeoprojgnomonicGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicGraphN::get(self : GeoprojgnomonicGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_graphn_set(s : GeoprojgnomonicGraphN, i : Int, v : Double) -> GeoprojgnomonicGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicGraphN::set(self : GeoprojgnomonicGraphN, i : Int, v : Double) -> GeoprojgnomonicGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_graphn_sum(s : GeoprojgnomonicGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicGraphN::sum(self : GeoprojgnomonicGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_graphn_mean(s : GeoprojgnomonicGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicGraphN::mean(self : GeoprojgnomonicGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_graphn_scale(s : GeoprojgnomonicGraphN, f : Double) -> GeoprojgnomonicGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicGraphN::scale(self : GeoprojgnomonicGraphN, f : Double) -> GeoprojgnomonicGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_graphn_add(a : GeoprojgnomonicGraphN, b : GeoprojgnomonicGraphN) -> GeoprojgnomonicGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicGraphN::add(self : GeoprojgnomonicGraphN, other : GeoprojgnomonicGraphN) -> GeoprojgnomonicGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_graphn_copy(s : GeoprojgnomonicGraphN) -> GeoprojgnomonicGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicGraphN::copy(self : GeoprojgnomonicGraphN) -> GeoprojgnomonicGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_graphn_fill(s : GeoprojgnomonicGraphN, v : Double) -> GeoprojgnomonicGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicGraphN::fill(self : GeoprojgnomonicGraphN, v : Double) -> GeoprojgnomonicGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_graphn_min(s : GeoprojgnomonicGraphN) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicGraphN::min(self : GeoprojgnomonicGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_graphn_max(s : GeoprojgnomonicGraphN) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicGraphN::max(self : GeoprojgnomonicGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_graphn_to_string(s : GeoprojgnomonicGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicGraphN::to_string(self : GeoprojgnomonicGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicNode {
@@ -504,45 +504,45 @@ pub fn geo_proj_gnomonic_node_make(size : Int) -> GeoprojgnomonicNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_node_len(s : GeoprojgnomonicNode) -> Int { s.size }
+pub fn GeoprojgnomonicNode::len(self : GeoprojgnomonicNode) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_node_get(s : GeoprojgnomonicNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicNode::get(self : GeoprojgnomonicNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_node_set(s : GeoprojgnomonicNode, i : Int, v : Double) -> GeoprojgnomonicNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicNode::set(self : GeoprojgnomonicNode, i : Int, v : Double) -> GeoprojgnomonicNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_node_sum(s : GeoprojgnomonicNode) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicNode::sum(self : GeoprojgnomonicNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_node_mean(s : GeoprojgnomonicNode) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicNode::mean(self : GeoprojgnomonicNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_node_scale(s : GeoprojgnomonicNode, f : Double) -> GeoprojgnomonicNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicNode::scale(self : GeoprojgnomonicNode, f : Double) -> GeoprojgnomonicNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_node_add(a : GeoprojgnomonicNode, b : GeoprojgnomonicNode) -> GeoprojgnomonicNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicNode::add(self : GeoprojgnomonicNode, other : GeoprojgnomonicNode) -> GeoprojgnomonicNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_node_copy(s : GeoprojgnomonicNode) -> GeoprojgnomonicNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicNode::copy(self : GeoprojgnomonicNode) -> GeoprojgnomonicNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_node_fill(s : GeoprojgnomonicNode, v : Double) -> GeoprojgnomonicNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicNode::fill(self : GeoprojgnomonicNode, v : Double) -> GeoprojgnomonicNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_node_min(s : GeoprojgnomonicNode) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicNode::min(self : GeoprojgnomonicNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_node_max(s : GeoprojgnomonicNode) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicNode::max(self : GeoprojgnomonicNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_node_to_string(s : GeoprojgnomonicNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicNode::to_string(self : GeoprojgnomonicNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicEdge {
@@ -555,45 +555,45 @@ pub fn geo_proj_gnomonic_edge_make(size : Int) -> GeoprojgnomonicEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_edge_len(s : GeoprojgnomonicEdge) -> Int { s.size }
+pub fn GeoprojgnomonicEdge::len(self : GeoprojgnomonicEdge) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_edge_get(s : GeoprojgnomonicEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicEdge::get(self : GeoprojgnomonicEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_edge_set(s : GeoprojgnomonicEdge, i : Int, v : Double) -> GeoprojgnomonicEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicEdge::set(self : GeoprojgnomonicEdge, i : Int, v : Double) -> GeoprojgnomonicEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_edge_sum(s : GeoprojgnomonicEdge) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicEdge::sum(self : GeoprojgnomonicEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_edge_mean(s : GeoprojgnomonicEdge) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicEdge::mean(self : GeoprojgnomonicEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_edge_scale(s : GeoprojgnomonicEdge, f : Double) -> GeoprojgnomonicEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicEdge::scale(self : GeoprojgnomonicEdge, f : Double) -> GeoprojgnomonicEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_edge_add(a : GeoprojgnomonicEdge, b : GeoprojgnomonicEdge) -> GeoprojgnomonicEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicEdge::add(self : GeoprojgnomonicEdge, other : GeoprojgnomonicEdge) -> GeoprojgnomonicEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_edge_copy(s : GeoprojgnomonicEdge) -> GeoprojgnomonicEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicEdge::copy(self : GeoprojgnomonicEdge) -> GeoprojgnomonicEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_edge_fill(s : GeoprojgnomonicEdge, v : Double) -> GeoprojgnomonicEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicEdge::fill(self : GeoprojgnomonicEdge, v : Double) -> GeoprojgnomonicEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_edge_min(s : GeoprojgnomonicEdge) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicEdge::min(self : GeoprojgnomonicEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_edge_max(s : GeoprojgnomonicEdge) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicEdge::max(self : GeoprojgnomonicEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_edge_to_string(s : GeoprojgnomonicEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicEdge::to_string(self : GeoprojgnomonicEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicPath {
@@ -606,45 +606,45 @@ pub fn geo_proj_gnomonic_path_make(size : Int) -> GeoprojgnomonicPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_path_len(s : GeoprojgnomonicPath) -> Int { s.size }
+pub fn GeoprojgnomonicPath::len(self : GeoprojgnomonicPath) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_path_get(s : GeoprojgnomonicPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicPath::get(self : GeoprojgnomonicPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_path_set(s : GeoprojgnomonicPath, i : Int, v : Double) -> GeoprojgnomonicPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicPath::set(self : GeoprojgnomonicPath, i : Int, v : Double) -> GeoprojgnomonicPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_path_sum(s : GeoprojgnomonicPath) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicPath::sum(self : GeoprojgnomonicPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_path_mean(s : GeoprojgnomonicPath) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicPath::mean(self : GeoprojgnomonicPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_path_scale(s : GeoprojgnomonicPath, f : Double) -> GeoprojgnomonicPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicPath::scale(self : GeoprojgnomonicPath, f : Double) -> GeoprojgnomonicPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_path_add(a : GeoprojgnomonicPath, b : GeoprojgnomonicPath) -> GeoprojgnomonicPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicPath::add(self : GeoprojgnomonicPath, other : GeoprojgnomonicPath) -> GeoprojgnomonicPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_path_copy(s : GeoprojgnomonicPath) -> GeoprojgnomonicPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicPath::copy(self : GeoprojgnomonicPath) -> GeoprojgnomonicPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_path_fill(s : GeoprojgnomonicPath, v : Double) -> GeoprojgnomonicPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicPath::fill(self : GeoprojgnomonicPath, v : Double) -> GeoprojgnomonicPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_path_min(s : GeoprojgnomonicPath) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicPath::min(self : GeoprojgnomonicPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_path_max(s : GeoprojgnomonicPath) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicPath::max(self : GeoprojgnomonicPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_path_to_string(s : GeoprojgnomonicPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicPath::to_string(self : GeoprojgnomonicPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicCluster {
@@ -657,45 +657,45 @@ pub fn geo_proj_gnomonic_cluster_make(size : Int) -> GeoprojgnomonicCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_cluster_len(s : GeoprojgnomonicCluster) -> Int { s.size }
+pub fn GeoprojgnomonicCluster::len(self : GeoprojgnomonicCluster) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_cluster_get(s : GeoprojgnomonicCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicCluster::get(self : GeoprojgnomonicCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_cluster_set(s : GeoprojgnomonicCluster, i : Int, v : Double) -> GeoprojgnomonicCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicCluster::set(self : GeoprojgnomonicCluster, i : Int, v : Double) -> GeoprojgnomonicCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_cluster_sum(s : GeoprojgnomonicCluster) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicCluster::sum(self : GeoprojgnomonicCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_cluster_mean(s : GeoprojgnomonicCluster) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicCluster::mean(self : GeoprojgnomonicCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_cluster_scale(s : GeoprojgnomonicCluster, f : Double) -> GeoprojgnomonicCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicCluster::scale(self : GeoprojgnomonicCluster, f : Double) -> GeoprojgnomonicCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_cluster_add(a : GeoprojgnomonicCluster, b : GeoprojgnomonicCluster) -> GeoprojgnomonicCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicCluster::add(self : GeoprojgnomonicCluster, other : GeoprojgnomonicCluster) -> GeoprojgnomonicCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_cluster_copy(s : GeoprojgnomonicCluster) -> GeoprojgnomonicCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicCluster::copy(self : GeoprojgnomonicCluster) -> GeoprojgnomonicCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_cluster_fill(s : GeoprojgnomonicCluster, v : Double) -> GeoprojgnomonicCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicCluster::fill(self : GeoprojgnomonicCluster, v : Double) -> GeoprojgnomonicCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_cluster_min(s : GeoprojgnomonicCluster) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicCluster::min(self : GeoprojgnomonicCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_cluster_max(s : GeoprojgnomonicCluster) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicCluster::max(self : GeoprojgnomonicCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_cluster_to_string(s : GeoprojgnomonicCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicCluster::to_string(self : GeoprojgnomonicCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicModel {
@@ -708,45 +708,45 @@ pub fn geo_proj_gnomonic_model_make(size : Int) -> GeoprojgnomonicModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_model_len(s : GeoprojgnomonicModel) -> Int { s.size }
+pub fn GeoprojgnomonicModel::len(self : GeoprojgnomonicModel) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_model_get(s : GeoprojgnomonicModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicModel::get(self : GeoprojgnomonicModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_model_set(s : GeoprojgnomonicModel, i : Int, v : Double) -> GeoprojgnomonicModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicModel::set(self : GeoprojgnomonicModel, i : Int, v : Double) -> GeoprojgnomonicModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_model_sum(s : GeoprojgnomonicModel) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicModel::sum(self : GeoprojgnomonicModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_model_mean(s : GeoprojgnomonicModel) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicModel::mean(self : GeoprojgnomonicModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_model_scale(s : GeoprojgnomonicModel, f : Double) -> GeoprojgnomonicModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicModel::scale(self : GeoprojgnomonicModel, f : Double) -> GeoprojgnomonicModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_model_add(a : GeoprojgnomonicModel, b : GeoprojgnomonicModel) -> GeoprojgnomonicModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicModel::add(self : GeoprojgnomonicModel, other : GeoprojgnomonicModel) -> GeoprojgnomonicModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_model_copy(s : GeoprojgnomonicModel) -> GeoprojgnomonicModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicModel::copy(self : GeoprojgnomonicModel) -> GeoprojgnomonicModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_model_fill(s : GeoprojgnomonicModel, v : Double) -> GeoprojgnomonicModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicModel::fill(self : GeoprojgnomonicModel, v : Double) -> GeoprojgnomonicModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_model_min(s : GeoprojgnomonicModel) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicModel::min(self : GeoprojgnomonicModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_model_max(s : GeoprojgnomonicModel) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicModel::max(self : GeoprojgnomonicModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_model_to_string(s : GeoprojgnomonicModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicModel::to_string(self : GeoprojgnomonicModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicLayer {
@@ -759,45 +759,45 @@ pub fn geo_proj_gnomonic_layer_make(size : Int) -> GeoprojgnomonicLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_layer_len(s : GeoprojgnomonicLayer) -> Int { s.size }
+pub fn GeoprojgnomonicLayer::len(self : GeoprojgnomonicLayer) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_layer_get(s : GeoprojgnomonicLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicLayer::get(self : GeoprojgnomonicLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_layer_set(s : GeoprojgnomonicLayer, i : Int, v : Double) -> GeoprojgnomonicLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicLayer::set(self : GeoprojgnomonicLayer, i : Int, v : Double) -> GeoprojgnomonicLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_layer_sum(s : GeoprojgnomonicLayer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicLayer::sum(self : GeoprojgnomonicLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_layer_mean(s : GeoprojgnomonicLayer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicLayer::mean(self : GeoprojgnomonicLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_layer_scale(s : GeoprojgnomonicLayer, f : Double) -> GeoprojgnomonicLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicLayer::scale(self : GeoprojgnomonicLayer, f : Double) -> GeoprojgnomonicLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_layer_add(a : GeoprojgnomonicLayer, b : GeoprojgnomonicLayer) -> GeoprojgnomonicLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicLayer::add(self : GeoprojgnomonicLayer, other : GeoprojgnomonicLayer) -> GeoprojgnomonicLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_layer_copy(s : GeoprojgnomonicLayer) -> GeoprojgnomonicLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicLayer::copy(self : GeoprojgnomonicLayer) -> GeoprojgnomonicLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_layer_fill(s : GeoprojgnomonicLayer, v : Double) -> GeoprojgnomonicLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicLayer::fill(self : GeoprojgnomonicLayer, v : Double) -> GeoprojgnomonicLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_layer_min(s : GeoprojgnomonicLayer) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicLayer::min(self : GeoprojgnomonicLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_layer_max(s : GeoprojgnomonicLayer) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicLayer::max(self : GeoprojgnomonicLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_layer_to_string(s : GeoprojgnomonicLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicLayer::to_string(self : GeoprojgnomonicLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicBuffer {
@@ -810,45 +810,45 @@ pub fn geo_proj_gnomonic_buffer_make(size : Int) -> GeoprojgnomonicBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_buffer_len(s : GeoprojgnomonicBuffer) -> Int { s.size }
+pub fn GeoprojgnomonicBuffer::len(self : GeoprojgnomonicBuffer) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_buffer_get(s : GeoprojgnomonicBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicBuffer::get(self : GeoprojgnomonicBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_buffer_set(s : GeoprojgnomonicBuffer, i : Int, v : Double) -> GeoprojgnomonicBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicBuffer::set(self : GeoprojgnomonicBuffer, i : Int, v : Double) -> GeoprojgnomonicBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_buffer_sum(s : GeoprojgnomonicBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicBuffer::sum(self : GeoprojgnomonicBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_buffer_mean(s : GeoprojgnomonicBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicBuffer::mean(self : GeoprojgnomonicBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_buffer_scale(s : GeoprojgnomonicBuffer, f : Double) -> GeoprojgnomonicBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicBuffer::scale(self : GeoprojgnomonicBuffer, f : Double) -> GeoprojgnomonicBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_buffer_add(a : GeoprojgnomonicBuffer, b : GeoprojgnomonicBuffer) -> GeoprojgnomonicBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicBuffer::add(self : GeoprojgnomonicBuffer, other : GeoprojgnomonicBuffer) -> GeoprojgnomonicBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_buffer_copy(s : GeoprojgnomonicBuffer) -> GeoprojgnomonicBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicBuffer::copy(self : GeoprojgnomonicBuffer) -> GeoprojgnomonicBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_buffer_fill(s : GeoprojgnomonicBuffer, v : Double) -> GeoprojgnomonicBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicBuffer::fill(self : GeoprojgnomonicBuffer, v : Double) -> GeoprojgnomonicBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_buffer_min(s : GeoprojgnomonicBuffer) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicBuffer::min(self : GeoprojgnomonicBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_buffer_max(s : GeoprojgnomonicBuffer) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicBuffer::max(self : GeoprojgnomonicBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_buffer_to_string(s : GeoprojgnomonicBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicBuffer::to_string(self : GeoprojgnomonicBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicCursor {
@@ -861,45 +861,45 @@ pub fn geo_proj_gnomonic_cursor_make(size : Int) -> GeoprojgnomonicCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_cursor_len(s : GeoprojgnomonicCursor) -> Int { s.size }
+pub fn GeoprojgnomonicCursor::len(self : GeoprojgnomonicCursor) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_cursor_get(s : GeoprojgnomonicCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicCursor::get(self : GeoprojgnomonicCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_cursor_set(s : GeoprojgnomonicCursor, i : Int, v : Double) -> GeoprojgnomonicCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicCursor::set(self : GeoprojgnomonicCursor, i : Int, v : Double) -> GeoprojgnomonicCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_cursor_sum(s : GeoprojgnomonicCursor) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicCursor::sum(self : GeoprojgnomonicCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_cursor_mean(s : GeoprojgnomonicCursor) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicCursor::mean(self : GeoprojgnomonicCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_cursor_scale(s : GeoprojgnomonicCursor, f : Double) -> GeoprojgnomonicCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicCursor::scale(self : GeoprojgnomonicCursor, f : Double) -> GeoprojgnomonicCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_cursor_add(a : GeoprojgnomonicCursor, b : GeoprojgnomonicCursor) -> GeoprojgnomonicCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicCursor::add(self : GeoprojgnomonicCursor, other : GeoprojgnomonicCursor) -> GeoprojgnomonicCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_cursor_copy(s : GeoprojgnomonicCursor) -> GeoprojgnomonicCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicCursor::copy(self : GeoprojgnomonicCursor) -> GeoprojgnomonicCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_cursor_fill(s : GeoprojgnomonicCursor, v : Double) -> GeoprojgnomonicCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicCursor::fill(self : GeoprojgnomonicCursor, v : Double) -> GeoprojgnomonicCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_cursor_min(s : GeoprojgnomonicCursor) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicCursor::min(self : GeoprojgnomonicCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_cursor_max(s : GeoprojgnomonicCursor) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicCursor::max(self : GeoprojgnomonicCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_cursor_to_string(s : GeoprojgnomonicCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicCursor::to_string(self : GeoprojgnomonicCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicView {
@@ -912,45 +912,45 @@ pub fn geo_proj_gnomonic_view_make(size : Int) -> GeoprojgnomonicView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_view_len(s : GeoprojgnomonicView) -> Int { s.size }
+pub fn GeoprojgnomonicView::len(self : GeoprojgnomonicView) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_view_get(s : GeoprojgnomonicView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicView::get(self : GeoprojgnomonicView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_view_set(s : GeoprojgnomonicView, i : Int, v : Double) -> GeoprojgnomonicView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicView::set(self : GeoprojgnomonicView, i : Int, v : Double) -> GeoprojgnomonicView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_view_sum(s : GeoprojgnomonicView) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicView::sum(self : GeoprojgnomonicView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_view_mean(s : GeoprojgnomonicView) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicView::mean(self : GeoprojgnomonicView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_view_scale(s : GeoprojgnomonicView, f : Double) -> GeoprojgnomonicView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicView::scale(self : GeoprojgnomonicView, f : Double) -> GeoprojgnomonicView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_view_add(a : GeoprojgnomonicView, b : GeoprojgnomonicView) -> GeoprojgnomonicView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicView::add(self : GeoprojgnomonicView, other : GeoprojgnomonicView) -> GeoprojgnomonicView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_view_copy(s : GeoprojgnomonicView) -> GeoprojgnomonicView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicView::copy(self : GeoprojgnomonicView) -> GeoprojgnomonicView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_view_fill(s : GeoprojgnomonicView, v : Double) -> GeoprojgnomonicView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicView::fill(self : GeoprojgnomonicView, v : Double) -> GeoprojgnomonicView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_view_min(s : GeoprojgnomonicView) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicView::min(self : GeoprojgnomonicView) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_view_max(s : GeoprojgnomonicView) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicView::max(self : GeoprojgnomonicView) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_view_to_string(s : GeoprojgnomonicView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicView::to_string(self : GeoprojgnomonicView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicRange {
@@ -963,45 +963,45 @@ pub fn geo_proj_gnomonic_range_make(size : Int) -> GeoprojgnomonicRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_range_len(s : GeoprojgnomonicRange) -> Int { s.size }
+pub fn GeoprojgnomonicRange::len(self : GeoprojgnomonicRange) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_range_get(s : GeoprojgnomonicRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicRange::get(self : GeoprojgnomonicRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_range_set(s : GeoprojgnomonicRange, i : Int, v : Double) -> GeoprojgnomonicRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicRange::set(self : GeoprojgnomonicRange, i : Int, v : Double) -> GeoprojgnomonicRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_range_sum(s : GeoprojgnomonicRange) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicRange::sum(self : GeoprojgnomonicRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_range_mean(s : GeoprojgnomonicRange) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicRange::mean(self : GeoprojgnomonicRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_range_scale(s : GeoprojgnomonicRange, f : Double) -> GeoprojgnomonicRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicRange::scale(self : GeoprojgnomonicRange, f : Double) -> GeoprojgnomonicRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_range_add(a : GeoprojgnomonicRange, b : GeoprojgnomonicRange) -> GeoprojgnomonicRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicRange::add(self : GeoprojgnomonicRange, other : GeoprojgnomonicRange) -> GeoprojgnomonicRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_range_copy(s : GeoprojgnomonicRange) -> GeoprojgnomonicRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicRange::copy(self : GeoprojgnomonicRange) -> GeoprojgnomonicRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_range_fill(s : GeoprojgnomonicRange, v : Double) -> GeoprojgnomonicRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicRange::fill(self : GeoprojgnomonicRange, v : Double) -> GeoprojgnomonicRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_range_min(s : GeoprojgnomonicRange) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicRange::min(self : GeoprojgnomonicRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_range_max(s : GeoprojgnomonicRange) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicRange::max(self : GeoprojgnomonicRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_range_to_string(s : GeoprojgnomonicRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicRange::to_string(self : GeoprojgnomonicRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_proj_gnomonic_slice_make(size : Int) -> GeoprojgnomonicSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_gnomonic_slice_len(s : GeoprojgnomonicSlice) -> Int { s.size }
+pub fn GeoprojgnomonicSlice::len(self : GeoprojgnomonicSlice) -> Int { self.size }
 
-pub fn geo_proj_gnomonic_slice_get(s : GeoprojgnomonicSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojgnomonicSlice::get(self : GeoprojgnomonicSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_gnomonic_slice_set(s : GeoprojgnomonicSlice, i : Int, v : Double) -> GeoprojgnomonicSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicSlice::set(self : GeoprojgnomonicSlice, i : Int, v : Double) -> GeoprojgnomonicSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_slice_sum(s : GeoprojgnomonicSlice) -> Double { @_common.sum(s.data) }
+pub fn GeoprojgnomonicSlice::sum(self : GeoprojgnomonicSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_gnomonic_slice_mean(s : GeoprojgnomonicSlice) -> Double { @_common.mean(s.data) }
+pub fn GeoprojgnomonicSlice::mean(self : GeoprojgnomonicSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_gnomonic_slice_scale(s : GeoprojgnomonicSlice, f : Double) -> GeoprojgnomonicSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicSlice::scale(self : GeoprojgnomonicSlice, f : Double) -> GeoprojgnomonicSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_slice_add(a : GeoprojgnomonicSlice, b : GeoprojgnomonicSlice) -> GeoprojgnomonicSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojgnomonicSlice::add(self : GeoprojgnomonicSlice, other : GeoprojgnomonicSlice) -> GeoprojgnomonicSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_slice_copy(s : GeoprojgnomonicSlice) -> GeoprojgnomonicSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicSlice::copy(self : GeoprojgnomonicSlice) -> GeoprojgnomonicSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_slice_fill(s : GeoprojgnomonicSlice, v : Double) -> GeoprojgnomonicSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojgnomonicSlice::fill(self : GeoprojgnomonicSlice, v : Double) -> GeoprojgnomonicSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_gnomonic_slice_min(s : GeoprojgnomonicSlice) -> Double { @_common.min(s.data) }
+pub fn GeoprojgnomonicSlice::min(self : GeoprojgnomonicSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_gnomonic_slice_max(s : GeoprojgnomonicSlice) -> Double { @_common.max(s.data) }
+pub fn GeoprojgnomonicSlice::max(self : GeoprojgnomonicSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_gnomonic_slice_to_string(s : GeoprojgnomonicSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojgnomonicSlice::to_string(self : GeoprojgnomonicSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

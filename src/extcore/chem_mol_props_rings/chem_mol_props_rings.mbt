@@ -351,45 +351,45 @@ pub fn chem_mol_props_rings_frame_make(size : Int) -> ChemmolpropsringsFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_frame_len(s : ChemmolpropsringsFrame) -> Int { s.size }
+pub fn ChemmolpropsringsFrame::len(self : ChemmolpropsringsFrame) -> Int { self.size }
 
-pub fn chem_mol_props_rings_frame_get(s : ChemmolpropsringsFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsFrame::get(self : ChemmolpropsringsFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_frame_set(s : ChemmolpropsringsFrame, i : Int, v : Double) -> ChemmolpropsringsFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsFrame::set(self : ChemmolpropsringsFrame, i : Int, v : Double) -> ChemmolpropsringsFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_frame_sum(s : ChemmolpropsringsFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsFrame::sum(self : ChemmolpropsringsFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_frame_mean(s : ChemmolpropsringsFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsFrame::mean(self : ChemmolpropsringsFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_frame_scale(s : ChemmolpropsringsFrame, f : Double) -> ChemmolpropsringsFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsFrame::scale(self : ChemmolpropsringsFrame, f : Double) -> ChemmolpropsringsFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_frame_add(a : ChemmolpropsringsFrame, b : ChemmolpropsringsFrame) -> ChemmolpropsringsFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsFrame::add(self : ChemmolpropsringsFrame, other : ChemmolpropsringsFrame) -> ChemmolpropsringsFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_frame_copy(s : ChemmolpropsringsFrame) -> ChemmolpropsringsFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsFrame::copy(self : ChemmolpropsringsFrame) -> ChemmolpropsringsFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_frame_fill(s : ChemmolpropsringsFrame, v : Double) -> ChemmolpropsringsFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsFrame::fill(self : ChemmolpropsringsFrame, v : Double) -> ChemmolpropsringsFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_frame_min(s : ChemmolpropsringsFrame) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsFrame::min(self : ChemmolpropsringsFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_frame_max(s : ChemmolpropsringsFrame) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsFrame::max(self : ChemmolpropsringsFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_frame_to_string(s : ChemmolpropsringsFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsFrame::to_string(self : ChemmolpropsringsFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsTable {
@@ -402,45 +402,45 @@ pub fn chem_mol_props_rings_table_make(size : Int) -> ChemmolpropsringsTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_table_len(s : ChemmolpropsringsTable) -> Int { s.size }
+pub fn ChemmolpropsringsTable::len(self : ChemmolpropsringsTable) -> Int { self.size }
 
-pub fn chem_mol_props_rings_table_get(s : ChemmolpropsringsTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsTable::get(self : ChemmolpropsringsTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_table_set(s : ChemmolpropsringsTable, i : Int, v : Double) -> ChemmolpropsringsTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsTable::set(self : ChemmolpropsringsTable, i : Int, v : Double) -> ChemmolpropsringsTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_table_sum(s : ChemmolpropsringsTable) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsTable::sum(self : ChemmolpropsringsTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_table_mean(s : ChemmolpropsringsTable) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsTable::mean(self : ChemmolpropsringsTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_table_scale(s : ChemmolpropsringsTable, f : Double) -> ChemmolpropsringsTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsTable::scale(self : ChemmolpropsringsTable, f : Double) -> ChemmolpropsringsTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_table_add(a : ChemmolpropsringsTable, b : ChemmolpropsringsTable) -> ChemmolpropsringsTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsTable::add(self : ChemmolpropsringsTable, other : ChemmolpropsringsTable) -> ChemmolpropsringsTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_table_copy(s : ChemmolpropsringsTable) -> ChemmolpropsringsTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsTable::copy(self : ChemmolpropsringsTable) -> ChemmolpropsringsTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_table_fill(s : ChemmolpropsringsTable, v : Double) -> ChemmolpropsringsTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsTable::fill(self : ChemmolpropsringsTable, v : Double) -> ChemmolpropsringsTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_table_min(s : ChemmolpropsringsTable) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsTable::min(self : ChemmolpropsringsTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_table_max(s : ChemmolpropsringsTable) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsTable::max(self : ChemmolpropsringsTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_table_to_string(s : ChemmolpropsringsTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsTable::to_string(self : ChemmolpropsringsTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsGraphN {
@@ -453,45 +453,45 @@ pub fn chem_mol_props_rings_graphn_make(size : Int) -> ChemmolpropsringsGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_graphn_len(s : ChemmolpropsringsGraphN) -> Int { s.size }
+pub fn ChemmolpropsringsGraphN::len(self : ChemmolpropsringsGraphN) -> Int { self.size }
 
-pub fn chem_mol_props_rings_graphn_get(s : ChemmolpropsringsGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsGraphN::get(self : ChemmolpropsringsGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_graphn_set(s : ChemmolpropsringsGraphN, i : Int, v : Double) -> ChemmolpropsringsGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsGraphN::set(self : ChemmolpropsringsGraphN, i : Int, v : Double) -> ChemmolpropsringsGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_graphn_sum(s : ChemmolpropsringsGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsGraphN::sum(self : ChemmolpropsringsGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_graphn_mean(s : ChemmolpropsringsGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsGraphN::mean(self : ChemmolpropsringsGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_graphn_scale(s : ChemmolpropsringsGraphN, f : Double) -> ChemmolpropsringsGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsGraphN::scale(self : ChemmolpropsringsGraphN, f : Double) -> ChemmolpropsringsGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_graphn_add(a : ChemmolpropsringsGraphN, b : ChemmolpropsringsGraphN) -> ChemmolpropsringsGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsGraphN::add(self : ChemmolpropsringsGraphN, other : ChemmolpropsringsGraphN) -> ChemmolpropsringsGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_graphn_copy(s : ChemmolpropsringsGraphN) -> ChemmolpropsringsGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsGraphN::copy(self : ChemmolpropsringsGraphN) -> ChemmolpropsringsGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_graphn_fill(s : ChemmolpropsringsGraphN, v : Double) -> ChemmolpropsringsGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsGraphN::fill(self : ChemmolpropsringsGraphN, v : Double) -> ChemmolpropsringsGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_graphn_min(s : ChemmolpropsringsGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsGraphN::min(self : ChemmolpropsringsGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_graphn_max(s : ChemmolpropsringsGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsGraphN::max(self : ChemmolpropsringsGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_graphn_to_string(s : ChemmolpropsringsGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsGraphN::to_string(self : ChemmolpropsringsGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsNode {
@@ -504,45 +504,45 @@ pub fn chem_mol_props_rings_node_make(size : Int) -> ChemmolpropsringsNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_node_len(s : ChemmolpropsringsNode) -> Int { s.size }
+pub fn ChemmolpropsringsNode::len(self : ChemmolpropsringsNode) -> Int { self.size }
 
-pub fn chem_mol_props_rings_node_get(s : ChemmolpropsringsNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsNode::get(self : ChemmolpropsringsNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_node_set(s : ChemmolpropsringsNode, i : Int, v : Double) -> ChemmolpropsringsNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsNode::set(self : ChemmolpropsringsNode, i : Int, v : Double) -> ChemmolpropsringsNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_node_sum(s : ChemmolpropsringsNode) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsNode::sum(self : ChemmolpropsringsNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_node_mean(s : ChemmolpropsringsNode) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsNode::mean(self : ChemmolpropsringsNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_node_scale(s : ChemmolpropsringsNode, f : Double) -> ChemmolpropsringsNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsNode::scale(self : ChemmolpropsringsNode, f : Double) -> ChemmolpropsringsNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_node_add(a : ChemmolpropsringsNode, b : ChemmolpropsringsNode) -> ChemmolpropsringsNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsNode::add(self : ChemmolpropsringsNode, other : ChemmolpropsringsNode) -> ChemmolpropsringsNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_node_copy(s : ChemmolpropsringsNode) -> ChemmolpropsringsNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsNode::copy(self : ChemmolpropsringsNode) -> ChemmolpropsringsNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_node_fill(s : ChemmolpropsringsNode, v : Double) -> ChemmolpropsringsNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsNode::fill(self : ChemmolpropsringsNode, v : Double) -> ChemmolpropsringsNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_node_min(s : ChemmolpropsringsNode) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsNode::min(self : ChemmolpropsringsNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_node_max(s : ChemmolpropsringsNode) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsNode::max(self : ChemmolpropsringsNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_node_to_string(s : ChemmolpropsringsNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsNode::to_string(self : ChemmolpropsringsNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsEdge {
@@ -555,45 +555,45 @@ pub fn chem_mol_props_rings_edge_make(size : Int) -> ChemmolpropsringsEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_edge_len(s : ChemmolpropsringsEdge) -> Int { s.size }
+pub fn ChemmolpropsringsEdge::len(self : ChemmolpropsringsEdge) -> Int { self.size }
 
-pub fn chem_mol_props_rings_edge_get(s : ChemmolpropsringsEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsEdge::get(self : ChemmolpropsringsEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_edge_set(s : ChemmolpropsringsEdge, i : Int, v : Double) -> ChemmolpropsringsEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsEdge::set(self : ChemmolpropsringsEdge, i : Int, v : Double) -> ChemmolpropsringsEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_edge_sum(s : ChemmolpropsringsEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsEdge::sum(self : ChemmolpropsringsEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_edge_mean(s : ChemmolpropsringsEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsEdge::mean(self : ChemmolpropsringsEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_edge_scale(s : ChemmolpropsringsEdge, f : Double) -> ChemmolpropsringsEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsEdge::scale(self : ChemmolpropsringsEdge, f : Double) -> ChemmolpropsringsEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_edge_add(a : ChemmolpropsringsEdge, b : ChemmolpropsringsEdge) -> ChemmolpropsringsEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsEdge::add(self : ChemmolpropsringsEdge, other : ChemmolpropsringsEdge) -> ChemmolpropsringsEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_edge_copy(s : ChemmolpropsringsEdge) -> ChemmolpropsringsEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsEdge::copy(self : ChemmolpropsringsEdge) -> ChemmolpropsringsEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_edge_fill(s : ChemmolpropsringsEdge, v : Double) -> ChemmolpropsringsEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsEdge::fill(self : ChemmolpropsringsEdge, v : Double) -> ChemmolpropsringsEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_edge_min(s : ChemmolpropsringsEdge) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsEdge::min(self : ChemmolpropsringsEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_edge_max(s : ChemmolpropsringsEdge) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsEdge::max(self : ChemmolpropsringsEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_edge_to_string(s : ChemmolpropsringsEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsEdge::to_string(self : ChemmolpropsringsEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsPath {
@@ -606,45 +606,45 @@ pub fn chem_mol_props_rings_path_make(size : Int) -> ChemmolpropsringsPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_path_len(s : ChemmolpropsringsPath) -> Int { s.size }
+pub fn ChemmolpropsringsPath::len(self : ChemmolpropsringsPath) -> Int { self.size }
 
-pub fn chem_mol_props_rings_path_get(s : ChemmolpropsringsPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsPath::get(self : ChemmolpropsringsPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_path_set(s : ChemmolpropsringsPath, i : Int, v : Double) -> ChemmolpropsringsPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsPath::set(self : ChemmolpropsringsPath, i : Int, v : Double) -> ChemmolpropsringsPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_path_sum(s : ChemmolpropsringsPath) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsPath::sum(self : ChemmolpropsringsPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_path_mean(s : ChemmolpropsringsPath) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsPath::mean(self : ChemmolpropsringsPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_path_scale(s : ChemmolpropsringsPath, f : Double) -> ChemmolpropsringsPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsPath::scale(self : ChemmolpropsringsPath, f : Double) -> ChemmolpropsringsPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_path_add(a : ChemmolpropsringsPath, b : ChemmolpropsringsPath) -> ChemmolpropsringsPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsPath::add(self : ChemmolpropsringsPath, other : ChemmolpropsringsPath) -> ChemmolpropsringsPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_path_copy(s : ChemmolpropsringsPath) -> ChemmolpropsringsPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsPath::copy(self : ChemmolpropsringsPath) -> ChemmolpropsringsPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_path_fill(s : ChemmolpropsringsPath, v : Double) -> ChemmolpropsringsPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsPath::fill(self : ChemmolpropsringsPath, v : Double) -> ChemmolpropsringsPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_path_min(s : ChemmolpropsringsPath) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsPath::min(self : ChemmolpropsringsPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_path_max(s : ChemmolpropsringsPath) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsPath::max(self : ChemmolpropsringsPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_path_to_string(s : ChemmolpropsringsPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsPath::to_string(self : ChemmolpropsringsPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsCluster {
@@ -657,45 +657,45 @@ pub fn chem_mol_props_rings_cluster_make(size : Int) -> ChemmolpropsringsCluster
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_cluster_len(s : ChemmolpropsringsCluster) -> Int { s.size }
+pub fn ChemmolpropsringsCluster::len(self : ChemmolpropsringsCluster) -> Int { self.size }
 
-pub fn chem_mol_props_rings_cluster_get(s : ChemmolpropsringsCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsCluster::get(self : ChemmolpropsringsCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_cluster_set(s : ChemmolpropsringsCluster, i : Int, v : Double) -> ChemmolpropsringsCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsCluster::set(self : ChemmolpropsringsCluster, i : Int, v : Double) -> ChemmolpropsringsCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_cluster_sum(s : ChemmolpropsringsCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsCluster::sum(self : ChemmolpropsringsCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_cluster_mean(s : ChemmolpropsringsCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsCluster::mean(self : ChemmolpropsringsCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_cluster_scale(s : ChemmolpropsringsCluster, f : Double) -> ChemmolpropsringsCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsCluster::scale(self : ChemmolpropsringsCluster, f : Double) -> ChemmolpropsringsCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_cluster_add(a : ChemmolpropsringsCluster, b : ChemmolpropsringsCluster) -> ChemmolpropsringsCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsCluster::add(self : ChemmolpropsringsCluster, other : ChemmolpropsringsCluster) -> ChemmolpropsringsCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_cluster_copy(s : ChemmolpropsringsCluster) -> ChemmolpropsringsCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsCluster::copy(self : ChemmolpropsringsCluster) -> ChemmolpropsringsCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_cluster_fill(s : ChemmolpropsringsCluster, v : Double) -> ChemmolpropsringsCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsCluster::fill(self : ChemmolpropsringsCluster, v : Double) -> ChemmolpropsringsCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_cluster_min(s : ChemmolpropsringsCluster) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsCluster::min(self : ChemmolpropsringsCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_cluster_max(s : ChemmolpropsringsCluster) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsCluster::max(self : ChemmolpropsringsCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_cluster_to_string(s : ChemmolpropsringsCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsCluster::to_string(self : ChemmolpropsringsCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsModel {
@@ -708,45 +708,45 @@ pub fn chem_mol_props_rings_model_make(size : Int) -> ChemmolpropsringsModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_model_len(s : ChemmolpropsringsModel) -> Int { s.size }
+pub fn ChemmolpropsringsModel::len(self : ChemmolpropsringsModel) -> Int { self.size }
 
-pub fn chem_mol_props_rings_model_get(s : ChemmolpropsringsModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsModel::get(self : ChemmolpropsringsModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_model_set(s : ChemmolpropsringsModel, i : Int, v : Double) -> ChemmolpropsringsModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsModel::set(self : ChemmolpropsringsModel, i : Int, v : Double) -> ChemmolpropsringsModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_model_sum(s : ChemmolpropsringsModel) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsModel::sum(self : ChemmolpropsringsModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_model_mean(s : ChemmolpropsringsModel) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsModel::mean(self : ChemmolpropsringsModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_model_scale(s : ChemmolpropsringsModel, f : Double) -> ChemmolpropsringsModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsModel::scale(self : ChemmolpropsringsModel, f : Double) -> ChemmolpropsringsModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_model_add(a : ChemmolpropsringsModel, b : ChemmolpropsringsModel) -> ChemmolpropsringsModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsModel::add(self : ChemmolpropsringsModel, other : ChemmolpropsringsModel) -> ChemmolpropsringsModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_model_copy(s : ChemmolpropsringsModel) -> ChemmolpropsringsModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsModel::copy(self : ChemmolpropsringsModel) -> ChemmolpropsringsModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_model_fill(s : ChemmolpropsringsModel, v : Double) -> ChemmolpropsringsModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsModel::fill(self : ChemmolpropsringsModel, v : Double) -> ChemmolpropsringsModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_model_min(s : ChemmolpropsringsModel) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsModel::min(self : ChemmolpropsringsModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_model_max(s : ChemmolpropsringsModel) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsModel::max(self : ChemmolpropsringsModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_model_to_string(s : ChemmolpropsringsModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsModel::to_string(self : ChemmolpropsringsModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsLayer {
@@ -759,45 +759,45 @@ pub fn chem_mol_props_rings_layer_make(size : Int) -> ChemmolpropsringsLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_layer_len(s : ChemmolpropsringsLayer) -> Int { s.size }
+pub fn ChemmolpropsringsLayer::len(self : ChemmolpropsringsLayer) -> Int { self.size }
 
-pub fn chem_mol_props_rings_layer_get(s : ChemmolpropsringsLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsLayer::get(self : ChemmolpropsringsLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_layer_set(s : ChemmolpropsringsLayer, i : Int, v : Double) -> ChemmolpropsringsLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsLayer::set(self : ChemmolpropsringsLayer, i : Int, v : Double) -> ChemmolpropsringsLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_layer_sum(s : ChemmolpropsringsLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsLayer::sum(self : ChemmolpropsringsLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_layer_mean(s : ChemmolpropsringsLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsLayer::mean(self : ChemmolpropsringsLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_layer_scale(s : ChemmolpropsringsLayer, f : Double) -> ChemmolpropsringsLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsLayer::scale(self : ChemmolpropsringsLayer, f : Double) -> ChemmolpropsringsLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_layer_add(a : ChemmolpropsringsLayer, b : ChemmolpropsringsLayer) -> ChemmolpropsringsLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsLayer::add(self : ChemmolpropsringsLayer, other : ChemmolpropsringsLayer) -> ChemmolpropsringsLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_layer_copy(s : ChemmolpropsringsLayer) -> ChemmolpropsringsLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsLayer::copy(self : ChemmolpropsringsLayer) -> ChemmolpropsringsLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_layer_fill(s : ChemmolpropsringsLayer, v : Double) -> ChemmolpropsringsLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsLayer::fill(self : ChemmolpropsringsLayer, v : Double) -> ChemmolpropsringsLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_layer_min(s : ChemmolpropsringsLayer) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsLayer::min(self : ChemmolpropsringsLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_layer_max(s : ChemmolpropsringsLayer) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsLayer::max(self : ChemmolpropsringsLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_layer_to_string(s : ChemmolpropsringsLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsLayer::to_string(self : ChemmolpropsringsLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsBuffer {
@@ -810,45 +810,45 @@ pub fn chem_mol_props_rings_buffer_make(size : Int) -> ChemmolpropsringsBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_buffer_len(s : ChemmolpropsringsBuffer) -> Int { s.size }
+pub fn ChemmolpropsringsBuffer::len(self : ChemmolpropsringsBuffer) -> Int { self.size }
 
-pub fn chem_mol_props_rings_buffer_get(s : ChemmolpropsringsBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsBuffer::get(self : ChemmolpropsringsBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_buffer_set(s : ChemmolpropsringsBuffer, i : Int, v : Double) -> ChemmolpropsringsBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsBuffer::set(self : ChemmolpropsringsBuffer, i : Int, v : Double) -> ChemmolpropsringsBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_buffer_sum(s : ChemmolpropsringsBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsBuffer::sum(self : ChemmolpropsringsBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_buffer_mean(s : ChemmolpropsringsBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsBuffer::mean(self : ChemmolpropsringsBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_buffer_scale(s : ChemmolpropsringsBuffer, f : Double) -> ChemmolpropsringsBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsBuffer::scale(self : ChemmolpropsringsBuffer, f : Double) -> ChemmolpropsringsBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_buffer_add(a : ChemmolpropsringsBuffer, b : ChemmolpropsringsBuffer) -> ChemmolpropsringsBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsBuffer::add(self : ChemmolpropsringsBuffer, other : ChemmolpropsringsBuffer) -> ChemmolpropsringsBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_buffer_copy(s : ChemmolpropsringsBuffer) -> ChemmolpropsringsBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsBuffer::copy(self : ChemmolpropsringsBuffer) -> ChemmolpropsringsBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_buffer_fill(s : ChemmolpropsringsBuffer, v : Double) -> ChemmolpropsringsBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsBuffer::fill(self : ChemmolpropsringsBuffer, v : Double) -> ChemmolpropsringsBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_buffer_min(s : ChemmolpropsringsBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsBuffer::min(self : ChemmolpropsringsBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_buffer_max(s : ChemmolpropsringsBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsBuffer::max(self : ChemmolpropsringsBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_buffer_to_string(s : ChemmolpropsringsBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsBuffer::to_string(self : ChemmolpropsringsBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsCursor {
@@ -861,45 +861,45 @@ pub fn chem_mol_props_rings_cursor_make(size : Int) -> ChemmolpropsringsCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_cursor_len(s : ChemmolpropsringsCursor) -> Int { s.size }
+pub fn ChemmolpropsringsCursor::len(self : ChemmolpropsringsCursor) -> Int { self.size }
 
-pub fn chem_mol_props_rings_cursor_get(s : ChemmolpropsringsCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsCursor::get(self : ChemmolpropsringsCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_cursor_set(s : ChemmolpropsringsCursor, i : Int, v : Double) -> ChemmolpropsringsCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsCursor::set(self : ChemmolpropsringsCursor, i : Int, v : Double) -> ChemmolpropsringsCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_cursor_sum(s : ChemmolpropsringsCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsCursor::sum(self : ChemmolpropsringsCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_cursor_mean(s : ChemmolpropsringsCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsCursor::mean(self : ChemmolpropsringsCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_cursor_scale(s : ChemmolpropsringsCursor, f : Double) -> ChemmolpropsringsCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsCursor::scale(self : ChemmolpropsringsCursor, f : Double) -> ChemmolpropsringsCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_cursor_add(a : ChemmolpropsringsCursor, b : ChemmolpropsringsCursor) -> ChemmolpropsringsCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsCursor::add(self : ChemmolpropsringsCursor, other : ChemmolpropsringsCursor) -> ChemmolpropsringsCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_cursor_copy(s : ChemmolpropsringsCursor) -> ChemmolpropsringsCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsCursor::copy(self : ChemmolpropsringsCursor) -> ChemmolpropsringsCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_cursor_fill(s : ChemmolpropsringsCursor, v : Double) -> ChemmolpropsringsCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsCursor::fill(self : ChemmolpropsringsCursor, v : Double) -> ChemmolpropsringsCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_cursor_min(s : ChemmolpropsringsCursor) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsCursor::min(self : ChemmolpropsringsCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_cursor_max(s : ChemmolpropsringsCursor) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsCursor::max(self : ChemmolpropsringsCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_cursor_to_string(s : ChemmolpropsringsCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsCursor::to_string(self : ChemmolpropsringsCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsView {
@@ -912,45 +912,45 @@ pub fn chem_mol_props_rings_view_make(size : Int) -> ChemmolpropsringsView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_view_len(s : ChemmolpropsringsView) -> Int { s.size }
+pub fn ChemmolpropsringsView::len(self : ChemmolpropsringsView) -> Int { self.size }
 
-pub fn chem_mol_props_rings_view_get(s : ChemmolpropsringsView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsView::get(self : ChemmolpropsringsView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_view_set(s : ChemmolpropsringsView, i : Int, v : Double) -> ChemmolpropsringsView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsView::set(self : ChemmolpropsringsView, i : Int, v : Double) -> ChemmolpropsringsView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_view_sum(s : ChemmolpropsringsView) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsView::sum(self : ChemmolpropsringsView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_view_mean(s : ChemmolpropsringsView) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsView::mean(self : ChemmolpropsringsView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_view_scale(s : ChemmolpropsringsView, f : Double) -> ChemmolpropsringsView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsView::scale(self : ChemmolpropsringsView, f : Double) -> ChemmolpropsringsView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_view_add(a : ChemmolpropsringsView, b : ChemmolpropsringsView) -> ChemmolpropsringsView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsView::add(self : ChemmolpropsringsView, other : ChemmolpropsringsView) -> ChemmolpropsringsView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_view_copy(s : ChemmolpropsringsView) -> ChemmolpropsringsView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsView::copy(self : ChemmolpropsringsView) -> ChemmolpropsringsView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_view_fill(s : ChemmolpropsringsView, v : Double) -> ChemmolpropsringsView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsView::fill(self : ChemmolpropsringsView, v : Double) -> ChemmolpropsringsView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_view_min(s : ChemmolpropsringsView) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsView::min(self : ChemmolpropsringsView) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_view_max(s : ChemmolpropsringsView) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsView::max(self : ChemmolpropsringsView) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_view_to_string(s : ChemmolpropsringsView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsView::to_string(self : ChemmolpropsringsView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsRange {
@@ -963,45 +963,45 @@ pub fn chem_mol_props_rings_range_make(size : Int) -> ChemmolpropsringsRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_range_len(s : ChemmolpropsringsRange) -> Int { s.size }
+pub fn ChemmolpropsringsRange::len(self : ChemmolpropsringsRange) -> Int { self.size }
 
-pub fn chem_mol_props_rings_range_get(s : ChemmolpropsringsRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsRange::get(self : ChemmolpropsringsRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_range_set(s : ChemmolpropsringsRange, i : Int, v : Double) -> ChemmolpropsringsRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsRange::set(self : ChemmolpropsringsRange, i : Int, v : Double) -> ChemmolpropsringsRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_range_sum(s : ChemmolpropsringsRange) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsRange::sum(self : ChemmolpropsringsRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_range_mean(s : ChemmolpropsringsRange) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsRange::mean(self : ChemmolpropsringsRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_range_scale(s : ChemmolpropsringsRange, f : Double) -> ChemmolpropsringsRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsRange::scale(self : ChemmolpropsringsRange, f : Double) -> ChemmolpropsringsRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_range_add(a : ChemmolpropsringsRange, b : ChemmolpropsringsRange) -> ChemmolpropsringsRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsRange::add(self : ChemmolpropsringsRange, other : ChemmolpropsringsRange) -> ChemmolpropsringsRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_range_copy(s : ChemmolpropsringsRange) -> ChemmolpropsringsRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsRange::copy(self : ChemmolpropsringsRange) -> ChemmolpropsringsRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_range_fill(s : ChemmolpropsringsRange, v : Double) -> ChemmolpropsringsRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsRange::fill(self : ChemmolpropsringsRange, v : Double) -> ChemmolpropsringsRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_range_min(s : ChemmolpropsringsRange) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsRange::min(self : ChemmolpropsringsRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_range_max(s : ChemmolpropsringsRange) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsRange::max(self : ChemmolpropsringsRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_range_to_string(s : ChemmolpropsringsRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsRange::to_string(self : ChemmolpropsringsRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsringsSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_mol_props_rings_slice_make(size : Int) -> ChemmolpropsringsSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rings_slice_len(s : ChemmolpropsringsSlice) -> Int { s.size }
+pub fn ChemmolpropsringsSlice::len(self : ChemmolpropsringsSlice) -> Int { self.size }
 
-pub fn chem_mol_props_rings_slice_get(s : ChemmolpropsringsSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsringsSlice::get(self : ChemmolpropsringsSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rings_slice_set(s : ChemmolpropsringsSlice, i : Int, v : Double) -> ChemmolpropsringsSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsSlice::set(self : ChemmolpropsringsSlice, i : Int, v : Double) -> ChemmolpropsringsSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_slice_sum(s : ChemmolpropsringsSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsringsSlice::sum(self : ChemmolpropsringsSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rings_slice_mean(s : ChemmolpropsringsSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsringsSlice::mean(self : ChemmolpropsringsSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rings_slice_scale(s : ChemmolpropsringsSlice, f : Double) -> ChemmolpropsringsSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsSlice::scale(self : ChemmolpropsringsSlice, f : Double) -> ChemmolpropsringsSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_slice_add(a : ChemmolpropsringsSlice, b : ChemmolpropsringsSlice) -> ChemmolpropsringsSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsringsSlice::add(self : ChemmolpropsringsSlice, other : ChemmolpropsringsSlice) -> ChemmolpropsringsSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_slice_copy(s : ChemmolpropsringsSlice) -> ChemmolpropsringsSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsSlice::copy(self : ChemmolpropsringsSlice) -> ChemmolpropsringsSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_slice_fill(s : ChemmolpropsringsSlice, v : Double) -> ChemmolpropsringsSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsringsSlice::fill(self : ChemmolpropsringsSlice, v : Double) -> ChemmolpropsringsSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rings_slice_min(s : ChemmolpropsringsSlice) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsringsSlice::min(self : ChemmolpropsringsSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rings_slice_max(s : ChemmolpropsringsSlice) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsringsSlice::max(self : ChemmolpropsringsSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rings_slice_to_string(s : ChemmolpropsringsSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsringsSlice::to_string(self : ChemmolpropsringsSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

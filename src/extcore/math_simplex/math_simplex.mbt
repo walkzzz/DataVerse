@@ -351,45 +351,45 @@ pub fn math_simplex_frame_make(size : Int) -> MathsimplexFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_frame_len(s : MathsimplexFrame) -> Int { s.size }
+pub fn MathsimplexFrame::len(self : MathsimplexFrame) -> Int { self.size }
 
-pub fn math_simplex_frame_get(s : MathsimplexFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexFrame::get(self : MathsimplexFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_frame_set(s : MathsimplexFrame, i : Int, v : Double) -> MathsimplexFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexFrame::set(self : MathsimplexFrame, i : Int, v : Double) -> MathsimplexFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_frame_sum(s : MathsimplexFrame) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexFrame::sum(self : MathsimplexFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_frame_mean(s : MathsimplexFrame) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexFrame::mean(self : MathsimplexFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_frame_scale(s : MathsimplexFrame, f : Double) -> MathsimplexFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexFrame::scale(self : MathsimplexFrame, f : Double) -> MathsimplexFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_frame_add(a : MathsimplexFrame, b : MathsimplexFrame) -> MathsimplexFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexFrame::add(self : MathsimplexFrame, other : MathsimplexFrame) -> MathsimplexFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_frame_copy(s : MathsimplexFrame) -> MathsimplexFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexFrame::copy(self : MathsimplexFrame) -> MathsimplexFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_frame_fill(s : MathsimplexFrame, v : Double) -> MathsimplexFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexFrame::fill(self : MathsimplexFrame, v : Double) -> MathsimplexFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_frame_min(s : MathsimplexFrame) -> Double { @_common.min(s.data) }
+pub fn MathsimplexFrame::min(self : MathsimplexFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_frame_max(s : MathsimplexFrame) -> Double { @_common.max(s.data) }
+pub fn MathsimplexFrame::max(self : MathsimplexFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_frame_to_string(s : MathsimplexFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexFrame::to_string(self : MathsimplexFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexTable {
@@ -402,45 +402,45 @@ pub fn math_simplex_table_make(size : Int) -> MathsimplexTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_table_len(s : MathsimplexTable) -> Int { s.size }
+pub fn MathsimplexTable::len(self : MathsimplexTable) -> Int { self.size }
 
-pub fn math_simplex_table_get(s : MathsimplexTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexTable::get(self : MathsimplexTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_table_set(s : MathsimplexTable, i : Int, v : Double) -> MathsimplexTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexTable::set(self : MathsimplexTable, i : Int, v : Double) -> MathsimplexTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_table_sum(s : MathsimplexTable) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexTable::sum(self : MathsimplexTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_table_mean(s : MathsimplexTable) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexTable::mean(self : MathsimplexTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_table_scale(s : MathsimplexTable, f : Double) -> MathsimplexTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexTable::scale(self : MathsimplexTable, f : Double) -> MathsimplexTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_table_add(a : MathsimplexTable, b : MathsimplexTable) -> MathsimplexTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexTable::add(self : MathsimplexTable, other : MathsimplexTable) -> MathsimplexTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_table_copy(s : MathsimplexTable) -> MathsimplexTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexTable::copy(self : MathsimplexTable) -> MathsimplexTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_table_fill(s : MathsimplexTable, v : Double) -> MathsimplexTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexTable::fill(self : MathsimplexTable, v : Double) -> MathsimplexTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_table_min(s : MathsimplexTable) -> Double { @_common.min(s.data) }
+pub fn MathsimplexTable::min(self : MathsimplexTable) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_table_max(s : MathsimplexTable) -> Double { @_common.max(s.data) }
+pub fn MathsimplexTable::max(self : MathsimplexTable) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_table_to_string(s : MathsimplexTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexTable::to_string(self : MathsimplexTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexGraphN {
@@ -453,45 +453,45 @@ pub fn math_simplex_graphn_make(size : Int) -> MathsimplexGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_graphn_len(s : MathsimplexGraphN) -> Int { s.size }
+pub fn MathsimplexGraphN::len(self : MathsimplexGraphN) -> Int { self.size }
 
-pub fn math_simplex_graphn_get(s : MathsimplexGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexGraphN::get(self : MathsimplexGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_graphn_set(s : MathsimplexGraphN, i : Int, v : Double) -> MathsimplexGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexGraphN::set(self : MathsimplexGraphN, i : Int, v : Double) -> MathsimplexGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_graphn_sum(s : MathsimplexGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexGraphN::sum(self : MathsimplexGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_graphn_mean(s : MathsimplexGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexGraphN::mean(self : MathsimplexGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_graphn_scale(s : MathsimplexGraphN, f : Double) -> MathsimplexGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexGraphN::scale(self : MathsimplexGraphN, f : Double) -> MathsimplexGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_graphn_add(a : MathsimplexGraphN, b : MathsimplexGraphN) -> MathsimplexGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexGraphN::add(self : MathsimplexGraphN, other : MathsimplexGraphN) -> MathsimplexGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_graphn_copy(s : MathsimplexGraphN) -> MathsimplexGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexGraphN::copy(self : MathsimplexGraphN) -> MathsimplexGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_graphn_fill(s : MathsimplexGraphN, v : Double) -> MathsimplexGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexGraphN::fill(self : MathsimplexGraphN, v : Double) -> MathsimplexGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_graphn_min(s : MathsimplexGraphN) -> Double { @_common.min(s.data) }
+pub fn MathsimplexGraphN::min(self : MathsimplexGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_graphn_max(s : MathsimplexGraphN) -> Double { @_common.max(s.data) }
+pub fn MathsimplexGraphN::max(self : MathsimplexGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_graphn_to_string(s : MathsimplexGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexGraphN::to_string(self : MathsimplexGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexNode {
@@ -504,45 +504,45 @@ pub fn math_simplex_node_make(size : Int) -> MathsimplexNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_node_len(s : MathsimplexNode) -> Int { s.size }
+pub fn MathsimplexNode::len(self : MathsimplexNode) -> Int { self.size }
 
-pub fn math_simplex_node_get(s : MathsimplexNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexNode::get(self : MathsimplexNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_node_set(s : MathsimplexNode, i : Int, v : Double) -> MathsimplexNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexNode::set(self : MathsimplexNode, i : Int, v : Double) -> MathsimplexNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_node_sum(s : MathsimplexNode) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexNode::sum(self : MathsimplexNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_node_mean(s : MathsimplexNode) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexNode::mean(self : MathsimplexNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_node_scale(s : MathsimplexNode, f : Double) -> MathsimplexNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexNode::scale(self : MathsimplexNode, f : Double) -> MathsimplexNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_node_add(a : MathsimplexNode, b : MathsimplexNode) -> MathsimplexNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexNode::add(self : MathsimplexNode, other : MathsimplexNode) -> MathsimplexNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_node_copy(s : MathsimplexNode) -> MathsimplexNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexNode::copy(self : MathsimplexNode) -> MathsimplexNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_node_fill(s : MathsimplexNode, v : Double) -> MathsimplexNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexNode::fill(self : MathsimplexNode, v : Double) -> MathsimplexNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_node_min(s : MathsimplexNode) -> Double { @_common.min(s.data) }
+pub fn MathsimplexNode::min(self : MathsimplexNode) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_node_max(s : MathsimplexNode) -> Double { @_common.max(s.data) }
+pub fn MathsimplexNode::max(self : MathsimplexNode) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_node_to_string(s : MathsimplexNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexNode::to_string(self : MathsimplexNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexEdge {
@@ -555,45 +555,45 @@ pub fn math_simplex_edge_make(size : Int) -> MathsimplexEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_edge_len(s : MathsimplexEdge) -> Int { s.size }
+pub fn MathsimplexEdge::len(self : MathsimplexEdge) -> Int { self.size }
 
-pub fn math_simplex_edge_get(s : MathsimplexEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexEdge::get(self : MathsimplexEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_edge_set(s : MathsimplexEdge, i : Int, v : Double) -> MathsimplexEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexEdge::set(self : MathsimplexEdge, i : Int, v : Double) -> MathsimplexEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_edge_sum(s : MathsimplexEdge) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexEdge::sum(self : MathsimplexEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_edge_mean(s : MathsimplexEdge) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexEdge::mean(self : MathsimplexEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_edge_scale(s : MathsimplexEdge, f : Double) -> MathsimplexEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexEdge::scale(self : MathsimplexEdge, f : Double) -> MathsimplexEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_edge_add(a : MathsimplexEdge, b : MathsimplexEdge) -> MathsimplexEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexEdge::add(self : MathsimplexEdge, other : MathsimplexEdge) -> MathsimplexEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_edge_copy(s : MathsimplexEdge) -> MathsimplexEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexEdge::copy(self : MathsimplexEdge) -> MathsimplexEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_edge_fill(s : MathsimplexEdge, v : Double) -> MathsimplexEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexEdge::fill(self : MathsimplexEdge, v : Double) -> MathsimplexEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_edge_min(s : MathsimplexEdge) -> Double { @_common.min(s.data) }
+pub fn MathsimplexEdge::min(self : MathsimplexEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_edge_max(s : MathsimplexEdge) -> Double { @_common.max(s.data) }
+pub fn MathsimplexEdge::max(self : MathsimplexEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_edge_to_string(s : MathsimplexEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexEdge::to_string(self : MathsimplexEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexPath {
@@ -606,45 +606,45 @@ pub fn math_simplex_path_make(size : Int) -> MathsimplexPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_path_len(s : MathsimplexPath) -> Int { s.size }
+pub fn MathsimplexPath::len(self : MathsimplexPath) -> Int { self.size }
 
-pub fn math_simplex_path_get(s : MathsimplexPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexPath::get(self : MathsimplexPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_path_set(s : MathsimplexPath, i : Int, v : Double) -> MathsimplexPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexPath::set(self : MathsimplexPath, i : Int, v : Double) -> MathsimplexPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_path_sum(s : MathsimplexPath) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexPath::sum(self : MathsimplexPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_path_mean(s : MathsimplexPath) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexPath::mean(self : MathsimplexPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_path_scale(s : MathsimplexPath, f : Double) -> MathsimplexPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexPath::scale(self : MathsimplexPath, f : Double) -> MathsimplexPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_path_add(a : MathsimplexPath, b : MathsimplexPath) -> MathsimplexPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexPath::add(self : MathsimplexPath, other : MathsimplexPath) -> MathsimplexPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_path_copy(s : MathsimplexPath) -> MathsimplexPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexPath::copy(self : MathsimplexPath) -> MathsimplexPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_path_fill(s : MathsimplexPath, v : Double) -> MathsimplexPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexPath::fill(self : MathsimplexPath, v : Double) -> MathsimplexPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_path_min(s : MathsimplexPath) -> Double { @_common.min(s.data) }
+pub fn MathsimplexPath::min(self : MathsimplexPath) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_path_max(s : MathsimplexPath) -> Double { @_common.max(s.data) }
+pub fn MathsimplexPath::max(self : MathsimplexPath) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_path_to_string(s : MathsimplexPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexPath::to_string(self : MathsimplexPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexCluster {
@@ -657,45 +657,45 @@ pub fn math_simplex_cluster_make(size : Int) -> MathsimplexCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_cluster_len(s : MathsimplexCluster) -> Int { s.size }
+pub fn MathsimplexCluster::len(self : MathsimplexCluster) -> Int { self.size }
 
-pub fn math_simplex_cluster_get(s : MathsimplexCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexCluster::get(self : MathsimplexCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_cluster_set(s : MathsimplexCluster, i : Int, v : Double) -> MathsimplexCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexCluster::set(self : MathsimplexCluster, i : Int, v : Double) -> MathsimplexCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_cluster_sum(s : MathsimplexCluster) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexCluster::sum(self : MathsimplexCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_cluster_mean(s : MathsimplexCluster) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexCluster::mean(self : MathsimplexCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_cluster_scale(s : MathsimplexCluster, f : Double) -> MathsimplexCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexCluster::scale(self : MathsimplexCluster, f : Double) -> MathsimplexCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_cluster_add(a : MathsimplexCluster, b : MathsimplexCluster) -> MathsimplexCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexCluster::add(self : MathsimplexCluster, other : MathsimplexCluster) -> MathsimplexCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_cluster_copy(s : MathsimplexCluster) -> MathsimplexCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexCluster::copy(self : MathsimplexCluster) -> MathsimplexCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_cluster_fill(s : MathsimplexCluster, v : Double) -> MathsimplexCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexCluster::fill(self : MathsimplexCluster, v : Double) -> MathsimplexCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_cluster_min(s : MathsimplexCluster) -> Double { @_common.min(s.data) }
+pub fn MathsimplexCluster::min(self : MathsimplexCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_cluster_max(s : MathsimplexCluster) -> Double { @_common.max(s.data) }
+pub fn MathsimplexCluster::max(self : MathsimplexCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_cluster_to_string(s : MathsimplexCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexCluster::to_string(self : MathsimplexCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexModel {
@@ -708,45 +708,45 @@ pub fn math_simplex_model_make(size : Int) -> MathsimplexModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_model_len(s : MathsimplexModel) -> Int { s.size }
+pub fn MathsimplexModel::len(self : MathsimplexModel) -> Int { self.size }
 
-pub fn math_simplex_model_get(s : MathsimplexModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexModel::get(self : MathsimplexModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_model_set(s : MathsimplexModel, i : Int, v : Double) -> MathsimplexModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexModel::set(self : MathsimplexModel, i : Int, v : Double) -> MathsimplexModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_model_sum(s : MathsimplexModel) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexModel::sum(self : MathsimplexModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_model_mean(s : MathsimplexModel) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexModel::mean(self : MathsimplexModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_model_scale(s : MathsimplexModel, f : Double) -> MathsimplexModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexModel::scale(self : MathsimplexModel, f : Double) -> MathsimplexModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_model_add(a : MathsimplexModel, b : MathsimplexModel) -> MathsimplexModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexModel::add(self : MathsimplexModel, other : MathsimplexModel) -> MathsimplexModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_model_copy(s : MathsimplexModel) -> MathsimplexModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexModel::copy(self : MathsimplexModel) -> MathsimplexModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_model_fill(s : MathsimplexModel, v : Double) -> MathsimplexModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexModel::fill(self : MathsimplexModel, v : Double) -> MathsimplexModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_model_min(s : MathsimplexModel) -> Double { @_common.min(s.data) }
+pub fn MathsimplexModel::min(self : MathsimplexModel) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_model_max(s : MathsimplexModel) -> Double { @_common.max(s.data) }
+pub fn MathsimplexModel::max(self : MathsimplexModel) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_model_to_string(s : MathsimplexModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexModel::to_string(self : MathsimplexModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexLayer {
@@ -759,45 +759,45 @@ pub fn math_simplex_layer_make(size : Int) -> MathsimplexLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_layer_len(s : MathsimplexLayer) -> Int { s.size }
+pub fn MathsimplexLayer::len(self : MathsimplexLayer) -> Int { self.size }
 
-pub fn math_simplex_layer_get(s : MathsimplexLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexLayer::get(self : MathsimplexLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_layer_set(s : MathsimplexLayer, i : Int, v : Double) -> MathsimplexLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexLayer::set(self : MathsimplexLayer, i : Int, v : Double) -> MathsimplexLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_layer_sum(s : MathsimplexLayer) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexLayer::sum(self : MathsimplexLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_layer_mean(s : MathsimplexLayer) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexLayer::mean(self : MathsimplexLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_layer_scale(s : MathsimplexLayer, f : Double) -> MathsimplexLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexLayer::scale(self : MathsimplexLayer, f : Double) -> MathsimplexLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_layer_add(a : MathsimplexLayer, b : MathsimplexLayer) -> MathsimplexLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexLayer::add(self : MathsimplexLayer, other : MathsimplexLayer) -> MathsimplexLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_layer_copy(s : MathsimplexLayer) -> MathsimplexLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexLayer::copy(self : MathsimplexLayer) -> MathsimplexLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_layer_fill(s : MathsimplexLayer, v : Double) -> MathsimplexLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexLayer::fill(self : MathsimplexLayer, v : Double) -> MathsimplexLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_layer_min(s : MathsimplexLayer) -> Double { @_common.min(s.data) }
+pub fn MathsimplexLayer::min(self : MathsimplexLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_layer_max(s : MathsimplexLayer) -> Double { @_common.max(s.data) }
+pub fn MathsimplexLayer::max(self : MathsimplexLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_layer_to_string(s : MathsimplexLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexLayer::to_string(self : MathsimplexLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexBuffer {
@@ -810,45 +810,45 @@ pub fn math_simplex_buffer_make(size : Int) -> MathsimplexBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_buffer_len(s : MathsimplexBuffer) -> Int { s.size }
+pub fn MathsimplexBuffer::len(self : MathsimplexBuffer) -> Int { self.size }
 
-pub fn math_simplex_buffer_get(s : MathsimplexBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexBuffer::get(self : MathsimplexBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_buffer_set(s : MathsimplexBuffer, i : Int, v : Double) -> MathsimplexBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexBuffer::set(self : MathsimplexBuffer, i : Int, v : Double) -> MathsimplexBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_buffer_sum(s : MathsimplexBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexBuffer::sum(self : MathsimplexBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_buffer_mean(s : MathsimplexBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexBuffer::mean(self : MathsimplexBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_buffer_scale(s : MathsimplexBuffer, f : Double) -> MathsimplexBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexBuffer::scale(self : MathsimplexBuffer, f : Double) -> MathsimplexBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_buffer_add(a : MathsimplexBuffer, b : MathsimplexBuffer) -> MathsimplexBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexBuffer::add(self : MathsimplexBuffer, other : MathsimplexBuffer) -> MathsimplexBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_buffer_copy(s : MathsimplexBuffer) -> MathsimplexBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexBuffer::copy(self : MathsimplexBuffer) -> MathsimplexBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_buffer_fill(s : MathsimplexBuffer, v : Double) -> MathsimplexBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexBuffer::fill(self : MathsimplexBuffer, v : Double) -> MathsimplexBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_buffer_min(s : MathsimplexBuffer) -> Double { @_common.min(s.data) }
+pub fn MathsimplexBuffer::min(self : MathsimplexBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_buffer_max(s : MathsimplexBuffer) -> Double { @_common.max(s.data) }
+pub fn MathsimplexBuffer::max(self : MathsimplexBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_buffer_to_string(s : MathsimplexBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexBuffer::to_string(self : MathsimplexBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexCursor {
@@ -861,45 +861,45 @@ pub fn math_simplex_cursor_make(size : Int) -> MathsimplexCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_cursor_len(s : MathsimplexCursor) -> Int { s.size }
+pub fn MathsimplexCursor::len(self : MathsimplexCursor) -> Int { self.size }
 
-pub fn math_simplex_cursor_get(s : MathsimplexCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexCursor::get(self : MathsimplexCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_cursor_set(s : MathsimplexCursor, i : Int, v : Double) -> MathsimplexCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexCursor::set(self : MathsimplexCursor, i : Int, v : Double) -> MathsimplexCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_cursor_sum(s : MathsimplexCursor) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexCursor::sum(self : MathsimplexCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_cursor_mean(s : MathsimplexCursor) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexCursor::mean(self : MathsimplexCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_cursor_scale(s : MathsimplexCursor, f : Double) -> MathsimplexCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexCursor::scale(self : MathsimplexCursor, f : Double) -> MathsimplexCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_cursor_add(a : MathsimplexCursor, b : MathsimplexCursor) -> MathsimplexCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexCursor::add(self : MathsimplexCursor, other : MathsimplexCursor) -> MathsimplexCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_cursor_copy(s : MathsimplexCursor) -> MathsimplexCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexCursor::copy(self : MathsimplexCursor) -> MathsimplexCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_cursor_fill(s : MathsimplexCursor, v : Double) -> MathsimplexCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexCursor::fill(self : MathsimplexCursor, v : Double) -> MathsimplexCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_cursor_min(s : MathsimplexCursor) -> Double { @_common.min(s.data) }
+pub fn MathsimplexCursor::min(self : MathsimplexCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_cursor_max(s : MathsimplexCursor) -> Double { @_common.max(s.data) }
+pub fn MathsimplexCursor::max(self : MathsimplexCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_cursor_to_string(s : MathsimplexCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexCursor::to_string(self : MathsimplexCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexView {
@@ -912,45 +912,45 @@ pub fn math_simplex_view_make(size : Int) -> MathsimplexView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_view_len(s : MathsimplexView) -> Int { s.size }
+pub fn MathsimplexView::len(self : MathsimplexView) -> Int { self.size }
 
-pub fn math_simplex_view_get(s : MathsimplexView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexView::get(self : MathsimplexView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_view_set(s : MathsimplexView, i : Int, v : Double) -> MathsimplexView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexView::set(self : MathsimplexView, i : Int, v : Double) -> MathsimplexView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_view_sum(s : MathsimplexView) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexView::sum(self : MathsimplexView) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_view_mean(s : MathsimplexView) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexView::mean(self : MathsimplexView) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_view_scale(s : MathsimplexView, f : Double) -> MathsimplexView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexView::scale(self : MathsimplexView, f : Double) -> MathsimplexView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_view_add(a : MathsimplexView, b : MathsimplexView) -> MathsimplexView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexView::add(self : MathsimplexView, other : MathsimplexView) -> MathsimplexView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_view_copy(s : MathsimplexView) -> MathsimplexView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexView::copy(self : MathsimplexView) -> MathsimplexView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_view_fill(s : MathsimplexView, v : Double) -> MathsimplexView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexView::fill(self : MathsimplexView, v : Double) -> MathsimplexView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_view_min(s : MathsimplexView) -> Double { @_common.min(s.data) }
+pub fn MathsimplexView::min(self : MathsimplexView) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_view_max(s : MathsimplexView) -> Double { @_common.max(s.data) }
+pub fn MathsimplexView::max(self : MathsimplexView) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_view_to_string(s : MathsimplexView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexView::to_string(self : MathsimplexView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexRange {
@@ -963,45 +963,45 @@ pub fn math_simplex_range_make(size : Int) -> MathsimplexRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_range_len(s : MathsimplexRange) -> Int { s.size }
+pub fn MathsimplexRange::len(self : MathsimplexRange) -> Int { self.size }
 
-pub fn math_simplex_range_get(s : MathsimplexRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexRange::get(self : MathsimplexRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_range_set(s : MathsimplexRange, i : Int, v : Double) -> MathsimplexRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexRange::set(self : MathsimplexRange, i : Int, v : Double) -> MathsimplexRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_range_sum(s : MathsimplexRange) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexRange::sum(self : MathsimplexRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_range_mean(s : MathsimplexRange) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexRange::mean(self : MathsimplexRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_range_scale(s : MathsimplexRange, f : Double) -> MathsimplexRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexRange::scale(self : MathsimplexRange, f : Double) -> MathsimplexRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_range_add(a : MathsimplexRange, b : MathsimplexRange) -> MathsimplexRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexRange::add(self : MathsimplexRange, other : MathsimplexRange) -> MathsimplexRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_range_copy(s : MathsimplexRange) -> MathsimplexRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexRange::copy(self : MathsimplexRange) -> MathsimplexRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_range_fill(s : MathsimplexRange, v : Double) -> MathsimplexRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexRange::fill(self : MathsimplexRange, v : Double) -> MathsimplexRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_range_min(s : MathsimplexRange) -> Double { @_common.min(s.data) }
+pub fn MathsimplexRange::min(self : MathsimplexRange) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_range_max(s : MathsimplexRange) -> Double { @_common.max(s.data) }
+pub fn MathsimplexRange::max(self : MathsimplexRange) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_range_to_string(s : MathsimplexRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexRange::to_string(self : MathsimplexRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsimplexSlice {
@@ -1014,44 +1014,44 @@ pub fn math_simplex_slice_make(size : Int) -> MathsimplexSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_simplex_slice_len(s : MathsimplexSlice) -> Int { s.size }
+pub fn MathsimplexSlice::len(self : MathsimplexSlice) -> Int { self.size }
 
-pub fn math_simplex_slice_get(s : MathsimplexSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsimplexSlice::get(self : MathsimplexSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_simplex_slice_set(s : MathsimplexSlice, i : Int, v : Double) -> MathsimplexSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsimplexSlice::set(self : MathsimplexSlice, i : Int, v : Double) -> MathsimplexSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_slice_sum(s : MathsimplexSlice) -> Double { @_common.sum(s.data) }
+pub fn MathsimplexSlice::sum(self : MathsimplexSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_simplex_slice_mean(s : MathsimplexSlice) -> Double { @_common.mean(s.data) }
+pub fn MathsimplexSlice::mean(self : MathsimplexSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_simplex_slice_scale(s : MathsimplexSlice, f : Double) -> MathsimplexSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsimplexSlice::scale(self : MathsimplexSlice, f : Double) -> MathsimplexSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_slice_add(a : MathsimplexSlice, b : MathsimplexSlice) -> MathsimplexSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsimplexSlice::add(self : MathsimplexSlice, other : MathsimplexSlice) -> MathsimplexSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_simplex_slice_copy(s : MathsimplexSlice) -> MathsimplexSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsimplexSlice::copy(self : MathsimplexSlice) -> MathsimplexSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_slice_fill(s : MathsimplexSlice, v : Double) -> MathsimplexSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsimplexSlice::fill(self : MathsimplexSlice, v : Double) -> MathsimplexSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_simplex_slice_min(s : MathsimplexSlice) -> Double { @_common.min(s.data) }
+pub fn MathsimplexSlice::min(self : MathsimplexSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_simplex_slice_max(s : MathsimplexSlice) -> Double { @_common.max(s.data) }
+pub fn MathsimplexSlice::max(self : MathsimplexSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_simplex_slice_to_string(s : MathsimplexSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsimplexSlice::to_string(self : MathsimplexSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

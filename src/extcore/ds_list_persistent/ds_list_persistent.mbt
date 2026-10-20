@@ -351,45 +351,45 @@ pub fn ds_list_persistent_frame_make(size : Int) -> DslistpersistentFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_frame_len(s : DslistpersistentFrame) -> Int { s.size }
+pub fn DslistpersistentFrame::len(self : DslistpersistentFrame) -> Int { self.size }
 
-pub fn ds_list_persistent_frame_get(s : DslistpersistentFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentFrame::get(self : DslistpersistentFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_frame_set(s : DslistpersistentFrame, i : Int, v : Double) -> DslistpersistentFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentFrame::set(self : DslistpersistentFrame, i : Int, v : Double) -> DslistpersistentFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_frame_sum(s : DslistpersistentFrame) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentFrame::sum(self : DslistpersistentFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_frame_mean(s : DslistpersistentFrame) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentFrame::mean(self : DslistpersistentFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_frame_scale(s : DslistpersistentFrame, f : Double) -> DslistpersistentFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentFrame::scale(self : DslistpersistentFrame, f : Double) -> DslistpersistentFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_frame_add(a : DslistpersistentFrame, b : DslistpersistentFrame) -> DslistpersistentFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentFrame::add(self : DslistpersistentFrame, other : DslistpersistentFrame) -> DslistpersistentFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_frame_copy(s : DslistpersistentFrame) -> DslistpersistentFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentFrame::copy(self : DslistpersistentFrame) -> DslistpersistentFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_frame_fill(s : DslistpersistentFrame, v : Double) -> DslistpersistentFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentFrame::fill(self : DslistpersistentFrame, v : Double) -> DslistpersistentFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_frame_min(s : DslistpersistentFrame) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentFrame::min(self : DslistpersistentFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_frame_max(s : DslistpersistentFrame) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentFrame::max(self : DslistpersistentFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_frame_to_string(s : DslistpersistentFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentFrame::to_string(self : DslistpersistentFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentTable {
@@ -402,45 +402,45 @@ pub fn ds_list_persistent_table_make(size : Int) -> DslistpersistentTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_table_len(s : DslistpersistentTable) -> Int { s.size }
+pub fn DslistpersistentTable::len(self : DslistpersistentTable) -> Int { self.size }
 
-pub fn ds_list_persistent_table_get(s : DslistpersistentTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentTable::get(self : DslistpersistentTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_table_set(s : DslistpersistentTable, i : Int, v : Double) -> DslistpersistentTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentTable::set(self : DslistpersistentTable, i : Int, v : Double) -> DslistpersistentTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_table_sum(s : DslistpersistentTable) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentTable::sum(self : DslistpersistentTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_table_mean(s : DslistpersistentTable) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentTable::mean(self : DslistpersistentTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_table_scale(s : DslistpersistentTable, f : Double) -> DslistpersistentTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentTable::scale(self : DslistpersistentTable, f : Double) -> DslistpersistentTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_table_add(a : DslistpersistentTable, b : DslistpersistentTable) -> DslistpersistentTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentTable::add(self : DslistpersistentTable, other : DslistpersistentTable) -> DslistpersistentTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_table_copy(s : DslistpersistentTable) -> DslistpersistentTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentTable::copy(self : DslistpersistentTable) -> DslistpersistentTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_table_fill(s : DslistpersistentTable, v : Double) -> DslistpersistentTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentTable::fill(self : DslistpersistentTable, v : Double) -> DslistpersistentTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_table_min(s : DslistpersistentTable) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentTable::min(self : DslistpersistentTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_table_max(s : DslistpersistentTable) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentTable::max(self : DslistpersistentTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_table_to_string(s : DslistpersistentTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentTable::to_string(self : DslistpersistentTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentGraphN {
@@ -453,45 +453,45 @@ pub fn ds_list_persistent_graphn_make(size : Int) -> DslistpersistentGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_graphn_len(s : DslistpersistentGraphN) -> Int { s.size }
+pub fn DslistpersistentGraphN::len(self : DslistpersistentGraphN) -> Int { self.size }
 
-pub fn ds_list_persistent_graphn_get(s : DslistpersistentGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentGraphN::get(self : DslistpersistentGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_graphn_set(s : DslistpersistentGraphN, i : Int, v : Double) -> DslistpersistentGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentGraphN::set(self : DslistpersistentGraphN, i : Int, v : Double) -> DslistpersistentGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_graphn_sum(s : DslistpersistentGraphN) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentGraphN::sum(self : DslistpersistentGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_graphn_mean(s : DslistpersistentGraphN) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentGraphN::mean(self : DslistpersistentGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_graphn_scale(s : DslistpersistentGraphN, f : Double) -> DslistpersistentGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentGraphN::scale(self : DslistpersistentGraphN, f : Double) -> DslistpersistentGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_graphn_add(a : DslistpersistentGraphN, b : DslistpersistentGraphN) -> DslistpersistentGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentGraphN::add(self : DslistpersistentGraphN, other : DslistpersistentGraphN) -> DslistpersistentGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_graphn_copy(s : DslistpersistentGraphN) -> DslistpersistentGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentGraphN::copy(self : DslistpersistentGraphN) -> DslistpersistentGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_graphn_fill(s : DslistpersistentGraphN, v : Double) -> DslistpersistentGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentGraphN::fill(self : DslistpersistentGraphN, v : Double) -> DslistpersistentGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_graphn_min(s : DslistpersistentGraphN) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentGraphN::min(self : DslistpersistentGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_graphn_max(s : DslistpersistentGraphN) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentGraphN::max(self : DslistpersistentGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_graphn_to_string(s : DslistpersistentGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentGraphN::to_string(self : DslistpersistentGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentNode {
@@ -504,45 +504,45 @@ pub fn ds_list_persistent_node_make(size : Int) -> DslistpersistentNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_node_len(s : DslistpersistentNode) -> Int { s.size }
+pub fn DslistpersistentNode::len(self : DslistpersistentNode) -> Int { self.size }
 
-pub fn ds_list_persistent_node_get(s : DslistpersistentNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentNode::get(self : DslistpersistentNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_node_set(s : DslistpersistentNode, i : Int, v : Double) -> DslistpersistentNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentNode::set(self : DslistpersistentNode, i : Int, v : Double) -> DslistpersistentNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_node_sum(s : DslistpersistentNode) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentNode::sum(self : DslistpersistentNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_node_mean(s : DslistpersistentNode) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentNode::mean(self : DslistpersistentNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_node_scale(s : DslistpersistentNode, f : Double) -> DslistpersistentNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentNode::scale(self : DslistpersistentNode, f : Double) -> DslistpersistentNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_node_add(a : DslistpersistentNode, b : DslistpersistentNode) -> DslistpersistentNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentNode::add(self : DslistpersistentNode, other : DslistpersistentNode) -> DslistpersistentNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_node_copy(s : DslistpersistentNode) -> DslistpersistentNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentNode::copy(self : DslistpersistentNode) -> DslistpersistentNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_node_fill(s : DslistpersistentNode, v : Double) -> DslistpersistentNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentNode::fill(self : DslistpersistentNode, v : Double) -> DslistpersistentNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_node_min(s : DslistpersistentNode) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentNode::min(self : DslistpersistentNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_node_max(s : DslistpersistentNode) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentNode::max(self : DslistpersistentNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_node_to_string(s : DslistpersistentNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentNode::to_string(self : DslistpersistentNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentEdge {
@@ -555,45 +555,45 @@ pub fn ds_list_persistent_edge_make(size : Int) -> DslistpersistentEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_edge_len(s : DslistpersistentEdge) -> Int { s.size }
+pub fn DslistpersistentEdge::len(self : DslistpersistentEdge) -> Int { self.size }
 
-pub fn ds_list_persistent_edge_get(s : DslistpersistentEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentEdge::get(self : DslistpersistentEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_edge_set(s : DslistpersistentEdge, i : Int, v : Double) -> DslistpersistentEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentEdge::set(self : DslistpersistentEdge, i : Int, v : Double) -> DslistpersistentEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_edge_sum(s : DslistpersistentEdge) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentEdge::sum(self : DslistpersistentEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_edge_mean(s : DslistpersistentEdge) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentEdge::mean(self : DslistpersistentEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_edge_scale(s : DslistpersistentEdge, f : Double) -> DslistpersistentEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentEdge::scale(self : DslistpersistentEdge, f : Double) -> DslistpersistentEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_edge_add(a : DslistpersistentEdge, b : DslistpersistentEdge) -> DslistpersistentEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentEdge::add(self : DslistpersistentEdge, other : DslistpersistentEdge) -> DslistpersistentEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_edge_copy(s : DslistpersistentEdge) -> DslistpersistentEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentEdge::copy(self : DslistpersistentEdge) -> DslistpersistentEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_edge_fill(s : DslistpersistentEdge, v : Double) -> DslistpersistentEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentEdge::fill(self : DslistpersistentEdge, v : Double) -> DslistpersistentEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_edge_min(s : DslistpersistentEdge) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentEdge::min(self : DslistpersistentEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_edge_max(s : DslistpersistentEdge) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentEdge::max(self : DslistpersistentEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_edge_to_string(s : DslistpersistentEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentEdge::to_string(self : DslistpersistentEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentPath {
@@ -606,45 +606,45 @@ pub fn ds_list_persistent_path_make(size : Int) -> DslistpersistentPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_path_len(s : DslistpersistentPath) -> Int { s.size }
+pub fn DslistpersistentPath::len(self : DslistpersistentPath) -> Int { self.size }
 
-pub fn ds_list_persistent_path_get(s : DslistpersistentPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentPath::get(self : DslistpersistentPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_path_set(s : DslistpersistentPath, i : Int, v : Double) -> DslistpersistentPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentPath::set(self : DslistpersistentPath, i : Int, v : Double) -> DslistpersistentPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_path_sum(s : DslistpersistentPath) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentPath::sum(self : DslistpersistentPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_path_mean(s : DslistpersistentPath) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentPath::mean(self : DslistpersistentPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_path_scale(s : DslistpersistentPath, f : Double) -> DslistpersistentPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentPath::scale(self : DslistpersistentPath, f : Double) -> DslistpersistentPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_path_add(a : DslistpersistentPath, b : DslistpersistentPath) -> DslistpersistentPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentPath::add(self : DslistpersistentPath, other : DslistpersistentPath) -> DslistpersistentPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_path_copy(s : DslistpersistentPath) -> DslistpersistentPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentPath::copy(self : DslistpersistentPath) -> DslistpersistentPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_path_fill(s : DslistpersistentPath, v : Double) -> DslistpersistentPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentPath::fill(self : DslistpersistentPath, v : Double) -> DslistpersistentPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_path_min(s : DslistpersistentPath) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentPath::min(self : DslistpersistentPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_path_max(s : DslistpersistentPath) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentPath::max(self : DslistpersistentPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_path_to_string(s : DslistpersistentPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentPath::to_string(self : DslistpersistentPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentCluster {
@@ -657,45 +657,45 @@ pub fn ds_list_persistent_cluster_make(size : Int) -> DslistpersistentCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_cluster_len(s : DslistpersistentCluster) -> Int { s.size }
+pub fn DslistpersistentCluster::len(self : DslistpersistentCluster) -> Int { self.size }
 
-pub fn ds_list_persistent_cluster_get(s : DslistpersistentCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentCluster::get(self : DslistpersistentCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_cluster_set(s : DslistpersistentCluster, i : Int, v : Double) -> DslistpersistentCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentCluster::set(self : DslistpersistentCluster, i : Int, v : Double) -> DslistpersistentCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_cluster_sum(s : DslistpersistentCluster) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentCluster::sum(self : DslistpersistentCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_cluster_mean(s : DslistpersistentCluster) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentCluster::mean(self : DslistpersistentCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_cluster_scale(s : DslistpersistentCluster, f : Double) -> DslistpersistentCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentCluster::scale(self : DslistpersistentCluster, f : Double) -> DslistpersistentCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_cluster_add(a : DslistpersistentCluster, b : DslistpersistentCluster) -> DslistpersistentCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentCluster::add(self : DslistpersistentCluster, other : DslistpersistentCluster) -> DslistpersistentCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_cluster_copy(s : DslistpersistentCluster) -> DslistpersistentCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentCluster::copy(self : DslistpersistentCluster) -> DslistpersistentCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_cluster_fill(s : DslistpersistentCluster, v : Double) -> DslistpersistentCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentCluster::fill(self : DslistpersistentCluster, v : Double) -> DslistpersistentCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_cluster_min(s : DslistpersistentCluster) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentCluster::min(self : DslistpersistentCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_cluster_max(s : DslistpersistentCluster) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentCluster::max(self : DslistpersistentCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_cluster_to_string(s : DslistpersistentCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentCluster::to_string(self : DslistpersistentCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentModel {
@@ -708,45 +708,45 @@ pub fn ds_list_persistent_model_make(size : Int) -> DslistpersistentModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_model_len(s : DslistpersistentModel) -> Int { s.size }
+pub fn DslistpersistentModel::len(self : DslistpersistentModel) -> Int { self.size }
 
-pub fn ds_list_persistent_model_get(s : DslistpersistentModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentModel::get(self : DslistpersistentModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_model_set(s : DslistpersistentModel, i : Int, v : Double) -> DslistpersistentModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentModel::set(self : DslistpersistentModel, i : Int, v : Double) -> DslistpersistentModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_model_sum(s : DslistpersistentModel) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentModel::sum(self : DslistpersistentModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_model_mean(s : DslistpersistentModel) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentModel::mean(self : DslistpersistentModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_model_scale(s : DslistpersistentModel, f : Double) -> DslistpersistentModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentModel::scale(self : DslistpersistentModel, f : Double) -> DslistpersistentModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_model_add(a : DslistpersistentModel, b : DslistpersistentModel) -> DslistpersistentModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentModel::add(self : DslistpersistentModel, other : DslistpersistentModel) -> DslistpersistentModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_model_copy(s : DslistpersistentModel) -> DslistpersistentModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentModel::copy(self : DslistpersistentModel) -> DslistpersistentModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_model_fill(s : DslistpersistentModel, v : Double) -> DslistpersistentModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentModel::fill(self : DslistpersistentModel, v : Double) -> DslistpersistentModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_model_min(s : DslistpersistentModel) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentModel::min(self : DslistpersistentModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_model_max(s : DslistpersistentModel) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentModel::max(self : DslistpersistentModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_model_to_string(s : DslistpersistentModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentModel::to_string(self : DslistpersistentModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentLayer {
@@ -759,45 +759,45 @@ pub fn ds_list_persistent_layer_make(size : Int) -> DslistpersistentLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_layer_len(s : DslistpersistentLayer) -> Int { s.size }
+pub fn DslistpersistentLayer::len(self : DslistpersistentLayer) -> Int { self.size }
 
-pub fn ds_list_persistent_layer_get(s : DslistpersistentLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentLayer::get(self : DslistpersistentLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_layer_set(s : DslistpersistentLayer, i : Int, v : Double) -> DslistpersistentLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentLayer::set(self : DslistpersistentLayer, i : Int, v : Double) -> DslistpersistentLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_layer_sum(s : DslistpersistentLayer) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentLayer::sum(self : DslistpersistentLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_layer_mean(s : DslistpersistentLayer) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentLayer::mean(self : DslistpersistentLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_layer_scale(s : DslistpersistentLayer, f : Double) -> DslistpersistentLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentLayer::scale(self : DslistpersistentLayer, f : Double) -> DslistpersistentLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_layer_add(a : DslistpersistentLayer, b : DslistpersistentLayer) -> DslistpersistentLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentLayer::add(self : DslistpersistentLayer, other : DslistpersistentLayer) -> DslistpersistentLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_layer_copy(s : DslistpersistentLayer) -> DslistpersistentLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentLayer::copy(self : DslistpersistentLayer) -> DslistpersistentLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_layer_fill(s : DslistpersistentLayer, v : Double) -> DslistpersistentLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentLayer::fill(self : DslistpersistentLayer, v : Double) -> DslistpersistentLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_layer_min(s : DslistpersistentLayer) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentLayer::min(self : DslistpersistentLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_layer_max(s : DslistpersistentLayer) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentLayer::max(self : DslistpersistentLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_layer_to_string(s : DslistpersistentLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentLayer::to_string(self : DslistpersistentLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentBuffer {
@@ -810,45 +810,45 @@ pub fn ds_list_persistent_buffer_make(size : Int) -> DslistpersistentBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_buffer_len(s : DslistpersistentBuffer) -> Int { s.size }
+pub fn DslistpersistentBuffer::len(self : DslistpersistentBuffer) -> Int { self.size }
 
-pub fn ds_list_persistent_buffer_get(s : DslistpersistentBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentBuffer::get(self : DslistpersistentBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_buffer_set(s : DslistpersistentBuffer, i : Int, v : Double) -> DslistpersistentBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentBuffer::set(self : DslistpersistentBuffer, i : Int, v : Double) -> DslistpersistentBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_buffer_sum(s : DslistpersistentBuffer) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentBuffer::sum(self : DslistpersistentBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_buffer_mean(s : DslistpersistentBuffer) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentBuffer::mean(self : DslistpersistentBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_buffer_scale(s : DslistpersistentBuffer, f : Double) -> DslistpersistentBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentBuffer::scale(self : DslistpersistentBuffer, f : Double) -> DslistpersistentBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_buffer_add(a : DslistpersistentBuffer, b : DslistpersistentBuffer) -> DslistpersistentBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentBuffer::add(self : DslistpersistentBuffer, other : DslistpersistentBuffer) -> DslistpersistentBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_buffer_copy(s : DslistpersistentBuffer) -> DslistpersistentBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentBuffer::copy(self : DslistpersistentBuffer) -> DslistpersistentBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_buffer_fill(s : DslistpersistentBuffer, v : Double) -> DslistpersistentBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentBuffer::fill(self : DslistpersistentBuffer, v : Double) -> DslistpersistentBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_buffer_min(s : DslistpersistentBuffer) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentBuffer::min(self : DslistpersistentBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_buffer_max(s : DslistpersistentBuffer) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentBuffer::max(self : DslistpersistentBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_buffer_to_string(s : DslistpersistentBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentBuffer::to_string(self : DslistpersistentBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentCursor {
@@ -861,45 +861,45 @@ pub fn ds_list_persistent_cursor_make(size : Int) -> DslistpersistentCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_cursor_len(s : DslistpersistentCursor) -> Int { s.size }
+pub fn DslistpersistentCursor::len(self : DslistpersistentCursor) -> Int { self.size }
 
-pub fn ds_list_persistent_cursor_get(s : DslistpersistentCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentCursor::get(self : DslistpersistentCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_cursor_set(s : DslistpersistentCursor, i : Int, v : Double) -> DslistpersistentCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentCursor::set(self : DslistpersistentCursor, i : Int, v : Double) -> DslistpersistentCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_cursor_sum(s : DslistpersistentCursor) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentCursor::sum(self : DslistpersistentCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_cursor_mean(s : DslistpersistentCursor) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentCursor::mean(self : DslistpersistentCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_cursor_scale(s : DslistpersistentCursor, f : Double) -> DslistpersistentCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentCursor::scale(self : DslistpersistentCursor, f : Double) -> DslistpersistentCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_cursor_add(a : DslistpersistentCursor, b : DslistpersistentCursor) -> DslistpersistentCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentCursor::add(self : DslistpersistentCursor, other : DslistpersistentCursor) -> DslistpersistentCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_cursor_copy(s : DslistpersistentCursor) -> DslistpersistentCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentCursor::copy(self : DslistpersistentCursor) -> DslistpersistentCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_cursor_fill(s : DslistpersistentCursor, v : Double) -> DslistpersistentCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentCursor::fill(self : DslistpersistentCursor, v : Double) -> DslistpersistentCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_cursor_min(s : DslistpersistentCursor) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentCursor::min(self : DslistpersistentCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_cursor_max(s : DslistpersistentCursor) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentCursor::max(self : DslistpersistentCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_cursor_to_string(s : DslistpersistentCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentCursor::to_string(self : DslistpersistentCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentView {
@@ -912,45 +912,45 @@ pub fn ds_list_persistent_view_make(size : Int) -> DslistpersistentView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_view_len(s : DslistpersistentView) -> Int { s.size }
+pub fn DslistpersistentView::len(self : DslistpersistentView) -> Int { self.size }
 
-pub fn ds_list_persistent_view_get(s : DslistpersistentView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentView::get(self : DslistpersistentView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_view_set(s : DslistpersistentView, i : Int, v : Double) -> DslistpersistentView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentView::set(self : DslistpersistentView, i : Int, v : Double) -> DslistpersistentView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_view_sum(s : DslistpersistentView) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentView::sum(self : DslistpersistentView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_view_mean(s : DslistpersistentView) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentView::mean(self : DslistpersistentView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_view_scale(s : DslistpersistentView, f : Double) -> DslistpersistentView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentView::scale(self : DslistpersistentView, f : Double) -> DslistpersistentView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_view_add(a : DslistpersistentView, b : DslistpersistentView) -> DslistpersistentView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentView::add(self : DslistpersistentView, other : DslistpersistentView) -> DslistpersistentView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_view_copy(s : DslistpersistentView) -> DslistpersistentView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentView::copy(self : DslistpersistentView) -> DslistpersistentView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_view_fill(s : DslistpersistentView, v : Double) -> DslistpersistentView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentView::fill(self : DslistpersistentView, v : Double) -> DslistpersistentView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_view_min(s : DslistpersistentView) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentView::min(self : DslistpersistentView) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_view_max(s : DslistpersistentView) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentView::max(self : DslistpersistentView) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_view_to_string(s : DslistpersistentView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentView::to_string(self : DslistpersistentView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentRange {
@@ -963,45 +963,45 @@ pub fn ds_list_persistent_range_make(size : Int) -> DslistpersistentRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_range_len(s : DslistpersistentRange) -> Int { s.size }
+pub fn DslistpersistentRange::len(self : DslistpersistentRange) -> Int { self.size }
 
-pub fn ds_list_persistent_range_get(s : DslistpersistentRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentRange::get(self : DslistpersistentRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_range_set(s : DslistpersistentRange, i : Int, v : Double) -> DslistpersistentRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentRange::set(self : DslistpersistentRange, i : Int, v : Double) -> DslistpersistentRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_range_sum(s : DslistpersistentRange) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentRange::sum(self : DslistpersistentRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_range_mean(s : DslistpersistentRange) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentRange::mean(self : DslistpersistentRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_range_scale(s : DslistpersistentRange, f : Double) -> DslistpersistentRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentRange::scale(self : DslistpersistentRange, f : Double) -> DslistpersistentRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_range_add(a : DslistpersistentRange, b : DslistpersistentRange) -> DslistpersistentRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentRange::add(self : DslistpersistentRange, other : DslistpersistentRange) -> DslistpersistentRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_range_copy(s : DslistpersistentRange) -> DslistpersistentRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentRange::copy(self : DslistpersistentRange) -> DslistpersistentRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_range_fill(s : DslistpersistentRange, v : Double) -> DslistpersistentRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentRange::fill(self : DslistpersistentRange, v : Double) -> DslistpersistentRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_range_min(s : DslistpersistentRange) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentRange::min(self : DslistpersistentRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_range_max(s : DslistpersistentRange) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentRange::max(self : DslistpersistentRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_range_to_string(s : DslistpersistentRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentRange::to_string(self : DslistpersistentRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistpersistentSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_list_persistent_slice_make(size : Int) -> DslistpersistentSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_persistent_slice_len(s : DslistpersistentSlice) -> Int { s.size }
+pub fn DslistpersistentSlice::len(self : DslistpersistentSlice) -> Int { self.size }
 
-pub fn ds_list_persistent_slice_get(s : DslistpersistentSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistpersistentSlice::get(self : DslistpersistentSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_persistent_slice_set(s : DslistpersistentSlice, i : Int, v : Double) -> DslistpersistentSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistpersistentSlice::set(self : DslistpersistentSlice, i : Int, v : Double) -> DslistpersistentSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_slice_sum(s : DslistpersistentSlice) -> Double { @_common.sum(s.data) }
+pub fn DslistpersistentSlice::sum(self : DslistpersistentSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_persistent_slice_mean(s : DslistpersistentSlice) -> Double { @_common.mean(s.data) }
+pub fn DslistpersistentSlice::mean(self : DslistpersistentSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_persistent_slice_scale(s : DslistpersistentSlice, f : Double) -> DslistpersistentSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistpersistentSlice::scale(self : DslistpersistentSlice, f : Double) -> DslistpersistentSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_slice_add(a : DslistpersistentSlice, b : DslistpersistentSlice) -> DslistpersistentSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistpersistentSlice::add(self : DslistpersistentSlice, other : DslistpersistentSlice) -> DslistpersistentSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_persistent_slice_copy(s : DslistpersistentSlice) -> DslistpersistentSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistpersistentSlice::copy(self : DslistpersistentSlice) -> DslistpersistentSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_slice_fill(s : DslistpersistentSlice, v : Double) -> DslistpersistentSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistpersistentSlice::fill(self : DslistpersistentSlice, v : Double) -> DslistpersistentSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_persistent_slice_min(s : DslistpersistentSlice) -> Double { @_common.min(s.data) }
+pub fn DslistpersistentSlice::min(self : DslistpersistentSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_persistent_slice_max(s : DslistpersistentSlice) -> Double { @_common.max(s.data) }
+pub fn DslistpersistentSlice::max(self : DslistpersistentSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_persistent_slice_to_string(s : DslistpersistentSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistpersistentSlice::to_string(self : DslistpersistentSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

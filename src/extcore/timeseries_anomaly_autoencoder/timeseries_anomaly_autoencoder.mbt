@@ -351,45 +351,45 @@ pub fn timeseries_anomaly_autoencoder_frame_make(size : Int) -> Timeseriesanomal
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_frame_len(s : TimeseriesanomalyautoencoderFrame) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderFrame::len(self : TimeseriesanomalyautoencoderFrame) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_frame_get(s : TimeseriesanomalyautoencoderFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderFrame::get(self : TimeseriesanomalyautoencoderFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_frame_set(s : TimeseriesanomalyautoencoderFrame, i : Int, v : Double) -> TimeseriesanomalyautoencoderFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderFrame::set(self : TimeseriesanomalyautoencoderFrame, i : Int, v : Double) -> TimeseriesanomalyautoencoderFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_frame_sum(s : TimeseriesanomalyautoencoderFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderFrame::sum(self : TimeseriesanomalyautoencoderFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_frame_mean(s : TimeseriesanomalyautoencoderFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderFrame::mean(self : TimeseriesanomalyautoencoderFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_frame_scale(s : TimeseriesanomalyautoencoderFrame, f : Double) -> TimeseriesanomalyautoencoderFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderFrame::scale(self : TimeseriesanomalyautoencoderFrame, f : Double) -> TimeseriesanomalyautoencoderFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_frame_add(a : TimeseriesanomalyautoencoderFrame, b : TimeseriesanomalyautoencoderFrame) -> TimeseriesanomalyautoencoderFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderFrame::add(self : TimeseriesanomalyautoencoderFrame, other : TimeseriesanomalyautoencoderFrame) -> TimeseriesanomalyautoencoderFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_frame_copy(s : TimeseriesanomalyautoencoderFrame) -> TimeseriesanomalyautoencoderFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderFrame::copy(self : TimeseriesanomalyautoencoderFrame) -> TimeseriesanomalyautoencoderFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_frame_fill(s : TimeseriesanomalyautoencoderFrame, v : Double) -> TimeseriesanomalyautoencoderFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderFrame::fill(self : TimeseriesanomalyautoencoderFrame, v : Double) -> TimeseriesanomalyautoencoderFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_frame_min(s : TimeseriesanomalyautoencoderFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderFrame::min(self : TimeseriesanomalyautoencoderFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_frame_max(s : TimeseriesanomalyautoencoderFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderFrame::max(self : TimeseriesanomalyautoencoderFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_frame_to_string(s : TimeseriesanomalyautoencoderFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderFrame::to_string(self : TimeseriesanomalyautoencoderFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderTable {
@@ -402,45 +402,45 @@ pub fn timeseries_anomaly_autoencoder_table_make(size : Int) -> Timeseriesanomal
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_table_len(s : TimeseriesanomalyautoencoderTable) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderTable::len(self : TimeseriesanomalyautoencoderTable) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_table_get(s : TimeseriesanomalyautoencoderTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderTable::get(self : TimeseriesanomalyautoencoderTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_table_set(s : TimeseriesanomalyautoencoderTable, i : Int, v : Double) -> TimeseriesanomalyautoencoderTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderTable::set(self : TimeseriesanomalyautoencoderTable, i : Int, v : Double) -> TimeseriesanomalyautoencoderTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_table_sum(s : TimeseriesanomalyautoencoderTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderTable::sum(self : TimeseriesanomalyautoencoderTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_table_mean(s : TimeseriesanomalyautoencoderTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderTable::mean(self : TimeseriesanomalyautoencoderTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_table_scale(s : TimeseriesanomalyautoencoderTable, f : Double) -> TimeseriesanomalyautoencoderTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderTable::scale(self : TimeseriesanomalyautoencoderTable, f : Double) -> TimeseriesanomalyautoencoderTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_table_add(a : TimeseriesanomalyautoencoderTable, b : TimeseriesanomalyautoencoderTable) -> TimeseriesanomalyautoencoderTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderTable::add(self : TimeseriesanomalyautoencoderTable, other : TimeseriesanomalyautoencoderTable) -> TimeseriesanomalyautoencoderTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_table_copy(s : TimeseriesanomalyautoencoderTable) -> TimeseriesanomalyautoencoderTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderTable::copy(self : TimeseriesanomalyautoencoderTable) -> TimeseriesanomalyautoencoderTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_table_fill(s : TimeseriesanomalyautoencoderTable, v : Double) -> TimeseriesanomalyautoencoderTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderTable::fill(self : TimeseriesanomalyautoencoderTable, v : Double) -> TimeseriesanomalyautoencoderTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_table_min(s : TimeseriesanomalyautoencoderTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderTable::min(self : TimeseriesanomalyautoencoderTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_table_max(s : TimeseriesanomalyautoencoderTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderTable::max(self : TimeseriesanomalyautoencoderTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_table_to_string(s : TimeseriesanomalyautoencoderTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderTable::to_string(self : TimeseriesanomalyautoencoderTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_anomaly_autoencoder_graphn_make(size : Int) -> Timeseriesanoma
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_graphn_len(s : TimeseriesanomalyautoencoderGraphN) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderGraphN::len(self : TimeseriesanomalyautoencoderGraphN) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_graphn_get(s : TimeseriesanomalyautoencoderGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderGraphN::get(self : TimeseriesanomalyautoencoderGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_graphn_set(s : TimeseriesanomalyautoencoderGraphN, i : Int, v : Double) -> TimeseriesanomalyautoencoderGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderGraphN::set(self : TimeseriesanomalyautoencoderGraphN, i : Int, v : Double) -> TimeseriesanomalyautoencoderGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_graphn_sum(s : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderGraphN::sum(self : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_graphn_mean(s : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderGraphN::mean(self : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_graphn_scale(s : TimeseriesanomalyautoencoderGraphN, f : Double) -> TimeseriesanomalyautoencoderGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderGraphN::scale(self : TimeseriesanomalyautoencoderGraphN, f : Double) -> TimeseriesanomalyautoencoderGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_graphn_add(a : TimeseriesanomalyautoencoderGraphN, b : TimeseriesanomalyautoencoderGraphN) -> TimeseriesanomalyautoencoderGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderGraphN::add(self : TimeseriesanomalyautoencoderGraphN, other : TimeseriesanomalyautoencoderGraphN) -> TimeseriesanomalyautoencoderGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_graphn_copy(s : TimeseriesanomalyautoencoderGraphN) -> TimeseriesanomalyautoencoderGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderGraphN::copy(self : TimeseriesanomalyautoencoderGraphN) -> TimeseriesanomalyautoencoderGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_graphn_fill(s : TimeseriesanomalyautoencoderGraphN, v : Double) -> TimeseriesanomalyautoencoderGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderGraphN::fill(self : TimeseriesanomalyautoencoderGraphN, v : Double) -> TimeseriesanomalyautoencoderGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_graphn_min(s : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderGraphN::min(self : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_graphn_max(s : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderGraphN::max(self : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_graphn_to_string(s : TimeseriesanomalyautoencoderGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderGraphN::to_string(self : TimeseriesanomalyautoencoderGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderNode {
@@ -504,45 +504,45 @@ pub fn timeseries_anomaly_autoencoder_node_make(size : Int) -> Timeseriesanomaly
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_node_len(s : TimeseriesanomalyautoencoderNode) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderNode::len(self : TimeseriesanomalyautoencoderNode) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_node_get(s : TimeseriesanomalyautoencoderNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderNode::get(self : TimeseriesanomalyautoencoderNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_node_set(s : TimeseriesanomalyautoencoderNode, i : Int, v : Double) -> TimeseriesanomalyautoencoderNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderNode::set(self : TimeseriesanomalyautoencoderNode, i : Int, v : Double) -> TimeseriesanomalyautoencoderNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_node_sum(s : TimeseriesanomalyautoencoderNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderNode::sum(self : TimeseriesanomalyautoencoderNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_node_mean(s : TimeseriesanomalyautoencoderNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderNode::mean(self : TimeseriesanomalyautoencoderNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_node_scale(s : TimeseriesanomalyautoencoderNode, f : Double) -> TimeseriesanomalyautoencoderNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderNode::scale(self : TimeseriesanomalyautoencoderNode, f : Double) -> TimeseriesanomalyautoencoderNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_node_add(a : TimeseriesanomalyautoencoderNode, b : TimeseriesanomalyautoencoderNode) -> TimeseriesanomalyautoencoderNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderNode::add(self : TimeseriesanomalyautoencoderNode, other : TimeseriesanomalyautoencoderNode) -> TimeseriesanomalyautoencoderNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_node_copy(s : TimeseriesanomalyautoencoderNode) -> TimeseriesanomalyautoencoderNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderNode::copy(self : TimeseriesanomalyautoencoderNode) -> TimeseriesanomalyautoencoderNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_node_fill(s : TimeseriesanomalyautoencoderNode, v : Double) -> TimeseriesanomalyautoencoderNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderNode::fill(self : TimeseriesanomalyautoencoderNode, v : Double) -> TimeseriesanomalyautoencoderNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_node_min(s : TimeseriesanomalyautoencoderNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderNode::min(self : TimeseriesanomalyautoencoderNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_node_max(s : TimeseriesanomalyautoencoderNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderNode::max(self : TimeseriesanomalyautoencoderNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_node_to_string(s : TimeseriesanomalyautoencoderNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderNode::to_string(self : TimeseriesanomalyautoencoderNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_anomaly_autoencoder_edge_make(size : Int) -> Timeseriesanomaly
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_edge_len(s : TimeseriesanomalyautoencoderEdge) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderEdge::len(self : TimeseriesanomalyautoencoderEdge) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_edge_get(s : TimeseriesanomalyautoencoderEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderEdge::get(self : TimeseriesanomalyautoencoderEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_edge_set(s : TimeseriesanomalyautoencoderEdge, i : Int, v : Double) -> TimeseriesanomalyautoencoderEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderEdge::set(self : TimeseriesanomalyautoencoderEdge, i : Int, v : Double) -> TimeseriesanomalyautoencoderEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_edge_sum(s : TimeseriesanomalyautoencoderEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderEdge::sum(self : TimeseriesanomalyautoencoderEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_edge_mean(s : TimeseriesanomalyautoencoderEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderEdge::mean(self : TimeseriesanomalyautoencoderEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_edge_scale(s : TimeseriesanomalyautoencoderEdge, f : Double) -> TimeseriesanomalyautoencoderEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderEdge::scale(self : TimeseriesanomalyautoencoderEdge, f : Double) -> TimeseriesanomalyautoencoderEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_edge_add(a : TimeseriesanomalyautoencoderEdge, b : TimeseriesanomalyautoencoderEdge) -> TimeseriesanomalyautoencoderEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderEdge::add(self : TimeseriesanomalyautoencoderEdge, other : TimeseriesanomalyautoencoderEdge) -> TimeseriesanomalyautoencoderEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_edge_copy(s : TimeseriesanomalyautoencoderEdge) -> TimeseriesanomalyautoencoderEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderEdge::copy(self : TimeseriesanomalyautoencoderEdge) -> TimeseriesanomalyautoencoderEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_edge_fill(s : TimeseriesanomalyautoencoderEdge, v : Double) -> TimeseriesanomalyautoencoderEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderEdge::fill(self : TimeseriesanomalyautoencoderEdge, v : Double) -> TimeseriesanomalyautoencoderEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_edge_min(s : TimeseriesanomalyautoencoderEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderEdge::min(self : TimeseriesanomalyautoencoderEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_edge_max(s : TimeseriesanomalyautoencoderEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderEdge::max(self : TimeseriesanomalyautoencoderEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_edge_to_string(s : TimeseriesanomalyautoencoderEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderEdge::to_string(self : TimeseriesanomalyautoencoderEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderPath {
@@ -606,45 +606,45 @@ pub fn timeseries_anomaly_autoencoder_path_make(size : Int) -> Timeseriesanomaly
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_path_len(s : TimeseriesanomalyautoencoderPath) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderPath::len(self : TimeseriesanomalyautoencoderPath) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_path_get(s : TimeseriesanomalyautoencoderPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderPath::get(self : TimeseriesanomalyautoencoderPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_path_set(s : TimeseriesanomalyautoencoderPath, i : Int, v : Double) -> TimeseriesanomalyautoencoderPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderPath::set(self : TimeseriesanomalyautoencoderPath, i : Int, v : Double) -> TimeseriesanomalyautoencoderPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_path_sum(s : TimeseriesanomalyautoencoderPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderPath::sum(self : TimeseriesanomalyautoencoderPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_path_mean(s : TimeseriesanomalyautoencoderPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderPath::mean(self : TimeseriesanomalyautoencoderPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_path_scale(s : TimeseriesanomalyautoencoderPath, f : Double) -> TimeseriesanomalyautoencoderPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderPath::scale(self : TimeseriesanomalyautoencoderPath, f : Double) -> TimeseriesanomalyautoencoderPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_path_add(a : TimeseriesanomalyautoencoderPath, b : TimeseriesanomalyautoencoderPath) -> TimeseriesanomalyautoencoderPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderPath::add(self : TimeseriesanomalyautoencoderPath, other : TimeseriesanomalyautoencoderPath) -> TimeseriesanomalyautoencoderPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_path_copy(s : TimeseriesanomalyautoencoderPath) -> TimeseriesanomalyautoencoderPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderPath::copy(self : TimeseriesanomalyautoencoderPath) -> TimeseriesanomalyautoencoderPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_path_fill(s : TimeseriesanomalyautoencoderPath, v : Double) -> TimeseriesanomalyautoencoderPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderPath::fill(self : TimeseriesanomalyautoencoderPath, v : Double) -> TimeseriesanomalyautoencoderPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_path_min(s : TimeseriesanomalyautoencoderPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderPath::min(self : TimeseriesanomalyautoencoderPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_path_max(s : TimeseriesanomalyautoencoderPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderPath::max(self : TimeseriesanomalyautoencoderPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_path_to_string(s : TimeseriesanomalyautoencoderPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderPath::to_string(self : TimeseriesanomalyautoencoderPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_anomaly_autoencoder_cluster_make(size : Int) -> Timeseriesanom
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_cluster_len(s : TimeseriesanomalyautoencoderCluster) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderCluster::len(self : TimeseriesanomalyautoencoderCluster) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_cluster_get(s : TimeseriesanomalyautoencoderCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderCluster::get(self : TimeseriesanomalyautoencoderCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_cluster_set(s : TimeseriesanomalyautoencoderCluster, i : Int, v : Double) -> TimeseriesanomalyautoencoderCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderCluster::set(self : TimeseriesanomalyautoencoderCluster, i : Int, v : Double) -> TimeseriesanomalyautoencoderCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_cluster_sum(s : TimeseriesanomalyautoencoderCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderCluster::sum(self : TimeseriesanomalyautoencoderCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_cluster_mean(s : TimeseriesanomalyautoencoderCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderCluster::mean(self : TimeseriesanomalyautoencoderCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_cluster_scale(s : TimeseriesanomalyautoencoderCluster, f : Double) -> TimeseriesanomalyautoencoderCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderCluster::scale(self : TimeseriesanomalyautoencoderCluster, f : Double) -> TimeseriesanomalyautoencoderCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_cluster_add(a : TimeseriesanomalyautoencoderCluster, b : TimeseriesanomalyautoencoderCluster) -> TimeseriesanomalyautoencoderCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderCluster::add(self : TimeseriesanomalyautoencoderCluster, other : TimeseriesanomalyautoencoderCluster) -> TimeseriesanomalyautoencoderCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_cluster_copy(s : TimeseriesanomalyautoencoderCluster) -> TimeseriesanomalyautoencoderCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderCluster::copy(self : TimeseriesanomalyautoencoderCluster) -> TimeseriesanomalyautoencoderCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_cluster_fill(s : TimeseriesanomalyautoencoderCluster, v : Double) -> TimeseriesanomalyautoencoderCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderCluster::fill(self : TimeseriesanomalyautoencoderCluster, v : Double) -> TimeseriesanomalyautoencoderCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_cluster_min(s : TimeseriesanomalyautoencoderCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderCluster::min(self : TimeseriesanomalyautoencoderCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_cluster_max(s : TimeseriesanomalyautoencoderCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderCluster::max(self : TimeseriesanomalyautoencoderCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_cluster_to_string(s : TimeseriesanomalyautoencoderCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderCluster::to_string(self : TimeseriesanomalyautoencoderCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderModel {
@@ -708,45 +708,45 @@ pub fn timeseries_anomaly_autoencoder_model_make(size : Int) -> Timeseriesanomal
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_model_len(s : TimeseriesanomalyautoencoderModel) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderModel::len(self : TimeseriesanomalyautoencoderModel) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_model_get(s : TimeseriesanomalyautoencoderModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderModel::get(self : TimeseriesanomalyautoencoderModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_model_set(s : TimeseriesanomalyautoencoderModel, i : Int, v : Double) -> TimeseriesanomalyautoencoderModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderModel::set(self : TimeseriesanomalyautoencoderModel, i : Int, v : Double) -> TimeseriesanomalyautoencoderModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_model_sum(s : TimeseriesanomalyautoencoderModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderModel::sum(self : TimeseriesanomalyautoencoderModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_model_mean(s : TimeseriesanomalyautoencoderModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderModel::mean(self : TimeseriesanomalyautoencoderModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_model_scale(s : TimeseriesanomalyautoencoderModel, f : Double) -> TimeseriesanomalyautoencoderModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderModel::scale(self : TimeseriesanomalyautoencoderModel, f : Double) -> TimeseriesanomalyautoencoderModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_model_add(a : TimeseriesanomalyautoencoderModel, b : TimeseriesanomalyautoencoderModel) -> TimeseriesanomalyautoencoderModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderModel::add(self : TimeseriesanomalyautoencoderModel, other : TimeseriesanomalyautoencoderModel) -> TimeseriesanomalyautoencoderModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_model_copy(s : TimeseriesanomalyautoencoderModel) -> TimeseriesanomalyautoencoderModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderModel::copy(self : TimeseriesanomalyautoencoderModel) -> TimeseriesanomalyautoencoderModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_model_fill(s : TimeseriesanomalyautoencoderModel, v : Double) -> TimeseriesanomalyautoencoderModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderModel::fill(self : TimeseriesanomalyautoencoderModel, v : Double) -> TimeseriesanomalyautoencoderModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_model_min(s : TimeseriesanomalyautoencoderModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderModel::min(self : TimeseriesanomalyautoencoderModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_model_max(s : TimeseriesanomalyautoencoderModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderModel::max(self : TimeseriesanomalyautoencoderModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_model_to_string(s : TimeseriesanomalyautoencoderModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderModel::to_string(self : TimeseriesanomalyautoencoderModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_anomaly_autoencoder_layer_make(size : Int) -> Timeseriesanomal
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_layer_len(s : TimeseriesanomalyautoencoderLayer) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderLayer::len(self : TimeseriesanomalyautoencoderLayer) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_layer_get(s : TimeseriesanomalyautoencoderLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderLayer::get(self : TimeseriesanomalyautoencoderLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_layer_set(s : TimeseriesanomalyautoencoderLayer, i : Int, v : Double) -> TimeseriesanomalyautoencoderLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderLayer::set(self : TimeseriesanomalyautoencoderLayer, i : Int, v : Double) -> TimeseriesanomalyautoencoderLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_layer_sum(s : TimeseriesanomalyautoencoderLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderLayer::sum(self : TimeseriesanomalyautoencoderLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_layer_mean(s : TimeseriesanomalyautoencoderLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderLayer::mean(self : TimeseriesanomalyautoencoderLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_layer_scale(s : TimeseriesanomalyautoencoderLayer, f : Double) -> TimeseriesanomalyautoencoderLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderLayer::scale(self : TimeseriesanomalyautoencoderLayer, f : Double) -> TimeseriesanomalyautoencoderLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_layer_add(a : TimeseriesanomalyautoencoderLayer, b : TimeseriesanomalyautoencoderLayer) -> TimeseriesanomalyautoencoderLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderLayer::add(self : TimeseriesanomalyautoencoderLayer, other : TimeseriesanomalyautoencoderLayer) -> TimeseriesanomalyautoencoderLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_layer_copy(s : TimeseriesanomalyautoencoderLayer) -> TimeseriesanomalyautoencoderLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderLayer::copy(self : TimeseriesanomalyautoencoderLayer) -> TimeseriesanomalyautoencoderLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_layer_fill(s : TimeseriesanomalyautoencoderLayer, v : Double) -> TimeseriesanomalyautoencoderLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderLayer::fill(self : TimeseriesanomalyautoencoderLayer, v : Double) -> TimeseriesanomalyautoencoderLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_layer_min(s : TimeseriesanomalyautoencoderLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderLayer::min(self : TimeseriesanomalyautoencoderLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_layer_max(s : TimeseriesanomalyautoencoderLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderLayer::max(self : TimeseriesanomalyautoencoderLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_layer_to_string(s : TimeseriesanomalyautoencoderLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderLayer::to_string(self : TimeseriesanomalyautoencoderLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_anomaly_autoencoder_buffer_make(size : Int) -> Timeseriesanoma
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_buffer_len(s : TimeseriesanomalyautoencoderBuffer) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderBuffer::len(self : TimeseriesanomalyautoencoderBuffer) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_buffer_get(s : TimeseriesanomalyautoencoderBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderBuffer::get(self : TimeseriesanomalyautoencoderBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_buffer_set(s : TimeseriesanomalyautoencoderBuffer, i : Int, v : Double) -> TimeseriesanomalyautoencoderBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderBuffer::set(self : TimeseriesanomalyautoencoderBuffer, i : Int, v : Double) -> TimeseriesanomalyautoencoderBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_buffer_sum(s : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderBuffer::sum(self : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_buffer_mean(s : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderBuffer::mean(self : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_buffer_scale(s : TimeseriesanomalyautoencoderBuffer, f : Double) -> TimeseriesanomalyautoencoderBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderBuffer::scale(self : TimeseriesanomalyautoencoderBuffer, f : Double) -> TimeseriesanomalyautoencoderBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_buffer_add(a : TimeseriesanomalyautoencoderBuffer, b : TimeseriesanomalyautoencoderBuffer) -> TimeseriesanomalyautoencoderBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderBuffer::add(self : TimeseriesanomalyautoencoderBuffer, other : TimeseriesanomalyautoencoderBuffer) -> TimeseriesanomalyautoencoderBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_buffer_copy(s : TimeseriesanomalyautoencoderBuffer) -> TimeseriesanomalyautoencoderBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderBuffer::copy(self : TimeseriesanomalyautoencoderBuffer) -> TimeseriesanomalyautoencoderBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_buffer_fill(s : TimeseriesanomalyautoencoderBuffer, v : Double) -> TimeseriesanomalyautoencoderBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderBuffer::fill(self : TimeseriesanomalyautoencoderBuffer, v : Double) -> TimeseriesanomalyautoencoderBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_buffer_min(s : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderBuffer::min(self : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_buffer_max(s : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderBuffer::max(self : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_buffer_to_string(s : TimeseriesanomalyautoencoderBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderBuffer::to_string(self : TimeseriesanomalyautoencoderBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_anomaly_autoencoder_cursor_make(size : Int) -> Timeseriesanoma
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_cursor_len(s : TimeseriesanomalyautoencoderCursor) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderCursor::len(self : TimeseriesanomalyautoencoderCursor) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_cursor_get(s : TimeseriesanomalyautoencoderCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderCursor::get(self : TimeseriesanomalyautoencoderCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_cursor_set(s : TimeseriesanomalyautoencoderCursor, i : Int, v : Double) -> TimeseriesanomalyautoencoderCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderCursor::set(self : TimeseriesanomalyautoencoderCursor, i : Int, v : Double) -> TimeseriesanomalyautoencoderCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_cursor_sum(s : TimeseriesanomalyautoencoderCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderCursor::sum(self : TimeseriesanomalyautoencoderCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_cursor_mean(s : TimeseriesanomalyautoencoderCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderCursor::mean(self : TimeseriesanomalyautoencoderCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_cursor_scale(s : TimeseriesanomalyautoencoderCursor, f : Double) -> TimeseriesanomalyautoencoderCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderCursor::scale(self : TimeseriesanomalyautoencoderCursor, f : Double) -> TimeseriesanomalyautoencoderCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_cursor_add(a : TimeseriesanomalyautoencoderCursor, b : TimeseriesanomalyautoencoderCursor) -> TimeseriesanomalyautoencoderCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderCursor::add(self : TimeseriesanomalyautoencoderCursor, other : TimeseriesanomalyautoencoderCursor) -> TimeseriesanomalyautoencoderCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_cursor_copy(s : TimeseriesanomalyautoencoderCursor) -> TimeseriesanomalyautoencoderCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderCursor::copy(self : TimeseriesanomalyautoencoderCursor) -> TimeseriesanomalyautoencoderCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_cursor_fill(s : TimeseriesanomalyautoencoderCursor, v : Double) -> TimeseriesanomalyautoencoderCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderCursor::fill(self : TimeseriesanomalyautoencoderCursor, v : Double) -> TimeseriesanomalyautoencoderCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_cursor_min(s : TimeseriesanomalyautoencoderCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderCursor::min(self : TimeseriesanomalyautoencoderCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_cursor_max(s : TimeseriesanomalyautoencoderCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderCursor::max(self : TimeseriesanomalyautoencoderCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_cursor_to_string(s : TimeseriesanomalyautoencoderCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderCursor::to_string(self : TimeseriesanomalyautoencoderCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderView {
@@ -912,45 +912,45 @@ pub fn timeseries_anomaly_autoencoder_view_make(size : Int) -> Timeseriesanomaly
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_view_len(s : TimeseriesanomalyautoencoderView) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderView::len(self : TimeseriesanomalyautoencoderView) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_view_get(s : TimeseriesanomalyautoencoderView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderView::get(self : TimeseriesanomalyautoencoderView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_view_set(s : TimeseriesanomalyautoencoderView, i : Int, v : Double) -> TimeseriesanomalyautoencoderView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderView::set(self : TimeseriesanomalyautoencoderView, i : Int, v : Double) -> TimeseriesanomalyautoencoderView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_view_sum(s : TimeseriesanomalyautoencoderView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderView::sum(self : TimeseriesanomalyautoencoderView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_view_mean(s : TimeseriesanomalyautoencoderView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderView::mean(self : TimeseriesanomalyautoencoderView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_view_scale(s : TimeseriesanomalyautoencoderView, f : Double) -> TimeseriesanomalyautoencoderView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderView::scale(self : TimeseriesanomalyautoencoderView, f : Double) -> TimeseriesanomalyautoencoderView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_view_add(a : TimeseriesanomalyautoencoderView, b : TimeseriesanomalyautoencoderView) -> TimeseriesanomalyautoencoderView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderView::add(self : TimeseriesanomalyautoencoderView, other : TimeseriesanomalyautoencoderView) -> TimeseriesanomalyautoencoderView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_view_copy(s : TimeseriesanomalyautoencoderView) -> TimeseriesanomalyautoencoderView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderView::copy(self : TimeseriesanomalyautoencoderView) -> TimeseriesanomalyautoencoderView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_view_fill(s : TimeseriesanomalyautoencoderView, v : Double) -> TimeseriesanomalyautoencoderView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderView::fill(self : TimeseriesanomalyautoencoderView, v : Double) -> TimeseriesanomalyautoencoderView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_view_min(s : TimeseriesanomalyautoencoderView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderView::min(self : TimeseriesanomalyautoencoderView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_view_max(s : TimeseriesanomalyautoencoderView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderView::max(self : TimeseriesanomalyautoencoderView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_view_to_string(s : TimeseriesanomalyautoencoderView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderView::to_string(self : TimeseriesanomalyautoencoderView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderRange {
@@ -963,45 +963,45 @@ pub fn timeseries_anomaly_autoencoder_range_make(size : Int) -> Timeseriesanomal
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_range_len(s : TimeseriesanomalyautoencoderRange) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderRange::len(self : TimeseriesanomalyautoencoderRange) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_range_get(s : TimeseriesanomalyautoencoderRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderRange::get(self : TimeseriesanomalyautoencoderRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_range_set(s : TimeseriesanomalyautoencoderRange, i : Int, v : Double) -> TimeseriesanomalyautoencoderRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderRange::set(self : TimeseriesanomalyautoencoderRange, i : Int, v : Double) -> TimeseriesanomalyautoencoderRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_range_sum(s : TimeseriesanomalyautoencoderRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderRange::sum(self : TimeseriesanomalyautoencoderRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_range_mean(s : TimeseriesanomalyautoencoderRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderRange::mean(self : TimeseriesanomalyautoencoderRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_range_scale(s : TimeseriesanomalyautoencoderRange, f : Double) -> TimeseriesanomalyautoencoderRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderRange::scale(self : TimeseriesanomalyautoencoderRange, f : Double) -> TimeseriesanomalyautoencoderRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_range_add(a : TimeseriesanomalyautoencoderRange, b : TimeseriesanomalyautoencoderRange) -> TimeseriesanomalyautoencoderRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderRange::add(self : TimeseriesanomalyautoencoderRange, other : TimeseriesanomalyautoencoderRange) -> TimeseriesanomalyautoencoderRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_range_copy(s : TimeseriesanomalyautoencoderRange) -> TimeseriesanomalyautoencoderRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderRange::copy(self : TimeseriesanomalyautoencoderRange) -> TimeseriesanomalyautoencoderRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_range_fill(s : TimeseriesanomalyautoencoderRange, v : Double) -> TimeseriesanomalyautoencoderRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderRange::fill(self : TimeseriesanomalyautoencoderRange, v : Double) -> TimeseriesanomalyautoencoderRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_range_min(s : TimeseriesanomalyautoencoderRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderRange::min(self : TimeseriesanomalyautoencoderRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_range_max(s : TimeseriesanomalyautoencoderRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderRange::max(self : TimeseriesanomalyautoencoderRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_range_to_string(s : TimeseriesanomalyautoencoderRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderRange::to_string(self : TimeseriesanomalyautoencoderRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyautoencoderSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_anomaly_autoencoder_slice_make(size : Int) -> Timeseriesanomal
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_autoencoder_slice_len(s : TimeseriesanomalyautoencoderSlice) -> Int { s.size }
+pub fn TimeseriesanomalyautoencoderSlice::len(self : TimeseriesanomalyautoencoderSlice) -> Int { self.size }
 
-pub fn timeseries_anomaly_autoencoder_slice_get(s : TimeseriesanomalyautoencoderSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyautoencoderSlice::get(self : TimeseriesanomalyautoencoderSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_autoencoder_slice_set(s : TimeseriesanomalyautoencoderSlice, i : Int, v : Double) -> TimeseriesanomalyautoencoderSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderSlice::set(self : TimeseriesanomalyautoencoderSlice, i : Int, v : Double) -> TimeseriesanomalyautoencoderSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_slice_sum(s : TimeseriesanomalyautoencoderSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyautoencoderSlice::sum(self : TimeseriesanomalyautoencoderSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_slice_mean(s : TimeseriesanomalyautoencoderSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyautoencoderSlice::mean(self : TimeseriesanomalyautoencoderSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_slice_scale(s : TimeseriesanomalyautoencoderSlice, f : Double) -> TimeseriesanomalyautoencoderSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderSlice::scale(self : TimeseriesanomalyautoencoderSlice, f : Double) -> TimeseriesanomalyautoencoderSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_slice_add(a : TimeseriesanomalyautoencoderSlice, b : TimeseriesanomalyautoencoderSlice) -> TimeseriesanomalyautoencoderSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyautoencoderSlice::add(self : TimeseriesanomalyautoencoderSlice, other : TimeseriesanomalyautoencoderSlice) -> TimeseriesanomalyautoencoderSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_slice_copy(s : TimeseriesanomalyautoencoderSlice) -> TimeseriesanomalyautoencoderSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderSlice::copy(self : TimeseriesanomalyautoencoderSlice) -> TimeseriesanomalyautoencoderSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_slice_fill(s : TimeseriesanomalyautoencoderSlice, v : Double) -> TimeseriesanomalyautoencoderSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyautoencoderSlice::fill(self : TimeseriesanomalyautoencoderSlice, v : Double) -> TimeseriesanomalyautoencoderSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_autoencoder_slice_min(s : TimeseriesanomalyautoencoderSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyautoencoderSlice::min(self : TimeseriesanomalyautoencoderSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_slice_max(s : TimeseriesanomalyautoencoderSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyautoencoderSlice::max(self : TimeseriesanomalyautoencoderSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_autoencoder_slice_to_string(s : TimeseriesanomalyautoencoderSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyautoencoderSlice::to_string(self : TimeseriesanomalyautoencoderSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

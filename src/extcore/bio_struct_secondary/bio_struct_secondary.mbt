@@ -351,45 +351,45 @@ pub fn bio_struct_secondary_frame_make(size : Int) -> BiostructsecondaryFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_frame_len(s : BiostructsecondaryFrame) -> Int { s.size }
+pub fn BiostructsecondaryFrame::len(self : BiostructsecondaryFrame) -> Int { self.size }
 
-pub fn bio_struct_secondary_frame_get(s : BiostructsecondaryFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryFrame::get(self : BiostructsecondaryFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_frame_set(s : BiostructsecondaryFrame, i : Int, v : Double) -> BiostructsecondaryFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryFrame::set(self : BiostructsecondaryFrame, i : Int, v : Double) -> BiostructsecondaryFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_frame_sum(s : BiostructsecondaryFrame) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryFrame::sum(self : BiostructsecondaryFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_frame_mean(s : BiostructsecondaryFrame) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryFrame::mean(self : BiostructsecondaryFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_frame_scale(s : BiostructsecondaryFrame, f : Double) -> BiostructsecondaryFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryFrame::scale(self : BiostructsecondaryFrame, f : Double) -> BiostructsecondaryFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_frame_add(a : BiostructsecondaryFrame, b : BiostructsecondaryFrame) -> BiostructsecondaryFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryFrame::add(self : BiostructsecondaryFrame, other : BiostructsecondaryFrame) -> BiostructsecondaryFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_frame_copy(s : BiostructsecondaryFrame) -> BiostructsecondaryFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryFrame::copy(self : BiostructsecondaryFrame) -> BiostructsecondaryFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_frame_fill(s : BiostructsecondaryFrame, v : Double) -> BiostructsecondaryFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryFrame::fill(self : BiostructsecondaryFrame, v : Double) -> BiostructsecondaryFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_frame_min(s : BiostructsecondaryFrame) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryFrame::min(self : BiostructsecondaryFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_frame_max(s : BiostructsecondaryFrame) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryFrame::max(self : BiostructsecondaryFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_frame_to_string(s : BiostructsecondaryFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryFrame::to_string(self : BiostructsecondaryFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondaryTable {
@@ -402,45 +402,45 @@ pub fn bio_struct_secondary_table_make(size : Int) -> BiostructsecondaryTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_table_len(s : BiostructsecondaryTable) -> Int { s.size }
+pub fn BiostructsecondaryTable::len(self : BiostructsecondaryTable) -> Int { self.size }
 
-pub fn bio_struct_secondary_table_get(s : BiostructsecondaryTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryTable::get(self : BiostructsecondaryTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_table_set(s : BiostructsecondaryTable, i : Int, v : Double) -> BiostructsecondaryTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryTable::set(self : BiostructsecondaryTable, i : Int, v : Double) -> BiostructsecondaryTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_table_sum(s : BiostructsecondaryTable) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryTable::sum(self : BiostructsecondaryTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_table_mean(s : BiostructsecondaryTable) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryTable::mean(self : BiostructsecondaryTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_table_scale(s : BiostructsecondaryTable, f : Double) -> BiostructsecondaryTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryTable::scale(self : BiostructsecondaryTable, f : Double) -> BiostructsecondaryTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_table_add(a : BiostructsecondaryTable, b : BiostructsecondaryTable) -> BiostructsecondaryTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryTable::add(self : BiostructsecondaryTable, other : BiostructsecondaryTable) -> BiostructsecondaryTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_table_copy(s : BiostructsecondaryTable) -> BiostructsecondaryTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryTable::copy(self : BiostructsecondaryTable) -> BiostructsecondaryTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_table_fill(s : BiostructsecondaryTable, v : Double) -> BiostructsecondaryTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryTable::fill(self : BiostructsecondaryTable, v : Double) -> BiostructsecondaryTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_table_min(s : BiostructsecondaryTable) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryTable::min(self : BiostructsecondaryTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_table_max(s : BiostructsecondaryTable) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryTable::max(self : BiostructsecondaryTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_table_to_string(s : BiostructsecondaryTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryTable::to_string(self : BiostructsecondaryTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondaryGraphN {
@@ -453,45 +453,45 @@ pub fn bio_struct_secondary_graphn_make(size : Int) -> BiostructsecondaryGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_graphn_len(s : BiostructsecondaryGraphN) -> Int { s.size }
+pub fn BiostructsecondaryGraphN::len(self : BiostructsecondaryGraphN) -> Int { self.size }
 
-pub fn bio_struct_secondary_graphn_get(s : BiostructsecondaryGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryGraphN::get(self : BiostructsecondaryGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_graphn_set(s : BiostructsecondaryGraphN, i : Int, v : Double) -> BiostructsecondaryGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryGraphN::set(self : BiostructsecondaryGraphN, i : Int, v : Double) -> BiostructsecondaryGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_graphn_sum(s : BiostructsecondaryGraphN) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryGraphN::sum(self : BiostructsecondaryGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_graphn_mean(s : BiostructsecondaryGraphN) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryGraphN::mean(self : BiostructsecondaryGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_graphn_scale(s : BiostructsecondaryGraphN, f : Double) -> BiostructsecondaryGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryGraphN::scale(self : BiostructsecondaryGraphN, f : Double) -> BiostructsecondaryGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_graphn_add(a : BiostructsecondaryGraphN, b : BiostructsecondaryGraphN) -> BiostructsecondaryGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryGraphN::add(self : BiostructsecondaryGraphN, other : BiostructsecondaryGraphN) -> BiostructsecondaryGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_graphn_copy(s : BiostructsecondaryGraphN) -> BiostructsecondaryGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryGraphN::copy(self : BiostructsecondaryGraphN) -> BiostructsecondaryGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_graphn_fill(s : BiostructsecondaryGraphN, v : Double) -> BiostructsecondaryGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryGraphN::fill(self : BiostructsecondaryGraphN, v : Double) -> BiostructsecondaryGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_graphn_min(s : BiostructsecondaryGraphN) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryGraphN::min(self : BiostructsecondaryGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_graphn_max(s : BiostructsecondaryGraphN) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryGraphN::max(self : BiostructsecondaryGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_graphn_to_string(s : BiostructsecondaryGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryGraphN::to_string(self : BiostructsecondaryGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondaryNode {
@@ -504,45 +504,45 @@ pub fn bio_struct_secondary_node_make(size : Int) -> BiostructsecondaryNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_node_len(s : BiostructsecondaryNode) -> Int { s.size }
+pub fn BiostructsecondaryNode::len(self : BiostructsecondaryNode) -> Int { self.size }
 
-pub fn bio_struct_secondary_node_get(s : BiostructsecondaryNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryNode::get(self : BiostructsecondaryNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_node_set(s : BiostructsecondaryNode, i : Int, v : Double) -> BiostructsecondaryNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryNode::set(self : BiostructsecondaryNode, i : Int, v : Double) -> BiostructsecondaryNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_node_sum(s : BiostructsecondaryNode) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryNode::sum(self : BiostructsecondaryNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_node_mean(s : BiostructsecondaryNode) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryNode::mean(self : BiostructsecondaryNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_node_scale(s : BiostructsecondaryNode, f : Double) -> BiostructsecondaryNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryNode::scale(self : BiostructsecondaryNode, f : Double) -> BiostructsecondaryNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_node_add(a : BiostructsecondaryNode, b : BiostructsecondaryNode) -> BiostructsecondaryNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryNode::add(self : BiostructsecondaryNode, other : BiostructsecondaryNode) -> BiostructsecondaryNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_node_copy(s : BiostructsecondaryNode) -> BiostructsecondaryNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryNode::copy(self : BiostructsecondaryNode) -> BiostructsecondaryNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_node_fill(s : BiostructsecondaryNode, v : Double) -> BiostructsecondaryNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryNode::fill(self : BiostructsecondaryNode, v : Double) -> BiostructsecondaryNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_node_min(s : BiostructsecondaryNode) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryNode::min(self : BiostructsecondaryNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_node_max(s : BiostructsecondaryNode) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryNode::max(self : BiostructsecondaryNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_node_to_string(s : BiostructsecondaryNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryNode::to_string(self : BiostructsecondaryNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondaryEdge {
@@ -555,45 +555,45 @@ pub fn bio_struct_secondary_edge_make(size : Int) -> BiostructsecondaryEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_edge_len(s : BiostructsecondaryEdge) -> Int { s.size }
+pub fn BiostructsecondaryEdge::len(self : BiostructsecondaryEdge) -> Int { self.size }
 
-pub fn bio_struct_secondary_edge_get(s : BiostructsecondaryEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryEdge::get(self : BiostructsecondaryEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_edge_set(s : BiostructsecondaryEdge, i : Int, v : Double) -> BiostructsecondaryEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryEdge::set(self : BiostructsecondaryEdge, i : Int, v : Double) -> BiostructsecondaryEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_edge_sum(s : BiostructsecondaryEdge) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryEdge::sum(self : BiostructsecondaryEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_edge_mean(s : BiostructsecondaryEdge) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryEdge::mean(self : BiostructsecondaryEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_edge_scale(s : BiostructsecondaryEdge, f : Double) -> BiostructsecondaryEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryEdge::scale(self : BiostructsecondaryEdge, f : Double) -> BiostructsecondaryEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_edge_add(a : BiostructsecondaryEdge, b : BiostructsecondaryEdge) -> BiostructsecondaryEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryEdge::add(self : BiostructsecondaryEdge, other : BiostructsecondaryEdge) -> BiostructsecondaryEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_edge_copy(s : BiostructsecondaryEdge) -> BiostructsecondaryEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryEdge::copy(self : BiostructsecondaryEdge) -> BiostructsecondaryEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_edge_fill(s : BiostructsecondaryEdge, v : Double) -> BiostructsecondaryEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryEdge::fill(self : BiostructsecondaryEdge, v : Double) -> BiostructsecondaryEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_edge_min(s : BiostructsecondaryEdge) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryEdge::min(self : BiostructsecondaryEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_edge_max(s : BiostructsecondaryEdge) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryEdge::max(self : BiostructsecondaryEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_edge_to_string(s : BiostructsecondaryEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryEdge::to_string(self : BiostructsecondaryEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondaryPath {
@@ -606,45 +606,45 @@ pub fn bio_struct_secondary_path_make(size : Int) -> BiostructsecondaryPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_path_len(s : BiostructsecondaryPath) -> Int { s.size }
+pub fn BiostructsecondaryPath::len(self : BiostructsecondaryPath) -> Int { self.size }
 
-pub fn bio_struct_secondary_path_get(s : BiostructsecondaryPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryPath::get(self : BiostructsecondaryPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_path_set(s : BiostructsecondaryPath, i : Int, v : Double) -> BiostructsecondaryPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryPath::set(self : BiostructsecondaryPath, i : Int, v : Double) -> BiostructsecondaryPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_path_sum(s : BiostructsecondaryPath) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryPath::sum(self : BiostructsecondaryPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_path_mean(s : BiostructsecondaryPath) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryPath::mean(self : BiostructsecondaryPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_path_scale(s : BiostructsecondaryPath, f : Double) -> BiostructsecondaryPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryPath::scale(self : BiostructsecondaryPath, f : Double) -> BiostructsecondaryPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_path_add(a : BiostructsecondaryPath, b : BiostructsecondaryPath) -> BiostructsecondaryPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryPath::add(self : BiostructsecondaryPath, other : BiostructsecondaryPath) -> BiostructsecondaryPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_path_copy(s : BiostructsecondaryPath) -> BiostructsecondaryPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryPath::copy(self : BiostructsecondaryPath) -> BiostructsecondaryPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_path_fill(s : BiostructsecondaryPath, v : Double) -> BiostructsecondaryPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryPath::fill(self : BiostructsecondaryPath, v : Double) -> BiostructsecondaryPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_path_min(s : BiostructsecondaryPath) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryPath::min(self : BiostructsecondaryPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_path_max(s : BiostructsecondaryPath) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryPath::max(self : BiostructsecondaryPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_path_to_string(s : BiostructsecondaryPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryPath::to_string(self : BiostructsecondaryPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondaryCluster {
@@ -657,45 +657,45 @@ pub fn bio_struct_secondary_cluster_make(size : Int) -> BiostructsecondaryCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_cluster_len(s : BiostructsecondaryCluster) -> Int { s.size }
+pub fn BiostructsecondaryCluster::len(self : BiostructsecondaryCluster) -> Int { self.size }
 
-pub fn bio_struct_secondary_cluster_get(s : BiostructsecondaryCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryCluster::get(self : BiostructsecondaryCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_cluster_set(s : BiostructsecondaryCluster, i : Int, v : Double) -> BiostructsecondaryCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryCluster::set(self : BiostructsecondaryCluster, i : Int, v : Double) -> BiostructsecondaryCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_cluster_sum(s : BiostructsecondaryCluster) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryCluster::sum(self : BiostructsecondaryCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_cluster_mean(s : BiostructsecondaryCluster) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryCluster::mean(self : BiostructsecondaryCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_cluster_scale(s : BiostructsecondaryCluster, f : Double) -> BiostructsecondaryCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryCluster::scale(self : BiostructsecondaryCluster, f : Double) -> BiostructsecondaryCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_cluster_add(a : BiostructsecondaryCluster, b : BiostructsecondaryCluster) -> BiostructsecondaryCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryCluster::add(self : BiostructsecondaryCluster, other : BiostructsecondaryCluster) -> BiostructsecondaryCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_cluster_copy(s : BiostructsecondaryCluster) -> BiostructsecondaryCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryCluster::copy(self : BiostructsecondaryCluster) -> BiostructsecondaryCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_cluster_fill(s : BiostructsecondaryCluster, v : Double) -> BiostructsecondaryCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryCluster::fill(self : BiostructsecondaryCluster, v : Double) -> BiostructsecondaryCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_cluster_min(s : BiostructsecondaryCluster) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryCluster::min(self : BiostructsecondaryCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_cluster_max(s : BiostructsecondaryCluster) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryCluster::max(self : BiostructsecondaryCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_cluster_to_string(s : BiostructsecondaryCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryCluster::to_string(self : BiostructsecondaryCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondaryModel {
@@ -708,45 +708,45 @@ pub fn bio_struct_secondary_model_make(size : Int) -> BiostructsecondaryModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_model_len(s : BiostructsecondaryModel) -> Int { s.size }
+pub fn BiostructsecondaryModel::len(self : BiostructsecondaryModel) -> Int { self.size }
 
-pub fn bio_struct_secondary_model_get(s : BiostructsecondaryModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryModel::get(self : BiostructsecondaryModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_model_set(s : BiostructsecondaryModel, i : Int, v : Double) -> BiostructsecondaryModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryModel::set(self : BiostructsecondaryModel, i : Int, v : Double) -> BiostructsecondaryModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_model_sum(s : BiostructsecondaryModel) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryModel::sum(self : BiostructsecondaryModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_model_mean(s : BiostructsecondaryModel) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryModel::mean(self : BiostructsecondaryModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_model_scale(s : BiostructsecondaryModel, f : Double) -> BiostructsecondaryModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryModel::scale(self : BiostructsecondaryModel, f : Double) -> BiostructsecondaryModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_model_add(a : BiostructsecondaryModel, b : BiostructsecondaryModel) -> BiostructsecondaryModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryModel::add(self : BiostructsecondaryModel, other : BiostructsecondaryModel) -> BiostructsecondaryModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_model_copy(s : BiostructsecondaryModel) -> BiostructsecondaryModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryModel::copy(self : BiostructsecondaryModel) -> BiostructsecondaryModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_model_fill(s : BiostructsecondaryModel, v : Double) -> BiostructsecondaryModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryModel::fill(self : BiostructsecondaryModel, v : Double) -> BiostructsecondaryModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_model_min(s : BiostructsecondaryModel) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryModel::min(self : BiostructsecondaryModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_model_max(s : BiostructsecondaryModel) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryModel::max(self : BiostructsecondaryModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_model_to_string(s : BiostructsecondaryModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryModel::to_string(self : BiostructsecondaryModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondaryLayer {
@@ -759,45 +759,45 @@ pub fn bio_struct_secondary_layer_make(size : Int) -> BiostructsecondaryLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_layer_len(s : BiostructsecondaryLayer) -> Int { s.size }
+pub fn BiostructsecondaryLayer::len(self : BiostructsecondaryLayer) -> Int { self.size }
 
-pub fn bio_struct_secondary_layer_get(s : BiostructsecondaryLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryLayer::get(self : BiostructsecondaryLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_layer_set(s : BiostructsecondaryLayer, i : Int, v : Double) -> BiostructsecondaryLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryLayer::set(self : BiostructsecondaryLayer, i : Int, v : Double) -> BiostructsecondaryLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_layer_sum(s : BiostructsecondaryLayer) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryLayer::sum(self : BiostructsecondaryLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_layer_mean(s : BiostructsecondaryLayer) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryLayer::mean(self : BiostructsecondaryLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_layer_scale(s : BiostructsecondaryLayer, f : Double) -> BiostructsecondaryLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryLayer::scale(self : BiostructsecondaryLayer, f : Double) -> BiostructsecondaryLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_layer_add(a : BiostructsecondaryLayer, b : BiostructsecondaryLayer) -> BiostructsecondaryLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryLayer::add(self : BiostructsecondaryLayer, other : BiostructsecondaryLayer) -> BiostructsecondaryLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_layer_copy(s : BiostructsecondaryLayer) -> BiostructsecondaryLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryLayer::copy(self : BiostructsecondaryLayer) -> BiostructsecondaryLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_layer_fill(s : BiostructsecondaryLayer, v : Double) -> BiostructsecondaryLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryLayer::fill(self : BiostructsecondaryLayer, v : Double) -> BiostructsecondaryLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_layer_min(s : BiostructsecondaryLayer) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryLayer::min(self : BiostructsecondaryLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_layer_max(s : BiostructsecondaryLayer) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryLayer::max(self : BiostructsecondaryLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_layer_to_string(s : BiostructsecondaryLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryLayer::to_string(self : BiostructsecondaryLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondaryBuffer {
@@ -810,45 +810,45 @@ pub fn bio_struct_secondary_buffer_make(size : Int) -> BiostructsecondaryBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_buffer_len(s : BiostructsecondaryBuffer) -> Int { s.size }
+pub fn BiostructsecondaryBuffer::len(self : BiostructsecondaryBuffer) -> Int { self.size }
 
-pub fn bio_struct_secondary_buffer_get(s : BiostructsecondaryBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryBuffer::get(self : BiostructsecondaryBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_buffer_set(s : BiostructsecondaryBuffer, i : Int, v : Double) -> BiostructsecondaryBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryBuffer::set(self : BiostructsecondaryBuffer, i : Int, v : Double) -> BiostructsecondaryBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_buffer_sum(s : BiostructsecondaryBuffer) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryBuffer::sum(self : BiostructsecondaryBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_buffer_mean(s : BiostructsecondaryBuffer) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryBuffer::mean(self : BiostructsecondaryBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_buffer_scale(s : BiostructsecondaryBuffer, f : Double) -> BiostructsecondaryBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryBuffer::scale(self : BiostructsecondaryBuffer, f : Double) -> BiostructsecondaryBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_buffer_add(a : BiostructsecondaryBuffer, b : BiostructsecondaryBuffer) -> BiostructsecondaryBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryBuffer::add(self : BiostructsecondaryBuffer, other : BiostructsecondaryBuffer) -> BiostructsecondaryBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_buffer_copy(s : BiostructsecondaryBuffer) -> BiostructsecondaryBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryBuffer::copy(self : BiostructsecondaryBuffer) -> BiostructsecondaryBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_buffer_fill(s : BiostructsecondaryBuffer, v : Double) -> BiostructsecondaryBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryBuffer::fill(self : BiostructsecondaryBuffer, v : Double) -> BiostructsecondaryBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_buffer_min(s : BiostructsecondaryBuffer) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryBuffer::min(self : BiostructsecondaryBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_buffer_max(s : BiostructsecondaryBuffer) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryBuffer::max(self : BiostructsecondaryBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_buffer_to_string(s : BiostructsecondaryBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryBuffer::to_string(self : BiostructsecondaryBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondaryCursor {
@@ -861,45 +861,45 @@ pub fn bio_struct_secondary_cursor_make(size : Int) -> BiostructsecondaryCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_cursor_len(s : BiostructsecondaryCursor) -> Int { s.size }
+pub fn BiostructsecondaryCursor::len(self : BiostructsecondaryCursor) -> Int { self.size }
 
-pub fn bio_struct_secondary_cursor_get(s : BiostructsecondaryCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryCursor::get(self : BiostructsecondaryCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_cursor_set(s : BiostructsecondaryCursor, i : Int, v : Double) -> BiostructsecondaryCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryCursor::set(self : BiostructsecondaryCursor, i : Int, v : Double) -> BiostructsecondaryCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_cursor_sum(s : BiostructsecondaryCursor) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryCursor::sum(self : BiostructsecondaryCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_cursor_mean(s : BiostructsecondaryCursor) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryCursor::mean(self : BiostructsecondaryCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_cursor_scale(s : BiostructsecondaryCursor, f : Double) -> BiostructsecondaryCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryCursor::scale(self : BiostructsecondaryCursor, f : Double) -> BiostructsecondaryCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_cursor_add(a : BiostructsecondaryCursor, b : BiostructsecondaryCursor) -> BiostructsecondaryCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryCursor::add(self : BiostructsecondaryCursor, other : BiostructsecondaryCursor) -> BiostructsecondaryCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_cursor_copy(s : BiostructsecondaryCursor) -> BiostructsecondaryCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryCursor::copy(self : BiostructsecondaryCursor) -> BiostructsecondaryCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_cursor_fill(s : BiostructsecondaryCursor, v : Double) -> BiostructsecondaryCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryCursor::fill(self : BiostructsecondaryCursor, v : Double) -> BiostructsecondaryCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_cursor_min(s : BiostructsecondaryCursor) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryCursor::min(self : BiostructsecondaryCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_cursor_max(s : BiostructsecondaryCursor) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryCursor::max(self : BiostructsecondaryCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_cursor_to_string(s : BiostructsecondaryCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryCursor::to_string(self : BiostructsecondaryCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondaryView {
@@ -912,45 +912,45 @@ pub fn bio_struct_secondary_view_make(size : Int) -> BiostructsecondaryView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_view_len(s : BiostructsecondaryView) -> Int { s.size }
+pub fn BiostructsecondaryView::len(self : BiostructsecondaryView) -> Int { self.size }
 
-pub fn bio_struct_secondary_view_get(s : BiostructsecondaryView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryView::get(self : BiostructsecondaryView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_view_set(s : BiostructsecondaryView, i : Int, v : Double) -> BiostructsecondaryView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryView::set(self : BiostructsecondaryView, i : Int, v : Double) -> BiostructsecondaryView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_view_sum(s : BiostructsecondaryView) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryView::sum(self : BiostructsecondaryView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_view_mean(s : BiostructsecondaryView) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryView::mean(self : BiostructsecondaryView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_view_scale(s : BiostructsecondaryView, f : Double) -> BiostructsecondaryView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryView::scale(self : BiostructsecondaryView, f : Double) -> BiostructsecondaryView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_view_add(a : BiostructsecondaryView, b : BiostructsecondaryView) -> BiostructsecondaryView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryView::add(self : BiostructsecondaryView, other : BiostructsecondaryView) -> BiostructsecondaryView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_view_copy(s : BiostructsecondaryView) -> BiostructsecondaryView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryView::copy(self : BiostructsecondaryView) -> BiostructsecondaryView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_view_fill(s : BiostructsecondaryView, v : Double) -> BiostructsecondaryView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryView::fill(self : BiostructsecondaryView, v : Double) -> BiostructsecondaryView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_view_min(s : BiostructsecondaryView) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryView::min(self : BiostructsecondaryView) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_view_max(s : BiostructsecondaryView) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryView::max(self : BiostructsecondaryView) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_view_to_string(s : BiostructsecondaryView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryView::to_string(self : BiostructsecondaryView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondaryRange {
@@ -963,45 +963,45 @@ pub fn bio_struct_secondary_range_make(size : Int) -> BiostructsecondaryRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_range_len(s : BiostructsecondaryRange) -> Int { s.size }
+pub fn BiostructsecondaryRange::len(self : BiostructsecondaryRange) -> Int { self.size }
 
-pub fn bio_struct_secondary_range_get(s : BiostructsecondaryRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondaryRange::get(self : BiostructsecondaryRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_range_set(s : BiostructsecondaryRange, i : Int, v : Double) -> BiostructsecondaryRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondaryRange::set(self : BiostructsecondaryRange, i : Int, v : Double) -> BiostructsecondaryRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_range_sum(s : BiostructsecondaryRange) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondaryRange::sum(self : BiostructsecondaryRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_range_mean(s : BiostructsecondaryRange) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondaryRange::mean(self : BiostructsecondaryRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_range_scale(s : BiostructsecondaryRange, f : Double) -> BiostructsecondaryRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryRange::scale(self : BiostructsecondaryRange, f : Double) -> BiostructsecondaryRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_range_add(a : BiostructsecondaryRange, b : BiostructsecondaryRange) -> BiostructsecondaryRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondaryRange::add(self : BiostructsecondaryRange, other : BiostructsecondaryRange) -> BiostructsecondaryRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_range_copy(s : BiostructsecondaryRange) -> BiostructsecondaryRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryRange::copy(self : BiostructsecondaryRange) -> BiostructsecondaryRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_range_fill(s : BiostructsecondaryRange, v : Double) -> BiostructsecondaryRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondaryRange::fill(self : BiostructsecondaryRange, v : Double) -> BiostructsecondaryRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_range_min(s : BiostructsecondaryRange) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondaryRange::min(self : BiostructsecondaryRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_range_max(s : BiostructsecondaryRange) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondaryRange::max(self : BiostructsecondaryRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_range_to_string(s : BiostructsecondaryRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondaryRange::to_string(self : BiostructsecondaryRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructsecondarySlice {
@@ -1014,44 +1014,44 @@ pub fn bio_struct_secondary_slice_make(size : Int) -> BiostructsecondarySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_secondary_slice_len(s : BiostructsecondarySlice) -> Int { s.size }
+pub fn BiostructsecondarySlice::len(self : BiostructsecondarySlice) -> Int { self.size }
 
-pub fn bio_struct_secondary_slice_get(s : BiostructsecondarySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructsecondarySlice::get(self : BiostructsecondarySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_secondary_slice_set(s : BiostructsecondarySlice, i : Int, v : Double) -> BiostructsecondarySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructsecondarySlice::set(self : BiostructsecondarySlice, i : Int, v : Double) -> BiostructsecondarySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_slice_sum(s : BiostructsecondarySlice) -> Double { @_common.sum(s.data) }
+pub fn BiostructsecondarySlice::sum(self : BiostructsecondarySlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_secondary_slice_mean(s : BiostructsecondarySlice) -> Double { @_common.mean(s.data) }
+pub fn BiostructsecondarySlice::mean(self : BiostructsecondarySlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_secondary_slice_scale(s : BiostructsecondarySlice, f : Double) -> BiostructsecondarySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructsecondarySlice::scale(self : BiostructsecondarySlice, f : Double) -> BiostructsecondarySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_slice_add(a : BiostructsecondarySlice, b : BiostructsecondarySlice) -> BiostructsecondarySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructsecondarySlice::add(self : BiostructsecondarySlice, other : BiostructsecondarySlice) -> BiostructsecondarySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_slice_copy(s : BiostructsecondarySlice) -> BiostructsecondarySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructsecondarySlice::copy(self : BiostructsecondarySlice) -> BiostructsecondarySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_slice_fill(s : BiostructsecondarySlice, v : Double) -> BiostructsecondarySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructsecondarySlice::fill(self : BiostructsecondarySlice, v : Double) -> BiostructsecondarySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_secondary_slice_min(s : BiostructsecondarySlice) -> Double { @_common.min(s.data) }
+pub fn BiostructsecondarySlice::min(self : BiostructsecondarySlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_secondary_slice_max(s : BiostructsecondarySlice) -> Double { @_common.max(s.data) }
+pub fn BiostructsecondarySlice::max(self : BiostructsecondarySlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_secondary_slice_to_string(s : BiostructsecondarySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructsecondarySlice::to_string(self : BiostructsecondarySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn timeseries_holt_frame_make(size : Int) -> TimeseriesholtFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_frame_len(s : TimeseriesholtFrame) -> Int { s.size }
+pub fn TimeseriesholtFrame::len(self : TimeseriesholtFrame) -> Int { self.size }
 
-pub fn timeseries_holt_frame_get(s : TimeseriesholtFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtFrame::get(self : TimeseriesholtFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_frame_set(s : TimeseriesholtFrame, i : Int, v : Double) -> TimeseriesholtFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtFrame::set(self : TimeseriesholtFrame, i : Int, v : Double) -> TimeseriesholtFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_frame_sum(s : TimeseriesholtFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtFrame::sum(self : TimeseriesholtFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_frame_mean(s : TimeseriesholtFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtFrame::mean(self : TimeseriesholtFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_frame_scale(s : TimeseriesholtFrame, f : Double) -> TimeseriesholtFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtFrame::scale(self : TimeseriesholtFrame, f : Double) -> TimeseriesholtFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_frame_add(a : TimeseriesholtFrame, b : TimeseriesholtFrame) -> TimeseriesholtFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtFrame::add(self : TimeseriesholtFrame, other : TimeseriesholtFrame) -> TimeseriesholtFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_frame_copy(s : TimeseriesholtFrame) -> TimeseriesholtFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtFrame::copy(self : TimeseriesholtFrame) -> TimeseriesholtFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_frame_fill(s : TimeseriesholtFrame, v : Double) -> TimeseriesholtFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtFrame::fill(self : TimeseriesholtFrame, v : Double) -> TimeseriesholtFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_frame_min(s : TimeseriesholtFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtFrame::min(self : TimeseriesholtFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_frame_max(s : TimeseriesholtFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtFrame::max(self : TimeseriesholtFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_frame_to_string(s : TimeseriesholtFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtFrame::to_string(self : TimeseriesholtFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtTable {
@@ -402,45 +402,45 @@ pub fn timeseries_holt_table_make(size : Int) -> TimeseriesholtTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_table_len(s : TimeseriesholtTable) -> Int { s.size }
+pub fn TimeseriesholtTable::len(self : TimeseriesholtTable) -> Int { self.size }
 
-pub fn timeseries_holt_table_get(s : TimeseriesholtTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtTable::get(self : TimeseriesholtTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_table_set(s : TimeseriesholtTable, i : Int, v : Double) -> TimeseriesholtTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtTable::set(self : TimeseriesholtTable, i : Int, v : Double) -> TimeseriesholtTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_table_sum(s : TimeseriesholtTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtTable::sum(self : TimeseriesholtTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_table_mean(s : TimeseriesholtTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtTable::mean(self : TimeseriesholtTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_table_scale(s : TimeseriesholtTable, f : Double) -> TimeseriesholtTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtTable::scale(self : TimeseriesholtTable, f : Double) -> TimeseriesholtTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_table_add(a : TimeseriesholtTable, b : TimeseriesholtTable) -> TimeseriesholtTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtTable::add(self : TimeseriesholtTable, other : TimeseriesholtTable) -> TimeseriesholtTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_table_copy(s : TimeseriesholtTable) -> TimeseriesholtTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtTable::copy(self : TimeseriesholtTable) -> TimeseriesholtTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_table_fill(s : TimeseriesholtTable, v : Double) -> TimeseriesholtTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtTable::fill(self : TimeseriesholtTable, v : Double) -> TimeseriesholtTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_table_min(s : TimeseriesholtTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtTable::min(self : TimeseriesholtTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_table_max(s : TimeseriesholtTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtTable::max(self : TimeseriesholtTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_table_to_string(s : TimeseriesholtTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtTable::to_string(self : TimeseriesholtTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_holt_graphn_make(size : Int) -> TimeseriesholtGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_graphn_len(s : TimeseriesholtGraphN) -> Int { s.size }
+pub fn TimeseriesholtGraphN::len(self : TimeseriesholtGraphN) -> Int { self.size }
 
-pub fn timeseries_holt_graphn_get(s : TimeseriesholtGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtGraphN::get(self : TimeseriesholtGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_graphn_set(s : TimeseriesholtGraphN, i : Int, v : Double) -> TimeseriesholtGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtGraphN::set(self : TimeseriesholtGraphN, i : Int, v : Double) -> TimeseriesholtGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_graphn_sum(s : TimeseriesholtGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtGraphN::sum(self : TimeseriesholtGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_graphn_mean(s : TimeseriesholtGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtGraphN::mean(self : TimeseriesholtGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_graphn_scale(s : TimeseriesholtGraphN, f : Double) -> TimeseriesholtGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtGraphN::scale(self : TimeseriesholtGraphN, f : Double) -> TimeseriesholtGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_graphn_add(a : TimeseriesholtGraphN, b : TimeseriesholtGraphN) -> TimeseriesholtGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtGraphN::add(self : TimeseriesholtGraphN, other : TimeseriesholtGraphN) -> TimeseriesholtGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_graphn_copy(s : TimeseriesholtGraphN) -> TimeseriesholtGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtGraphN::copy(self : TimeseriesholtGraphN) -> TimeseriesholtGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_graphn_fill(s : TimeseriesholtGraphN, v : Double) -> TimeseriesholtGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtGraphN::fill(self : TimeseriesholtGraphN, v : Double) -> TimeseriesholtGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_graphn_min(s : TimeseriesholtGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtGraphN::min(self : TimeseriesholtGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_graphn_max(s : TimeseriesholtGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtGraphN::max(self : TimeseriesholtGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_graphn_to_string(s : TimeseriesholtGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtGraphN::to_string(self : TimeseriesholtGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtNode {
@@ -504,45 +504,45 @@ pub fn timeseries_holt_node_make(size : Int) -> TimeseriesholtNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_node_len(s : TimeseriesholtNode) -> Int { s.size }
+pub fn TimeseriesholtNode::len(self : TimeseriesholtNode) -> Int { self.size }
 
-pub fn timeseries_holt_node_get(s : TimeseriesholtNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtNode::get(self : TimeseriesholtNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_node_set(s : TimeseriesholtNode, i : Int, v : Double) -> TimeseriesholtNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtNode::set(self : TimeseriesholtNode, i : Int, v : Double) -> TimeseriesholtNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_node_sum(s : TimeseriesholtNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtNode::sum(self : TimeseriesholtNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_node_mean(s : TimeseriesholtNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtNode::mean(self : TimeseriesholtNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_node_scale(s : TimeseriesholtNode, f : Double) -> TimeseriesholtNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtNode::scale(self : TimeseriesholtNode, f : Double) -> TimeseriesholtNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_node_add(a : TimeseriesholtNode, b : TimeseriesholtNode) -> TimeseriesholtNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtNode::add(self : TimeseriesholtNode, other : TimeseriesholtNode) -> TimeseriesholtNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_node_copy(s : TimeseriesholtNode) -> TimeseriesholtNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtNode::copy(self : TimeseriesholtNode) -> TimeseriesholtNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_node_fill(s : TimeseriesholtNode, v : Double) -> TimeseriesholtNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtNode::fill(self : TimeseriesholtNode, v : Double) -> TimeseriesholtNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_node_min(s : TimeseriesholtNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtNode::min(self : TimeseriesholtNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_node_max(s : TimeseriesholtNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtNode::max(self : TimeseriesholtNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_node_to_string(s : TimeseriesholtNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtNode::to_string(self : TimeseriesholtNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_holt_edge_make(size : Int) -> TimeseriesholtEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_edge_len(s : TimeseriesholtEdge) -> Int { s.size }
+pub fn TimeseriesholtEdge::len(self : TimeseriesholtEdge) -> Int { self.size }
 
-pub fn timeseries_holt_edge_get(s : TimeseriesholtEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtEdge::get(self : TimeseriesholtEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_edge_set(s : TimeseriesholtEdge, i : Int, v : Double) -> TimeseriesholtEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtEdge::set(self : TimeseriesholtEdge, i : Int, v : Double) -> TimeseriesholtEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_edge_sum(s : TimeseriesholtEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtEdge::sum(self : TimeseriesholtEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_edge_mean(s : TimeseriesholtEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtEdge::mean(self : TimeseriesholtEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_edge_scale(s : TimeseriesholtEdge, f : Double) -> TimeseriesholtEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtEdge::scale(self : TimeseriesholtEdge, f : Double) -> TimeseriesholtEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_edge_add(a : TimeseriesholtEdge, b : TimeseriesholtEdge) -> TimeseriesholtEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtEdge::add(self : TimeseriesholtEdge, other : TimeseriesholtEdge) -> TimeseriesholtEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_edge_copy(s : TimeseriesholtEdge) -> TimeseriesholtEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtEdge::copy(self : TimeseriesholtEdge) -> TimeseriesholtEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_edge_fill(s : TimeseriesholtEdge, v : Double) -> TimeseriesholtEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtEdge::fill(self : TimeseriesholtEdge, v : Double) -> TimeseriesholtEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_edge_min(s : TimeseriesholtEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtEdge::min(self : TimeseriesholtEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_edge_max(s : TimeseriesholtEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtEdge::max(self : TimeseriesholtEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_edge_to_string(s : TimeseriesholtEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtEdge::to_string(self : TimeseriesholtEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtPath {
@@ -606,45 +606,45 @@ pub fn timeseries_holt_path_make(size : Int) -> TimeseriesholtPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_path_len(s : TimeseriesholtPath) -> Int { s.size }
+pub fn TimeseriesholtPath::len(self : TimeseriesholtPath) -> Int { self.size }
 
-pub fn timeseries_holt_path_get(s : TimeseriesholtPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtPath::get(self : TimeseriesholtPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_path_set(s : TimeseriesholtPath, i : Int, v : Double) -> TimeseriesholtPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtPath::set(self : TimeseriesholtPath, i : Int, v : Double) -> TimeseriesholtPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_path_sum(s : TimeseriesholtPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtPath::sum(self : TimeseriesholtPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_path_mean(s : TimeseriesholtPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtPath::mean(self : TimeseriesholtPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_path_scale(s : TimeseriesholtPath, f : Double) -> TimeseriesholtPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtPath::scale(self : TimeseriesholtPath, f : Double) -> TimeseriesholtPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_path_add(a : TimeseriesholtPath, b : TimeseriesholtPath) -> TimeseriesholtPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtPath::add(self : TimeseriesholtPath, other : TimeseriesholtPath) -> TimeseriesholtPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_path_copy(s : TimeseriesholtPath) -> TimeseriesholtPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtPath::copy(self : TimeseriesholtPath) -> TimeseriesholtPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_path_fill(s : TimeseriesholtPath, v : Double) -> TimeseriesholtPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtPath::fill(self : TimeseriesholtPath, v : Double) -> TimeseriesholtPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_path_min(s : TimeseriesholtPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtPath::min(self : TimeseriesholtPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_path_max(s : TimeseriesholtPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtPath::max(self : TimeseriesholtPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_path_to_string(s : TimeseriesholtPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtPath::to_string(self : TimeseriesholtPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_holt_cluster_make(size : Int) -> TimeseriesholtCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_cluster_len(s : TimeseriesholtCluster) -> Int { s.size }
+pub fn TimeseriesholtCluster::len(self : TimeseriesholtCluster) -> Int { self.size }
 
-pub fn timeseries_holt_cluster_get(s : TimeseriesholtCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtCluster::get(self : TimeseriesholtCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_cluster_set(s : TimeseriesholtCluster, i : Int, v : Double) -> TimeseriesholtCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtCluster::set(self : TimeseriesholtCluster, i : Int, v : Double) -> TimeseriesholtCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_cluster_sum(s : TimeseriesholtCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtCluster::sum(self : TimeseriesholtCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_cluster_mean(s : TimeseriesholtCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtCluster::mean(self : TimeseriesholtCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_cluster_scale(s : TimeseriesholtCluster, f : Double) -> TimeseriesholtCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtCluster::scale(self : TimeseriesholtCluster, f : Double) -> TimeseriesholtCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_cluster_add(a : TimeseriesholtCluster, b : TimeseriesholtCluster) -> TimeseriesholtCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtCluster::add(self : TimeseriesholtCluster, other : TimeseriesholtCluster) -> TimeseriesholtCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_cluster_copy(s : TimeseriesholtCluster) -> TimeseriesholtCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtCluster::copy(self : TimeseriesholtCluster) -> TimeseriesholtCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_cluster_fill(s : TimeseriesholtCluster, v : Double) -> TimeseriesholtCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtCluster::fill(self : TimeseriesholtCluster, v : Double) -> TimeseriesholtCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_cluster_min(s : TimeseriesholtCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtCluster::min(self : TimeseriesholtCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_cluster_max(s : TimeseriesholtCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtCluster::max(self : TimeseriesholtCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_cluster_to_string(s : TimeseriesholtCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtCluster::to_string(self : TimeseriesholtCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtModel {
@@ -708,45 +708,45 @@ pub fn timeseries_holt_model_make(size : Int) -> TimeseriesholtModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_model_len(s : TimeseriesholtModel) -> Int { s.size }
+pub fn TimeseriesholtModel::len(self : TimeseriesholtModel) -> Int { self.size }
 
-pub fn timeseries_holt_model_get(s : TimeseriesholtModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtModel::get(self : TimeseriesholtModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_model_set(s : TimeseriesholtModel, i : Int, v : Double) -> TimeseriesholtModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtModel::set(self : TimeseriesholtModel, i : Int, v : Double) -> TimeseriesholtModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_model_sum(s : TimeseriesholtModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtModel::sum(self : TimeseriesholtModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_model_mean(s : TimeseriesholtModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtModel::mean(self : TimeseriesholtModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_model_scale(s : TimeseriesholtModel, f : Double) -> TimeseriesholtModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtModel::scale(self : TimeseriesholtModel, f : Double) -> TimeseriesholtModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_model_add(a : TimeseriesholtModel, b : TimeseriesholtModel) -> TimeseriesholtModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtModel::add(self : TimeseriesholtModel, other : TimeseriesholtModel) -> TimeseriesholtModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_model_copy(s : TimeseriesholtModel) -> TimeseriesholtModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtModel::copy(self : TimeseriesholtModel) -> TimeseriesholtModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_model_fill(s : TimeseriesholtModel, v : Double) -> TimeseriesholtModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtModel::fill(self : TimeseriesholtModel, v : Double) -> TimeseriesholtModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_model_min(s : TimeseriesholtModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtModel::min(self : TimeseriesholtModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_model_max(s : TimeseriesholtModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtModel::max(self : TimeseriesholtModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_model_to_string(s : TimeseriesholtModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtModel::to_string(self : TimeseriesholtModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_holt_layer_make(size : Int) -> TimeseriesholtLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_layer_len(s : TimeseriesholtLayer) -> Int { s.size }
+pub fn TimeseriesholtLayer::len(self : TimeseriesholtLayer) -> Int { self.size }
 
-pub fn timeseries_holt_layer_get(s : TimeseriesholtLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtLayer::get(self : TimeseriesholtLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_layer_set(s : TimeseriesholtLayer, i : Int, v : Double) -> TimeseriesholtLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtLayer::set(self : TimeseriesholtLayer, i : Int, v : Double) -> TimeseriesholtLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_layer_sum(s : TimeseriesholtLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtLayer::sum(self : TimeseriesholtLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_layer_mean(s : TimeseriesholtLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtLayer::mean(self : TimeseriesholtLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_layer_scale(s : TimeseriesholtLayer, f : Double) -> TimeseriesholtLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtLayer::scale(self : TimeseriesholtLayer, f : Double) -> TimeseriesholtLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_layer_add(a : TimeseriesholtLayer, b : TimeseriesholtLayer) -> TimeseriesholtLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtLayer::add(self : TimeseriesholtLayer, other : TimeseriesholtLayer) -> TimeseriesholtLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_layer_copy(s : TimeseriesholtLayer) -> TimeseriesholtLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtLayer::copy(self : TimeseriesholtLayer) -> TimeseriesholtLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_layer_fill(s : TimeseriesholtLayer, v : Double) -> TimeseriesholtLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtLayer::fill(self : TimeseriesholtLayer, v : Double) -> TimeseriesholtLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_layer_min(s : TimeseriesholtLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtLayer::min(self : TimeseriesholtLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_layer_max(s : TimeseriesholtLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtLayer::max(self : TimeseriesholtLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_layer_to_string(s : TimeseriesholtLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtLayer::to_string(self : TimeseriesholtLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_holt_buffer_make(size : Int) -> TimeseriesholtBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_buffer_len(s : TimeseriesholtBuffer) -> Int { s.size }
+pub fn TimeseriesholtBuffer::len(self : TimeseriesholtBuffer) -> Int { self.size }
 
-pub fn timeseries_holt_buffer_get(s : TimeseriesholtBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtBuffer::get(self : TimeseriesholtBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_buffer_set(s : TimeseriesholtBuffer, i : Int, v : Double) -> TimeseriesholtBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtBuffer::set(self : TimeseriesholtBuffer, i : Int, v : Double) -> TimeseriesholtBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_buffer_sum(s : TimeseriesholtBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtBuffer::sum(self : TimeseriesholtBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_buffer_mean(s : TimeseriesholtBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtBuffer::mean(self : TimeseriesholtBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_buffer_scale(s : TimeseriesholtBuffer, f : Double) -> TimeseriesholtBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtBuffer::scale(self : TimeseriesholtBuffer, f : Double) -> TimeseriesholtBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_buffer_add(a : TimeseriesholtBuffer, b : TimeseriesholtBuffer) -> TimeseriesholtBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtBuffer::add(self : TimeseriesholtBuffer, other : TimeseriesholtBuffer) -> TimeseriesholtBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_buffer_copy(s : TimeseriesholtBuffer) -> TimeseriesholtBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtBuffer::copy(self : TimeseriesholtBuffer) -> TimeseriesholtBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_buffer_fill(s : TimeseriesholtBuffer, v : Double) -> TimeseriesholtBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtBuffer::fill(self : TimeseriesholtBuffer, v : Double) -> TimeseriesholtBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_buffer_min(s : TimeseriesholtBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtBuffer::min(self : TimeseriesholtBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_buffer_max(s : TimeseriesholtBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtBuffer::max(self : TimeseriesholtBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_buffer_to_string(s : TimeseriesholtBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtBuffer::to_string(self : TimeseriesholtBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_holt_cursor_make(size : Int) -> TimeseriesholtCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_cursor_len(s : TimeseriesholtCursor) -> Int { s.size }
+pub fn TimeseriesholtCursor::len(self : TimeseriesholtCursor) -> Int { self.size }
 
-pub fn timeseries_holt_cursor_get(s : TimeseriesholtCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtCursor::get(self : TimeseriesholtCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_cursor_set(s : TimeseriesholtCursor, i : Int, v : Double) -> TimeseriesholtCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtCursor::set(self : TimeseriesholtCursor, i : Int, v : Double) -> TimeseriesholtCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_cursor_sum(s : TimeseriesholtCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtCursor::sum(self : TimeseriesholtCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_cursor_mean(s : TimeseriesholtCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtCursor::mean(self : TimeseriesholtCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_cursor_scale(s : TimeseriesholtCursor, f : Double) -> TimeseriesholtCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtCursor::scale(self : TimeseriesholtCursor, f : Double) -> TimeseriesholtCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_cursor_add(a : TimeseriesholtCursor, b : TimeseriesholtCursor) -> TimeseriesholtCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtCursor::add(self : TimeseriesholtCursor, other : TimeseriesholtCursor) -> TimeseriesholtCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_cursor_copy(s : TimeseriesholtCursor) -> TimeseriesholtCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtCursor::copy(self : TimeseriesholtCursor) -> TimeseriesholtCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_cursor_fill(s : TimeseriesholtCursor, v : Double) -> TimeseriesholtCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtCursor::fill(self : TimeseriesholtCursor, v : Double) -> TimeseriesholtCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_cursor_min(s : TimeseriesholtCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtCursor::min(self : TimeseriesholtCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_cursor_max(s : TimeseriesholtCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtCursor::max(self : TimeseriesholtCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_cursor_to_string(s : TimeseriesholtCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtCursor::to_string(self : TimeseriesholtCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtView {
@@ -912,45 +912,45 @@ pub fn timeseries_holt_view_make(size : Int) -> TimeseriesholtView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_view_len(s : TimeseriesholtView) -> Int { s.size }
+pub fn TimeseriesholtView::len(self : TimeseriesholtView) -> Int { self.size }
 
-pub fn timeseries_holt_view_get(s : TimeseriesholtView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtView::get(self : TimeseriesholtView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_view_set(s : TimeseriesholtView, i : Int, v : Double) -> TimeseriesholtView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtView::set(self : TimeseriesholtView, i : Int, v : Double) -> TimeseriesholtView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_view_sum(s : TimeseriesholtView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtView::sum(self : TimeseriesholtView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_view_mean(s : TimeseriesholtView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtView::mean(self : TimeseriesholtView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_view_scale(s : TimeseriesholtView, f : Double) -> TimeseriesholtView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtView::scale(self : TimeseriesholtView, f : Double) -> TimeseriesholtView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_view_add(a : TimeseriesholtView, b : TimeseriesholtView) -> TimeseriesholtView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtView::add(self : TimeseriesholtView, other : TimeseriesholtView) -> TimeseriesholtView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_view_copy(s : TimeseriesholtView) -> TimeseriesholtView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtView::copy(self : TimeseriesholtView) -> TimeseriesholtView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_view_fill(s : TimeseriesholtView, v : Double) -> TimeseriesholtView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtView::fill(self : TimeseriesholtView, v : Double) -> TimeseriesholtView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_view_min(s : TimeseriesholtView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtView::min(self : TimeseriesholtView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_view_max(s : TimeseriesholtView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtView::max(self : TimeseriesholtView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_view_to_string(s : TimeseriesholtView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtView::to_string(self : TimeseriesholtView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtRange {
@@ -963,45 +963,45 @@ pub fn timeseries_holt_range_make(size : Int) -> TimeseriesholtRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_range_len(s : TimeseriesholtRange) -> Int { s.size }
+pub fn TimeseriesholtRange::len(self : TimeseriesholtRange) -> Int { self.size }
 
-pub fn timeseries_holt_range_get(s : TimeseriesholtRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtRange::get(self : TimeseriesholtRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_range_set(s : TimeseriesholtRange, i : Int, v : Double) -> TimeseriesholtRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtRange::set(self : TimeseriesholtRange, i : Int, v : Double) -> TimeseriesholtRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_range_sum(s : TimeseriesholtRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtRange::sum(self : TimeseriesholtRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_range_mean(s : TimeseriesholtRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtRange::mean(self : TimeseriesholtRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_range_scale(s : TimeseriesholtRange, f : Double) -> TimeseriesholtRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtRange::scale(self : TimeseriesholtRange, f : Double) -> TimeseriesholtRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_range_add(a : TimeseriesholtRange, b : TimeseriesholtRange) -> TimeseriesholtRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtRange::add(self : TimeseriesholtRange, other : TimeseriesholtRange) -> TimeseriesholtRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_range_copy(s : TimeseriesholtRange) -> TimeseriesholtRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtRange::copy(self : TimeseriesholtRange) -> TimeseriesholtRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_range_fill(s : TimeseriesholtRange, v : Double) -> TimeseriesholtRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtRange::fill(self : TimeseriesholtRange, v : Double) -> TimeseriesholtRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_range_min(s : TimeseriesholtRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtRange::min(self : TimeseriesholtRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_range_max(s : TimeseriesholtRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtRange::max(self : TimeseriesholtRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_range_to_string(s : TimeseriesholtRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtRange::to_string(self : TimeseriesholtRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesholtSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_holt_slice_make(size : Int) -> TimeseriesholtSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_holt_slice_len(s : TimeseriesholtSlice) -> Int { s.size }
+pub fn TimeseriesholtSlice::len(self : TimeseriesholtSlice) -> Int { self.size }
 
-pub fn timeseries_holt_slice_get(s : TimeseriesholtSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesholtSlice::get(self : TimeseriesholtSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_holt_slice_set(s : TimeseriesholtSlice, i : Int, v : Double) -> TimeseriesholtSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesholtSlice::set(self : TimeseriesholtSlice, i : Int, v : Double) -> TimeseriesholtSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_slice_sum(s : TimeseriesholtSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesholtSlice::sum(self : TimeseriesholtSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_holt_slice_mean(s : TimeseriesholtSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesholtSlice::mean(self : TimeseriesholtSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_holt_slice_scale(s : TimeseriesholtSlice, f : Double) -> TimeseriesholtSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesholtSlice::scale(self : TimeseriesholtSlice, f : Double) -> TimeseriesholtSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_slice_add(a : TimeseriesholtSlice, b : TimeseriesholtSlice) -> TimeseriesholtSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesholtSlice::add(self : TimeseriesholtSlice, other : TimeseriesholtSlice) -> TimeseriesholtSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_holt_slice_copy(s : TimeseriesholtSlice) -> TimeseriesholtSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesholtSlice::copy(self : TimeseriesholtSlice) -> TimeseriesholtSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_slice_fill(s : TimeseriesholtSlice, v : Double) -> TimeseriesholtSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesholtSlice::fill(self : TimeseriesholtSlice, v : Double) -> TimeseriesholtSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_holt_slice_min(s : TimeseriesholtSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesholtSlice::min(self : TimeseriesholtSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_holt_slice_max(s : TimeseriesholtSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesholtSlice::max(self : TimeseriesholtSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_holt_slice_to_string(s : TimeseriesholtSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesholtSlice::to_string(self : TimeseriesholtSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

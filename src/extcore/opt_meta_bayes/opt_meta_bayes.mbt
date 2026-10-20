@@ -351,45 +351,45 @@ pub fn opt_meta_bayes_frame_make(size : Int) -> OptmetabayesFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_frame_len(s : OptmetabayesFrame) -> Int { s.size }
+pub fn OptmetabayesFrame::len(self : OptmetabayesFrame) -> Int { self.size }
 
-pub fn opt_meta_bayes_frame_get(s : OptmetabayesFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesFrame::get(self : OptmetabayesFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_frame_set(s : OptmetabayesFrame, i : Int, v : Double) -> OptmetabayesFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesFrame::set(self : OptmetabayesFrame, i : Int, v : Double) -> OptmetabayesFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_frame_sum(s : OptmetabayesFrame) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesFrame::sum(self : OptmetabayesFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_frame_mean(s : OptmetabayesFrame) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesFrame::mean(self : OptmetabayesFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_frame_scale(s : OptmetabayesFrame, f : Double) -> OptmetabayesFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesFrame::scale(self : OptmetabayesFrame, f : Double) -> OptmetabayesFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_frame_add(a : OptmetabayesFrame, b : OptmetabayesFrame) -> OptmetabayesFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesFrame::add(self : OptmetabayesFrame, other : OptmetabayesFrame) -> OptmetabayesFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_frame_copy(s : OptmetabayesFrame) -> OptmetabayesFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesFrame::copy(self : OptmetabayesFrame) -> OptmetabayesFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_frame_fill(s : OptmetabayesFrame, v : Double) -> OptmetabayesFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesFrame::fill(self : OptmetabayesFrame, v : Double) -> OptmetabayesFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_frame_min(s : OptmetabayesFrame) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesFrame::min(self : OptmetabayesFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_frame_max(s : OptmetabayesFrame) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesFrame::max(self : OptmetabayesFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_frame_to_string(s : OptmetabayesFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesFrame::to_string(self : OptmetabayesFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesTable {
@@ -402,45 +402,45 @@ pub fn opt_meta_bayes_table_make(size : Int) -> OptmetabayesTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_table_len(s : OptmetabayesTable) -> Int { s.size }
+pub fn OptmetabayesTable::len(self : OptmetabayesTable) -> Int { self.size }
 
-pub fn opt_meta_bayes_table_get(s : OptmetabayesTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesTable::get(self : OptmetabayesTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_table_set(s : OptmetabayesTable, i : Int, v : Double) -> OptmetabayesTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesTable::set(self : OptmetabayesTable, i : Int, v : Double) -> OptmetabayesTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_table_sum(s : OptmetabayesTable) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesTable::sum(self : OptmetabayesTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_table_mean(s : OptmetabayesTable) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesTable::mean(self : OptmetabayesTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_table_scale(s : OptmetabayesTable, f : Double) -> OptmetabayesTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesTable::scale(self : OptmetabayesTable, f : Double) -> OptmetabayesTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_table_add(a : OptmetabayesTable, b : OptmetabayesTable) -> OptmetabayesTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesTable::add(self : OptmetabayesTable, other : OptmetabayesTable) -> OptmetabayesTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_table_copy(s : OptmetabayesTable) -> OptmetabayesTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesTable::copy(self : OptmetabayesTable) -> OptmetabayesTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_table_fill(s : OptmetabayesTable, v : Double) -> OptmetabayesTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesTable::fill(self : OptmetabayesTable, v : Double) -> OptmetabayesTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_table_min(s : OptmetabayesTable) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesTable::min(self : OptmetabayesTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_table_max(s : OptmetabayesTable) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesTable::max(self : OptmetabayesTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_table_to_string(s : OptmetabayesTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesTable::to_string(self : OptmetabayesTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesGraphN {
@@ -453,45 +453,45 @@ pub fn opt_meta_bayes_graphn_make(size : Int) -> OptmetabayesGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_graphn_len(s : OptmetabayesGraphN) -> Int { s.size }
+pub fn OptmetabayesGraphN::len(self : OptmetabayesGraphN) -> Int { self.size }
 
-pub fn opt_meta_bayes_graphn_get(s : OptmetabayesGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesGraphN::get(self : OptmetabayesGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_graphn_set(s : OptmetabayesGraphN, i : Int, v : Double) -> OptmetabayesGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesGraphN::set(self : OptmetabayesGraphN, i : Int, v : Double) -> OptmetabayesGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_graphn_sum(s : OptmetabayesGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesGraphN::sum(self : OptmetabayesGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_graphn_mean(s : OptmetabayesGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesGraphN::mean(self : OptmetabayesGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_graphn_scale(s : OptmetabayesGraphN, f : Double) -> OptmetabayesGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesGraphN::scale(self : OptmetabayesGraphN, f : Double) -> OptmetabayesGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_graphn_add(a : OptmetabayesGraphN, b : OptmetabayesGraphN) -> OptmetabayesGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesGraphN::add(self : OptmetabayesGraphN, other : OptmetabayesGraphN) -> OptmetabayesGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_graphn_copy(s : OptmetabayesGraphN) -> OptmetabayesGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesGraphN::copy(self : OptmetabayesGraphN) -> OptmetabayesGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_graphn_fill(s : OptmetabayesGraphN, v : Double) -> OptmetabayesGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesGraphN::fill(self : OptmetabayesGraphN, v : Double) -> OptmetabayesGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_graphn_min(s : OptmetabayesGraphN) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesGraphN::min(self : OptmetabayesGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_graphn_max(s : OptmetabayesGraphN) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesGraphN::max(self : OptmetabayesGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_graphn_to_string(s : OptmetabayesGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesGraphN::to_string(self : OptmetabayesGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesNode {
@@ -504,45 +504,45 @@ pub fn opt_meta_bayes_node_make(size : Int) -> OptmetabayesNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_node_len(s : OptmetabayesNode) -> Int { s.size }
+pub fn OptmetabayesNode::len(self : OptmetabayesNode) -> Int { self.size }
 
-pub fn opt_meta_bayes_node_get(s : OptmetabayesNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesNode::get(self : OptmetabayesNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_node_set(s : OptmetabayesNode, i : Int, v : Double) -> OptmetabayesNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesNode::set(self : OptmetabayesNode, i : Int, v : Double) -> OptmetabayesNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_node_sum(s : OptmetabayesNode) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesNode::sum(self : OptmetabayesNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_node_mean(s : OptmetabayesNode) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesNode::mean(self : OptmetabayesNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_node_scale(s : OptmetabayesNode, f : Double) -> OptmetabayesNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesNode::scale(self : OptmetabayesNode, f : Double) -> OptmetabayesNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_node_add(a : OptmetabayesNode, b : OptmetabayesNode) -> OptmetabayesNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesNode::add(self : OptmetabayesNode, other : OptmetabayesNode) -> OptmetabayesNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_node_copy(s : OptmetabayesNode) -> OptmetabayesNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesNode::copy(self : OptmetabayesNode) -> OptmetabayesNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_node_fill(s : OptmetabayesNode, v : Double) -> OptmetabayesNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesNode::fill(self : OptmetabayesNode, v : Double) -> OptmetabayesNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_node_min(s : OptmetabayesNode) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesNode::min(self : OptmetabayesNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_node_max(s : OptmetabayesNode) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesNode::max(self : OptmetabayesNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_node_to_string(s : OptmetabayesNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesNode::to_string(self : OptmetabayesNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesEdge {
@@ -555,45 +555,45 @@ pub fn opt_meta_bayes_edge_make(size : Int) -> OptmetabayesEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_edge_len(s : OptmetabayesEdge) -> Int { s.size }
+pub fn OptmetabayesEdge::len(self : OptmetabayesEdge) -> Int { self.size }
 
-pub fn opt_meta_bayes_edge_get(s : OptmetabayesEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesEdge::get(self : OptmetabayesEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_edge_set(s : OptmetabayesEdge, i : Int, v : Double) -> OptmetabayesEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesEdge::set(self : OptmetabayesEdge, i : Int, v : Double) -> OptmetabayesEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_edge_sum(s : OptmetabayesEdge) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesEdge::sum(self : OptmetabayesEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_edge_mean(s : OptmetabayesEdge) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesEdge::mean(self : OptmetabayesEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_edge_scale(s : OptmetabayesEdge, f : Double) -> OptmetabayesEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesEdge::scale(self : OptmetabayesEdge, f : Double) -> OptmetabayesEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_edge_add(a : OptmetabayesEdge, b : OptmetabayesEdge) -> OptmetabayesEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesEdge::add(self : OptmetabayesEdge, other : OptmetabayesEdge) -> OptmetabayesEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_edge_copy(s : OptmetabayesEdge) -> OptmetabayesEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesEdge::copy(self : OptmetabayesEdge) -> OptmetabayesEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_edge_fill(s : OptmetabayesEdge, v : Double) -> OptmetabayesEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesEdge::fill(self : OptmetabayesEdge, v : Double) -> OptmetabayesEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_edge_min(s : OptmetabayesEdge) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesEdge::min(self : OptmetabayesEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_edge_max(s : OptmetabayesEdge) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesEdge::max(self : OptmetabayesEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_edge_to_string(s : OptmetabayesEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesEdge::to_string(self : OptmetabayesEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesPath {
@@ -606,45 +606,45 @@ pub fn opt_meta_bayes_path_make(size : Int) -> OptmetabayesPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_path_len(s : OptmetabayesPath) -> Int { s.size }
+pub fn OptmetabayesPath::len(self : OptmetabayesPath) -> Int { self.size }
 
-pub fn opt_meta_bayes_path_get(s : OptmetabayesPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesPath::get(self : OptmetabayesPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_path_set(s : OptmetabayesPath, i : Int, v : Double) -> OptmetabayesPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesPath::set(self : OptmetabayesPath, i : Int, v : Double) -> OptmetabayesPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_path_sum(s : OptmetabayesPath) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesPath::sum(self : OptmetabayesPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_path_mean(s : OptmetabayesPath) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesPath::mean(self : OptmetabayesPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_path_scale(s : OptmetabayesPath, f : Double) -> OptmetabayesPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesPath::scale(self : OptmetabayesPath, f : Double) -> OptmetabayesPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_path_add(a : OptmetabayesPath, b : OptmetabayesPath) -> OptmetabayesPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesPath::add(self : OptmetabayesPath, other : OptmetabayesPath) -> OptmetabayesPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_path_copy(s : OptmetabayesPath) -> OptmetabayesPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesPath::copy(self : OptmetabayesPath) -> OptmetabayesPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_path_fill(s : OptmetabayesPath, v : Double) -> OptmetabayesPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesPath::fill(self : OptmetabayesPath, v : Double) -> OptmetabayesPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_path_min(s : OptmetabayesPath) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesPath::min(self : OptmetabayesPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_path_max(s : OptmetabayesPath) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesPath::max(self : OptmetabayesPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_path_to_string(s : OptmetabayesPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesPath::to_string(self : OptmetabayesPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesCluster {
@@ -657,45 +657,45 @@ pub fn opt_meta_bayes_cluster_make(size : Int) -> OptmetabayesCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_cluster_len(s : OptmetabayesCluster) -> Int { s.size }
+pub fn OptmetabayesCluster::len(self : OptmetabayesCluster) -> Int { self.size }
 
-pub fn opt_meta_bayes_cluster_get(s : OptmetabayesCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesCluster::get(self : OptmetabayesCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_cluster_set(s : OptmetabayesCluster, i : Int, v : Double) -> OptmetabayesCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesCluster::set(self : OptmetabayesCluster, i : Int, v : Double) -> OptmetabayesCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_cluster_sum(s : OptmetabayesCluster) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesCluster::sum(self : OptmetabayesCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_cluster_mean(s : OptmetabayesCluster) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesCluster::mean(self : OptmetabayesCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_cluster_scale(s : OptmetabayesCluster, f : Double) -> OptmetabayesCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesCluster::scale(self : OptmetabayesCluster, f : Double) -> OptmetabayesCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_cluster_add(a : OptmetabayesCluster, b : OptmetabayesCluster) -> OptmetabayesCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesCluster::add(self : OptmetabayesCluster, other : OptmetabayesCluster) -> OptmetabayesCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_cluster_copy(s : OptmetabayesCluster) -> OptmetabayesCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesCluster::copy(self : OptmetabayesCluster) -> OptmetabayesCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_cluster_fill(s : OptmetabayesCluster, v : Double) -> OptmetabayesCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesCluster::fill(self : OptmetabayesCluster, v : Double) -> OptmetabayesCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_cluster_min(s : OptmetabayesCluster) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesCluster::min(self : OptmetabayesCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_cluster_max(s : OptmetabayesCluster) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesCluster::max(self : OptmetabayesCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_cluster_to_string(s : OptmetabayesCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesCluster::to_string(self : OptmetabayesCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesModel {
@@ -708,45 +708,45 @@ pub fn opt_meta_bayes_model_make(size : Int) -> OptmetabayesModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_model_len(s : OptmetabayesModel) -> Int { s.size }
+pub fn OptmetabayesModel::len(self : OptmetabayesModel) -> Int { self.size }
 
-pub fn opt_meta_bayes_model_get(s : OptmetabayesModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesModel::get(self : OptmetabayesModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_model_set(s : OptmetabayesModel, i : Int, v : Double) -> OptmetabayesModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesModel::set(self : OptmetabayesModel, i : Int, v : Double) -> OptmetabayesModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_model_sum(s : OptmetabayesModel) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesModel::sum(self : OptmetabayesModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_model_mean(s : OptmetabayesModel) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesModel::mean(self : OptmetabayesModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_model_scale(s : OptmetabayesModel, f : Double) -> OptmetabayesModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesModel::scale(self : OptmetabayesModel, f : Double) -> OptmetabayesModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_model_add(a : OptmetabayesModel, b : OptmetabayesModel) -> OptmetabayesModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesModel::add(self : OptmetabayesModel, other : OptmetabayesModel) -> OptmetabayesModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_model_copy(s : OptmetabayesModel) -> OptmetabayesModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesModel::copy(self : OptmetabayesModel) -> OptmetabayesModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_model_fill(s : OptmetabayesModel, v : Double) -> OptmetabayesModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesModel::fill(self : OptmetabayesModel, v : Double) -> OptmetabayesModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_model_min(s : OptmetabayesModel) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesModel::min(self : OptmetabayesModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_model_max(s : OptmetabayesModel) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesModel::max(self : OptmetabayesModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_model_to_string(s : OptmetabayesModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesModel::to_string(self : OptmetabayesModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesLayer {
@@ -759,45 +759,45 @@ pub fn opt_meta_bayes_layer_make(size : Int) -> OptmetabayesLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_layer_len(s : OptmetabayesLayer) -> Int { s.size }
+pub fn OptmetabayesLayer::len(self : OptmetabayesLayer) -> Int { self.size }
 
-pub fn opt_meta_bayes_layer_get(s : OptmetabayesLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesLayer::get(self : OptmetabayesLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_layer_set(s : OptmetabayesLayer, i : Int, v : Double) -> OptmetabayesLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesLayer::set(self : OptmetabayesLayer, i : Int, v : Double) -> OptmetabayesLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_layer_sum(s : OptmetabayesLayer) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesLayer::sum(self : OptmetabayesLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_layer_mean(s : OptmetabayesLayer) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesLayer::mean(self : OptmetabayesLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_layer_scale(s : OptmetabayesLayer, f : Double) -> OptmetabayesLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesLayer::scale(self : OptmetabayesLayer, f : Double) -> OptmetabayesLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_layer_add(a : OptmetabayesLayer, b : OptmetabayesLayer) -> OptmetabayesLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesLayer::add(self : OptmetabayesLayer, other : OptmetabayesLayer) -> OptmetabayesLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_layer_copy(s : OptmetabayesLayer) -> OptmetabayesLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesLayer::copy(self : OptmetabayesLayer) -> OptmetabayesLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_layer_fill(s : OptmetabayesLayer, v : Double) -> OptmetabayesLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesLayer::fill(self : OptmetabayesLayer, v : Double) -> OptmetabayesLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_layer_min(s : OptmetabayesLayer) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesLayer::min(self : OptmetabayesLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_layer_max(s : OptmetabayesLayer) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesLayer::max(self : OptmetabayesLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_layer_to_string(s : OptmetabayesLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesLayer::to_string(self : OptmetabayesLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesBuffer {
@@ -810,45 +810,45 @@ pub fn opt_meta_bayes_buffer_make(size : Int) -> OptmetabayesBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_buffer_len(s : OptmetabayesBuffer) -> Int { s.size }
+pub fn OptmetabayesBuffer::len(self : OptmetabayesBuffer) -> Int { self.size }
 
-pub fn opt_meta_bayes_buffer_get(s : OptmetabayesBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesBuffer::get(self : OptmetabayesBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_buffer_set(s : OptmetabayesBuffer, i : Int, v : Double) -> OptmetabayesBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesBuffer::set(self : OptmetabayesBuffer, i : Int, v : Double) -> OptmetabayesBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_buffer_sum(s : OptmetabayesBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesBuffer::sum(self : OptmetabayesBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_buffer_mean(s : OptmetabayesBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesBuffer::mean(self : OptmetabayesBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_buffer_scale(s : OptmetabayesBuffer, f : Double) -> OptmetabayesBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesBuffer::scale(self : OptmetabayesBuffer, f : Double) -> OptmetabayesBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_buffer_add(a : OptmetabayesBuffer, b : OptmetabayesBuffer) -> OptmetabayesBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesBuffer::add(self : OptmetabayesBuffer, other : OptmetabayesBuffer) -> OptmetabayesBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_buffer_copy(s : OptmetabayesBuffer) -> OptmetabayesBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesBuffer::copy(self : OptmetabayesBuffer) -> OptmetabayesBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_buffer_fill(s : OptmetabayesBuffer, v : Double) -> OptmetabayesBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesBuffer::fill(self : OptmetabayesBuffer, v : Double) -> OptmetabayesBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_buffer_min(s : OptmetabayesBuffer) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesBuffer::min(self : OptmetabayesBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_buffer_max(s : OptmetabayesBuffer) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesBuffer::max(self : OptmetabayesBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_buffer_to_string(s : OptmetabayesBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesBuffer::to_string(self : OptmetabayesBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesCursor {
@@ -861,45 +861,45 @@ pub fn opt_meta_bayes_cursor_make(size : Int) -> OptmetabayesCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_cursor_len(s : OptmetabayesCursor) -> Int { s.size }
+pub fn OptmetabayesCursor::len(self : OptmetabayesCursor) -> Int { self.size }
 
-pub fn opt_meta_bayes_cursor_get(s : OptmetabayesCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesCursor::get(self : OptmetabayesCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_cursor_set(s : OptmetabayesCursor, i : Int, v : Double) -> OptmetabayesCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesCursor::set(self : OptmetabayesCursor, i : Int, v : Double) -> OptmetabayesCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_cursor_sum(s : OptmetabayesCursor) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesCursor::sum(self : OptmetabayesCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_cursor_mean(s : OptmetabayesCursor) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesCursor::mean(self : OptmetabayesCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_cursor_scale(s : OptmetabayesCursor, f : Double) -> OptmetabayesCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesCursor::scale(self : OptmetabayesCursor, f : Double) -> OptmetabayesCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_cursor_add(a : OptmetabayesCursor, b : OptmetabayesCursor) -> OptmetabayesCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesCursor::add(self : OptmetabayesCursor, other : OptmetabayesCursor) -> OptmetabayesCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_cursor_copy(s : OptmetabayesCursor) -> OptmetabayesCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesCursor::copy(self : OptmetabayesCursor) -> OptmetabayesCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_cursor_fill(s : OptmetabayesCursor, v : Double) -> OptmetabayesCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesCursor::fill(self : OptmetabayesCursor, v : Double) -> OptmetabayesCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_cursor_min(s : OptmetabayesCursor) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesCursor::min(self : OptmetabayesCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_cursor_max(s : OptmetabayesCursor) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesCursor::max(self : OptmetabayesCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_cursor_to_string(s : OptmetabayesCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesCursor::to_string(self : OptmetabayesCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesView {
@@ -912,45 +912,45 @@ pub fn opt_meta_bayes_view_make(size : Int) -> OptmetabayesView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_view_len(s : OptmetabayesView) -> Int { s.size }
+pub fn OptmetabayesView::len(self : OptmetabayesView) -> Int { self.size }
 
-pub fn opt_meta_bayes_view_get(s : OptmetabayesView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesView::get(self : OptmetabayesView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_view_set(s : OptmetabayesView, i : Int, v : Double) -> OptmetabayesView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesView::set(self : OptmetabayesView, i : Int, v : Double) -> OptmetabayesView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_view_sum(s : OptmetabayesView) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesView::sum(self : OptmetabayesView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_view_mean(s : OptmetabayesView) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesView::mean(self : OptmetabayesView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_view_scale(s : OptmetabayesView, f : Double) -> OptmetabayesView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesView::scale(self : OptmetabayesView, f : Double) -> OptmetabayesView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_view_add(a : OptmetabayesView, b : OptmetabayesView) -> OptmetabayesView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesView::add(self : OptmetabayesView, other : OptmetabayesView) -> OptmetabayesView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_view_copy(s : OptmetabayesView) -> OptmetabayesView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesView::copy(self : OptmetabayesView) -> OptmetabayesView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_view_fill(s : OptmetabayesView, v : Double) -> OptmetabayesView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesView::fill(self : OptmetabayesView, v : Double) -> OptmetabayesView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_view_min(s : OptmetabayesView) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesView::min(self : OptmetabayesView) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_view_max(s : OptmetabayesView) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesView::max(self : OptmetabayesView) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_view_to_string(s : OptmetabayesView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesView::to_string(self : OptmetabayesView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesRange {
@@ -963,45 +963,45 @@ pub fn opt_meta_bayes_range_make(size : Int) -> OptmetabayesRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_range_len(s : OptmetabayesRange) -> Int { s.size }
+pub fn OptmetabayesRange::len(self : OptmetabayesRange) -> Int { self.size }
 
-pub fn opt_meta_bayes_range_get(s : OptmetabayesRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesRange::get(self : OptmetabayesRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_range_set(s : OptmetabayesRange, i : Int, v : Double) -> OptmetabayesRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesRange::set(self : OptmetabayesRange, i : Int, v : Double) -> OptmetabayesRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_range_sum(s : OptmetabayesRange) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesRange::sum(self : OptmetabayesRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_range_mean(s : OptmetabayesRange) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesRange::mean(self : OptmetabayesRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_range_scale(s : OptmetabayesRange, f : Double) -> OptmetabayesRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesRange::scale(self : OptmetabayesRange, f : Double) -> OptmetabayesRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_range_add(a : OptmetabayesRange, b : OptmetabayesRange) -> OptmetabayesRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesRange::add(self : OptmetabayesRange, other : OptmetabayesRange) -> OptmetabayesRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_range_copy(s : OptmetabayesRange) -> OptmetabayesRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesRange::copy(self : OptmetabayesRange) -> OptmetabayesRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_range_fill(s : OptmetabayesRange, v : Double) -> OptmetabayesRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesRange::fill(self : OptmetabayesRange, v : Double) -> OptmetabayesRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_range_min(s : OptmetabayesRange) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesRange::min(self : OptmetabayesRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_range_max(s : OptmetabayesRange) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesRange::max(self : OptmetabayesRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_range_to_string(s : OptmetabayesRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesRange::to_string(self : OptmetabayesRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetabayesSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_meta_bayes_slice_make(size : Int) -> OptmetabayesSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_bayes_slice_len(s : OptmetabayesSlice) -> Int { s.size }
+pub fn OptmetabayesSlice::len(self : OptmetabayesSlice) -> Int { self.size }
 
-pub fn opt_meta_bayes_slice_get(s : OptmetabayesSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetabayesSlice::get(self : OptmetabayesSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_bayes_slice_set(s : OptmetabayesSlice, i : Int, v : Double) -> OptmetabayesSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetabayesSlice::set(self : OptmetabayesSlice, i : Int, v : Double) -> OptmetabayesSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_slice_sum(s : OptmetabayesSlice) -> Double { @_common.sum(s.data) }
+pub fn OptmetabayesSlice::sum(self : OptmetabayesSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_bayes_slice_mean(s : OptmetabayesSlice) -> Double { @_common.mean(s.data) }
+pub fn OptmetabayesSlice::mean(self : OptmetabayesSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_bayes_slice_scale(s : OptmetabayesSlice, f : Double) -> OptmetabayesSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetabayesSlice::scale(self : OptmetabayesSlice, f : Double) -> OptmetabayesSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_slice_add(a : OptmetabayesSlice, b : OptmetabayesSlice) -> OptmetabayesSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetabayesSlice::add(self : OptmetabayesSlice, other : OptmetabayesSlice) -> OptmetabayesSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_slice_copy(s : OptmetabayesSlice) -> OptmetabayesSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetabayesSlice::copy(self : OptmetabayesSlice) -> OptmetabayesSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_slice_fill(s : OptmetabayesSlice, v : Double) -> OptmetabayesSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetabayesSlice::fill(self : OptmetabayesSlice, v : Double) -> OptmetabayesSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_bayes_slice_min(s : OptmetabayesSlice) -> Double { @_common.min(s.data) }
+pub fn OptmetabayesSlice::min(self : OptmetabayesSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_bayes_slice_max(s : OptmetabayesSlice) -> Double { @_common.max(s.data) }
+pub fn OptmetabayesSlice::max(self : OptmetabayesSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_bayes_slice_to_string(s : OptmetabayesSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetabayesSlice::to_string(self : OptmetabayesSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn math_approx_minimax_frame_make(size : Int) -> MathapproxminimaxFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_frame_len(s : MathapproxminimaxFrame) -> Int { s.size }
+pub fn MathapproxminimaxFrame::len(self : MathapproxminimaxFrame) -> Int { self.size }
 
-pub fn math_approx_minimax_frame_get(s : MathapproxminimaxFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxFrame::get(self : MathapproxminimaxFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_frame_set(s : MathapproxminimaxFrame, i : Int, v : Double) -> MathapproxminimaxFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxFrame::set(self : MathapproxminimaxFrame, i : Int, v : Double) -> MathapproxminimaxFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_frame_sum(s : MathapproxminimaxFrame) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxFrame::sum(self : MathapproxminimaxFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_frame_mean(s : MathapproxminimaxFrame) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxFrame::mean(self : MathapproxminimaxFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_frame_scale(s : MathapproxminimaxFrame, f : Double) -> MathapproxminimaxFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxFrame::scale(self : MathapproxminimaxFrame, f : Double) -> MathapproxminimaxFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_frame_add(a : MathapproxminimaxFrame, b : MathapproxminimaxFrame) -> MathapproxminimaxFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxFrame::add(self : MathapproxminimaxFrame, other : MathapproxminimaxFrame) -> MathapproxminimaxFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_frame_copy(s : MathapproxminimaxFrame) -> MathapproxminimaxFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxFrame::copy(self : MathapproxminimaxFrame) -> MathapproxminimaxFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_frame_fill(s : MathapproxminimaxFrame, v : Double) -> MathapproxminimaxFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxFrame::fill(self : MathapproxminimaxFrame, v : Double) -> MathapproxminimaxFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_frame_min(s : MathapproxminimaxFrame) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxFrame::min(self : MathapproxminimaxFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_frame_max(s : MathapproxminimaxFrame) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxFrame::max(self : MathapproxminimaxFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_frame_to_string(s : MathapproxminimaxFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxFrame::to_string(self : MathapproxminimaxFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxTable {
@@ -402,45 +402,45 @@ pub fn math_approx_minimax_table_make(size : Int) -> MathapproxminimaxTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_table_len(s : MathapproxminimaxTable) -> Int { s.size }
+pub fn MathapproxminimaxTable::len(self : MathapproxminimaxTable) -> Int { self.size }
 
-pub fn math_approx_minimax_table_get(s : MathapproxminimaxTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxTable::get(self : MathapproxminimaxTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_table_set(s : MathapproxminimaxTable, i : Int, v : Double) -> MathapproxminimaxTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxTable::set(self : MathapproxminimaxTable, i : Int, v : Double) -> MathapproxminimaxTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_table_sum(s : MathapproxminimaxTable) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxTable::sum(self : MathapproxminimaxTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_table_mean(s : MathapproxminimaxTable) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxTable::mean(self : MathapproxminimaxTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_table_scale(s : MathapproxminimaxTable, f : Double) -> MathapproxminimaxTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxTable::scale(self : MathapproxminimaxTable, f : Double) -> MathapproxminimaxTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_table_add(a : MathapproxminimaxTable, b : MathapproxminimaxTable) -> MathapproxminimaxTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxTable::add(self : MathapproxminimaxTable, other : MathapproxminimaxTable) -> MathapproxminimaxTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_table_copy(s : MathapproxminimaxTable) -> MathapproxminimaxTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxTable::copy(self : MathapproxminimaxTable) -> MathapproxminimaxTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_table_fill(s : MathapproxminimaxTable, v : Double) -> MathapproxminimaxTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxTable::fill(self : MathapproxminimaxTable, v : Double) -> MathapproxminimaxTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_table_min(s : MathapproxminimaxTable) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxTable::min(self : MathapproxminimaxTable) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_table_max(s : MathapproxminimaxTable) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxTable::max(self : MathapproxminimaxTable) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_table_to_string(s : MathapproxminimaxTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxTable::to_string(self : MathapproxminimaxTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxGraphN {
@@ -453,45 +453,45 @@ pub fn math_approx_minimax_graphn_make(size : Int) -> MathapproxminimaxGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_graphn_len(s : MathapproxminimaxGraphN) -> Int { s.size }
+pub fn MathapproxminimaxGraphN::len(self : MathapproxminimaxGraphN) -> Int { self.size }
 
-pub fn math_approx_minimax_graphn_get(s : MathapproxminimaxGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxGraphN::get(self : MathapproxminimaxGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_graphn_set(s : MathapproxminimaxGraphN, i : Int, v : Double) -> MathapproxminimaxGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxGraphN::set(self : MathapproxminimaxGraphN, i : Int, v : Double) -> MathapproxminimaxGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_graphn_sum(s : MathapproxminimaxGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxGraphN::sum(self : MathapproxminimaxGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_graphn_mean(s : MathapproxminimaxGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxGraphN::mean(self : MathapproxminimaxGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_graphn_scale(s : MathapproxminimaxGraphN, f : Double) -> MathapproxminimaxGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxGraphN::scale(self : MathapproxminimaxGraphN, f : Double) -> MathapproxminimaxGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_graphn_add(a : MathapproxminimaxGraphN, b : MathapproxminimaxGraphN) -> MathapproxminimaxGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxGraphN::add(self : MathapproxminimaxGraphN, other : MathapproxminimaxGraphN) -> MathapproxminimaxGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_graphn_copy(s : MathapproxminimaxGraphN) -> MathapproxminimaxGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxGraphN::copy(self : MathapproxminimaxGraphN) -> MathapproxminimaxGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_graphn_fill(s : MathapproxminimaxGraphN, v : Double) -> MathapproxminimaxGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxGraphN::fill(self : MathapproxminimaxGraphN, v : Double) -> MathapproxminimaxGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_graphn_min(s : MathapproxminimaxGraphN) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxGraphN::min(self : MathapproxminimaxGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_graphn_max(s : MathapproxminimaxGraphN) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxGraphN::max(self : MathapproxminimaxGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_graphn_to_string(s : MathapproxminimaxGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxGraphN::to_string(self : MathapproxminimaxGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxNode {
@@ -504,45 +504,45 @@ pub fn math_approx_minimax_node_make(size : Int) -> MathapproxminimaxNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_node_len(s : MathapproxminimaxNode) -> Int { s.size }
+pub fn MathapproxminimaxNode::len(self : MathapproxminimaxNode) -> Int { self.size }
 
-pub fn math_approx_minimax_node_get(s : MathapproxminimaxNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxNode::get(self : MathapproxminimaxNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_node_set(s : MathapproxminimaxNode, i : Int, v : Double) -> MathapproxminimaxNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxNode::set(self : MathapproxminimaxNode, i : Int, v : Double) -> MathapproxminimaxNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_node_sum(s : MathapproxminimaxNode) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxNode::sum(self : MathapproxminimaxNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_node_mean(s : MathapproxminimaxNode) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxNode::mean(self : MathapproxminimaxNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_node_scale(s : MathapproxminimaxNode, f : Double) -> MathapproxminimaxNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxNode::scale(self : MathapproxminimaxNode, f : Double) -> MathapproxminimaxNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_node_add(a : MathapproxminimaxNode, b : MathapproxminimaxNode) -> MathapproxminimaxNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxNode::add(self : MathapproxminimaxNode, other : MathapproxminimaxNode) -> MathapproxminimaxNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_node_copy(s : MathapproxminimaxNode) -> MathapproxminimaxNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxNode::copy(self : MathapproxminimaxNode) -> MathapproxminimaxNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_node_fill(s : MathapproxminimaxNode, v : Double) -> MathapproxminimaxNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxNode::fill(self : MathapproxminimaxNode, v : Double) -> MathapproxminimaxNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_node_min(s : MathapproxminimaxNode) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxNode::min(self : MathapproxminimaxNode) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_node_max(s : MathapproxminimaxNode) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxNode::max(self : MathapproxminimaxNode) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_node_to_string(s : MathapproxminimaxNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxNode::to_string(self : MathapproxminimaxNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxEdge {
@@ -555,45 +555,45 @@ pub fn math_approx_minimax_edge_make(size : Int) -> MathapproxminimaxEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_edge_len(s : MathapproxminimaxEdge) -> Int { s.size }
+pub fn MathapproxminimaxEdge::len(self : MathapproxminimaxEdge) -> Int { self.size }
 
-pub fn math_approx_minimax_edge_get(s : MathapproxminimaxEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxEdge::get(self : MathapproxminimaxEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_edge_set(s : MathapproxminimaxEdge, i : Int, v : Double) -> MathapproxminimaxEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxEdge::set(self : MathapproxminimaxEdge, i : Int, v : Double) -> MathapproxminimaxEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_edge_sum(s : MathapproxminimaxEdge) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxEdge::sum(self : MathapproxminimaxEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_edge_mean(s : MathapproxminimaxEdge) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxEdge::mean(self : MathapproxminimaxEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_edge_scale(s : MathapproxminimaxEdge, f : Double) -> MathapproxminimaxEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxEdge::scale(self : MathapproxminimaxEdge, f : Double) -> MathapproxminimaxEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_edge_add(a : MathapproxminimaxEdge, b : MathapproxminimaxEdge) -> MathapproxminimaxEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxEdge::add(self : MathapproxminimaxEdge, other : MathapproxminimaxEdge) -> MathapproxminimaxEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_edge_copy(s : MathapproxminimaxEdge) -> MathapproxminimaxEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxEdge::copy(self : MathapproxminimaxEdge) -> MathapproxminimaxEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_edge_fill(s : MathapproxminimaxEdge, v : Double) -> MathapproxminimaxEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxEdge::fill(self : MathapproxminimaxEdge, v : Double) -> MathapproxminimaxEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_edge_min(s : MathapproxminimaxEdge) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxEdge::min(self : MathapproxminimaxEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_edge_max(s : MathapproxminimaxEdge) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxEdge::max(self : MathapproxminimaxEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_edge_to_string(s : MathapproxminimaxEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxEdge::to_string(self : MathapproxminimaxEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxPath {
@@ -606,45 +606,45 @@ pub fn math_approx_minimax_path_make(size : Int) -> MathapproxminimaxPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_path_len(s : MathapproxminimaxPath) -> Int { s.size }
+pub fn MathapproxminimaxPath::len(self : MathapproxminimaxPath) -> Int { self.size }
 
-pub fn math_approx_minimax_path_get(s : MathapproxminimaxPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxPath::get(self : MathapproxminimaxPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_path_set(s : MathapproxminimaxPath, i : Int, v : Double) -> MathapproxminimaxPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxPath::set(self : MathapproxminimaxPath, i : Int, v : Double) -> MathapproxminimaxPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_path_sum(s : MathapproxminimaxPath) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxPath::sum(self : MathapproxminimaxPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_path_mean(s : MathapproxminimaxPath) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxPath::mean(self : MathapproxminimaxPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_path_scale(s : MathapproxminimaxPath, f : Double) -> MathapproxminimaxPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxPath::scale(self : MathapproxminimaxPath, f : Double) -> MathapproxminimaxPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_path_add(a : MathapproxminimaxPath, b : MathapproxminimaxPath) -> MathapproxminimaxPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxPath::add(self : MathapproxminimaxPath, other : MathapproxminimaxPath) -> MathapproxminimaxPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_path_copy(s : MathapproxminimaxPath) -> MathapproxminimaxPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxPath::copy(self : MathapproxminimaxPath) -> MathapproxminimaxPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_path_fill(s : MathapproxminimaxPath, v : Double) -> MathapproxminimaxPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxPath::fill(self : MathapproxminimaxPath, v : Double) -> MathapproxminimaxPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_path_min(s : MathapproxminimaxPath) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxPath::min(self : MathapproxminimaxPath) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_path_max(s : MathapproxminimaxPath) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxPath::max(self : MathapproxminimaxPath) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_path_to_string(s : MathapproxminimaxPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxPath::to_string(self : MathapproxminimaxPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxCluster {
@@ -657,45 +657,45 @@ pub fn math_approx_minimax_cluster_make(size : Int) -> MathapproxminimaxCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_cluster_len(s : MathapproxminimaxCluster) -> Int { s.size }
+pub fn MathapproxminimaxCluster::len(self : MathapproxminimaxCluster) -> Int { self.size }
 
-pub fn math_approx_minimax_cluster_get(s : MathapproxminimaxCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxCluster::get(self : MathapproxminimaxCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_cluster_set(s : MathapproxminimaxCluster, i : Int, v : Double) -> MathapproxminimaxCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxCluster::set(self : MathapproxminimaxCluster, i : Int, v : Double) -> MathapproxminimaxCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_cluster_sum(s : MathapproxminimaxCluster) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxCluster::sum(self : MathapproxminimaxCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_cluster_mean(s : MathapproxminimaxCluster) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxCluster::mean(self : MathapproxminimaxCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_cluster_scale(s : MathapproxminimaxCluster, f : Double) -> MathapproxminimaxCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxCluster::scale(self : MathapproxminimaxCluster, f : Double) -> MathapproxminimaxCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_cluster_add(a : MathapproxminimaxCluster, b : MathapproxminimaxCluster) -> MathapproxminimaxCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxCluster::add(self : MathapproxminimaxCluster, other : MathapproxminimaxCluster) -> MathapproxminimaxCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_cluster_copy(s : MathapproxminimaxCluster) -> MathapproxminimaxCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxCluster::copy(self : MathapproxminimaxCluster) -> MathapproxminimaxCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_cluster_fill(s : MathapproxminimaxCluster, v : Double) -> MathapproxminimaxCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxCluster::fill(self : MathapproxminimaxCluster, v : Double) -> MathapproxminimaxCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_cluster_min(s : MathapproxminimaxCluster) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxCluster::min(self : MathapproxminimaxCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_cluster_max(s : MathapproxminimaxCluster) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxCluster::max(self : MathapproxminimaxCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_cluster_to_string(s : MathapproxminimaxCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxCluster::to_string(self : MathapproxminimaxCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxModel {
@@ -708,45 +708,45 @@ pub fn math_approx_minimax_model_make(size : Int) -> MathapproxminimaxModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_model_len(s : MathapproxminimaxModel) -> Int { s.size }
+pub fn MathapproxminimaxModel::len(self : MathapproxminimaxModel) -> Int { self.size }
 
-pub fn math_approx_minimax_model_get(s : MathapproxminimaxModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxModel::get(self : MathapproxminimaxModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_model_set(s : MathapproxminimaxModel, i : Int, v : Double) -> MathapproxminimaxModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxModel::set(self : MathapproxminimaxModel, i : Int, v : Double) -> MathapproxminimaxModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_model_sum(s : MathapproxminimaxModel) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxModel::sum(self : MathapproxminimaxModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_model_mean(s : MathapproxminimaxModel) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxModel::mean(self : MathapproxminimaxModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_model_scale(s : MathapproxminimaxModel, f : Double) -> MathapproxminimaxModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxModel::scale(self : MathapproxminimaxModel, f : Double) -> MathapproxminimaxModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_model_add(a : MathapproxminimaxModel, b : MathapproxminimaxModel) -> MathapproxminimaxModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxModel::add(self : MathapproxminimaxModel, other : MathapproxminimaxModel) -> MathapproxminimaxModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_model_copy(s : MathapproxminimaxModel) -> MathapproxminimaxModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxModel::copy(self : MathapproxminimaxModel) -> MathapproxminimaxModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_model_fill(s : MathapproxminimaxModel, v : Double) -> MathapproxminimaxModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxModel::fill(self : MathapproxminimaxModel, v : Double) -> MathapproxminimaxModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_model_min(s : MathapproxminimaxModel) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxModel::min(self : MathapproxminimaxModel) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_model_max(s : MathapproxminimaxModel) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxModel::max(self : MathapproxminimaxModel) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_model_to_string(s : MathapproxminimaxModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxModel::to_string(self : MathapproxminimaxModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxLayer {
@@ -759,45 +759,45 @@ pub fn math_approx_minimax_layer_make(size : Int) -> MathapproxminimaxLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_layer_len(s : MathapproxminimaxLayer) -> Int { s.size }
+pub fn MathapproxminimaxLayer::len(self : MathapproxminimaxLayer) -> Int { self.size }
 
-pub fn math_approx_minimax_layer_get(s : MathapproxminimaxLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxLayer::get(self : MathapproxminimaxLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_layer_set(s : MathapproxminimaxLayer, i : Int, v : Double) -> MathapproxminimaxLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxLayer::set(self : MathapproxminimaxLayer, i : Int, v : Double) -> MathapproxminimaxLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_layer_sum(s : MathapproxminimaxLayer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxLayer::sum(self : MathapproxminimaxLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_layer_mean(s : MathapproxminimaxLayer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxLayer::mean(self : MathapproxminimaxLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_layer_scale(s : MathapproxminimaxLayer, f : Double) -> MathapproxminimaxLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxLayer::scale(self : MathapproxminimaxLayer, f : Double) -> MathapproxminimaxLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_layer_add(a : MathapproxminimaxLayer, b : MathapproxminimaxLayer) -> MathapproxminimaxLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxLayer::add(self : MathapproxminimaxLayer, other : MathapproxminimaxLayer) -> MathapproxminimaxLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_layer_copy(s : MathapproxminimaxLayer) -> MathapproxminimaxLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxLayer::copy(self : MathapproxminimaxLayer) -> MathapproxminimaxLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_layer_fill(s : MathapproxminimaxLayer, v : Double) -> MathapproxminimaxLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxLayer::fill(self : MathapproxminimaxLayer, v : Double) -> MathapproxminimaxLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_layer_min(s : MathapproxminimaxLayer) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxLayer::min(self : MathapproxminimaxLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_layer_max(s : MathapproxminimaxLayer) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxLayer::max(self : MathapproxminimaxLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_layer_to_string(s : MathapproxminimaxLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxLayer::to_string(self : MathapproxminimaxLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxBuffer {
@@ -810,45 +810,45 @@ pub fn math_approx_minimax_buffer_make(size : Int) -> MathapproxminimaxBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_buffer_len(s : MathapproxminimaxBuffer) -> Int { s.size }
+pub fn MathapproxminimaxBuffer::len(self : MathapproxminimaxBuffer) -> Int { self.size }
 
-pub fn math_approx_minimax_buffer_get(s : MathapproxminimaxBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxBuffer::get(self : MathapproxminimaxBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_buffer_set(s : MathapproxminimaxBuffer, i : Int, v : Double) -> MathapproxminimaxBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxBuffer::set(self : MathapproxminimaxBuffer, i : Int, v : Double) -> MathapproxminimaxBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_buffer_sum(s : MathapproxminimaxBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxBuffer::sum(self : MathapproxminimaxBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_buffer_mean(s : MathapproxminimaxBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxBuffer::mean(self : MathapproxminimaxBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_buffer_scale(s : MathapproxminimaxBuffer, f : Double) -> MathapproxminimaxBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxBuffer::scale(self : MathapproxminimaxBuffer, f : Double) -> MathapproxminimaxBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_buffer_add(a : MathapproxminimaxBuffer, b : MathapproxminimaxBuffer) -> MathapproxminimaxBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxBuffer::add(self : MathapproxminimaxBuffer, other : MathapproxminimaxBuffer) -> MathapproxminimaxBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_buffer_copy(s : MathapproxminimaxBuffer) -> MathapproxminimaxBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxBuffer::copy(self : MathapproxminimaxBuffer) -> MathapproxminimaxBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_buffer_fill(s : MathapproxminimaxBuffer, v : Double) -> MathapproxminimaxBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxBuffer::fill(self : MathapproxminimaxBuffer, v : Double) -> MathapproxminimaxBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_buffer_min(s : MathapproxminimaxBuffer) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxBuffer::min(self : MathapproxminimaxBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_buffer_max(s : MathapproxminimaxBuffer) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxBuffer::max(self : MathapproxminimaxBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_buffer_to_string(s : MathapproxminimaxBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxBuffer::to_string(self : MathapproxminimaxBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxCursor {
@@ -861,45 +861,45 @@ pub fn math_approx_minimax_cursor_make(size : Int) -> MathapproxminimaxCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_cursor_len(s : MathapproxminimaxCursor) -> Int { s.size }
+pub fn MathapproxminimaxCursor::len(self : MathapproxminimaxCursor) -> Int { self.size }
 
-pub fn math_approx_minimax_cursor_get(s : MathapproxminimaxCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxCursor::get(self : MathapproxminimaxCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_cursor_set(s : MathapproxminimaxCursor, i : Int, v : Double) -> MathapproxminimaxCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxCursor::set(self : MathapproxminimaxCursor, i : Int, v : Double) -> MathapproxminimaxCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_cursor_sum(s : MathapproxminimaxCursor) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxCursor::sum(self : MathapproxminimaxCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_cursor_mean(s : MathapproxminimaxCursor) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxCursor::mean(self : MathapproxminimaxCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_cursor_scale(s : MathapproxminimaxCursor, f : Double) -> MathapproxminimaxCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxCursor::scale(self : MathapproxminimaxCursor, f : Double) -> MathapproxminimaxCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_cursor_add(a : MathapproxminimaxCursor, b : MathapproxminimaxCursor) -> MathapproxminimaxCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxCursor::add(self : MathapproxminimaxCursor, other : MathapproxminimaxCursor) -> MathapproxminimaxCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_cursor_copy(s : MathapproxminimaxCursor) -> MathapproxminimaxCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxCursor::copy(self : MathapproxminimaxCursor) -> MathapproxminimaxCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_cursor_fill(s : MathapproxminimaxCursor, v : Double) -> MathapproxminimaxCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxCursor::fill(self : MathapproxminimaxCursor, v : Double) -> MathapproxminimaxCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_cursor_min(s : MathapproxminimaxCursor) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxCursor::min(self : MathapproxminimaxCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_cursor_max(s : MathapproxminimaxCursor) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxCursor::max(self : MathapproxminimaxCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_cursor_to_string(s : MathapproxminimaxCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxCursor::to_string(self : MathapproxminimaxCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxView {
@@ -912,45 +912,45 @@ pub fn math_approx_minimax_view_make(size : Int) -> MathapproxminimaxView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_view_len(s : MathapproxminimaxView) -> Int { s.size }
+pub fn MathapproxminimaxView::len(self : MathapproxminimaxView) -> Int { self.size }
 
-pub fn math_approx_minimax_view_get(s : MathapproxminimaxView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxView::get(self : MathapproxminimaxView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_view_set(s : MathapproxminimaxView, i : Int, v : Double) -> MathapproxminimaxView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxView::set(self : MathapproxminimaxView, i : Int, v : Double) -> MathapproxminimaxView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_view_sum(s : MathapproxminimaxView) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxView::sum(self : MathapproxminimaxView) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_view_mean(s : MathapproxminimaxView) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxView::mean(self : MathapproxminimaxView) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_view_scale(s : MathapproxminimaxView, f : Double) -> MathapproxminimaxView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxView::scale(self : MathapproxminimaxView, f : Double) -> MathapproxminimaxView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_view_add(a : MathapproxminimaxView, b : MathapproxminimaxView) -> MathapproxminimaxView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxView::add(self : MathapproxminimaxView, other : MathapproxminimaxView) -> MathapproxminimaxView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_view_copy(s : MathapproxminimaxView) -> MathapproxminimaxView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxView::copy(self : MathapproxminimaxView) -> MathapproxminimaxView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_view_fill(s : MathapproxminimaxView, v : Double) -> MathapproxminimaxView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxView::fill(self : MathapproxminimaxView, v : Double) -> MathapproxminimaxView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_view_min(s : MathapproxminimaxView) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxView::min(self : MathapproxminimaxView) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_view_max(s : MathapproxminimaxView) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxView::max(self : MathapproxminimaxView) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_view_to_string(s : MathapproxminimaxView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxView::to_string(self : MathapproxminimaxView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxRange {
@@ -963,45 +963,45 @@ pub fn math_approx_minimax_range_make(size : Int) -> MathapproxminimaxRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_range_len(s : MathapproxminimaxRange) -> Int { s.size }
+pub fn MathapproxminimaxRange::len(self : MathapproxminimaxRange) -> Int { self.size }
 
-pub fn math_approx_minimax_range_get(s : MathapproxminimaxRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxRange::get(self : MathapproxminimaxRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_range_set(s : MathapproxminimaxRange, i : Int, v : Double) -> MathapproxminimaxRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxRange::set(self : MathapproxminimaxRange, i : Int, v : Double) -> MathapproxminimaxRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_range_sum(s : MathapproxminimaxRange) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxRange::sum(self : MathapproxminimaxRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_range_mean(s : MathapproxminimaxRange) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxRange::mean(self : MathapproxminimaxRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_range_scale(s : MathapproxminimaxRange, f : Double) -> MathapproxminimaxRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxRange::scale(self : MathapproxminimaxRange, f : Double) -> MathapproxminimaxRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_range_add(a : MathapproxminimaxRange, b : MathapproxminimaxRange) -> MathapproxminimaxRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxRange::add(self : MathapproxminimaxRange, other : MathapproxminimaxRange) -> MathapproxminimaxRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_range_copy(s : MathapproxminimaxRange) -> MathapproxminimaxRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxRange::copy(self : MathapproxminimaxRange) -> MathapproxminimaxRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_range_fill(s : MathapproxminimaxRange, v : Double) -> MathapproxminimaxRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxRange::fill(self : MathapproxminimaxRange, v : Double) -> MathapproxminimaxRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_range_min(s : MathapproxminimaxRange) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxRange::min(self : MathapproxminimaxRange) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_range_max(s : MathapproxminimaxRange) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxRange::max(self : MathapproxminimaxRange) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_range_to_string(s : MathapproxminimaxRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxRange::to_string(self : MathapproxminimaxRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxminimaxSlice {
@@ -1014,44 +1014,44 @@ pub fn math_approx_minimax_slice_make(size : Int) -> MathapproxminimaxSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_minimax_slice_len(s : MathapproxminimaxSlice) -> Int { s.size }
+pub fn MathapproxminimaxSlice::len(self : MathapproxminimaxSlice) -> Int { self.size }
 
-pub fn math_approx_minimax_slice_get(s : MathapproxminimaxSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxminimaxSlice::get(self : MathapproxminimaxSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_minimax_slice_set(s : MathapproxminimaxSlice, i : Int, v : Double) -> MathapproxminimaxSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxminimaxSlice::set(self : MathapproxminimaxSlice, i : Int, v : Double) -> MathapproxminimaxSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_slice_sum(s : MathapproxminimaxSlice) -> Double { @_common.sum(s.data) }
+pub fn MathapproxminimaxSlice::sum(self : MathapproxminimaxSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_minimax_slice_mean(s : MathapproxminimaxSlice) -> Double { @_common.mean(s.data) }
+pub fn MathapproxminimaxSlice::mean(self : MathapproxminimaxSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_minimax_slice_scale(s : MathapproxminimaxSlice, f : Double) -> MathapproxminimaxSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxSlice::scale(self : MathapproxminimaxSlice, f : Double) -> MathapproxminimaxSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_slice_add(a : MathapproxminimaxSlice, b : MathapproxminimaxSlice) -> MathapproxminimaxSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxminimaxSlice::add(self : MathapproxminimaxSlice, other : MathapproxminimaxSlice) -> MathapproxminimaxSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_minimax_slice_copy(s : MathapproxminimaxSlice) -> MathapproxminimaxSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxSlice::copy(self : MathapproxminimaxSlice) -> MathapproxminimaxSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_slice_fill(s : MathapproxminimaxSlice, v : Double) -> MathapproxminimaxSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxminimaxSlice::fill(self : MathapproxminimaxSlice, v : Double) -> MathapproxminimaxSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_minimax_slice_min(s : MathapproxminimaxSlice) -> Double { @_common.min(s.data) }
+pub fn MathapproxminimaxSlice::min(self : MathapproxminimaxSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_minimax_slice_max(s : MathapproxminimaxSlice) -> Double { @_common.max(s.data) }
+pub fn MathapproxminimaxSlice::max(self : MathapproxminimaxSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_minimax_slice_to_string(s : MathapproxminimaxSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxminimaxSlice::to_string(self : MathapproxminimaxSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

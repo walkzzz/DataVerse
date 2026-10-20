@@ -351,45 +351,45 @@ pub fn nlp_pos_averaged_frame_make(size : Int) -> NlpposaveragedFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_frame_len(s : NlpposaveragedFrame) -> Int { s.size }
+pub fn NlpposaveragedFrame::len(self : NlpposaveragedFrame) -> Int { self.size }
 
-pub fn nlp_pos_averaged_frame_get(s : NlpposaveragedFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedFrame::get(self : NlpposaveragedFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_frame_set(s : NlpposaveragedFrame, i : Int, v : Double) -> NlpposaveragedFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedFrame::set(self : NlpposaveragedFrame, i : Int, v : Double) -> NlpposaveragedFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_frame_sum(s : NlpposaveragedFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedFrame::sum(self : NlpposaveragedFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_frame_mean(s : NlpposaveragedFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedFrame::mean(self : NlpposaveragedFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_frame_scale(s : NlpposaveragedFrame, f : Double) -> NlpposaveragedFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedFrame::scale(self : NlpposaveragedFrame, f : Double) -> NlpposaveragedFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_frame_add(a : NlpposaveragedFrame, b : NlpposaveragedFrame) -> NlpposaveragedFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedFrame::add(self : NlpposaveragedFrame, other : NlpposaveragedFrame) -> NlpposaveragedFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_frame_copy(s : NlpposaveragedFrame) -> NlpposaveragedFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedFrame::copy(self : NlpposaveragedFrame) -> NlpposaveragedFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_frame_fill(s : NlpposaveragedFrame, v : Double) -> NlpposaveragedFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedFrame::fill(self : NlpposaveragedFrame, v : Double) -> NlpposaveragedFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_frame_min(s : NlpposaveragedFrame) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedFrame::min(self : NlpposaveragedFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_frame_max(s : NlpposaveragedFrame) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedFrame::max(self : NlpposaveragedFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_frame_to_string(s : NlpposaveragedFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedFrame::to_string(self : NlpposaveragedFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedTable {
@@ -402,45 +402,45 @@ pub fn nlp_pos_averaged_table_make(size : Int) -> NlpposaveragedTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_table_len(s : NlpposaveragedTable) -> Int { s.size }
+pub fn NlpposaveragedTable::len(self : NlpposaveragedTable) -> Int { self.size }
 
-pub fn nlp_pos_averaged_table_get(s : NlpposaveragedTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedTable::get(self : NlpposaveragedTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_table_set(s : NlpposaveragedTable, i : Int, v : Double) -> NlpposaveragedTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedTable::set(self : NlpposaveragedTable, i : Int, v : Double) -> NlpposaveragedTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_table_sum(s : NlpposaveragedTable) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedTable::sum(self : NlpposaveragedTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_table_mean(s : NlpposaveragedTable) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedTable::mean(self : NlpposaveragedTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_table_scale(s : NlpposaveragedTable, f : Double) -> NlpposaveragedTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedTable::scale(self : NlpposaveragedTable, f : Double) -> NlpposaveragedTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_table_add(a : NlpposaveragedTable, b : NlpposaveragedTable) -> NlpposaveragedTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedTable::add(self : NlpposaveragedTable, other : NlpposaveragedTable) -> NlpposaveragedTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_table_copy(s : NlpposaveragedTable) -> NlpposaveragedTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedTable::copy(self : NlpposaveragedTable) -> NlpposaveragedTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_table_fill(s : NlpposaveragedTable, v : Double) -> NlpposaveragedTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedTable::fill(self : NlpposaveragedTable, v : Double) -> NlpposaveragedTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_table_min(s : NlpposaveragedTable) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedTable::min(self : NlpposaveragedTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_table_max(s : NlpposaveragedTable) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedTable::max(self : NlpposaveragedTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_table_to_string(s : NlpposaveragedTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedTable::to_string(self : NlpposaveragedTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_pos_averaged_graphn_make(size : Int) -> NlpposaveragedGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_graphn_len(s : NlpposaveragedGraphN) -> Int { s.size }
+pub fn NlpposaveragedGraphN::len(self : NlpposaveragedGraphN) -> Int { self.size }
 
-pub fn nlp_pos_averaged_graphn_get(s : NlpposaveragedGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedGraphN::get(self : NlpposaveragedGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_graphn_set(s : NlpposaveragedGraphN, i : Int, v : Double) -> NlpposaveragedGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedGraphN::set(self : NlpposaveragedGraphN, i : Int, v : Double) -> NlpposaveragedGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_graphn_sum(s : NlpposaveragedGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedGraphN::sum(self : NlpposaveragedGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_graphn_mean(s : NlpposaveragedGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedGraphN::mean(self : NlpposaveragedGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_graphn_scale(s : NlpposaveragedGraphN, f : Double) -> NlpposaveragedGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedGraphN::scale(self : NlpposaveragedGraphN, f : Double) -> NlpposaveragedGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_graphn_add(a : NlpposaveragedGraphN, b : NlpposaveragedGraphN) -> NlpposaveragedGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedGraphN::add(self : NlpposaveragedGraphN, other : NlpposaveragedGraphN) -> NlpposaveragedGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_graphn_copy(s : NlpposaveragedGraphN) -> NlpposaveragedGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedGraphN::copy(self : NlpposaveragedGraphN) -> NlpposaveragedGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_graphn_fill(s : NlpposaveragedGraphN, v : Double) -> NlpposaveragedGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedGraphN::fill(self : NlpposaveragedGraphN, v : Double) -> NlpposaveragedGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_graphn_min(s : NlpposaveragedGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedGraphN::min(self : NlpposaveragedGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_graphn_max(s : NlpposaveragedGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedGraphN::max(self : NlpposaveragedGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_graphn_to_string(s : NlpposaveragedGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedGraphN::to_string(self : NlpposaveragedGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedNode {
@@ -504,45 +504,45 @@ pub fn nlp_pos_averaged_node_make(size : Int) -> NlpposaveragedNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_node_len(s : NlpposaveragedNode) -> Int { s.size }
+pub fn NlpposaveragedNode::len(self : NlpposaveragedNode) -> Int { self.size }
 
-pub fn nlp_pos_averaged_node_get(s : NlpposaveragedNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedNode::get(self : NlpposaveragedNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_node_set(s : NlpposaveragedNode, i : Int, v : Double) -> NlpposaveragedNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedNode::set(self : NlpposaveragedNode, i : Int, v : Double) -> NlpposaveragedNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_node_sum(s : NlpposaveragedNode) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedNode::sum(self : NlpposaveragedNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_node_mean(s : NlpposaveragedNode) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedNode::mean(self : NlpposaveragedNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_node_scale(s : NlpposaveragedNode, f : Double) -> NlpposaveragedNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedNode::scale(self : NlpposaveragedNode, f : Double) -> NlpposaveragedNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_node_add(a : NlpposaveragedNode, b : NlpposaveragedNode) -> NlpposaveragedNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedNode::add(self : NlpposaveragedNode, other : NlpposaveragedNode) -> NlpposaveragedNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_node_copy(s : NlpposaveragedNode) -> NlpposaveragedNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedNode::copy(self : NlpposaveragedNode) -> NlpposaveragedNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_node_fill(s : NlpposaveragedNode, v : Double) -> NlpposaveragedNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedNode::fill(self : NlpposaveragedNode, v : Double) -> NlpposaveragedNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_node_min(s : NlpposaveragedNode) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedNode::min(self : NlpposaveragedNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_node_max(s : NlpposaveragedNode) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedNode::max(self : NlpposaveragedNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_node_to_string(s : NlpposaveragedNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedNode::to_string(self : NlpposaveragedNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedEdge {
@@ -555,45 +555,45 @@ pub fn nlp_pos_averaged_edge_make(size : Int) -> NlpposaveragedEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_edge_len(s : NlpposaveragedEdge) -> Int { s.size }
+pub fn NlpposaveragedEdge::len(self : NlpposaveragedEdge) -> Int { self.size }
 
-pub fn nlp_pos_averaged_edge_get(s : NlpposaveragedEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedEdge::get(self : NlpposaveragedEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_edge_set(s : NlpposaveragedEdge, i : Int, v : Double) -> NlpposaveragedEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedEdge::set(self : NlpposaveragedEdge, i : Int, v : Double) -> NlpposaveragedEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_edge_sum(s : NlpposaveragedEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedEdge::sum(self : NlpposaveragedEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_edge_mean(s : NlpposaveragedEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedEdge::mean(self : NlpposaveragedEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_edge_scale(s : NlpposaveragedEdge, f : Double) -> NlpposaveragedEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedEdge::scale(self : NlpposaveragedEdge, f : Double) -> NlpposaveragedEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_edge_add(a : NlpposaveragedEdge, b : NlpposaveragedEdge) -> NlpposaveragedEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedEdge::add(self : NlpposaveragedEdge, other : NlpposaveragedEdge) -> NlpposaveragedEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_edge_copy(s : NlpposaveragedEdge) -> NlpposaveragedEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedEdge::copy(self : NlpposaveragedEdge) -> NlpposaveragedEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_edge_fill(s : NlpposaveragedEdge, v : Double) -> NlpposaveragedEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedEdge::fill(self : NlpposaveragedEdge, v : Double) -> NlpposaveragedEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_edge_min(s : NlpposaveragedEdge) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedEdge::min(self : NlpposaveragedEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_edge_max(s : NlpposaveragedEdge) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedEdge::max(self : NlpposaveragedEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_edge_to_string(s : NlpposaveragedEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedEdge::to_string(self : NlpposaveragedEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedPath {
@@ -606,45 +606,45 @@ pub fn nlp_pos_averaged_path_make(size : Int) -> NlpposaveragedPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_path_len(s : NlpposaveragedPath) -> Int { s.size }
+pub fn NlpposaveragedPath::len(self : NlpposaveragedPath) -> Int { self.size }
 
-pub fn nlp_pos_averaged_path_get(s : NlpposaveragedPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedPath::get(self : NlpposaveragedPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_path_set(s : NlpposaveragedPath, i : Int, v : Double) -> NlpposaveragedPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedPath::set(self : NlpposaveragedPath, i : Int, v : Double) -> NlpposaveragedPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_path_sum(s : NlpposaveragedPath) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedPath::sum(self : NlpposaveragedPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_path_mean(s : NlpposaveragedPath) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedPath::mean(self : NlpposaveragedPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_path_scale(s : NlpposaveragedPath, f : Double) -> NlpposaveragedPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedPath::scale(self : NlpposaveragedPath, f : Double) -> NlpposaveragedPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_path_add(a : NlpposaveragedPath, b : NlpposaveragedPath) -> NlpposaveragedPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedPath::add(self : NlpposaveragedPath, other : NlpposaveragedPath) -> NlpposaveragedPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_path_copy(s : NlpposaveragedPath) -> NlpposaveragedPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedPath::copy(self : NlpposaveragedPath) -> NlpposaveragedPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_path_fill(s : NlpposaveragedPath, v : Double) -> NlpposaveragedPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedPath::fill(self : NlpposaveragedPath, v : Double) -> NlpposaveragedPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_path_min(s : NlpposaveragedPath) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedPath::min(self : NlpposaveragedPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_path_max(s : NlpposaveragedPath) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedPath::max(self : NlpposaveragedPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_path_to_string(s : NlpposaveragedPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedPath::to_string(self : NlpposaveragedPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedCluster {
@@ -657,45 +657,45 @@ pub fn nlp_pos_averaged_cluster_make(size : Int) -> NlpposaveragedCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_cluster_len(s : NlpposaveragedCluster) -> Int { s.size }
+pub fn NlpposaveragedCluster::len(self : NlpposaveragedCluster) -> Int { self.size }
 
-pub fn nlp_pos_averaged_cluster_get(s : NlpposaveragedCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedCluster::get(self : NlpposaveragedCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_cluster_set(s : NlpposaveragedCluster, i : Int, v : Double) -> NlpposaveragedCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedCluster::set(self : NlpposaveragedCluster, i : Int, v : Double) -> NlpposaveragedCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_cluster_sum(s : NlpposaveragedCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedCluster::sum(self : NlpposaveragedCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_cluster_mean(s : NlpposaveragedCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedCluster::mean(self : NlpposaveragedCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_cluster_scale(s : NlpposaveragedCluster, f : Double) -> NlpposaveragedCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedCluster::scale(self : NlpposaveragedCluster, f : Double) -> NlpposaveragedCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_cluster_add(a : NlpposaveragedCluster, b : NlpposaveragedCluster) -> NlpposaveragedCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedCluster::add(self : NlpposaveragedCluster, other : NlpposaveragedCluster) -> NlpposaveragedCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_cluster_copy(s : NlpposaveragedCluster) -> NlpposaveragedCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedCluster::copy(self : NlpposaveragedCluster) -> NlpposaveragedCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_cluster_fill(s : NlpposaveragedCluster, v : Double) -> NlpposaveragedCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedCluster::fill(self : NlpposaveragedCluster, v : Double) -> NlpposaveragedCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_cluster_min(s : NlpposaveragedCluster) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedCluster::min(self : NlpposaveragedCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_cluster_max(s : NlpposaveragedCluster) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedCluster::max(self : NlpposaveragedCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_cluster_to_string(s : NlpposaveragedCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedCluster::to_string(self : NlpposaveragedCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedModel {
@@ -708,45 +708,45 @@ pub fn nlp_pos_averaged_model_make(size : Int) -> NlpposaveragedModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_model_len(s : NlpposaveragedModel) -> Int { s.size }
+pub fn NlpposaveragedModel::len(self : NlpposaveragedModel) -> Int { self.size }
 
-pub fn nlp_pos_averaged_model_get(s : NlpposaveragedModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedModel::get(self : NlpposaveragedModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_model_set(s : NlpposaveragedModel, i : Int, v : Double) -> NlpposaveragedModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedModel::set(self : NlpposaveragedModel, i : Int, v : Double) -> NlpposaveragedModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_model_sum(s : NlpposaveragedModel) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedModel::sum(self : NlpposaveragedModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_model_mean(s : NlpposaveragedModel) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedModel::mean(self : NlpposaveragedModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_model_scale(s : NlpposaveragedModel, f : Double) -> NlpposaveragedModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedModel::scale(self : NlpposaveragedModel, f : Double) -> NlpposaveragedModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_model_add(a : NlpposaveragedModel, b : NlpposaveragedModel) -> NlpposaveragedModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedModel::add(self : NlpposaveragedModel, other : NlpposaveragedModel) -> NlpposaveragedModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_model_copy(s : NlpposaveragedModel) -> NlpposaveragedModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedModel::copy(self : NlpposaveragedModel) -> NlpposaveragedModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_model_fill(s : NlpposaveragedModel, v : Double) -> NlpposaveragedModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedModel::fill(self : NlpposaveragedModel, v : Double) -> NlpposaveragedModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_model_min(s : NlpposaveragedModel) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedModel::min(self : NlpposaveragedModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_model_max(s : NlpposaveragedModel) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedModel::max(self : NlpposaveragedModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_model_to_string(s : NlpposaveragedModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedModel::to_string(self : NlpposaveragedModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedLayer {
@@ -759,45 +759,45 @@ pub fn nlp_pos_averaged_layer_make(size : Int) -> NlpposaveragedLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_layer_len(s : NlpposaveragedLayer) -> Int { s.size }
+pub fn NlpposaveragedLayer::len(self : NlpposaveragedLayer) -> Int { self.size }
 
-pub fn nlp_pos_averaged_layer_get(s : NlpposaveragedLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedLayer::get(self : NlpposaveragedLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_layer_set(s : NlpposaveragedLayer, i : Int, v : Double) -> NlpposaveragedLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedLayer::set(self : NlpposaveragedLayer, i : Int, v : Double) -> NlpposaveragedLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_layer_sum(s : NlpposaveragedLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedLayer::sum(self : NlpposaveragedLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_layer_mean(s : NlpposaveragedLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedLayer::mean(self : NlpposaveragedLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_layer_scale(s : NlpposaveragedLayer, f : Double) -> NlpposaveragedLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedLayer::scale(self : NlpposaveragedLayer, f : Double) -> NlpposaveragedLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_layer_add(a : NlpposaveragedLayer, b : NlpposaveragedLayer) -> NlpposaveragedLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedLayer::add(self : NlpposaveragedLayer, other : NlpposaveragedLayer) -> NlpposaveragedLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_layer_copy(s : NlpposaveragedLayer) -> NlpposaveragedLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedLayer::copy(self : NlpposaveragedLayer) -> NlpposaveragedLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_layer_fill(s : NlpposaveragedLayer, v : Double) -> NlpposaveragedLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedLayer::fill(self : NlpposaveragedLayer, v : Double) -> NlpposaveragedLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_layer_min(s : NlpposaveragedLayer) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedLayer::min(self : NlpposaveragedLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_layer_max(s : NlpposaveragedLayer) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedLayer::max(self : NlpposaveragedLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_layer_to_string(s : NlpposaveragedLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedLayer::to_string(self : NlpposaveragedLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_pos_averaged_buffer_make(size : Int) -> NlpposaveragedBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_buffer_len(s : NlpposaveragedBuffer) -> Int { s.size }
+pub fn NlpposaveragedBuffer::len(self : NlpposaveragedBuffer) -> Int { self.size }
 
-pub fn nlp_pos_averaged_buffer_get(s : NlpposaveragedBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedBuffer::get(self : NlpposaveragedBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_buffer_set(s : NlpposaveragedBuffer, i : Int, v : Double) -> NlpposaveragedBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedBuffer::set(self : NlpposaveragedBuffer, i : Int, v : Double) -> NlpposaveragedBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_buffer_sum(s : NlpposaveragedBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedBuffer::sum(self : NlpposaveragedBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_buffer_mean(s : NlpposaveragedBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedBuffer::mean(self : NlpposaveragedBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_buffer_scale(s : NlpposaveragedBuffer, f : Double) -> NlpposaveragedBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedBuffer::scale(self : NlpposaveragedBuffer, f : Double) -> NlpposaveragedBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_buffer_add(a : NlpposaveragedBuffer, b : NlpposaveragedBuffer) -> NlpposaveragedBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedBuffer::add(self : NlpposaveragedBuffer, other : NlpposaveragedBuffer) -> NlpposaveragedBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_buffer_copy(s : NlpposaveragedBuffer) -> NlpposaveragedBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedBuffer::copy(self : NlpposaveragedBuffer) -> NlpposaveragedBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_buffer_fill(s : NlpposaveragedBuffer, v : Double) -> NlpposaveragedBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedBuffer::fill(self : NlpposaveragedBuffer, v : Double) -> NlpposaveragedBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_buffer_min(s : NlpposaveragedBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedBuffer::min(self : NlpposaveragedBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_buffer_max(s : NlpposaveragedBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedBuffer::max(self : NlpposaveragedBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_buffer_to_string(s : NlpposaveragedBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedBuffer::to_string(self : NlpposaveragedBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedCursor {
@@ -861,45 +861,45 @@ pub fn nlp_pos_averaged_cursor_make(size : Int) -> NlpposaveragedCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_cursor_len(s : NlpposaveragedCursor) -> Int { s.size }
+pub fn NlpposaveragedCursor::len(self : NlpposaveragedCursor) -> Int { self.size }
 
-pub fn nlp_pos_averaged_cursor_get(s : NlpposaveragedCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedCursor::get(self : NlpposaveragedCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_cursor_set(s : NlpposaveragedCursor, i : Int, v : Double) -> NlpposaveragedCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedCursor::set(self : NlpposaveragedCursor, i : Int, v : Double) -> NlpposaveragedCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_cursor_sum(s : NlpposaveragedCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedCursor::sum(self : NlpposaveragedCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_cursor_mean(s : NlpposaveragedCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedCursor::mean(self : NlpposaveragedCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_cursor_scale(s : NlpposaveragedCursor, f : Double) -> NlpposaveragedCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedCursor::scale(self : NlpposaveragedCursor, f : Double) -> NlpposaveragedCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_cursor_add(a : NlpposaveragedCursor, b : NlpposaveragedCursor) -> NlpposaveragedCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedCursor::add(self : NlpposaveragedCursor, other : NlpposaveragedCursor) -> NlpposaveragedCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_cursor_copy(s : NlpposaveragedCursor) -> NlpposaveragedCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedCursor::copy(self : NlpposaveragedCursor) -> NlpposaveragedCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_cursor_fill(s : NlpposaveragedCursor, v : Double) -> NlpposaveragedCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedCursor::fill(self : NlpposaveragedCursor, v : Double) -> NlpposaveragedCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_cursor_min(s : NlpposaveragedCursor) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedCursor::min(self : NlpposaveragedCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_cursor_max(s : NlpposaveragedCursor) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedCursor::max(self : NlpposaveragedCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_cursor_to_string(s : NlpposaveragedCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedCursor::to_string(self : NlpposaveragedCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedView {
@@ -912,45 +912,45 @@ pub fn nlp_pos_averaged_view_make(size : Int) -> NlpposaveragedView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_view_len(s : NlpposaveragedView) -> Int { s.size }
+pub fn NlpposaveragedView::len(self : NlpposaveragedView) -> Int { self.size }
 
-pub fn nlp_pos_averaged_view_get(s : NlpposaveragedView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedView::get(self : NlpposaveragedView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_view_set(s : NlpposaveragedView, i : Int, v : Double) -> NlpposaveragedView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedView::set(self : NlpposaveragedView, i : Int, v : Double) -> NlpposaveragedView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_view_sum(s : NlpposaveragedView) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedView::sum(self : NlpposaveragedView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_view_mean(s : NlpposaveragedView) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedView::mean(self : NlpposaveragedView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_view_scale(s : NlpposaveragedView, f : Double) -> NlpposaveragedView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedView::scale(self : NlpposaveragedView, f : Double) -> NlpposaveragedView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_view_add(a : NlpposaveragedView, b : NlpposaveragedView) -> NlpposaveragedView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedView::add(self : NlpposaveragedView, other : NlpposaveragedView) -> NlpposaveragedView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_view_copy(s : NlpposaveragedView) -> NlpposaveragedView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedView::copy(self : NlpposaveragedView) -> NlpposaveragedView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_view_fill(s : NlpposaveragedView, v : Double) -> NlpposaveragedView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedView::fill(self : NlpposaveragedView, v : Double) -> NlpposaveragedView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_view_min(s : NlpposaveragedView) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedView::min(self : NlpposaveragedView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_view_max(s : NlpposaveragedView) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedView::max(self : NlpposaveragedView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_view_to_string(s : NlpposaveragedView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedView::to_string(self : NlpposaveragedView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedRange {
@@ -963,45 +963,45 @@ pub fn nlp_pos_averaged_range_make(size : Int) -> NlpposaveragedRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_range_len(s : NlpposaveragedRange) -> Int { s.size }
+pub fn NlpposaveragedRange::len(self : NlpposaveragedRange) -> Int { self.size }
 
-pub fn nlp_pos_averaged_range_get(s : NlpposaveragedRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedRange::get(self : NlpposaveragedRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_range_set(s : NlpposaveragedRange, i : Int, v : Double) -> NlpposaveragedRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedRange::set(self : NlpposaveragedRange, i : Int, v : Double) -> NlpposaveragedRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_range_sum(s : NlpposaveragedRange) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedRange::sum(self : NlpposaveragedRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_range_mean(s : NlpposaveragedRange) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedRange::mean(self : NlpposaveragedRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_range_scale(s : NlpposaveragedRange, f : Double) -> NlpposaveragedRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedRange::scale(self : NlpposaveragedRange, f : Double) -> NlpposaveragedRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_range_add(a : NlpposaveragedRange, b : NlpposaveragedRange) -> NlpposaveragedRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedRange::add(self : NlpposaveragedRange, other : NlpposaveragedRange) -> NlpposaveragedRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_range_copy(s : NlpposaveragedRange) -> NlpposaveragedRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedRange::copy(self : NlpposaveragedRange) -> NlpposaveragedRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_range_fill(s : NlpposaveragedRange, v : Double) -> NlpposaveragedRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedRange::fill(self : NlpposaveragedRange, v : Double) -> NlpposaveragedRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_range_min(s : NlpposaveragedRange) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedRange::min(self : NlpposaveragedRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_range_max(s : NlpposaveragedRange) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedRange::max(self : NlpposaveragedRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_range_to_string(s : NlpposaveragedRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedRange::to_string(self : NlpposaveragedRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposaveragedSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_pos_averaged_slice_make(size : Int) -> NlpposaveragedSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_averaged_slice_len(s : NlpposaveragedSlice) -> Int { s.size }
+pub fn NlpposaveragedSlice::len(self : NlpposaveragedSlice) -> Int { self.size }
 
-pub fn nlp_pos_averaged_slice_get(s : NlpposaveragedSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposaveragedSlice::get(self : NlpposaveragedSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_averaged_slice_set(s : NlpposaveragedSlice, i : Int, v : Double) -> NlpposaveragedSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposaveragedSlice::set(self : NlpposaveragedSlice, i : Int, v : Double) -> NlpposaveragedSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_slice_sum(s : NlpposaveragedSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpposaveragedSlice::sum(self : NlpposaveragedSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_averaged_slice_mean(s : NlpposaveragedSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpposaveragedSlice::mean(self : NlpposaveragedSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_averaged_slice_scale(s : NlpposaveragedSlice, f : Double) -> NlpposaveragedSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposaveragedSlice::scale(self : NlpposaveragedSlice, f : Double) -> NlpposaveragedSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_slice_add(a : NlpposaveragedSlice, b : NlpposaveragedSlice) -> NlpposaveragedSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposaveragedSlice::add(self : NlpposaveragedSlice, other : NlpposaveragedSlice) -> NlpposaveragedSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_slice_copy(s : NlpposaveragedSlice) -> NlpposaveragedSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposaveragedSlice::copy(self : NlpposaveragedSlice) -> NlpposaveragedSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_slice_fill(s : NlpposaveragedSlice, v : Double) -> NlpposaveragedSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposaveragedSlice::fill(self : NlpposaveragedSlice, v : Double) -> NlpposaveragedSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_averaged_slice_min(s : NlpposaveragedSlice) -> Double { @_common.min(s.data) }
+pub fn NlpposaveragedSlice::min(self : NlpposaveragedSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_averaged_slice_max(s : NlpposaveragedSlice) -> Double { @_common.max(s.data) }
+pub fn NlpposaveragedSlice::max(self : NlpposaveragedSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_averaged_slice_to_string(s : NlpposaveragedSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposaveragedSlice::to_string(self : NlpposaveragedSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

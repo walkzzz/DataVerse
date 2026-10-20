@@ -351,45 +351,45 @@ pub fn timeseries_decomp_beveridge_frame_make(size : Int) -> Timeseriesdecompbev
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_frame_len(s : TimeseriesdecompbeveridgeFrame) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeFrame::len(self : TimeseriesdecompbeveridgeFrame) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_frame_get(s : TimeseriesdecompbeveridgeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeFrame::get(self : TimeseriesdecompbeveridgeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_frame_set(s : TimeseriesdecompbeveridgeFrame, i : Int, v : Double) -> TimeseriesdecompbeveridgeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeFrame::set(self : TimeseriesdecompbeveridgeFrame, i : Int, v : Double) -> TimeseriesdecompbeveridgeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_frame_sum(s : TimeseriesdecompbeveridgeFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeFrame::sum(self : TimeseriesdecompbeveridgeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_frame_mean(s : TimeseriesdecompbeveridgeFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeFrame::mean(self : TimeseriesdecompbeveridgeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_frame_scale(s : TimeseriesdecompbeveridgeFrame, f : Double) -> TimeseriesdecompbeveridgeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeFrame::scale(self : TimeseriesdecompbeveridgeFrame, f : Double) -> TimeseriesdecompbeveridgeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_frame_add(a : TimeseriesdecompbeveridgeFrame, b : TimeseriesdecompbeveridgeFrame) -> TimeseriesdecompbeveridgeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeFrame::add(self : TimeseriesdecompbeveridgeFrame, other : TimeseriesdecompbeveridgeFrame) -> TimeseriesdecompbeveridgeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_frame_copy(s : TimeseriesdecompbeveridgeFrame) -> TimeseriesdecompbeveridgeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeFrame::copy(self : TimeseriesdecompbeveridgeFrame) -> TimeseriesdecompbeveridgeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_frame_fill(s : TimeseriesdecompbeveridgeFrame, v : Double) -> TimeseriesdecompbeveridgeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeFrame::fill(self : TimeseriesdecompbeveridgeFrame, v : Double) -> TimeseriesdecompbeveridgeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_frame_min(s : TimeseriesdecompbeveridgeFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeFrame::min(self : TimeseriesdecompbeveridgeFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_frame_max(s : TimeseriesdecompbeveridgeFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeFrame::max(self : TimeseriesdecompbeveridgeFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_frame_to_string(s : TimeseriesdecompbeveridgeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeFrame::to_string(self : TimeseriesdecompbeveridgeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgeTable {
@@ -402,45 +402,45 @@ pub fn timeseries_decomp_beveridge_table_make(size : Int) -> Timeseriesdecompbev
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_table_len(s : TimeseriesdecompbeveridgeTable) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeTable::len(self : TimeseriesdecompbeveridgeTable) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_table_get(s : TimeseriesdecompbeveridgeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeTable::get(self : TimeseriesdecompbeveridgeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_table_set(s : TimeseriesdecompbeveridgeTable, i : Int, v : Double) -> TimeseriesdecompbeveridgeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeTable::set(self : TimeseriesdecompbeveridgeTable, i : Int, v : Double) -> TimeseriesdecompbeveridgeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_table_sum(s : TimeseriesdecompbeveridgeTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeTable::sum(self : TimeseriesdecompbeveridgeTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_table_mean(s : TimeseriesdecompbeveridgeTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeTable::mean(self : TimeseriesdecompbeveridgeTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_table_scale(s : TimeseriesdecompbeveridgeTable, f : Double) -> TimeseriesdecompbeveridgeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeTable::scale(self : TimeseriesdecompbeveridgeTable, f : Double) -> TimeseriesdecompbeveridgeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_table_add(a : TimeseriesdecompbeveridgeTable, b : TimeseriesdecompbeveridgeTable) -> TimeseriesdecompbeveridgeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeTable::add(self : TimeseriesdecompbeveridgeTable, other : TimeseriesdecompbeveridgeTable) -> TimeseriesdecompbeveridgeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_table_copy(s : TimeseriesdecompbeveridgeTable) -> TimeseriesdecompbeveridgeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeTable::copy(self : TimeseriesdecompbeveridgeTable) -> TimeseriesdecompbeveridgeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_table_fill(s : TimeseriesdecompbeveridgeTable, v : Double) -> TimeseriesdecompbeveridgeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeTable::fill(self : TimeseriesdecompbeveridgeTable, v : Double) -> TimeseriesdecompbeveridgeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_table_min(s : TimeseriesdecompbeveridgeTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeTable::min(self : TimeseriesdecompbeveridgeTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_table_max(s : TimeseriesdecompbeveridgeTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeTable::max(self : TimeseriesdecompbeveridgeTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_table_to_string(s : TimeseriesdecompbeveridgeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeTable::to_string(self : TimeseriesdecompbeveridgeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgeGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_decomp_beveridge_graphn_make(size : Int) -> Timeseriesdecompbe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_graphn_len(s : TimeseriesdecompbeveridgeGraphN) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeGraphN::len(self : TimeseriesdecompbeveridgeGraphN) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_graphn_get(s : TimeseriesdecompbeveridgeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeGraphN::get(self : TimeseriesdecompbeveridgeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_graphn_set(s : TimeseriesdecompbeveridgeGraphN, i : Int, v : Double) -> TimeseriesdecompbeveridgeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeGraphN::set(self : TimeseriesdecompbeveridgeGraphN, i : Int, v : Double) -> TimeseriesdecompbeveridgeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_graphn_sum(s : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeGraphN::sum(self : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_graphn_mean(s : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeGraphN::mean(self : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_graphn_scale(s : TimeseriesdecompbeveridgeGraphN, f : Double) -> TimeseriesdecompbeveridgeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeGraphN::scale(self : TimeseriesdecompbeveridgeGraphN, f : Double) -> TimeseriesdecompbeveridgeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_graphn_add(a : TimeseriesdecompbeveridgeGraphN, b : TimeseriesdecompbeveridgeGraphN) -> TimeseriesdecompbeveridgeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeGraphN::add(self : TimeseriesdecompbeveridgeGraphN, other : TimeseriesdecompbeveridgeGraphN) -> TimeseriesdecompbeveridgeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_graphn_copy(s : TimeseriesdecompbeveridgeGraphN) -> TimeseriesdecompbeveridgeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeGraphN::copy(self : TimeseriesdecompbeveridgeGraphN) -> TimeseriesdecompbeveridgeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_graphn_fill(s : TimeseriesdecompbeveridgeGraphN, v : Double) -> TimeseriesdecompbeveridgeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeGraphN::fill(self : TimeseriesdecompbeveridgeGraphN, v : Double) -> TimeseriesdecompbeveridgeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_graphn_min(s : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeGraphN::min(self : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_graphn_max(s : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeGraphN::max(self : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_graphn_to_string(s : TimeseriesdecompbeveridgeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeGraphN::to_string(self : TimeseriesdecompbeveridgeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgeNode {
@@ -504,45 +504,45 @@ pub fn timeseries_decomp_beveridge_node_make(size : Int) -> Timeseriesdecompbeve
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_node_len(s : TimeseriesdecompbeveridgeNode) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeNode::len(self : TimeseriesdecompbeveridgeNode) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_node_get(s : TimeseriesdecompbeveridgeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeNode::get(self : TimeseriesdecompbeveridgeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_node_set(s : TimeseriesdecompbeveridgeNode, i : Int, v : Double) -> TimeseriesdecompbeveridgeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeNode::set(self : TimeseriesdecompbeveridgeNode, i : Int, v : Double) -> TimeseriesdecompbeveridgeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_node_sum(s : TimeseriesdecompbeveridgeNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeNode::sum(self : TimeseriesdecompbeveridgeNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_node_mean(s : TimeseriesdecompbeveridgeNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeNode::mean(self : TimeseriesdecompbeveridgeNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_node_scale(s : TimeseriesdecompbeveridgeNode, f : Double) -> TimeseriesdecompbeveridgeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeNode::scale(self : TimeseriesdecompbeveridgeNode, f : Double) -> TimeseriesdecompbeveridgeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_node_add(a : TimeseriesdecompbeveridgeNode, b : TimeseriesdecompbeveridgeNode) -> TimeseriesdecompbeveridgeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeNode::add(self : TimeseriesdecompbeveridgeNode, other : TimeseriesdecompbeveridgeNode) -> TimeseriesdecompbeveridgeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_node_copy(s : TimeseriesdecompbeveridgeNode) -> TimeseriesdecompbeveridgeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeNode::copy(self : TimeseriesdecompbeveridgeNode) -> TimeseriesdecompbeveridgeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_node_fill(s : TimeseriesdecompbeveridgeNode, v : Double) -> TimeseriesdecompbeveridgeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeNode::fill(self : TimeseriesdecompbeveridgeNode, v : Double) -> TimeseriesdecompbeveridgeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_node_min(s : TimeseriesdecompbeveridgeNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeNode::min(self : TimeseriesdecompbeveridgeNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_node_max(s : TimeseriesdecompbeveridgeNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeNode::max(self : TimeseriesdecompbeveridgeNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_node_to_string(s : TimeseriesdecompbeveridgeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeNode::to_string(self : TimeseriesdecompbeveridgeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgeEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_decomp_beveridge_edge_make(size : Int) -> Timeseriesdecompbeve
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_edge_len(s : TimeseriesdecompbeveridgeEdge) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeEdge::len(self : TimeseriesdecompbeveridgeEdge) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_edge_get(s : TimeseriesdecompbeveridgeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeEdge::get(self : TimeseriesdecompbeveridgeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_edge_set(s : TimeseriesdecompbeveridgeEdge, i : Int, v : Double) -> TimeseriesdecompbeveridgeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeEdge::set(self : TimeseriesdecompbeveridgeEdge, i : Int, v : Double) -> TimeseriesdecompbeveridgeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_edge_sum(s : TimeseriesdecompbeveridgeEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeEdge::sum(self : TimeseriesdecompbeveridgeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_edge_mean(s : TimeseriesdecompbeveridgeEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeEdge::mean(self : TimeseriesdecompbeveridgeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_edge_scale(s : TimeseriesdecompbeveridgeEdge, f : Double) -> TimeseriesdecompbeveridgeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeEdge::scale(self : TimeseriesdecompbeveridgeEdge, f : Double) -> TimeseriesdecompbeveridgeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_edge_add(a : TimeseriesdecompbeveridgeEdge, b : TimeseriesdecompbeveridgeEdge) -> TimeseriesdecompbeveridgeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeEdge::add(self : TimeseriesdecompbeveridgeEdge, other : TimeseriesdecompbeveridgeEdge) -> TimeseriesdecompbeveridgeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_edge_copy(s : TimeseriesdecompbeveridgeEdge) -> TimeseriesdecompbeveridgeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeEdge::copy(self : TimeseriesdecompbeveridgeEdge) -> TimeseriesdecompbeveridgeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_edge_fill(s : TimeseriesdecompbeveridgeEdge, v : Double) -> TimeseriesdecompbeveridgeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeEdge::fill(self : TimeseriesdecompbeveridgeEdge, v : Double) -> TimeseriesdecompbeveridgeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_edge_min(s : TimeseriesdecompbeveridgeEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeEdge::min(self : TimeseriesdecompbeveridgeEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_edge_max(s : TimeseriesdecompbeveridgeEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeEdge::max(self : TimeseriesdecompbeveridgeEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_edge_to_string(s : TimeseriesdecompbeveridgeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeEdge::to_string(self : TimeseriesdecompbeveridgeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgePath {
@@ -606,45 +606,45 @@ pub fn timeseries_decomp_beveridge_path_make(size : Int) -> Timeseriesdecompbeve
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_path_len(s : TimeseriesdecompbeveridgePath) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgePath::len(self : TimeseriesdecompbeveridgePath) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_path_get(s : TimeseriesdecompbeveridgePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgePath::get(self : TimeseriesdecompbeveridgePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_path_set(s : TimeseriesdecompbeveridgePath, i : Int, v : Double) -> TimeseriesdecompbeveridgePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgePath::set(self : TimeseriesdecompbeveridgePath, i : Int, v : Double) -> TimeseriesdecompbeveridgePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_path_sum(s : TimeseriesdecompbeveridgePath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgePath::sum(self : TimeseriesdecompbeveridgePath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_path_mean(s : TimeseriesdecompbeveridgePath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgePath::mean(self : TimeseriesdecompbeveridgePath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_path_scale(s : TimeseriesdecompbeveridgePath, f : Double) -> TimeseriesdecompbeveridgePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgePath::scale(self : TimeseriesdecompbeveridgePath, f : Double) -> TimeseriesdecompbeveridgePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_path_add(a : TimeseriesdecompbeveridgePath, b : TimeseriesdecompbeveridgePath) -> TimeseriesdecompbeveridgePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgePath::add(self : TimeseriesdecompbeveridgePath, other : TimeseriesdecompbeveridgePath) -> TimeseriesdecompbeveridgePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_path_copy(s : TimeseriesdecompbeveridgePath) -> TimeseriesdecompbeveridgePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgePath::copy(self : TimeseriesdecompbeveridgePath) -> TimeseriesdecompbeveridgePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_path_fill(s : TimeseriesdecompbeveridgePath, v : Double) -> TimeseriesdecompbeveridgePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgePath::fill(self : TimeseriesdecompbeveridgePath, v : Double) -> TimeseriesdecompbeveridgePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_path_min(s : TimeseriesdecompbeveridgePath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgePath::min(self : TimeseriesdecompbeveridgePath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_path_max(s : TimeseriesdecompbeveridgePath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgePath::max(self : TimeseriesdecompbeveridgePath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_path_to_string(s : TimeseriesdecompbeveridgePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgePath::to_string(self : TimeseriesdecompbeveridgePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgeCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_decomp_beveridge_cluster_make(size : Int) -> Timeseriesdecompb
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_cluster_len(s : TimeseriesdecompbeveridgeCluster) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeCluster::len(self : TimeseriesdecompbeveridgeCluster) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_cluster_get(s : TimeseriesdecompbeveridgeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeCluster::get(self : TimeseriesdecompbeveridgeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_cluster_set(s : TimeseriesdecompbeveridgeCluster, i : Int, v : Double) -> TimeseriesdecompbeveridgeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeCluster::set(self : TimeseriesdecompbeveridgeCluster, i : Int, v : Double) -> TimeseriesdecompbeveridgeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_cluster_sum(s : TimeseriesdecompbeveridgeCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeCluster::sum(self : TimeseriesdecompbeveridgeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_cluster_mean(s : TimeseriesdecompbeveridgeCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeCluster::mean(self : TimeseriesdecompbeveridgeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_cluster_scale(s : TimeseriesdecompbeveridgeCluster, f : Double) -> TimeseriesdecompbeveridgeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeCluster::scale(self : TimeseriesdecompbeveridgeCluster, f : Double) -> TimeseriesdecompbeveridgeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_cluster_add(a : TimeseriesdecompbeveridgeCluster, b : TimeseriesdecompbeveridgeCluster) -> TimeseriesdecompbeveridgeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeCluster::add(self : TimeseriesdecompbeveridgeCluster, other : TimeseriesdecompbeveridgeCluster) -> TimeseriesdecompbeveridgeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_cluster_copy(s : TimeseriesdecompbeveridgeCluster) -> TimeseriesdecompbeveridgeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeCluster::copy(self : TimeseriesdecompbeveridgeCluster) -> TimeseriesdecompbeveridgeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_cluster_fill(s : TimeseriesdecompbeveridgeCluster, v : Double) -> TimeseriesdecompbeveridgeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeCluster::fill(self : TimeseriesdecompbeveridgeCluster, v : Double) -> TimeseriesdecompbeveridgeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_cluster_min(s : TimeseriesdecompbeveridgeCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeCluster::min(self : TimeseriesdecompbeveridgeCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_cluster_max(s : TimeseriesdecompbeveridgeCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeCluster::max(self : TimeseriesdecompbeveridgeCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_cluster_to_string(s : TimeseriesdecompbeveridgeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeCluster::to_string(self : TimeseriesdecompbeveridgeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgeModel {
@@ -708,45 +708,45 @@ pub fn timeseries_decomp_beveridge_model_make(size : Int) -> Timeseriesdecompbev
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_model_len(s : TimeseriesdecompbeveridgeModel) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeModel::len(self : TimeseriesdecompbeveridgeModel) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_model_get(s : TimeseriesdecompbeveridgeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeModel::get(self : TimeseriesdecompbeveridgeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_model_set(s : TimeseriesdecompbeveridgeModel, i : Int, v : Double) -> TimeseriesdecompbeveridgeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeModel::set(self : TimeseriesdecompbeveridgeModel, i : Int, v : Double) -> TimeseriesdecompbeveridgeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_model_sum(s : TimeseriesdecompbeveridgeModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeModel::sum(self : TimeseriesdecompbeveridgeModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_model_mean(s : TimeseriesdecompbeveridgeModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeModel::mean(self : TimeseriesdecompbeveridgeModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_model_scale(s : TimeseriesdecompbeveridgeModel, f : Double) -> TimeseriesdecompbeveridgeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeModel::scale(self : TimeseriesdecompbeveridgeModel, f : Double) -> TimeseriesdecompbeveridgeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_model_add(a : TimeseriesdecompbeveridgeModel, b : TimeseriesdecompbeveridgeModel) -> TimeseriesdecompbeveridgeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeModel::add(self : TimeseriesdecompbeveridgeModel, other : TimeseriesdecompbeveridgeModel) -> TimeseriesdecompbeveridgeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_model_copy(s : TimeseriesdecompbeveridgeModel) -> TimeseriesdecompbeveridgeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeModel::copy(self : TimeseriesdecompbeveridgeModel) -> TimeseriesdecompbeveridgeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_model_fill(s : TimeseriesdecompbeveridgeModel, v : Double) -> TimeseriesdecompbeveridgeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeModel::fill(self : TimeseriesdecompbeveridgeModel, v : Double) -> TimeseriesdecompbeveridgeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_model_min(s : TimeseriesdecompbeveridgeModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeModel::min(self : TimeseriesdecompbeveridgeModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_model_max(s : TimeseriesdecompbeveridgeModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeModel::max(self : TimeseriesdecompbeveridgeModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_model_to_string(s : TimeseriesdecompbeveridgeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeModel::to_string(self : TimeseriesdecompbeveridgeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgeLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_decomp_beveridge_layer_make(size : Int) -> Timeseriesdecompbev
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_layer_len(s : TimeseriesdecompbeveridgeLayer) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeLayer::len(self : TimeseriesdecompbeveridgeLayer) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_layer_get(s : TimeseriesdecompbeveridgeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeLayer::get(self : TimeseriesdecompbeveridgeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_layer_set(s : TimeseriesdecompbeveridgeLayer, i : Int, v : Double) -> TimeseriesdecompbeveridgeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeLayer::set(self : TimeseriesdecompbeveridgeLayer, i : Int, v : Double) -> TimeseriesdecompbeveridgeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_layer_sum(s : TimeseriesdecompbeveridgeLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeLayer::sum(self : TimeseriesdecompbeveridgeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_layer_mean(s : TimeseriesdecompbeveridgeLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeLayer::mean(self : TimeseriesdecompbeveridgeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_layer_scale(s : TimeseriesdecompbeveridgeLayer, f : Double) -> TimeseriesdecompbeveridgeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeLayer::scale(self : TimeseriesdecompbeveridgeLayer, f : Double) -> TimeseriesdecompbeveridgeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_layer_add(a : TimeseriesdecompbeveridgeLayer, b : TimeseriesdecompbeveridgeLayer) -> TimeseriesdecompbeveridgeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeLayer::add(self : TimeseriesdecompbeveridgeLayer, other : TimeseriesdecompbeveridgeLayer) -> TimeseriesdecompbeveridgeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_layer_copy(s : TimeseriesdecompbeveridgeLayer) -> TimeseriesdecompbeveridgeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeLayer::copy(self : TimeseriesdecompbeveridgeLayer) -> TimeseriesdecompbeveridgeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_layer_fill(s : TimeseriesdecompbeveridgeLayer, v : Double) -> TimeseriesdecompbeveridgeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeLayer::fill(self : TimeseriesdecompbeveridgeLayer, v : Double) -> TimeseriesdecompbeveridgeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_layer_min(s : TimeseriesdecompbeveridgeLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeLayer::min(self : TimeseriesdecompbeveridgeLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_layer_max(s : TimeseriesdecompbeveridgeLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeLayer::max(self : TimeseriesdecompbeveridgeLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_layer_to_string(s : TimeseriesdecompbeveridgeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeLayer::to_string(self : TimeseriesdecompbeveridgeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgeBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_decomp_beveridge_buffer_make(size : Int) -> Timeseriesdecompbe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_buffer_len(s : TimeseriesdecompbeveridgeBuffer) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeBuffer::len(self : TimeseriesdecompbeveridgeBuffer) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_buffer_get(s : TimeseriesdecompbeveridgeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeBuffer::get(self : TimeseriesdecompbeveridgeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_buffer_set(s : TimeseriesdecompbeveridgeBuffer, i : Int, v : Double) -> TimeseriesdecompbeveridgeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeBuffer::set(self : TimeseriesdecompbeveridgeBuffer, i : Int, v : Double) -> TimeseriesdecompbeveridgeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_buffer_sum(s : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeBuffer::sum(self : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_buffer_mean(s : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeBuffer::mean(self : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_buffer_scale(s : TimeseriesdecompbeveridgeBuffer, f : Double) -> TimeseriesdecompbeveridgeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeBuffer::scale(self : TimeseriesdecompbeveridgeBuffer, f : Double) -> TimeseriesdecompbeveridgeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_buffer_add(a : TimeseriesdecompbeveridgeBuffer, b : TimeseriesdecompbeveridgeBuffer) -> TimeseriesdecompbeveridgeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeBuffer::add(self : TimeseriesdecompbeveridgeBuffer, other : TimeseriesdecompbeveridgeBuffer) -> TimeseriesdecompbeveridgeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_buffer_copy(s : TimeseriesdecompbeveridgeBuffer) -> TimeseriesdecompbeveridgeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeBuffer::copy(self : TimeseriesdecompbeveridgeBuffer) -> TimeseriesdecompbeveridgeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_buffer_fill(s : TimeseriesdecompbeveridgeBuffer, v : Double) -> TimeseriesdecompbeveridgeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeBuffer::fill(self : TimeseriesdecompbeveridgeBuffer, v : Double) -> TimeseriesdecompbeveridgeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_buffer_min(s : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeBuffer::min(self : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_buffer_max(s : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeBuffer::max(self : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_buffer_to_string(s : TimeseriesdecompbeveridgeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeBuffer::to_string(self : TimeseriesdecompbeveridgeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgeCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_decomp_beveridge_cursor_make(size : Int) -> Timeseriesdecompbe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_cursor_len(s : TimeseriesdecompbeveridgeCursor) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeCursor::len(self : TimeseriesdecompbeveridgeCursor) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_cursor_get(s : TimeseriesdecompbeveridgeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeCursor::get(self : TimeseriesdecompbeveridgeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_cursor_set(s : TimeseriesdecompbeveridgeCursor, i : Int, v : Double) -> TimeseriesdecompbeveridgeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeCursor::set(self : TimeseriesdecompbeveridgeCursor, i : Int, v : Double) -> TimeseriesdecompbeveridgeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_cursor_sum(s : TimeseriesdecompbeveridgeCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeCursor::sum(self : TimeseriesdecompbeveridgeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_cursor_mean(s : TimeseriesdecompbeveridgeCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeCursor::mean(self : TimeseriesdecompbeveridgeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_cursor_scale(s : TimeseriesdecompbeveridgeCursor, f : Double) -> TimeseriesdecompbeveridgeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeCursor::scale(self : TimeseriesdecompbeveridgeCursor, f : Double) -> TimeseriesdecompbeveridgeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_cursor_add(a : TimeseriesdecompbeveridgeCursor, b : TimeseriesdecompbeveridgeCursor) -> TimeseriesdecompbeveridgeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeCursor::add(self : TimeseriesdecompbeveridgeCursor, other : TimeseriesdecompbeveridgeCursor) -> TimeseriesdecompbeveridgeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_cursor_copy(s : TimeseriesdecompbeveridgeCursor) -> TimeseriesdecompbeveridgeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeCursor::copy(self : TimeseriesdecompbeveridgeCursor) -> TimeseriesdecompbeveridgeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_cursor_fill(s : TimeseriesdecompbeveridgeCursor, v : Double) -> TimeseriesdecompbeveridgeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeCursor::fill(self : TimeseriesdecompbeveridgeCursor, v : Double) -> TimeseriesdecompbeveridgeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_cursor_min(s : TimeseriesdecompbeveridgeCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeCursor::min(self : TimeseriesdecompbeveridgeCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_cursor_max(s : TimeseriesdecompbeveridgeCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeCursor::max(self : TimeseriesdecompbeveridgeCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_cursor_to_string(s : TimeseriesdecompbeveridgeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeCursor::to_string(self : TimeseriesdecompbeveridgeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgeView {
@@ -912,45 +912,45 @@ pub fn timeseries_decomp_beveridge_view_make(size : Int) -> Timeseriesdecompbeve
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_view_len(s : TimeseriesdecompbeveridgeView) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeView::len(self : TimeseriesdecompbeveridgeView) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_view_get(s : TimeseriesdecompbeveridgeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeView::get(self : TimeseriesdecompbeveridgeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_view_set(s : TimeseriesdecompbeveridgeView, i : Int, v : Double) -> TimeseriesdecompbeveridgeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeView::set(self : TimeseriesdecompbeveridgeView, i : Int, v : Double) -> TimeseriesdecompbeveridgeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_view_sum(s : TimeseriesdecompbeveridgeView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeView::sum(self : TimeseriesdecompbeveridgeView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_view_mean(s : TimeseriesdecompbeveridgeView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeView::mean(self : TimeseriesdecompbeveridgeView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_view_scale(s : TimeseriesdecompbeveridgeView, f : Double) -> TimeseriesdecompbeveridgeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeView::scale(self : TimeseriesdecompbeveridgeView, f : Double) -> TimeseriesdecompbeveridgeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_view_add(a : TimeseriesdecompbeveridgeView, b : TimeseriesdecompbeveridgeView) -> TimeseriesdecompbeveridgeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeView::add(self : TimeseriesdecompbeveridgeView, other : TimeseriesdecompbeveridgeView) -> TimeseriesdecompbeveridgeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_view_copy(s : TimeseriesdecompbeveridgeView) -> TimeseriesdecompbeveridgeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeView::copy(self : TimeseriesdecompbeveridgeView) -> TimeseriesdecompbeveridgeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_view_fill(s : TimeseriesdecompbeveridgeView, v : Double) -> TimeseriesdecompbeveridgeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeView::fill(self : TimeseriesdecompbeveridgeView, v : Double) -> TimeseriesdecompbeveridgeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_view_min(s : TimeseriesdecompbeveridgeView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeView::min(self : TimeseriesdecompbeveridgeView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_view_max(s : TimeseriesdecompbeveridgeView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeView::max(self : TimeseriesdecompbeveridgeView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_view_to_string(s : TimeseriesdecompbeveridgeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeView::to_string(self : TimeseriesdecompbeveridgeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgeRange {
@@ -963,45 +963,45 @@ pub fn timeseries_decomp_beveridge_range_make(size : Int) -> Timeseriesdecompbev
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_range_len(s : TimeseriesdecompbeveridgeRange) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeRange::len(self : TimeseriesdecompbeveridgeRange) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_range_get(s : TimeseriesdecompbeveridgeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeRange::get(self : TimeseriesdecompbeveridgeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_range_set(s : TimeseriesdecompbeveridgeRange, i : Int, v : Double) -> TimeseriesdecompbeveridgeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeRange::set(self : TimeseriesdecompbeveridgeRange, i : Int, v : Double) -> TimeseriesdecompbeveridgeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_range_sum(s : TimeseriesdecompbeveridgeRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeRange::sum(self : TimeseriesdecompbeveridgeRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_range_mean(s : TimeseriesdecompbeveridgeRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeRange::mean(self : TimeseriesdecompbeveridgeRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_range_scale(s : TimeseriesdecompbeveridgeRange, f : Double) -> TimeseriesdecompbeveridgeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeRange::scale(self : TimeseriesdecompbeveridgeRange, f : Double) -> TimeseriesdecompbeveridgeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_range_add(a : TimeseriesdecompbeveridgeRange, b : TimeseriesdecompbeveridgeRange) -> TimeseriesdecompbeveridgeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeRange::add(self : TimeseriesdecompbeveridgeRange, other : TimeseriesdecompbeveridgeRange) -> TimeseriesdecompbeveridgeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_range_copy(s : TimeseriesdecompbeveridgeRange) -> TimeseriesdecompbeveridgeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeRange::copy(self : TimeseriesdecompbeveridgeRange) -> TimeseriesdecompbeveridgeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_range_fill(s : TimeseriesdecompbeveridgeRange, v : Double) -> TimeseriesdecompbeveridgeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeRange::fill(self : TimeseriesdecompbeveridgeRange, v : Double) -> TimeseriesdecompbeveridgeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_range_min(s : TimeseriesdecompbeveridgeRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeRange::min(self : TimeseriesdecompbeveridgeRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_range_max(s : TimeseriesdecompbeveridgeRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeRange::max(self : TimeseriesdecompbeveridgeRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_range_to_string(s : TimeseriesdecompbeveridgeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeRange::to_string(self : TimeseriesdecompbeveridgeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompbeveridgeSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_decomp_beveridge_slice_make(size : Int) -> Timeseriesdecompbev
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_beveridge_slice_len(s : TimeseriesdecompbeveridgeSlice) -> Int { s.size }
+pub fn TimeseriesdecompbeveridgeSlice::len(self : TimeseriesdecompbeveridgeSlice) -> Int { self.size }
 
-pub fn timeseries_decomp_beveridge_slice_get(s : TimeseriesdecompbeveridgeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompbeveridgeSlice::get(self : TimeseriesdecompbeveridgeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_beveridge_slice_set(s : TimeseriesdecompbeveridgeSlice, i : Int, v : Double) -> TimeseriesdecompbeveridgeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeSlice::set(self : TimeseriesdecompbeveridgeSlice, i : Int, v : Double) -> TimeseriesdecompbeveridgeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_slice_sum(s : TimeseriesdecompbeveridgeSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompbeveridgeSlice::sum(self : TimeseriesdecompbeveridgeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_beveridge_slice_mean(s : TimeseriesdecompbeveridgeSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompbeveridgeSlice::mean(self : TimeseriesdecompbeveridgeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_beveridge_slice_scale(s : TimeseriesdecompbeveridgeSlice, f : Double) -> TimeseriesdecompbeveridgeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeSlice::scale(self : TimeseriesdecompbeveridgeSlice, f : Double) -> TimeseriesdecompbeveridgeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_slice_add(a : TimeseriesdecompbeveridgeSlice, b : TimeseriesdecompbeveridgeSlice) -> TimeseriesdecompbeveridgeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompbeveridgeSlice::add(self : TimeseriesdecompbeveridgeSlice, other : TimeseriesdecompbeveridgeSlice) -> TimeseriesdecompbeveridgeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_slice_copy(s : TimeseriesdecompbeveridgeSlice) -> TimeseriesdecompbeveridgeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeSlice::copy(self : TimeseriesdecompbeveridgeSlice) -> TimeseriesdecompbeveridgeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_slice_fill(s : TimeseriesdecompbeveridgeSlice, v : Double) -> TimeseriesdecompbeveridgeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompbeveridgeSlice::fill(self : TimeseriesdecompbeveridgeSlice, v : Double) -> TimeseriesdecompbeveridgeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_beveridge_slice_min(s : TimeseriesdecompbeveridgeSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompbeveridgeSlice::min(self : TimeseriesdecompbeveridgeSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_beveridge_slice_max(s : TimeseriesdecompbeveridgeSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompbeveridgeSlice::max(self : TimeseriesdecompbeveridgeSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_beveridge_slice_to_string(s : TimeseriesdecompbeveridgeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompbeveridgeSlice::to_string(self : TimeseriesdecompbeveridgeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

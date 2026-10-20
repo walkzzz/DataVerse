@@ -351,45 +351,45 @@ pub fn finance_risk_incremental_frame_make(size : Int) -> Financeriskincremental
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_frame_len(s : FinanceriskincrementalFrame) -> Int { s.size }
+pub fn FinanceriskincrementalFrame::len(self : FinanceriskincrementalFrame) -> Int { self.size }
 
-pub fn finance_risk_incremental_frame_get(s : FinanceriskincrementalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalFrame::get(self : FinanceriskincrementalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_frame_set(s : FinanceriskincrementalFrame, i : Int, v : Double) -> FinanceriskincrementalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalFrame::set(self : FinanceriskincrementalFrame, i : Int, v : Double) -> FinanceriskincrementalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_frame_sum(s : FinanceriskincrementalFrame) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalFrame::sum(self : FinanceriskincrementalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_frame_mean(s : FinanceriskincrementalFrame) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalFrame::mean(self : FinanceriskincrementalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_frame_scale(s : FinanceriskincrementalFrame, f : Double) -> FinanceriskincrementalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalFrame::scale(self : FinanceriskincrementalFrame, f : Double) -> FinanceriskincrementalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_frame_add(a : FinanceriskincrementalFrame, b : FinanceriskincrementalFrame) -> FinanceriskincrementalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalFrame::add(self : FinanceriskincrementalFrame, other : FinanceriskincrementalFrame) -> FinanceriskincrementalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_frame_copy(s : FinanceriskincrementalFrame) -> FinanceriskincrementalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalFrame::copy(self : FinanceriskincrementalFrame) -> FinanceriskincrementalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_frame_fill(s : FinanceriskincrementalFrame, v : Double) -> FinanceriskincrementalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalFrame::fill(self : FinanceriskincrementalFrame, v : Double) -> FinanceriskincrementalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_frame_min(s : FinanceriskincrementalFrame) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalFrame::min(self : FinanceriskincrementalFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_frame_max(s : FinanceriskincrementalFrame) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalFrame::max(self : FinanceriskincrementalFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_frame_to_string(s : FinanceriskincrementalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalFrame::to_string(self : FinanceriskincrementalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalTable {
@@ -402,45 +402,45 @@ pub fn finance_risk_incremental_table_make(size : Int) -> Financeriskincremental
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_table_len(s : FinanceriskincrementalTable) -> Int { s.size }
+pub fn FinanceriskincrementalTable::len(self : FinanceriskincrementalTable) -> Int { self.size }
 
-pub fn finance_risk_incremental_table_get(s : FinanceriskincrementalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalTable::get(self : FinanceriskincrementalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_table_set(s : FinanceriskincrementalTable, i : Int, v : Double) -> FinanceriskincrementalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalTable::set(self : FinanceriskincrementalTable, i : Int, v : Double) -> FinanceriskincrementalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_table_sum(s : FinanceriskincrementalTable) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalTable::sum(self : FinanceriskincrementalTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_table_mean(s : FinanceriskincrementalTable) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalTable::mean(self : FinanceriskincrementalTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_table_scale(s : FinanceriskincrementalTable, f : Double) -> FinanceriskincrementalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalTable::scale(self : FinanceriskincrementalTable, f : Double) -> FinanceriskincrementalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_table_add(a : FinanceriskincrementalTable, b : FinanceriskincrementalTable) -> FinanceriskincrementalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalTable::add(self : FinanceriskincrementalTable, other : FinanceriskincrementalTable) -> FinanceriskincrementalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_table_copy(s : FinanceriskincrementalTable) -> FinanceriskincrementalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalTable::copy(self : FinanceriskincrementalTable) -> FinanceriskincrementalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_table_fill(s : FinanceriskincrementalTable, v : Double) -> FinanceriskincrementalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalTable::fill(self : FinanceriskincrementalTable, v : Double) -> FinanceriskincrementalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_table_min(s : FinanceriskincrementalTable) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalTable::min(self : FinanceriskincrementalTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_table_max(s : FinanceriskincrementalTable) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalTable::max(self : FinanceriskincrementalTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_table_to_string(s : FinanceriskincrementalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalTable::to_string(self : FinanceriskincrementalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalGraphN {
@@ -453,45 +453,45 @@ pub fn finance_risk_incremental_graphn_make(size : Int) -> Financeriskincrementa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_graphn_len(s : FinanceriskincrementalGraphN) -> Int { s.size }
+pub fn FinanceriskincrementalGraphN::len(self : FinanceriskincrementalGraphN) -> Int { self.size }
 
-pub fn finance_risk_incremental_graphn_get(s : FinanceriskincrementalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalGraphN::get(self : FinanceriskincrementalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_graphn_set(s : FinanceriskincrementalGraphN, i : Int, v : Double) -> FinanceriskincrementalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalGraphN::set(self : FinanceriskincrementalGraphN, i : Int, v : Double) -> FinanceriskincrementalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_graphn_sum(s : FinanceriskincrementalGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalGraphN::sum(self : FinanceriskincrementalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_graphn_mean(s : FinanceriskincrementalGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalGraphN::mean(self : FinanceriskincrementalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_graphn_scale(s : FinanceriskincrementalGraphN, f : Double) -> FinanceriskincrementalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalGraphN::scale(self : FinanceriskincrementalGraphN, f : Double) -> FinanceriskincrementalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_graphn_add(a : FinanceriskincrementalGraphN, b : FinanceriskincrementalGraphN) -> FinanceriskincrementalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalGraphN::add(self : FinanceriskincrementalGraphN, other : FinanceriskincrementalGraphN) -> FinanceriskincrementalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_graphn_copy(s : FinanceriskincrementalGraphN) -> FinanceriskincrementalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalGraphN::copy(self : FinanceriskincrementalGraphN) -> FinanceriskincrementalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_graphn_fill(s : FinanceriskincrementalGraphN, v : Double) -> FinanceriskincrementalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalGraphN::fill(self : FinanceriskincrementalGraphN, v : Double) -> FinanceriskincrementalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_graphn_min(s : FinanceriskincrementalGraphN) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalGraphN::min(self : FinanceriskincrementalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_graphn_max(s : FinanceriskincrementalGraphN) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalGraphN::max(self : FinanceriskincrementalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_graphn_to_string(s : FinanceriskincrementalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalGraphN::to_string(self : FinanceriskincrementalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalNode {
@@ -504,45 +504,45 @@ pub fn finance_risk_incremental_node_make(size : Int) -> FinanceriskincrementalN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_node_len(s : FinanceriskincrementalNode) -> Int { s.size }
+pub fn FinanceriskincrementalNode::len(self : FinanceriskincrementalNode) -> Int { self.size }
 
-pub fn finance_risk_incremental_node_get(s : FinanceriskincrementalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalNode::get(self : FinanceriskincrementalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_node_set(s : FinanceriskincrementalNode, i : Int, v : Double) -> FinanceriskincrementalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalNode::set(self : FinanceriskincrementalNode, i : Int, v : Double) -> FinanceriskincrementalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_node_sum(s : FinanceriskincrementalNode) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalNode::sum(self : FinanceriskincrementalNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_node_mean(s : FinanceriskincrementalNode) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalNode::mean(self : FinanceriskincrementalNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_node_scale(s : FinanceriskincrementalNode, f : Double) -> FinanceriskincrementalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalNode::scale(self : FinanceriskincrementalNode, f : Double) -> FinanceriskincrementalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_node_add(a : FinanceriskincrementalNode, b : FinanceriskincrementalNode) -> FinanceriskincrementalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalNode::add(self : FinanceriskincrementalNode, other : FinanceriskincrementalNode) -> FinanceriskincrementalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_node_copy(s : FinanceriskincrementalNode) -> FinanceriskincrementalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalNode::copy(self : FinanceriskincrementalNode) -> FinanceriskincrementalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_node_fill(s : FinanceriskincrementalNode, v : Double) -> FinanceriskincrementalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalNode::fill(self : FinanceriskincrementalNode, v : Double) -> FinanceriskincrementalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_node_min(s : FinanceriskincrementalNode) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalNode::min(self : FinanceriskincrementalNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_node_max(s : FinanceriskincrementalNode) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalNode::max(self : FinanceriskincrementalNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_node_to_string(s : FinanceriskincrementalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalNode::to_string(self : FinanceriskincrementalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalEdge {
@@ -555,45 +555,45 @@ pub fn finance_risk_incremental_edge_make(size : Int) -> FinanceriskincrementalE
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_edge_len(s : FinanceriskincrementalEdge) -> Int { s.size }
+pub fn FinanceriskincrementalEdge::len(self : FinanceriskincrementalEdge) -> Int { self.size }
 
-pub fn finance_risk_incremental_edge_get(s : FinanceriskincrementalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalEdge::get(self : FinanceriskincrementalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_edge_set(s : FinanceriskincrementalEdge, i : Int, v : Double) -> FinanceriskincrementalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalEdge::set(self : FinanceriskincrementalEdge, i : Int, v : Double) -> FinanceriskincrementalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_edge_sum(s : FinanceriskincrementalEdge) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalEdge::sum(self : FinanceriskincrementalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_edge_mean(s : FinanceriskincrementalEdge) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalEdge::mean(self : FinanceriskincrementalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_edge_scale(s : FinanceriskincrementalEdge, f : Double) -> FinanceriskincrementalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalEdge::scale(self : FinanceriskincrementalEdge, f : Double) -> FinanceriskincrementalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_edge_add(a : FinanceriskincrementalEdge, b : FinanceriskincrementalEdge) -> FinanceriskincrementalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalEdge::add(self : FinanceriskincrementalEdge, other : FinanceriskincrementalEdge) -> FinanceriskincrementalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_edge_copy(s : FinanceriskincrementalEdge) -> FinanceriskincrementalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalEdge::copy(self : FinanceriskincrementalEdge) -> FinanceriskincrementalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_edge_fill(s : FinanceriskincrementalEdge, v : Double) -> FinanceriskincrementalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalEdge::fill(self : FinanceriskincrementalEdge, v : Double) -> FinanceriskincrementalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_edge_min(s : FinanceriskincrementalEdge) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalEdge::min(self : FinanceriskincrementalEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_edge_max(s : FinanceriskincrementalEdge) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalEdge::max(self : FinanceriskincrementalEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_edge_to_string(s : FinanceriskincrementalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalEdge::to_string(self : FinanceriskincrementalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalPath {
@@ -606,45 +606,45 @@ pub fn finance_risk_incremental_path_make(size : Int) -> FinanceriskincrementalP
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_path_len(s : FinanceriskincrementalPath) -> Int { s.size }
+pub fn FinanceriskincrementalPath::len(self : FinanceriskincrementalPath) -> Int { self.size }
 
-pub fn finance_risk_incremental_path_get(s : FinanceriskincrementalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalPath::get(self : FinanceriskincrementalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_path_set(s : FinanceriskincrementalPath, i : Int, v : Double) -> FinanceriskincrementalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalPath::set(self : FinanceriskincrementalPath, i : Int, v : Double) -> FinanceriskincrementalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_path_sum(s : FinanceriskincrementalPath) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalPath::sum(self : FinanceriskincrementalPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_path_mean(s : FinanceriskincrementalPath) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalPath::mean(self : FinanceriskincrementalPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_path_scale(s : FinanceriskincrementalPath, f : Double) -> FinanceriskincrementalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalPath::scale(self : FinanceriskincrementalPath, f : Double) -> FinanceriskincrementalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_path_add(a : FinanceriskincrementalPath, b : FinanceriskincrementalPath) -> FinanceriskincrementalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalPath::add(self : FinanceriskincrementalPath, other : FinanceriskincrementalPath) -> FinanceriskincrementalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_path_copy(s : FinanceriskincrementalPath) -> FinanceriskincrementalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalPath::copy(self : FinanceriskincrementalPath) -> FinanceriskincrementalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_path_fill(s : FinanceriskincrementalPath, v : Double) -> FinanceriskincrementalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalPath::fill(self : FinanceriskincrementalPath, v : Double) -> FinanceriskincrementalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_path_min(s : FinanceriskincrementalPath) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalPath::min(self : FinanceriskincrementalPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_path_max(s : FinanceriskincrementalPath) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalPath::max(self : FinanceriskincrementalPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_path_to_string(s : FinanceriskincrementalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalPath::to_string(self : FinanceriskincrementalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalCluster {
@@ -657,45 +657,45 @@ pub fn finance_risk_incremental_cluster_make(size : Int) -> Financeriskincrement
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_cluster_len(s : FinanceriskincrementalCluster) -> Int { s.size }
+pub fn FinanceriskincrementalCluster::len(self : FinanceriskincrementalCluster) -> Int { self.size }
 
-pub fn finance_risk_incremental_cluster_get(s : FinanceriskincrementalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalCluster::get(self : FinanceriskincrementalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_cluster_set(s : FinanceriskincrementalCluster, i : Int, v : Double) -> FinanceriskincrementalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalCluster::set(self : FinanceriskincrementalCluster, i : Int, v : Double) -> FinanceriskincrementalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_cluster_sum(s : FinanceriskincrementalCluster) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalCluster::sum(self : FinanceriskincrementalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_cluster_mean(s : FinanceriskincrementalCluster) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalCluster::mean(self : FinanceriskincrementalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_cluster_scale(s : FinanceriskincrementalCluster, f : Double) -> FinanceriskincrementalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalCluster::scale(self : FinanceriskincrementalCluster, f : Double) -> FinanceriskincrementalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_cluster_add(a : FinanceriskincrementalCluster, b : FinanceriskincrementalCluster) -> FinanceriskincrementalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalCluster::add(self : FinanceriskincrementalCluster, other : FinanceriskincrementalCluster) -> FinanceriskincrementalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_cluster_copy(s : FinanceriskincrementalCluster) -> FinanceriskincrementalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalCluster::copy(self : FinanceriskincrementalCluster) -> FinanceriskincrementalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_cluster_fill(s : FinanceriskincrementalCluster, v : Double) -> FinanceriskincrementalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalCluster::fill(self : FinanceriskincrementalCluster, v : Double) -> FinanceriskincrementalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_cluster_min(s : FinanceriskincrementalCluster) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalCluster::min(self : FinanceriskincrementalCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_cluster_max(s : FinanceriskincrementalCluster) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalCluster::max(self : FinanceriskincrementalCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_cluster_to_string(s : FinanceriskincrementalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalCluster::to_string(self : FinanceriskincrementalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalModel {
@@ -708,45 +708,45 @@ pub fn finance_risk_incremental_model_make(size : Int) -> Financeriskincremental
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_model_len(s : FinanceriskincrementalModel) -> Int { s.size }
+pub fn FinanceriskincrementalModel::len(self : FinanceriskincrementalModel) -> Int { self.size }
 
-pub fn finance_risk_incremental_model_get(s : FinanceriskincrementalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalModel::get(self : FinanceriskincrementalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_model_set(s : FinanceriskincrementalModel, i : Int, v : Double) -> FinanceriskincrementalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalModel::set(self : FinanceriskincrementalModel, i : Int, v : Double) -> FinanceriskincrementalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_model_sum(s : FinanceriskincrementalModel) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalModel::sum(self : FinanceriskincrementalModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_model_mean(s : FinanceriskincrementalModel) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalModel::mean(self : FinanceriskincrementalModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_model_scale(s : FinanceriskincrementalModel, f : Double) -> FinanceriskincrementalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalModel::scale(self : FinanceriskincrementalModel, f : Double) -> FinanceriskincrementalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_model_add(a : FinanceriskincrementalModel, b : FinanceriskincrementalModel) -> FinanceriskincrementalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalModel::add(self : FinanceriskincrementalModel, other : FinanceriskincrementalModel) -> FinanceriskincrementalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_model_copy(s : FinanceriskincrementalModel) -> FinanceriskincrementalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalModel::copy(self : FinanceriskincrementalModel) -> FinanceriskincrementalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_model_fill(s : FinanceriskincrementalModel, v : Double) -> FinanceriskincrementalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalModel::fill(self : FinanceriskincrementalModel, v : Double) -> FinanceriskincrementalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_model_min(s : FinanceriskincrementalModel) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalModel::min(self : FinanceriskincrementalModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_model_max(s : FinanceriskincrementalModel) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalModel::max(self : FinanceriskincrementalModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_model_to_string(s : FinanceriskincrementalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalModel::to_string(self : FinanceriskincrementalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalLayer {
@@ -759,45 +759,45 @@ pub fn finance_risk_incremental_layer_make(size : Int) -> Financeriskincremental
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_layer_len(s : FinanceriskincrementalLayer) -> Int { s.size }
+pub fn FinanceriskincrementalLayer::len(self : FinanceriskincrementalLayer) -> Int { self.size }
 
-pub fn finance_risk_incremental_layer_get(s : FinanceriskincrementalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalLayer::get(self : FinanceriskincrementalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_layer_set(s : FinanceriskincrementalLayer, i : Int, v : Double) -> FinanceriskincrementalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalLayer::set(self : FinanceriskincrementalLayer, i : Int, v : Double) -> FinanceriskincrementalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_layer_sum(s : FinanceriskincrementalLayer) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalLayer::sum(self : FinanceriskincrementalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_layer_mean(s : FinanceriskincrementalLayer) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalLayer::mean(self : FinanceriskincrementalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_layer_scale(s : FinanceriskincrementalLayer, f : Double) -> FinanceriskincrementalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalLayer::scale(self : FinanceriskincrementalLayer, f : Double) -> FinanceriskincrementalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_layer_add(a : FinanceriskincrementalLayer, b : FinanceriskincrementalLayer) -> FinanceriskincrementalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalLayer::add(self : FinanceriskincrementalLayer, other : FinanceriskincrementalLayer) -> FinanceriskincrementalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_layer_copy(s : FinanceriskincrementalLayer) -> FinanceriskincrementalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalLayer::copy(self : FinanceriskincrementalLayer) -> FinanceriskincrementalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_layer_fill(s : FinanceriskincrementalLayer, v : Double) -> FinanceriskincrementalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalLayer::fill(self : FinanceriskincrementalLayer, v : Double) -> FinanceriskincrementalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_layer_min(s : FinanceriskincrementalLayer) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalLayer::min(self : FinanceriskincrementalLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_layer_max(s : FinanceriskincrementalLayer) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalLayer::max(self : FinanceriskincrementalLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_layer_to_string(s : FinanceriskincrementalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalLayer::to_string(self : FinanceriskincrementalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalBuffer {
@@ -810,45 +810,45 @@ pub fn finance_risk_incremental_buffer_make(size : Int) -> Financeriskincrementa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_buffer_len(s : FinanceriskincrementalBuffer) -> Int { s.size }
+pub fn FinanceriskincrementalBuffer::len(self : FinanceriskincrementalBuffer) -> Int { self.size }
 
-pub fn finance_risk_incremental_buffer_get(s : FinanceriskincrementalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalBuffer::get(self : FinanceriskincrementalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_buffer_set(s : FinanceriskincrementalBuffer, i : Int, v : Double) -> FinanceriskincrementalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalBuffer::set(self : FinanceriskincrementalBuffer, i : Int, v : Double) -> FinanceriskincrementalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_buffer_sum(s : FinanceriskincrementalBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalBuffer::sum(self : FinanceriskincrementalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_buffer_mean(s : FinanceriskincrementalBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalBuffer::mean(self : FinanceriskincrementalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_buffer_scale(s : FinanceriskincrementalBuffer, f : Double) -> FinanceriskincrementalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalBuffer::scale(self : FinanceriskincrementalBuffer, f : Double) -> FinanceriskincrementalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_buffer_add(a : FinanceriskincrementalBuffer, b : FinanceriskincrementalBuffer) -> FinanceriskincrementalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalBuffer::add(self : FinanceriskincrementalBuffer, other : FinanceriskincrementalBuffer) -> FinanceriskincrementalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_buffer_copy(s : FinanceriskincrementalBuffer) -> FinanceriskincrementalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalBuffer::copy(self : FinanceriskincrementalBuffer) -> FinanceriskincrementalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_buffer_fill(s : FinanceriskincrementalBuffer, v : Double) -> FinanceriskincrementalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalBuffer::fill(self : FinanceriskincrementalBuffer, v : Double) -> FinanceriskincrementalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_buffer_min(s : FinanceriskincrementalBuffer) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalBuffer::min(self : FinanceriskincrementalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_buffer_max(s : FinanceriskincrementalBuffer) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalBuffer::max(self : FinanceriskincrementalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_buffer_to_string(s : FinanceriskincrementalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalBuffer::to_string(self : FinanceriskincrementalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalCursor {
@@ -861,45 +861,45 @@ pub fn finance_risk_incremental_cursor_make(size : Int) -> Financeriskincrementa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_cursor_len(s : FinanceriskincrementalCursor) -> Int { s.size }
+pub fn FinanceriskincrementalCursor::len(self : FinanceriskincrementalCursor) -> Int { self.size }
 
-pub fn finance_risk_incremental_cursor_get(s : FinanceriskincrementalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalCursor::get(self : FinanceriskincrementalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_cursor_set(s : FinanceriskincrementalCursor, i : Int, v : Double) -> FinanceriskincrementalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalCursor::set(self : FinanceriskincrementalCursor, i : Int, v : Double) -> FinanceriskincrementalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_cursor_sum(s : FinanceriskincrementalCursor) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalCursor::sum(self : FinanceriskincrementalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_cursor_mean(s : FinanceriskincrementalCursor) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalCursor::mean(self : FinanceriskincrementalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_cursor_scale(s : FinanceriskincrementalCursor, f : Double) -> FinanceriskincrementalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalCursor::scale(self : FinanceriskincrementalCursor, f : Double) -> FinanceriskincrementalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_cursor_add(a : FinanceriskincrementalCursor, b : FinanceriskincrementalCursor) -> FinanceriskincrementalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalCursor::add(self : FinanceriskincrementalCursor, other : FinanceriskincrementalCursor) -> FinanceriskincrementalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_cursor_copy(s : FinanceriskincrementalCursor) -> FinanceriskincrementalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalCursor::copy(self : FinanceriskincrementalCursor) -> FinanceriskincrementalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_cursor_fill(s : FinanceriskincrementalCursor, v : Double) -> FinanceriskincrementalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalCursor::fill(self : FinanceriskincrementalCursor, v : Double) -> FinanceriskincrementalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_cursor_min(s : FinanceriskincrementalCursor) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalCursor::min(self : FinanceriskincrementalCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_cursor_max(s : FinanceriskincrementalCursor) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalCursor::max(self : FinanceriskincrementalCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_cursor_to_string(s : FinanceriskincrementalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalCursor::to_string(self : FinanceriskincrementalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalView {
@@ -912,45 +912,45 @@ pub fn finance_risk_incremental_view_make(size : Int) -> FinanceriskincrementalV
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_view_len(s : FinanceriskincrementalView) -> Int { s.size }
+pub fn FinanceriskincrementalView::len(self : FinanceriskincrementalView) -> Int { self.size }
 
-pub fn finance_risk_incremental_view_get(s : FinanceriskincrementalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalView::get(self : FinanceriskincrementalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_view_set(s : FinanceriskincrementalView, i : Int, v : Double) -> FinanceriskincrementalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalView::set(self : FinanceriskincrementalView, i : Int, v : Double) -> FinanceriskincrementalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_view_sum(s : FinanceriskincrementalView) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalView::sum(self : FinanceriskincrementalView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_view_mean(s : FinanceriskincrementalView) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalView::mean(self : FinanceriskincrementalView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_view_scale(s : FinanceriskincrementalView, f : Double) -> FinanceriskincrementalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalView::scale(self : FinanceriskincrementalView, f : Double) -> FinanceriskincrementalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_view_add(a : FinanceriskincrementalView, b : FinanceriskincrementalView) -> FinanceriskincrementalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalView::add(self : FinanceriskincrementalView, other : FinanceriskincrementalView) -> FinanceriskincrementalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_view_copy(s : FinanceriskincrementalView) -> FinanceriskincrementalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalView::copy(self : FinanceriskincrementalView) -> FinanceriskincrementalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_view_fill(s : FinanceriskincrementalView, v : Double) -> FinanceriskincrementalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalView::fill(self : FinanceriskincrementalView, v : Double) -> FinanceriskincrementalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_view_min(s : FinanceriskincrementalView) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalView::min(self : FinanceriskincrementalView) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_view_max(s : FinanceriskincrementalView) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalView::max(self : FinanceriskincrementalView) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_view_to_string(s : FinanceriskincrementalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalView::to_string(self : FinanceriskincrementalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalRange {
@@ -963,45 +963,45 @@ pub fn finance_risk_incremental_range_make(size : Int) -> Financeriskincremental
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_range_len(s : FinanceriskincrementalRange) -> Int { s.size }
+pub fn FinanceriskincrementalRange::len(self : FinanceriskincrementalRange) -> Int { self.size }
 
-pub fn finance_risk_incremental_range_get(s : FinanceriskincrementalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalRange::get(self : FinanceriskincrementalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_range_set(s : FinanceriskincrementalRange, i : Int, v : Double) -> FinanceriskincrementalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalRange::set(self : FinanceriskincrementalRange, i : Int, v : Double) -> FinanceriskincrementalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_range_sum(s : FinanceriskincrementalRange) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalRange::sum(self : FinanceriskincrementalRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_range_mean(s : FinanceriskincrementalRange) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalRange::mean(self : FinanceriskincrementalRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_range_scale(s : FinanceriskincrementalRange, f : Double) -> FinanceriskincrementalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalRange::scale(self : FinanceriskincrementalRange, f : Double) -> FinanceriskincrementalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_range_add(a : FinanceriskincrementalRange, b : FinanceriskincrementalRange) -> FinanceriskincrementalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalRange::add(self : FinanceriskincrementalRange, other : FinanceriskincrementalRange) -> FinanceriskincrementalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_range_copy(s : FinanceriskincrementalRange) -> FinanceriskincrementalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalRange::copy(self : FinanceriskincrementalRange) -> FinanceriskincrementalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_range_fill(s : FinanceriskincrementalRange, v : Double) -> FinanceriskincrementalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalRange::fill(self : FinanceriskincrementalRange, v : Double) -> FinanceriskincrementalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_range_min(s : FinanceriskincrementalRange) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalRange::min(self : FinanceriskincrementalRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_range_max(s : FinanceriskincrementalRange) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalRange::max(self : FinanceriskincrementalRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_range_to_string(s : FinanceriskincrementalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalRange::to_string(self : FinanceriskincrementalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskincrementalSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_risk_incremental_slice_make(size : Int) -> Financeriskincremental
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_incremental_slice_len(s : FinanceriskincrementalSlice) -> Int { s.size }
+pub fn FinanceriskincrementalSlice::len(self : FinanceriskincrementalSlice) -> Int { self.size }
 
-pub fn finance_risk_incremental_slice_get(s : FinanceriskincrementalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskincrementalSlice::get(self : FinanceriskincrementalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_incremental_slice_set(s : FinanceriskincrementalSlice, i : Int, v : Double) -> FinanceriskincrementalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalSlice::set(self : FinanceriskincrementalSlice, i : Int, v : Double) -> FinanceriskincrementalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_slice_sum(s : FinanceriskincrementalSlice) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskincrementalSlice::sum(self : FinanceriskincrementalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_incremental_slice_mean(s : FinanceriskincrementalSlice) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskincrementalSlice::mean(self : FinanceriskincrementalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_incremental_slice_scale(s : FinanceriskincrementalSlice, f : Double) -> FinanceriskincrementalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalSlice::scale(self : FinanceriskincrementalSlice, f : Double) -> FinanceriskincrementalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_slice_add(a : FinanceriskincrementalSlice, b : FinanceriskincrementalSlice) -> FinanceriskincrementalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskincrementalSlice::add(self : FinanceriskincrementalSlice, other : FinanceriskincrementalSlice) -> FinanceriskincrementalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_slice_copy(s : FinanceriskincrementalSlice) -> FinanceriskincrementalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalSlice::copy(self : FinanceriskincrementalSlice) -> FinanceriskincrementalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_slice_fill(s : FinanceriskincrementalSlice, v : Double) -> FinanceriskincrementalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskincrementalSlice::fill(self : FinanceriskincrementalSlice, v : Double) -> FinanceriskincrementalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_incremental_slice_min(s : FinanceriskincrementalSlice) -> Double { @_common.min(s.data) }
+pub fn FinanceriskincrementalSlice::min(self : FinanceriskincrementalSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_incremental_slice_max(s : FinanceriskincrementalSlice) -> Double { @_common.max(s.data) }
+pub fn FinanceriskincrementalSlice::max(self : FinanceriskincrementalSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_incremental_slice_to_string(s : FinanceriskincrementalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskincrementalSlice::to_string(self : FinanceriskincrementalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

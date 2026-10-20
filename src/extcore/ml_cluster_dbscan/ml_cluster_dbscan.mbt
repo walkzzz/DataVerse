@@ -351,45 +351,45 @@ pub fn ml_cluster_dbscan_frame_make(size : Int) -> MlclusterdbscanFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_frame_len(s : MlclusterdbscanFrame) -> Int { s.size }
+pub fn MlclusterdbscanFrame::len(self : MlclusterdbscanFrame) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_frame_get(s : MlclusterdbscanFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanFrame::get(self : MlclusterdbscanFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_frame_set(s : MlclusterdbscanFrame, i : Int, v : Double) -> MlclusterdbscanFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanFrame::set(self : MlclusterdbscanFrame, i : Int, v : Double) -> MlclusterdbscanFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_frame_sum(s : MlclusterdbscanFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanFrame::sum(self : MlclusterdbscanFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_frame_mean(s : MlclusterdbscanFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanFrame::mean(self : MlclusterdbscanFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_frame_scale(s : MlclusterdbscanFrame, f : Double) -> MlclusterdbscanFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanFrame::scale(self : MlclusterdbscanFrame, f : Double) -> MlclusterdbscanFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_frame_add(a : MlclusterdbscanFrame, b : MlclusterdbscanFrame) -> MlclusterdbscanFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanFrame::add(self : MlclusterdbscanFrame, other : MlclusterdbscanFrame) -> MlclusterdbscanFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_frame_copy(s : MlclusterdbscanFrame) -> MlclusterdbscanFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanFrame::copy(self : MlclusterdbscanFrame) -> MlclusterdbscanFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_frame_fill(s : MlclusterdbscanFrame, v : Double) -> MlclusterdbscanFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanFrame::fill(self : MlclusterdbscanFrame, v : Double) -> MlclusterdbscanFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_frame_min(s : MlclusterdbscanFrame) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanFrame::min(self : MlclusterdbscanFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_frame_max(s : MlclusterdbscanFrame) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanFrame::max(self : MlclusterdbscanFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_frame_to_string(s : MlclusterdbscanFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanFrame::to_string(self : MlclusterdbscanFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanTable {
@@ -402,45 +402,45 @@ pub fn ml_cluster_dbscan_table_make(size : Int) -> MlclusterdbscanTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_table_len(s : MlclusterdbscanTable) -> Int { s.size }
+pub fn MlclusterdbscanTable::len(self : MlclusterdbscanTable) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_table_get(s : MlclusterdbscanTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanTable::get(self : MlclusterdbscanTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_table_set(s : MlclusterdbscanTable, i : Int, v : Double) -> MlclusterdbscanTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanTable::set(self : MlclusterdbscanTable, i : Int, v : Double) -> MlclusterdbscanTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_table_sum(s : MlclusterdbscanTable) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanTable::sum(self : MlclusterdbscanTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_table_mean(s : MlclusterdbscanTable) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanTable::mean(self : MlclusterdbscanTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_table_scale(s : MlclusterdbscanTable, f : Double) -> MlclusterdbscanTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanTable::scale(self : MlclusterdbscanTable, f : Double) -> MlclusterdbscanTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_table_add(a : MlclusterdbscanTable, b : MlclusterdbscanTable) -> MlclusterdbscanTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanTable::add(self : MlclusterdbscanTable, other : MlclusterdbscanTable) -> MlclusterdbscanTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_table_copy(s : MlclusterdbscanTable) -> MlclusterdbscanTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanTable::copy(self : MlclusterdbscanTable) -> MlclusterdbscanTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_table_fill(s : MlclusterdbscanTable, v : Double) -> MlclusterdbscanTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanTable::fill(self : MlclusterdbscanTable, v : Double) -> MlclusterdbscanTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_table_min(s : MlclusterdbscanTable) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanTable::min(self : MlclusterdbscanTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_table_max(s : MlclusterdbscanTable) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanTable::max(self : MlclusterdbscanTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_table_to_string(s : MlclusterdbscanTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanTable::to_string(self : MlclusterdbscanTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanGraphN {
@@ -453,45 +453,45 @@ pub fn ml_cluster_dbscan_graphn_make(size : Int) -> MlclusterdbscanGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_graphn_len(s : MlclusterdbscanGraphN) -> Int { s.size }
+pub fn MlclusterdbscanGraphN::len(self : MlclusterdbscanGraphN) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_graphn_get(s : MlclusterdbscanGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanGraphN::get(self : MlclusterdbscanGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_graphn_set(s : MlclusterdbscanGraphN, i : Int, v : Double) -> MlclusterdbscanGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanGraphN::set(self : MlclusterdbscanGraphN, i : Int, v : Double) -> MlclusterdbscanGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_graphn_sum(s : MlclusterdbscanGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanGraphN::sum(self : MlclusterdbscanGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_graphn_mean(s : MlclusterdbscanGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanGraphN::mean(self : MlclusterdbscanGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_graphn_scale(s : MlclusterdbscanGraphN, f : Double) -> MlclusterdbscanGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanGraphN::scale(self : MlclusterdbscanGraphN, f : Double) -> MlclusterdbscanGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_graphn_add(a : MlclusterdbscanGraphN, b : MlclusterdbscanGraphN) -> MlclusterdbscanGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanGraphN::add(self : MlclusterdbscanGraphN, other : MlclusterdbscanGraphN) -> MlclusterdbscanGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_graphn_copy(s : MlclusterdbscanGraphN) -> MlclusterdbscanGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanGraphN::copy(self : MlclusterdbscanGraphN) -> MlclusterdbscanGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_graphn_fill(s : MlclusterdbscanGraphN, v : Double) -> MlclusterdbscanGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanGraphN::fill(self : MlclusterdbscanGraphN, v : Double) -> MlclusterdbscanGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_graphn_min(s : MlclusterdbscanGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanGraphN::min(self : MlclusterdbscanGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_graphn_max(s : MlclusterdbscanGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanGraphN::max(self : MlclusterdbscanGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_graphn_to_string(s : MlclusterdbscanGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanGraphN::to_string(self : MlclusterdbscanGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanNode {
@@ -504,45 +504,45 @@ pub fn ml_cluster_dbscan_node_make(size : Int) -> MlclusterdbscanNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_node_len(s : MlclusterdbscanNode) -> Int { s.size }
+pub fn MlclusterdbscanNode::len(self : MlclusterdbscanNode) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_node_get(s : MlclusterdbscanNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanNode::get(self : MlclusterdbscanNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_node_set(s : MlclusterdbscanNode, i : Int, v : Double) -> MlclusterdbscanNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanNode::set(self : MlclusterdbscanNode, i : Int, v : Double) -> MlclusterdbscanNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_node_sum(s : MlclusterdbscanNode) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanNode::sum(self : MlclusterdbscanNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_node_mean(s : MlclusterdbscanNode) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanNode::mean(self : MlclusterdbscanNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_node_scale(s : MlclusterdbscanNode, f : Double) -> MlclusterdbscanNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanNode::scale(self : MlclusterdbscanNode, f : Double) -> MlclusterdbscanNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_node_add(a : MlclusterdbscanNode, b : MlclusterdbscanNode) -> MlclusterdbscanNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanNode::add(self : MlclusterdbscanNode, other : MlclusterdbscanNode) -> MlclusterdbscanNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_node_copy(s : MlclusterdbscanNode) -> MlclusterdbscanNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanNode::copy(self : MlclusterdbscanNode) -> MlclusterdbscanNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_node_fill(s : MlclusterdbscanNode, v : Double) -> MlclusterdbscanNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanNode::fill(self : MlclusterdbscanNode, v : Double) -> MlclusterdbscanNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_node_min(s : MlclusterdbscanNode) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanNode::min(self : MlclusterdbscanNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_node_max(s : MlclusterdbscanNode) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanNode::max(self : MlclusterdbscanNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_node_to_string(s : MlclusterdbscanNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanNode::to_string(self : MlclusterdbscanNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanEdge {
@@ -555,45 +555,45 @@ pub fn ml_cluster_dbscan_edge_make(size : Int) -> MlclusterdbscanEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_edge_len(s : MlclusterdbscanEdge) -> Int { s.size }
+pub fn MlclusterdbscanEdge::len(self : MlclusterdbscanEdge) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_edge_get(s : MlclusterdbscanEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanEdge::get(self : MlclusterdbscanEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_edge_set(s : MlclusterdbscanEdge, i : Int, v : Double) -> MlclusterdbscanEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanEdge::set(self : MlclusterdbscanEdge, i : Int, v : Double) -> MlclusterdbscanEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_edge_sum(s : MlclusterdbscanEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanEdge::sum(self : MlclusterdbscanEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_edge_mean(s : MlclusterdbscanEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanEdge::mean(self : MlclusterdbscanEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_edge_scale(s : MlclusterdbscanEdge, f : Double) -> MlclusterdbscanEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanEdge::scale(self : MlclusterdbscanEdge, f : Double) -> MlclusterdbscanEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_edge_add(a : MlclusterdbscanEdge, b : MlclusterdbscanEdge) -> MlclusterdbscanEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanEdge::add(self : MlclusterdbscanEdge, other : MlclusterdbscanEdge) -> MlclusterdbscanEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_edge_copy(s : MlclusterdbscanEdge) -> MlclusterdbscanEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanEdge::copy(self : MlclusterdbscanEdge) -> MlclusterdbscanEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_edge_fill(s : MlclusterdbscanEdge, v : Double) -> MlclusterdbscanEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanEdge::fill(self : MlclusterdbscanEdge, v : Double) -> MlclusterdbscanEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_edge_min(s : MlclusterdbscanEdge) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanEdge::min(self : MlclusterdbscanEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_edge_max(s : MlclusterdbscanEdge) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanEdge::max(self : MlclusterdbscanEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_edge_to_string(s : MlclusterdbscanEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanEdge::to_string(self : MlclusterdbscanEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanPath {
@@ -606,45 +606,45 @@ pub fn ml_cluster_dbscan_path_make(size : Int) -> MlclusterdbscanPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_path_len(s : MlclusterdbscanPath) -> Int { s.size }
+pub fn MlclusterdbscanPath::len(self : MlclusterdbscanPath) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_path_get(s : MlclusterdbscanPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanPath::get(self : MlclusterdbscanPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_path_set(s : MlclusterdbscanPath, i : Int, v : Double) -> MlclusterdbscanPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanPath::set(self : MlclusterdbscanPath, i : Int, v : Double) -> MlclusterdbscanPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_path_sum(s : MlclusterdbscanPath) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanPath::sum(self : MlclusterdbscanPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_path_mean(s : MlclusterdbscanPath) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanPath::mean(self : MlclusterdbscanPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_path_scale(s : MlclusterdbscanPath, f : Double) -> MlclusterdbscanPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanPath::scale(self : MlclusterdbscanPath, f : Double) -> MlclusterdbscanPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_path_add(a : MlclusterdbscanPath, b : MlclusterdbscanPath) -> MlclusterdbscanPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanPath::add(self : MlclusterdbscanPath, other : MlclusterdbscanPath) -> MlclusterdbscanPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_path_copy(s : MlclusterdbscanPath) -> MlclusterdbscanPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanPath::copy(self : MlclusterdbscanPath) -> MlclusterdbscanPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_path_fill(s : MlclusterdbscanPath, v : Double) -> MlclusterdbscanPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanPath::fill(self : MlclusterdbscanPath, v : Double) -> MlclusterdbscanPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_path_min(s : MlclusterdbscanPath) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanPath::min(self : MlclusterdbscanPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_path_max(s : MlclusterdbscanPath) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanPath::max(self : MlclusterdbscanPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_path_to_string(s : MlclusterdbscanPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanPath::to_string(self : MlclusterdbscanPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanCluster {
@@ -657,45 +657,45 @@ pub fn ml_cluster_dbscan_cluster_make(size : Int) -> MlclusterdbscanCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_cluster_len(s : MlclusterdbscanCluster) -> Int { s.size }
+pub fn MlclusterdbscanCluster::len(self : MlclusterdbscanCluster) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_cluster_get(s : MlclusterdbscanCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanCluster::get(self : MlclusterdbscanCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_cluster_set(s : MlclusterdbscanCluster, i : Int, v : Double) -> MlclusterdbscanCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanCluster::set(self : MlclusterdbscanCluster, i : Int, v : Double) -> MlclusterdbscanCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_cluster_sum(s : MlclusterdbscanCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanCluster::sum(self : MlclusterdbscanCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_cluster_mean(s : MlclusterdbscanCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanCluster::mean(self : MlclusterdbscanCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_cluster_scale(s : MlclusterdbscanCluster, f : Double) -> MlclusterdbscanCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanCluster::scale(self : MlclusterdbscanCluster, f : Double) -> MlclusterdbscanCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_cluster_add(a : MlclusterdbscanCluster, b : MlclusterdbscanCluster) -> MlclusterdbscanCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanCluster::add(self : MlclusterdbscanCluster, other : MlclusterdbscanCluster) -> MlclusterdbscanCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_cluster_copy(s : MlclusterdbscanCluster) -> MlclusterdbscanCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanCluster::copy(self : MlclusterdbscanCluster) -> MlclusterdbscanCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_cluster_fill(s : MlclusterdbscanCluster, v : Double) -> MlclusterdbscanCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanCluster::fill(self : MlclusterdbscanCluster, v : Double) -> MlclusterdbscanCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_cluster_min(s : MlclusterdbscanCluster) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanCluster::min(self : MlclusterdbscanCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_cluster_max(s : MlclusterdbscanCluster) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanCluster::max(self : MlclusterdbscanCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_cluster_to_string(s : MlclusterdbscanCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanCluster::to_string(self : MlclusterdbscanCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanModel {
@@ -708,45 +708,45 @@ pub fn ml_cluster_dbscan_model_make(size : Int) -> MlclusterdbscanModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_model_len(s : MlclusterdbscanModel) -> Int { s.size }
+pub fn MlclusterdbscanModel::len(self : MlclusterdbscanModel) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_model_get(s : MlclusterdbscanModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanModel::get(self : MlclusterdbscanModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_model_set(s : MlclusterdbscanModel, i : Int, v : Double) -> MlclusterdbscanModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanModel::set(self : MlclusterdbscanModel, i : Int, v : Double) -> MlclusterdbscanModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_model_sum(s : MlclusterdbscanModel) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanModel::sum(self : MlclusterdbscanModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_model_mean(s : MlclusterdbscanModel) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanModel::mean(self : MlclusterdbscanModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_model_scale(s : MlclusterdbscanModel, f : Double) -> MlclusterdbscanModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanModel::scale(self : MlclusterdbscanModel, f : Double) -> MlclusterdbscanModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_model_add(a : MlclusterdbscanModel, b : MlclusterdbscanModel) -> MlclusterdbscanModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanModel::add(self : MlclusterdbscanModel, other : MlclusterdbscanModel) -> MlclusterdbscanModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_model_copy(s : MlclusterdbscanModel) -> MlclusterdbscanModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanModel::copy(self : MlclusterdbscanModel) -> MlclusterdbscanModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_model_fill(s : MlclusterdbscanModel, v : Double) -> MlclusterdbscanModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanModel::fill(self : MlclusterdbscanModel, v : Double) -> MlclusterdbscanModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_model_min(s : MlclusterdbscanModel) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanModel::min(self : MlclusterdbscanModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_model_max(s : MlclusterdbscanModel) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanModel::max(self : MlclusterdbscanModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_model_to_string(s : MlclusterdbscanModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanModel::to_string(self : MlclusterdbscanModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanLayer {
@@ -759,45 +759,45 @@ pub fn ml_cluster_dbscan_layer_make(size : Int) -> MlclusterdbscanLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_layer_len(s : MlclusterdbscanLayer) -> Int { s.size }
+pub fn MlclusterdbscanLayer::len(self : MlclusterdbscanLayer) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_layer_get(s : MlclusterdbscanLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanLayer::get(self : MlclusterdbscanLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_layer_set(s : MlclusterdbscanLayer, i : Int, v : Double) -> MlclusterdbscanLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanLayer::set(self : MlclusterdbscanLayer, i : Int, v : Double) -> MlclusterdbscanLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_layer_sum(s : MlclusterdbscanLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanLayer::sum(self : MlclusterdbscanLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_layer_mean(s : MlclusterdbscanLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanLayer::mean(self : MlclusterdbscanLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_layer_scale(s : MlclusterdbscanLayer, f : Double) -> MlclusterdbscanLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanLayer::scale(self : MlclusterdbscanLayer, f : Double) -> MlclusterdbscanLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_layer_add(a : MlclusterdbscanLayer, b : MlclusterdbscanLayer) -> MlclusterdbscanLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanLayer::add(self : MlclusterdbscanLayer, other : MlclusterdbscanLayer) -> MlclusterdbscanLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_layer_copy(s : MlclusterdbscanLayer) -> MlclusterdbscanLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanLayer::copy(self : MlclusterdbscanLayer) -> MlclusterdbscanLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_layer_fill(s : MlclusterdbscanLayer, v : Double) -> MlclusterdbscanLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanLayer::fill(self : MlclusterdbscanLayer, v : Double) -> MlclusterdbscanLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_layer_min(s : MlclusterdbscanLayer) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanLayer::min(self : MlclusterdbscanLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_layer_max(s : MlclusterdbscanLayer) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanLayer::max(self : MlclusterdbscanLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_layer_to_string(s : MlclusterdbscanLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanLayer::to_string(self : MlclusterdbscanLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanBuffer {
@@ -810,45 +810,45 @@ pub fn ml_cluster_dbscan_buffer_make(size : Int) -> MlclusterdbscanBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_buffer_len(s : MlclusterdbscanBuffer) -> Int { s.size }
+pub fn MlclusterdbscanBuffer::len(self : MlclusterdbscanBuffer) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_buffer_get(s : MlclusterdbscanBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanBuffer::get(self : MlclusterdbscanBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_buffer_set(s : MlclusterdbscanBuffer, i : Int, v : Double) -> MlclusterdbscanBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanBuffer::set(self : MlclusterdbscanBuffer, i : Int, v : Double) -> MlclusterdbscanBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_buffer_sum(s : MlclusterdbscanBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanBuffer::sum(self : MlclusterdbscanBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_buffer_mean(s : MlclusterdbscanBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanBuffer::mean(self : MlclusterdbscanBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_buffer_scale(s : MlclusterdbscanBuffer, f : Double) -> MlclusterdbscanBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanBuffer::scale(self : MlclusterdbscanBuffer, f : Double) -> MlclusterdbscanBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_buffer_add(a : MlclusterdbscanBuffer, b : MlclusterdbscanBuffer) -> MlclusterdbscanBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanBuffer::add(self : MlclusterdbscanBuffer, other : MlclusterdbscanBuffer) -> MlclusterdbscanBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_buffer_copy(s : MlclusterdbscanBuffer) -> MlclusterdbscanBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanBuffer::copy(self : MlclusterdbscanBuffer) -> MlclusterdbscanBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_buffer_fill(s : MlclusterdbscanBuffer, v : Double) -> MlclusterdbscanBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanBuffer::fill(self : MlclusterdbscanBuffer, v : Double) -> MlclusterdbscanBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_buffer_min(s : MlclusterdbscanBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanBuffer::min(self : MlclusterdbscanBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_buffer_max(s : MlclusterdbscanBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanBuffer::max(self : MlclusterdbscanBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_buffer_to_string(s : MlclusterdbscanBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanBuffer::to_string(self : MlclusterdbscanBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanCursor {
@@ -861,45 +861,45 @@ pub fn ml_cluster_dbscan_cursor_make(size : Int) -> MlclusterdbscanCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_cursor_len(s : MlclusterdbscanCursor) -> Int { s.size }
+pub fn MlclusterdbscanCursor::len(self : MlclusterdbscanCursor) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_cursor_get(s : MlclusterdbscanCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanCursor::get(self : MlclusterdbscanCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_cursor_set(s : MlclusterdbscanCursor, i : Int, v : Double) -> MlclusterdbscanCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanCursor::set(self : MlclusterdbscanCursor, i : Int, v : Double) -> MlclusterdbscanCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_cursor_sum(s : MlclusterdbscanCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanCursor::sum(self : MlclusterdbscanCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_cursor_mean(s : MlclusterdbscanCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanCursor::mean(self : MlclusterdbscanCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_cursor_scale(s : MlclusterdbscanCursor, f : Double) -> MlclusterdbscanCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanCursor::scale(self : MlclusterdbscanCursor, f : Double) -> MlclusterdbscanCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_cursor_add(a : MlclusterdbscanCursor, b : MlclusterdbscanCursor) -> MlclusterdbscanCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanCursor::add(self : MlclusterdbscanCursor, other : MlclusterdbscanCursor) -> MlclusterdbscanCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_cursor_copy(s : MlclusterdbscanCursor) -> MlclusterdbscanCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanCursor::copy(self : MlclusterdbscanCursor) -> MlclusterdbscanCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_cursor_fill(s : MlclusterdbscanCursor, v : Double) -> MlclusterdbscanCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanCursor::fill(self : MlclusterdbscanCursor, v : Double) -> MlclusterdbscanCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_cursor_min(s : MlclusterdbscanCursor) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanCursor::min(self : MlclusterdbscanCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_cursor_max(s : MlclusterdbscanCursor) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanCursor::max(self : MlclusterdbscanCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_cursor_to_string(s : MlclusterdbscanCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanCursor::to_string(self : MlclusterdbscanCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanView {
@@ -912,45 +912,45 @@ pub fn ml_cluster_dbscan_view_make(size : Int) -> MlclusterdbscanView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_view_len(s : MlclusterdbscanView) -> Int { s.size }
+pub fn MlclusterdbscanView::len(self : MlclusterdbscanView) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_view_get(s : MlclusterdbscanView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanView::get(self : MlclusterdbscanView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_view_set(s : MlclusterdbscanView, i : Int, v : Double) -> MlclusterdbscanView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanView::set(self : MlclusterdbscanView, i : Int, v : Double) -> MlclusterdbscanView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_view_sum(s : MlclusterdbscanView) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanView::sum(self : MlclusterdbscanView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_view_mean(s : MlclusterdbscanView) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanView::mean(self : MlclusterdbscanView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_view_scale(s : MlclusterdbscanView, f : Double) -> MlclusterdbscanView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanView::scale(self : MlclusterdbscanView, f : Double) -> MlclusterdbscanView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_view_add(a : MlclusterdbscanView, b : MlclusterdbscanView) -> MlclusterdbscanView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanView::add(self : MlclusterdbscanView, other : MlclusterdbscanView) -> MlclusterdbscanView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_view_copy(s : MlclusterdbscanView) -> MlclusterdbscanView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanView::copy(self : MlclusterdbscanView) -> MlclusterdbscanView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_view_fill(s : MlclusterdbscanView, v : Double) -> MlclusterdbscanView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanView::fill(self : MlclusterdbscanView, v : Double) -> MlclusterdbscanView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_view_min(s : MlclusterdbscanView) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanView::min(self : MlclusterdbscanView) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_view_max(s : MlclusterdbscanView) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanView::max(self : MlclusterdbscanView) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_view_to_string(s : MlclusterdbscanView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanView::to_string(self : MlclusterdbscanView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanRange {
@@ -963,45 +963,45 @@ pub fn ml_cluster_dbscan_range_make(size : Int) -> MlclusterdbscanRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_range_len(s : MlclusterdbscanRange) -> Int { s.size }
+pub fn MlclusterdbscanRange::len(self : MlclusterdbscanRange) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_range_get(s : MlclusterdbscanRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanRange::get(self : MlclusterdbscanRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_range_set(s : MlclusterdbscanRange, i : Int, v : Double) -> MlclusterdbscanRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanRange::set(self : MlclusterdbscanRange, i : Int, v : Double) -> MlclusterdbscanRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_range_sum(s : MlclusterdbscanRange) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanRange::sum(self : MlclusterdbscanRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_range_mean(s : MlclusterdbscanRange) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanRange::mean(self : MlclusterdbscanRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_range_scale(s : MlclusterdbscanRange, f : Double) -> MlclusterdbscanRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanRange::scale(self : MlclusterdbscanRange, f : Double) -> MlclusterdbscanRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_range_add(a : MlclusterdbscanRange, b : MlclusterdbscanRange) -> MlclusterdbscanRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanRange::add(self : MlclusterdbscanRange, other : MlclusterdbscanRange) -> MlclusterdbscanRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_range_copy(s : MlclusterdbscanRange) -> MlclusterdbscanRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanRange::copy(self : MlclusterdbscanRange) -> MlclusterdbscanRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_range_fill(s : MlclusterdbscanRange, v : Double) -> MlclusterdbscanRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanRange::fill(self : MlclusterdbscanRange, v : Double) -> MlclusterdbscanRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_range_min(s : MlclusterdbscanRange) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanRange::min(self : MlclusterdbscanRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_range_max(s : MlclusterdbscanRange) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanRange::max(self : MlclusterdbscanRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_range_to_string(s : MlclusterdbscanRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanRange::to_string(self : MlclusterdbscanRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterdbscanSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_cluster_dbscan_slice_make(size : Int) -> MlclusterdbscanSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_dbscan_slice_len(s : MlclusterdbscanSlice) -> Int { s.size }
+pub fn MlclusterdbscanSlice::len(self : MlclusterdbscanSlice) -> Int { self.size }
 
-pub fn ml_cluster_dbscan_slice_get(s : MlclusterdbscanSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterdbscanSlice::get(self : MlclusterdbscanSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_dbscan_slice_set(s : MlclusterdbscanSlice, i : Int, v : Double) -> MlclusterdbscanSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterdbscanSlice::set(self : MlclusterdbscanSlice, i : Int, v : Double) -> MlclusterdbscanSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_slice_sum(s : MlclusterdbscanSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclusterdbscanSlice::sum(self : MlclusterdbscanSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_dbscan_slice_mean(s : MlclusterdbscanSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclusterdbscanSlice::mean(self : MlclusterdbscanSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_dbscan_slice_scale(s : MlclusterdbscanSlice, f : Double) -> MlclusterdbscanSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanSlice::scale(self : MlclusterdbscanSlice, f : Double) -> MlclusterdbscanSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_slice_add(a : MlclusterdbscanSlice, b : MlclusterdbscanSlice) -> MlclusterdbscanSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterdbscanSlice::add(self : MlclusterdbscanSlice, other : MlclusterdbscanSlice) -> MlclusterdbscanSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_slice_copy(s : MlclusterdbscanSlice) -> MlclusterdbscanSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanSlice::copy(self : MlclusterdbscanSlice) -> MlclusterdbscanSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_slice_fill(s : MlclusterdbscanSlice, v : Double) -> MlclusterdbscanSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterdbscanSlice::fill(self : MlclusterdbscanSlice, v : Double) -> MlclusterdbscanSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_dbscan_slice_min(s : MlclusterdbscanSlice) -> Double { @_common.min(s.data) }
+pub fn MlclusterdbscanSlice::min(self : MlclusterdbscanSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_dbscan_slice_max(s : MlclusterdbscanSlice) -> Double { @_common.max(s.data) }
+pub fn MlclusterdbscanSlice::max(self : MlclusterdbscanSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_dbscan_slice_to_string(s : MlclusterdbscanSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterdbscanSlice::to_string(self : MlclusterdbscanSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

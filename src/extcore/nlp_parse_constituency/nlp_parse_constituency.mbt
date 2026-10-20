@@ -351,45 +351,45 @@ pub fn nlp_parse_constituency_frame_make(size : Int) -> NlpparseconstituencyFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_frame_len(s : NlpparseconstituencyFrame) -> Int { s.size }
+pub fn NlpparseconstituencyFrame::len(self : NlpparseconstituencyFrame) -> Int { self.size }
 
-pub fn nlp_parse_constituency_frame_get(s : NlpparseconstituencyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyFrame::get(self : NlpparseconstituencyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_frame_set(s : NlpparseconstituencyFrame, i : Int, v : Double) -> NlpparseconstituencyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyFrame::set(self : NlpparseconstituencyFrame, i : Int, v : Double) -> NlpparseconstituencyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_frame_sum(s : NlpparseconstituencyFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyFrame::sum(self : NlpparseconstituencyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_frame_mean(s : NlpparseconstituencyFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyFrame::mean(self : NlpparseconstituencyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_frame_scale(s : NlpparseconstituencyFrame, f : Double) -> NlpparseconstituencyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyFrame::scale(self : NlpparseconstituencyFrame, f : Double) -> NlpparseconstituencyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_frame_add(a : NlpparseconstituencyFrame, b : NlpparseconstituencyFrame) -> NlpparseconstituencyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyFrame::add(self : NlpparseconstituencyFrame, other : NlpparseconstituencyFrame) -> NlpparseconstituencyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_frame_copy(s : NlpparseconstituencyFrame) -> NlpparseconstituencyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyFrame::copy(self : NlpparseconstituencyFrame) -> NlpparseconstituencyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_frame_fill(s : NlpparseconstituencyFrame, v : Double) -> NlpparseconstituencyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyFrame::fill(self : NlpparseconstituencyFrame, v : Double) -> NlpparseconstituencyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_frame_min(s : NlpparseconstituencyFrame) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyFrame::min(self : NlpparseconstituencyFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_frame_max(s : NlpparseconstituencyFrame) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyFrame::max(self : NlpparseconstituencyFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_frame_to_string(s : NlpparseconstituencyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyFrame::to_string(self : NlpparseconstituencyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencyTable {
@@ -402,45 +402,45 @@ pub fn nlp_parse_constituency_table_make(size : Int) -> NlpparseconstituencyTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_table_len(s : NlpparseconstituencyTable) -> Int { s.size }
+pub fn NlpparseconstituencyTable::len(self : NlpparseconstituencyTable) -> Int { self.size }
 
-pub fn nlp_parse_constituency_table_get(s : NlpparseconstituencyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyTable::get(self : NlpparseconstituencyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_table_set(s : NlpparseconstituencyTable, i : Int, v : Double) -> NlpparseconstituencyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyTable::set(self : NlpparseconstituencyTable, i : Int, v : Double) -> NlpparseconstituencyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_table_sum(s : NlpparseconstituencyTable) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyTable::sum(self : NlpparseconstituencyTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_table_mean(s : NlpparseconstituencyTable) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyTable::mean(self : NlpparseconstituencyTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_table_scale(s : NlpparseconstituencyTable, f : Double) -> NlpparseconstituencyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyTable::scale(self : NlpparseconstituencyTable, f : Double) -> NlpparseconstituencyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_table_add(a : NlpparseconstituencyTable, b : NlpparseconstituencyTable) -> NlpparseconstituencyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyTable::add(self : NlpparseconstituencyTable, other : NlpparseconstituencyTable) -> NlpparseconstituencyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_table_copy(s : NlpparseconstituencyTable) -> NlpparseconstituencyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyTable::copy(self : NlpparseconstituencyTable) -> NlpparseconstituencyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_table_fill(s : NlpparseconstituencyTable, v : Double) -> NlpparseconstituencyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyTable::fill(self : NlpparseconstituencyTable, v : Double) -> NlpparseconstituencyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_table_min(s : NlpparseconstituencyTable) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyTable::min(self : NlpparseconstituencyTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_table_max(s : NlpparseconstituencyTable) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyTable::max(self : NlpparseconstituencyTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_table_to_string(s : NlpparseconstituencyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyTable::to_string(self : NlpparseconstituencyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencyGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_parse_constituency_graphn_make(size : Int) -> NlpparseconstituencyGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_graphn_len(s : NlpparseconstituencyGraphN) -> Int { s.size }
+pub fn NlpparseconstituencyGraphN::len(self : NlpparseconstituencyGraphN) -> Int { self.size }
 
-pub fn nlp_parse_constituency_graphn_get(s : NlpparseconstituencyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyGraphN::get(self : NlpparseconstituencyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_graphn_set(s : NlpparseconstituencyGraphN, i : Int, v : Double) -> NlpparseconstituencyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyGraphN::set(self : NlpparseconstituencyGraphN, i : Int, v : Double) -> NlpparseconstituencyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_graphn_sum(s : NlpparseconstituencyGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyGraphN::sum(self : NlpparseconstituencyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_graphn_mean(s : NlpparseconstituencyGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyGraphN::mean(self : NlpparseconstituencyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_graphn_scale(s : NlpparseconstituencyGraphN, f : Double) -> NlpparseconstituencyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyGraphN::scale(self : NlpparseconstituencyGraphN, f : Double) -> NlpparseconstituencyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_graphn_add(a : NlpparseconstituencyGraphN, b : NlpparseconstituencyGraphN) -> NlpparseconstituencyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyGraphN::add(self : NlpparseconstituencyGraphN, other : NlpparseconstituencyGraphN) -> NlpparseconstituencyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_graphn_copy(s : NlpparseconstituencyGraphN) -> NlpparseconstituencyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyGraphN::copy(self : NlpparseconstituencyGraphN) -> NlpparseconstituencyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_graphn_fill(s : NlpparseconstituencyGraphN, v : Double) -> NlpparseconstituencyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyGraphN::fill(self : NlpparseconstituencyGraphN, v : Double) -> NlpparseconstituencyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_graphn_min(s : NlpparseconstituencyGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyGraphN::min(self : NlpparseconstituencyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_graphn_max(s : NlpparseconstituencyGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyGraphN::max(self : NlpparseconstituencyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_graphn_to_string(s : NlpparseconstituencyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyGraphN::to_string(self : NlpparseconstituencyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencyNode {
@@ -504,45 +504,45 @@ pub fn nlp_parse_constituency_node_make(size : Int) -> NlpparseconstituencyNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_node_len(s : NlpparseconstituencyNode) -> Int { s.size }
+pub fn NlpparseconstituencyNode::len(self : NlpparseconstituencyNode) -> Int { self.size }
 
-pub fn nlp_parse_constituency_node_get(s : NlpparseconstituencyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyNode::get(self : NlpparseconstituencyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_node_set(s : NlpparseconstituencyNode, i : Int, v : Double) -> NlpparseconstituencyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyNode::set(self : NlpparseconstituencyNode, i : Int, v : Double) -> NlpparseconstituencyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_node_sum(s : NlpparseconstituencyNode) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyNode::sum(self : NlpparseconstituencyNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_node_mean(s : NlpparseconstituencyNode) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyNode::mean(self : NlpparseconstituencyNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_node_scale(s : NlpparseconstituencyNode, f : Double) -> NlpparseconstituencyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyNode::scale(self : NlpparseconstituencyNode, f : Double) -> NlpparseconstituencyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_node_add(a : NlpparseconstituencyNode, b : NlpparseconstituencyNode) -> NlpparseconstituencyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyNode::add(self : NlpparseconstituencyNode, other : NlpparseconstituencyNode) -> NlpparseconstituencyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_node_copy(s : NlpparseconstituencyNode) -> NlpparseconstituencyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyNode::copy(self : NlpparseconstituencyNode) -> NlpparseconstituencyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_node_fill(s : NlpparseconstituencyNode, v : Double) -> NlpparseconstituencyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyNode::fill(self : NlpparseconstituencyNode, v : Double) -> NlpparseconstituencyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_node_min(s : NlpparseconstituencyNode) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyNode::min(self : NlpparseconstituencyNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_node_max(s : NlpparseconstituencyNode) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyNode::max(self : NlpparseconstituencyNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_node_to_string(s : NlpparseconstituencyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyNode::to_string(self : NlpparseconstituencyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencyEdge {
@@ -555,45 +555,45 @@ pub fn nlp_parse_constituency_edge_make(size : Int) -> NlpparseconstituencyEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_edge_len(s : NlpparseconstituencyEdge) -> Int { s.size }
+pub fn NlpparseconstituencyEdge::len(self : NlpparseconstituencyEdge) -> Int { self.size }
 
-pub fn nlp_parse_constituency_edge_get(s : NlpparseconstituencyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyEdge::get(self : NlpparseconstituencyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_edge_set(s : NlpparseconstituencyEdge, i : Int, v : Double) -> NlpparseconstituencyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyEdge::set(self : NlpparseconstituencyEdge, i : Int, v : Double) -> NlpparseconstituencyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_edge_sum(s : NlpparseconstituencyEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyEdge::sum(self : NlpparseconstituencyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_edge_mean(s : NlpparseconstituencyEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyEdge::mean(self : NlpparseconstituencyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_edge_scale(s : NlpparseconstituencyEdge, f : Double) -> NlpparseconstituencyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyEdge::scale(self : NlpparseconstituencyEdge, f : Double) -> NlpparseconstituencyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_edge_add(a : NlpparseconstituencyEdge, b : NlpparseconstituencyEdge) -> NlpparseconstituencyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyEdge::add(self : NlpparseconstituencyEdge, other : NlpparseconstituencyEdge) -> NlpparseconstituencyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_edge_copy(s : NlpparseconstituencyEdge) -> NlpparseconstituencyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyEdge::copy(self : NlpparseconstituencyEdge) -> NlpparseconstituencyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_edge_fill(s : NlpparseconstituencyEdge, v : Double) -> NlpparseconstituencyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyEdge::fill(self : NlpparseconstituencyEdge, v : Double) -> NlpparseconstituencyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_edge_min(s : NlpparseconstituencyEdge) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyEdge::min(self : NlpparseconstituencyEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_edge_max(s : NlpparseconstituencyEdge) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyEdge::max(self : NlpparseconstituencyEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_edge_to_string(s : NlpparseconstituencyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyEdge::to_string(self : NlpparseconstituencyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencyPath {
@@ -606,45 +606,45 @@ pub fn nlp_parse_constituency_path_make(size : Int) -> NlpparseconstituencyPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_path_len(s : NlpparseconstituencyPath) -> Int { s.size }
+pub fn NlpparseconstituencyPath::len(self : NlpparseconstituencyPath) -> Int { self.size }
 
-pub fn nlp_parse_constituency_path_get(s : NlpparseconstituencyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyPath::get(self : NlpparseconstituencyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_path_set(s : NlpparseconstituencyPath, i : Int, v : Double) -> NlpparseconstituencyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyPath::set(self : NlpparseconstituencyPath, i : Int, v : Double) -> NlpparseconstituencyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_path_sum(s : NlpparseconstituencyPath) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyPath::sum(self : NlpparseconstituencyPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_path_mean(s : NlpparseconstituencyPath) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyPath::mean(self : NlpparseconstituencyPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_path_scale(s : NlpparseconstituencyPath, f : Double) -> NlpparseconstituencyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyPath::scale(self : NlpparseconstituencyPath, f : Double) -> NlpparseconstituencyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_path_add(a : NlpparseconstituencyPath, b : NlpparseconstituencyPath) -> NlpparseconstituencyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyPath::add(self : NlpparseconstituencyPath, other : NlpparseconstituencyPath) -> NlpparseconstituencyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_path_copy(s : NlpparseconstituencyPath) -> NlpparseconstituencyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyPath::copy(self : NlpparseconstituencyPath) -> NlpparseconstituencyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_path_fill(s : NlpparseconstituencyPath, v : Double) -> NlpparseconstituencyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyPath::fill(self : NlpparseconstituencyPath, v : Double) -> NlpparseconstituencyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_path_min(s : NlpparseconstituencyPath) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyPath::min(self : NlpparseconstituencyPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_path_max(s : NlpparseconstituencyPath) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyPath::max(self : NlpparseconstituencyPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_path_to_string(s : NlpparseconstituencyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyPath::to_string(self : NlpparseconstituencyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencyCluster {
@@ -657,45 +657,45 @@ pub fn nlp_parse_constituency_cluster_make(size : Int) -> NlpparseconstituencyCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_cluster_len(s : NlpparseconstituencyCluster) -> Int { s.size }
+pub fn NlpparseconstituencyCluster::len(self : NlpparseconstituencyCluster) -> Int { self.size }
 
-pub fn nlp_parse_constituency_cluster_get(s : NlpparseconstituencyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyCluster::get(self : NlpparseconstituencyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_cluster_set(s : NlpparseconstituencyCluster, i : Int, v : Double) -> NlpparseconstituencyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyCluster::set(self : NlpparseconstituencyCluster, i : Int, v : Double) -> NlpparseconstituencyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_cluster_sum(s : NlpparseconstituencyCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyCluster::sum(self : NlpparseconstituencyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_cluster_mean(s : NlpparseconstituencyCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyCluster::mean(self : NlpparseconstituencyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_cluster_scale(s : NlpparseconstituencyCluster, f : Double) -> NlpparseconstituencyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyCluster::scale(self : NlpparseconstituencyCluster, f : Double) -> NlpparseconstituencyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_cluster_add(a : NlpparseconstituencyCluster, b : NlpparseconstituencyCluster) -> NlpparseconstituencyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyCluster::add(self : NlpparseconstituencyCluster, other : NlpparseconstituencyCluster) -> NlpparseconstituencyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_cluster_copy(s : NlpparseconstituencyCluster) -> NlpparseconstituencyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyCluster::copy(self : NlpparseconstituencyCluster) -> NlpparseconstituencyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_cluster_fill(s : NlpparseconstituencyCluster, v : Double) -> NlpparseconstituencyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyCluster::fill(self : NlpparseconstituencyCluster, v : Double) -> NlpparseconstituencyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_cluster_min(s : NlpparseconstituencyCluster) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyCluster::min(self : NlpparseconstituencyCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_cluster_max(s : NlpparseconstituencyCluster) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyCluster::max(self : NlpparseconstituencyCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_cluster_to_string(s : NlpparseconstituencyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyCluster::to_string(self : NlpparseconstituencyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencyModel {
@@ -708,45 +708,45 @@ pub fn nlp_parse_constituency_model_make(size : Int) -> NlpparseconstituencyMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_model_len(s : NlpparseconstituencyModel) -> Int { s.size }
+pub fn NlpparseconstituencyModel::len(self : NlpparseconstituencyModel) -> Int { self.size }
 
-pub fn nlp_parse_constituency_model_get(s : NlpparseconstituencyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyModel::get(self : NlpparseconstituencyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_model_set(s : NlpparseconstituencyModel, i : Int, v : Double) -> NlpparseconstituencyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyModel::set(self : NlpparseconstituencyModel, i : Int, v : Double) -> NlpparseconstituencyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_model_sum(s : NlpparseconstituencyModel) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyModel::sum(self : NlpparseconstituencyModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_model_mean(s : NlpparseconstituencyModel) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyModel::mean(self : NlpparseconstituencyModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_model_scale(s : NlpparseconstituencyModel, f : Double) -> NlpparseconstituencyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyModel::scale(self : NlpparseconstituencyModel, f : Double) -> NlpparseconstituencyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_model_add(a : NlpparseconstituencyModel, b : NlpparseconstituencyModel) -> NlpparseconstituencyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyModel::add(self : NlpparseconstituencyModel, other : NlpparseconstituencyModel) -> NlpparseconstituencyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_model_copy(s : NlpparseconstituencyModel) -> NlpparseconstituencyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyModel::copy(self : NlpparseconstituencyModel) -> NlpparseconstituencyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_model_fill(s : NlpparseconstituencyModel, v : Double) -> NlpparseconstituencyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyModel::fill(self : NlpparseconstituencyModel, v : Double) -> NlpparseconstituencyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_model_min(s : NlpparseconstituencyModel) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyModel::min(self : NlpparseconstituencyModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_model_max(s : NlpparseconstituencyModel) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyModel::max(self : NlpparseconstituencyModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_model_to_string(s : NlpparseconstituencyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyModel::to_string(self : NlpparseconstituencyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencyLayer {
@@ -759,45 +759,45 @@ pub fn nlp_parse_constituency_layer_make(size : Int) -> NlpparseconstituencyLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_layer_len(s : NlpparseconstituencyLayer) -> Int { s.size }
+pub fn NlpparseconstituencyLayer::len(self : NlpparseconstituencyLayer) -> Int { self.size }
 
-pub fn nlp_parse_constituency_layer_get(s : NlpparseconstituencyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyLayer::get(self : NlpparseconstituencyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_layer_set(s : NlpparseconstituencyLayer, i : Int, v : Double) -> NlpparseconstituencyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyLayer::set(self : NlpparseconstituencyLayer, i : Int, v : Double) -> NlpparseconstituencyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_layer_sum(s : NlpparseconstituencyLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyLayer::sum(self : NlpparseconstituencyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_layer_mean(s : NlpparseconstituencyLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyLayer::mean(self : NlpparseconstituencyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_layer_scale(s : NlpparseconstituencyLayer, f : Double) -> NlpparseconstituencyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyLayer::scale(self : NlpparseconstituencyLayer, f : Double) -> NlpparseconstituencyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_layer_add(a : NlpparseconstituencyLayer, b : NlpparseconstituencyLayer) -> NlpparseconstituencyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyLayer::add(self : NlpparseconstituencyLayer, other : NlpparseconstituencyLayer) -> NlpparseconstituencyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_layer_copy(s : NlpparseconstituencyLayer) -> NlpparseconstituencyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyLayer::copy(self : NlpparseconstituencyLayer) -> NlpparseconstituencyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_layer_fill(s : NlpparseconstituencyLayer, v : Double) -> NlpparseconstituencyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyLayer::fill(self : NlpparseconstituencyLayer, v : Double) -> NlpparseconstituencyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_layer_min(s : NlpparseconstituencyLayer) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyLayer::min(self : NlpparseconstituencyLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_layer_max(s : NlpparseconstituencyLayer) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyLayer::max(self : NlpparseconstituencyLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_layer_to_string(s : NlpparseconstituencyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyLayer::to_string(self : NlpparseconstituencyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencyBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_parse_constituency_buffer_make(size : Int) -> NlpparseconstituencyBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_buffer_len(s : NlpparseconstituencyBuffer) -> Int { s.size }
+pub fn NlpparseconstituencyBuffer::len(self : NlpparseconstituencyBuffer) -> Int { self.size }
 
-pub fn nlp_parse_constituency_buffer_get(s : NlpparseconstituencyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyBuffer::get(self : NlpparseconstituencyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_buffer_set(s : NlpparseconstituencyBuffer, i : Int, v : Double) -> NlpparseconstituencyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyBuffer::set(self : NlpparseconstituencyBuffer, i : Int, v : Double) -> NlpparseconstituencyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_buffer_sum(s : NlpparseconstituencyBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyBuffer::sum(self : NlpparseconstituencyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_buffer_mean(s : NlpparseconstituencyBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyBuffer::mean(self : NlpparseconstituencyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_buffer_scale(s : NlpparseconstituencyBuffer, f : Double) -> NlpparseconstituencyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyBuffer::scale(self : NlpparseconstituencyBuffer, f : Double) -> NlpparseconstituencyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_buffer_add(a : NlpparseconstituencyBuffer, b : NlpparseconstituencyBuffer) -> NlpparseconstituencyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyBuffer::add(self : NlpparseconstituencyBuffer, other : NlpparseconstituencyBuffer) -> NlpparseconstituencyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_buffer_copy(s : NlpparseconstituencyBuffer) -> NlpparseconstituencyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyBuffer::copy(self : NlpparseconstituencyBuffer) -> NlpparseconstituencyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_buffer_fill(s : NlpparseconstituencyBuffer, v : Double) -> NlpparseconstituencyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyBuffer::fill(self : NlpparseconstituencyBuffer, v : Double) -> NlpparseconstituencyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_buffer_min(s : NlpparseconstituencyBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyBuffer::min(self : NlpparseconstituencyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_buffer_max(s : NlpparseconstituencyBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyBuffer::max(self : NlpparseconstituencyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_buffer_to_string(s : NlpparseconstituencyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyBuffer::to_string(self : NlpparseconstituencyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencyCursor {
@@ -861,45 +861,45 @@ pub fn nlp_parse_constituency_cursor_make(size : Int) -> NlpparseconstituencyCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_cursor_len(s : NlpparseconstituencyCursor) -> Int { s.size }
+pub fn NlpparseconstituencyCursor::len(self : NlpparseconstituencyCursor) -> Int { self.size }
 
-pub fn nlp_parse_constituency_cursor_get(s : NlpparseconstituencyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyCursor::get(self : NlpparseconstituencyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_cursor_set(s : NlpparseconstituencyCursor, i : Int, v : Double) -> NlpparseconstituencyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyCursor::set(self : NlpparseconstituencyCursor, i : Int, v : Double) -> NlpparseconstituencyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_cursor_sum(s : NlpparseconstituencyCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyCursor::sum(self : NlpparseconstituencyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_cursor_mean(s : NlpparseconstituencyCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyCursor::mean(self : NlpparseconstituencyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_cursor_scale(s : NlpparseconstituencyCursor, f : Double) -> NlpparseconstituencyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyCursor::scale(self : NlpparseconstituencyCursor, f : Double) -> NlpparseconstituencyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_cursor_add(a : NlpparseconstituencyCursor, b : NlpparseconstituencyCursor) -> NlpparseconstituencyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyCursor::add(self : NlpparseconstituencyCursor, other : NlpparseconstituencyCursor) -> NlpparseconstituencyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_cursor_copy(s : NlpparseconstituencyCursor) -> NlpparseconstituencyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyCursor::copy(self : NlpparseconstituencyCursor) -> NlpparseconstituencyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_cursor_fill(s : NlpparseconstituencyCursor, v : Double) -> NlpparseconstituencyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyCursor::fill(self : NlpparseconstituencyCursor, v : Double) -> NlpparseconstituencyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_cursor_min(s : NlpparseconstituencyCursor) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyCursor::min(self : NlpparseconstituencyCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_cursor_max(s : NlpparseconstituencyCursor) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyCursor::max(self : NlpparseconstituencyCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_cursor_to_string(s : NlpparseconstituencyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyCursor::to_string(self : NlpparseconstituencyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencyView {
@@ -912,45 +912,45 @@ pub fn nlp_parse_constituency_view_make(size : Int) -> NlpparseconstituencyView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_view_len(s : NlpparseconstituencyView) -> Int { s.size }
+pub fn NlpparseconstituencyView::len(self : NlpparseconstituencyView) -> Int { self.size }
 
-pub fn nlp_parse_constituency_view_get(s : NlpparseconstituencyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyView::get(self : NlpparseconstituencyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_view_set(s : NlpparseconstituencyView, i : Int, v : Double) -> NlpparseconstituencyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyView::set(self : NlpparseconstituencyView, i : Int, v : Double) -> NlpparseconstituencyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_view_sum(s : NlpparseconstituencyView) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyView::sum(self : NlpparseconstituencyView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_view_mean(s : NlpparseconstituencyView) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyView::mean(self : NlpparseconstituencyView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_view_scale(s : NlpparseconstituencyView, f : Double) -> NlpparseconstituencyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyView::scale(self : NlpparseconstituencyView, f : Double) -> NlpparseconstituencyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_view_add(a : NlpparseconstituencyView, b : NlpparseconstituencyView) -> NlpparseconstituencyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyView::add(self : NlpparseconstituencyView, other : NlpparseconstituencyView) -> NlpparseconstituencyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_view_copy(s : NlpparseconstituencyView) -> NlpparseconstituencyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyView::copy(self : NlpparseconstituencyView) -> NlpparseconstituencyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_view_fill(s : NlpparseconstituencyView, v : Double) -> NlpparseconstituencyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyView::fill(self : NlpparseconstituencyView, v : Double) -> NlpparseconstituencyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_view_min(s : NlpparseconstituencyView) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyView::min(self : NlpparseconstituencyView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_view_max(s : NlpparseconstituencyView) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyView::max(self : NlpparseconstituencyView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_view_to_string(s : NlpparseconstituencyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyView::to_string(self : NlpparseconstituencyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencyRange {
@@ -963,45 +963,45 @@ pub fn nlp_parse_constituency_range_make(size : Int) -> NlpparseconstituencyRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_range_len(s : NlpparseconstituencyRange) -> Int { s.size }
+pub fn NlpparseconstituencyRange::len(self : NlpparseconstituencyRange) -> Int { self.size }
 
-pub fn nlp_parse_constituency_range_get(s : NlpparseconstituencyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencyRange::get(self : NlpparseconstituencyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_range_set(s : NlpparseconstituencyRange, i : Int, v : Double) -> NlpparseconstituencyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyRange::set(self : NlpparseconstituencyRange, i : Int, v : Double) -> NlpparseconstituencyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_range_sum(s : NlpparseconstituencyRange) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencyRange::sum(self : NlpparseconstituencyRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_range_mean(s : NlpparseconstituencyRange) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencyRange::mean(self : NlpparseconstituencyRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_range_scale(s : NlpparseconstituencyRange, f : Double) -> NlpparseconstituencyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyRange::scale(self : NlpparseconstituencyRange, f : Double) -> NlpparseconstituencyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_range_add(a : NlpparseconstituencyRange, b : NlpparseconstituencyRange) -> NlpparseconstituencyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencyRange::add(self : NlpparseconstituencyRange, other : NlpparseconstituencyRange) -> NlpparseconstituencyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_range_copy(s : NlpparseconstituencyRange) -> NlpparseconstituencyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyRange::copy(self : NlpparseconstituencyRange) -> NlpparseconstituencyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_range_fill(s : NlpparseconstituencyRange, v : Double) -> NlpparseconstituencyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencyRange::fill(self : NlpparseconstituencyRange, v : Double) -> NlpparseconstituencyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_range_min(s : NlpparseconstituencyRange) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencyRange::min(self : NlpparseconstituencyRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_range_max(s : NlpparseconstituencyRange) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencyRange::max(self : NlpparseconstituencyRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_range_to_string(s : NlpparseconstituencyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencyRange::to_string(self : NlpparseconstituencyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseconstituencySlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_parse_constituency_slice_make(size : Int) -> NlpparseconstituencySlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_constituency_slice_len(s : NlpparseconstituencySlice) -> Int { s.size }
+pub fn NlpparseconstituencySlice::len(self : NlpparseconstituencySlice) -> Int { self.size }
 
-pub fn nlp_parse_constituency_slice_get(s : NlpparseconstituencySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseconstituencySlice::get(self : NlpparseconstituencySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_constituency_slice_set(s : NlpparseconstituencySlice, i : Int, v : Double) -> NlpparseconstituencySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseconstituencySlice::set(self : NlpparseconstituencySlice, i : Int, v : Double) -> NlpparseconstituencySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_slice_sum(s : NlpparseconstituencySlice) -> Double { @_common.sum(s.data) }
+pub fn NlpparseconstituencySlice::sum(self : NlpparseconstituencySlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_constituency_slice_mean(s : NlpparseconstituencySlice) -> Double { @_common.mean(s.data) }
+pub fn NlpparseconstituencySlice::mean(self : NlpparseconstituencySlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_constituency_slice_scale(s : NlpparseconstituencySlice, f : Double) -> NlpparseconstituencySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencySlice::scale(self : NlpparseconstituencySlice, f : Double) -> NlpparseconstituencySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_slice_add(a : NlpparseconstituencySlice, b : NlpparseconstituencySlice) -> NlpparseconstituencySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseconstituencySlice::add(self : NlpparseconstituencySlice, other : NlpparseconstituencySlice) -> NlpparseconstituencySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_slice_copy(s : NlpparseconstituencySlice) -> NlpparseconstituencySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencySlice::copy(self : NlpparseconstituencySlice) -> NlpparseconstituencySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_slice_fill(s : NlpparseconstituencySlice, v : Double) -> NlpparseconstituencySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseconstituencySlice::fill(self : NlpparseconstituencySlice, v : Double) -> NlpparseconstituencySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_constituency_slice_min(s : NlpparseconstituencySlice) -> Double { @_common.min(s.data) }
+pub fn NlpparseconstituencySlice::min(self : NlpparseconstituencySlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_constituency_slice_max(s : NlpparseconstituencySlice) -> Double { @_common.max(s.data) }
+pub fn NlpparseconstituencySlice::max(self : NlpparseconstituencySlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_constituency_slice_to_string(s : NlpparseconstituencySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseconstituencySlice::to_string(self : NlpparseconstituencySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

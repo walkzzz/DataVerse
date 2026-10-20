@@ -351,45 +351,45 @@ pub fn chem_mol_repr_smiles_frame_make(size : Int) -> ChemmolreprsmilesFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_frame_len(s : ChemmolreprsmilesFrame) -> Int { s.size }
+pub fn ChemmolreprsmilesFrame::len(self : ChemmolreprsmilesFrame) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_frame_get(s : ChemmolreprsmilesFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesFrame::get(self : ChemmolreprsmilesFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_frame_set(s : ChemmolreprsmilesFrame, i : Int, v : Double) -> ChemmolreprsmilesFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesFrame::set(self : ChemmolreprsmilesFrame, i : Int, v : Double) -> ChemmolreprsmilesFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_frame_sum(s : ChemmolreprsmilesFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesFrame::sum(self : ChemmolreprsmilesFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_frame_mean(s : ChemmolreprsmilesFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesFrame::mean(self : ChemmolreprsmilesFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_frame_scale(s : ChemmolreprsmilesFrame, f : Double) -> ChemmolreprsmilesFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesFrame::scale(self : ChemmolreprsmilesFrame, f : Double) -> ChemmolreprsmilesFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_frame_add(a : ChemmolreprsmilesFrame, b : ChemmolreprsmilesFrame) -> ChemmolreprsmilesFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesFrame::add(self : ChemmolreprsmilesFrame, other : ChemmolreprsmilesFrame) -> ChemmolreprsmilesFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_frame_copy(s : ChemmolreprsmilesFrame) -> ChemmolreprsmilesFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesFrame::copy(self : ChemmolreprsmilesFrame) -> ChemmolreprsmilesFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_frame_fill(s : ChemmolreprsmilesFrame, v : Double) -> ChemmolreprsmilesFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesFrame::fill(self : ChemmolreprsmilesFrame, v : Double) -> ChemmolreprsmilesFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_frame_min(s : ChemmolreprsmilesFrame) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesFrame::min(self : ChemmolreprsmilesFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_frame_max(s : ChemmolreprsmilesFrame) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesFrame::max(self : ChemmolreprsmilesFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_frame_to_string(s : ChemmolreprsmilesFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesFrame::to_string(self : ChemmolreprsmilesFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesTable {
@@ -402,45 +402,45 @@ pub fn chem_mol_repr_smiles_table_make(size : Int) -> ChemmolreprsmilesTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_table_len(s : ChemmolreprsmilesTable) -> Int { s.size }
+pub fn ChemmolreprsmilesTable::len(self : ChemmolreprsmilesTable) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_table_get(s : ChemmolreprsmilesTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesTable::get(self : ChemmolreprsmilesTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_table_set(s : ChemmolreprsmilesTable, i : Int, v : Double) -> ChemmolreprsmilesTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesTable::set(self : ChemmolreprsmilesTable, i : Int, v : Double) -> ChemmolreprsmilesTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_table_sum(s : ChemmolreprsmilesTable) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesTable::sum(self : ChemmolreprsmilesTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_table_mean(s : ChemmolreprsmilesTable) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesTable::mean(self : ChemmolreprsmilesTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_table_scale(s : ChemmolreprsmilesTable, f : Double) -> ChemmolreprsmilesTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesTable::scale(self : ChemmolreprsmilesTable, f : Double) -> ChemmolreprsmilesTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_table_add(a : ChemmolreprsmilesTable, b : ChemmolreprsmilesTable) -> ChemmolreprsmilesTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesTable::add(self : ChemmolreprsmilesTable, other : ChemmolreprsmilesTable) -> ChemmolreprsmilesTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_table_copy(s : ChemmolreprsmilesTable) -> ChemmolreprsmilesTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesTable::copy(self : ChemmolreprsmilesTable) -> ChemmolreprsmilesTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_table_fill(s : ChemmolreprsmilesTable, v : Double) -> ChemmolreprsmilesTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesTable::fill(self : ChemmolreprsmilesTable, v : Double) -> ChemmolreprsmilesTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_table_min(s : ChemmolreprsmilesTable) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesTable::min(self : ChemmolreprsmilesTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_table_max(s : ChemmolreprsmilesTable) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesTable::max(self : ChemmolreprsmilesTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_table_to_string(s : ChemmolreprsmilesTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesTable::to_string(self : ChemmolreprsmilesTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesGraphN {
@@ -453,45 +453,45 @@ pub fn chem_mol_repr_smiles_graphn_make(size : Int) -> ChemmolreprsmilesGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_graphn_len(s : ChemmolreprsmilesGraphN) -> Int { s.size }
+pub fn ChemmolreprsmilesGraphN::len(self : ChemmolreprsmilesGraphN) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_graphn_get(s : ChemmolreprsmilesGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesGraphN::get(self : ChemmolreprsmilesGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_graphn_set(s : ChemmolreprsmilesGraphN, i : Int, v : Double) -> ChemmolreprsmilesGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesGraphN::set(self : ChemmolreprsmilesGraphN, i : Int, v : Double) -> ChemmolreprsmilesGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_graphn_sum(s : ChemmolreprsmilesGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesGraphN::sum(self : ChemmolreprsmilesGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_graphn_mean(s : ChemmolreprsmilesGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesGraphN::mean(self : ChemmolreprsmilesGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_graphn_scale(s : ChemmolreprsmilesGraphN, f : Double) -> ChemmolreprsmilesGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesGraphN::scale(self : ChemmolreprsmilesGraphN, f : Double) -> ChemmolreprsmilesGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_graphn_add(a : ChemmolreprsmilesGraphN, b : ChemmolreprsmilesGraphN) -> ChemmolreprsmilesGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesGraphN::add(self : ChemmolreprsmilesGraphN, other : ChemmolreprsmilesGraphN) -> ChemmolreprsmilesGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_graphn_copy(s : ChemmolreprsmilesGraphN) -> ChemmolreprsmilesGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesGraphN::copy(self : ChemmolreprsmilesGraphN) -> ChemmolreprsmilesGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_graphn_fill(s : ChemmolreprsmilesGraphN, v : Double) -> ChemmolreprsmilesGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesGraphN::fill(self : ChemmolreprsmilesGraphN, v : Double) -> ChemmolreprsmilesGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_graphn_min(s : ChemmolreprsmilesGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesGraphN::min(self : ChemmolreprsmilesGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_graphn_max(s : ChemmolreprsmilesGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesGraphN::max(self : ChemmolreprsmilesGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_graphn_to_string(s : ChemmolreprsmilesGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesGraphN::to_string(self : ChemmolreprsmilesGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesNode {
@@ -504,45 +504,45 @@ pub fn chem_mol_repr_smiles_node_make(size : Int) -> ChemmolreprsmilesNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_node_len(s : ChemmolreprsmilesNode) -> Int { s.size }
+pub fn ChemmolreprsmilesNode::len(self : ChemmolreprsmilesNode) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_node_get(s : ChemmolreprsmilesNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesNode::get(self : ChemmolreprsmilesNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_node_set(s : ChemmolreprsmilesNode, i : Int, v : Double) -> ChemmolreprsmilesNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesNode::set(self : ChemmolreprsmilesNode, i : Int, v : Double) -> ChemmolreprsmilesNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_node_sum(s : ChemmolreprsmilesNode) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesNode::sum(self : ChemmolreprsmilesNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_node_mean(s : ChemmolreprsmilesNode) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesNode::mean(self : ChemmolreprsmilesNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_node_scale(s : ChemmolreprsmilesNode, f : Double) -> ChemmolreprsmilesNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesNode::scale(self : ChemmolreprsmilesNode, f : Double) -> ChemmolreprsmilesNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_node_add(a : ChemmolreprsmilesNode, b : ChemmolreprsmilesNode) -> ChemmolreprsmilesNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesNode::add(self : ChemmolreprsmilesNode, other : ChemmolreprsmilesNode) -> ChemmolreprsmilesNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_node_copy(s : ChemmolreprsmilesNode) -> ChemmolreprsmilesNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesNode::copy(self : ChemmolreprsmilesNode) -> ChemmolreprsmilesNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_node_fill(s : ChemmolreprsmilesNode, v : Double) -> ChemmolreprsmilesNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesNode::fill(self : ChemmolreprsmilesNode, v : Double) -> ChemmolreprsmilesNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_node_min(s : ChemmolreprsmilesNode) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesNode::min(self : ChemmolreprsmilesNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_node_max(s : ChemmolreprsmilesNode) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesNode::max(self : ChemmolreprsmilesNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_node_to_string(s : ChemmolreprsmilesNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesNode::to_string(self : ChemmolreprsmilesNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesEdge {
@@ -555,45 +555,45 @@ pub fn chem_mol_repr_smiles_edge_make(size : Int) -> ChemmolreprsmilesEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_edge_len(s : ChemmolreprsmilesEdge) -> Int { s.size }
+pub fn ChemmolreprsmilesEdge::len(self : ChemmolreprsmilesEdge) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_edge_get(s : ChemmolreprsmilesEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesEdge::get(self : ChemmolreprsmilesEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_edge_set(s : ChemmolreprsmilesEdge, i : Int, v : Double) -> ChemmolreprsmilesEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesEdge::set(self : ChemmolreprsmilesEdge, i : Int, v : Double) -> ChemmolreprsmilesEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_edge_sum(s : ChemmolreprsmilesEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesEdge::sum(self : ChemmolreprsmilesEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_edge_mean(s : ChemmolreprsmilesEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesEdge::mean(self : ChemmolreprsmilesEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_edge_scale(s : ChemmolreprsmilesEdge, f : Double) -> ChemmolreprsmilesEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesEdge::scale(self : ChemmolreprsmilesEdge, f : Double) -> ChemmolreprsmilesEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_edge_add(a : ChemmolreprsmilesEdge, b : ChemmolreprsmilesEdge) -> ChemmolreprsmilesEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesEdge::add(self : ChemmolreprsmilesEdge, other : ChemmolreprsmilesEdge) -> ChemmolreprsmilesEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_edge_copy(s : ChemmolreprsmilesEdge) -> ChemmolreprsmilesEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesEdge::copy(self : ChemmolreprsmilesEdge) -> ChemmolreprsmilesEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_edge_fill(s : ChemmolreprsmilesEdge, v : Double) -> ChemmolreprsmilesEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesEdge::fill(self : ChemmolreprsmilesEdge, v : Double) -> ChemmolreprsmilesEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_edge_min(s : ChemmolreprsmilesEdge) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesEdge::min(self : ChemmolreprsmilesEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_edge_max(s : ChemmolreprsmilesEdge) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesEdge::max(self : ChemmolreprsmilesEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_edge_to_string(s : ChemmolreprsmilesEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesEdge::to_string(self : ChemmolreprsmilesEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesPath {
@@ -606,45 +606,45 @@ pub fn chem_mol_repr_smiles_path_make(size : Int) -> ChemmolreprsmilesPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_path_len(s : ChemmolreprsmilesPath) -> Int { s.size }
+pub fn ChemmolreprsmilesPath::len(self : ChemmolreprsmilesPath) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_path_get(s : ChemmolreprsmilesPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesPath::get(self : ChemmolreprsmilesPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_path_set(s : ChemmolreprsmilesPath, i : Int, v : Double) -> ChemmolreprsmilesPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesPath::set(self : ChemmolreprsmilesPath, i : Int, v : Double) -> ChemmolreprsmilesPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_path_sum(s : ChemmolreprsmilesPath) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesPath::sum(self : ChemmolreprsmilesPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_path_mean(s : ChemmolreprsmilesPath) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesPath::mean(self : ChemmolreprsmilesPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_path_scale(s : ChemmolreprsmilesPath, f : Double) -> ChemmolreprsmilesPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesPath::scale(self : ChemmolreprsmilesPath, f : Double) -> ChemmolreprsmilesPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_path_add(a : ChemmolreprsmilesPath, b : ChemmolreprsmilesPath) -> ChemmolreprsmilesPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesPath::add(self : ChemmolreprsmilesPath, other : ChemmolreprsmilesPath) -> ChemmolreprsmilesPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_path_copy(s : ChemmolreprsmilesPath) -> ChemmolreprsmilesPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesPath::copy(self : ChemmolreprsmilesPath) -> ChemmolreprsmilesPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_path_fill(s : ChemmolreprsmilesPath, v : Double) -> ChemmolreprsmilesPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesPath::fill(self : ChemmolreprsmilesPath, v : Double) -> ChemmolreprsmilesPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_path_min(s : ChemmolreprsmilesPath) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesPath::min(self : ChemmolreprsmilesPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_path_max(s : ChemmolreprsmilesPath) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesPath::max(self : ChemmolreprsmilesPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_path_to_string(s : ChemmolreprsmilesPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesPath::to_string(self : ChemmolreprsmilesPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesCluster {
@@ -657,45 +657,45 @@ pub fn chem_mol_repr_smiles_cluster_make(size : Int) -> ChemmolreprsmilesCluster
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_cluster_len(s : ChemmolreprsmilesCluster) -> Int { s.size }
+pub fn ChemmolreprsmilesCluster::len(self : ChemmolreprsmilesCluster) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_cluster_get(s : ChemmolreprsmilesCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesCluster::get(self : ChemmolreprsmilesCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_cluster_set(s : ChemmolreprsmilesCluster, i : Int, v : Double) -> ChemmolreprsmilesCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesCluster::set(self : ChemmolreprsmilesCluster, i : Int, v : Double) -> ChemmolreprsmilesCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_cluster_sum(s : ChemmolreprsmilesCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesCluster::sum(self : ChemmolreprsmilesCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_cluster_mean(s : ChemmolreprsmilesCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesCluster::mean(self : ChemmolreprsmilesCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_cluster_scale(s : ChemmolreprsmilesCluster, f : Double) -> ChemmolreprsmilesCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesCluster::scale(self : ChemmolreprsmilesCluster, f : Double) -> ChemmolreprsmilesCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_cluster_add(a : ChemmolreprsmilesCluster, b : ChemmolreprsmilesCluster) -> ChemmolreprsmilesCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesCluster::add(self : ChemmolreprsmilesCluster, other : ChemmolreprsmilesCluster) -> ChemmolreprsmilesCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_cluster_copy(s : ChemmolreprsmilesCluster) -> ChemmolreprsmilesCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesCluster::copy(self : ChemmolreprsmilesCluster) -> ChemmolreprsmilesCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_cluster_fill(s : ChemmolreprsmilesCluster, v : Double) -> ChemmolreprsmilesCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesCluster::fill(self : ChemmolreprsmilesCluster, v : Double) -> ChemmolreprsmilesCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_cluster_min(s : ChemmolreprsmilesCluster) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesCluster::min(self : ChemmolreprsmilesCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_cluster_max(s : ChemmolreprsmilesCluster) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesCluster::max(self : ChemmolreprsmilesCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_cluster_to_string(s : ChemmolreprsmilesCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesCluster::to_string(self : ChemmolreprsmilesCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesModel {
@@ -708,45 +708,45 @@ pub fn chem_mol_repr_smiles_model_make(size : Int) -> ChemmolreprsmilesModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_model_len(s : ChemmolreprsmilesModel) -> Int { s.size }
+pub fn ChemmolreprsmilesModel::len(self : ChemmolreprsmilesModel) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_model_get(s : ChemmolreprsmilesModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesModel::get(self : ChemmolreprsmilesModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_model_set(s : ChemmolreprsmilesModel, i : Int, v : Double) -> ChemmolreprsmilesModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesModel::set(self : ChemmolreprsmilesModel, i : Int, v : Double) -> ChemmolreprsmilesModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_model_sum(s : ChemmolreprsmilesModel) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesModel::sum(self : ChemmolreprsmilesModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_model_mean(s : ChemmolreprsmilesModel) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesModel::mean(self : ChemmolreprsmilesModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_model_scale(s : ChemmolreprsmilesModel, f : Double) -> ChemmolreprsmilesModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesModel::scale(self : ChemmolreprsmilesModel, f : Double) -> ChemmolreprsmilesModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_model_add(a : ChemmolreprsmilesModel, b : ChemmolreprsmilesModel) -> ChemmolreprsmilesModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesModel::add(self : ChemmolreprsmilesModel, other : ChemmolreprsmilesModel) -> ChemmolreprsmilesModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_model_copy(s : ChemmolreprsmilesModel) -> ChemmolreprsmilesModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesModel::copy(self : ChemmolreprsmilesModel) -> ChemmolreprsmilesModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_model_fill(s : ChemmolreprsmilesModel, v : Double) -> ChemmolreprsmilesModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesModel::fill(self : ChemmolreprsmilesModel, v : Double) -> ChemmolreprsmilesModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_model_min(s : ChemmolreprsmilesModel) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesModel::min(self : ChemmolreprsmilesModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_model_max(s : ChemmolreprsmilesModel) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesModel::max(self : ChemmolreprsmilesModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_model_to_string(s : ChemmolreprsmilesModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesModel::to_string(self : ChemmolreprsmilesModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesLayer {
@@ -759,45 +759,45 @@ pub fn chem_mol_repr_smiles_layer_make(size : Int) -> ChemmolreprsmilesLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_layer_len(s : ChemmolreprsmilesLayer) -> Int { s.size }
+pub fn ChemmolreprsmilesLayer::len(self : ChemmolreprsmilesLayer) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_layer_get(s : ChemmolreprsmilesLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesLayer::get(self : ChemmolreprsmilesLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_layer_set(s : ChemmolreprsmilesLayer, i : Int, v : Double) -> ChemmolreprsmilesLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesLayer::set(self : ChemmolreprsmilesLayer, i : Int, v : Double) -> ChemmolreprsmilesLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_layer_sum(s : ChemmolreprsmilesLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesLayer::sum(self : ChemmolreprsmilesLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_layer_mean(s : ChemmolreprsmilesLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesLayer::mean(self : ChemmolreprsmilesLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_layer_scale(s : ChemmolreprsmilesLayer, f : Double) -> ChemmolreprsmilesLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesLayer::scale(self : ChemmolreprsmilesLayer, f : Double) -> ChemmolreprsmilesLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_layer_add(a : ChemmolreprsmilesLayer, b : ChemmolreprsmilesLayer) -> ChemmolreprsmilesLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesLayer::add(self : ChemmolreprsmilesLayer, other : ChemmolreprsmilesLayer) -> ChemmolreprsmilesLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_layer_copy(s : ChemmolreprsmilesLayer) -> ChemmolreprsmilesLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesLayer::copy(self : ChemmolreprsmilesLayer) -> ChemmolreprsmilesLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_layer_fill(s : ChemmolreprsmilesLayer, v : Double) -> ChemmolreprsmilesLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesLayer::fill(self : ChemmolreprsmilesLayer, v : Double) -> ChemmolreprsmilesLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_layer_min(s : ChemmolreprsmilesLayer) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesLayer::min(self : ChemmolreprsmilesLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_layer_max(s : ChemmolreprsmilesLayer) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesLayer::max(self : ChemmolreprsmilesLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_layer_to_string(s : ChemmolreprsmilesLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesLayer::to_string(self : ChemmolreprsmilesLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesBuffer {
@@ -810,45 +810,45 @@ pub fn chem_mol_repr_smiles_buffer_make(size : Int) -> ChemmolreprsmilesBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_buffer_len(s : ChemmolreprsmilesBuffer) -> Int { s.size }
+pub fn ChemmolreprsmilesBuffer::len(self : ChemmolreprsmilesBuffer) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_buffer_get(s : ChemmolreprsmilesBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesBuffer::get(self : ChemmolreprsmilesBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_buffer_set(s : ChemmolreprsmilesBuffer, i : Int, v : Double) -> ChemmolreprsmilesBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesBuffer::set(self : ChemmolreprsmilesBuffer, i : Int, v : Double) -> ChemmolreprsmilesBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_buffer_sum(s : ChemmolreprsmilesBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesBuffer::sum(self : ChemmolreprsmilesBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_buffer_mean(s : ChemmolreprsmilesBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesBuffer::mean(self : ChemmolreprsmilesBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_buffer_scale(s : ChemmolreprsmilesBuffer, f : Double) -> ChemmolreprsmilesBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesBuffer::scale(self : ChemmolreprsmilesBuffer, f : Double) -> ChemmolreprsmilesBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_buffer_add(a : ChemmolreprsmilesBuffer, b : ChemmolreprsmilesBuffer) -> ChemmolreprsmilesBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesBuffer::add(self : ChemmolreprsmilesBuffer, other : ChemmolreprsmilesBuffer) -> ChemmolreprsmilesBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_buffer_copy(s : ChemmolreprsmilesBuffer) -> ChemmolreprsmilesBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesBuffer::copy(self : ChemmolreprsmilesBuffer) -> ChemmolreprsmilesBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_buffer_fill(s : ChemmolreprsmilesBuffer, v : Double) -> ChemmolreprsmilesBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesBuffer::fill(self : ChemmolreprsmilesBuffer, v : Double) -> ChemmolreprsmilesBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_buffer_min(s : ChemmolreprsmilesBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesBuffer::min(self : ChemmolreprsmilesBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_buffer_max(s : ChemmolreprsmilesBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesBuffer::max(self : ChemmolreprsmilesBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_buffer_to_string(s : ChemmolreprsmilesBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesBuffer::to_string(self : ChemmolreprsmilesBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesCursor {
@@ -861,45 +861,45 @@ pub fn chem_mol_repr_smiles_cursor_make(size : Int) -> ChemmolreprsmilesCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_cursor_len(s : ChemmolreprsmilesCursor) -> Int { s.size }
+pub fn ChemmolreprsmilesCursor::len(self : ChemmolreprsmilesCursor) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_cursor_get(s : ChemmolreprsmilesCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesCursor::get(self : ChemmolreprsmilesCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_cursor_set(s : ChemmolreprsmilesCursor, i : Int, v : Double) -> ChemmolreprsmilesCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesCursor::set(self : ChemmolreprsmilesCursor, i : Int, v : Double) -> ChemmolreprsmilesCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_cursor_sum(s : ChemmolreprsmilesCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesCursor::sum(self : ChemmolreprsmilesCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_cursor_mean(s : ChemmolreprsmilesCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesCursor::mean(self : ChemmolreprsmilesCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_cursor_scale(s : ChemmolreprsmilesCursor, f : Double) -> ChemmolreprsmilesCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesCursor::scale(self : ChemmolreprsmilesCursor, f : Double) -> ChemmolreprsmilesCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_cursor_add(a : ChemmolreprsmilesCursor, b : ChemmolreprsmilesCursor) -> ChemmolreprsmilesCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesCursor::add(self : ChemmolreprsmilesCursor, other : ChemmolreprsmilesCursor) -> ChemmolreprsmilesCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_cursor_copy(s : ChemmolreprsmilesCursor) -> ChemmolreprsmilesCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesCursor::copy(self : ChemmolreprsmilesCursor) -> ChemmolreprsmilesCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_cursor_fill(s : ChemmolreprsmilesCursor, v : Double) -> ChemmolreprsmilesCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesCursor::fill(self : ChemmolreprsmilesCursor, v : Double) -> ChemmolreprsmilesCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_cursor_min(s : ChemmolreprsmilesCursor) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesCursor::min(self : ChemmolreprsmilesCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_cursor_max(s : ChemmolreprsmilesCursor) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesCursor::max(self : ChemmolreprsmilesCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_cursor_to_string(s : ChemmolreprsmilesCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesCursor::to_string(self : ChemmolreprsmilesCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesView {
@@ -912,45 +912,45 @@ pub fn chem_mol_repr_smiles_view_make(size : Int) -> ChemmolreprsmilesView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_view_len(s : ChemmolreprsmilesView) -> Int { s.size }
+pub fn ChemmolreprsmilesView::len(self : ChemmolreprsmilesView) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_view_get(s : ChemmolreprsmilesView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesView::get(self : ChemmolreprsmilesView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_view_set(s : ChemmolreprsmilesView, i : Int, v : Double) -> ChemmolreprsmilesView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesView::set(self : ChemmolreprsmilesView, i : Int, v : Double) -> ChemmolreprsmilesView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_view_sum(s : ChemmolreprsmilesView) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesView::sum(self : ChemmolreprsmilesView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_view_mean(s : ChemmolreprsmilesView) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesView::mean(self : ChemmolreprsmilesView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_view_scale(s : ChemmolreprsmilesView, f : Double) -> ChemmolreprsmilesView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesView::scale(self : ChemmolreprsmilesView, f : Double) -> ChemmolreprsmilesView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_view_add(a : ChemmolreprsmilesView, b : ChemmolreprsmilesView) -> ChemmolreprsmilesView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesView::add(self : ChemmolreprsmilesView, other : ChemmolreprsmilesView) -> ChemmolreprsmilesView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_view_copy(s : ChemmolreprsmilesView) -> ChemmolreprsmilesView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesView::copy(self : ChemmolreprsmilesView) -> ChemmolreprsmilesView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_view_fill(s : ChemmolreprsmilesView, v : Double) -> ChemmolreprsmilesView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesView::fill(self : ChemmolreprsmilesView, v : Double) -> ChemmolreprsmilesView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_view_min(s : ChemmolreprsmilesView) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesView::min(self : ChemmolreprsmilesView) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_view_max(s : ChemmolreprsmilesView) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesView::max(self : ChemmolreprsmilesView) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_view_to_string(s : ChemmolreprsmilesView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesView::to_string(self : ChemmolreprsmilesView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesRange {
@@ -963,45 +963,45 @@ pub fn chem_mol_repr_smiles_range_make(size : Int) -> ChemmolreprsmilesRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_range_len(s : ChemmolreprsmilesRange) -> Int { s.size }
+pub fn ChemmolreprsmilesRange::len(self : ChemmolreprsmilesRange) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_range_get(s : ChemmolreprsmilesRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesRange::get(self : ChemmolreprsmilesRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_range_set(s : ChemmolreprsmilesRange, i : Int, v : Double) -> ChemmolreprsmilesRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesRange::set(self : ChemmolreprsmilesRange, i : Int, v : Double) -> ChemmolreprsmilesRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_range_sum(s : ChemmolreprsmilesRange) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesRange::sum(self : ChemmolreprsmilesRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_range_mean(s : ChemmolreprsmilesRange) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesRange::mean(self : ChemmolreprsmilesRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_range_scale(s : ChemmolreprsmilesRange, f : Double) -> ChemmolreprsmilesRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesRange::scale(self : ChemmolreprsmilesRange, f : Double) -> ChemmolreprsmilesRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_range_add(a : ChemmolreprsmilesRange, b : ChemmolreprsmilesRange) -> ChemmolreprsmilesRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesRange::add(self : ChemmolreprsmilesRange, other : ChemmolreprsmilesRange) -> ChemmolreprsmilesRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_range_copy(s : ChemmolreprsmilesRange) -> ChemmolreprsmilesRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesRange::copy(self : ChemmolreprsmilesRange) -> ChemmolreprsmilesRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_range_fill(s : ChemmolreprsmilesRange, v : Double) -> ChemmolreprsmilesRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesRange::fill(self : ChemmolreprsmilesRange, v : Double) -> ChemmolreprsmilesRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_range_min(s : ChemmolreprsmilesRange) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesRange::min(self : ChemmolreprsmilesRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_range_max(s : ChemmolreprsmilesRange) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesRange::max(self : ChemmolreprsmilesRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_range_to_string(s : ChemmolreprsmilesRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesRange::to_string(self : ChemmolreprsmilesRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprsmilesSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_mol_repr_smiles_slice_make(size : Int) -> ChemmolreprsmilesSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_smiles_slice_len(s : ChemmolreprsmilesSlice) -> Int { s.size }
+pub fn ChemmolreprsmilesSlice::len(self : ChemmolreprsmilesSlice) -> Int { self.size }
 
-pub fn chem_mol_repr_smiles_slice_get(s : ChemmolreprsmilesSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprsmilesSlice::get(self : ChemmolreprsmilesSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_smiles_slice_set(s : ChemmolreprsmilesSlice, i : Int, v : Double) -> ChemmolreprsmilesSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesSlice::set(self : ChemmolreprsmilesSlice, i : Int, v : Double) -> ChemmolreprsmilesSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_slice_sum(s : ChemmolreprsmilesSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprsmilesSlice::sum(self : ChemmolreprsmilesSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_smiles_slice_mean(s : ChemmolreprsmilesSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprsmilesSlice::mean(self : ChemmolreprsmilesSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_smiles_slice_scale(s : ChemmolreprsmilesSlice, f : Double) -> ChemmolreprsmilesSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesSlice::scale(self : ChemmolreprsmilesSlice, f : Double) -> ChemmolreprsmilesSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_slice_add(a : ChemmolreprsmilesSlice, b : ChemmolreprsmilesSlice) -> ChemmolreprsmilesSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprsmilesSlice::add(self : ChemmolreprsmilesSlice, other : ChemmolreprsmilesSlice) -> ChemmolreprsmilesSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_slice_copy(s : ChemmolreprsmilesSlice) -> ChemmolreprsmilesSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesSlice::copy(self : ChemmolreprsmilesSlice) -> ChemmolreprsmilesSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_slice_fill(s : ChemmolreprsmilesSlice, v : Double) -> ChemmolreprsmilesSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprsmilesSlice::fill(self : ChemmolreprsmilesSlice, v : Double) -> ChemmolreprsmilesSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_smiles_slice_min(s : ChemmolreprsmilesSlice) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprsmilesSlice::min(self : ChemmolreprsmilesSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_smiles_slice_max(s : ChemmolreprsmilesSlice) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprsmilesSlice::max(self : ChemmolreprsmilesSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_smiles_slice_to_string(s : ChemmolreprsmilesSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprsmilesSlice::to_string(self : ChemmolreprsmilesSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

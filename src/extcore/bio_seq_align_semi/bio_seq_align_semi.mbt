@@ -351,45 +351,45 @@ pub fn bio_seq_align_semi_frame_make(size : Int) -> BioseqalignsemiFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_frame_len(s : BioseqalignsemiFrame) -> Int { s.size }
+pub fn BioseqalignsemiFrame::len(self : BioseqalignsemiFrame) -> Int { self.size }
 
-pub fn bio_seq_align_semi_frame_get(s : BioseqalignsemiFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiFrame::get(self : BioseqalignsemiFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_frame_set(s : BioseqalignsemiFrame, i : Int, v : Double) -> BioseqalignsemiFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiFrame::set(self : BioseqalignsemiFrame, i : Int, v : Double) -> BioseqalignsemiFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_frame_sum(s : BioseqalignsemiFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiFrame::sum(self : BioseqalignsemiFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_frame_mean(s : BioseqalignsemiFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiFrame::mean(self : BioseqalignsemiFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_frame_scale(s : BioseqalignsemiFrame, f : Double) -> BioseqalignsemiFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiFrame::scale(self : BioseqalignsemiFrame, f : Double) -> BioseqalignsemiFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_frame_add(a : BioseqalignsemiFrame, b : BioseqalignsemiFrame) -> BioseqalignsemiFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiFrame::add(self : BioseqalignsemiFrame, other : BioseqalignsemiFrame) -> BioseqalignsemiFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_frame_copy(s : BioseqalignsemiFrame) -> BioseqalignsemiFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiFrame::copy(self : BioseqalignsemiFrame) -> BioseqalignsemiFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_frame_fill(s : BioseqalignsemiFrame, v : Double) -> BioseqalignsemiFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiFrame::fill(self : BioseqalignsemiFrame, v : Double) -> BioseqalignsemiFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_frame_min(s : BioseqalignsemiFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiFrame::min(self : BioseqalignsemiFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_frame_max(s : BioseqalignsemiFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiFrame::max(self : BioseqalignsemiFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_frame_to_string(s : BioseqalignsemiFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiFrame::to_string(self : BioseqalignsemiFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_align_semi_table_make(size : Int) -> BioseqalignsemiTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_table_len(s : BioseqalignsemiTable) -> Int { s.size }
+pub fn BioseqalignsemiTable::len(self : BioseqalignsemiTable) -> Int { self.size }
 
-pub fn bio_seq_align_semi_table_get(s : BioseqalignsemiTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiTable::get(self : BioseqalignsemiTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_table_set(s : BioseqalignsemiTable, i : Int, v : Double) -> BioseqalignsemiTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiTable::set(self : BioseqalignsemiTable, i : Int, v : Double) -> BioseqalignsemiTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_table_sum(s : BioseqalignsemiTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiTable::sum(self : BioseqalignsemiTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_table_mean(s : BioseqalignsemiTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiTable::mean(self : BioseqalignsemiTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_table_scale(s : BioseqalignsemiTable, f : Double) -> BioseqalignsemiTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiTable::scale(self : BioseqalignsemiTable, f : Double) -> BioseqalignsemiTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_table_add(a : BioseqalignsemiTable, b : BioseqalignsemiTable) -> BioseqalignsemiTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiTable::add(self : BioseqalignsemiTable, other : BioseqalignsemiTable) -> BioseqalignsemiTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_table_copy(s : BioseqalignsemiTable) -> BioseqalignsemiTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiTable::copy(self : BioseqalignsemiTable) -> BioseqalignsemiTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_table_fill(s : BioseqalignsemiTable, v : Double) -> BioseqalignsemiTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiTable::fill(self : BioseqalignsemiTable, v : Double) -> BioseqalignsemiTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_table_min(s : BioseqalignsemiTable) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiTable::min(self : BioseqalignsemiTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_table_max(s : BioseqalignsemiTable) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiTable::max(self : BioseqalignsemiTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_table_to_string(s : BioseqalignsemiTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiTable::to_string(self : BioseqalignsemiTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_align_semi_graphn_make(size : Int) -> BioseqalignsemiGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_graphn_len(s : BioseqalignsemiGraphN) -> Int { s.size }
+pub fn BioseqalignsemiGraphN::len(self : BioseqalignsemiGraphN) -> Int { self.size }
 
-pub fn bio_seq_align_semi_graphn_get(s : BioseqalignsemiGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiGraphN::get(self : BioseqalignsemiGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_graphn_set(s : BioseqalignsemiGraphN, i : Int, v : Double) -> BioseqalignsemiGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiGraphN::set(self : BioseqalignsemiGraphN, i : Int, v : Double) -> BioseqalignsemiGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_graphn_sum(s : BioseqalignsemiGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiGraphN::sum(self : BioseqalignsemiGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_graphn_mean(s : BioseqalignsemiGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiGraphN::mean(self : BioseqalignsemiGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_graphn_scale(s : BioseqalignsemiGraphN, f : Double) -> BioseqalignsemiGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiGraphN::scale(self : BioseqalignsemiGraphN, f : Double) -> BioseqalignsemiGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_graphn_add(a : BioseqalignsemiGraphN, b : BioseqalignsemiGraphN) -> BioseqalignsemiGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiGraphN::add(self : BioseqalignsemiGraphN, other : BioseqalignsemiGraphN) -> BioseqalignsemiGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_graphn_copy(s : BioseqalignsemiGraphN) -> BioseqalignsemiGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiGraphN::copy(self : BioseqalignsemiGraphN) -> BioseqalignsemiGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_graphn_fill(s : BioseqalignsemiGraphN, v : Double) -> BioseqalignsemiGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiGraphN::fill(self : BioseqalignsemiGraphN, v : Double) -> BioseqalignsemiGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_graphn_min(s : BioseqalignsemiGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiGraphN::min(self : BioseqalignsemiGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_graphn_max(s : BioseqalignsemiGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiGraphN::max(self : BioseqalignsemiGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_graphn_to_string(s : BioseqalignsemiGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiGraphN::to_string(self : BioseqalignsemiGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_align_semi_node_make(size : Int) -> BioseqalignsemiNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_node_len(s : BioseqalignsemiNode) -> Int { s.size }
+pub fn BioseqalignsemiNode::len(self : BioseqalignsemiNode) -> Int { self.size }
 
-pub fn bio_seq_align_semi_node_get(s : BioseqalignsemiNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiNode::get(self : BioseqalignsemiNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_node_set(s : BioseqalignsemiNode, i : Int, v : Double) -> BioseqalignsemiNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiNode::set(self : BioseqalignsemiNode, i : Int, v : Double) -> BioseqalignsemiNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_node_sum(s : BioseqalignsemiNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiNode::sum(self : BioseqalignsemiNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_node_mean(s : BioseqalignsemiNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiNode::mean(self : BioseqalignsemiNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_node_scale(s : BioseqalignsemiNode, f : Double) -> BioseqalignsemiNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiNode::scale(self : BioseqalignsemiNode, f : Double) -> BioseqalignsemiNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_node_add(a : BioseqalignsemiNode, b : BioseqalignsemiNode) -> BioseqalignsemiNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiNode::add(self : BioseqalignsemiNode, other : BioseqalignsemiNode) -> BioseqalignsemiNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_node_copy(s : BioseqalignsemiNode) -> BioseqalignsemiNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiNode::copy(self : BioseqalignsemiNode) -> BioseqalignsemiNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_node_fill(s : BioseqalignsemiNode, v : Double) -> BioseqalignsemiNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiNode::fill(self : BioseqalignsemiNode, v : Double) -> BioseqalignsemiNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_node_min(s : BioseqalignsemiNode) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiNode::min(self : BioseqalignsemiNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_node_max(s : BioseqalignsemiNode) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiNode::max(self : BioseqalignsemiNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_node_to_string(s : BioseqalignsemiNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiNode::to_string(self : BioseqalignsemiNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_align_semi_edge_make(size : Int) -> BioseqalignsemiEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_edge_len(s : BioseqalignsemiEdge) -> Int { s.size }
+pub fn BioseqalignsemiEdge::len(self : BioseqalignsemiEdge) -> Int { self.size }
 
-pub fn bio_seq_align_semi_edge_get(s : BioseqalignsemiEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiEdge::get(self : BioseqalignsemiEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_edge_set(s : BioseqalignsemiEdge, i : Int, v : Double) -> BioseqalignsemiEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiEdge::set(self : BioseqalignsemiEdge, i : Int, v : Double) -> BioseqalignsemiEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_edge_sum(s : BioseqalignsemiEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiEdge::sum(self : BioseqalignsemiEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_edge_mean(s : BioseqalignsemiEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiEdge::mean(self : BioseqalignsemiEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_edge_scale(s : BioseqalignsemiEdge, f : Double) -> BioseqalignsemiEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiEdge::scale(self : BioseqalignsemiEdge, f : Double) -> BioseqalignsemiEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_edge_add(a : BioseqalignsemiEdge, b : BioseqalignsemiEdge) -> BioseqalignsemiEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiEdge::add(self : BioseqalignsemiEdge, other : BioseqalignsemiEdge) -> BioseqalignsemiEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_edge_copy(s : BioseqalignsemiEdge) -> BioseqalignsemiEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiEdge::copy(self : BioseqalignsemiEdge) -> BioseqalignsemiEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_edge_fill(s : BioseqalignsemiEdge, v : Double) -> BioseqalignsemiEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiEdge::fill(self : BioseqalignsemiEdge, v : Double) -> BioseqalignsemiEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_edge_min(s : BioseqalignsemiEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiEdge::min(self : BioseqalignsemiEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_edge_max(s : BioseqalignsemiEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiEdge::max(self : BioseqalignsemiEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_edge_to_string(s : BioseqalignsemiEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiEdge::to_string(self : BioseqalignsemiEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiPath {
@@ -606,45 +606,45 @@ pub fn bio_seq_align_semi_path_make(size : Int) -> BioseqalignsemiPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_path_len(s : BioseqalignsemiPath) -> Int { s.size }
+pub fn BioseqalignsemiPath::len(self : BioseqalignsemiPath) -> Int { self.size }
 
-pub fn bio_seq_align_semi_path_get(s : BioseqalignsemiPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiPath::get(self : BioseqalignsemiPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_path_set(s : BioseqalignsemiPath, i : Int, v : Double) -> BioseqalignsemiPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiPath::set(self : BioseqalignsemiPath, i : Int, v : Double) -> BioseqalignsemiPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_path_sum(s : BioseqalignsemiPath) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiPath::sum(self : BioseqalignsemiPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_path_mean(s : BioseqalignsemiPath) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiPath::mean(self : BioseqalignsemiPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_path_scale(s : BioseqalignsemiPath, f : Double) -> BioseqalignsemiPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiPath::scale(self : BioseqalignsemiPath, f : Double) -> BioseqalignsemiPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_path_add(a : BioseqalignsemiPath, b : BioseqalignsemiPath) -> BioseqalignsemiPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiPath::add(self : BioseqalignsemiPath, other : BioseqalignsemiPath) -> BioseqalignsemiPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_path_copy(s : BioseqalignsemiPath) -> BioseqalignsemiPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiPath::copy(self : BioseqalignsemiPath) -> BioseqalignsemiPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_path_fill(s : BioseqalignsemiPath, v : Double) -> BioseqalignsemiPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiPath::fill(self : BioseqalignsemiPath, v : Double) -> BioseqalignsemiPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_path_min(s : BioseqalignsemiPath) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiPath::min(self : BioseqalignsemiPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_path_max(s : BioseqalignsemiPath) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiPath::max(self : BioseqalignsemiPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_path_to_string(s : BioseqalignsemiPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiPath::to_string(self : BioseqalignsemiPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_align_semi_cluster_make(size : Int) -> BioseqalignsemiCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_cluster_len(s : BioseqalignsemiCluster) -> Int { s.size }
+pub fn BioseqalignsemiCluster::len(self : BioseqalignsemiCluster) -> Int { self.size }
 
-pub fn bio_seq_align_semi_cluster_get(s : BioseqalignsemiCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiCluster::get(self : BioseqalignsemiCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_cluster_set(s : BioseqalignsemiCluster, i : Int, v : Double) -> BioseqalignsemiCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiCluster::set(self : BioseqalignsemiCluster, i : Int, v : Double) -> BioseqalignsemiCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_cluster_sum(s : BioseqalignsemiCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiCluster::sum(self : BioseqalignsemiCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_cluster_mean(s : BioseqalignsemiCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiCluster::mean(self : BioseqalignsemiCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_cluster_scale(s : BioseqalignsemiCluster, f : Double) -> BioseqalignsemiCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiCluster::scale(self : BioseqalignsemiCluster, f : Double) -> BioseqalignsemiCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_cluster_add(a : BioseqalignsemiCluster, b : BioseqalignsemiCluster) -> BioseqalignsemiCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiCluster::add(self : BioseqalignsemiCluster, other : BioseqalignsemiCluster) -> BioseqalignsemiCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_cluster_copy(s : BioseqalignsemiCluster) -> BioseqalignsemiCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiCluster::copy(self : BioseqalignsemiCluster) -> BioseqalignsemiCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_cluster_fill(s : BioseqalignsemiCluster, v : Double) -> BioseqalignsemiCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiCluster::fill(self : BioseqalignsemiCluster, v : Double) -> BioseqalignsemiCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_cluster_min(s : BioseqalignsemiCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiCluster::min(self : BioseqalignsemiCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_cluster_max(s : BioseqalignsemiCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiCluster::max(self : BioseqalignsemiCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_cluster_to_string(s : BioseqalignsemiCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiCluster::to_string(self : BioseqalignsemiCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_align_semi_model_make(size : Int) -> BioseqalignsemiModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_model_len(s : BioseqalignsemiModel) -> Int { s.size }
+pub fn BioseqalignsemiModel::len(self : BioseqalignsemiModel) -> Int { self.size }
 
-pub fn bio_seq_align_semi_model_get(s : BioseqalignsemiModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiModel::get(self : BioseqalignsemiModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_model_set(s : BioseqalignsemiModel, i : Int, v : Double) -> BioseqalignsemiModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiModel::set(self : BioseqalignsemiModel, i : Int, v : Double) -> BioseqalignsemiModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_model_sum(s : BioseqalignsemiModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiModel::sum(self : BioseqalignsemiModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_model_mean(s : BioseqalignsemiModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiModel::mean(self : BioseqalignsemiModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_model_scale(s : BioseqalignsemiModel, f : Double) -> BioseqalignsemiModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiModel::scale(self : BioseqalignsemiModel, f : Double) -> BioseqalignsemiModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_model_add(a : BioseqalignsemiModel, b : BioseqalignsemiModel) -> BioseqalignsemiModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiModel::add(self : BioseqalignsemiModel, other : BioseqalignsemiModel) -> BioseqalignsemiModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_model_copy(s : BioseqalignsemiModel) -> BioseqalignsemiModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiModel::copy(self : BioseqalignsemiModel) -> BioseqalignsemiModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_model_fill(s : BioseqalignsemiModel, v : Double) -> BioseqalignsemiModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiModel::fill(self : BioseqalignsemiModel, v : Double) -> BioseqalignsemiModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_model_min(s : BioseqalignsemiModel) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiModel::min(self : BioseqalignsemiModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_model_max(s : BioseqalignsemiModel) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiModel::max(self : BioseqalignsemiModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_model_to_string(s : BioseqalignsemiModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiModel::to_string(self : BioseqalignsemiModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_align_semi_layer_make(size : Int) -> BioseqalignsemiLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_layer_len(s : BioseqalignsemiLayer) -> Int { s.size }
+pub fn BioseqalignsemiLayer::len(self : BioseqalignsemiLayer) -> Int { self.size }
 
-pub fn bio_seq_align_semi_layer_get(s : BioseqalignsemiLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiLayer::get(self : BioseqalignsemiLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_layer_set(s : BioseqalignsemiLayer, i : Int, v : Double) -> BioseqalignsemiLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiLayer::set(self : BioseqalignsemiLayer, i : Int, v : Double) -> BioseqalignsemiLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_layer_sum(s : BioseqalignsemiLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiLayer::sum(self : BioseqalignsemiLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_layer_mean(s : BioseqalignsemiLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiLayer::mean(self : BioseqalignsemiLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_layer_scale(s : BioseqalignsemiLayer, f : Double) -> BioseqalignsemiLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiLayer::scale(self : BioseqalignsemiLayer, f : Double) -> BioseqalignsemiLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_layer_add(a : BioseqalignsemiLayer, b : BioseqalignsemiLayer) -> BioseqalignsemiLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiLayer::add(self : BioseqalignsemiLayer, other : BioseqalignsemiLayer) -> BioseqalignsemiLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_layer_copy(s : BioseqalignsemiLayer) -> BioseqalignsemiLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiLayer::copy(self : BioseqalignsemiLayer) -> BioseqalignsemiLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_layer_fill(s : BioseqalignsemiLayer, v : Double) -> BioseqalignsemiLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiLayer::fill(self : BioseqalignsemiLayer, v : Double) -> BioseqalignsemiLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_layer_min(s : BioseqalignsemiLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiLayer::min(self : BioseqalignsemiLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_layer_max(s : BioseqalignsemiLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiLayer::max(self : BioseqalignsemiLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_layer_to_string(s : BioseqalignsemiLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiLayer::to_string(self : BioseqalignsemiLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_align_semi_buffer_make(size : Int) -> BioseqalignsemiBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_buffer_len(s : BioseqalignsemiBuffer) -> Int { s.size }
+pub fn BioseqalignsemiBuffer::len(self : BioseqalignsemiBuffer) -> Int { self.size }
 
-pub fn bio_seq_align_semi_buffer_get(s : BioseqalignsemiBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiBuffer::get(self : BioseqalignsemiBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_buffer_set(s : BioseqalignsemiBuffer, i : Int, v : Double) -> BioseqalignsemiBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiBuffer::set(self : BioseqalignsemiBuffer, i : Int, v : Double) -> BioseqalignsemiBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_buffer_sum(s : BioseqalignsemiBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiBuffer::sum(self : BioseqalignsemiBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_buffer_mean(s : BioseqalignsemiBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiBuffer::mean(self : BioseqalignsemiBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_buffer_scale(s : BioseqalignsemiBuffer, f : Double) -> BioseqalignsemiBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiBuffer::scale(self : BioseqalignsemiBuffer, f : Double) -> BioseqalignsemiBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_buffer_add(a : BioseqalignsemiBuffer, b : BioseqalignsemiBuffer) -> BioseqalignsemiBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiBuffer::add(self : BioseqalignsemiBuffer, other : BioseqalignsemiBuffer) -> BioseqalignsemiBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_buffer_copy(s : BioseqalignsemiBuffer) -> BioseqalignsemiBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiBuffer::copy(self : BioseqalignsemiBuffer) -> BioseqalignsemiBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_buffer_fill(s : BioseqalignsemiBuffer, v : Double) -> BioseqalignsemiBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiBuffer::fill(self : BioseqalignsemiBuffer, v : Double) -> BioseqalignsemiBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_buffer_min(s : BioseqalignsemiBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiBuffer::min(self : BioseqalignsemiBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_buffer_max(s : BioseqalignsemiBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiBuffer::max(self : BioseqalignsemiBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_buffer_to_string(s : BioseqalignsemiBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiBuffer::to_string(self : BioseqalignsemiBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_align_semi_cursor_make(size : Int) -> BioseqalignsemiCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_cursor_len(s : BioseqalignsemiCursor) -> Int { s.size }
+pub fn BioseqalignsemiCursor::len(self : BioseqalignsemiCursor) -> Int { self.size }
 
-pub fn bio_seq_align_semi_cursor_get(s : BioseqalignsemiCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiCursor::get(self : BioseqalignsemiCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_cursor_set(s : BioseqalignsemiCursor, i : Int, v : Double) -> BioseqalignsemiCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiCursor::set(self : BioseqalignsemiCursor, i : Int, v : Double) -> BioseqalignsemiCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_cursor_sum(s : BioseqalignsemiCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiCursor::sum(self : BioseqalignsemiCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_cursor_mean(s : BioseqalignsemiCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiCursor::mean(self : BioseqalignsemiCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_cursor_scale(s : BioseqalignsemiCursor, f : Double) -> BioseqalignsemiCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiCursor::scale(self : BioseqalignsemiCursor, f : Double) -> BioseqalignsemiCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_cursor_add(a : BioseqalignsemiCursor, b : BioseqalignsemiCursor) -> BioseqalignsemiCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiCursor::add(self : BioseqalignsemiCursor, other : BioseqalignsemiCursor) -> BioseqalignsemiCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_cursor_copy(s : BioseqalignsemiCursor) -> BioseqalignsemiCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiCursor::copy(self : BioseqalignsemiCursor) -> BioseqalignsemiCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_cursor_fill(s : BioseqalignsemiCursor, v : Double) -> BioseqalignsemiCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiCursor::fill(self : BioseqalignsemiCursor, v : Double) -> BioseqalignsemiCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_cursor_min(s : BioseqalignsemiCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiCursor::min(self : BioseqalignsemiCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_cursor_max(s : BioseqalignsemiCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiCursor::max(self : BioseqalignsemiCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_cursor_to_string(s : BioseqalignsemiCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiCursor::to_string(self : BioseqalignsemiCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiView {
@@ -912,45 +912,45 @@ pub fn bio_seq_align_semi_view_make(size : Int) -> BioseqalignsemiView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_view_len(s : BioseqalignsemiView) -> Int { s.size }
+pub fn BioseqalignsemiView::len(self : BioseqalignsemiView) -> Int { self.size }
 
-pub fn bio_seq_align_semi_view_get(s : BioseqalignsemiView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiView::get(self : BioseqalignsemiView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_view_set(s : BioseqalignsemiView, i : Int, v : Double) -> BioseqalignsemiView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiView::set(self : BioseqalignsemiView, i : Int, v : Double) -> BioseqalignsemiView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_view_sum(s : BioseqalignsemiView) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiView::sum(self : BioseqalignsemiView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_view_mean(s : BioseqalignsemiView) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiView::mean(self : BioseqalignsemiView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_view_scale(s : BioseqalignsemiView, f : Double) -> BioseqalignsemiView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiView::scale(self : BioseqalignsemiView, f : Double) -> BioseqalignsemiView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_view_add(a : BioseqalignsemiView, b : BioseqalignsemiView) -> BioseqalignsemiView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiView::add(self : BioseqalignsemiView, other : BioseqalignsemiView) -> BioseqalignsemiView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_view_copy(s : BioseqalignsemiView) -> BioseqalignsemiView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiView::copy(self : BioseqalignsemiView) -> BioseqalignsemiView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_view_fill(s : BioseqalignsemiView, v : Double) -> BioseqalignsemiView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiView::fill(self : BioseqalignsemiView, v : Double) -> BioseqalignsemiView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_view_min(s : BioseqalignsemiView) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiView::min(self : BioseqalignsemiView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_view_max(s : BioseqalignsemiView) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiView::max(self : BioseqalignsemiView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_view_to_string(s : BioseqalignsemiView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiView::to_string(self : BioseqalignsemiView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_align_semi_range_make(size : Int) -> BioseqalignsemiRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_range_len(s : BioseqalignsemiRange) -> Int { s.size }
+pub fn BioseqalignsemiRange::len(self : BioseqalignsemiRange) -> Int { self.size }
 
-pub fn bio_seq_align_semi_range_get(s : BioseqalignsemiRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiRange::get(self : BioseqalignsemiRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_range_set(s : BioseqalignsemiRange, i : Int, v : Double) -> BioseqalignsemiRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiRange::set(self : BioseqalignsemiRange, i : Int, v : Double) -> BioseqalignsemiRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_range_sum(s : BioseqalignsemiRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiRange::sum(self : BioseqalignsemiRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_range_mean(s : BioseqalignsemiRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiRange::mean(self : BioseqalignsemiRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_range_scale(s : BioseqalignsemiRange, f : Double) -> BioseqalignsemiRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiRange::scale(self : BioseqalignsemiRange, f : Double) -> BioseqalignsemiRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_range_add(a : BioseqalignsemiRange, b : BioseqalignsemiRange) -> BioseqalignsemiRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiRange::add(self : BioseqalignsemiRange, other : BioseqalignsemiRange) -> BioseqalignsemiRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_range_copy(s : BioseqalignsemiRange) -> BioseqalignsemiRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiRange::copy(self : BioseqalignsemiRange) -> BioseqalignsemiRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_range_fill(s : BioseqalignsemiRange, v : Double) -> BioseqalignsemiRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiRange::fill(self : BioseqalignsemiRange, v : Double) -> BioseqalignsemiRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_range_min(s : BioseqalignsemiRange) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiRange::min(self : BioseqalignsemiRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_range_max(s : BioseqalignsemiRange) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiRange::max(self : BioseqalignsemiRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_range_to_string(s : BioseqalignsemiRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiRange::to_string(self : BioseqalignsemiRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignsemiSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_align_semi_slice_make(size : Int) -> BioseqalignsemiSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_semi_slice_len(s : BioseqalignsemiSlice) -> Int { s.size }
+pub fn BioseqalignsemiSlice::len(self : BioseqalignsemiSlice) -> Int { self.size }
 
-pub fn bio_seq_align_semi_slice_get(s : BioseqalignsemiSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignsemiSlice::get(self : BioseqalignsemiSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_semi_slice_set(s : BioseqalignsemiSlice, i : Int, v : Double) -> BioseqalignsemiSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignsemiSlice::set(self : BioseqalignsemiSlice, i : Int, v : Double) -> BioseqalignsemiSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_slice_sum(s : BioseqalignsemiSlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignsemiSlice::sum(self : BioseqalignsemiSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_semi_slice_mean(s : BioseqalignsemiSlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignsemiSlice::mean(self : BioseqalignsemiSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_semi_slice_scale(s : BioseqalignsemiSlice, f : Double) -> BioseqalignsemiSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiSlice::scale(self : BioseqalignsemiSlice, f : Double) -> BioseqalignsemiSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_slice_add(a : BioseqalignsemiSlice, b : BioseqalignsemiSlice) -> BioseqalignsemiSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignsemiSlice::add(self : BioseqalignsemiSlice, other : BioseqalignsemiSlice) -> BioseqalignsemiSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_slice_copy(s : BioseqalignsemiSlice) -> BioseqalignsemiSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiSlice::copy(self : BioseqalignsemiSlice) -> BioseqalignsemiSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_slice_fill(s : BioseqalignsemiSlice, v : Double) -> BioseqalignsemiSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignsemiSlice::fill(self : BioseqalignsemiSlice, v : Double) -> BioseqalignsemiSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_semi_slice_min(s : BioseqalignsemiSlice) -> Double { @_common.min(s.data) }
+pub fn BioseqalignsemiSlice::min(self : BioseqalignsemiSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_semi_slice_max(s : BioseqalignsemiSlice) -> Double { @_common.max(s.data) }
+pub fn BioseqalignsemiSlice::max(self : BioseqalignsemiSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_semi_slice_to_string(s : BioseqalignsemiSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignsemiSlice::to_string(self : BioseqalignsemiSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

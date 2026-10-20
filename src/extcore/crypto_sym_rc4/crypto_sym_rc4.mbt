@@ -351,45 +351,45 @@ pub fn crypto_sym_rc4_frame_make(size : Int) -> Cryptosymrc4Frame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_frame_len(s : Cryptosymrc4Frame) -> Int { s.size }
+pub fn Cryptosymrc4Frame::len(self : Cryptosymrc4Frame) -> Int { self.size }
 
-pub fn crypto_sym_rc4_frame_get(s : Cryptosymrc4Frame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4Frame::get(self : Cryptosymrc4Frame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_frame_set(s : Cryptosymrc4Frame, i : Int, v : Double) -> Cryptosymrc4Frame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Frame::set(self : Cryptosymrc4Frame, i : Int, v : Double) -> Cryptosymrc4Frame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_frame_sum(s : Cryptosymrc4Frame) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4Frame::sum(self : Cryptosymrc4Frame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_frame_mean(s : Cryptosymrc4Frame) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4Frame::mean(self : Cryptosymrc4Frame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_frame_scale(s : Cryptosymrc4Frame, f : Double) -> Cryptosymrc4Frame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Frame::scale(self : Cryptosymrc4Frame, f : Double) -> Cryptosymrc4Frame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_frame_add(a : Cryptosymrc4Frame, b : Cryptosymrc4Frame) -> Cryptosymrc4Frame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4Frame::add(self : Cryptosymrc4Frame, other : Cryptosymrc4Frame) -> Cryptosymrc4Frame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_frame_copy(s : Cryptosymrc4Frame) -> Cryptosymrc4Frame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Frame::copy(self : Cryptosymrc4Frame) -> Cryptosymrc4Frame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_frame_fill(s : Cryptosymrc4Frame, v : Double) -> Cryptosymrc4Frame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Frame::fill(self : Cryptosymrc4Frame, v : Double) -> Cryptosymrc4Frame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_frame_min(s : Cryptosymrc4Frame) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4Frame::min(self : Cryptosymrc4Frame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_frame_max(s : Cryptosymrc4Frame) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4Frame::max(self : Cryptosymrc4Frame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_frame_to_string(s : Cryptosymrc4Frame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4Frame::to_string(self : Cryptosymrc4Frame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4Table {
@@ -402,45 +402,45 @@ pub fn crypto_sym_rc4_table_make(size : Int) -> Cryptosymrc4Table {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_table_len(s : Cryptosymrc4Table) -> Int { s.size }
+pub fn Cryptosymrc4Table::len(self : Cryptosymrc4Table) -> Int { self.size }
 
-pub fn crypto_sym_rc4_table_get(s : Cryptosymrc4Table, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4Table::get(self : Cryptosymrc4Table, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_table_set(s : Cryptosymrc4Table, i : Int, v : Double) -> Cryptosymrc4Table {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Table::set(self : Cryptosymrc4Table, i : Int, v : Double) -> Cryptosymrc4Table {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_table_sum(s : Cryptosymrc4Table) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4Table::sum(self : Cryptosymrc4Table) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_table_mean(s : Cryptosymrc4Table) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4Table::mean(self : Cryptosymrc4Table) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_table_scale(s : Cryptosymrc4Table, f : Double) -> Cryptosymrc4Table {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Table::scale(self : Cryptosymrc4Table, f : Double) -> Cryptosymrc4Table {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_table_add(a : Cryptosymrc4Table, b : Cryptosymrc4Table) -> Cryptosymrc4Table {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4Table::add(self : Cryptosymrc4Table, other : Cryptosymrc4Table) -> Cryptosymrc4Table {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_table_copy(s : Cryptosymrc4Table) -> Cryptosymrc4Table {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Table::copy(self : Cryptosymrc4Table) -> Cryptosymrc4Table {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_table_fill(s : Cryptosymrc4Table, v : Double) -> Cryptosymrc4Table {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Table::fill(self : Cryptosymrc4Table, v : Double) -> Cryptosymrc4Table {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_table_min(s : Cryptosymrc4Table) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4Table::min(self : Cryptosymrc4Table) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_table_max(s : Cryptosymrc4Table) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4Table::max(self : Cryptosymrc4Table) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_table_to_string(s : Cryptosymrc4Table) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4Table::to_string(self : Cryptosymrc4Table) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4GraphN {
@@ -453,45 +453,45 @@ pub fn crypto_sym_rc4_graphn_make(size : Int) -> Cryptosymrc4GraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_graphn_len(s : Cryptosymrc4GraphN) -> Int { s.size }
+pub fn Cryptosymrc4GraphN::len(self : Cryptosymrc4GraphN) -> Int { self.size }
 
-pub fn crypto_sym_rc4_graphn_get(s : Cryptosymrc4GraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4GraphN::get(self : Cryptosymrc4GraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_graphn_set(s : Cryptosymrc4GraphN, i : Int, v : Double) -> Cryptosymrc4GraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4GraphN::set(self : Cryptosymrc4GraphN, i : Int, v : Double) -> Cryptosymrc4GraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_graphn_sum(s : Cryptosymrc4GraphN) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4GraphN::sum(self : Cryptosymrc4GraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_graphn_mean(s : Cryptosymrc4GraphN) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4GraphN::mean(self : Cryptosymrc4GraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_graphn_scale(s : Cryptosymrc4GraphN, f : Double) -> Cryptosymrc4GraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4GraphN::scale(self : Cryptosymrc4GraphN, f : Double) -> Cryptosymrc4GraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_graphn_add(a : Cryptosymrc4GraphN, b : Cryptosymrc4GraphN) -> Cryptosymrc4GraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4GraphN::add(self : Cryptosymrc4GraphN, other : Cryptosymrc4GraphN) -> Cryptosymrc4GraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_graphn_copy(s : Cryptosymrc4GraphN) -> Cryptosymrc4GraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4GraphN::copy(self : Cryptosymrc4GraphN) -> Cryptosymrc4GraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_graphn_fill(s : Cryptosymrc4GraphN, v : Double) -> Cryptosymrc4GraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4GraphN::fill(self : Cryptosymrc4GraphN, v : Double) -> Cryptosymrc4GraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_graphn_min(s : Cryptosymrc4GraphN) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4GraphN::min(self : Cryptosymrc4GraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_graphn_max(s : Cryptosymrc4GraphN) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4GraphN::max(self : Cryptosymrc4GraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_graphn_to_string(s : Cryptosymrc4GraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4GraphN::to_string(self : Cryptosymrc4GraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4Node {
@@ -504,45 +504,45 @@ pub fn crypto_sym_rc4_node_make(size : Int) -> Cryptosymrc4Node {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_node_len(s : Cryptosymrc4Node) -> Int { s.size }
+pub fn Cryptosymrc4Node::len(self : Cryptosymrc4Node) -> Int { self.size }
 
-pub fn crypto_sym_rc4_node_get(s : Cryptosymrc4Node, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4Node::get(self : Cryptosymrc4Node, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_node_set(s : Cryptosymrc4Node, i : Int, v : Double) -> Cryptosymrc4Node {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Node::set(self : Cryptosymrc4Node, i : Int, v : Double) -> Cryptosymrc4Node {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_node_sum(s : Cryptosymrc4Node) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4Node::sum(self : Cryptosymrc4Node) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_node_mean(s : Cryptosymrc4Node) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4Node::mean(self : Cryptosymrc4Node) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_node_scale(s : Cryptosymrc4Node, f : Double) -> Cryptosymrc4Node {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Node::scale(self : Cryptosymrc4Node, f : Double) -> Cryptosymrc4Node {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_node_add(a : Cryptosymrc4Node, b : Cryptosymrc4Node) -> Cryptosymrc4Node {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4Node::add(self : Cryptosymrc4Node, other : Cryptosymrc4Node) -> Cryptosymrc4Node {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_node_copy(s : Cryptosymrc4Node) -> Cryptosymrc4Node {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Node::copy(self : Cryptosymrc4Node) -> Cryptosymrc4Node {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_node_fill(s : Cryptosymrc4Node, v : Double) -> Cryptosymrc4Node {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Node::fill(self : Cryptosymrc4Node, v : Double) -> Cryptosymrc4Node {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_node_min(s : Cryptosymrc4Node) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4Node::min(self : Cryptosymrc4Node) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_node_max(s : Cryptosymrc4Node) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4Node::max(self : Cryptosymrc4Node) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_node_to_string(s : Cryptosymrc4Node) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4Node::to_string(self : Cryptosymrc4Node) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4Edge {
@@ -555,45 +555,45 @@ pub fn crypto_sym_rc4_edge_make(size : Int) -> Cryptosymrc4Edge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_edge_len(s : Cryptosymrc4Edge) -> Int { s.size }
+pub fn Cryptosymrc4Edge::len(self : Cryptosymrc4Edge) -> Int { self.size }
 
-pub fn crypto_sym_rc4_edge_get(s : Cryptosymrc4Edge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4Edge::get(self : Cryptosymrc4Edge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_edge_set(s : Cryptosymrc4Edge, i : Int, v : Double) -> Cryptosymrc4Edge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Edge::set(self : Cryptosymrc4Edge, i : Int, v : Double) -> Cryptosymrc4Edge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_edge_sum(s : Cryptosymrc4Edge) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4Edge::sum(self : Cryptosymrc4Edge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_edge_mean(s : Cryptosymrc4Edge) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4Edge::mean(self : Cryptosymrc4Edge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_edge_scale(s : Cryptosymrc4Edge, f : Double) -> Cryptosymrc4Edge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Edge::scale(self : Cryptosymrc4Edge, f : Double) -> Cryptosymrc4Edge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_edge_add(a : Cryptosymrc4Edge, b : Cryptosymrc4Edge) -> Cryptosymrc4Edge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4Edge::add(self : Cryptosymrc4Edge, other : Cryptosymrc4Edge) -> Cryptosymrc4Edge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_edge_copy(s : Cryptosymrc4Edge) -> Cryptosymrc4Edge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Edge::copy(self : Cryptosymrc4Edge) -> Cryptosymrc4Edge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_edge_fill(s : Cryptosymrc4Edge, v : Double) -> Cryptosymrc4Edge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Edge::fill(self : Cryptosymrc4Edge, v : Double) -> Cryptosymrc4Edge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_edge_min(s : Cryptosymrc4Edge) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4Edge::min(self : Cryptosymrc4Edge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_edge_max(s : Cryptosymrc4Edge) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4Edge::max(self : Cryptosymrc4Edge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_edge_to_string(s : Cryptosymrc4Edge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4Edge::to_string(self : Cryptosymrc4Edge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4Path {
@@ -606,45 +606,45 @@ pub fn crypto_sym_rc4_path_make(size : Int) -> Cryptosymrc4Path {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_path_len(s : Cryptosymrc4Path) -> Int { s.size }
+pub fn Cryptosymrc4Path::len(self : Cryptosymrc4Path) -> Int { self.size }
 
-pub fn crypto_sym_rc4_path_get(s : Cryptosymrc4Path, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4Path::get(self : Cryptosymrc4Path, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_path_set(s : Cryptosymrc4Path, i : Int, v : Double) -> Cryptosymrc4Path {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Path::set(self : Cryptosymrc4Path, i : Int, v : Double) -> Cryptosymrc4Path {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_path_sum(s : Cryptosymrc4Path) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4Path::sum(self : Cryptosymrc4Path) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_path_mean(s : Cryptosymrc4Path) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4Path::mean(self : Cryptosymrc4Path) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_path_scale(s : Cryptosymrc4Path, f : Double) -> Cryptosymrc4Path {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Path::scale(self : Cryptosymrc4Path, f : Double) -> Cryptosymrc4Path {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_path_add(a : Cryptosymrc4Path, b : Cryptosymrc4Path) -> Cryptosymrc4Path {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4Path::add(self : Cryptosymrc4Path, other : Cryptosymrc4Path) -> Cryptosymrc4Path {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_path_copy(s : Cryptosymrc4Path) -> Cryptosymrc4Path {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Path::copy(self : Cryptosymrc4Path) -> Cryptosymrc4Path {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_path_fill(s : Cryptosymrc4Path, v : Double) -> Cryptosymrc4Path {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Path::fill(self : Cryptosymrc4Path, v : Double) -> Cryptosymrc4Path {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_path_min(s : Cryptosymrc4Path) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4Path::min(self : Cryptosymrc4Path) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_path_max(s : Cryptosymrc4Path) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4Path::max(self : Cryptosymrc4Path) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_path_to_string(s : Cryptosymrc4Path) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4Path::to_string(self : Cryptosymrc4Path) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4Cluster {
@@ -657,45 +657,45 @@ pub fn crypto_sym_rc4_cluster_make(size : Int) -> Cryptosymrc4Cluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_cluster_len(s : Cryptosymrc4Cluster) -> Int { s.size }
+pub fn Cryptosymrc4Cluster::len(self : Cryptosymrc4Cluster) -> Int { self.size }
 
-pub fn crypto_sym_rc4_cluster_get(s : Cryptosymrc4Cluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4Cluster::get(self : Cryptosymrc4Cluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_cluster_set(s : Cryptosymrc4Cluster, i : Int, v : Double) -> Cryptosymrc4Cluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Cluster::set(self : Cryptosymrc4Cluster, i : Int, v : Double) -> Cryptosymrc4Cluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_cluster_sum(s : Cryptosymrc4Cluster) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4Cluster::sum(self : Cryptosymrc4Cluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_cluster_mean(s : Cryptosymrc4Cluster) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4Cluster::mean(self : Cryptosymrc4Cluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_cluster_scale(s : Cryptosymrc4Cluster, f : Double) -> Cryptosymrc4Cluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Cluster::scale(self : Cryptosymrc4Cluster, f : Double) -> Cryptosymrc4Cluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_cluster_add(a : Cryptosymrc4Cluster, b : Cryptosymrc4Cluster) -> Cryptosymrc4Cluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4Cluster::add(self : Cryptosymrc4Cluster, other : Cryptosymrc4Cluster) -> Cryptosymrc4Cluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_cluster_copy(s : Cryptosymrc4Cluster) -> Cryptosymrc4Cluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Cluster::copy(self : Cryptosymrc4Cluster) -> Cryptosymrc4Cluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_cluster_fill(s : Cryptosymrc4Cluster, v : Double) -> Cryptosymrc4Cluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Cluster::fill(self : Cryptosymrc4Cluster, v : Double) -> Cryptosymrc4Cluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_cluster_min(s : Cryptosymrc4Cluster) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4Cluster::min(self : Cryptosymrc4Cluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_cluster_max(s : Cryptosymrc4Cluster) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4Cluster::max(self : Cryptosymrc4Cluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_cluster_to_string(s : Cryptosymrc4Cluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4Cluster::to_string(self : Cryptosymrc4Cluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4Model {
@@ -708,45 +708,45 @@ pub fn crypto_sym_rc4_model_make(size : Int) -> Cryptosymrc4Model {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_model_len(s : Cryptosymrc4Model) -> Int { s.size }
+pub fn Cryptosymrc4Model::len(self : Cryptosymrc4Model) -> Int { self.size }
 
-pub fn crypto_sym_rc4_model_get(s : Cryptosymrc4Model, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4Model::get(self : Cryptosymrc4Model, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_model_set(s : Cryptosymrc4Model, i : Int, v : Double) -> Cryptosymrc4Model {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Model::set(self : Cryptosymrc4Model, i : Int, v : Double) -> Cryptosymrc4Model {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_model_sum(s : Cryptosymrc4Model) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4Model::sum(self : Cryptosymrc4Model) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_model_mean(s : Cryptosymrc4Model) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4Model::mean(self : Cryptosymrc4Model) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_model_scale(s : Cryptosymrc4Model, f : Double) -> Cryptosymrc4Model {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Model::scale(self : Cryptosymrc4Model, f : Double) -> Cryptosymrc4Model {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_model_add(a : Cryptosymrc4Model, b : Cryptosymrc4Model) -> Cryptosymrc4Model {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4Model::add(self : Cryptosymrc4Model, other : Cryptosymrc4Model) -> Cryptosymrc4Model {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_model_copy(s : Cryptosymrc4Model) -> Cryptosymrc4Model {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Model::copy(self : Cryptosymrc4Model) -> Cryptosymrc4Model {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_model_fill(s : Cryptosymrc4Model, v : Double) -> Cryptosymrc4Model {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Model::fill(self : Cryptosymrc4Model, v : Double) -> Cryptosymrc4Model {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_model_min(s : Cryptosymrc4Model) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4Model::min(self : Cryptosymrc4Model) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_model_max(s : Cryptosymrc4Model) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4Model::max(self : Cryptosymrc4Model) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_model_to_string(s : Cryptosymrc4Model) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4Model::to_string(self : Cryptosymrc4Model) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4Layer {
@@ -759,45 +759,45 @@ pub fn crypto_sym_rc4_layer_make(size : Int) -> Cryptosymrc4Layer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_layer_len(s : Cryptosymrc4Layer) -> Int { s.size }
+pub fn Cryptosymrc4Layer::len(self : Cryptosymrc4Layer) -> Int { self.size }
 
-pub fn crypto_sym_rc4_layer_get(s : Cryptosymrc4Layer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4Layer::get(self : Cryptosymrc4Layer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_layer_set(s : Cryptosymrc4Layer, i : Int, v : Double) -> Cryptosymrc4Layer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Layer::set(self : Cryptosymrc4Layer, i : Int, v : Double) -> Cryptosymrc4Layer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_layer_sum(s : Cryptosymrc4Layer) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4Layer::sum(self : Cryptosymrc4Layer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_layer_mean(s : Cryptosymrc4Layer) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4Layer::mean(self : Cryptosymrc4Layer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_layer_scale(s : Cryptosymrc4Layer, f : Double) -> Cryptosymrc4Layer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Layer::scale(self : Cryptosymrc4Layer, f : Double) -> Cryptosymrc4Layer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_layer_add(a : Cryptosymrc4Layer, b : Cryptosymrc4Layer) -> Cryptosymrc4Layer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4Layer::add(self : Cryptosymrc4Layer, other : Cryptosymrc4Layer) -> Cryptosymrc4Layer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_layer_copy(s : Cryptosymrc4Layer) -> Cryptosymrc4Layer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Layer::copy(self : Cryptosymrc4Layer) -> Cryptosymrc4Layer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_layer_fill(s : Cryptosymrc4Layer, v : Double) -> Cryptosymrc4Layer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Layer::fill(self : Cryptosymrc4Layer, v : Double) -> Cryptosymrc4Layer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_layer_min(s : Cryptosymrc4Layer) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4Layer::min(self : Cryptosymrc4Layer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_layer_max(s : Cryptosymrc4Layer) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4Layer::max(self : Cryptosymrc4Layer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_layer_to_string(s : Cryptosymrc4Layer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4Layer::to_string(self : Cryptosymrc4Layer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4Buffer {
@@ -810,45 +810,45 @@ pub fn crypto_sym_rc4_buffer_make(size : Int) -> Cryptosymrc4Buffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_buffer_len(s : Cryptosymrc4Buffer) -> Int { s.size }
+pub fn Cryptosymrc4Buffer::len(self : Cryptosymrc4Buffer) -> Int { self.size }
 
-pub fn crypto_sym_rc4_buffer_get(s : Cryptosymrc4Buffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4Buffer::get(self : Cryptosymrc4Buffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_buffer_set(s : Cryptosymrc4Buffer, i : Int, v : Double) -> Cryptosymrc4Buffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Buffer::set(self : Cryptosymrc4Buffer, i : Int, v : Double) -> Cryptosymrc4Buffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_buffer_sum(s : Cryptosymrc4Buffer) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4Buffer::sum(self : Cryptosymrc4Buffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_buffer_mean(s : Cryptosymrc4Buffer) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4Buffer::mean(self : Cryptosymrc4Buffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_buffer_scale(s : Cryptosymrc4Buffer, f : Double) -> Cryptosymrc4Buffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Buffer::scale(self : Cryptosymrc4Buffer, f : Double) -> Cryptosymrc4Buffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_buffer_add(a : Cryptosymrc4Buffer, b : Cryptosymrc4Buffer) -> Cryptosymrc4Buffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4Buffer::add(self : Cryptosymrc4Buffer, other : Cryptosymrc4Buffer) -> Cryptosymrc4Buffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_buffer_copy(s : Cryptosymrc4Buffer) -> Cryptosymrc4Buffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Buffer::copy(self : Cryptosymrc4Buffer) -> Cryptosymrc4Buffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_buffer_fill(s : Cryptosymrc4Buffer, v : Double) -> Cryptosymrc4Buffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Buffer::fill(self : Cryptosymrc4Buffer, v : Double) -> Cryptosymrc4Buffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_buffer_min(s : Cryptosymrc4Buffer) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4Buffer::min(self : Cryptosymrc4Buffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_buffer_max(s : Cryptosymrc4Buffer) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4Buffer::max(self : Cryptosymrc4Buffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_buffer_to_string(s : Cryptosymrc4Buffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4Buffer::to_string(self : Cryptosymrc4Buffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4Cursor {
@@ -861,45 +861,45 @@ pub fn crypto_sym_rc4_cursor_make(size : Int) -> Cryptosymrc4Cursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_cursor_len(s : Cryptosymrc4Cursor) -> Int { s.size }
+pub fn Cryptosymrc4Cursor::len(self : Cryptosymrc4Cursor) -> Int { self.size }
 
-pub fn crypto_sym_rc4_cursor_get(s : Cryptosymrc4Cursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4Cursor::get(self : Cryptosymrc4Cursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_cursor_set(s : Cryptosymrc4Cursor, i : Int, v : Double) -> Cryptosymrc4Cursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Cursor::set(self : Cryptosymrc4Cursor, i : Int, v : Double) -> Cryptosymrc4Cursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_cursor_sum(s : Cryptosymrc4Cursor) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4Cursor::sum(self : Cryptosymrc4Cursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_cursor_mean(s : Cryptosymrc4Cursor) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4Cursor::mean(self : Cryptosymrc4Cursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_cursor_scale(s : Cryptosymrc4Cursor, f : Double) -> Cryptosymrc4Cursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Cursor::scale(self : Cryptosymrc4Cursor, f : Double) -> Cryptosymrc4Cursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_cursor_add(a : Cryptosymrc4Cursor, b : Cryptosymrc4Cursor) -> Cryptosymrc4Cursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4Cursor::add(self : Cryptosymrc4Cursor, other : Cryptosymrc4Cursor) -> Cryptosymrc4Cursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_cursor_copy(s : Cryptosymrc4Cursor) -> Cryptosymrc4Cursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Cursor::copy(self : Cryptosymrc4Cursor) -> Cryptosymrc4Cursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_cursor_fill(s : Cryptosymrc4Cursor, v : Double) -> Cryptosymrc4Cursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Cursor::fill(self : Cryptosymrc4Cursor, v : Double) -> Cryptosymrc4Cursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_cursor_min(s : Cryptosymrc4Cursor) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4Cursor::min(self : Cryptosymrc4Cursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_cursor_max(s : Cryptosymrc4Cursor) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4Cursor::max(self : Cryptosymrc4Cursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_cursor_to_string(s : Cryptosymrc4Cursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4Cursor::to_string(self : Cryptosymrc4Cursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4View {
@@ -912,45 +912,45 @@ pub fn crypto_sym_rc4_view_make(size : Int) -> Cryptosymrc4View {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_view_len(s : Cryptosymrc4View) -> Int { s.size }
+pub fn Cryptosymrc4View::len(self : Cryptosymrc4View) -> Int { self.size }
 
-pub fn crypto_sym_rc4_view_get(s : Cryptosymrc4View, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4View::get(self : Cryptosymrc4View, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_view_set(s : Cryptosymrc4View, i : Int, v : Double) -> Cryptosymrc4View {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4View::set(self : Cryptosymrc4View, i : Int, v : Double) -> Cryptosymrc4View {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_view_sum(s : Cryptosymrc4View) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4View::sum(self : Cryptosymrc4View) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_view_mean(s : Cryptosymrc4View) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4View::mean(self : Cryptosymrc4View) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_view_scale(s : Cryptosymrc4View, f : Double) -> Cryptosymrc4View {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4View::scale(self : Cryptosymrc4View, f : Double) -> Cryptosymrc4View {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_view_add(a : Cryptosymrc4View, b : Cryptosymrc4View) -> Cryptosymrc4View {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4View::add(self : Cryptosymrc4View, other : Cryptosymrc4View) -> Cryptosymrc4View {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_view_copy(s : Cryptosymrc4View) -> Cryptosymrc4View {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4View::copy(self : Cryptosymrc4View) -> Cryptosymrc4View {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_view_fill(s : Cryptosymrc4View, v : Double) -> Cryptosymrc4View {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4View::fill(self : Cryptosymrc4View, v : Double) -> Cryptosymrc4View {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_view_min(s : Cryptosymrc4View) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4View::min(self : Cryptosymrc4View) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_view_max(s : Cryptosymrc4View) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4View::max(self : Cryptosymrc4View) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_view_to_string(s : Cryptosymrc4View) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4View::to_string(self : Cryptosymrc4View) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4Range {
@@ -963,45 +963,45 @@ pub fn crypto_sym_rc4_range_make(size : Int) -> Cryptosymrc4Range {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_range_len(s : Cryptosymrc4Range) -> Int { s.size }
+pub fn Cryptosymrc4Range::len(self : Cryptosymrc4Range) -> Int { self.size }
 
-pub fn crypto_sym_rc4_range_get(s : Cryptosymrc4Range, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4Range::get(self : Cryptosymrc4Range, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_range_set(s : Cryptosymrc4Range, i : Int, v : Double) -> Cryptosymrc4Range {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Range::set(self : Cryptosymrc4Range, i : Int, v : Double) -> Cryptosymrc4Range {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_range_sum(s : Cryptosymrc4Range) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4Range::sum(self : Cryptosymrc4Range) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_range_mean(s : Cryptosymrc4Range) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4Range::mean(self : Cryptosymrc4Range) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_range_scale(s : Cryptosymrc4Range, f : Double) -> Cryptosymrc4Range {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Range::scale(self : Cryptosymrc4Range, f : Double) -> Cryptosymrc4Range {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_range_add(a : Cryptosymrc4Range, b : Cryptosymrc4Range) -> Cryptosymrc4Range {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4Range::add(self : Cryptosymrc4Range, other : Cryptosymrc4Range) -> Cryptosymrc4Range {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_range_copy(s : Cryptosymrc4Range) -> Cryptosymrc4Range {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Range::copy(self : Cryptosymrc4Range) -> Cryptosymrc4Range {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_range_fill(s : Cryptosymrc4Range, v : Double) -> Cryptosymrc4Range {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Range::fill(self : Cryptosymrc4Range, v : Double) -> Cryptosymrc4Range {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_range_min(s : Cryptosymrc4Range) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4Range::min(self : Cryptosymrc4Range) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_range_max(s : Cryptosymrc4Range) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4Range::max(self : Cryptosymrc4Range) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_range_to_string(s : Cryptosymrc4Range) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4Range::to_string(self : Cryptosymrc4Range) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptosymrc4Slice {
@@ -1014,44 +1014,44 @@ pub fn crypto_sym_rc4_slice_make(size : Int) -> Cryptosymrc4Slice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_rc4_slice_len(s : Cryptosymrc4Slice) -> Int { s.size }
+pub fn Cryptosymrc4Slice::len(self : Cryptosymrc4Slice) -> Int { self.size }
 
-pub fn crypto_sym_rc4_slice_get(s : Cryptosymrc4Slice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptosymrc4Slice::get(self : Cryptosymrc4Slice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_rc4_slice_set(s : Cryptosymrc4Slice, i : Int, v : Double) -> Cryptosymrc4Slice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Slice::set(self : Cryptosymrc4Slice, i : Int, v : Double) -> Cryptosymrc4Slice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_slice_sum(s : Cryptosymrc4Slice) -> Double { @_common.sum(s.data) }
+pub fn Cryptosymrc4Slice::sum(self : Cryptosymrc4Slice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_rc4_slice_mean(s : Cryptosymrc4Slice) -> Double { @_common.mean(s.data) }
+pub fn Cryptosymrc4Slice::mean(self : Cryptosymrc4Slice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_rc4_slice_scale(s : Cryptosymrc4Slice, f : Double) -> Cryptosymrc4Slice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Slice::scale(self : Cryptosymrc4Slice, f : Double) -> Cryptosymrc4Slice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_slice_add(a : Cryptosymrc4Slice, b : Cryptosymrc4Slice) -> Cryptosymrc4Slice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptosymrc4Slice::add(self : Cryptosymrc4Slice, other : Cryptosymrc4Slice) -> Cryptosymrc4Slice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_slice_copy(s : Cryptosymrc4Slice) -> Cryptosymrc4Slice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Slice::copy(self : Cryptosymrc4Slice) -> Cryptosymrc4Slice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_slice_fill(s : Cryptosymrc4Slice, v : Double) -> Cryptosymrc4Slice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptosymrc4Slice::fill(self : Cryptosymrc4Slice, v : Double) -> Cryptosymrc4Slice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_rc4_slice_min(s : Cryptosymrc4Slice) -> Double { @_common.min(s.data) }
+pub fn Cryptosymrc4Slice::min(self : Cryptosymrc4Slice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_rc4_slice_max(s : Cryptosymrc4Slice) -> Double { @_common.max(s.data) }
+pub fn Cryptosymrc4Slice::max(self : Cryptosymrc4Slice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_rc4_slice_to_string(s : Cryptosymrc4Slice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptosymrc4Slice::to_string(self : Cryptosymrc4Slice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

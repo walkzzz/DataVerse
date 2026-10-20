@@ -351,45 +351,45 @@ pub fn graph_connect_components_frame_make(size : Int) -> Graphconnectcomponents
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_frame_len(s : GraphconnectcomponentsFrame) -> Int { s.size }
+pub fn GraphconnectcomponentsFrame::len(self : GraphconnectcomponentsFrame) -> Int { self.size }
 
-pub fn graph_connect_components_frame_get(s : GraphconnectcomponentsFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsFrame::get(self : GraphconnectcomponentsFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_frame_set(s : GraphconnectcomponentsFrame, i : Int, v : Double) -> GraphconnectcomponentsFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsFrame::set(self : GraphconnectcomponentsFrame, i : Int, v : Double) -> GraphconnectcomponentsFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_frame_sum(s : GraphconnectcomponentsFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsFrame::sum(self : GraphconnectcomponentsFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_frame_mean(s : GraphconnectcomponentsFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsFrame::mean(self : GraphconnectcomponentsFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_frame_scale(s : GraphconnectcomponentsFrame, f : Double) -> GraphconnectcomponentsFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsFrame::scale(self : GraphconnectcomponentsFrame, f : Double) -> GraphconnectcomponentsFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_frame_add(a : GraphconnectcomponentsFrame, b : GraphconnectcomponentsFrame) -> GraphconnectcomponentsFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsFrame::add(self : GraphconnectcomponentsFrame, other : GraphconnectcomponentsFrame) -> GraphconnectcomponentsFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_frame_copy(s : GraphconnectcomponentsFrame) -> GraphconnectcomponentsFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsFrame::copy(self : GraphconnectcomponentsFrame) -> GraphconnectcomponentsFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_frame_fill(s : GraphconnectcomponentsFrame, v : Double) -> GraphconnectcomponentsFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsFrame::fill(self : GraphconnectcomponentsFrame, v : Double) -> GraphconnectcomponentsFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_frame_min(s : GraphconnectcomponentsFrame) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsFrame::min(self : GraphconnectcomponentsFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_frame_max(s : GraphconnectcomponentsFrame) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsFrame::max(self : GraphconnectcomponentsFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_frame_to_string(s : GraphconnectcomponentsFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsFrame::to_string(self : GraphconnectcomponentsFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsTable {
@@ -402,45 +402,45 @@ pub fn graph_connect_components_table_make(size : Int) -> Graphconnectcomponents
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_table_len(s : GraphconnectcomponentsTable) -> Int { s.size }
+pub fn GraphconnectcomponentsTable::len(self : GraphconnectcomponentsTable) -> Int { self.size }
 
-pub fn graph_connect_components_table_get(s : GraphconnectcomponentsTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsTable::get(self : GraphconnectcomponentsTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_table_set(s : GraphconnectcomponentsTable, i : Int, v : Double) -> GraphconnectcomponentsTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsTable::set(self : GraphconnectcomponentsTable, i : Int, v : Double) -> GraphconnectcomponentsTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_table_sum(s : GraphconnectcomponentsTable) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsTable::sum(self : GraphconnectcomponentsTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_table_mean(s : GraphconnectcomponentsTable) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsTable::mean(self : GraphconnectcomponentsTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_table_scale(s : GraphconnectcomponentsTable, f : Double) -> GraphconnectcomponentsTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsTable::scale(self : GraphconnectcomponentsTable, f : Double) -> GraphconnectcomponentsTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_table_add(a : GraphconnectcomponentsTable, b : GraphconnectcomponentsTable) -> GraphconnectcomponentsTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsTable::add(self : GraphconnectcomponentsTable, other : GraphconnectcomponentsTable) -> GraphconnectcomponentsTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_table_copy(s : GraphconnectcomponentsTable) -> GraphconnectcomponentsTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsTable::copy(self : GraphconnectcomponentsTable) -> GraphconnectcomponentsTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_table_fill(s : GraphconnectcomponentsTable, v : Double) -> GraphconnectcomponentsTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsTable::fill(self : GraphconnectcomponentsTable, v : Double) -> GraphconnectcomponentsTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_table_min(s : GraphconnectcomponentsTable) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsTable::min(self : GraphconnectcomponentsTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_table_max(s : GraphconnectcomponentsTable) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsTable::max(self : GraphconnectcomponentsTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_table_to_string(s : GraphconnectcomponentsTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsTable::to_string(self : GraphconnectcomponentsTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsGraphN {
@@ -453,45 +453,45 @@ pub fn graph_connect_components_graphn_make(size : Int) -> Graphconnectcomponent
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_graphn_len(s : GraphconnectcomponentsGraphN) -> Int { s.size }
+pub fn GraphconnectcomponentsGraphN::len(self : GraphconnectcomponentsGraphN) -> Int { self.size }
 
-pub fn graph_connect_components_graphn_get(s : GraphconnectcomponentsGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsGraphN::get(self : GraphconnectcomponentsGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_graphn_set(s : GraphconnectcomponentsGraphN, i : Int, v : Double) -> GraphconnectcomponentsGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsGraphN::set(self : GraphconnectcomponentsGraphN, i : Int, v : Double) -> GraphconnectcomponentsGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_graphn_sum(s : GraphconnectcomponentsGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsGraphN::sum(self : GraphconnectcomponentsGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_graphn_mean(s : GraphconnectcomponentsGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsGraphN::mean(self : GraphconnectcomponentsGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_graphn_scale(s : GraphconnectcomponentsGraphN, f : Double) -> GraphconnectcomponentsGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsGraphN::scale(self : GraphconnectcomponentsGraphN, f : Double) -> GraphconnectcomponentsGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_graphn_add(a : GraphconnectcomponentsGraphN, b : GraphconnectcomponentsGraphN) -> GraphconnectcomponentsGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsGraphN::add(self : GraphconnectcomponentsGraphN, other : GraphconnectcomponentsGraphN) -> GraphconnectcomponentsGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_graphn_copy(s : GraphconnectcomponentsGraphN) -> GraphconnectcomponentsGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsGraphN::copy(self : GraphconnectcomponentsGraphN) -> GraphconnectcomponentsGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_graphn_fill(s : GraphconnectcomponentsGraphN, v : Double) -> GraphconnectcomponentsGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsGraphN::fill(self : GraphconnectcomponentsGraphN, v : Double) -> GraphconnectcomponentsGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_graphn_min(s : GraphconnectcomponentsGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsGraphN::min(self : GraphconnectcomponentsGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_graphn_max(s : GraphconnectcomponentsGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsGraphN::max(self : GraphconnectcomponentsGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_graphn_to_string(s : GraphconnectcomponentsGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsGraphN::to_string(self : GraphconnectcomponentsGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsNode {
@@ -504,45 +504,45 @@ pub fn graph_connect_components_node_make(size : Int) -> GraphconnectcomponentsN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_node_len(s : GraphconnectcomponentsNode) -> Int { s.size }
+pub fn GraphconnectcomponentsNode::len(self : GraphconnectcomponentsNode) -> Int { self.size }
 
-pub fn graph_connect_components_node_get(s : GraphconnectcomponentsNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsNode::get(self : GraphconnectcomponentsNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_node_set(s : GraphconnectcomponentsNode, i : Int, v : Double) -> GraphconnectcomponentsNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsNode::set(self : GraphconnectcomponentsNode, i : Int, v : Double) -> GraphconnectcomponentsNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_node_sum(s : GraphconnectcomponentsNode) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsNode::sum(self : GraphconnectcomponentsNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_node_mean(s : GraphconnectcomponentsNode) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsNode::mean(self : GraphconnectcomponentsNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_node_scale(s : GraphconnectcomponentsNode, f : Double) -> GraphconnectcomponentsNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsNode::scale(self : GraphconnectcomponentsNode, f : Double) -> GraphconnectcomponentsNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_node_add(a : GraphconnectcomponentsNode, b : GraphconnectcomponentsNode) -> GraphconnectcomponentsNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsNode::add(self : GraphconnectcomponentsNode, other : GraphconnectcomponentsNode) -> GraphconnectcomponentsNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_node_copy(s : GraphconnectcomponentsNode) -> GraphconnectcomponentsNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsNode::copy(self : GraphconnectcomponentsNode) -> GraphconnectcomponentsNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_node_fill(s : GraphconnectcomponentsNode, v : Double) -> GraphconnectcomponentsNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsNode::fill(self : GraphconnectcomponentsNode, v : Double) -> GraphconnectcomponentsNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_node_min(s : GraphconnectcomponentsNode) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsNode::min(self : GraphconnectcomponentsNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_node_max(s : GraphconnectcomponentsNode) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsNode::max(self : GraphconnectcomponentsNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_node_to_string(s : GraphconnectcomponentsNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsNode::to_string(self : GraphconnectcomponentsNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsEdge {
@@ -555,45 +555,45 @@ pub fn graph_connect_components_edge_make(size : Int) -> GraphconnectcomponentsE
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_edge_len(s : GraphconnectcomponentsEdge) -> Int { s.size }
+pub fn GraphconnectcomponentsEdge::len(self : GraphconnectcomponentsEdge) -> Int { self.size }
 
-pub fn graph_connect_components_edge_get(s : GraphconnectcomponentsEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsEdge::get(self : GraphconnectcomponentsEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_edge_set(s : GraphconnectcomponentsEdge, i : Int, v : Double) -> GraphconnectcomponentsEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsEdge::set(self : GraphconnectcomponentsEdge, i : Int, v : Double) -> GraphconnectcomponentsEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_edge_sum(s : GraphconnectcomponentsEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsEdge::sum(self : GraphconnectcomponentsEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_edge_mean(s : GraphconnectcomponentsEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsEdge::mean(self : GraphconnectcomponentsEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_edge_scale(s : GraphconnectcomponentsEdge, f : Double) -> GraphconnectcomponentsEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsEdge::scale(self : GraphconnectcomponentsEdge, f : Double) -> GraphconnectcomponentsEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_edge_add(a : GraphconnectcomponentsEdge, b : GraphconnectcomponentsEdge) -> GraphconnectcomponentsEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsEdge::add(self : GraphconnectcomponentsEdge, other : GraphconnectcomponentsEdge) -> GraphconnectcomponentsEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_edge_copy(s : GraphconnectcomponentsEdge) -> GraphconnectcomponentsEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsEdge::copy(self : GraphconnectcomponentsEdge) -> GraphconnectcomponentsEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_edge_fill(s : GraphconnectcomponentsEdge, v : Double) -> GraphconnectcomponentsEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsEdge::fill(self : GraphconnectcomponentsEdge, v : Double) -> GraphconnectcomponentsEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_edge_min(s : GraphconnectcomponentsEdge) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsEdge::min(self : GraphconnectcomponentsEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_edge_max(s : GraphconnectcomponentsEdge) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsEdge::max(self : GraphconnectcomponentsEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_edge_to_string(s : GraphconnectcomponentsEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsEdge::to_string(self : GraphconnectcomponentsEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsPath {
@@ -606,45 +606,45 @@ pub fn graph_connect_components_path_make(size : Int) -> GraphconnectcomponentsP
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_path_len(s : GraphconnectcomponentsPath) -> Int { s.size }
+pub fn GraphconnectcomponentsPath::len(self : GraphconnectcomponentsPath) -> Int { self.size }
 
-pub fn graph_connect_components_path_get(s : GraphconnectcomponentsPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsPath::get(self : GraphconnectcomponentsPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_path_set(s : GraphconnectcomponentsPath, i : Int, v : Double) -> GraphconnectcomponentsPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsPath::set(self : GraphconnectcomponentsPath, i : Int, v : Double) -> GraphconnectcomponentsPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_path_sum(s : GraphconnectcomponentsPath) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsPath::sum(self : GraphconnectcomponentsPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_path_mean(s : GraphconnectcomponentsPath) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsPath::mean(self : GraphconnectcomponentsPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_path_scale(s : GraphconnectcomponentsPath, f : Double) -> GraphconnectcomponentsPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsPath::scale(self : GraphconnectcomponentsPath, f : Double) -> GraphconnectcomponentsPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_path_add(a : GraphconnectcomponentsPath, b : GraphconnectcomponentsPath) -> GraphconnectcomponentsPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsPath::add(self : GraphconnectcomponentsPath, other : GraphconnectcomponentsPath) -> GraphconnectcomponentsPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_path_copy(s : GraphconnectcomponentsPath) -> GraphconnectcomponentsPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsPath::copy(self : GraphconnectcomponentsPath) -> GraphconnectcomponentsPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_path_fill(s : GraphconnectcomponentsPath, v : Double) -> GraphconnectcomponentsPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsPath::fill(self : GraphconnectcomponentsPath, v : Double) -> GraphconnectcomponentsPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_path_min(s : GraphconnectcomponentsPath) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsPath::min(self : GraphconnectcomponentsPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_path_max(s : GraphconnectcomponentsPath) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsPath::max(self : GraphconnectcomponentsPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_path_to_string(s : GraphconnectcomponentsPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsPath::to_string(self : GraphconnectcomponentsPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsCluster {
@@ -657,45 +657,45 @@ pub fn graph_connect_components_cluster_make(size : Int) -> Graphconnectcomponen
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_cluster_len(s : GraphconnectcomponentsCluster) -> Int { s.size }
+pub fn GraphconnectcomponentsCluster::len(self : GraphconnectcomponentsCluster) -> Int { self.size }
 
-pub fn graph_connect_components_cluster_get(s : GraphconnectcomponentsCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsCluster::get(self : GraphconnectcomponentsCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_cluster_set(s : GraphconnectcomponentsCluster, i : Int, v : Double) -> GraphconnectcomponentsCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsCluster::set(self : GraphconnectcomponentsCluster, i : Int, v : Double) -> GraphconnectcomponentsCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_cluster_sum(s : GraphconnectcomponentsCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsCluster::sum(self : GraphconnectcomponentsCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_cluster_mean(s : GraphconnectcomponentsCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsCluster::mean(self : GraphconnectcomponentsCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_cluster_scale(s : GraphconnectcomponentsCluster, f : Double) -> GraphconnectcomponentsCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsCluster::scale(self : GraphconnectcomponentsCluster, f : Double) -> GraphconnectcomponentsCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_cluster_add(a : GraphconnectcomponentsCluster, b : GraphconnectcomponentsCluster) -> GraphconnectcomponentsCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsCluster::add(self : GraphconnectcomponentsCluster, other : GraphconnectcomponentsCluster) -> GraphconnectcomponentsCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_cluster_copy(s : GraphconnectcomponentsCluster) -> GraphconnectcomponentsCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsCluster::copy(self : GraphconnectcomponentsCluster) -> GraphconnectcomponentsCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_cluster_fill(s : GraphconnectcomponentsCluster, v : Double) -> GraphconnectcomponentsCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsCluster::fill(self : GraphconnectcomponentsCluster, v : Double) -> GraphconnectcomponentsCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_cluster_min(s : GraphconnectcomponentsCluster) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsCluster::min(self : GraphconnectcomponentsCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_cluster_max(s : GraphconnectcomponentsCluster) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsCluster::max(self : GraphconnectcomponentsCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_cluster_to_string(s : GraphconnectcomponentsCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsCluster::to_string(self : GraphconnectcomponentsCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsModel {
@@ -708,45 +708,45 @@ pub fn graph_connect_components_model_make(size : Int) -> Graphconnectcomponents
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_model_len(s : GraphconnectcomponentsModel) -> Int { s.size }
+pub fn GraphconnectcomponentsModel::len(self : GraphconnectcomponentsModel) -> Int { self.size }
 
-pub fn graph_connect_components_model_get(s : GraphconnectcomponentsModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsModel::get(self : GraphconnectcomponentsModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_model_set(s : GraphconnectcomponentsModel, i : Int, v : Double) -> GraphconnectcomponentsModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsModel::set(self : GraphconnectcomponentsModel, i : Int, v : Double) -> GraphconnectcomponentsModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_model_sum(s : GraphconnectcomponentsModel) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsModel::sum(self : GraphconnectcomponentsModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_model_mean(s : GraphconnectcomponentsModel) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsModel::mean(self : GraphconnectcomponentsModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_model_scale(s : GraphconnectcomponentsModel, f : Double) -> GraphconnectcomponentsModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsModel::scale(self : GraphconnectcomponentsModel, f : Double) -> GraphconnectcomponentsModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_model_add(a : GraphconnectcomponentsModel, b : GraphconnectcomponentsModel) -> GraphconnectcomponentsModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsModel::add(self : GraphconnectcomponentsModel, other : GraphconnectcomponentsModel) -> GraphconnectcomponentsModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_model_copy(s : GraphconnectcomponentsModel) -> GraphconnectcomponentsModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsModel::copy(self : GraphconnectcomponentsModel) -> GraphconnectcomponentsModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_model_fill(s : GraphconnectcomponentsModel, v : Double) -> GraphconnectcomponentsModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsModel::fill(self : GraphconnectcomponentsModel, v : Double) -> GraphconnectcomponentsModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_model_min(s : GraphconnectcomponentsModel) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsModel::min(self : GraphconnectcomponentsModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_model_max(s : GraphconnectcomponentsModel) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsModel::max(self : GraphconnectcomponentsModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_model_to_string(s : GraphconnectcomponentsModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsModel::to_string(self : GraphconnectcomponentsModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsLayer {
@@ -759,45 +759,45 @@ pub fn graph_connect_components_layer_make(size : Int) -> Graphconnectcomponents
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_layer_len(s : GraphconnectcomponentsLayer) -> Int { s.size }
+pub fn GraphconnectcomponentsLayer::len(self : GraphconnectcomponentsLayer) -> Int { self.size }
 
-pub fn graph_connect_components_layer_get(s : GraphconnectcomponentsLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsLayer::get(self : GraphconnectcomponentsLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_layer_set(s : GraphconnectcomponentsLayer, i : Int, v : Double) -> GraphconnectcomponentsLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsLayer::set(self : GraphconnectcomponentsLayer, i : Int, v : Double) -> GraphconnectcomponentsLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_layer_sum(s : GraphconnectcomponentsLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsLayer::sum(self : GraphconnectcomponentsLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_layer_mean(s : GraphconnectcomponentsLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsLayer::mean(self : GraphconnectcomponentsLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_layer_scale(s : GraphconnectcomponentsLayer, f : Double) -> GraphconnectcomponentsLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsLayer::scale(self : GraphconnectcomponentsLayer, f : Double) -> GraphconnectcomponentsLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_layer_add(a : GraphconnectcomponentsLayer, b : GraphconnectcomponentsLayer) -> GraphconnectcomponentsLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsLayer::add(self : GraphconnectcomponentsLayer, other : GraphconnectcomponentsLayer) -> GraphconnectcomponentsLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_layer_copy(s : GraphconnectcomponentsLayer) -> GraphconnectcomponentsLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsLayer::copy(self : GraphconnectcomponentsLayer) -> GraphconnectcomponentsLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_layer_fill(s : GraphconnectcomponentsLayer, v : Double) -> GraphconnectcomponentsLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsLayer::fill(self : GraphconnectcomponentsLayer, v : Double) -> GraphconnectcomponentsLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_layer_min(s : GraphconnectcomponentsLayer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsLayer::min(self : GraphconnectcomponentsLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_layer_max(s : GraphconnectcomponentsLayer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsLayer::max(self : GraphconnectcomponentsLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_layer_to_string(s : GraphconnectcomponentsLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsLayer::to_string(self : GraphconnectcomponentsLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsBuffer {
@@ -810,45 +810,45 @@ pub fn graph_connect_components_buffer_make(size : Int) -> Graphconnectcomponent
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_buffer_len(s : GraphconnectcomponentsBuffer) -> Int { s.size }
+pub fn GraphconnectcomponentsBuffer::len(self : GraphconnectcomponentsBuffer) -> Int { self.size }
 
-pub fn graph_connect_components_buffer_get(s : GraphconnectcomponentsBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsBuffer::get(self : GraphconnectcomponentsBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_buffer_set(s : GraphconnectcomponentsBuffer, i : Int, v : Double) -> GraphconnectcomponentsBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsBuffer::set(self : GraphconnectcomponentsBuffer, i : Int, v : Double) -> GraphconnectcomponentsBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_buffer_sum(s : GraphconnectcomponentsBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsBuffer::sum(self : GraphconnectcomponentsBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_buffer_mean(s : GraphconnectcomponentsBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsBuffer::mean(self : GraphconnectcomponentsBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_buffer_scale(s : GraphconnectcomponentsBuffer, f : Double) -> GraphconnectcomponentsBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsBuffer::scale(self : GraphconnectcomponentsBuffer, f : Double) -> GraphconnectcomponentsBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_buffer_add(a : GraphconnectcomponentsBuffer, b : GraphconnectcomponentsBuffer) -> GraphconnectcomponentsBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsBuffer::add(self : GraphconnectcomponentsBuffer, other : GraphconnectcomponentsBuffer) -> GraphconnectcomponentsBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_buffer_copy(s : GraphconnectcomponentsBuffer) -> GraphconnectcomponentsBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsBuffer::copy(self : GraphconnectcomponentsBuffer) -> GraphconnectcomponentsBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_buffer_fill(s : GraphconnectcomponentsBuffer, v : Double) -> GraphconnectcomponentsBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsBuffer::fill(self : GraphconnectcomponentsBuffer, v : Double) -> GraphconnectcomponentsBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_buffer_min(s : GraphconnectcomponentsBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsBuffer::min(self : GraphconnectcomponentsBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_buffer_max(s : GraphconnectcomponentsBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsBuffer::max(self : GraphconnectcomponentsBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_buffer_to_string(s : GraphconnectcomponentsBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsBuffer::to_string(self : GraphconnectcomponentsBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsCursor {
@@ -861,45 +861,45 @@ pub fn graph_connect_components_cursor_make(size : Int) -> Graphconnectcomponent
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_cursor_len(s : GraphconnectcomponentsCursor) -> Int { s.size }
+pub fn GraphconnectcomponentsCursor::len(self : GraphconnectcomponentsCursor) -> Int { self.size }
 
-pub fn graph_connect_components_cursor_get(s : GraphconnectcomponentsCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsCursor::get(self : GraphconnectcomponentsCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_cursor_set(s : GraphconnectcomponentsCursor, i : Int, v : Double) -> GraphconnectcomponentsCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsCursor::set(self : GraphconnectcomponentsCursor, i : Int, v : Double) -> GraphconnectcomponentsCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_cursor_sum(s : GraphconnectcomponentsCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsCursor::sum(self : GraphconnectcomponentsCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_cursor_mean(s : GraphconnectcomponentsCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsCursor::mean(self : GraphconnectcomponentsCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_cursor_scale(s : GraphconnectcomponentsCursor, f : Double) -> GraphconnectcomponentsCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsCursor::scale(self : GraphconnectcomponentsCursor, f : Double) -> GraphconnectcomponentsCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_cursor_add(a : GraphconnectcomponentsCursor, b : GraphconnectcomponentsCursor) -> GraphconnectcomponentsCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsCursor::add(self : GraphconnectcomponentsCursor, other : GraphconnectcomponentsCursor) -> GraphconnectcomponentsCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_cursor_copy(s : GraphconnectcomponentsCursor) -> GraphconnectcomponentsCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsCursor::copy(self : GraphconnectcomponentsCursor) -> GraphconnectcomponentsCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_cursor_fill(s : GraphconnectcomponentsCursor, v : Double) -> GraphconnectcomponentsCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsCursor::fill(self : GraphconnectcomponentsCursor, v : Double) -> GraphconnectcomponentsCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_cursor_min(s : GraphconnectcomponentsCursor) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsCursor::min(self : GraphconnectcomponentsCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_cursor_max(s : GraphconnectcomponentsCursor) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsCursor::max(self : GraphconnectcomponentsCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_cursor_to_string(s : GraphconnectcomponentsCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsCursor::to_string(self : GraphconnectcomponentsCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsView {
@@ -912,45 +912,45 @@ pub fn graph_connect_components_view_make(size : Int) -> GraphconnectcomponentsV
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_view_len(s : GraphconnectcomponentsView) -> Int { s.size }
+pub fn GraphconnectcomponentsView::len(self : GraphconnectcomponentsView) -> Int { self.size }
 
-pub fn graph_connect_components_view_get(s : GraphconnectcomponentsView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsView::get(self : GraphconnectcomponentsView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_view_set(s : GraphconnectcomponentsView, i : Int, v : Double) -> GraphconnectcomponentsView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsView::set(self : GraphconnectcomponentsView, i : Int, v : Double) -> GraphconnectcomponentsView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_view_sum(s : GraphconnectcomponentsView) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsView::sum(self : GraphconnectcomponentsView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_view_mean(s : GraphconnectcomponentsView) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsView::mean(self : GraphconnectcomponentsView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_view_scale(s : GraphconnectcomponentsView, f : Double) -> GraphconnectcomponentsView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsView::scale(self : GraphconnectcomponentsView, f : Double) -> GraphconnectcomponentsView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_view_add(a : GraphconnectcomponentsView, b : GraphconnectcomponentsView) -> GraphconnectcomponentsView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsView::add(self : GraphconnectcomponentsView, other : GraphconnectcomponentsView) -> GraphconnectcomponentsView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_view_copy(s : GraphconnectcomponentsView) -> GraphconnectcomponentsView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsView::copy(self : GraphconnectcomponentsView) -> GraphconnectcomponentsView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_view_fill(s : GraphconnectcomponentsView, v : Double) -> GraphconnectcomponentsView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsView::fill(self : GraphconnectcomponentsView, v : Double) -> GraphconnectcomponentsView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_view_min(s : GraphconnectcomponentsView) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsView::min(self : GraphconnectcomponentsView) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_view_max(s : GraphconnectcomponentsView) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsView::max(self : GraphconnectcomponentsView) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_view_to_string(s : GraphconnectcomponentsView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsView::to_string(self : GraphconnectcomponentsView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsRange {
@@ -963,45 +963,45 @@ pub fn graph_connect_components_range_make(size : Int) -> Graphconnectcomponents
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_range_len(s : GraphconnectcomponentsRange) -> Int { s.size }
+pub fn GraphconnectcomponentsRange::len(self : GraphconnectcomponentsRange) -> Int { self.size }
 
-pub fn graph_connect_components_range_get(s : GraphconnectcomponentsRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsRange::get(self : GraphconnectcomponentsRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_range_set(s : GraphconnectcomponentsRange, i : Int, v : Double) -> GraphconnectcomponentsRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsRange::set(self : GraphconnectcomponentsRange, i : Int, v : Double) -> GraphconnectcomponentsRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_range_sum(s : GraphconnectcomponentsRange) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsRange::sum(self : GraphconnectcomponentsRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_range_mean(s : GraphconnectcomponentsRange) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsRange::mean(self : GraphconnectcomponentsRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_range_scale(s : GraphconnectcomponentsRange, f : Double) -> GraphconnectcomponentsRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsRange::scale(self : GraphconnectcomponentsRange, f : Double) -> GraphconnectcomponentsRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_range_add(a : GraphconnectcomponentsRange, b : GraphconnectcomponentsRange) -> GraphconnectcomponentsRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsRange::add(self : GraphconnectcomponentsRange, other : GraphconnectcomponentsRange) -> GraphconnectcomponentsRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_range_copy(s : GraphconnectcomponentsRange) -> GraphconnectcomponentsRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsRange::copy(self : GraphconnectcomponentsRange) -> GraphconnectcomponentsRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_range_fill(s : GraphconnectcomponentsRange, v : Double) -> GraphconnectcomponentsRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsRange::fill(self : GraphconnectcomponentsRange, v : Double) -> GraphconnectcomponentsRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_range_min(s : GraphconnectcomponentsRange) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsRange::min(self : GraphconnectcomponentsRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_range_max(s : GraphconnectcomponentsRange) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsRange::max(self : GraphconnectcomponentsRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_range_to_string(s : GraphconnectcomponentsRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsRange::to_string(self : GraphconnectcomponentsRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectcomponentsSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_connect_components_slice_make(size : Int) -> Graphconnectcomponents
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_components_slice_len(s : GraphconnectcomponentsSlice) -> Int { s.size }
+pub fn GraphconnectcomponentsSlice::len(self : GraphconnectcomponentsSlice) -> Int { self.size }
 
-pub fn graph_connect_components_slice_get(s : GraphconnectcomponentsSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectcomponentsSlice::get(self : GraphconnectcomponentsSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_components_slice_set(s : GraphconnectcomponentsSlice, i : Int, v : Double) -> GraphconnectcomponentsSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsSlice::set(self : GraphconnectcomponentsSlice, i : Int, v : Double) -> GraphconnectcomponentsSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_slice_sum(s : GraphconnectcomponentsSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectcomponentsSlice::sum(self : GraphconnectcomponentsSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_components_slice_mean(s : GraphconnectcomponentsSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectcomponentsSlice::mean(self : GraphconnectcomponentsSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_components_slice_scale(s : GraphconnectcomponentsSlice, f : Double) -> GraphconnectcomponentsSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsSlice::scale(self : GraphconnectcomponentsSlice, f : Double) -> GraphconnectcomponentsSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_slice_add(a : GraphconnectcomponentsSlice, b : GraphconnectcomponentsSlice) -> GraphconnectcomponentsSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectcomponentsSlice::add(self : GraphconnectcomponentsSlice, other : GraphconnectcomponentsSlice) -> GraphconnectcomponentsSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_components_slice_copy(s : GraphconnectcomponentsSlice) -> GraphconnectcomponentsSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsSlice::copy(self : GraphconnectcomponentsSlice) -> GraphconnectcomponentsSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_slice_fill(s : GraphconnectcomponentsSlice, v : Double) -> GraphconnectcomponentsSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectcomponentsSlice::fill(self : GraphconnectcomponentsSlice, v : Double) -> GraphconnectcomponentsSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_components_slice_min(s : GraphconnectcomponentsSlice) -> Double { @_common.min(s.data) }
+pub fn GraphconnectcomponentsSlice::min(self : GraphconnectcomponentsSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_components_slice_max(s : GraphconnectcomponentsSlice) -> Double { @_common.max(s.data) }
+pub fn GraphconnectcomponentsSlice::max(self : GraphconnectcomponentsSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_components_slice_to_string(s : GraphconnectcomponentsSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectcomponentsSlice::to_string(self : GraphconnectcomponentsSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

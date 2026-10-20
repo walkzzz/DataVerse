@@ -351,45 +351,45 @@ pub fn physics_heat_phase_frame_make(size : Int) -> PhysicsheatphaseFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_frame_len(s : PhysicsheatphaseFrame) -> Int { s.size }
+pub fn PhysicsheatphaseFrame::len(self : PhysicsheatphaseFrame) -> Int { self.size }
 
-pub fn physics_heat_phase_frame_get(s : PhysicsheatphaseFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseFrame::get(self : PhysicsheatphaseFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_frame_set(s : PhysicsheatphaseFrame, i : Int, v : Double) -> PhysicsheatphaseFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseFrame::set(self : PhysicsheatphaseFrame, i : Int, v : Double) -> PhysicsheatphaseFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_frame_sum(s : PhysicsheatphaseFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseFrame::sum(self : PhysicsheatphaseFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_frame_mean(s : PhysicsheatphaseFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseFrame::mean(self : PhysicsheatphaseFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_frame_scale(s : PhysicsheatphaseFrame, f : Double) -> PhysicsheatphaseFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseFrame::scale(self : PhysicsheatphaseFrame, f : Double) -> PhysicsheatphaseFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_frame_add(a : PhysicsheatphaseFrame, b : PhysicsheatphaseFrame) -> PhysicsheatphaseFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseFrame::add(self : PhysicsheatphaseFrame, other : PhysicsheatphaseFrame) -> PhysicsheatphaseFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_frame_copy(s : PhysicsheatphaseFrame) -> PhysicsheatphaseFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseFrame::copy(self : PhysicsheatphaseFrame) -> PhysicsheatphaseFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_frame_fill(s : PhysicsheatphaseFrame, v : Double) -> PhysicsheatphaseFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseFrame::fill(self : PhysicsheatphaseFrame, v : Double) -> PhysicsheatphaseFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_frame_min(s : PhysicsheatphaseFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseFrame::min(self : PhysicsheatphaseFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_frame_max(s : PhysicsheatphaseFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseFrame::max(self : PhysicsheatphaseFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_frame_to_string(s : PhysicsheatphaseFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseFrame::to_string(self : PhysicsheatphaseFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphaseTable {
@@ -402,45 +402,45 @@ pub fn physics_heat_phase_table_make(size : Int) -> PhysicsheatphaseTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_table_len(s : PhysicsheatphaseTable) -> Int { s.size }
+pub fn PhysicsheatphaseTable::len(self : PhysicsheatphaseTable) -> Int { self.size }
 
-pub fn physics_heat_phase_table_get(s : PhysicsheatphaseTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseTable::get(self : PhysicsheatphaseTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_table_set(s : PhysicsheatphaseTable, i : Int, v : Double) -> PhysicsheatphaseTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseTable::set(self : PhysicsheatphaseTable, i : Int, v : Double) -> PhysicsheatphaseTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_table_sum(s : PhysicsheatphaseTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseTable::sum(self : PhysicsheatphaseTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_table_mean(s : PhysicsheatphaseTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseTable::mean(self : PhysicsheatphaseTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_table_scale(s : PhysicsheatphaseTable, f : Double) -> PhysicsheatphaseTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseTable::scale(self : PhysicsheatphaseTable, f : Double) -> PhysicsheatphaseTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_table_add(a : PhysicsheatphaseTable, b : PhysicsheatphaseTable) -> PhysicsheatphaseTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseTable::add(self : PhysicsheatphaseTable, other : PhysicsheatphaseTable) -> PhysicsheatphaseTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_table_copy(s : PhysicsheatphaseTable) -> PhysicsheatphaseTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseTable::copy(self : PhysicsheatphaseTable) -> PhysicsheatphaseTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_table_fill(s : PhysicsheatphaseTable, v : Double) -> PhysicsheatphaseTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseTable::fill(self : PhysicsheatphaseTable, v : Double) -> PhysicsheatphaseTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_table_min(s : PhysicsheatphaseTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseTable::min(self : PhysicsheatphaseTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_table_max(s : PhysicsheatphaseTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseTable::max(self : PhysicsheatphaseTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_table_to_string(s : PhysicsheatphaseTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseTable::to_string(self : PhysicsheatphaseTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphaseGraphN {
@@ -453,45 +453,45 @@ pub fn physics_heat_phase_graphn_make(size : Int) -> PhysicsheatphaseGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_graphn_len(s : PhysicsheatphaseGraphN) -> Int { s.size }
+pub fn PhysicsheatphaseGraphN::len(self : PhysicsheatphaseGraphN) -> Int { self.size }
 
-pub fn physics_heat_phase_graphn_get(s : PhysicsheatphaseGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseGraphN::get(self : PhysicsheatphaseGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_graphn_set(s : PhysicsheatphaseGraphN, i : Int, v : Double) -> PhysicsheatphaseGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseGraphN::set(self : PhysicsheatphaseGraphN, i : Int, v : Double) -> PhysicsheatphaseGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_graphn_sum(s : PhysicsheatphaseGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseGraphN::sum(self : PhysicsheatphaseGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_graphn_mean(s : PhysicsheatphaseGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseGraphN::mean(self : PhysicsheatphaseGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_graphn_scale(s : PhysicsheatphaseGraphN, f : Double) -> PhysicsheatphaseGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseGraphN::scale(self : PhysicsheatphaseGraphN, f : Double) -> PhysicsheatphaseGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_graphn_add(a : PhysicsheatphaseGraphN, b : PhysicsheatphaseGraphN) -> PhysicsheatphaseGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseGraphN::add(self : PhysicsheatphaseGraphN, other : PhysicsheatphaseGraphN) -> PhysicsheatphaseGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_graphn_copy(s : PhysicsheatphaseGraphN) -> PhysicsheatphaseGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseGraphN::copy(self : PhysicsheatphaseGraphN) -> PhysicsheatphaseGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_graphn_fill(s : PhysicsheatphaseGraphN, v : Double) -> PhysicsheatphaseGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseGraphN::fill(self : PhysicsheatphaseGraphN, v : Double) -> PhysicsheatphaseGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_graphn_min(s : PhysicsheatphaseGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseGraphN::min(self : PhysicsheatphaseGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_graphn_max(s : PhysicsheatphaseGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseGraphN::max(self : PhysicsheatphaseGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_graphn_to_string(s : PhysicsheatphaseGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseGraphN::to_string(self : PhysicsheatphaseGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphaseNode {
@@ -504,45 +504,45 @@ pub fn physics_heat_phase_node_make(size : Int) -> PhysicsheatphaseNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_node_len(s : PhysicsheatphaseNode) -> Int { s.size }
+pub fn PhysicsheatphaseNode::len(self : PhysicsheatphaseNode) -> Int { self.size }
 
-pub fn physics_heat_phase_node_get(s : PhysicsheatphaseNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseNode::get(self : PhysicsheatphaseNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_node_set(s : PhysicsheatphaseNode, i : Int, v : Double) -> PhysicsheatphaseNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseNode::set(self : PhysicsheatphaseNode, i : Int, v : Double) -> PhysicsheatphaseNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_node_sum(s : PhysicsheatphaseNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseNode::sum(self : PhysicsheatphaseNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_node_mean(s : PhysicsheatphaseNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseNode::mean(self : PhysicsheatphaseNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_node_scale(s : PhysicsheatphaseNode, f : Double) -> PhysicsheatphaseNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseNode::scale(self : PhysicsheatphaseNode, f : Double) -> PhysicsheatphaseNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_node_add(a : PhysicsheatphaseNode, b : PhysicsheatphaseNode) -> PhysicsheatphaseNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseNode::add(self : PhysicsheatphaseNode, other : PhysicsheatphaseNode) -> PhysicsheatphaseNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_node_copy(s : PhysicsheatphaseNode) -> PhysicsheatphaseNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseNode::copy(self : PhysicsheatphaseNode) -> PhysicsheatphaseNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_node_fill(s : PhysicsheatphaseNode, v : Double) -> PhysicsheatphaseNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseNode::fill(self : PhysicsheatphaseNode, v : Double) -> PhysicsheatphaseNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_node_min(s : PhysicsheatphaseNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseNode::min(self : PhysicsheatphaseNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_node_max(s : PhysicsheatphaseNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseNode::max(self : PhysicsheatphaseNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_node_to_string(s : PhysicsheatphaseNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseNode::to_string(self : PhysicsheatphaseNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphaseEdge {
@@ -555,45 +555,45 @@ pub fn physics_heat_phase_edge_make(size : Int) -> PhysicsheatphaseEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_edge_len(s : PhysicsheatphaseEdge) -> Int { s.size }
+pub fn PhysicsheatphaseEdge::len(self : PhysicsheatphaseEdge) -> Int { self.size }
 
-pub fn physics_heat_phase_edge_get(s : PhysicsheatphaseEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseEdge::get(self : PhysicsheatphaseEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_edge_set(s : PhysicsheatphaseEdge, i : Int, v : Double) -> PhysicsheatphaseEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseEdge::set(self : PhysicsheatphaseEdge, i : Int, v : Double) -> PhysicsheatphaseEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_edge_sum(s : PhysicsheatphaseEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseEdge::sum(self : PhysicsheatphaseEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_edge_mean(s : PhysicsheatphaseEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseEdge::mean(self : PhysicsheatphaseEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_edge_scale(s : PhysicsheatphaseEdge, f : Double) -> PhysicsheatphaseEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseEdge::scale(self : PhysicsheatphaseEdge, f : Double) -> PhysicsheatphaseEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_edge_add(a : PhysicsheatphaseEdge, b : PhysicsheatphaseEdge) -> PhysicsheatphaseEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseEdge::add(self : PhysicsheatphaseEdge, other : PhysicsheatphaseEdge) -> PhysicsheatphaseEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_edge_copy(s : PhysicsheatphaseEdge) -> PhysicsheatphaseEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseEdge::copy(self : PhysicsheatphaseEdge) -> PhysicsheatphaseEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_edge_fill(s : PhysicsheatphaseEdge, v : Double) -> PhysicsheatphaseEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseEdge::fill(self : PhysicsheatphaseEdge, v : Double) -> PhysicsheatphaseEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_edge_min(s : PhysicsheatphaseEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseEdge::min(self : PhysicsheatphaseEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_edge_max(s : PhysicsheatphaseEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseEdge::max(self : PhysicsheatphaseEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_edge_to_string(s : PhysicsheatphaseEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseEdge::to_string(self : PhysicsheatphaseEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphasePath {
@@ -606,45 +606,45 @@ pub fn physics_heat_phase_path_make(size : Int) -> PhysicsheatphasePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_path_len(s : PhysicsheatphasePath) -> Int { s.size }
+pub fn PhysicsheatphasePath::len(self : PhysicsheatphasePath) -> Int { self.size }
 
-pub fn physics_heat_phase_path_get(s : PhysicsheatphasePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphasePath::get(self : PhysicsheatphasePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_path_set(s : PhysicsheatphasePath, i : Int, v : Double) -> PhysicsheatphasePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphasePath::set(self : PhysicsheatphasePath, i : Int, v : Double) -> PhysicsheatphasePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_path_sum(s : PhysicsheatphasePath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphasePath::sum(self : PhysicsheatphasePath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_path_mean(s : PhysicsheatphasePath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphasePath::mean(self : PhysicsheatphasePath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_path_scale(s : PhysicsheatphasePath, f : Double) -> PhysicsheatphasePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphasePath::scale(self : PhysicsheatphasePath, f : Double) -> PhysicsheatphasePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_path_add(a : PhysicsheatphasePath, b : PhysicsheatphasePath) -> PhysicsheatphasePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphasePath::add(self : PhysicsheatphasePath, other : PhysicsheatphasePath) -> PhysicsheatphasePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_path_copy(s : PhysicsheatphasePath) -> PhysicsheatphasePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphasePath::copy(self : PhysicsheatphasePath) -> PhysicsheatphasePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_path_fill(s : PhysicsheatphasePath, v : Double) -> PhysicsheatphasePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphasePath::fill(self : PhysicsheatphasePath, v : Double) -> PhysicsheatphasePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_path_min(s : PhysicsheatphasePath) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphasePath::min(self : PhysicsheatphasePath) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_path_max(s : PhysicsheatphasePath) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphasePath::max(self : PhysicsheatphasePath) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_path_to_string(s : PhysicsheatphasePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphasePath::to_string(self : PhysicsheatphasePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphaseCluster {
@@ -657,45 +657,45 @@ pub fn physics_heat_phase_cluster_make(size : Int) -> PhysicsheatphaseCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_cluster_len(s : PhysicsheatphaseCluster) -> Int { s.size }
+pub fn PhysicsheatphaseCluster::len(self : PhysicsheatphaseCluster) -> Int { self.size }
 
-pub fn physics_heat_phase_cluster_get(s : PhysicsheatphaseCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseCluster::get(self : PhysicsheatphaseCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_cluster_set(s : PhysicsheatphaseCluster, i : Int, v : Double) -> PhysicsheatphaseCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseCluster::set(self : PhysicsheatphaseCluster, i : Int, v : Double) -> PhysicsheatphaseCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_cluster_sum(s : PhysicsheatphaseCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseCluster::sum(self : PhysicsheatphaseCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_cluster_mean(s : PhysicsheatphaseCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseCluster::mean(self : PhysicsheatphaseCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_cluster_scale(s : PhysicsheatphaseCluster, f : Double) -> PhysicsheatphaseCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseCluster::scale(self : PhysicsheatphaseCluster, f : Double) -> PhysicsheatphaseCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_cluster_add(a : PhysicsheatphaseCluster, b : PhysicsheatphaseCluster) -> PhysicsheatphaseCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseCluster::add(self : PhysicsheatphaseCluster, other : PhysicsheatphaseCluster) -> PhysicsheatphaseCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_cluster_copy(s : PhysicsheatphaseCluster) -> PhysicsheatphaseCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseCluster::copy(self : PhysicsheatphaseCluster) -> PhysicsheatphaseCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_cluster_fill(s : PhysicsheatphaseCluster, v : Double) -> PhysicsheatphaseCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseCluster::fill(self : PhysicsheatphaseCluster, v : Double) -> PhysicsheatphaseCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_cluster_min(s : PhysicsheatphaseCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseCluster::min(self : PhysicsheatphaseCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_cluster_max(s : PhysicsheatphaseCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseCluster::max(self : PhysicsheatphaseCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_cluster_to_string(s : PhysicsheatphaseCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseCluster::to_string(self : PhysicsheatphaseCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphaseModel {
@@ -708,45 +708,45 @@ pub fn physics_heat_phase_model_make(size : Int) -> PhysicsheatphaseModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_model_len(s : PhysicsheatphaseModel) -> Int { s.size }
+pub fn PhysicsheatphaseModel::len(self : PhysicsheatphaseModel) -> Int { self.size }
 
-pub fn physics_heat_phase_model_get(s : PhysicsheatphaseModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseModel::get(self : PhysicsheatphaseModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_model_set(s : PhysicsheatphaseModel, i : Int, v : Double) -> PhysicsheatphaseModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseModel::set(self : PhysicsheatphaseModel, i : Int, v : Double) -> PhysicsheatphaseModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_model_sum(s : PhysicsheatphaseModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseModel::sum(self : PhysicsheatphaseModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_model_mean(s : PhysicsheatphaseModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseModel::mean(self : PhysicsheatphaseModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_model_scale(s : PhysicsheatphaseModel, f : Double) -> PhysicsheatphaseModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseModel::scale(self : PhysicsheatphaseModel, f : Double) -> PhysicsheatphaseModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_model_add(a : PhysicsheatphaseModel, b : PhysicsheatphaseModel) -> PhysicsheatphaseModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseModel::add(self : PhysicsheatphaseModel, other : PhysicsheatphaseModel) -> PhysicsheatphaseModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_model_copy(s : PhysicsheatphaseModel) -> PhysicsheatphaseModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseModel::copy(self : PhysicsheatphaseModel) -> PhysicsheatphaseModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_model_fill(s : PhysicsheatphaseModel, v : Double) -> PhysicsheatphaseModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseModel::fill(self : PhysicsheatphaseModel, v : Double) -> PhysicsheatphaseModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_model_min(s : PhysicsheatphaseModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseModel::min(self : PhysicsheatphaseModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_model_max(s : PhysicsheatphaseModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseModel::max(self : PhysicsheatphaseModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_model_to_string(s : PhysicsheatphaseModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseModel::to_string(self : PhysicsheatphaseModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphaseLayer {
@@ -759,45 +759,45 @@ pub fn physics_heat_phase_layer_make(size : Int) -> PhysicsheatphaseLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_layer_len(s : PhysicsheatphaseLayer) -> Int { s.size }
+pub fn PhysicsheatphaseLayer::len(self : PhysicsheatphaseLayer) -> Int { self.size }
 
-pub fn physics_heat_phase_layer_get(s : PhysicsheatphaseLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseLayer::get(self : PhysicsheatphaseLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_layer_set(s : PhysicsheatphaseLayer, i : Int, v : Double) -> PhysicsheatphaseLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseLayer::set(self : PhysicsheatphaseLayer, i : Int, v : Double) -> PhysicsheatphaseLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_layer_sum(s : PhysicsheatphaseLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseLayer::sum(self : PhysicsheatphaseLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_layer_mean(s : PhysicsheatphaseLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseLayer::mean(self : PhysicsheatphaseLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_layer_scale(s : PhysicsheatphaseLayer, f : Double) -> PhysicsheatphaseLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseLayer::scale(self : PhysicsheatphaseLayer, f : Double) -> PhysicsheatphaseLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_layer_add(a : PhysicsheatphaseLayer, b : PhysicsheatphaseLayer) -> PhysicsheatphaseLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseLayer::add(self : PhysicsheatphaseLayer, other : PhysicsheatphaseLayer) -> PhysicsheatphaseLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_layer_copy(s : PhysicsheatphaseLayer) -> PhysicsheatphaseLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseLayer::copy(self : PhysicsheatphaseLayer) -> PhysicsheatphaseLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_layer_fill(s : PhysicsheatphaseLayer, v : Double) -> PhysicsheatphaseLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseLayer::fill(self : PhysicsheatphaseLayer, v : Double) -> PhysicsheatphaseLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_layer_min(s : PhysicsheatphaseLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseLayer::min(self : PhysicsheatphaseLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_layer_max(s : PhysicsheatphaseLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseLayer::max(self : PhysicsheatphaseLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_layer_to_string(s : PhysicsheatphaseLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseLayer::to_string(self : PhysicsheatphaseLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphaseBuffer {
@@ -810,45 +810,45 @@ pub fn physics_heat_phase_buffer_make(size : Int) -> PhysicsheatphaseBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_buffer_len(s : PhysicsheatphaseBuffer) -> Int { s.size }
+pub fn PhysicsheatphaseBuffer::len(self : PhysicsheatphaseBuffer) -> Int { self.size }
 
-pub fn physics_heat_phase_buffer_get(s : PhysicsheatphaseBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseBuffer::get(self : PhysicsheatphaseBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_buffer_set(s : PhysicsheatphaseBuffer, i : Int, v : Double) -> PhysicsheatphaseBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseBuffer::set(self : PhysicsheatphaseBuffer, i : Int, v : Double) -> PhysicsheatphaseBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_buffer_sum(s : PhysicsheatphaseBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseBuffer::sum(self : PhysicsheatphaseBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_buffer_mean(s : PhysicsheatphaseBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseBuffer::mean(self : PhysicsheatphaseBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_buffer_scale(s : PhysicsheatphaseBuffer, f : Double) -> PhysicsheatphaseBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseBuffer::scale(self : PhysicsheatphaseBuffer, f : Double) -> PhysicsheatphaseBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_buffer_add(a : PhysicsheatphaseBuffer, b : PhysicsheatphaseBuffer) -> PhysicsheatphaseBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseBuffer::add(self : PhysicsheatphaseBuffer, other : PhysicsheatphaseBuffer) -> PhysicsheatphaseBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_buffer_copy(s : PhysicsheatphaseBuffer) -> PhysicsheatphaseBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseBuffer::copy(self : PhysicsheatphaseBuffer) -> PhysicsheatphaseBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_buffer_fill(s : PhysicsheatphaseBuffer, v : Double) -> PhysicsheatphaseBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseBuffer::fill(self : PhysicsheatphaseBuffer, v : Double) -> PhysicsheatphaseBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_buffer_min(s : PhysicsheatphaseBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseBuffer::min(self : PhysicsheatphaseBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_buffer_max(s : PhysicsheatphaseBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseBuffer::max(self : PhysicsheatphaseBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_buffer_to_string(s : PhysicsheatphaseBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseBuffer::to_string(self : PhysicsheatphaseBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphaseCursor {
@@ -861,45 +861,45 @@ pub fn physics_heat_phase_cursor_make(size : Int) -> PhysicsheatphaseCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_cursor_len(s : PhysicsheatphaseCursor) -> Int { s.size }
+pub fn PhysicsheatphaseCursor::len(self : PhysicsheatphaseCursor) -> Int { self.size }
 
-pub fn physics_heat_phase_cursor_get(s : PhysicsheatphaseCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseCursor::get(self : PhysicsheatphaseCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_cursor_set(s : PhysicsheatphaseCursor, i : Int, v : Double) -> PhysicsheatphaseCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseCursor::set(self : PhysicsheatphaseCursor, i : Int, v : Double) -> PhysicsheatphaseCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_cursor_sum(s : PhysicsheatphaseCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseCursor::sum(self : PhysicsheatphaseCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_cursor_mean(s : PhysicsheatphaseCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseCursor::mean(self : PhysicsheatphaseCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_cursor_scale(s : PhysicsheatphaseCursor, f : Double) -> PhysicsheatphaseCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseCursor::scale(self : PhysicsheatphaseCursor, f : Double) -> PhysicsheatphaseCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_cursor_add(a : PhysicsheatphaseCursor, b : PhysicsheatphaseCursor) -> PhysicsheatphaseCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseCursor::add(self : PhysicsheatphaseCursor, other : PhysicsheatphaseCursor) -> PhysicsheatphaseCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_cursor_copy(s : PhysicsheatphaseCursor) -> PhysicsheatphaseCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseCursor::copy(self : PhysicsheatphaseCursor) -> PhysicsheatphaseCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_cursor_fill(s : PhysicsheatphaseCursor, v : Double) -> PhysicsheatphaseCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseCursor::fill(self : PhysicsheatphaseCursor, v : Double) -> PhysicsheatphaseCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_cursor_min(s : PhysicsheatphaseCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseCursor::min(self : PhysicsheatphaseCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_cursor_max(s : PhysicsheatphaseCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseCursor::max(self : PhysicsheatphaseCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_cursor_to_string(s : PhysicsheatphaseCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseCursor::to_string(self : PhysicsheatphaseCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphaseView {
@@ -912,45 +912,45 @@ pub fn physics_heat_phase_view_make(size : Int) -> PhysicsheatphaseView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_view_len(s : PhysicsheatphaseView) -> Int { s.size }
+pub fn PhysicsheatphaseView::len(self : PhysicsheatphaseView) -> Int { self.size }
 
-pub fn physics_heat_phase_view_get(s : PhysicsheatphaseView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseView::get(self : PhysicsheatphaseView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_view_set(s : PhysicsheatphaseView, i : Int, v : Double) -> PhysicsheatphaseView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseView::set(self : PhysicsheatphaseView, i : Int, v : Double) -> PhysicsheatphaseView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_view_sum(s : PhysicsheatphaseView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseView::sum(self : PhysicsheatphaseView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_view_mean(s : PhysicsheatphaseView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseView::mean(self : PhysicsheatphaseView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_view_scale(s : PhysicsheatphaseView, f : Double) -> PhysicsheatphaseView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseView::scale(self : PhysicsheatphaseView, f : Double) -> PhysicsheatphaseView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_view_add(a : PhysicsheatphaseView, b : PhysicsheatphaseView) -> PhysicsheatphaseView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseView::add(self : PhysicsheatphaseView, other : PhysicsheatphaseView) -> PhysicsheatphaseView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_view_copy(s : PhysicsheatphaseView) -> PhysicsheatphaseView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseView::copy(self : PhysicsheatphaseView) -> PhysicsheatphaseView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_view_fill(s : PhysicsheatphaseView, v : Double) -> PhysicsheatphaseView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseView::fill(self : PhysicsheatphaseView, v : Double) -> PhysicsheatphaseView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_view_min(s : PhysicsheatphaseView) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseView::min(self : PhysicsheatphaseView) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_view_max(s : PhysicsheatphaseView) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseView::max(self : PhysicsheatphaseView) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_view_to_string(s : PhysicsheatphaseView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseView::to_string(self : PhysicsheatphaseView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphaseRange {
@@ -963,45 +963,45 @@ pub fn physics_heat_phase_range_make(size : Int) -> PhysicsheatphaseRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_range_len(s : PhysicsheatphaseRange) -> Int { s.size }
+pub fn PhysicsheatphaseRange::len(self : PhysicsheatphaseRange) -> Int { self.size }
 
-pub fn physics_heat_phase_range_get(s : PhysicsheatphaseRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseRange::get(self : PhysicsheatphaseRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_range_set(s : PhysicsheatphaseRange, i : Int, v : Double) -> PhysicsheatphaseRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseRange::set(self : PhysicsheatphaseRange, i : Int, v : Double) -> PhysicsheatphaseRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_range_sum(s : PhysicsheatphaseRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseRange::sum(self : PhysicsheatphaseRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_range_mean(s : PhysicsheatphaseRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseRange::mean(self : PhysicsheatphaseRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_range_scale(s : PhysicsheatphaseRange, f : Double) -> PhysicsheatphaseRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseRange::scale(self : PhysicsheatphaseRange, f : Double) -> PhysicsheatphaseRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_range_add(a : PhysicsheatphaseRange, b : PhysicsheatphaseRange) -> PhysicsheatphaseRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseRange::add(self : PhysicsheatphaseRange, other : PhysicsheatphaseRange) -> PhysicsheatphaseRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_range_copy(s : PhysicsheatphaseRange) -> PhysicsheatphaseRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseRange::copy(self : PhysicsheatphaseRange) -> PhysicsheatphaseRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_range_fill(s : PhysicsheatphaseRange, v : Double) -> PhysicsheatphaseRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseRange::fill(self : PhysicsheatphaseRange, v : Double) -> PhysicsheatphaseRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_range_min(s : PhysicsheatphaseRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseRange::min(self : PhysicsheatphaseRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_range_max(s : PhysicsheatphaseRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseRange::max(self : PhysicsheatphaseRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_range_to_string(s : PhysicsheatphaseRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseRange::to_string(self : PhysicsheatphaseRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatphaseSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_heat_phase_slice_make(size : Int) -> PhysicsheatphaseSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_phase_slice_len(s : PhysicsheatphaseSlice) -> Int { s.size }
+pub fn PhysicsheatphaseSlice::len(self : PhysicsheatphaseSlice) -> Int { self.size }
 
-pub fn physics_heat_phase_slice_get(s : PhysicsheatphaseSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatphaseSlice::get(self : PhysicsheatphaseSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_phase_slice_set(s : PhysicsheatphaseSlice, i : Int, v : Double) -> PhysicsheatphaseSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseSlice::set(self : PhysicsheatphaseSlice, i : Int, v : Double) -> PhysicsheatphaseSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_slice_sum(s : PhysicsheatphaseSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatphaseSlice::sum(self : PhysicsheatphaseSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_phase_slice_mean(s : PhysicsheatphaseSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatphaseSlice::mean(self : PhysicsheatphaseSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_phase_slice_scale(s : PhysicsheatphaseSlice, f : Double) -> PhysicsheatphaseSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseSlice::scale(self : PhysicsheatphaseSlice, f : Double) -> PhysicsheatphaseSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_slice_add(a : PhysicsheatphaseSlice, b : PhysicsheatphaseSlice) -> PhysicsheatphaseSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatphaseSlice::add(self : PhysicsheatphaseSlice, other : PhysicsheatphaseSlice) -> PhysicsheatphaseSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_phase_slice_copy(s : PhysicsheatphaseSlice) -> PhysicsheatphaseSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseSlice::copy(self : PhysicsheatphaseSlice) -> PhysicsheatphaseSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_slice_fill(s : PhysicsheatphaseSlice, v : Double) -> PhysicsheatphaseSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatphaseSlice::fill(self : PhysicsheatphaseSlice, v : Double) -> PhysicsheatphaseSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_phase_slice_min(s : PhysicsheatphaseSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatphaseSlice::min(self : PhysicsheatphaseSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_phase_slice_max(s : PhysicsheatphaseSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatphaseSlice::max(self : PhysicsheatphaseSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_phase_slice_to_string(s : PhysicsheatphaseSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatphaseSlice::to_string(self : PhysicsheatphaseSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

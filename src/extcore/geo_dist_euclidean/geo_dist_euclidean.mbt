@@ -351,45 +351,45 @@ pub fn geo_dist_euclidean_frame_make(size : Int) -> GeodisteuclideanFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_frame_len(s : GeodisteuclideanFrame) -> Int { s.size }
+pub fn GeodisteuclideanFrame::len(self : GeodisteuclideanFrame) -> Int { self.size }
 
-pub fn geo_dist_euclidean_frame_get(s : GeodisteuclideanFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanFrame::get(self : GeodisteuclideanFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_frame_set(s : GeodisteuclideanFrame, i : Int, v : Double) -> GeodisteuclideanFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanFrame::set(self : GeodisteuclideanFrame, i : Int, v : Double) -> GeodisteuclideanFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_frame_sum(s : GeodisteuclideanFrame) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanFrame::sum(self : GeodisteuclideanFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_frame_mean(s : GeodisteuclideanFrame) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanFrame::mean(self : GeodisteuclideanFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_frame_scale(s : GeodisteuclideanFrame, f : Double) -> GeodisteuclideanFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanFrame::scale(self : GeodisteuclideanFrame, f : Double) -> GeodisteuclideanFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_frame_add(a : GeodisteuclideanFrame, b : GeodisteuclideanFrame) -> GeodisteuclideanFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanFrame::add(self : GeodisteuclideanFrame, other : GeodisteuclideanFrame) -> GeodisteuclideanFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_frame_copy(s : GeodisteuclideanFrame) -> GeodisteuclideanFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanFrame::copy(self : GeodisteuclideanFrame) -> GeodisteuclideanFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_frame_fill(s : GeodisteuclideanFrame, v : Double) -> GeodisteuclideanFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanFrame::fill(self : GeodisteuclideanFrame, v : Double) -> GeodisteuclideanFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_frame_min(s : GeodisteuclideanFrame) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanFrame::min(self : GeodisteuclideanFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_frame_max(s : GeodisteuclideanFrame) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanFrame::max(self : GeodisteuclideanFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_frame_to_string(s : GeodisteuclideanFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanFrame::to_string(self : GeodisteuclideanFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanTable {
@@ -402,45 +402,45 @@ pub fn geo_dist_euclidean_table_make(size : Int) -> GeodisteuclideanTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_table_len(s : GeodisteuclideanTable) -> Int { s.size }
+pub fn GeodisteuclideanTable::len(self : GeodisteuclideanTable) -> Int { self.size }
 
-pub fn geo_dist_euclidean_table_get(s : GeodisteuclideanTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanTable::get(self : GeodisteuclideanTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_table_set(s : GeodisteuclideanTable, i : Int, v : Double) -> GeodisteuclideanTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanTable::set(self : GeodisteuclideanTable, i : Int, v : Double) -> GeodisteuclideanTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_table_sum(s : GeodisteuclideanTable) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanTable::sum(self : GeodisteuclideanTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_table_mean(s : GeodisteuclideanTable) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanTable::mean(self : GeodisteuclideanTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_table_scale(s : GeodisteuclideanTable, f : Double) -> GeodisteuclideanTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanTable::scale(self : GeodisteuclideanTable, f : Double) -> GeodisteuclideanTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_table_add(a : GeodisteuclideanTable, b : GeodisteuclideanTable) -> GeodisteuclideanTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanTable::add(self : GeodisteuclideanTable, other : GeodisteuclideanTable) -> GeodisteuclideanTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_table_copy(s : GeodisteuclideanTable) -> GeodisteuclideanTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanTable::copy(self : GeodisteuclideanTable) -> GeodisteuclideanTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_table_fill(s : GeodisteuclideanTable, v : Double) -> GeodisteuclideanTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanTable::fill(self : GeodisteuclideanTable, v : Double) -> GeodisteuclideanTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_table_min(s : GeodisteuclideanTable) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanTable::min(self : GeodisteuclideanTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_table_max(s : GeodisteuclideanTable) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanTable::max(self : GeodisteuclideanTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_table_to_string(s : GeodisteuclideanTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanTable::to_string(self : GeodisteuclideanTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanGraphN {
@@ -453,45 +453,45 @@ pub fn geo_dist_euclidean_graphn_make(size : Int) -> GeodisteuclideanGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_graphn_len(s : GeodisteuclideanGraphN) -> Int { s.size }
+pub fn GeodisteuclideanGraphN::len(self : GeodisteuclideanGraphN) -> Int { self.size }
 
-pub fn geo_dist_euclidean_graphn_get(s : GeodisteuclideanGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanGraphN::get(self : GeodisteuclideanGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_graphn_set(s : GeodisteuclideanGraphN, i : Int, v : Double) -> GeodisteuclideanGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanGraphN::set(self : GeodisteuclideanGraphN, i : Int, v : Double) -> GeodisteuclideanGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_graphn_sum(s : GeodisteuclideanGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanGraphN::sum(self : GeodisteuclideanGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_graphn_mean(s : GeodisteuclideanGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanGraphN::mean(self : GeodisteuclideanGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_graphn_scale(s : GeodisteuclideanGraphN, f : Double) -> GeodisteuclideanGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanGraphN::scale(self : GeodisteuclideanGraphN, f : Double) -> GeodisteuclideanGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_graphn_add(a : GeodisteuclideanGraphN, b : GeodisteuclideanGraphN) -> GeodisteuclideanGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanGraphN::add(self : GeodisteuclideanGraphN, other : GeodisteuclideanGraphN) -> GeodisteuclideanGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_graphn_copy(s : GeodisteuclideanGraphN) -> GeodisteuclideanGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanGraphN::copy(self : GeodisteuclideanGraphN) -> GeodisteuclideanGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_graphn_fill(s : GeodisteuclideanGraphN, v : Double) -> GeodisteuclideanGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanGraphN::fill(self : GeodisteuclideanGraphN, v : Double) -> GeodisteuclideanGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_graphn_min(s : GeodisteuclideanGraphN) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanGraphN::min(self : GeodisteuclideanGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_graphn_max(s : GeodisteuclideanGraphN) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanGraphN::max(self : GeodisteuclideanGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_graphn_to_string(s : GeodisteuclideanGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanGraphN::to_string(self : GeodisteuclideanGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanNode {
@@ -504,45 +504,45 @@ pub fn geo_dist_euclidean_node_make(size : Int) -> GeodisteuclideanNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_node_len(s : GeodisteuclideanNode) -> Int { s.size }
+pub fn GeodisteuclideanNode::len(self : GeodisteuclideanNode) -> Int { self.size }
 
-pub fn geo_dist_euclidean_node_get(s : GeodisteuclideanNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanNode::get(self : GeodisteuclideanNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_node_set(s : GeodisteuclideanNode, i : Int, v : Double) -> GeodisteuclideanNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanNode::set(self : GeodisteuclideanNode, i : Int, v : Double) -> GeodisteuclideanNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_node_sum(s : GeodisteuclideanNode) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanNode::sum(self : GeodisteuclideanNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_node_mean(s : GeodisteuclideanNode) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanNode::mean(self : GeodisteuclideanNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_node_scale(s : GeodisteuclideanNode, f : Double) -> GeodisteuclideanNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanNode::scale(self : GeodisteuclideanNode, f : Double) -> GeodisteuclideanNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_node_add(a : GeodisteuclideanNode, b : GeodisteuclideanNode) -> GeodisteuclideanNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanNode::add(self : GeodisteuclideanNode, other : GeodisteuclideanNode) -> GeodisteuclideanNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_node_copy(s : GeodisteuclideanNode) -> GeodisteuclideanNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanNode::copy(self : GeodisteuclideanNode) -> GeodisteuclideanNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_node_fill(s : GeodisteuclideanNode, v : Double) -> GeodisteuclideanNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanNode::fill(self : GeodisteuclideanNode, v : Double) -> GeodisteuclideanNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_node_min(s : GeodisteuclideanNode) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanNode::min(self : GeodisteuclideanNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_node_max(s : GeodisteuclideanNode) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanNode::max(self : GeodisteuclideanNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_node_to_string(s : GeodisteuclideanNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanNode::to_string(self : GeodisteuclideanNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanEdge {
@@ -555,45 +555,45 @@ pub fn geo_dist_euclidean_edge_make(size : Int) -> GeodisteuclideanEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_edge_len(s : GeodisteuclideanEdge) -> Int { s.size }
+pub fn GeodisteuclideanEdge::len(self : GeodisteuclideanEdge) -> Int { self.size }
 
-pub fn geo_dist_euclidean_edge_get(s : GeodisteuclideanEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanEdge::get(self : GeodisteuclideanEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_edge_set(s : GeodisteuclideanEdge, i : Int, v : Double) -> GeodisteuclideanEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanEdge::set(self : GeodisteuclideanEdge, i : Int, v : Double) -> GeodisteuclideanEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_edge_sum(s : GeodisteuclideanEdge) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanEdge::sum(self : GeodisteuclideanEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_edge_mean(s : GeodisteuclideanEdge) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanEdge::mean(self : GeodisteuclideanEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_edge_scale(s : GeodisteuclideanEdge, f : Double) -> GeodisteuclideanEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanEdge::scale(self : GeodisteuclideanEdge, f : Double) -> GeodisteuclideanEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_edge_add(a : GeodisteuclideanEdge, b : GeodisteuclideanEdge) -> GeodisteuclideanEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanEdge::add(self : GeodisteuclideanEdge, other : GeodisteuclideanEdge) -> GeodisteuclideanEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_edge_copy(s : GeodisteuclideanEdge) -> GeodisteuclideanEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanEdge::copy(self : GeodisteuclideanEdge) -> GeodisteuclideanEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_edge_fill(s : GeodisteuclideanEdge, v : Double) -> GeodisteuclideanEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanEdge::fill(self : GeodisteuclideanEdge, v : Double) -> GeodisteuclideanEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_edge_min(s : GeodisteuclideanEdge) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanEdge::min(self : GeodisteuclideanEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_edge_max(s : GeodisteuclideanEdge) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanEdge::max(self : GeodisteuclideanEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_edge_to_string(s : GeodisteuclideanEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanEdge::to_string(self : GeodisteuclideanEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanPath {
@@ -606,45 +606,45 @@ pub fn geo_dist_euclidean_path_make(size : Int) -> GeodisteuclideanPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_path_len(s : GeodisteuclideanPath) -> Int { s.size }
+pub fn GeodisteuclideanPath::len(self : GeodisteuclideanPath) -> Int { self.size }
 
-pub fn geo_dist_euclidean_path_get(s : GeodisteuclideanPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanPath::get(self : GeodisteuclideanPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_path_set(s : GeodisteuclideanPath, i : Int, v : Double) -> GeodisteuclideanPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanPath::set(self : GeodisteuclideanPath, i : Int, v : Double) -> GeodisteuclideanPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_path_sum(s : GeodisteuclideanPath) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanPath::sum(self : GeodisteuclideanPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_path_mean(s : GeodisteuclideanPath) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanPath::mean(self : GeodisteuclideanPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_path_scale(s : GeodisteuclideanPath, f : Double) -> GeodisteuclideanPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanPath::scale(self : GeodisteuclideanPath, f : Double) -> GeodisteuclideanPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_path_add(a : GeodisteuclideanPath, b : GeodisteuclideanPath) -> GeodisteuclideanPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanPath::add(self : GeodisteuclideanPath, other : GeodisteuclideanPath) -> GeodisteuclideanPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_path_copy(s : GeodisteuclideanPath) -> GeodisteuclideanPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanPath::copy(self : GeodisteuclideanPath) -> GeodisteuclideanPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_path_fill(s : GeodisteuclideanPath, v : Double) -> GeodisteuclideanPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanPath::fill(self : GeodisteuclideanPath, v : Double) -> GeodisteuclideanPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_path_min(s : GeodisteuclideanPath) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanPath::min(self : GeodisteuclideanPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_path_max(s : GeodisteuclideanPath) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanPath::max(self : GeodisteuclideanPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_path_to_string(s : GeodisteuclideanPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanPath::to_string(self : GeodisteuclideanPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanCluster {
@@ -657,45 +657,45 @@ pub fn geo_dist_euclidean_cluster_make(size : Int) -> GeodisteuclideanCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_cluster_len(s : GeodisteuclideanCluster) -> Int { s.size }
+pub fn GeodisteuclideanCluster::len(self : GeodisteuclideanCluster) -> Int { self.size }
 
-pub fn geo_dist_euclidean_cluster_get(s : GeodisteuclideanCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanCluster::get(self : GeodisteuclideanCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_cluster_set(s : GeodisteuclideanCluster, i : Int, v : Double) -> GeodisteuclideanCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanCluster::set(self : GeodisteuclideanCluster, i : Int, v : Double) -> GeodisteuclideanCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_cluster_sum(s : GeodisteuclideanCluster) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanCluster::sum(self : GeodisteuclideanCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_cluster_mean(s : GeodisteuclideanCluster) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanCluster::mean(self : GeodisteuclideanCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_cluster_scale(s : GeodisteuclideanCluster, f : Double) -> GeodisteuclideanCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanCluster::scale(self : GeodisteuclideanCluster, f : Double) -> GeodisteuclideanCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_cluster_add(a : GeodisteuclideanCluster, b : GeodisteuclideanCluster) -> GeodisteuclideanCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanCluster::add(self : GeodisteuclideanCluster, other : GeodisteuclideanCluster) -> GeodisteuclideanCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_cluster_copy(s : GeodisteuclideanCluster) -> GeodisteuclideanCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanCluster::copy(self : GeodisteuclideanCluster) -> GeodisteuclideanCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_cluster_fill(s : GeodisteuclideanCluster, v : Double) -> GeodisteuclideanCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanCluster::fill(self : GeodisteuclideanCluster, v : Double) -> GeodisteuclideanCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_cluster_min(s : GeodisteuclideanCluster) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanCluster::min(self : GeodisteuclideanCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_cluster_max(s : GeodisteuclideanCluster) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanCluster::max(self : GeodisteuclideanCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_cluster_to_string(s : GeodisteuclideanCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanCluster::to_string(self : GeodisteuclideanCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanModel {
@@ -708,45 +708,45 @@ pub fn geo_dist_euclidean_model_make(size : Int) -> GeodisteuclideanModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_model_len(s : GeodisteuclideanModel) -> Int { s.size }
+pub fn GeodisteuclideanModel::len(self : GeodisteuclideanModel) -> Int { self.size }
 
-pub fn geo_dist_euclidean_model_get(s : GeodisteuclideanModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanModel::get(self : GeodisteuclideanModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_model_set(s : GeodisteuclideanModel, i : Int, v : Double) -> GeodisteuclideanModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanModel::set(self : GeodisteuclideanModel, i : Int, v : Double) -> GeodisteuclideanModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_model_sum(s : GeodisteuclideanModel) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanModel::sum(self : GeodisteuclideanModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_model_mean(s : GeodisteuclideanModel) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanModel::mean(self : GeodisteuclideanModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_model_scale(s : GeodisteuclideanModel, f : Double) -> GeodisteuclideanModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanModel::scale(self : GeodisteuclideanModel, f : Double) -> GeodisteuclideanModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_model_add(a : GeodisteuclideanModel, b : GeodisteuclideanModel) -> GeodisteuclideanModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanModel::add(self : GeodisteuclideanModel, other : GeodisteuclideanModel) -> GeodisteuclideanModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_model_copy(s : GeodisteuclideanModel) -> GeodisteuclideanModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanModel::copy(self : GeodisteuclideanModel) -> GeodisteuclideanModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_model_fill(s : GeodisteuclideanModel, v : Double) -> GeodisteuclideanModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanModel::fill(self : GeodisteuclideanModel, v : Double) -> GeodisteuclideanModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_model_min(s : GeodisteuclideanModel) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanModel::min(self : GeodisteuclideanModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_model_max(s : GeodisteuclideanModel) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanModel::max(self : GeodisteuclideanModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_model_to_string(s : GeodisteuclideanModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanModel::to_string(self : GeodisteuclideanModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanLayer {
@@ -759,45 +759,45 @@ pub fn geo_dist_euclidean_layer_make(size : Int) -> GeodisteuclideanLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_layer_len(s : GeodisteuclideanLayer) -> Int { s.size }
+pub fn GeodisteuclideanLayer::len(self : GeodisteuclideanLayer) -> Int { self.size }
 
-pub fn geo_dist_euclidean_layer_get(s : GeodisteuclideanLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanLayer::get(self : GeodisteuclideanLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_layer_set(s : GeodisteuclideanLayer, i : Int, v : Double) -> GeodisteuclideanLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanLayer::set(self : GeodisteuclideanLayer, i : Int, v : Double) -> GeodisteuclideanLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_layer_sum(s : GeodisteuclideanLayer) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanLayer::sum(self : GeodisteuclideanLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_layer_mean(s : GeodisteuclideanLayer) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanLayer::mean(self : GeodisteuclideanLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_layer_scale(s : GeodisteuclideanLayer, f : Double) -> GeodisteuclideanLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanLayer::scale(self : GeodisteuclideanLayer, f : Double) -> GeodisteuclideanLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_layer_add(a : GeodisteuclideanLayer, b : GeodisteuclideanLayer) -> GeodisteuclideanLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanLayer::add(self : GeodisteuclideanLayer, other : GeodisteuclideanLayer) -> GeodisteuclideanLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_layer_copy(s : GeodisteuclideanLayer) -> GeodisteuclideanLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanLayer::copy(self : GeodisteuclideanLayer) -> GeodisteuclideanLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_layer_fill(s : GeodisteuclideanLayer, v : Double) -> GeodisteuclideanLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanLayer::fill(self : GeodisteuclideanLayer, v : Double) -> GeodisteuclideanLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_layer_min(s : GeodisteuclideanLayer) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanLayer::min(self : GeodisteuclideanLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_layer_max(s : GeodisteuclideanLayer) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanLayer::max(self : GeodisteuclideanLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_layer_to_string(s : GeodisteuclideanLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanLayer::to_string(self : GeodisteuclideanLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanBuffer {
@@ -810,45 +810,45 @@ pub fn geo_dist_euclidean_buffer_make(size : Int) -> GeodisteuclideanBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_buffer_len(s : GeodisteuclideanBuffer) -> Int { s.size }
+pub fn GeodisteuclideanBuffer::len(self : GeodisteuclideanBuffer) -> Int { self.size }
 
-pub fn geo_dist_euclidean_buffer_get(s : GeodisteuclideanBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanBuffer::get(self : GeodisteuclideanBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_buffer_set(s : GeodisteuclideanBuffer, i : Int, v : Double) -> GeodisteuclideanBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanBuffer::set(self : GeodisteuclideanBuffer, i : Int, v : Double) -> GeodisteuclideanBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_buffer_sum(s : GeodisteuclideanBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanBuffer::sum(self : GeodisteuclideanBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_buffer_mean(s : GeodisteuclideanBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanBuffer::mean(self : GeodisteuclideanBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_buffer_scale(s : GeodisteuclideanBuffer, f : Double) -> GeodisteuclideanBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanBuffer::scale(self : GeodisteuclideanBuffer, f : Double) -> GeodisteuclideanBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_buffer_add(a : GeodisteuclideanBuffer, b : GeodisteuclideanBuffer) -> GeodisteuclideanBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanBuffer::add(self : GeodisteuclideanBuffer, other : GeodisteuclideanBuffer) -> GeodisteuclideanBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_buffer_copy(s : GeodisteuclideanBuffer) -> GeodisteuclideanBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanBuffer::copy(self : GeodisteuclideanBuffer) -> GeodisteuclideanBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_buffer_fill(s : GeodisteuclideanBuffer, v : Double) -> GeodisteuclideanBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanBuffer::fill(self : GeodisteuclideanBuffer, v : Double) -> GeodisteuclideanBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_buffer_min(s : GeodisteuclideanBuffer) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanBuffer::min(self : GeodisteuclideanBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_buffer_max(s : GeodisteuclideanBuffer) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanBuffer::max(self : GeodisteuclideanBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_buffer_to_string(s : GeodisteuclideanBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanBuffer::to_string(self : GeodisteuclideanBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanCursor {
@@ -861,45 +861,45 @@ pub fn geo_dist_euclidean_cursor_make(size : Int) -> GeodisteuclideanCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_cursor_len(s : GeodisteuclideanCursor) -> Int { s.size }
+pub fn GeodisteuclideanCursor::len(self : GeodisteuclideanCursor) -> Int { self.size }
 
-pub fn geo_dist_euclidean_cursor_get(s : GeodisteuclideanCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanCursor::get(self : GeodisteuclideanCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_cursor_set(s : GeodisteuclideanCursor, i : Int, v : Double) -> GeodisteuclideanCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanCursor::set(self : GeodisteuclideanCursor, i : Int, v : Double) -> GeodisteuclideanCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_cursor_sum(s : GeodisteuclideanCursor) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanCursor::sum(self : GeodisteuclideanCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_cursor_mean(s : GeodisteuclideanCursor) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanCursor::mean(self : GeodisteuclideanCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_cursor_scale(s : GeodisteuclideanCursor, f : Double) -> GeodisteuclideanCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanCursor::scale(self : GeodisteuclideanCursor, f : Double) -> GeodisteuclideanCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_cursor_add(a : GeodisteuclideanCursor, b : GeodisteuclideanCursor) -> GeodisteuclideanCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanCursor::add(self : GeodisteuclideanCursor, other : GeodisteuclideanCursor) -> GeodisteuclideanCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_cursor_copy(s : GeodisteuclideanCursor) -> GeodisteuclideanCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanCursor::copy(self : GeodisteuclideanCursor) -> GeodisteuclideanCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_cursor_fill(s : GeodisteuclideanCursor, v : Double) -> GeodisteuclideanCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanCursor::fill(self : GeodisteuclideanCursor, v : Double) -> GeodisteuclideanCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_cursor_min(s : GeodisteuclideanCursor) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanCursor::min(self : GeodisteuclideanCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_cursor_max(s : GeodisteuclideanCursor) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanCursor::max(self : GeodisteuclideanCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_cursor_to_string(s : GeodisteuclideanCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanCursor::to_string(self : GeodisteuclideanCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanView {
@@ -912,45 +912,45 @@ pub fn geo_dist_euclidean_view_make(size : Int) -> GeodisteuclideanView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_view_len(s : GeodisteuclideanView) -> Int { s.size }
+pub fn GeodisteuclideanView::len(self : GeodisteuclideanView) -> Int { self.size }
 
-pub fn geo_dist_euclidean_view_get(s : GeodisteuclideanView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanView::get(self : GeodisteuclideanView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_view_set(s : GeodisteuclideanView, i : Int, v : Double) -> GeodisteuclideanView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanView::set(self : GeodisteuclideanView, i : Int, v : Double) -> GeodisteuclideanView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_view_sum(s : GeodisteuclideanView) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanView::sum(self : GeodisteuclideanView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_view_mean(s : GeodisteuclideanView) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanView::mean(self : GeodisteuclideanView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_view_scale(s : GeodisteuclideanView, f : Double) -> GeodisteuclideanView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanView::scale(self : GeodisteuclideanView, f : Double) -> GeodisteuclideanView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_view_add(a : GeodisteuclideanView, b : GeodisteuclideanView) -> GeodisteuclideanView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanView::add(self : GeodisteuclideanView, other : GeodisteuclideanView) -> GeodisteuclideanView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_view_copy(s : GeodisteuclideanView) -> GeodisteuclideanView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanView::copy(self : GeodisteuclideanView) -> GeodisteuclideanView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_view_fill(s : GeodisteuclideanView, v : Double) -> GeodisteuclideanView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanView::fill(self : GeodisteuclideanView, v : Double) -> GeodisteuclideanView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_view_min(s : GeodisteuclideanView) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanView::min(self : GeodisteuclideanView) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_view_max(s : GeodisteuclideanView) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanView::max(self : GeodisteuclideanView) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_view_to_string(s : GeodisteuclideanView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanView::to_string(self : GeodisteuclideanView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanRange {
@@ -963,45 +963,45 @@ pub fn geo_dist_euclidean_range_make(size : Int) -> GeodisteuclideanRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_range_len(s : GeodisteuclideanRange) -> Int { s.size }
+pub fn GeodisteuclideanRange::len(self : GeodisteuclideanRange) -> Int { self.size }
 
-pub fn geo_dist_euclidean_range_get(s : GeodisteuclideanRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanRange::get(self : GeodisteuclideanRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_range_set(s : GeodisteuclideanRange, i : Int, v : Double) -> GeodisteuclideanRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanRange::set(self : GeodisteuclideanRange, i : Int, v : Double) -> GeodisteuclideanRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_range_sum(s : GeodisteuclideanRange) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanRange::sum(self : GeodisteuclideanRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_range_mean(s : GeodisteuclideanRange) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanRange::mean(self : GeodisteuclideanRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_range_scale(s : GeodisteuclideanRange, f : Double) -> GeodisteuclideanRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanRange::scale(self : GeodisteuclideanRange, f : Double) -> GeodisteuclideanRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_range_add(a : GeodisteuclideanRange, b : GeodisteuclideanRange) -> GeodisteuclideanRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanRange::add(self : GeodisteuclideanRange, other : GeodisteuclideanRange) -> GeodisteuclideanRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_range_copy(s : GeodisteuclideanRange) -> GeodisteuclideanRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanRange::copy(self : GeodisteuclideanRange) -> GeodisteuclideanRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_range_fill(s : GeodisteuclideanRange, v : Double) -> GeodisteuclideanRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanRange::fill(self : GeodisteuclideanRange, v : Double) -> GeodisteuclideanRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_range_min(s : GeodisteuclideanRange) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanRange::min(self : GeodisteuclideanRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_range_max(s : GeodisteuclideanRange) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanRange::max(self : GeodisteuclideanRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_range_to_string(s : GeodisteuclideanRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanRange::to_string(self : GeodisteuclideanRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisteuclideanSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_dist_euclidean_slice_make(size : Int) -> GeodisteuclideanSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_euclidean_slice_len(s : GeodisteuclideanSlice) -> Int { s.size }
+pub fn GeodisteuclideanSlice::len(self : GeodisteuclideanSlice) -> Int { self.size }
 
-pub fn geo_dist_euclidean_slice_get(s : GeodisteuclideanSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisteuclideanSlice::get(self : GeodisteuclideanSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_euclidean_slice_set(s : GeodisteuclideanSlice, i : Int, v : Double) -> GeodisteuclideanSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisteuclideanSlice::set(self : GeodisteuclideanSlice, i : Int, v : Double) -> GeodisteuclideanSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_slice_sum(s : GeodisteuclideanSlice) -> Double { @_common.sum(s.data) }
+pub fn GeodisteuclideanSlice::sum(self : GeodisteuclideanSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_euclidean_slice_mean(s : GeodisteuclideanSlice) -> Double { @_common.mean(s.data) }
+pub fn GeodisteuclideanSlice::mean(self : GeodisteuclideanSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_euclidean_slice_scale(s : GeodisteuclideanSlice, f : Double) -> GeodisteuclideanSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanSlice::scale(self : GeodisteuclideanSlice, f : Double) -> GeodisteuclideanSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_slice_add(a : GeodisteuclideanSlice, b : GeodisteuclideanSlice) -> GeodisteuclideanSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisteuclideanSlice::add(self : GeodisteuclideanSlice, other : GeodisteuclideanSlice) -> GeodisteuclideanSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_slice_copy(s : GeodisteuclideanSlice) -> GeodisteuclideanSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanSlice::copy(self : GeodisteuclideanSlice) -> GeodisteuclideanSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_slice_fill(s : GeodisteuclideanSlice, v : Double) -> GeodisteuclideanSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisteuclideanSlice::fill(self : GeodisteuclideanSlice, v : Double) -> GeodisteuclideanSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_euclidean_slice_min(s : GeodisteuclideanSlice) -> Double { @_common.min(s.data) }
+pub fn GeodisteuclideanSlice::min(self : GeodisteuclideanSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_euclidean_slice_max(s : GeodisteuclideanSlice) -> Double { @_common.max(s.data) }
+pub fn GeodisteuclideanSlice::max(self : GeodisteuclideanSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_euclidean_slice_to_string(s : GeodisteuclideanSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisteuclideanSlice::to_string(self : GeodisteuclideanSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

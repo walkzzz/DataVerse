@@ -351,45 +351,45 @@ pub fn signal_window_kaiser_frame_make(size : Int) -> SignalwindowkaiserFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_frame_len(s : SignalwindowkaiserFrame) -> Int { s.size }
+pub fn SignalwindowkaiserFrame::len(self : SignalwindowkaiserFrame) -> Int { self.size }
 
-pub fn signal_window_kaiser_frame_get(s : SignalwindowkaiserFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserFrame::get(self : SignalwindowkaiserFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_frame_set(s : SignalwindowkaiserFrame, i : Int, v : Double) -> SignalwindowkaiserFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserFrame::set(self : SignalwindowkaiserFrame, i : Int, v : Double) -> SignalwindowkaiserFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_frame_sum(s : SignalwindowkaiserFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserFrame::sum(self : SignalwindowkaiserFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_frame_mean(s : SignalwindowkaiserFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserFrame::mean(self : SignalwindowkaiserFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_frame_scale(s : SignalwindowkaiserFrame, f : Double) -> SignalwindowkaiserFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserFrame::scale(self : SignalwindowkaiserFrame, f : Double) -> SignalwindowkaiserFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_frame_add(a : SignalwindowkaiserFrame, b : SignalwindowkaiserFrame) -> SignalwindowkaiserFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserFrame::add(self : SignalwindowkaiserFrame, other : SignalwindowkaiserFrame) -> SignalwindowkaiserFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_frame_copy(s : SignalwindowkaiserFrame) -> SignalwindowkaiserFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserFrame::copy(self : SignalwindowkaiserFrame) -> SignalwindowkaiserFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_frame_fill(s : SignalwindowkaiserFrame, v : Double) -> SignalwindowkaiserFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserFrame::fill(self : SignalwindowkaiserFrame, v : Double) -> SignalwindowkaiserFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_frame_min(s : SignalwindowkaiserFrame) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserFrame::min(self : SignalwindowkaiserFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_frame_max(s : SignalwindowkaiserFrame) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserFrame::max(self : SignalwindowkaiserFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_frame_to_string(s : SignalwindowkaiserFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserFrame::to_string(self : SignalwindowkaiserFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserTable {
@@ -402,45 +402,45 @@ pub fn signal_window_kaiser_table_make(size : Int) -> SignalwindowkaiserTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_table_len(s : SignalwindowkaiserTable) -> Int { s.size }
+pub fn SignalwindowkaiserTable::len(self : SignalwindowkaiserTable) -> Int { self.size }
 
-pub fn signal_window_kaiser_table_get(s : SignalwindowkaiserTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserTable::get(self : SignalwindowkaiserTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_table_set(s : SignalwindowkaiserTable, i : Int, v : Double) -> SignalwindowkaiserTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserTable::set(self : SignalwindowkaiserTable, i : Int, v : Double) -> SignalwindowkaiserTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_table_sum(s : SignalwindowkaiserTable) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserTable::sum(self : SignalwindowkaiserTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_table_mean(s : SignalwindowkaiserTable) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserTable::mean(self : SignalwindowkaiserTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_table_scale(s : SignalwindowkaiserTable, f : Double) -> SignalwindowkaiserTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserTable::scale(self : SignalwindowkaiserTable, f : Double) -> SignalwindowkaiserTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_table_add(a : SignalwindowkaiserTable, b : SignalwindowkaiserTable) -> SignalwindowkaiserTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserTable::add(self : SignalwindowkaiserTable, other : SignalwindowkaiserTable) -> SignalwindowkaiserTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_table_copy(s : SignalwindowkaiserTable) -> SignalwindowkaiserTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserTable::copy(self : SignalwindowkaiserTable) -> SignalwindowkaiserTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_table_fill(s : SignalwindowkaiserTable, v : Double) -> SignalwindowkaiserTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserTable::fill(self : SignalwindowkaiserTable, v : Double) -> SignalwindowkaiserTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_table_min(s : SignalwindowkaiserTable) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserTable::min(self : SignalwindowkaiserTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_table_max(s : SignalwindowkaiserTable) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserTable::max(self : SignalwindowkaiserTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_table_to_string(s : SignalwindowkaiserTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserTable::to_string(self : SignalwindowkaiserTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserGraphN {
@@ -453,45 +453,45 @@ pub fn signal_window_kaiser_graphn_make(size : Int) -> SignalwindowkaiserGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_graphn_len(s : SignalwindowkaiserGraphN) -> Int { s.size }
+pub fn SignalwindowkaiserGraphN::len(self : SignalwindowkaiserGraphN) -> Int { self.size }
 
-pub fn signal_window_kaiser_graphn_get(s : SignalwindowkaiserGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserGraphN::get(self : SignalwindowkaiserGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_graphn_set(s : SignalwindowkaiserGraphN, i : Int, v : Double) -> SignalwindowkaiserGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserGraphN::set(self : SignalwindowkaiserGraphN, i : Int, v : Double) -> SignalwindowkaiserGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_graphn_sum(s : SignalwindowkaiserGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserGraphN::sum(self : SignalwindowkaiserGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_graphn_mean(s : SignalwindowkaiserGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserGraphN::mean(self : SignalwindowkaiserGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_graphn_scale(s : SignalwindowkaiserGraphN, f : Double) -> SignalwindowkaiserGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserGraphN::scale(self : SignalwindowkaiserGraphN, f : Double) -> SignalwindowkaiserGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_graphn_add(a : SignalwindowkaiserGraphN, b : SignalwindowkaiserGraphN) -> SignalwindowkaiserGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserGraphN::add(self : SignalwindowkaiserGraphN, other : SignalwindowkaiserGraphN) -> SignalwindowkaiserGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_graphn_copy(s : SignalwindowkaiserGraphN) -> SignalwindowkaiserGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserGraphN::copy(self : SignalwindowkaiserGraphN) -> SignalwindowkaiserGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_graphn_fill(s : SignalwindowkaiserGraphN, v : Double) -> SignalwindowkaiserGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserGraphN::fill(self : SignalwindowkaiserGraphN, v : Double) -> SignalwindowkaiserGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_graphn_min(s : SignalwindowkaiserGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserGraphN::min(self : SignalwindowkaiserGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_graphn_max(s : SignalwindowkaiserGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserGraphN::max(self : SignalwindowkaiserGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_graphn_to_string(s : SignalwindowkaiserGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserGraphN::to_string(self : SignalwindowkaiserGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserNode {
@@ -504,45 +504,45 @@ pub fn signal_window_kaiser_node_make(size : Int) -> SignalwindowkaiserNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_node_len(s : SignalwindowkaiserNode) -> Int { s.size }
+pub fn SignalwindowkaiserNode::len(self : SignalwindowkaiserNode) -> Int { self.size }
 
-pub fn signal_window_kaiser_node_get(s : SignalwindowkaiserNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserNode::get(self : SignalwindowkaiserNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_node_set(s : SignalwindowkaiserNode, i : Int, v : Double) -> SignalwindowkaiserNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserNode::set(self : SignalwindowkaiserNode, i : Int, v : Double) -> SignalwindowkaiserNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_node_sum(s : SignalwindowkaiserNode) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserNode::sum(self : SignalwindowkaiserNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_node_mean(s : SignalwindowkaiserNode) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserNode::mean(self : SignalwindowkaiserNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_node_scale(s : SignalwindowkaiserNode, f : Double) -> SignalwindowkaiserNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserNode::scale(self : SignalwindowkaiserNode, f : Double) -> SignalwindowkaiserNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_node_add(a : SignalwindowkaiserNode, b : SignalwindowkaiserNode) -> SignalwindowkaiserNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserNode::add(self : SignalwindowkaiserNode, other : SignalwindowkaiserNode) -> SignalwindowkaiserNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_node_copy(s : SignalwindowkaiserNode) -> SignalwindowkaiserNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserNode::copy(self : SignalwindowkaiserNode) -> SignalwindowkaiserNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_node_fill(s : SignalwindowkaiserNode, v : Double) -> SignalwindowkaiserNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserNode::fill(self : SignalwindowkaiserNode, v : Double) -> SignalwindowkaiserNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_node_min(s : SignalwindowkaiserNode) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserNode::min(self : SignalwindowkaiserNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_node_max(s : SignalwindowkaiserNode) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserNode::max(self : SignalwindowkaiserNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_node_to_string(s : SignalwindowkaiserNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserNode::to_string(self : SignalwindowkaiserNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserEdge {
@@ -555,45 +555,45 @@ pub fn signal_window_kaiser_edge_make(size : Int) -> SignalwindowkaiserEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_edge_len(s : SignalwindowkaiserEdge) -> Int { s.size }
+pub fn SignalwindowkaiserEdge::len(self : SignalwindowkaiserEdge) -> Int { self.size }
 
-pub fn signal_window_kaiser_edge_get(s : SignalwindowkaiserEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserEdge::get(self : SignalwindowkaiserEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_edge_set(s : SignalwindowkaiserEdge, i : Int, v : Double) -> SignalwindowkaiserEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserEdge::set(self : SignalwindowkaiserEdge, i : Int, v : Double) -> SignalwindowkaiserEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_edge_sum(s : SignalwindowkaiserEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserEdge::sum(self : SignalwindowkaiserEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_edge_mean(s : SignalwindowkaiserEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserEdge::mean(self : SignalwindowkaiserEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_edge_scale(s : SignalwindowkaiserEdge, f : Double) -> SignalwindowkaiserEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserEdge::scale(self : SignalwindowkaiserEdge, f : Double) -> SignalwindowkaiserEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_edge_add(a : SignalwindowkaiserEdge, b : SignalwindowkaiserEdge) -> SignalwindowkaiserEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserEdge::add(self : SignalwindowkaiserEdge, other : SignalwindowkaiserEdge) -> SignalwindowkaiserEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_edge_copy(s : SignalwindowkaiserEdge) -> SignalwindowkaiserEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserEdge::copy(self : SignalwindowkaiserEdge) -> SignalwindowkaiserEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_edge_fill(s : SignalwindowkaiserEdge, v : Double) -> SignalwindowkaiserEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserEdge::fill(self : SignalwindowkaiserEdge, v : Double) -> SignalwindowkaiserEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_edge_min(s : SignalwindowkaiserEdge) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserEdge::min(self : SignalwindowkaiserEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_edge_max(s : SignalwindowkaiserEdge) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserEdge::max(self : SignalwindowkaiserEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_edge_to_string(s : SignalwindowkaiserEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserEdge::to_string(self : SignalwindowkaiserEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserPath {
@@ -606,45 +606,45 @@ pub fn signal_window_kaiser_path_make(size : Int) -> SignalwindowkaiserPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_path_len(s : SignalwindowkaiserPath) -> Int { s.size }
+pub fn SignalwindowkaiserPath::len(self : SignalwindowkaiserPath) -> Int { self.size }
 
-pub fn signal_window_kaiser_path_get(s : SignalwindowkaiserPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserPath::get(self : SignalwindowkaiserPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_path_set(s : SignalwindowkaiserPath, i : Int, v : Double) -> SignalwindowkaiserPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserPath::set(self : SignalwindowkaiserPath, i : Int, v : Double) -> SignalwindowkaiserPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_path_sum(s : SignalwindowkaiserPath) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserPath::sum(self : SignalwindowkaiserPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_path_mean(s : SignalwindowkaiserPath) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserPath::mean(self : SignalwindowkaiserPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_path_scale(s : SignalwindowkaiserPath, f : Double) -> SignalwindowkaiserPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserPath::scale(self : SignalwindowkaiserPath, f : Double) -> SignalwindowkaiserPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_path_add(a : SignalwindowkaiserPath, b : SignalwindowkaiserPath) -> SignalwindowkaiserPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserPath::add(self : SignalwindowkaiserPath, other : SignalwindowkaiserPath) -> SignalwindowkaiserPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_path_copy(s : SignalwindowkaiserPath) -> SignalwindowkaiserPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserPath::copy(self : SignalwindowkaiserPath) -> SignalwindowkaiserPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_path_fill(s : SignalwindowkaiserPath, v : Double) -> SignalwindowkaiserPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserPath::fill(self : SignalwindowkaiserPath, v : Double) -> SignalwindowkaiserPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_path_min(s : SignalwindowkaiserPath) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserPath::min(self : SignalwindowkaiserPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_path_max(s : SignalwindowkaiserPath) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserPath::max(self : SignalwindowkaiserPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_path_to_string(s : SignalwindowkaiserPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserPath::to_string(self : SignalwindowkaiserPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserCluster {
@@ -657,45 +657,45 @@ pub fn signal_window_kaiser_cluster_make(size : Int) -> SignalwindowkaiserCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_cluster_len(s : SignalwindowkaiserCluster) -> Int { s.size }
+pub fn SignalwindowkaiserCluster::len(self : SignalwindowkaiserCluster) -> Int { self.size }
 
-pub fn signal_window_kaiser_cluster_get(s : SignalwindowkaiserCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserCluster::get(self : SignalwindowkaiserCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_cluster_set(s : SignalwindowkaiserCluster, i : Int, v : Double) -> SignalwindowkaiserCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserCluster::set(self : SignalwindowkaiserCluster, i : Int, v : Double) -> SignalwindowkaiserCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_cluster_sum(s : SignalwindowkaiserCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserCluster::sum(self : SignalwindowkaiserCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_cluster_mean(s : SignalwindowkaiserCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserCluster::mean(self : SignalwindowkaiserCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_cluster_scale(s : SignalwindowkaiserCluster, f : Double) -> SignalwindowkaiserCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserCluster::scale(self : SignalwindowkaiserCluster, f : Double) -> SignalwindowkaiserCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_cluster_add(a : SignalwindowkaiserCluster, b : SignalwindowkaiserCluster) -> SignalwindowkaiserCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserCluster::add(self : SignalwindowkaiserCluster, other : SignalwindowkaiserCluster) -> SignalwindowkaiserCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_cluster_copy(s : SignalwindowkaiserCluster) -> SignalwindowkaiserCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserCluster::copy(self : SignalwindowkaiserCluster) -> SignalwindowkaiserCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_cluster_fill(s : SignalwindowkaiserCluster, v : Double) -> SignalwindowkaiserCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserCluster::fill(self : SignalwindowkaiserCluster, v : Double) -> SignalwindowkaiserCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_cluster_min(s : SignalwindowkaiserCluster) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserCluster::min(self : SignalwindowkaiserCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_cluster_max(s : SignalwindowkaiserCluster) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserCluster::max(self : SignalwindowkaiserCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_cluster_to_string(s : SignalwindowkaiserCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserCluster::to_string(self : SignalwindowkaiserCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserModel {
@@ -708,45 +708,45 @@ pub fn signal_window_kaiser_model_make(size : Int) -> SignalwindowkaiserModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_model_len(s : SignalwindowkaiserModel) -> Int { s.size }
+pub fn SignalwindowkaiserModel::len(self : SignalwindowkaiserModel) -> Int { self.size }
 
-pub fn signal_window_kaiser_model_get(s : SignalwindowkaiserModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserModel::get(self : SignalwindowkaiserModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_model_set(s : SignalwindowkaiserModel, i : Int, v : Double) -> SignalwindowkaiserModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserModel::set(self : SignalwindowkaiserModel, i : Int, v : Double) -> SignalwindowkaiserModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_model_sum(s : SignalwindowkaiserModel) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserModel::sum(self : SignalwindowkaiserModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_model_mean(s : SignalwindowkaiserModel) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserModel::mean(self : SignalwindowkaiserModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_model_scale(s : SignalwindowkaiserModel, f : Double) -> SignalwindowkaiserModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserModel::scale(self : SignalwindowkaiserModel, f : Double) -> SignalwindowkaiserModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_model_add(a : SignalwindowkaiserModel, b : SignalwindowkaiserModel) -> SignalwindowkaiserModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserModel::add(self : SignalwindowkaiserModel, other : SignalwindowkaiserModel) -> SignalwindowkaiserModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_model_copy(s : SignalwindowkaiserModel) -> SignalwindowkaiserModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserModel::copy(self : SignalwindowkaiserModel) -> SignalwindowkaiserModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_model_fill(s : SignalwindowkaiserModel, v : Double) -> SignalwindowkaiserModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserModel::fill(self : SignalwindowkaiserModel, v : Double) -> SignalwindowkaiserModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_model_min(s : SignalwindowkaiserModel) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserModel::min(self : SignalwindowkaiserModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_model_max(s : SignalwindowkaiserModel) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserModel::max(self : SignalwindowkaiserModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_model_to_string(s : SignalwindowkaiserModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserModel::to_string(self : SignalwindowkaiserModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserLayer {
@@ -759,45 +759,45 @@ pub fn signal_window_kaiser_layer_make(size : Int) -> SignalwindowkaiserLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_layer_len(s : SignalwindowkaiserLayer) -> Int { s.size }
+pub fn SignalwindowkaiserLayer::len(self : SignalwindowkaiserLayer) -> Int { self.size }
 
-pub fn signal_window_kaiser_layer_get(s : SignalwindowkaiserLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserLayer::get(self : SignalwindowkaiserLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_layer_set(s : SignalwindowkaiserLayer, i : Int, v : Double) -> SignalwindowkaiserLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserLayer::set(self : SignalwindowkaiserLayer, i : Int, v : Double) -> SignalwindowkaiserLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_layer_sum(s : SignalwindowkaiserLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserLayer::sum(self : SignalwindowkaiserLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_layer_mean(s : SignalwindowkaiserLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserLayer::mean(self : SignalwindowkaiserLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_layer_scale(s : SignalwindowkaiserLayer, f : Double) -> SignalwindowkaiserLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserLayer::scale(self : SignalwindowkaiserLayer, f : Double) -> SignalwindowkaiserLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_layer_add(a : SignalwindowkaiserLayer, b : SignalwindowkaiserLayer) -> SignalwindowkaiserLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserLayer::add(self : SignalwindowkaiserLayer, other : SignalwindowkaiserLayer) -> SignalwindowkaiserLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_layer_copy(s : SignalwindowkaiserLayer) -> SignalwindowkaiserLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserLayer::copy(self : SignalwindowkaiserLayer) -> SignalwindowkaiserLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_layer_fill(s : SignalwindowkaiserLayer, v : Double) -> SignalwindowkaiserLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserLayer::fill(self : SignalwindowkaiserLayer, v : Double) -> SignalwindowkaiserLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_layer_min(s : SignalwindowkaiserLayer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserLayer::min(self : SignalwindowkaiserLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_layer_max(s : SignalwindowkaiserLayer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserLayer::max(self : SignalwindowkaiserLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_layer_to_string(s : SignalwindowkaiserLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserLayer::to_string(self : SignalwindowkaiserLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserBuffer {
@@ -810,45 +810,45 @@ pub fn signal_window_kaiser_buffer_make(size : Int) -> SignalwindowkaiserBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_buffer_len(s : SignalwindowkaiserBuffer) -> Int { s.size }
+pub fn SignalwindowkaiserBuffer::len(self : SignalwindowkaiserBuffer) -> Int { self.size }
 
-pub fn signal_window_kaiser_buffer_get(s : SignalwindowkaiserBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserBuffer::get(self : SignalwindowkaiserBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_buffer_set(s : SignalwindowkaiserBuffer, i : Int, v : Double) -> SignalwindowkaiserBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserBuffer::set(self : SignalwindowkaiserBuffer, i : Int, v : Double) -> SignalwindowkaiserBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_buffer_sum(s : SignalwindowkaiserBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserBuffer::sum(self : SignalwindowkaiserBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_buffer_mean(s : SignalwindowkaiserBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserBuffer::mean(self : SignalwindowkaiserBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_buffer_scale(s : SignalwindowkaiserBuffer, f : Double) -> SignalwindowkaiserBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserBuffer::scale(self : SignalwindowkaiserBuffer, f : Double) -> SignalwindowkaiserBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_buffer_add(a : SignalwindowkaiserBuffer, b : SignalwindowkaiserBuffer) -> SignalwindowkaiserBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserBuffer::add(self : SignalwindowkaiserBuffer, other : SignalwindowkaiserBuffer) -> SignalwindowkaiserBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_buffer_copy(s : SignalwindowkaiserBuffer) -> SignalwindowkaiserBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserBuffer::copy(self : SignalwindowkaiserBuffer) -> SignalwindowkaiserBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_buffer_fill(s : SignalwindowkaiserBuffer, v : Double) -> SignalwindowkaiserBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserBuffer::fill(self : SignalwindowkaiserBuffer, v : Double) -> SignalwindowkaiserBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_buffer_min(s : SignalwindowkaiserBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserBuffer::min(self : SignalwindowkaiserBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_buffer_max(s : SignalwindowkaiserBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserBuffer::max(self : SignalwindowkaiserBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_buffer_to_string(s : SignalwindowkaiserBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserBuffer::to_string(self : SignalwindowkaiserBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserCursor {
@@ -861,45 +861,45 @@ pub fn signal_window_kaiser_cursor_make(size : Int) -> SignalwindowkaiserCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_cursor_len(s : SignalwindowkaiserCursor) -> Int { s.size }
+pub fn SignalwindowkaiserCursor::len(self : SignalwindowkaiserCursor) -> Int { self.size }
 
-pub fn signal_window_kaiser_cursor_get(s : SignalwindowkaiserCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserCursor::get(self : SignalwindowkaiserCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_cursor_set(s : SignalwindowkaiserCursor, i : Int, v : Double) -> SignalwindowkaiserCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserCursor::set(self : SignalwindowkaiserCursor, i : Int, v : Double) -> SignalwindowkaiserCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_cursor_sum(s : SignalwindowkaiserCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserCursor::sum(self : SignalwindowkaiserCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_cursor_mean(s : SignalwindowkaiserCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserCursor::mean(self : SignalwindowkaiserCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_cursor_scale(s : SignalwindowkaiserCursor, f : Double) -> SignalwindowkaiserCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserCursor::scale(self : SignalwindowkaiserCursor, f : Double) -> SignalwindowkaiserCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_cursor_add(a : SignalwindowkaiserCursor, b : SignalwindowkaiserCursor) -> SignalwindowkaiserCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserCursor::add(self : SignalwindowkaiserCursor, other : SignalwindowkaiserCursor) -> SignalwindowkaiserCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_cursor_copy(s : SignalwindowkaiserCursor) -> SignalwindowkaiserCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserCursor::copy(self : SignalwindowkaiserCursor) -> SignalwindowkaiserCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_cursor_fill(s : SignalwindowkaiserCursor, v : Double) -> SignalwindowkaiserCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserCursor::fill(self : SignalwindowkaiserCursor, v : Double) -> SignalwindowkaiserCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_cursor_min(s : SignalwindowkaiserCursor) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserCursor::min(self : SignalwindowkaiserCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_cursor_max(s : SignalwindowkaiserCursor) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserCursor::max(self : SignalwindowkaiserCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_cursor_to_string(s : SignalwindowkaiserCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserCursor::to_string(self : SignalwindowkaiserCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserView {
@@ -912,45 +912,45 @@ pub fn signal_window_kaiser_view_make(size : Int) -> SignalwindowkaiserView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_view_len(s : SignalwindowkaiserView) -> Int { s.size }
+pub fn SignalwindowkaiserView::len(self : SignalwindowkaiserView) -> Int { self.size }
 
-pub fn signal_window_kaiser_view_get(s : SignalwindowkaiserView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserView::get(self : SignalwindowkaiserView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_view_set(s : SignalwindowkaiserView, i : Int, v : Double) -> SignalwindowkaiserView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserView::set(self : SignalwindowkaiserView, i : Int, v : Double) -> SignalwindowkaiserView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_view_sum(s : SignalwindowkaiserView) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserView::sum(self : SignalwindowkaiserView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_view_mean(s : SignalwindowkaiserView) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserView::mean(self : SignalwindowkaiserView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_view_scale(s : SignalwindowkaiserView, f : Double) -> SignalwindowkaiserView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserView::scale(self : SignalwindowkaiserView, f : Double) -> SignalwindowkaiserView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_view_add(a : SignalwindowkaiserView, b : SignalwindowkaiserView) -> SignalwindowkaiserView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserView::add(self : SignalwindowkaiserView, other : SignalwindowkaiserView) -> SignalwindowkaiserView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_view_copy(s : SignalwindowkaiserView) -> SignalwindowkaiserView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserView::copy(self : SignalwindowkaiserView) -> SignalwindowkaiserView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_view_fill(s : SignalwindowkaiserView, v : Double) -> SignalwindowkaiserView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserView::fill(self : SignalwindowkaiserView, v : Double) -> SignalwindowkaiserView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_view_min(s : SignalwindowkaiserView) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserView::min(self : SignalwindowkaiserView) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_view_max(s : SignalwindowkaiserView) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserView::max(self : SignalwindowkaiserView) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_view_to_string(s : SignalwindowkaiserView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserView::to_string(self : SignalwindowkaiserView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserRange {
@@ -963,45 +963,45 @@ pub fn signal_window_kaiser_range_make(size : Int) -> SignalwindowkaiserRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_range_len(s : SignalwindowkaiserRange) -> Int { s.size }
+pub fn SignalwindowkaiserRange::len(self : SignalwindowkaiserRange) -> Int { self.size }
 
-pub fn signal_window_kaiser_range_get(s : SignalwindowkaiserRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserRange::get(self : SignalwindowkaiserRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_range_set(s : SignalwindowkaiserRange, i : Int, v : Double) -> SignalwindowkaiserRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserRange::set(self : SignalwindowkaiserRange, i : Int, v : Double) -> SignalwindowkaiserRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_range_sum(s : SignalwindowkaiserRange) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserRange::sum(self : SignalwindowkaiserRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_range_mean(s : SignalwindowkaiserRange) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserRange::mean(self : SignalwindowkaiserRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_range_scale(s : SignalwindowkaiserRange, f : Double) -> SignalwindowkaiserRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserRange::scale(self : SignalwindowkaiserRange, f : Double) -> SignalwindowkaiserRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_range_add(a : SignalwindowkaiserRange, b : SignalwindowkaiserRange) -> SignalwindowkaiserRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserRange::add(self : SignalwindowkaiserRange, other : SignalwindowkaiserRange) -> SignalwindowkaiserRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_range_copy(s : SignalwindowkaiserRange) -> SignalwindowkaiserRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserRange::copy(self : SignalwindowkaiserRange) -> SignalwindowkaiserRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_range_fill(s : SignalwindowkaiserRange, v : Double) -> SignalwindowkaiserRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserRange::fill(self : SignalwindowkaiserRange, v : Double) -> SignalwindowkaiserRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_range_min(s : SignalwindowkaiserRange) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserRange::min(self : SignalwindowkaiserRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_range_max(s : SignalwindowkaiserRange) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserRange::max(self : SignalwindowkaiserRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_range_to_string(s : SignalwindowkaiserRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserRange::to_string(self : SignalwindowkaiserRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_window_kaiser_slice_make(size : Int) -> SignalwindowkaiserSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_kaiser_slice_len(s : SignalwindowkaiserSlice) -> Int { s.size }
+pub fn SignalwindowkaiserSlice::len(self : SignalwindowkaiserSlice) -> Int { self.size }
 
-pub fn signal_window_kaiser_slice_get(s : SignalwindowkaiserSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowkaiserSlice::get(self : SignalwindowkaiserSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_kaiser_slice_set(s : SignalwindowkaiserSlice, i : Int, v : Double) -> SignalwindowkaiserSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserSlice::set(self : SignalwindowkaiserSlice, i : Int, v : Double) -> SignalwindowkaiserSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_slice_sum(s : SignalwindowkaiserSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowkaiserSlice::sum(self : SignalwindowkaiserSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_kaiser_slice_mean(s : SignalwindowkaiserSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowkaiserSlice::mean(self : SignalwindowkaiserSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_kaiser_slice_scale(s : SignalwindowkaiserSlice, f : Double) -> SignalwindowkaiserSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserSlice::scale(self : SignalwindowkaiserSlice, f : Double) -> SignalwindowkaiserSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_slice_add(a : SignalwindowkaiserSlice, b : SignalwindowkaiserSlice) -> SignalwindowkaiserSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowkaiserSlice::add(self : SignalwindowkaiserSlice, other : SignalwindowkaiserSlice) -> SignalwindowkaiserSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_slice_copy(s : SignalwindowkaiserSlice) -> SignalwindowkaiserSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserSlice::copy(self : SignalwindowkaiserSlice) -> SignalwindowkaiserSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_slice_fill(s : SignalwindowkaiserSlice, v : Double) -> SignalwindowkaiserSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowkaiserSlice::fill(self : SignalwindowkaiserSlice, v : Double) -> SignalwindowkaiserSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_kaiser_slice_min(s : SignalwindowkaiserSlice) -> Double { @_common.min(s.data) }
+pub fn SignalwindowkaiserSlice::min(self : SignalwindowkaiserSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_kaiser_slice_max(s : SignalwindowkaiserSlice) -> Double { @_common.max(s.data) }
+pub fn SignalwindowkaiserSlice::max(self : SignalwindowkaiserSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_kaiser_slice_to_string(s : SignalwindowkaiserSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowkaiserSlice::to_string(self : SignalwindowkaiserSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

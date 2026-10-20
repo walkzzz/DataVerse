@@ -351,45 +351,45 @@ pub fn finance_portfolio_factor_frame_make(size : Int) -> Financeportfoliofactor
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_frame_len(s : FinanceportfoliofactorFrame) -> Int { s.size }
+pub fn FinanceportfoliofactorFrame::len(self : FinanceportfoliofactorFrame) -> Int { self.size }
 
-pub fn finance_portfolio_factor_frame_get(s : FinanceportfoliofactorFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorFrame::get(self : FinanceportfoliofactorFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_frame_set(s : FinanceportfoliofactorFrame, i : Int, v : Double) -> FinanceportfoliofactorFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorFrame::set(self : FinanceportfoliofactorFrame, i : Int, v : Double) -> FinanceportfoliofactorFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_frame_sum(s : FinanceportfoliofactorFrame) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorFrame::sum(self : FinanceportfoliofactorFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_frame_mean(s : FinanceportfoliofactorFrame) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorFrame::mean(self : FinanceportfoliofactorFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_frame_scale(s : FinanceportfoliofactorFrame, f : Double) -> FinanceportfoliofactorFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorFrame::scale(self : FinanceportfoliofactorFrame, f : Double) -> FinanceportfoliofactorFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_frame_add(a : FinanceportfoliofactorFrame, b : FinanceportfoliofactorFrame) -> FinanceportfoliofactorFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorFrame::add(self : FinanceportfoliofactorFrame, other : FinanceportfoliofactorFrame) -> FinanceportfoliofactorFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_frame_copy(s : FinanceportfoliofactorFrame) -> FinanceportfoliofactorFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorFrame::copy(self : FinanceportfoliofactorFrame) -> FinanceportfoliofactorFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_frame_fill(s : FinanceportfoliofactorFrame, v : Double) -> FinanceportfoliofactorFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorFrame::fill(self : FinanceportfoliofactorFrame, v : Double) -> FinanceportfoliofactorFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_frame_min(s : FinanceportfoliofactorFrame) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorFrame::min(self : FinanceportfoliofactorFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_frame_max(s : FinanceportfoliofactorFrame) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorFrame::max(self : FinanceportfoliofactorFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_frame_to_string(s : FinanceportfoliofactorFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorFrame::to_string(self : FinanceportfoliofactorFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorTable {
@@ -402,45 +402,45 @@ pub fn finance_portfolio_factor_table_make(size : Int) -> Financeportfoliofactor
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_table_len(s : FinanceportfoliofactorTable) -> Int { s.size }
+pub fn FinanceportfoliofactorTable::len(self : FinanceportfoliofactorTable) -> Int { self.size }
 
-pub fn finance_portfolio_factor_table_get(s : FinanceportfoliofactorTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorTable::get(self : FinanceportfoliofactorTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_table_set(s : FinanceportfoliofactorTable, i : Int, v : Double) -> FinanceportfoliofactorTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorTable::set(self : FinanceportfoliofactorTable, i : Int, v : Double) -> FinanceportfoliofactorTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_table_sum(s : FinanceportfoliofactorTable) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorTable::sum(self : FinanceportfoliofactorTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_table_mean(s : FinanceportfoliofactorTable) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorTable::mean(self : FinanceportfoliofactorTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_table_scale(s : FinanceportfoliofactorTable, f : Double) -> FinanceportfoliofactorTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorTable::scale(self : FinanceportfoliofactorTable, f : Double) -> FinanceportfoliofactorTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_table_add(a : FinanceportfoliofactorTable, b : FinanceportfoliofactorTable) -> FinanceportfoliofactorTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorTable::add(self : FinanceportfoliofactorTable, other : FinanceportfoliofactorTable) -> FinanceportfoliofactorTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_table_copy(s : FinanceportfoliofactorTable) -> FinanceportfoliofactorTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorTable::copy(self : FinanceportfoliofactorTable) -> FinanceportfoliofactorTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_table_fill(s : FinanceportfoliofactorTable, v : Double) -> FinanceportfoliofactorTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorTable::fill(self : FinanceportfoliofactorTable, v : Double) -> FinanceportfoliofactorTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_table_min(s : FinanceportfoliofactorTable) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorTable::min(self : FinanceportfoliofactorTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_table_max(s : FinanceportfoliofactorTable) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorTable::max(self : FinanceportfoliofactorTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_table_to_string(s : FinanceportfoliofactorTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorTable::to_string(self : FinanceportfoliofactorTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorGraphN {
@@ -453,45 +453,45 @@ pub fn finance_portfolio_factor_graphn_make(size : Int) -> Financeportfoliofacto
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_graphn_len(s : FinanceportfoliofactorGraphN) -> Int { s.size }
+pub fn FinanceportfoliofactorGraphN::len(self : FinanceportfoliofactorGraphN) -> Int { self.size }
 
-pub fn finance_portfolio_factor_graphn_get(s : FinanceportfoliofactorGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorGraphN::get(self : FinanceportfoliofactorGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_graphn_set(s : FinanceportfoliofactorGraphN, i : Int, v : Double) -> FinanceportfoliofactorGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorGraphN::set(self : FinanceportfoliofactorGraphN, i : Int, v : Double) -> FinanceportfoliofactorGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_graphn_sum(s : FinanceportfoliofactorGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorGraphN::sum(self : FinanceportfoliofactorGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_graphn_mean(s : FinanceportfoliofactorGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorGraphN::mean(self : FinanceportfoliofactorGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_graphn_scale(s : FinanceportfoliofactorGraphN, f : Double) -> FinanceportfoliofactorGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorGraphN::scale(self : FinanceportfoliofactorGraphN, f : Double) -> FinanceportfoliofactorGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_graphn_add(a : FinanceportfoliofactorGraphN, b : FinanceportfoliofactorGraphN) -> FinanceportfoliofactorGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorGraphN::add(self : FinanceportfoliofactorGraphN, other : FinanceportfoliofactorGraphN) -> FinanceportfoliofactorGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_graphn_copy(s : FinanceportfoliofactorGraphN) -> FinanceportfoliofactorGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorGraphN::copy(self : FinanceportfoliofactorGraphN) -> FinanceportfoliofactorGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_graphn_fill(s : FinanceportfoliofactorGraphN, v : Double) -> FinanceportfoliofactorGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorGraphN::fill(self : FinanceportfoliofactorGraphN, v : Double) -> FinanceportfoliofactorGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_graphn_min(s : FinanceportfoliofactorGraphN) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorGraphN::min(self : FinanceportfoliofactorGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_graphn_max(s : FinanceportfoliofactorGraphN) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorGraphN::max(self : FinanceportfoliofactorGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_graphn_to_string(s : FinanceportfoliofactorGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorGraphN::to_string(self : FinanceportfoliofactorGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorNode {
@@ -504,45 +504,45 @@ pub fn finance_portfolio_factor_node_make(size : Int) -> FinanceportfoliofactorN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_node_len(s : FinanceportfoliofactorNode) -> Int { s.size }
+pub fn FinanceportfoliofactorNode::len(self : FinanceportfoliofactorNode) -> Int { self.size }
 
-pub fn finance_portfolio_factor_node_get(s : FinanceportfoliofactorNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorNode::get(self : FinanceportfoliofactorNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_node_set(s : FinanceportfoliofactorNode, i : Int, v : Double) -> FinanceportfoliofactorNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorNode::set(self : FinanceportfoliofactorNode, i : Int, v : Double) -> FinanceportfoliofactorNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_node_sum(s : FinanceportfoliofactorNode) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorNode::sum(self : FinanceportfoliofactorNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_node_mean(s : FinanceportfoliofactorNode) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorNode::mean(self : FinanceportfoliofactorNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_node_scale(s : FinanceportfoliofactorNode, f : Double) -> FinanceportfoliofactorNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorNode::scale(self : FinanceportfoliofactorNode, f : Double) -> FinanceportfoliofactorNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_node_add(a : FinanceportfoliofactorNode, b : FinanceportfoliofactorNode) -> FinanceportfoliofactorNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorNode::add(self : FinanceportfoliofactorNode, other : FinanceportfoliofactorNode) -> FinanceportfoliofactorNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_node_copy(s : FinanceportfoliofactorNode) -> FinanceportfoliofactorNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorNode::copy(self : FinanceportfoliofactorNode) -> FinanceportfoliofactorNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_node_fill(s : FinanceportfoliofactorNode, v : Double) -> FinanceportfoliofactorNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorNode::fill(self : FinanceportfoliofactorNode, v : Double) -> FinanceportfoliofactorNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_node_min(s : FinanceportfoliofactorNode) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorNode::min(self : FinanceportfoliofactorNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_node_max(s : FinanceportfoliofactorNode) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorNode::max(self : FinanceportfoliofactorNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_node_to_string(s : FinanceportfoliofactorNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorNode::to_string(self : FinanceportfoliofactorNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorEdge {
@@ -555,45 +555,45 @@ pub fn finance_portfolio_factor_edge_make(size : Int) -> FinanceportfoliofactorE
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_edge_len(s : FinanceportfoliofactorEdge) -> Int { s.size }
+pub fn FinanceportfoliofactorEdge::len(self : FinanceportfoliofactorEdge) -> Int { self.size }
 
-pub fn finance_portfolio_factor_edge_get(s : FinanceportfoliofactorEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorEdge::get(self : FinanceportfoliofactorEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_edge_set(s : FinanceportfoliofactorEdge, i : Int, v : Double) -> FinanceportfoliofactorEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorEdge::set(self : FinanceportfoliofactorEdge, i : Int, v : Double) -> FinanceportfoliofactorEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_edge_sum(s : FinanceportfoliofactorEdge) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorEdge::sum(self : FinanceportfoliofactorEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_edge_mean(s : FinanceportfoliofactorEdge) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorEdge::mean(self : FinanceportfoliofactorEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_edge_scale(s : FinanceportfoliofactorEdge, f : Double) -> FinanceportfoliofactorEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorEdge::scale(self : FinanceportfoliofactorEdge, f : Double) -> FinanceportfoliofactorEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_edge_add(a : FinanceportfoliofactorEdge, b : FinanceportfoliofactorEdge) -> FinanceportfoliofactorEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorEdge::add(self : FinanceportfoliofactorEdge, other : FinanceportfoliofactorEdge) -> FinanceportfoliofactorEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_edge_copy(s : FinanceportfoliofactorEdge) -> FinanceportfoliofactorEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorEdge::copy(self : FinanceportfoliofactorEdge) -> FinanceportfoliofactorEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_edge_fill(s : FinanceportfoliofactorEdge, v : Double) -> FinanceportfoliofactorEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorEdge::fill(self : FinanceportfoliofactorEdge, v : Double) -> FinanceportfoliofactorEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_edge_min(s : FinanceportfoliofactorEdge) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorEdge::min(self : FinanceportfoliofactorEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_edge_max(s : FinanceportfoliofactorEdge) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorEdge::max(self : FinanceportfoliofactorEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_edge_to_string(s : FinanceportfoliofactorEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorEdge::to_string(self : FinanceportfoliofactorEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorPath {
@@ -606,45 +606,45 @@ pub fn finance_portfolio_factor_path_make(size : Int) -> FinanceportfoliofactorP
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_path_len(s : FinanceportfoliofactorPath) -> Int { s.size }
+pub fn FinanceportfoliofactorPath::len(self : FinanceportfoliofactorPath) -> Int { self.size }
 
-pub fn finance_portfolio_factor_path_get(s : FinanceportfoliofactorPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorPath::get(self : FinanceportfoliofactorPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_path_set(s : FinanceportfoliofactorPath, i : Int, v : Double) -> FinanceportfoliofactorPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorPath::set(self : FinanceportfoliofactorPath, i : Int, v : Double) -> FinanceportfoliofactorPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_path_sum(s : FinanceportfoliofactorPath) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorPath::sum(self : FinanceportfoliofactorPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_path_mean(s : FinanceportfoliofactorPath) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorPath::mean(self : FinanceportfoliofactorPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_path_scale(s : FinanceportfoliofactorPath, f : Double) -> FinanceportfoliofactorPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorPath::scale(self : FinanceportfoliofactorPath, f : Double) -> FinanceportfoliofactorPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_path_add(a : FinanceportfoliofactorPath, b : FinanceportfoliofactorPath) -> FinanceportfoliofactorPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorPath::add(self : FinanceportfoliofactorPath, other : FinanceportfoliofactorPath) -> FinanceportfoliofactorPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_path_copy(s : FinanceportfoliofactorPath) -> FinanceportfoliofactorPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorPath::copy(self : FinanceportfoliofactorPath) -> FinanceportfoliofactorPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_path_fill(s : FinanceportfoliofactorPath, v : Double) -> FinanceportfoliofactorPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorPath::fill(self : FinanceportfoliofactorPath, v : Double) -> FinanceportfoliofactorPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_path_min(s : FinanceportfoliofactorPath) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorPath::min(self : FinanceportfoliofactorPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_path_max(s : FinanceportfoliofactorPath) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorPath::max(self : FinanceportfoliofactorPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_path_to_string(s : FinanceportfoliofactorPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorPath::to_string(self : FinanceportfoliofactorPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorCluster {
@@ -657,45 +657,45 @@ pub fn finance_portfolio_factor_cluster_make(size : Int) -> Financeportfoliofact
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_cluster_len(s : FinanceportfoliofactorCluster) -> Int { s.size }
+pub fn FinanceportfoliofactorCluster::len(self : FinanceportfoliofactorCluster) -> Int { self.size }
 
-pub fn finance_portfolio_factor_cluster_get(s : FinanceportfoliofactorCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorCluster::get(self : FinanceportfoliofactorCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_cluster_set(s : FinanceportfoliofactorCluster, i : Int, v : Double) -> FinanceportfoliofactorCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorCluster::set(self : FinanceportfoliofactorCluster, i : Int, v : Double) -> FinanceportfoliofactorCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_cluster_sum(s : FinanceportfoliofactorCluster) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorCluster::sum(self : FinanceportfoliofactorCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_cluster_mean(s : FinanceportfoliofactorCluster) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorCluster::mean(self : FinanceportfoliofactorCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_cluster_scale(s : FinanceportfoliofactorCluster, f : Double) -> FinanceportfoliofactorCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorCluster::scale(self : FinanceportfoliofactorCluster, f : Double) -> FinanceportfoliofactorCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_cluster_add(a : FinanceportfoliofactorCluster, b : FinanceportfoliofactorCluster) -> FinanceportfoliofactorCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorCluster::add(self : FinanceportfoliofactorCluster, other : FinanceportfoliofactorCluster) -> FinanceportfoliofactorCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_cluster_copy(s : FinanceportfoliofactorCluster) -> FinanceportfoliofactorCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorCluster::copy(self : FinanceportfoliofactorCluster) -> FinanceportfoliofactorCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_cluster_fill(s : FinanceportfoliofactorCluster, v : Double) -> FinanceportfoliofactorCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorCluster::fill(self : FinanceportfoliofactorCluster, v : Double) -> FinanceportfoliofactorCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_cluster_min(s : FinanceportfoliofactorCluster) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorCluster::min(self : FinanceportfoliofactorCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_cluster_max(s : FinanceportfoliofactorCluster) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorCluster::max(self : FinanceportfoliofactorCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_cluster_to_string(s : FinanceportfoliofactorCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorCluster::to_string(self : FinanceportfoliofactorCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorModel {
@@ -708,45 +708,45 @@ pub fn finance_portfolio_factor_model_make(size : Int) -> Financeportfoliofactor
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_model_len(s : FinanceportfoliofactorModel) -> Int { s.size }
+pub fn FinanceportfoliofactorModel::len(self : FinanceportfoliofactorModel) -> Int { self.size }
 
-pub fn finance_portfolio_factor_model_get(s : FinanceportfoliofactorModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorModel::get(self : FinanceportfoliofactorModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_model_set(s : FinanceportfoliofactorModel, i : Int, v : Double) -> FinanceportfoliofactorModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorModel::set(self : FinanceportfoliofactorModel, i : Int, v : Double) -> FinanceportfoliofactorModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_model_sum(s : FinanceportfoliofactorModel) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorModel::sum(self : FinanceportfoliofactorModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_model_mean(s : FinanceportfoliofactorModel) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorModel::mean(self : FinanceportfoliofactorModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_model_scale(s : FinanceportfoliofactorModel, f : Double) -> FinanceportfoliofactorModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorModel::scale(self : FinanceportfoliofactorModel, f : Double) -> FinanceportfoliofactorModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_model_add(a : FinanceportfoliofactorModel, b : FinanceportfoliofactorModel) -> FinanceportfoliofactorModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorModel::add(self : FinanceportfoliofactorModel, other : FinanceportfoliofactorModel) -> FinanceportfoliofactorModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_model_copy(s : FinanceportfoliofactorModel) -> FinanceportfoliofactorModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorModel::copy(self : FinanceportfoliofactorModel) -> FinanceportfoliofactorModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_model_fill(s : FinanceportfoliofactorModel, v : Double) -> FinanceportfoliofactorModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorModel::fill(self : FinanceportfoliofactorModel, v : Double) -> FinanceportfoliofactorModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_model_min(s : FinanceportfoliofactorModel) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorModel::min(self : FinanceportfoliofactorModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_model_max(s : FinanceportfoliofactorModel) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorModel::max(self : FinanceportfoliofactorModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_model_to_string(s : FinanceportfoliofactorModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorModel::to_string(self : FinanceportfoliofactorModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorLayer {
@@ -759,45 +759,45 @@ pub fn finance_portfolio_factor_layer_make(size : Int) -> Financeportfoliofactor
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_layer_len(s : FinanceportfoliofactorLayer) -> Int { s.size }
+pub fn FinanceportfoliofactorLayer::len(self : FinanceportfoliofactorLayer) -> Int { self.size }
 
-pub fn finance_portfolio_factor_layer_get(s : FinanceportfoliofactorLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorLayer::get(self : FinanceportfoliofactorLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_layer_set(s : FinanceportfoliofactorLayer, i : Int, v : Double) -> FinanceportfoliofactorLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorLayer::set(self : FinanceportfoliofactorLayer, i : Int, v : Double) -> FinanceportfoliofactorLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_layer_sum(s : FinanceportfoliofactorLayer) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorLayer::sum(self : FinanceportfoliofactorLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_layer_mean(s : FinanceportfoliofactorLayer) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorLayer::mean(self : FinanceportfoliofactorLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_layer_scale(s : FinanceportfoliofactorLayer, f : Double) -> FinanceportfoliofactorLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorLayer::scale(self : FinanceportfoliofactorLayer, f : Double) -> FinanceportfoliofactorLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_layer_add(a : FinanceportfoliofactorLayer, b : FinanceportfoliofactorLayer) -> FinanceportfoliofactorLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorLayer::add(self : FinanceportfoliofactorLayer, other : FinanceportfoliofactorLayer) -> FinanceportfoliofactorLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_layer_copy(s : FinanceportfoliofactorLayer) -> FinanceportfoliofactorLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorLayer::copy(self : FinanceportfoliofactorLayer) -> FinanceportfoliofactorLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_layer_fill(s : FinanceportfoliofactorLayer, v : Double) -> FinanceportfoliofactorLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorLayer::fill(self : FinanceportfoliofactorLayer, v : Double) -> FinanceportfoliofactorLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_layer_min(s : FinanceportfoliofactorLayer) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorLayer::min(self : FinanceportfoliofactorLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_layer_max(s : FinanceportfoliofactorLayer) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorLayer::max(self : FinanceportfoliofactorLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_layer_to_string(s : FinanceportfoliofactorLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorLayer::to_string(self : FinanceportfoliofactorLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorBuffer {
@@ -810,45 +810,45 @@ pub fn finance_portfolio_factor_buffer_make(size : Int) -> Financeportfoliofacto
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_buffer_len(s : FinanceportfoliofactorBuffer) -> Int { s.size }
+pub fn FinanceportfoliofactorBuffer::len(self : FinanceportfoliofactorBuffer) -> Int { self.size }
 
-pub fn finance_portfolio_factor_buffer_get(s : FinanceportfoliofactorBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorBuffer::get(self : FinanceportfoliofactorBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_buffer_set(s : FinanceportfoliofactorBuffer, i : Int, v : Double) -> FinanceportfoliofactorBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorBuffer::set(self : FinanceportfoliofactorBuffer, i : Int, v : Double) -> FinanceportfoliofactorBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_buffer_sum(s : FinanceportfoliofactorBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorBuffer::sum(self : FinanceportfoliofactorBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_buffer_mean(s : FinanceportfoliofactorBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorBuffer::mean(self : FinanceportfoliofactorBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_buffer_scale(s : FinanceportfoliofactorBuffer, f : Double) -> FinanceportfoliofactorBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorBuffer::scale(self : FinanceportfoliofactorBuffer, f : Double) -> FinanceportfoliofactorBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_buffer_add(a : FinanceportfoliofactorBuffer, b : FinanceportfoliofactorBuffer) -> FinanceportfoliofactorBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorBuffer::add(self : FinanceportfoliofactorBuffer, other : FinanceportfoliofactorBuffer) -> FinanceportfoliofactorBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_buffer_copy(s : FinanceportfoliofactorBuffer) -> FinanceportfoliofactorBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorBuffer::copy(self : FinanceportfoliofactorBuffer) -> FinanceportfoliofactorBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_buffer_fill(s : FinanceportfoliofactorBuffer, v : Double) -> FinanceportfoliofactorBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorBuffer::fill(self : FinanceportfoliofactorBuffer, v : Double) -> FinanceportfoliofactorBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_buffer_min(s : FinanceportfoliofactorBuffer) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorBuffer::min(self : FinanceportfoliofactorBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_buffer_max(s : FinanceportfoliofactorBuffer) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorBuffer::max(self : FinanceportfoliofactorBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_buffer_to_string(s : FinanceportfoliofactorBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorBuffer::to_string(self : FinanceportfoliofactorBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorCursor {
@@ -861,45 +861,45 @@ pub fn finance_portfolio_factor_cursor_make(size : Int) -> Financeportfoliofacto
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_cursor_len(s : FinanceportfoliofactorCursor) -> Int { s.size }
+pub fn FinanceportfoliofactorCursor::len(self : FinanceportfoliofactorCursor) -> Int { self.size }
 
-pub fn finance_portfolio_factor_cursor_get(s : FinanceportfoliofactorCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorCursor::get(self : FinanceportfoliofactorCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_cursor_set(s : FinanceportfoliofactorCursor, i : Int, v : Double) -> FinanceportfoliofactorCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorCursor::set(self : FinanceportfoliofactorCursor, i : Int, v : Double) -> FinanceportfoliofactorCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_cursor_sum(s : FinanceportfoliofactorCursor) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorCursor::sum(self : FinanceportfoliofactorCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_cursor_mean(s : FinanceportfoliofactorCursor) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorCursor::mean(self : FinanceportfoliofactorCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_cursor_scale(s : FinanceportfoliofactorCursor, f : Double) -> FinanceportfoliofactorCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorCursor::scale(self : FinanceportfoliofactorCursor, f : Double) -> FinanceportfoliofactorCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_cursor_add(a : FinanceportfoliofactorCursor, b : FinanceportfoliofactorCursor) -> FinanceportfoliofactorCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorCursor::add(self : FinanceportfoliofactorCursor, other : FinanceportfoliofactorCursor) -> FinanceportfoliofactorCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_cursor_copy(s : FinanceportfoliofactorCursor) -> FinanceportfoliofactorCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorCursor::copy(self : FinanceportfoliofactorCursor) -> FinanceportfoliofactorCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_cursor_fill(s : FinanceportfoliofactorCursor, v : Double) -> FinanceportfoliofactorCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorCursor::fill(self : FinanceportfoliofactorCursor, v : Double) -> FinanceportfoliofactorCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_cursor_min(s : FinanceportfoliofactorCursor) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorCursor::min(self : FinanceportfoliofactorCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_cursor_max(s : FinanceportfoliofactorCursor) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorCursor::max(self : FinanceportfoliofactorCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_cursor_to_string(s : FinanceportfoliofactorCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorCursor::to_string(self : FinanceportfoliofactorCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorView {
@@ -912,45 +912,45 @@ pub fn finance_portfolio_factor_view_make(size : Int) -> FinanceportfoliofactorV
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_view_len(s : FinanceportfoliofactorView) -> Int { s.size }
+pub fn FinanceportfoliofactorView::len(self : FinanceportfoliofactorView) -> Int { self.size }
 
-pub fn finance_portfolio_factor_view_get(s : FinanceportfoliofactorView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorView::get(self : FinanceportfoliofactorView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_view_set(s : FinanceportfoliofactorView, i : Int, v : Double) -> FinanceportfoliofactorView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorView::set(self : FinanceportfoliofactorView, i : Int, v : Double) -> FinanceportfoliofactorView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_view_sum(s : FinanceportfoliofactorView) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorView::sum(self : FinanceportfoliofactorView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_view_mean(s : FinanceportfoliofactorView) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorView::mean(self : FinanceportfoliofactorView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_view_scale(s : FinanceportfoliofactorView, f : Double) -> FinanceportfoliofactorView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorView::scale(self : FinanceportfoliofactorView, f : Double) -> FinanceportfoliofactorView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_view_add(a : FinanceportfoliofactorView, b : FinanceportfoliofactorView) -> FinanceportfoliofactorView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorView::add(self : FinanceportfoliofactorView, other : FinanceportfoliofactorView) -> FinanceportfoliofactorView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_view_copy(s : FinanceportfoliofactorView) -> FinanceportfoliofactorView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorView::copy(self : FinanceportfoliofactorView) -> FinanceportfoliofactorView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_view_fill(s : FinanceportfoliofactorView, v : Double) -> FinanceportfoliofactorView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorView::fill(self : FinanceportfoliofactorView, v : Double) -> FinanceportfoliofactorView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_view_min(s : FinanceportfoliofactorView) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorView::min(self : FinanceportfoliofactorView) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_view_max(s : FinanceportfoliofactorView) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorView::max(self : FinanceportfoliofactorView) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_view_to_string(s : FinanceportfoliofactorView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorView::to_string(self : FinanceportfoliofactorView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorRange {
@@ -963,45 +963,45 @@ pub fn finance_portfolio_factor_range_make(size : Int) -> Financeportfoliofactor
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_range_len(s : FinanceportfoliofactorRange) -> Int { s.size }
+pub fn FinanceportfoliofactorRange::len(self : FinanceportfoliofactorRange) -> Int { self.size }
 
-pub fn finance_portfolio_factor_range_get(s : FinanceportfoliofactorRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorRange::get(self : FinanceportfoliofactorRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_range_set(s : FinanceportfoliofactorRange, i : Int, v : Double) -> FinanceportfoliofactorRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorRange::set(self : FinanceportfoliofactorRange, i : Int, v : Double) -> FinanceportfoliofactorRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_range_sum(s : FinanceportfoliofactorRange) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorRange::sum(self : FinanceportfoliofactorRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_range_mean(s : FinanceportfoliofactorRange) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorRange::mean(self : FinanceportfoliofactorRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_range_scale(s : FinanceportfoliofactorRange, f : Double) -> FinanceportfoliofactorRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorRange::scale(self : FinanceportfoliofactorRange, f : Double) -> FinanceportfoliofactorRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_range_add(a : FinanceportfoliofactorRange, b : FinanceportfoliofactorRange) -> FinanceportfoliofactorRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorRange::add(self : FinanceportfoliofactorRange, other : FinanceportfoliofactorRange) -> FinanceportfoliofactorRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_range_copy(s : FinanceportfoliofactorRange) -> FinanceportfoliofactorRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorRange::copy(self : FinanceportfoliofactorRange) -> FinanceportfoliofactorRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_range_fill(s : FinanceportfoliofactorRange, v : Double) -> FinanceportfoliofactorRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorRange::fill(self : FinanceportfoliofactorRange, v : Double) -> FinanceportfoliofactorRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_range_min(s : FinanceportfoliofactorRange) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorRange::min(self : FinanceportfoliofactorRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_range_max(s : FinanceportfoliofactorRange) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorRange::max(self : FinanceportfoliofactorRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_range_to_string(s : FinanceportfoliofactorRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorRange::to_string(self : FinanceportfoliofactorRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliofactorSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_portfolio_factor_slice_make(size : Int) -> Financeportfoliofactor
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_factor_slice_len(s : FinanceportfoliofactorSlice) -> Int { s.size }
+pub fn FinanceportfoliofactorSlice::len(self : FinanceportfoliofactorSlice) -> Int { self.size }
 
-pub fn finance_portfolio_factor_slice_get(s : FinanceportfoliofactorSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliofactorSlice::get(self : FinanceportfoliofactorSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_factor_slice_set(s : FinanceportfoliofactorSlice, i : Int, v : Double) -> FinanceportfoliofactorSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorSlice::set(self : FinanceportfoliofactorSlice, i : Int, v : Double) -> FinanceportfoliofactorSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_slice_sum(s : FinanceportfoliofactorSlice) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliofactorSlice::sum(self : FinanceportfoliofactorSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_factor_slice_mean(s : FinanceportfoliofactorSlice) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliofactorSlice::mean(self : FinanceportfoliofactorSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_factor_slice_scale(s : FinanceportfoliofactorSlice, f : Double) -> FinanceportfoliofactorSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorSlice::scale(self : FinanceportfoliofactorSlice, f : Double) -> FinanceportfoliofactorSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_slice_add(a : FinanceportfoliofactorSlice, b : FinanceportfoliofactorSlice) -> FinanceportfoliofactorSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliofactorSlice::add(self : FinanceportfoliofactorSlice, other : FinanceportfoliofactorSlice) -> FinanceportfoliofactorSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_slice_copy(s : FinanceportfoliofactorSlice) -> FinanceportfoliofactorSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorSlice::copy(self : FinanceportfoliofactorSlice) -> FinanceportfoliofactorSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_slice_fill(s : FinanceportfoliofactorSlice, v : Double) -> FinanceportfoliofactorSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliofactorSlice::fill(self : FinanceportfoliofactorSlice, v : Double) -> FinanceportfoliofactorSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_factor_slice_min(s : FinanceportfoliofactorSlice) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliofactorSlice::min(self : FinanceportfoliofactorSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_factor_slice_max(s : FinanceportfoliofactorSlice) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliofactorSlice::max(self : FinanceportfoliofactorSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_factor_slice_to_string(s : FinanceportfoliofactorSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliofactorSlice::to_string(self : FinanceportfoliofactorSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

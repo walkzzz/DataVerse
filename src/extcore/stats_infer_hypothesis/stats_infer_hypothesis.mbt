@@ -351,45 +351,45 @@ pub fn stats_infer_hypothesis_frame_make(size : Int) -> StatsinferhypothesisFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_frame_len(s : StatsinferhypothesisFrame) -> Int { s.size }
+pub fn StatsinferhypothesisFrame::len(self : StatsinferhypothesisFrame) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_frame_get(s : StatsinferhypothesisFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisFrame::get(self : StatsinferhypothesisFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_frame_set(s : StatsinferhypothesisFrame, i : Int, v : Double) -> StatsinferhypothesisFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisFrame::set(self : StatsinferhypothesisFrame, i : Int, v : Double) -> StatsinferhypothesisFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_frame_sum(s : StatsinferhypothesisFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisFrame::sum(self : StatsinferhypothesisFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_frame_mean(s : StatsinferhypothesisFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisFrame::mean(self : StatsinferhypothesisFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_frame_scale(s : StatsinferhypothesisFrame, f : Double) -> StatsinferhypothesisFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisFrame::scale(self : StatsinferhypothesisFrame, f : Double) -> StatsinferhypothesisFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_frame_add(a : StatsinferhypothesisFrame, b : StatsinferhypothesisFrame) -> StatsinferhypothesisFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisFrame::add(self : StatsinferhypothesisFrame, other : StatsinferhypothesisFrame) -> StatsinferhypothesisFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_frame_copy(s : StatsinferhypothesisFrame) -> StatsinferhypothesisFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisFrame::copy(self : StatsinferhypothesisFrame) -> StatsinferhypothesisFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_frame_fill(s : StatsinferhypothesisFrame, v : Double) -> StatsinferhypothesisFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisFrame::fill(self : StatsinferhypothesisFrame, v : Double) -> StatsinferhypothesisFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_frame_min(s : StatsinferhypothesisFrame) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisFrame::min(self : StatsinferhypothesisFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_frame_max(s : StatsinferhypothesisFrame) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisFrame::max(self : StatsinferhypothesisFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_frame_to_string(s : StatsinferhypothesisFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisFrame::to_string(self : StatsinferhypothesisFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisTable {
@@ -402,45 +402,45 @@ pub fn stats_infer_hypothesis_table_make(size : Int) -> StatsinferhypothesisTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_table_len(s : StatsinferhypothesisTable) -> Int { s.size }
+pub fn StatsinferhypothesisTable::len(self : StatsinferhypothesisTable) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_table_get(s : StatsinferhypothesisTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisTable::get(self : StatsinferhypothesisTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_table_set(s : StatsinferhypothesisTable, i : Int, v : Double) -> StatsinferhypothesisTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisTable::set(self : StatsinferhypothesisTable, i : Int, v : Double) -> StatsinferhypothesisTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_table_sum(s : StatsinferhypothesisTable) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisTable::sum(self : StatsinferhypothesisTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_table_mean(s : StatsinferhypothesisTable) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisTable::mean(self : StatsinferhypothesisTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_table_scale(s : StatsinferhypothesisTable, f : Double) -> StatsinferhypothesisTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisTable::scale(self : StatsinferhypothesisTable, f : Double) -> StatsinferhypothesisTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_table_add(a : StatsinferhypothesisTable, b : StatsinferhypothesisTable) -> StatsinferhypothesisTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisTable::add(self : StatsinferhypothesisTable, other : StatsinferhypothesisTable) -> StatsinferhypothesisTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_table_copy(s : StatsinferhypothesisTable) -> StatsinferhypothesisTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisTable::copy(self : StatsinferhypothesisTable) -> StatsinferhypothesisTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_table_fill(s : StatsinferhypothesisTable, v : Double) -> StatsinferhypothesisTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisTable::fill(self : StatsinferhypothesisTable, v : Double) -> StatsinferhypothesisTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_table_min(s : StatsinferhypothesisTable) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisTable::min(self : StatsinferhypothesisTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_table_max(s : StatsinferhypothesisTable) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisTable::max(self : StatsinferhypothesisTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_table_to_string(s : StatsinferhypothesisTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisTable::to_string(self : StatsinferhypothesisTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisGraphN {
@@ -453,45 +453,45 @@ pub fn stats_infer_hypothesis_graphn_make(size : Int) -> StatsinferhypothesisGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_graphn_len(s : StatsinferhypothesisGraphN) -> Int { s.size }
+pub fn StatsinferhypothesisGraphN::len(self : StatsinferhypothesisGraphN) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_graphn_get(s : StatsinferhypothesisGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisGraphN::get(self : StatsinferhypothesisGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_graphn_set(s : StatsinferhypothesisGraphN, i : Int, v : Double) -> StatsinferhypothesisGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisGraphN::set(self : StatsinferhypothesisGraphN, i : Int, v : Double) -> StatsinferhypothesisGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_graphn_sum(s : StatsinferhypothesisGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisGraphN::sum(self : StatsinferhypothesisGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_graphn_mean(s : StatsinferhypothesisGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisGraphN::mean(self : StatsinferhypothesisGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_graphn_scale(s : StatsinferhypothesisGraphN, f : Double) -> StatsinferhypothesisGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisGraphN::scale(self : StatsinferhypothesisGraphN, f : Double) -> StatsinferhypothesisGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_graphn_add(a : StatsinferhypothesisGraphN, b : StatsinferhypothesisGraphN) -> StatsinferhypothesisGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisGraphN::add(self : StatsinferhypothesisGraphN, other : StatsinferhypothesisGraphN) -> StatsinferhypothesisGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_graphn_copy(s : StatsinferhypothesisGraphN) -> StatsinferhypothesisGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisGraphN::copy(self : StatsinferhypothesisGraphN) -> StatsinferhypothesisGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_graphn_fill(s : StatsinferhypothesisGraphN, v : Double) -> StatsinferhypothesisGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisGraphN::fill(self : StatsinferhypothesisGraphN, v : Double) -> StatsinferhypothesisGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_graphn_min(s : StatsinferhypothesisGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisGraphN::min(self : StatsinferhypothesisGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_graphn_max(s : StatsinferhypothesisGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisGraphN::max(self : StatsinferhypothesisGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_graphn_to_string(s : StatsinferhypothesisGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisGraphN::to_string(self : StatsinferhypothesisGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisNode {
@@ -504,45 +504,45 @@ pub fn stats_infer_hypothesis_node_make(size : Int) -> StatsinferhypothesisNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_node_len(s : StatsinferhypothesisNode) -> Int { s.size }
+pub fn StatsinferhypothesisNode::len(self : StatsinferhypothesisNode) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_node_get(s : StatsinferhypothesisNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisNode::get(self : StatsinferhypothesisNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_node_set(s : StatsinferhypothesisNode, i : Int, v : Double) -> StatsinferhypothesisNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisNode::set(self : StatsinferhypothesisNode, i : Int, v : Double) -> StatsinferhypothesisNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_node_sum(s : StatsinferhypothesisNode) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisNode::sum(self : StatsinferhypothesisNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_node_mean(s : StatsinferhypothesisNode) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisNode::mean(self : StatsinferhypothesisNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_node_scale(s : StatsinferhypothesisNode, f : Double) -> StatsinferhypothesisNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisNode::scale(self : StatsinferhypothesisNode, f : Double) -> StatsinferhypothesisNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_node_add(a : StatsinferhypothesisNode, b : StatsinferhypothesisNode) -> StatsinferhypothesisNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisNode::add(self : StatsinferhypothesisNode, other : StatsinferhypothesisNode) -> StatsinferhypothesisNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_node_copy(s : StatsinferhypothesisNode) -> StatsinferhypothesisNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisNode::copy(self : StatsinferhypothesisNode) -> StatsinferhypothesisNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_node_fill(s : StatsinferhypothesisNode, v : Double) -> StatsinferhypothesisNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisNode::fill(self : StatsinferhypothesisNode, v : Double) -> StatsinferhypothesisNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_node_min(s : StatsinferhypothesisNode) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisNode::min(self : StatsinferhypothesisNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_node_max(s : StatsinferhypothesisNode) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisNode::max(self : StatsinferhypothesisNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_node_to_string(s : StatsinferhypothesisNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisNode::to_string(self : StatsinferhypothesisNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisEdge {
@@ -555,45 +555,45 @@ pub fn stats_infer_hypothesis_edge_make(size : Int) -> StatsinferhypothesisEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_edge_len(s : StatsinferhypothesisEdge) -> Int { s.size }
+pub fn StatsinferhypothesisEdge::len(self : StatsinferhypothesisEdge) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_edge_get(s : StatsinferhypothesisEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisEdge::get(self : StatsinferhypothesisEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_edge_set(s : StatsinferhypothesisEdge, i : Int, v : Double) -> StatsinferhypothesisEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisEdge::set(self : StatsinferhypothesisEdge, i : Int, v : Double) -> StatsinferhypothesisEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_edge_sum(s : StatsinferhypothesisEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisEdge::sum(self : StatsinferhypothesisEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_edge_mean(s : StatsinferhypothesisEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisEdge::mean(self : StatsinferhypothesisEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_edge_scale(s : StatsinferhypothesisEdge, f : Double) -> StatsinferhypothesisEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisEdge::scale(self : StatsinferhypothesisEdge, f : Double) -> StatsinferhypothesisEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_edge_add(a : StatsinferhypothesisEdge, b : StatsinferhypothesisEdge) -> StatsinferhypothesisEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisEdge::add(self : StatsinferhypothesisEdge, other : StatsinferhypothesisEdge) -> StatsinferhypothesisEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_edge_copy(s : StatsinferhypothesisEdge) -> StatsinferhypothesisEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisEdge::copy(self : StatsinferhypothesisEdge) -> StatsinferhypothesisEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_edge_fill(s : StatsinferhypothesisEdge, v : Double) -> StatsinferhypothesisEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisEdge::fill(self : StatsinferhypothesisEdge, v : Double) -> StatsinferhypothesisEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_edge_min(s : StatsinferhypothesisEdge) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisEdge::min(self : StatsinferhypothesisEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_edge_max(s : StatsinferhypothesisEdge) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisEdge::max(self : StatsinferhypothesisEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_edge_to_string(s : StatsinferhypothesisEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisEdge::to_string(self : StatsinferhypothesisEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisPath {
@@ -606,45 +606,45 @@ pub fn stats_infer_hypothesis_path_make(size : Int) -> StatsinferhypothesisPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_path_len(s : StatsinferhypothesisPath) -> Int { s.size }
+pub fn StatsinferhypothesisPath::len(self : StatsinferhypothesisPath) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_path_get(s : StatsinferhypothesisPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisPath::get(self : StatsinferhypothesisPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_path_set(s : StatsinferhypothesisPath, i : Int, v : Double) -> StatsinferhypothesisPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisPath::set(self : StatsinferhypothesisPath, i : Int, v : Double) -> StatsinferhypothesisPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_path_sum(s : StatsinferhypothesisPath) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisPath::sum(self : StatsinferhypothesisPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_path_mean(s : StatsinferhypothesisPath) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisPath::mean(self : StatsinferhypothesisPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_path_scale(s : StatsinferhypothesisPath, f : Double) -> StatsinferhypothesisPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisPath::scale(self : StatsinferhypothesisPath, f : Double) -> StatsinferhypothesisPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_path_add(a : StatsinferhypothesisPath, b : StatsinferhypothesisPath) -> StatsinferhypothesisPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisPath::add(self : StatsinferhypothesisPath, other : StatsinferhypothesisPath) -> StatsinferhypothesisPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_path_copy(s : StatsinferhypothesisPath) -> StatsinferhypothesisPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisPath::copy(self : StatsinferhypothesisPath) -> StatsinferhypothesisPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_path_fill(s : StatsinferhypothesisPath, v : Double) -> StatsinferhypothesisPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisPath::fill(self : StatsinferhypothesisPath, v : Double) -> StatsinferhypothesisPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_path_min(s : StatsinferhypothesisPath) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisPath::min(self : StatsinferhypothesisPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_path_max(s : StatsinferhypothesisPath) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisPath::max(self : StatsinferhypothesisPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_path_to_string(s : StatsinferhypothesisPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisPath::to_string(self : StatsinferhypothesisPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisCluster {
@@ -657,45 +657,45 @@ pub fn stats_infer_hypothesis_cluster_make(size : Int) -> StatsinferhypothesisCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_cluster_len(s : StatsinferhypothesisCluster) -> Int { s.size }
+pub fn StatsinferhypothesisCluster::len(self : StatsinferhypothesisCluster) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_cluster_get(s : StatsinferhypothesisCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisCluster::get(self : StatsinferhypothesisCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_cluster_set(s : StatsinferhypothesisCluster, i : Int, v : Double) -> StatsinferhypothesisCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisCluster::set(self : StatsinferhypothesisCluster, i : Int, v : Double) -> StatsinferhypothesisCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_cluster_sum(s : StatsinferhypothesisCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisCluster::sum(self : StatsinferhypothesisCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_cluster_mean(s : StatsinferhypothesisCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisCluster::mean(self : StatsinferhypothesisCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_cluster_scale(s : StatsinferhypothesisCluster, f : Double) -> StatsinferhypothesisCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisCluster::scale(self : StatsinferhypothesisCluster, f : Double) -> StatsinferhypothesisCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_cluster_add(a : StatsinferhypothesisCluster, b : StatsinferhypothesisCluster) -> StatsinferhypothesisCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisCluster::add(self : StatsinferhypothesisCluster, other : StatsinferhypothesisCluster) -> StatsinferhypothesisCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_cluster_copy(s : StatsinferhypothesisCluster) -> StatsinferhypothesisCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisCluster::copy(self : StatsinferhypothesisCluster) -> StatsinferhypothesisCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_cluster_fill(s : StatsinferhypothesisCluster, v : Double) -> StatsinferhypothesisCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisCluster::fill(self : StatsinferhypothesisCluster, v : Double) -> StatsinferhypothesisCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_cluster_min(s : StatsinferhypothesisCluster) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisCluster::min(self : StatsinferhypothesisCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_cluster_max(s : StatsinferhypothesisCluster) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisCluster::max(self : StatsinferhypothesisCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_cluster_to_string(s : StatsinferhypothesisCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisCluster::to_string(self : StatsinferhypothesisCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisModel {
@@ -708,45 +708,45 @@ pub fn stats_infer_hypothesis_model_make(size : Int) -> StatsinferhypothesisMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_model_len(s : StatsinferhypothesisModel) -> Int { s.size }
+pub fn StatsinferhypothesisModel::len(self : StatsinferhypothesisModel) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_model_get(s : StatsinferhypothesisModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisModel::get(self : StatsinferhypothesisModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_model_set(s : StatsinferhypothesisModel, i : Int, v : Double) -> StatsinferhypothesisModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisModel::set(self : StatsinferhypothesisModel, i : Int, v : Double) -> StatsinferhypothesisModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_model_sum(s : StatsinferhypothesisModel) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisModel::sum(self : StatsinferhypothesisModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_model_mean(s : StatsinferhypothesisModel) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisModel::mean(self : StatsinferhypothesisModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_model_scale(s : StatsinferhypothesisModel, f : Double) -> StatsinferhypothesisModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisModel::scale(self : StatsinferhypothesisModel, f : Double) -> StatsinferhypothesisModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_model_add(a : StatsinferhypothesisModel, b : StatsinferhypothesisModel) -> StatsinferhypothesisModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisModel::add(self : StatsinferhypothesisModel, other : StatsinferhypothesisModel) -> StatsinferhypothesisModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_model_copy(s : StatsinferhypothesisModel) -> StatsinferhypothesisModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisModel::copy(self : StatsinferhypothesisModel) -> StatsinferhypothesisModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_model_fill(s : StatsinferhypothesisModel, v : Double) -> StatsinferhypothesisModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisModel::fill(self : StatsinferhypothesisModel, v : Double) -> StatsinferhypothesisModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_model_min(s : StatsinferhypothesisModel) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisModel::min(self : StatsinferhypothesisModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_model_max(s : StatsinferhypothesisModel) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisModel::max(self : StatsinferhypothesisModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_model_to_string(s : StatsinferhypothesisModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisModel::to_string(self : StatsinferhypothesisModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisLayer {
@@ -759,45 +759,45 @@ pub fn stats_infer_hypothesis_layer_make(size : Int) -> StatsinferhypothesisLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_layer_len(s : StatsinferhypothesisLayer) -> Int { s.size }
+pub fn StatsinferhypothesisLayer::len(self : StatsinferhypothesisLayer) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_layer_get(s : StatsinferhypothesisLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisLayer::get(self : StatsinferhypothesisLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_layer_set(s : StatsinferhypothesisLayer, i : Int, v : Double) -> StatsinferhypothesisLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisLayer::set(self : StatsinferhypothesisLayer, i : Int, v : Double) -> StatsinferhypothesisLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_layer_sum(s : StatsinferhypothesisLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisLayer::sum(self : StatsinferhypothesisLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_layer_mean(s : StatsinferhypothesisLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisLayer::mean(self : StatsinferhypothesisLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_layer_scale(s : StatsinferhypothesisLayer, f : Double) -> StatsinferhypothesisLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisLayer::scale(self : StatsinferhypothesisLayer, f : Double) -> StatsinferhypothesisLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_layer_add(a : StatsinferhypothesisLayer, b : StatsinferhypothesisLayer) -> StatsinferhypothesisLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisLayer::add(self : StatsinferhypothesisLayer, other : StatsinferhypothesisLayer) -> StatsinferhypothesisLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_layer_copy(s : StatsinferhypothesisLayer) -> StatsinferhypothesisLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisLayer::copy(self : StatsinferhypothesisLayer) -> StatsinferhypothesisLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_layer_fill(s : StatsinferhypothesisLayer, v : Double) -> StatsinferhypothesisLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisLayer::fill(self : StatsinferhypothesisLayer, v : Double) -> StatsinferhypothesisLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_layer_min(s : StatsinferhypothesisLayer) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisLayer::min(self : StatsinferhypothesisLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_layer_max(s : StatsinferhypothesisLayer) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisLayer::max(self : StatsinferhypothesisLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_layer_to_string(s : StatsinferhypothesisLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisLayer::to_string(self : StatsinferhypothesisLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisBuffer {
@@ -810,45 +810,45 @@ pub fn stats_infer_hypothesis_buffer_make(size : Int) -> StatsinferhypothesisBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_buffer_len(s : StatsinferhypothesisBuffer) -> Int { s.size }
+pub fn StatsinferhypothesisBuffer::len(self : StatsinferhypothesisBuffer) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_buffer_get(s : StatsinferhypothesisBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisBuffer::get(self : StatsinferhypothesisBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_buffer_set(s : StatsinferhypothesisBuffer, i : Int, v : Double) -> StatsinferhypothesisBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisBuffer::set(self : StatsinferhypothesisBuffer, i : Int, v : Double) -> StatsinferhypothesisBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_buffer_sum(s : StatsinferhypothesisBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisBuffer::sum(self : StatsinferhypothesisBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_buffer_mean(s : StatsinferhypothesisBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisBuffer::mean(self : StatsinferhypothesisBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_buffer_scale(s : StatsinferhypothesisBuffer, f : Double) -> StatsinferhypothesisBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisBuffer::scale(self : StatsinferhypothesisBuffer, f : Double) -> StatsinferhypothesisBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_buffer_add(a : StatsinferhypothesisBuffer, b : StatsinferhypothesisBuffer) -> StatsinferhypothesisBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisBuffer::add(self : StatsinferhypothesisBuffer, other : StatsinferhypothesisBuffer) -> StatsinferhypothesisBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_buffer_copy(s : StatsinferhypothesisBuffer) -> StatsinferhypothesisBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisBuffer::copy(self : StatsinferhypothesisBuffer) -> StatsinferhypothesisBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_buffer_fill(s : StatsinferhypothesisBuffer, v : Double) -> StatsinferhypothesisBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisBuffer::fill(self : StatsinferhypothesisBuffer, v : Double) -> StatsinferhypothesisBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_buffer_min(s : StatsinferhypothesisBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisBuffer::min(self : StatsinferhypothesisBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_buffer_max(s : StatsinferhypothesisBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisBuffer::max(self : StatsinferhypothesisBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_buffer_to_string(s : StatsinferhypothesisBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisBuffer::to_string(self : StatsinferhypothesisBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisCursor {
@@ -861,45 +861,45 @@ pub fn stats_infer_hypothesis_cursor_make(size : Int) -> StatsinferhypothesisCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_cursor_len(s : StatsinferhypothesisCursor) -> Int { s.size }
+pub fn StatsinferhypothesisCursor::len(self : StatsinferhypothesisCursor) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_cursor_get(s : StatsinferhypothesisCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisCursor::get(self : StatsinferhypothesisCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_cursor_set(s : StatsinferhypothesisCursor, i : Int, v : Double) -> StatsinferhypothesisCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisCursor::set(self : StatsinferhypothesisCursor, i : Int, v : Double) -> StatsinferhypothesisCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_cursor_sum(s : StatsinferhypothesisCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisCursor::sum(self : StatsinferhypothesisCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_cursor_mean(s : StatsinferhypothesisCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisCursor::mean(self : StatsinferhypothesisCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_cursor_scale(s : StatsinferhypothesisCursor, f : Double) -> StatsinferhypothesisCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisCursor::scale(self : StatsinferhypothesisCursor, f : Double) -> StatsinferhypothesisCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_cursor_add(a : StatsinferhypothesisCursor, b : StatsinferhypothesisCursor) -> StatsinferhypothesisCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisCursor::add(self : StatsinferhypothesisCursor, other : StatsinferhypothesisCursor) -> StatsinferhypothesisCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_cursor_copy(s : StatsinferhypothesisCursor) -> StatsinferhypothesisCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisCursor::copy(self : StatsinferhypothesisCursor) -> StatsinferhypothesisCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_cursor_fill(s : StatsinferhypothesisCursor, v : Double) -> StatsinferhypothesisCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisCursor::fill(self : StatsinferhypothesisCursor, v : Double) -> StatsinferhypothesisCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_cursor_min(s : StatsinferhypothesisCursor) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisCursor::min(self : StatsinferhypothesisCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_cursor_max(s : StatsinferhypothesisCursor) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisCursor::max(self : StatsinferhypothesisCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_cursor_to_string(s : StatsinferhypothesisCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisCursor::to_string(self : StatsinferhypothesisCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisView {
@@ -912,45 +912,45 @@ pub fn stats_infer_hypothesis_view_make(size : Int) -> StatsinferhypothesisView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_view_len(s : StatsinferhypothesisView) -> Int { s.size }
+pub fn StatsinferhypothesisView::len(self : StatsinferhypothesisView) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_view_get(s : StatsinferhypothesisView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisView::get(self : StatsinferhypothesisView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_view_set(s : StatsinferhypothesisView, i : Int, v : Double) -> StatsinferhypothesisView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisView::set(self : StatsinferhypothesisView, i : Int, v : Double) -> StatsinferhypothesisView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_view_sum(s : StatsinferhypothesisView) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisView::sum(self : StatsinferhypothesisView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_view_mean(s : StatsinferhypothesisView) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisView::mean(self : StatsinferhypothesisView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_view_scale(s : StatsinferhypothesisView, f : Double) -> StatsinferhypothesisView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisView::scale(self : StatsinferhypothesisView, f : Double) -> StatsinferhypothesisView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_view_add(a : StatsinferhypothesisView, b : StatsinferhypothesisView) -> StatsinferhypothesisView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisView::add(self : StatsinferhypothesisView, other : StatsinferhypothesisView) -> StatsinferhypothesisView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_view_copy(s : StatsinferhypothesisView) -> StatsinferhypothesisView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisView::copy(self : StatsinferhypothesisView) -> StatsinferhypothesisView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_view_fill(s : StatsinferhypothesisView, v : Double) -> StatsinferhypothesisView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisView::fill(self : StatsinferhypothesisView, v : Double) -> StatsinferhypothesisView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_view_min(s : StatsinferhypothesisView) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisView::min(self : StatsinferhypothesisView) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_view_max(s : StatsinferhypothesisView) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisView::max(self : StatsinferhypothesisView) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_view_to_string(s : StatsinferhypothesisView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisView::to_string(self : StatsinferhypothesisView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisRange {
@@ -963,45 +963,45 @@ pub fn stats_infer_hypothesis_range_make(size : Int) -> StatsinferhypothesisRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_range_len(s : StatsinferhypothesisRange) -> Int { s.size }
+pub fn StatsinferhypothesisRange::len(self : StatsinferhypothesisRange) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_range_get(s : StatsinferhypothesisRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisRange::get(self : StatsinferhypothesisRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_range_set(s : StatsinferhypothesisRange, i : Int, v : Double) -> StatsinferhypothesisRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisRange::set(self : StatsinferhypothesisRange, i : Int, v : Double) -> StatsinferhypothesisRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_range_sum(s : StatsinferhypothesisRange) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisRange::sum(self : StatsinferhypothesisRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_range_mean(s : StatsinferhypothesisRange) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisRange::mean(self : StatsinferhypothesisRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_range_scale(s : StatsinferhypothesisRange, f : Double) -> StatsinferhypothesisRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisRange::scale(self : StatsinferhypothesisRange, f : Double) -> StatsinferhypothesisRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_range_add(a : StatsinferhypothesisRange, b : StatsinferhypothesisRange) -> StatsinferhypothesisRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisRange::add(self : StatsinferhypothesisRange, other : StatsinferhypothesisRange) -> StatsinferhypothesisRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_range_copy(s : StatsinferhypothesisRange) -> StatsinferhypothesisRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisRange::copy(self : StatsinferhypothesisRange) -> StatsinferhypothesisRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_range_fill(s : StatsinferhypothesisRange, v : Double) -> StatsinferhypothesisRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisRange::fill(self : StatsinferhypothesisRange, v : Double) -> StatsinferhypothesisRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_range_min(s : StatsinferhypothesisRange) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisRange::min(self : StatsinferhypothesisRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_range_max(s : StatsinferhypothesisRange) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisRange::max(self : StatsinferhypothesisRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_range_to_string(s : StatsinferhypothesisRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisRange::to_string(self : StatsinferhypothesisRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsinferhypothesisSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_infer_hypothesis_slice_make(size : Int) -> StatsinferhypothesisSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_infer_hypothesis_slice_len(s : StatsinferhypothesisSlice) -> Int { s.size }
+pub fn StatsinferhypothesisSlice::len(self : StatsinferhypothesisSlice) -> Int { self.size }
 
-pub fn stats_infer_hypothesis_slice_get(s : StatsinferhypothesisSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsinferhypothesisSlice::get(self : StatsinferhypothesisSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_infer_hypothesis_slice_set(s : StatsinferhypothesisSlice, i : Int, v : Double) -> StatsinferhypothesisSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisSlice::set(self : StatsinferhypothesisSlice, i : Int, v : Double) -> StatsinferhypothesisSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_slice_sum(s : StatsinferhypothesisSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsinferhypothesisSlice::sum(self : StatsinferhypothesisSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_infer_hypothesis_slice_mean(s : StatsinferhypothesisSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsinferhypothesisSlice::mean(self : StatsinferhypothesisSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_infer_hypothesis_slice_scale(s : StatsinferhypothesisSlice, f : Double) -> StatsinferhypothesisSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisSlice::scale(self : StatsinferhypothesisSlice, f : Double) -> StatsinferhypothesisSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_slice_add(a : StatsinferhypothesisSlice, b : StatsinferhypothesisSlice) -> StatsinferhypothesisSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsinferhypothesisSlice::add(self : StatsinferhypothesisSlice, other : StatsinferhypothesisSlice) -> StatsinferhypothesisSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_slice_copy(s : StatsinferhypothesisSlice) -> StatsinferhypothesisSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisSlice::copy(self : StatsinferhypothesisSlice) -> StatsinferhypothesisSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_slice_fill(s : StatsinferhypothesisSlice, v : Double) -> StatsinferhypothesisSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsinferhypothesisSlice::fill(self : StatsinferhypothesisSlice, v : Double) -> StatsinferhypothesisSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_infer_hypothesis_slice_min(s : StatsinferhypothesisSlice) -> Double { @_common.min(s.data) }
+pub fn StatsinferhypothesisSlice::min(self : StatsinferhypothesisSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_infer_hypothesis_slice_max(s : StatsinferhypothesisSlice) -> Double { @_common.max(s.data) }
+pub fn StatsinferhypothesisSlice::max(self : StatsinferhypothesisSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_infer_hypothesis_slice_to_string(s : StatsinferhypothesisSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsinferhypothesisSlice::to_string(self : StatsinferhypothesisSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

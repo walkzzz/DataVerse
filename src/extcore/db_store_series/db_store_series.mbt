@@ -351,45 +351,45 @@ pub fn db_store_series_frame_make(size : Int) -> DbstoreseriesFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_frame_len(s : DbstoreseriesFrame) -> Int { s.size }
+pub fn DbstoreseriesFrame::len(self : DbstoreseriesFrame) -> Int { self.size }
 
-pub fn db_store_series_frame_get(s : DbstoreseriesFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesFrame::get(self : DbstoreseriesFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_frame_set(s : DbstoreseriesFrame, i : Int, v : Double) -> DbstoreseriesFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesFrame::set(self : DbstoreseriesFrame, i : Int, v : Double) -> DbstoreseriesFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_frame_sum(s : DbstoreseriesFrame) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesFrame::sum(self : DbstoreseriesFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_frame_mean(s : DbstoreseriesFrame) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesFrame::mean(self : DbstoreseriesFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_frame_scale(s : DbstoreseriesFrame, f : Double) -> DbstoreseriesFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesFrame::scale(self : DbstoreseriesFrame, f : Double) -> DbstoreseriesFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_frame_add(a : DbstoreseriesFrame, b : DbstoreseriesFrame) -> DbstoreseriesFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesFrame::add(self : DbstoreseriesFrame, other : DbstoreseriesFrame) -> DbstoreseriesFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_frame_copy(s : DbstoreseriesFrame) -> DbstoreseriesFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesFrame::copy(self : DbstoreseriesFrame) -> DbstoreseriesFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_frame_fill(s : DbstoreseriesFrame, v : Double) -> DbstoreseriesFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesFrame::fill(self : DbstoreseriesFrame, v : Double) -> DbstoreseriesFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_frame_min(s : DbstoreseriesFrame) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesFrame::min(self : DbstoreseriesFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_frame_max(s : DbstoreseriesFrame) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesFrame::max(self : DbstoreseriesFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_frame_to_string(s : DbstoreseriesFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesFrame::to_string(self : DbstoreseriesFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesTable {
@@ -402,45 +402,45 @@ pub fn db_store_series_table_make(size : Int) -> DbstoreseriesTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_table_len(s : DbstoreseriesTable) -> Int { s.size }
+pub fn DbstoreseriesTable::len(self : DbstoreseriesTable) -> Int { self.size }
 
-pub fn db_store_series_table_get(s : DbstoreseriesTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesTable::get(self : DbstoreseriesTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_table_set(s : DbstoreseriesTable, i : Int, v : Double) -> DbstoreseriesTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesTable::set(self : DbstoreseriesTable, i : Int, v : Double) -> DbstoreseriesTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_table_sum(s : DbstoreseriesTable) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesTable::sum(self : DbstoreseriesTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_table_mean(s : DbstoreseriesTable) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesTable::mean(self : DbstoreseriesTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_table_scale(s : DbstoreseriesTable, f : Double) -> DbstoreseriesTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesTable::scale(self : DbstoreseriesTable, f : Double) -> DbstoreseriesTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_table_add(a : DbstoreseriesTable, b : DbstoreseriesTable) -> DbstoreseriesTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesTable::add(self : DbstoreseriesTable, other : DbstoreseriesTable) -> DbstoreseriesTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_table_copy(s : DbstoreseriesTable) -> DbstoreseriesTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesTable::copy(self : DbstoreseriesTable) -> DbstoreseriesTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_table_fill(s : DbstoreseriesTable, v : Double) -> DbstoreseriesTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesTable::fill(self : DbstoreseriesTable, v : Double) -> DbstoreseriesTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_table_min(s : DbstoreseriesTable) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesTable::min(self : DbstoreseriesTable) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_table_max(s : DbstoreseriesTable) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesTable::max(self : DbstoreseriesTable) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_table_to_string(s : DbstoreseriesTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesTable::to_string(self : DbstoreseriesTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesGraphN {
@@ -453,45 +453,45 @@ pub fn db_store_series_graphn_make(size : Int) -> DbstoreseriesGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_graphn_len(s : DbstoreseriesGraphN) -> Int { s.size }
+pub fn DbstoreseriesGraphN::len(self : DbstoreseriesGraphN) -> Int { self.size }
 
-pub fn db_store_series_graphn_get(s : DbstoreseriesGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesGraphN::get(self : DbstoreseriesGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_graphn_set(s : DbstoreseriesGraphN, i : Int, v : Double) -> DbstoreseriesGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesGraphN::set(self : DbstoreseriesGraphN, i : Int, v : Double) -> DbstoreseriesGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_graphn_sum(s : DbstoreseriesGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesGraphN::sum(self : DbstoreseriesGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_graphn_mean(s : DbstoreseriesGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesGraphN::mean(self : DbstoreseriesGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_graphn_scale(s : DbstoreseriesGraphN, f : Double) -> DbstoreseriesGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesGraphN::scale(self : DbstoreseriesGraphN, f : Double) -> DbstoreseriesGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_graphn_add(a : DbstoreseriesGraphN, b : DbstoreseriesGraphN) -> DbstoreseriesGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesGraphN::add(self : DbstoreseriesGraphN, other : DbstoreseriesGraphN) -> DbstoreseriesGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_graphn_copy(s : DbstoreseriesGraphN) -> DbstoreseriesGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesGraphN::copy(self : DbstoreseriesGraphN) -> DbstoreseriesGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_graphn_fill(s : DbstoreseriesGraphN, v : Double) -> DbstoreseriesGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesGraphN::fill(self : DbstoreseriesGraphN, v : Double) -> DbstoreseriesGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_graphn_min(s : DbstoreseriesGraphN) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesGraphN::min(self : DbstoreseriesGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_graphn_max(s : DbstoreseriesGraphN) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesGraphN::max(self : DbstoreseriesGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_graphn_to_string(s : DbstoreseriesGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesGraphN::to_string(self : DbstoreseriesGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesNode {
@@ -504,45 +504,45 @@ pub fn db_store_series_node_make(size : Int) -> DbstoreseriesNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_node_len(s : DbstoreseriesNode) -> Int { s.size }
+pub fn DbstoreseriesNode::len(self : DbstoreseriesNode) -> Int { self.size }
 
-pub fn db_store_series_node_get(s : DbstoreseriesNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesNode::get(self : DbstoreseriesNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_node_set(s : DbstoreseriesNode, i : Int, v : Double) -> DbstoreseriesNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesNode::set(self : DbstoreseriesNode, i : Int, v : Double) -> DbstoreseriesNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_node_sum(s : DbstoreseriesNode) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesNode::sum(self : DbstoreseriesNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_node_mean(s : DbstoreseriesNode) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesNode::mean(self : DbstoreseriesNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_node_scale(s : DbstoreseriesNode, f : Double) -> DbstoreseriesNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesNode::scale(self : DbstoreseriesNode, f : Double) -> DbstoreseriesNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_node_add(a : DbstoreseriesNode, b : DbstoreseriesNode) -> DbstoreseriesNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesNode::add(self : DbstoreseriesNode, other : DbstoreseriesNode) -> DbstoreseriesNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_node_copy(s : DbstoreseriesNode) -> DbstoreseriesNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesNode::copy(self : DbstoreseriesNode) -> DbstoreseriesNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_node_fill(s : DbstoreseriesNode, v : Double) -> DbstoreseriesNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesNode::fill(self : DbstoreseriesNode, v : Double) -> DbstoreseriesNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_node_min(s : DbstoreseriesNode) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesNode::min(self : DbstoreseriesNode) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_node_max(s : DbstoreseriesNode) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesNode::max(self : DbstoreseriesNode) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_node_to_string(s : DbstoreseriesNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesNode::to_string(self : DbstoreseriesNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesEdge {
@@ -555,45 +555,45 @@ pub fn db_store_series_edge_make(size : Int) -> DbstoreseriesEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_edge_len(s : DbstoreseriesEdge) -> Int { s.size }
+pub fn DbstoreseriesEdge::len(self : DbstoreseriesEdge) -> Int { self.size }
 
-pub fn db_store_series_edge_get(s : DbstoreseriesEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesEdge::get(self : DbstoreseriesEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_edge_set(s : DbstoreseriesEdge, i : Int, v : Double) -> DbstoreseriesEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesEdge::set(self : DbstoreseriesEdge, i : Int, v : Double) -> DbstoreseriesEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_edge_sum(s : DbstoreseriesEdge) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesEdge::sum(self : DbstoreseriesEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_edge_mean(s : DbstoreseriesEdge) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesEdge::mean(self : DbstoreseriesEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_edge_scale(s : DbstoreseriesEdge, f : Double) -> DbstoreseriesEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesEdge::scale(self : DbstoreseriesEdge, f : Double) -> DbstoreseriesEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_edge_add(a : DbstoreseriesEdge, b : DbstoreseriesEdge) -> DbstoreseriesEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesEdge::add(self : DbstoreseriesEdge, other : DbstoreseriesEdge) -> DbstoreseriesEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_edge_copy(s : DbstoreseriesEdge) -> DbstoreseriesEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesEdge::copy(self : DbstoreseriesEdge) -> DbstoreseriesEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_edge_fill(s : DbstoreseriesEdge, v : Double) -> DbstoreseriesEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesEdge::fill(self : DbstoreseriesEdge, v : Double) -> DbstoreseriesEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_edge_min(s : DbstoreseriesEdge) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesEdge::min(self : DbstoreseriesEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_edge_max(s : DbstoreseriesEdge) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesEdge::max(self : DbstoreseriesEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_edge_to_string(s : DbstoreseriesEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesEdge::to_string(self : DbstoreseriesEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesPath {
@@ -606,45 +606,45 @@ pub fn db_store_series_path_make(size : Int) -> DbstoreseriesPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_path_len(s : DbstoreseriesPath) -> Int { s.size }
+pub fn DbstoreseriesPath::len(self : DbstoreseriesPath) -> Int { self.size }
 
-pub fn db_store_series_path_get(s : DbstoreseriesPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesPath::get(self : DbstoreseriesPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_path_set(s : DbstoreseriesPath, i : Int, v : Double) -> DbstoreseriesPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesPath::set(self : DbstoreseriesPath, i : Int, v : Double) -> DbstoreseriesPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_path_sum(s : DbstoreseriesPath) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesPath::sum(self : DbstoreseriesPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_path_mean(s : DbstoreseriesPath) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesPath::mean(self : DbstoreseriesPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_path_scale(s : DbstoreseriesPath, f : Double) -> DbstoreseriesPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesPath::scale(self : DbstoreseriesPath, f : Double) -> DbstoreseriesPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_path_add(a : DbstoreseriesPath, b : DbstoreseriesPath) -> DbstoreseriesPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesPath::add(self : DbstoreseriesPath, other : DbstoreseriesPath) -> DbstoreseriesPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_path_copy(s : DbstoreseriesPath) -> DbstoreseriesPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesPath::copy(self : DbstoreseriesPath) -> DbstoreseriesPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_path_fill(s : DbstoreseriesPath, v : Double) -> DbstoreseriesPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesPath::fill(self : DbstoreseriesPath, v : Double) -> DbstoreseriesPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_path_min(s : DbstoreseriesPath) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesPath::min(self : DbstoreseriesPath) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_path_max(s : DbstoreseriesPath) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesPath::max(self : DbstoreseriesPath) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_path_to_string(s : DbstoreseriesPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesPath::to_string(self : DbstoreseriesPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesCluster {
@@ -657,45 +657,45 @@ pub fn db_store_series_cluster_make(size : Int) -> DbstoreseriesCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_cluster_len(s : DbstoreseriesCluster) -> Int { s.size }
+pub fn DbstoreseriesCluster::len(self : DbstoreseriesCluster) -> Int { self.size }
 
-pub fn db_store_series_cluster_get(s : DbstoreseriesCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesCluster::get(self : DbstoreseriesCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_cluster_set(s : DbstoreseriesCluster, i : Int, v : Double) -> DbstoreseriesCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesCluster::set(self : DbstoreseriesCluster, i : Int, v : Double) -> DbstoreseriesCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_cluster_sum(s : DbstoreseriesCluster) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesCluster::sum(self : DbstoreseriesCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_cluster_mean(s : DbstoreseriesCluster) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesCluster::mean(self : DbstoreseriesCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_cluster_scale(s : DbstoreseriesCluster, f : Double) -> DbstoreseriesCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesCluster::scale(self : DbstoreseriesCluster, f : Double) -> DbstoreseriesCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_cluster_add(a : DbstoreseriesCluster, b : DbstoreseriesCluster) -> DbstoreseriesCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesCluster::add(self : DbstoreseriesCluster, other : DbstoreseriesCluster) -> DbstoreseriesCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_cluster_copy(s : DbstoreseriesCluster) -> DbstoreseriesCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesCluster::copy(self : DbstoreseriesCluster) -> DbstoreseriesCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_cluster_fill(s : DbstoreseriesCluster, v : Double) -> DbstoreseriesCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesCluster::fill(self : DbstoreseriesCluster, v : Double) -> DbstoreseriesCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_cluster_min(s : DbstoreseriesCluster) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesCluster::min(self : DbstoreseriesCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_cluster_max(s : DbstoreseriesCluster) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesCluster::max(self : DbstoreseriesCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_cluster_to_string(s : DbstoreseriesCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesCluster::to_string(self : DbstoreseriesCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesModel {
@@ -708,45 +708,45 @@ pub fn db_store_series_model_make(size : Int) -> DbstoreseriesModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_model_len(s : DbstoreseriesModel) -> Int { s.size }
+pub fn DbstoreseriesModel::len(self : DbstoreseriesModel) -> Int { self.size }
 
-pub fn db_store_series_model_get(s : DbstoreseriesModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesModel::get(self : DbstoreseriesModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_model_set(s : DbstoreseriesModel, i : Int, v : Double) -> DbstoreseriesModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesModel::set(self : DbstoreseriesModel, i : Int, v : Double) -> DbstoreseriesModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_model_sum(s : DbstoreseriesModel) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesModel::sum(self : DbstoreseriesModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_model_mean(s : DbstoreseriesModel) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesModel::mean(self : DbstoreseriesModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_model_scale(s : DbstoreseriesModel, f : Double) -> DbstoreseriesModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesModel::scale(self : DbstoreseriesModel, f : Double) -> DbstoreseriesModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_model_add(a : DbstoreseriesModel, b : DbstoreseriesModel) -> DbstoreseriesModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesModel::add(self : DbstoreseriesModel, other : DbstoreseriesModel) -> DbstoreseriesModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_model_copy(s : DbstoreseriesModel) -> DbstoreseriesModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesModel::copy(self : DbstoreseriesModel) -> DbstoreseriesModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_model_fill(s : DbstoreseriesModel, v : Double) -> DbstoreseriesModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesModel::fill(self : DbstoreseriesModel, v : Double) -> DbstoreseriesModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_model_min(s : DbstoreseriesModel) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesModel::min(self : DbstoreseriesModel) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_model_max(s : DbstoreseriesModel) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesModel::max(self : DbstoreseriesModel) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_model_to_string(s : DbstoreseriesModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesModel::to_string(self : DbstoreseriesModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesLayer {
@@ -759,45 +759,45 @@ pub fn db_store_series_layer_make(size : Int) -> DbstoreseriesLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_layer_len(s : DbstoreseriesLayer) -> Int { s.size }
+pub fn DbstoreseriesLayer::len(self : DbstoreseriesLayer) -> Int { self.size }
 
-pub fn db_store_series_layer_get(s : DbstoreseriesLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesLayer::get(self : DbstoreseriesLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_layer_set(s : DbstoreseriesLayer, i : Int, v : Double) -> DbstoreseriesLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesLayer::set(self : DbstoreseriesLayer, i : Int, v : Double) -> DbstoreseriesLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_layer_sum(s : DbstoreseriesLayer) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesLayer::sum(self : DbstoreseriesLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_layer_mean(s : DbstoreseriesLayer) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesLayer::mean(self : DbstoreseriesLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_layer_scale(s : DbstoreseriesLayer, f : Double) -> DbstoreseriesLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesLayer::scale(self : DbstoreseriesLayer, f : Double) -> DbstoreseriesLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_layer_add(a : DbstoreseriesLayer, b : DbstoreseriesLayer) -> DbstoreseriesLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesLayer::add(self : DbstoreseriesLayer, other : DbstoreseriesLayer) -> DbstoreseriesLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_layer_copy(s : DbstoreseriesLayer) -> DbstoreseriesLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesLayer::copy(self : DbstoreseriesLayer) -> DbstoreseriesLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_layer_fill(s : DbstoreseriesLayer, v : Double) -> DbstoreseriesLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesLayer::fill(self : DbstoreseriesLayer, v : Double) -> DbstoreseriesLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_layer_min(s : DbstoreseriesLayer) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesLayer::min(self : DbstoreseriesLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_layer_max(s : DbstoreseriesLayer) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesLayer::max(self : DbstoreseriesLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_layer_to_string(s : DbstoreseriesLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesLayer::to_string(self : DbstoreseriesLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesBuffer {
@@ -810,45 +810,45 @@ pub fn db_store_series_buffer_make(size : Int) -> DbstoreseriesBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_buffer_len(s : DbstoreseriesBuffer) -> Int { s.size }
+pub fn DbstoreseriesBuffer::len(self : DbstoreseriesBuffer) -> Int { self.size }
 
-pub fn db_store_series_buffer_get(s : DbstoreseriesBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesBuffer::get(self : DbstoreseriesBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_buffer_set(s : DbstoreseriesBuffer, i : Int, v : Double) -> DbstoreseriesBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesBuffer::set(self : DbstoreseriesBuffer, i : Int, v : Double) -> DbstoreseriesBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_buffer_sum(s : DbstoreseriesBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesBuffer::sum(self : DbstoreseriesBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_buffer_mean(s : DbstoreseriesBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesBuffer::mean(self : DbstoreseriesBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_buffer_scale(s : DbstoreseriesBuffer, f : Double) -> DbstoreseriesBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesBuffer::scale(self : DbstoreseriesBuffer, f : Double) -> DbstoreseriesBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_buffer_add(a : DbstoreseriesBuffer, b : DbstoreseriesBuffer) -> DbstoreseriesBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesBuffer::add(self : DbstoreseriesBuffer, other : DbstoreseriesBuffer) -> DbstoreseriesBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_buffer_copy(s : DbstoreseriesBuffer) -> DbstoreseriesBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesBuffer::copy(self : DbstoreseriesBuffer) -> DbstoreseriesBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_buffer_fill(s : DbstoreseriesBuffer, v : Double) -> DbstoreseriesBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesBuffer::fill(self : DbstoreseriesBuffer, v : Double) -> DbstoreseriesBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_buffer_min(s : DbstoreseriesBuffer) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesBuffer::min(self : DbstoreseriesBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_buffer_max(s : DbstoreseriesBuffer) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesBuffer::max(self : DbstoreseriesBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_buffer_to_string(s : DbstoreseriesBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesBuffer::to_string(self : DbstoreseriesBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesCursor {
@@ -861,45 +861,45 @@ pub fn db_store_series_cursor_make(size : Int) -> DbstoreseriesCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_cursor_len(s : DbstoreseriesCursor) -> Int { s.size }
+pub fn DbstoreseriesCursor::len(self : DbstoreseriesCursor) -> Int { self.size }
 
-pub fn db_store_series_cursor_get(s : DbstoreseriesCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesCursor::get(self : DbstoreseriesCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_cursor_set(s : DbstoreseriesCursor, i : Int, v : Double) -> DbstoreseriesCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesCursor::set(self : DbstoreseriesCursor, i : Int, v : Double) -> DbstoreseriesCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_cursor_sum(s : DbstoreseriesCursor) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesCursor::sum(self : DbstoreseriesCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_cursor_mean(s : DbstoreseriesCursor) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesCursor::mean(self : DbstoreseriesCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_cursor_scale(s : DbstoreseriesCursor, f : Double) -> DbstoreseriesCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesCursor::scale(self : DbstoreseriesCursor, f : Double) -> DbstoreseriesCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_cursor_add(a : DbstoreseriesCursor, b : DbstoreseriesCursor) -> DbstoreseriesCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesCursor::add(self : DbstoreseriesCursor, other : DbstoreseriesCursor) -> DbstoreseriesCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_cursor_copy(s : DbstoreseriesCursor) -> DbstoreseriesCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesCursor::copy(self : DbstoreseriesCursor) -> DbstoreseriesCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_cursor_fill(s : DbstoreseriesCursor, v : Double) -> DbstoreseriesCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesCursor::fill(self : DbstoreseriesCursor, v : Double) -> DbstoreseriesCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_cursor_min(s : DbstoreseriesCursor) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesCursor::min(self : DbstoreseriesCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_cursor_max(s : DbstoreseriesCursor) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesCursor::max(self : DbstoreseriesCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_cursor_to_string(s : DbstoreseriesCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesCursor::to_string(self : DbstoreseriesCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesView {
@@ -912,45 +912,45 @@ pub fn db_store_series_view_make(size : Int) -> DbstoreseriesView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_view_len(s : DbstoreseriesView) -> Int { s.size }
+pub fn DbstoreseriesView::len(self : DbstoreseriesView) -> Int { self.size }
 
-pub fn db_store_series_view_get(s : DbstoreseriesView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesView::get(self : DbstoreseriesView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_view_set(s : DbstoreseriesView, i : Int, v : Double) -> DbstoreseriesView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesView::set(self : DbstoreseriesView, i : Int, v : Double) -> DbstoreseriesView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_view_sum(s : DbstoreseriesView) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesView::sum(self : DbstoreseriesView) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_view_mean(s : DbstoreseriesView) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesView::mean(self : DbstoreseriesView) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_view_scale(s : DbstoreseriesView, f : Double) -> DbstoreseriesView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesView::scale(self : DbstoreseriesView, f : Double) -> DbstoreseriesView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_view_add(a : DbstoreseriesView, b : DbstoreseriesView) -> DbstoreseriesView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesView::add(self : DbstoreseriesView, other : DbstoreseriesView) -> DbstoreseriesView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_view_copy(s : DbstoreseriesView) -> DbstoreseriesView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesView::copy(self : DbstoreseriesView) -> DbstoreseriesView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_view_fill(s : DbstoreseriesView, v : Double) -> DbstoreseriesView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesView::fill(self : DbstoreseriesView, v : Double) -> DbstoreseriesView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_view_min(s : DbstoreseriesView) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesView::min(self : DbstoreseriesView) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_view_max(s : DbstoreseriesView) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesView::max(self : DbstoreseriesView) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_view_to_string(s : DbstoreseriesView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesView::to_string(self : DbstoreseriesView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesRange {
@@ -963,45 +963,45 @@ pub fn db_store_series_range_make(size : Int) -> DbstoreseriesRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_range_len(s : DbstoreseriesRange) -> Int { s.size }
+pub fn DbstoreseriesRange::len(self : DbstoreseriesRange) -> Int { self.size }
 
-pub fn db_store_series_range_get(s : DbstoreseriesRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesRange::get(self : DbstoreseriesRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_range_set(s : DbstoreseriesRange, i : Int, v : Double) -> DbstoreseriesRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesRange::set(self : DbstoreseriesRange, i : Int, v : Double) -> DbstoreseriesRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_range_sum(s : DbstoreseriesRange) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesRange::sum(self : DbstoreseriesRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_range_mean(s : DbstoreseriesRange) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesRange::mean(self : DbstoreseriesRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_range_scale(s : DbstoreseriesRange, f : Double) -> DbstoreseriesRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesRange::scale(self : DbstoreseriesRange, f : Double) -> DbstoreseriesRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_range_add(a : DbstoreseriesRange, b : DbstoreseriesRange) -> DbstoreseriesRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesRange::add(self : DbstoreseriesRange, other : DbstoreseriesRange) -> DbstoreseriesRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_range_copy(s : DbstoreseriesRange) -> DbstoreseriesRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesRange::copy(self : DbstoreseriesRange) -> DbstoreseriesRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_range_fill(s : DbstoreseriesRange, v : Double) -> DbstoreseriesRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesRange::fill(self : DbstoreseriesRange, v : Double) -> DbstoreseriesRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_range_min(s : DbstoreseriesRange) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesRange::min(self : DbstoreseriesRange) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_range_max(s : DbstoreseriesRange) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesRange::max(self : DbstoreseriesRange) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_range_to_string(s : DbstoreseriesRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesRange::to_string(self : DbstoreseriesRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoreseriesSlice {
@@ -1014,44 +1014,44 @@ pub fn db_store_series_slice_make(size : Int) -> DbstoreseriesSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_series_slice_len(s : DbstoreseriesSlice) -> Int { s.size }
+pub fn DbstoreseriesSlice::len(self : DbstoreseriesSlice) -> Int { self.size }
 
-pub fn db_store_series_slice_get(s : DbstoreseriesSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoreseriesSlice::get(self : DbstoreseriesSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_series_slice_set(s : DbstoreseriesSlice, i : Int, v : Double) -> DbstoreseriesSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoreseriesSlice::set(self : DbstoreseriesSlice, i : Int, v : Double) -> DbstoreseriesSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_slice_sum(s : DbstoreseriesSlice) -> Double { @_common.sum(s.data) }
+pub fn DbstoreseriesSlice::sum(self : DbstoreseriesSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_series_slice_mean(s : DbstoreseriesSlice) -> Double { @_common.mean(s.data) }
+pub fn DbstoreseriesSlice::mean(self : DbstoreseriesSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_series_slice_scale(s : DbstoreseriesSlice, f : Double) -> DbstoreseriesSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoreseriesSlice::scale(self : DbstoreseriesSlice, f : Double) -> DbstoreseriesSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_slice_add(a : DbstoreseriesSlice, b : DbstoreseriesSlice) -> DbstoreseriesSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoreseriesSlice::add(self : DbstoreseriesSlice, other : DbstoreseriesSlice) -> DbstoreseriesSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_series_slice_copy(s : DbstoreseriesSlice) -> DbstoreseriesSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoreseriesSlice::copy(self : DbstoreseriesSlice) -> DbstoreseriesSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_slice_fill(s : DbstoreseriesSlice, v : Double) -> DbstoreseriesSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoreseriesSlice::fill(self : DbstoreseriesSlice, v : Double) -> DbstoreseriesSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_series_slice_min(s : DbstoreseriesSlice) -> Double { @_common.min(s.data) }
+pub fn DbstoreseriesSlice::min(self : DbstoreseriesSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_store_series_slice_max(s : DbstoreseriesSlice) -> Double { @_common.max(s.data) }
+pub fn DbstoreseriesSlice::max(self : DbstoreseriesSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_store_series_slice_to_string(s : DbstoreseriesSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoreseriesSlice::to_string(self : DbstoreseriesSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

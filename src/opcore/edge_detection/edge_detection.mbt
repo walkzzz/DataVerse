@@ -4,28 +4,37 @@
 /// 边缘检测算法集合：Sobel/Prewitt/Roberts/Laplacian/Canny/Marr-Hildreth/DoG/相位一致性等。
 /// 纯 MoonBit 实现，无外部依赖。
 
+///|
 /// 边缘图像 / Edge image (grayscale, Double data).
 pub struct EdgeImage {
-  width : Int
-  height : Int
+  width : Int32
+  height : Int32
   data : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend EdgeImage with Eq::{equal, not_equal}
+
+///|
 pub extend EdgeImage with Debug::{to_repr}
 
+///|
 /// 边缘配置 / Edge config.
 pub struct EdgeConfig {
-  method_ : Int
+  method_ : Int32
   low_threshold : Double
   high_threshold : Double
   sigma : Double
-  kernel_size : Int
+  kernel_size : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend EdgeConfig with Eq::{equal, not_equal}
+
+///|
 pub extend EdgeConfig with Debug::{to_repr}
 
+///|
 fn edge_atan2(y : Double, x : Double) -> Double {
   let pi = 3.141592653589793
   if x > 0.0 {
@@ -46,6 +55,7 @@ fn edge_atan2(y : Double, x : Double) -> Double {
   0.0
 }
 
+///|
 fn edge_atan(x : Double) -> Double {
   let mut result = 0.0
   let mut term = x
@@ -65,16 +75,18 @@ fn edge_atan(x : Double) -> Double {
   result
 }
 
-fn edge_empty(w : Int, h : Int) -> EdgeImage {
+///|
+fn edge_empty(w : Int32, h : Int32) -> EdgeImage {
   let n = w * h
   let data : Array[Double] = []
   for _ in 0..<n {
     data.push(0.0)
   }
-  { width: w, height: h, data }
+  { width: w, height: h, data, }
 }
 
-fn edge_pixel(img : EdgeImage, x : Int, y : Int) -> Double {
+///|
+fn edge_pixel(img : EdgeImage, x : Int32, y : Int32) -> Double {
   if x < 0 || x >= img.width || y < 0 || y >= img.height {
     return 0.0
   }
@@ -85,7 +97,8 @@ fn edge_pixel(img : EdgeImage, x : Int, y : Int) -> Double {
   img.data[idx]
 }
 
-fn edge_set_pixel(img : EdgeImage, x : Int, y : Int, v : Double) -> Unit {
+///|
+fn edge_set_pixel(img : EdgeImage, x : Int32, y : Int32, v : Double) -> Unit {
   if x < 0 || x >= img.width || y < 0 || y >= img.height {
     return
   }
@@ -95,49 +108,69 @@ fn edge_set_pixel(img : EdgeImage, x : Int, y : Int, v : Double) -> Unit {
   }
 }
 
+///|
 /// 构造边缘图像 / Build edge image.
-pub fn make_edge_image(width : Int, height : Int, data : Array[Double]) -> EdgeImage {
-  { width, height, data }
+pub fn make_edge_image(
+  width : Int32,
+  height : Int32,
+  data : Array[Double],
+) -> EdgeImage {
+  { width, height, data, }
 }
 
+///|
 /// 空边缘图像 / Empty edge image.
-pub fn edge_empty_image(width : Int, height : Int) -> EdgeImage {
+pub fn edge_empty_image(width : Int32, height : Int32) -> EdgeImage {
   edge_empty(width, height)
 }
 
+///|
 /// 克隆边缘图像 / Clone edge image.
 pub fn edge_clone(img : EdgeImage) -> EdgeImage {
   let data : Array[Double] = []
   for i in 0..<img.data.length() {
     data.push(img.data[i])
   }
-  { width: img.width, height: img.height, data }
+  { width: img.width, height: img.height, data, }
 }
 
+///|
 /// Sobel X 方向 / Sobel X direction.
 pub fn edge_sobel_x(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let gx = -edge_pixel(img, x - 1, y - 1) + edge_pixel(img, x + 1, y - 1) - 2.0 * edge_pixel(img, x - 1, y) + 2.0 * edge_pixel(img, x + 1, y) - edge_pixel(img, x - 1, y + 1) + edge_pixel(img, x + 1, y + 1)
+      let gx = -edge_pixel(img, x - 1, y - 1) +
+        edge_pixel(img, x + 1, y - 1) -
+        2.0 * edge_pixel(img, x - 1, y) +
+        2.0 * edge_pixel(img, x + 1, y) -
+        edge_pixel(img, x - 1, y + 1) +
+        edge_pixel(img, x + 1, y + 1)
       edge_set_pixel(out, x, y, gx)
     }
   }
   out
 }
 
+///|
 /// Sobel Y 方向 / Sobel Y direction.
 pub fn edge_sobel_y(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let gy = -edge_pixel(img, x - 1, y - 1) - 2.0 * edge_pixel(img, x, y - 1) - edge_pixel(img, x + 1, y - 1) + edge_pixel(img, x - 1, y + 1) + 2.0 * edge_pixel(img, x, y + 1) + edge_pixel(img, x + 1, y + 1)
+      let gy = -edge_pixel(img, x - 1, y - 1) -
+        2.0 * edge_pixel(img, x, y - 1) -
+        edge_pixel(img, x + 1, y - 1) +
+        edge_pixel(img, x - 1, y + 1) +
+        2.0 * edge_pixel(img, x, y + 1) +
+        edge_pixel(img, x + 1, y + 1)
       edge_set_pixel(out, x, y, gy)
     }
   }
   out
 }
 
+///|
 /// Sobel 幅度 / Sobel magnitude.
 pub fn edge_sobel_magnitude(img : EdgeImage) -> EdgeImage {
   let gx = edge_sobel_x(img)
@@ -145,13 +178,17 @@ pub fn edge_sobel_magnitude(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let mag = @_common.sqrt(edge_pixel(gx, x, y) * edge_pixel(gx, x, y) + edge_pixel(gy, x, y) * edge_pixel(gy, x, y))
+      let mag = @_common.sqrt(
+        edge_pixel(gx, x, y) * edge_pixel(gx, x, y) +
+        edge_pixel(gy, x, y) * edge_pixel(gy, x, y),
+      )
       edge_set_pixel(out, x, y, mag)
     }
   }
   out
 }
 
+///|
 /// Sobel 方向 / Sobel direction.
 pub fn edge_sobel_direction(img : EdgeImage) -> EdgeImage {
   let gx = edge_sobel_x(img)
@@ -166,30 +203,43 @@ pub fn edge_sobel_direction(img : EdgeImage) -> EdgeImage {
   out
 }
 
+///|
 /// Prewitt X 方向 / Prewitt X direction.
 pub fn edge_prewitt_x(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let gx = -edge_pixel(img, x - 1, y - 1) + edge_pixel(img, x + 1, y - 1) - edge_pixel(img, x - 1, y) + edge_pixel(img, x + 1, y) - edge_pixel(img, x - 1, y + 1) + edge_pixel(img, x + 1, y + 1)
+      let gx = -edge_pixel(img, x - 1, y - 1) +
+        edge_pixel(img, x + 1, y - 1) -
+        edge_pixel(img, x - 1, y) +
+        edge_pixel(img, x + 1, y) -
+        edge_pixel(img, x - 1, y + 1) +
+        edge_pixel(img, x + 1, y + 1)
       edge_set_pixel(out, x, y, gx)
     }
   }
   out
 }
 
+///|
 /// Prewitt Y 方向 / Prewitt Y direction.
 pub fn edge_prewitt_y(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let gy = -edge_pixel(img, x - 1, y - 1) - edge_pixel(img, x, y - 1) - edge_pixel(img, x + 1, y - 1) + edge_pixel(img, x - 1, y + 1) + edge_pixel(img, x, y + 1) + edge_pixel(img, x + 1, y + 1)
+      let gy = -edge_pixel(img, x - 1, y - 1) -
+        edge_pixel(img, x, y - 1) -
+        edge_pixel(img, x + 1, y - 1) +
+        edge_pixel(img, x - 1, y + 1) +
+        edge_pixel(img, x, y + 1) +
+        edge_pixel(img, x + 1, y + 1)
       edge_set_pixel(out, x, y, gy)
     }
   }
   out
 }
 
+///|
 /// Prewitt 幅度 / Prewitt magnitude.
 pub fn edge_prewitt_magnitude(img : EdgeImage) -> EdgeImage {
   let gx = edge_prewitt_x(img)
@@ -197,13 +247,17 @@ pub fn edge_prewitt_magnitude(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let mag = @_common.sqrt(edge_pixel(gx, x, y) * edge_pixel(gx, x, y) + edge_pixel(gy, x, y) * edge_pixel(gy, x, y))
+      let mag = @_common.sqrt(
+        edge_pixel(gx, x, y) * edge_pixel(gx, x, y) +
+        edge_pixel(gy, x, y) * edge_pixel(gy, x, y),
+      )
       edge_set_pixel(out, x, y, mag)
     }
   }
   out
 }
 
+///|
 /// Roberts X 方向 / Roberts X direction.
 pub fn edge_roberts_x(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
@@ -216,6 +270,7 @@ pub fn edge_roberts_x(img : EdgeImage) -> EdgeImage {
   out
 }
 
+///|
 /// Roberts Y 方向 / Roberts Y direction.
 pub fn edge_roberts_y(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
@@ -228,6 +283,7 @@ pub fn edge_roberts_y(img : EdgeImage) -> EdgeImage {
   out
 }
 
+///|
 /// Roberts 幅度 / Roberts magnitude.
 pub fn edge_roberts_magnitude(img : EdgeImage) -> EdgeImage {
   let gx = edge_roberts_x(img)
@@ -235,37 +291,55 @@ pub fn edge_roberts_magnitude(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let mag = @_common.sqrt(edge_pixel(gx, x, y) * edge_pixel(gx, x, y) + edge_pixel(gy, x, y) * edge_pixel(gy, x, y))
+      let mag = @_common.sqrt(
+        edge_pixel(gx, x, y) * edge_pixel(gx, x, y) +
+        edge_pixel(gy, x, y) * edge_pixel(gy, x, y),
+      )
       edge_set_pixel(out, x, y, mag)
     }
   }
   out
 }
 
+///|
 /// Laplacian 4 邻域 / Laplacian 4-neighbor.
 pub fn edge_laplacian_4(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let v = 4.0 * edge_pixel(img, x, y) - edge_pixel(img, x - 1, y) - edge_pixel(img, x + 1, y) - edge_pixel(img, x, y - 1) - edge_pixel(img, x, y + 1)
+      let v = 4.0 * edge_pixel(img, x, y) -
+        edge_pixel(img, x - 1, y) -
+        edge_pixel(img, x + 1, y) -
+        edge_pixel(img, x, y - 1) -
+        edge_pixel(img, x, y + 1)
       edge_set_pixel(out, x, y, v)
     }
   }
   out
 }
 
+///|
 /// Laplacian 8 邻域 / Laplacian 8-neighbor.
 pub fn edge_laplacian_8(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let v = 8.0 * edge_pixel(img, x, y) - edge_pixel(img, x - 1, y - 1) - edge_pixel(img, x, y - 1) - edge_pixel(img, x + 1, y - 1) - edge_pixel(img, x - 1, y) - edge_pixel(img, x + 1, y) - edge_pixel(img, x - 1, y + 1) - edge_pixel(img, x, y + 1) - edge_pixel(img, x + 1, y + 1)
+      let v = 8.0 * edge_pixel(img, x, y) -
+        edge_pixel(img, x - 1, y - 1) -
+        edge_pixel(img, x, y - 1) -
+        edge_pixel(img, x + 1, y - 1) -
+        edge_pixel(img, x - 1, y) -
+        edge_pixel(img, x + 1, y) -
+        edge_pixel(img, x - 1, y + 1) -
+        edge_pixel(img, x, y + 1) -
+        edge_pixel(img, x + 1, y + 1)
       edge_set_pixel(out, x, y, v)
     }
   }
   out
 }
 
+///|
 /// Laplacian of Gaussian / Laplacian of Gaussian.
 pub fn edge_laplacian_gaussian(img : EdgeImage, sigma : Double) -> EdgeImage {
   if sigma <= 0.0 {
@@ -278,10 +352,12 @@ pub fn edge_laplacian_gaussian(img : EdgeImage, sigma : Double) -> EdgeImage {
   let size = 2 * radius + 1
   let kernel : Array[Double] = []
   let s2 = sigma * sigma
-  for dy in -radius..=radius {
-    for dx in -radius..=radius {
+  for dy in -radius..<=radius {
+    for dx in -radius..<=radius {
       let r2 = (dx * dx + dy * dy).to_double()
-      let v = (r2 / s2 - 2.0) * @math.exp(-r2 / (2.0 * s2)) / (s2 * 3.141592653589793)
+      let v = (r2 / s2 - 2.0) *
+        @math.exp(-r2 / (2.0 * s2)) /
+        (s2 * 3.141592653589793)
       kernel.push(v)
     }
   }
@@ -291,7 +367,9 @@ pub fn edge_laplacian_gaussian(img : EdgeImage, sigma : Double) -> EdgeImage {
       let mut sum = 0.0
       for ky in 0..<size {
         for kx in 0..<size {
-          sum = sum + edge_pixel(img, x + kx - radius, y + ky - radius) * kernel[ky * size + kx]
+          sum = sum +
+            edge_pixel(img, x + kx - radius, y + ky - radius) *
+            kernel[ky * size + kx]
         }
       }
       edge_set_pixel(out, x, y, sum)
@@ -300,6 +378,7 @@ pub fn edge_laplacian_gaussian(img : EdgeImage, sigma : Double) -> EdgeImage {
   out
 }
 
+///|
 /// Canny 高斯平滑 / Canny Gaussian smoothing.
 pub fn canny_gaussian(img : EdgeImage, sigma : Double) -> EdgeImage {
   if sigma <= 0.0 {
@@ -313,8 +392,8 @@ pub fn canny_gaussian(img : EdgeImage, sigma : Double) -> EdgeImage {
   let kernel : Array[Double] = []
   let s2 = sigma * sigma
   let mut ksum = 0.0
-  for dy in -radius..=radius {
-    for dx in -radius..=radius {
+  for dy in -radius..<=radius {
+    for dx in -radius..<=radius {
       let r2 = (dx * dx + dy * dy).to_double()
       let v = @math.exp(-r2 / (2.0 * s2))
       kernel.push(v)
@@ -327,7 +406,9 @@ pub fn canny_gaussian(img : EdgeImage, sigma : Double) -> EdgeImage {
       let mut sum = 0.0
       for ky in 0..<size {
         for kx in 0..<size {
-          sum = sum + edge_pixel(img, x + kx - radius, y + ky - radius) * kernel[ky * size + kx]
+          sum = sum +
+            edge_pixel(img, x + kx - radius, y + ky - radius) *
+            kernel[ky * size + kx]
         }
       }
       edge_set_pixel(out, x, y, sum / ksum)
@@ -336,6 +417,7 @@ pub fn canny_gaussian(img : EdgeImage, sigma : Double) -> EdgeImage {
   out
 }
 
+///|
 /// Canny 梯度 / Canny gradient.
 pub fn canny_gradient(img : EdgeImage) -> (EdgeImage, EdgeImage) {
   let gx = edge_sobel_x(img)
@@ -344,7 +426,10 @@ pub fn canny_gradient(img : EdgeImage) -> (EdgeImage, EdgeImage) {
   let dir = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      let m = @_common.sqrt(edge_pixel(gx, x, y) * edge_pixel(gx, x, y) + edge_pixel(gy, x, y) * edge_pixel(gy, x, y))
+      let m = @_common.sqrt(
+        edge_pixel(gx, x, y) * edge_pixel(gx, x, y) +
+        edge_pixel(gy, x, y) * edge_pixel(gy, x, y),
+      )
       edge_set_pixel(mag, x, y, m)
       let d = edge_atan2(edge_pixel(gy, x, y), edge_pixel(gx, x, y))
       edge_set_pixel(dir, x, y, d)
@@ -353,6 +438,7 @@ pub fn canny_gradient(img : EdgeImage) -> (EdgeImage, EdgeImage) {
   (mag, dir)
 }
 
+///|
 /// Canny 非极大值抑制 / Canny non-maximum suppression.
 pub fn canney_nms(mag : EdgeImage, dir : EdgeImage) -> EdgeImage {
   let out = edge_empty(mag.width, mag.height)
@@ -378,8 +464,13 @@ pub fn canney_nms(mag : EdgeImage, dir : EdgeImage) -> EdgeImage {
   out
 }
 
+///|
 /// Canny 双阈值 / Canny double threshold.
-pub fn canny_threshold(img : EdgeImage, low : Double, high : Double) -> EdgeImage {
+pub fn canny_threshold(
+  img : EdgeImage,
+  low : Double,
+  high : Double,
+) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
@@ -394,10 +485,11 @@ pub fn canny_threshold(img : EdgeImage, low : Double, high : Double) -> EdgeImag
   out
 }
 
+///|
 /// 滞后连接 / Hysteresis linking.
 pub fn edge_hysteresis(img : EdgeImage) -> EdgeImage {
   let out = edge_clone(img)
-  let queue : Array[(Int, Int)] = []
+  let queue : Array[(Int32, Int32)] = []
   for y in 0..<out.height {
     for x in 0..<out.width {
       if edge_pixel(out, x, y) == 255.0 {
@@ -407,9 +499,9 @@ pub fn edge_hysteresis(img : EdgeImage) -> EdgeImage {
   }
   while queue.length() > 0 {
     let (cx, cy) = queue[queue.length() - 1]
-    ignore(        ignore(queue.remove(queue.length() - 1)))
-    for dy in -1..=1 {
-      for dx in -1..=1 {
+    ignore(ignore(queue.remove(queue.length() - 1)))
+    for dy in -1..<=1 {
+      for dx in -1..<=1 {
         if dx == 0 && dy == 0 {
           continue
         }
@@ -435,6 +527,7 @@ pub fn edge_hysteresis(img : EdgeImage) -> EdgeImage {
   out
 }
 
+///|
 /// 边缘细化 / Edge thinning.
 pub fn edge_thin(img : EdgeImage) -> EdgeImage {
   let mut out = edge_clone(img)
@@ -459,7 +552,10 @@ pub fn edge_thin(img : EdgeImage) -> EdgeImage {
         let p8 = if edge_pixel(out, x - 1, y) > 0.0 { 1 } else { 0 }
         let p9 = if edge_pixel(out, x - 1, y - 1) > 0.0 { 1 } else { 0 }
         let cn = p2 + p4 + p6 + p8
-        let seq = (p2 * (1 - p3) * p4) + (p4 * (1 - p5) * p6) + (p6 * (1 - p7) * p8) + (p8 * (1 - p9) * p2)
+        let seq = p2 * (1 - p3) * p4 +
+          p4 * (1 - p5) * p6 +
+          p6 * (1 - p7) * p8 +
+          p8 * (1 - p9) * p2
         if cn >= 2 && cn <= 6 && seq == 1 {
           edge_set_pixel(next, x, y, 0.0)
           changed = true
@@ -473,6 +569,7 @@ pub fn edge_thin(img : EdgeImage) -> EdgeImage {
   out
 }
 
+///|
 /// 边缘连接 / Edge linking.
 pub fn edge_link(img : EdgeImage, threshold : Double) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
@@ -486,15 +583,15 @@ pub fn edge_link(img : EdgeImage, threshold : Double) -> EdgeImage {
       if visited[idx] || edge_pixel(img, x, y) < threshold {
         continue
       }
-      let queue : Array[(Int, Int)] = []
+      let queue : Array[(Int32, Int32)] = []
       queue.push((x, y))
       visited[idx] = true
       while queue.length() > 0 {
         let (cx, cy) = queue[queue.length() - 1]
-        ignore(        ignore(queue.remove(queue.length() - 1)))
+        ignore(ignore(queue.remove(queue.length() - 1)))
         edge_set_pixel(out, cx, cy, 255.0)
-        for dy in -1..=1 {
-          for dx in -1..=1 {
+        for dy in -1..<=1 {
+          for dx in -1..<=1 {
             if dx == 0 && dy == 0 {
               continue
             }
@@ -517,8 +614,9 @@ pub fn edge_link(img : EdgeImage, threshold : Double) -> EdgeImage {
   out
 }
 
+///|
 /// 边缘补全 / Edge completion.
-pub fn edge_complete(img : EdgeImage, max_gap : Int) -> EdgeImage {
+pub fn edge_complete(img : EdgeImage, max_gap : Int32) -> EdgeImage {
   let out = edge_clone(img)
   for y in 0..<out.height {
     let mut last_edge = -1
@@ -536,6 +634,7 @@ pub fn edge_complete(img : EdgeImage, max_gap : Int) -> EdgeImage {
   out
 }
 
+///|
 /// 零交叉检测 / Zero crossing detection.
 pub fn edge_zero_crossing(img : EdgeImage) -> EdgeImage {
   let out = edge_empty(img.width, img.height)
@@ -559,12 +658,14 @@ pub fn edge_zero_crossing(img : EdgeImage) -> EdgeImage {
   out
 }
 
+///|
 /// Marr-Hildreth 边缘检测 / Marr-Hildreth edge detection.
 pub fn edge_marr_hildreth(img : EdgeImage, sigma : Double) -> EdgeImage {
   let log = edge_laplacian_gaussian(img, sigma)
   edge_zero_crossing(log)
 }
 
+///|
 /// DoG 边缘检测 / Difference of Gaussians.
 pub fn edge_dog(img : EdgeImage, sigma1 : Double, sigma2 : Double) -> EdgeImage {
   let g1 = canny_gaussian(img, sigma1)
@@ -578,11 +679,13 @@ pub fn edge_dog(img : EdgeImage, sigma1 : Double, sigma2 : Double) -> EdgeImage 
   out
 }
 
+///|
 /// LoG 拉普拉斯 / LoG Laplacian.
 pub fn edge_log_laplacian(img : EdgeImage, sigma : Double) -> EdgeImage {
   edge_laplacian_gaussian(img, sigma)
 }
 
+///|
 /// 相位一致性 / Phase congruency (simplified).
 pub fn edge_phase_congruency(img : EdgeImage) -> EdgeImage {
   let gx = edge_sobel_x(img)
@@ -595,8 +698,8 @@ pub fn edge_phase_congruency(img : EdgeImage) -> EdgeImage {
       let mag = @_common.sqrt(a * a + b * b)
       let mut sum_even = 0.0
       let mut sum_odd = 0.0
-      for dy in -1..=1 {
-        for dx in -1..=1 {
+      for dy in -1..<=1 {
+        for dx in -1..<=1 {
           let v = edge_pixel(img, x + dx, y + dy)
           if dx * dx + dy * dy > 0 {
             sum_even = sum_even + v
@@ -612,6 +715,7 @@ pub fn edge_phase_congruency(img : EdgeImage) -> EdgeImage {
   out
 }
 
+///|
 /// 单ogenic 边缘检测 / Monogenic signal edge detection.
 pub fn edge_monogenic(img : EdgeImage) -> EdgeImage {
   let gx = edge_sobel_x(img)
@@ -630,10 +734,12 @@ pub fn edge_monogenic(img : EdgeImage) -> EdgeImage {
   out
 }
 
+///|
 fn edge_cos(x : Double) -> Double {
   edge_sin(x + 1.5707963267948966)
 }
 
+///|
 fn edge_sin(x : Double) -> Double {
   let pi = 3.141592653589793
   let two_pi = 6.283185307179586
@@ -654,19 +760,31 @@ fn edge_sin(x : Double) -> Double {
   sum
 }
 
+///|
 /// 非极大值抑制 / Non-maximum suppression.
 pub fn edge_non_max_suppress(img : EdgeImage) -> EdgeImage {
   let (mag, dir) = canny_gradient(img)
   canney_nms(mag, dir)
 }
 
+///|
 /// 双阈值 / Double threshold.
-pub fn edge_double_threshold(img : EdgeImage, low : Double, high : Double) -> EdgeImage {
+pub fn edge_double_threshold(
+  img : EdgeImage,
+  low : Double,
+  high : Double,
+) -> EdgeImage {
   canny_threshold(img, low, high)
 }
 
+///|
 /// Canny 边缘检测 / Canny edge detection.
-pub fn edge_canny(img : EdgeImage, low : Double, high : Double, sigma : Double) -> EdgeImage {
+pub fn edge_canny(
+  img : EdgeImage,
+  low : Double,
+  high : Double,
+  sigma : Double,
+) -> EdgeImage {
   let smoothed = canny_gaussian(img, sigma)
   let (mag, dir) = canny_gradient(smoothed)
   let nms = canney_nms(mag, dir)
@@ -674,6 +792,7 @@ pub fn edge_canny(img : EdgeImage, low : Double, high : Double, sigma : Double) 
   edge_hysteresis(thresh)
 }
 
+///|
 /// 边缘质量 / Edge quality.
 pub fn edge_quality(edges : EdgeImage, img : EdgeImage) -> Double {
   let mut sum = 0.0
@@ -695,6 +814,7 @@ pub fn edge_quality(edges : EdgeImage, img : EdgeImage) -> Double {
   sum / count
 }
 
+///|
 /// 边缘连续性 / Edge continuity.
 pub fn edge_continuity(edges : EdgeImage) -> Double {
   let mut total_len = 0.0
@@ -708,18 +828,17 @@ pub fn edge_continuity(edges : EdgeImage) -> Double {
       let idx = y * edges.width + x
       if visited[idx] || edge_pixel(edges, x, y) == 0.0 {
         continue
-
       }
-      let queue : Array[(Int, Int)] = []
+      let queue : Array[(Int32, Int32)] = []
       queue.push((x, y))
       visited[idx] = true
       let mut seg_len = 0.0
       while queue.length() > 0 {
         let (cx, cy) = queue[queue.length() - 1]
-        ignore(        ignore(queue.remove(queue.length() - 1)))
+        ignore(ignore(queue.remove(queue.length() - 1)))
         seg_len = seg_len + 1.0
-        for dy in -1..=1 {
-          for dx in -1..=1 {
+        for dy in -1..<=1 {
+          for dx in -1..<=1 {
             if dx == 0 && dy == 0 {
               continue
             }
@@ -747,6 +866,7 @@ pub fn edge_continuity(edges : EdgeImage) -> Double {
   total_len / num_segments
 }
 
+///|
 /// 边缘强度 / Edge strength.
 pub fn edge_strength(edges : EdgeImage) -> Double {
   let mut sum = 0.0
@@ -763,17 +883,19 @@ pub fn edge_strength(edges : EdgeImage) -> Double {
   sum / count
 }
 
+///|
 /// 构造边缘配置 / Build edge config.
 pub fn make_edge_config(
-  method_ : Int,
+  method_ : Int32,
   low_threshold : Double,
   high_threshold : Double,
   sigma : Double,
-  kernel_size : Int
+  kernel_size : Int32,
 ) -> EdgeConfig {
-  { method_, low_threshold, high_threshold, sigma, kernel_size }
+  { method_, low_threshold, high_threshold, sigma, kernel_size, }
 }
 
+///|
 /// 全边缘检测 / Detect all edges.
 pub fn edge_detect_all(img : EdgeImage) -> Array[EdgeImage] {
   let result : Array[EdgeImage] = []
@@ -787,8 +909,14 @@ pub fn edge_detect_all(img : EdgeImage) -> Array[EdgeImage] {
   result
 }
 
+///|
 /// 边缘剖面 / Edge profile.
-pub fn edge_profile(img : EdgeImage, x : Int, y : Int, direction : Int) -> Array[Double] {
+pub fn edge_profile(
+  img : EdgeImage,
+  x : Int32,
+  y : Int32,
+  direction : Int32,
+) -> Array[Double] {
   let result : Array[Double] = []
   let length = if direction == 0 { img.width } else { img.height }
   for i in 0..<length {
@@ -802,9 +930,14 @@ pub fn edge_profile(img : EdgeImage, x : Int, y : Int, direction : Int) -> Array
   result
 }
 
+///|
 /// 转字符串 / Convert to string.
 pub fn edge_to_string(img : EdgeImage) -> String {
-  let mut s = "EdgeImage(" + img.width.to_string() + "x" + img.height.to_string() + ")["
+  let mut s = "EdgeImage(" +
+    img.width.to_string() +
+    "x" +
+    img.height.to_string() +
+    ")["
   let limit = if img.data.length() > 10 { 10 } else { img.data.length() }
   for i in 0..<limit {
     if i > 0 {
@@ -819,6 +952,7 @@ pub fn edge_to_string(img : EdgeImage) -> String {
   s
 }
 
+///|
 /// Sobel 完整检测 / Sobel full detection.
 pub fn edge_sobel(img : EdgeImage, threshold : Double) -> EdgeImage {
   let mag = edge_sobel_magnitude(img)
@@ -833,6 +967,7 @@ pub fn edge_sobel(img : EdgeImage, threshold : Double) -> EdgeImage {
   out
 }
 
+///|
 /// Prewitt 完整检测 / Prewitt full detection.
 pub fn edge_prewitt(img : EdgeImage, threshold : Double) -> EdgeImage {
   let mag = edge_prewitt_magnitude(img)
@@ -847,6 +982,7 @@ pub fn edge_prewitt(img : EdgeImage, threshold : Double) -> EdgeImage {
   out
 }
 
+///|
 /// Roberts 完整检测 / Roberts full detection.
 pub fn edge_roberts(img : EdgeImage, threshold : Double) -> EdgeImage {
   let mag = edge_roberts_magnitude(img)
@@ -861,6 +997,7 @@ pub fn edge_roberts(img : EdgeImage, threshold : Double) -> EdgeImage {
   out
 }
 
+///|
 /// 边缘检测 ID / Edge detection operator ID.
 pub fn edge_detection_id() -> String {
   "opcore/edge_detection"

@@ -7,10 +7,12 @@
 /// # Agent memory extension
 ///
 /// Vector / graph / episodic / semantic / procedural / working / reflective memory.
-
 const MEM_LARGE_DOUBLE : Double = 999999999999999.0
+
+///|
 const MEM_EPS : Double = 0.0000000000000001
 
+///|
 /// 记忆种类 / Memory kind.
 pub(all) enum MemoryKind {
   VectorKind
@@ -22,9 +24,13 @@ pub(all) enum MemoryKind {
   ReflectiveKind
 } derive(Debug, Eq)
 
+///|
 pub extend MemoryKind with Eq::{equal, not_equal}
+
+///|
 pub extend MemoryKind with Debug::{to_repr}
 
+///|
 /// 优先级 / Priority level.
 pub(all) enum PriorityLevel {
   PriorityLow
@@ -32,9 +38,13 @@ pub(all) enum PriorityLevel {
   PriorityHigh
 } derive(Debug, Eq)
 
+///|
 pub extend PriorityLevel with Eq::{equal, not_equal}
+
+///|
 pub extend PriorityLevel with Debug::{to_repr}
 
+///|
 /// 记忆条目 / Memory item.
 pub struct MemoryItem {
   id : String
@@ -44,98 +54,112 @@ pub struct MemoryItem {
   priority : PriorityLevel
   timestamp : Double
   importance : Double
-  access_count : Int
+  access_count : Int32
   decay_factor : Double
 }
 
+///|
 /// 记忆扩展 / Memory extension (main store).
 pub struct MemoryExt {
   items : Array[MemoryItem]
-  capacity : Int
+  capacity : Int32
   cache : Array[MemoryItem]
-  index : Array[(String, Int)]
+  index : Array[(String, Int32)]
 }
 
+///|
 /// 向量记忆 / Vector memory.
 pub struct VectorMemory {
   items : Array[MemoryItem]
-  dimension : Int
+  dimension : Int32
 }
 
+///|
 /// 图记忆 / Graph memory.
 pub struct GraphMemory {
   nodes : Array[MemoryItem]
   edges : Array[(String, String, Double)]
 }
 
+///|
 /// 情节记忆 / Episodic memory.
 pub struct EpisodicExt {
   episodes : Array[MemoryItem]
-  current_episode : Int
+  current_episode : Int32
 }
 
+///|
 /// 语义记忆 / Semantic memory.
 pub struct SemanticMemory {
   items : Array[MemoryItem]
   encoded : Array[(String, Array[Double])]
 }
 
+///|
 /// 程序记忆 / Procedural memory.
 pub struct ProceduralMemory {
   procedures : Array[MemoryItem]
-  execution_count : Int
+  execution_count : Int32
 }
 
+///|
 /// 工作记忆 / Working memory.
 pub struct WorkingMemory {
   stack : Array[MemoryItem]
-  max_size : Int
+  max_size : Int32
 }
 
+///|
 /// 反思记忆 / Reflective memory.
 pub struct ReflectiveMemory {
   reflections : Array[MemoryItem]
-  analysis_count : Int
+  analysis_count : Int32
 }
 
+///|
 /// 记忆固化 / Memory consolidation.
 pub struct MemoryConsolidation {
   short_term : Array[MemoryItem]
   long_term : Array[MemoryItem]
 }
 
+///|
 /// 记忆遗忘 / Memory forgetting.
 pub struct MemoryForgetting {
   decay_rate : Double
   repetition_boost : Double
 }
 
+///|
 /// 记忆关联 / Memory association.
 pub struct MemoryAssociation {
   links : Array[(String, String, Double)]
 }
 
+///|
 /// 记忆压缩 / Memory compression.
 pub struct MemoryCompression {
   compressed : Array[(String, String)]
   ratio : Double
 }
 
+///|
 /// 记忆索引 / Memory index.
 pub struct MemoryIndex {
-  entries : Array[(String, Int)]
+  entries : Array[(String, Int32)]
   built : Bool
 }
 
+///|
 /// 记忆缓存 / Memory cache.
 pub struct MemoryCache {
   entries : Array[MemoryItem]
-  max_size : Int
+  max_size : Int32
 }
 
+///|
 ///===
 /// 辅助数学 / Helper math (private)
-
 fn mem_cosine_sim(a : Array[Double], b : Array[Double]) -> Double {
   let len = if a.length() < b.length() { a.length() } else { b.length() }
   if len == 0 {
@@ -160,6 +184,7 @@ fn mem_cosine_sim(a : Array[Double], b : Array[Double]) -> Double {
 ///===
 /// 构造 / Constructors
 
+///|
 /// 构造记忆条目 / Create memory item.
 pub fn make_memory_item(
   id : String,
@@ -170,90 +195,119 @@ pub fn make_memory_item(
   timestamp : Double,
   importance : Double,
 ) -> MemoryItem {
-  { id: id, content: content, embedding: embedding, kind: kind, priority: priority, timestamp: timestamp, importance: importance, access_count: 0, decay_factor: 1.0 }
+  {
+    id,
+    content,
+    embedding,
+    kind,
+    priority,
+    timestamp,
+    importance,
+    access_count: 0,
+    decay_factor: 1.0,
+  }
 }
 
+///|
 /// 构造记忆扩展 / Create memory extension.
-pub fn make_memory_ext(capacity : Int) -> MemoryExt {
-  { items: [], capacity: capacity, cache: [], index: [] }
+pub fn make_memory_ext(capacity : Int32) -> MemoryExt {
+  { items: [], capacity, cache: [], index: [], }
 }
 
+///|
 /// 构造向量记忆 / Create vector memory.
-pub fn make_vector_memory(dimension : Int) -> VectorMemory {
-  { items: [], dimension: dimension }
+pub fn make_vector_memory(dimension : Int32) -> VectorMemory {
+  { items: [], dimension, }
 }
 
+///|
 /// 构造图记忆 / Create graph memory.
 pub fn make_graph_memory() -> GraphMemory {
-  { nodes: [], edges: [] }
+  { nodes: [], edges: [], }
 }
 
+///|
 /// 构造情节记忆 / Create episodic memory.
 pub fn make_episodic_ext() -> EpisodicExt {
-  { episodes: [], current_episode: 0 }
+  { episodes: [], current_episode: 0, }
 }
 
+///|
 /// 构造语义记忆 / Create semantic memory.
 pub fn make_semantic_memory() -> SemanticMemory {
-  { items: [], encoded: [] }
+  { items: [], encoded: [], }
 }
 
+///|
 /// 构造程序记忆 / Create procedural memory.
 pub fn make_procedural_memory() -> ProceduralMemory {
-  { procedures: [], execution_count: 0 }
+  { procedures: [], execution_count: 0, }
 }
 
+///|
 /// 构造工作记忆 / Create working memory.
-pub fn make_working_memory(max_size : Int) -> WorkingMemory {
-  { stack: [], max_size: max_size }
+pub fn make_working_memory(max_size : Int32) -> WorkingMemory {
+  { stack: [], max_size, }
 }
 
+///|
 /// 构造反思记忆 / Create reflective memory.
 pub fn make_reflective_memory() -> ReflectiveMemory {
-  { reflections: [], analysis_count: 0 }
+  { reflections: [], analysis_count: 0, }
 }
 
+///|
 /// 构造记忆固化 / Create memory consolidation.
 pub fn make_memory_consolidation() -> MemoryConsolidation {
-  { short_term: [], long_term: [] }
+  { short_term: [], long_term: [], }
 }
 
+///|
 /// 构造记忆遗忘 / Create memory forgetting.
-pub fn make_memory_forgetting(decay_rate : Double, repetition_boost : Double) -> MemoryForgetting {
-  { decay_rate: decay_rate, repetition_boost: repetition_boost }
+pub fn make_memory_forgetting(
+  decay_rate : Double,
+  repetition_boost : Double,
+) -> MemoryForgetting {
+  { decay_rate, repetition_boost, }
 }
 
+///|
 /// 构造记忆关联 / Create memory association.
 pub fn make_memory_association() -> MemoryAssociation {
-  { links: [] }
+  { links: [], }
 }
 
+///|
 /// 构造记忆压缩 / Create memory compression.
 pub fn make_memory_compression() -> MemoryCompression {
-  { compressed: [], ratio: 0.0 }
+  { compressed: [], ratio: 0.0, }
 }
 
+///|
 /// 构造记忆索引 / Create memory index.
 pub fn make_memory_index() -> MemoryIndex {
-  { entries: [], built: false }
+  { entries: [], built: false, }
 }
 
+///|
 /// 构造记忆缓存 / Create memory cache.
-pub fn make_memory_cache(max_size : Int) -> MemoryCache {
-  { entries: [], max_size: max_size }
+pub fn make_memory_cache(max_size : Int32) -> MemoryCache {
+  { entries: [], max_size, }
 }
 
 ///===
 /// 基础操作 / Basic operations
 
+///|
 /// 添加记忆 / Add memory item.
 pub fn ext_add(ext : MemoryExt, item : MemoryItem) -> MemoryExt {
   let new_items = ext.items.copy()
   new_items.push(item)
   let pruned = mem_prune_items(new_items, ext.capacity)
-  { ..ext, items: pruned }
+  { ..ext, items: pruned, }
 }
 
+///|
 /// 检索记忆 / Retrieve memory by id.
 pub fn ext_retrieve(ext : MemoryExt, id : String) -> MemoryItem {
   let empty = make_memory_item("", "", [], VectorKind, PriorityLow, 0.0, 0.0)
@@ -265,6 +319,7 @@ pub fn ext_retrieve(ext : MemoryExt, id : String) -> MemoryItem {
   empty
 }
 
+///|
 /// 搜索记忆 / Search memory by keyword.
 pub fn ext_search(ext : MemoryExt, keyword : String) -> Array[MemoryItem] {
   let result : Array[MemoryItem] = []
@@ -276,7 +331,11 @@ pub fn ext_search(ext : MemoryExt, keyword : String) -> Array[MemoryItem] {
   result
 }
 
-fn mem_prune_items(items : Array[MemoryItem], capacity : Int) -> Array[MemoryItem] {
+///|
+fn mem_prune_items(
+  items : Array[MemoryItem],
+  capacity : Int32,
+) -> Array[MemoryItem] {
   if items.length() <= capacity {
     return items
   }
@@ -292,15 +351,21 @@ fn mem_prune_items(items : Array[MemoryItem], capacity : Int) -> Array[MemoryIte
 ///===
 /// 向量记忆 / Vector memory
 
+///|
 /// 向量存储 / Store vector.
 pub fn vector_store(vm : VectorMemory, item : MemoryItem) -> VectorMemory {
   let new_items = vm.items.copy()
   new_items.push(item)
-  { ..vm, items: new_items }
+  { ..vm, items: new_items, }
 }
 
+///|
 /// 向量搜索 / Vector search memory.
-pub fn vector_search_mem(vm : VectorMemory, query : Array[Double], top_k : Int) -> Array[MemoryItem] {
+pub fn vector_search_mem(
+  vm : VectorMemory,
+  query : Array[Double],
+  top_k : Int32,
+) -> Array[MemoryItem] {
   let scored : Array[(MemoryItem, Double)] = []
   for i in 0..<vm.items.length() {
     let sim = mem_cosine_sim(query, vm.items[i].embedding)
@@ -315,15 +380,16 @@ pub fn vector_search_mem(vm : VectorMemory, query : Array[Double], top_k : Int) 
   result
 }
 
+///|
 /// 向量索引 / Vector index (return sorted indices by similarity).
-pub fn vector_index(vm : VectorMemory, query : Array[Double]) -> Array[Int] {
-  let scored : Array[(Int, Double)] = []
+pub fn vector_index(vm : VectorMemory, query : Array[Double]) -> Array[Int32] {
+  let scored : Array[(Int32, Double)] = []
   for i in 0..<vm.items.length() {
     let sim = mem_cosine_sim(query, vm.items[i].embedding)
     scored.push((i, sim))
   }
   scored.sort_by(fn(a, b) { b.1.compare(a.1) })
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<scored.length() {
     result.push(scored[i].0)
   }
@@ -333,18 +399,24 @@ pub fn vector_index(vm : VectorMemory, query : Array[Double]) -> Array[Int] {
 ///===
 /// 图记忆 / Graph memory
 
+///|
 /// 图存储 / Store graph node.
 pub fn graph_store(gm : GraphMemory, item : MemoryItem) -> GraphMemory {
   let new_nodes = gm.nodes.copy()
   new_nodes.push(item)
-  { ..gm, nodes: new_nodes }
+  { ..gm, nodes: new_nodes, }
 }
 
+///|
 /// 图遍历 / Graph traverse (BFS from node id).
-pub fn graph_traverse_mem(gm : GraphMemory, start_id : String, max_depth : Int) -> Array[String] {
+pub fn graph_traverse_mem(
+  gm : GraphMemory,
+  start_id : String,
+  max_depth : Int32,
+) -> Array[String] {
   let result : Array[String] = []
   let visited : Array[String] = []
-  let frontier : Array[(String, Int)] = [(start_id, 0)]
+  let frontier : Array[(String, Int32)] = [(start_id, 0)]
   while frontier.length() > 0 {
     let head = frontier[0]
     let _ = frontier.remove(0)
@@ -374,6 +446,7 @@ pub fn graph_traverse_mem(gm : GraphMemory, start_id : String, max_depth : Int) 
   result
 }
 
+///|
 /// 图查询 / Graph query (neighbors of node).
 pub fn graph_query_mem(gm : GraphMemory, node_id : String) -> Array[String] {
   let result : Array[String] = []
@@ -388,15 +461,17 @@ pub fn graph_query_mem(gm : GraphMemory, node_id : String) -> Array[String] {
 ///===
 /// 情节记忆 / Episodic memory
 
+///|
 /// 情节存储 / Store episode.
 pub fn episode_store(em : EpisodicExt, item : MemoryItem) -> EpisodicExt {
   let new_episodes = em.episodes.copy()
   new_episodes.push(item)
-  { ..em, episodes: new_episodes, current_episode: new_episodes.length() - 1 }
+  { ..em, episodes: new_episodes, current_episode: new_episodes.length() - 1, }
 }
 
+///|
 /// 情节检索 / Retrieve episode by index.
-pub fn episode_retrieve(em : EpisodicExt, index : Int) -> MemoryItem {
+pub fn episode_retrieve(em : EpisodicExt, index : Int32) -> MemoryItem {
   let empty = make_memory_item("", "", [], EpisodicKind, PriorityLow, 0.0, 0.0)
   if index < 0 || index >= em.episodes.length() {
     return empty
@@ -404,6 +479,7 @@ pub fn episode_retrieve(em : EpisodicExt, index : Int) -> MemoryItem {
   em.episodes[index]
 }
 
+///|
 /// 情节回放 / Replay episodes (return all in order).
 pub fn episode_replay_mem(em : EpisodicExt) -> Array[MemoryItem] {
   em.episodes.copy()
@@ -412,15 +488,25 @@ pub fn episode_replay_mem(em : EpisodicExt) -> Array[MemoryItem] {
 ///===
 /// 语义记忆 / Semantic memory
 
+///|
 /// 语义编码 / Semantic encode (store with embedding).
-pub fn semantic_encode(sm : SemanticMemory, id : String, embedding : Array[Double]) -> SemanticMemory {
+pub fn semantic_encode(
+  sm : SemanticMemory,
+  id : String,
+  embedding : Array[Double],
+) -> SemanticMemory {
   let new_encoded = sm.encoded.copy()
   new_encoded.push((id, embedding))
-  { ..sm, encoded: new_encoded }
+  { ..sm, encoded: new_encoded, }
 }
 
+///|
 /// 语义搜索 / Semantic search.
-pub fn semantic_search(sm : SemanticMemory, query : Array[Double], top_k : Int) -> Array[String] {
+pub fn semantic_search(
+  sm : SemanticMemory,
+  query : Array[Double],
+  top_k : Int32,
+) -> Array[String] {
   let scored : Array[(String, Double)] = []
   for i in 0..<sm.encoded.length() {
     let sim = mem_cosine_sim(query, sm.encoded[i].1)
@@ -435,6 +521,7 @@ pub fn semantic_search(sm : SemanticMemory, query : Array[Double], top_k : Int) 
   result
 }
 
+///|
 /// 语义匹配 / Semantic match (best match id).
 pub fn semantic_match(sm : SemanticMemory, query : Array[Double]) -> String {
   let results = semantic_search(sm, query, 1)
@@ -448,16 +535,29 @@ pub fn semantic_match(sm : SemanticMemory, query : Array[Double]) -> String {
 ///===
 /// 程序记忆 / Procedural memory
 
+///|
 /// 程序存储 / Store procedure.
-pub fn procedure_store(pm : ProceduralMemory, item : MemoryItem) -> ProceduralMemory {
+pub fn procedure_store(
+  pm : ProceduralMemory,
+  item : MemoryItem,
+) -> ProceduralMemory {
   let new_procedures = pm.procedures.copy()
   new_procedures.push(item)
-  { ..pm, procedures: new_procedures }
+  { ..pm, procedures: new_procedures, }
 }
 
+///|
 /// 程序检索 / Retrieve procedure by id.
 pub fn procedure_retrieve(pm : ProceduralMemory, id : String) -> MemoryItem {
-  let empty = make_memory_item("", "", [], ProceduralKind, PriorityLow, 0.0, 0.0)
+  let empty = make_memory_item(
+    "",
+    "",
+    [],
+    ProceduralKind,
+    PriorityLow,
+    0.0,
+    0.0,
+  )
   for i in 0..<pm.procedures.length() {
     if pm.procedures[i].id == id {
       return pm.procedures[i]
@@ -466,20 +566,28 @@ pub fn procedure_retrieve(pm : ProceduralMemory, id : String) -> MemoryItem {
   empty
 }
 
+///|
 /// 程序执行 / Execute procedure (increment execution count).
-pub fn procedure_execute(pm : ProceduralMemory, id : String) -> ProceduralMemory {
+pub fn procedure_execute(
+  pm : ProceduralMemory,
+  id : String,
+) -> ProceduralMemory {
   let new_procedures = pm.procedures.copy()
   for i in 0..<new_procedures.length() {
     if new_procedures[i].id == id {
-      new_procedures[i] = { ..new_procedures[i], access_count: new_procedures[i].access_count + 1 }
+      new_procedures[i] = {
+        ..new_procedures[i],
+        access_count: new_procedures[i].access_count + 1,
+      }
     }
   }
-  { ..pm, procedures: new_procedures, execution_count: pm.execution_count + 1 }
+  { ..pm, procedures: new_procedures, execution_count: pm.execution_count + 1, }
 }
 
 ///===
 /// 工作记忆 / Working memory
 
+///|
 /// 工作记忆压入 / Push to working memory.
 pub fn working_push(wm : WorkingMemory, item : MemoryItem) -> WorkingMemory {
   let new_stack = wm.stack.copy()
@@ -487,9 +595,10 @@ pub fn working_push(wm : WorkingMemory, item : MemoryItem) -> WorkingMemory {
   if new_stack.length() > wm.max_size {
     let _ = new_stack.remove(0)
   }
-  { ..wm, stack: new_stack }
+  { ..wm, stack: new_stack, }
 }
 
+///|
 /// 工作记忆弹出 / Pop from working memory.
 pub fn working_pop(wm : WorkingMemory) -> (WorkingMemory, MemoryItem) {
   let empty = make_memory_item("", "", [], WorkingKind, PriorityLow, 0.0, 0.0)
@@ -499,26 +608,35 @@ pub fn working_pop(wm : WorkingMemory) -> (WorkingMemory, MemoryItem) {
   let new_stack = wm.stack.copy()
   let last = new_stack[new_stack.length() - 1]
   let _ = new_stack.remove(new_stack.length() - 1)
-  ({ ..wm, stack: new_stack }, last)
+  ({ ..wm, stack: new_stack, }, last)
 }
 
+///|
 /// 工作记忆清空 / Clear working memory.
 pub fn working_clear(wm : WorkingMemory) -> WorkingMemory {
-  { ..wm, stack: [] }
+  { ..wm, stack: [], }
 }
 
 ///===
 /// 反思记忆 / Reflective memory
 
+///|
 /// 反思存储 / Store reflection.
-pub fn reflect_store(rm : ReflectiveMemory, item : MemoryItem) -> ReflectiveMemory {
+pub fn reflect_store(
+  rm : ReflectiveMemory,
+  item : MemoryItem,
+) -> ReflectiveMemory {
   let new_reflections = rm.reflections.copy()
   new_reflections.push(item)
-  { ..rm, reflections: new_reflections }
+  { ..rm, reflections: new_reflections, }
 }
 
+///|
 /// 反思检索 / Retrieve reflections by keyword.
-pub fn reflect_retrieve(rm : ReflectiveMemory, keyword : String) -> Array[MemoryItem] {
+pub fn reflect_retrieve(
+  rm : ReflectiveMemory,
+  keyword : String,
+) -> Array[MemoryItem] {
   let result : Array[MemoryItem] = []
   for i in 0..<rm.reflections.length() {
     if rm.reflections[i].content.contains(keyword) {
@@ -528,8 +646,9 @@ pub fn reflect_retrieve(rm : ReflectiveMemory, keyword : String) -> Array[Memory
   result
 }
 
+///|
 /// 反思分析 / Analyze reflections (count and average importance).
-pub fn reflect_analyze(rm : ReflectiveMemory) -> (Int, Double) {
+pub fn reflect_analyze(rm : ReflectiveMemory) -> (Int32, Double) {
   let n = rm.reflections.length()
   if n == 0 {
     return (0, 0.0)
@@ -544,8 +663,12 @@ pub fn reflect_analyze(rm : ReflectiveMemory) -> (Int, Double) {
 ///===
 /// 记忆固化 / Consolidation
 
+///|
 /// 短期固化 / Consolidate short-term (move high importance to long-term).
-pub fn consolidate_short(mc : MemoryConsolidation, threshold : Double) -> MemoryConsolidation {
+pub fn consolidate_short(
+  mc : MemoryConsolidation,
+  threshold : Double,
+) -> MemoryConsolidation {
   let new_long = mc.long_term.copy()
   let remaining : Array[MemoryItem] = []
   for i in 0..<mc.short_term.length() {
@@ -555,49 +678,87 @@ pub fn consolidate_short(mc : MemoryConsolidation, threshold : Double) -> Memory
       remaining.push(mc.short_term[i])
     }
   }
-  { short_term: remaining, long_term: new_long }
+  { short_term: remaining, long_term: new_long, }
 }
 
+///|
 /// 长期固化 / Consolidate long-term (merge into existing).
-pub fn consolidate_long(mc : MemoryConsolidation, items : Array[MemoryItem]) -> MemoryConsolidation {
+pub fn consolidate_long(
+  mc : MemoryConsolidation,
+  items : Array[MemoryItem],
+) -> MemoryConsolidation {
   let new_long = mc.long_term.copy()
   for i in 0..<items.length() {
     new_long.push(items[i])
   }
-  { ..mc, long_term: new_long }
+  { ..mc, long_term: new_long, }
 }
 
 ///===
 /// 记忆遗忘 / Forgetting
 
+///|
 /// 衰减遗忘 / Decay forgetting.
-pub fn forget_decay(mf : MemoryForgetting, item : MemoryItem, elapsed : Double) -> MemoryItem {
+pub fn forget_decay(
+  mf : MemoryForgetting,
+  item : MemoryItem,
+  elapsed : Double,
+) -> MemoryItem {
   let decay = @math.exp(-mf.decay_rate * elapsed)
-  { ..item, decay_factor: item.decay_factor * decay, importance: item.importance * decay }
+  {
+    ..item,
+    decay_factor: item.decay_factor * decay,
+    importance: item.importance * decay,
+  }
 }
 
+///|
 /// 间隔遗忘 / Spaced repetition.
-pub fn forget_spaced(mf : MemoryForgetting, item : MemoryItem, interval : Double) -> MemoryItem {
+pub fn forget_spaced(
+  mf : MemoryForgetting,
+  item : MemoryItem,
+  interval : Double,
+) -> MemoryItem {
   let boost = @math.exp(mf.repetition_boost * interval)
-  { ..item, importance: item.importance * boost, access_count: item.access_count + 1 }
+  {
+    ..item,
+    importance: item.importance * boost,
+    access_count: item.access_count + 1,
+  }
 }
 
+///|
 /// 重复遗忘 / Repetition boost.
-pub fn forget_repetition(mf : MemoryForgetting, item : MemoryItem, repetitions : Int) -> MemoryItem {
+pub fn forget_repetition(
+  mf : MemoryForgetting,
+  item : MemoryItem,
+  repetitions : Int32,
+) -> MemoryItem {
   let boost = 1.0 + mf.repetition_boost * repetitions.to_double()
-  { ..item, importance: item.importance * boost, access_count: item.access_count + repetitions }
+  {
+    ..item,
+    importance: item.importance * boost,
+    access_count: item.access_count + repetitions,
+  }
 }
 
 ///===
 /// 记忆关联 / Association
 
+///|
 /// 关联链接 / Associate link.
-pub fn associate_link(ma : MemoryAssociation, from_id : String, to_id : String, weight : Double) -> MemoryAssociation {
+pub fn associate_link(
+  ma : MemoryAssociation,
+  from_id : String,
+  to_id : String,
+  weight : Double,
+) -> MemoryAssociation {
   let new_links = ma.links.copy()
   new_links.push((from_id, to_id, weight))
-  { ..ma, links: new_links }
+  { ..ma, links: new_links, }
 }
 
+///|
 /// 关联检索 / Associate retrieve (linked ids).
 pub fn associate_retrieve(ma : MemoryAssociation, id : String) -> Array[String] {
   let result : Array[String] = []
@@ -609,11 +770,16 @@ pub fn associate_retrieve(ma : MemoryAssociation, id : String) -> Array[String] 
   result
 }
 
+///|
 /// 关联扩散 / Associate spread (multi-hop).
-pub fn associate_spread(ma : MemoryAssociation, start_id : String, max_hops : Int) -> Array[String] {
+pub fn associate_spread(
+  ma : MemoryAssociation,
+  start_id : String,
+  max_hops : Int32,
+) -> Array[String] {
   let result : Array[String] = []
   let visited : Array[String] = [start_id]
-  let frontier : Array[(String, Int)] = [(start_id, 0)]
+  let frontier : Array[(String, Int32)] = [(start_id, 0)]
   while frontier.length() > 0 {
     let head = frontier[0]
     let _ = frontier.remove(0)
@@ -632,7 +798,7 @@ pub fn associate_spread(ma : MemoryAssociation, start_id : String, max_hops : In
             break
           }
         }
-        if !(already) {
+        if !already {
           visited.push(target)
           result.push(target)
           frontier.push((target, hops + 1))
@@ -646,15 +812,29 @@ pub fn associate_spread(ma : MemoryAssociation, start_id : String, max_hops : In
 ///===
 /// 记忆压缩 / Compression
 
+///|
 /// 压缩记忆 / Compress memory (summarize content).
-pub fn compress_mem(mc : MemoryCompression, id : String, content : String) -> MemoryCompression {
+pub fn compress_mem(
+  mc : MemoryCompression,
+  id : String,
+  content : String,
+) -> MemoryCompression {
   let new_compressed = mc.compressed.copy()
-  let summary = if content.length() > 100 { content[:100].to_owned() } else { content }
+  let summary = if content.length() > 100 {
+    content[:100].to_owned()
+  } else {
+    content
+  }
   new_compressed.push((id, summary))
-  let ratio = if content.length() == 0 { 0.0 } else { summary.length().to_double() / content.length().to_double() }
-  { ..mc, compressed: new_compressed, ratio: ratio }
+  let ratio = if content.length() == 0 {
+    0.0
+  } else {
+    summary.length().to_double() / content.length().to_double()
+  }
+  { ..mc, compressed: new_compressed, ratio, }
 }
 
+///|
 /// 解压记忆 / Decompress memory (return original if stored).
 pub fn decompress_mem(mc : MemoryCompression, id : String) -> String {
   for i in 0..<mc.compressed.length() {
@@ -665,6 +845,7 @@ pub fn decompress_mem(mc : MemoryCompression, id : String) -> String {
   ""
 }
 
+///|
 /// 压缩摘要 / Compress summary (overall ratio).
 pub fn compress_summary(mc : MemoryCompression) -> Double {
   mc.ratio
@@ -673,17 +854,22 @@ pub fn compress_summary(mc : MemoryCompression) -> Double {
 ///===
 /// 记忆索引 / Index
 
+///|
 /// 构建索引 / Build memory index.
-pub fn index_build_mem(mi : MemoryIndex, items : Array[MemoryItem]) -> MemoryIndex {
-  let entries : Array[(String, Int)] = []
+pub fn index_build_mem(
+  mi : MemoryIndex,
+  items : Array[MemoryItem],
+) -> MemoryIndex {
+  let entries : Array[(String, Int32)] = []
   for i in 0..<items.length() {
     entries.push((items[i].id, i))
   }
-  { entries: entries, built: true }
+  { entries, built: true, }
 }
 
+///|
 /// 查询索引 / Query memory index.
-pub fn index_query_mem(mi : MemoryIndex, id : String) -> Int {
+pub fn index_query_mem(mi : MemoryIndex, id : String) -> Int32 {
   for i in 0..<mi.entries.length() {
     if mi.entries[i].0 == id {
       return mi.entries[i].1
@@ -692,8 +878,13 @@ pub fn index_query_mem(mi : MemoryIndex, id : String) -> Int {
   -1
 }
 
+///|
 /// 更新索引 / Update memory index.
-pub fn index_update_mem(mi : MemoryIndex, id : String, idx : Int) -> MemoryIndex {
+pub fn index_update_mem(
+  mi : MemoryIndex,
+  id : String,
+  idx : Int32,
+) -> MemoryIndex {
   let new_entries = mi.entries.copy()
   let mut found = false
   for i in 0..<new_entries.length() {
@@ -703,15 +894,16 @@ pub fn index_update_mem(mi : MemoryIndex, id : String, idx : Int) -> MemoryIndex
       break
     }
   }
-  if !(found) {
+  if !found {
     new_entries.push((id, idx))
   }
-  { ..mi, entries: new_entries }
+  { ..mi, entries: new_entries, }
 }
 
 ///===
 /// 记忆缓存 / Cache
 
+///|
 /// 缓存存储 / Cache store.
 pub fn cache_store(mc : MemoryCache, item : MemoryItem) -> MemoryCache {
   let new_entries = mc.entries.copy()
@@ -719,9 +911,10 @@ pub fn cache_store(mc : MemoryCache, item : MemoryItem) -> MemoryCache {
   if new_entries.length() > mc.max_size {
     let _ = new_entries.remove(0)
   }
-  { ..mc, entries: new_entries }
+  { ..mc, entries: new_entries, }
 }
 
+///|
 /// 缓存查找 / Cache lookup.
 pub fn cache_lookup(mc : MemoryCache, id : String) -> MemoryItem {
   let empty = make_memory_item("", "", [], VectorKind, PriorityLow, 0.0, 0.0)
@@ -733,6 +926,7 @@ pub fn cache_lookup(mc : MemoryCache, id : String) -> MemoryItem {
   empty
 }
 
+///|
 /// 缓存失效 / Cache invalidate.
 pub fn cache_invalidate(mc : MemoryCache, id : String) -> MemoryCache {
   let new_entries : Array[MemoryItem] = []
@@ -741,24 +935,27 @@ pub fn cache_invalidate(mc : MemoryCache, id : String) -> MemoryCache {
       new_entries.push(mc.entries[i])
     }
   }
-  { ..mc, entries: new_entries }
+  { ..mc, entries: new_entries, }
 }
 
 ///===
 /// 容量 / 使用 / 驱逐 / 优先级 / Capacity / Usage / Evict / Priority
 
+///|
 /// 记忆容量 / Memory capacity.
-pub fn memory_capacity(ext : MemoryExt) -> Int {
+pub fn memory_capacity(ext : MemoryExt) -> Int32 {
   ext.capacity
 }
 
+///|
 /// 记忆使用 / Memory usage (current size).
-pub fn memory_usage(ext : MemoryExt) -> Int {
+pub fn memory_usage(ext : MemoryExt) -> Int32 {
   ext.items.length()
 }
 
+///|
 /// 记忆驱逐 / Memory evict (remove lowest importance).
-pub fn memory_evict(ext : MemoryExt, count : Int) -> MemoryExt {
+pub fn memory_evict(ext : MemoryExt, count : Int32) -> MemoryExt {
   if count <= 0 {
     return ext
   }
@@ -769,23 +966,29 @@ pub fn memory_evict(ext : MemoryExt, count : Int) -> MemoryExt {
   for i in remove_n..<sorted.length() {
     remaining.push(sorted[i])
   }
-  { ..ext, items: remaining }
+  { ..ext, items: remaining, }
 }
 
+///|
 /// 记忆优先级 / Memory priority (set priority of item).
-pub fn memory_priority(ext : MemoryExt, id : String, priority : PriorityLevel) -> MemoryExt {
+pub fn memory_priority(
+  ext : MemoryExt,
+  id : String,
+  priority : PriorityLevel,
+) -> MemoryExt {
   let new_items = ext.items.copy()
   for i in 0..<new_items.length() {
     if new_items[i].id == id {
-      new_items[i] = { ..new_items[i], priority: priority }
+      new_items[i] = { ..new_items[i], priority, }
     }
   }
-  { ..ext, items: new_items }
+  { ..ext, items: new_items, }
 }
 
 ///===
 /// ID
 
+///|
 /// 模块 ID / Module id.
 pub fn agent_memory_ext_id() -> String {
   "agent_kit/agent_memory_ext"

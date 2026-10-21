@@ -1,27 +1,35 @@
 ///|
 /// S9.3 视频处理深化 / Video Processing Deepening
 
+///|
 /// 视频帧序列 / Video frame sequence.
 pub struct FrameSequence {
   frames : Array[@image.GrayImage]
-  fps : Int
+  fps : Int32
 }
 
+///|
 /// 构造帧序列 / Create frame sequence.
-pub fn make_frame_sequence(frames : Array[@image.GrayImage], fps : Int) -> FrameSequence {
-  { frames: frames, fps: fps }
+pub fn make_frame_sequence(
+  frames : Array[@image.GrayImage],
+  fps : Int32,
+) -> FrameSequence {
+  { frames, fps, }
 }
 
+///|
 /// 帧数 / Frame count.
-pub fn frame_count_seq(seq : FrameSequence) -> Int {
+pub fn frame_count_seq(seq : FrameSequence) -> Int32 {
   seq.frames.length()
 }
 
+///|
 /// 视频时长（秒）/ Video duration (seconds).
 pub fn video_duration_sec(seq : FrameSequence) -> Double {
   seq.frames.length().to_double() / seq.fps.to_double()
 }
 
+///|
 /// 帧差分 / Frame difference (returns difference image between consecutive frames).
 pub fn frame_difference(seq : FrameSequence) -> Array[@image.GrayImage] {
   let result : Array[@image.GrayImage] = []
@@ -42,6 +50,7 @@ pub fn frame_difference(seq : FrameSequence) -> Array[@image.GrayImage] {
   result
 }
 
+///|
 /// 运动强度 / Motion intensity (mean of frame differences).
 pub fn motion_intensity(seq : FrameSequence) -> Double {
   let diffs = frame_difference(seq)
@@ -62,10 +71,14 @@ pub fn motion_intensity(seq : FrameSequence) -> Double {
   total / count.to_double()
 }
 
+///|
 /// 关键帧提取 / Keyframe extraction (select frames with highest motion).
-pub fn extract_keyframes(seq : FrameSequence, n_keyframes : Int) -> Array[Int] {
+pub fn extract_keyframes(
+  seq : FrameSequence,
+  n_keyframes : Int32,
+) -> Array[Int32] {
   let diffs = frame_difference(seq)
-  let scores : Array[(Int, Double)] = []
+  let scores : Array[(Int32, Double)] = []
   for i in 0..<diffs.length() {
     let mut sum = 0.0
     for j in 0..<diffs[i].pixels.length() {
@@ -73,9 +86,21 @@ pub fn extract_keyframes(seq : FrameSequence, n_keyframes : Int) -> Array[Int] {
     }
     scores.push((i + 1, sum))
   }
-  scores.sort_by(fn(a, b) { if a.1 > b.1 { -1 } else if a.1 < b.1 { 1 } else { 0 } })
-  let result : Array[Int] = []
-  let n = if n_keyframes < scores.length() { n_keyframes } else { scores.length() }
+  scores.sort_by(fn(a, b) {
+    if a.1 > b.1 {
+      -1
+    } else if a.1 < b.1 {
+      1
+    } else {
+      0
+    }
+  })
+  let result : Array[Int32] = []
+  let n = if n_keyframes < scores.length() {
+    n_keyframes
+  } else {
+    scores.length()
+  }
   for i in 0..<n {
     result.push(scores[i].0)
   }
@@ -83,6 +108,7 @@ pub fn extract_keyframes(seq : FrameSequence, n_keyframes : Int) -> Array[Int] {
   result
 }
 
+///|
 /// 帧均值 / Frame average (temporal average).
 pub fn frame_average(seq : FrameSequence) -> @image.GrayImage {
   if seq.frames.length() == 0 {
@@ -105,6 +131,7 @@ pub fn frame_average(seq : FrameSequence) -> @image.GrayImage {
   @image.make_gray_image(w, h, result)
 }
 
+///|
 /// 视频稳定度 / Video stability (inverse of motion intensity).
 pub fn video_stability(seq : FrameSequence) -> Double {
   let motion = motion_intensity(seq)

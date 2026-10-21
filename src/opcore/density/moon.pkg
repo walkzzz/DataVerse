@@ -2,5 +2,4 @@
 // S4.5：Kernel / Point / Line Density（契约 + 模拟实现）
 import {
   "dataverse/opcore/proximity",
-
 }

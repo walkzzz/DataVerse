@@ -6,6 +6,7 @@
 ///
 /// # Retrieval augmentation operators
 
+///|
 /// 检索方法 / Retrieval method_.
 pub(all) enum RetrievalMethod {
   VectorSearch
@@ -14,6 +15,7 @@ pub(all) enum RetrievalMethod {
   SemanticSearch
 }
 
+///|
 /// 文档 / Document.
 pub(all) struct Document {
   id : String
@@ -23,13 +25,15 @@ pub(all) struct Document {
   score : Double
 }
 
+///|
 /// 检索结果 / Retrieval result.
 pub struct RetrievalResult {
   document : Document
   method_ : RetrievalMethod
-  rank : Int
+  rank : Int32
 }
 
+///|
 /// 构造文档 / Create document.
 pub fn make_document(
   id : String,
@@ -37,17 +41,23 @@ pub fn make_document(
   embedding : Array[Double],
   metadata : String,
 ) -> Document {
-  { id: id, content: content, embedding: embedding, metadata: metadata, score: 0.0 }
+  { id, content, embedding, metadata, score: 0.0, }
 }
 
+///|
 /// 构造检索结果 / Create retrieval result.
-pub fn make_retrieval_result(document : Document, method_ : RetrievalMethod, rank : Int) -> RetrievalResult {
-  { document: document, method_: method_, rank: rank }
+pub fn make_retrieval_result(
+  document : Document,
+  method_ : RetrievalMethod,
+  rank : Int32,
+) -> RetrievalResult {
+  { document, method_, rank, }
 }
 
 ///===
 /// 向量检索 / Vector search
 
+///|
 /// 余弦相似度 / Cosine similarity.
 pub fn cosine_similarity(a : Array[Double], b : Array[Double]) -> Double {
   let len = if a.length() < b.length() { a.length() } else { b.length() }
@@ -63,30 +73,42 @@ pub fn cosine_similarity(a : Array[Double], b : Array[Double]) -> Double {
     norm_b = norm_b + b[i] * b[i]
   }
   let denom = sqrt_(norm_a) * sqrt_(norm_b)
-  if denom == 0.0 { 0.0 } else { dot / denom }
+  if denom == 0.0 {
+    0.0
+  } else {
+    dot / denom
+  }
 }
 
+///|
 fn sqrt_(x : Double) -> Double {
-  if x < 0.0 { return 0.0 }
-  if x == 0.0 { return 0.0 }
+  if x < 0.0 {
+    return 0.0
+  }
+  if x == 0.0 {
+    return 0.0
+  }
   let mut guess = x / 2.0
-  if guess == 0.0 { guess = 1.0 }
+  if guess == 0.0 {
+    guess = 1.0
+  }
   for _ in 0..<50 {
     guess = (guess + x / guess) / 2.0
   }
   guess
 }
 
+///|
 /// 向量检索 / Vector search.
 pub fn vector_search(
   query_embedding : Array[Double],
   documents : Array[Document],
-  top_k : Int,
+  top_k : Int32,
 ) -> Array[RetrievalResult] {
   let scored : Array[Document] = []
   for i in 0..<documents.length() {
     let sim = cosine_similarity(query_embedding, documents[i].embedding)
-    scored.push({ ..documents[i], score: sim })
+    scored.push({ ..documents[i], score: sim, })
   }
   scored.sort_by(fn(a, b) { b.score.compare(a.score) })
   let result : Array[RetrievalResult] = []
@@ -100,17 +122,18 @@ pub fn vector_search(
 ///===
 /// 关键词检索 / Keyword search
 
+///|
 /// 关键词检索 / Keyword search.
 pub fn keyword_search(
   query : String,
   documents : Array[Document],
-  top_k : Int,
+  top_k : Int32,
 ) -> Array[RetrievalResult] {
   let query_lower = query
   let scored : Array[Document] = []
   for i in 0..<documents.length() {
     let score = keyword_score(query_lower, documents[i].content)
-    scored.push({ ..documents[i], score: score })
+    scored.push({ ..documents[i], score, })
   }
   scored.sort_by(fn(a, b) { b.score.compare(a.score) })
   let result : Array[RetrievalResult] = []
@@ -121,6 +144,7 @@ pub fn keyword_search(
   result
 }
 
+///|
 fn keyword_score(query : String, content : String) -> Double {
   let mut score = 0.0
   let query_words = query.split(" ").to_array()
@@ -136,16 +160,21 @@ fn keyword_score(query : String, content : String) -> Double {
 ///===
 /// 混合检索 / Hybrid search
 
+///|
 /// 混合检索 / Hybrid search (combine vector + keyword).
 pub fn hybrid_search(
   query : String,
   query_embedding : Array[Double],
   documents : Array[Document],
-  top_k : Int,
+  top_k : Int32,
   vector_weight : Double,
 ) -> Array[RetrievalResult] {
   let keyword_weight = 1.0 - vector_weight
-  let vector_results = vector_search(query_embedding, documents, documents.length())
+  let vector_results = vector_search(
+    query_embedding,
+    documents,
+    documents.length(),
+  )
   let keyword_results = keyword_search(query, documents, documents.length())
   let scored : Array[Document] = []
   for i in 0..<documents.length() {
@@ -162,7 +191,7 @@ pub fn hybrid_search(
       }
     }
     let combined = vector_weight * v_score + keyword_weight * k_score
-    scored.push({ ..documents[i], score: combined })
+    scored.push({ ..documents[i], score: combined, })
   }
   scored.sort_by(fn(a, b) { b.score.compare(a.score) })
   let result : Array[RetrievalResult] = []
@@ -176,19 +205,23 @@ pub fn hybrid_search(
 ///===
 /// 重排序 / Re-ranking
 
+///|
 /// 重排序 / Re-rank results by score.
 pub fn rerank(results : Array[RetrievalResult]) -> Array[RetrievalResult] {
   let sorted = results.copy()
   sorted.sort_by(fn(a, b) { b.document.score.compare(a.document.score) })
   let result : Array[RetrievalResult] = []
   for i in 0..<sorted.length() {
-    result.push({ ..sorted[i], rank: i + 1 })
+    result.push({ ..sorted[i], rank: i + 1, })
   }
   result
 }
 
+///|
 /// 去重 / Deduplicate results.
-pub fn deduplicate_results(results : Array[RetrievalResult]) -> Array[RetrievalResult] {
+pub fn deduplicate_results(
+  results : Array[RetrievalResult],
+) -> Array[RetrievalResult] {
   let seen : Array[String] = []
   let result : Array[RetrievalResult] = []
   for i in 0..<results.length() {
@@ -198,7 +231,7 @@ pub fn deduplicate_results(results : Array[RetrievalResult]) -> Array[RetrievalR
         found = true
       }
     }
-    if !(found) {
+    if !found {
       seen.push(results[i].document.id)
       result.push(results[i])
     }
@@ -206,9 +239,9 @@ pub fn deduplicate_results(results : Array[RetrievalResult]) -> Array[RetrievalR
   result
 }
 
+///|
 ///===
 /// 方法名称 / Method name
-
 pub fn method_name(method_ : RetrievalMethod) -> String {
   match method_ {
     VectorSearch => "vector"
@@ -218,9 +251,9 @@ pub fn method_name(method_ : RetrievalMethod) -> String {
   }
 }
 
+///|
 ///===
 /// ID
-
 pub fn retrieval_id() -> String {
   "agent_kit/retrieval"
 }

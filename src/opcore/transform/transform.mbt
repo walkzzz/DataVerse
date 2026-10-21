@@ -8,34 +8,39 @@
 ///
 /// Text/image/audio/video transform. See architecture §4.3.2 ⑦.
 
+///|
 /// 转小写 / Convert content to lowercase.
-pub fn to_lowercase(
-  input : @dataobject.DataObject
-) -> @dataobject.DataObject {
+pub fn to_lowercase(input : @dataobject.DataObject) -> @dataobject.DataObject {
   let lowered = String::from_array(
     input.content.to_array().map(fn(c) { c.to_ascii_lowercase() }),
   )
   @dataobject.make_dataobject_with_metadata(
-    lowered, input.modality, input.schema, input.metadata,
+    lowered,
+    input.modality,
+    input.schema,
+    input.metadata,
   )
 }
 
+///|
 /// 转大写 / Convert content to uppercase.
-pub fn to_uppercase(
-  input : @dataobject.DataObject
-) -> @dataobject.DataObject {
+pub fn to_uppercase(input : @dataobject.DataObject) -> @dataobject.DataObject {
   let uppered = String::from_array(
     input.content.to_array().map(fn(c) { c.to_ascii_uppercase() }),
   )
   @dataobject.make_dataobject_with_metadata(
-    uppered, input.modality, input.schema, input.metadata,
+    uppered,
+    input.modality,
+    input.schema,
+    input.metadata,
   )
 }
 
+///|
 /// 截断：保留前 max_len 字符 / Truncate to max_len characters.
 pub fn truncate(
   input : @dataobject.DataObject,
-  max_len : Int
+  max_len : Int32,
 ) -> @dataobject.DataObject {
   let truncated = if input.content.length() <= max_len {
     input.content
@@ -43,10 +48,14 @@ pub fn truncate(
     String::from_array(input.content.to_array()[0:max_len])
   }
   @dataobject.make_dataobject_with_metadata(
-    truncated, input.modality, input.schema, input.metadata,
+    truncated,
+    input.modality,
+    input.schema,
+    input.metadata,
   )
 }
 
+///|
 pub fn transform_id() -> String {
   "opcore/transform"
 }
@@ -56,6 +65,7 @@ pub fn transform_id() -> String {
 // 对标 ArcGIS Pro: Con / Pick / Set Null / Reclassify / Slice / Lookup
 // ============================================================
 
+///|
 /// 条件赋值 / Conditional assignment (Con).
 ///
 /// 对标 ArcGIS Pro Con 工具。
@@ -64,12 +74,14 @@ pub fn transform_id() -> String {
 pub fn transform_conditional(
   condition : @hydrology.RasterGrid,
   true_raster : @hydrology.RasterGrid,
-  false_raster : @hydrology.RasterGrid
+  false_raster : @hydrology.RasterGrid,
 ) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(condition)
   let cols = @hydrology.raster_cols(condition)
-  if rows != @hydrology.raster_rows(true_raster) || cols != @hydrology.raster_cols(true_raster) ||
-     rows != @hydrology.raster_rows(false_raster) || cols != @hydrology.raster_cols(false_raster) {
+  if rows != @hydrology.raster_rows(true_raster) ||
+    cols != @hydrology.raster_cols(true_raster) ||
+    rows != @hydrology.raster_rows(false_raster) ||
+    cols != @hydrology.raster_cols(false_raster) {
     @hydrology.make_raster([])
   } else {
     let result : Array[Array[Double]] = []
@@ -88,6 +100,7 @@ pub fn transform_conditional(
   }
 }
 
+///|
 /// 位置选择 / Pick by position.
 ///
 /// 对标 ArcGIS Pro Pick 工具。
@@ -95,7 +108,7 @@ pub fn transform_conditional(
 /// 退化安全：位置越界或空数组返回空栅格。
 pub fn transform_pick(
   position : @hydrology.RasterGrid,
-  input_rasters : Array[@hydrology.RasterGrid]
+  input_rasters : Array[@hydrology.RasterGrid],
 ) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(position)
   let cols = @hydrology.raster_cols(position)
@@ -107,9 +120,10 @@ pub fn transform_pick(
       let row : Array[Double] = []
       for j in 0..<cols {
         let idx = @hydrology.raster_get(position, i, j).to_int()
-        if idx >= 0 && idx < input_rasters.length() &&
-           i < @hydrology.raster_rows(input_rasters[idx]) &&
-           j < @hydrology.raster_cols(input_rasters[idx]) {
+        if idx >= 0 &&
+          idx < input_rasters.length() &&
+          i < @hydrology.raster_rows(input_rasters[idx]) &&
+          j < @hydrology.raster_cols(input_rasters[idx]) {
           row.push(@hydrology.raster_get(input_rasters[idx], i, j))
         } else {
           row.push(0.0)
@@ -121,6 +135,7 @@ pub fn transform_pick(
   }
 }
 
+///|
 /// 设空 / Set Null.
 ///
 /// 对标 ArcGIS Pro Set Null 工具。
@@ -128,11 +143,12 @@ pub fn transform_pick(
 /// 退化安全：空栅格返回空栅格。
 pub fn transform_set_null(
   condition : @hydrology.RasterGrid,
-  input_raster : @hydrology.RasterGrid
+  input_raster : @hydrology.RasterGrid,
 ) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(condition)
   let cols = @hydrology.raster_cols(condition)
-  if rows != @hydrology.raster_rows(input_raster) || cols != @hydrology.raster_cols(input_raster) {
+  if rows != @hydrology.raster_rows(input_raster) ||
+    cols != @hydrology.raster_cols(input_raster) {
     @hydrology.make_raster([])
   } else {
     let result : Array[Array[Double]] = []
@@ -151,6 +167,7 @@ pub fn transform_set_null(
   }
 }
 
+///|
 /// 重分类 / Reclassify.
 ///
 /// 对标 ArcGIS Pro Reclassify 工具。
@@ -158,7 +175,7 @@ pub fn transform_set_null(
 /// 退化安全：无匹配范围返回原值。
 pub fn transform_reclassify(
   input_raster : @hydrology.RasterGrid,
-  remap : Array[(Double, Double, Double)]
+  remap : Array[(Double, Double, Double)],
 ) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(input_raster)
   let cols = @hydrology.raster_cols(input_raster)
@@ -180,6 +197,7 @@ pub fn transform_reclassify(
   @hydrology.make_raster(result)
 }
 
+///|
 /// 切片 / Slice.
 ///
 /// 对标 ArcGIS Pro Slice 工具。
@@ -187,7 +205,7 @@ pub fn transform_reclassify(
 /// 退化安全：n_slices <= 0 或值范围为 0 返回原栅格。
 pub fn transform_slice(
   input_raster : @hydrology.RasterGrid,
-  n_slices : Int
+  n_slices : Int32,
 ) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(input_raster)
   let cols = @hydrology.raster_cols(input_raster)
@@ -199,8 +217,12 @@ pub fn transform_slice(
     for i in 0..<rows {
       for j in 0..<cols {
         let v = @hydrology.raster_get(input_raster, i, j)
-        if v < min_v { min_v = v }
-        if v > max_v { max_v = v }
+        if v < min_v {
+          min_v = v
+        }
+        if v > max_v {
+          max_v = v
+        }
       }
     }
     let range = max_v - min_v
@@ -212,7 +234,8 @@ pub fn transform_slice(
         let row : Array[Double] = []
         for j in 0..<cols {
           let v = @hydrology.raster_get(input_raster, i, j)
-          let raw_slice = ((v - min_v) / range * n_slices.to_double()).to_int() + 1
+          let raw_slice = ((v - min_v) / range * n_slices.to_double()).to_int() +
+            1
           let slice = if raw_slice > n_slices { n_slices } else { raw_slice }
           row.push(slice.to_double())
         }
@@ -223,6 +246,7 @@ pub fn transform_slice(
   }
 }
 
+///|
 /// 查找 / Lookup.
 ///
 /// 对标 ArcGIS Pro Lookup 工具。
@@ -230,7 +254,7 @@ pub fn transform_slice(
 /// 退化安全：索引越界返回 0.0。
 pub fn transform_lookup(
   input_raster : @hydrology.RasterGrid,
-  lookup_table : Array[Double]
+  lookup_table : Array[Double],
 ) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(input_raster)
   let cols = @hydrology.raster_cols(input_raster)

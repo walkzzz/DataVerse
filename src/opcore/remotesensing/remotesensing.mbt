@@ -7,29 +7,38 @@
 ///
 /// # Remote sensing operators
 
+///|
 /// 多波段图像 / Multi-band image.
 pub struct MultiBandImage {
-  width : Int
-  height : Int
+  width : Int32
+  height : Int32
   bands : Array[Array[Double]]
 }
 
+///|
 /// 构造多波段图像 / Create multi-band image.
 pub fn make_multiband(
-  width : Int,
-  height : Int,
+  width : Int32,
+  height : Int32,
   bands : Array[Array[Double]],
 ) -> MultiBandImage {
-  { width: width, height: height, bands: bands }
+  { width, height, bands, }
 }
 
+///|
 /// 波段数 / Band count.
-pub fn band_count(img : MultiBandImage) -> Int {
+pub fn band_count(img : MultiBandImage) -> Int32 {
   img.bands.length()
 }
 
+///|
 /// 安全获取像素值 / Safe pixel access.
-fn get_band_pixel(img : MultiBandImage, band : Int, row : Int, col : Int) -> Double {
+fn get_band_pixel(
+  img : MultiBandImage,
+  band : Int32,
+  row : Int32,
+  col : Int32,
+) -> Double {
   if band < 0 || band >= img.bands.length() {
     return 0.0
   }
@@ -42,9 +51,14 @@ fn get_band_pixel(img : MultiBandImage, band : Int, row : Int, col : Int) -> Dou
 ///===
 /// 植被指数
 
+///|
 /// NDVI / Normalized Difference Vegetation Index.
 /// NDVI = (NIR - Red) / (NIR + Red)
-pub fn ndvi(img : MultiBandImage, nir_band : Int, red_band : Int) -> Array[Double] {
+pub fn ndvi(
+  img : MultiBandImage,
+  nir_band : Int32,
+  red_band : Int32,
+) -> Array[Double] {
   let result : Array[Double] = []
   for r in 0..<img.height {
     for c in 0..<img.width {
@@ -61,13 +75,14 @@ pub fn ndvi(img : MultiBandImage, nir_band : Int, red_band : Int) -> Array[Doubl
   result
 }
 
+///|
 /// EVI / Enhanced Vegetation Index.
 /// EVI = 2.5 * (NIR - Red) / (NIR + 6*Red - 7.5*Blue + 1)
 pub fn evi(
   img : MultiBandImage,
-  nir_band : Int,
-  red_band : Int,
-  blue_band : Int,
+  nir_band : Int32,
+  red_band : Int32,
+  blue_band : Int32,
 ) -> Array[Double] {
   let result : Array[Double] = []
   for r in 0..<img.height {
@@ -86,11 +101,12 @@ pub fn evi(
   result
 }
 
+///|
 /// SAVI / Soil-Adjusted Vegetation Index.
 pub fn savi(
   img : MultiBandImage,
-  nir_band : Int,
-  red_band : Int,
+  nir_band : Int32,
+  red_band : Int32,
   l : Double,
 ) -> Array[Double] {
   let result : Array[Double] = []
@@ -112,9 +128,14 @@ pub fn savi(
 ///===
 /// 水体指数
 
+///|
 /// NDWI / Normalized Difference Water Index.
 /// NDWI = (Green - NIR) / (Green + NIR)
-pub fn ndwi(img : MultiBandImage, green_band : Int, nir_band : Int) -> Array[Double] {
+pub fn ndwi(
+  img : MultiBandImage,
+  green_band : Int32,
+  nir_band : Int32,
+) -> Array[Double] {
   let result : Array[Double] = []
   for r in 0..<img.height {
     for c in 0..<img.width {
@@ -131,9 +152,14 @@ pub fn ndwi(img : MultiBandImage, green_band : Int, nir_band : Int) -> Array[Dou
   result
 }
 
+///|
 /// MNDWI / Modified NDWI.
 /// MNDWI = (Green - SWIR) / (Green + SWIR)
-pub fn mndwi(img : MultiBandImage, green_band : Int, swir_band : Int) -> Array[Double] {
+pub fn mndwi(
+  img : MultiBandImage,
+  green_band : Int32,
+  swir_band : Int32,
+) -> Array[Double] {
   let result : Array[Double] = []
   for r in 0..<img.height {
     for c in 0..<img.width {
@@ -153,9 +179,14 @@ pub fn mndwi(img : MultiBandImage, green_band : Int, swir_band : Int) -> Array[D
 ///===
 /// 建筑指数
 
+///|
 /// NDBI / Normalized Difference Built-up Index.
 /// NDBI = (SWIR - NIR) / (SWIR + NIR)
-pub fn ndbi(img : MultiBandImage, swir_band : Int, nir_band : Int) -> Array[Double] {
+pub fn ndbi(
+  img : MultiBandImage,
+  swir_band : Int32,
+  nir_band : Int32,
+) -> Array[Double] {
   let result : Array[Double] = []
   for r in 0..<img.height {
     for c in 0..<img.width {
@@ -175,19 +206,31 @@ pub fn ndbi(img : MultiBandImage, swir_band : Int, nir_band : Int) -> Array[Doub
 ///===
 /// 波段运算
 
+///|
 /// 波段减法 / Band subtraction.
-pub fn band_subtract(img : MultiBandImage, band1 : Int, band2 : Int) -> Array[Double] {
+pub fn band_subtract(
+  img : MultiBandImage,
+  band1 : Int32,
+  band2 : Int32,
+) -> Array[Double] {
   let result : Array[Double] = []
   for r in 0..<img.height {
     for c in 0..<img.width {
-      result.push(get_band_pixel(img, band1, r, c) - get_band_pixel(img, band2, r, c))
+      result.push(
+        get_band_pixel(img, band1, r, c) - get_band_pixel(img, band2, r, c),
+      )
     }
   }
   result
 }
 
+///|
 /// 波段比值 / Band ratio.
-pub fn band_ratio(img : MultiBandImage, band1 : Int, band2 : Int) -> Array[Double] {
+pub fn band_ratio(
+  img : MultiBandImage,
+  band1 : Int32,
+  band2 : Int32,
+) -> Array[Double] {
   let result : Array[Double] = []
   for r in 0..<img.height {
     for c in 0..<img.width {
@@ -206,9 +249,13 @@ pub fn band_ratio(img : MultiBandImage, band1 : Int, band2 : Int) -> Array[Doubl
 ///===
 /// 分类
 
+///|
 /// 阈值分类 / Threshold classification.
-pub fn threshold_classify(values : Array[Double], thresholds : Array[Double]) -> Array[Int] {
-  let result : Array[Int] = []
+pub fn threshold_classify(
+  values : Array[Double],
+  thresholds : Array[Double],
+) -> Array[Int32] {
+  let result : Array[Int32] = []
   for i in 0..<values.length() {
     let mut class_id = 0
     for j in 0..<thresholds.length() {
@@ -221,12 +268,13 @@ pub fn threshold_classify(values : Array[Double], thresholds : Array[Double]) ->
   result
 }
 
+///|
 /// 监督分类（简化）/ Supervised classification (simplified, nearest mean).
 pub fn supervised_classify(
   values : Array[Double],
-  class_means : Array[(Int, Double)],
-) -> Array[Int] {
-  let result : Array[Int] = []
+  class_means : Array[(Int32, Double)],
+) -> Array[Int32] {
+  let result : Array[Int32] = []
   for i in 0..<values.length() {
     let mut best_class = 0
     let mut best_dist = 999999.0
@@ -246,8 +294,12 @@ pub fn supervised_classify(
 ///===
 /// 统计
 
+///|
 /// 波段统计 / Band statistics (min, max, mean, std).
-pub fn band_stats(img : MultiBandImage, band : Int) -> (Double, Double, Double, Double) {
+pub fn band_stats(
+  img : MultiBandImage,
+  band : Int32,
+) -> (Double, Double, Double, Double) {
   if band < 0 || band >= img.bands.length() {
     return (0.0, 0.0, 0.0, 0.0)
   }
@@ -277,9 +329,9 @@ pub fn band_stats(img : MultiBandImage, band : Int) -> (Double, Double, Double, 
   (min_v, max_v, mean, (variance / n.to_double()).sqrt())
 }
 
+///|
 ///===
 /// ID
-
 pub fn remotesensing_id() -> String {
   "opcore/remotesensing"
 }

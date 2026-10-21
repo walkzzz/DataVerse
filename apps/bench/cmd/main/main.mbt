@@ -1,3 +1,4 @@
+///|
 fn main {
   println("DataVerse Benchmark Tool v0.1.0-dev")
   println("====================================")

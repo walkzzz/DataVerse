@@ -8,34 +8,48 @@
 ///
 /// quality_score → statistics → report. See architecture §4.5 ③.
 
+///|
 /// 评估报告 / Evaluation report.
 pub struct EvalReport {
-  total_count : Int
+  total_count : Int32
   avg_quality : Double
   min_quality : Double
   max_quality : Double
-  text_count : Int
-  image_count : Int
-  audio_count : Int
-  video_count : Int
-  other_count : Int
+  text_count : Int32
+  image_count : Int32
+  audio_count : Int32
+  video_count : Int32
+  other_count : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend EvalReport with Eq::{equal, not_equal}
+
+///|
 pub extend EvalReport with Debug::{to_repr}
 
+///|
 /// 空评估报告（退化安全）/ Empty eval report (degenerate-safe).
 pub fn empty_eval_report() -> EvalReport {
-  { total_count: 0, avg_quality: 0.0, min_quality: 0.0, max_quality: 0.0, text_count: 0, image_count: 0, audio_count: 0, video_count: 0, other_count: 0 }
+  {
+    total_count: 0,
+    avg_quality: 0.0,
+    min_quality: 0.0,
+    max_quality: 0.0,
+    text_count: 0,
+    image_count: 0,
+    audio_count: 0,
+    video_count: 0,
+    other_count: 0,
+  }
 }
 
+///|
 /// 评估流水线 / Evaluation line.
 ///
 /// 对每个 DataObject 计算 text_quality_score，聚合为 EvalReport。
 /// 退化安全：空数组返回 empty_eval_report。
-pub fn eval_line(
-  arr : Array[@dataobject.DataObject]
-) -> EvalReport {
+pub fn eval_line(arr : Array[@dataobject.DataObject]) -> EvalReport {
   let total = arr.length()
   if total == 0 {
     empty_eval_report()
@@ -66,10 +80,21 @@ pub fn eval_line(
         _ => other_c = other_c + 1
       }
     }
-    { total_count: total, avg_quality: sum_q / total.to_double(), min_quality: min_q, max_quality: max_q, text_count: text_c, image_count: image_c, audio_count: audio_c, video_count: video_c, other_count: other_c }
+    {
+      total_count: total,
+      avg_quality: sum_q / total.to_double(),
+      min_quality: min_q,
+      max_quality: max_q,
+      text_count: text_c,
+      image_count: image_c,
+      audio_count: audio_c,
+      video_count: video_c,
+      other_count: other_c,
+    }
   }
 }
 
+///|
 pub fn eval_line_id() -> String {
   "recipe/eval_line"
 }

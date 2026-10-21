@@ -3,19 +3,21 @@
 /// S12 Phase 12 — 神经符号集成/逻辑张量网络/可微逻辑
 /// 神经符号AI：符号推理 + 神经网络 + 可微逻辑
 
+///|
 ///===
 /// 符号逻辑 / Symbolic logic
-
 pub struct Predicate {
   name : String
   args : Array[String]
 }
 
+///|
 /// 构造谓词
 pub fn make_predicate(name : String, args : Array[String]) -> Predicate {
-  { name, args }
+  { name, args, }
 }
 
+///|
 /// 谓词转字符串
 pub fn predicate_to_string(p : Predicate) -> String {
   let mut result = p.name + "("
@@ -28,6 +30,7 @@ pub fn predicate_to_string(p : Predicate) -> String {
   result + ")"
 }
 
+///|
 /// 谓词相等
 pub fn predicate_eq(a : Predicate, b : Predicate) -> Bool {
   if a.name != b.name {
@@ -44,6 +47,7 @@ pub fn predicate_eq(a : Predicate, b : Predicate) -> Bool {
   true
 }
 
+///|
 /// 逻辑规则
 pub struct LogicRule {
   head : Predicate
@@ -51,11 +55,17 @@ pub struct LogicRule {
   weight : Double
 }
 
+///|
 /// 构造逻辑规则
-pub fn make_rule(head : Predicate, body : Array[Predicate], weight : Double) -> LogicRule {
-  { head, body, weight }
+pub fn make_rule(
+  head : Predicate,
+  body : Array[Predicate],
+  weight : Double,
+) -> LogicRule {
+  { head, body, weight, }
 }
 
+///|
 /// 规则转字符串
 pub fn rule_to_string(rule : LogicRule) -> String {
   let mut result = predicate_to_string(rule.head) + " :- "
@@ -68,20 +78,26 @@ pub fn rule_to_string(rule : LogicRule) -> String {
   result + " [w=" + double_to_string(rule.weight) + "]"
 }
 
+///|
 ///===
 /// 逻辑张量网络 / Logic Tensor Network (LTN)
-
 pub struct LTNVariable {
   name : String
   value : Double
   trainable : Bool
 }
 
+///|
 /// 构造 LTN 变量
-pub fn make_ltn_variable(name : String, value : Double, trainable : Bool) -> LTNVariable {
-  { name, value, trainable }
+pub fn make_ltn_variable(
+  name : String,
+  value : Double,
+  trainable : Bool,
+) -> LTNVariable {
+  { name, value, trainable, }
 }
 
+///|
 /// LTN 谓词（神经网络参数化）
 pub struct LTNPredicate {
   name : String
@@ -89,13 +105,22 @@ pub struct LTNPredicate {
   bias : Double
 }
 
+///|
 /// 构造 LTN 谓词
-pub fn make_ltn_predicate(name : String, weights : Array[Double], bias : Double) -> LTNPredicate {
-  { name, weights, bias }
+pub fn make_ltn_predicate(
+  name : String,
+  weights : Array[Double],
+  bias : Double,
+) -> LTNPredicate {
+  { name, weights, bias, }
 }
 
+///|
 /// LTN 谓词求值
-pub fn ltn_predicate_eval(pred : LTNPredicate, inputs : Array[Double]) -> Double {
+pub fn ltn_predicate_eval(
+  pred : LTNPredicate,
+  inputs : Array[Double],
+) -> Double {
   let n = array_length(pred.weights)
   let mut sum = pred.bias
   for i in 0..<n {
@@ -106,6 +131,7 @@ pub fn ltn_predicate_eval(pred : LTNPredicate, inputs : Array[Double]) -> Double
   sigmoid(sum)
 }
 
+///|
 /// LTN 合取（AND）
 pub fn ltn_and(values : Array[Double]) -> Double {
   let mut result = 1.0
@@ -115,6 +141,7 @@ pub fn ltn_and(values : Array[Double]) -> Double {
   result
 }
 
+///|
 /// LTN 析取（OR）
 pub fn ltn_or(values : Array[Double]) -> Double {
   let mut result = 1.0
@@ -124,26 +151,31 @@ pub fn ltn_or(values : Array[Double]) -> Double {
   1.0 - result
 }
 
+///|
 /// LTN 蕴含（IMPLIES）
 pub fn ltn_implies(a : Double, b : Double) -> Double {
   1.0 - a + a * b
 }
 
+///|
 /// LTN 否定（NOT）
 pub fn ltn_not(a : Double) -> Double {
   1.0 - a
 }
 
+///|
 /// LTN 等价（EQUIV）
 pub fn ltn_equiv(a : Double, b : Double) -> Double {
   ltn_and([ltn_implies(a, b), ltn_implies(b, a)])
 }
 
+///|
 /// LTN 存在量词（EXISTS）
 pub fn ltn_exists(values : Array[Double]) -> Double {
   ltn_or(values)
 }
 
+///|
 /// LTN 全称量词（FORALL）
 pub fn ltn_forall(values : Array[Double]) -> Double {
   let n = array_length(values)
@@ -161,11 +193,13 @@ pub fn ltn_forall(values : Array[Double]) -> Double {
 ///===
 /// 可微逻辑 / Differentiable logic
 
+///|
 /// t-norm 乘积
 pub fn t_norm_product(a : Double, b : Double) -> Double {
   a * b
 }
 
+///|
 /// t-norm 最小
 pub fn t_norm_min(a : Double, b : Double) -> Double {
   if a < b {
@@ -175,6 +209,7 @@ pub fn t_norm_min(a : Double, b : Double) -> Double {
   }
 }
 
+///|
 /// t-norm Lukasiewicz
 pub fn t_norm_lukasiewicz(a : Double, b : Double) -> Double {
   let s = a + b - 1.0
@@ -185,11 +220,13 @@ pub fn t_norm_lukasiewicz(a : Double, b : Double) -> Double {
   }
 }
 
+///|
 /// t-conorm 概率和
 pub fn t_conorm_prob(a : Double, b : Double) -> Double {
   a + b - a * b
 }
 
+///|
 /// t-conorm 最大
 pub fn t_conorm_max(a : Double, b : Double) -> Double {
   if a > b {
@@ -199,11 +236,13 @@ pub fn t_conorm_max(a : Double, b : Double) -> Double {
   }
 }
 
+///|
 /// 蕴含算子 Reichenbach
 pub fn implies_reichenbach(a : Double, b : Double) -> Double {
   1.0 - a + a * b
 }
 
+///|
 /// 蕴含算子 Godel
 pub fn implies_godel(a : Double, b : Double) -> Double {
   if a <= b {
@@ -213,38 +252,44 @@ pub fn implies_godel(a : Double, b : Double) -> Double {
   }
 }
 
+///|
 /// 蕴含算子 Goguen
 pub fn implies_goguen(a : Double, b : Double) -> Double {
   if a < 0.000000000000001 {
     1.0
+  } else if b / a > 1.0 {
+    1.0
   } else {
-    if b / a > 1.0 {
-      1.0
-    } else {
-      b / a
-    }
+    b / a
   }
 }
 
+///|
 ///===
 /// 知识图谱推理 / Knowledge graph reasoning
-
 pub struct KGTriple {
   subject : String
   relation : String
   object : String
 }
 
+///|
 /// 构造 KG 三元组
-pub fn make_triple(subject : String, relation : String, object : String) -> KGTriple {
-  { subject, relation, object }
+pub fn make_triple(
+  subject : String,
+  relation : String,
+  object : String,
+) -> KGTriple {
+  { subject, relation, object, }
 }
 
+///|
 /// 三元组转字符串
 pub fn triple_to_string(t : KGTriple) -> String {
   "(" + t.subject + ", " + t.relation + ", " + t.object + ")"
 }
 
+///|
 /// 知识图谱
 pub struct KnowledgeGraph {
   triples : Array[KGTriple]
@@ -252,26 +297,32 @@ pub struct KnowledgeGraph {
   relations : Array[String]
 }
 
+///|
 /// 构造知识图谱
 pub fn make_knowledge_graph(triples : Array[KGTriple]) -> KnowledgeGraph {
   let mut entities = []
   let mut relations = []
   for i in 0..<array_length(triples) {
-    if !(array_contains_str(entities, triples[i].subject)) {
+    if !array_contains_str(entities, triples[i].subject) {
       entities = array_append_str(entities, [triples[i].subject])
     }
-    if !(array_contains_str(entities, triples[i].object)) {
+    if !array_contains_str(entities, triples[i].object) {
       entities = array_append_str(entities, [triples[i].object])
     }
-    if !(array_contains_str(relations, triples[i].relation)) {
+    if !array_contains_str(relations, triples[i].relation) {
       relations = array_append_str(relations, [triples[i].relation])
     }
   }
-  { triples, entities, relations }
+  { triples, entities, relations, }
 }
 
+///|
 /// KG 查询：给定主语和关系，找宾语
-pub fn kg_query(kg : KnowledgeGraph, subject : String, relation : String) -> Array[String] {
+pub fn kg_query(
+  kg : KnowledgeGraph,
+  subject : String,
+  relation : String,
+) -> Array[String] {
   let mut results = []
   for i in 0..<array_length(kg.triples) {
     if kg.triples[i].subject == subject && kg.triples[i].relation == relation {
@@ -281,8 +332,13 @@ pub fn kg_query(kg : KnowledgeGraph, subject : String, relation : String) -> Arr
   results
 }
 
+///|
 /// KG 反向查询：给定宾语和关系，找主语
-pub fn kg_query_inverse(kg : KnowledgeGraph, relation : String, object : String) -> Array[String] {
+pub fn kg_query_inverse(
+  kg : KnowledgeGraph,
+  relation : String,
+  object : String,
+) -> Array[String] {
   let mut results = []
   for i in 0..<array_length(kg.triples) {
     if kg.triples[i].relation == relation && kg.triples[i].object == object {
@@ -292,43 +348,53 @@ pub fn kg_query_inverse(kg : KnowledgeGraph, relation : String, object : String)
   results
 }
 
+///|
 /// KG 实体数
-pub fn kg_entity_count(kg : KnowledgeGraph) -> Int {
+pub fn kg_entity_count(kg : KnowledgeGraph) -> Int32 {
   array_length(kg.entities)
 }
 
+///|
 /// KG 关系数
-pub fn kg_relation_count(kg : KnowledgeGraph) -> Int {
+pub fn kg_relation_count(kg : KnowledgeGraph) -> Int32 {
   array_length(kg.relations)
 }
 
+///|
 /// KG 三元组数
-pub fn kg_triple_count(kg : KnowledgeGraph) -> Int {
+pub fn kg_triple_count(kg : KnowledgeGraph) -> Int32 {
   array_length(kg.triples)
 }
 
+///|
 ///===
 /// TransE 嵌入 / TransE embedding
-
 pub struct TransEModel {
   entity_embeddings : Array[(String, Array[Double])]
   relation_embeddings : Array[(String, Array[Double])]
-  dim : Int
+  dim : Int32
   margin : Double
 }
 
+///|
 /// 构造 TransE 模型
 pub fn make_transe_model(
   entity_embeddings : Array[(String, Array[Double])],
   relation_embeddings : Array[(String, Array[Double])],
-  dim : Int,
-  margin : Double
+  dim : Int32,
+  margin : Double,
 ) -> TransEModel {
-  { entity_embeddings, relation_embeddings, dim, margin }
+  { entity_embeddings, relation_embeddings, dim, margin, }
 }
 
+///|
 /// TransE 得分函数: ||h + r - t||
-pub fn transe_score(model : TransEModel, h : String, r : String, t : String) -> Double {
+pub fn transe_score(
+  model : TransEModel,
+  h : String,
+  r : String,
+  t : String,
+) -> Double {
   let h_emb = lookup_embedding(model.entity_embeddings, h)
   let r_emb = lookup_embedding(model.relation_embeddings, r)
   let t_emb = lookup_embedding(model.entity_embeddings, t)
@@ -341,13 +407,28 @@ pub fn transe_score(model : TransEModel, h : String, r : String, t : String) -> 
   sqrt_(sum)
 }
 
+///|
 /// TransE 损失
-pub fn transe_loss(model : TransEModel, positive : Array[KGTriple], negative : Array[KGTriple]) -> Double {
+pub fn transe_loss(
+  model : TransEModel,
+  positive : Array[KGTriple],
+  negative : Array[KGTriple],
+) -> Double {
   let mut loss = 0.0
   for i in 0..<array_length(positive) {
-    let pos_score = transe_score(model, positive[i].subject, positive[i].relation, positive[i].object)
+    let pos_score = transe_score(
+      model,
+      positive[i].subject,
+      positive[i].relation,
+      positive[i].object,
+    )
     if i < array_length(negative) {
-      let neg_score = transe_score(model, negative[i].subject, negative[i].relation, negative[i].object)
+      let neg_score = transe_score(
+        model,
+        negative[i].subject,
+        negative[i].relation,
+        negative[i].object,
+      )
       let diff = model.margin + pos_score - neg_score
       if diff > 0.0 {
         loss = loss + diff
@@ -357,36 +438,51 @@ pub fn transe_loss(model : TransEModel, positive : Array[KGTriple], negative : A
   loss
 }
 
+///|
 ///===
 /// 规则提取 / Rule extraction
-
 pub struct ExtractedRule {
   conditions : Array[String]
   conclusion : String
   confidence : Double
-  support : Int
+  support : Int32
 }
 
+///|
 /// 构造提取规则
-pub fn make_extracted_rule(conditions : Array[String], conclusion : String, confidence : Double, support : Int) -> ExtractedRule {
-  { conditions, conclusion, confidence, support }
+pub fn make_extracted_rule(
+  conditions : Array[String],
+  conclusion : String,
+  confidence : Double,
+  support : Int32,
+) -> ExtractedRule {
+  { conditions, conclusion, confidence, support, }
 }
 
+///|
 /// 规则提取（从决策路径）
-pub fn extract_rules_from_paths(paths : Array[(Array[String], String)]) -> Array[ExtractedRule] {
+pub fn extract_rules_from_paths(
+  paths : Array[(Array[String], String)],
+) -> Array[ExtractedRule] {
   let mut rules = []
   for i in 0..<array_length(paths) {
     let path = paths[i]
     let conditions = path.0
     let conclusion = path.1
     let conf = 1.0 / int_to_double(i + 1)
-    rules = array_append_rule(rules, [make_extracted_rule(conditions, conclusion, conf, 1)])
+    rules = array_append_rule(rules, [
+      make_extracted_rule(conditions, conclusion, conf, 1),
+    ])
   }
   rules
 }
 
+///|
 /// 规则过滤（按置信度阈值）
-pub fn filter_rules_by_confidence(rules : Array[ExtractedRule], threshold : Double) -> Array[ExtractedRule] {
+pub fn filter_rules_by_confidence(
+  rules : Array[ExtractedRule],
+  threshold : Double,
+) -> Array[ExtractedRule] {
   let mut filtered = []
   for i in 0..<array_length(rules) {
     if rules[i].confidence >= threshold {
@@ -396,23 +492,26 @@ pub fn filter_rules_by_confidence(rules : Array[ExtractedRule], threshold : Doub
   filtered
 }
 
+///|
 /// 规则合并（相同结论）
 pub fn merge_rules(rules : Array[ExtractedRule]) -> Array[ExtractedRule] {
   let mut merged = []
   let used = Array::make(array_length(rules), false)
   for i in 0..<array_length(rules) {
-    if !(used[i]) {
+    if !used[i] {
       used[i] = true
       let mut combined_conds = rules[i].conditions
       let mut total_support = rules[i].support
       let mut conf_sum = rules[i].confidence
       let mut conf_count = 1
       for j in (i + 1)..<array_length(rules) {
-        if !(used[j]) && rules[j].conclusion == rules[i].conclusion {
+        if !used[j] && rules[j].conclusion == rules[i].conclusion {
           used[j] = true
           for k in 0..<array_length(rules[j].conditions) {
-            if !(array_contains_str(combined_conds, rules[j].conditions[k])) {
-              combined_conds = array_append_str(combined_conds, [rules[j].conditions[k]])
+            if !array_contains_str(combined_conds, rules[j].conditions[k]) {
+              combined_conds = array_append_str(combined_conds, [
+                rules[j].conditions[k],
+              ])
             }
           }
           total_support = total_support + rules[j].support
@@ -420,28 +519,44 @@ pub fn merge_rules(rules : Array[ExtractedRule]) -> Array[ExtractedRule] {
           conf_count = conf_count + 1
         }
       }
-      merged = array_append_rule(merged, [make_extracted_rule(combined_conds, rules[i].conclusion, conf_sum / int_to_double(conf_count), total_support)])
+      merged = array_append_rule(merged, [
+        make_extracted_rule(
+          combined_conds,
+          rules[i].conclusion,
+          conf_sum / int_to_double(conf_count),
+          total_support,
+        ),
+      ])
     }
   }
   merged
 }
 
+///|
 ///===
 /// 神经符号推理 / Neuro-symbolic reasoning
-
 pub struct NSReasoner {
   rules : Array[LogicRule]
   facts : Array[Predicate]
   ltn_preds : Array[LTNPredicate]
 }
 
+///|
 /// 构造神经符号推理器
-pub fn make_ns_reasoner(rules : Array[LogicRule], facts : Array[Predicate], ltn_preds : Array[LTNPredicate]) -> NSReasoner {
-  { rules, facts, ltn_preds }
+pub fn make_ns_reasoner(
+  rules : Array[LogicRule],
+  facts : Array[Predicate],
+  ltn_preds : Array[LTNPredicate],
+) -> NSReasoner {
+  { rules, facts, ltn_preds, }
 }
 
+///|
 /// 前向推理
-pub fn forward_chain(reasoner : NSReasoner, max_steps : Int) -> Array[Predicate] {
+pub fn forward_chain(
+  reasoner : NSReasoner,
+  max_steps : Int32,
+) -> Array[Predicate] {
   let mut derived = reasoner.facts
   let mut changed = true
   let mut steps = 0
@@ -458,7 +573,7 @@ pub fn forward_chain(reasoner : NSReasoner, max_steps : Int) -> Array[Predicate]
             found = true
           }
         }
-        if !(found) {
+        if !found {
           all_satisfied = false
         }
       }
@@ -469,7 +584,7 @@ pub fn forward_chain(reasoner : NSReasoner, max_steps : Int) -> Array[Predicate]
             already = true
           }
         }
-        if !(already) {
+        if !already {
           derived = array_append_pred(derived, [rule.head])
           changed = true
         }
@@ -479,6 +594,7 @@ pub fn forward_chain(reasoner : NSReasoner, max_steps : Int) -> Array[Predicate]
   derived
 }
 
+///|
 /// 查询事实
 pub fn query_fact(reasoner : NSReasoner, query : Predicate) -> Bool {
   for i in 0..<array_length(reasoner.facts) {
@@ -489,8 +605,13 @@ pub fn query_fact(reasoner : NSReasoner, query : Predicate) -> Bool {
   false
 }
 
+///|
 /// 神经符号查询（带置信度）
-pub fn ns_query(reasoner : NSReasoner, query : Predicate, inputs : Array[Double]) -> Double {
+pub fn ns_query(
+  reasoner : NSReasoner,
+  query : Predicate,
+  inputs : Array[Double],
+) -> Double {
   for i in 0..<array_length(reasoner.ltn_preds) {
     if reasoner.ltn_preds[i].name == query.name {
       return ltn_predicate_eval(reasoner.ltn_preds[i], inputs)
@@ -503,19 +624,24 @@ pub fn ns_query(reasoner : NSReasoner, query : Predicate, inputs : Array[Double]
   }
 }
 
+///|
 ///===
 /// 概率逻辑 / Probabilistic logic
-
 pub struct ProbabilisticFact {
   predicate : Predicate
   probability : Double
 }
 
+///|
 /// 构造概率事实
-pub fn make_prob_fact(predicate : Predicate, probability : Double) -> ProbabilisticFact {
-  { predicate, probability }
+pub fn make_prob_fact(
+  predicate : Predicate,
+  probability : Double,
+) -> ProbabilisticFact {
+  { predicate, probability, }
 }
 
+///|
 /// 概率合取
 pub fn prob_conjunction(facts : Array[ProbabilisticFact]) -> Double {
   let mut result = 1.0
@@ -525,6 +651,7 @@ pub fn prob_conjunction(facts : Array[ProbabilisticFact]) -> Double {
   result
 }
 
+///|
 /// 概率析取（独立假设）
 pub fn prob_disjunction(facts : Array[ProbabilisticFact]) -> Double {
   let mut result = 1.0
@@ -534,13 +661,19 @@ pub fn prob_disjunction(facts : Array[ProbabilisticFact]) -> Double {
   1.0 - result
 }
 
+///|
 /// 概率否定
 pub fn prob_negation(fact : ProbabilisticFact) -> Double {
   1.0 - fact.probability
 }
 
+///|
 /// 贝叶斯规则推理
-pub fn bayesian_rule(prior : Double, likelihood : Double, evidence : Double) -> Double {
+pub fn bayesian_rule(
+  prior : Double,
+  likelihood : Double,
+  evidence : Double,
+) -> Double {
   if evidence < 0.000000000000001 {
     prior
   } else {
@@ -548,17 +681,19 @@ pub fn bayesian_rule(prior : Double, likelihood : Double, evidence : Double) -> 
   }
 }
 
+///|
 ///===
 /// 辅助函数 / Helper functions
-
-fn[A] array_length(arr : Array[A]) -> Int {
+fn[A] array_length(arr : Array[A]) -> Int32 {
   arr.length()
 }
 
+///|
 fn sigmoid(x : Double) -> Double {
   1.0 / (1.0 + exp_(-x))
 }
 
+///|
 fn exp_(x : Double) -> Double {
   if x > 700.0 {
     999999999999999.0
@@ -575,6 +710,7 @@ fn exp_(x : Double) -> Double {
   }
 }
 
+///|
 fn sqrt_(x : Double) -> Double {
   if x < 0.0 {
     0.0
@@ -592,7 +728,11 @@ fn sqrt_(x : Double) -> Double {
   }
 }
 
-fn lookup_embedding(embeddings : Array[(String, Array[Double])], name : String) -> Array[Double] {
+///|
+fn lookup_embedding(
+  embeddings : Array[(String, Array[Double])],
+  name : String,
+) -> Array[Double] {
   for i in 0..<array_length(embeddings) {
     if embeddings[i].0 == name {
       return embeddings[i].1
@@ -601,6 +741,7 @@ fn lookup_embedding(embeddings : Array[(String, Array[Double])], name : String) 
   Array::make(10, 0.0)
 }
 
+///|
 fn double_to_string(x : Double) -> String {
   let int_part = int_of_double(x)
   let frac = x - int_to_double(int_part)
@@ -608,6 +749,7 @@ fn double_to_string(x : Double) -> String {
   int_to_string(int_part) + "." + int_to_string(frac_int)
 }
 
+///|
 fn abs_double(x : Double) -> Double {
   if x < 0.0 {
     -x
@@ -616,7 +758,8 @@ fn abs_double(x : Double) -> Double {
   }
 }
 
-fn int_of_double(x : Double) -> Int {
+///|
+fn int_of_double(x : Double) -> Int32 {
   if x >= 0.0 {
     int_of_double_impl(x)
   } else {
@@ -624,7 +767,8 @@ fn int_of_double(x : Double) -> Int {
   }
 }
 
-fn int_of_double_impl(x : Double) -> Int {
+///|
+fn int_of_double_impl(x : Double) -> Int32 {
   let mut n = 0
   let mut d = x
   while d >= 1.0 {
@@ -634,14 +778,17 @@ fn int_of_double_impl(x : Double) -> Int {
   n
 }
 
-fn int_to_double(n : Int) -> Double {
+///|
+fn int_to_double(n : Int32) -> Double {
   n.to_double()
 }
 
-fn int_to_string(n : Int) -> String {
+///|
+fn int_to_string(n : Int32) -> String {
   n.to_string()
 }
 
+///|
 fn array_contains_str(arr : Array[String], x : String) -> Bool {
   for i in 0..<array_length(arr) {
     if arr[i] == x {
@@ -651,6 +798,7 @@ fn array_contains_str(arr : Array[String], x : String) -> Bool {
   false
 }
 
+///|
 fn array_append_str(arr : Array[String], elem : Array[String]) -> Array[String] {
   let n = array_length(arr)
   let m = array_length(elem)
@@ -667,7 +815,11 @@ fn array_append_str(arr : Array[String], elem : Array[String]) -> Array[String] 
   result
 }
 
-fn array_append_pred(arr : Array[Predicate], elem : Array[Predicate]) -> Array[Predicate] {
+///|
+fn array_append_pred(
+  arr : Array[Predicate],
+  elem : Array[Predicate],
+) -> Array[Predicate] {
   let n = array_length(arr)
   let m = array_length(elem)
   if n == 0 {
@@ -683,7 +835,11 @@ fn array_append_pred(arr : Array[Predicate], elem : Array[Predicate]) -> Array[P
   result
 }
 
-fn array_append_rule(arr : Array[ExtractedRule], elem : Array[ExtractedRule]) -> Array[ExtractedRule] {
+///|
+fn array_append_rule(
+  arr : Array[ExtractedRule],
+  elem : Array[ExtractedRule],
+) -> Array[ExtractedRule] {
   let n = array_length(arr)
   let m = array_length(elem)
   if n == 0 {

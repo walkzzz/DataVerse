@@ -7,40 +7,61 @@
 ///
 /// Data version tower and snapshots. See architecture §4.4.1.
 
+///|
 /// 版本 / A single version entry.
 pub struct Version {
   version_id : String
   parent : String?
-  timestamp : Int
+  timestamp : Int32
   snapshot_ref : String
 } derive(Debug, Eq)
 
+///|
 pub extend Version with Eq::{equal, not_equal}
+
+///|
 pub extend Version with Debug::{to_repr}
 
+///|
 /// 版本塔 / Version tower: ordered version collection.
 pub struct VersionTower {
   versions : Array[Version]
 } derive(Debug, Eq)
 
+///|
 pub extend VersionTower with Eq::{equal, not_equal}
+
+///|
 pub extend VersionTower with Debug::{to_repr}
 
+///|
 /// 构造版本 / Build a version.
-pub fn make_version(id : String, parent : String?, timestamp : Int, snapshot : String) -> Version {
-  { version_id: id, parent, timestamp, snapshot_ref: snapshot }
+pub fn make_version(
+  id : String,
+  parent : String?,
+  timestamp : Int32,
+  snapshot : String,
+) -> Version {
+  { version_id: id, parent, timestamp, snapshot_ref: snapshot, }
 }
 
+///|
 /// 根版本（无父）/ Root version (no parent).
-pub fn root_version(id : String, timestamp : Int, snapshot : String) -> Version {
-  { version_id: id, parent: None, timestamp, snapshot_ref: snapshot }
+pub fn root_version(
+  id : String,
+  timestamp : Int32,
+  snapshot : String,
+) -> Version {
+  { version_id: id, parent: None, timestamp, snapshot_ref: snapshot, }
 }
 
+///|
 /// 空版本塔 / Empty version tower.
 pub fn empty_tower() -> VersionTower {
-  { versions: [] }
+  { versions: [], }
 }
 
+///|
 /// 追加版本 / Append a version to tower.
 pub fn append(tower : VersionTower, v : Version) -> VersionTower {
   let new_versions = []
@@ -48,14 +69,16 @@ pub fn append(tower : VersionTower, v : Version) -> VersionTower {
     new_versions.push(x)
   }
   new_versions.push(v)
-  { versions: new_versions }
+  { versions: new_versions, }
 }
 
+///|
 /// 版本塔高度 / Tower height.
-pub fn height(tower : VersionTower) -> Int {
+pub fn height(tower : VersionTower) -> Int32 {
   tower.versions.length()
 }
 
+///|
 /// 最新版本 / Latest version.
 ///
 /// 退化安全：空塔返回 None。
@@ -68,6 +91,7 @@ pub fn latest(tower : VersionTower) -> Version? {
   }
 }
 
+///|
 /// 按 ID 查找版本 / Find version by id.
 pub fn get_by_id(tower : VersionTower, id : String) -> Version? {
   let n = tower.versions.length()
@@ -79,6 +103,7 @@ pub fn get_by_id(tower : VersionTower, id : String) -> Version? {
   None
 }
 
+///|
 /// 祖先链 / Ancestor chain from a version to root.
 ///
 /// 返回从给定版本到根的祖先链（含自身）。退化安全：ID 不存在返回空。
@@ -104,6 +129,7 @@ pub fn ancestors(tower : VersionTower, id : String) -> Array[Version] {
   result
 }
 
+///|
 pub fn version_id() -> String {
   "datatemporal/version"
 }

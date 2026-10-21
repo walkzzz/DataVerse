@@ -14,21 +14,28 @@
 // ============================================================
 
 const E_EULER : Double = 2.718281828459045
+
+///|
 const LARGE_DOUBLE : Double = 999999999999999.0
 
 // ============================================================
 // 类型定义 / Type definitions
 // ============================================================
 
+///|
 /// 混淆矩阵 / Confusion matrix.
 pub struct ConfusionMatrix {
-  matrix : Array[Array[Int]]
-  num_classes : Int
+  matrix : Array[Array[Int32]]
+  num_classes : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend ConfusionMatrix with Eq::{equal, not_equal}
+
+///|
 pub extend ConfusionMatrix with Debug::{to_repr}
 
+///|
 /// ROC 曲线 / ROC curve result.
 pub struct ROCCurve {
   fpr : Array[Double]
@@ -36,9 +43,13 @@ pub struct ROCCurve {
   thresholds : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend ROCCurve with Eq::{equal, not_equal}
+
+///|
 pub extend ROCCurve with Debug::{to_repr}
 
+///|
 /// 交叉验证结果 / Cross-validation result.
 pub struct CVResult {
   mean_score : Double
@@ -46,13 +57,17 @@ pub struct CVResult {
   scores : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend CVResult with Eq::{equal, not_equal}
+
+///|
 pub extend CVResult with Debug::{to_repr}
 
 // ============================================================
 // 辅助数学函数 / Helper math functions
 // ============================================================
 
+///|
 /// 平方根 / Square root.
 pub fn sqrt_(x : Double) -> Double {
   if x < 0.0 {
@@ -71,6 +86,7 @@ pub fn sqrt_(x : Double) -> Double {
   guess
 }
 
+///|
 fn abs_(x : Double) -> Double {
   if x < 0.0 {
     -x
@@ -79,6 +95,7 @@ fn abs_(x : Double) -> Double {
   }
 }
 
+///|
 /// 自然指数 / Natural exponential.
 pub fn exp_(x : Double) -> Double {
   if x > 700.0 {
@@ -112,6 +129,7 @@ pub fn exp_(x : Double) -> Double {
   result
 }
 
+///|
 /// 自然对数 / Natural logarithm.
 pub fn ln_(x : Double) -> Double {
   if x <= 0.0 {
@@ -144,11 +162,13 @@ pub fn ln_(x : Double) -> Double {
   result * 2.0 + m.to_double()
 }
 
+///|
 fn rng_(seed : Double) -> Double {
   let s = seed * 1103515245.0 + 12345.0
   s - (s / 2147483647.0).to_int().to_double() * 2147483647.0
 }
 
+///|
 fn euclidean_dist(x : Array[Double], y : Array[Double]) -> Double {
   let n = x.length()
   let mut sum = 0.0
@@ -159,6 +179,7 @@ fn euclidean_dist(x : Array[Double], y : Array[Double]) -> Double {
   sqrt_(sum)
 }
 
+///|
 fn pearson_corr(x : Array[Double], y : Array[Double]) -> Double {
   let n = x.length()
   if n == 0 || n != y.length() {
@@ -190,6 +211,7 @@ fn pearson_corr(x : Array[Double], y : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 包标识 / Package identity.
 pub fn ml_stats_id() -> String {
   "dataverse/opcore/ml_stats v0.1.0 (42 fn)"
@@ -199,6 +221,7 @@ pub fn ml_stats_id() -> String {
 // 特征工程 / Feature engineering
 // ============================================================
 
+///|
 /// L2 归一化 / L2 normalization.
 pub fn normalize_feature(data : Array[Double]) -> Array[Double] {
   let n = data.length()
@@ -220,6 +243,7 @@ pub fn normalize_feature(data : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 /// 标准化（Z-score）/ Standardization.
 pub fn standardize_feature(data : Array[Double]) -> Array[Double] {
   let n = data.length()
@@ -247,9 +271,12 @@ pub fn standardize_feature(data : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 /// Min-Max 缩放 / Min-Max scaling.
 pub fn min_max_scale(
-  data : Array[Double], min_val : Double, max_val : Double
+  data : Array[Double],
+  min_val : Double,
+  max_val : Double,
 ) -> Array[Double] {
   let n = data.length()
   if n == 0 {
@@ -280,8 +307,12 @@ pub fn min_max_scale(
   result
 }
 
+///|
 /// One-Hot 编码 / One-hot encoding.
-pub fn encode_one_hot(labels : Array[Int], num_classes : Int) -> Array[Array[Double]] {
+pub fn encode_one_hot(
+  labels : Array[Int32],
+  num_classes : Int32,
+) -> Array[Array[Double]] {
   let n = labels.length()
   let result : Array[Array[Double]] = []
   for _ in 0..<n {
@@ -295,8 +326,9 @@ pub fn encode_one_hot(labels : Array[Int], num_classes : Int) -> Array[Array[Dou
   result
 }
 
+///|
 /// 标签编码 / Label encoding.
-pub fn encode_label(labels : Array[String]) -> Array[Int] {
+pub fn encode_label(labels : Array[String]) -> Array[Int32] {
   let n = labels.length()
   let unique : Array[String] = []
   for i in 0..<n {
@@ -323,8 +355,12 @@ pub fn encode_label(labels : Array[String]) -> Array[Int] {
   result
 }
 
+///|
 /// 序数编码 / Ordinal encoding.
-pub fn encode_ordinal(labels : Array[String], order : Array[String]) -> Array[Int] {
+pub fn encode_ordinal(
+  labels : Array[String],
+  order : Array[String],
+) -> Array[Int32] {
   let n = labels.length()
   let result = Array::make(n, -1)
   for i in 0..<n {
@@ -338,8 +374,9 @@ pub fn encode_ordinal(labels : Array[String], order : Array[String]) -> Array[In
   result
 }
 
+///|
 /// 分箱 / Binning by edges.
-pub fn bin_feature(data : Array[Double], edges : Array[Double]) -> Array[Int] {
+pub fn bin_feature(data : Array[Double], edges : Array[Double]) -> Array[Int32] {
   let n = data.length()
   let result = Array::make(n, 0)
   for i in 0..<n {
@@ -356,8 +393,9 @@ pub fn bin_feature(data : Array[Double], edges : Array[Double]) -> Array[Int] {
   result
 }
 
+///|
 /// 等宽离散化 / Equal-width discretization.
-pub fn discretize(data : Array[Double], num_bins : Int) -> Array[Int] {
+pub fn discretize(data : Array[Double], num_bins : Int32) -> Array[Int32] {
   let n = data.length()
   if n == 0 || num_bins <= 0 {
     return []
@@ -390,9 +428,11 @@ pub fn discretize(data : Array[Double], num_bins : Int) -> Array[Int] {
   result
 }
 
+///|
 /// 多项式特征 / Polynomial features.
 pub fn polynomial_features(
-  data : Array[Double], degree : Int
+  data : Array[Double],
+  degree : Int32,
 ) -> Array[Array[Double]] {
   let n = data.length()
   let result : Array[Array[Double]] = []
@@ -402,7 +442,7 @@ pub fn polynomial_features(
   for i in 0..<n {
     let mut p = 1.0
     result[i][0] = 1.0
-    for d in 1..=degree {
+    for d in 1..<=degree {
       p = p * data[i]
       result[i][d] = p
     }
@@ -410,6 +450,7 @@ pub fn polynomial_features(
   result
 }
 
+///|
 /// 特征重要性 / Feature importance.
 pub fn feature_importance(weights : Array[Double]) -> Array[Double] {
   let n = weights.length()
@@ -430,9 +471,13 @@ pub fn feature_importance(weights : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 /// 特征选择 / Feature selection by threshold.
-pub fn feature_selection(scores : Array[Double], threshold : Double) -> Array[Int] {
-  let result : Array[Int] = []
+pub fn feature_selection(
+  scores : Array[Double],
+  threshold : Double,
+) -> Array[Int32] {
+  let result : Array[Int32] = []
   for i in 0..<scores.length() {
     if scores[i] >= threshold {
       result.push(i)
@@ -441,15 +486,17 @@ pub fn feature_selection(scores : Array[Double], threshold : Double) -> Array[In
   result
 }
 
+///|
 /// 移除相关特征 / Remove correlated features.
 pub fn remove_correlated(
-  features : Array[Array[Double]], threshold : Double
-) -> Array[Int] {
+  features : Array[Array[Double]],
+  threshold : Double,
+) -> Array[Int32] {
   let n = features.length()
   if n == 0 {
     return []
   }
-  let selected : Array[Int] = [0]
+  let selected : Array[Int32] = [0]
   for i in 1..<n {
     let mut keep = true
     for j in 0..<selected.length() {
@@ -470,8 +517,9 @@ pub fn remove_correlated(
 // 模型评估 / Model evaluation
 // ============================================================
 
+///|
 /// 准确率 / Accuracy.
-pub fn accuracy(y_true : Array[Int], y_pred : Array[Int]) -> Double {
+pub fn accuracy(y_true : Array[Int32], y_pred : Array[Int32]) -> Double {
   let n = y_true.length()
   if n == 0 || n != y_pred.length() {
     return 0.0
@@ -485,8 +533,13 @@ pub fn accuracy(y_true : Array[Int], y_pred : Array[Int]) -> Double {
   correct.to_double() / n.to_double()
 }
 
+///|
 /// 精确率 / Precision.
-pub fn precision(y_true : Array[Int], y_pred : Array[Int], positive : Int) -> Double {
+pub fn precision(
+  y_true : Array[Int32],
+  y_pred : Array[Int32],
+  positive : Int32,
+) -> Double {
   let n = y_true.length()
   if n == 0 || n != y_pred.length() {
     return 0.0
@@ -510,8 +563,13 @@ pub fn precision(y_true : Array[Int], y_pred : Array[Int], positive : Int) -> Do
   }
 }
 
+///|
 /// 召回率 / Recall.
-pub fn recall(y_true : Array[Int], y_pred : Array[Int], positive : Int) -> Double {
+pub fn recall(
+  y_true : Array[Int32],
+  y_pred : Array[Int32],
+  positive : Int32,
+) -> Double {
   let n = y_true.length()
   if n == 0 || n != y_pred.length() {
     return 0.0
@@ -535,9 +593,12 @@ pub fn recall(y_true : Array[Int], y_pred : Array[Int], positive : Int) -> Doubl
   }
 }
 
+///|
 /// F1 分数 / F1 score.
 pub fn f1_score_ml(
-  y_true : Array[Int], y_pred : Array[Int], positive : Int
+  y_true : Array[Int32],
+  y_pred : Array[Int32],
+  positive : Int32,
 ) -> Double {
   let p = precision(y_true, y_pred, positive)
   let r = recall(y_true, y_pred, positive)
@@ -549,11 +610,14 @@ pub fn f1_score_ml(
   }
 }
 
+///|
 /// 混淆矩阵 / Confusion matrix.
 pub fn confusion_matrix(
-  y_true : Array[Int], y_pred : Array[Int], num_classes : Int
+  y_true : Array[Int32],
+  y_pred : Array[Int32],
+  num_classes : Int32,
 ) -> ConfusionMatrix {
-  let matrix : Array[Array[Int]] = []
+  let matrix : Array[Array[Int32]] = []
   for _ in 0..<num_classes {
     matrix.push(Array::make(num_classes, 0))
   }
@@ -569,8 +633,9 @@ pub fn confusion_matrix(
   { matrix, num_classes, }
 }
 
+///|
 /// ROC 曲线 / ROC curve.
-pub fn roc_curve(y_true : Array[Int], y_score : Array[Double]) -> ROCCurve {
+pub fn roc_curve(y_true : Array[Int32], y_score : Array[Double]) -> ROCCurve {
   let n = y_true.length()
   let mut pos = 0
   let mut neg = 0
@@ -618,8 +683,9 @@ pub fn roc_curve(y_true : Array[Int], y_score : Array[Double]) -> ROCCurve {
   { fpr, tpr, thresholds, }
 }
 
+///|
 /// AUC 分数 / AUC score.
-pub fn auc_score(y_true : Array[Int], y_score : Array[Double]) -> Double {
+pub fn auc_score(y_true : Array[Int32], y_score : Array[Double]) -> Double {
   let roc = roc_curve(y_true, y_score)
   let n = roc.fpr.length()
   if n < 2 {
@@ -634,8 +700,9 @@ pub fn auc_score(y_true : Array[Int], y_score : Array[Double]) -> Double {
   auc
 }
 
+///|
 /// 对数损失 / Log loss.
-pub fn log_loss(y_true : Array[Int], y_prob : Array[Double]) -> Double {
+pub fn log_loss(y_true : Array[Int32], y_prob : Array[Double]) -> Double {
   let n = y_true.length()
   if n == 0 || n != y_prob.length() {
     return 0.0
@@ -659,8 +726,9 @@ pub fn log_loss(y_true : Array[Int], y_prob : Array[Double]) -> Double {
   -sum / n.to_double()
 }
 
+///|
 /// Hinge 损失 / Hinge loss.
-pub fn hinge_loss(y_true : Array[Int], y_pred : Array[Double]) -> Double {
+pub fn hinge_loss(y_true : Array[Int32], y_pred : Array[Double]) -> Double {
   let n = y_true.length()
   if n == 0 || n != y_pred.length() {
     return 0.0
@@ -676,6 +744,7 @@ pub fn hinge_loss(y_true : Array[Int], y_pred : Array[Double]) -> Double {
   sum / n.to_double()
 }
 
+///|
 /// KL 散度 / KL divergence.
 pub fn kl_divergence(p : Array[Double], q : Array[Double]) -> Double {
   let n = p.length()
@@ -691,9 +760,11 @@ pub fn kl_divergence(p : Array[Double], q : Array[Double]) -> Double {
   sum
 }
 
+///|
 /// 均方误差 / Mean squared error.
 pub fn mean_squared_error(
-  y_true : Array[Double], y_pred : Array[Double]
+  y_true : Array[Double],
+  y_pred : Array[Double],
 ) -> Double {
   let n = y_true.length()
   if n == 0 || n != y_pred.length() {
@@ -707,9 +778,11 @@ pub fn mean_squared_error(
   sum / n.to_double()
 }
 
+///|
 /// 平均绝对误差 / Mean absolute error.
 pub fn mean_absolute_error(
-  y_true : Array[Double], y_pred : Array[Double]
+  y_true : Array[Double],
+  y_pred : Array[Double],
 ) -> Double {
   let n = y_true.length()
   if n == 0 || n != y_pred.length() {
@@ -722,6 +795,7 @@ pub fn mean_absolute_error(
   sum / n.to_double()
 }
 
+///|
 /// R2 分数 / R2 score.
 pub fn r2_score(y_true : Array[Double], y_pred : Array[Double]) -> Double {
   let n = y_true.length()
@@ -748,9 +822,11 @@ pub fn r2_score(y_true : Array[Double], y_pred : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 轮廓系数 / Silhouette score.
 pub fn silhouette_score(
-  data : Array[Array[Double]], labels : Array[Int]
+  data : Array[Array[Double]],
+  labels : Array[Int32],
 ) -> Double {
   let n = data.length()
   if n == 0 || n != labels.length() {
@@ -783,9 +859,11 @@ pub fn silhouette_score(
   total / n.to_double()
 }
 
+///|
 /// Davies-Bouldin 指数 / Davies-Bouldin index.
 pub fn davies_bouldin_score(
-  data : Array[Array[Double]], labels : Array[Int]
+  data : Array[Array[Double]],
+  labels : Array[Int32],
 ) -> Double {
   let n = data.length()
   if n == 0 {
@@ -849,9 +927,11 @@ pub fn davies_bouldin_score(
   total / k.to_double()
 }
 
+///|
 /// Calinski-Harabasz 指数 / Calinski-Harabasz index.
 pub fn calinski_harabasz_score(
-  data : Array[Array[Double]], labels : Array[Int]
+  data : Array[Array[Double]],
+  labels : Array[Int32],
 ) -> Double {
   let n = data.length()
   if n == 0 {
@@ -908,7 +988,7 @@ pub fn calinski_harabasz_score(
   if ss_w == 0.0 {
     0.0
   } else {
-    (ss_b / (k - 1).to_double()) / (ss_w / (n - k).to_double())
+    ss_b / (k - 1).to_double() / (ss_w / (n - k).to_double())
   }
 }
 
@@ -916,19 +996,23 @@ pub fn calinski_harabasz_score(
 // 交叉验证 / Cross-validation
 // ============================================================
 
+///|
 /// K 折分割 / K-fold split.
-pub fn k_fold_split(n : Int, k : Int) -> Array[(Array[Int], Array[Int])] {
+pub fn k_fold_split(
+  n : Int32,
+  k : Int32,
+) -> Array[(Array[Int32], Array[Int32])] {
   if n <= 0 || k <= 0 || k > n {
     return []
   }
   let fold_size = n / k
   let remainder = n % k
-  let result : Array[(Array[Int], Array[Int])] = []
+  let result : Array[(Array[Int32], Array[Int32])] = []
   let mut start = 0
   for fold in 0..<k {
     let size = if fold < remainder { fold_size + 1 } else { fold_size }
-    let test_set : Array[Int] = []
-    let train_set : Array[Int] = []
+    let test_set : Array[Int32] = []
+    let train_set : Array[Int32] = []
     for i in 0..<n {
       if i >= start && i < start + size {
         test_set.push(i)
@@ -942,10 +1026,12 @@ pub fn k_fold_split(n : Int, k : Int) -> Array[(Array[Int], Array[Int])] {
   result
 }
 
+///|
 /// 分层分割 / Stratified split.
 pub fn stratified_split(
-  labels : Array[Int], k : Int
-) -> Array[(Array[Int], Array[Int])] {
+  labels : Array[Int32],
+  k : Int32,
+) -> Array[(Array[Int32], Array[Int32])] {
   let n = labels.length()
   if n == 0 || k <= 0 {
     return []
@@ -957,14 +1043,14 @@ pub fn stratified_split(
     }
   }
   let num_classes = max_label + 1
-  let class_indices : Array[Array[Int]] = []
+  let class_indices : Array[Array[Int32]] = []
   for _ in 0..<num_classes {
     class_indices.push([])
   }
   for i in 0..<n {
     class_indices[labels[i]].push(i)
   }
-  let folds : Array[Array[Int]] = []
+  let folds : Array[Array[Int32]] = []
   for _ in 0..<k {
     folds.push([])
   }
@@ -975,10 +1061,10 @@ pub fn stratified_split(
       folds[fold].push(class_indices[c][i])
     }
   }
-  let result : Array[(Array[Int], Array[Int])] = []
+  let result : Array[(Array[Int32], Array[Int32])] = []
   for fold in 0..<k {
     let test_set = folds[fold]
-    let train_set : Array[Int] = []
+    let train_set : Array[Int32] = []
     for i in 0..<n {
       let mut in_test = false
       for j in 0..<test_set.length() {
@@ -996,15 +1082,16 @@ pub fn stratified_split(
   result
 }
 
+///|
 /// 留一法 / Leave-one-out.
-pub fn leave_one_out(n : Int) -> Array[(Array[Int], Array[Int])] {
+pub fn leave_one_out(n : Int32) -> Array[(Array[Int32], Array[Int32])] {
   if n <= 0 {
     return []
   }
-  let result : Array[(Array[Int], Array[Int])] = []
+  let result : Array[(Array[Int32], Array[Int32])] = []
   for i in 0..<n {
-    let train_set : Array[Int] = []
-    let test_set : Array[Int] = [i]
+    let train_set : Array[Int32] = []
+    let test_set : Array[Int32] = [i]
     for j in 0..<n {
       if j != i {
         train_set.push(j)
@@ -1015,6 +1102,7 @@ pub fn leave_one_out(n : Int) -> Array[(Array[Int], Array[Int])] {
   result
 }
 
+///|
 /// 交叉验证分数 / Cross-validate score.
 pub fn cross_validate_score(scores : Array[Double]) -> CVResult {
   let n = scores.length()
@@ -1035,8 +1123,12 @@ pub fn cross_validate_score(scores : Array[Double]) -> CVResult {
   { mean_score: mean, std_score: std, scores, }
 }
 
+///|
 /// 自助采样 / Bootstrap sample.
-pub fn bootstrap_sample(data : Array[Double], n_samples : Int) -> Array[Double] {
+pub fn bootstrap_sample(
+  data : Array[Double],
+  n_samples : Int32,
+) -> Array[Double] {
   let n = data.length()
   if n == 0 || n_samples <= 0 {
     return []
@@ -1055,9 +1147,12 @@ pub fn bootstrap_sample(data : Array[Double], n_samples : Int) -> Array[Double] 
 // 重采样 / Resampling
 // ============================================================
 
+///|
 /// 过采样 / Oversample.
 pub fn oversample(
-  data : Array[Array[Double]], labels : Array[Int], target_count : Int
+  data : Array[Array[Double]],
+  labels : Array[Int32],
+  target_count : Int32,
 ) -> Array[Array[Double]] {
   let n = data.length()
   if n == 0 || n != labels.length() {
@@ -1070,7 +1165,7 @@ pub fn oversample(
     }
   }
   let num_classes = max_label + 1
-  let class_indices : Array[Array[Int]] = []
+  let class_indices : Array[Array[Int32]] = []
   for _ in 0..<num_classes {
     class_indices.push([])
   }
@@ -1093,9 +1188,12 @@ pub fn oversample(
   result
 }
 
+///|
 /// 欠采样 / Undersample.
 pub fn undersample(
-  data : Array[Array[Double]], labels : Array[Int], target_count : Int
+  data : Array[Array[Double]],
+  labels : Array[Int32],
+  target_count : Int32,
 ) -> Array[Array[Double]] {
   let n = data.length()
   if n == 0 || n != labels.length() {
@@ -1108,7 +1206,7 @@ pub fn undersample(
     }
   }
   let num_classes = max_label + 1
-  let class_indices : Array[Array[Int]] = []
+  let class_indices : Array[Array[Int32]] = []
   for _ in 0..<num_classes {
     class_indices.push([])
   }
@@ -1120,7 +1218,7 @@ pub fn undersample(
   for c in 0..<num_classes {
     let cn = class_indices[c].length()
     if cn > target_count && target_count > 0 {
-      let selected : Array[Int] = []
+      let selected : Array[Int32] = []
       while selected.length() < target_count {
         seed = rng_(seed)
         let idx = (seed / 2147483647.0 * cn.to_double()).to_int() % cn
@@ -1147,12 +1245,13 @@ pub fn undersample(
   result
 }
 
+///|
 /// SMOTE 合成 / SMOTE synthetic samples.
 pub fn smote(
   data : Array[Array[Double]],
-  labels : Array[Int],
-  k : Int,
-  n_synthetic : Int
+  labels : Array[Int32],
+  k : Int32,
+  n_synthetic : Int32,
 ) -> Array[Array[Double]] {
   let n = data.length()
   if n == 0 || n != labels.length() || n_synthetic <= 0 {
@@ -1177,7 +1276,7 @@ pub fn smote(
       minority_class = c
     }
   }
-  let minority_indices : Array[Int] = []
+  let minority_indices : Array[Int32] = []
   for i in 0..<n {
     if labels[i] == minority_class {
       minority_indices.push(i)
@@ -1192,19 +1291,21 @@ pub fn smote(
   let mut seed = 42.0
   for _ in 0..<n_synthetic {
     seed = rng_(seed)
-    let idx = minority_indices[
-      (seed / 2147483647.0 * mn.to_double()).to_int() % mn
-    ]
+    let idx = minority_indices[(seed / 2147483647.0 * mn.to_double()).to_int() %
+      mn]
     let kk = if k < mn { k } else { mn - 1 }
     if kk <= 0 {
       result.push(data[idx])
       continue
     }
-    let dists : Array[(Int, Double)] = []
+    let dists : Array[(Int32, Double)] = []
     for j in 0..<mn {
       if minority_indices[j] != idx {
         dists.push(
-          (minority_indices[j], euclidean_dist(data[idx], data[minority_indices[j]])),
+          (
+            minority_indices[j],
+            euclidean_dist(data[idx], data[minority_indices[j]]),
+          ),
         )
       }
     }
@@ -1222,9 +1323,7 @@ pub fn smote(
       i = i + 1
     }
     seed = rng_(seed)
-    let nn_idx = dists[
-      (seed / 2147483647.0 * kk.to_double()).to_int() % kk
-    ].0
+    let nn_idx = dists[(seed / 2147483647.0 * kk.to_double()).to_int() % kk].0
     seed = rng_(seed)
     let gap = seed / 2147483647.0
     let synth = Array::make(dim, 0.0)
@@ -1236,15 +1335,19 @@ pub fn smote(
   result
 }
 
+///|
 /// 训练测试分割 / Train-test split.
-pub fn train_test_split(n : Int, test_ratio : Double) -> (Array[Int], Array[Int]) {
+pub fn train_test_split(
+  n : Int32,
+  test_ratio : Double,
+) -> (Array[Int32], Array[Int32]) {
   if n <= 0 {
     return ([], [])
   }
   let test_size = (n.to_double() * test_ratio).to_int()
   let indices = shuffle_dataset(n)
-  let test_set : Array[Int] = []
-  let train_set : Array[Int] = []
+  let test_set : Array[Int32] = []
+  let train_set : Array[Int32] = []
   for i in 0..<n {
     if i < test_size {
       test_set.push(indices[i])
@@ -1255,8 +1358,9 @@ pub fn train_test_split(n : Int, test_ratio : Double) -> (Array[Int], Array[Int]
   (train_set, test_set)
 }
 
+///|
 /// 数据集洗牌 / Shuffle dataset.
-pub fn shuffle_dataset(n : Int) -> Array[Int] {
+pub fn shuffle_dataset(n : Int32) -> Array[Int32] {
   let result = Array::make(n, 0)
   for i in 0..<n {
     result[i] = i

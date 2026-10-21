@@ -8,16 +8,18 @@
 ///
 /// exact_dedup. See architecture §4.5 ②.
 
+///|
 /// 去重线 / Dedup line.
 ///
 /// 精确去重：按 content 字符串去重。
 /// 退化安全：空数组返回空数组。
 pub fn dedup_line(
-  arr : Array[@dataobject.DataObject]
+  arr : Array[@dataobject.DataObject],
 ) -> Array[@dataobject.DataObject] {
   @dedup.exact_dedup(arr)
 }
 
+///|
 pub fn dedup_line_id() -> String {
   "recipe/dedup_line"
 }

@@ -6,7 +6,6 @@
 /// # Curriculum Learning
 ///
 /// Difficulty scoring, samplers, teacher signal, self-paced, boost, anti/balanced/online/transfer curriculum, baby step, macro, evaluation.
-
 fn exp(x : Double) -> Double {
   if x > 20.0 {
     485165195.4
@@ -23,6 +22,7 @@ fn exp(x : Double) -> Double {
   }
 }
 
+///|
 fn log(x : Double) -> Double {
   if x <= 0.0 {
     -1000.0
@@ -39,6 +39,7 @@ fn log(x : Double) -> Double {
   }
 }
 
+///|
 fn sqrt(x : Double) -> Double {
   if x <= 0.0 {
     0.0
@@ -51,10 +52,16 @@ fn sqrt(x : Double) -> Double {
   }
 }
 
+///|
 fn abs_d(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
+  if x < 0.0 {
+    -x
+  } else {
+    x
+  }
 }
 
+///|
 fn sin_d(x : Double) -> Double {
   let pi = 3.141592653589793
   let two_pi = 6.283185307179586
@@ -69,148 +76,211 @@ fn sin_d(x : Double) -> Double {
   let mut term = y
   let y2 = y * y
   for j in 1..<20 {
-    term = term * y2 / ((2 * j).to_double() * (2 * j + 1).to_double()) * (-1.0)
+    term = term * y2 / ((2 * j).to_double() * (2 * j + 1).to_double()) * -1.0
     result = result + term
   }
   result
 }
 
+///|
 fn clamp(x : Double, lo : Double, hi : Double) -> Double {
-  if x < lo { lo } else if x > hi { hi } else { x }
+  if x < lo {
+    lo
+  } else if x > hi {
+    hi
+  } else {
+    x
+  }
 }
 
+///|
 pub(all) struct Curriculum {
-  samples : Array[Int]
+  samples : Array[Int32]
   difficulties : Array[Double]
-  current_step : Int
-  max_step : Int
+  current_step : Int32
+  max_step : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend Curriculum with Eq::{equal, not_equal}
+
+///|
 pub extend Curriculum with Debug::{to_repr}
 
+///|
 pub(all) struct DifficultyConfig {
   method_name : String
   threshold : Double
-  num_bins : Int
+  num_bins : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend DifficultyConfig with Eq::{equal, not_equal}
+
+///|
 pub extend DifficultyConfig with Debug::{to_repr}
 
+///|
 pub(all) struct SamplerConfig {
-  batch_size : Int
+  batch_size : Int32
   easy_ratio : Double
   hard_ratio : Double
 } derive(Debug, Eq)
 
+///|
 pub extend SamplerConfig with Eq::{equal, not_equal}
+
+///|
 pub extend SamplerConfig with Debug::{to_repr}
 
+///|
 pub(all) struct TeacherConfig {
   teacher_type : String
   confidence_threshold : Double
   temperature : Double
 } derive(Debug, Eq)
 
+///|
 pub extend TeacherConfig with Eq::{equal, not_equal}
+
+///|
 pub extend TeacherConfig with Debug::{to_repr}
 
+///|
 pub(all) struct SelfPacedConfig {
   threshold : Double
   lambda : Double
   gamma : Double
 } derive(Debug, Eq)
 
+///|
 pub extend SelfPacedConfig with Eq::{equal, not_equal}
+
+///|
 pub extend SelfPacedConfig with Debug::{to_repr}
 
+///|
 pub(all) struct BoostConfig {
   init_rate : Double
   decay : Double
   max_rate : Double
 } derive(Debug, Eq)
 
+///|
 pub extend BoostConfig with Eq::{equal, not_equal}
+
+///|
 pub extend BoostConfig with Debug::{to_repr}
 
+///|
 pub(all) struct AntiCurriculumConfig {
   start_hard : Bool
   schedule : String
-  num_steps : Int
+  num_steps : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend AntiCurriculumConfig with Eq::{equal, not_equal}
+
+///|
 pub extend AntiCurriculumConfig with Debug::{to_repr}
 
+///|
 pub(all) struct BalancedConfig {
   target_ratio : Double
   tolerance : Double
-  buffer_size : Int
+  buffer_size : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend BalancedConfig with Eq::{equal, not_equal}
+
+///|
 pub extend BalancedConfig with Debug::{to_repr}
 
+///|
 pub(all) struct OnlineCurriculumConfig {
-  window_size : Int
+  window_size : Int32
   adapt_rate : Double
   min_difficulty : Double
   max_difficulty : Double
 } derive(Debug, Eq)
 
+///|
 pub extend OnlineCurriculumConfig with Eq::{equal, not_equal}
+
+///|
 pub extend OnlineCurriculumConfig with Debug::{to_repr}
 
+///|
 pub(all) struct TransferCurriculumConfig {
-  source_steps : Int
-  target_steps : Int
+  source_steps : Int32
+  target_steps : Int32
   adapt_rate : Double
 } derive(Debug, Eq)
 
+///|
 pub extend TransferCurriculumConfig with Eq::{equal, not_equal}
+
+///|
 pub extend TransferCurriculumConfig with Debug::{to_repr}
 
+///|
 pub(all) struct BabyStepConfig {
   init_difficulty : Double
   step_increment : Double
   max_difficulty : Double
 } derive(Debug, Eq)
 
+///|
 pub extend BabyStepConfig with Eq::{equal, not_equal}
+
+///|
 pub extend BabyStepConfig with Debug::{to_repr}
 
+///|
 pub(all) struct MacroCurriculumConfig {
-  num_phases : Int
-  phase_length : Int
+  num_phases : Int32
+  phase_length : Int32
   difficulty_increment : Double
 } derive(Debug, Eq)
 
+///|
 pub extend MacroCurriculumConfig with Eq::{equal, not_equal}
+
+///|
 pub extend MacroCurriculumConfig with Debug::{to_repr}
 
+///|
 /// 构造课程 / Build curriculum.
 pub fn make_curriculum(
-  samples : Array[Int],
+  samples : Array[Int32],
   difficulties : Array[Double],
-  max_step : Int
+  max_step : Int32,
 ) -> Curriculum {
-  { samples, difficulties, current_step: 0, max_step }
+  { samples, difficulties, current_step: 0, max_step, }
 }
 
+///|
 /// 课程添加样本 / Add sample to curriculum.
 pub fn curriculum_add(
   curr : Curriculum,
-  sample : Int,
-  difficulty : Double
+  sample : Int32,
+  difficulty : Double,
 ) -> Curriculum {
   let new_samples = curr.samples
   new_samples.push(sample)
   let new_diffs = curr.difficulties
   new_diffs.push(difficulty)
-  { samples: new_samples, difficulties: new_diffs, current_step: curr.current_step, max_step: curr.max_step }
+  {
+    samples: new_samples,
+    difficulties: new_diffs,
+    current_step: curr.current_step,
+    max_step: curr.max_step,
+  }
 }
 
+///|
 /// 课程排序 / Sort curriculum by difficulty.
 pub fn curriculum_sort(curr : Curriculum) -> Curriculum {
   let n = if curr.samples.length() < curr.difficulties.length() {
@@ -218,31 +288,46 @@ pub fn curriculum_sort(curr : Curriculum) -> Curriculum {
   } else {
     curr.difficulties.length()
   }
-  let pairs : Array[(Double, Int)] = []
+  let pairs : Array[(Double, Int32)] = []
   for i in 0..<n {
     pairs.push((curr.difficulties[i], curr.samples[i]))
   }
   pairs.sort_by(fn(a, b) { a.0.compare(b.0) })
-  let sorted_samples : Array[Int] = []
+  let sorted_samples : Array[Int32] = []
   let sorted_diffs : Array[Double] = []
   for i in 0..<pairs.length() {
     sorted_samples.push(pairs[i].1)
     sorted_diffs.push(pairs[i].0)
   }
-  { samples: sorted_samples, difficulties: sorted_diffs, current_step: curr.current_step, max_step: curr.max_step }
+  {
+    samples: sorted_samples,
+    difficulties: sorted_diffs,
+    current_step: curr.current_step,
+    max_step: curr.max_step,
+  }
 }
 
+///|
 /// 构造难度配置 / Build difficulty config.
-pub fn make_difficulty(method_name : String, threshold : Double, num_bins : Int) -> DifficultyConfig {
-  { method_name, threshold, num_bins }
+pub fn make_difficulty(
+  method_name : String,
+  threshold : Double,
+  num_bins : Int32,
+) -> DifficultyConfig {
+  { method_name, threshold, num_bins, }
 }
 
+///|
 /// 难度评分 / Compute difficulty score from loss.
 pub fn difficulty_score(loss : Double, config : DifficultyConfig) -> Double {
   if config.method_name == "loss" {
     clamp(loss, 0.0, 999999.0)
   } else if config.method_name == "log_loss" {
-    if loss > 0.0 { log(loss + 1.0) } else { 0.0 }
+    if loss > 0.0 {
+      log(loss + 1.0)
+    } else {
+      0.0
+    }
   } else if config.method_name == "sqrt_loss" {
     sqrt(clamp(loss, 0.0, 999999.0))
   } else {
@@ -250,31 +335,40 @@ pub fn difficulty_score(loss : Double, config : DifficultyConfig) -> Double {
   }
 }
 
+///|
 /// 难度等级 / Assign difficulty rank (bin).
-pub fn difficulty_rank(score : Double, config : DifficultyConfig) -> Int {
+pub fn difficulty_rank(score : Double, config : DifficultyConfig) -> Int32 {
   if config.num_bins <= 0 {
     0
   } else {
     let rank = (score * config.num_bins.to_double()).to_int()
-    if rank < 0 { 0 } else if rank >= config.num_bins { config.num_bins - 1 } else { rank }
+    if rank < 0 {
+      0
+    } else if rank >= config.num_bins {
+      config.num_bins - 1
+    } else {
+      rank
+    }
   }
 }
 
+///|
 /// 构造课程采样器 / Build curriculum sampler.
 pub fn make_sampler_curriculum(
-  batch_size : Int,
+  batch_size : Int32,
   easy_ratio : Double,
-  hard_ratio : Double
+  hard_ratio : Double,
 ) -> SamplerConfig {
-  { batch_size, easy_ratio, hard_ratio }
+  { batch_size, easy_ratio, hard_ratio, }
 }
 
+///|
 /// 采样简单样本 / Sample easy samples.
 pub fn sample_easy(
-  samples : Array[Int],
+  samples : Array[Int32],
   difficulties : Array[Double],
-  batch_size : Int
-) -> Array[Int] {
+  batch_size : Int32,
+) -> Array[Int32] {
   let n = if samples.length() < difficulties.length() {
     samples.length()
   } else {
@@ -283,13 +377,17 @@ pub fn sample_easy(
   if n == 0 || batch_size <= 0 {
     []
   } else {
-    let pairs : Array[(Double, Int)] = []
+    let pairs : Array[(Double, Int32)] = []
     for i in 0..<n {
       pairs.push((difficulties[i], samples[i]))
     }
     pairs.sort_by(fn(a, b) { a.0.compare(b.0) })
-    let take = if batch_size < pairs.length() { batch_size } else { pairs.length() }
-    let result : Array[Int] = []
+    let take = if batch_size < pairs.length() {
+      batch_size
+    } else {
+      pairs.length()
+    }
+    let result : Array[Int32] = []
     for i in 0..<take {
       result.push(pairs[i].1)
     }
@@ -297,12 +395,13 @@ pub fn sample_easy(
   }
 }
 
+///|
 /// 采样困难样本 / Sample hard samples.
 pub fn sample_hard(
-  samples : Array[Int],
+  samples : Array[Int32],
   difficulties : Array[Double],
-  batch_size : Int
-) -> Array[Int] {
+  batch_size : Int32,
+) -> Array[Int32] {
   let n = if samples.length() < difficulties.length() {
     samples.length()
   } else {
@@ -311,13 +410,17 @@ pub fn sample_hard(
   if n == 0 || batch_size <= 0 {
     []
   } else {
-    let pairs : Array[(Double, Int)] = []
+    let pairs : Array[(Double, Int32)] = []
     for i in 0..<n {
       pairs.push((difficulties[i], samples[i]))
     }
     pairs.sort_by(fn(a, b) { b.0.compare(a.0) })
-    let take = if batch_size < pairs.length() { batch_size } else { pairs.length() }
-    let result : Array[Int] = []
+    let take = if batch_size < pairs.length() {
+      batch_size
+    } else {
+      pairs.length()
+    }
+    let result : Array[Int32] = []
     for i in 0..<take {
       result.push(pairs[i].1)
     }
@@ -325,17 +428,18 @@ pub fn sample_hard(
   }
 }
 
+///|
 /// 混合采样 / Mixed sampling with easy/hard ratio.
 pub fn sample_mixed(
-  samples : Array[Int],
+  samples : Array[Int32],
   difficulties : Array[Double],
-  config : SamplerConfig
-) -> Array[Int] {
+  config : SamplerConfig,
+) -> Array[Int32] {
   let easy_count = (config.batch_size.to_double() * config.easy_ratio).to_int()
   let hard_count = (config.batch_size.to_double() * config.hard_ratio).to_int()
   let easy = sample_easy(samples, difficulties, easy_count)
   let hard = sample_hard(samples, difficulties, hard_count)
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<easy.length() {
     result.push(easy[i])
   }
@@ -345,19 +449,21 @@ pub fn sample_mixed(
   result
 }
 
+///|
 /// 构造教师配置 / Build teacher config.
 pub fn make_teacher(
   teacher_type : String,
   confidence_threshold : Double,
-  temperature : Double
+  temperature : Double,
 ) -> TeacherConfig {
-  { teacher_type, confidence_threshold, temperature }
+  { teacher_type, confidence_threshold, temperature, }
 }
 
+///|
 /// 教师信号 / Teacher confidence signal.
 pub fn teacher_signal(
   teacher_logits : Array[Double],
-  config : TeacherConfig
+  config : TeacherConfig,
 ) -> Double {
   let n = teacher_logits.length()
   if n == 0 {
@@ -371,21 +477,27 @@ pub fn teacher_signal(
     }
     let mut sum_exp = 0.0
     for i in 0..<n {
-      sum_exp = sum_exp + exp((teacher_logits[i] - max_val) / config.temperature)
+      sum_exp = sum_exp +
+        exp((teacher_logits[i] - max_val) / config.temperature)
     }
     if sum_exp == 0.0 {
       0.0
     } else {
       let max_prob = 1.0 / sum_exp
-      if max_prob >= config.confidence_threshold { max_prob } else { 0.0 }
+      if max_prob >= config.confidence_threshold {
+        max_prob
+      } else {
+        0.0
+      }
     }
   }
 }
 
+///|
 /// 教师知识 / Teacher knowledge (soft labels).
 pub fn teacher_knowledge(
   teacher_logits : Array[Double],
-  temperature : Double
+  temperature : Double,
 ) -> Array[Double] {
   let n = teacher_logits.length()
   if n == 0 || temperature == 0.0 {
@@ -410,17 +522,24 @@ pub fn teacher_knowledge(
   }
 }
 
+///|
 /// 构造自步配置 / Build self-paced config.
-pub fn make_self_paced(threshold : Double, lambda : Double, gamma : Double) -> SelfPacedConfig {
-  { threshold, lambda, gamma }
+pub fn make_self_paced(
+  threshold : Double,
+  lambda : Double,
+  gamma : Double,
+) -> SelfPacedConfig {
+  { threshold, lambda, gamma, }
 }
 
+///|
 /// SPL 损失 / Self-paced learning loss.
 /// L = loss + lambda * v, where v is sample weight.
 pub fn spl_loss(loss : Double, weight : Double, lambda : Double) -> Double {
   loss + lambda * weight
 }
 
+///|
 /// SPL 权重 / Self-paced weight.
 /// v = 1 - lambda / loss if loss > lambda, else 0.
 pub fn spl_weight(loss : Double, lambda : Double) -> Double {
@@ -431,8 +550,9 @@ pub fn spl_weight(loss : Double, lambda : Double) -> Double {
   }
 }
 
+///|
 /// SPL 阈值 / Self-paced threshold update.
-pub fn spl_threshold(config : SelfPacedConfig, step : Int) -> Double {
+pub fn spl_threshold(config : SelfPacedConfig, step : Int32) -> Double {
   if step <= 0 {
     config.threshold
   } else {
@@ -440,23 +560,29 @@ pub fn spl_threshold(config : SelfPacedConfig, step : Int) -> Double {
   }
 }
 
+///|
 /// 构造 Boost 配置 / Build boost config.
-pub fn make_boost_rate(init_rate : Double, decay : Double, max_rate : Double) -> BoostConfig {
-  { init_rate, decay, max_rate }
+pub fn make_boost_rate(
+  init_rate : Double,
+  decay : Double,
+  max_rate : Double,
+) -> BoostConfig {
+  { init_rate, decay, max_rate, }
 }
 
+///|
 /// Boost 采样 / Boost sample selection.
 pub fn boost_sample(
-  samples : Array[Int],
+  samples : Array[Int32],
   losses : Array[Double],
-  rate : Double
-) -> Array[Int] {
+  rate : Double,
+) -> Array[Int32] {
   let n = if samples.length() < losses.length() {
     samples.length()
   } else {
     losses.length()
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<n {
     let p = clamp(losses[i] * rate, 0.0, 1.0)
     let seed = abs_d(sin_d(samples[i].to_double()))
@@ -467,28 +593,31 @@ pub fn boost_sample(
   result
 }
 
+///|
 /// Boost 权重 / Boost weight schedule.
-pub fn boost_weight(config : BoostConfig, step : Int) -> Double {
+pub fn boost_weight(config : BoostConfig, step : Int32) -> Double {
   let rate = config.init_rate * exp(-config.decay * step.to_double())
   clamp(rate, 0.0, config.max_rate)
 }
 
+///|
 /// 构造反课程配置 / Build anti-curriculum config.
 pub fn make_anti_curriculum(
   start_hard : Bool,
   schedule : String,
-  num_steps : Int
+  num_steps : Int32,
 ) -> AntiCurriculumConfig {
-  { start_hard, schedule, num_steps }
+  { start_hard, schedule, num_steps, }
 }
 
+///|
 /// 反课程采样 / Anti-curriculum sampling (hard first).
 pub fn anti_sample(
-  samples : Array[Int],
+  samples : Array[Int32],
   difficulties : Array[Double],
-  step : Int,
-  config : AntiCurriculumConfig
-) -> Array[Int] {
+  step : Int32,
+  config : AntiCurriculumConfig,
+) -> Array[Int32] {
   let n = if samples.length() < difficulties.length() {
     samples.length()
   } else {
@@ -503,7 +632,7 @@ pub fn anti_sample(
       clamp(step.to_double() / config.num_steps.to_double(), 0.0, 1.0)
     }
     let threshold = 1.0 - progress
-    let result : Array[Int] = []
+    let result : Array[Int32] = []
     for i in 0..<n {
       let norm_d = clamp(difficulties[i], 0.0, 1.0)
       if norm_d >= threshold {
@@ -514,12 +643,17 @@ pub fn anti_sample(
   }
 }
 
+///|
 /// 反课程调度 / Anti-curriculum schedule.
-pub fn anti_schedule(config : AntiCurriculumConfig, step : Int) -> Double {
+pub fn anti_schedule(config : AntiCurriculumConfig, step : Int32) -> Double {
   if config.num_steps <= 0 {
     1.0
   } else {
-    let progress = clamp(step.to_double() / config.num_steps.to_double(), 0.0, 1.0)
+    let progress = clamp(
+      step.to_double() / config.num_steps.to_double(),
+      0.0,
+      1.0,
+    )
     if config.schedule == "linear" {
       1.0 - progress
     } else if config.schedule == "exp" {
@@ -530,28 +664,30 @@ pub fn anti_schedule(config : AntiCurriculumConfig, step : Int) -> Double {
   }
 }
 
+///|
 /// 构造平衡课程配置 / Build balanced curriculum config.
 pub fn make_balanced_curriculum(
   target_ratio : Double,
   tolerance : Double,
-  buffer_size : Int
+  buffer_size : Int32,
 ) -> BalancedConfig {
-  { target_ratio, tolerance, buffer_size }
+  { target_ratio, tolerance, buffer_size, }
 }
 
+///|
 /// 平衡简单困难 / Balance easy and hard samples.
 pub fn balance_easy_hard(
-  easy_samples : Array[Int],
-  hard_samples : Array[Int],
-  config : BalancedConfig
-) -> Array[Int] {
+  easy_samples : Array[Int32],
+  hard_samples : Array[Int32],
+  config : BalancedConfig,
+) -> Array[Int32] {
   let easy_n = easy_samples.length()
   let hard_n = hard_samples.length()
   if easy_n + hard_n == 0 {
     []
   } else {
     let current_ratio = easy_n.to_double() / (easy_n + hard_n).to_double()
-    let result : Array[Int] = []
+    let result : Array[Int32] = []
     if abs_d(current_ratio - config.target_ratio) < config.tolerance {
       for i in 0..<easy_n {
         result.push(easy_samples[i])
@@ -563,13 +699,17 @@ pub fn balance_easy_hard(
       for i in 0..<easy_n {
         result.push(easy_samples[i])
       }
-      let take = (easy_n.to_double() * (1.0 - config.target_ratio) / config.target_ratio).to_int()
+      let take = (easy_n.to_double() *
+      (1.0 - config.target_ratio) /
+      config.target_ratio).to_int()
       let t = if take < hard_n { take } else { hard_n }
       for i in 0..<t {
         result.push(hard_samples[i])
       }
     } else {
-      let take = (hard_n.to_double() * config.target_ratio / (1.0 - config.target_ratio)).to_int()
+      let take = (hard_n.to_double() *
+      config.target_ratio /
+      (1.0 - config.target_ratio)).to_int()
       let t = if take < easy_n { take } else { easy_n }
       for i in 0..<t {
         result.push(easy_samples[i])
@@ -582,8 +722,9 @@ pub fn balance_easy_hard(
   }
 }
 
+///|
 /// 平衡比例 / Compute balance ratio.
-pub fn balance_ratio(easy_count : Int, hard_count : Int) -> Double {
+pub fn balance_ratio(easy_count : Int32, hard_count : Int32) -> Double {
   if easy_count + hard_count == 0 {
     0.5
   } else {
@@ -591,31 +732,35 @@ pub fn balance_ratio(easy_count : Int, hard_count : Int) -> Double {
   }
 }
 
+///|
 /// 构造在线课程配置 / Build online curriculum config.
 pub fn make_online_curriculum(
-  window_size : Int,
+  window_size : Int32,
   adapt_rate : Double,
   min_difficulty : Double,
-  max_difficulty : Double
+  max_difficulty : Double,
 ) -> OnlineCurriculumConfig {
-  { window_size, adapt_rate, min_difficulty, max_difficulty }
+  { window_size, adapt_rate, min_difficulty, max_difficulty, }
 }
 
+///|
 /// 在线更新 / Online difficulty update.
 pub fn online_update(
   config : OnlineCurriculumConfig,
   current_difficulty : Double,
-  loss : Double
+  loss : Double,
 ) -> Double {
   let target = clamp(loss, config.min_difficulty, config.max_difficulty)
-  let updated = current_difficulty + config.adapt_rate * (target - current_difficulty)
+  let updated = current_difficulty +
+    config.adapt_rate * (target - current_difficulty)
   clamp(updated, config.min_difficulty, config.max_difficulty)
 }
 
+///|
 /// 在线难度 / Online difficulty from window of losses.
 pub fn online_difficulty(
   losses : Array[Double],
-  config : OnlineCurriculumConfig
+  config : OnlineCurriculumConfig,
 ) -> Double {
   let n = losses.length()
   if n == 0 {
@@ -635,22 +780,31 @@ pub fn online_difficulty(
     if count == 0 {
       config.min_difficulty
     } else {
-      clamp(sum / count.to_double(), config.min_difficulty, config.max_difficulty)
+      clamp(
+        sum / count.to_double(),
+        config.min_difficulty,
+        config.max_difficulty,
+      )
     }
   }
 }
 
+///|
 /// 构造迁移课程配置 / Build transfer curriculum config.
 pub fn make_transfer_curriculum(
-  source_steps : Int,
-  target_steps : Int,
-  adapt_rate : Double
+  source_steps : Int32,
+  target_steps : Int32,
+  adapt_rate : Double,
 ) -> TransferCurriculumConfig {
-  { source_steps, target_steps, adapt_rate }
+  { source_steps, target_steps, adapt_rate, }
 }
 
+///|
 /// 迁移调度 / Transfer schedule.
-pub fn transfer_schedule(config : TransferCurriculumConfig, step : Int) -> Double {
+pub fn transfer_schedule(
+  config : TransferCurriculumConfig,
+  step : Int32,
+) -> Double {
   if step < config.source_steps {
     clamp(step.to_double() / config.source_steps.to_double(), 0.0, 1.0)
   } else {
@@ -658,13 +812,24 @@ pub fn transfer_schedule(config : TransferCurriculumConfig, step : Int) -> Doubl
     if config.target_steps <= 0 {
       1.0
     } else {
-      clamp(1.0 - target_step.to_double() / config.target_steps.to_double() * config.adapt_rate, 0.0, 1.0)
+      clamp(
+        1.0 -
+        target_step.to_double() /
+        config.target_steps.to_double() *
+        config.adapt_rate,
+        0.0,
+        1.0,
+      )
     }
   }
 }
 
+///|
 /// 迁移适应 / Transfer adaptation weight.
-pub fn transfer_adapt(config : TransferCurriculumConfig, step : Int) -> Double {
+pub fn transfer_adapt(
+  config : TransferCurriculumConfig,
+  step : Int32,
+) -> Double {
   if step < config.source_steps {
     1.0
   } else {
@@ -673,37 +838,42 @@ pub fn transfer_adapt(config : TransferCurriculumConfig, step : Int) -> Double {
   }
 }
 
+///|
 /// 构造 BabyStep 配置 / Build baby step config.
 pub fn make_baby_step(
   init_difficulty : Double,
   step_increment : Double,
-  max_difficulty : Double
+  max_difficulty : Double,
 ) -> BabyStepConfig {
-  { init_difficulty, step_increment, max_difficulty }
+  { init_difficulty, step_increment, max_difficulty, }
 }
 
+///|
 /// BabyStep 调度 / Baby step schedule.
-pub fn baby_step_schedule(config : BabyStepConfig, step : Int) -> Double {
+pub fn baby_step_schedule(config : BabyStepConfig, step : Int32) -> Double {
   let d = config.init_difficulty + config.step_increment * step.to_double()
   clamp(d, 0.0, config.max_difficulty)
 }
 
+///|
 /// BabyStep 下一步 / Baby step next difficulty.
 pub fn baby_step_next(config : BabyStepConfig, current : Double) -> Double {
   clamp(current + config.step_increment, 0.0, config.max_difficulty)
 }
 
+///|
 /// 构造 Macro 课程配置 / Build macro curriculum config.
 pub fn make_macro_curriculum(
-  num_phases : Int,
-  phase_length : Int,
-  difficulty_increment : Double
+  num_phases : Int32,
+  phase_length : Int32,
+  difficulty_increment : Double,
 ) -> MacroCurriculumConfig {
-  { num_phases, phase_length, difficulty_increment }
+  { num_phases, phase_length, difficulty_increment, }
 }
 
+///|
 /// Macro 调度 / Macro schedule.
-pub fn macro_schedule(config : MacroCurriculumConfig, step : Int) -> Double {
+pub fn macro_schedule(config : MacroCurriculumConfig, step : Int32) -> Double {
   if config.phase_length <= 0 {
     0.0
   } else {
@@ -712,20 +882,26 @@ pub fn macro_schedule(config : MacroCurriculumConfig, step : Int) -> Double {
   }
 }
 
+///|
 /// Macro 阶段 / Macro current phase.
-pub fn macro_phase(config : MacroCurriculumConfig, step : Int) -> Int {
+pub fn macro_phase(config : MacroCurriculumConfig, step : Int32) -> Int32 {
   if config.phase_length <= 0 {
     0
   } else {
     let phase = step / config.phase_length
-    if phase >= config.num_phases { config.num_phases - 1 } else { phase }
+    if phase >= config.num_phases {
+      config.num_phases - 1
+    } else {
+      phase
+    }
   }
 }
 
+///|
 /// 课程评估 / Evaluate curriculum.
 pub fn curriculum_evaluate(
   losses : Array[Double],
-  difficulties : Array[Double]
+  difficulties : Array[Double],
 ) -> Double {
   let n = if losses.length() < difficulties.length() {
     losses.length()
@@ -743,6 +919,7 @@ pub fn curriculum_evaluate(
   }
 }
 
+///|
 /// 课程进度 / Curriculum progress.
 pub fn curriculum_progress(curr : Curriculum) -> Double {
   if curr.max_step <= 0 {
@@ -752,20 +929,19 @@ pub fn curriculum_progress(curr : Curriculum) -> Double {
   }
 }
 
+///|
 /// 课程消融 / Curriculum ablation (compare with/without).
-pub fn curriculum_ablation(
-  loss_with : Double,
-  loss_without : Double
-) -> Double {
+pub fn curriculum_ablation(loss_with : Double, loss_without : Double) -> Double {
   loss_without - loss_with
 }
 
+///|
 /// 反课程损失 / Anti-curriculum loss weighting.
 pub fn anti_curriculum_loss(
   loss : Double,
   difficulty : Double,
-  step : Int,
-  num_steps : Int
+  step : Int32,
+  num_steps : Int32,
 ) -> Double {
   if num_steps <= 0 {
     loss
@@ -776,6 +952,7 @@ pub fn anti_curriculum_loss(
   }
 }
 
+///|
 /// 模块标识 / Module identity.
 pub fn curriculum_id() -> String {
   "learncore/curriculum"

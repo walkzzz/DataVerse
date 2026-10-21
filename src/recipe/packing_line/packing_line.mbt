@@ -8,13 +8,14 @@
 ///
 /// filter_empty → chunk → collect. See architecture §4.5 ②.
 
+///|
 /// 打包流水线 / Packing line.
 ///
 /// 对每个非空 DataObject 按 chunk_size 切分内容，返回所有段的 DataObject 数组。
 /// 退化安全：空数组返回空数组；chunk_size <= 0 返回原数组（不过滤空）。
 pub fn packing_line(
   arr : Array[@dataobject.DataObject],
-  chunk_size : Int
+  chunk_size : Int32,
 ) -> Array[@dataobject.DataObject] {
   if chunk_size <= 0 {
     arr
@@ -27,7 +28,11 @@ pub fn packing_line(
         let total = chars.length()
         let mut pos = 0
         while pos < total {
-          let end = if pos + chunk_size < total { pos + chunk_size } else { total }
+          let end = if pos + chunk_size < total {
+            pos + chunk_size
+          } else {
+            total
+          }
           let piece = String::from_array(chars[pos:end])
           result.push(@dataobject.make_dataobject(piece, d.modality, d.schema))
           pos = pos + chunk_size
@@ -38,6 +43,7 @@ pub fn packing_line(
   }
 }
 
+///|
 pub fn packing_line_id() -> String {
   "recipe/packing_line"
 }

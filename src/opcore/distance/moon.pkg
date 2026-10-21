@@ -1,5 +1,4 @@
 // opcore/distance 距离分析 / Distance Analysis
 // S4.6：Euclidean / Cost / Path / Corridor（契约 + 模拟实现）
 import {
-
 }

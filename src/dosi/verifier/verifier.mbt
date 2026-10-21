@@ -8,15 +8,20 @@
 ///
 /// Verify index dependency graph + cycle detection. See architecture §4.7.3.
 
+///|
 /// 校验结果 / Verification result.
 pub struct VerifyResult {
   valid : Bool
   issues : Array[String]
 } derive(Debug, Eq)
 
+///|
 pub extend VerifyResult with Eq::{equal, not_equal}
+
+///|
 pub extend VerifyResult with Debug::{to_repr}
 
+///|
 /// 校验索引 / Verify DOSI index.
 ///
 /// 检查：1) 依赖路径在索引中存在 2) 无循环依赖。
@@ -38,7 +43,13 @@ pub fn verify_index(index : @dosi.DOSIIndex) -> VerifyResult {
         }
       }
       if !found {
-        issues.push("missing dependency: " + deps[j] + " (required by " + entries[i].symbolic.path + ")")
+        issues.push(
+          "missing dependency: " +
+          deps[j] +
+          " (required by " +
+          entries[i].symbolic.path +
+          ")",
+        )
       }
     }
   }
@@ -52,15 +63,17 @@ pub fn verify_index(index : @dosi.DOSIIndex) -> VerifyResult {
       }
     }
   }
-  { valid: issues.length() == 0, issues }
+  { valid: issues.length() == 0, issues, }
 }
 
+///|
 /// 检查依赖是否存在 / Check if all dependencies exist.
 pub fn check_dependencies(index : @dosi.DOSIIndex) -> Bool {
   let result = verify_index(index)
   result.valid
 }
 
+///|
 /// 检测循环依赖 / Detect circular dependencies (self-dependency).
 ///
 /// 返回有自依赖的路径列表。
@@ -79,11 +92,13 @@ pub fn detect_cycles(index : @dosi.DOSIIndex) -> Array[String] {
   cycles
 }
 
+///|
 /// 空校验结果 / Empty verify result (valid).
 pub fn valid_result() -> VerifyResult {
-  { valid: true, issues: [] }
+  { valid: true, issues: [], }
 }
 
+///|
 pub fn verifier_id() -> String {
   "dosi/verifier"
 }

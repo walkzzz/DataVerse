@@ -8,7 +8,7 @@ repository = ""
 
 license = "Apache-2.0"
 
-keywords = ["data", "operator", "ai", "ir", "moonbit"]
+keywords = [ "data", "operator", "ai", "ir", "moonbit" ]
 
 preferred_target = "wasm"
 

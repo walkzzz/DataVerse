@@ -8,8 +8,11 @@
 ///
 /// Exact, approximate, semantic dedup. See architecture §4.3.2 ④.
 
+///|
 /// 精确去重：按 content 去重，保留首次出现 / Exact dedup by content, keep first occurrence.
-pub fn exact_dedup(inputs : Array[@dataobject.DataObject]) -> Array[@dataobject.DataObject] {
+pub fn exact_dedup(
+  inputs : Array[@dataobject.DataObject],
+) -> Array[@dataobject.DataObject] {
   let result : Array[@dataobject.DataObject] = []
   for d in inputs {
     let mut found = false
@@ -25,11 +28,13 @@ pub fn exact_dedup(inputs : Array[@dataobject.DataObject]) -> Array[@dataobject.
   result
 }
 
+///|
 /// 去重前后数量差 / Dedup count reduction.
-pub fn dedup_count(before : Int, after : Int) -> Int {
+pub fn dedup_count(before : Int32, after : Int32) -> Int32 {
   before - after
 }
 
+///|
 pub fn dedup_id() -> String {
   "opcore/dedup"
 }

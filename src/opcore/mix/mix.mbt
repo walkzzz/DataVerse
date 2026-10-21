@@ -8,25 +8,32 @@
 ///
 /// Multi-dimension blending, debiasing. See architecture §4.3.2 ⑩.
 
+///|
 /// 按模态分组 / Group by modality.
 ///
 /// 对标 DJ `naive_grouper`。返回 (模态, 该模态所有 DataObject) 列表。
 pub fn group_by_modality(
-  arr : Array[@dataobject.DataObject]
+  arr : Array[@dataobject.DataObject],
 ) -> Array[(@dataobject.Modality, Array[@dataobject.DataObject])] {
   let modalities = [
-    @dataobject.Text, @dataobject.Image, @dataobject.Audio, @dataobject.Video,
-    @dataobject.Table, @dataobject.Code, @dataobject.Multi,
+    @dataobject.Text,
+    @dataobject.Image,
+    @dataobject.Audio,
+    @dataobject.Video,
+    @dataobject.Table,
+    @dataobject.Code,
+    @dataobject.Multi,
   ]
-  modalities.map(fn(m) {
-    (m, arr.filter(fn(d) { d.modality == m }))
-  }).filter(fn(pair) { pair.1.length() > 0 })
+  modalities
+  .map(fn(m) { (m, arr.filter(fn(d) { d.modality == m })) })
+  .filter(fn(pair) { pair.1.length() > 0 })
 }
 
+///|
 /// 交错混合：两个数组交替取元素 / Interleave two arrays.
 pub fn interleave(
   a : Array[@dataobject.DataObject],
-  b : Array[@dataobject.DataObject]
+  b : Array[@dataobject.DataObject],
 ) -> Array[@dataobject.DataObject] {
   let result = []
   let max_len = if a.length() > b.length() { a.length() } else { b.length() }
@@ -41,6 +48,7 @@ pub fn interleave(
   result
 }
 
+///|
 pub fn mix_id() -> String {
   "opcore/mix"
 }

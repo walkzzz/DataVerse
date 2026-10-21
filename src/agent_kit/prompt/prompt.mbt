@@ -6,6 +6,7 @@
 ///
 /// # Prompt engineering operators
 
+///|
 /// Prompt 模板 / Prompt template.
 pub struct PromptTemplate {
   name : String
@@ -13,31 +14,44 @@ pub struct PromptTemplate {
   variables : Array[String]
 }
 
+///|
 /// Few-shot 示例 / Few-shot example.
 pub struct FewShotExample {
   input : String
   output : String
 }
 
+///|
 /// 构造 Prompt 模板 / Create prompt template.
-pub fn make_template(name : String, template : String, variables : Array[String]) -> PromptTemplate {
-  { name: name, template: template, variables: variables }
+pub fn make_template(
+  name : String,
+  template : String,
+  variables : Array[String],
+) -> PromptTemplate {
+  { name, template, variables, }
 }
 
+///|
 /// 构造 few-shot 示例 / Create few-shot example.
 pub fn make_few_shot(input : String, output : String) -> FewShotExample {
-  { input: input, output: output }
+  { input, output, }
 }
 
 ///===
 /// 变量替换 / Variable substitution
 
+///|
 /// 替换变量 / Replace variable in template.
-pub fn replace_variable(template : String, var_name : String, value : String) -> String {
+pub fn replace_variable(
+  template : String,
+  var_name : String,
+  value : String,
+) -> String {
   let placeholder = "{" + var_name + "}"
   template.replace(old=placeholder, new=value)
 }
 
+///|
 /// 替换所有变量 / Replace all variables.
 pub fn replace_all_variables(
   template : String,
@@ -50,6 +64,7 @@ pub fn replace_all_variables(
   result
 }
 
+///|
 /// 渲染模板 / Render template with variables.
 pub fn render_template(
   tmpl : PromptTemplate,
@@ -61,11 +76,13 @@ pub fn render_template(
 ///===
 /// Prompt 构建 / Prompt building
 
+///|
 /// 构建 system prompt / Build system prompt.
 pub fn build_system_prompt(role : String, instructions : String) -> String {
   "You are a " + role + ". " + instructions
 }
 
+///|
 /// 构建 user prompt / Build user prompt.
 pub fn build_user_prompt(question : String, context : String) -> String {
   if context.length() > 0 {
@@ -78,6 +95,7 @@ pub fn build_user_prompt(question : String, context : String) -> String {
 ///===
 /// Few-shot / Few-shot prompting
 
+///|
 /// 构建 few-shot prompt / Build few-shot prompt.
 pub fn build_few_shot_prompt(
   instruction : String,
@@ -97,19 +115,28 @@ pub fn build_few_shot_prompt(
 ///===
 /// 链式 Prompt / Prompt chaining
 
+///|
 /// Prompt 链 / Prompt chain.
 pub struct PromptChain {
   steps : Array[PromptTemplate]
   separator : String
 }
 
+///|
 /// 构造 Prompt 链 / Create prompt chain.
-pub fn make_chain(steps : Array[PromptTemplate], separator : String) -> PromptChain {
-  { steps: steps, separator: separator }
+pub fn make_chain(
+  steps : Array[PromptTemplate],
+  separator : String,
+) -> PromptChain {
+  { steps, separator, }
 }
 
+///|
 /// 渲染链 / Render chain.
-pub fn render_chain(chain : PromptChain, vars : Array[(String, String)]) -> String {
+pub fn render_chain(
+  chain : PromptChain,
+  vars : Array[(String, String)],
+) -> String {
   let mut result = ""
   for i in 0..<chain.steps.length() {
     if i > 0 {
@@ -120,18 +147,20 @@ pub fn render_chain(chain : PromptChain, vars : Array[(String, String)]) -> Stri
   result
 }
 
+///|
 /// 追加步骤 / Append step to chain.
 pub fn append_step(chain : PromptChain, step : PromptTemplate) -> PromptChain {
   let new_steps = chain.steps.copy()
   new_steps.push(step)
-  { ..chain, steps: new_steps }
+  { ..chain, steps: new_steps, }
 }
 
 ///===
 /// Prompt 分析 / Prompt analysis
 
+///|
 /// 统计变量数 / Count variables in template.
-pub fn count_variables(template : String) -> Int {
+pub fn count_variables(template : String) -> Int32 {
   let mut count = 0
   let mut in_var = false
   for i in 0..<template.length() {
@@ -146,6 +175,7 @@ pub fn count_variables(template : String) -> Int {
   count
 }
 
+///|
 /// 提取变量名 / Extract variable names from template.
 pub fn extract_variables(template : String) -> Array[String] {
   let vars : Array[String] = []
@@ -163,15 +193,15 @@ pub fn extract_variables(template : String) -> Array[String] {
       in_var = false
       current = ""
     } else if in_var {
-      current = current + Int::unsafe_to_char(code).to_string()
+      current = current + Int32::unsafe_to_char(code).to_string()
     }
   }
   vars
 }
 
+///|
 ///===
 /// ID
-
 pub fn prompt_id() -> String {
   "agent_kit/prompt"
 }

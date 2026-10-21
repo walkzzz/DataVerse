@@ -8,6 +8,7 @@
 ///
 /// Standardization, normalization, encoding. See architecture §4.3.5 A.
 
+///|
 /// 标准化（Z-score）：(x - mean) / std / Standardize (Z-score).
 ///
 /// 退化安全：空数组返回空数组；std = 0 返回全 0。
@@ -30,6 +31,7 @@ pub fn standardize(data : Array[Double]) -> Array[Double] {
   data.map(fn(x) { (x - mean) / std })
 }
 
+///|
 /// Min-Max 归一化：映射到 [0, 1] / Min-Max normalize to [0, 1].
 ///
 /// 退化安全：空数组返回空数组；所有值相同返回全 0。
@@ -55,6 +57,7 @@ pub fn normalize_minmax(data : Array[Double]) -> Array[Double] {
   data.map(fn(x) { (x - lo) / range })
 }
 
+///|
 pub fn feature_id() -> String {
   "learncore/feature"
 }
@@ -64,12 +67,15 @@ pub fn feature_id() -> String {
 // 对标 ArcGIS Pro: Central Feature / Mean Center / Median Center / Standard Distance / Directional Distribution
 // ============================================================
 
+///|
 /// 中心要素 / Central Feature.
 ///
 /// 对标 ArcGIS Pro Central Feature 工具。
 /// 从点集中找到使到所有其他点距离总和最小的点。
 /// 退化安全：空点集返回 (0.0, 0.0)。
-pub fn feature_central_feature(points : Array[@proximity.Point]) -> (@proximity.Point, Double) {
+pub fn feature_central_feature(
+  points : Array[@proximity.Point],
+) -> (@proximity.Point, Double) {
   let n = points.length()
   if n == 0 {
     (@proximity.make_point(0.0, 0.0), 0.0)
@@ -94,12 +100,15 @@ pub fn feature_central_feature(points : Array[@proximity.Point]) -> (@proximity.
   }
 }
 
+///|
 /// 平均中心 / Mean Center.
 ///
 /// 对标 ArcGIS Pro Mean Center 工具。
 /// 计算所有点坐标的算术平均。
 /// 退化安全：空点集返回 (0.0, 0.0)。
-pub fn feature_mean_center(points : Array[@proximity.Point]) -> @proximity.Point {
+pub fn feature_mean_center(
+  points : Array[@proximity.Point],
+) -> @proximity.Point {
   let n = points.length()
   if n == 0 {
     @proximity.make_point(0.0, 0.0)
@@ -114,12 +123,15 @@ pub fn feature_mean_center(points : Array[@proximity.Point]) -> @proximity.Point
   }
 }
 
+///|
 /// 中位数中心 / Median Center (simplified).
 ///
 /// 对标 ArcGIS Pro Median Center 工具。
 /// 简化策略：分别对 x 和 y 坐标排序取中位数。
 /// 退化安全：空点集返回 (0.0, 0.0)。
-pub fn feature_median_center(points : Array[@proximity.Point]) -> @proximity.Point {
+pub fn feature_median_center(
+  points : Array[@proximity.Point],
+) -> @proximity.Point {
   let n = points.length()
   if n == 0 {
     @proximity.make_point(0.0, 0.0)
@@ -136,11 +148,15 @@ pub fn feature_median_center(points : Array[@proximity.Point]) -> @proximity.Poi
     if n % 2 == 1 {
       @proximity.make_point(xs[mid], ys[mid])
     } else {
-      @proximity.make_point((xs[mid - 1] + xs[mid]) / 2.0, (ys[mid - 1] + ys[mid]) / 2.0)
+      @proximity.make_point(
+        (xs[mid - 1] + xs[mid]) / 2.0,
+        (ys[mid - 1] + ys[mid]) / 2.0,
+      )
     }
   }
 }
 
+///|
 /// 标准距离 / Standard Distance.
 ///
 /// 对标 ArcGIS Pro Standard Distance 工具。
@@ -162,12 +178,15 @@ pub fn feature_standard_distance(points : Array[@proximity.Point]) -> Double {
   }
 }
 
+///|
 /// 方向分布 / Directional Distribution (Standard Deviational Ellipse).
 ///
 /// 对标 ArcGIS Pro Directional Distribution 工具。
 /// 返回 (center_x, center_y, major_axis, minor_axis, rotation_angle)。
 /// 退化安全：空点集返回 (0, 0, 0, 0, 0)。
-pub fn feature_directional_distribution(points : Array[@proximity.Point]) -> (Double, Double, Double, Double, Double) {
+pub fn feature_directional_distribution(
+  points : Array[@proximity.Point],
+) -> (Double, Double, Double, Double, Double) {
   let n = points.length()
   if n == 0 {
     (0.0, 0.0, 0.0, 0.0, 0.0)
@@ -201,6 +220,8 @@ pub fn feature_directional_distribution(points : Array[@proximity.Point]) -> (Do
     (center.x, center.y, major, minor, rotation)
   }
 }
+
+///|
 fn atan_custom(x : Double) -> Double {
   let pi = 3.14159265358979323846
   let abs_x = if x < 0.0 { -x } else { x }
@@ -212,6 +233,7 @@ fn atan_custom(x : Double) -> Double {
   }
 }
 
+///|
 fn atan_taylor(x : Double) -> Double {
   let mut result = 0.0
   let mut x_pow = x

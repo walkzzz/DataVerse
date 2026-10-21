@@ -6,6 +6,7 @@
 ///
 /// # Knowledge graph
 
+///|
 /// 实体 / Entity.
 pub struct Entity {
   entity_id : String
@@ -13,9 +14,13 @@ pub struct Entity {
   attributes : Array[(String, String)]
 } derive(Debug, Eq)
 
+///|
 pub extend Entity with Eq::{equal, not_equal}
+
+///|
 pub extend Entity with Debug::{to_repr}
 
+///|
 /// 关系 / Relation.
 pub struct Relation {
   relation_id : String
@@ -24,9 +29,13 @@ pub struct Relation {
   symmetric : Bool
 } derive(Debug, Eq)
 
+///|
 pub extend Relation with Eq::{equal, not_equal}
+
+///|
 pub extend Relation with Debug::{to_repr}
 
+///|
 /// 三元组 / Triple.
 pub struct Triple {
   subject : String
@@ -34,9 +43,13 @@ pub struct Triple {
   object : String
 } derive(Debug, Eq)
 
+///|
 pub extend Triple with Eq::{equal, not_equal}
+
+///|
 pub extend Triple with Debug::{to_repr}
 
+///|
 /// 知识图谱 / Knowledge graph.
 pub struct KnowledgeGraph {
   kg_id : String
@@ -45,9 +58,13 @@ pub struct KnowledgeGraph {
   triples : Array[Triple]
 } derive(Debug, Eq)
 
+///|
 pub extend KnowledgeGraph with Eq::{equal, not_equal}
+
+///|
 pub extend KnowledgeGraph with Debug::{to_repr}
 
+///|
 /// 本体 / Ontology.
 pub struct Ontology {
   ontology_id : String
@@ -55,9 +72,13 @@ pub struct Ontology {
   hierarchy : Array[(String, String)]
 } derive(Debug, Eq)
 
+///|
 pub extend Ontology with Eq::{equal, not_equal}
+
+///|
 pub extend Ontology with Debug::{to_repr}
 
+///|
 /// RDF 三元组 / RDF triple.
 pub struct RDFTriple {
   subject : String
@@ -65,9 +86,13 @@ pub struct RDFTriple {
   object : String
 } derive(Debug, Eq)
 
+///|
 pub extend RDFTriple with Eq::{equal, not_equal}
+
+///|
 pub extend RDFTriple with Debug::{to_repr}
 
+///|
 /// SPARQL 查询 / SPARQL query.
 pub struct SPARQLQuery {
   query_id : String
@@ -75,9 +100,13 @@ pub struct SPARQLQuery {
   select_vars : Array[String]
 } derive(Debug, Eq)
 
+///|
 pub extend SPARQLQuery with Eq::{equal, not_equal}
+
+///|
 pub extend SPARQLQuery with Debug::{to_repr}
 
+///|
 /// 推理器 / Reasoner.
 pub struct Reasoner {
   reasoner_id : String
@@ -85,20 +114,28 @@ pub struct Reasoner {
   facts : Array[Triple]
 } derive(Debug, Eq)
 
+///|
 pub extend Reasoner with Eq::{equal, not_equal}
+
+///|
 pub extend Reasoner with Debug::{to_repr}
 
+///|
 /// 嵌入 / Embedding.
 pub struct Embedding {
   emb_id : String
   entity_embeddings : Array[(String, Array[Double])]
   relation_embeddings : Array[(String, Array[Double])]
-  dim : Int
+  dim : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend Embedding with Eq::{equal, not_equal}
+
+///|
 pub extend Embedding with Debug::{to_repr}
 
+///|
 /// 模式 / Schema.
 pub struct Schema {
   schema_id : String
@@ -106,31 +143,42 @@ pub struct Schema {
   relation_constraints : Array[(String, String, String)]
 } derive(Debug, Eq)
 
+///|
 pub extend Schema with Eq::{equal, not_equal}
+
+///|
 pub extend Schema with Debug::{to_repr}
 
+///|
 /// SHACL 约束 / SHACL constraint.
 pub struct SHACL {
   shacl_id : String
   shapes : Array[(String, String)]
-  min_count : Array[(String, Int)]
+  min_count : Array[(String, Int32)]
 } derive(Debug, Eq)
 
+///|
 pub extend SHACL with Eq::{equal, not_equal}
+
+///|
 pub extend SHACL with Debug::{to_repr}
 
+///|
 /// 知识图谱联邦 / KG federation.
 pub struct KGFederation {
   fed_id : String
   graphs : Array[KnowledgeGraph]
 } derive(Debug, Eq)
 
+///|
 pub extend KGFederation with Eq::{equal, not_equal}
+
+///|
 pub extend KGFederation with Debug::{to_repr}
 
+///|
 ///===
 /// 辅助函数 / Helpers
-
 fn kg_cos(x : Double) -> Double {
   let mut result = 1.0
   let mut term = 1.0
@@ -141,6 +189,7 @@ fn kg_cos(x : Double) -> Double {
   result
 }
 
+///|
 fn vector_add(a : Array[Double], b : Array[Double]) -> Array[Double] {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
   let result : Array[Double] = []
@@ -150,6 +199,7 @@ fn vector_add(a : Array[Double], b : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 fn vector_sub(a : Array[Double], b : Array[Double]) -> Array[Double] {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
   let result : Array[Double] = []
@@ -159,6 +209,7 @@ fn vector_sub(a : Array[Double], b : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 fn vector_dot(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
   let mut sum = 0.0
@@ -168,6 +219,7 @@ fn vector_dot(a : Array[Double], b : Array[Double]) -> Double {
   sum
 }
 
+///|
 fn vector_scale(a : Array[Double], s : Double) -> Array[Double] {
   let result : Array[Double] = []
   for i in 0..<a.length() {
@@ -176,6 +228,7 @@ fn vector_scale(a : Array[Double], s : Double) -> Array[Double] {
   result
 }
 
+///|
 fn vector_norm(a : Array[Double]) -> Double {
   let mut sum = 0.0
   for i in 0..<a.length() {
@@ -184,6 +237,7 @@ fn vector_norm(a : Array[Double]) -> Double {
   @_common.sqrt(sum)
 }
 
+///|
 fn contains_str(arr : Array[String], val : String) -> Bool {
   for i in 0..<arr.length() {
     if arr[i] == val {
@@ -193,6 +247,7 @@ fn contains_str(arr : Array[String], val : String) -> Bool {
   false
 }
 
+///|
 fn contains_entity(kg : KnowledgeGraph, entity_id : String) -> Bool {
   for i in 0..<kg.entities.length() {
     if kg.entities[i].entity_id == entity_id {
@@ -202,6 +257,7 @@ fn contains_entity(kg : KnowledgeGraph, entity_id : String) -> Bool {
   false
 }
 
+///|
 fn contains_relation(kg : KnowledgeGraph, relation_id : String) -> Bool {
   for i in 0..<kg.relations.length() {
     if kg.relations[i].relation_id == relation_id {
@@ -211,6 +267,7 @@ fn contains_relation(kg : KnowledgeGraph, relation_id : String) -> Bool {
   false
 }
 
+///|
 fn kg_get_entity_type(kg : KnowledgeGraph, entity_id : String) -> String? {
   for i in 0..<kg.entities.length() {
     if kg.entities[i].entity_id == entity_id {
@@ -220,6 +277,7 @@ fn kg_get_entity_type(kg : KnowledgeGraph, entity_id : String) -> String? {
   None
 }
 
+///|
 fn lookup_embedding(
   embeddings : Array[(String, Array[Double])],
   key : String,
@@ -232,10 +290,12 @@ fn lookup_embedding(
   None
 }
 
+///|
 fn is_var(s : String) -> Bool {
   s.length() > 0 && s[0] == '?'
 }
 
+///|
 fn triple_exists(
   triples : Array[Triple],
   s : String,
@@ -243,7 +303,9 @@ fn triple_exists(
   o : String,
 ) -> Bool {
   for i in 0..<triples.length() {
-    if triples[i].subject == s && triples[i].predicate == p && triples[i].object == o {
+    if triples[i].subject == s &&
+      triples[i].predicate == p &&
+      triples[i].object == o {
       return true
     }
   }
@@ -253,25 +315,32 @@ fn triple_exists(
 ///===
 /// 构造与添加 / Construction and addition
 
+///|
 /// 构造知识图谱 / Make knowledge graph.
 pub fn make_kg(kg_id : String) -> KnowledgeGraph {
-  { kg_id, entities: [], relations: [], triples: [] }
+  { kg_id, entities: [], relations: [], triples: [], }
 }
 
+///|
 /// 添加实体 / Add entity.
 pub fn kg_add_entity(kg : KnowledgeGraph, entity : Entity) -> KnowledgeGraph {
   let new_entities = kg.entities.copy()
   new_entities.push(entity)
-  { ..kg, entities: new_entities }
+  { ..kg, entities: new_entities, }
 }
 
+///|
 /// 添加关系 / Add relation.
-pub fn kg_add_relation(kg : KnowledgeGraph, relation : Relation) -> KnowledgeGraph {
+pub fn kg_add_relation(
+  kg : KnowledgeGraph,
+  relation : Relation,
+) -> KnowledgeGraph {
   let new_relations = kg.relations.copy()
   new_relations.push(relation)
-  { ..kg, relations: new_relations }
+  { ..kg, relations: new_relations, }
 }
 
+///|
 /// 添加属性 / Add attribute.
 pub fn kg_add_attribute(
   kg : KnowledgeGraph,
@@ -284,17 +353,18 @@ pub fn kg_add_attribute(
     if kg.entities[i].entity_id == entity_id {
       let new_attrs = kg.entities[i].attributes.copy()
       new_attrs.push((key, value))
-      new_entities.push({ ..kg.entities[i], attributes: new_attrs })
+      new_entities.push({ ..kg.entities[i], attributes: new_attrs, })
     } else {
       new_entities.push(kg.entities[i])
     }
   }
-  { ..kg, entities: new_entities }
+  { ..kg, entities: new_entities, }
 }
 
 ///===
 /// 查询 / Query
 
+///|
 /// 查询实体 / Query entity.
 pub fn kg_query_entity(kg : KnowledgeGraph, entity_id : String) -> Entity? {
   for i in 0..<kg.entities.length() {
@@ -305,8 +375,12 @@ pub fn kg_query_entity(kg : KnowledgeGraph, entity_id : String) -> Entity? {
   None
 }
 
+///|
 /// 查询关系 / Query relation.
-pub fn kg_query_relation(kg : KnowledgeGraph, relation_id : String) -> Relation? {
+pub fn kg_query_relation(
+  kg : KnowledgeGraph,
+  relation_id : String,
+) -> Relation? {
   for i in 0..<kg.relations.length() {
     if kg.relations[i].relation_id == relation_id {
       return Some(kg.relations[i])
@@ -315,6 +389,7 @@ pub fn kg_query_relation(kg : KnowledgeGraph, relation_id : String) -> Relation?
   None
 }
 
+///|
 /// 查询属性 / Query attribute.
 pub fn kg_query_attribute(
   kg : KnowledgeGraph,
@@ -336,17 +411,18 @@ pub fn kg_query_attribute(
 ///===
 /// 邻居与路径 / Neighbors and paths
 
+///|
 /// 邻居 / Neighbors.
 pub fn kg_neighbors(kg : KnowledgeGraph, entity_id : String) -> Array[String] {
   let result : Array[String] = []
   for i in 0..<kg.triples.length() {
     if kg.triples[i].subject == entity_id {
-      if !(contains_str(result, kg.triples[i].object)) {
+      if !contains_str(result, kg.triples[i].object) {
         result.push(kg.triples[i].object)
       }
     }
     if kg.triples[i].object == entity_id {
-      if !(contains_str(result, kg.triples[i].subject)) {
+      if !contains_str(result, kg.triples[i].subject) {
         result.push(kg.triples[i].subject)
       }
     }
@@ -354,12 +430,13 @@ pub fn kg_neighbors(kg : KnowledgeGraph, entity_id : String) -> Array[String] {
   result
 }
 
+///|
 /// 路径 / Paths.
 pub fn kg_paths(
   kg : KnowledgeGraph,
   start : String,
   end_ : String,
-  max_depth : Int,
+  max_depth : Int32,
 ) -> Array[Array[String]] {
   let result : Array[Array[String]] = []
   let initial_path : Array[String] = [start]
@@ -367,11 +444,12 @@ pub fn kg_paths(
   result
 }
 
+///|
 fn kg_paths_dfs(
   kg : KnowledgeGraph,
   current : String,
   end_ : String,
-  depth : Int,
+  depth : Int32,
   path : Array[String],
   result : Array[Array[String]],
 ) -> Unit {
@@ -385,7 +463,7 @@ fn kg_paths_dfs(
   for i in 0..<kg.triples.length() {
     if kg.triples[i].subject == current {
       let next = kg.triples[i].object
-      if !(contains_str(path, next)) {
+      if !contains_str(path, next) {
         let new_path = path.copy()
         new_path.push(next)
         kg_paths_dfs(kg, next, end_, depth - 1, new_path, result)
@@ -394,6 +472,7 @@ fn kg_paths_dfs(
   }
 }
 
+///|
 /// 最短路径 / Shortest path.
 pub fn kg_shortest_path(
   kg : KnowledgeGraph,
@@ -418,8 +497,12 @@ pub fn kg_shortest_path(
 ///===
 /// 子图与合并 / Subgraph and merge
 
+///|
 /// 子图 / Subgraph.
-pub fn kg_subgraph(kg : KnowledgeGraph, entities : Array[String]) -> KnowledgeGraph {
+pub fn kg_subgraph(
+  kg : KnowledgeGraph,
+  entities : Array[String],
+) -> KnowledgeGraph {
   let new_entities : Array[Entity] = []
   for i in 0..<kg.entities.length() {
     if contains_str(entities, kg.entities[i].entity_id) {
@@ -434,14 +517,24 @@ pub fn kg_subgraph(kg : KnowledgeGraph, entities : Array[String]) -> KnowledgeGr
       new_triples.push(kg.triples[i])
     }
   }
-  { kg_id: kg.kg_id + "_sub", entities: new_entities, relations: kg.relations.copy(), triples: new_triples }
+  {
+    kg_id: kg.kg_id + "_sub",
+    entities: new_entities,
+    relations: kg.relations.copy(),
+    triples: new_triples,
+  }
 }
 
+///|
 /// 超图 / Supergraph.
-pub fn kg_supergraph(kg1 : KnowledgeGraph, kg2 : KnowledgeGraph) -> KnowledgeGraph {
+pub fn kg_supergraph(
+  kg1 : KnowledgeGraph,
+  kg2 : KnowledgeGraph,
+) -> KnowledgeGraph {
   kg_merge(kg1, kg2)
 }
 
+///|
 /// 合并 / Merge.
 pub fn kg_merge(kg1 : KnowledgeGraph, kg2 : KnowledgeGraph) -> KnowledgeGraph {
   let new_entities = kg1.entities.copy()
@@ -456,22 +549,30 @@ pub fn kg_merge(kg1 : KnowledgeGraph, kg2 : KnowledgeGraph) -> KnowledgeGraph {
   for i in 0..<kg2.triples.length() {
     new_triples.push(kg2.triples[i])
   }
-  { kg_id: kg1.kg_id + "_" + kg2.kg_id, entities: new_entities, relations: new_relations, triples: new_triples }
+  {
+    kg_id: kg1.kg_id + "_" + kg2.kg_id,
+    entities: new_entities,
+    relations: new_relations,
+    triples: new_triples,
+  }
 }
 
 ///===
 /// 本体 / Ontology
 
+///|
 /// 构造本体 / Make ontology.
 pub fn make_ontology(ontology_id : String) -> Ontology {
-  { ontology_id, classes: [], hierarchy: [] }
+  { ontology_id, classes: [], hierarchy: [], }
 }
 
+///|
 /// 本体类 / Ontology classes.
 pub fn ontology_classes(ontology : Ontology) -> Array[String] {
   ontology.classes.copy()
 }
 
+///|
 /// 本体层级 / Ontology hierarchy.
 pub fn ontology_hierarchy(ontology : Ontology) -> Array[(String, String)] {
   ontology.hierarchy.copy()
@@ -480,25 +581,29 @@ pub fn ontology_hierarchy(ontology : Ontology) -> Array[(String, String)] {
 ///===
 /// RDF 三元组 / RDF triple
 
+///|
 /// 构造 RDF 三元组 / Make RDF triple.
 pub fn make_rdf_triple(
   subject : String,
   predicate : String,
   object : String,
 ) -> RDFTriple {
-  { subject, predicate, object }
+  { subject, predicate, object, }
 }
 
+///|
 /// RDF 主语 / RDF subject.
 pub fn rdf_subject(triple : RDFTriple) -> String {
   triple.subject
 }
 
+///|
 /// RDF 谓词 / RDF predicate.
 pub fn rdf_predicate(triple : RDFTriple) -> String {
   triple.predicate
 }
 
+///|
 /// RDF 宾语 / RDF object.
 pub fn rdf_object(triple : RDFTriple) -> String {
   triple.object
@@ -507,15 +612,17 @@ pub fn rdf_object(triple : RDFTriple) -> String {
 ///===
 /// SPARQL / SPARQL query
 
+///|
 /// 构造 SPARQL 查询 / Make SPARQL query.
 pub fn make_sparql_query(
   query_id : String,
   patterns : Array[Triple],
   select_vars : Array[String],
 ) -> SPARQLQuery {
-  { query_id, patterns, select_vars }
+  { query_id, patterns, select_vars, }
 }
 
+///|
 /// 执行 SPARQL / Execute SPARQL.
 pub fn sparql_execute(
   kg : KnowledgeGraph,
@@ -551,6 +658,7 @@ pub fn sparql_execute(
   results
 }
 
+///|
 /// SPARQL 结果 / SPARQL results.
 pub fn sparql_results(results : Array[Array[String]]) -> String {
   let mut output = ""
@@ -571,45 +679,59 @@ pub fn sparql_results(results : Array[Array[String]]) -> String {
 ///===
 /// 推理 / Reasoning
 
+///|
 /// 构造推理器 / Make reasoner.
 pub fn make_reasoner(reasoner_id : String) -> Reasoner {
-  { reasoner_id, rules: [], facts: [] }
+  { reasoner_id, rules: [], facts: [], }
 }
 
+///|
 /// 前向推理 / Forward reasoning.
 pub fn reason_forward(reasoner : Reasoner, triple : Triple) -> Array[Triple] {
   let result : Array[Triple] = [triple]
   for i in 0..<reasoner.rules.length() {
     let rule = reasoner.rules[i]
     if rule.0 == triple.predicate {
-      result.push({ subject: triple.subject, predicate: rule.1, object: triple.object })
+      result.push({
+        subject: triple.subject,
+        predicate: rule.1,
+        object: triple.object,
+      })
     }
   }
   result
 }
 
+///|
 /// 后向推理 / Backward reasoning.
 pub fn reason_backward(reasoner : Reasoner, goal : Triple) -> Bool {
   reason_backward_helper(reasoner, goal, 10)
 }
 
+///|
 fn reason_backward_helper(
   reasoner : Reasoner,
   goal : Triple,
-  depth : Int,
+  depth : Int32,
 ) -> Bool {
   if depth <= 0 {
     return false
   }
   for i in 0..<reasoner.facts.length() {
-    if reasoner.facts[i].subject == goal.subject && reasoner.facts[i].predicate == goal.predicate && reasoner.facts[i].object == goal.object {
+    if reasoner.facts[i].subject == goal.subject &&
+      reasoner.facts[i].predicate == goal.predicate &&
+      reasoner.facts[i].object == goal.object {
       return true
     }
   }
   for i in 0..<reasoner.rules.length() {
     let rule = reasoner.rules[i]
     if rule.1 == goal.predicate {
-      let sub_goal : Triple = { subject: goal.subject, predicate: rule.0, object: goal.object }
+      let sub_goal : Triple = {
+        subject: goal.subject,
+        predicate: rule.0,
+        object: goal.object,
+      }
       if reason_backward_helper(reasoner, sub_goal, depth - 1) {
         return true
       }
@@ -618,6 +740,7 @@ fn reason_backward_helper(
   false
 }
 
+///|
 /// 推理 / Infer.
 pub fn kg_infer(
   kg : KnowledgeGraph,
@@ -633,32 +756,37 @@ pub fn kg_infer(
         if new_triples[i].predicate == rules[j].0 {
           let s = new_triples[i].subject
           let o = new_triples[i].object
-          if !(triple_exists(new_triples, s, rules[j].1, o)) {
-            new_triples.push({ subject: s, predicate: rules[j].1, object: o })
+          if !triple_exists(new_triples, s, rules[j].1, o) {
+            new_triples.push({ subject: s, predicate: rules[j].1, object: o, })
             changed = true
           }
         }
       }
     }
   }
-  { ..kg, triples: new_triples }
+  { ..kg, triples: new_triples, }
 }
 
+///|
 /// 蕴含 / Entail.
 pub fn kg_entail(kg : KnowledgeGraph, triple : Triple) -> Bool {
   triple_exists(kg.triples, triple.subject, triple.predicate, triple.object)
 }
 
+///|
 /// 一致性 / Consistent.
 pub fn kg_consistent(kg : KnowledgeGraph) -> Bool {
   for i in 0..<kg.triples.length() {
     let outer_len = kg.triples.length()
     let start_j = i + 1
     for j in start_j..<outer_len {
-      if kg.triples[i].subject == kg.triples[j].subject && kg.triples[i].predicate == kg.triples[j].predicate && kg.triples[i].object != kg.triples[j].object {
+      if kg.triples[i].subject == kg.triples[j].subject &&
+        kg.triples[i].predicate == kg.triples[j].predicate &&
+        kg.triples[i].object != kg.triples[j].object {
         let mut has_neg = false
         for k in 0..<kg.relations.length() {
-          if kg.relations[k].relation_id == kg.triples[i].predicate && !(kg.relations[k].symmetric) {
+          if kg.relations[k].relation_id == kg.triples[i].predicate &&
+            !kg.relations[k].symmetric {
             has_neg = true
           }
         }
@@ -674,6 +802,7 @@ pub fn kg_consistent(kg : KnowledgeGraph) -> Bool {
 ///===
 /// 闭包 / Closure
 
+///|
 /// 传递闭包 / Transitive closure.
 pub fn kg_transitive_closure(
   kg : KnowledgeGraph,
@@ -687,11 +816,12 @@ pub fn kg_transitive_closure(
     for i in 0..<n {
       if new_triples[i].predicate == predicate {
         for j in 0..<n {
-          if new_triples[j].predicate == predicate && new_triples[i].object == new_triples[j].subject {
+          if new_triples[j].predicate == predicate &&
+            new_triples[i].object == new_triples[j].subject {
             let s = new_triples[i].subject
             let o = new_triples[j].object
-            if !(triple_exists(new_triples, s, predicate, o)) {
-              new_triples.push({ subject: s, predicate, object: o })
+            if !triple_exists(new_triples, s, predicate, o) {
+              new_triples.push({ subject: s, predicate, object: o, })
               changed = true
             }
           }
@@ -699,9 +829,10 @@ pub fn kg_transitive_closure(
       }
     }
   }
-  { ..kg, triples: new_triples }
+  { ..kg, triples: new_triples, }
 }
 
+///|
 /// 自反闭包 / Reflexive closure.
 pub fn kg_reflexive_closure(
   kg : KnowledgeGraph,
@@ -710,13 +841,14 @@ pub fn kg_reflexive_closure(
   let new_triples = kg.triples.copy()
   for i in 0..<kg.entities.length() {
     let eid = kg.entities[i].entity_id
-    if !(triple_exists(new_triples, eid, predicate, eid)) {
-      new_triples.push({ subject: eid, predicate, object: eid })
+    if !triple_exists(new_triples, eid, predicate, eid) {
+      new_triples.push({ subject: eid, predicate, object: eid, })
     }
   }
-  { ..kg, triples: new_triples }
+  { ..kg, triples: new_triples, }
 }
 
+///|
 /// 对称闭包 / Symmetric closure.
 pub fn kg_symmetric_closure(
   kg : KnowledgeGraph,
@@ -727,17 +859,18 @@ pub fn kg_symmetric_closure(
     if kg.triples[i].predicate == predicate {
       let s = kg.triples[i].object
       let o = kg.triples[i].subject
-      if !(triple_exists(new_triples, s, predicate, o)) {
-        new_triples.push({ subject: s, predicate, object: o })
+      if !triple_exists(new_triples, s, predicate, o) {
+        new_triples.push({ subject: s, predicate, object: o, })
       }
     }
   }
-  { ..kg, triples: new_triples }
+  { ..kg, triples: new_triples, }
 }
 
 ///===
 /// 类型检查 / Type checking
 
+///|
 /// 类型检查 / Type check.
 pub fn kg_type_check(
   kg : KnowledgeGraph,
@@ -745,13 +878,15 @@ pub fn kg_type_check(
   type_ : String,
 ) -> Bool {
   for i in 0..<kg.entities.length() {
-    if kg.entities[i].entity_id == entity_id && kg.entities[i].entity_type == type_ {
+    if kg.entities[i].entity_id == entity_id &&
+      kg.entities[i].entity_type == type_ {
       return true
     }
   }
   false
 }
 
+///|
 /// 实例检查 / Instance check.
 pub fn kg_instance_check(
   kg : KnowledgeGraph,
@@ -759,13 +894,15 @@ pub fn kg_instance_check(
   class_ : String,
 ) -> Bool {
   for i in 0..<kg.entities.length() {
-    if kg.entities[i].entity_id == entity_id && kg.entities[i].entity_type == class_ {
+    if kg.entities[i].entity_id == entity_id &&
+      kg.entities[i].entity_type == class_ {
       return true
     }
   }
   false
 }
 
+///|
 /// 子类检查 / Subclass check.
 pub fn kg_subclass_check(
   ontology : Ontology,
@@ -775,11 +912,12 @@ pub fn kg_subclass_check(
   kg_subclass_helper(ontology, sub, sup, 10)
 }
 
+///|
 fn kg_subclass_helper(
   ontology : Ontology,
   sub : String,
   sup : String,
-  depth : Int,
+  depth : Int32,
 ) -> Bool {
   if depth <= 0 {
     return false
@@ -805,6 +943,7 @@ fn kg_subclass_helper(
 ///===
 /// 实体链接与抽取 / Entity linking and extraction
 
+///|
 /// 实体链接 / Entity link.
 pub fn kg_entity_link(kg : KnowledgeGraph, mention : String) -> String? {
   for i in 0..<kg.entities.length() {
@@ -820,6 +959,7 @@ pub fn kg_entity_link(kg : KnowledgeGraph, mention : String) -> String? {
   None
 }
 
+///|
 /// 关系抽取 / Relation extract.
 pub fn kg_relation_extract(text : String) -> Array[Triple] {
   let result : Array[Triple] = []
@@ -827,7 +967,7 @@ pub fn kg_relation_extract(text : String) -> Array[Triple] {
   let mut current = ""
   let chars = text.to_array()
   for i in 0..<chars.length() {
-    if chars[i] == Int::unsafe_to_char(44) {
+    if chars[i] == Int32::unsafe_to_char(44) {
       parts.push(current)
       current = ""
     } else {
@@ -838,11 +978,12 @@ pub fn kg_relation_extract(text : String) -> Array[Triple] {
     parts.push(current)
   }
   if parts.length() >= 3 {
-    result.push({ subject: parts[0], predicate: parts[1], object: parts[2] })
+    result.push({ subject: parts[0], predicate: parts[1], object: parts[2], })
   }
   result
 }
 
+///|
 /// 三元组验证 / Triple validate.
 pub fn kg_triple_validate(kg : KnowledgeGraph, triple : Triple) -> Bool {
   let s_exists = contains_entity(kg, triple.subject)
@@ -854,11 +995,13 @@ pub fn kg_triple_validate(kg : KnowledgeGraph, triple : Triple) -> Bool {
 ///===
 /// 嵌入 / Embedding
 
+///|
 /// 构造嵌入 / Make embedding.
-pub fn kg_embedding(emb_id : String, dim : Int) -> Embedding {
-  { emb_id, entity_embeddings: [], relation_embeddings: [], dim }
+pub fn kg_embedding(emb_id : String, dim : Int32) -> Embedding {
+  { emb_id, entity_embeddings: [], relation_embeddings: [], dim, }
 }
 
+///|
 /// TransE 评分 / TransE score.
 pub fn kg_transE(
   h : Array[Double],
@@ -870,6 +1013,7 @@ pub fn kg_transE(
   0.0 - vector_norm(diff)
 }
 
+///|
 /// TransH 评分 / TransH score.
 pub fn kg_transH(
   h : Array[Double],
@@ -885,6 +1029,7 @@ pub fn kg_transH(
   0.0 - vector_norm(diff)
 }
 
+///|
 /// DistMult 评分 / DistMult score.
 pub fn kg_distMult(
   h : Array[Double],
@@ -900,6 +1045,7 @@ pub fn kg_distMult(
   sum
 }
 
+///|
 /// ComplEx 评分 / ComplEx score.
 pub fn kg_complEx(
   h_re : Array[Double],
@@ -912,11 +1058,16 @@ pub fn kg_complEx(
   let n = h_re.length()
   let mut sum = 0.0
   for i in 0..<n {
-    sum = sum + h_re[i] * r_re[i] * t_re[i] + h_re[i] * r_im[i] * t_im[i] + h_im[i] * r_re[i] * t_im[i] - h_im[i] * r_im[i] * t_re[i]
+    sum = sum +
+      h_re[i] * r_re[i] * t_re[i] +
+      h_re[i] * r_im[i] * t_im[i] +
+      h_im[i] * r_re[i] * t_im[i] -
+      h_im[i] * r_im[i] * t_re[i]
   }
   sum
 }
 
+///|
 /// RotatE 评分 / RotatE score.
 pub fn kg_rotateE(
   h : Array[Double],
@@ -932,6 +1083,7 @@ pub fn kg_rotateE(
   0.0 - vector_norm(diff)
 }
 
+///|
 /// 三元组评分 / Score triple.
 pub fn kg_score_triple(
   emb : Embedding,
@@ -951,11 +1103,12 @@ pub fn kg_score_triple(
 ///===
 /// 嵌入训练与预测 / Embedding training and prediction
 
+///|
 /// 训练嵌入 / Train embedding.
 pub fn kg_train_embedding(
   kg : KnowledgeGraph,
-  dim : Int,
-  epochs : Int,
+  dim : Int32,
+  epochs : Int32,
 ) -> Embedding {
   let entity_embeddings : Array[(String, Array[Double])] = []
   for i in 0..<kg.entities.length() {
@@ -974,15 +1127,12 @@ pub fn kg_train_embedding(
     relation_embeddings.push((kg.relations[i].relation_id, vec))
   }
   let emb_id = kg.kg_id + "_emb_" + epochs.to_string()
-  { emb_id, entity_embeddings, relation_embeddings, dim }
+  { emb_id, entity_embeddings, relation_embeddings, dim, }
 }
 
+///|
 /// 预测关系 / Predict relation.
-pub fn kg_predict_relation(
-  emb : Embedding,
-  h : String,
-  t : String,
-) -> String? {
+pub fn kg_predict_relation(emb : Embedding, h : String, t : String) -> String? {
   let h_vec = lookup_embedding(emb.entity_embeddings, h)
   let t_vec = lookup_embedding(emb.entity_embeddings, t)
   match (h_vec, t_vec) {
@@ -1004,12 +1154,9 @@ pub fn kg_predict_relation(
   }
 }
 
+///|
 /// 预测实体 / Predict entity.
-pub fn kg_predict_entity(
-  emb : Embedding,
-  h : String,
-  r : String,
-) -> String? {
+pub fn kg_predict_entity(emb : Embedding, h : String, r : String) -> String? {
   let h_vec = lookup_embedding(emb.entity_embeddings, h)
   let r_vec = lookup_embedding(emb.relation_embeddings, r)
   match (h_vec, r_vec) {
@@ -1034,11 +1181,9 @@ pub fn kg_predict_entity(
 ///===
 /// 链接补全 / Link completion
 
+///|
 /// 知识图谱补全 / Knowledge graph completion.
-pub fn kg_completion(
-  kg : KnowledgeGraph,
-  emb : Embedding,
-) -> Array[Triple] {
+pub fn kg_completion(kg : KnowledgeGraph, emb : Embedding) -> Array[Triple] {
   let result : Array[Triple] = []
   for i in 0..<emb.entity_embeddings.length() {
     for j in 0..<emb.entity_embeddings.length() {
@@ -1046,11 +1191,10 @@ pub fn kg_completion(
         let h = emb.entity_embeddings[i].0
         let t = emb.entity_embeddings[j].0
         match kg_predict_relation(emb, h, t) {
-          Some(r) => {
-            if !(triple_exists(kg.triples, h, r, t)) {
-              result.push({ subject: h, predicate: r, object: t })
+          Some(r) =>
+            if !triple_exists(kg.triples, h, r, t) {
+              result.push({ subject: h, predicate: r, object: t, })
             }
-          }
           None => ()
         }
       }
@@ -1059,6 +1203,7 @@ pub fn kg_completion(
   result
 }
 
+///|
 /// 缺失链接 / Missing links.
 pub fn kg_missing_links(
   kg : KnowledgeGraph,
@@ -1073,10 +1218,10 @@ pub fn kg_missing_links(
           let h = kg.entities[i].entity_id
           let t = kg.entities[j].entity_id
           let r = kg.relations[k].relation_id
-          if !(triple_exists(kg.triples, h, r, t)) {
+          if !triple_exists(kg.triples, h, r, t) {
             count = count + 1
             if count.to_double() <= threshold {
-              result.push({ subject: h, predicate: r, object: t })
+              result.push({ subject: h, predicate: r, object: t, })
             }
           }
         }
@@ -1086,13 +1231,15 @@ pub fn kg_missing_links(
   result
 }
 
+///|
 /// 排名评分 / Rank score.
-pub fn kg_rank_score(emb : Embedding, triple : Triple) -> Int {
+pub fn kg_rank_score(emb : Embedding, triple : Triple) -> Int32 {
   let h_vec = lookup_embedding(emb.entity_embeddings, triple.subject)
   let t_vec = lookup_embedding(emb.entity_embeddings, triple.object)
   match (h_vec, t_vec) {
     (Some(hv), Some(tv)) => {
-      let target_score = match lookup_embedding(emb.relation_embeddings, triple.predicate) {
+      let target_score = match
+        lookup_embedding(emb.relation_embeddings, triple.predicate) {
         Some(rv) => kg_transE(hv, rv, tv)
         None => 0.0
       }
@@ -1116,16 +1263,19 @@ pub fn kg_rank_score(emb : Embedding, triple : Triple) -> Int {
 ///===
 /// 模式与 SHACL / Schema and SHACL
 
+///|
 /// 构造模式 / Make schema.
 pub fn kg_schema(schema_id : String) -> Schema {
-  { schema_id, type_constraints: [], relation_constraints: [] }
+  { schema_id, type_constraints: [], relation_constraints: [], }
 }
 
+///|
 /// 构造 SHACL / Make SHACL.
 pub fn kg_shacl(shacl_id : String) -> SHACL {
-  { shacl_id, shapes: [], min_count: [] }
+  { shacl_id, shapes: [], min_count: [], }
 }
 
+///|
 /// 验证模式 / Validate schema.
 pub fn kg_validate_schema(kg : KnowledgeGraph, schema : Schema) -> Bool {
   for i in 0..<kg.triples.length() {
@@ -1143,7 +1293,7 @@ pub fn kg_validate_schema(kg : KnowledgeGraph, schema : Schema) -> Bool {
         if schema.relation_constraints.length() == 0 {
           valid = true
         }
-        if !(valid) {
+        if !valid {
           return false
         }
       }
@@ -1156,11 +1306,13 @@ pub fn kg_validate_schema(kg : KnowledgeGraph, schema : Schema) -> Bool {
 ///===
 /// 联邦 / Federation
 
+///|
 /// 构造联邦 / Make federation.
 pub fn kg_federation(fed_id : String) -> KGFederation {
-  { fed_id, graphs: [] }
+  { fed_id, graphs: [], }
 }
 
+///|
 /// 联邦查询 / Federate query.
 pub fn kg_federate_query(
   fed : KGFederation,
@@ -1176,6 +1328,7 @@ pub fn kg_federate_query(
   result
 }
 
+///|
 /// 联邦结果 / Federate results.
 pub fn kg_federate_results(
   results : Array[Array[Array[String]]],
@@ -1189,9 +1342,9 @@ pub fn kg_federate_results(
   merged
 }
 
+///|
 ///===
 /// 模块标识 / Module id
-
 pub fn knowledge_graph_id() -> String {
   "agent_kit/knowledge_graph"
 }

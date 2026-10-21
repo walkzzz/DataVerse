@@ -11,42 +11,52 @@
 /// Consistency: window-equivalent. See architecture §4.1.
 /// S0.2 provides window abstraction and contract; concrete operators filled in Phase 1.
 
+///|
 /// 流式窗口配置 / Streaming window configuration.
 ///
 /// `window_size` 为窗口大小，`slide` 为滑动步长。
 /// 当 `slide == window_size` 为翻滚窗口；`slide < window_size` 为滑动窗口。
 pub struct WindowConfig {
-  window_size : Int
-  slide : Int
+  window_size : Int32
+  slide : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend WindowConfig with Eq::{equal, not_equal}
+
+///|
 pub extend WindowConfig with Debug::{to_repr}
 
+///|
 /// 默认窗口：翻滚窗口，大小 100 / Default tumbling window, size 100.
 pub fn default_window() -> WindowConfig {
-  { window_size: 100, slide: 100 }
+  { window_size: 100, slide: 100, }
 }
 
+///|
 /// 滑动窗口 / Sliding window with given size and slide.
-pub fn sliding_window(size : Int, slide : Int) -> WindowConfig {
-  { window_size: size, slide: slide }
+pub fn sliding_window(size : Int32, slide : Int32) -> WindowConfig {
+  { window_size: size, slide, }
 }
 
+///|
 pub fn streaming_id() -> String {
   "kernel/streaming"
 }
 
+///|
 /// 模式标签 / Mode tag string.
 pub fn mode_tag() -> String {
   "streaming"
 }
 
+///|
 /// 一致性保证声明 / Consistency guarantee.
 pub fn consistency_guarantee() -> String {
   "window-equiv"
 }
 
+///|
 /// 窗口校验 / Window validation: size > 0 and slide > 0.
 pub fn valid_window(config : WindowConfig) -> Bool {
   config.window_size > 0 && config.slide > 0

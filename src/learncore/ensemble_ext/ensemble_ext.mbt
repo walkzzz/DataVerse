@@ -10,77 +10,106 @@
 // 类型定义 / Type definitions
 // ============================================================
 
+///|
 /// Bagging 配置 / Bagging config.
 pub struct BaggingConfig {
-  n_estimators : Int
+  n_estimators : Int32
   sample_ratio : Double
   with_replacement : Bool
 } derive(Debug, Eq)
 
+///|
 pub extend BaggingConfig with Eq::{equal, not_equal}
+
+///|
 pub extend BaggingConfig with Debug::{to_repr}
 
+///|
 /// Boosting 配置 / Boosting config.
 pub struct BoostingConfig {
-  n_estimators : Int
+  n_estimators : Int32
   learning_rate : Double
   loss : String
 } derive(Debug, Eq)
 
+///|
 pub extend BoostingConfig with Eq::{equal, not_equal}
+
+///|
 pub extend BoostingConfig with Debug::{to_repr}
 
+///|
 /// Stacking 配置 / Stacking config.
 pub struct StackingConfig {
-  base_models : Int
+  base_models : Int32
   meta_learner : String
-  cv_folds : Int
+  cv_folds : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend StackingConfig with Eq::{equal, not_equal}
+
+///|
 pub extend StackingConfig with Debug::{to_repr}
 
+///|
 /// Voting 配置 / Voting config.
 pub struct VotingConfig {
-  n_models : Int
+  n_models : Int32
   weights : Array[Double]
   voting_type : String
 } derive(Debug, Eq)
 
+///|
 pub extend VotingConfig with Eq::{equal, not_equal}
+
+///|
 pub extend VotingConfig with Debug::{to_repr}
 
+///|
 /// 随机森林配置 / Random forest config.
 pub struct RandomForestConfig {
-  n_estimators : Int
-  max_depth : Int
-  max_features : Int
+  n_estimators : Int32
+  max_depth : Int32
+  max_features : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend RandomForestConfig with Eq::{equal, not_equal}
+
+///|
 pub extend RandomForestConfig with Debug::{to_repr}
 
+///|
 /// 集成配置 / Ensemble config.
 pub struct EnsembleConfig {
   name : String
-  n_models : Int
+  n_models : Int32
   weights : Array[Double]
   method_ : String
 } derive(Debug, Eq)
 
+///|
 pub extend EnsembleConfig with Eq::{equal, not_equal}
+
+///|
 pub extend EnsembleConfig with Debug::{to_repr}
 
+///|
 /// 集成模型 / Ensemble model.
 pub struct EnsembleModel {
   predictions : Array[Array[Double]]
   weights : Array[Double]
-  labels : Array[Int]
+  labels : Array[Int32]
 } derive(Debug, Eq)
 
+///|
 pub extend EnsembleModel with Eq::{equal, not_equal}
+
+///|
 pub extend EnsembleModel with Debug::{to_repr}
 
+///|
 /// AdaBoost 状态 / AdaBoost state.
 pub struct AdaBoostState {
   weights : Array[Double]
@@ -88,24 +117,32 @@ pub struct AdaBoostState {
   errors : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend AdaBoostState with Eq::{equal, not_equal}
+
+///|
 pub extend AdaBoostState with Debug::{to_repr}
 
+///|
 /// XGBoost 配置 / XGBoost config.
 pub struct XGBoostConfig {
-  n_estimators : Int
+  n_estimators : Int32
   learning_rate : Double
-  max_depth : Int
+  max_depth : Int32
   lambda : Double
 } derive(Debug, Eq)
 
+///|
 pub extend XGBoostConfig with Eq::{equal, not_equal}
+
+///|
 pub extend XGBoostConfig with Debug::{to_repr}
 
 // ============================================================
 // 辅助数学函数 / Helper math functions
 // ============================================================
 
+///|
 fn exp_approx(x : Double) -> Double {
   if x > 20.0 {
     485165195.4
@@ -122,6 +159,7 @@ fn exp_approx(x : Double) -> Double {
   }
 }
 
+///|
 fn log_approx(x : Double) -> Double {
   if x <= 0.0 {
     -1000.0
@@ -138,6 +176,7 @@ fn log_approx(x : Double) -> Double {
   }
 }
 
+///|
 fn sqrt_approx(x : Double) -> Double {
   if x < 0.0 {
     return 0.0
@@ -155,7 +194,8 @@ fn sqrt_approx(x : Double) -> Double {
   guess
 }
 
-fn parse_int_simple(s : String) -> Int {
+///|
+fn parse_int_simple(s : String) -> Int32 {
   let mut result = 0
   let mut negative = false
   let mut i = 0
@@ -170,9 +210,14 @@ fn parse_int_simple(s : String) -> Int {
     }
     i = i + 1
   }
-  if negative { -result } else { result }
+  if negative {
+    -result
+  } else {
+    result
+  }
 }
 
+///|
 fn parse_double_simple(s : String) -> Double {
   let mut result = 0.0
   let mut negative = false
@@ -200,23 +245,32 @@ fn parse_double_simple(s : String) -> Double {
     }
     i = i + 1
   }
-  if negative { -result } else { result }
+  if negative {
+    -result
+  } else {
+    result
+  }
 }
 
 // ============================================================
 // Bagging
 // ============================================================
 
+///|
 /// 创建 Bagging 配置 / Make bagging config.
-pub fn make_bagging(n_estimators : Int, sample_ratio : Double) -> BaggingConfig {
-  BaggingConfig::{n_estimators, sample_ratio, with_replacement: true}
+pub fn make_bagging(
+  n_estimators : Int32,
+  sample_ratio : Double,
+) -> BaggingConfig {
+  BaggingConfig::{ n_estimators, sample_ratio, with_replacement: true, }
 }
 
+///|
 /// Bagging 训练 / Bagging train (returns ensemble of predictions).
 pub fn bagging_train(
   data : Array[Double],
-  labels : Array[Int],
-  config : BaggingConfig
+  labels : Array[Int32],
+  config : BaggingConfig,
 ) -> EnsembleModel {
   let predictions : Array[Array[Double]] = []
   let weights : Array[Double] = []
@@ -229,9 +283,10 @@ pub fn bagging_train(
     predictions.push(pred)
     weights.push(1.0 / config.n_estimators.to_double())
   }
-  EnsembleModel::{predictions, weights, labels}
+  EnsembleModel::{ predictions, weights, labels, }
 }
 
+///|
 /// Bagging 预测 / Bagging predict.
 pub fn bagging_predict(model : EnsembleModel) -> Array[Double] {
   let n_models = model.predictions.length()
@@ -241,7 +296,11 @@ pub fn bagging_predict(model : EnsembleModel) -> Array[Double] {
   let n_samples = model.predictions[0].length()
   let result : Array[Double] = Array::make(n_samples, 0.0)
   for m in 0..<n_models {
-    let w = if m < model.weights.length() { model.weights[m] } else { 1.0 / n_models.to_double() }
+    let w = if m < model.weights.length() {
+      model.weights[m]
+    } else {
+      1.0 / n_models.to_double()
+    }
     for s in 0..<n_samples {
       if s < model.predictions[m].length() {
         result[s] = result[s] + w * model.predictions[m][s]
@@ -255,16 +314,21 @@ pub fn bagging_predict(model : EnsembleModel) -> Array[Double] {
 // Boosting
 // ============================================================
 
+///|
 /// 创建 Boosting 配置 / Make boosting config.
-pub fn make_boosting(n_estimators : Int, learning_rate : Double) -> BoostingConfig {
-  BoostingConfig::{n_estimators, learning_rate, loss: "exponential"}
+pub fn make_boosting(
+  n_estimators : Int32,
+  learning_rate : Double,
+) -> BoostingConfig {
+  BoostingConfig::{ n_estimators, learning_rate, loss: "exponential", }
 }
 
+///|
 /// Boosting 训练 / Boosting train.
 pub fn boosting_train(
   data : Array[Double],
-  labels : Array[Int],
-  config : BoostingConfig
+  labels : Array[Int32],
+  config : BoostingConfig,
 ) -> EnsembleModel {
   let n = data.length()
   let weights : Array[Double] = Array::make(n, 1.0 / n.to_double())
@@ -289,9 +353,10 @@ pub fn boosting_train(
       current_pred[i] = current_pred[i] + config.learning_rate * pred[i]
     }
   }
-  EnsembleModel::{predictions, weights: model_weights, labels}
+  EnsembleModel::{ predictions, weights: model_weights, labels, }
 }
 
+///|
 /// Boosting 预测 / Boosting predict.
 pub fn boosting_predict(model : EnsembleModel) -> Array[Double] {
   let n_models = model.predictions.length()
@@ -315,25 +380,38 @@ pub fn boosting_predict(model : EnsembleModel) -> Array[Double] {
 // AdaBoost
 // ============================================================
 
+///|
 /// AdaBoost 单步 / AdaBoost step.
 pub fn adaboost_step(
   weights : Array[Double],
-  predictions : Array[Int],
-  labels : Array[Int],
-  learning_rate : Double
+  predictions : Array[Int32],
+  labels : Array[Int32],
+  learning_rate : Double,
 ) -> AdaBoostState {
   let n = weights.length()
   let mut err = 0.0
   for i in 0..<n {
-    if i < predictions.length() && i < labels.length() && predictions[i] != labels[i] {
+    if i < predictions.length() &&
+      i < labels.length() &&
+      predictions[i] != labels[i] {
       err = err + weights[i]
     }
   }
-  let alpha = if err <= 0.0 || err >= 1.0 { 0.0 } else { learning_rate * log_approx((1.0 - err) / err) }
+  let alpha = if err <= 0.0 || err >= 1.0 {
+    0.0
+  } else {
+    learning_rate * log_approx((1.0 - err) / err)
+  }
   let new_weights : Array[Double] = []
   let mut sum = 0.0
   for i in 0..<n {
-    let incorrect = if i < predictions.length() && i < labels.length() && predictions[i] != labels[i] { 1.0 } else { 0.0 }
+    let incorrect = if i < predictions.length() &&
+      i < labels.length() &&
+      predictions[i] != labels[i] {
+      1.0
+    } else {
+      0.0
+    }
     let w = weights[i] * exp_approx(alpha * incorrect)
     new_weights.push(w)
     sum = sum + w
@@ -343,21 +421,28 @@ pub fn adaboost_step(
       new_weights[i] = new_weights[i] / sum
     }
   }
-  AdaBoostState::{weights: new_weights, alphas: [alpha], errors: [err]}
+  AdaBoostState::{ weights: new_weights, alphas: [alpha], errors: [err], }
 }
 
+///|
 /// AdaBoost 权重 / AdaBoost weight.
 pub fn adaboost_weight(
   base_weights : Array[Double],
-  predictions : Array[Int],
-  labels : Array[Int],
-  alpha : Double
+  predictions : Array[Int32],
+  labels : Array[Int32],
+  alpha : Double,
 ) -> Array[Double] {
   let n = base_weights.length()
   let result : Array[Double] = []
   let mut sum = 0.0
   for i in 0..<n {
-    let incorrect = if i < predictions.length() && i < labels.length() && predictions[i] != labels[i] { 1.0 } else { 0.0 }
+    let incorrect = if i < predictions.length() &&
+      i < labels.length() &&
+      predictions[i] != labels[i] {
+      1.0
+    } else {
+      0.0
+    }
     let w = base_weights[i] * exp_approx(alpha * incorrect)
     result.push(w)
     sum = sum + w
@@ -370,22 +455,31 @@ pub fn adaboost_weight(
   result
 }
 
+///|
 /// AdaBoost 预测 / AdaBoost predict.
 pub fn adaboost_predict(
-  base_predictions : Array[Array[Int]],
-  alphas : Array[Double]
-) -> Array[Int] {
+  base_predictions : Array[Array[Int32]],
+  alphas : Array[Double],
+) -> Array[Int32] {
   let n_models = base_predictions.length()
   if n_models == 0 {
     return []
   }
   let n_samples = base_predictions[0].length()
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for s in 0..<n_samples {
     let mut score = 0.0
     for m in 0..<n_models {
       let a = if m < alphas.length() { alphas[m] } else { 1.0 }
-      let p = if s < base_predictions[m].length() { if base_predictions[m][s] == 1 { 1.0 } else { -1.0 } } else { 0.0 }
+      let p = if s < base_predictions[m].length() {
+        if base_predictions[m][s] == 1 {
+          1.0
+        } else {
+          -1.0
+        }
+      } else {
+        0.0
+      }
       score = score + a * p
     }
     result.push(if score > 0.0 { 1 } else { 0 })
@@ -397,11 +491,12 @@ pub fn adaboost_predict(
 // Gradient Boosting
 // ============================================================
 
+///|
 /// 梯度提升单步 / Gradient boost step.
 pub fn gradient_boost_step(
   current_predictions : Array[Double],
   residuals : Array[Double],
-  learning_rate : Double
+  learning_rate : Double,
 ) -> Array[Double] {
   let n = current_predictions.length()
   let m = if n < residuals.length() { n } else { residuals.length() }
@@ -416,10 +511,11 @@ pub fn gradient_boost_step(
   result
 }
 
+///|
 /// 梯度提升预测 / Gradient boost predict.
 pub fn gradient_boost_predict(
   base_predictions : Array[Array[Double]],
-  learning_rates : Array[Double]
+  learning_rates : Array[Double],
 ) -> Array[Double] {
   let n_models = base_predictions.length()
   if n_models == 0 {
@@ -442,15 +538,20 @@ pub fn gradient_boost_predict(
 // Stacking
 // ============================================================
 
+///|
 /// 创建 Stacking 配置 / Make stacking config.
-pub fn make_stacking(n_base_models : Int, meta_learner : String) -> StackingConfig {
-  StackingConfig::{base_models: n_base_models, meta_learner, cv_folds: 5}
+pub fn make_stacking(
+  n_base_models : Int32,
+  meta_learner : String,
+) -> StackingConfig {
+  StackingConfig::{ base_models: n_base_models, meta_learner, cv_folds: 5, }
 }
 
+///|
 /// Stacking 预测 / Stacking predict.
 pub fn stacking_predict(
   base_predictions : Array[Array[Double]],
-  meta_weights : Array[Double]
+  meta_weights : Array[Double],
 ) -> Array[Double] {
   let n_models = base_predictions.length()
   if n_models == 0 {
@@ -474,11 +575,12 @@ pub fn stacking_predict(
   result
 }
 
+///|
 /// 元学习器预测 / Meta learner predict.
 pub fn meta_learner_predict(
   base_predictions : Array[Array[Double]],
   meta_weights : Array[Double],
-  method_ : String
+  method_ : String,
 ) -> Array[Double] {
   if method_ == "linear" {
     stacking_predict(base_predictions, meta_weights)
@@ -507,21 +609,27 @@ pub fn meta_learner_predict(
 // Voting
 // ============================================================
 
+///|
 /// 创建 Voting 配置 / Make voting config.
-pub fn make_voting(n_models : Int, weights : Array[Double], voting_type : String) -> VotingConfig {
-  VotingConfig::{n_models, weights, voting_type}
+pub fn make_voting(
+  n_models : Int32,
+  weights : Array[Double],
+  voting_type : String,
+) -> VotingConfig {
+  VotingConfig::{ n_models, weights, voting_type, }
 }
 
+///|
 /// 硬投票 / Voting hard.
-pub fn voting_hard(predictions : Array[Array[Int]]) -> Array[Int] {
+pub fn voting_hard(predictions : Array[Array[Int32]]) -> Array[Int32] {
   let n_models = predictions.length()
   if n_models == 0 {
     return []
   }
   let n_samples = predictions[0].length()
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for s in 0..<n_samples {
-    let votes : Array[(Int, Int)] = []
+    let votes : Array[(Int32, Int32)] = []
     for m in 0..<n_models {
       if s < predictions[m].length() {
         let pred = predictions[m][s]
@@ -532,7 +640,7 @@ pub fn voting_hard(predictions : Array[Array[Int]]) -> Array[Int] {
             found = true
           }
         }
-        if !(found) {
+        if !found {
           votes.push((pred, 1))
         }
       }
@@ -550,8 +658,11 @@ pub fn voting_hard(predictions : Array[Array[Int]]) -> Array[Int] {
   result
 }
 
+///|
 /// 软投票 / Voting soft.
-pub fn voting_soft(probabilities : Array[Array[Array[Double]]]) -> Array[Array[Double]] {
+pub fn voting_soft(
+  probabilities : Array[Array[Array[Double]]],
+) -> Array[Array[Double]] {
   let n_models = probabilities.length()
   if n_models == 0 {
     return []
@@ -559,7 +670,11 @@ pub fn voting_soft(probabilities : Array[Array[Array[Double]]]) -> Array[Array[D
   let n_samples = probabilities[0].length()
   let result : Array[Array[Double]] = []
   for s in 0..<n_samples {
-    let n_classes = if s < probabilities[0].length() { probabilities[0][s].length() } else { 0 }
+    let n_classes = if s < probabilities[0].length() {
+      probabilities[0][s].length()
+    } else {
+      0
+    }
     let avg : Array[Double] = Array::make(n_classes, 0.0)
     for m in 0..<n_models {
       if s < probabilities[m].length() {
@@ -582,11 +697,17 @@ pub fn voting_soft(probabilities : Array[Array[Array[Double]]]) -> Array[Array[D
 // Random Forest
 // ============================================================
 
+///|
 /// 创建随机森林配置 / Make random forest config.
-pub fn make_random_forest(n_estimators : Int, max_depth : Int, max_features : Int) -> RandomForestConfig {
-  RandomForestConfig::{n_estimators, max_depth, max_features}
+pub fn make_random_forest(
+  n_estimators : Int32,
+  max_depth : Int32,
+  max_features : Int32,
+) -> RandomForestConfig {
+  RandomForestConfig::{ n_estimators, max_depth, max_features, }
 }
 
+///|
 /// 随机森林预测 / RF predict.
 pub fn rf_predict(base_predictions : Array[Array[Double]]) -> Array[Double] {
   let n_models = base_predictions.length()
@@ -608,8 +729,11 @@ pub fn rf_predict(base_predictions : Array[Array[Double]]) -> Array[Double] {
   result
 }
 
+///|
 /// 随机森林特征重要性 / RF feature importance.
-pub fn rf_feature_importance(importances : Array[Array[Double]]) -> Array[Double] {
+pub fn rf_feature_importance(
+  importances : Array[Array[Double]],
+) -> Array[Double] {
   let n_models = importances.length()
   if n_models == 0 {
     return []
@@ -633,13 +757,20 @@ pub fn rf_feature_importance(importances : Array[Array[Double]]) -> Array[Double
 // Extra Trees
 // ============================================================
 
+///|
 /// 创建 Extra Trees 配置 / Make extra trees config.
-pub fn make_extra_trees(n_estimators : Int, max_depth : Int) -> RandomForestConfig {
-  RandomForestConfig::{n_estimators, max_depth, max_features: 0}
+pub fn make_extra_trees(
+  n_estimators : Int32,
+  max_depth : Int32,
+) -> RandomForestConfig {
+  RandomForestConfig::{ n_estimators, max_depth, max_features: 0, }
 }
 
+///|
 /// Extra Trees 预测 / Extra trees predict.
-pub fn extra_trees_predict(base_predictions : Array[Array[Double]]) -> Array[Double] {
+pub fn extra_trees_predict(
+  base_predictions : Array[Array[Double]],
+) -> Array[Double] {
   rf_predict(base_predictions)
 }
 
@@ -647,15 +778,20 @@ pub fn extra_trees_predict(base_predictions : Array[Array[Double]]) -> Array[Dou
 // XGBoost / LightGBM / CatBoost (simplified)
 // ============================================================
 
+///|
 /// 创建 XGBoost 配置 / Make XGBoost config.
-pub fn make_xgboost_simple(n_estimators : Int, learning_rate : Double) -> XGBoostConfig {
-  XGBoostConfig::{n_estimators, learning_rate, max_depth: 6, lambda: 1.0}
+pub fn make_xgboost_simple(
+  n_estimators : Int32,
+  learning_rate : Double,
+) -> XGBoostConfig {
+  XGBoostConfig::{ n_estimators, learning_rate, max_depth: 6, lambda: 1.0, }
 }
 
+///|
 /// XGBoost 预测 / XGBoost predict.
 pub fn xgboost_predict(
   base_predictions : Array[Array[Double]],
-  learning_rate : Double
+  learning_rate : Double,
 ) -> Array[Double] {
   let n_models = base_predictions.length()
   if n_models == 0 {
@@ -673,28 +809,38 @@ pub fn xgboost_predict(
   result
 }
 
+///|
 /// 创建 LightGBM 配置 / Make LightGBM config.
-pub fn make_lightgbm_simple(n_estimators : Int, learning_rate : Double) -> XGBoostConfig {
-  XGBoostConfig::{n_estimators, learning_rate, max_depth: -1, lambda: 0.0}
+pub fn make_lightgbm_simple(
+  n_estimators : Int32,
+  learning_rate : Double,
+) -> XGBoostConfig {
+  XGBoostConfig::{ n_estimators, learning_rate, max_depth: -1, lambda: 0.0, }
 }
 
+///|
 /// LightGBM 预测 / LightGBM predict.
 pub fn lightgbm_predict(
   base_predictions : Array[Array[Double]],
-  learning_rate : Double
+  learning_rate : Double,
 ) -> Array[Double] {
   xgboost_predict(base_predictions, learning_rate)
 }
 
+///|
 /// 创建 CatBoost 配置 / Make CatBoost config.
-pub fn make_catboost_simple(n_estimators : Int, learning_rate : Double) -> XGBoostConfig {
-  XGBoostConfig::{n_estimators, learning_rate, max_depth: 8, lambda: 3.0}
+pub fn make_catboost_simple(
+  n_estimators : Int32,
+  learning_rate : Double,
+) -> XGBoostConfig {
+  XGBoostConfig::{ n_estimators, learning_rate, max_depth: 8, lambda: 3.0, }
 }
 
+///|
 /// CatBoost 预测 / CatBoost predict.
 pub fn catboost_predict(
   base_predictions : Array[Array[Double]],
-  learning_rate : Double
+  learning_rate : Double,
 ) -> Array[Double] {
   xgboost_predict(base_predictions, learning_rate)
 }
@@ -703,8 +849,9 @@ pub fn catboost_predict(
 // 集成诊断 / Ensemble diagnostics
 // ============================================================
 
+///|
 /// 集成多样性 / Ensemble diversity (average pairwise disagreement).
-pub fn ensemble_diversity(predictions : Array[Array[Int]]) -> Double {
+pub fn ensemble_diversity(predictions : Array[Array[Int32]]) -> Double {
   let n_models = predictions.length()
   if n_models < 2 {
     return 0.0
@@ -735,6 +882,7 @@ pub fn ensemble_diversity(predictions : Array[Array[Int]]) -> Double {
   }
 }
 
+///|
 /// 集成相关性 / Ensemble correlation (average pairwise correlation).
 pub fn ensemble_correlation(predictions : Array[Array[Double]]) -> Double {
   let n_models = predictions.length()
@@ -752,8 +900,16 @@ pub fn ensemble_correlation(predictions : Array[Array[Double]]) -> Double {
       let mut sum11 = 0.0
       let mut sum22 = 0.0
       for s in 0..<n_samples {
-        let p1 = if s < predictions[m1].length() { predictions[m1][s] } else { 0.0 }
-        let p2 = if s < predictions[m2].length() { predictions[m2][s] } else { 0.0 }
+        let p1 = if s < predictions[m1].length() {
+          predictions[m1][s]
+        } else {
+          0.0
+        }
+        let p2 = if s < predictions[m2].length() {
+          predictions[m2][s]
+        } else {
+          0.0
+        }
         sum1 = sum1 + p1
         sum2 = sum2 + p2
         sum12 = sum12 + p1 * p2
@@ -784,10 +940,11 @@ pub fn ensemble_correlation(predictions : Array[Array[Double]]) -> Double {
 // 加权集成 / Weighted ensemble
 // ============================================================
 
+///|
 /// 加权集成 / Weighted ensemble.
 pub fn weighted_ensemble(
   predictions : Array[Array[Double]],
-  weights : Array[Double]
+  weights : Array[Double],
 ) -> Array[Double] {
   let n_models = predictions.length()
   if n_models == 0 {
@@ -817,17 +974,21 @@ pub fn weighted_ensemble(
   result
 }
 
+///|
 /// 优化权重 / Optimize weights (simple grid search).
 pub fn optimize_weights(
   predictions : Array[Array[Double]],
-  labels : Array[Double]
+  labels : Array[Double],
 ) -> Array[Double] {
   let n_models = predictions.length()
   if n_models == 0 {
     return []
   }
   let n_samples = predictions[0].length()
-  let best_weights : Array[Double] = Array::make(n_models, 1.0 / n_models.to_double())
+  let best_weights : Array[Double] = Array::make(
+    n_models,
+    1.0 / n_models.to_double(),
+  )
   let mut best_error = 999999999.0
   let steps = 10
   for m in 0..<n_models {
@@ -876,16 +1037,18 @@ pub fn optimize_weights(
 // 集成配置 / Ensemble config
 // ============================================================
 
+///|
 /// 创建集成配置 / Make ensemble config.
 pub fn make_ensemble_config(
   name : String,
-  n_models : Int,
+  n_models : Int32,
   weights : Array[Double],
-  method_ : String
+  method_ : String,
 ) -> EnsembleConfig {
-  EnsembleConfig::{name, n_models, weights, method_}
+  EnsembleConfig::{ name, n_models, weights, method_, }
 }
 
+///|
 /// 验证集成配置 / Ensemble validate.
 pub fn ensemble_validate(config : EnsembleConfig) -> Bool {
   if config.n_models <= 0 {
@@ -908,10 +1071,11 @@ pub fn ensemble_validate(config : EnsembleConfig) -> Bool {
 // OOB (Out-of-Bag)
 // ============================================================
 
+///|
 /// OOB 得分 / OOB score.
 pub fn oob_score(
   oob_predictions : Array[Double],
-  labels : Array[Int]
+  labels : Array[Int32],
 ) -> Double {
   let n = oob_predictions.length()
   if n == 0 {
@@ -929,10 +1093,11 @@ pub fn oob_score(
   correct / n.to_double()
 }
 
+///|
 /// OOB 预测 / OOB prediction.
 pub fn oob_prediction(
   base_predictions : Array[Array[Double]],
-  oob_mask : Array[Array[Bool]]
+  oob_mask : Array[Array[Bool]],
 ) -> Array[Double] {
   let n_models = base_predictions.length()
   if n_models == 0 {
@@ -940,10 +1105,12 @@ pub fn oob_prediction(
   }
   let n_samples = base_predictions[0].length()
   let result : Array[Double] = Array::make(n_samples, 0.0)
-  let counts : Array[Int] = Array::make(n_samples, 0)
+  let counts : Array[Int32] = Array::make(n_samples, 0)
   for m in 0..<n_models {
     for s in 0..<n_samples {
-      if s < oob_mask[m].length() && oob_mask[m][s] && s < base_predictions[m].length() {
+      if s < oob_mask[m].length() &&
+        oob_mask[m][s] &&
+        s < base_predictions[m].length() {
         result[s] = result[s] + base_predictions[m][s]
         counts[s] = counts[s] + 1
       }
@@ -961,6 +1128,7 @@ pub fn oob_prediction(
 // 集成保存/加载/摘要 / Ensemble save/load/summary
 // ============================================================
 
+///|
 /// 集成保存 / Ensemble save (to string).
 pub fn ensemble_save(model : EnsembleModel) -> String {
   let mut result = model.labels.length().to_string() + ";"
@@ -980,11 +1148,12 @@ pub fn ensemble_save(model : EnsembleModel) -> String {
   result
 }
 
+///|
 /// 集成加载 / Ensemble load (from string, simplified).
 pub fn ensemble_load(s : String) -> EnsembleModel {
   let predictions : Array[Array[Double]] = []
   let weights : Array[Double] = []
-  let labels : Array[Int] = []
+  let labels : Array[Int32] = []
   let parts : Array[String] = []
   let mut current = ""
   for i in 0..<s.length() {
@@ -993,7 +1162,7 @@ pub fn ensemble_load(s : String) -> EnsembleModel {
       parts.push(current)
       current = ""
     } else {
-      current = current + String::from_array([Int::unsafe_to_char(c)])
+      current = current + String::from_array([Int32::unsafe_to_char(c)])
     }
   }
   parts.push(current)
@@ -1021,32 +1190,40 @@ pub fn ensemble_load(s : String) -> EnsembleModel {
         weights.push(parse_double_simple(wnum))
         wnum = ""
       } else {
-        wnum = wnum + String::from_array([Int::unsafe_to_char(c)])
+        wnum = wnum + String::from_array([Int32::unsafe_to_char(c)])
       }
     }
     if weight_str.length() > 0 {
       weights.push(parse_double_simple(wnum))
     }
   }
-  EnsembleModel::{predictions, weights, labels}
+  EnsembleModel::{ predictions, weights, labels, }
 }
 
+///|
 /// 集成摘要 / Ensemble summary.
 pub fn ensemble_summary(model : EnsembleModel) -> String {
   let n_models = model.predictions.length()
   let n_labels = model.labels.length()
   let n_weights = model.weights.length()
-  "Ensemble: " + n_models.to_string() + " models, " + n_labels.to_string() + " labels, " + n_weights.to_string() + " weights"
+  "Ensemble: " +
+  n_models.to_string() +
+  " models, " +
+  n_labels.to_string() +
+  " labels, " +
+  n_weights.to_string() +
+  " weights"
 }
 
 // ============================================================
 // 多分类集成 / Multiclass ensemble
 // ============================================================
 
+///|
 /// 创建多分类集成 / Make multiclass ensemble.
 pub fn make_multiclass_ensemble(
   predictions : Array[Array[Array[Double]]],
-  n_classes : Int
+  n_classes : Int32,
 ) -> Array[Array[Double]] {
   let n_models = predictions.length()
   if n_models == 0 {
@@ -1073,21 +1250,24 @@ pub fn make_multiclass_ensemble(
   result
 }
 
+///|
 /// 多分类投票 / Multiclass voting.
 pub fn multiclass_voting(
-  predictions : Array[Array[Int]],
-  n_classes : Int
-) -> Array[Int] {
+  predictions : Array[Array[Int32]],
+  n_classes : Int32,
+) -> Array[Int32] {
   let n_models = predictions.length()
   if n_models == 0 {
     return []
   }
   let n_samples = predictions[0].length()
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for s in 0..<n_samples {
-    let votes : Array[Int] = Array::make(n_classes, 0)
+    let votes : Array[Int32] = Array::make(n_classes, 0)
     for m in 0..<n_models {
-      if s < predictions[m].length() && predictions[m][s] >= 0 && predictions[m][s] < n_classes {
+      if s < predictions[m].length() &&
+        predictions[m][s] >= 0 &&
+        predictions[m][s] < n_classes {
         votes[predictions[m][s]] = votes[predictions[m][s]] + 1
       }
     }
@@ -1108,13 +1288,14 @@ pub fn multiclass_voting(
 // 特征选择与剪枝 / Feature selection & pruning
 // ============================================================
 
+///|
 /// 集成特征选择 / Ensemble feature selection.
 pub fn ensemble_feature_selection(
   importances : Array[Array[Double]],
-  threshold : Double
-) -> Array[Int] {
+  threshold : Double,
+) -> Array[Int32] {
   let avg = rf_feature_importance(importances)
-  let selected : Array[Int] = []
+  let selected : Array[Int32] = []
   for f in 0..<avg.length() {
     if avg[f] >= threshold {
       selected.push(f)
@@ -1123,10 +1304,11 @@ pub fn ensemble_feature_selection(
   selected
 }
 
+///|
 /// 集成剪枝 / Ensemble prune (remove low-weight models).
 pub fn ensemble_prune(
   model : EnsembleModel,
-  threshold : Double
+  threshold : Double,
 ) -> EnsembleModel {
   let new_predictions : Array[Array[Double]] = []
   let new_weights : Array[Double] = []
@@ -1137,13 +1319,18 @@ pub fn ensemble_prune(
       new_weights.push(w)
     }
   }
-  EnsembleModel::{predictions: new_predictions, weights: new_weights, labels: model.labels}
+  EnsembleModel::{
+    predictions: new_predictions,
+    weights: new_weights,
+    labels: model.labels,
+  }
 }
 
 // ============================================================
 // ID
 // ============================================================
 
+///|
 /// 集成扩展算子 ID / Ensemble extension operator ID.
 pub fn ensemble_ext_id() -> String {
   "learncore/ensemble_ext"

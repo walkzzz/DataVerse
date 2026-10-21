@@ -8,25 +8,34 @@
 ///
 /// Execute PipelineIR in topological order. See architecture §3 + §6 S1.6.
 
+///|
 /// 执行计划 / Execution plan: ordered operator names.
 pub struct ExecutionPlan {
   steps : Array[String]
 } derive(Debug, Eq)
 
+///|
 pub extend ExecutionPlan with Eq::{equal, not_equal}
+
+///|
 pub extend ExecutionPlan with Debug::{to_repr}
 
+///|
 /// 执行结果 / Execution result: output + trace + step count.
 pub struct ExecutionResult {
   output_fingerprint : String
   trace : Array[String]
-  step_count : Int
+  step_count : Int32
   success : Bool
 } derive(Debug, Eq)
 
+///|
 pub extend ExecutionResult with Eq::{equal, not_equal}
+
+///|
 pub extend ExecutionResult with Debug::{to_repr}
 
+///|
 /// 从 PipelineIR 生成执行计划 / Build execution plan from PipelineIR.
 ///
 /// 按拓扑排序排列算子名。退化安全：空流水线返回空计划；有环返回空计划。
@@ -46,11 +55,15 @@ pub fn make_plan(pipeline : @ir_pipeline.PipelineIR) -> ExecutionPlan {
   { steps, }
 }
 
+///|
 /// 串行执行 / Execute plan serially.
 ///
 /// 模拟执行：按步骤顺序记录轨迹，生成输出指纹。
 /// 输入为输入数据指纹。退化安全：空计划返回原输入指纹。
-pub fn execute(plan : ExecutionPlan, input_fingerprint : String) -> ExecutionResult {
+pub fn execute(
+  plan : ExecutionPlan,
+  input_fingerprint : String,
+) -> ExecutionResult {
   let trace = []
   let mut current_fp = input_fingerprint
   for i = 0; i < plan.steps.length(); i = i + 1 {
@@ -67,18 +80,24 @@ pub fn execute(plan : ExecutionPlan, input_fingerprint : String) -> ExecutionRes
   }
 }
 
+///|
 /// 空执行计划 / Empty execution plan.
 pub fn empty_plan() -> ExecutionPlan {
-  { steps: [] }
+  { steps: [], }
 }
 
+///|
 /// 执行计划步数 / Plan step count.
-pub fn plan_step_count(plan : ExecutionPlan) -> Int {
+pub fn plan_step_count(plan : ExecutionPlan) -> Int32 {
   plan.steps.length()
 }
 
+///|
 /// 合并两个执行结果 / Merge two execution results.
-pub fn merge_results(a : ExecutionResult, b : ExecutionResult) -> ExecutionResult {
+pub fn merge_results(
+  a : ExecutionResult,
+  b : ExecutionResult,
+) -> ExecutionResult {
   {
     output_fingerprint: a.output_fingerprint + ";" + b.output_fingerprint,
     trace: a.trace + b.trace,
@@ -87,6 +106,7 @@ pub fn merge_results(a : ExecutionResult, b : ExecutionResult) -> ExecutionResul
   }
 }
 
+///|
 pub fn cpu_serial_id() -> String {
   "parallel/cpu_serial"
 }

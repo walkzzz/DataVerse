@@ -2,5 +2,4 @@
 // S4.7：IDW / Kriging / Spline / Natural Neighbor（契约 + 模拟实现）
 import {
   "dataverse/opcore/proximity",
-
 }

@@ -6,7 +6,6 @@
 /// # Deep Learning
 ///
 /// Tensor ops, conv, pool, norm, attention, RNN/LSTM/GRU, optimizers, losses, generative models.
-
 fn exp(x : Double) -> Double {
   if x > 20.0 {
     485165195.4
@@ -23,6 +22,7 @@ fn exp(x : Double) -> Double {
   }
 }
 
+///|
 fn log(x : Double) -> Double {
   if x <= 0.0 {
     -1000.0
@@ -39,6 +39,7 @@ fn log(x : Double) -> Double {
   }
 }
 
+///|
 fn sqrt(x : Double) -> Double {
   if x <= 0.0 {
     0.0
@@ -51,10 +52,16 @@ fn sqrt(x : Double) -> Double {
   }
 }
 
+///|
 fn abs_d(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
+  if x < 0.0 {
+    -x
+  } else {
+    x
+  }
 }
 
+///|
 fn sin(x : Double) -> Double {
   let pi = 3.141592653589793
   let two_pi = 6.283185307179586
@@ -69,27 +76,31 @@ fn sin(x : Double) -> Double {
   let mut term = y
   let y2 = y * y
   for j in 1..<20 {
-    term = term * y2 / ((2 * j).to_double() * (2 * j + 1).to_double()) * (-1.0)
+    term = term * y2 / ((2 * j).to_double() * (2 * j + 1).to_double()) * -1.0
     result = result + term
   }
   result
 }
 
+///|
 fn cos(x : Double) -> Double {
   let half_pi = 1.5707963267948966
   sin(x + half_pi)
 }
 
+///|
 fn sigmoid(x : Double) -> Double {
   1.0 / (1.0 + exp(-x))
 }
 
+///|
 fn tanh_d(x : Double) -> Double {
   let e1 = exp(x)
   let e2 = exp(-x)
   (e1 - e2) / (e1 + e2)
 }
 
+///|
 fn parse_double_str(s : String) -> Double {
   let mut result = 0.0
   let mut negative = false
@@ -114,119 +125,168 @@ fn parse_double_str(s : String) -> Double {
     }
     i = i + 1
   }
-  if negative { -result } else { result }
+  if negative {
+    -result
+  } else {
+    result
+  }
 }
 
+///|
 /// 张量 / Tensor.
 pub struct Tensor {
-  shape : Array[Int]
+  shape : Array[Int32]
   data : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend Tensor with Eq::{equal, not_equal}
+
+///|
 pub extend Tensor with Debug::{to_repr}
 
+///|
 /// Conv2d 配置 / Conv2d configuration.
 pub struct Conv2dMeta {
-  in_channels : Int
-  out_channels : Int
-  kernel_size : Int
-  stride : Int
-  padding : Int
+  in_channels : Int32
+  out_channels : Int32
+  kernel_size : Int32
+  stride : Int32
+  padding : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend Conv2dMeta with Eq::{equal, not_equal}
+
+///|
 pub extend Conv2dMeta with Debug::{to_repr}
 
+///|
 /// MaxPool 配置 / MaxPool configuration.
 pub struct MaxPoolMeta {
-  kernel_size : Int
-  stride : Int
+  kernel_size : Int32
+  stride : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend MaxPoolMeta with Eq::{equal, not_equal}
+
+///|
 pub extend MaxPoolMeta with Debug::{to_repr}
 
+///|
 /// AvgPool 配置 / AvgPool configuration.
 pub struct AvgPoolMeta {
-  kernel_size : Int
-  stride : Int
+  kernel_size : Int32
+  stride : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend AvgPoolMeta with Eq::{equal, not_equal}
+
+///|
 pub extend AvgPoolMeta with Debug::{to_repr}
 
+///|
 /// BatchNorm 配置 / BatchNorm configuration.
 pub struct BatchNormMeta {
-  num_features : Int
+  num_features : Int32
   epsilon : Double
   gamma : Array[Double]
   beta : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend BatchNormMeta with Eq::{equal, not_equal}
+
+///|
 pub extend BatchNormMeta with Debug::{to_repr}
 
+///|
 /// LayerNorm 配置 / LayerNorm configuration.
 pub struct LayerNormMeta {
-  num_features : Int
+  num_features : Int32
   epsilon : Double
   gamma : Array[Double]
   beta : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend LayerNormMeta with Eq::{equal, not_equal}
+
+///|
 pub extend LayerNormMeta with Debug::{to_repr}
 
+///|
 /// Dropout 配置 / Dropout configuration.
 pub struct DropoutMeta {
   rate : Double
   training : Bool
 } derive(Debug, Eq)
 
+///|
 pub extend DropoutMeta with Eq::{equal, not_equal}
+
+///|
 pub extend DropoutMeta with Debug::{to_repr}
 
+///|
 /// Attention 配置 / Attention configuration.
 pub struct AttentionMeta {
-  num_heads : Int
-  d_model : Int
-  d_k : Int
-  d_v : Int
+  num_heads : Int32
+  d_model : Int32
+  d_k : Int32
+  d_v : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend AttentionMeta with Eq::{equal, not_equal}
+
+///|
 pub extend AttentionMeta with Debug::{to_repr}
 
+///|
 /// Transformer 配置 / Transformer configuration.
 pub struct TransformerMeta {
-  num_layers : Int
-  num_heads : Int
-  d_model : Int
-  d_ff : Int
+  num_layers : Int32
+  num_heads : Int32
+  d_model : Int32
+  d_ff : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend TransformerMeta with Eq::{equal, not_equal}
+
+///|
 pub extend TransformerMeta with Debug::{to_repr}
 
+///|
 /// LSTM 配置 / LSTM configuration.
 pub struct LSTMMeta {
-  input_size : Int
-  hidden_size : Int
+  input_size : Int32
+  hidden_size : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend LSTMMeta with Eq::{equal, not_equal}
+
+///|
 pub extend LSTMMeta with Debug::{to_repr}
 
+///|
 /// GRU 配置 / GRU configuration.
 pub struct GRUMeta {
-  input_size : Int
-  hidden_size : Int
+  input_size : Int32
+  hidden_size : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend GRUMeta with Eq::{equal, not_equal}
+
+///|
 pub extend GRUMeta with Debug::{to_repr}
 
+///|
 /// Adam 优化器状态 / Adam optimizer state.
 pub struct AdamState {
   lr : Double
@@ -236,12 +296,16 @@ pub struct AdamState {
   params : Array[Double]
   m : Array[Double]
   v : Array[Double]
-  step_count : Int
+  step_count : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend AdamState with Eq::{equal, not_equal}
+
+///|
 pub extend AdamState with Debug::{to_repr}
 
+///|
 /// SGD 优化器状态 / SGD optimizer state.
 pub struct SGDState {
   lr : Double
@@ -250,9 +314,13 @@ pub struct SGDState {
   velocity : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend SGDState with Eq::{equal, not_equal}
+
+///|
 pub extend SGDState with Debug::{to_repr}
 
+///|
 /// AdaGrad 优化器状态 / AdaGrad optimizer state.
 pub struct AdaGradState {
   lr : Double
@@ -261,9 +329,13 @@ pub struct AdaGradState {
   cache : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend AdaGradState with Eq::{equal, not_equal}
+
+///|
 pub extend AdaGradState with Debug::{to_repr}
 
+///|
 /// AdaDelta 优化器状态 / AdaDelta optimizer state.
 pub struct AdaDeltaState {
   lr : Double
@@ -274,67 +346,90 @@ pub struct AdaDeltaState {
   edx : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend AdaDeltaState with Eq::{equal, not_equal}
+
+///|
 pub extend AdaDeltaState with Debug::{to_repr}
 
+///|
 /// 学习率调度器 / Learning rate scheduler.
 pub struct SchedulerMeta {
   init_lr : Double
-  step_size : Int
+  step_size : Int32
   gamma : Double
-  total_steps : Int
+  total_steps : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend SchedulerMeta with Eq::{equal, not_equal}
+
+///|
 pub extend SchedulerMeta with Debug::{to_repr}
 
+///|
 /// 自编码器配置 / Autoencoder configuration.
 pub struct AutoEncoderMeta {
-  input_dim : Int
-  hidden_dim : Int
-  latent_dim : Int
+  input_dim : Int32
+  hidden_dim : Int32
+  latent_dim : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend AutoEncoderMeta with Eq::{equal, not_equal}
+
+///|
 pub extend AutoEncoderMeta with Debug::{to_repr}
 
+///|
 /// VAE 配置 / Variational Autoencoder configuration.
 pub struct VAEMeta {
-  input_dim : Int
-  hidden_dim : Int
-  latent_dim : Int
+  input_dim : Int32
+  hidden_dim : Int32
+  latent_dim : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend VAEMeta with Eq::{equal, not_equal}
+
+///|
 pub extend VAEMeta with Debug::{to_repr}
 
+///|
 /// GAN 配置 / GAN configuration.
 pub struct GANMeta {
-  generator_dim : Int
-  discriminator_dim : Int
-  noise_dim : Int
+  generator_dim : Int32
+  discriminator_dim : Int32
+  noise_dim : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend GANMeta with Eq::{equal, not_equal}
+
+///|
 pub extend GANMeta with Debug::{to_repr}
 
+///|
 /// 构造张量 / Build tensor.
-pub fn make_tensor(shape : Array[Int], data : Array[Double]) -> Tensor {
-  { shape, data }
+pub fn make_tensor(shape : Array[Int32], data : Array[Double]) -> Tensor {
+  { shape, data, }
 }
 
+///|
 /// 张量形状 / Tensor shape.
-pub fn tensor_shape(tensor : Tensor) -> Array[Int] {
+pub fn tensor_shape(tensor : Tensor) -> Array[Int32] {
   tensor.shape
 }
 
+///|
 /// 张量大小 / Tensor size (number of elements).
-pub fn tensor_size(tensor : Tensor) -> Int {
+pub fn tensor_size(tensor : Tensor) -> Int32 {
   tensor.data.length()
 }
 
+///|
 /// 张量重塑 / Tensor reshape.
-pub fn tensor_reshape(tensor : Tensor, new_shape : Array[Int]) -> Tensor {
+pub fn tensor_reshape(tensor : Tensor, new_shape : Array[Int32]) -> Tensor {
   let mut new_size = 1
   for i in 0..<new_shape.length() {
     new_size = new_size * new_shape[i]
@@ -342,57 +437,61 @@ pub fn tensor_reshape(tensor : Tensor, new_shape : Array[Int]) -> Tensor {
   if new_size != tensor.data.length() {
     tensor
   } else {
-    { shape: new_shape, data: tensor.data }
+    { shape: new_shape, data: tensor.data, }
   }
 }
 
+///|
 /// 张量加法 / Tensor element-wise add.
 pub fn tensor_add(a : Tensor, b : Tensor) -> Tensor {
   let n = a.data.length()
   if n != b.data.length() {
-    { shape: [], data: [] }
+    { shape: [], data: [], }
   } else {
     let data : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
       data[i] = a.data[i] + b.data[i]
     }
-    { shape: a.shape, data }
+    { shape: a.shape, data, }
   }
 }
 
+///|
 /// 张量减法 / Tensor element-wise sub.
 pub fn tensor_sub(a : Tensor, b : Tensor) -> Tensor {
   let n = a.data.length()
   if n != b.data.length() {
-    { shape: [], data: [] }
+    { shape: [], data: [], }
   } else {
     let data : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
       data[i] = a.data[i] - b.data[i]
     }
-    { shape: a.shape, data }
+    { shape: a.shape, data, }
   }
 }
 
+///|
 /// 张量乘法 / Tensor element-wise mul.
 pub fn tensor_mul(a : Tensor, b : Tensor) -> Tensor {
   let n = a.data.length()
   if n != b.data.length() {
-    { shape: [], data: [] }
+    { shape: [], data: [], }
   } else {
     let data : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
       data[i] = a.data[i] * b.data[i]
     }
-    { shape: a.shape, data }
+    { shape: a.shape, data, }
   }
 }
 
+///|
 /// 张量除法 / Tensor element-wise div.
 pub fn tensor_div(a : Tensor, b : Tensor) -> Tensor {
   let n = a.data.length()
   if n != b.data.length() {
-    { shape: [], data: [] }
+    { shape: [], data: [], }
   } else {
     let data : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
@@ -400,10 +499,11 @@ pub fn tensor_div(a : Tensor, b : Tensor) -> Tensor {
         data[i] = a.data[i] / b.data[i]
       }
     }
-    { shape: a.shape, data }
+    { shape: a.shape, data, }
   }
 }
 
+///|
 /// 张量点积 / Tensor dot product.
 pub fn tensor_dot(a : Tensor, b : Tensor) -> Double {
   let n = a.data.length()
@@ -418,6 +518,7 @@ pub fn tensor_dot(a : Tensor, b : Tensor) -> Double {
   }
 }
 
+///|
 /// 张量转置 / Tensor transpose (2D).
 pub fn tensor_transpose(tensor : Tensor) -> Tensor {
   if tensor.shape.length() != 2 {
@@ -431,15 +532,16 @@ pub fn tensor_transpose(tensor : Tensor) -> Tensor {
         new_data[j * rows + i] = tensor.data[i * cols + j]
       }
     }
-    let new_shape : Array[Int] = [cols, rows]
-    { shape: new_shape, data: new_data }
+    let new_shape : Array[Int32] = [cols, rows]
+    { shape: new_shape, data: new_data, }
   }
 }
 
+///|
 /// 张量矩阵乘法 / Tensor matrix multiply (2D).
 pub fn tensor_matmul(a : Tensor, b : Tensor) -> Tensor {
   if a.shape.length() != 2 || b.shape.length() != 2 || a.shape[1] != b.shape[0] {
-    { shape: [], data: [] }
+    { shape: [], data: [], }
   } else {
     let m = a.shape[0]
     let k = a.shape[1]
@@ -454,18 +556,30 @@ pub fn tensor_matmul(a : Tensor, b : Tensor) -> Tensor {
         new_data[i * n + j] = sum
       }
     }
-    let new_shape : Array[Int] = [m, n]
-    { shape: new_shape, data: new_data }
+    let new_shape : Array[Int32] = [m, n]
+    { shape: new_shape, data: new_data, }
   }
 }
 
+///|
 /// 构造 Conv2d / Build Conv2d meta.
-pub fn make_conv2d(in_channels : Int, out_channels : Int, kernel_size : Int, stride : Int, padding : Int) -> Conv2dMeta {
-  { in_channels, out_channels, kernel_size, stride, padding }
+pub fn make_conv2d(
+  in_channels : Int32,
+  out_channels : Int32,
+  kernel_size : Int32,
+  stride : Int32,
+  padding : Int32,
+) -> Conv2dMeta {
+  { in_channels, out_channels, kernel_size, stride, padding, }
 }
 
+///|
 /// Conv2d 前向 / Conv2d forward.
-pub fn conv2d_forward(input : Array[Array[Double]], kernel : Array[Array[Double]], meta : Conv2dMeta) -> Array[Array[Double]] {
+pub fn conv2d_forward(
+  input : Array[Array[Double]],
+  kernel : Array[Array[Double]],
+  meta : Conv2dMeta,
+) -> Array[Array[Double]] {
   let h = input.length()
   if h == 0 {
     []
@@ -507,7 +621,10 @@ pub fn conv2d_forward(input : Array[Array[Double]], kernel : Array[Array[Double]
               for kj in 0..<k {
                 let pi = oi * s + ki
                 let pj = oj * s + kj
-                if pi < padded.length() && pj < padded[pi].length() && ki < kernel.length() && kj < kernel[ki].length() {
+                if pi < padded.length() &&
+                  pj < padded[pi].length() &&
+                  ki < kernel.length() &&
+                  kj < kernel[ki].length() {
                   sum = sum + padded[pi][pj] * kernel[ki][kj]
                 }
               }
@@ -522,8 +639,13 @@ pub fn conv2d_forward(input : Array[Array[Double]], kernel : Array[Array[Double]
   }
 }
 
+///|
 /// Conv2d 反向 / Conv2d backward (gradient w.r.t. input, simplified).
-pub fn conv2d_backward(grad_output : Array[Array[Double]], kernel : Array[Array[Double]], meta : Conv2dMeta) -> Array[Array[Double]] {
+pub fn conv2d_backward(
+  grad_output : Array[Array[Double]],
+  kernel : Array[Array[Double]],
+  meta : Conv2dMeta,
+) -> Array[Array[Double]] {
   let h = grad_output.length()
   if h == 0 {
     []
@@ -541,8 +663,12 @@ pub fn conv2d_backward(grad_output : Array[Array[Double]], kernel : Array[Array[
           for kj in 0..<k {
             let pi = oi * meta.stride + ki
             let pj = oj * meta.stride + kj
-            if pi < result.length() && pj < result[pi].length() && ki < kernel.length() && kj < kernel[ki].length() {
-              result[pi][pj] = result[pi][pj] + grad_output[oi][oj] * kernel[ki][kj]
+            if pi < result.length() &&
+              pj < result[pi].length() &&
+              ki < kernel.length() &&
+              kj < kernel[ki].length() {
+              result[pi][pj] = result[pi][pj] +
+                grad_output[oi][oj] * kernel[ki][kj]
             }
           }
         }
@@ -552,13 +678,18 @@ pub fn conv2d_backward(grad_output : Array[Array[Double]], kernel : Array[Array[
   }
 }
 
+///|
 /// 构造 MaxPool / Build MaxPool meta.
-pub fn make_maxpool(kernel_size : Int, stride : Int) -> MaxPoolMeta {
-  { kernel_size, stride }
+pub fn make_maxpool(kernel_size : Int32, stride : Int32) -> MaxPoolMeta {
+  { kernel_size, stride, }
 }
 
+///|
 /// MaxPool 前向 / MaxPool forward.
-pub fn maxpool_forward(input : Array[Array[Double]], meta : MaxPoolMeta) -> Array[Array[Double]] {
+pub fn maxpool_forward(
+  input : Array[Array[Double]],
+  meta : MaxPoolMeta,
+) -> Array[Array[Double]] {
   let h = input.length()
   if h == 0 || meta.stride <= 0 {
     []
@@ -594,8 +725,13 @@ pub fn maxpool_forward(input : Array[Array[Double]], meta : MaxPoolMeta) -> Arra
   }
 }
 
+///|
 /// MaxPool 反向 / MaxPool backward (simplified).
-pub fn maxpool_backward(grad_output : Array[Array[Double]], input : Array[Array[Double]], meta : MaxPoolMeta) -> Array[Array[Double]] {
+pub fn maxpool_backward(
+  grad_output : Array[Array[Double]],
+  input : Array[Array[Double]],
+  meta : MaxPoolMeta,
+) -> Array[Array[Double]] {
   let h = input.length()
   if h == 0 {
     []
@@ -636,13 +772,18 @@ pub fn maxpool_backward(grad_output : Array[Array[Double]], input : Array[Array[
   }
 }
 
+///|
 /// 构造 AvgPool / Build AvgPool meta.
-pub fn make_avgpool(kernel_size : Int, stride : Int) -> AvgPoolMeta {
-  { kernel_size, stride }
+pub fn make_avgpool(kernel_size : Int32, stride : Int32) -> AvgPoolMeta {
+  { kernel_size, stride, }
 }
 
+///|
 /// AvgPool 前向 / AvgPool forward.
-pub fn avgpool_forward(input : Array[Array[Double]], meta : AvgPoolMeta) -> Array[Array[Double]] {
+pub fn avgpool_forward(
+  input : Array[Array[Double]],
+  meta : AvgPoolMeta,
+) -> Array[Array[Double]] {
   let h = input.length()
   if h == 0 || meta.stride <= 0 {
     []
@@ -677,8 +818,13 @@ pub fn avgpool_forward(input : Array[Array[Double]], meta : AvgPoolMeta) -> Arra
   }
 }
 
+///|
 /// AvgPool 反向 / AvgPool backward.
-pub fn avgpool_backward(grad_output : Array[Array[Double]], input : Array[Array[Double]], meta : AvgPoolMeta) -> Array[Array[Double]] {
+pub fn avgpool_backward(
+  grad_output : Array[Array[Double]],
+  input : Array[Array[Double]],
+  meta : AvgPoolMeta,
+) -> Array[Array[Double]] {
   let h = input.length()
   if h == 0 {
     []
@@ -711,13 +857,23 @@ pub fn avgpool_backward(grad_output : Array[Array[Double]], input : Array[Array[
   }
 }
 
+///|
 /// 构造 BatchNorm / Build BatchNorm meta.
-pub fn make_batchnorm(num_features : Int, epsilon : Double) -> BatchNormMeta {
-  { num_features, epsilon, gamma: Array::make(num_features, 1.0), beta: Array::make(num_features, 0.0) }
+pub fn make_batchnorm(num_features : Int32, epsilon : Double) -> BatchNormMeta {
+  {
+    num_features,
+    epsilon,
+    gamma: Array::make(num_features, 1.0),
+    beta: Array::make(num_features, 0.0),
+  }
 }
 
+///|
 /// BatchNorm 前向 / BatchNorm forward.
-pub fn batchnorm_forward(input : Array[Double], meta : BatchNormMeta) -> Array[Double] {
+pub fn batchnorm_forward(
+  input : Array[Double],
+  meta : BatchNormMeta,
+) -> Array[Double] {
   let n = input.length()
   if n == 0 {
     []
@@ -744,8 +900,13 @@ pub fn batchnorm_forward(input : Array[Double], meta : BatchNormMeta) -> Array[D
   }
 }
 
+///|
 /// BatchNorm 反向 / BatchNorm backward (simplified).
-pub fn batchnorm_backward(grad_output : Array[Double], input : Array[Double], meta : BatchNormMeta) -> Array[Double] {
+pub fn batchnorm_backward(
+  grad_output : Array[Double],
+  input : Array[Double],
+  meta : BatchNormMeta,
+) -> Array[Double] {
   let n = input.length()
   if n == 0 {
     []
@@ -771,13 +932,23 @@ pub fn batchnorm_backward(grad_output : Array[Double], input : Array[Double], me
   }
 }
 
+///|
 /// 构造 LayerNorm / Build LayerNorm meta.
-pub fn make_layernorm(num_features : Int, epsilon : Double) -> LayerNormMeta {
-  { num_features, epsilon, gamma: Array::make(num_features, 1.0), beta: Array::make(num_features, 0.0) }
+pub fn make_layernorm(num_features : Int32, epsilon : Double) -> LayerNormMeta {
+  {
+    num_features,
+    epsilon,
+    gamma: Array::make(num_features, 1.0),
+    beta: Array::make(num_features, 0.0),
+  }
 }
 
+///|
 /// LayerNorm 前向 / LayerNorm forward.
-pub fn layernorm_forward(input : Array[Double], meta : LayerNormMeta) -> Array[Double] {
+pub fn layernorm_forward(
+  input : Array[Double],
+  meta : LayerNormMeta,
+) -> Array[Double] {
   let n = input.length()
   if n == 0 {
     []
@@ -804,8 +975,13 @@ pub fn layernorm_forward(input : Array[Double], meta : LayerNormMeta) -> Array[D
   }
 }
 
+///|
 /// LayerNorm 反向 / LayerNorm backward (simplified).
-pub fn layernorm_backward(grad_output : Array[Double], input : Array[Double], meta : LayerNormMeta) -> Array[Double] {
+pub fn layernorm_backward(
+  grad_output : Array[Double],
+  input : Array[Double],
+  meta : LayerNormMeta,
+) -> Array[Double] {
   let n = input.length()
   if n == 0 {
     []
@@ -831,14 +1007,19 @@ pub fn layernorm_backward(grad_output : Array[Double], input : Array[Double], me
   }
 }
 
+///|
 /// 构造 Dropout / Build Dropout meta.
 pub fn make_dropout(rate : Double, training : Bool) -> DropoutMeta {
-  { rate, training }
+  { rate, training, }
 }
 
+///|
 /// Dropout 前向 / Dropout forward.
-pub fn dropout_forward(input : Array[Double], meta : DropoutMeta) -> Array[Double] {
-  if !(meta.training) || meta.rate <= 0.0 || meta.rate >= 1.0 {
+pub fn dropout_forward(
+  input : Array[Double],
+  meta : DropoutMeta,
+) -> Array[Double] {
+  if !meta.training || meta.rate <= 0.0 || meta.rate >= 1.0 {
     input
   } else {
     let period = (1.0 / meta.rate).to_int()
@@ -859,25 +1040,39 @@ pub fn dropout_forward(input : Array[Double], meta : DropoutMeta) -> Array[Doubl
   }
 }
 
+///|
 /// Dropout 反向 / Dropout backward.
-pub fn dropout_backward(grad_output : Array[Double], meta : DropoutMeta) -> Array[Double] {
+pub fn dropout_backward(
+  grad_output : Array[Double],
+  meta : DropoutMeta,
+) -> Array[Double] {
   dropout_forward(grad_output, meta)
 }
 
+///|
 /// 构造 Attention / Build Attention meta.
-pub fn make_attention(num_heads : Int, d_model : Int) -> AttentionMeta {
+pub fn make_attention(num_heads : Int32, d_model : Int32) -> AttentionMeta {
   let d_k = if num_heads > 0 { d_model / num_heads } else { d_model }
-  { num_heads, d_model, d_k, d_v: d_k }
+  { num_heads, d_model, d_k, d_v: d_k, }
 }
 
+///|
 /// Attention 前向 / Scaled dot-product attention.
-pub fn attention_forward(query : Array[Double], keys : Array[Double], values : Array[Double]) -> Array[Double] {
+pub fn attention_forward(
+  query : Array[Double],
+  keys : Array[Double],
+  values : Array[Double],
+) -> Array[Double] {
   let n = query.length()
   if n == 0 || n != keys.length() || n != values.length() {
     []
   } else {
     let scale = 1.0 / sqrt(n.to_double())
-    let score = tensor_dot({ shape: [n], data: query }, { shape: [n], data: keys }) * scale
+    let score = tensor_dot({ shape: [n], data: query, }, {
+        shape: [n],
+        data: keys,
+      }) *
+      scale
     let weight = sigmoid(score)
     let result : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
@@ -887,8 +1082,14 @@ pub fn attention_forward(query : Array[Double], keys : Array[Double], values : A
   }
 }
 
+///|
 /// 多头注意力 / Multi-head attention.
-pub fn multi_head_attention(query : Array[Double], keys : Array[Double], values : Array[Double], meta : AttentionMeta) -> Array[Double] {
+pub fn multi_head_attention(
+  query : Array[Double],
+  keys : Array[Double],
+  values : Array[Double],
+  meta : AttentionMeta,
+) -> Array[Double] {
   let n = query.length()
   if n == 0 || meta.num_heads <= 0 {
     []
@@ -913,7 +1114,8 @@ pub fn multi_head_attention(query : Array[Double], keys : Array[Double], values 
         let head_out = attention_forward(q_head, k_head, v_head)
         for i in 0..<head_dim {
           if start + i < n && i < head_out.length() {
-            result[start + i] = result[start + i] + head_out[i] / meta.num_heads.to_double()
+            result[start + i] = result[start + i] +
+              head_out[i] / meta.num_heads.to_double()
           }
         }
       }
@@ -922,19 +1124,38 @@ pub fn multi_head_attention(query : Array[Double], keys : Array[Double], values 
   }
 }
 
+///|
 /// 构造 Transformer / Build Transformer meta.
-pub fn make_transformer(num_layers : Int, num_heads : Int, d_model : Int, d_ff : Int) -> TransformerMeta {
-  { num_layers, num_heads, d_model, d_ff }
+pub fn make_transformer(
+  num_layers : Int32,
+  num_heads : Int32,
+  d_model : Int32,
+  d_ff : Int32,
+) -> TransformerMeta {
+  { num_layers, num_heads, d_model, d_ff, }
 }
 
+///|
 /// Transformer 层 / Transformer single layer.
-pub fn transformer_layer(input : Array[Array[Double]], meta : TransformerMeta) -> Array[Array[Double]] {
+pub fn transformer_layer(
+  input : Array[Array[Double]],
+  meta : TransformerMeta,
+) -> Array[Array[Double]] {
   let result : Array[Array[Double]] = []
   for i in 0..<input.length() {
     let row : Array[Double] = []
-    let attn = multi_head_attention(input[i], input[i], input[i], make_attention(meta.num_heads, meta.d_model))
+    let attn = multi_head_attention(
+      input[i],
+      input[i],
+      input[i],
+      make_attention(meta.num_heads, meta.d_model),
+    )
     for j in 0..<input[i].length() {
-      let v = if j < attn.length() { input[i][j] + attn[j] } else { input[i][j] }
+      let v = if j < attn.length() {
+        input[i][j] + attn[j]
+      } else {
+        input[i][j]
+      }
       row.push(tanh_d(v))
     }
     result.push(row)
@@ -942,8 +1163,12 @@ pub fn transformer_layer(input : Array[Array[Double]], meta : TransformerMeta) -
   result
 }
 
+///|
 /// Transformer 前向 / Transformer forward.
-pub fn transformer_forward(input : Array[Array[Double]], meta : TransformerMeta) -> Array[Array[Double]] {
+pub fn transformer_forward(
+  input : Array[Array[Double]],
+  meta : TransformerMeta,
+) -> Array[Array[Double]] {
   let mut result = input
   for _ in 0..<meta.num_layers {
     result = transformer_layer(result, meta)
@@ -951,19 +1176,31 @@ pub fn transformer_forward(input : Array[Array[Double]], meta : TransformerMeta)
   result
 }
 
+///|
 /// 构造 LSTM / Build LSTM meta.
-pub fn make_lstm(input_size : Int, hidden_size : Int) -> LSTMMeta {
-  { input_size, hidden_size }
+pub fn make_lstm(input_size : Int32, hidden_size : Int32) -> LSTMMeta {
+  { input_size, hidden_size, }
 }
 
+///|
 /// LSTM 门控 / LSTM gate computation.
-pub fn lstm_gate(x : Double, h : Double, _meta : LSTMMeta) -> (Double, Double, Double, Double) {
+pub fn lstm_gate(
+  x : Double,
+  h : Double,
+  _meta : LSTMMeta,
+) -> (Double, Double, Double, Double) {
   let combined = x + h
   (sigmoid(combined), sigmoid(combined), tanh_d(combined), sigmoid(combined))
 }
 
+///|
 /// LSTM 单元 / LSTM cell.
-pub fn lstm_cell(input : Array[Double], hidden : Array[Double], cell : Array[Double], meta : LSTMMeta) -> (Array[Double], Array[Double]) {
+pub fn lstm_cell(
+  input : Array[Double],
+  hidden : Array[Double],
+  cell : Array[Double],
+  meta : LSTMMeta,
+) -> (Array[Double], Array[Double]) {
   let h_size = meta.hidden_size
   let new_h : Array[Double] = Array::make(h_size, 0.0)
   let new_c : Array[Double] = Array::make(h_size, 0.0)
@@ -978,8 +1215,14 @@ pub fn lstm_cell(input : Array[Double], hidden : Array[Double], cell : Array[Dou
   (new_h, new_c)
 }
 
+///|
 /// LSTM 前向 / LSTM forward.
-pub fn lstm_forward(sequence : Array[Array[Double]], initial_hidden : Array[Double], initial_cell : Array[Double], meta : LSTMMeta) -> Array[Array[Double]] {
+pub fn lstm_forward(
+  sequence : Array[Array[Double]],
+  initial_hidden : Array[Double],
+  initial_cell : Array[Double],
+  meta : LSTMMeta,
+) -> Array[Array[Double]] {
   let result : Array[Array[Double]] = []
   let mut hidden = initial_hidden
   let mut cell = initial_cell
@@ -992,19 +1235,30 @@ pub fn lstm_forward(sequence : Array[Array[Double]], initial_hidden : Array[Doub
   result
 }
 
+///|
 /// 构造 GRU / Build GRU meta.
-pub fn make_gru(input_size : Int, hidden_size : Int) -> GRUMeta {
-  { input_size, hidden_size }
+pub fn make_gru(input_size : Int32, hidden_size : Int32) -> GRUMeta {
+  { input_size, hidden_size, }
 }
 
+///|
 /// GRU 门控 / GRU gate computation.
-pub fn gru_gate(x : Double, h : Double, _meta : GRUMeta) -> (Double, Double, Double) {
+pub fn gru_gate(
+  x : Double,
+  h : Double,
+  _meta : GRUMeta,
+) -> (Double, Double, Double) {
   let combined = x + h
   (sigmoid(combined), sigmoid(combined), tanh_d(x + sigmoid(combined) * h))
 }
 
+///|
 /// GRU 单元 / GRU cell.
-pub fn gru_cell(input : Array[Double], hidden : Array[Double], meta : GRUMeta) -> Array[Double] {
+pub fn gru_cell(
+  input : Array[Double],
+  hidden : Array[Double],
+  meta : GRUMeta,
+) -> Array[Double] {
   let h_size = meta.hidden_size
   let result : Array[Double] = Array::make(h_size, 0.0)
   for i in 0..<h_size {
@@ -1016,8 +1270,13 @@ pub fn gru_cell(input : Array[Double], hidden : Array[Double], meta : GRUMeta) -
   result
 }
 
+///|
 /// GRU 前向 / GRU forward.
-pub fn gru_forward(sequence : Array[Array[Double]], initial_hidden : Array[Double], meta : GRUMeta) -> Array[Array[Double]] {
+pub fn gru_forward(
+  sequence : Array[Array[Double]],
+  initial_hidden : Array[Double],
+  meta : GRUMeta,
+) -> Array[Array[Double]] {
   let result : Array[Array[Double]] = []
   let mut hidden = initial_hidden
   for t in 0..<sequence.length() {
@@ -1027,12 +1286,23 @@ pub fn gru_forward(sequence : Array[Array[Double]], initial_hidden : Array[Doubl
   result
 }
 
+///|
 /// 构造 Adam 优化器 / Build Adam optimizer.
 pub fn make_optimizer_adam(lr : Double, params : Array[Double]) -> AdamState {
   let n = params.length()
-  { lr, beta1: 0.9, beta2: 0.999, epsilon: 0.000000001, params, m: Array::make(n, 0.0), v: Array::make(n, 0.0), step_count: 0 }
+  {
+    lr,
+    beta1: 0.9,
+    beta2: 0.999,
+    epsilon: 0.000000001,
+    params,
+    m: Array::make(n, 0.0),
+    v: Array::make(n, 0.0),
+    step_count: 0,
+  }
 }
 
+///|
 /// Adam 单步 / Adam step.
 pub fn adam_step(state : AdamState, gradients : Array[Double]) -> Array[Double] {
   let n = state.params.length()
@@ -1058,6 +1328,7 @@ pub fn adam_step(state : AdamState, gradients : Array[Double]) -> Array[Double] 
   }
 }
 
+///|
 /// Adam 更新状态 / Adam update state.
 pub fn adam_update(state : AdamState, gradients : Array[Double]) -> AdamState {
   let n = state.params.length()
@@ -1078,18 +1349,30 @@ pub fn adam_update(state : AdamState, gradients : Array[Double]) -> AdamState {
       new_v[i] = beta2 * state.v[i] + (1.0 - beta2) * g * g
       let m_hat = new_m[i] / bc1
       let v_hat = new_v[i] / bc2
-      new_params[i] = state.params[i] - state.lr * m_hat / (sqrt(v_hat) + state.epsilon)
+      new_params[i] = state.params[i] -
+        state.lr * m_hat / (sqrt(v_hat) + state.epsilon)
     }
-    { lr: state.lr, beta1, beta2, epsilon: state.epsilon, params: new_params, m: new_m, v: new_v, step_count: state.step_count + 1 }
+    {
+      lr: state.lr,
+      beta1,
+      beta2,
+      epsilon: state.epsilon,
+      params: new_params,
+      m: new_m,
+      v: new_v,
+      step_count: state.step_count + 1,
+    }
   }
 }
 
+///|
 /// 构造 SGD 优化器 / Build SGD optimizer.
 pub fn make_optimizer_sgd(lr : Double, params : Array[Double]) -> SGDState {
   let n = params.length()
-  { lr, momentum: 0.0, params, velocity: Array::make(n, 0.0) }
+  { lr, momentum: 0.0, params, velocity: Array::make(n, 0.0), }
 }
 
+///|
 /// SGD 单步 / SGD step.
 pub fn sgd_step(state : SGDState, gradients : Array[Double]) -> Array[Double] {
   let n = state.params.length()
@@ -1104,6 +1387,7 @@ pub fn sgd_step(state : SGDState, gradients : Array[Double]) -> Array[Double] {
   }
 }
 
+///|
 /// SGD 更新状态 / SGD update state.
 pub fn sgd_update(state : SGDState, gradients : Array[Double]) -> SGDState {
   let n = state.params.length()
@@ -1116,18 +1400,26 @@ pub fn sgd_update(state : SGDState, gradients : Array[Double]) -> SGDState {
       new_v[i] = state.momentum * state.velocity[i] - state.lr * gradients[i]
       new_p[i] = state.params[i] + new_v[i]
     }
-    { lr: state.lr, momentum: state.momentum, params: new_p, velocity: new_v }
+    { lr: state.lr, momentum: state.momentum, params: new_p, velocity: new_v, }
   }
 }
 
+///|
 /// 构造 AdaGrad 优化器 / Build AdaGrad optimizer.
-pub fn make_optimizer_adagrad(lr : Double, params : Array[Double]) -> AdaGradState {
+pub fn make_optimizer_adagrad(
+  lr : Double,
+  params : Array[Double],
+) -> AdaGradState {
   let n = params.length()
-  { lr, epsilon: 0.000000001, params, cache: Array::make(n, 0.0) }
+  { lr, epsilon: 0.000000001, params, cache: Array::make(n, 0.0), }
 }
 
+///|
 /// AdaGrad 单步 / AdaGrad step.
-pub fn adagrad_step(state : AdaGradState, gradients : Array[Double]) -> Array[Double] {
+pub fn adagrad_step(
+  state : AdaGradState,
+  gradients : Array[Double],
+) -> Array[Double] {
   let n = state.params.length()
   if n != gradients.length() {
     state.params
@@ -1142,14 +1434,29 @@ pub fn adagrad_step(state : AdaGradState, gradients : Array[Double]) -> Array[Do
   }
 }
 
+///|
 /// 构造 AdaDelta 优化器 / Build AdaDelta optimizer.
-pub fn make_optimizer_adadelta(lr : Double, params : Array[Double]) -> AdaDeltaState {
+pub fn make_optimizer_adadelta(
+  lr : Double,
+  params : Array[Double],
+) -> AdaDeltaState {
   let n = params.length()
-  { lr, rho: 0.95, epsilon: 0.000000001, params, eg: Array::make(n, 0.0), edx: Array::make(n, 0.0) }
+  {
+    lr,
+    rho: 0.95,
+    epsilon: 0.000000001,
+    params,
+    eg: Array::make(n, 0.0),
+    edx: Array::make(n, 0.0),
+  }
 }
 
+///|
 /// AdaDelta 单步 / AdaDelta step.
-pub fn adadelta_step(state : AdaDeltaState, gradients : Array[Double]) -> Array[Double] {
+pub fn adadelta_step(
+  state : AdaDeltaState,
+  gradients : Array[Double],
+) -> Array[Double] {
   let n = state.params.length()
   if n != gradients.length() {
     state.params
@@ -1165,13 +1472,18 @@ pub fn adadelta_step(state : AdaDeltaState, gradients : Array[Double]) -> Array[
   }
 }
 
+///|
 /// 构造交叉熵损失标识 / Build cross-entropy loss id.
-pub fn make_loss_cross_entropy() -> Int {
+pub fn make_loss_cross_entropy() -> Int32 {
   0
 }
 
+///|
 /// 交叉熵损失 / Cross-entropy loss.
-pub fn cross_entropy_loss(logits : Array[Double], target : Array[Double]) -> Double {
+pub fn cross_entropy_loss(
+  logits : Array[Double],
+  target : Array[Double],
+) -> Double {
   let n = logits.length()
   if n == 0 || n != target.length() {
     0.0
@@ -1195,11 +1507,13 @@ pub fn cross_entropy_loss(logits : Array[Double], target : Array[Double]) -> Dou
   }
 }
 
+///|
 /// 构造 MSE 损失标识 / Build MSE loss id.
-pub fn make_loss_mse() -> Int {
+pub fn make_loss_mse() -> Int32 {
   1
 }
 
+///|
 /// MSE 损失 / MSE loss.
 pub fn mse_loss(pred : Array[Double], target : Array[Double]) -> Double {
   let n = pred.length()
@@ -1215,11 +1529,13 @@ pub fn mse_loss(pred : Array[Double], target : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 构造 MAE 损失标识 / Build MAE loss id.
-pub fn make_loss_mae() -> Int {
+pub fn make_loss_mae() -> Int32 {
   2
 }
 
+///|
 /// MAE 损失 / MAE loss.
 pub fn mae_loss(pred : Array[Double], target : Array[Double]) -> Double {
   let n = pred.length()
@@ -1234,13 +1550,19 @@ pub fn mae_loss(pred : Array[Double], target : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 构造 Huber 损失 / Build Huber loss.
 pub fn make_loss_huber(delta : Double) -> Double {
   delta
 }
 
+///|
 /// Huber 损失 / Huber loss.
-pub fn huber_loss(pred : Array[Double], target : Array[Double], delta : Double) -> Double {
+pub fn huber_loss(
+  pred : Array[Double],
+  target : Array[Double],
+  delta : Double,
+) -> Double {
   let n = pred.length()
   if n == 0 || n != target.length() {
     0.0
@@ -1259,11 +1581,13 @@ pub fn huber_loss(pred : Array[Double], target : Array[Double], delta : Double) 
   }
 }
 
+///|
 /// 构造 KL 散度标识 / Build KL divergence loss id.
-pub fn make_loss_kl() -> Int {
+pub fn make_loss_kl() -> Int32 {
   3
 }
 
+///|
 /// KL 散度 / KL divergence loss.
 pub fn kl_loss(p : Array[Double], q : Array[Double]) -> Double {
   let n = p.length()
@@ -1280,6 +1604,7 @@ pub fn kl_loss(p : Array[Double], q : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 梯度检查 / Gradient check.
 pub fn gradient_check(f : (Double) -> Double, x : Double, h : Double) -> Bool {
   let grad = (f(x + h) - f(x - h)) / (2.0 * h)
@@ -1287,8 +1612,13 @@ pub fn gradient_check(f : (Double) -> Double, x : Double, h : Double) -> Bool {
   abs_d(grad - grad2) < 0.01
 }
 
+///|
 /// 数值梯度检查 / Numerical gradient check.
-pub fn numerical_gradient_check(params : Array[Double], gradients : Array[Double], h : Double) -> Bool {
+pub fn numerical_gradient_check(
+  params : Array[Double],
+  gradients : Array[Double],
+  h : Double,
+) -> Bool {
   let n = params.length()
   if n != gradients.length() {
     false
@@ -1304,13 +1634,19 @@ pub fn numerical_gradient_check(params : Array[Double], gradients : Array[Double
   }
 }
 
+///|
 /// 构造调度器 / Build scheduler.
-pub fn make_scheduler(init_lr : Double, step_size : Int, gamma : Double) -> SchedulerMeta {
-  { init_lr, step_size, gamma, total_steps: 100 }
+pub fn make_scheduler(
+  init_lr : Double,
+  step_size : Int32,
+  gamma : Double,
+) -> SchedulerMeta {
+  { init_lr, step_size, gamma, total_steps: 100, }
 }
 
+///|
 /// 阶梯学习率 / Step learning rate.
-pub fn lr_step(scheduler : SchedulerMeta, step : Int) -> Double {
+pub fn lr_step(scheduler : SchedulerMeta, step : Int32) -> Double {
   if scheduler.step_size <= 0 {
     scheduler.init_lr
   } else {
@@ -1323,8 +1659,9 @@ pub fn lr_step(scheduler : SchedulerMeta, step : Int) -> Double {
   }
 }
 
+///|
 /// 指数学习率 / Exponential learning rate.
-pub fn lr_exponential(scheduler : SchedulerMeta, step : Int) -> Double {
+pub fn lr_exponential(scheduler : SchedulerMeta, step : Int32) -> Double {
   let mut factor = 1.0
   for _ in 0..<step {
     factor = factor * scheduler.gamma
@@ -1332,8 +1669,9 @@ pub fn lr_exponential(scheduler : SchedulerMeta, step : Int) -> Double {
   scheduler.init_lr * factor
 }
 
+///|
 /// 余弦学习率 / Cosine learning rate.
-pub fn lr_cosine(scheduler : SchedulerMeta, step : Int) -> Double {
+pub fn lr_cosine(scheduler : SchedulerMeta, step : Int32) -> Double {
   if scheduler.total_steps <= 0 {
     scheduler.init_lr
   } else {
@@ -1343,6 +1681,7 @@ pub fn lr_cosine(scheduler : SchedulerMeta, step : Int) -> Double {
   }
 }
 
+///|
 /// 模型保存 / Model save (serialize to string).
 pub fn model_save(params : Array[Double]) -> String {
   let mut result = ""
@@ -1355,6 +1694,7 @@ pub fn model_save(params : Array[Double]) -> String {
   result
 }
 
+///|
 /// 模型加载 / Model load (deserialize from string, simplified).
 pub fn model_load(data : String) -> Array[Double] {
   let result : Array[Double] = []
@@ -1376,6 +1716,7 @@ pub fn model_load(data : String) -> Array[Double] {
   result
 }
 
+///|
 /// 模型摘要 / Model summary.
 pub fn model_summary(params : Array[Double]) -> String {
   let n = params.length()
@@ -1396,16 +1737,32 @@ pub fn model_summary(params : Array[Double]) -> String {
     }
   }
   let mean = if n > 0 { sum / n.to_double() } else { 0.0 }
-  "params=" + n.to_string() + ",mean=" + mean.to_string() + ",min=" + min_val.to_string() + ",max=" + max_val.to_string()
+  "params=" +
+  n.to_string() +
+  ",mean=" +
+  mean.to_string() +
+  ",min=" +
+  min_val.to_string() +
+  ",max=" +
+  max_val.to_string()
 }
 
+///|
 /// 构造自编码器 / Build autoencoder.
-pub fn make_autoencoder(input_dim : Int, hidden_dim : Int, latent_dim : Int) -> AutoEncoderMeta {
-  { input_dim, hidden_dim, latent_dim }
+pub fn make_autoencoder(
+  input_dim : Int32,
+  hidden_dim : Int32,
+  latent_dim : Int32,
+) -> AutoEncoderMeta {
+  { input_dim, hidden_dim, latent_dim, }
 }
 
+///|
 /// 自编码器编码 / Autoencoder encode.
-pub fn autoencoder_encode(input : Array[Double], meta : AutoEncoderMeta) -> Array[Double] {
+pub fn autoencoder_encode(
+  input : Array[Double],
+  meta : AutoEncoderMeta,
+) -> Array[Double] {
   let result : Array[Double] = Array::make(meta.latent_dim, 0.0)
   for i in 0..<meta.latent_dim {
     let mut sum = 0.0
@@ -1419,8 +1776,12 @@ pub fn autoencoder_encode(input : Array[Double], meta : AutoEncoderMeta) -> Arra
   result
 }
 
+///|
 /// 自编码器解码 / Autoencoder decode.
-pub fn autoencoder_decode(latent : Array[Double], meta : AutoEncoderMeta) -> Array[Double] {
+pub fn autoencoder_decode(
+  latent : Array[Double],
+  meta : AutoEncoderMeta,
+) -> Array[Double] {
   let result : Array[Double] = Array::make(meta.input_dim, 0.0)
   for i in 0..<meta.input_dim {
     let mut sum = 0.0
@@ -1434,13 +1795,22 @@ pub fn autoencoder_decode(latent : Array[Double], meta : AutoEncoderMeta) -> Arr
   result
 }
 
+///|
 /// 构造 VAE / Build VAE.
-pub fn make_vae(input_dim : Int, hidden_dim : Int, latent_dim : Int) -> VAEMeta {
-  { input_dim, hidden_dim, latent_dim }
+pub fn make_vae(
+  input_dim : Int32,
+  hidden_dim : Int32,
+  latent_dim : Int32,
+) -> VAEMeta {
+  { input_dim, hidden_dim, latent_dim, }
 }
 
+///|
 /// VAE 编码 / VAE encode (returns mean and log_var).
-pub fn vae_encode(input : Array[Double], meta : VAEMeta) -> (Array[Double], Array[Double]) {
+pub fn vae_encode(
+  input : Array[Double],
+  meta : VAEMeta,
+) -> (Array[Double], Array[Double]) {
   let mu : Array[Double] = Array::make(meta.latent_dim, 0.0)
   let log_var : Array[Double] = Array::make(meta.latent_dim, 0.0)
   for i in 0..<meta.latent_dim {
@@ -1456,6 +1826,7 @@ pub fn vae_encode(input : Array[Double], meta : VAEMeta) -> (Array[Double], Arra
   (mu, log_var)
 }
 
+///|
 /// VAE 解码 / VAE decode.
 pub fn vae_decode(latent : Array[Double], meta : VAEMeta) -> Array[Double] {
   let result : Array[Double] = Array::make(meta.input_dim, 0.0)
@@ -1471,8 +1842,14 @@ pub fn vae_decode(latent : Array[Double], meta : VAEMeta) -> Array[Double] {
   result
 }
 
+///|
 /// VAE 损失 / VAE loss (reconstruction + KL).
-pub fn vae_loss(recon : Array[Double], target : Array[Double], mu : Array[Double], log_var : Array[Double]) -> Double {
+pub fn vae_loss(
+  recon : Array[Double],
+  target : Array[Double],
+  mu : Array[Double],
+  log_var : Array[Double],
+) -> Double {
   let n = recon.length()
   if n == 0 || n != target.length() {
     0.0
@@ -1493,11 +1870,17 @@ pub fn vae_loss(recon : Array[Double], target : Array[Double], mu : Array[Double
   }
 }
 
+///|
 /// 构造 GAN / Build GAN.
-pub fn make_gan(generator_dim : Int, discriminator_dim : Int, noise_dim : Int) -> GANMeta {
-  { generator_dim, discriminator_dim, noise_dim }
+pub fn make_gan(
+  generator_dim : Int32,
+  discriminator_dim : Int32,
+  noise_dim : Int32,
+) -> GANMeta {
+  { generator_dim, discriminator_dim, noise_dim, }
 }
 
+///|
 /// GAN 判别器 / GAN discriminator.
 pub fn gan_discriminator(input : Array[Double], _meta : GANMeta) -> Double {
   let n = input.length()
@@ -1512,6 +1895,7 @@ pub fn gan_discriminator(input : Array[Double], _meta : GANMeta) -> Double {
   }
 }
 
+///|
 /// GAN 生成器 / GAN generator.
 pub fn gan_generator(noise : Array[Double], meta : GANMeta) -> Array[Double] {
   let result : Array[Double] = Array::make(meta.generator_dim, 0.0)
@@ -1527,12 +1911,14 @@ pub fn gan_generator(noise : Array[Double], meta : GANMeta) -> Array[Double] {
   result
 }
 
+///|
 /// GAN 损失 / GAN loss.
 pub fn gan_loss(d_real : Double, d_fake : Double) -> Double {
   let eps = 0.000000001
   -(log(d_real + eps) + log(1.0 - d_fake + eps))
 }
 
+///|
 /// 模块标识 / Module identifier.
 pub fn deep_learning_id() -> String {
   "learncore/deep_learning"

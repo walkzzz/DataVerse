@@ -1,998 +1,2048 @@
+///|
 ///===
 /// extcore/ml_ensemble_lightgbm
-
 pub(all) struct MlensemblelightgbmPoint {
   x : Double
   y : Double
   z : Double
-  label : Int
+  label : Int32
 }
 
-pub fn ml_ensemble_lightgbm_make_point(x : Double, y : Double) -> MlensemblelightgbmPoint {
-  { x, y, z: 0.0, label: 0 }
+///|
+pub fn ml_ensemble_lightgbm_make_point(
+  x : Double,
+  y : Double,
+) -> MlensemblelightgbmPoint {
+  { x, y, z: 0.0, label: 0, }
 }
 
-pub fn ml_ensemble_lightgbm_make_point3(x : Double, y : Double, z : Double) -> MlensemblelightgbmPoint {
-  { x, y, z, label: 0 }
+///|
+pub fn ml_ensemble_lightgbm_make_point3(
+  x : Double,
+  y : Double,
+  z : Double,
+) -> MlensemblelightgbmPoint {
+  { x, y, z, label: 0, }
 }
 
-pub fn MlensemblelightgbmPoint::x(self : MlensemblelightgbmPoint) -> Double { self.x }
+///|
+pub fn MlensemblelightgbmPoint::x(self : MlensemblelightgbmPoint) -> Double {
+  self.x
+}
 
-pub fn MlensemblelightgbmPoint::y(self : MlensemblelightgbmPoint) -> Double { self.y }
+///|
+pub fn MlensemblelightgbmPoint::y(self : MlensemblelightgbmPoint) -> Double {
+  self.y
+}
 
-pub fn MlensemblelightgbmPoint::z(self : MlensemblelightgbmPoint) -> Double { self.z }
+///|
+pub fn MlensemblelightgbmPoint::z(self : MlensemblelightgbmPoint) -> Double {
+  self.z
+}
 
-pub fn MlensemblelightgbmPoint::label(self : MlensemblelightgbmPoint) -> Int { self.label }
+///|
+pub fn MlensemblelightgbmPoint::label(self : MlensemblelightgbmPoint) -> Int32 {
+  self.label
+}
 
-pub fn MlensemblelightgbmPoint::dist(self : MlensemblelightgbmPoint, other : MlensemblelightgbmPoint) -> Double {
+///|
+pub fn MlensemblelightgbmPoint::dist(
+  self : MlensemblelightgbmPoint,
+  other : MlensemblelightgbmPoint,
+) -> Double {
   let dx = self.x - other.x
   let dy = self.y - other.y
   let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn MlensemblelightgbmPoint::add(self : MlensemblelightgbmPoint, other : MlensemblelightgbmPoint) -> MlensemblelightgbmPoint {
-  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
+///|
+pub fn MlensemblelightgbmPoint::add(
+  self : MlensemblelightgbmPoint,
+  other : MlensemblelightgbmPoint,
+) -> MlensemblelightgbmPoint {
+  {
+    x: self.x + other.x,
+    y: self.y + other.y,
+    z: self.z + other.z,
+    label: self.label,
+  }
 }
 
-pub fn MlensemblelightgbmPoint::sub(self : MlensemblelightgbmPoint, other : MlensemblelightgbmPoint) -> MlensemblelightgbmPoint {
-  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
+///|
+pub fn MlensemblelightgbmPoint::sub(
+  self : MlensemblelightgbmPoint,
+  other : MlensemblelightgbmPoint,
+) -> MlensemblelightgbmPoint {
+  {
+    x: self.x - other.x,
+    y: self.y - other.y,
+    z: self.z - other.z,
+    label: self.label,
+  }
 }
 
-pub fn MlensemblelightgbmPoint::scale(self : MlensemblelightgbmPoint, s : Double) -> MlensemblelightgbmPoint {
-  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
+///|
+pub fn MlensemblelightgbmPoint::scale(
+  self : MlensemblelightgbmPoint,
+  s : Double,
+) -> MlensemblelightgbmPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label, }
 }
 
-pub fn MlensemblelightgbmPoint::dot(self : MlensemblelightgbmPoint, other : MlensemblelightgbmPoint) -> Double {
+///|
+pub fn MlensemblelightgbmPoint::dot(
+  self : MlensemblelightgbmPoint,
+  other : MlensemblelightgbmPoint,
+) -> Double {
   self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn MlensemblelightgbmPoint::cross(self : MlensemblelightgbmPoint, other : MlensemblelightgbmPoint) -> MlensemblelightgbmPoint {
-  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
+///|
+pub fn MlensemblelightgbmPoint::cross(
+  self : MlensemblelightgbmPoint,
+  other : MlensemblelightgbmPoint,
+) -> MlensemblelightgbmPoint {
+  {
+    x: self.y * other.z - self.z * other.y,
+    y: self.z * other.x - self.x * other.z,
+    z: self.x * other.y - self.y * other.x,
+    label: 0,
+  }
 }
 
+///|
 pub fn MlensemblelightgbmPoint::norm(self : MlensemblelightgbmPoint) -> Double {
   @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn MlensemblelightgbmPoint::normalize(self : MlensemblelightgbmPoint) -> MlensemblelightgbmPoint {
+///|
+pub fn MlensemblelightgbmPoint::normalize(
+  self : MlensemblelightgbmPoint,
+) -> MlensemblelightgbmPoint {
   let n = self.norm()
-  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
-}
-
-pub fn MlensemblelightgbmPoint::negate(self : MlensemblelightgbmPoint) -> MlensemblelightgbmPoint {
-  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
-}
-
-pub fn MlensemblelightgbmPoint::mid(self : MlensemblelightgbmPoint, other : MlensemblelightgbmPoint) -> MlensemblelightgbmPoint {
-  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
-}
-
-pub fn MlensemblelightgbmPoint::lerp(self : MlensemblelightgbmPoint, other : MlensemblelightgbmPoint, t : Double) -> MlensemblelightgbmPoint {
-  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
-}
-
-pub fn MlensemblelightgbmPoint::to_string(self : MlensemblelightgbmPoint) -> String {
-  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
-}
-
-pub(all) struct MlensemblelightgbmSeries {
-  vals : Array[Double]
-  name : String
-  meta : Int
-}
-
-pub fn ml_ensemble_lightgbm_make_series(vals : Array[Double], name : String) -> MlensemblelightgbmSeries {
-  { vals, name, meta: 0 }
-}
-
-pub fn MlensemblelightgbmSeries::len(self : MlensemblelightgbmSeries) -> Int { self.vals.length() }
-
-pub fn MlensemblelightgbmSeries::sum(self : MlensemblelightgbmSeries) -> Double { @_common.sum(self.vals) }
-
-pub fn MlensemblelightgbmSeries::mean(self : MlensemblelightgbmSeries) -> Double { @_common.mean(self.vals) }
-
-pub fn MlensemblelightgbmSeries::min(self : MlensemblelightgbmSeries) -> Double { @_common.min(self.vals) }
-
-pub fn MlensemblelightgbmSeries::max(self : MlensemblelightgbmSeries) -> Double { @_common.max(self.vals) }
-
-pub fn MlensemblelightgbmSeries::range(self : MlensemblelightgbmSeries) -> Double {
-  @_common.max(self.vals) - @_common.min(self.vals)
-}
-
-pub fn MlensemblelightgbmSeries::variance(self : MlensemblelightgbmSeries) -> Double { @_common.variance(self.vals) }
-
-pub fn MlensemblelightgbmSeries::std(self : MlensemblelightgbmSeries) -> Double { @_common.std(self.vals) }
-
-pub fn MlensemblelightgbmSeries::median(self : MlensemblelightgbmSeries) -> Double { @_common.median(self.vals) }
-
-pub fn MlensemblelightgbmSeries::scale(self : MlensemblelightgbmSeries, f : Double) -> MlensemblelightgbmSeries {
-  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
-}
-
-pub fn MlensemblelightgbmSeries::add(self : MlensemblelightgbmSeries, other : MlensemblelightgbmSeries) -> MlensemblelightgbmSeries {
-  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
-}
-
-pub fn MlensemblelightgbmSeries::sub(self : MlensemblelightgbmSeries, other : MlensemblelightgbmSeries) -> MlensemblelightgbmSeries {
-  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
-}
-
-pub fn MlensemblelightgbmSeries::normalize(self : MlensemblelightgbmSeries) -> MlensemblelightgbmSeries {
-  let mn = self.min()
-  let mx = self.max()
-  let r = mx - mn
-  if r < 0.0000001 { self } else {
-    let result = []
-    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
-    { vals: result, name: self.name, meta: self.meta }
+  if n < 0.0000001 {
+    self
+  } else {
+    self.scale(1.0 / n)
   }
 }
 
-pub fn MlensemblelightgbmSeries::cumsum(self : MlensemblelightgbmSeries) -> MlensemblelightgbmSeries {
-  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
+///|
+pub fn MlensemblelightgbmPoint::negate(
+  self : MlensemblelightgbmPoint,
+) -> MlensemblelightgbmPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label, }
 }
 
-pub fn MlensemblelightgbmSeries::to_string(self : MlensemblelightgbmSeries) -> String {
+///|
+pub fn MlensemblelightgbmPoint::mid(
+  self : MlensemblelightgbmPoint,
+  other : MlensemblelightgbmPoint,
+) -> MlensemblelightgbmPoint {
+  {
+    x: (self.x + other.x) / 2.0,
+    y: (self.y + other.y) / 2.0,
+    z: (self.z + other.z) / 2.0,
+    label: self.label,
+  }
+}
+
+///|
+pub fn MlensemblelightgbmPoint::lerp(
+  self : MlensemblelightgbmPoint,
+  other : MlensemblelightgbmPoint,
+  t : Double,
+) -> MlensemblelightgbmPoint {
+  {
+    x: self.x + (other.x - self.x) * t,
+    y: self.y + (other.y - self.y) * t,
+    z: self.z + (other.z - self.z) * t,
+    label: self.label,
+  }
+}
+
+///|
+pub fn MlensemblelightgbmPoint::to_string(
+  self : MlensemblelightgbmPoint,
+) -> String {
+  "(" +
+  @_common.dbl(self.x) +
+  ", " +
+  @_common.dbl(self.y) +
+  ", " +
+  @_common.dbl(self.z) +
+  ")[" +
+  self.label.to_string() +
+  "]"
+}
+
+///|
+pub(all) struct MlensemblelightgbmSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int32
+}
+
+///|
+pub fn ml_ensemble_lightgbm_make_series(
+  vals : Array[Double],
+  name : String,
+) -> MlensemblelightgbmSeries {
+  { vals, name, meta: 0, }
+}
+
+///|
+pub fn MlensemblelightgbmSeries::len(self : MlensemblelightgbmSeries) -> Int32 {
+  self.vals.length()
+}
+
+///|
+pub fn MlensemblelightgbmSeries::sum(self : MlensemblelightgbmSeries) -> Double {
+  @_common.sum(self.vals)
+}
+
+///|
+pub fn MlensemblelightgbmSeries::mean(
+  self : MlensemblelightgbmSeries,
+) -> Double {
+  @_common.mean(self.vals)
+}
+
+///|
+pub fn MlensemblelightgbmSeries::min(self : MlensemblelightgbmSeries) -> Double {
+  @_common.min(self.vals)
+}
+
+///|
+pub fn MlensemblelightgbmSeries::max(self : MlensemblelightgbmSeries) -> Double {
+  @_common.max(self.vals)
+}
+
+///|
+pub fn MlensemblelightgbmSeries::range(
+  self : MlensemblelightgbmSeries,
+) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
+}
+
+///|
+pub fn MlensemblelightgbmSeries::variance(
+  self : MlensemblelightgbmSeries,
+) -> Double {
+  @_common.variance(self.vals)
+}
+
+///|
+pub fn MlensemblelightgbmSeries::std(self : MlensemblelightgbmSeries) -> Double {
+  @_common.std(self.vals)
+}
+
+///|
+pub fn MlensemblelightgbmSeries::median(
+  self : MlensemblelightgbmSeries,
+) -> Double {
+  @_common.median(self.vals)
+}
+
+///|
+pub fn MlensemblelightgbmSeries::scale(
+  self : MlensemblelightgbmSeries,
+  f : Double,
+) -> MlensemblelightgbmSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta, }
+}
+
+///|
+pub fn MlensemblelightgbmSeries::add(
+  self : MlensemblelightgbmSeries,
+  other : MlensemblelightgbmSeries,
+) -> MlensemblelightgbmSeries {
+  {
+    vals: @_common.add_arr(self.vals, other.vals),
+    name: self.name + "+" + other.name,
+    meta: self.meta,
+  }
+}
+
+///|
+pub fn MlensemblelightgbmSeries::sub(
+  self : MlensemblelightgbmSeries,
+  other : MlensemblelightgbmSeries,
+) -> MlensemblelightgbmSeries {
+  {
+    vals: @_common.sub_arr(self.vals, other.vals),
+    name: self.name + "-" + other.name,
+    meta: self.meta,
+  }
+}
+
+///|
+pub fn MlensemblelightgbmSeries::normalize(
+  self : MlensemblelightgbmSeries,
+) -> MlensemblelightgbmSeries {
+  let mn = self.min()
+  let mx = self.max()
+  let r = mx - mn
+  if r < 0.0000001 {
+    self
+  } else {
+    let result = []
+    for i in 0..<self.vals.length() {
+      result.push((self.vals[i] - mn) / r)
+    }
+    { vals: result, name: self.name, meta: self.meta, }
+  }
+}
+
+///|
+pub fn MlensemblelightgbmSeries::cumsum(
+  self : MlensemblelightgbmSeries,
+) -> MlensemblelightgbmSeries {
+  {
+    vals: @_common.cumsum(self.vals),
+    name: self.name + "_cumsum",
+    meta: self.meta,
+  }
+}
+
+///|
+pub fn MlensemblelightgbmSeries::to_string(
+  self : MlensemblelightgbmSeries,
+) -> String {
   let mut result = self.name + "["
   let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
-  if n > 10 { result + "...]" } else { result + "]" }
+  for i in 0..<lim {
+    if i > 0 {
+      result = result + ", "
+    }
+    result = result + @_common.dbl(self.vals[i])
+  }
+  if n > 10 {
+    result + "...]"
+  } else {
+    result + "]"
+  }
 }
 
+///|
 pub(all) struct MlensemblelightgbmMatrix {
   data : Array[Array[Double]]
-  rows : Int
-  cols : Int
+  rows : Int32
+  cols : Int32
 }
 
-pub fn ml_ensemble_lightgbm_make_matrix(rows : Int, cols : Int, val : Double) -> MlensemblelightgbmMatrix {
+///|
+pub fn ml_ensemble_lightgbm_make_matrix(
+  rows : Int32,
+  cols : Int32,
+  val : Double,
+) -> MlensemblelightgbmMatrix {
   let data = []
-  for _ in 0..<rows { data.push(Array::make(cols, val)) }
-  { data, rows, cols }
+  for _ in 0..<rows {
+    data.push(Array::make(cols, val))
+  }
+  { data, rows, cols, }
 }
 
-pub fn ml_ensemble_lightgbm_matrix_identity(n : Int) -> MlensemblelightgbmMatrix {
+///|
+pub fn ml_ensemble_lightgbm_matrix_identity(
+  n : Int32,
+) -> MlensemblelightgbmMatrix {
   let m = ml_ensemble_lightgbm_make_matrix(n, n, 0.0)
-  for i in 0..<n { m.data[i][i] = 1.0 }
+  for i in 0..<n {
+    m.data[i][i] = 1.0
+  }
   m
 }
 
-pub fn MlensemblelightgbmMatrix::get(self : MlensemblelightgbmMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
+///|
+pub fn MlensemblelightgbmMatrix::get(
+  self : MlensemblelightgbmMatrix,
+  i : Int32,
+  j : Int32,
+) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols {
+    0.0
+  } else {
+    self.data[i][j]
+  }
 }
 
-pub fn MlensemblelightgbmMatrix::transpose(self : MlensemblelightgbmMatrix) -> MlensemblelightgbmMatrix {
+///|
+pub fn MlensemblelightgbmMatrix::transpose(
+  self : MlensemblelightgbmMatrix,
+) -> MlensemblelightgbmMatrix {
   let result = ml_ensemble_lightgbm_make_matrix(self.cols, self.rows, 0.0)
-  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
-  result
-}
-
-pub fn MlensemblelightgbmMatrix::add(self : MlensemblelightgbmMatrix, other : MlensemblelightgbmMatrix) -> MlensemblelightgbmMatrix {
-  if self.rows != other.rows || self.cols != other.cols { return self }
-  let result = ml_ensemble_lightgbm_make_matrix(self.rows, self.cols, 0.0)
-  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
-  result
-}
-
-pub fn MlensemblelightgbmMatrix::scale(self : MlensemblelightgbmMatrix, s : Double) -> MlensemblelightgbmMatrix {
-  let result = ml_ensemble_lightgbm_make_matrix(self.rows, self.cols, 0.0)
-  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
-  result
-}
-
-pub fn MlensemblelightgbmMatrix::multiply(self : MlensemblelightgbmMatrix, other : MlensemblelightgbmMatrix) -> MlensemblelightgbmMatrix {
-  if self.cols != other.rows { return ml_ensemble_lightgbm_make_matrix(self.rows, other.cols, 0.0) }
-  let result = ml_ensemble_lightgbm_make_matrix(self.rows, other.cols, 0.0)
   for i in 0..<self.rows {
-    for k in 0..<self.cols {
-      let v = self.data[i][k]
-      for j in 0..<other.cols { result.data[i][j] = result.data[i][j] + v * other.data[k][j] }
+    for j in 0..<self.cols {
+      result.data[j][i] = self.data[i][j]
     }
   }
   result
 }
 
-pub fn MlensemblelightgbmMatrix::trace(self : MlensemblelightgbmMatrix) -> Double {
+///|
+pub fn MlensemblelightgbmMatrix::add(
+  self : MlensemblelightgbmMatrix,
+  other : MlensemblelightgbmMatrix,
+) -> MlensemblelightgbmMatrix {
+  if self.rows != other.rows || self.cols != other.cols {
+    return self
+  }
+  let result = ml_ensemble_lightgbm_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<self.cols {
+      result.data[i][j] = self.data[i][j] + other.data[i][j]
+    }
+  }
+  result
+}
+
+///|
+pub fn MlensemblelightgbmMatrix::scale(
+  self : MlensemblelightgbmMatrix,
+  s : Double,
+) -> MlensemblelightgbmMatrix {
+  let result = ml_ensemble_lightgbm_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<self.cols {
+      result.data[i][j] = self.data[i][j] * s
+    }
+  }
+  result
+}
+
+///|
+pub fn MlensemblelightgbmMatrix::multiply(
+  self : MlensemblelightgbmMatrix,
+  other : MlensemblelightgbmMatrix,
+) -> MlensemblelightgbmMatrix {
+  if self.cols != other.rows {
+    return ml_ensemble_lightgbm_make_matrix(self.rows, other.cols, 0.0)
+  }
+  let result = ml_ensemble_lightgbm_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for k in 0..<self.cols {
+      let v = self.data[i][k]
+      for j in 0..<other.cols {
+        result.data[i][j] = result.data[i][j] + v * other.data[k][j]
+      }
+    }
+  }
+  result
+}
+
+///|
+pub fn MlensemblelightgbmMatrix::trace(
+  self : MlensemblelightgbmMatrix,
+) -> Double {
   let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + self.data[i][i] }
+  for i in 0..<n {
+    sum = sum + self.data[i][i]
+  }
   sum
 }
 
+///|
 pub fn MlensemblelightgbmMatrix::det(self : MlensemblelightgbmMatrix) -> Double {
-  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+  if self.rows != self.cols {
+    0.0
+  } else if self.rows == 1 {
+    self.data[0][0]
+  } else if self.rows == 2 {
     self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
   } else if self.rows == 3 {
-    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
-    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
-    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
+    let a = self.data[0][0] *
+      (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] *
+      (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] *
+      (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
-  } else { 0.0 }
+  } else {
+    0.0
+  }
 }
 
-pub fn MlensemblelightgbmMatrix::norm(self : MlensemblelightgbmMatrix) -> Double {
+///|
+pub fn MlensemblelightgbmMatrix::norm(
+  self : MlensemblelightgbmMatrix,
+) -> Double {
   let mut sum = 0.0
-  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
+  for i in 0..<self.rows {
+    for j in 0..<self.cols {
+      sum = sum + self.data[i][j] * self.data[i][j]
+    }
+  }
   @_common.sqrt(sum)
 }
 
-pub fn MlensemblelightgbmMatrix::to_string(self : MlensemblelightgbmMatrix) -> String {
-  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+///|
+pub fn MlensemblelightgbmMatrix::to_string(
+  self : MlensemblelightgbmMatrix,
+) -> String {
+  let mut result = "Mat(" +
+    self.rows.to_string() +
+    "x" +
+    self.cols.to_string() +
+    ")\n"
   let rl = if self.rows < 5 { self.rows } else { 5 }
   let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
+    for j in 0..<cl {
+      if j > 0 {
+        result = result + ", "
+      }
+      result = result + @_common.dbl(self.data[i][j])
+    }
     result = result + "]\n"
   }
   result
 }
 
+///|
 pub(all) struct MlensemblelightgbmVector {
   comps : Array[Double]
-  dim : Int
+  dim : Int32
 }
 
-pub fn ml_ensemble_lightgbm_make_vector(comps : Array[Double]) -> MlensemblelightgbmVector {
-  { comps, dim: comps.length() }
+///|
+pub fn ml_ensemble_lightgbm_make_vector(
+  comps : Array[Double],
+) -> MlensemblelightgbmVector {
+  { comps, dim: comps.length(), }
 }
 
-pub fn ml_ensemble_lightgbm_vector_zero(dim : Int) -> MlensemblelightgbmVector {
-  { comps: Array::make(dim, 0.0), dim }
+///|
+pub fn ml_ensemble_lightgbm_vector_zero(
+  dim : Int32,
+) -> MlensemblelightgbmVector {
+  { comps: Array::make(dim, 0.0), dim, }
 }
 
-pub fn MlensemblelightgbmVector::add(self : MlensemblelightgbmVector, other : MlensemblelightgbmVector) -> MlensemblelightgbmVector {
+///|
+pub fn MlensemblelightgbmVector::add(
+  self : MlensemblelightgbmVector,
+  other : MlensemblelightgbmVector,
+) -> MlensemblelightgbmVector {
   let n = if self.dim < other.dim { self.dim } else { other.dim }
-  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n, }
 }
 
-pub fn MlensemblelightgbmVector::sub(self : MlensemblelightgbmVector, other : MlensemblelightgbmVector) -> MlensemblelightgbmVector {
+///|
+pub fn MlensemblelightgbmVector::sub(
+  self : MlensemblelightgbmVector,
+  other : MlensemblelightgbmVector,
+) -> MlensemblelightgbmVector {
   let n = if self.dim < other.dim { self.dim } else { other.dim }
-  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n, }
 }
 
-pub fn MlensemblelightgbmVector::scale(self : MlensemblelightgbmVector, s : Double) -> MlensemblelightgbmVector {
-  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
+///|
+pub fn MlensemblelightgbmVector::scale(
+  self : MlensemblelightgbmVector,
+  s : Double,
+) -> MlensemblelightgbmVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim, }
 }
 
-pub fn MlensemblelightgbmVector::dot(self : MlensemblelightgbmVector, other : MlensemblelightgbmVector) -> Double {
+///|
+pub fn MlensemblelightgbmVector::dot(
+  self : MlensemblelightgbmVector,
+  other : MlensemblelightgbmVector,
+) -> Double {
   let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
+  for i in 0..<n {
+    sum = sum + self.comps[i] * other.comps[i]
+  }
   sum
 }
 
-pub fn MlensemblelightgbmVector::norm(self : MlensemblelightgbmVector) -> Double { self.dot(self) |> @_common.sqrt }
-
-pub fn MlensemblelightgbmVector::normalize(self : MlensemblelightgbmVector) -> MlensemblelightgbmVector {
-  let n = self.norm()
-  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
+///|
+pub fn MlensemblelightgbmVector::norm(
+  self : MlensemblelightgbmVector,
+) -> Double {
+  self.dot(self) |> @_common.sqrt
 }
 
-pub fn MlensemblelightgbmVector::dist(self : MlensemblelightgbmVector, other : MlensemblelightgbmVector) -> Double {
+///|
+pub fn MlensemblelightgbmVector::normalize(
+  self : MlensemblelightgbmVector,
+) -> MlensemblelightgbmVector {
+  let n = self.norm()
+  if n < 0.0000001 {
+    self
+  } else {
+    self.scale(1.0 / n)
+  }
+}
+
+///|
+pub fn MlensemblelightgbmVector::dist(
+  self : MlensemblelightgbmVector,
+  other : MlensemblelightgbmVector,
+) -> Double {
   self.sub(other).norm()
 }
 
-pub fn MlensemblelightgbmVector::to_string(self : MlensemblelightgbmVector) -> String {
+///|
+pub fn MlensemblelightgbmVector::to_string(
+  self : MlensemblelightgbmVector,
+) -> String {
   let mut result = "["
   let lim = if self.dim < 10 { self.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
-  if self.dim > 10 { result + "...]" } else { result + "]" }
+  for i in 0..<lim {
+    if i > 0 {
+      result = result + ", "
+    }
+    result = result + @_common.dbl(self.comps[i])
+  }
+  if self.dim > 10 {
+    result + "...]"
+  } else {
+    result + "]"
+  }
 }
 
+///|
 pub(all) struct MlensemblelightgbmFrame {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_frame_make(size : Int) -> MlensemblelightgbmFrame {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_frame_make(size : Int32) -> MlensemblelightgbmFrame {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmFrame::len(self : MlensemblelightgbmFrame) -> Int { self.size }
-
-pub fn MlensemblelightgbmFrame::get(self : MlensemblelightgbmFrame, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmFrame::len(self : MlensemblelightgbmFrame) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmFrame::set(self : MlensemblelightgbmFrame, i : Int, v : Double) -> MlensemblelightgbmFrame {
+///|
+pub fn MlensemblelightgbmFrame::get(
+  self : MlensemblelightgbmFrame,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmFrame::set(
+  self : MlensemblelightgbmFrame,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmFrame {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmFrame::sum(self : MlensemblelightgbmFrame) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmFrame::mean(self : MlensemblelightgbmFrame) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmFrame::scale(self : MlensemblelightgbmFrame, f : Double) -> MlensemblelightgbmFrame {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmFrame::sum(self : MlensemblelightgbmFrame) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmFrame::add(self : MlensemblelightgbmFrame, other : MlensemblelightgbmFrame) -> MlensemblelightgbmFrame {
+///|
+pub fn MlensemblelightgbmFrame::mean(self : MlensemblelightgbmFrame) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmFrame::scale(
+  self : MlensemblelightgbmFrame,
+  f : Double,
+) -> MlensemblelightgbmFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmFrame::add(
+  self : MlensemblelightgbmFrame,
+  other : MlensemblelightgbmFrame,
+) -> MlensemblelightgbmFrame {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmFrame::copy(self : MlensemblelightgbmFrame) -> MlensemblelightgbmFrame {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmFrame::copy(
+  self : MlensemblelightgbmFrame,
+) -> MlensemblelightgbmFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmFrame::fill(self : MlensemblelightgbmFrame, v : Double) -> MlensemblelightgbmFrame {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmFrame::fill(
+  self : MlensemblelightgbmFrame,
+  v : Double,
+) -> MlensemblelightgbmFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmFrame::min(self : MlensemblelightgbmFrame) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmFrame::min(self : MlensemblelightgbmFrame) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmFrame::max(self : MlensemblelightgbmFrame) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmFrame::max(self : MlensemblelightgbmFrame) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmFrame::to_string(self : MlensemblelightgbmFrame) -> String {
+///|
+pub fn MlensemblelightgbmFrame::to_string(
+  self : MlensemblelightgbmFrame,
+) -> String {
   "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmTable {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_table_make(size : Int) -> MlensemblelightgbmTable {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_table_make(size : Int32) -> MlensemblelightgbmTable {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmTable::len(self : MlensemblelightgbmTable) -> Int { self.size }
-
-pub fn MlensemblelightgbmTable::get(self : MlensemblelightgbmTable, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmTable::len(self : MlensemblelightgbmTable) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmTable::set(self : MlensemblelightgbmTable, i : Int, v : Double) -> MlensemblelightgbmTable {
+///|
+pub fn MlensemblelightgbmTable::get(
+  self : MlensemblelightgbmTable,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmTable::set(
+  self : MlensemblelightgbmTable,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmTable {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmTable::sum(self : MlensemblelightgbmTable) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmTable::mean(self : MlensemblelightgbmTable) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmTable::scale(self : MlensemblelightgbmTable, f : Double) -> MlensemblelightgbmTable {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmTable::sum(self : MlensemblelightgbmTable) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmTable::add(self : MlensemblelightgbmTable, other : MlensemblelightgbmTable) -> MlensemblelightgbmTable {
+///|
+pub fn MlensemblelightgbmTable::mean(self : MlensemblelightgbmTable) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmTable::scale(
+  self : MlensemblelightgbmTable,
+  f : Double,
+) -> MlensemblelightgbmTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmTable::add(
+  self : MlensemblelightgbmTable,
+  other : MlensemblelightgbmTable,
+) -> MlensemblelightgbmTable {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmTable::copy(self : MlensemblelightgbmTable) -> MlensemblelightgbmTable {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmTable::copy(
+  self : MlensemblelightgbmTable,
+) -> MlensemblelightgbmTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmTable::fill(self : MlensemblelightgbmTable, v : Double) -> MlensemblelightgbmTable {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmTable::fill(
+  self : MlensemblelightgbmTable,
+  v : Double,
+) -> MlensemblelightgbmTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmTable::min(self : MlensemblelightgbmTable) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmTable::min(self : MlensemblelightgbmTable) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmTable::max(self : MlensemblelightgbmTable) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmTable::max(self : MlensemblelightgbmTable) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmTable::to_string(self : MlensemblelightgbmTable) -> String {
+///|
+pub fn MlensemblelightgbmTable::to_string(
+  self : MlensemblelightgbmTable,
+) -> String {
   "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmGraphN {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_graphn_make(size : Int) -> MlensemblelightgbmGraphN {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_graphn_make(
+  size : Int32,
+) -> MlensemblelightgbmGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmGraphN::len(self : MlensemblelightgbmGraphN) -> Int { self.size }
-
-pub fn MlensemblelightgbmGraphN::get(self : MlensemblelightgbmGraphN, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmGraphN::len(self : MlensemblelightgbmGraphN) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmGraphN::set(self : MlensemblelightgbmGraphN, i : Int, v : Double) -> MlensemblelightgbmGraphN {
+///|
+pub fn MlensemblelightgbmGraphN::get(
+  self : MlensemblelightgbmGraphN,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmGraphN::set(
+  self : MlensemblelightgbmGraphN,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmGraphN {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmGraphN::sum(self : MlensemblelightgbmGraphN) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmGraphN::mean(self : MlensemblelightgbmGraphN) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmGraphN::scale(self : MlensemblelightgbmGraphN, f : Double) -> MlensemblelightgbmGraphN {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmGraphN::sum(self : MlensemblelightgbmGraphN) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmGraphN::add(self : MlensemblelightgbmGraphN, other : MlensemblelightgbmGraphN) -> MlensemblelightgbmGraphN {
+///|
+pub fn MlensemblelightgbmGraphN::mean(
+  self : MlensemblelightgbmGraphN,
+) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmGraphN::scale(
+  self : MlensemblelightgbmGraphN,
+  f : Double,
+) -> MlensemblelightgbmGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmGraphN::add(
+  self : MlensemblelightgbmGraphN,
+  other : MlensemblelightgbmGraphN,
+) -> MlensemblelightgbmGraphN {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmGraphN::copy(self : MlensemblelightgbmGraphN) -> MlensemblelightgbmGraphN {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmGraphN::copy(
+  self : MlensemblelightgbmGraphN,
+) -> MlensemblelightgbmGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmGraphN::fill(self : MlensemblelightgbmGraphN, v : Double) -> MlensemblelightgbmGraphN {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmGraphN::fill(
+  self : MlensemblelightgbmGraphN,
+  v : Double,
+) -> MlensemblelightgbmGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmGraphN::min(self : MlensemblelightgbmGraphN) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmGraphN::min(self : MlensemblelightgbmGraphN) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmGraphN::max(self : MlensemblelightgbmGraphN) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmGraphN::max(self : MlensemblelightgbmGraphN) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmGraphN::to_string(self : MlensemblelightgbmGraphN) -> String {
+///|
+pub fn MlensemblelightgbmGraphN::to_string(
+  self : MlensemblelightgbmGraphN,
+) -> String {
   "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmNode {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_node_make(size : Int) -> MlensemblelightgbmNode {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_node_make(size : Int32) -> MlensemblelightgbmNode {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmNode::len(self : MlensemblelightgbmNode) -> Int { self.size }
-
-pub fn MlensemblelightgbmNode::get(self : MlensemblelightgbmNode, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmNode::len(self : MlensemblelightgbmNode) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmNode::set(self : MlensemblelightgbmNode, i : Int, v : Double) -> MlensemblelightgbmNode {
+///|
+pub fn MlensemblelightgbmNode::get(
+  self : MlensemblelightgbmNode,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmNode::set(
+  self : MlensemblelightgbmNode,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmNode {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmNode::sum(self : MlensemblelightgbmNode) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmNode::mean(self : MlensemblelightgbmNode) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmNode::scale(self : MlensemblelightgbmNode, f : Double) -> MlensemblelightgbmNode {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmNode::sum(self : MlensemblelightgbmNode) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmNode::add(self : MlensemblelightgbmNode, other : MlensemblelightgbmNode) -> MlensemblelightgbmNode {
+///|
+pub fn MlensemblelightgbmNode::mean(self : MlensemblelightgbmNode) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmNode::scale(
+  self : MlensemblelightgbmNode,
+  f : Double,
+) -> MlensemblelightgbmNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmNode::add(
+  self : MlensemblelightgbmNode,
+  other : MlensemblelightgbmNode,
+) -> MlensemblelightgbmNode {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmNode::copy(self : MlensemblelightgbmNode) -> MlensemblelightgbmNode {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmNode::copy(
+  self : MlensemblelightgbmNode,
+) -> MlensemblelightgbmNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmNode::fill(self : MlensemblelightgbmNode, v : Double) -> MlensemblelightgbmNode {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmNode::fill(
+  self : MlensemblelightgbmNode,
+  v : Double,
+) -> MlensemblelightgbmNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmNode::min(self : MlensemblelightgbmNode) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmNode::min(self : MlensemblelightgbmNode) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmNode::max(self : MlensemblelightgbmNode) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmNode::max(self : MlensemblelightgbmNode) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmNode::to_string(self : MlensemblelightgbmNode) -> String {
+///|
+pub fn MlensemblelightgbmNode::to_string(
+  self : MlensemblelightgbmNode,
+) -> String {
   "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmEdge {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_edge_make(size : Int) -> MlensemblelightgbmEdge {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_edge_make(size : Int32) -> MlensemblelightgbmEdge {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmEdge::len(self : MlensemblelightgbmEdge) -> Int { self.size }
-
-pub fn MlensemblelightgbmEdge::get(self : MlensemblelightgbmEdge, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmEdge::len(self : MlensemblelightgbmEdge) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmEdge::set(self : MlensemblelightgbmEdge, i : Int, v : Double) -> MlensemblelightgbmEdge {
+///|
+pub fn MlensemblelightgbmEdge::get(
+  self : MlensemblelightgbmEdge,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmEdge::set(
+  self : MlensemblelightgbmEdge,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmEdge {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmEdge::sum(self : MlensemblelightgbmEdge) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmEdge::mean(self : MlensemblelightgbmEdge) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmEdge::scale(self : MlensemblelightgbmEdge, f : Double) -> MlensemblelightgbmEdge {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmEdge::sum(self : MlensemblelightgbmEdge) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmEdge::add(self : MlensemblelightgbmEdge, other : MlensemblelightgbmEdge) -> MlensemblelightgbmEdge {
+///|
+pub fn MlensemblelightgbmEdge::mean(self : MlensemblelightgbmEdge) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmEdge::scale(
+  self : MlensemblelightgbmEdge,
+  f : Double,
+) -> MlensemblelightgbmEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmEdge::add(
+  self : MlensemblelightgbmEdge,
+  other : MlensemblelightgbmEdge,
+) -> MlensemblelightgbmEdge {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmEdge::copy(self : MlensemblelightgbmEdge) -> MlensemblelightgbmEdge {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmEdge::copy(
+  self : MlensemblelightgbmEdge,
+) -> MlensemblelightgbmEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmEdge::fill(self : MlensemblelightgbmEdge, v : Double) -> MlensemblelightgbmEdge {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmEdge::fill(
+  self : MlensemblelightgbmEdge,
+  v : Double,
+) -> MlensemblelightgbmEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmEdge::min(self : MlensemblelightgbmEdge) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmEdge::min(self : MlensemblelightgbmEdge) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmEdge::max(self : MlensemblelightgbmEdge) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmEdge::max(self : MlensemblelightgbmEdge) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmEdge::to_string(self : MlensemblelightgbmEdge) -> String {
+///|
+pub fn MlensemblelightgbmEdge::to_string(
+  self : MlensemblelightgbmEdge,
+) -> String {
   "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmPath {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_path_make(size : Int) -> MlensemblelightgbmPath {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_path_make(size : Int32) -> MlensemblelightgbmPath {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmPath::len(self : MlensemblelightgbmPath) -> Int { self.size }
-
-pub fn MlensemblelightgbmPath::get(self : MlensemblelightgbmPath, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmPath::len(self : MlensemblelightgbmPath) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmPath::set(self : MlensemblelightgbmPath, i : Int, v : Double) -> MlensemblelightgbmPath {
+///|
+pub fn MlensemblelightgbmPath::get(
+  self : MlensemblelightgbmPath,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmPath::set(
+  self : MlensemblelightgbmPath,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmPath {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmPath::sum(self : MlensemblelightgbmPath) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmPath::mean(self : MlensemblelightgbmPath) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmPath::scale(self : MlensemblelightgbmPath, f : Double) -> MlensemblelightgbmPath {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmPath::sum(self : MlensemblelightgbmPath) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmPath::add(self : MlensemblelightgbmPath, other : MlensemblelightgbmPath) -> MlensemblelightgbmPath {
+///|
+pub fn MlensemblelightgbmPath::mean(self : MlensemblelightgbmPath) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmPath::scale(
+  self : MlensemblelightgbmPath,
+  f : Double,
+) -> MlensemblelightgbmPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmPath::add(
+  self : MlensemblelightgbmPath,
+  other : MlensemblelightgbmPath,
+) -> MlensemblelightgbmPath {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmPath::copy(self : MlensemblelightgbmPath) -> MlensemblelightgbmPath {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmPath::copy(
+  self : MlensemblelightgbmPath,
+) -> MlensemblelightgbmPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmPath::fill(self : MlensemblelightgbmPath, v : Double) -> MlensemblelightgbmPath {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmPath::fill(
+  self : MlensemblelightgbmPath,
+  v : Double,
+) -> MlensemblelightgbmPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmPath::min(self : MlensemblelightgbmPath) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmPath::min(self : MlensemblelightgbmPath) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmPath::max(self : MlensemblelightgbmPath) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmPath::max(self : MlensemblelightgbmPath) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmPath::to_string(self : MlensemblelightgbmPath) -> String {
+///|
+pub fn MlensemblelightgbmPath::to_string(
+  self : MlensemblelightgbmPath,
+) -> String {
   "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmCluster {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_cluster_make(size : Int) -> MlensemblelightgbmCluster {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_cluster_make(
+  size : Int32,
+) -> MlensemblelightgbmCluster {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmCluster::len(self : MlensemblelightgbmCluster) -> Int { self.size }
-
-pub fn MlensemblelightgbmCluster::get(self : MlensemblelightgbmCluster, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmCluster::len(
+  self : MlensemblelightgbmCluster,
+) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmCluster::set(self : MlensemblelightgbmCluster, i : Int, v : Double) -> MlensemblelightgbmCluster {
+///|
+pub fn MlensemblelightgbmCluster::get(
+  self : MlensemblelightgbmCluster,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmCluster::set(
+  self : MlensemblelightgbmCluster,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmCluster {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmCluster::sum(self : MlensemblelightgbmCluster) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmCluster::mean(self : MlensemblelightgbmCluster) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmCluster::scale(self : MlensemblelightgbmCluster, f : Double) -> MlensemblelightgbmCluster {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmCluster::sum(
+  self : MlensemblelightgbmCluster,
+) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmCluster::add(self : MlensemblelightgbmCluster, other : MlensemblelightgbmCluster) -> MlensemblelightgbmCluster {
+///|
+pub fn MlensemblelightgbmCluster::mean(
+  self : MlensemblelightgbmCluster,
+) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmCluster::scale(
+  self : MlensemblelightgbmCluster,
+  f : Double,
+) -> MlensemblelightgbmCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmCluster::add(
+  self : MlensemblelightgbmCluster,
+  other : MlensemblelightgbmCluster,
+) -> MlensemblelightgbmCluster {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmCluster::copy(self : MlensemblelightgbmCluster) -> MlensemblelightgbmCluster {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmCluster::copy(
+  self : MlensemblelightgbmCluster,
+) -> MlensemblelightgbmCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmCluster::fill(self : MlensemblelightgbmCluster, v : Double) -> MlensemblelightgbmCluster {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmCluster::fill(
+  self : MlensemblelightgbmCluster,
+  v : Double,
+) -> MlensemblelightgbmCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmCluster::min(self : MlensemblelightgbmCluster) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmCluster::min(
+  self : MlensemblelightgbmCluster,
+) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmCluster::max(self : MlensemblelightgbmCluster) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmCluster::max(
+  self : MlensemblelightgbmCluster,
+) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmCluster::to_string(self : MlensemblelightgbmCluster) -> String {
+///|
+pub fn MlensemblelightgbmCluster::to_string(
+  self : MlensemblelightgbmCluster,
+) -> String {
   "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmModel {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_model_make(size : Int) -> MlensemblelightgbmModel {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_model_make(size : Int32) -> MlensemblelightgbmModel {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmModel::len(self : MlensemblelightgbmModel) -> Int { self.size }
-
-pub fn MlensemblelightgbmModel::get(self : MlensemblelightgbmModel, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmModel::len(self : MlensemblelightgbmModel) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmModel::set(self : MlensemblelightgbmModel, i : Int, v : Double) -> MlensemblelightgbmModel {
+///|
+pub fn MlensemblelightgbmModel::get(
+  self : MlensemblelightgbmModel,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmModel::set(
+  self : MlensemblelightgbmModel,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmModel {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmModel::sum(self : MlensemblelightgbmModel) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmModel::mean(self : MlensemblelightgbmModel) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmModel::scale(self : MlensemblelightgbmModel, f : Double) -> MlensemblelightgbmModel {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmModel::sum(self : MlensemblelightgbmModel) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmModel::add(self : MlensemblelightgbmModel, other : MlensemblelightgbmModel) -> MlensemblelightgbmModel {
+///|
+pub fn MlensemblelightgbmModel::mean(self : MlensemblelightgbmModel) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmModel::scale(
+  self : MlensemblelightgbmModel,
+  f : Double,
+) -> MlensemblelightgbmModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmModel::add(
+  self : MlensemblelightgbmModel,
+  other : MlensemblelightgbmModel,
+) -> MlensemblelightgbmModel {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmModel::copy(self : MlensemblelightgbmModel) -> MlensemblelightgbmModel {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmModel::copy(
+  self : MlensemblelightgbmModel,
+) -> MlensemblelightgbmModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmModel::fill(self : MlensemblelightgbmModel, v : Double) -> MlensemblelightgbmModel {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmModel::fill(
+  self : MlensemblelightgbmModel,
+  v : Double,
+) -> MlensemblelightgbmModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmModel::min(self : MlensemblelightgbmModel) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmModel::min(self : MlensemblelightgbmModel) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmModel::max(self : MlensemblelightgbmModel) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmModel::max(self : MlensemblelightgbmModel) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmModel::to_string(self : MlensemblelightgbmModel) -> String {
+///|
+pub fn MlensemblelightgbmModel::to_string(
+  self : MlensemblelightgbmModel,
+) -> String {
   "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmLayer {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_layer_make(size : Int) -> MlensemblelightgbmLayer {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_layer_make(size : Int32) -> MlensemblelightgbmLayer {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmLayer::len(self : MlensemblelightgbmLayer) -> Int { self.size }
-
-pub fn MlensemblelightgbmLayer::get(self : MlensemblelightgbmLayer, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmLayer::len(self : MlensemblelightgbmLayer) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmLayer::set(self : MlensemblelightgbmLayer, i : Int, v : Double) -> MlensemblelightgbmLayer {
+///|
+pub fn MlensemblelightgbmLayer::get(
+  self : MlensemblelightgbmLayer,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmLayer::set(
+  self : MlensemblelightgbmLayer,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmLayer {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmLayer::sum(self : MlensemblelightgbmLayer) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmLayer::mean(self : MlensemblelightgbmLayer) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmLayer::scale(self : MlensemblelightgbmLayer, f : Double) -> MlensemblelightgbmLayer {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmLayer::sum(self : MlensemblelightgbmLayer) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmLayer::add(self : MlensemblelightgbmLayer, other : MlensemblelightgbmLayer) -> MlensemblelightgbmLayer {
+///|
+pub fn MlensemblelightgbmLayer::mean(self : MlensemblelightgbmLayer) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmLayer::scale(
+  self : MlensemblelightgbmLayer,
+  f : Double,
+) -> MlensemblelightgbmLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmLayer::add(
+  self : MlensemblelightgbmLayer,
+  other : MlensemblelightgbmLayer,
+) -> MlensemblelightgbmLayer {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmLayer::copy(self : MlensemblelightgbmLayer) -> MlensemblelightgbmLayer {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmLayer::copy(
+  self : MlensemblelightgbmLayer,
+) -> MlensemblelightgbmLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmLayer::fill(self : MlensemblelightgbmLayer, v : Double) -> MlensemblelightgbmLayer {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmLayer::fill(
+  self : MlensemblelightgbmLayer,
+  v : Double,
+) -> MlensemblelightgbmLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmLayer::min(self : MlensemblelightgbmLayer) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmLayer::min(self : MlensemblelightgbmLayer) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmLayer::max(self : MlensemblelightgbmLayer) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmLayer::max(self : MlensemblelightgbmLayer) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmLayer::to_string(self : MlensemblelightgbmLayer) -> String {
+///|
+pub fn MlensemblelightgbmLayer::to_string(
+  self : MlensemblelightgbmLayer,
+) -> String {
   "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmBuffer {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_buffer_make(size : Int) -> MlensemblelightgbmBuffer {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_buffer_make(
+  size : Int32,
+) -> MlensemblelightgbmBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmBuffer::len(self : MlensemblelightgbmBuffer) -> Int { self.size }
-
-pub fn MlensemblelightgbmBuffer::get(self : MlensemblelightgbmBuffer, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmBuffer::len(self : MlensemblelightgbmBuffer) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmBuffer::set(self : MlensemblelightgbmBuffer, i : Int, v : Double) -> MlensemblelightgbmBuffer {
+///|
+pub fn MlensemblelightgbmBuffer::get(
+  self : MlensemblelightgbmBuffer,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmBuffer::set(
+  self : MlensemblelightgbmBuffer,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmBuffer {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmBuffer::sum(self : MlensemblelightgbmBuffer) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmBuffer::mean(self : MlensemblelightgbmBuffer) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmBuffer::scale(self : MlensemblelightgbmBuffer, f : Double) -> MlensemblelightgbmBuffer {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmBuffer::sum(self : MlensemblelightgbmBuffer) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmBuffer::add(self : MlensemblelightgbmBuffer, other : MlensemblelightgbmBuffer) -> MlensemblelightgbmBuffer {
+///|
+pub fn MlensemblelightgbmBuffer::mean(
+  self : MlensemblelightgbmBuffer,
+) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmBuffer::scale(
+  self : MlensemblelightgbmBuffer,
+  f : Double,
+) -> MlensemblelightgbmBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmBuffer::add(
+  self : MlensemblelightgbmBuffer,
+  other : MlensemblelightgbmBuffer,
+) -> MlensemblelightgbmBuffer {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmBuffer::copy(self : MlensemblelightgbmBuffer) -> MlensemblelightgbmBuffer {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmBuffer::copy(
+  self : MlensemblelightgbmBuffer,
+) -> MlensemblelightgbmBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmBuffer::fill(self : MlensemblelightgbmBuffer, v : Double) -> MlensemblelightgbmBuffer {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmBuffer::fill(
+  self : MlensemblelightgbmBuffer,
+  v : Double,
+) -> MlensemblelightgbmBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmBuffer::min(self : MlensemblelightgbmBuffer) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmBuffer::min(self : MlensemblelightgbmBuffer) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmBuffer::max(self : MlensemblelightgbmBuffer) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmBuffer::max(self : MlensemblelightgbmBuffer) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmBuffer::to_string(self : MlensemblelightgbmBuffer) -> String {
+///|
+pub fn MlensemblelightgbmBuffer::to_string(
+  self : MlensemblelightgbmBuffer,
+) -> String {
   "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmCursor {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_cursor_make(size : Int) -> MlensemblelightgbmCursor {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_cursor_make(
+  size : Int32,
+) -> MlensemblelightgbmCursor {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmCursor::len(self : MlensemblelightgbmCursor) -> Int { self.size }
-
-pub fn MlensemblelightgbmCursor::get(self : MlensemblelightgbmCursor, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmCursor::len(self : MlensemblelightgbmCursor) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmCursor::set(self : MlensemblelightgbmCursor, i : Int, v : Double) -> MlensemblelightgbmCursor {
+///|
+pub fn MlensemblelightgbmCursor::get(
+  self : MlensemblelightgbmCursor,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmCursor::set(
+  self : MlensemblelightgbmCursor,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmCursor {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmCursor::sum(self : MlensemblelightgbmCursor) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmCursor::mean(self : MlensemblelightgbmCursor) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmCursor::scale(self : MlensemblelightgbmCursor, f : Double) -> MlensemblelightgbmCursor {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmCursor::sum(self : MlensemblelightgbmCursor) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmCursor::add(self : MlensemblelightgbmCursor, other : MlensemblelightgbmCursor) -> MlensemblelightgbmCursor {
+///|
+pub fn MlensemblelightgbmCursor::mean(
+  self : MlensemblelightgbmCursor,
+) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmCursor::scale(
+  self : MlensemblelightgbmCursor,
+  f : Double,
+) -> MlensemblelightgbmCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmCursor::add(
+  self : MlensemblelightgbmCursor,
+  other : MlensemblelightgbmCursor,
+) -> MlensemblelightgbmCursor {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmCursor::copy(self : MlensemblelightgbmCursor) -> MlensemblelightgbmCursor {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmCursor::copy(
+  self : MlensemblelightgbmCursor,
+) -> MlensemblelightgbmCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmCursor::fill(self : MlensemblelightgbmCursor, v : Double) -> MlensemblelightgbmCursor {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmCursor::fill(
+  self : MlensemblelightgbmCursor,
+  v : Double,
+) -> MlensemblelightgbmCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmCursor::min(self : MlensemblelightgbmCursor) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmCursor::min(self : MlensemblelightgbmCursor) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmCursor::max(self : MlensemblelightgbmCursor) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmCursor::max(self : MlensemblelightgbmCursor) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmCursor::to_string(self : MlensemblelightgbmCursor) -> String {
+///|
+pub fn MlensemblelightgbmCursor::to_string(
+  self : MlensemblelightgbmCursor,
+) -> String {
   "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmView {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_view_make(size : Int) -> MlensemblelightgbmView {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_view_make(size : Int32) -> MlensemblelightgbmView {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmView::len(self : MlensemblelightgbmView) -> Int { self.size }
-
-pub fn MlensemblelightgbmView::get(self : MlensemblelightgbmView, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmView::len(self : MlensemblelightgbmView) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmView::set(self : MlensemblelightgbmView, i : Int, v : Double) -> MlensemblelightgbmView {
+///|
+pub fn MlensemblelightgbmView::get(
+  self : MlensemblelightgbmView,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmView::set(
+  self : MlensemblelightgbmView,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmView {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmView::sum(self : MlensemblelightgbmView) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmView::mean(self : MlensemblelightgbmView) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmView::scale(self : MlensemblelightgbmView, f : Double) -> MlensemblelightgbmView {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmView::sum(self : MlensemblelightgbmView) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmView::add(self : MlensemblelightgbmView, other : MlensemblelightgbmView) -> MlensemblelightgbmView {
+///|
+pub fn MlensemblelightgbmView::mean(self : MlensemblelightgbmView) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmView::scale(
+  self : MlensemblelightgbmView,
+  f : Double,
+) -> MlensemblelightgbmView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmView::add(
+  self : MlensemblelightgbmView,
+  other : MlensemblelightgbmView,
+) -> MlensemblelightgbmView {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmView::copy(self : MlensemblelightgbmView) -> MlensemblelightgbmView {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmView::copy(
+  self : MlensemblelightgbmView,
+) -> MlensemblelightgbmView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmView::fill(self : MlensemblelightgbmView, v : Double) -> MlensemblelightgbmView {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmView::fill(
+  self : MlensemblelightgbmView,
+  v : Double,
+) -> MlensemblelightgbmView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmView::min(self : MlensemblelightgbmView) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmView::min(self : MlensemblelightgbmView) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmView::max(self : MlensemblelightgbmView) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmView::max(self : MlensemblelightgbmView) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmView::to_string(self : MlensemblelightgbmView) -> String {
+///|
+pub fn MlensemblelightgbmView::to_string(
+  self : MlensemblelightgbmView,
+) -> String {
   "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmRange {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_range_make(size : Int) -> MlensemblelightgbmRange {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_range_make(size : Int32) -> MlensemblelightgbmRange {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmRange::len(self : MlensemblelightgbmRange) -> Int { self.size }
-
-pub fn MlensemblelightgbmRange::get(self : MlensemblelightgbmRange, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmRange::len(self : MlensemblelightgbmRange) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmRange::set(self : MlensemblelightgbmRange, i : Int, v : Double) -> MlensemblelightgbmRange {
+///|
+pub fn MlensemblelightgbmRange::get(
+  self : MlensemblelightgbmRange,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmRange::set(
+  self : MlensemblelightgbmRange,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmRange {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmRange::sum(self : MlensemblelightgbmRange) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmRange::mean(self : MlensemblelightgbmRange) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmRange::scale(self : MlensemblelightgbmRange, f : Double) -> MlensemblelightgbmRange {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmRange::sum(self : MlensemblelightgbmRange) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmRange::add(self : MlensemblelightgbmRange, other : MlensemblelightgbmRange) -> MlensemblelightgbmRange {
+///|
+pub fn MlensemblelightgbmRange::mean(self : MlensemblelightgbmRange) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmRange::scale(
+  self : MlensemblelightgbmRange,
+  f : Double,
+) -> MlensemblelightgbmRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmRange::add(
+  self : MlensemblelightgbmRange,
+  other : MlensemblelightgbmRange,
+) -> MlensemblelightgbmRange {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmRange::copy(self : MlensemblelightgbmRange) -> MlensemblelightgbmRange {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmRange::copy(
+  self : MlensemblelightgbmRange,
+) -> MlensemblelightgbmRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmRange::fill(self : MlensemblelightgbmRange, v : Double) -> MlensemblelightgbmRange {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmRange::fill(
+  self : MlensemblelightgbmRange,
+  v : Double,
+) -> MlensemblelightgbmRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmRange::min(self : MlensemblelightgbmRange) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmRange::min(self : MlensemblelightgbmRange) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmRange::max(self : MlensemblelightgbmRange) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmRange::max(self : MlensemblelightgbmRange) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmRange::to_string(self : MlensemblelightgbmRange) -> String {
+///|
+pub fn MlensemblelightgbmRange::to_string(
+  self : MlensemblelightgbmRange,
+) -> String {
   "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
+///|
 pub(all) struct MlensemblelightgbmSlice {
   data : Array[Double]
-  size : Int
-  tag : Int
+  size : Int32
+  tag : Int32
 }
 
-pub fn ml_ensemble_lightgbm_slice_make(size : Int) -> MlensemblelightgbmSlice {
-  { data: Array::make(size, 0.0), size, tag: 0 }
+///|
+pub fn ml_ensemble_lightgbm_slice_make(size : Int32) -> MlensemblelightgbmSlice {
+  { data: Array::make(size, 0.0), size, tag: 0, }
 }
 
-pub fn MlensemblelightgbmSlice::len(self : MlensemblelightgbmSlice) -> Int { self.size }
-
-pub fn MlensemblelightgbmSlice::get(self : MlensemblelightgbmSlice, i : Int) -> Double {
-  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
+///|
+pub fn MlensemblelightgbmSlice::len(self : MlensemblelightgbmSlice) -> Int32 {
+  self.size
 }
 
-pub fn MlensemblelightgbmSlice::set(self : MlensemblelightgbmSlice, i : Int, v : Double) -> MlensemblelightgbmSlice {
+///|
+pub fn MlensemblelightgbmSlice::get(
+  self : MlensemblelightgbmSlice,
+  i : Int32,
+) -> Double {
+  if i < 0 || i >= self.size {
+    0.0
+  } else {
+    self.data[i]
+  }
+}
+
+///|
+pub fn MlensemblelightgbmSlice::set(
+  self : MlensemblelightgbmSlice,
+  i : Int32,
+  v : Double,
+) -> MlensemblelightgbmSlice {
   let data = @_common.copy_arr(self.data)
-  if i >= 0 && i < self.size { data[i] = v }
-  { data, size: self.size, tag: self.tag }
+  if i >= 0 && i < self.size {
+    data[i] = v
+  }
+  { data, size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmSlice::sum(self : MlensemblelightgbmSlice) -> Double { @_common.sum(self.data) }
-
-pub fn MlensemblelightgbmSlice::mean(self : MlensemblelightgbmSlice) -> Double { @_common.mean(self.data) }
-
-pub fn MlensemblelightgbmSlice::scale(self : MlensemblelightgbmSlice, f : Double) -> MlensemblelightgbmSlice {
-  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmSlice::sum(self : MlensemblelightgbmSlice) -> Double {
+  @_common.sum(self.data)
 }
 
-pub fn MlensemblelightgbmSlice::add(self : MlensemblelightgbmSlice, other : MlensemblelightgbmSlice) -> MlensemblelightgbmSlice {
+///|
+pub fn MlensemblelightgbmSlice::mean(self : MlensemblelightgbmSlice) -> Double {
+  @_common.mean(self.data)
+}
+
+///|
+pub fn MlensemblelightgbmSlice::scale(
+  self : MlensemblelightgbmSlice,
+  f : Double,
+) -> MlensemblelightgbmSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag, }
+}
+
+///|
+pub fn MlensemblelightgbmSlice::add(
+  self : MlensemblelightgbmSlice,
+  other : MlensemblelightgbmSlice,
+) -> MlensemblelightgbmSlice {
   let n = if self.size < other.size { self.size } else { other.size }
-  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmSlice::copy(self : MlensemblelightgbmSlice) -> MlensemblelightgbmSlice {
-  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmSlice::copy(
+  self : MlensemblelightgbmSlice,
+) -> MlensemblelightgbmSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmSlice::fill(self : MlensemblelightgbmSlice, v : Double) -> MlensemblelightgbmSlice {
-  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
+///|
+pub fn MlensemblelightgbmSlice::fill(
+  self : MlensemblelightgbmSlice,
+  v : Double,
+) -> MlensemblelightgbmSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag, }
 }
 
-pub fn MlensemblelightgbmSlice::min(self : MlensemblelightgbmSlice) -> Double { @_common.min(self.data) }
+///|
+pub fn MlensemblelightgbmSlice::min(self : MlensemblelightgbmSlice) -> Double {
+  @_common.min(self.data)
+}
 
-pub fn MlensemblelightgbmSlice::max(self : MlensemblelightgbmSlice) -> Double { @_common.max(self.data) }
+///|
+pub fn MlensemblelightgbmSlice::max(self : MlensemblelightgbmSlice) -> Double {
+  @_common.max(self.data)
+}
 
-pub fn MlensemblelightgbmSlice::to_string(self : MlensemblelightgbmSlice) -> String {
+///|
+pub fn MlensemblelightgbmSlice::to_string(
+  self : MlensemblelightgbmSlice,
+) -> String {
   "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
-

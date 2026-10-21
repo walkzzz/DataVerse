@@ -10,21 +10,23 @@
 /// Base for exact-hash dedup, exact statistics, schema validation.
 /// Consistency: byte-exact. See architecture §4.1.
 /// S0.2 provides mode tag and contract; concrete hash algorithms (SHA-256 etc.) filled in S0.4.
-
 pub fn exact_id() -> String {
   "kernel/exact"
 }
 
+///|
 /// 模式标签 / Mode tag string.
 pub fn mode_tag() -> String {
   "exact"
 }
 
+///|
 /// 一致性保证声明 / Consistency guarantee.
 pub fn consistency_guarantee() -> String {
   "byte-exact"
 }
 
+///|
 /// 退化处理：空数据安全 / Degenerate handling: empty data is safe.
 pub fn handles_empty() -> Bool {
   true

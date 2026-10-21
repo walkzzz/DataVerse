@@ -1,3 +1,4 @@
+///|
 fn main {
   println("DataVerse CLI v0.1.0-dev")
   println("========================")

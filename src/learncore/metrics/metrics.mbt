@@ -8,6 +8,7 @@
 ///
 /// Model evaluation metrics. See architecture §4.3.5 D.
 
+///|
 /// 准确率 / Accuracy.
 ///
 /// 退化安全：空数组返回 0.0。
@@ -29,6 +30,7 @@ pub fn accuracy(predicted : Array[String], actual : Array[String]) -> Double {
   correct.to_double() / n.to_double()
 }
 
+///|
 /// 均方误差 / Mean squared error.
 ///
 /// 退化安全：空数组返回 0.0。
@@ -49,6 +51,7 @@ pub fn mse(predicted : Array[Double], actual : Array[Double]) -> Double {
   sum / n.to_double()
 }
 
+///|
 /// 平均绝对误差 / Mean absolute error.
 ///
 /// 退化安全：空数组返回 0.0。
@@ -73,6 +76,7 @@ pub fn mae(predicted : Array[Double], actual : Array[Double]) -> Double {
   sum / n.to_double()
 }
 
+///|
 /// 混淆矩阵 / Confusion matrix.
 ///
 /// 输入预测标签 + 真实标签 + 标签集合，返回 n×n 矩阵（行=真实，列=预测）。
@@ -80,8 +84,8 @@ pub fn mae(predicted : Array[Double], actual : Array[Double]) -> Double {
 pub fn confusion_matrix(
   predicted : Array[String],
   actual : Array[String],
-  labels : Array[String]
-) -> Array[Array[Int]] {
+  labels : Array[String],
+) -> Array[Array[Int32]] {
   let n = labels.length()
   let matrix = []
   for _i = 0; _i < n; _i = _i + 1 {
@@ -102,7 +106,8 @@ pub fn confusion_matrix(
   matrix
 }
 
-fn label_index(labels : Array[String], label : String) -> Int {
+///|
+fn label_index(labels : Array[String], label : String) -> Int32 {
   for i = 0; i < labels.length(); i = i + 1 {
     if labels[i] == label {
       return i
@@ -111,6 +116,7 @@ fn label_index(labels : Array[String], label : String) -> Int {
   -1
 }
 
+///|
 pub fn metrics_id() -> String {
   "learncore/metrics"
 }

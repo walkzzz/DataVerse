@@ -8,71 +8,84 @@
 ///
 /// Operator graph DAG: nodes + edges + topo sort. See architecture §4.6.
 
+///|
 /// DAG 边 / DAG edge: dependency from source to target.
 pub struct DAGEdge {
   from : @ir_core.IRNodeId
   to : @ir_core.IRNodeId
 } derive(Debug, Eq)
 
+///|
 pub extend DAGEdge with Eq::{equal, not_equal}
+
+///|
 pub extend DAGEdge with Debug::{to_repr}
 
+///|
 /// 流水线 IR / Pipeline IR: DAG of operator nodes.
 pub struct PipelineIR {
   nodes : Array[@ir_operator.OperatorIR]
   edges : Array[DAGEdge]
 } derive(Debug, Eq)
 
+///|
 pub extend PipelineIR with Eq::{equal, not_equal}
+
+///|
 pub extend PipelineIR with Debug::{to_repr}
 
+///|
 /// 构造 DAG 边 / Build a DAG edge.
 pub fn DAGEdge::new(
   from : @ir_core.IRNodeId,
-  to : @ir_core.IRNodeId
+  to : @ir_core.IRNodeId,
 ) -> DAGEdge {
-  { from, to }
+  { from, to, }
 }
 
+///|
 /// 空流水线 / Empty pipeline.
 pub fn PipelineIR::empty() -> PipelineIR {
-  { nodes: [], edges: [] }
+  { nodes: [], edges: [], }
 }
 
+///|
 /// 构造流水线 / Build a pipeline from nodes and edges.
 pub fn PipelineIR::new(
   nodes : Array[@ir_operator.OperatorIR],
-  edges : Array[DAGEdge]
+  edges : Array[DAGEdge],
 ) -> PipelineIR {
-  { nodes, edges }
+  { nodes, edges, }
 }
 
+///|
 /// 添加节点 / Add a node.
 pub fn PipelineIR::add_node(
   self : PipelineIR,
-  node : @ir_operator.OperatorIR
+  node : @ir_operator.OperatorIR,
 ) -> PipelineIR {
-  { nodes: self.nodes + [node], edges: self.edges }
+  { nodes: self.nodes + [node], edges: self.edges, }
 }
 
+///|
 /// 添加边 / Add an edge.
-pub fn PipelineIR::add_edge(
-  self : PipelineIR,
-  edge : DAGEdge
-) -> PipelineIR {
-  { nodes: self.nodes, edges: self.edges + [edge] }
+pub fn PipelineIR::add_edge(self : PipelineIR, edge : DAGEdge) -> PipelineIR {
+  { nodes: self.nodes, edges: self.edges + [edge], }
 }
 
+///|
 /// 节点数 / Node count.
-pub fn PipelineIR::node_count(self : PipelineIR) -> Int {
+pub fn PipelineIR::node_count(self : PipelineIR) -> Int32 {
   self.nodes.length()
 }
 
+///|
 /// 边数 / Edge count.
-pub fn PipelineIR::edge_count(self : PipelineIR) -> Int {
+pub fn PipelineIR::edge_count(self : PipelineIR) -> Int32 {
   self.edges.length()
 }
 
+///|
 /// 拓扑排序 / Topological sort (Kahn's algorithm).
 ///
 /// 返回节点 ID 的拓扑顺序。若存在环返回空数组（退化安全）。
@@ -126,6 +139,7 @@ pub fn PipelineIR::topo_order(self : PipelineIR) -> Array[@ir_core.IRNodeId] {
   }
 }
 
+///|
 pub fn ir_pipeline_id() -> String {
   "datair/ir_pipeline"
 }

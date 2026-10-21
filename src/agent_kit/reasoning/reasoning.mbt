@@ -8,6 +8,7 @@
 ///
 /// Logic / causal / counterfactual reasoning.
 
+///|
 /// 逻辑规则 P -> Q / Logic rule.
 pub struct Rule {
   rule_id : String
@@ -16,9 +17,13 @@ pub struct Rule {
   confidence : Double
 } derive(Debug, Eq)
 
+///|
 pub extend Rule with Eq::{equal, not_equal}
+
+///|
 pub extend Rule with Debug::{to_repr}
 
+///|
 /// 事实 / Fact.
 pub struct Fact {
   fact_id : String
@@ -27,18 +32,26 @@ pub struct Fact {
   confidence : Double
 } derive(Debug, Eq)
 
+///|
 pub extend Fact with Eq::{equal, not_equal}
+
+///|
 pub extend Fact with Debug::{to_repr}
 
+///|
 /// 查询 / Query.
 pub struct Query {
   query_id : String
   proposition : String
 } derive(Debug, Eq)
 
+///|
 pub extend Query with Eq::{equal, not_equal}
+
+///|
 pub extend Query with Debug::{to_repr}
 
+///|
 /// 推理结果 / Inference result.
 pub struct InferenceResult {
   query : Query
@@ -48,17 +61,25 @@ pub struct InferenceResult {
   explanation : String
 } derive(Debug, Eq)
 
+///|
 pub extend InferenceResult with Eq::{equal, not_equal}
+
+///|
 pub extend InferenceResult with Debug::{to_repr}
 
+///|
 /// 替换：变量 -> 值 / Substitution.
 pub struct Substitution {
   bindings : Array[(String, String)]
 } derive(Debug, Eq)
 
+///|
 pub extend Substitution with Eq::{equal, not_equal}
+
+///|
 pub extend Substitution with Debug::{to_repr}
 
+///|
 /// 因果模型 / Causal model.
 pub struct CausalModel {
   model_id : String
@@ -66,9 +87,13 @@ pub struct CausalModel {
   edges : Array[(String, String)]
 } derive(Debug, Eq)
 
+///|
 pub extend CausalModel with Eq::{equal, not_equal}
+
+///|
 pub extend CausalModel with Debug::{to_repr}
 
+///|
 /// 论证 / Argument.
 pub struct Argument {
   arg_id : String
@@ -76,19 +101,27 @@ pub struct Argument {
   conclusion : Fact
 } derive(Debug, Eq)
 
+///|
 pub extend Argument with Eq::{equal, not_equal}
+
+///|
 pub extend Argument with Debug::{to_repr}
 
+///|
 /// 证明步骤 / Proof step.
 pub struct ProofStep {
-  step_id : Int
+  step_id : Int32
   statement : String
   justification : String
 } derive(Debug, Eq)
 
+///|
 pub extend ProofStep with Eq::{equal, not_equal}
+
+///|
 pub extend ProofStep with Debug::{to_repr}
 
+///|
 /// 证明 / Proof.
 pub struct Proof {
   proof_id : String
@@ -96,9 +129,13 @@ pub struct Proof {
   goal : String
 } derive(Debug, Eq)
 
+///|
 pub extend Proof with Eq::{equal, not_equal}
+
+///|
 pub extend Proof with Debug::{to_repr}
 
+///|
 /// 知识库 / Knowledge base.
 pub struct KnowledgeBase {
   kb_id : String
@@ -106,64 +143,112 @@ pub struct KnowledgeBase {
   rules : Array[Rule]
 } derive(Debug, Eq)
 
+///|
 pub extend KnowledgeBase with Eq::{equal, not_equal}
+
+///|
 pub extend KnowledgeBase with Debug::{to_repr}
 
 ///===
 /// 构造函数 / Constructors
 
+///|
 /// 构造规则 / Make rule.
-pub fn make_rule(rule_id : String, premise : String, conclusion : String, confidence : Double) -> Rule {
-  { rule_id, premise, conclusion, confidence }
+pub fn make_rule(
+  rule_id : String,
+  premise : String,
+  conclusion : String,
+  confidence : Double,
+) -> Rule {
+  { rule_id, premise, conclusion, confidence, }
 }
 
+///|
 /// 构造事实 / Make fact.
-pub fn make_fact(fact_id : String, proposition : String, truth_value : Bool, confidence : Double) -> Fact {
-  { fact_id, proposition, truth_value, confidence }
+pub fn make_fact(
+  fact_id : String,
+  proposition : String,
+  truth_value : Bool,
+  confidence : Double,
+) -> Fact {
+  { fact_id, proposition, truth_value, confidence, }
 }
 
+///|
 /// 构造查询 / Make query.
 pub fn make_query(query_id : String, proposition : String) -> Query {
-  { query_id, proposition }
+  { query_id, proposition, }
 }
 
+///|
 /// 构造推理结果 / Make inference result.
-pub fn make_inference_result(query : Query, answer : Bool, support : Array[Rule], confidence : Double, explanation : String) -> InferenceResult {
-  { query, answer, support, confidence, explanation }
+pub fn make_inference_result(
+  query : Query,
+  answer : Bool,
+  support : Array[Rule],
+  confidence : Double,
+  explanation : String,
+) -> InferenceResult {
+  { query, answer, support, confidence, explanation, }
 }
 
 ///===
 /// 经典逻辑推理 / Classical logic inference
 
+///|
 /// 肯定前件：P->Q, P ⊢ Q / Modus ponens.
 pub fn modus_ponens(rule : Rule, fact : Fact) -> Fact? {
   if rule.premise == fact.proposition && fact.truth_value {
-    Some(make_fact("mp_" + fact.fact_id, rule.conclusion, true, rule.confidence * fact.confidence))
+    Some(
+      make_fact(
+        "mp_" + fact.fact_id,
+        rule.conclusion,
+        true,
+        rule.confidence * fact.confidence,
+      ),
+    )
   } else {
     None
   }
 }
 
+///|
 /// 否定后件：P->Q, ¬Q ⊢ ¬P / Modus tollens.
 pub fn modus_tollens(rule : Rule, fact : Fact) -> Fact? {
-  if rule.conclusion == fact.proposition && !(fact.truth_value) {
-    Some(make_fact("mt_" + fact.fact_id, rule.premise, false, rule.confidence * fact.confidence))
+  if rule.conclusion == fact.proposition && !fact.truth_value {
+    Some(
+      make_fact(
+        "mt_" + fact.fact_id,
+        rule.premise,
+        false,
+        rule.confidence * fact.confidence,
+      ),
+    )
   } else {
     None
   }
 }
 
+///|
 /// 假言三段论：P->Q, Q->R ⊢ P->R / Hypothetical syllogism.
 pub fn hypothetical_syllogism(r1 : Rule, r2 : Rule) -> Rule? {
   if r1.conclusion == r2.premise {
-    Some(make_rule("hs_" + r1.rule_id + "_" + r2.rule_id, r1.premise, r2.conclusion, r1.confidence * r2.confidence))
+    Some(
+      make_rule(
+        "hs_" + r1.rule_id + "_" + r2.rule_id,
+        r1.premise,
+        r2.conclusion,
+        r1.confidence * r2.confidence,
+      ),
+    )
   } else {
     None
   }
 }
 
+///|
 /// 前向链 / Forward chaining.
-pub fn forward_chaining(kb : KnowledgeBase, max_iter : Int) -> Array[Fact] {
+pub fn forward_chaining(kb : KnowledgeBase, max_iter : Int32) -> Array[Fact] {
   let result = kb.beliefs.copy()
   let mut changed = true
   let mut iter = 0
@@ -180,7 +265,7 @@ pub fn forward_chaining(kb : KnowledgeBase, max_iter : Int) -> Array[Fact] {
                 exists = true
               }
             }
-            if !(exists) {
+            if !exists {
               result.push(new_fact)
               changed = true
             }
@@ -194,8 +279,13 @@ pub fn forward_chaining(kb : KnowledgeBase, max_iter : Int) -> Array[Fact] {
   result
 }
 
+///|
 /// 后向链 / Backward chaining.
-pub fn backward_chaining(kb : KnowledgeBase, query : Query, depth : Int) -> InferenceResult {
+pub fn backward_chaining(
+  kb : KnowledgeBase,
+  query : Query,
+  depth : Int32,
+) -> InferenceResult {
   if depth <= 0 {
     return make_inference_result(query, false, [], 0.0, "Depth limit reached")
   }
@@ -231,8 +321,12 @@ pub fn backward_chaining(kb : KnowledgeBase, query : Query, depth : Int) -> Infe
   }
 }
 
+///|
 /// 归结 / Resolution.
-pub fn resolution(clause1 : Array[String], clause2 : Array[String]) -> Array[String] {
+pub fn resolution(
+  clause1 : Array[String],
+  clause2 : Array[String],
+) -> Array[String] {
   let result : Array[String] = []
   let mut resolved = false
   let mut resolve_idx1 = -1
@@ -263,7 +357,7 @@ pub fn resolution(clause1 : Array[String], clause2 : Array[String]) -> Array[Str
             exists = true
           }
         }
-        if !(exists) {
+        if !exists {
           result.push(l)
         }
       }
@@ -272,26 +366,28 @@ pub fn resolution(clause1 : Array[String], clause2 : Array[String]) -> Array[Str
   result
 }
 
+///|
 ///===
 /// 统一与替换 / Unification and substitution
-
 fn is_variable(term : String) -> Bool {
   term.length() > 0 && term[0] == '?'
 }
 
+///|
 /// 统一 / Unification.
 pub fn unification(term1 : String, term2 : String) -> Substitution? {
   if term1 == term2 {
-    Some({ bindings: [] })
+    Some({ bindings: [], })
   } else if is_variable(term1) {
-    Some({ bindings: [(term1, term2)] })
+    Some({ bindings: [(term1, term2)], })
   } else if is_variable(term2) {
-    Some({ bindings: [(term2, term1)] })
+    Some({ bindings: [(term2, term1)], })
   } else {
     None
   }
 }
 
+///|
 /// 替换 / Apply substitution.
 pub fn substitution(term : String, sub : Substitution) -> String {
   let mut result = term
@@ -305,8 +401,12 @@ pub fn substitution(term : String, sub : Substitution) -> String {
   result
 }
 
+///|
 /// 组合替换 / Compose substitutions.
-pub fn compose_substitution(s1 : Substitution, s2 : Substitution) -> Substitution {
+pub fn compose_substitution(
+  s1 : Substitution,
+  s2 : Substitution,
+) -> Substitution {
   let result : Array[(String, String)] = []
   for i = 0; i < s1.bindings.length(); i = i + 1 {
     let v = s1.bindings[i].0
@@ -321,41 +421,60 @@ pub fn compose_substitution(s1 : Substitution, s2 : Substitution) -> Substitutio
         exists = true
       }
     }
-    if !(exists) {
+    if !exists {
       result.push((v, s2.bindings[j].1))
     }
   }
-  { bindings: result }
+  { bindings: result, }
 }
 
 ///===
 /// 因果推理 / Causal reasoning
 
+///|
 /// 构造因果模型 / Make causal model.
-pub fn make_causal_model(model_id : String, variables : Array[String]) -> CausalModel {
-  { model_id, variables, edges: [] }
+pub fn make_causal_model(
+  model_id : String,
+  variables : Array[String],
+) -> CausalModel {
+  { model_id, variables, edges: [], }
 }
 
+///|
 /// 添加因果边 / Add causal edge.
-pub fn add_causal_edge(model : CausalModel, cause : String, effect : String) -> CausalModel {
+pub fn add_causal_edge(
+  model : CausalModel,
+  cause : String,
+  effect : String,
+) -> CausalModel {
   let new_edges = model.edges.copy()
   new_edges.push((cause, effect))
-  { ..model, edges: new_edges }
+  { ..model, edges: new_edges, }
 }
 
+///|
 /// do 操作：干预 / Do intervention.
-pub fn do_intervention(model : CausalModel, variable : String, _value : Double) -> CausalModel {
+pub fn do_intervention(
+  model : CausalModel,
+  variable : String,
+  _value : Double,
+) -> CausalModel {
   let new_edges : Array[(String, String)] = []
   for i = 0; i < model.edges.length(); i = i + 1 {
     if model.edges[i].1 != variable {
       new_edges.push(model.edges[i])
     }
   }
-  { ..model, edges: new_edges }
+  { ..model, edges: new_edges, }
 }
 
+///|
 /// 反事实推理 / Counterfactual.
-pub fn counterfactual(model : CausalModel, observed : Fact, hypothesis : Fact) -> Fact {
+pub fn counterfactual(
+  model : CausalModel,
+  observed : Fact,
+  hypothesis : Fact,
+) -> Fact {
   let intervened = do_intervention(model, hypothesis.proposition, 1.0)
   let mut support_count = 0
   for i = 0; i < intervened.edges.length(); i = i + 1 {
@@ -364,11 +483,23 @@ pub fn counterfactual(model : CausalModel, observed : Fact, hypothesis : Fact) -
     }
   }
   let cf_conf = hypothesis.confidence * observed.confidence
-  make_fact("cf_" + observed.fact_id, hypothesis.proposition, hypothesis.truth_value, cf_conf)
+  make_fact(
+    "cf_" + observed.fact_id,
+    hypothesis.proposition,
+    hypothesis.truth_value,
+    cf_conf,
+  )
 }
 
+///|
 /// 因果效应 / Causal effect.
-pub fn causal_effect(model : CausalModel, cause : String, effect : String, cause_value : Double, baseline : Double) -> Double {
+pub fn causal_effect(
+  model : CausalModel,
+  cause : String,
+  effect : String,
+  cause_value : Double,
+  baseline : Double,
+) -> Double {
   let mut has_path = false
   for i = 0; i < model.edges.length(); i = i + 1 {
     if model.edges[i].0 == cause && model.edges[i].1 == effect {
@@ -382,8 +513,14 @@ pub fn causal_effect(model : CausalModel, cause : String, effect : String, cause
   }
 }
 
+///|
 /// 后门调整 / Backdoor adjustment.
-pub fn backdoor_adjustment(model : CausalModel, treatment : String, outcome : String, confounders : Array[String]) -> Double {
+pub fn backdoor_adjustment(
+  model : CausalModel,
+  treatment : String,
+  outcome : String,
+  confounders : Array[String],
+) -> Double {
   let mut valid_confounders = 0
   for i = 0; i < confounders.length(); i = i + 1 {
     let z = confounders[i]
@@ -408,8 +545,14 @@ pub fn backdoor_adjustment(model : CausalModel, treatment : String, outcome : St
   }
 }
 
+///|
 /// 前门调整 / Frontdoor adjustment.
-pub fn frontdoor_adjustment(model : CausalModel, treatment : String, mediator : String, outcome : String) -> Double {
+pub fn frontdoor_adjustment(
+  model : CausalModel,
+  treatment : String,
+  mediator : String,
+  outcome : String,
+) -> Double {
   let mut path1 = false
   let mut path2 = false
   for i = 0; i < model.edges.length(); i = i + 1 {
@@ -427,8 +570,14 @@ pub fn frontdoor_adjustment(model : CausalModel, treatment : String, mediator : 
   }
 }
 
+///|
 /// 工具变量 / Instrumental variable.
-pub fn instrumental_variable(model : CausalModel, instrument : String, treatment : String, outcome : String) -> Double {
+pub fn instrumental_variable(
+  model : CausalModel,
+  instrument : String,
+  treatment : String,
+  outcome : String,
+) -> Double {
   let mut z_to_x = false
   let mut x_to_y = false
   let mut z_to_y = false
@@ -443,7 +592,7 @@ pub fn instrumental_variable(model : CausalModel, instrument : String, treatment
       z_to_y = true
     }
   }
-  if z_to_x && x_to_y && !(z_to_y) {
+  if z_to_x && x_to_y && !z_to_y {
     1.0
   } else {
     0.0
@@ -453,11 +602,17 @@ pub fn instrumental_variable(model : CausalModel, instrument : String, treatment
 ///===
 /// 论证理论 / Argument theory
 
+///|
 /// 构造论证 / Make argument.
-pub fn make_argument(arg_id : String, premises : Array[Fact], conclusion : Fact) -> Argument {
-  { arg_id, premises, conclusion }
+pub fn make_argument(
+  arg_id : String,
+  premises : Array[Fact],
+  conclusion : Fact,
+) -> Argument {
+  { arg_id, premises, conclusion, }
 }
 
+///|
 /// 评估论证 / Evaluate argument.
 pub fn evaluate_argument(arg : Argument) -> Double {
   if arg.premises.length() == 0 {
@@ -472,11 +627,12 @@ pub fn evaluate_argument(arg : Argument) -> Double {
   min_conf * arg.conclusion.confidence
 }
 
+///|
 /// 论证有效性 / Argument validity.
 pub fn argument_validity(arg : Argument) -> Bool {
   let mut all_true = true
   for i = 0; i < arg.premises.length(); i = i + 1 {
-    if !(arg.premises[i].truth_value) {
+    if !arg.premises[i].truth_value {
       all_true = false
     }
   }
@@ -486,12 +642,17 @@ pub fn argument_validity(arg : Argument) -> Bool {
 ///===
 /// 推理类型 / Reasoning types
 
+///|
 /// 演绎推理 / Deductive reasoning.
-pub fn deductive_reasoning(premises : Array[Fact], rules : Array[Rule]) -> Array[Fact] {
+pub fn deductive_reasoning(
+  premises : Array[Fact],
+  rules : Array[Rule],
+) -> Array[Fact] {
   let kb = make_knowledge_base("ded", premises, rules)
   forward_chaining(kb, 100)
 }
 
+///|
 /// 归纳推理 / Inductive reasoning.
 pub fn inductive_reasoning(observations : Array[Fact]) -> Rule {
   if observations.length() < 2 {
@@ -504,18 +665,28 @@ pub fn inductive_reasoning(observations : Array[Fact]) -> Rule {
     }
   }
   let conf = true_count.to_double() / observations.length().to_double()
-  make_rule("ind_rule", observations[0].proposition, observations[observations.length() - 1].proposition, conf)
+  make_rule(
+    "ind_rule",
+    observations[0].proposition,
+    observations[observations.length() - 1].proposition,
+    conf,
+  )
 }
 
+///|
 /// 溯因推理 / Abductive reasoning.
-pub fn abductive_reasoning(observations : Array[Fact], hypotheses : Array[Rule]) -> Rule? {
+pub fn abductive_reasoning(
+  observations : Array[Fact],
+  hypotheses : Array[Rule],
+) -> Rule? {
   let mut best : Rule? = None
   let mut best_conf = 0.0
   for i = 0; i < hypotheses.length(); i = i + 1 {
     let h = hypotheses[i]
     let mut match_count = 0
     for j = 0; j < observations.length(); j = j + 1 {
-      if h.conclusion == observations[j].proposition && observations[j].truth_value {
+      if h.conclusion == observations[j].proposition &&
+        observations[j].truth_value {
         match_count = match_count + 1
       }
     }
@@ -531,16 +702,27 @@ pub fn abductive_reasoning(observations : Array[Fact], hypotheses : Array[Rule])
 ///===
 /// 证明 / Proof
 
+///|
 /// 构造证明 / Make proof.
-pub fn make_proof(proof_id : String, steps : Array[ProofStep], goal : String) -> Proof {
-  { proof_id, steps, goal }
+pub fn make_proof(
+  proof_id : String,
+  steps : Array[ProofStep],
+  goal : String,
+) -> Proof {
+  { proof_id, steps, goal, }
 }
 
+///|
 /// 证明步骤 / Proof step.
-pub fn proof_step(step_id : Int, statement : String, justification : String) -> ProofStep {
-  { step_id, statement, justification }
+pub fn proof_step(
+  step_id : Int32,
+  statement : String,
+  justification : String,
+) -> ProofStep {
+  { step_id, statement, justification, }
 }
 
+///|
 /// 验证证明 / Verify proof.
 pub fn verify_proof(proof : Proof) -> Bool {
   if proof.steps.length() == 0 {
@@ -559,18 +741,25 @@ pub fn verify_proof(proof : Proof) -> Bool {
 ///===
 /// 知识库 / Knowledge base
 
+///|
 /// 构造知识库 / Make knowledge base.
-pub fn make_knowledge_base(kb_id : String, beliefs : Array[Fact], rules : Array[Rule]) -> KnowledgeBase {
-  { kb_id, beliefs, rules }
+pub fn make_knowledge_base(
+  kb_id : String,
+  beliefs : Array[Fact],
+  rules : Array[Rule],
+) -> KnowledgeBase {
+  { kb_id, beliefs, rules, }
 }
 
+///|
 /// 添加信念 / Add belief.
 pub fn add_belief(kb : KnowledgeBase, belief : Fact) -> KnowledgeBase {
   let new_beliefs = kb.beliefs.copy()
   new_beliefs.push(belief)
-  { ..kb, beliefs: new_beliefs }
+  { ..kb, beliefs: new_beliefs, }
 }
 
+///|
 /// 查询信念 / Query belief.
 pub fn query_belief(kb : KnowledgeBase, proposition : String) -> Fact? {
   let mut result : Fact? = None
@@ -582,6 +771,7 @@ pub fn query_belief(kb : KnowledgeBase, proposition : String) -> Fact? {
   result
 }
 
+///|
 /// 修正信念 / Revise belief.
 pub fn revise_belief(kb : KnowledgeBase, belief : Fact) -> KnowledgeBase {
   let new_beliefs : Array[Fact] = []
@@ -594,28 +784,34 @@ pub fn revise_belief(kb : KnowledgeBase, belief : Fact) -> KnowledgeBase {
       new_beliefs.push(kb.beliefs[i])
     }
   }
-  if !(found) {
+  if !found {
     new_beliefs.push(belief)
   }
-  { ..kb, beliefs: new_beliefs }
+  { ..kb, beliefs: new_beliefs, }
 }
 
+///|
 /// 撤回信念 / Retract belief.
-pub fn retract_belief(kb : KnowledgeBase, proposition : String) -> KnowledgeBase {
+pub fn retract_belief(
+  kb : KnowledgeBase,
+  proposition : String,
+) -> KnowledgeBase {
   let new_beliefs : Array[Fact] = []
   for i = 0; i < kb.beliefs.length(); i = i + 1 {
     if kb.beliefs[i].proposition != proposition {
       new_beliefs.push(kb.beliefs[i])
     }
   }
-  { ..kb, beliefs: new_beliefs }
+  { ..kb, beliefs: new_beliefs, }
 }
 
+///|
 /// 一致性检查 / Consistency check.
 pub fn consistency_check(kb : KnowledgeBase) -> Bool {
   for i = 0; i < kb.beliefs.length(); i = i + 1 {
     for j = i + 1; j < kb.beliefs.length(); j = j + 1 {
-      if kb.beliefs[i].proposition == kb.beliefs[j].proposition && kb.beliefs[i].truth_value != kb.beliefs[j].truth_value {
+      if kb.beliefs[i].proposition == kb.beliefs[j].proposition &&
+        kb.beliefs[i].truth_value != kb.beliefs[j].truth_value {
         return false
       }
     }
@@ -623,6 +819,7 @@ pub fn consistency_check(kb : KnowledgeBase) -> Bool {
   true
 }
 
+///|
 /// 模块标识 / Module id.
 pub fn reasoning_id() -> String {
   "agent_kit/reasoning"

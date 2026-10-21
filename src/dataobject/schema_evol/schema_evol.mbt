@@ -8,6 +8,7 @@
 ///
 /// Version management / field ops / validation / conversion / migration / strategy / compatibility.
 
+///|
 /// 字段类型 / Field type.
 pub(all) enum FieldType {
   Text
@@ -18,9 +19,13 @@ pub(all) enum FieldType {
   Date
 } derive(Debug, Eq)
 
+///|
 pub extend FieldType with Eq::{equal, not_equal}
+
+///|
 pub extend FieldType with Debug::{to_repr}
 
+///|
 /// 兼容性等级 / Compatibility level.
 pub(all) enum Compatibility {
   Full
@@ -29,9 +34,13 @@ pub(all) enum Compatibility {
   None
 } derive(Debug, Eq)
 
+///|
 pub extend Compatibility with Eq::{equal, not_equal}
+
+///|
 pub extend Compatibility with Debug::{to_repr}
 
+///|
 /// 迁移风险等级 / Migration risk level.
 pub(all) enum MigrationRiskLevel {
   Low
@@ -40,9 +49,13 @@ pub(all) enum MigrationRiskLevel {
   Critical
 } derive(Debug, Eq)
 
+///|
 pub extend MigrationRiskLevel with Eq::{equal, not_equal}
+
+///|
 pub extend MigrationRiskLevel with Debug::{to_repr}
 
+///|
 /// 演化动作 / Evolution action.
 pub(all) enum EvolutionAction {
   AddField
@@ -53,9 +66,13 @@ pub(all) enum EvolutionAction {
   MakeRequired
 } derive(Debug, Eq)
 
+///|
 pub extend EvolutionAction with Eq::{equal, not_equal}
+
+///|
 pub extend EvolutionAction with Debug::{to_repr}
 
+///|
 /// 字段描述 / Field descriptor.
 pub struct Field {
   name : String
@@ -64,18 +81,26 @@ pub struct Field {
   default_value : String?
 } derive(Debug, Eq)
 
+///|
 pub extend Field with Eq::{equal, not_equal}
+
+///|
 pub extend Field with Debug::{to_repr}
 
+///|
 /// 模式 / Schema.
 pub struct Schema {
-  version : Int
+  version : Int32
   fields : Array[Field]
 } derive(Debug, Eq)
 
+///|
 pub extend Schema with Eq::{equal, not_equal}
+
+///|
 pub extend Schema with Debug::{to_repr}
 
+///|
 /// 模式差异 / Schema diff.
 pub struct SchemaDiff {
   added : Array[Field]
@@ -83,28 +108,40 @@ pub struct SchemaDiff {
   modified : Array[Field]
 } derive(Debug, Eq)
 
+///|
 pub extend SchemaDiff with Eq::{equal, not_equal}
+
+///|
 pub extend SchemaDiff with Debug::{to_repr}
 
+///|
 /// 迁移 / Migration.
 pub struct Migration {
-  from_version : Int
-  to_version : Int
+  from_version : Int32
+  to_version : Int32
   diff : SchemaDiff
 } derive(Debug, Eq)
 
+///|
 pub extend Migration with Eq::{equal, not_equal}
+
+///|
 pub extend Migration with Debug::{to_repr}
 
+///|
 /// 演化计划 / Evolution plan.
 pub struct EvolutionPlan {
   steps : Array[(EvolutionAction, String)]
   risk : MigrationRiskLevel
 } derive(Debug, Eq)
 
+///|
 pub extend EvolutionPlan with Eq::{equal, not_equal}
+
+///|
 pub extend EvolutionPlan with Debug::{to_repr}
 
+///|
 /// 演化结果 / Evolution result.
 pub struct EvolutionResult {
   success : Bool
@@ -112,39 +149,48 @@ pub struct EvolutionResult {
   message : String
 } derive(Debug, Eq)
 
+///|
 pub extend EvolutionResult with Eq::{equal, not_equal}
+
+///|
 pub extend EvolutionResult with Debug::{to_repr}
 
+///|
 /// 构造字段 / Build a field.
 pub fn make_field(
   name : String,
   field_type : FieldType,
   nullable : Bool,
-  default_value : String?
+  default_value : String?,
 ) -> Field {
-  { name, field_type, nullable, default_value }
+  { name, field_type, nullable, default_value, }
 }
 
+///|
 /// 构造必填字段 / Build a required field.
 pub fn required_field(name : String, field_type : FieldType) -> Field {
-  { name, field_type, nullable: false, default_value: None }
+  { name, field_type, nullable: false, default_value: None, }
 }
 
+///|
 /// 构造可选字段 / Build an optional field.
 pub fn optional_field(name : String, field_type : FieldType) -> Field {
-  { name, field_type, nullable: true, default_value: None }
+  { name, field_type, nullable: true, default_value: None, }
 }
 
+///|
 /// 构造空模式 / Build an empty schema.
 pub fn empty_schema() -> Schema {
-  { version: 0, fields: [] }
+  { version: 0, fields: [], }
 }
 
+///|
 /// 字段名相等判断 / Field name equality.
 pub fn field_name_eq(a : Field, b : Field) -> Bool {
   a.name == b.name
 }
 
+///|
 /// 字段完全相等判断 / Field full equality.
 pub fn field_full_eq(a : Field, b : Field) -> Bool {
   a.name == b.name &&
@@ -153,8 +199,9 @@ pub fn field_full_eq(a : Field, b : Field) -> Bool {
   a.default_value == b.default_value
 }
 
+///|
 /// 在数组中查找字段名索引 / Find field index by name.
-pub fn find_field_index(fields : Array[Field], name : String) -> Int {
+pub fn find_field_index(fields : Array[Field], name : String) -> Int32 {
   let n = fields.length()
   for i in 0..<n {
     if fields[i].name == name {
@@ -164,6 +211,7 @@ pub fn find_field_index(fields : Array[Field], name : String) -> Int {
   -1
 }
 
+///|
 /// 字段类型转字符串 / Field type to string.
 pub fn field_type_to_string(t : FieldType) -> String {
   match t {
@@ -176,6 +224,7 @@ pub fn field_type_to_string(t : FieldType) -> String {
   }
 }
 
+///|
 /// 字符串转字段类型 / String to field type.
 pub fn string_to_field_type(s : String) -> FieldType {
   match s {
@@ -189,6 +238,7 @@ pub fn string_to_field_type(s : String) -> FieldType {
   }
 }
 
+///|
 /// 兼容性转字符串 / Compatibility to string.
 pub fn compatibility_to_string(c : Compatibility) -> String {
   match c {
@@ -199,6 +249,7 @@ pub fn compatibility_to_string(c : Compatibility) -> String {
   }
 }
 
+///|
 /// 风险等级转字符串 / Risk level to string.
 pub fn risk_to_string(r : MigrationRiskLevel) -> String {
   match r {
@@ -209,6 +260,7 @@ pub fn risk_to_string(r : MigrationRiskLevel) -> String {
   }
 }
 
+///|
 /// 演化动作转字符串 / Evolution action to string.
 pub fn action_to_string(a : EvolutionAction) -> String {
   match a {
@@ -221,21 +273,25 @@ pub fn action_to_string(a : EvolutionAction) -> String {
   }
 }
 
+///|
 /// 构造 v1 模式 / Build a v1 schema.
 pub fn make_schema_v1(fields : Array[Field]) -> Schema {
-  { version: 1, fields }
+  { version: 1, fields, }
 }
 
+///|
 /// 构造 v2 模式 / Build a v2 schema.
 pub fn make_schema_v2(fields : Array[Field]) -> Schema {
-  { version: 2, fields }
+  { version: 2, fields, }
 }
 
+///|
 /// 获取模式版本 / Get schema version.
-pub fn schema_version(s : Schema) -> Int {
+pub fn schema_version(s : Schema) -> Int32 {
   s.version
 }
 
+///|
 /// 计算模式差异 / Compute schema diff.
 pub fn schema_diff(from : Schema, to : Schema) -> SchemaDiff {
   let added : Array[Field] = []
@@ -248,7 +304,7 @@ pub fn schema_diff(from : Schema, to : Schema) -> SchemaDiff {
     let idx = find_field_index(from.fields, f.name)
     if idx == -1 {
       added.push(f)
-    } else if !(field_full_eq(from.fields[idx], f)) {
+    } else if !field_full_eq(from.fields[idx], f) {
       modified.push(f)
     }
   }
@@ -259,21 +315,27 @@ pub fn schema_diff(from : Schema, to : Schema) -> SchemaDiff {
       removed.push(f)
     }
   }
-  { added, removed, modified }
+  { added, removed, modified, }
 }
 
+///|
 /// 构造迁移 / Build a migration.
 pub fn schema_migration(from : Schema, to : Schema) -> Migration {
-  { from_version: from.version, to_version: to.version, diff: schema_diff(from, to) }
+  {
+    from_version: from.version,
+    to_version: to.version,
+    diff: schema_diff(from, to),
+  }
 }
 
+///|
 /// 向后兼容 / Backward compatibility: new schema can read old data.
 pub fn schema_backward_compat(old : Schema, new : Schema) -> Bool {
   let d = schema_diff(old, new)
   let na = d.added.length()
   for i in 0..<na {
     let f = d.added[i]
-    if !(f.nullable) && f.default_value is None {
+    if !f.nullable && f.default_value is None {
       return false
     }
   }
@@ -283,7 +345,7 @@ pub fn schema_backward_compat(old : Schema, new : Schema) -> Bool {
     let idx = find_field_index(old.fields, f.name)
     if idx >= 0 {
       let of = old.fields[idx]
-      if !(f.nullable) && of.nullable {
+      if !f.nullable && of.nullable {
         return false
       }
     }
@@ -291,6 +353,7 @@ pub fn schema_backward_compat(old : Schema, new : Schema) -> Bool {
   true
 }
 
+///|
 /// 向前兼容 / Forward compatibility: old schema can read new data.
 pub fn schema_forward_compat(old : Schema, new : Schema) -> Bool {
   let d = schema_diff(old, new)
@@ -303,7 +366,7 @@ pub fn schema_forward_compat(old : Schema, new : Schema) -> Bool {
     let idx = find_field_index(old.fields, f.name)
     if idx >= 0 {
       let of = old.fields[idx]
-      if f.nullable && !(of.nullable) {
+      if f.nullable && !of.nullable {
         return false
       }
     }
@@ -311,11 +374,13 @@ pub fn schema_forward_compat(old : Schema, new : Schema) -> Bool {
   true
 }
 
+///|
 /// 完全兼容 / Full compatibility.
 pub fn schema_full_compat(old : Schema, new : Schema) -> Bool {
   schema_backward_compat(old, new) && schema_forward_compat(old, new)
 }
 
+///|
 /// 添加字段 / Add a field to schema.
 pub fn add_field(s : Schema, f : Field) -> Schema {
   let idx = find_field_index(s.fields, f.name)
@@ -328,9 +393,10 @@ pub fn add_field(s : Schema, f : Field) -> Schema {
     new_fields.push(s.fields[i])
   }
   new_fields.push(f)
-  { version: s.version, fields: new_fields }
+  { version: s.version, fields: new_fields, }
 }
 
+///|
 /// 移除字段 / Remove a field from schema.
 pub fn remove_field(s : Schema, name : String) -> Schema {
   let new_fields : Array[Field] = []
@@ -340,9 +406,10 @@ pub fn remove_field(s : Schema, name : String) -> Schema {
       new_fields.push(s.fields[i])
     }
   }
-  { version: s.version, fields: new_fields }
+  { version: s.version, fields: new_fields, }
 }
 
+///|
 /// 重命名字段 / Rename a field.
 pub fn rename_field(s : Schema, old_name : String, new_name : String) -> Schema {
   let new_fields : Array[Field] = []
@@ -350,29 +417,45 @@ pub fn rename_field(s : Schema, old_name : String, new_name : String) -> Schema 
   for i in 0..<n {
     let f = s.fields[i]
     if f.name == old_name {
-      new_fields.push({ name: new_name, field_type: f.field_type, nullable: f.nullable, default_value: f.default_value })
+      new_fields.push({
+        name: new_name,
+        field_type: f.field_type,
+        nullable: f.nullable,
+        default_value: f.default_value,
+      })
     } else {
       new_fields.push(f)
     }
   }
-  { version: s.version, fields: new_fields }
+  { version: s.version, fields: new_fields, }
 }
 
+///|
 /// 改变字段类型 / Change field type.
-pub fn change_field_type(s : Schema, name : String, new_type : FieldType) -> Schema {
+pub fn change_field_type(
+  s : Schema,
+  name : String,
+  new_type : FieldType,
+) -> Schema {
   let new_fields : Array[Field] = []
   let n = s.fields.length()
   for i in 0..<n {
     let f = s.fields[i]
     if f.name == name {
-      new_fields.push({ name: f.name, field_type: new_type, nullable: f.nullable, default_value: f.default_value })
+      new_fields.push({
+        name: f.name,
+        field_type: new_type,
+        nullable: f.nullable,
+        default_value: f.default_value,
+      })
     } else {
       new_fields.push(f)
     }
   }
-  { version: s.version, fields: new_fields }
+  { version: s.version, fields: new_fields, }
 }
 
+///|
 /// 使字段可选 / Make field optional.
 pub fn make_field_optional(s : Schema, name : String) -> Schema {
   let new_fields : Array[Field] = []
@@ -380,14 +463,20 @@ pub fn make_field_optional(s : Schema, name : String) -> Schema {
   for i in 0..<n {
     let f = s.fields[i]
     if f.name == name {
-      new_fields.push({ name: f.name, field_type: f.field_type, nullable: true, default_value: f.default_value })
+      new_fields.push({
+        name: f.name,
+        field_type: f.field_type,
+        nullable: true,
+        default_value: f.default_value,
+      })
     } else {
       new_fields.push(f)
     }
   }
-  { version: s.version, fields: new_fields }
+  { version: s.version, fields: new_fields, }
 }
 
+///|
 /// 使字段必填 / Make field required.
 pub fn make_field_required(s : Schema, name : String) -> Schema {
   let new_fields : Array[Field] = []
@@ -395,14 +484,20 @@ pub fn make_field_required(s : Schema, name : String) -> Schema {
   for i in 0..<n {
     let f = s.fields[i]
     if f.name == name {
-      new_fields.push({ name: f.name, field_type: f.field_type, nullable: false, default_value: f.default_value })
+      new_fields.push({
+        name: f.name,
+        field_type: f.field_type,
+        nullable: false,
+        default_value: f.default_value,
+      })
     } else {
       new_fields.push(f)
     }
   }
-  { version: s.version, fields: new_fields }
+  { version: s.version, fields: new_fields, }
 }
 
+///|
 /// 设置默认值 / Set default value.
 pub fn set_default_value(s : Schema, name : String, value : String) -> Schema {
   let new_fields : Array[Field] = []
@@ -410,19 +505,26 @@ pub fn set_default_value(s : Schema, name : String, value : String) -> Schema {
   for i in 0..<n {
     let f = s.fields[i]
     if f.name == name {
-      new_fields.push({ name: f.name, field_type: f.field_type, nullable: f.nullable, default_value: Some(value) })
+      new_fields.push({
+        name: f.name,
+        field_type: f.field_type,
+        nullable: f.nullable,
+        default_value: Some(value),
+      })
     } else {
       new_fields.push(f)
     }
   }
-  { version: s.version, fields: new_fields }
+  { version: s.version, fields: new_fields, }
 }
 
+///|
 /// 字段是否存在 / Check field existence.
 pub fn field_exists(s : Schema, name : String) -> Bool {
   find_field_index(s.fields, name) >= 0
 }
 
+///|
 /// 获取字段类型 / Get field type.
 pub fn get_field_type(s : Schema, name : String) -> FieldType? {
   let idx = find_field_index(s.fields, name)
@@ -433,6 +535,7 @@ pub fn get_field_type(s : Schema, name : String) -> FieldType? {
   }
 }
 
+///|
 /// 获取字段默认值 / Get field default value.
 pub fn get_field_default(s : Schema, name : String) -> String?? {
   let idx = find_field_index(s.fields, name)
@@ -443,6 +546,7 @@ pub fn get_field_default(s : Schema, name : String) -> String?? {
   }
 }
 
+///|
 /// 验证模式 / Validate schema.
 pub fn validate_schema(s : Schema) -> Bool {
   let n = s.fields.length()
@@ -460,6 +564,7 @@ pub fn validate_schema(s : Schema) -> Bool {
   true
 }
 
+///|
 /// 验证记录 / Validate record against schema.
 pub fn validate_record(s : Schema, record : Array[(String, String)]) -> Bool {
   let nr = record.length()
@@ -472,13 +577,14 @@ pub fn validate_record(s : Schema, record : Array[(String, String)]) -> Bool {
       return false
     }
     let f = s.fields[idx]
-    if val.length() == 0 && !(f.nullable) {
+    if val.length() == 0 && !f.nullable {
       return false
     }
   }
   true
 }
 
+///|
 /// 验证迁移 / Validate migration.
 pub fn validate_migration(m : Migration) -> Bool {
   if m.from_version >= m.to_version {
@@ -487,13 +593,14 @@ pub fn validate_migration(m : Migration) -> Bool {
   let na = m.diff.added.length()
   for i in 0..<na {
     let f = m.diff.added[i]
-    if !(f.nullable) && f.default_value is None {
+    if !f.nullable && f.default_value is None {
       return false
     }
   }
   true
 }
 
+///|
 /// 检查可空 / Check nullable.
 pub fn check_nullable(s : Schema, name : String) -> Bool {
   let idx = find_field_index(s.fields, name)
@@ -504,6 +611,7 @@ pub fn check_nullable(s : Schema, name : String) -> Bool {
   }
 }
 
+///|
 /// 检查唯一 / Check unique field names.
 pub fn check_unique(s : Schema) -> Bool {
   let n = s.fields.length()
@@ -517,8 +625,13 @@ pub fn check_unique(s : Schema) -> Bool {
   true
 }
 
+///|
 /// 检查外键 / Check foreign key reference.
-pub fn check_foreign_key(s : Schema, ref_schema : Schema, field_name : String) -> Bool {
+pub fn check_foreign_key(
+  s : Schema,
+  ref_schema : Schema,
+  field_name : String,
+) -> Bool {
   let idx = find_field_index(s.fields, field_name)
   if idx == -1 {
     return false
@@ -526,35 +639,44 @@ pub fn check_foreign_key(s : Schema, ref_schema : Schema, field_name : String) -
   field_exists(ref_schema, field_name)
 }
 
+///|
 /// 检查索引 / Check index validity.
 pub fn check_index(s : Schema, index_fields : Array[String]) -> Bool {
   let n = index_fields.length()
   for i in 0..<n {
-    if !(field_exists(s, index_fields[i])) {
+    if !field_exists(s, index_fields[i]) {
       return false
     }
   }
   true
 }
 
+///|
 /// 检查约束模式 / Check constraint schema.
 pub fn check_constraint_schema(s : Schema, constraints : Array[String]) -> Bool {
   let nc = constraints.length()
   for i in 0..<nc {
-    if !(field_exists(s, constraints[i])) {
+    if !field_exists(s, constraints[i]) {
       return false
     }
   }
   true
 }
 
+///|
 /// 模式转 JSON / Schema to JSON string.
 pub fn schema_to_json(s : Schema) -> String {
   let mut result = "{\"version\":" + s.version.to_string() + ",\"fields\":["
   let n = s.fields.length()
   for i in 0..<n {
     let f = s.fields[i]
-    result = result + "{\"name\":\"" + f.name + "\",\"type\":\"" + field_type_to_string(f.field_type) + "\",\"nullable\":" + f.nullable.to_string()
+    result = result +
+      "{\"name\":\"" +
+      f.name +
+      "\",\"type\":\"" +
+      field_type_to_string(f.field_type) +
+      "\",\"nullable\":" +
+      f.nullable.to_string()
     result = result + ",\"default\":"
     match f.default_value {
       Some(v) => result = result + "\"" + v + "\""
@@ -569,18 +691,29 @@ pub fn schema_to_json(s : Schema) -> String {
   result
 }
 
+///|
 /// 从 JSON 构造模式（简化版）/ Schema from JSON (simplified).
-pub fn schema_from_json(version : Int, field_names : Array[String], field_types : Array[String]) -> Schema {
+pub fn schema_from_json(
+  version : Int32,
+  field_names : Array[String],
+  field_types : Array[String],
+) -> Schema {
   let fields : Array[Field] = []
   let n = field_names.length()
   for i in 0..<n {
     if i < field_types.length() {
-      fields.push({ name: field_names[i], field_type: string_to_field_type(field_types[i]), nullable: true, default_value: None })
+      fields.push({
+        name: field_names[i],
+        field_type: string_to_field_type(field_types[i]),
+        nullable: true,
+        default_value: None,
+      })
     }
   }
-  { version, fields }
+  { version, fields, }
 }
 
+///|
 /// 模式转 DDL / Schema to DDL.
 pub fn schema_to_ddl(s : Schema, table_name : String) -> String {
   let mut result = "CREATE TABLE " + table_name + " ("
@@ -588,7 +721,7 @@ pub fn schema_to_ddl(s : Schema, table_name : String) -> String {
   for i in 0..<n {
     let f = s.fields[i]
     result = result + f.name + " " + field_type_to_string(f.field_type)
-    if !(f.nullable) {
+    if !f.nullable {
       result = result + " NOT NULL"
     }
     match f.default_value {
@@ -603,6 +736,7 @@ pub fn schema_to_ddl(s : Schema, table_name : String) -> String {
   result
 }
 
+///|
 /// 合并模式 / Merge schemas.
 pub fn merge_schemas(a : Schema, b : Schema) -> Schema {
   let fields : Array[Field] = []
@@ -617,9 +751,10 @@ pub fn merge_schemas(a : Schema, b : Schema) -> Schema {
       fields.push(f)
     }
   }
-  { version: b.version, fields }
+  { version: b.version, fields, }
 }
 
+///|
 /// 交集模式 / Intersect schemas.
 pub fn intersect_schemas(a : Schema, b : Schema) -> Schema {
   let fields : Array[Field] = []
@@ -630,9 +765,10 @@ pub fn intersect_schemas(a : Schema, b : Schema) -> Schema {
       fields.push(f)
     }
   }
-  { version: a.version, fields }
+  { version: a.version, fields, }
 }
 
+///|
 /// 差集模式 / Diff schemas (fields in a but not in b).
 pub fn diff_schemas(a : Schema, b : Schema) -> Schema {
   let fields : Array[Field] = []
@@ -643,14 +779,15 @@ pub fn diff_schemas(a : Schema, b : Schema) -> Schema {
       fields.push(f)
     }
   }
-  { version: a.version, fields }
+  { version: a.version, fields, }
 }
 
+///|
 /// 迁移数据 / Migrate data from old schema to new schema.
 pub fn migrate_data(
   old : Schema,
   new : Schema,
-  record : Array[(String, String)]
+  record : Array[(String, String)],
 ) -> Array[(String, String)] {
   let result : Array[(String, String)] = []
   let nn = new.fields.length()
@@ -666,23 +803,22 @@ pub fn migrate_data(
         break
       }
     }
-    if !(found) {
+    if !found {
       let old_idx = find_field_index(old.fields, f.name)
       match f.default_value {
         Some(v) => result.push((f.name, v))
-        None => if f.nullable || old_idx >= 0 {
-          result.push((f.name, ""))
-        }
+        None => if f.nullable || old_idx >= 0 { result.push((f.name, "")) }
       }
     }
   }
   result
 }
 
+///|
 /// 转换数据 / Transform data values.
 pub fn transform_data(
   record : Array[(String, String)],
-  transform_fn : (String, String) -> String
+  transform_fn : (String, String) -> String,
 ) -> Array[(String, String)] {
   let result : Array[(String, String)] = []
   let n = record.length()
@@ -693,6 +829,7 @@ pub fn transform_data(
   result
 }
 
+///|
 /// 转换值类型 / Cast value to target type.
 pub fn cast_value(value : String, target_type : FieldType) -> String {
   match target_type {
@@ -738,7 +875,7 @@ pub fn cast_value(value : String, target_type : FieldType) -> String {
         "0.0"
       }
     }
-    Boolean => {
+    Boolean =>
       if value == "true" || value == "1" || value == "yes" {
         "true"
       } else if value == "false" || value == "0" || value == "no" {
@@ -746,23 +883,17 @@ pub fn cast_value(value : String, target_type : FieldType) -> String {
       } else {
         "false"
       }
-    }
     Nested => value
-    Date => {
-      if value.length() >= 8 {
-        value
-      } else {
-        "19700101"
-      }
-    }
+    Date => if value.length() >= 8 { value } else { "19700101" }
   }
 }
 
+///|
 /// 处理缺失字段 / Handle missing field.
 pub fn handle_missing_field(
   s : Schema,
   record : Array[(String, String)],
-  field_name : String
+  field_name : String,
 ) -> String {
   let nr = record.length()
   for i in 0..<nr {
@@ -781,10 +912,11 @@ pub fn handle_missing_field(
   ""
 }
 
+///|
 /// 处理额外字段 / Handle extra field not in schema.
 pub fn handle_extra_field(
   s : Schema,
-  record : Array[(String, String)]
+  record : Array[(String, String)],
 ) -> Array[(String, String)] {
   let result : Array[(String, String)] = []
   let nr = record.length()
@@ -797,10 +929,11 @@ pub fn handle_extra_field(
   result
 }
 
+///|
 /// 处理类型不匹配 / Handle type mismatch.
 pub fn handle_type_mismatch(
   s : Schema,
-  record : Array[(String, String)]
+  record : Array[(String, String)],
 ) -> Array[(String, String)] {
   let result : Array[(String, String)] = []
   let nr = record.length()
@@ -817,6 +950,7 @@ pub fn handle_type_mismatch(
   result
 }
 
+///|
 /// 扩展模式 / Expand schema by adding fields.
 pub fn expand_schema(s : Schema, new_fields : Array[Field]) -> Schema {
   let fields : Array[Field] = []
@@ -831,9 +965,10 @@ pub fn expand_schema(s : Schema, new_fields : Array[Field]) -> Schema {
       fields.push(f)
     }
   }
-  { version: s.version + 1, fields }
+  { version: s.version + 1, fields, }
 }
 
+///|
 /// 收缩模式 / Contract schema by removing fields.
 pub fn contract_schema(s : Schema, remove_names : Array[String]) -> Schema {
   let fields : Array[Field] = []
@@ -852,11 +987,16 @@ pub fn contract_schema(s : Schema, remove_names : Array[String]) -> Schema {
       fields.push(f)
     }
   }
-  { version: s.version + 1, fields }
+  { version: s.version + 1, fields, }
 }
 
+///|
 /// 演化模式 / Evolve schema with a single action.
-pub fn evolve_schema(s : Schema, action : EvolutionAction, field : Field) -> Schema {
+pub fn evolve_schema(
+  s : Schema,
+  action : EvolutionAction,
+  field : Field,
+) -> Schema {
   match action {
     AddField => add_field(s, field)
     RemoveField => remove_field(s, field.name)
@@ -867,6 +1007,7 @@ pub fn evolve_schema(s : Schema, action : EvolutionAction, field : Field) -> Sch
   }
 }
 
+///|
 /// 创建演化计划 / Make an evolution plan.
 pub fn make_evolution_plan(from : Schema, to : Schema) -> EvolutionPlan {
   let steps : Array[(EvolutionAction, String)] = []
@@ -884,9 +1025,10 @@ pub fn make_evolution_plan(from : Schema, to : Schema) -> EvolutionPlan {
     steps.push((ChangeType, d.modified[i].name))
   }
   let risk = migration_risk(from, to)
-  { steps, risk }
+  { steps, risk, }
 }
 
+///|
 /// 执行演化 / Execute evolution plan.
 pub fn execute_evolution(s : Schema, plan : EvolutionPlan) -> EvolutionResult {
   let mut current = s
@@ -905,27 +1047,41 @@ pub fn execute_evolution(s : Schema, plan : EvolutionPlan) -> EvolutionResult {
     }
   }
   let msg = "Executed " + n.to_string() + " steps"
-  { success: true, new_schema: current, message: msg }
+  { success: true, new_schema: current, message: msg, }
 }
 
+///|
 /// 回滚演化 / Rollback evolution.
-pub fn rollback_evolution(current : Schema, previous : Schema) -> EvolutionResult {
+pub fn rollback_evolution(
+  current : Schema,
+  previous : Schema,
+) -> EvolutionResult {
   if validate_schema(previous) {
-    { success: true, new_schema: previous, message: "Rollback successful" }
+    { success: true, new_schema: previous, message: "Rollback successful", }
   } else {
-    { success: false, new_schema: current, message: "Rollback failed: invalid previous schema" }
+    {
+      success: false,
+      new_schema: current,
+      message: "Rollback failed: invalid previous schema",
+    }
   }
 }
 
+///|
 /// 提交演化 / Commit evolution.
 pub fn commit_evolution(s : Schema) -> EvolutionResult {
   if validate_schema(s) {
-    { success: true, new_schema: s, message: "Committed version " + s.version.to_string() }
+    {
+      success: true,
+      new_schema: s,
+      message: "Committed version " + s.version.to_string(),
+    }
   } else {
-    { success: false, new_schema: s, message: "Commit failed: invalid schema" }
+    { success: false, new_schema: s, message: "Commit failed: invalid schema", }
   }
 }
 
+///|
 /// 是否兼容 / Check compatibility.
 pub fn is_compatible(old : Schema, new : Schema) -> Compatibility {
   let b = schema_backward_compat(old, new)
@@ -941,6 +1097,7 @@ pub fn is_compatible(old : Schema, new : Schema) -> Compatibility {
   }
 }
 
+///|
 /// 兼容性评分 / Compatibility score.
 pub fn compatibility_score(old : Schema, new : Schema) -> Double {
   let d = schema_diff(old, new)
@@ -957,16 +1114,14 @@ pub fn compatibility_score(old : Schema, new : Schema) -> Double {
   if f {
     score = score + 0.5
   }
-  let safe_added : Int = if b {
-    d.added.length()
-  } else {
-    0
-  }
-  score - 0.01 * (d.removed.length() + d.modified.length() - safe_added / 2).to_double()
+  let safe_added : Int32 = if b { d.added.length() } else { 0 }
+  score -
+  0.01 * (d.removed.length() + d.modified.length() - safe_added / 2).to_double()
 }
 
+///|
 /// 破坏性变更 / Breaking changes count.
-pub fn breaking_changes(old : Schema, new : Schema) -> Int {
+pub fn breaking_changes(old : Schema, new : Schema) -> Int32 {
   let d = schema_diff(old, new)
   let mut count = d.removed.length()
   let nm = d.modified.length()
@@ -975,7 +1130,7 @@ pub fn breaking_changes(old : Schema, new : Schema) -> Int {
     let idx = find_field_index(old.fields, f.name)
     if idx >= 0 {
       let of = old.fields[idx]
-      if !(f.nullable) && of.nullable {
+      if !f.nullable && of.nullable {
         count = count + 1
       }
       if f.field_type != of.field_type {
@@ -986,15 +1141,16 @@ pub fn breaking_changes(old : Schema, new : Schema) -> Int {
   let na = d.added.length()
   for i in 0..<na {
     let f = d.added[i]
-    if !(f.nullable) && f.default_value is None {
+    if !f.nullable && f.default_value is None {
       count = count + 1
     }
   }
   count
 }
 
+///|
 /// 非破坏性变更 / Non-breaking changes count.
-pub fn non_breaking_changes(old : Schema, new : Schema) -> Int {
+pub fn non_breaking_changes(old : Schema, new : Schema) -> Int32 {
   let d = schema_diff(old, new)
   let mut count = 0
   let na = d.added.length()
@@ -1010,7 +1166,7 @@ pub fn non_breaking_changes(old : Schema, new : Schema) -> Int {
     let idx = find_field_index(old.fields, f.name)
     if idx >= 0 {
       let of = old.fields[idx]
-      if f.nullable && !(of.nullable) {
+      if f.nullable && !of.nullable {
         count = count + 1
       }
     }
@@ -1018,6 +1174,7 @@ pub fn non_breaking_changes(old : Schema, new : Schema) -> Int {
   count
 }
 
+///|
 /// 迁移风险 / Migration risk level.
 pub fn migration_risk(old : Schema, new : Schema) -> MigrationRiskLevel {
   let bc = breaking_changes(old, new)
@@ -1032,11 +1189,13 @@ pub fn migration_risk(old : Schema, new : Schema) -> MigrationRiskLevel {
   }
 }
 
+///|
 /// 模式字段数 / Schema field count.
-pub fn schema_field_count(s : Schema) -> Int {
+pub fn schema_field_count(s : Schema) -> Int32 {
   s.fields.length()
 }
 
+///|
 /// 模式相等 / Schema equality.
 pub fn schema_equal(a : Schema, b : Schema) -> Bool {
   if a.version != b.version {
@@ -1047,28 +1206,31 @@ pub fn schema_equal(a : Schema, b : Schema) -> Bool {
   }
   let n = a.fields.length()
   for i in 0..<n {
-    if !(field_full_eq(a.fields[i], b.fields[i])) {
+    if !field_full_eq(a.fields[i], b.fields[i]) {
       return false
     }
   }
   true
 }
 
+///|
 /// 模式为空 / Schema is empty.
 pub fn schema_is_empty(s : Schema) -> Bool {
   s.fields.length() == 0
 }
 
+///|
 /// 复制模式 / Copy schema with new version.
-pub fn copy_schema(s : Schema, new_version : Int) -> Schema {
+pub fn copy_schema(s : Schema, new_version : Int32) -> Schema {
   let fields : Array[Field] = []
   let n = s.fields.length()
   for i in 0..<n {
     fields.push(s.fields[i])
   }
-  { version: new_version, fields }
+  { version: new_version, fields, }
 }
 
+///|
 /// 获取所有字段名 / Get all field names.
 pub fn field_names(s : Schema) -> Array[String] {
   let names : Array[String] = []
@@ -1079,6 +1241,7 @@ pub fn field_names(s : Schema) -> Array[String] {
   names
 }
 
+///|
 /// 获取所有字段类型 / Get all field types.
 pub fn field_types(s : Schema) -> Array[FieldType] {
   let types : Array[FieldType] = []
@@ -1089,20 +1252,22 @@ pub fn field_types(s : Schema) -> Array[FieldType] {
   types
 }
 
+///|
 /// 必填字段数 / Required field count.
-pub fn required_field_count(s : Schema) -> Int {
+pub fn required_field_count(s : Schema) -> Int32 {
   let mut count = 0
   let n = s.fields.length()
   for i in 0..<n {
-    if !(s.fields[i].nullable) {
+    if !s.fields[i].nullable {
       count = count + 1
     }
   }
   count
 }
 
+///|
 /// 可选字段数 / Optional field count.
-pub fn optional_field_count(s : Schema) -> Int {
+pub fn optional_field_count(s : Schema) -> Int32 {
   let mut count = 0
   let n = s.fields.length()
   for i in 0..<n {
@@ -1113,8 +1278,9 @@ pub fn optional_field_count(s : Schema) -> Int {
   count
 }
 
+///|
 /// 有默认值的字段数 / Field count with default value.
-pub fn default_value_count(s : Schema) -> Int {
+pub fn default_value_count(s : Schema) -> Int32 {
   let mut count = 0
   let n = s.fields.length()
   for i in 0..<n {
@@ -1125,9 +1291,14 @@ pub fn default_value_count(s : Schema) -> Int {
   count
 }
 
+///|
 /// 模式摘要 / Schema summary string.
 pub fn schema_summary(s : Schema) -> String {
-  let mut result = "Schema v" + s.version.to_string() + " (" + s.fields.length().to_string() + " fields): "
+  let mut result = "Schema v" +
+    s.version.to_string() +
+    " (" +
+    s.fields.length().to_string() +
+    " fields): "
   let n = s.fields.length()
   for i in 0..<n {
     let f = s.fields[i]
@@ -1142,9 +1313,15 @@ pub fn schema_summary(s : Schema) -> String {
   result
 }
 
+///|
 /// 差异摘要 / Diff summary string.
 pub fn diff_summary(d : SchemaDiff) -> String {
-  let mut result = "Diff: +" + d.added.length().to_string() + " -" + d.removed.length().to_string() + " ~" + d.modified.length().to_string()
+  let mut result = "Diff: +" +
+    d.added.length().to_string() +
+    " -" +
+    d.removed.length().to_string() +
+    " ~" +
+    d.modified.length().to_string()
   if d.added.length() > 0 {
     result = result + " [added:"
     let na = d.added.length()
@@ -1164,14 +1341,25 @@ pub fn diff_summary(d : SchemaDiff) -> String {
   result
 }
 
+///|
 /// 迁移摘要 / Migration summary string.
 pub fn migration_summary(m : Migration) -> String {
-  "Migration v" + m.from_version.to_string() + " -> v" + m.to_version.to_string() + ": " + diff_summary(m.diff)
+  "Migration v" +
+  m.from_version.to_string() +
+  " -> v" +
+  m.to_version.to_string() +
+  ": " +
+  diff_summary(m.diff)
 }
 
+///|
 /// 演化计划摘要 / Evolution plan summary.
 pub fn evolution_plan_summary(p : EvolutionPlan) -> String {
-  let mut result = "Plan (" + p.steps.length().to_string() + " steps, risk=" + risk_to_string(p.risk) + "):"
+  let mut result = "Plan (" +
+    p.steps.length().to_string() +
+    " steps, risk=" +
+    risk_to_string(p.risk) +
+    "):"
   let n = p.steps.length()
   for i in 0..<n {
     let step = p.steps[i]
@@ -1180,6 +1368,7 @@ pub fn evolution_plan_summary(p : EvolutionPlan) -> String {
   result
 }
 
+///|
 /// 包标识 / Package id.
 pub fn schema_evol_id() -> String {
   let pkg = "dataobject/schema_evol"

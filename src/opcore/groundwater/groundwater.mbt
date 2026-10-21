@@ -13,57 +13,93 @@
 // 类型定义 / Type definitions
 // ============================================================
 
+///|
 /// 地下水配置 / Groundwater configuration.
 pub struct GroundwaterConfig {
-  porosity : Double         // 孔隙度（0-1）
-  conductivity : Double    // 渗透系数（m/s）
-  gradient_x : Double       // 水头梯度 x 分量
-  gradient_y : Double       // 水头梯度 y 分量
+  porosity : Double // 孔隙度（0-1）
+  conductivity : Double // 渗透系数（m/s）
+  gradient_x : Double // 水头梯度 x 分量
+  gradient_y : Double // 水头梯度 y 分量
 } derive(Debug, Eq)
 
+///|
 pub extend GroundwaterConfig with Eq::{equal, not_equal}
+
+///|
 pub extend GroundwaterConfig with Debug::{to_repr}
 
+///|
 /// 达西流结果 / Darcy flow result.
 pub struct DarcyFlowResult {
-  flow_x : Double           // x 方向通量
-  flow_y : Double           // y 方向通量
-  velocity : Double         // 实际流速大小
-  head_gradient : Double    // 水头梯度大小
+  flow_x : Double // x 方向通量
+  flow_y : Double // y 方向通量
+  velocity : Double // 实际流速大小
+  head_gradient : Double // 水头梯度大小
 } derive(Debug, Eq)
 
+///|
 pub extend DarcyFlowResult with Eq::{equal, not_equal}
+
+///|
 pub extend DarcyFlowResult with Debug::{to_repr}
 
+///|
 /// 粒子追踪结果 / Particle track result.
 pub struct ParticleTrackResult {
-  path : Array[(Double, Double)]  // 粒子路径
-  total_distance : Double         // 总距离
-  total_time : Double             // 总时间
-  steps : Int                     // 步数
+  path : Array[(Double, Double)] // 粒子路径
+  total_distance : Double // 总距离
+  total_time : Double // 总时间
+  steps : Int32 // 步数
 } derive(Debug, Eq)
 
+///|
 pub extend ParticleTrackResult with Eq::{equal, not_equal}
+
+///|
 pub extend ParticleTrackResult with Debug::{to_repr}
 
 // ============================================================
 // 基础构造 / Basic constructors
 // ============================================================
 
+///|
 /// 构造地下水配置 / Build groundwater config.
-pub fn make_groundwater_config(porosity : Double, conductivity : Double, gradient_x : Double, gradient_y : Double) -> GroundwaterConfig {
-  let n = if porosity < 0.0 { 0.0 } else if porosity > 1.0 { 1.0 } else { porosity }
+pub fn make_groundwater_config(
+  porosity : Double,
+  conductivity : Double,
+  gradient_x : Double,
+  gradient_y : Double,
+) -> GroundwaterConfig {
+  let n = if porosity < 0.0 {
+    0.0
+  } else if porosity > 1.0 {
+    1.0
+  } else {
+    porosity
+  }
   let k = if conductivity < 0.0 { 0.0 } else { conductivity }
   { porosity: n, conductivity: k, gradient_x, gradient_y, }
 }
 
+///|
 /// 构造达西流结果 / Build Darcy flow result.
-pub fn make_darcy_flow_result(flow_x : Double, flow_y : Double, velocity : Double, head_gradient : Double) -> DarcyFlowResult {
+pub fn make_darcy_flow_result(
+  flow_x : Double,
+  flow_y : Double,
+  velocity : Double,
+  head_gradient : Double,
+) -> DarcyFlowResult {
   { flow_x, flow_y, velocity, head_gradient, }
 }
 
+///|
 /// 构造粒子追踪结果 / Build particle track result.
-pub fn make_particle_track_result(path : Array[(Double, Double)], total_distance : Double, total_time : Double, steps : Int) -> ParticleTrackResult {
+pub fn make_particle_track_result(
+  path : Array[(Double, Double)],
+  total_distance : Double,
+  total_time : Double,
+  steps : Int32,
+) -> ParticleTrackResult {
   { path, total_distance, total_time, steps, }
 }
 
@@ -71,6 +107,7 @@ pub fn make_particle_track_result(path : Array[(Double, Double)], total_distance
 // 达西流 / Darcy flow
 // ============================================================
 
+///|
 /// 水头梯度大小 / Head gradient magnitude.
 ///
 /// 公式：|grad(h)| = sqrt(grad_x² + grad_y²)
@@ -78,6 +115,7 @@ pub fn groundwater_head_gradient(config : GroundwaterConfig) -> Double {
   (config.gradient_x * config.gradient_x + config.gradient_y * config.gradient_y).sqrt()
 }
 
+///|
 /// 达西流 / Darcy flow.
 ///
 /// 公式：q = -K * grad(h)
@@ -90,6 +128,7 @@ pub fn darcy_flow(config : GroundwaterConfig) -> DarcyFlowResult {
   make_darcy_flow_result(flow_x, flow_y, velocity, grad)
 }
 
+///|
 /// 达西速度 / Darcy velocity (actual seepage velocity).
 ///
 /// 公式：v = q / n = -K * grad(h) / n
@@ -104,6 +143,7 @@ pub fn darcy_velocity(config : GroundwaterConfig) -> Double {
   }
 }
 
+///|
 /// 达西流方向 / Darcy flow direction (degrees).
 ///
 /// 退化安全：零梯度返回 0。
@@ -117,6 +157,7 @@ pub fn groundwater_flow_direction(config : GroundwaterConfig) -> Double {
   }
 }
 
+///|
 fn atan2_deg(y : Double, x : Double) -> Double {
   let pi = 3.14159265358979323846
   let result = if x > 0.0 {
@@ -135,11 +176,12 @@ fn atan2_deg(y : Double, x : Double) -> Double {
   rad_to_deg(result)
 }
 
-
+///|
 fn rad_to_deg(rad : Double) -> Double {
   rad * 180.0 / 3.14159265358979323846
 }
 
+///|
 fn atan_custom(x : Double) -> Double {
   let pi = 3.14159265358979323846
   let abs_x = if x < 0.0 { -x } else { x }
@@ -151,6 +193,7 @@ fn atan_custom(x : Double) -> Double {
   }
 }
 
+///|
 fn atan_taylor(x : Double) -> Double {
   let mut result = 0.0
   let mut x_pow = x
@@ -173,11 +216,18 @@ fn atan_taylor(x : Double) -> Double {
 // 粒子追踪 / Particle track
 // ============================================================
 
+///|
 /// 粒子追踪 / Particle track through velocity field.
 ///
 /// 从起点出发，沿达西流速场移动指定步数。
 /// 退化安全：零流速返回仅含起点的路径。
-pub fn particle_track(config : GroundwaterConfig, start_x : Double, start_y : Double, step_size : Double, max_steps : Int) -> ParticleTrackResult {
+pub fn particle_track(
+  config : GroundwaterConfig,
+  start_x : Double,
+  start_y : Double,
+  step_size : Double,
+  max_steps : Int32,
+) -> ParticleTrackResult {
   if step_size <= 0.0 || max_steps <= 0 {
     make_particle_track_result([(start_x, start_y)], 0.0, 0.0, 0)
   } else {
@@ -209,11 +259,17 @@ pub fn particle_track(config : GroundwaterConfig, start_x : Double, start_y : Do
 // 孔隙扩散 / Porous puff
 // ============================================================
 
+///|
 /// 孔隙扩散 / Porous puff dispersion.
 ///
 /// 模拟公式：C(r,t) = C0 / (4πDt) × exp(-r² / (4Dt))
 /// 退化安全：D<=0 或 t<=0 返回 0。
-pub fn porous_puff(distance : Double, time : Double, diffusivity : Double, initial_concentration : Double) -> Double {
+pub fn porous_puff(
+  distance : Double,
+  time : Double,
+  diffusivity : Double,
+  initial_concentration : Double,
+) -> Double {
   if diffusivity <= 0.0 || time <= 0.0 {
     0.0
   } else {
@@ -224,6 +280,7 @@ pub fn porous_puff(distance : Double, time : Double, diffusivity : Double, initi
   }
 }
 
+///|
 fn exp_custom(x : Double) -> Double {
   if x < -20.0 {
     0.0
@@ -243,10 +300,16 @@ fn exp_custom(x : Double) -> Double {
   }
 }
 
+///|
 /// 孔隙扩散网格 / Porous puff over a grid of distances.
 ///
 /// 退化安全：空数组返回空数组。
-pub fn porous_puff_grid(distances : Array[Array[Double]], time : Double, diffusivity : Double, initial_concentration : Double) -> Array[Array[Double]] {
+pub fn porous_puff_grid(
+  distances : Array[Array[Double]],
+  time : Double,
+  diffusivity : Double,
+  initial_concentration : Double,
+) -> Array[Array[Double]] {
   let rows = distances.length()
   if rows == 0 {
     []
@@ -255,7 +318,9 @@ pub fn porous_puff_grid(distances : Array[Array[Double]], time : Double, diffusi
     for i in 0..<rows {
       let row : Array[Double] = []
       for j in 0..<distances[i].length() {
-        row.push(porous_puff(distances[i][j], time, diffusivity, initial_concentration))
+        row.push(
+          porous_puff(distances[i][j], time, diffusivity, initial_concentration),
+        )
       }
       result.push(row)
     }
@@ -267,22 +332,42 @@ pub fn porous_puff_grid(distances : Array[Array[Double]], time : Double, diffusi
 // 统计 / Statistics
 // ============================================================
 
+///|
 /// 地下水统计 / Groundwater flow statistics.
 ///
 /// 返回 (velocity, gradient, flow_direction)。
-pub fn groundwater_stats(config : GroundwaterConfig) -> (Double, Double, Double) {
+pub fn groundwater_stats(
+  config : GroundwaterConfig,
+) -> (Double, Double, Double) {
   let v = darcy_velocity(config)
   let g = groundwater_head_gradient(config)
   let d = groundwater_flow_direction(config)
   (v, g, d)
 }
 
+///|
 /// 地下水配置摘要 / Groundwater config summary string.
 pub fn groundwater_config_summary(config : GroundwaterConfig) -> String {
-  "porosity=" + config.porosity.to_string() + ", conductivity=" + config.conductivity.to_string() + ", gradient=(" + config.gradient_x.to_string() + ", " + config.gradient_y.to_string() + ")"
+  "porosity=" +
+  config.porosity.to_string() +
+  ", conductivity=" +
+  config.conductivity.to_string() +
+  ", gradient=(" +
+  config.gradient_x.to_string() +
+  ", " +
+  config.gradient_y.to_string() +
+  ")"
 }
 
+///|
 /// 粒子追踪摘要 / Particle track summary string.
 pub fn particle_track_summary(result : ParticleTrackResult) -> String {
-  "steps=" + result.steps.to_string() + ", distance=" + result.total_distance.to_string() + ", time=" + result.total_time.to_string() + ", path_length=" + result.path.length().to_string()
+  "steps=" +
+  result.steps.to_string() +
+  ", distance=" +
+  result.total_distance.to_string() +
+  ", time=" +
+  result.total_time.to_string() +
+  ", path_length=" +
+  result.path.length().to_string()
 }

@@ -8,6 +8,7 @@
 ///
 /// KNN classification. See architecture §4.3.5 A.
 
+///|
 /// KNN 分类 / KNN classification.
 ///
 /// 输入训练集 (特征, 标签) + 待分类点 + k，返回多数投票标签。
@@ -15,19 +16,13 @@
 pub fn knn_classify(
   train : Array[(Array[Double], String)],
   query : Array[Double],
-  k : Int
+  k : Int32,
 ) -> String {
   let n = train.length()
   if n == 0 {
     return ""
   }
-  let effective_k = if k <= 0 {
-    1
-  } else if k > n {
-    n
-  } else {
-    k
-  }
+  let effective_k = if k <= 0 { 1 } else if k > n { n } else { k }
   // 计算距离 + 排序
   let dists = train.map(fn(sample) {
     (euclidean_dist(sample.0, query), sample.1)
@@ -50,6 +45,7 @@ pub fn knn_classify(
   majority_vote(votes)
 }
 
+///|
 fn euclidean_dist(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
   let mut sum = 0.0
@@ -60,6 +56,7 @@ fn euclidean_dist(a : Array[Double], b : Array[Double]) -> Double {
   sum
 }
 
+///|
 fn majority_vote(labels : Array[String]) -> String {
   if labels.length() == 0 {
     return ""
@@ -82,15 +79,23 @@ fn majority_vote(labels : Array[String]) -> String {
   best_label
 }
 
+///|
 pub fn classify_id() -> String {
   "learncore/classify"
 }
+
+///|
 /// 森林分类 / Forest-based Classification (simplified).
 ///
 /// 对标 ArcGIS Pro Forest-based Classification 工具。
 /// 简化策略：使用多数投票模拟随机森林。
 /// 退化安全：空训练集返回 0。
-pub fn classify_forest(features : Array[Double], training_features : Array[Array[Double]], training_labels : Array[Int], _n_trees : Int) -> Int {
+pub fn classify_forest(
+  features : Array[Double],
+  training_features : Array[Array[Double]],
+  training_labels : Array[Int32],
+  _n_trees : Int32,
+) -> Int32 {
   if training_features.length() == 0 || training_labels.length() == 0 {
     0
   } else {
@@ -100,7 +105,11 @@ pub fn classify_forest(features : Array[Double], training_features : Array[Array
     for i in 0..<n {
       let mut d = 0.0
       let tf = training_features[i]
-      let m = if features.length() < tf.length() { features.length() } else { tf.length() }
+      let m = if features.length() < tf.length() {
+        features.length()
+      } else {
+        tf.length()
+      }
       for j in 0..<m {
         let diff = features[j] - tf[j]
         d = d + diff * diff

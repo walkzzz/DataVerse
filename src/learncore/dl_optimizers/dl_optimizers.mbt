@@ -8,8 +8,9 @@
 ///
 /// Optimizer contracts + single-step update. See architecture §4.3.5.
 
+///|
 /// 整数幂 / Integer power helper.
-fn pow_int(base : Double, exp : Int) -> Double {
+fn pow_int(base : Double, exp : Int32) -> Double {
   let mut result = 1.0
   for _i in 0..<exp {
     result = result * base
@@ -17,41 +18,58 @@ fn pow_int(base : Double, exp : Int) -> Double {
   result
 }
 
+///|
 /// 优化器类型 / Optimizer kind.
 pub(all) enum OptimizerKind {
   SGD
   Adam
 } derive(Debug, Eq)
 
+///|
 pub extend OptimizerKind with Eq::{equal, not_equal}
+
+///|
 pub extend OptimizerKind with Debug::{to_repr}
 
+///|
 /// 优化器状态 / Optimizer state.
 pub struct OptimizerState {
   kind : OptimizerKind
   lr : Double
   params : Array[Double]
   velocity : Array[Double]
-  step_count : Int
+  step_count : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend OptimizerState with Eq::{equal, not_equal}
+
+///|
 pub extend OptimizerState with Debug::{to_repr}
 
+///|
 /// 构造优化器 / Build optimizer.
-pub fn make_optimizer(kind : OptimizerKind, lr : Double, params : Array[Double]) -> OptimizerState {
+pub fn make_optimizer(
+  kind : OptimizerKind,
+  lr : Double,
+  params : Array[Double],
+) -> OptimizerState {
   let n = params.length()
   let v : Array[Double] = []
   for _ in 0..<n {
     v.push(0.0)
   }
-  { kind, lr, params, velocity: v, step_count: 0 }
+  { kind, lr, params, velocity: v, step_count: 0, }
 }
 
+///|
 /// SGD 单步 / SGD step.
 ///
 /// new_params = params - lr * gradients.
-pub fn sgd_step(state : OptimizerState, gradients : Array[Double]) -> Array[Double] {
+pub fn sgd_step(
+  state : OptimizerState,
+  gradients : Array[Double],
+) -> Array[Double] {
   let n = state.params.length()
   if n != gradients.length() {
     state.params
@@ -64,11 +82,15 @@ pub fn sgd_step(state : OptimizerState, gradients : Array[Double]) -> Array[Doub
   }
 }
 
+///|
 /// Adam 单步（简化）/ Adam step (simplified).
 ///
 /// 简化版：velocity = beta1 * velocity + (1 - beta1) * grad
 ///        new_params = params - lr * velocity
-pub fn adam_step(state : OptimizerState, gradients : Array[Double]) -> Array[Double] {
+pub fn adam_step(
+  state : OptimizerState,
+  gradients : Array[Double],
+) -> Array[Double] {
   let n = state.params.length()
   if n != gradients.length() {
     state.params
@@ -83,16 +105,24 @@ pub fn adam_step(state : OptimizerState, gradients : Array[Double]) -> Array[Dou
   }
 }
 
+///|
 /// 优化器单步 / Optimizer step.
-pub fn optimizer_step(state : OptimizerState, gradients : Array[Double]) -> Array[Double] {
+pub fn optimizer_step(
+  state : OptimizerState,
+  gradients : Array[Double],
+) -> Array[Double] {
   match state.kind {
     SGD => sgd_step(state, gradients)
     Adam => adam_step(state, gradients)
   }
 }
 
+///|
 /// 更新优化器状态 / Update optimizer state after a step.
-pub fn update_state(state : OptimizerState, new_params : Array[Double]) -> OptimizerState {
+pub fn update_state(
+  state : OptimizerState,
+  new_params : Array[Double],
+) -> OptimizerState {
   let n = new_params.length()
   let new_v : Array[Double] = []
   for i in 0..<n {
@@ -107,9 +137,16 @@ pub fn update_state(state : OptimizerState, new_params : Array[Double]) -> Optim
       new_v.push(0.0)
     }
   }
-  { kind: state.kind, lr: state.lr, params: new_params, velocity: new_v, step_count: state.step_count + 1 }
+  {
+    kind: state.kind,
+    lr: state.lr,
+    params: new_params,
+    velocity: new_v,
+    step_count: state.step_count + 1,
+  }
 }
 
+///|
 /// 优化器名称 / Optimizer name.
 pub fn optimizer_name(kind : OptimizerKind) -> String {
   match kind {
@@ -118,6 +155,7 @@ pub fn optimizer_name(kind : OptimizerKind) -> String {
   }
 }
 
+///|
 pub fn dl_optimizers_id() -> String {
   "learncore/dl_optimizers"
 }
@@ -125,11 +163,12 @@ pub fn dl_optimizers_id() -> String {
 ///===
 /// S7.3 扩展：AdamW/RAdam/Lookahead/AdaBelief/NAdam/AdaMax/RMSProp/Adagrad/ASGD/Lamb
 
+///|
 /// AdamW 一步 / AdamW optimizer step (decoupled weight decay).
 pub fn adamw_step(
   state : OptimizerState,
   gradients : Array[Double],
-  weight_decay : Double
+  weight_decay : Double,
 ) -> Array[Double] {
   let n = state.params.length()
   let m = if gradients.length() < n { gradients.length() } else { n }
@@ -152,10 +191,11 @@ pub fn adamw_step(
   result
 }
 
+///|
 /// RAdam 一步 / Rectified Adam step.
 pub fn radam_step(
   state : OptimizerState,
-  gradients : Array[Double]
+  gradients : Array[Double],
 ) -> Array[Double] {
   let n = state.params.length()
   let m = if gradients.length() < n { gradients.length() } else { n }
@@ -165,14 +205,18 @@ pub fn radam_step(
   let eps = 0.00000001
   let t = state.step_count + 1
   let rho_inf = 2.0 / (1.0 - beta2) - 1.0
-  let rho_t = rho_inf - 2.0 * t.to_double() * pow_int(beta2, t) / (1.0 - pow_int(beta2, t))
+  let rho_t = rho_inf -
+    2.0 * t.to_double() * pow_int(beta2, t) / (1.0 - pow_int(beta2, t))
   for i in 0..<m {
     let g = gradients[i]
     let m_t = beta1 * state.velocity[i] + (1.0 - beta1) * g
     let v_t = beta2 * state.velocity[i] + (1.0 - beta2) * g * g
     let m_hat = m_t / (1.0 - pow_int(beta1, t))
     if rho_t > 4.0 {
-      let r_t = ((rho_t - 4.0) * (rho_t - 2.0) * rho_inf / ((rho_inf - 4.0) * (rho_inf - 2.0) * rho_t)).sqrt()
+      let r_t = ((rho_t - 4.0) *
+      (rho_t - 2.0) *
+      rho_inf /
+      ((rho_inf - 4.0) * (rho_inf - 2.0) * rho_t)).sqrt()
       let v_hat = v_t.sqrt()
       result[i] = state.params[i] - state.lr * r_t * m_hat / (v_hat + eps)
     } else {
@@ -185,10 +229,11 @@ pub fn radam_step(
   result
 }
 
+///|
 /// AdaBelief 一步 / AdaBelief optimizer step.
 pub fn adabelief_step(
   state : OptimizerState,
-  gradients : Array[Double]
+  gradients : Array[Double],
 ) -> Array[Double] {
   let n = state.params.length()
   let m = if gradients.length() < n { gradients.length() } else { n }
@@ -200,7 +245,9 @@ pub fn adabelief_step(
   for i in 0..<m {
     let g = gradients[i]
     let m_t = beta1 * state.velocity[i] + (1.0 - beta1) * g
-    let v_t = beta2 * state.velocity[i] + (1.0 - beta2) * (g - m_t) * (g - m_t) + eps
+    let v_t = beta2 * state.velocity[i] +
+      (1.0 - beta2) * (g - m_t) * (g - m_t) +
+      eps
     let m_hat = m_t / (1.0 - pow_int(beta1, t))
     let v_hat = v_t / (1.0 - pow_int(beta2, t))
     result[i] = state.params[i] - state.lr * m_hat / (v_hat.sqrt() + eps)
@@ -211,10 +258,11 @@ pub fn adabelief_step(
   result
 }
 
+///|
 /// NAdam 一步 / NAdam optimizer step (Nesterov-accelerated Adam).
 pub fn nadam_step(
   state : OptimizerState,
-  gradients : Array[Double]
+  gradients : Array[Double],
 ) -> Array[Double] {
   let n = state.params.length()
   let m = if gradients.length() < n { gradients.length() } else { n }
@@ -227,7 +275,8 @@ pub fn nadam_step(
     let g = gradients[i]
     let m_t = beta1 * state.velocity[i] + (1.0 - beta1) * g
     let v_t = beta2 * state.velocity[i] + (1.0 - beta2) * g * g
-    let m_hat = m_t / (1.0 - pow_int(beta1, t)) + (1.0 - beta1) * g / (1.0 - pow_int(beta1, t))
+    let m_hat = m_t / (1.0 - pow_int(beta1, t)) +
+      (1.0 - beta1) * g / (1.0 - pow_int(beta1, t))
     let v_hat = v_t / (1.0 - pow_int(beta2, t))
     result[i] = state.params[i] - state.lr * m_hat / (v_hat.sqrt() + eps)
   }
@@ -237,10 +286,11 @@ pub fn nadam_step(
   result
 }
 
+///|
 /// AdaMax 一步 / AdaMax optimizer step.
 pub fn adamax_step(
   state : OptimizerState,
-  gradients : Array[Double]
+  gradients : Array[Double],
 ) -> Array[Double] {
   let n = state.params.length()
   let m = if gradients.length() < n { gradients.length() } else { n }
@@ -264,11 +314,12 @@ pub fn adamax_step(
   result
 }
 
+///|
 /// RMSProp 一步 / RMSProp optimizer step.
 pub fn rmsprop_step(
   state : OptimizerState,
   gradients : Array[Double],
-  alpha : Double
+  alpha : Double,
 ) -> Array[Double] {
   let n = state.params.length()
   let m = if gradients.length() < n { gradients.length() } else { n }
@@ -285,10 +336,11 @@ pub fn rmsprop_step(
   result
 }
 
+///|
 /// Adagrad 一步 / Adagrad optimizer step.
 pub fn adagrad_step(
   state : OptimizerState,
-  gradients : Array[Double]
+  gradients : Array[Double],
 ) -> Array[Double] {
   let n = state.params.length()
   let m = if gradients.length() < n { gradients.length() } else { n }
@@ -305,11 +357,12 @@ pub fn adagrad_step(
   result
 }
 
+///|
 /// ASGD 一步 / Averaged SGD step.
 pub fn asgd_step(
   state : OptimizerState,
   gradients : Array[Double],
-  weight_decay : Double
+  weight_decay : Double,
 ) -> Array[Double] {
   let n = state.params.length()
   let m = if gradients.length() < n { gradients.length() } else { n }
@@ -318,7 +371,8 @@ pub fn asgd_step(
   for i in 0..<m {
     let g = gradients[i] + weight_decay * state.params[i]
     let new_param = state.params[i] - state.lr * g
-    result[i] = (t.to_double() * state.params[i] + new_param) / (t.to_double() + 1.0)
+    result[i] = (t.to_double() * state.params[i] + new_param) /
+      (t.to_double() + 1.0)
   }
   for i in m..<n {
     result[i] = state.params[i]
@@ -326,11 +380,12 @@ pub fn asgd_step(
   result
 }
 
+///|
 /// Lamb 一步 / Lamb optimizer step (simplified).
 pub fn lamb_step(
   state : OptimizerState,
   gradients : Array[Double],
-  weight_decay : Double
+  weight_decay : Double,
 ) -> Array[Double] {
   let n = state.params.length()
   let m = if gradients.length() < n { gradients.length() } else { n }
@@ -354,13 +409,18 @@ pub fn lamb_step(
   result
 }
 
+///|
 /// Lookahead 一步 / Lookahead optimizer step (simplified, returns averaged).
 pub fn lookahead_step(
   slow_params : Array[Double],
   fast_params : Array[Double],
-  k : Double
+  k : Double,
 ) -> Array[Double] {
-  let n = if slow_params.length() < fast_params.length() { slow_params.length() } else { fast_params.length() }
+  let n = if slow_params.length() < fast_params.length() {
+    slow_params.length()
+  } else {
+    fast_params.length()
+  }
   let result : Array[Double] = Array::make(n, 0.0)
   for i in 0..<n {
     result[i] = slow_params[i] + k * (fast_params[i] - slow_params[i])

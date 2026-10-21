@@ -8,6 +8,7 @@
 ///
 /// Quality model scoring. See architecture §4.3.2 ⑥.
 
+///|
 /// 长度质量分：基于内容长度的归一化打分 / Length-based quality score.
 ///
 /// 打分公式：`min(length / 100, 1.0)`。空内容 0.0，≥100 字符 1.0。
@@ -22,6 +23,7 @@ pub fn length_quality_score(input : @dataobject.DataObject) -> Double {
   }
 }
 
+///|
 /// 文本质量分：综合长度与非空比 / Text quality score.
 ///
 /// S1.1 基础版：长度分 × 0.7 + 非空分 × 0.3。
@@ -31,6 +33,7 @@ pub fn text_quality_score(input : @dataobject.DataObject) -> Double {
   len_score * 0.7 + nonempty_score * 0.3
 }
 
+///|
 pub fn quality_id() -> String {
   "opcore/quality"
 }

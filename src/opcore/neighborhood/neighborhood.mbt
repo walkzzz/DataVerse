@@ -13,6 +13,7 @@
 // 类型定义 / Type definitions
 // ============================================================
 
+///|
 /// 块统计类型 / Block statistic kind.
 pub(all) enum BlockStat {
   BlockMean
@@ -27,9 +28,13 @@ pub(all) enum BlockStat {
   BlockMedian
 } derive(Debug, Eq)
 
+///|
 pub extend BlockStat with Eq::{equal, not_equal}
+
+///|
 pub extend BlockStat with Debug::{to_repr}
 
+///|
 /// 线统计类型 / Line statistic kind.
 pub(all) enum LineStat {
   LineMean
@@ -41,9 +46,13 @@ pub(all) enum LineStat {
   LineStd
 } derive(Debug, Eq)
 
+///|
 pub extend LineStat with Eq::{equal, not_equal}
+
+///|
 pub extend LineStat with Debug::{to_repr}
 
+///|
 /// 邻域形状 / Neighborhood shape kind.
 pub(all) enum NeighborhoodKind {
   NHRectangle
@@ -53,43 +62,65 @@ pub(all) enum NeighborhoodKind {
   NHRing
 } derive(Debug, Eq)
 
+///|
 pub extend NeighborhoodKind with Eq::{equal, not_equal}
+
+///|
 pub extend NeighborhoodKind with Debug::{to_repr}
 
+///|
 /// 邻域配置 / Neighborhood configuration.
 pub struct NeighborhoodConfig {
   kind : NeighborhoodKind
-  radius1 : Int
-  radius2 : Int
+  radius1 : Int32
+  radius2 : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend NeighborhoodConfig with Eq::{equal, not_equal}
+
+///|
 pub extend NeighborhoodConfig with Debug::{to_repr}
 
+///|
 /// 块统计结果 / Block result.
 pub struct BlockResult {
   value : Double
-  block_row : Int
-  block_col : Int
+  block_row : Int32
+  block_col : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend BlockResult with Eq::{equal, not_equal}
+
+///|
 pub extend BlockResult with Debug::{to_repr}
 
 // ============================================================
 // 基础构造 / Basic constructors
 // ============================================================
 
+///|
 /// 构造邻域配置 / Build neighborhood config.
-pub fn make_neighborhood_config(kind : NeighborhoodKind, radius1 : Int, radius2 : Int) -> NeighborhoodConfig {
+pub fn make_neighborhood_config(
+  kind : NeighborhoodKind,
+  radius1 : Int32,
+  radius2 : Int32,
+) -> NeighborhoodConfig {
   { kind, radius1, radius2, }
 }
 
+///|
 /// 构造块结果 / Build a block result.
-pub fn make_block_result(value : Double, block_row : Int, block_col : Int) -> BlockResult {
+pub fn make_block_result(
+  value : Double,
+  block_row : Int32,
+  block_col : Int32,
+) -> BlockResult {
   { value, block_row, block_col, }
 }
 
+///|
 /// 块统计类型名称 / Block stat name.
 pub fn block_stat_name(s : BlockStat) -> String {
   match s {
@@ -106,6 +137,7 @@ pub fn block_stat_name(s : BlockStat) -> String {
   }
 }
 
+///|
 /// 线统计类型名称 / Line stat name.
 pub fn line_stat_name(s : LineStat) -> String {
   match s {
@@ -119,6 +151,7 @@ pub fn line_stat_name(s : LineStat) -> String {
   }
 }
 
+///|
 /// 邻域形状名称 / Neighborhood kind name.
 pub fn neighborhood_kind_name(k : NeighborhoodKind) -> String {
   match k {
@@ -134,8 +167,14 @@ pub fn neighborhood_kind_name(k : NeighborhoodKind) -> String {
 // 块统计 / Block statistics
 // ============================================================
 
+///|
 /// 收集块内值 / Collect values in a block.
-fn block_values(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int, block_size : Int) -> Array[Double] {
+fn block_values(
+  raster : @hydrology.RasterGrid,
+  block_row : Int32,
+  block_col : Int32,
+  block_size : Int32,
+) -> Array[Double] {
   let rows = @hydrology.raster_rows(raster)
   let cols = @hydrology.raster_cols(raster)
   let result : Array[Double] = []
@@ -153,10 +192,16 @@ fn block_values(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int
   result
 }
 
+///|
 /// 块均值 / Block mean.
 ///
 /// 退化安全：空块返回 0.0。
-pub fn block_mean(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int, block_size : Int) -> Double {
+pub fn block_mean(
+  raster : @hydrology.RasterGrid,
+  block_row : Int32,
+  block_col : Int32,
+  block_size : Int32,
+) -> Double {
   let vals = block_values(raster, block_row, block_col, block_size)
   let n = vals.length()
   if n == 0 {
@@ -170,8 +215,14 @@ pub fn block_mean(raster : @hydrology.RasterGrid, block_row : Int, block_col : I
   }
 }
 
+///|
 /// 块求和 / Block sum.
-pub fn block_sum(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int, block_size : Int) -> Double {
+pub fn block_sum(
+  raster : @hydrology.RasterGrid,
+  block_row : Int32,
+  block_col : Int32,
+  block_size : Int32,
+) -> Double {
   let vals = block_values(raster, block_row, block_col, block_size)
   let mut sum = 0.0
   for v in vals {
@@ -180,10 +231,16 @@ pub fn block_sum(raster : @hydrology.RasterGrid, block_row : Int, block_col : In
   sum
 }
 
+///|
 /// 块最小值 / Block min.
 ///
 /// 退化安全：空块返回 0.0。
-pub fn block_min(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int, block_size : Int) -> Double {
+pub fn block_min(
+  raster : @hydrology.RasterGrid,
+  block_row : Int32,
+  block_col : Int32,
+  block_size : Int32,
+) -> Double {
   let vals = block_values(raster, block_row, block_col, block_size)
   if vals.length() == 0 {
     0.0
@@ -198,10 +255,16 @@ pub fn block_min(raster : @hydrology.RasterGrid, block_row : Int, block_col : In
   }
 }
 
+///|
 /// 块最大值 / Block max.
 ///
 /// 退化安全：空块返回 0.0。
-pub fn block_max(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int, block_size : Int) -> Double {
+pub fn block_max(
+  raster : @hydrology.RasterGrid,
+  block_row : Int32,
+  block_col : Int32,
+  block_size : Int32,
+) -> Double {
   let vals = block_values(raster, block_row, block_col, block_size)
   if vals.length() == 0 {
     0.0
@@ -216,20 +279,39 @@ pub fn block_max(raster : @hydrology.RasterGrid, block_row : Int, block_col : In
   }
 }
 
+///|
 /// 块极差 / Block range.
-pub fn block_range(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int, block_size : Int) -> Double {
-  block_max(raster, block_row, block_col, block_size) - block_min(raster, block_row, block_col, block_size)
+pub fn block_range(
+  raster : @hydrology.RasterGrid,
+  block_row : Int32,
+  block_col : Int32,
+  block_size : Int32,
+) -> Double {
+  block_max(raster, block_row, block_col, block_size) -
+  block_min(raster, block_row, block_col, block_size)
 }
 
+///|
 /// 块计数 / Block count.
-pub fn block_count(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int, block_size : Int) -> Int {
+pub fn block_count(
+  raster : @hydrology.RasterGrid,
+  block_row : Int32,
+  block_col : Int32,
+  block_size : Int32,
+) -> Int32 {
   block_values(raster, block_row, block_col, block_size).length()
 }
 
+///|
 /// 块标准差 / Block standard deviation.
 ///
 /// 退化安全：空块返回 0.0。
-pub fn block_std(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int, block_size : Int) -> Double {
+pub fn block_std(
+  raster : @hydrology.RasterGrid,
+  block_row : Int32,
+  block_col : Int32,
+  block_size : Int32,
+) -> Double {
   let vals = block_values(raster, block_row, block_col, block_size)
   let n = vals.length()
   if n <= 1 {
@@ -245,10 +327,16 @@ pub fn block_std(raster : @hydrology.RasterGrid, block_row : Int, block_col : In
   }
 }
 
+///|
 /// 块众数 / Block majority (simplified: first value).
 ///
 /// 退化安全：空块返回 0.0。
-pub fn block_majority(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int, block_size : Int) -> Double {
+pub fn block_majority(
+  raster : @hydrology.RasterGrid,
+  block_row : Int32,
+  block_col : Int32,
+  block_size : Int32,
+) -> Double {
   let vals = block_values(raster, block_row, block_col, block_size)
   if vals.length() == 0 {
     0.0
@@ -257,10 +345,16 @@ pub fn block_majority(raster : @hydrology.RasterGrid, block_row : Int, block_col
   }
 }
 
+///|
 /// 块少数 / Block minority (simplified: last value).
 ///
 /// 退化安全：空块返回 0.0。
-pub fn block_minority(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int, block_size : Int) -> Double {
+pub fn block_minority(
+  raster : @hydrology.RasterGrid,
+  block_row : Int32,
+  block_col : Int32,
+  block_size : Int32,
+) -> Double {
   let vals = block_values(raster, block_row, block_col, block_size)
   if vals.length() == 0 {
     0.0
@@ -269,10 +363,16 @@ pub fn block_minority(raster : @hydrology.RasterGrid, block_row : Int, block_col
   }
 }
 
+///|
 /// 块中位数 / Block median (simplified: middle element).
 ///
 /// 退化安全：空块返回 0.0。
-pub fn block_median(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int, block_size : Int) -> Double {
+pub fn block_median(
+  raster : @hydrology.RasterGrid,
+  block_row : Int32,
+  block_col : Int32,
+  block_size : Int32,
+) -> Double {
   let vals = block_values(raster, block_row, block_col, block_size)
   let n = vals.length()
   if n == 0 {
@@ -282,17 +382,25 @@ pub fn block_median(raster : @hydrology.RasterGrid, block_row : Int, block_col :
   }
 }
 
+///|
 /// 通用块统计 / Generic block statistics.
 ///
 /// 退化安全：空块返回 0.0。
-pub fn block_statistics(raster : @hydrology.RasterGrid, block_row : Int, block_col : Int, block_size : Int, stat : BlockStat) -> Double {
+pub fn block_statistics(
+  raster : @hydrology.RasterGrid,
+  block_row : Int32,
+  block_col : Int32,
+  block_size : Int32,
+  stat : BlockStat,
+) -> Double {
   match stat {
     BlockMean => block_mean(raster, block_row, block_col, block_size)
     BlockSum => block_sum(raster, block_row, block_col, block_size)
     BlockMin => block_min(raster, block_row, block_col, block_size)
     BlockMax => block_max(raster, block_row, block_col, block_size)
     BlockRange => block_range(raster, block_row, block_col, block_size)
-    BlockCount => block_count(raster, block_row, block_col, block_size).to_double()
+    BlockCount =>
+      block_count(raster, block_row, block_col, block_size).to_double()
     BlockStd => block_std(raster, block_row, block_col, block_size)
     BlockMajority => block_majority(raster, block_row, block_col, block_size)
     BlockMinority => block_minority(raster, block_row, block_col, block_size)
@@ -300,11 +408,16 @@ pub fn block_statistics(raster : @hydrology.RasterGrid, block_row : Int, block_c
   }
 }
 
+///|
 /// 块统计栅格 / Block statistics grid: apply block stat to entire raster.
 ///
 /// 将栅格分成 block_size × block_size 的块，每块输出一个统计值。
 /// 退化安全：空栅格返回空栅格。
-pub fn block_statistics_grid(raster : @hydrology.RasterGrid, block_size : Int, stat : BlockStat) -> @hydrology.RasterGrid {
+pub fn block_statistics_grid(
+  raster : @hydrology.RasterGrid,
+  block_size : Int32,
+  stat : BlockStat,
+) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(raster)
   let cols = @hydrology.raster_cols(raster)
   if block_size <= 0 || rows == 0 || cols == 0 {
@@ -328,8 +441,12 @@ pub fn block_statistics_grid(raster : @hydrology.RasterGrid, block_size : Int, s
 // 线统计 / Line statistics
 // ============================================================
 
+///|
 /// 沿行收集值 / Collect values along a row (line).
-fn line_values_row(raster : @hydrology.RasterGrid, row : Int) -> Array[Double] {
+fn line_values_row(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+) -> Array[Double] {
   let cols = @hydrology.raster_cols(raster)
   let result : Array[Double] = []
   for j in 0..<cols {
@@ -338,8 +455,12 @@ fn line_values_row(raster : @hydrology.RasterGrid, row : Int) -> Array[Double] {
   result
 }
 
+///|
 /// 沿列收集值 / Collect values along a column (line).
-fn line_values_col(raster : @hydrology.RasterGrid, col : Int) -> Array[Double] {
+fn line_values_col(
+  raster : @hydrology.RasterGrid,
+  col : Int32,
+) -> Array[Double] {
   let rows = @hydrology.raster_rows(raster)
   let result : Array[Double] = []
   for i in 0..<rows {
@@ -348,10 +469,11 @@ fn line_values_col(raster : @hydrology.RasterGrid, col : Int) -> Array[Double] {
   result
 }
 
+///|
 /// 线均值 / Line mean along a row.
 ///
 /// 退化安全：空线返回 0.0。
-pub fn line_mean(raster : @hydrology.RasterGrid, row : Int) -> Double {
+pub fn line_mean(raster : @hydrology.RasterGrid, row : Int32) -> Double {
   let vals = line_values_row(raster, row)
   let n = vals.length()
   if n == 0 {
@@ -365,8 +487,9 @@ pub fn line_mean(raster : @hydrology.RasterGrid, row : Int) -> Double {
   }
 }
 
+///|
 /// 线求和 / Line sum along a row.
-pub fn line_sum(raster : @hydrology.RasterGrid, row : Int) -> Double {
+pub fn line_sum(raster : @hydrology.RasterGrid, row : Int32) -> Double {
   let vals = line_values_row(raster, row)
   let mut sum = 0.0
   for v in vals {
@@ -375,10 +498,11 @@ pub fn line_sum(raster : @hydrology.RasterGrid, row : Int) -> Double {
   sum
 }
 
+///|
 /// 线最小值 / Line min along a row.
 ///
 /// 退化安全：空线返回 0.0。
-pub fn line_min(raster : @hydrology.RasterGrid, row : Int) -> Double {
+pub fn line_min(raster : @hydrology.RasterGrid, row : Int32) -> Double {
   let vals = line_values_row(raster, row)
   if vals.length() == 0 {
     0.0
@@ -393,10 +517,11 @@ pub fn line_min(raster : @hydrology.RasterGrid, row : Int) -> Double {
   }
 }
 
+///|
 /// 线最大值 / Line max along a row.
 ///
 /// 退化安全：空线返回 0.0。
-pub fn line_max(raster : @hydrology.RasterGrid, row : Int) -> Double {
+pub fn line_max(raster : @hydrology.RasterGrid, row : Int32) -> Double {
   let vals = line_values_row(raster, row)
   if vals.length() == 0 {
     0.0
@@ -411,20 +536,23 @@ pub fn line_max(raster : @hydrology.RasterGrid, row : Int) -> Double {
   }
 }
 
+///|
 /// 线计数 / Line count along a row.
-pub fn line_count(raster : @hydrology.RasterGrid, row : Int) -> Int {
+pub fn line_count(raster : @hydrology.RasterGrid, row : Int32) -> Int32 {
   line_values_row(raster, row).length()
 }
 
+///|
 /// 线极差 / Line range along a row.
-pub fn line_range(raster : @hydrology.RasterGrid, row : Int) -> Double {
+pub fn line_range(raster : @hydrology.RasterGrid, row : Int32) -> Double {
   line_max(raster, row) - line_min(raster, row)
 }
 
+///|
 /// 线标准差 / Line standard deviation along a row.
 ///
 /// 退化安全：空线返回 0.0。
-pub fn line_std(raster : @hydrology.RasterGrid, row : Int) -> Double {
+pub fn line_std(raster : @hydrology.RasterGrid, row : Int32) -> Double {
   let vals = line_values_row(raster, row)
   let n = vals.length()
   if n <= 1 {
@@ -440,10 +568,15 @@ pub fn line_std(raster : @hydrology.RasterGrid, row : Int) -> Double {
   }
 }
 
+///|
 /// 通用线统计 / Generic line statistics along a row.
 ///
 /// 退化安全：空线返回 0.0。
-pub fn line_statistics(raster : @hydrology.RasterGrid, row : Int, stat : LineStat) -> Double {
+pub fn line_statistics(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  stat : LineStat,
+) -> Double {
   match stat {
     LineMean => line_mean(raster, row)
     LineSum => line_sum(raster, row)
@@ -455,10 +588,15 @@ pub fn line_statistics(raster : @hydrology.RasterGrid, row : Int, stat : LineSta
   }
 }
 
+///|
 /// 线统计（列方向）/ Line statistics along a column.
 ///
 /// 退化安全：空线返回 0.0。
-pub fn line_statistics_col(raster : @hydrology.RasterGrid, col : Int, stat : LineStat) -> Double {
+pub fn line_statistics_col(
+  raster : @hydrology.RasterGrid,
+  col : Int32,
+  stat : LineStat,
+) -> Double {
   let vals = line_values_col(raster, col)
   let n = vals.length()
   if n == 0 {
@@ -467,22 +605,34 @@ pub fn line_statistics_col(raster : @hydrology.RasterGrid, col : Int, stat : Lin
     match stat {
       LineMean => {
         let mut sum = 0.0
-        for v in vals { sum = sum + v }
+        for v in vals {
+          sum = sum + v
+        }
         sum / n.to_double()
       }
       LineSum => {
         let mut sum = 0.0
-        for v in vals { sum = sum + v }
+        for v in vals {
+          sum = sum + v
+        }
         sum
       }
       LineMin => {
         let mut m = vals[0]
-        for i in 1..<n { if vals[i] < m { m = vals[i] } }
+        for i in 1..<n {
+          if vals[i] < m {
+            m = vals[i]
+          }
+        }
         m
       }
       LineMax => {
         let mut m = vals[0]
-        for i in 1..<n { if vals[i] > m { m = vals[i] } }
+        for i in 1..<n {
+          if vals[i] > m {
+            m = vals[i]
+          }
+        }
         m
       }
       LineCount => n.to_double()
@@ -490,15 +640,23 @@ pub fn line_statistics_col(raster : @hydrology.RasterGrid, col : Int, stat : Lin
         let mut mn = vals[0]
         let mut mx = vals[0]
         for i in 1..<n {
-          if vals[i] < mn { mn = vals[i] }
-          if vals[i] > mx { mx = vals[i] }
+          if vals[i] < mn {
+            mn = vals[i]
+          }
+          if vals[i] > mx {
+            mx = vals[i]
+          }
         }
         mx - mn
       }
-      LineStd => {
-        if n <= 1 { 0.0 } else {
+      LineStd =>
+        if n <= 1 {
+          0.0
+        } else {
           let mut sum = 0.0
-          for v in vals { sum = sum + v }
+          for v in vals {
+            sum = sum + v
+          }
           let mean = sum / n.to_double()
           let mut sum_sq = 0.0
           for v in vals {
@@ -507,7 +665,6 @@ pub fn line_statistics_col(raster : @hydrology.RasterGrid, col : Int, stat : Lin
           }
           (sum_sq / n.to_double()).sqrt()
         }
-      }
     }
   }
 }
@@ -516,11 +673,12 @@ pub fn line_statistics_col(raster : @hydrology.RasterGrid, col : Int, stat : Lin
 // 邻域单元列表 / Neighborhood cell list
 // ============================================================
 
+///|
 /// 邻域单元列表 / List of neighborhood cell offsets.
 ///
 /// 返回邻域内的相对偏移量列表。
 /// 退化安全：radius <= 0 返回 [(0, 0)]。
-pub fn neighborhood_cells(config : NeighborhoodConfig) -> Array[(Int, Int)] {
+pub fn neighborhood_cells(config : NeighborhoodConfig) -> Array[(Int32, Int32)] {
   let r1 = config.radius1
   let r2 = config.radius2
   if r1 <= 0 {
@@ -528,7 +686,7 @@ pub fn neighborhood_cells(config : NeighborhoodConfig) -> Array[(Int, Int)] {
   } else {
     match config.kind {
       NHRectangle => {
-        let result : Array[(Int, Int)] = []
+        let result : Array[(Int32, Int32)] = []
         let r_start = -r1
         let r_end = r1 + 1
         for di in r_start..<r_end {
@@ -539,7 +697,7 @@ pub fn neighborhood_cells(config : NeighborhoodConfig) -> Array[(Int, Int)] {
         result
       }
       NHCircle => {
-        let result : Array[(Int, Int)] = []
+        let result : Array[(Int32, Int32)] = []
         let r_start = -r1
         let r_end = r1 + 1
         for di in r_start..<r_end {
@@ -553,7 +711,7 @@ pub fn neighborhood_cells(config : NeighborhoodConfig) -> Array[(Int, Int)] {
       }
       NHAnnulus => {
         let inner = if r2 > 0 { r2 } else { 0 }
-        let result : Array[(Int, Int)] = []
+        let result : Array[(Int32, Int32)] = []
         let r_start = -r1
         let r_end = r1 + 1
         for di in r_start..<r_end {
@@ -567,7 +725,7 @@ pub fn neighborhood_cells(config : NeighborhoodConfig) -> Array[(Int, Int)] {
         result
       }
       NHWedge => {
-        let result : Array[(Int, Int)] = []
+        let result : Array[(Int32, Int32)] = []
         let r_start = -r1
         let r_end = r1 + 1
         for di in r_start..<r_end {
@@ -580,7 +738,7 @@ pub fn neighborhood_cells(config : NeighborhoodConfig) -> Array[(Int, Int)] {
         result
       }
       NHRing => {
-        let result : Array[(Int, Int)] = []
+        let result : Array[(Int32, Int32)] = []
         let r_start = -r1
         let r_end = r1 + 1
         for di in r_start..<r_end {
@@ -597,15 +755,22 @@ pub fn neighborhood_cells(config : NeighborhoodConfig) -> Array[(Int, Int)] {
   }
 }
 
+///|
 /// 邻域单元数 / Neighborhood cell count.
-pub fn neighborhood_cell_count(config : NeighborhoodConfig) -> Int {
+pub fn neighborhood_cell_count(config : NeighborhoodConfig) -> Int32 {
   neighborhood_cells(config).length()
 }
 
+///|
 /// 邻域展开 / Neighborhood expand: apply neighborhood to a cell, collect values.
 ///
 /// 退化安全：越界单元格跳过。
-pub fn neighborhood_expand(raster : @hydrology.RasterGrid, row : Int, col : Int, config : NeighborhoodConfig) -> Array[Double] {
+pub fn neighborhood_expand(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  config : NeighborhoodConfig,
+) -> Array[Double] {
   let rows = @hydrology.raster_rows(raster)
   let cols = @hydrology.raster_cols(raster)
   let cells = neighborhood_cells(config)
@@ -620,10 +785,15 @@ pub fn neighborhood_expand(raster : @hydrology.RasterGrid, row : Int, col : Int,
   result
 }
 
+///|
 /// 块统计结果列表 / Block results list.
 ///
 /// 退化安全：空栅格返回空数组。
-pub fn block_results_grid(raster : @hydrology.RasterGrid, block_size : Int, stat : BlockStat) -> Array[Array[BlockResult]] {
+pub fn block_results_grid(
+  raster : @hydrology.RasterGrid,
+  block_size : Int32,
+  stat : BlockStat,
+) -> Array[Array[BlockResult]] {
   let rows = @hydrology.raster_rows(raster)
   let cols = @hydrology.raster_cols(raster)
   if block_size <= 0 || rows == 0 || cols == 0 {
@@ -635,7 +805,13 @@ pub fn block_results_grid(raster : @hydrology.RasterGrid, block_size : Int, stat
     for br in 0..<n_block_rows {
       let row : Array[BlockResult] = []
       for bc in 0..<n_block_cols {
-        row.push(make_block_result(block_statistics(raster, br, bc, block_size, stat), br, bc))
+        row.push(
+          make_block_result(
+            block_statistics(raster, br, bc, block_size, stat),
+            br,
+            bc,
+          ),
+        )
       }
       result.push(row)
     }

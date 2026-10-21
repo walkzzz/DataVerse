@@ -1,21 +1,25 @@
 ///|
 /// S9.4 语义分析深化 / Semantic Analysis Deepening
 
+///|
 /// 文本嵌入向量 / Text embedding vector.
 pub struct Embedding {
   vector : Array[Double]
 }
 
+///|
 /// 构造嵌入 / Create embedding.
 pub fn make_embedding(vector : Array[Double]) -> Embedding {
-  { vector: vector }
+  { vector, }
 }
 
+///|
 /// 嵌入维度 / Embedding dimension.
-pub fn embedding_dim(emb : Embedding) -> Int {
+pub fn embedding_dim(emb : Embedding) -> Int32 {
   emb.vector.length()
 }
 
+///|
 /// 余弦相似度 / Cosine similarity.
 pub fn cosine_similarity(emb1 : Embedding, emb2 : Embedding) -> Double {
   let n = emb1.vector.length()
@@ -36,6 +40,7 @@ pub fn cosine_similarity(emb1 : Embedding, emb2 : Embedding) -> Double {
   dot / (norm1.sqrt() * norm2.sqrt())
 }
 
+///|
 /// 欧氏距离 / Euclidean distance between embeddings.
 pub fn embedding_distance(emb1 : Embedding, emb2 : Embedding) -> Double {
   let n = emb1.vector.length()
@@ -50,6 +55,7 @@ pub fn embedding_distance(emb1 : Embedding, emb2 : Embedding) -> Double {
   sum.sqrt()
 }
 
+///|
 /// 点积 / Dot product.
 pub fn dot_product(emb1 : Embedding, emb2 : Embedding) -> Double {
   let n = emb1.vector.length()
@@ -63,6 +69,7 @@ pub fn dot_product(emb1 : Embedding, emb2 : Embedding) -> Double {
   sum
 }
 
+///|
 /// 嵌入归一化 / Normalize embedding.
 pub fn normalize_embedding(emb : Embedding) -> Embedding {
   let mut norm = 0.0
@@ -77,22 +84,31 @@ pub fn normalize_embedding(emb : Embedding) -> Embedding {
   for i in 0..<emb.vector.length() {
     result.push(emb.vector[i] / norm)
   }
-  { vector: result }
+  { vector: result, }
 }
 
+///|
 /// K-最近邻搜索 / K-nearest neighbors search.
 pub fn knn_search(
   query : Embedding,
   database : Array[Embedding],
-  k : Int,
-) -> Array[(Int, Double)] {
-  let scores : Array[(Int, Double)] = []
+  k : Int32,
+) -> Array[(Int32, Double)] {
+  let scores : Array[(Int32, Double)] = []
   for i in 0..<database.length() {
     let sim = cosine_similarity(query, database[i])
     scores.push((i, sim))
   }
-  scores.sort_by(fn(a, b) { if a.1 > b.1 { -1 } else if a.1 < b.1 { 1 } else { 0 } })
-  let result : Array[(Int, Double)] = []
+  scores.sort_by(fn(a, b) {
+    if a.1 > b.1 {
+      -1
+    } else if a.1 < b.1 {
+      1
+    } else {
+      0
+    }
+  })
+  let result : Array[(Int32, Double)] = []
   let n = if k < scores.length() { k } else { scores.length() }
   for i in 0..<n {
     result.push(scores[i])
@@ -100,10 +116,11 @@ pub fn knn_search(
   result
 }
 
+///|
 /// 质心嵌入 / Centroid embedding (average of multiple embeddings).
 pub fn centroid_embedding(embeddings : Array[Embedding]) -> Embedding {
   if embeddings.length() == 0 {
-    return { vector: [] }
+    return { vector: [], }
   }
   let dim = embeddings[0].vector.length()
   let result : Array[Double] = Array::make(dim, 0.0)
@@ -118,9 +135,10 @@ pub fn centroid_embedding(embeddings : Array[Embedding]) -> Embedding {
   for j in 0..<dim {
     result[j] = result[j] / n
   }
-  { vector: result }
+  { vector: result, }
 }
 
+///|
 /// 文本分类（简化）/ Text classification (simplified, nearest centroid).
 pub fn classify_text(
   query : Embedding,
@@ -139,6 +157,7 @@ pub fn classify_text(
   best_label
 }
 
+///|
 /// 词频向量 / Term frequency vector.
 pub fn term_frequency_vector(
   tokens : Array[String],
@@ -152,5 +171,5 @@ pub fn term_frequency_vector(
       }
     }
   }
-  { vector: result }
+  { vector: result, }
 }

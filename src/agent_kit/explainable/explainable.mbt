@@ -10,17 +10,18 @@
 /// LIME, SHAP, IG, Grad-CAM, Attention, Feature Importance, PDP/ICE,
 /// Anchors, Counterfactual, Decision Tree, Rule Extraction, Surrogate, ALE.
 
+///|
 ///===
 /// 数学辅助 / Math helpers
-
-fn xa_lcg_next(state : Int) -> Int {
+fn xa_lcg_next(state : Int32) -> Int32 {
   let a = 1103515245
   let c = 12345
   let m = 2147483647
   (a * state + c) % m
 }
 
-fn xa_rand(state : Int) -> (Double, Int) {
+///|
+fn xa_rand(state : Int32) -> (Double, Int32) {
   let next = xa_lcg_next(state)
   (next.to_double() / 2147483647.0, next)
 }
@@ -28,6 +29,7 @@ fn xa_rand(state : Int) -> (Double, Int) {
 ///===
 /// 公共类型 / Common types
 
+///|
 /// XAI 方法 / XAI method.
 pub(all) enum XAIMethod {
   LIME
@@ -45,6 +47,7 @@ pub(all) enum XAIMethod {
   ALE
 }
 
+///|
 /// 特征贡献 / Feature contribution.
 pub struct FeatureContribution {
   feature : String
@@ -52,6 +55,7 @@ pub struct FeatureContribution {
   contribution : Double
 }
 
+///|
 /// 解释结果 / Explanation result.
 pub struct Explanation {
   xai_method : XAIMethod
@@ -61,25 +65,28 @@ pub struct Explanation {
   meta : String
 }
 
+///|
 /// XAI 配置 / XAI config.
 pub struct XAIConfig {
   xai_method : XAIMethod
-  num_samples : Int
-  seed : Int
+  num_samples : Int32
+  seed : Int32
   tolerance : Double
   baseline : Array[Double]
 }
 
+///|
 /// 构造 XAI 配置 / Create XAI config.
 pub fn make_xai_config(
   xai_method : XAIMethod,
-  num_samples : Int,
-  seed : Int,
+  num_samples : Int32,
+  seed : Int32,
   tolerance : Double,
 ) -> XAIConfig {
-  { xai_method: xai_method, num_samples: num_samples, seed: seed, tolerance: tolerance, baseline: [] }
+  { xai_method, num_samples, seed, tolerance, baseline: [], }
 }
 
+///|
 /// 构造解释 / Create explanation.
 pub fn make_explanation(
   xai_method : XAIMethod,
@@ -87,37 +94,48 @@ pub fn make_explanation(
   prediction : Double,
   contributions : Array[FeatureContribution],
 ) -> Explanation {
-  { xai_method: xai_method, base_value: base_value, prediction: prediction, contributions: contributions, meta: "" }
+  { xai_method, base_value, prediction, contributions, meta: "", }
 }
 
+///|
 /// 构造特征贡献 / Create feature contribution.
-pub fn make_contribution(feature : String, value : Double, contribution : Double) -> FeatureContribution {
-  { feature: feature, value: value, contribution: contribution }
+pub fn make_contribution(
+  feature : String,
+  value : Double,
+  contribution : Double,
+) -> FeatureContribution {
+  { feature, value, contribution, }
 }
 
 ///===
 /// LIME
 
+///|
 /// LIME 配置 / LIME config.
 pub struct LIMEConfig {
-  num_samples : Int
+  num_samples : Int32
   kernel_width : Double
-  seed : Int
+  seed : Int32
   feature_names : Array[String]
 }
 
+///|
 /// 构造 LIME / Create LIME config.
 pub fn make_lime(
-  num_samples : Int,
+  num_samples : Int32,
   kernel_width : Double,
-  seed : Int,
+  seed : Int32,
   feature_names : Array[String],
 ) -> LIMEConfig {
-  { num_samples: num_samples, kernel_width: kernel_width, seed: seed, feature_names: feature_names }
+  { num_samples, kernel_width, seed, feature_names, }
 }
 
+///|
 /// LIME 采样 / LIME sampling.
-pub fn lime_sample(config : LIMEConfig, instance : Array[Double]) -> Array[Array[Double]] {
+pub fn lime_sample(
+  config : LIMEConfig,
+  instance : Array[Double],
+) -> Array[Array[Double]] {
   let samples : Array[Array[Double]] = []
   let mut state = config.seed
   for _ in 0..<config.num_samples {
@@ -133,6 +151,7 @@ pub fn lime_sample(config : LIMEConfig, instance : Array[Double]) -> Array[Array
   samples
 }
 
+///|
 /// LIME 局部拟合 / LIME fit local.
 pub fn lime_fit_local(
   config : LIMEConfig,
@@ -146,7 +165,9 @@ pub fn lime_fit_local(
     let (r, ns) = xa_rand(state)
     state = ns
     let d = r * config.kernel_width
-    weights.push(@math.exp(-d * d / (config.kernel_width * config.kernel_width)))
+    weights.push(
+      @math.exp(-d * d / (config.kernel_width * config.kernel_width)),
+    )
   }
   let coefs : Array[Double] = []
   for j in 0..<n {
@@ -165,8 +186,13 @@ pub fn lime_fit_local(
   coefs
 }
 
+///|
 /// LIME 解释 / LIME explain.
-pub fn lime_explain(config : LIMEConfig, instance : Array[Double], predict_fn : (Array[Double]) -> Double) -> Explanation {
+pub fn lime_explain(
+  config : LIMEConfig,
+  instance : Array[Double],
+  predict_fn : (Array[Double]) -> Double,
+) -> Explanation {
   let samples = lime_sample(config, instance)
   let predictions : Array[Double] = []
   for i in 0..<samples.length() {
@@ -176,29 +202,46 @@ pub fn lime_explain(config : LIMEConfig, instance : Array[Double], predict_fn : 
   let contribs : Array[FeatureContribution] = []
   let base = predict_fn(instance)
   for j in 0..<coefs.length() {
-    let name = if j < config.feature_names.length() { config.feature_names[j] } else { "f" + j.to_string() }
+    let name = if j < config.feature_names.length() {
+      config.feature_names[j]
+    } else {
+      "f" + j.to_string()
+    }
     contribs.push(make_contribution(name, instance[j], coefs[j] * instance[j]))
   }
-  { xai_method: LIME, base_value: base, prediction: base, contributions: contribs, meta: "lime" }
+  {
+    xai_method: LIME,
+    base_value: base,
+    prediction: base,
+    contributions: contribs,
+    meta: "lime",
+  }
 }
 
 ///===
 /// SHAP
 
+///|
 /// SHAP 配置 / SHAP config.
 pub struct SHAPConfig {
-  num_samples : Int
-  seed : Int
+  num_samples : Int32
+  seed : Int32
   feature_names : Array[String]
 }
 
+///|
 /// 构造 SHAP / Create SHAP config.
-pub fn make_shap(num_samples : Int, seed : Int, feature_names : Array[String]) -> SHAPConfig {
-  { num_samples: num_samples, seed: seed, feature_names: feature_names }
+pub fn make_shap(
+  num_samples : Int32,
+  seed : Int32,
+  feature_names : Array[String],
+) -> SHAPConfig {
+  { num_samples, seed, feature_names, }
 }
 
+///|
 /// SHAP 核 / SHAP kernel.
-pub fn shap_kernel(z : Int, m : Int) -> Double {
+pub fn shap_kernel(z : Int32, m : Int32) -> Double {
   if z == 0 || z == m {
     1000000.0
   } else {
@@ -218,6 +261,7 @@ pub fn shap_kernel(z : Int, m : Int) -> Double {
   }
 }
 
+///|
 /// SHAP 值 / SHAP value.
 pub fn shap_value(
   config : SHAPConfig,
@@ -257,6 +301,7 @@ pub fn shap_value(
   shap
 }
 
+///|
 /// SHAP 解释 / SHAP explain.
 pub fn shap_explain(
   config : SHAPConfig,
@@ -269,27 +314,43 @@ pub fn shap_explain(
   let base = predict_fn(baseline)
   let mut pred = base
   for j in 0..<values.length() {
-    let name = if j < config.feature_names.length() { config.feature_names[j] } else { "f" + j.to_string() }
+    let name = if j < config.feature_names.length() {
+      config.feature_names[j]
+    } else {
+      "f" + j.to_string()
+    }
     contribs.push(make_contribution(name, instance[j], values[j]))
     pred = pred + values[j]
   }
-  { xai_method: SHAP, base_value: base, prediction: pred, contributions: contribs, meta: "shap" }
+  {
+    xai_method: SHAP,
+    base_value: base,
+    prediction: pred,
+    contributions: contribs,
+    meta: "shap",
+  }
 }
 
 ///===
 /// Integrated Gradients
 
+///|
 /// IG 配置 / Integrated Gradients config.
 pub struct IGConfig {
-  num_steps : Int
+  num_steps : Int32
   baseline : Array[Double]
 }
 
+///|
 /// 构造 IG / Create IG config.
-pub fn make_integrated_gradients(num_steps : Int, baseline : Array[Double]) -> IGConfig {
-  { num_steps: num_steps, baseline: baseline }
+pub fn make_integrated_gradients(
+  num_steps : Int32,
+  baseline : Array[Double],
+) -> IGConfig {
+  { num_steps, baseline, }
 }
 
+///|
 /// IG 基线 / IG baseline.
 pub fn ig_baseline(instance : Array[Double]) -> Array[Double] {
   let b : Array[Double] = []
@@ -299,8 +360,13 @@ pub fn ig_baseline(instance : Array[Double]) -> Array[Double] {
   b
 }
 
+///|
 /// IG 路径 / IG path.
-pub fn ig_path(config : IGConfig, instance : Array[Double], alpha : Double) -> Array[Double] {
+pub fn ig_path(
+  config : IGConfig,
+  instance : Array[Double],
+  alpha : Double,
+) -> Array[Double] {
   let path : Array[Double] = []
   for i in 0..<instance.length() {
     let b = if i < config.baseline.length() { config.baseline[i] } else { 0.0 }
@@ -309,6 +375,7 @@ pub fn ig_path(config : IGConfig, instance : Array[Double], alpha : Double) -> A
   path
 }
 
+///|
 /// IG 解释 / IG explain.
 pub fn ig_explain(
   config : IGConfig,
@@ -333,27 +400,41 @@ pub fn ig_explain(
   let base = predict_fn(config.baseline)
   let mut pred = base
   for j in 0..<n {
-    let attr = ig[j] / config.num_steps.to_double() * (instance[j] - (if j < config.baseline.length() { config.baseline[j] } else { 0.0 }))
+    let attr = ig[j] /
+      config.num_steps.to_double() *
+      (
+        instance[j] -
+        (if j < config.baseline.length() { config.baseline[j] } else { 0.0 })
+      )
     contribs.push(make_contribution("f" + j.to_string(), instance[j], attr))
     pred = pred + attr
   }
-  { xai_method: IntegratedGradients, base_value: base, prediction: pred, contributions: contribs, meta: "ig" }
+  {
+    xai_method: IntegratedGradients,
+    base_value: base,
+    prediction: pred,
+    contributions: contribs,
+    meta: "ig",
+  }
 }
 
 ///===
 /// Grad-CAM
 
+///|
 /// Grad-CAM 配置 / Grad-CAM config.
 pub struct GradCAMConfig {
-  target_layer : Int
+  target_layer : Int32
   relu : Bool
 }
 
+///|
 /// 构造 Grad-CAM / Create Grad-CAM config.
-pub fn make_grad_cam(target_layer : Int, relu : Bool) -> GradCAMConfig {
-  { target_layer: target_layer, relu: relu }
+pub fn make_grad_cam(target_layer : Int32, relu : Bool) -> GradCAMConfig {
+  { target_layer, relu, }
 }
 
+///|
 /// Grad-CAM 热力图 / Grad-CAM heatmap.
 pub fn grad_cam_heatmap(
   config : GradCAMConfig,
@@ -388,6 +469,7 @@ pub fn grad_cam_heatmap(
   heatmap
 }
 
+///|
 /// Grad-CAM 解释 / Grad-CAM explain.
 pub fn grad_cam_explain(
   config : GradCAMConfig,
@@ -402,30 +484,52 @@ pub fn grad_cam_explain(
     let cols = heatmap[0].length()
     for r in 0..<rows {
       for c in 0..<cols {
-        contribs.push(make_contribution("h" + r.to_string() + "_" + c.to_string(), activations[r][c], heatmap[r][c]))
+        contribs.push(
+          make_contribution(
+            "h" + r.to_string() + "_" + c.to_string(),
+            activations[r][c],
+            heatmap[r][c],
+          ),
+        )
       }
     }
   }
-  { xai_method: GradCAM, base_value: 0.0, prediction: prediction, contributions: contribs, meta: "grad_cam" }
+  {
+    xai_method: GradCAM,
+    base_value: 0.0,
+    prediction,
+    contributions: contribs,
+    meta: "grad_cam",
+  }
 }
 
 ///===
 /// Attention 可视化
 
+///|
 /// Attention 配置 / Attention config.
 pub struct AttentionVizConfig {
-  num_heads : Int
-  num_layers : Int
+  num_heads : Int32
+  num_layers : Int32
   rollout : Bool
 }
 
+///|
 /// 构造 Attention 可视化 / Create attention viz config.
-pub fn make_attention_viz(num_heads : Int, num_layers : Int, rollout : Bool) -> AttentionVizConfig {
-  { num_heads: num_heads, num_layers: num_layers, rollout: rollout }
+pub fn make_attention_viz(
+  num_heads : Int32,
+  num_layers : Int32,
+  rollout : Bool,
+) -> AttentionVizConfig {
+  { num_heads, num_layers, rollout, }
 }
 
+///|
 /// Attention 权重 / Attention weights.
-pub fn attention_weights(config : AttentionVizConfig, raw_scores : Array[Array[Double]]) -> Array[Array[Double]] {
+pub fn attention_weights(
+  config : AttentionVizConfig,
+  raw_scores : Array[Array[Double]],
+) -> Array[Array[Double]] {
   let n = raw_scores.length()
   let weights : Array[Array[Double]] = []
   if n == 0 {
@@ -455,8 +559,11 @@ pub fn attention_weights(config : AttentionVizConfig, raw_scores : Array[Array[D
   weights
 }
 
+///|
 /// Attention rollout / Attention rollout.
-pub fn attention_rollout(layer_attentions : Array[Array[Array[Double]]]) -> Array[Array[Double]] {
+pub fn attention_rollout(
+  layer_attentions : Array[Array[Array[Double]]],
+) -> Array[Array[Double]] {
   if layer_attentions.length() == 0 {
     return []
   }
@@ -478,7 +585,9 @@ pub fn attention_rollout(layer_attentions : Array[Array[Array[Double]]]) -> Arra
       for j in 0..<result[i].length() {
         let mut s = 0.0
         for k in 0..<n {
-          if k < result[i].length() && k < layer.length() && j < layer[k].length() {
+          if k < result[i].length() &&
+            k < layer.length() &&
+            j < layer[k].length() {
             s = s + result[i][k] * layer[k][j]
           }
         }
@@ -494,22 +603,25 @@ pub fn attention_rollout(layer_attentions : Array[Array[Array[Double]]]) -> Arra
 ///===
 /// 特征重要性
 
+///|
 /// 特征重要性配置 / Feature importance config.
 pub struct FeatureImportanceConfig {
-  num_repeats : Int
-  seed : Int
+  num_repeats : Int32
+  seed : Int32
   feature_names : Array[String]
 }
 
+///|
 /// 构造特征重要性 / Create feature importance config.
 pub fn make_feature_importance_xai(
-  num_repeats : Int,
-  seed : Int,
+  num_repeats : Int32,
+  seed : Int32,
   feature_names : Array[String],
 ) -> FeatureImportanceConfig {
-  { num_repeats: num_repeats, seed: seed, feature_names: feature_names }
+  { num_repeats, seed, feature_names, }
 }
 
+///|
 /// 置换重要性 / Permutation importance.
 pub fn permutation_importance(
   config : FeatureImportanceConfig,
@@ -540,7 +652,8 @@ pub fn permutation_importance(
       for i in 0..<permuted.length() {
         let (r, ns) = xa_rand(state)
         state = ns
-        let idx = (r * permuted.length().to_double()).to_int() % permuted.length()
+        let idx = (r * permuted.length().to_double()).to_int() %
+          permuted.length()
         if idx < 0 {
           permuted[i][j] = permuted[0][j]
         } else {
@@ -560,13 +673,14 @@ pub fn permutation_importance(
   importances
 }
 
+///|
 /// Drop-column 重要性 / Drop-column importance.
 pub fn drop_col_importance(
   config : FeatureImportanceConfig,
   instances : Array[Array[Double]],
   labels : Array[Double],
   predict_fn : (Array[Double]) -> Double,
-  predict_fn_dropped : (Array[Double], Int) -> Double,
+  predict_fn_dropped : (Array[Double], Int32) -> Double,
 ) -> Array[Double] {
   let n = if instances.length() > 0 { instances[0].length() } else { 0 }
   let mut base_err = 0.0
@@ -592,22 +706,28 @@ pub fn drop_col_importance(
 ///===
 /// 部分依赖 / Partial Dependence
 
+///|
 /// PDP 配置 / PDP config.
 pub struct PDPConfig {
-  grid_resolution : Int
+  grid_resolution : Int32
   feature_names : Array[String]
 }
 
+///|
 /// 构造 PDP / Create PDP config.
-pub fn make_partial_dependence(grid_resolution : Int, feature_names : Array[String]) -> PDPConfig {
-  { grid_resolution: grid_resolution, feature_names: feature_names }
+pub fn make_partial_dependence(
+  grid_resolution : Int32,
+  feature_names : Array[String],
+) -> PDPConfig {
+  { grid_resolution, feature_names, }
 }
 
+///|
 /// PDP 解释 / PDP explain.
 pub fn pdp_explain(
   config : PDPConfig,
   instances : Array[Array[Double]],
-  feature_idx : Int,
+  feature_idx : Int32,
   predict_fn : (Array[Double]) -> Double,
 ) -> (Array[Double], Array[Double]) {
   if instances.length() == 0 {
@@ -626,7 +746,8 @@ pub fn pdp_explain(
   let grid : Array[Double] = []
   let pdp_vals : Array[Double] = []
   for g in 0..<config.grid_resolution {
-    let v = min_v + (max_v - min_v) * g.to_double() / (config.grid_resolution - 1).to_double()
+    let v = min_v +
+      (max_v - min_v) * g.to_double() / (config.grid_resolution - 1).to_double()
     grid.push(v)
     let mut s = 0.0
     for i in 0..<instances.length() {
@@ -645,11 +766,12 @@ pub fn pdp_explain(
   (grid, pdp_vals)
 }
 
+///|
 /// ICE 曲线 / ICE curve.
 pub fn pdp_ice(
   config : PDPConfig,
   instances : Array[Array[Double]],
-  feature_idx : Int,
+  feature_idx : Int32,
   predict_fn : (Array[Double]) -> Double,
 ) -> Array[Array[Double]] {
   if instances.length() == 0 {
@@ -669,7 +791,10 @@ pub fn pdp_ice(
   for i in 0..<instances.length() {
     let curve : Array[Double] = []
     for g in 0..<config.grid_resolution {
-      let v = min_v + (max_v - min_v) * g.to_double() / (config.grid_resolution - 1).to_double()
+      let v = min_v +
+        (max_v - min_v) *
+        g.to_double() /
+        (config.grid_resolution - 1).to_double()
       let row : Array[Double] = []
       for k in 0..<instances[i].length() {
         if k == feature_idx {
@@ -685,12 +810,13 @@ pub fn pdp_ice(
   ice
 }
 
+///|
 /// 2D PDP / 2D partial dependence.
 pub fn pdp_2d(
   config : PDPConfig,
   instances : Array[Array[Double]],
-  feature1 : Int,
-  feature2 : Int,
+  feature1 : Int32,
+  feature2 : Int32,
   predict_fn : (Array[Double]) -> Double,
 ) -> (Array[Double], Array[Double], Array[Array[Double]]) {
   if instances.length() == 0 {
@@ -717,8 +843,10 @@ pub fn pdp_2d(
   let grid1 : Array[Double] = []
   let grid2 : Array[Double] = []
   for g in 0..<config.grid_resolution {
-    let v1 = min1 + (max1 - min1) * g.to_double() / (config.grid_resolution - 1).to_double()
-    let v2 = min2 + (max2 - min2) * g.to_double() / (config.grid_resolution - 1).to_double()
+    let v1 = min1 +
+      (max1 - min1) * g.to_double() / (config.grid_resolution - 1).to_double()
+    let v2 = min2 +
+      (max2 - min2) * g.to_double() / (config.grid_resolution - 1).to_double()
     grid1.push(v1)
     grid2.push(v2)
   }
@@ -750,21 +878,28 @@ pub fn pdp_2d(
 ///===
 /// Anchors
 
+///|
 /// Anchors 配置 / Anchors config.
 pub struct AnchorsConfig {
   precision_threshold : Double
-  num_candidates : Int
-  seed : Int
+  num_candidates : Int32
+  seed : Int32
 }
 
+///|
 /// 构造 Anchors / Create anchors config.
-pub fn make_anchors(precision_threshold : Double, num_candidates : Int, seed : Int) -> AnchorsConfig {
-  { precision_threshold: precision_threshold, num_candidates: num_candidates, seed: seed }
+pub fn make_anchors(
+  precision_threshold : Double,
+  num_candidates : Int32,
+  seed : Int32,
+) -> AnchorsConfig {
+  { precision_threshold, num_candidates, seed, }
 }
 
+///|
 /// Anchors 精度 / Anchors precision.
 pub fn anchors_precision(
-  anchor : Array[(Int, Double)],
+  anchor : Array[(Int32, Double)],
   instances : Array[Array[Double]],
   instance : Array[Double],
   predict_fn : (Array[Double]) -> Double,
@@ -776,7 +911,8 @@ pub fn anchors_precision(
     let mut ok = true
     for a in 0..<anchor.length() {
       let (idx, val) = anchor[a]
-      if idx < instances[i].length() && @_common.abs(instances[i][idx] - val) > 0.000001 {
+      if idx < instances[i].length() &&
+        @_common.abs(instances[i][idx] - val) > 0.000001 {
         ok = false
       }
     }
@@ -794,18 +930,19 @@ pub fn anchors_precision(
   }
 }
 
+///|
 /// Anchors 查找 / Anchors find.
 pub fn anchors_find(
   config : AnchorsConfig,
   instance : Array[Double],
   instances : Array[Array[Double]],
   predict_fn : (Array[Double]) -> Double,
-) -> Array[(Int, Double)] {
+) -> Array[(Int32, Double)] {
   let target = predict_fn(instance)
-  let anchor : Array[(Int, Double)] = []
+  let anchor : Array[(Int32, Double)] = []
   let mut state = config.seed
   let n = instance.length()
-  let order : Array[Int] = []
+  let order : Array[Int32] = []
   for j in 0..<n {
     order.push(j)
   }
@@ -830,6 +967,7 @@ pub fn anchors_find(
   anchor
 }
 
+///|
 /// Anchors 解释 / Anchors explain.
 pub fn anchors_explain(
   config : AnchorsConfig,
@@ -842,30 +980,56 @@ pub fn anchors_explain(
   let contribs : Array[FeatureContribution] = []
   for a in 0..<anchor.length() {
     let (idx, val) = anchor[a]
-    contribs.push(make_contribution("f" + idx.to_string(), val, 1.0 / anchor.length().to_double()))
+    contribs.push(
+      make_contribution(
+        "f" + idx.to_string(),
+        val,
+        1.0 / anchor.length().to_double(),
+      ),
+    )
   }
-  { xai_method: Anchors, base_value: 0.0, prediction: predict_fn(instance), contributions: contribs, meta: "anchors:prec=" + prec.to_string() }
+  {
+    xai_method: Anchors,
+    base_value: 0.0,
+    prediction: predict_fn(instance),
+    contributions: contribs,
+    meta: "anchors:prec=" + prec.to_string(),
+  }
 }
 
 ///===
 /// 反事实 / Counterfactual
 
+///|
 /// 反事实配置 / Counterfactual config.
 pub struct CounterfactualConfig {
-  max_features_to_change : Int
+  max_features_to_change : Int32
   distance_threshold : Double
-  seed : Int
+  seed : Int32
 }
 
+///|
 /// 构造反事实 / Create counterfactual config.
-pub fn make_counterfactual(max_features_to_change : Int, distance_threshold : Double, seed : Int) -> CounterfactualConfig {
-  { max_features_to_change: max_features_to_change, distance_threshold: distance_threshold, seed: seed }
+pub fn make_counterfactual(
+  max_features_to_change : Int32,
+  distance_threshold : Double,
+  seed : Int32,
+) -> CounterfactualConfig {
+  { max_features_to_change, distance_threshold, seed, }
 }
 
+///|
 /// 反事实距离 / Counterfactual distance.
-pub fn cf_distance(instance : Array[Double], counterfactual : Array[Double]) -> Double {
+pub fn cf_distance(
+  instance : Array[Double],
+  counterfactual : Array[Double],
+) -> Double {
   let mut s = 0.0
-  let n = if instance.length() < counterfactual.length() { instance.length() } else { counterfactual.length() }
+  let n = if instance.length() < counterfactual.length() {
+    instance.length()
+  } else {
+    counterfactual.length()
+  }
   for i in 0..<n {
     let d = instance[i] - counterfactual[i]
     s = s + d * d
@@ -873,6 +1037,7 @@ pub fn cf_distance(instance : Array[Double], counterfactual : Array[Double]) -> 
   @_common.sqrt(s)
 }
 
+///|
 /// 反事实查找 / Counterfactual find.
 pub fn cf_find(
   config : CounterfactualConfig,
@@ -913,6 +1078,7 @@ pub fn cf_find(
   best
 }
 
+///|
 /// 反事实解释 / Counterfactual explain.
 pub fn cf_explain(
   config : CounterfactualConfig,
@@ -925,38 +1091,56 @@ pub fn cf_explain(
   let dist = cf_distance(instance, cf)
   let contribs : Array[FeatureContribution] = []
   for i in 0..<instance.length() {
-    contribs.push(make_contribution("f" + i.to_string(), cf[i], cf[i] - instance[i]))
+    contribs.push(
+      make_contribution("f" + i.to_string(), cf[i], cf[i] - instance[i]),
+    )
   }
-  { xai_method: Counterfactual, base_value: predict_fn(instance), prediction: predict_fn(cf), contributions: contribs, meta: "cf:dist=" + dist.to_string() }
+  {
+    xai_method: Counterfactual,
+    base_value: predict_fn(instance),
+    prediction: predict_fn(cf),
+    contributions: contribs,
+    meta: "cf:dist=" + dist.to_string(),
+  }
 }
 
 ///===
 /// 决策树解释 / Decision Tree Explanation
 
+///|
 /// 决策树节点 / Decision tree node.
 pub struct TreeNode {
-  feature : Int
+  feature : Int32
   threshold : Double
-  left : Int
-  right : Int
+  left : Int32
+  right : Int32
   value : Double
   is_leaf : Bool
 }
 
+///|
 /// 决策树解释配置 / Decision tree explain config.
 pub struct DecisionTreeExplainConfig {
   nodes : Array[TreeNode]
   feature_names : Array[String]
 }
 
+///|
 /// 构造决策树解释 / Create decision tree explain config.
-pub fn make_decision_tree_explain(nodes : Array[TreeNode], feature_names : Array[String]) -> DecisionTreeExplainConfig {
-  { nodes: nodes, feature_names: feature_names }
+pub fn make_decision_tree_explain(
+  nodes : Array[TreeNode],
+  feature_names : Array[String],
+) -> DecisionTreeExplainConfig {
+  { nodes, feature_names, }
 }
 
+///|
 /// 决策树路径 / Decision tree path.
-pub fn tree_path(config : DecisionTreeExplainConfig, instance : Array[Double]) -> Array[Int] {
-  let path : Array[Int] = []
+pub fn tree_path(
+  config : DecisionTreeExplainConfig,
+  instance : Array[Double],
+) -> Array[Int32] {
+  let path : Array[Int32] = []
   let mut node_idx = 0
   let mut steps = 0
   while node_idx >= 0 && node_idx < config.nodes.length() && steps < 1000 {
@@ -965,7 +1149,8 @@ pub fn tree_path(config : DecisionTreeExplainConfig, instance : Array[Double]) -
     if node.is_leaf {
       return path
     }
-    if node.feature < instance.length() && instance[node.feature] <= node.threshold {
+    if node.feature < instance.length() &&
+      instance[node.feature] <= node.threshold {
       node_idx = node.left
     } else {
       node_idx = node.right
@@ -975,18 +1160,27 @@ pub fn tree_path(config : DecisionTreeExplainConfig, instance : Array[Double]) -
   path
 }
 
+///|
 /// 决策树规则 / Decision tree rules.
-pub fn tree_rules(config : DecisionTreeExplainConfig, path : Array[Int]) -> String {
+pub fn tree_rules(
+  config : DecisionTreeExplainConfig,
+  path : Array[Int32],
+) -> String {
   let mut result = ""
   for i in 0..<path.length() {
     let node = config.nodes[path[i]]
     if node.is_leaf {
       result = result + " => " + node.value.to_string()
     } else {
-      let name = if node.feature < config.feature_names.length() { config.feature_names[node.feature] } else { "f" + node.feature.to_string() }
+      let name = if node.feature < config.feature_names.length() {
+        config.feature_names[node.feature]
+      } else {
+        "f" + node.feature.to_string()
+      }
       if i < path.length() - 1 {
         let next = config.nodes[path[i + 1]]
-        if next.feature == node.feature && @_common.abs(next.threshold - node.threshold) < 0.000001 {
+        if next.feature == node.feature &&
+          @_common.abs(next.threshold - node.threshold) < 0.000001 {
           result = result + name + " <= " + node.threshold.to_string()
         } else {
           result = result + name + " > " + node.threshold.to_string()
@@ -1000,8 +1194,11 @@ pub fn tree_rules(config : DecisionTreeExplainConfig, path : Array[Int]) -> Stri
   result
 }
 
+///|
 /// 决策树特征重要性 / Decision tree feature importance.
-pub fn tree_feature_importance(config : DecisionTreeExplainConfig) -> Array[Double] {
+pub fn tree_feature_importance(
+  config : DecisionTreeExplainConfig,
+) -> Array[Double] {
   let n = config.feature_names.length()
   let importances : Array[Double] = []
   for _ in 0..<n {
@@ -1009,10 +1206,19 @@ pub fn tree_feature_importance(config : DecisionTreeExplainConfig) -> Array[Doub
   }
   for i in 0..<config.nodes.length() {
     let node = config.nodes[i]
-    if !(node.is_leaf) && node.feature < n {
-      let left = if node.left < config.nodes.length() { config.nodes[node.left].value } else { 0.0 }
-      let right = if node.right < config.nodes.length() { config.nodes[node.right].value } else { 0.0 }
-      importances[node.feature] = importances[node.feature] + @_common.abs(left - right)
+    if !node.is_leaf && node.feature < n {
+      let left = if node.left < config.nodes.length() {
+        config.nodes[node.left].value
+      } else {
+        0.0
+      }
+      let right = if node.right < config.nodes.length() {
+        config.nodes[node.right].value
+      } else {
+        0.0
+      }
+      importances[node.feature] = importances[node.feature] +
+        @_common.abs(left - right)
     }
   }
   let mut total = 0.0
@@ -1030,25 +1236,33 @@ pub fn tree_feature_importance(config : DecisionTreeExplainConfig) -> Array[Doub
 ///===
 /// 规则提取 / Rule Extraction
 
+///|
 /// 规则 / Rule.
 pub struct Rule {
-  conditions : Array[(Int, Double, Bool)]
+  conditions : Array[(Int32, Double, Bool)]
   consequence : Double
   confidence : Double
 }
 
+///|
 /// 规则提取配置 / Rule extraction config.
 pub struct RuleExtractionConfig {
   min_confidence : Double
-  max_rules : Int
+  max_rules : Int32
   feature_names : Array[String]
 }
 
+///|
 /// 构造规则提取 / Create rule extraction config.
-pub fn make_rule_extraction(min_confidence : Double, max_rules : Int, feature_names : Array[String]) -> RuleExtractionConfig {
-  { min_confidence: min_confidence, max_rules: max_rules, feature_names: feature_names }
+pub fn make_rule_extraction(
+  min_confidence : Double,
+  max_rules : Int32,
+  feature_names : Array[String],
+) -> RuleExtractionConfig {
+  { min_confidence, max_rules, feature_names, }
 }
 
+///|
 /// 规则提取 / Rule extract.
 pub fn rule_extract(
   config : RuleExtractionConfig,
@@ -1078,7 +1292,11 @@ pub fn rule_extract(
     let mut pos = 0
     let mut neg = 0
     for i in 0..<instances.length() {
-      let matches = if le { instances[i][feat] <= thresh } else { instances[i][feat] > thresh }
+      let matches = if le {
+        instances[i][feat] <= thresh
+      } else {
+        instances[i][feat] > thresh
+      }
       if matches {
         if @_common.abs(labels[i] - 1.0) < 0.000001 {
           pos = pos + 1
@@ -1091,11 +1309,15 @@ pub fn rule_extract(
     if total > 0 {
       let conf = pos.to_double() / total.to_double()
       if conf >= config.min_confidence {
-        let conds : Array[(Int, Double, Bool)] = [(feat, thresh, le)]
-        rules.push({ conditions: conds, consequence: 1.0, confidence: conf })
+        let conds : Array[(Int32, Double, Bool)] = [(feat, thresh, le)]
+        rules.push({ conditions: conds, consequence: 1.0, confidence: conf, })
       } else if 1.0 - conf >= config.min_confidence {
-        let conds : Array[(Int, Double, Bool)] = [(feat, thresh, le)]
-        rules.push({ conditions: conds, consequence: 0.0, confidence: 1.0 - conf })
+        let conds : Array[(Int32, Double, Bool)] = [(feat, thresh, le)]
+        rules.push({
+          conditions: conds,
+          consequence: 0.0,
+          confidence: 1.0 - conf,
+        })
       }
     }
     let _ = r3
@@ -1103,13 +1325,15 @@ pub fn rule_extract(
   rules
 }
 
+///|
 /// 规则简化 / Rule simplify.
 pub fn rule_simplify(rules : Array[Rule]) -> Array[Rule] {
   let simplified : Array[Rule] = []
   for i in 0..<rules.length() {
     let mut dup = false
     for j in 0..<simplified.length() {
-      if rules[i].confidence == simplified[j].confidence && rules[i].consequence == simplified[j].consequence {
+      if rules[i].confidence == simplified[j].confidence &&
+        rules[i].consequence == simplified[j].consequence {
         if rules[i].conditions.length() == simplified[j].conditions.length() {
           let mut same = true
           for k in 0..<rules[i].conditions.length() {
@@ -1125,7 +1349,7 @@ pub fn rule_simplify(rules : Array[Rule]) -> Array[Rule] {
         }
       }
     }
-    if !(dup) {
+    if !dup {
       simplified.push(rules[i])
     }
   }
@@ -1135,18 +1359,25 @@ pub fn rule_simplify(rules : Array[Rule]) -> Array[Rule] {
 ///===
 /// 代理模型 / Surrogate
 
+///|
 /// 代理模型配置 / Surrogate config.
 pub struct SurrogateConfig {
   model_type : String
-  max_depth : Int
+  max_depth : Int32
   feature_names : Array[String]
 }
 
+///|
 /// 构造代理模型 / Create surrogate config.
-pub fn make_surrogate(model_type : String, max_depth : Int, feature_names : Array[String]) -> SurrogateConfig {
-  { model_type: model_type, max_depth: max_depth, feature_names: feature_names }
+pub fn make_surrogate(
+  model_type : String,
+  max_depth : Int32,
+  feature_names : Array[String],
+) -> SurrogateConfig {
+  { model_type, max_depth, feature_names, }
 }
 
+///|
 /// 代理模型拟合 / Surrogate fit.
 pub fn surrogate_fit(
   config : SurrogateConfig,
@@ -1172,6 +1403,7 @@ pub fn surrogate_fit(
   coefs
 }
 
+///|
 /// 代理模型解释 / Surrogate explain.
 pub fn surrogate_explain(
   config : SurrogateConfig,
@@ -1182,19 +1414,34 @@ pub fn surrogate_explain(
   let contribs : Array[FeatureContribution] = []
   let mut base = prediction
   for j in 0..<coefs.length() {
-    let name = if j < config.feature_names.length() { config.feature_names[j] } else { "f" + j.to_string() }
+    let name = if j < config.feature_names.length() {
+      config.feature_names[j]
+    } else {
+      "f" + j.to_string()
+    }
     let c = coefs[j] * instance[j]
     contribs.push(make_contribution(name, instance[j], c))
     base = base - c
   }
-  { xai_method: Surrogate, base_value: base, prediction: prediction, contributions: contribs, meta: "surrogate:" + config.model_type }
+  {
+    xai_method: Surrogate,
+    base_value: base,
+    prediction,
+    contributions: contribs,
+    meta: "surrogate:" + config.model_type,
+  }
 }
 
 ///===
 /// XAI 评估 / XAI evaluate
 
+///|
 /// XAI 解释统一入口 / XAI explain unified entry.
-pub fn xai_explain(config : XAIConfig, instance : Array[Double], predict_fn : (Array[Double]) -> Double) -> Explanation {
+pub fn xai_explain(
+  config : XAIConfig,
+  instance : Array[Double],
+  predict_fn : (Array[Double]) -> Double,
+) -> Explanation {
   let contribs : Array[FeatureContribution] = []
   let pred = predict_fn(instance)
   for j in 0..<instance.length() {
@@ -1224,9 +1471,16 @@ pub fn xai_explain(config : XAIConfig, instance : Array[Double], predict_fn : (A
     Surrogate => "surrogate"
     ALE => "ale"
   }
-  { xai_method: config.xai_method, base_value: 0.0, prediction: pred, contributions: contribs, meta: method_name }
+  {
+    xai_method: config.xai_method,
+    base_value: 0.0,
+    prediction: pred,
+    contributions: contribs,
+    meta: method_name,
+  }
 }
 
+///|
 /// XAI 评估 / XAI evaluate.
 pub fn xai_evaluate(
   explanation : Explanation,
@@ -1257,6 +1511,7 @@ pub fn xai_evaluate(
 ///===
 /// 解释格式化 / Explanation format
 
+///|
 /// 解释格式化 / Format explanation.
 pub fn explanation_format(explanation : Explanation) -> String {
   let method_name = match explanation.xai_method {
@@ -1280,7 +1535,14 @@ pub fn explanation_format(explanation : Explanation) -> String {
   result = result + "Contributions:\n"
   for i in 0..<explanation.contributions.length() {
     let c = explanation.contributions[i]
-    result = result + "  " + c.feature + " = " + c.value.to_string() + " -> " + c.contribution.to_string() + "\n"
+    result = result +
+      "  " +
+      c.feature +
+      " = " +
+      c.value.to_string() +
+      " -> " +
+      c.contribution.to_string() +
+      "\n"
   }
   if explanation.meta.length() > 0 {
     result = result + "Meta: " + explanation.meta + "\n"
@@ -1288,6 +1550,7 @@ pub fn explanation_format(explanation : Explanation) -> String {
   result
 }
 
+///|
 /// 解释可视化 / Visualize explanation.
 pub fn explanation_visualize(explanation : Explanation) -> String {
   let mut result = "+--------------------------------------+\n"
@@ -1315,18 +1578,29 @@ pub fn explanation_visualize(explanation : Explanation) -> String {
   result
 }
 
+///|
 ///===
 /// 评估指标 / Evaluation metrics
-
-fn xa_sort_desc_idx(contributions : Array[FeatureContribution], n : Int) -> Array[Int] {
-  let sorted_idx : Array[Int] = []
+fn xa_sort_desc_idx(
+  contributions : Array[FeatureContribution],
+  n : Int32,
+) -> Array[Int32] {
+  let sorted_idx : Array[Int32] = []
   for i in 0..<n {
     sorted_idx.push(i)
   }
   for i in 0..<n {
     for j in (i + 1)..<n {
-      let ai = if i < contributions.length() { @_common.abs(contributions[i].contribution) } else { 0.0 }
-      let aj = if j < contributions.length() { @_common.abs(contributions[j].contribution) } else { 0.0 }
+      let ai = if i < contributions.length() {
+        @_common.abs(contributions[i].contribution)
+      } else {
+        0.0
+      }
+      let aj = if j < contributions.length() {
+        @_common.abs(contributions[j].contribution)
+      } else {
+        0.0
+      }
       if aj > ai {
         let tmp = sorted_idx[i]
         sorted_idx[i] = sorted_idx[j]
@@ -1337,6 +1611,7 @@ fn xa_sort_desc_idx(contributions : Array[FeatureContribution], n : Int) -> Arra
   sorted_idx
 }
 
+///|
 /// 忠实度评估 / Faithfulness evaluation.
 pub fn faithfulness_eval(
   explanation : Explanation,
@@ -1365,6 +1640,7 @@ pub fn faithfulness_eval(
   }
 }
 
+///|
 /// 单调性评估 / Monotonicity evaluation.
 pub fn monotonicity_eval(
   explanation : Explanation,
@@ -1403,8 +1679,13 @@ pub fn monotonicity_eval(
   }
 }
 
+///|
 /// 完备性评估 / Completeness evaluation.
-pub fn completeness_eval(explanation : Explanation, instance : Array[Double], predict_fn : (Array[Double]) -> Double) -> Double {
+pub fn completeness_eval(
+  explanation : Explanation,
+  instance : Array[Double],
+  predict_fn : (Array[Double]) -> Double,
+) -> Double {
   let orig = predict_fn(instance)
   let base : Array[Double] = []
   for _ in 0..<instance.length() {
@@ -1415,7 +1696,7 @@ pub fn completeness_eval(explanation : Explanation, instance : Array[Double], pr
   for i in 0..<explanation.contributions.length() {
     sum_contrib = sum_contrib + explanation.contributions[i].contribution
   }
-  let diff = @_common.abs((orig - base_pred) - sum_contrib)
+  let diff = @_common.abs(orig - base_pred - sum_contrib)
   let denom = @_common.abs(orig - base_pred)
   if denom < 0.000001 {
     1.0
@@ -1427,22 +1708,28 @@ pub fn completeness_eval(explanation : Explanation, instance : Array[Double], pr
 ///===
 /// ALE / Accumulated Local Effects
 
+///|
 /// ALE 配置 / ALE config.
 pub struct ALEConfig {
-  grid_resolution : Int
+  grid_resolution : Int32
   feature_names : Array[String]
 }
 
+///|
 /// 构造 ALE / Create ALE config.
-pub fn make_ale(grid_resolution : Int, feature_names : Array[String]) -> ALEConfig {
-  { grid_resolution: grid_resolution, feature_names: feature_names }
+pub fn make_ale(
+  grid_resolution : Int32,
+  feature_names : Array[String],
+) -> ALEConfig {
+  { grid_resolution, feature_names, }
 }
 
+///|
 /// 1D ALE / 1D ALE.
 pub fn ale_1d(
   config : ALEConfig,
   instances : Array[Array[Double]],
-  feature_idx : Int,
+  feature_idx : Int32,
   predict_fn : (Array[Double]) -> Double,
 ) -> (Array[Double], Array[Double]) {
   if instances.length() == 0 {
@@ -1460,14 +1747,18 @@ pub fn ale_1d(
   }
   let grid : Array[Double] = []
   for g in 0..<config.grid_resolution {
-    grid.push(min_v + (max_v - min_v) * g.to_double() / (config.grid_resolution - 1).to_double())
+    grid.push(
+      min_v +
+      (max_v - min_v) * g.to_double() / (config.grid_resolution - 1).to_double(),
+    )
   }
   let local_effects : Array[Double] = []
   for g in 1..<config.grid_resolution {
     let mut s = 0.0
     let mut cnt = 0
     for i in 0..<instances.length() {
-      if instances[i][feature_idx] > grid[g - 1] && instances[i][feature_idx] <= grid[g] {
+      if instances[i][feature_idx] > grid[g - 1] &&
+        instances[i][feature_idx] <= grid[g] {
         let upper : Array[Double] = []
         let lower : Array[Double] = []
         for k in 0..<instances[i].length() {
@@ -1503,12 +1794,13 @@ pub fn ale_1d(
   (grid, ale)
 }
 
+///|
 /// 2D ALE / 2D ALE.
 pub fn ale_2d(
   config : ALEConfig,
   instances : Array[Array[Double]],
-  feature1 : Int,
-  feature2 : Int,
+  feature1 : Int32,
+  feature2 : Int32,
   predict_fn : (Array[Double]) -> Double,
 ) -> (Array[Double], Array[Double], Array[Array[Double]]) {
   if instances.length() == 0 {
@@ -1535,8 +1827,14 @@ pub fn ale_2d(
   let grid1 : Array[Double] = []
   let grid2 : Array[Double] = []
   for g in 0..<config.grid_resolution {
-    grid1.push(min1 + (max1 - min1) * g.to_double() / (config.grid_resolution - 1).to_double())
-    grid2.push(min2 + (max2 - min2) * g.to_double() / (config.grid_resolution - 1).to_double())
+    grid1.push(
+      min1 +
+      (max1 - min1) * g.to_double() / (config.grid_resolution - 1).to_double(),
+    )
+    grid2.push(
+      min2 +
+      (max2 - min2) * g.to_double() / (config.grid_resolution - 1).to_double(),
+    )
   }
   let ale2d : Array[Array[Double]] = []
   for g1 in 0..<config.grid_resolution {
@@ -1571,26 +1869,39 @@ pub fn ale_2d(
   (grid1, grid2, ale2d)
 }
 
+///|
 /// ALE 解释 / ALE explain.
 pub fn ale_explain(
   config : ALEConfig,
   instances : Array[Array[Double]],
-  feature_idx : Int,
+  feature_idx : Int32,
   predict_fn : (Array[Double]) -> Double,
 ) -> Explanation {
   let (grid, ale) = ale_1d(config, instances, feature_idx, predict_fn)
   let contribs : Array[FeatureContribution] = []
   for g in 0..<grid.length() {
-    let name = if feature_idx < config.feature_names.length() { config.feature_names[feature_idx] } else { "f" + feature_idx.to_string() }
-    contribs.push(make_contribution(name + "@" + g.to_string(), grid[g], ale[g]))
+    let name = if feature_idx < config.feature_names.length() {
+      config.feature_names[feature_idx]
+    } else {
+      "f" + feature_idx.to_string()
+    }
+    contribs.push(
+      make_contribution(name + "@" + g.to_string(), grid[g], ale[g]),
+    )
   }
   let pred = if instances.length() > 0 { predict_fn(instances[0]) } else { 0.0 }
-  { xai_method: ALE, base_value: 0.0, prediction: pred, contributions: contribs, meta: "ale" }
+  {
+    xai_method: ALE,
+    base_value: 0.0,
+    prediction: pred,
+    contributions: contribs,
+    meta: "ale",
+  }
 }
 
+///|
 ///===
 /// ID
-
 pub fn explainable_id() -> String {
   "agent_kit/explainable"
 }

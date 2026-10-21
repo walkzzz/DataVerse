@@ -124,7 +124,8 @@ test "spec: topk_by_length sorted descending" {
 test "spec: standardize zero mean invariant" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
   let std = @feature.standardize(data)
-  let mean = std.fold(init=0.0, fn(acc, x) { acc + x }) / std.length().to_double()
+  let mean = std.fold(init=0.0, fn(acc, x) { acc + x }) /
+    std.length().to_double()
   assert_true(mean > -0.001 && mean < 0.001)
 }
 
@@ -186,17 +187,39 @@ test "spec: mse non-negativity" {
 /// ∀ pipeline (DAG): topo_order 中每条边 (u,v) 满足 u 出现在 v 之前
 test "spec: topo_order validity" {
   let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("a"), "op_a", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("a"),
+    "op_a",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("b"), "op_b", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("b"),
+    "op_b",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("c"), "op_c", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("c"),
+    "op_c",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
-    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("a"), @ir_core.IRNodeId::new("b")))
-    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("b"), @ir_core.IRNodeId::new("c")))
+  let p = @ir_pipeline.PipelineIR::empty()
+    .add_node(n1)
+    .add_node(n2)
+    .add_node(n3)
+    .add_edge(
+      @ir_pipeline.DAGEdge::new(
+        @ir_core.IRNodeId::new("a"),
+        @ir_core.IRNodeId::new("b"),
+      ),
+    )
+    .add_edge(
+      @ir_pipeline.DAGEdge::new(
+        @ir_core.IRNodeId::new("b"),
+        @ir_core.IRNodeId::new("c"),
+      ),
+    )
   let order = p.topo_order()
   // 找到 a, b, c 的位置
   let mut pos_a = -1
@@ -223,15 +246,27 @@ test "spec: topo_order validity" {
 /// ∀ pipeline: optimize(pipeline).node_count <= pipeline.node_count
 test "spec: optimize node count monotonic" {
   let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"), "identity", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op1"),
+    "identity",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"), "normalize", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op2"),
+    "normalize",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"), "normalize", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op3"),
+    "normalize",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
+  let p = @ir_pipeline.PipelineIR::empty()
+    .add_node(n1)
+    .add_node(n2)
+    .add_node(n3)
   let opt = @ir_optimizer.optimize(p)
   assert_true(opt.node_count() <= p.node_count())
 }
@@ -303,8 +338,16 @@ test "spec: video_sample_frames monotone" {
 /// 性质 20：semantic_quality_score 范围不变量
 /// 0 <= score <= 1
 test "spec: semantic_quality_score range" {
-  let d1 = @dataobject.make_dataobject("hello world test", @dataobject.Text, @schema.empty())
-  let d2 = @dataobject.make_dataobject("a".repeat(200), @dataobject.Text, @schema.empty())
+  let d1 = @dataobject.make_dataobject(
+    "hello world test",
+    @dataobject.Text,
+    @schema.empty(),
+  )
+  let d2 = @dataobject.make_dataobject(
+    "a".repeat(200),
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let d3 = @dataobject.empty_dataobject(@dataobject.Text)
   let s1 = @semantic.semantic_quality_score(d1)
   let s2 = @semantic.semantic_quality_score(d2)
@@ -318,7 +361,11 @@ test "spec: semantic_quality_score range" {
 /// 性质 21：content_diversity_score 范围不变量
 /// 0 < score <= 1（非空时）
 test "spec: content_diversity_score range" {
-  let d = @dataobject.make_dataobject("abcdef", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "abcdef",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let s = @semantic.content_diversity_score(d)
   assert_true(s > 0.0 && s <= 1.0)
 }
@@ -327,7 +374,11 @@ test "spec: content_diversity_score range" {
 /// 性质 22：rewrite_text Simplify 幂等性
 /// simplify(simplify(x)) == simplify(x)（对短文本）
 test "spec: rewrite Simplify idempotent" {
-  let d = @dataobject.make_dataobject("  hello world  ", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "  hello world  ",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let r1 = @semantic.rewrite_text(d, @semantic.Simplify)
   let r2 = @semantic.rewrite_text(r1, @semantic.Simplify)
   assert_eq(r1.content, r2.content)
@@ -360,7 +411,7 @@ test "spec: kfold_splits complete" {
   let n = 10
   let k = 5
   let splits = @cross_validation.kfold_splits(n, k)
-  let all_test : Array[Int] = []
+  let all_test : Array[Int32] = []
   for i in 0..<splits.length() {
     for j in 0..<splits[i].test_indices.length() {
       all_test.push(splits[i].test_indices[j])
@@ -531,15 +582,27 @@ test "spec: run_benchmark zero iteration safe" {
 /// apply_fusion(p).fused_node_count <= apply_fusion(p).original_node_count
 test "spec: apply_fusion non_increasing" {
   let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"), "map1", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op1"),
+    "map1",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"), "map2", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op2"),
+    "map2",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"), "map3", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op3"),
+    "map3",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
+  let p = @ir_pipeline.PipelineIR::empty()
+    .add_node(n1)
+    .add_node(n2)
+    .add_node(n3)
   let result = @ir_fusion.apply_fusion(p)
   assert_true(result.fused_node_count <= result.original_node_count)
 }
@@ -595,7 +658,12 @@ test "spec: euclidean_distance triangle_inequality" {
 /// 性质 44：polygon_area 非负性
 /// area(polygon) >= 0
 test "spec: polygon_area non_negative" {
-  let poly = @overlay.make_polygon([@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 0.0), @proximity.make_point(4.0, 3.0), @proximity.make_point(0.0, 3.0)])
+  let poly = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(4.0, 3.0),
+    @proximity.make_point(0.0, 3.0),
+  ])
   assert_true(@overlay.polygon_area(poly) >= 0.0)
 }
 
@@ -603,7 +671,11 @@ test "spec: polygon_area non_negative" {
 /// 性质 45：polygon_perimeter 非负性
 /// perimeter(polygon) >= 0
 test "spec: polygon_perimeter non_negative" {
-  let poly = @overlay.make_polygon([@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 0.0), @proximity.make_point(4.0, 3.0)])
+  let poly = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(4.0, 3.0),
+  ])
   assert_true(@overlay.polygon_perimeter(poly) >= 0.0)
 }
 
@@ -611,7 +683,11 @@ test "spec: polygon_perimeter non_negative" {
 /// 性质 46：surface_slope 非负性
 /// slope >= 0 (degrees)
 test "spec: surface_slope non_negative" {
-  let raster = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]])
+  let raster = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
   let slope = @surface.surface_slope(raster, 1, 1, 1.0)
   assert_true(slope >= 0.0)
 }
@@ -653,7 +729,11 @@ test "spec: zonal_count non_negative" {
 /// 性质 50：focal_mean 常数栅格不变性
 /// focal_mean(constant_raster, r, c, radius) == constant
 test "spec: focal_mean constant_invariant" {
-  let raster = @hydrology.make_raster([[7.0, 7.0, 7.0], [7.0, 7.0, 7.0], [7.0, 7.0, 7.0]])
+  let raster = @hydrology.make_raster([
+    [7.0, 7.0, 7.0],
+    [7.0, 7.0, 7.0],
+    [7.0, 7.0, 7.0],
+  ])
   let m = @local_stats.focal_mean(raster, 1, 1, 1)
   assert_true((m - 7.0).abs() < 0.0001)
 }
@@ -667,7 +747,11 @@ test "spec: focal_mean constant_invariant" {
 /// 性质 51：block_mean 常数栅格不变性
 /// block_mean(constant_raster) == constant
 test "spec: block_mean constant_invariant" {
-  let r = @hydrology.make_raster([[7.0, 7.0, 7.0], [7.0, 7.0, 7.0], [7.0, 7.0, 7.0]])
+  let r = @hydrology.make_raster([
+    [7.0, 7.0, 7.0],
+    [7.0, 7.0, 7.0],
+    [7.0, 7.0, 7.0],
+  ])
   let m = @neighborhood.block_mean(r, 0, 0, 2)
   assert_true((m - 7.0).abs() < 0.0001)
 }
@@ -702,9 +786,21 @@ test "spec: line_count non_negative" {
 /// 性质 55：neighborhood_cell_count 非负性
 /// neighborhood_cell_count >= 0
 test "spec: neighborhood_cell_count non_negative" {
-  let cfg1 = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 2, 0)
-  let cfg2 = @neighborhood.make_neighborhood_config(@neighborhood.NHCircle, 1, 0)
-  let cfg3 = @neighborhood.make_neighborhood_config(@neighborhood.NHAnnulus, 3, 1)
+  let cfg1 = @neighborhood.make_neighborhood_config(
+    @neighborhood.NHRectangle,
+    2,
+    0,
+  )
+  let cfg2 = @neighborhood.make_neighborhood_config(
+    @neighborhood.NHCircle,
+    1,
+    0,
+  )
+  let cfg3 = @neighborhood.make_neighborhood_config(
+    @neighborhood.NHAnnulus,
+    3,
+    1,
+  )
   assert_true(@neighborhood.neighborhood_cell_count(cfg1) >= 0)
   assert_true(@neighborhood.neighborhood_cell_count(cfg2) >= 0)
   assert_true(@neighborhood.neighborhood_cell_count(cfg3) >= 0)
@@ -728,7 +824,10 @@ test "spec: solar_altitude non_negative" {
 test "spec: solar_global_equals_direct_plus_diffuse" {
   let cfg = @solar.make_solar_config(35.0, 120.0, 172, 14.0, 0.25)
   let r = @solar.solar_radiation_point(cfg)
-  assert_true((r.global_radiation - r.direct_radiation - r.diffuse_radiation).abs() < 0.001)
+  assert_true(
+    (r.global_radiation - r.direct_radiation - r.diffuse_radiation).abs() <
+    0.001,
+  )
 }
 
 ///|
@@ -775,10 +874,22 @@ test "spec: transform_set_null idempotency" {
   let r = @hydrology.make_raster([[5.0, 3.0], [7.0, 2.0]])
   let once = @transform.transform_set_null(cond, r)
   let twice = @transform.transform_set_null(cond, once)
-  assert_eq(@hydrology.raster_get(twice, 0, 0), @hydrology.raster_get(once, 0, 0))
-  assert_eq(@hydrology.raster_get(twice, 0, 1), @hydrology.raster_get(once, 0, 1))
-  assert_eq(@hydrology.raster_get(twice, 1, 0), @hydrology.raster_get(once, 1, 0))
-  assert_eq(@hydrology.raster_get(twice, 1, 1), @hydrology.raster_get(once, 1, 1))
+  assert_eq(
+    @hydrology.raster_get(twice, 0, 0),
+    @hydrology.raster_get(once, 0, 0),
+  )
+  assert_eq(
+    @hydrology.raster_get(twice, 0, 1),
+    @hydrology.raster_get(once, 0, 1),
+  )
+  assert_eq(
+    @hydrology.raster_get(twice, 1, 0),
+    @hydrology.raster_get(once, 1, 0),
+  )
+  assert_eq(
+    @hydrology.raster_get(twice, 1, 1),
+    @hydrology.raster_get(once, 1, 1),
+  )
 }
 
 ///|
@@ -949,7 +1060,11 @@ test "spec: attention output dimension" {
 /// ∀ input, hidden: len(rnn_step(input, hidden, meta)) == meta.hidden_size
 test "spec: rnn_step preserves hidden size" {
   let meta = @dl_layers.make_rnn(3, 5)
-  let result = @dl_layers.rnn_step([1.0, 2.0, 3.0], [0.0, 0.0, 0.0, 0.0, 0.0], meta)
+  let result = @dl_layers.rnn_step(
+    [1.0, 2.0, 3.0],
+    [0.0, 0.0, 0.0, 0.0, 0.0],
+    meta,
+  )
   assert_eq(result.length(), 5)
 }
 
@@ -957,7 +1072,12 @@ test "spec: rnn_step preserves hidden size" {
 /// 性质 76：lstm_step 保持 hidden_size
 test "spec: lstm_step preserves hidden size" {
   let meta = @dl_layers.make_lstm(3, 4)
-  let (h, c) = @dl_layers.lstm_step([1.0, 2.0, 3.0], [0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], meta)
+  let (h, c) = @dl_layers.lstm_step(
+    [1.0, 2.0, 3.0],
+    [0.0, 0.0, 0.0, 0.0],
+    [0.0, 0.0, 0.0, 0.0],
+    meta,
+  )
   assert_eq(h.length(), 4)
   assert_eq(c.length(), 4)
 }
@@ -996,6 +1116,7 @@ test "spec: difference length minus 1" {
   let result = @timeseries.difference(data)
   assert_eq(result.length(), data.length() - 1)
 }
+
 ///|
 /// 性质 81：network_id 恒等
 /// network_id() == "opcore/network"
@@ -1007,7 +1128,12 @@ test "spec: network_id constant" {
 /// 性质 82：shortest_distance 自反性
 /// ∀ graph, node: shortest_distance(graph, node, node) == 0.0
 test "spec: shortest_distance self zero" {
-  let g = @network.build_network_from_edges(5, [(0, 1, 1.0), (1, 2, 2.0), (2, 3, 3.0), (3, 4, 4.0)])
+  let g = @network.build_network_from_edges(5, [
+    (0, 1, 1.0),
+    (1, 2, 2.0),
+    (2, 3, 3.0),
+    (3, 4, 4.0),
+  ])
   assert_eq(@network.shortest_distance(g, 2, 2), 0.0)
 }
 
@@ -1155,7 +1281,7 @@ test "spec: threshold binary output" {
 ///|
 /// 性质 101：json_escape 双引号转义
 test "spec: json_escape quote" {
-  let bs = String::from_array([Int::unsafe_to_char(92)])
+  let bs = String::from_array([Int32::unsafe_to_char(92)])
   let q_in = "a" + "\"" + "b"
   let q_out = "a" + bs + "\"" + "b"
   assert_eq(@serialize.json_escape(q_in), q_out)
@@ -1214,7 +1340,10 @@ test "spec: moving_average length" {
 ///|
 /// 性质 107：fold_binary_op 加法交换
 test "spec: fold_add commutative" {
-  assert_eq(@ir_transform.fold_binary_op("+", 3.0, 5.0), @ir_transform.fold_binary_op("+", 5.0, 3.0))
+  assert_eq(
+    @ir_transform.fold_binary_op("+", 3.0, 5.0),
+    @ir_transform.fold_binary_op("+", 5.0, 3.0),
+  )
 }
 
 ///|
@@ -1276,7 +1405,13 @@ test "spec: count_variables correct" {
 /// 性质 115：memory_add 增加计数
 test "spec: memory_add increases count" {
   let store = @memory.make_memory_store(10, 10)
-  let entry = @memory.make_memory_entry("e1", "test", @memory.ShortTerm, 1.0, 0.5)
+  let entry = @memory.make_memory_entry(
+    "e1",
+    "test",
+    @memory.ShortTerm,
+    1.0,
+    0.5,
+  )
   let store2 = @memory.add_memory(store, entry)
   assert_eq(@memory.memory_count(store2), @memory.memory_count(store) + 1)
 }
@@ -1317,8 +1452,16 @@ test "spec: rerank by score" {
     @retrieval.make_document("d2", "b", [], ""),
   ]
   let results = [
-    @retrieval.make_retrieval_result({ ..docs[0], score: 0.3 }, @retrieval.VectorSearch, 1),
-    @retrieval.make_retrieval_result({ ..docs[1], score: 0.8 }, @retrieval.VectorSearch, 2),
+    @retrieval.make_retrieval_result(
+      { ..docs[0], score: 0.3, },
+      @retrieval.VectorSearch,
+      1,
+    ),
+    @retrieval.make_retrieval_result(
+      { ..docs[1], score: 0.8, },
+      @retrieval.VectorSearch,
+      2,
+    ),
   ]
   let reranked = @retrieval.rerank(results)
   assert_eq(reranked[0].rank, 1)

@@ -7,14 +7,16 @@
 /// # Text analytics
 ///
 /// Tokenize / similarity / sentiment / topic / embedding / classification.
-
 const TA_LARGE_DOUBLE : Double = 999999999999999.0
+
+///|
 const TA_E_EULER : Double = 2.718281828459045
 
 // ============================================================
 // 辅助数学函数 / Helper math functions (private)
 // ============================================================
 
+///|
 fn ta_pow(base : Double, exp : Double) -> Double {
   if base < 0.0 {
     let rounded = exp.to_int().to_double()
@@ -32,7 +34,11 @@ fn ta_pow(base : Double, exp : Double) -> Double {
       0.0
     }
   } else if base == 0.0 {
-    if exp > 0.0 { 0.0 } else { TA_LARGE_DOUBLE }
+    if exp > 0.0 {
+      0.0
+    } else {
+      TA_LARGE_DOUBLE
+    }
   } else {
     @math.exp(exp * @math.ln(base))
   }
@@ -42,27 +48,43 @@ fn ta_pow(base : Double, exp : Double) -> Double {
 // 辅助字符函数 / Helper char functions (private)
 // ============================================================
 
+///|
 fn ta_is_letter(c : Char) -> Bool {
   (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
 }
 
+///|
 fn ta_is_digit(c : Char) -> Bool {
   c >= '0' && c <= '9'
 }
 
+///|
 fn ta_is_whitespace(c : Char) -> Bool {
   c == ' ' || c == '\t' || c == '\n' || c == '\r'
 }
 
+///|
 fn ta_is_punctuation(c : Char) -> Bool {
   !ta_is_letter(c) && !ta_is_digit(c) && !ta_is_whitespace(c)
 }
 
+///|
 fn ta_is_vowel(c : Char) -> Bool {
-  c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y' ||
-  c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'Y'
+  c == 'a' ||
+  c == 'e' ||
+  c == 'i' ||
+  c == 'o' ||
+  c == 'u' ||
+  c == 'y' ||
+  c == 'A' ||
+  c == 'E' ||
+  c == 'I' ||
+  c == 'O' ||
+  c == 'U' ||
+  c == 'Y'
 }
 
+///|
 fn ta_ends_with(s : String, suffix : String) -> Bool {
   let slen = s.length()
   let flen = suffix.length()
@@ -79,7 +101,8 @@ fn ta_ends_with(s : String, suffix : String) -> Bool {
   true
 }
 
-fn ta_substring(s : String, start : Int, length : Int) -> String {
+///|
+fn ta_substring(s : String, start : Int32, length : Int32) -> String {
   let chars = s.to_array()
   let slen = chars.length()
   if start < 0 || start >= slen || length <= 0 {
@@ -89,7 +112,8 @@ fn ta_substring(s : String, start : Int, length : Int) -> String {
   String::from_array(chars[start:end])
 }
 
-fn ta_count_syllables(word : String) -> Int {
+///|
+fn ta_count_syllables(word : String) -> Int32 {
   let w = word.to_lower()
   let chars = w.to_array()
   if chars.length() == 0 {
@@ -117,6 +141,7 @@ fn ta_count_syllables(word : String) -> Int {
   count
 }
 
+///|
 fn ta_contains(arr : Array[String], s : String) -> Bool {
   for i in 0..<arr.length() {
     if arr[i] == s {
@@ -126,18 +151,34 @@ fn ta_contains(arr : Array[String], s : String) -> Bool {
   false
 }
 
+///|
 fn ta_pos_words() -> Array[String] {
-  ["good", "great", "excellent", "happy", "love", "wonderful", "amazing", "best", "beautiful", "perfect", "nice", "awesome", "fantastic", "brilliant", "superb"]
+  [
+    "good", "great", "excellent", "happy", "love", "wonderful", "amazing", "best",
+    "beautiful", "perfect", "nice", "awesome", "fantastic", "brilliant", "superb",
+  ]
 }
 
+///|
 fn ta_neg_words() -> Array[String] {
-  ["bad", "terrible", "awful", "sad", "hate", "horrible", "worst", "ugly", "wrong", "poor", "nasty", "dreadful", "appalling", "atrocious", "inferior"]
+  [
+    "bad", "terrible", "awful", "sad", "hate", "horrible", "worst", "ugly", "wrong",
+    "poor", "nasty", "dreadful", "appalling", "atrocious", "inferior",
+  ]
 }
 
+///|
 fn ta_stop_words() -> Array[String] {
-  ["the", "a", "an", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had", "do", "does", "did", "will", "would", "could", "should", "may", "might", "must", "can", "of", "in", "on", "at", "to", "for", "with", "by", "from", "as", "and", "or", "not", "but", "if", "then", "else", "this", "that", "these", "those", "i", "you", "he", "she", "it", "we", "they"]
+  [
+    "the", "a", "an", "is", "are", "was", "were", "be", "been", "being", "have",
+    "has", "had", "do", "does", "did", "will", "would", "could", "should", "may",
+    "might", "must", "can", "of", "in", "on", "at", "to", "for", "with", "by", "from",
+    "as", "and", "or", "not", "but", "if", "then", "else", "this", "that", "these",
+    "those", "i", "you", "he", "she", "it", "we", "they",
+  ]
 }
 
+///|
 fn ta_soundex_code(c : Char) -> Char {
   match c {
     'B' | 'F' | 'P' | 'V' => '1'
@@ -154,50 +195,67 @@ fn ta_soundex_code(c : Char) -> Char {
 // 类型定义 / Type definitions
 // ============================================================
 
+///|
 /// 语言模型 / Language model (n-gram).
 pub(all) struct LanguageModel {
-  n : Int
-  ngrams : Array[(String, Int)]
-  total : Int
+  n : Int32
+  ngrams : Array[(String, Int32)]
+  total : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend LanguageModel with Eq::{equal, not_equal}
+
+///|
 pub extend LanguageModel with Debug::{to_repr}
 
+///|
 /// 主题模型 / Topic model.
 pub(all) struct TopicModel {
-  k : Int
+  k : Int32
   words : Array[String]
   distributions : Array[Array[Double]]
 } derive(Debug, Eq)
 
+///|
 pub extend TopicModel with Eq::{equal, not_equal}
+
+///|
 pub extend TopicModel with Debug::{to_repr}
 
+///|
 /// 语料库 / Corpus.
 pub(all) struct Corpus {
   docs : Array[Array[String]]
   vocabulary : Array[String]
 } derive(Debug, Eq)
 
+///|
 pub extend Corpus with Eq::{equal, not_equal}
+
+///|
 pub extend Corpus with Debug::{to_repr}
 
+///|
 /// 语料库统计 / Corpus statistics.
 pub(all) struct CorpusStats {
-  doc_count : Int
-  total_words : Int
+  doc_count : Int32
+  total_words : Int32
   avg_doc_length : Double
-  vocab_size : Int
+  vocab_size : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend CorpusStats with Eq::{equal, not_equal}
+
+///|
 pub extend CorpusStats with Debug::{to_repr}
 
 // ============================================================
 // 基础文本操作 / Basic text operations
 // ============================================================
 
+///|
 /// 分词 / Tokenize text into words (split on whitespace and punctuation).
 pub fn tokenize(s : String) -> Array[String] {
   let chars = s.to_array()
@@ -220,6 +278,7 @@ pub fn tokenize(s : String) -> Array[String] {
   result
 }
 
+///|
 /// 按空格分词 / Split words by whitespace.
 pub fn split_words(s : String) -> Array[String] {
   let chars = s.to_array()
@@ -242,6 +301,7 @@ pub fn split_words(s : String) -> Array[String] {
   result
 }
 
+///|
 /// 分句 / Split text into sentences.
 pub fn split_sentences(s : String) -> Array[String] {
   let chars = s.to_array()
@@ -267,6 +327,7 @@ pub fn split_sentences(s : String) -> Array[String] {
   result
 }
 
+///|
 /// 文本归一化 / Normalize text (collapse whitespace, trim).
 pub fn normalize_text(s : String) -> String {
   let chars = s.to_array()
@@ -287,16 +348,19 @@ pub fn normalize_text(s : String) -> String {
   String::from_array(result).trim().to_owned()
 }
 
+///|
 /// 转小写 / Convert to lowercase.
 pub fn lowercase(s : String) -> String {
   s.to_lower()
 }
 
+///|
 /// 转大写 / Convert to uppercase.
 pub fn uppercase(s : String) -> String {
   s.to_upper()
 }
 
+///|
 /// 首字母大写 / Capitalize first letter.
 pub fn capitalize(s : String) -> String {
   if s.length() == 0 {
@@ -306,7 +370,7 @@ pub fn capitalize(s : String) -> String {
   let result : Array[Char] = []
   let first = chars[0]
   if first >= 'a' && first <= 'z' {
-    result.push(Int::unsafe_to_char(first.to_int() - 32))
+    result.push(Int32::unsafe_to_char(first.to_int() - 32))
   } else {
     result.push(first)
   }
@@ -316,6 +380,7 @@ pub fn capitalize(s : String) -> String {
   String::from_array(result)
 }
 
+///|
 /// 去除标点 / Strip punctuation from text.
 pub fn strip_punctuation(s : String) -> String {
   let chars = s.to_array()
@@ -333,13 +398,15 @@ pub fn strip_punctuation(s : String) -> String {
 // 统计 / Statistics
 // ============================================================
 
+///|
 /// 词数 / Word count.
-pub fn word_count(s : String) -> Int {
+pub fn word_count(s : String) -> Int32 {
   split_words(s).length()
 }
 
+///|
 /// 字符数 / Character count (excluding whitespace).
-pub fn char_count(s : String) -> Int {
+pub fn char_count(s : String) -> Int32 {
   let chars = s.to_array()
   let mut count = 0
   for i in 0..<chars.length() {
@@ -350,11 +417,13 @@ pub fn char_count(s : String) -> Int {
   count
 }
 
+///|
 /// 句数 / Sentence count.
-pub fn sentence_count(s : String) -> Int {
+pub fn sentence_count(s : String) -> Int32 {
   split_sentences(s).length()
 }
 
+///|
 /// 平均词长 / Average word length.
 pub fn avg_word_length(s : String) -> Double {
   let words = split_words(s)
@@ -369,6 +438,7 @@ pub fn avg_word_length(s : String) -> Double {
   total.to_double() / n.to_double()
 }
 
+///|
 /// 词频 / Term frequency (TF).
 pub fn term_frequency(term : String, doc : String) -> Double {
   let words = tokenize(doc)
@@ -385,8 +455,9 @@ pub fn term_frequency(term : String, doc : String) -> Double {
   count.to_double() / n.to_double()
 }
 
+///|
 /// 文档频率 / Document frequency (DF).
-pub fn document_frequency(term : String, corpus : Array[String]) -> Int {
+pub fn document_frequency(term : String, corpus : Array[String]) -> Int32 {
   let mut count = 0
   for i in 0..<corpus.length() {
     let words = tokenize(corpus[i])
@@ -404,6 +475,7 @@ pub fn document_frequency(term : String, corpus : Array[String]) -> Int {
   count
 }
 
+///|
 /// TF-IDF / TF-IDF score.
 pub fn tf_idf(term : String, doc : String, corpus : Array[String]) -> Double {
   let tf = term_frequency(term, doc)
@@ -420,8 +492,9 @@ pub fn tf_idf(term : String, doc : String, corpus : Array[String]) -> Double {
 // N-grams
 // ============================================================
 
+///|
 /// N-grams / Generate n-grams from word array.
-pub fn ngrams(words : Array[String], n : Int) -> Array[String] {
+pub fn ngrams(words : Array[String], n : Int32) -> Array[String] {
   let result : Array[String] = []
   let len = words.length()
   if n <= 0 || len < n {
@@ -438,18 +511,21 @@ pub fn ngrams(words : Array[String], n : Int) -> Array[String] {
   result
 }
 
+///|
 /// 二元组 / Bigrams.
 pub fn bigrams(words : Array[String]) -> Array[String] {
   ngrams(words, 2)
 }
 
+///|
 /// 三元组 / Trigrams.
 pub fn trigrams(words : Array[String]) -> Array[String] {
   ngrams(words, 3)
 }
 
+///|
 /// 跳跃元组 / Skip-grams with skip distance k.
-pub fn skip_grams(words : Array[String], k : Int) -> Array[String] {
+pub fn skip_grams(words : Array[String], k : Int32) -> Array[String] {
   let result : Array[String] = []
   let len = words.length()
   if k <= 0 || len < 2 {
@@ -468,8 +544,9 @@ pub fn skip_grams(words : Array[String], k : Int) -> Array[String] {
 // 相似度与距离 / Similarity and distance
 // ============================================================
 
+///|
 /// 编辑距离 / Levenshtein edit distance.
-pub fn levenshtein_distance(s1 : String, s2 : String) -> Int {
+pub fn levenshtein_distance(s1 : String, s2 : String) -> Int32 {
   let chars1 = s1.to_array()
   let chars2 = s2.to_array()
   let m = chars1.length()
@@ -480,11 +557,11 @@ pub fn levenshtein_distance(s1 : String, s2 : String) -> Int {
   if n == 0 {
     return m
   }
-  let dp : Array[Array[Int]] = []
+  let dp : Array[Array[Int32]] = []
   let rows = m + 1
   let cols = n + 1
   for i in 0..<rows {
-    let row : Array[Int] = []
+    let row : Array[Int32] = []
     for j in 0..<cols {
       if i == 0 {
         row.push(j)
@@ -504,6 +581,7 @@ pub fn levenshtein_distance(s1 : String, s2 : String) -> Int {
   dp[m][n]
 }
 
+///|
 /// Jaccard 相似度 / Jaccard similarity (word sets).
 pub fn jaccard_similarity(s1 : String, s2 : String) -> Double {
   let w1 = tokenize(s1)
@@ -533,6 +611,7 @@ pub fn jaccard_similarity(s1 : String, s2 : String) -> Double {
   inter.to_double() / union_count.to_double()
 }
 
+///|
 /// 余弦文本相似度 / Cosine text similarity (word frequency vectors).
 pub fn cosine_text_similarity(s1 : String, s2 : String) -> Double {
   let words1 = tokenize(s1)
@@ -574,6 +653,7 @@ pub fn cosine_text_similarity(s1 : String, s2 : String) -> Double {
   dot / (@_common.sqrt(norm1) * @_common.sqrt(norm2))
 }
 
+///|
 /// Jaro 距离 / Jaro similarity.
 pub fn jaro_distance(s1 : String, s2 : String) -> Double {
   if s1 == s2 {
@@ -630,6 +710,7 @@ pub fn jaro_distance(s1 : String, s2 : String) -> Double {
   (m / len1.to_double() + m / len2.to_double() + (m - t) / m) / 3.0
 }
 
+///|
 /// Jaro-Winkler 距离 / Jaro-Winkler similarity.
 pub fn jaro_winkler(s1 : String, s2 : String) -> Double {
   let jaro = jaro_distance(s1, s2)
@@ -647,6 +728,7 @@ pub fn jaro_winkler(s1 : String, s2 : String) -> Double {
   jaro + prefix.to_double() * 0.1 * (1.0 - jaro)
 }
 
+///|
 /// Soundex 编码 / Soundex phonetic code.
 pub fn soundex(s : String) -> String {
   if s.length() == 0 {
@@ -673,6 +755,7 @@ pub fn soundex(s : String) -> String {
   result
 }
 
+///|
 /// Metaphone 编码 / Metaphone phonetic code (simplified).
 pub fn metaphone(s : String) -> String {
   if s.length() == 0 {
@@ -710,6 +793,7 @@ pub fn metaphone(s : String) -> String {
 // 词形处理 / Stemming and lemmatization
 // ============================================================
 
+///|
 /// Porter 词干提取 / Porter stemmer (simplified).
 pub fn stem_porter(word : String) -> String {
   let w = word.to_lower()
@@ -737,20 +821,38 @@ pub fn stem_porter(word : String) -> String {
   result
 }
 
+///|
 /// 简单词形归并 / Simple lemmatization.
 pub fn lemmatize_simple(word : String) -> String {
   let w = word.to_lower()
   let irregular : Array[(String, String)] = [
-    ("went", "go"), ("gone", "go"), ("going", "go"),
-    ("was", "be"), ("were", "be"), ("been", "be"), ("being", "be"),
-    ("had", "have"), ("has", "have"), ("having", "have"),
-    ("did", "do"), ("done", "do"), ("doing", "do"),
-    ("ate", "eat"), ("eaten", "eat"), ("eating", "eat"),
-    ("ran", "run"), ("running", "run"),
-    ("sat", "sit"), ("sitting", "sit"),
-    ("met", "meet"), ("meeting", "meet"),
-    ("children", "child"), ("men", "man"), ("women", "woman"),
-    ("feet", "foot"), ("teeth", "tooth"),
+    ("went", "go"),
+    ("gone", "go"),
+    ("going", "go"),
+    ("was", "be"),
+    ("were", "be"),
+    ("been", "be"),
+    ("being", "be"),
+    ("had", "have"),
+    ("has", "have"),
+    ("having", "have"),
+    ("did", "do"),
+    ("done", "do"),
+    ("doing", "do"),
+    ("ate", "eat"),
+    ("eaten", "eat"),
+    ("eating", "eat"),
+    ("ran", "run"),
+    ("running", "run"),
+    ("sat", "sit"),
+    ("sitting", "sit"),
+    ("met", "meet"),
+    ("meeting", "meet"),
+    ("children", "child"),
+    ("men", "man"),
+    ("women", "woman"),
+    ("feet", "foot"),
+    ("teeth", "tooth"),
   ]
   for i in 0..<irregular.length() {
     if irregular[i].0 == w {
@@ -760,6 +862,7 @@ pub fn lemmatize_simple(word : String) -> String {
   stem_porter(w)
 }
 
+///|
 /// 去停用词 / Remove stop words.
 pub fn remove_stopwords(words : Array[String]) -> Array[String] {
   let stops = ta_stop_words()
@@ -777,8 +880,9 @@ pub fn remove_stopwords(words : Array[String]) -> Array[String] {
 // 语言模型 / Language model
 // ============================================================
 
+///|
 /// 构建语言模型 / Make n-gram language model.
-pub fn make_language_model(corpus : Array[String], n : Int) -> LanguageModel {
+pub fn make_language_model(corpus : Array[String], n : Int32) -> LanguageModel {
   let all_ngrams : Array[String] = []
   for i in 0..<corpus.length() {
     let words = tokenize(corpus[i])
@@ -787,7 +891,7 @@ pub fn make_language_model(corpus : Array[String], n : Int) -> LanguageModel {
       all_ngrams.push(grams[j])
     }
   }
-  let counts : Array[(String, Int)] = []
+  let counts : Array[(String, Int32)] = []
   for i in 0..<all_ngrams.length() {
     let g = all_ngrams[i]
     let mut found = false
@@ -803,14 +907,15 @@ pub fn make_language_model(corpus : Array[String], n : Int) -> LanguageModel {
       counts.push((g, 1))
     }
   }
-  { n, ngrams: counts, total: all_ngrams.length() }
+  { n, ngrams: counts, total: all_ngrams.length(), }
 }
 
+///|
 /// N-gram 概率 / N-gram probability.
 pub fn ngram_probability(
   model : LanguageModel,
   context : Array[String],
-  word : String
+  word : String,
 ) -> Double {
   let mut gram = ""
   for i in 0..<context.length() {
@@ -838,6 +943,7 @@ pub fn ngram_probability(
   count.to_double() / model.total.to_double()
 }
 
+///|
 /// 困惑度 / Perplexity of text given model.
 pub fn perplexity(model : LanguageModel, text : Array[String]) -> Double {
   let grams = ngrams(text, model.n)
@@ -873,6 +979,7 @@ pub fn perplexity(model : LanguageModel, text : Array[String]) -> Double {
 // 情感分析 / Sentiment analysis
 // ============================================================
 
+///|
 /// 正面情感分数 / Positive sentiment score.
 pub fn sentiment_positive(text : String) -> Double {
   let words = tokenize(text.to_lower())
@@ -890,6 +997,7 @@ pub fn sentiment_positive(text : String) -> Double {
   count.to_double() / n.to_double()
 }
 
+///|
 /// 负面情感分数 / Negative sentiment score.
 pub fn sentiment_negative(text : String) -> Double {
   let words = tokenize(text.to_lower())
@@ -907,6 +1015,7 @@ pub fn sentiment_negative(text : String) -> Double {
   count.to_double() / n.to_double()
 }
 
+///|
 /// 中性情感分数 / Neutral sentiment score.
 pub fn sentiment_neutral(text : String) -> Double {
   let pos = sentiment_positive(text)
@@ -918,8 +1027,9 @@ pub fn sentiment_neutral(text : String) -> Double {
 // 信息抽取 / Information extraction
 // ============================================================
 
+///|
 /// 关键词抽取 / Extract top-k keywords by TF.
-pub fn extract_keywords(text : String, k : Int) -> Array[String] {
+pub fn extract_keywords(text : String, k : Int32) -> Array[String] {
   let words = tokenize(text.to_lower())
   let stops = ta_stop_words()
   let candidates : Array[String] = []
@@ -928,7 +1038,7 @@ pub fn extract_keywords(text : String, k : Int) -> Array[String] {
       candidates.push(words[i])
     }
   }
-  let counts : Array[(String, Int)] = []
+  let counts : Array[(String, Int32)] = []
   for i in 0..<candidates.length() {
     let mut cnt = 0
     for j in 0..<words.length() {
@@ -938,7 +1048,7 @@ pub fn extract_keywords(text : String, k : Int) -> Array[String] {
     }
     counts.push((candidates[i], cnt))
   }
-  let sorted : Array[(String, Int)] = []
+  let sorted : Array[(String, Int32)] = []
   for i in 0..<counts.length() {
     sorted.push(counts[i])
   }
@@ -959,6 +1069,7 @@ pub fn extract_keywords(text : String, k : Int) -> Array[String] {
   result
 }
 
+///|
 /// 实体抽取 / Extract named entities (capitalized words).
 pub fn extract_entities(text : String) -> Array[String] {
   let words = split_words(text)
@@ -978,6 +1089,7 @@ pub fn extract_entities(text : String) -> Array[String] {
   result
 }
 
+///|
 /// 日期抽取 / Extract date-like patterns.
 pub fn extract_dates(text : String) -> Array[String] {
   let chars = text.to_array()
@@ -987,7 +1099,8 @@ pub fn extract_dates(text : String) -> Array[String] {
     if ta_is_digit(chars[i]) {
       let mut j = i
       let mut has_sep = false
-      while j < chars.length() && (ta_is_digit(chars[j]) || chars[j] == '/' || chars[j] == '-') {
+      while j < chars.length() &&
+            (ta_is_digit(chars[j]) || chars[j] == '/' || chars[j] == '-') {
         if chars[j] == '/' || chars[j] == '-' {
           has_sep = true
         }
@@ -1008,8 +1121,9 @@ pub fn extract_dates(text : String) -> Array[String] {
 // 主题模型 / Topic model
 // ============================================================
 
+///|
 /// 构建主题模型 / Make simple topic model.
-pub fn make_topic_model(corpus : Array[String], k : Int) -> TopicModel {
+pub fn make_topic_model(corpus : Array[String], k : Int32) -> TopicModel {
   let vocab : Array[String] = []
   for i in 0..<corpus.length() {
     let words = tokenize(corpus[i].to_lower())
@@ -1026,9 +1140,13 @@ pub fn make_topic_model(corpus : Array[String], k : Int) -> TopicModel {
       let mut hash = 0.0
       let chars = vocab[i].to_array()
       for c in 0..<chars.length() {
-        hash = hash + chars[c].to_int().to_double() * ta_pow(2.0, ((c + 1) % 7).to_double())
+        hash = hash +
+          chars[c].to_int().to_double() * ta_pow(2.0, ((c + 1) % 7).to_double())
       }
-      let val = @_common.abs(@math.ln(1.0 + @_common.abs(hash + t.to_double() * 3.7))) / 10.0
+      let val = @_common.abs(
+          @math.ln(1.0 + @_common.abs(hash + t.to_double() * 3.7)),
+        ) /
+        10.0
       dist.push(val)
     }
     let mut sum = 0.0
@@ -1042,9 +1160,10 @@ pub fn make_topic_model(corpus : Array[String], k : Int) -> TopicModel {
     }
     distributions.push(dist)
   }
-  { k, words: vocab, distributions }
+  { k, words: vocab, distributions, }
 }
 
+///|
 /// 主题分布 / Topic distribution for a document.
 pub fn topic_distribution(model : TopicModel, doc : String) -> Array[Double] {
   let words = tokenize(doc.to_lower())
@@ -1076,6 +1195,7 @@ pub fn topic_distribution(model : TopicModel, doc : String) -> Array[Double] {
   result
 }
 
+///|
 /// 主题一致性 / Topic coherence (simplified).
 pub fn topic_coherence(model : TopicModel) -> Double {
   let mut coherence = 0.0
@@ -1102,6 +1222,7 @@ pub fn topic_coherence(model : TopicModel) -> Double {
 // 分类 / Classification
 // ============================================================
 
+///|
 /// 文本分类 / Classify text into categories (keyword matching).
 pub fn text_classify(text : String, categories : Array[String]) -> String {
   if categories.length() == 0 {
@@ -1128,6 +1249,7 @@ pub fn text_classify(text : String, categories : Array[String]) -> String {
   best_cat
 }
 
+///|
 /// 语言检测 / Detect language (simplified).
 pub fn language_detect(text : String) -> String {
   let en_words = ["the", "and", "is", "are", "was", "were", "have", "has"]
@@ -1159,9 +1281,21 @@ pub fn language_detect(text : String) -> String {
   }
 }
 
+///|
 /// 拼写纠正 / Spelling correction (edit distance based).
 pub fn spelling_correct(word : String) -> String {
-  let dictionary = ["the", "and", "is", "are", "was", "were", "have", "has", "had", "will", "would", "could", "should", "good", "great", "best", "make", "made", "time", "like", "just", "know", "take", "come", "year", "give", "think", "look", "want", "need", "use", "find", "tell", "work", "call", "try", "ask", "help", "play", "move", "live", "believe", "bring", "happen", "write", "provide", "sit", "stand", "lose", "pay", "meet", "include", "continue", "set", "learn", "change", "lead", "understand", "watch", "follow", "stop", "create", "speak", "read", "allow", "add", "spend", "grow", "open", "walk", "win", "offer", "remember", "love", "consider", "appear", "buy", "wait", "serve", "die", "send", "expect", "build", "stay", "fall", "cut", "reach", "kill", "remain"]
+  let dictionary = [
+    "the", "and", "is", "are", "was", "were", "have", "has", "had", "will", "would",
+    "could", "should", "good", "great", "best", "make", "made", "time", "like", "just",
+    "know", "take", "come", "year", "give", "think", "look", "want", "need", "use",
+    "find", "tell", "work", "call", "try", "ask", "help", "play", "move", "live",
+    "believe", "bring", "happen", "write", "provide", "sit", "stand", "lose", "pay",
+    "meet", "include", "continue", "set", "learn", "change", "lead", "understand",
+    "watch", "follow", "stop", "create", "speak", "read", "allow", "add", "spend",
+    "grow", "open", "walk", "win", "offer", "remember", "love", "consider", "appear",
+    "buy", "wait", "serve", "die", "send", "expect", "build", "stay", "fall", "cut",
+    "reach", "kill", "remain",
+  ]
   if ta_contains(dictionary, word.to_lower()) {
     return word
   }
@@ -1185,6 +1319,7 @@ pub fn spelling_correct(word : String) -> String {
 // 词嵌入 / Word embedding
 // ============================================================
 
+///|
 /// 简单词嵌入 / Simple word embedding (hash-based).
 pub fn word_embedding_simple(word : String) -> Array[Double] {
   let result : Array[Double] = []
@@ -1194,13 +1329,15 @@ pub fn word_embedding_simple(word : String) -> Array[Double] {
     let mut v = 0.0
     for i in 0..<chars.length() {
       let shift = (i + d) % dim
-      v = v + chars[i].to_int().to_double() * ta_pow(2.0, shift.to_double() / 4.0)
+      v = v +
+        chars[i].to_int().to_double() * ta_pow(2.0, shift.to_double() / 4.0)
     }
     result.push(@math.ln(1.0 + @_common.abs(v)) / 10.0)
   }
   result
 }
 
+///|
 /// 类比推理 / Analogy (a:b :: c:?) simplified.
 pub fn analogy_simple(a : String, b : String, c : String) -> String {
   let ea = word_embedding_simple(a)
@@ -1211,7 +1348,10 @@ pub fn analogy_simple(a : String, b : String, c : String) -> String {
   for i in 0..<dim {
     target.push(eb[i] - ea[i] + ec[i])
   }
-  let dictionary = ["king", "queen", "man", "woman", "boy", "girl", "father", "mother", "son", "daughter", "brother", "sister", "uncle", "aunt", "nephew", "niece"]
+  let dictionary = [
+    "king", "queen", "man", "woman", "boy", "girl", "father", "mother", "son", "daughter",
+    "brother", "sister", "uncle", "aunt", "nephew", "niece",
+  ]
   let mut best = c
   let mut best_sim = -1.0
   for i in 0..<dictionary.length() {
@@ -1225,6 +1365,7 @@ pub fn analogy_simple(a : String, b : String, c : String) -> String {
   best
 }
 
+///|
 /// 嵌入相似度 / Cosine similarity between embeddings.
 pub fn similarity_embedding(e1 : Array[Double], e2 : Array[Double]) -> Double {
   let n = e1.length()
@@ -1249,6 +1390,7 @@ pub fn similarity_embedding(e1 : Array[Double], e2 : Array[Double]) -> Double {
 // 语料库 / Corpus
 // ============================================================
 
+///|
 /// 构建语料库 / Make corpus from documents.
 pub fn make_corpus(docs : Array[String]) -> Corpus {
   let tokenized : Array[Array[String]] = []
@@ -1262,9 +1404,10 @@ pub fn make_corpus(docs : Array[String]) -> Corpus {
       }
     }
   }
-  { docs: tokenized, vocabulary: vocab }
+  { docs: tokenized, vocabulary: vocab, }
 }
 
+///|
 /// 语料库统计 / Corpus statistics.
 pub fn corpus_stats(corpus : Corpus) -> CorpusStats {
   let doc_count = corpus.docs.length()
@@ -1277,11 +1420,17 @@ pub fn corpus_stats(corpus : Corpus) -> CorpusStats {
   } else {
     total_words.to_double() / doc_count.to_double()
   }
-  { doc_count, total_words, avg_doc_length: avg, vocab_size: corpus.vocabulary.length() }
+  {
+    doc_count,
+    total_words,
+    avg_doc_length: avg,
+    vocab_size: corpus.vocabulary.length(),
+  }
 }
 
+///|
 /// 词汇表大小 / Vocabulary size.
-pub fn vocabulary_size(corpus : Corpus) -> Int {
+pub fn vocabulary_size(corpus : Corpus) -> Int32 {
   corpus.vocabulary.length()
 }
 
@@ -1289,6 +1438,7 @@ pub fn vocabulary_size(corpus : Corpus) -> Int {
 // 可读性 / Readability
 // ============================================================
 
+///|
 /// 可读性分数 / Flesch reading ease score.
 pub fn readibility_score(text : String) -> Double {
   let words = split_words(text)
@@ -1302,9 +1452,12 @@ pub fn readibility_score(text : String) -> Double {
   for i in 0..<wc {
     syllable_count = syllable_count + ta_count_syllables(words[i])
   }
-  206.835 - 1.015 * wc.to_double() / sc.to_double() - 84.6 * syllable_count.to_double() / wc.to_double()
+  206.835 -
+  1.015 * wc.to_double() / sc.to_double() -
+  84.6 * syllable_count.to_double() / wc.to_double()
 }
 
+///|
 /// 词汇多样性 / Lexical diversity (unique/total).
 pub fn lexical_diversity(text : String) -> Double {
   let words = tokenize(text)
@@ -1321,8 +1474,9 @@ pub fn lexical_diversity(text : String) -> Double {
   unique.length().to_double() / n.to_double()
 }
 
+///|
 /// 只出现一次的词数 / Hapax legomena count.
-pub fn hapax_legomena(corpus : Corpus) -> Int {
+pub fn hapax_legomena(corpus : Corpus) -> Int32 {
   let mut count = 0
   for i in 0..<corpus.vocabulary.length() {
     let word = corpus.vocabulary[i]
@@ -1345,10 +1499,11 @@ pub fn hapax_legomena(corpus : Corpus) -> Int {
 // 额外统计函数 / Additional statistics
 // ============================================================
 
+///|
 /// 字符频率 / Character frequency.
-pub fn char_frequency(text : String) -> Array[(Char, Int)] {
+pub fn char_frequency(text : String) -> Array[(Char, Int32)] {
   let chars = text.to_array()
-  let result : Array[(Char, Int)] = []
+  let result : Array[(Char, Int32)] = []
   for i in 0..<chars.length() {
     let c = chars[i]
     let mut found = false
@@ -1367,10 +1522,11 @@ pub fn char_frequency(text : String) -> Array[(Char, Int)] {
   result
 }
 
+///|
 /// 词频率 / Word frequency.
-pub fn word_frequency(text : String) -> Array[(String, Int)] {
+pub fn word_frequency(text : String) -> Array[(String, Int32)] {
   let words = tokenize(text.to_lower())
-  let result : Array[(String, Int)] = []
+  let result : Array[(String, Int32)] = []
   for i in 0..<words.length() {
     let w = words[i]
     let mut found = false
@@ -1389,6 +1545,7 @@ pub fn word_frequency(text : String) -> Array[(String, Int)] {
   result
 }
 
+///|
 /// 最长词 / Longest word.
 pub fn longest_word(text : String) -> String {
   let words = split_words(text)
@@ -1404,6 +1561,7 @@ pub fn longest_word(text : String) -> String {
   best
 }
 
+///|
 /// 最短词 / Shortest word.
 pub fn shortest_word(text : String) -> String {
   let words = split_words(text)
@@ -1419,6 +1577,7 @@ pub fn shortest_word(text : String) -> String {
   best
 }
 
+///|
 /// 唯一词 / Unique words.
 pub fn unique_words(text : String) -> Array[String] {
   let words = tokenize(text)
@@ -1431,11 +1590,13 @@ pub fn unique_words(text : String) -> Array[String] {
   result
 }
 
+///|
 /// N-gram 计数 / N-gram count.
-pub fn ngram_count(words : Array[String], n : Int) -> Int {
+pub fn ngram_count(words : Array[String], n : Int32) -> Int32 {
   ngrams(words, n).length()
 }
 
+///|
 /// 文本相似度 / Text similarity (combined metric).
 pub fn text_similarity(s1 : String, s2 : String) -> Double {
   let jaro = jaro_winkler(s1, s2)
@@ -1448,6 +1609,7 @@ pub fn text_similarity(s1 : String, s2 : String) -> Double {
 // ID
 // ============================================================
 
+///|
 /// 模块标识 / Module identifier.
 pub fn text_analytics_id() -> String {
   "opcore/text_analytics"

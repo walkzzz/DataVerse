@@ -7,6 +7,7 @@
 ///
 /// Filter by quality score + top-k selection. See architecture §4.5 ③.
 
+///|
 /// 质量线 / Quality line.
 ///
 /// 1. 过滤掉质量分 < min_score 的
@@ -15,7 +16,7 @@
 pub fn quality_line(
   arr : Array[@dataobject.DataObject],
   min_score : Double,
-  k : Int
+  k : Int32,
 ) -> Array[@dataobject.DataObject] {
   let filtered = arr.filter(fn(d) {
     @quality.length_quality_score(d) >= min_score
@@ -23,6 +24,7 @@ pub fn quality_line(
   @select.topk_by_length(filtered, k)
 }
 
+///|
 pub fn quality_line_id() -> String {
   "recipe/quality_line"
 }

@@ -8,21 +8,28 @@
 ///
 /// Rule, statistical, quality-model, safety, modality filters. See architecture §4.3.2 ⑤.
 
+///|
 /// 长度过滤：content 长度在 [min, max] 内返回 true / Length filter.
-pub fn length_filter(min_len : Int, max_len : Int, input : @dataobject.DataObject) -> Bool {
+pub fn length_filter(
+  min_len : Int32,
+  max_len : Int32,
+  input : @dataobject.DataObject,
+) -> Bool {
   let len = input.content.length()
   len >= min_len && len <= max_len
 }
 
+///|
 /// 非空过滤：content 非空返回 true / Non-empty filter.
 pub fn non_empty_filter(input : @dataobject.DataObject) -> Bool {
   input.content.length() > 0
 }
 
+///|
 /// 批量过滤：保留满足谓词的元素 / Batch filter keeping elements satisfying predicate.
 pub fn filter_all(
   inputs : Array[@dataobject.DataObject],
-  predicate : (@dataobject.DataObject) -> Bool
+  predicate : (@dataobject.DataObject) -> Bool,
 ) -> Array[@dataobject.DataObject] {
   let result : Array[@dataobject.DataObject] = []
   for d in inputs {
@@ -33,14 +40,20 @@ pub fn filter_all(
   result
 }
 
+///|
 pub fn filter_id() -> String {
   "opcore/filter"
 }
+
+///|
 /// 分割 / Split text by delimiter.
 ///
 /// 对标 ArcGIS Pro Split 工具。
 /// 退化安全：空输入返回空数组。
-pub fn filter_split(input : @dataobject.DataObject, delimiter : String) -> Array[String] {
+pub fn filter_split(
+  input : @dataobject.DataObject,
+  delimiter : String,
+) -> Array[String] {
   let content = input.content
   if content.length() == 0 {
     []
@@ -49,6 +62,7 @@ pub fn filter_split(input : @dataobject.DataObject, delimiter : String) -> Array
   }
 }
 
+///|
 /// 按属性分割 / Split By Attributes.
 ///
 /// 对标 ArcGIS Pro Split By Attributes 工具。
@@ -56,7 +70,7 @@ pub fn filter_split(input : @dataobject.DataObject, delimiter : String) -> Array
 /// 退化安全：空记录返回空数组。
 pub fn filter_split_by_attributes(
   records : Array[Array[String]],
-  attr_index : Int
+  attr_index : Int32,
 ) -> Array[(String, Array[Array[String]])] {
   let n = records.length()
   if n == 0 || attr_index < 0 {
@@ -65,7 +79,11 @@ pub fn filter_split_by_attributes(
     let result : Array[(String, Array[Array[String]])] = []
     for i in 0..<n {
       let record = records[i]
-      let attr_val = if attr_index < record.length() { record[attr_index] } else { "" }
+      let attr_val = if attr_index < record.length() {
+        record[attr_index]
+      } else {
+        ""
+      }
       let mut found = false
       for idx in 0..<result.length() {
         if result[idx].0 == attr_val {

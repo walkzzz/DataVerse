@@ -11,30 +11,36 @@
 /// Consistency: seeded + error bound. See architecture §4.1.
 /// S0.2 provides seed management and contract; concrete algorithms filled in S0.4.
 
+///|
 /// 默认种子 / Default seed for reproducibility.
-pub fn default_seed() -> Int {
+pub fn default_seed() -> Int32 {
   42
 }
 
+///|
 pub fn approx_id() -> String {
   "kernel/approx"
 }
 
+///|
 /// 模式标签 / Mode tag string.
 pub fn mode_tag() -> String {
   "approx"
 }
 
+///|
 /// 一致性保证声明 / Consistency guarantee.
 pub fn consistency_guarantee() -> String {
   "seeded-bound"
 }
 
+///|
 /// 种子校验：非负 / Seed validation: non-negative.
-pub fn valid_seed(seed : Int) -> Bool {
+pub fn valid_seed(seed : Int32) -> Bool {
   seed >= 0
 }
 
+///|
 /// 误差界占位 / Error bound placeholder.
 /// 具体误差界由算子根据算法声明（如 MinHash 的 Jaccard 误差）。
 pub fn default_error_bound() -> Double {

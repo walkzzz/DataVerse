@@ -4,36 +4,46 @@
 /// 高级形态学算法集合：腐蚀/膨胀/开闭/骨架/距离变换/分水岭/重构/属性滤波/粒度等。
 /// 纯 MoonBit 实现，无外部依赖。
 
+///|
 /// 形态学图像 / Morphology image (binary/grayscale, Double data).
 pub struct MorphImage {
-  width : Int
-  height : Int
+  width : Int32
+  height : Int32
   data : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend MorphImage with Eq::{equal, not_equal}
+
+///|
 pub extend MorphImage with Debug::{to_repr}
 
+///|
 /// 结构元素 / Structuring element.
 pub struct StructElement {
-  width : Int
-  height : Int
+  width : Int32
+  height : Int32
   data : Array[Bool]
 } derive(Debug, Eq)
 
+///|
 pub extend StructElement with Eq::{equal, not_equal}
+
+///|
 pub extend StructElement with Debug::{to_repr}
 
-fn morph_empty(w : Int, h : Int) -> MorphImage {
+///|
+fn morph_empty(w : Int32, h : Int32) -> MorphImage {
   let n = w * h
   let data : Array[Double] = []
   for _ in 0..<n {
     data.push(0.0)
   }
-  { width: w, height: h, data }
+  { width: w, height: h, data, }
 }
 
-fn morph_pixel(img : MorphImage, x : Int, y : Int) -> Double {
+///|
+fn morph_pixel(img : MorphImage, x : Int32, y : Int32) -> Double {
   if x < 0 || x >= img.width || y < 0 || y >= img.height {
     return 0.0
   }
@@ -44,7 +54,8 @@ fn morph_pixel(img : MorphImage, x : Int, y : Int) -> Double {
   img.data[idx]
 }
 
-fn morph_set_pixel(img : MorphImage, x : Int, y : Int, v : Double) -> Unit {
+///|
+fn morph_set_pixel(img : MorphImage, x : Int32, y : Int32, v : Double) -> Unit {
   if x < 0 || x >= img.width || y < 0 || y >= img.height {
     return
   }
@@ -54,6 +65,7 @@ fn morph_set_pixel(img : MorphImage, x : Int, y : Int, v : Double) -> Unit {
   }
 }
 
+///|
 fn morph_max(a : Double, b : Double) -> Double {
   if a > b {
     a
@@ -62,6 +74,7 @@ fn morph_max(a : Double, b : Double) -> Double {
   }
 }
 
+///|
 fn morph_min(a : Double, b : Double) -> Double {
   if a < b {
     a
@@ -70,32 +83,45 @@ fn morph_min(a : Double, b : Double) -> Double {
   }
 }
 
+///|
 /// 构造形态学图像 / Build morphology image.
-pub fn make_morph_image(width : Int, height : Int, data : Array[Double]) -> MorphImage {
-  { width, height, data }
+pub fn make_morph_image(
+  width : Int32,
+  height : Int32,
+  data : Array[Double],
+) -> MorphImage {
+  { width, height, data, }
 }
 
+///|
 /// 空形态学图像 / Empty morphology image.
-pub fn morph_empty_image(width : Int, height : Int) -> MorphImage {
+pub fn morph_empty_image(width : Int32, height : Int32) -> MorphImage {
   morph_empty(width, height)
 }
 
+///|
 /// 克隆形态学图像 / Clone morphology image.
 pub fn morph_clone(img : MorphImage) -> MorphImage {
   let data : Array[Double] = []
   for i in 0..<img.data.length() {
     data.push(img.data[i])
   }
-  { width: img.width, height: img.height, data }
+  { width: img.width, height: img.height, data, }
 }
 
+///|
 /// 构造结构元素 / Build structuring element.
-pub fn morph_make_kernel(width : Int, height : Int, data : Array[Bool]) -> StructElement {
-  { width, height, data }
+pub fn morph_make_kernel(
+  width : Int32,
+  height : Int32,
+  data : Array[Bool],
+) -> StructElement {
+  { width, height, data, }
 }
 
+///|
 /// 十字结构元素 / Cross structuring element.
-pub fn morph_cross_kernel(size : Int) -> StructElement {
+pub fn morph_cross_kernel(size : Int32) -> StructElement {
   let data : Array[Bool] = []
   let half = size / 2
   for y in 0..<size {
@@ -103,20 +129,22 @@ pub fn morph_cross_kernel(size : Int) -> StructElement {
       data.push(x == half || y == half)
     }
   }
-  { width: size, height: size, data }
+  { width: size, height: size, data, }
 }
 
+///|
 /// 方形结构元素 / Square structuring element.
-pub fn morph_square_kernel(size : Int) -> StructElement {
+pub fn morph_square_kernel(size : Int32) -> StructElement {
   let data : Array[Bool] = []
   for _ in 0..<(size * size) {
     data.push(true)
   }
-  { width: size, height: size, data }
+  { width: size, height: size, data, }
 }
 
+///|
 /// 圆形结构元素 / Circle structuring element.
-pub fn morph_circle_kernel(radius : Int) -> StructElement {
+pub fn morph_circle_kernel(radius : Int32) -> StructElement {
   let size = 2 * radius + 1
   let data : Array[Bool] = []
   for y in 0..<size {
@@ -126,9 +154,10 @@ pub fn morph_circle_kernel(radius : Int) -> StructElement {
       data.push(dx * dx + dy * dy <= radius * radius)
     }
   }
-  { width: size, height: size, data }
+  { width: size, height: size, data, }
 }
 
+///|
 /// 高级腐蚀 / Advanced erosion.
 pub fn morph_erode_adv(img : MorphImage, se : StructElement) -> MorphImage {
   let out = morph_empty(img.width, img.height)
@@ -140,7 +169,7 @@ pub fn morph_erode_adv(img : MorphImage, se : StructElement) -> MorphImage {
       let mut found = false
       for sy in 0..<se.height {
         for sx in 0..<se.width {
-          if !(se.data[sy * se.width + sx]) {
+          if !se.data[sy * se.width + sx] {
             continue
           }
           let v = morph_pixel(img, x + sx - half_w, y + sy - half_h)
@@ -158,6 +187,7 @@ pub fn morph_erode_adv(img : MorphImage, se : StructElement) -> MorphImage {
   out
 }
 
+///|
 /// 高级膨胀 / Advanced dilation.
 pub fn morph_dilate_adv(img : MorphImage, se : StructElement) -> MorphImage {
   let out = morph_empty(img.width, img.height)
@@ -168,7 +198,7 @@ pub fn morph_dilate_adv(img : MorphImage, se : StructElement) -> MorphImage {
       let mut max_v = 0.0
       for sy in 0..<se.height {
         for sx in 0..<se.width {
-          if !(se.data[sy * se.width + sx]) {
+          if !se.data[sy * se.width + sx] {
             continue
           }
           let v = morph_pixel(img, x + sx - half_w, y + sy - half_h)
@@ -183,18 +213,21 @@ pub fn morph_dilate_adv(img : MorphImage, se : StructElement) -> MorphImage {
   out
 }
 
+///|
 /// 高级开运算 / Advanced opening.
 pub fn morph_open_adv(img : MorphImage, se : StructElement) -> MorphImage {
   let eroded = morph_erode_adv(img, se)
   morph_dilate_adv(eroded, se)
 }
 
+///|
 /// 高级闭运算 / Advanced closing.
 pub fn morph_close_adv(img : MorphImage, se : StructElement) -> MorphImage {
   let dilated = morph_dilate_adv(img, se)
   morph_erode_adv(dilated, se)
 }
 
+///|
 /// 形态学梯度 / Morphological gradient.
 pub fn morph_gradient(img : MorphImage, se : StructElement) -> MorphImage {
   let d = morph_dilate_adv(img, se)
@@ -208,32 +241,49 @@ pub fn morph_gradient(img : MorphImage, se : StructElement) -> MorphImage {
   out
 }
 
+///|
 /// Top-hat 变换 / Top-hat transform.
 pub fn morph_tophat(img : MorphImage, se : StructElement) -> MorphImage {
   let opened = morph_open_adv(img, se)
   let out = morph_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      morph_set_pixel(out, x, y, morph_pixel(img, x, y) - morph_pixel(opened, x, y))
+      morph_set_pixel(
+        out,
+        x,
+        y,
+        morph_pixel(img, x, y) - morph_pixel(opened, x, y),
+      )
     }
   }
   out
 }
 
+///|
 /// Black-hat 变换 / Black-hat transform.
 pub fn morph_blackhat(img : MorphImage, se : StructElement) -> MorphImage {
   let closed = morph_close_adv(img, se)
   let out = morph_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      morph_set_pixel(out, x, y, morph_pixel(closed, x, y) - morph_pixel(img, x, y))
+      morph_set_pixel(
+        out,
+        x,
+        y,
+        morph_pixel(closed, x, y) - morph_pixel(img, x, y),
+      )
     }
   }
   out
 }
 
+///|
 /// 击中击不中变换 / Hit-or-miss transform.
-pub fn morph_hit_miss(img : MorphImage, se_fg : StructElement, se_bg : StructElement) -> MorphImage {
+pub fn morph_hit_miss(
+  img : MorphImage,
+  se_fg : StructElement,
+  se_bg : StructElement,
+) -> MorphImage {
   let eroded_fg = morph_erode_adv(img, se_fg)
   let inverted = morph_empty(img.width, img.height)
   for y in 0..<img.height {
@@ -245,7 +295,8 @@ pub fn morph_hit_miss(img : MorphImage, se_fg : StructElement, se_bg : StructEle
   let out = morph_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      if morph_pixel(eroded_fg, x, y) > 0.0 && morph_pixel(eroded_bg, x, y) > 0.0 {
+      if morph_pixel(eroded_fg, x, y) > 0.0 &&
+        morph_pixel(eroded_bg, x, y) > 0.0 {
         morph_set_pixel(out, x, y, 255.0)
       }
     }
@@ -253,6 +304,7 @@ pub fn morph_hit_miss(img : MorphImage, se_fg : StructElement, se_bg : StructEle
   out
 }
 
+///|
 /// 细化 / Thinning.
 pub fn morph_thinning(img : MorphImage, se : StructElement) -> MorphImage {
   let hmt = morph_hit_miss(img, se, se)
@@ -266,6 +318,7 @@ pub fn morph_thinning(img : MorphImage, se : StructElement) -> MorphImage {
   out
 }
 
+///|
 /// 粗化 / Thickening.
 pub fn morph_thickening(img : MorphImage, se : StructElement) -> MorphImage {
   let hmt = morph_hit_miss(img, se, se)
@@ -279,6 +332,7 @@ pub fn morph_thickening(img : MorphImage, se : StructElement) -> MorphImage {
   out
 }
 
+///|
 /// 骨架提取 / Skeleton extraction.
 pub fn morph_skeleton(img : MorphImage) -> MorphImage {
   let se = morph_cross_kernel(3)
@@ -300,13 +354,14 @@ pub fn morph_skeleton(img : MorphImage) -> MorphImage {
       }
     }
     temp = eroded
-    if !(has_diff) {
+    if !has_diff {
       break
     }
   }
   result
 }
 
+///|
 /// 距离变换 / Distance transform.
 pub fn morph_distance_transform(img : MorphImage) -> MorphImage {
   let out = morph_empty(img.width, img.height)
@@ -340,6 +395,7 @@ pub fn morph_distance_transform(img : MorphImage) -> MorphImage {
   out
 }
 
+///|
 /// 中轴变换 / Medial axis transform.
 pub fn morph_medial_axis(img : MorphImage) -> MorphImage {
   let dist = morph_distance_transform(img)
@@ -351,8 +407,8 @@ pub fn morph_medial_axis(img : MorphImage) -> MorphImage {
         continue
       }
       let mut is_local_max = true
-      for dy in -1..=1 {
-        for dx in -1..=1 {
+      for dy in -1..<=1 {
+        for dx in -1..<=1 {
           if dx == 0 && dy == 0 {
             continue
           }
@@ -369,6 +425,7 @@ pub fn morph_medial_axis(img : MorphImage) -> MorphImage {
   out
 }
 
+///|
 /// 形态学分水岭 / Morphological watershed.
 pub fn morph_watershed_morph(img : MorphImage) -> MorphImage {
   let dist = morph_distance_transform(img)
@@ -385,23 +442,23 @@ pub fn morph_watershed_morph(img : MorphImage) -> MorphImage {
         continue
       }
       let mut is_seed = true
-      for dy in -1..=1 {
-        for dx in -1..=1 {
+      for dy in -1..<=1 {
+        for dx in -1..<=1 {
           if morph_pixel(dist, x + dx, y + dy) > morph_pixel(dist, x, y) {
             is_seed = false
           }
         }
       }
       if is_seed {
-        let queue : Array[(Int, Int)] = []
+        let queue : Array[(Int32, Int32)] = []
         queue.push((x, y))
         visited[idx] = true
         while queue.length() > 0 {
           let (cx, cy) = queue[queue.length() - 1]
-          ignore(          ignore(queue.remove(queue.length() - 1)))
+          ignore(ignore(queue.remove(queue.length() - 1)))
           morph_set_pixel(out, cx, cy, label)
-          for dy in -1..=1 {
-            for dx in -1..=1 {
+          for dy in -1..<=1 {
+            for dx in -1..<=1 {
               if dx == 0 && dy == 0 {
                 continue
               }
@@ -426,8 +483,12 @@ pub fn morph_watershed_morph(img : MorphImage) -> MorphImage {
   out
 }
 
+///|
 /// 测地重构 / Geodesic reconstruction.
-pub fn morph_reconstruction(marker : MorphImage, mask : MorphImage) -> MorphImage {
+pub fn morph_reconstruction(
+  marker : MorphImage,
+  mask : MorphImage,
+) -> MorphImage {
   let out = morph_clone(marker)
   let mut changed = true
   let mut iter = 0
@@ -449,6 +510,7 @@ pub fn morph_reconstruction(marker : MorphImage, mask : MorphImage) -> MorphImag
   out
 }
 
+///|
 /// 测地腐蚀 / Geodesic erosion.
 pub fn morph_geodesic(marker : MorphImage, mask : MorphImage) -> MorphImage {
   let out = morph_clone(marker)
@@ -472,14 +534,22 @@ pub fn morph_geodesic(marker : MorphImage, mask : MorphImage) -> MorphImage {
   out
 }
 
+///|
 /// 开重构 / Opening by reconstruction.
-pub fn morph_opening_by_reconstruction(img : MorphImage, se : StructElement) -> MorphImage {
+pub fn morph_opening_by_reconstruction(
+  img : MorphImage,
+  se : StructElement,
+) -> MorphImage {
   let eroded = morph_erode_adv(img, se)
   morph_reconstruction(eroded, img)
 }
 
+///|
 /// 闭重构 / Closing by reconstruction.
-pub fn morph_closing_by_reconstruction(img : MorphImage, se : StructElement) -> MorphImage {
+pub fn morph_closing_by_reconstruction(
+  img : MorphImage,
+  se : StructElement,
+) -> MorphImage {
   let dilated = morph_dilate_adv(img, se)
   let inverted_img = morph_empty(img.width, img.height)
   for y in 0..<img.height {
@@ -490,7 +560,12 @@ pub fn morph_closing_by_reconstruction(img : MorphImage, se : StructElement) -> 
   let inverted_dilated = morph_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
-      morph_set_pixel(inverted_dilated, x, y, 255.0 - morph_pixel(dilated, x, y))
+      morph_set_pixel(
+        inverted_dilated,
+        x,
+        y,
+        255.0 - morph_pixel(dilated, x, y),
+      )
     }
   }
   let rec = morph_reconstruction(inverted_dilated, inverted_img)
@@ -503,10 +578,14 @@ pub fn morph_closing_by_reconstruction(img : MorphImage, se : StructElement) -> 
   out
 }
 
+///|
 /// 交替序贯滤波 / Alternating sequential filter.
-pub fn morph_alternating_sequential_filter(img : MorphImage, max_size : Int) -> MorphImage {
+pub fn morph_alternating_sequential_filter(
+  img : MorphImage,
+  max_size : Int32,
+) -> MorphImage {
   let mut out = morph_clone(img)
-  for size in 1..=max_size {
+  for size in 1..<=max_size {
     let se = morph_square_kernel(2 * size + 1)
     out = morph_open_adv(out, se)
     out = morph_close_adv(out, se)
@@ -514,10 +593,11 @@ pub fn morph_alternating_sequential_filter(img : MorphImage, max_size : Int) -> 
   out
 }
 
+///|
 /// 面积开 / Area opening.
-pub fn morph_area_open(img : MorphImage, min_area : Int) -> MorphImage {
+pub fn morph_area_open(img : MorphImage, min_area : Int32) -> MorphImage {
   let labels = morph_label_morph(img)
-  let counts : Array[Int] = []
+  let counts : Array[Int32] = []
   for _ in 0..<(img.width * img.height + 1) {
     counts.push(0)
   }
@@ -541,8 +621,9 @@ pub fn morph_area_open(img : MorphImage, min_area : Int) -> MorphImage {
   out
 }
 
+///|
 /// 面积闭 / Area closing.
-pub fn morph_area_close(img : MorphImage, min_area : Int) -> MorphImage {
+pub fn morph_area_close(img : MorphImage, min_area : Int32) -> MorphImage {
   let inverted = morph_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
@@ -559,9 +640,10 @@ pub fn morph_area_close(img : MorphImage, min_area : Int) -> MorphImage {
   out
 }
 
+///|
 /// Max-tree / Max-tree.
-pub fn morph_max_tree(img : MorphImage) -> Array[(Double, Int)] {
-  let result : Array[(Double, Int)] = []
+pub fn morph_max_tree(img : MorphImage) -> Array[(Double, Int32)] {
+  let result : Array[(Double, Int32)] = []
   let levels : Array[Double] = []
   for y in 0..<img.height {
     for x in 0..<img.width {
@@ -572,7 +654,7 @@ pub fn morph_max_tree(img : MorphImage) -> Array[(Double, Int)] {
           found = true
         }
       }
-      if !(found) {
+      if !found {
         levels.push(v)
       }
     }
@@ -591,9 +673,10 @@ pub fn morph_max_tree(img : MorphImage) -> Array[(Double, Int)] {
   result
 }
 
+///|
 /// Min-tree / Min-tree.
-pub fn morph_min_tree(img : MorphImage) -> Array[(Double, Int)] {
-  let result : Array[(Double, Int)] = []
+pub fn morph_min_tree(img : MorphImage) -> Array[(Double, Int32)] {
+  let result : Array[(Double, Int32)] = []
   let levels : Array[Double] = []
   for y in 0..<img.height {
     for x in 0..<img.width {
@@ -604,7 +687,7 @@ pub fn morph_min_tree(img : MorphImage) -> Array[(Double, Int)] {
           found = true
         }
       }
-      if !(found) {
+      if !found {
         levels.push(v)
       }
     }
@@ -623,8 +706,13 @@ pub fn morph_min_tree(img : MorphImage) -> Array[(Double, Int)] {
   result
 }
 
+///|
 /// 属性滤波 / Attribute filter.
-pub fn morph_attribute_filter(img : MorphImage, min_area : Int, is_opening : Bool) -> MorphImage {
+pub fn morph_attribute_filter(
+  img : MorphImage,
+  min_area : Int32,
+  is_opening : Bool,
+) -> MorphImage {
   if is_opening {
     morph_area_open(img, min_area)
   } else {
@@ -632,17 +720,19 @@ pub fn morph_attribute_filter(img : MorphImage, min_area : Int, is_opening : Boo
   }
 }
 
+///|
 /// 粒度分析 / Granulometry.
-pub fn morph_granulometry(img : MorphImage, max_size : Int) -> Array[Double] {
+pub fn morph_granulometry(img : MorphImage, max_size : Int32) -> Array[Double] {
   let result : Array[Double] = []
   let mut prev = morph_clone(img)
-  for size in 1..=max_size {
+  for size in 1..<=max_size {
     let se = morph_circle_kernel(size)
     let opened = morph_open_adv(prev, se)
     let mut diff = 0.0
     for y in 0..<img.height {
       for x in 0..<img.width {
-        diff = diff + @_common.abs(morph_pixel(prev, x, y) - morph_pixel(opened, x, y))
+        diff = diff +
+          @_common.abs(morph_pixel(prev, x, y) - morph_pixel(opened, x, y))
       }
     }
     result.push(diff)
@@ -651,16 +741,24 @@ pub fn morph_granulometry(img : MorphImage, max_size : Int) -> Array[Double] {
   result
 }
 
+///|
 /// 模式谱 / Pattern spectrum.
-pub fn morph_pattern_spectrum(img : MorphImage, max_size : Int) -> Array[Double] {
+pub fn morph_pattern_spectrum(
+  img : MorphImage,
+  max_size : Int32,
+) -> Array[Double] {
   morph_granulometry(img, max_size)
 }
 
+///|
 /// 尺寸分布 / Size distribution.
-pub fn morph_size_distribution(img : MorphImage, max_size : Int) -> Array[Double] {
+pub fn morph_size_distribution(
+  img : MorphImage,
+  max_size : Int32,
+) -> Array[Double] {
   let result : Array[Double] = []
   let mut prev = morph_clone(img)
-  for size in 1..=max_size {
+  for size in 1..<=max_size {
     let se = morph_circle_kernel(size)
     let opened = morph_open_adv(prev, se)
     let mut volume = 0.0
@@ -675,6 +773,7 @@ pub fn morph_size_distribution(img : MorphImage, max_size : Int) -> Array[Double
   result
 }
 
+///|
 /// 凸包形态学 / Convex hull morphology (simplified).
 pub fn morph_convex_hull_morph(img : MorphImage) -> MorphImage {
   let out = morph_clone(img)
@@ -689,8 +788,8 @@ pub fn morph_convex_hull_morph(img : MorphImage) -> MorphImage {
       for x in 0..<img.width {
         if morph_pixel(out, x, y) == 0.0 && morph_pixel(dilated, x, y) > 0.0 {
           let mut fill = true
-          for dy in -1..=1 {
-            for dx in -1..=1 {
+          for dy in -1..<=1 {
+            for dx in -1..<=1 {
               if dx == 0 && dy == 0 {
                 continue
               }
@@ -710,6 +809,7 @@ pub fn morph_convex_hull_morph(img : MorphImage) -> MorphImage {
   out
 }
 
+///|
 /// 填充孔洞形态学 / Fill holes morphology.
 pub fn morph_fill_holes_morph(img : MorphImage) -> MorphImage {
   let out = morph_clone(img)
@@ -717,7 +817,7 @@ pub fn morph_fill_holes_morph(img : MorphImage) -> MorphImage {
   for _ in 0..<(img.width * img.height) {
     visited.push(false)
   }
-  let queue : Array[(Int, Int)] = []
+  let queue : Array[(Int32, Int32)] = []
   for x in 0..<img.width {
     if morph_pixel(img, x, 0) == 0.0 {
       queue.push((x, 0))
@@ -740,9 +840,9 @@ pub fn morph_fill_holes_morph(img : MorphImage) -> MorphImage {
   }
   while queue.length() > 0 {
     let (cx, cy) = queue[queue.length() - 1]
-    ignore(          ignore(queue.remove(queue.length() - 1)))
-    for dy in -1..=1 {
-      for dx in -1..=1 {
+    ignore(ignore(queue.remove(queue.length() - 1)))
+    for dy in -1..<=1 {
+      for dx in -1..<=1 {
         if dx == 0 && dy == 0 {
           continue
         }
@@ -763,7 +863,7 @@ pub fn morph_fill_holes_morph(img : MorphImage) -> MorphImage {
   for y in 0..<img.height {
     for x in 0..<img.width {
       let idx = y * img.width + x
-      if !(visited[idx]) && morph_pixel(img, x, y) == 0.0 {
+      if !visited[idx] && morph_pixel(img, x, y) == 0.0 {
         morph_set_pixel(out, x, y, 255.0)
       }
     }
@@ -771,6 +871,7 @@ pub fn morph_fill_holes_morph(img : MorphImage) -> MorphImage {
   out
 }
 
+///|
 /// 标记连通区域 / Label connected components.
 pub fn morph_label_morph(img : MorphImage) -> MorphImage {
   let out = morph_empty(img.width, img.height)
@@ -785,15 +886,15 @@ pub fn morph_label_morph(img : MorphImage) -> MorphImage {
       if visited[idx] || morph_pixel(img, x, y) == 0.0 {
         continue
       }
-      let queue : Array[(Int, Int)] = []
+      let queue : Array[(Int32, Int32)] = []
       queue.push((x, y))
       visited[idx] = true
       while queue.length() > 0 {
         let (cx, cy) = queue[queue.length() - 1]
-        ignore(          ignore(queue.remove(queue.length() - 1)))
+        ignore(ignore(queue.remove(queue.length() - 1)))
         morph_set_pixel(out, cx, cy, label)
-        for dy in -1..=1 {
-          for dx in -1..=1 {
+        for dy in -1..<=1 {
+          for dx in -1..<=1 {
             if dx == 0 && dy == 0 {
               continue
             }
@@ -817,8 +918,9 @@ pub fn morph_label_morph(img : MorphImage) -> MorphImage {
   out
 }
 
+///|
 /// 连通组件 / Connected components.
-pub fn morph_connected_components_morph(img : MorphImage) -> Int {
+pub fn morph_connected_components_morph(img : MorphImage) -> Int32 {
   let labels = morph_label_morph(img)
   let mut max_label = 0.0
   for y in 0..<labels.height {
@@ -832,9 +934,14 @@ pub fn morph_connected_components_morph(img : MorphImage) -> Int {
   max_label.to_int()
 }
 
+///|
 /// 转字符串 / Convert to string.
 pub fn morph_to_string(img : MorphImage) -> String {
-  let mut s = "MorphImage(" + img.width.to_string() + "x" + img.height.to_string() + ")["
+  let mut s = "MorphImage(" +
+    img.width.to_string() +
+    "x" +
+    img.height.to_string() +
+    ")["
   let limit = if img.data.length() > 10 { 10 } else { img.data.length() }
   for i in 0..<limit {
     if i > 0 {
@@ -849,6 +956,7 @@ pub fn morph_to_string(img : MorphImage) -> String {
   s
 }
 
+///|
 /// 形态学 ID / Morphology advanced operator ID.
 pub fn morphology_adv_id() -> String {
   "opcore/morphology_adv"

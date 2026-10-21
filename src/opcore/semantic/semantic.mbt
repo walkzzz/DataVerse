@@ -9,31 +9,40 @@
 ///
 /// Quality scoring + rewrite + synthesis. See architecture §4.3.2 ⑥⑦⑧.
 
+///|
 /// 改写模式 / Rewrite mode.
 pub(all) enum RewriteMode {
-  Simplify    // 简化：去多余空格、截断长文本
-  Formalize   // 正式化：首字母大写
-  Casual      // 口语化：模拟（规则占位）
-  Expand      // 扩写：重复核心内容
+  Simplify // 简化：去多余空格、截断长文本
+  Formalize // 正式化：首字母大写
+  Casual // 口语化：模拟（规则占位）
+  Expand // 扩写：重复核心内容
 } derive(Debug, Eq)
 
+///|
 pub extend RewriteMode with Eq::{equal, not_equal}
+
+///|
 pub extend RewriteMode with Debug::{to_repr}
 
+///|
 /// 合成模式 / Synthesis mode.
 pub(all) enum SynthesisMode {
-  Paraphrase   // 改写复述：简单变换
-  Augment      // 增强：拼接重复
-  Interpolate  // 插值：混合两段文本
+  Paraphrase // 改写复述：简单变换
+  Augment // 增强：拼接重复
+  Interpolate // 插值：混合两段文本
 } derive(Debug, Eq)
 
+///|
 pub extend SynthesisMode with Eq::{equal, not_equal}
+
+///|
 pub extend SynthesisMode with Debug::{to_repr}
 
 // ============================================================
 // 语义质量评分 / Semantic quality scoring
 // ============================================================
 
+///|
 /// 语义质量分 / Semantic quality score.
 ///
 /// 综合长度分 + 词汇丰富度分 + 非空分。
@@ -51,6 +60,7 @@ pub fn semantic_quality_score(input : @dataobject.DataObject) -> Double {
   }
 }
 
+///|
 /// 词汇丰富度分 / Content diversity score.
 ///
 /// 基于唯一字符数 / 总字符数。全相同字符返回接近 0.0，全不同返回 1.0。
@@ -82,10 +92,14 @@ pub fn content_diversity_score(input : @dataobject.DataObject) -> Double {
 // 改写算子 / Rewrite operators
 // ============================================================
 
+///|
 /// 文本改写 / Rewrite text.
 ///
 /// 按模式进行规则改写（模拟 LLM 改写）。
-pub fn rewrite_text(input : @dataobject.DataObject, mode : RewriteMode) -> @dataobject.DataObject {
+pub fn rewrite_text(
+  input : @dataobject.DataObject,
+  mode : RewriteMode,
+) -> @dataobject.DataObject {
   let new_content = match mode {
     Simplify => simplify_content(input.content)
     Formalize => formalize_content(input.content)
@@ -95,6 +109,7 @@ pub fn rewrite_text(input : @dataobject.DataObject, mode : RewriteMode) -> @data
   @dataobject.make_dataobject(new_content, input.modality, input.schema)
 }
 
+///|
 /// 简化内容 / Simplify content: trim + truncate to 200.
 fn simplify_content(s : String) -> String {
   let trimmed = s.trim().to_owned()
@@ -107,6 +122,7 @@ fn simplify_content(s : String) -> String {
   }
 }
 
+///|
 /// 正式化内容 / Formalize content: capitalize first letter.
 fn formalize_content(s : String) -> String {
   let chars = s.to_array()
@@ -122,11 +138,13 @@ fn formalize_content(s : String) -> String {
   }
 }
 
+///|
 /// 口语化内容 / Casual content: 模拟（规则占位，原样返回）.
 fn casual_content(s : String) -> String {
   s
 }
 
+///|
 /// 扩写内容 / Expand content: repeat core content.
 fn expand_content(s : String) -> String {
   let trimmed = s.trim().to_owned()
@@ -141,10 +159,14 @@ fn expand_content(s : String) -> String {
 // 合成算子 / Synthesis operators
 // ============================================================
 
+///|
 /// 文本合成 / Synthesize text.
 ///
 /// 按模式进行规则合成（模拟 LLM 合成新样本）。
-pub fn synthesize_text(input : @dataobject.DataObject, mode : SynthesisMode) -> @dataobject.DataObject {
+pub fn synthesize_text(
+  input : @dataobject.DataObject,
+  mode : SynthesisMode,
+) -> @dataobject.DataObject {
   let new_content = match mode {
     Paraphrase => paraphrase_content(input.content)
     Augment => augment_content(input.content)
@@ -153,6 +175,7 @@ pub fn synthesize_text(input : @dataobject.DataObject, mode : SynthesisMode) -> 
   @dataobject.make_dataobject(new_content, input.modality, input.schema)
 }
 
+///|
 /// 改写复述 / Paraphrase: 简单变换（首尾加标记）.
 fn paraphrase_content(s : String) -> String {
   if s.length() == 0 {
@@ -162,6 +185,7 @@ fn paraphrase_content(s : String) -> String {
   }
 }
 
+///|
 /// 增强 / Augment: 拼接重复.
 fn augment_content(s : String) -> String {
   if s.length() == 0 {
@@ -171,6 +195,7 @@ fn augment_content(s : String) -> String {
   }
 }
 
+///|
 /// 插值 / Interpolate: 混合变换（模拟）.
 fn interpolate_content(s : String) -> String {
   if s.length() == 0 {
@@ -180,6 +205,7 @@ fn interpolate_content(s : String) -> String {
   }
 }
 
+///|
 /// 改写模式名称 / Rewrite mode name.
 pub fn rewrite_mode_name(mode : RewriteMode) -> String {
   match mode {
@@ -190,6 +216,7 @@ pub fn rewrite_mode_name(mode : RewriteMode) -> String {
   }
 }
 
+///|
 /// 合成模式名称 / Synthesis mode name.
 pub fn synthesis_mode_name(mode : SynthesisMode) -> String {
   match mode {
@@ -199,6 +226,7 @@ pub fn synthesis_mode_name(mode : SynthesisMode) -> String {
   }
 }
 
+///|
 pub fn semantic_id() -> String {
   "opcore/semantic"
 }
@@ -206,18 +234,20 @@ pub fn semantic_id() -> String {
 // S2.11 停用词过滤 / Stopword filtering
 // ============================================================
 
+///|
 /// 默认英文停用词 / Default English stopwords.
 pub fn default_stopwords() -> Array[String] {
   [
-    "a", "an", "the", "is", "are", "was", "were", "be", "been", "being",
-    "have", "has", "had", "do", "does", "did", "will", "would", "could",
-    "should", "may", "might", "must", "can", "of", "in", "on", "at", "to",
-    "for", "with", "by", "from", "as", "and", "or", "not", "but", "if",
-    "then", "else", "this", "that", "these", "those", "i", "you", "he",
-    "she", "it", "we", "they", "me", "him", "her", "us", "them",
+    "a", "an", "the", "is", "are", "was", "were", "be", "been", "being", "have",
+    "has", "had", "do", "does", "did", "will", "would", "could", "should", "may",
+    "might", "must", "can", "of", "in", "on", "at", "to", "for", "with", "by", "from",
+    "as", "and", "or", "not", "but", "if", "then", "else", "this", "that", "these",
+    "those", "i", "you", "he", "she", "it", "we", "they", "me", "him", "her", "us",
+    "them",
   ]
 }
 
+///|
 /// 按空格分词 / Split text into words by whitespace.
 fn split_words(s : String) -> Array[String] {
   let chars = s.to_array()
@@ -241,6 +271,7 @@ fn split_words(s : String) -> Array[String] {
   result
 }
 
+///|
 /// 判断单词是否在停用词表 / Check if word is a stopword.
 fn is_stopword(word : String, stopwords : Array[String]) -> Bool {
   let lower = word.to_lower()
@@ -253,15 +284,19 @@ fn is_stopword(word : String, stopwords : Array[String]) -> Bool {
   found
 }
 
+///|
 /// 停用词过滤（默认词表）/ Remove stopwords (default list).
-pub fn remove_stopwords(input : @dataobject.DataObject) -> @dataobject.DataObject {
+pub fn remove_stopwords(
+  input : @dataobject.DataObject,
+) -> @dataobject.DataObject {
   remove_stopwords_custom(input, default_stopwords())
 }
 
+///|
 /// 停用词过滤（自定义词表）/ Remove stopwords (custom list).
 pub fn remove_stopwords_custom(
   input : @dataobject.DataObject,
-  stopwords : Array[String]
+  stopwords : Array[String],
 ) -> @dataobject.DataObject {
   let words = split_words(input.content)
   let kept : Array[String] = []
@@ -274,6 +309,7 @@ pub fn remove_stopwords_custom(
   @dataobject.make_dataobject(new_content, input.modality, input.schema)
 }
 
+///|
 /// 用分隔符拼接字符串数组 / Join string array with separator.
 fn join_strings(arr : Array[String], sep : String) -> String {
   if arr.length() == 0 {
@@ -291,20 +327,27 @@ fn join_strings(arr : Array[String], sep : String) -> String {
 // S2.11 更多改写函数 / Additional rewrite functions
 // ============================================================
 
+///|
 /// 去除首尾空白 / Trim whitespace.
 pub fn rewrite_trim(input : @dataobject.DataObject) -> @dataobject.DataObject {
   let new_content = input.content.trim().to_owned()
   @dataobject.make_dataobject(new_content, input.modality, input.schema)
 }
 
+///|
 /// 转小写 / Convert to lowercase.
-pub fn rewrite_lowercase(input : @dataobject.DataObject) -> @dataobject.DataObject {
+pub fn rewrite_lowercase(
+  input : @dataobject.DataObject,
+) -> @dataobject.DataObject {
   let new_content = input.content.to_lower()
   @dataobject.make_dataobject(new_content, input.modality, input.schema)
 }
 
+///|
 /// 转大写 / Convert to uppercase.
-pub fn rewrite_uppercase(input : @dataobject.DataObject) -> @dataobject.DataObject {
+pub fn rewrite_uppercase(
+  input : @dataobject.DataObject,
+) -> @dataobject.DataObject {
   let new_content = input.content.to_upper()
   @dataobject.make_dataobject(new_content, input.modality, input.schema)
 }
@@ -313,26 +356,29 @@ pub fn rewrite_uppercase(input : @dataobject.DataObject) -> @dataobject.DataObje
 // S2.11 更多合成函数 / Additional synthesis functions
 // ============================================================
 
+///|
 /// 拼接两段文本 / Concatenate two DataObjects.
 pub fn synthesize_concat(
   a : @dataobject.DataObject,
-  b : @dataobject.DataObject
+  b : @dataobject.DataObject,
 ) -> @dataobject.DataObject {
   let new_content = a.content + " " + b.content
   @dataobject.make_dataobject(new_content, a.modality, a.schema)
 }
 
+///|
 /// 模板填充 / Template fill.
 ///
 /// 将 template 中的 `{}` 替换为 input.content。
 pub fn synthesize_template(
   input : @dataobject.DataObject,
-  template : String
+  template : String,
 ) -> @dataobject.DataObject {
   let result = replace_all(template, "{}", input.content)
   @dataobject.make_dataobject(result, input.modality, input.schema)
 }
 
+///|
 /// 手动字符串替换 / Manual string replace (replace all occurrences of old_str with new_str).
 fn replace_all(s : String, old_str : String, new_str : String) -> String {
   if old_str.length() == 0 {
@@ -376,16 +422,17 @@ fn replace_all(s : String, old_str : String, new_str : String) -> String {
 // S2.11 词频统计 / Word frequency
 // ============================================================
 
+///|
 /// 词频统计 / Word frequency count.
 ///
 /// 返回 (word, count) 数组，按词频降序排列。
 /// 退化安全：空内容返回空数组。
-pub fn word_frequency(input : @dataobject.DataObject) -> Array[(String, Int)] {
+pub fn word_frequency(input : @dataobject.DataObject) -> Array[(String, Int32)] {
   let words = split_words(input.content)
   if words.length() == 0 {
     []
   } else {
-    let result : Array[(String, Int)] = []
+    let result : Array[(String, Int32)] = []
     let counted : Array[String] = []
     for i in 0..<words.length() {
       let w = words[i]
@@ -419,13 +466,14 @@ pub fn word_frequency(input : @dataobject.DataObject) -> Array[(String, Int)] {
 // S2.11 文本相似度 / Text similarity
 // ============================================================
 
+///|
 /// Jaccard 词集相似度 / Jaccard word-set similarity.
 ///
 /// 公式：`|A ∩ B| / |A ∪ B|`。
 /// 退化安全：两者皆空返回 0.0。
 pub fn text_similarity(
   a : @dataobject.DataObject,
-  b : @dataobject.DataObject
+  b : @dataobject.DataObject,
 ) -> Double {
   let words_a = split_words(a.content)
   let words_b = split_words(b.content)

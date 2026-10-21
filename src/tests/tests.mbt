@@ -8,7 +8,6 @@
 ///
 /// Operator robustness, degenerate data, consistency regression.
 /// See architecture §5. S0.2: kernel four-mode consistency + degenerate data tests.
-
 test "kernel mode_name covers four modes" {
   assert_eq(@kernel.mode_name(@kernel.Exact), "exact")
   assert_eq(@kernel.mode_name(@kernel.Approx(42)), "approx(seed)")
@@ -16,13 +15,18 @@ test "kernel mode_name covers four modes" {
   assert_eq(@kernel.mode_name(@kernel.Cache), "cache")
 }
 
+///|
 test "kernel mode_consistency contract" {
   assert_eq(@kernel.mode_consistency(@kernel.Exact), @kernel.ByteExact)
-  assert_eq(@kernel.mode_consistency(@kernel.Approx(7)), @kernel.SeededBound(7, 0.0))
+  assert_eq(
+    @kernel.mode_consistency(@kernel.Approx(7)),
+    @kernel.SeededBound(7, 0.0),
+  )
   assert_eq(@kernel.mode_consistency(@kernel.Streaming), @kernel.WindowEquiv)
   assert_eq(@kernel.mode_consistency(@kernel.Cache), @kernel.CacheHitEquiv)
 }
 
+///|
 test "kernel mode_from_tag roundtrip" {
   assert_eq(@kernel.mode_from_tag("exact", 0), @kernel.Exact)
   assert_eq(@kernel.mode_from_tag("approx", 42), @kernel.Approx(42))
@@ -30,12 +34,14 @@ test "kernel mode_from_tag roundtrip" {
   assert_eq(@kernel.mode_from_tag("cache", 0), @kernel.Cache)
 }
 
+///|
 test "kernel mode_from_tag unknown degrades to exact" {
   // 退化策略：未知 tag 安全退化为 Exact（最严格一致性）
   assert_eq(@kernel.mode_from_tag("unknown", 0), @kernel.Exact)
   assert_eq(@kernel.mode_from_tag("", 0), @kernel.Exact)
 }
 
+///|
 test "kernel all_mode_tags aggregates four sub-packages" {
   let tags = @kernel.all_mode_tags()
   assert_eq(tags.length(), 4)
@@ -45,6 +51,7 @@ test "kernel all_mode_tags aggregates four sub-packages" {
   assert_eq(tags[3], "cache")
 }
 
+///|
 test "kernel exact sub-package contract" {
   assert_eq(@exact.exact_id(), "kernel/exact")
   assert_eq(@exact.mode_tag(), "exact")
@@ -52,6 +59,7 @@ test "kernel exact sub-package contract" {
   assert_true(@exact.handles_empty())
 }
 
+///|
 test "kernel approx sub-package contract" {
   assert_eq(@approx.approx_id(), "kernel/approx")
   assert_eq(@approx.mode_tag(), "approx")
@@ -62,6 +70,7 @@ test "kernel approx sub-package contract" {
   assert_false(@approx.valid_seed(-1))
 }
 
+///|
 test "kernel streaming sub-package contract" {
   assert_eq(@streaming.streaming_id(), "kernel/streaming")
   assert_eq(@streaming.mode_tag(), "streaming")
@@ -72,6 +81,7 @@ test "kernel streaming sub-package contract" {
   assert_true(@streaming.valid_window(w))
 }
 
+///|
 test "kernel streaming sliding window" {
   let w = @streaming.sliding_window(200, 50)
   assert_eq(w.window_size, 200)
@@ -81,12 +91,14 @@ test "kernel streaming sliding window" {
   assert_false(@streaming.valid_window(bad))
 }
 
+///|
 test "kernel cache sub-package contract" {
   assert_eq(@cache.cache_id(), "kernel/cache")
   assert_eq(@cache.mode_tag(), "cache")
   assert_eq(@cache.consistency_guarantee(), "cache-hit-equiv")
 }
 
+///|
 test "kernel cache key fingerprint and hit" {
   let k1 = @cache.make_key("abc")
   assert_eq(k1.key, "abc")
@@ -97,6 +109,7 @@ test "kernel cache key fingerprint and hit" {
   assert_false(@cache.is_hit(k1, k3))
 }
 
+///|
 test "kernel degenerate: empty content cache key" {
   // 退化数据：空字符串安全处理
   let k = @cache.make_key("")
@@ -105,6 +118,7 @@ test "kernel degenerate: empty content cache key" {
 }
 // === S0.3 dataobject 8 实体测试 ===
 
+///|
 test "dataobject Modality enum" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("text", @dataobject.Text, s)
@@ -114,12 +128,17 @@ test "dataobject Modality enum" {
   assert_true(@dataobject.Text != @dataobject.Image)
 }
 
+///|
 test "dataobject Schema construction" {
-  let s = @schema.make([@schema.field("id", @schema.Integer), @schema.field("text", @schema.Text)])
+  let s = @schema.make([
+    @schema.field("id", @schema.Integer),
+    @schema.field("text", @schema.Text),
+  ])
   assert_eq(@schema.size(s), 2)
   assert_eq(@schema.size(@schema.empty()), 0)
 }
 
+///|
 test "dataobject Chunk construction" {
   let c = @chunk.make("c1", "hello", @chunk.TextSlice)
   assert_eq(c.id, "c1")
@@ -128,6 +147,7 @@ test "dataobject Chunk construction" {
   assert_eq(@chunk.length(e), 0)
 }
 
+///|
 test "dataobject Embedding construction" {
   let emb = @embedding.make("bge-small", [0.1, 0.2, 0.3])
   assert_eq(emb.model_id, "bge-small")
@@ -138,6 +158,7 @@ test "dataobject Embedding construction" {
   assert_true(z.normalized)
 }
 
+///|
 test "dataobject Record and Dataset construction" {
   let r = @record_dataset.make_record("r1", [("name", "Alice"), ("age", "30")])
   assert_eq(r.id, "r1")
@@ -148,6 +169,7 @@ test "dataobject Record and Dataset construction" {
   assert_eq(d.mix_ratio, 1.0)
 }
 
+///|
 test "dataobject Dataset with ratio and empty" {
   let r = @record_dataset.make_record("r1", [])
   let d = @record_dataset.make_dataset_with_ratio([r], "v2", 0.5)
@@ -156,6 +178,7 @@ test "dataobject Dataset with ratio and empty" {
   assert_eq(@record_dataset.size(e), 0)
 }
 
+///|
 test "dataobject DataObject construction" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("hello world", @dataobject.Text, s)
@@ -163,15 +186,20 @@ test "dataobject DataObject construction" {
   assert_false(@dataobject.has_lineage(d))
 }
 
+///|
 test "dataobject DataObject with metadata" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject_with_metadata(
-    "data", @dataobject.Table, s, [("source", "csv"), ("rows", "100")]
+    "data",
+    @dataobject.Table,
+    s,
+    [("source", "csv"), ("rows", "100")],
   )
   assert_eq(d.metadata.length(), 2)
   assert_false(@dataobject.has_lineage(d))
 }
 
+///|
 test "dataobject Lineage construction" {
   let l = @dataobject.make_lineage("op1", "fp_in", "fp_out", "p=1", "env=prod")
   assert_eq(l.operator_graph, "op1")
@@ -179,9 +207,12 @@ test "dataobject Lineage construction" {
   assert_eq(e.input_fingerprint, "")
 }
 
+///|
 test "dataobject QualityCard construction" {
   let q = @dataobject.make_quality_card(
-    [("accuracy", 0.95)], [("accuracy", 0.9)], true
+    [("accuracy", 0.95)],
+    [("accuracy", 0.9)],
+    true,
   )
   assert_true(q.verdict)
   let p = @dataobject.passing_quality_card()
@@ -189,6 +220,7 @@ test "dataobject QualityCard construction" {
   assert_eq(p.metrics.length(), 0)
 }
 
+///|
 test "dataobject degenerate: empty dataobject" {
   // 退化数据：空内容安全处理
   let d = @dataobject.empty_dataobject(@dataobject.Text)
@@ -197,6 +229,7 @@ test "dataobject degenerate: empty dataobject" {
 }
 // === S0.4 opcore 框架 + 三类算子测试 ===
 
+///|
 test "opcore OperatorCategory and category_name" {
   assert_eq(@opcore.category_name(@opcore.Clean), "clean")
   assert_eq(@opcore.category_name(@opcore.Dedup), "dedup")
@@ -204,15 +237,21 @@ test "opcore OperatorCategory and category_name" {
   assert_true(@opcore.Clean != @opcore.Dedup)
 }
 
+///|
 test "opcore Operator contract construction" {
   let op = @opcore.make_operator(
-    "text_length_filter", @opcore.Filter, @dataobject.Text, @kernel.Exact, false
+    "text_length_filter",
+    @opcore.Filter,
+    @dataobject.Text,
+    @kernel.Exact,
+    false,
   )
   assert_eq(op.name, "text_length_filter")
   assert_eq(op.category, @opcore.Filter)
   assert_false(op.reversible)
 }
 
+///|
 test "opcore clean remove_empty" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("hello", @dataobject.Text, s)
@@ -221,12 +260,14 @@ test "opcore clean remove_empty" {
   assert_eq(@clean.remove_empty(d2).content, "")
 }
 
+///|
 test "opcore clean strip_whitespace" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("  hello  ", @dataobject.Text, s)
   assert_eq(@clean.strip_whitespace(d).content, "hello")
 }
 
+///|
 test "opcore dedup exact_dedup" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
@@ -237,6 +278,7 @@ test "opcore dedup exact_dedup" {
   assert_eq(@dedup.dedup_count(3, 2), 1)
 }
 
+///|
 test "opcore filter length_filter" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("hi", @dataobject.Text, s)
@@ -245,6 +287,7 @@ test "opcore filter length_filter" {
   assert_false(@filter.length_filter(3, 20, d1))
 }
 
+///|
 test "opcore filter non_empty_filter" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("x", @dataobject.Text, s)
@@ -253,6 +296,7 @@ test "opcore filter non_empty_filter" {
   assert_false(@filter.non_empty_filter(d2))
 }
 
+///|
 test "opcore filter filter_all" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
@@ -262,9 +306,14 @@ test "opcore filter filter_all" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "opcore registry register and lookup" {
   let op = @opcore.make_operator(
-    "remove_empty", @opcore.Clean, @dataobject.Text, @kernel.Exact, false
+    "remove_empty",
+    @opcore.Clean,
+    @dataobject.Text,
+    @kernel.Exact,
+    false,
   )
   let r = @registry.register(@registry.empty(), op)
   assert_eq(@registry.size(r), 1)
@@ -274,14 +323,28 @@ test "opcore registry register and lookup" {
   assert_true(not_found is None)
 }
 
+///|
 test "opcore registry valid_operator" {
-  let valid = @opcore.make_operator("x", @opcore.Clean, @dataobject.Text, @kernel.Exact, false)
-  let invalid = @opcore.make_operator("", @opcore.Clean, @dataobject.Text, @kernel.Exact, false)
+  let valid = @opcore.make_operator(
+    "x",
+    @opcore.Clean,
+    @dataobject.Text,
+    @kernel.Exact,
+    false,
+  )
+  let invalid = @opcore.make_operator(
+    "",
+    @opcore.Clean,
+    @dataobject.Text,
+    @kernel.Exact,
+    false,
+  )
   assert_true(@registry.valid_operator(valid))
   assert_false(@registry.valid_operator(invalid))
 }
 // === S0.5 datatemporal 测试 ===
 
+///|
 test "datatemporal Fingerprint" {
   let fp1 = @datatemporal.make_fingerprint("hello")
   let fp2 = @datatemporal.make_fingerprint("hello")
@@ -290,6 +353,7 @@ test "datatemporal Fingerprint" {
   assert_false(@datatemporal.matches(fp1, fp3))
 }
 
+///|
 test "datatemporal Version and VersionTower" {
   let v1 = @version.root_version("v1", 1000, "snap1")
   let v2 = @version.make_version("v2", Some("v1"), 2000, "snap2")
@@ -298,6 +362,7 @@ test "datatemporal Version and VersionTower" {
   assert_eq(@version.height(tower), 2)
 }
 
+///|
 test "datatemporal BiLineage and FieldLineage" {
   let bl = @lineage.make_bi_lineage("dedup", ["in1"], ["out1"], "threshold=0.9")
   assert_eq(bl.operator, "dedup")
@@ -305,6 +370,7 @@ test "datatemporal BiLineage and FieldLineage" {
   assert_eq(fl.field_name, "score")
 }
 
+///|
 test "datatemporal DriftReport" {
   let dr = @drift.make_drift_report("accuracy", 0.95, 0.90)
   // 浮点精度：0.90 - 0.95 ≠ 精确 -0.05，验证 is_significant 行为
@@ -312,13 +378,15 @@ test "datatemporal DriftReport" {
   assert_false(@drift.is_significant(dr, 0.1))
 }
 
+///|
 test "datatemporal ReplayTrace" {
   let t = @replay.make_trace("t1", ["step1", "step2", "step3"], "fp_end")
   assert_eq(@replay.step_count(t), 3)
   let e = @replay.empty_trace("t0")
   assert_eq(@replay.step_count(e), 0)
-}// === S0.6 datair 基础语法定义测试 ===
+} // === S0.6 datair 基础语法定义测试 ===
 
+///|
 test "datair root id and ir_kind_count" {
   assert_eq(@datair.datair_id(), "datair")
   assert_eq(@datair.ir_core_id(), "datair/ir_core")
@@ -328,6 +396,7 @@ test "datair root id and ir_kind_count" {
   assert_eq(@datair.ir_kind_count(), 2)
 }
 
+///|
 test "ir_core IRNodeId construction and validity" {
   let id1 = @ir_core.IRNodeId::new("node_001")
   assert_eq(id1.value, "node_001")
@@ -337,6 +406,7 @@ test "ir_core IRNodeId construction and validity" {
   assert_false(id2.is_valid())
 }
 
+///|
 test "ir_core IRMetadata empty and construction" {
   let e = @ir_core.IRMetadata::empty()
   assert_true(e.is_empty())
@@ -346,6 +416,7 @@ test "ir_core IRMetadata empty and construction" {
   assert_eq(m.tag_count(), 2)
 }
 
+///|
 test "ir_entity EntityType and entity_type_name" {
   assert_eq(@ir_entity.entity_type_name(@ir_entity.DataObject), "data_object")
   assert_eq(@ir_entity.entity_type_name(@ir_entity.Chunk), "chunk")
@@ -354,10 +425,17 @@ test "ir_entity EntityType and entity_type_name" {
   assert_true(@ir_entity.DataObject != @ir_entity.Chunk)
 }
 
+///|
 test "ir_entity EntityIR construction" {
   let id = @ir_core.IRNodeId::new("ent_001")
   let m = @ir_core.IRMetadata::new(["text"], "1.0.0", "schema/text_v1")
-  let e = @ir_entity.EntityIR::new(id, @ir_entity.DataObject, "schema/text_v1", 1024, m)
+  let e = @ir_entity.EntityIR::new(
+    id,
+    @ir_entity.DataObject,
+    "schema/text_v1",
+    1024,
+    m,
+  )
   assert_eq(e.node_id.value, "ent_001")
   assert_eq(e.entity_type, @ir_entity.DataObject)
   assert_eq(e.schema_ref, "schema/text_v1")
@@ -368,8 +446,12 @@ test "ir_entity EntityIR construction" {
   assert_true(s.metadata.is_empty())
 }
 
+///|
 test "ir_operator Determinism and determinism_name" {
-  assert_eq(@ir_operator.determinism_name(@ir_operator.Deterministic), "deterministic")
+  assert_eq(
+    @ir_operator.determinism_name(@ir_operator.Deterministic),
+    "deterministic",
+  )
   assert_eq(
     @ir_operator.determinism_name(@ir_operator.ApproximateWithSeed(42)),
     "approximate(seed)",
@@ -381,6 +463,7 @@ test "ir_operator Determinism and determinism_name" {
   assert_true(@ir_operator.Deterministic != @ir_operator.NonDeterministic)
 }
 
+///|
 test "ir_operator IRModality and modality_name" {
   assert_eq(@ir_operator.modality_name(@ir_operator.Text), "text")
   assert_eq(@ir_operator.modality_name(@ir_operator.Image), "image")
@@ -388,6 +471,7 @@ test "ir_operator IRModality and modality_name" {
   assert_true(@ir_operator.Text != @ir_operator.Code)
 }
 
+///|
 test "ir_operator CostModel construction" {
   let c = @ir_operator.CostModel::new("O(n log n)", "O(n)", 0.7)
   assert_eq(c.time_complexity, "O(n log n)")
@@ -399,6 +483,7 @@ test "ir_operator CostModel construction" {
   assert_eq(s.space_complexity, "O(n)")
 }
 
+///|
 test "ir_operator OperatorIR construction" {
   let id = @ir_core.IRNodeId::new("op_001")
   let m = @ir_core.IRMetadata::new(["clean"], "1.0.0", "opcore/clean")
@@ -418,12 +503,16 @@ test "ir_operator OperatorIR construction" {
   assert_eq(op.determinism, @ir_operator.Deterministic)
   // 简化构造
   let s = @ir_operator.OperatorIR::simple(
-    id, "exact_dedup", @ir_operator.Text, @ir_operator.Deterministic,
+    id,
+    "exact_dedup",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   assert_eq(s.param_count(), 0)
   assert_true(s.metadata.is_empty())
 }
 
+///|
 test "datair degenerate: empty node id and empty metadata" {
   // 退化数据：空节点 id 安全处理（is_valid 返回 false，不抛异常）
   let id = @ir_core.IRNodeId::new("")
@@ -431,18 +520,23 @@ test "datair degenerate: empty node id and empty metadata" {
   let e = @ir_entity.EntityIR::simple(id, @ir_entity.DataObject, "")
   assert_eq(e.schema_ref, "")
   let op = @ir_operator.OperatorIR::simple(
-    id, "", @ir_operator.Text, @ir_operator.Deterministic,
+    id,
+    "",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   assert_eq(op.name, "")
   assert_eq(op.param_count(), 0)
-}// === S0.7 dosi 基础设施原型测试 ===
+} // === S0.7 dosi 基础设施原型测试 ===
 
+///|
 test "dosi root id and sub-package ids" {
   assert_eq(@dosi.dosi_id(), "dosi")
   assert_eq(@dosi.builder_id(), "dosi/builder")
   assert_eq(@dosi.router_id(), "dosi/router")
 }
 
+///|
 test "dosi SymbolicEntry and SemanticEntry construction" {
   let sym = @dosi.SymbolicEntry::new("opcore.clean.x", "clean", "text", ["dep1"])
   assert_eq(sym.path, "opcore.clean.x")
@@ -454,6 +548,7 @@ test "dosi SymbolicEntry and SemanticEntry construction" {
   assert_eq(sem.params.length(), 1)
 }
 
+///|
 test "dosi DOSIIndex empty and add" {
   let e = @dosi.DOSIIndex::empty()
   assert_eq(e.size(), 0)
@@ -465,6 +560,7 @@ test "dosi DOSIIndex empty and add" {
   assert_eq(idx.entries().length(), 1)
 }
 
+///|
 test "dosi builder build_opcore_index" {
   let idx = @builder.build_opcore_index()
   // S0.7 为 5 个 opcore 算子生成索引条目
@@ -472,6 +568,7 @@ test "dosi builder build_opcore_index" {
   assert_eq(@builder.builder_id(), "dosi/builder")
 }
 
+///|
 test "dosi builder build_from_operator_ir" {
   let id = @ir_core.IRNodeId::new("op_001")
   let op = @ir_operator.OperatorIR::new(
@@ -490,6 +587,7 @@ test "dosi builder build_from_operator_ir" {
   assert_eq(entry.semantic.params.length(), 2)
 }
 
+///|
 test "dosi builder merge" {
   let idx1 = @builder.build_opcore_index()
   let sym = @dosi.SymbolicEntry::new("extra", "custom", "text", [])
@@ -499,6 +597,7 @@ test "dosi builder merge" {
   assert_eq(merged.size(), 6)
 }
 
+///|
 test "dosi router lookup_by_path" {
   let idx = @builder.build_opcore_index()
   let found = @router.lookup_by_path(idx, "opcore.clean.remove_empty")
@@ -508,6 +607,7 @@ test "dosi router lookup_by_path" {
   assert_eq(@router.router_id(), "dosi/router")
 }
 
+///|
 test "dosi router lookup_by_category" {
   let idx = @builder.build_opcore_index()
   let clean_ops = @router.lookup_by_category(idx, "clean")
@@ -520,6 +620,7 @@ test "dosi router lookup_by_category" {
   assert_eq(empty.length(), 0)
 }
 
+///|
 test "dosi router lookup_by_modality" {
   let idx = @builder.build_opcore_index()
   let text_ops = @router.lookup_by_modality(idx, "text")
@@ -529,6 +630,7 @@ test "dosi router lookup_by_modality" {
   assert_eq(image_ops.length(), 0)
 }
 
+///|
 test "dosi router lookup_by_prefix" {
   let idx = @builder.build_opcore_index()
   let clean_all = @router.lookup_by_prefix(idx, "opcore.clean.")
@@ -539,6 +641,7 @@ test "dosi router lookup_by_prefix" {
   assert_eq(all.length(), 5)
 }
 
+///|
 test "dosi degenerate: empty index lookups" {
   // 退化数据：空索引查询安全返回
   let e = @dosi.DOSIIndex::empty()
@@ -547,12 +650,12 @@ test "dosi degenerate: empty index lookups" {
   assert_eq(@router.lookup_by_modality(e, "x").length(), 0)
   assert_eq(@router.lookup_by_prefix(e, "x").length(), 0)
 }
+
 ///|
 /// # S1.1 opcore 14 类算子测试 / 14-category operator tests
 ///
 /// 每类算子至少 1 个正常用例 + 1 个退化数据用例（空串/空数组/越界参数）。
 /// 对标 Data-Juicer P0 高频算子：whitespace_normalization, topk_selector, text_chunk_mapper 等。
-
 test "S1.1 ingest formatters modality" {
   let t = @ingest.text_formatter("hello")
   let j = @ingest.json_formatter("{\"a\":1}")
@@ -564,12 +667,14 @@ test "S1.1 ingest formatters modality" {
   assert_eq(@ingest.ingest_id(), "opcore/ingest")
 }
 
+///|
 test "S1.1 ingest degenerate: empty string" {
   let t = @ingest.text_formatter("")
   assert_eq(t.content, "")
   assert_eq(t.modality, @dataobject.Text)
 }
 
+///|
 test "S1.1 normalize whitespace_normalization" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("  hello   world  ", @dataobject.Text, s)
@@ -577,6 +682,7 @@ test "S1.1 normalize whitespace_normalization" {
   assert_eq(n.content, "hello world")
 }
 
+///|
 test "S1.1 normalize punctuation_normalization" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("你好，世界。", @dataobject.Text, s)
@@ -584,6 +690,7 @@ test "S1.1 normalize punctuation_normalization" {
   assert_eq(n.content, "你好,世界.")
 }
 
+///|
 test "S1.1 normalize degenerate: empty string" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("", @dataobject.Text, s)
@@ -592,6 +699,7 @@ test "S1.1 normalize degenerate: empty string" {
   assert_eq(@normalize.normalize_id(), "opcore/normalize")
 }
 
+///|
 test "S1.1 quality length_quality_score boundaries" {
   let s = @schema.empty()
   let empty = @dataobject.make_dataobject("", @dataobject.Text, s)
@@ -604,6 +712,7 @@ test "S1.1 quality length_quality_score boundaries" {
   assert_eq(@quality.length_quality_score(over), 1.0)
 }
 
+///|
 test "S1.1 quality text_quality_score" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("hello world", @dataobject.Text, s)
@@ -612,6 +721,7 @@ test "S1.1 quality text_quality_score" {
   assert_eq(@quality.quality_id(), "opcore/quality")
 }
 
+///|
 test "S1.1 transform to_lowercase and to_uppercase" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("Hello World", @dataobject.Text, s)
@@ -619,6 +729,7 @@ test "S1.1 transform to_lowercase and to_uppercase" {
   assert_eq(@transform.to_uppercase(d).content, "HELLO WORLD")
 }
 
+///|
 test "S1.1 transform truncate" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("hello world", @dataobject.Text, s)
@@ -626,6 +737,7 @@ test "S1.1 transform truncate" {
   assert_eq(@transform.truncate(d, 100).content, "hello world")
 }
 
+///|
 test "S1.1 transform degenerate: empty string" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("", @dataobject.Text, s)
@@ -635,6 +747,7 @@ test "S1.1 transform degenerate: empty string" {
   assert_eq(@transform.transform_id(), "opcore/transform")
 }
 
+///|
 test "S1.1 annotate tag_by_length three tiers" {
   let s = @schema.empty()
   let short_d = @dataobject.make_dataobject("hi", @dataobject.Text, s)
@@ -649,6 +762,7 @@ test "S1.1 annotate tag_by_length three tiers" {
   assert_eq(long_tagged.metadata[0], ("length_tag", "long"))
 }
 
+///|
 test "S1.1 annotate tag_modality" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("x", @dataobject.Image, s)
@@ -657,6 +771,7 @@ test "S1.1 annotate tag_modality" {
   assert_eq(@annotate.annotate_id(), "opcore/annotate")
 }
 
+///|
 test "S1.1 select topk_by_length" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
@@ -668,6 +783,7 @@ test "S1.1 select topk_by_length" {
   assert_eq(top2[1].content, "cc")
 }
 
+///|
 test "S1.1 select threshold_by_length" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
@@ -677,6 +793,7 @@ test "S1.1 select threshold_by_length" {
   assert_eq(result[0].content, "bbb")
 }
 
+///|
 test "S1.1 select degenerate: empty array and k<=0" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
@@ -691,6 +808,7 @@ test "S1.1 select degenerate: empty array and k<=0" {
   assert_eq(@select.select_id(), "opcore/select")
 }
 
+///|
 test "S1.1 mix group_by_modality" {
   let s = @schema.empty()
   let t1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
@@ -700,9 +818,13 @@ test "S1.1 mix group_by_modality" {
   assert_eq(groups.length(), 2)
 }
 
+///|
 test "S1.1 mix interleave" {
   let s = @schema.empty()
-  let a = [@dataobject.make_dataobject("a", @dataobject.Text, s), @dataobject.make_dataobject("b", @dataobject.Text, s)]
+  let a = [
+    @dataobject.make_dataobject("a", @dataobject.Text, s),
+    @dataobject.make_dataobject("b", @dataobject.Text, s),
+  ]
   let b = [@dataobject.make_dataobject("1", @dataobject.Text, s)]
   let result = @mix.interleave(a, b)
   assert_eq(result.length(), 3)
@@ -711,6 +833,7 @@ test "S1.1 mix interleave" {
   assert_eq(result[2].content, "b")
 }
 
+///|
 test "S1.1 mix degenerate: empty arrays" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("a", @dataobject.Text, s)
@@ -720,6 +843,7 @@ test "S1.1 mix degenerate: empty arrays" {
   assert_eq(@mix.mix_id(), "opcore/mix")
 }
 
+///|
 test "S1.1 pack text_chunk" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("abcdefghij", @dataobject.Text, s)
@@ -729,6 +853,7 @@ test "S1.1 pack text_chunk" {
   assert_eq(chunks[3].content, "j")
 }
 
+///|
 test "S1.1 pack degenerate: chunk_size <= 0" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("hello", @dataobject.Text, s)
@@ -742,6 +867,7 @@ test "S1.1 pack degenerate: chunk_size <= 0" {
   assert_eq(@pack.pack_id(), "opcore/pack")
 }
 
+///|
 test "S1.1 eval global_statistics" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("hello", @dataobject.Text, s)
@@ -754,6 +880,7 @@ test "S1.1 eval global_statistics" {
   assert_eq(stats.min_length, 0)
 }
 
+///|
 test "S1.1 eval degenerate: empty array" {
   let stats = @eval.global_statistics([])
   assert_eq(stats.total_count, 0)
@@ -761,15 +888,19 @@ test "S1.1 eval degenerate: empty array" {
   assert_eq(@eval.eval_id(), "opcore/eval")
 }
 
+///|
 test "S1.1 lineage_op attach_lineage" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("hello", @dataobject.Text, s)
-  let (out_d, lineage) = @lineage_op.attach_lineage(d, "whitespace_normalization")
+  let (out_d, lineage) = @lineage_op.attach_lineage(
+    d, "whitespace_normalization",
+  )
   assert_eq(out_d.content, "hello")
   assert_eq(lineage.operator_graph, "whitespace_normalization")
   assert_eq(lineage.input_fingerprint, "fp:5")
 }
 
+///|
 test "S1.1 lineage_op make_op_lineage" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("hello", @dataobject.Text, s)
@@ -779,6 +910,7 @@ test "S1.1 lineage_op make_op_lineage" {
   assert_eq(@lineage_op.lineage_op_id(), "opcore/lineage_op")
 }
 
+///|
 test "S1.1 safety mask_digits" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("call 138-1234-5678", @dataobject.Text, s)
@@ -786,6 +918,7 @@ test "S1.1 safety mask_digits" {
   assert_eq(masked.content, "call ***-****-****")
 }
 
+///|
 test "S1.1 safety mask_email" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("user@example.com", @dataobject.Text, s)
@@ -793,6 +926,7 @@ test "S1.1 safety mask_email" {
   assert_eq(masked.content, "***@example.com")
 }
 
+///|
 test "S1.1 safety degenerate: no digits and no at sign" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("plain text", @dataobject.Text, s)
@@ -803,12 +937,12 @@ test "S1.1 safety degenerate: no digits and no at sign" {
   assert_eq(@safety.mask_email(at_first).content, "@nope.com")
   assert_eq(@safety.safety_id(), "opcore/safety")
 }
+
 ///|
 /// # S1.2 learncore 传统 ML 算子测试 / Traditional ML operator tests
 ///
 /// 每类算子至少 1 个正常用例 + 1 个退化数据用例。
 /// 对标架构 §4.3.5 A（传统 ML）+ D（评估指标）。
-
 test "S1.2 learncore ModelSpace and model_space_name" {
   assert_eq(@learncore.model_space_name(@learncore.ML), "ml")
   assert_eq(@learncore.model_space_name(@learncore.DL), "dl")
@@ -820,12 +954,14 @@ test "S1.2 learncore ModelSpace and model_space_name" {
   assert_eq(@learncore.learncore_id(), "learncore")
 }
 
+///|
 test "S1.2 learncore Hyperparams construction" {
   let hp = @learncore.make_hyperparams("n_estimators", ["10", "50", "100"])
   assert_eq(hp.name, "n_estimators")
   assert_eq(hp.values.length(), 3)
 }
 
+///|
 test "S1.2 regression linear_regression basic" {
   // y = 2x + 1
   let points = [(0.0, 1.0), (1.0, 3.0), (2.0, 5.0), (3.0, 7.0)]
@@ -836,6 +972,7 @@ test "S1.2 regression linear_regression basic" {
   assert_true(pred > 10.99 && pred < 11.01)
 }
 
+///|
 test "S1.2 regression degenerate: empty and same x" {
   let empty_model = @regression.linear_regression([])
   assert_eq(empty_model.slope, 0.0)
@@ -848,6 +985,7 @@ test "S1.2 regression degenerate: empty and same x" {
   assert_eq(@regression.regression_id(), "learncore/regression")
 }
 
+///|
 test "S1.2 classify knn_classify basic" {
   let train = [
     ([0.0, 0.0], "A"),
@@ -861,6 +999,7 @@ test "S1.2 classify knn_classify basic" {
   assert_eq(label2, "B")
 }
 
+///|
 test "S1.2 classify degenerate: empty train and bad k" {
   assert_eq(@classify.knn_classify([], [0.0, 0.0], 3), "")
   let train = [([0.0], "A"), ([1.0], "B")]
@@ -871,6 +1010,7 @@ test "S1.2 classify degenerate: empty train and bad k" {
   assert_eq(@classify.classify_id(), "learncore/classify")
 }
 
+///|
 test "S1.2 cluster kmeans basic" {
   let points = [
     [0.0, 0.0],
@@ -890,6 +1030,7 @@ test "S1.2 cluster kmeans basic" {
   assert_true(labels[0] != labels[3])
 }
 
+///|
 test "S1.2 cluster degenerate: empty and bad k" {
   assert_eq(@cluster.kmeans([], 2, 10).length(), 0)
   let points = [[0.0], [1.0], [2.0]]
@@ -899,6 +1040,7 @@ test "S1.2 cluster degenerate: empty and bad k" {
   assert_eq(@cluster.cluster_id(), "learncore/cluster")
 }
 
+///|
 test "S1.2 feature standardize basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
   let std = @feature.standardize(data)
@@ -908,6 +1050,7 @@ test "S1.2 feature standardize basic" {
   assert_true(mean > -0.001 && mean < 0.001)
 }
 
+///|
 test "S1.2 feature normalize_minmax basic" {
   let data = [0.0, 5.0, 10.0]
   let norm = @feature.normalize_minmax(data)
@@ -916,6 +1059,7 @@ test "S1.2 feature normalize_minmax basic" {
   assert_true(norm[2] > 0.99 && norm[2] < 1.01)
 }
 
+///|
 test "S1.2 feature degenerate: empty and constant" {
   assert_eq(@feature.standardize([]).length(), 0)
   assert_eq(@feature.normalize_minmax([]).length(), 0)
@@ -928,10 +1072,14 @@ test "S1.2 feature degenerate: empty and constant" {
   assert_eq(@feature.feature_id(), "learncore/feature")
 }
 
+///|
 test "S1.2 metrics accuracy and mse and mae" {
   let pred = ["A", "B", "A", "B"]
   let actual = ["A", "B", "B", "B"]
-  assert_true(@metrics.accuracy(pred, actual) > 0.74 && @metrics.accuracy(pred, actual) < 0.76)
+  assert_true(
+    @metrics.accuracy(pred, actual) > 0.74 &&
+    @metrics.accuracy(pred, actual) < 0.76,
+  )
   let pred_d = [1.0, 2.0, 3.0]
   let actual_d = [1.0, 2.0, 4.0]
   let mse_val = @metrics.mse(pred_d, actual_d)
@@ -940,6 +1088,7 @@ test "S1.2 metrics accuracy and mse and mae" {
   assert_true(mae_val > 0.32 && mae_val < 0.34)
 }
 
+///|
 test "S1.2 metrics confusion_matrix" {
   let pred = ["A", "B", "A", "B"]
   let actual = ["A", "A", "A", "B"]
@@ -951,6 +1100,7 @@ test "S1.2 metrics confusion_matrix" {
   assert_eq(cm[1][1], 1) // 真B 预B
 }
 
+///|
 test "S1.2 metrics degenerate: empty arrays" {
   assert_eq(@metrics.accuracy([], []), 0.0)
   assert_eq(@metrics.mse([], []), 0.0)
@@ -959,11 +1109,11 @@ test "S1.2 metrics degenerate: empty arrays" {
   assert_eq(cm, [[0, 0], [0, 0]])
   assert_eq(@metrics.metrics_id(), "learncore/metrics")
 }
+
 ///|
 /// # S1.3 recipe 复合线测试 / Composite Pipeline Tests
 ///
 /// 4 条复合线：cleaning/dedup/quality/balance。架构 §4.5。
-
 test "S1.3 cleaning_line basic" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("  hello   world  ", @dataobject.Text, s)
@@ -975,11 +1125,13 @@ test "S1.3 cleaning_line basic" {
   assert_eq(result[1].content, "foo bar")
 }
 
+///|
 test "S1.3 cleaning_line degenerate: empty array" {
   assert_eq(@cleaning_line.cleaning_line([]).length(), 0)
   assert_eq(@cleaning_line.cleaning_line_id(), "recipe/cleaning_line")
 }
 
+///|
 test "S1.3 dedup_line basic" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
@@ -990,10 +1142,12 @@ test "S1.3 dedup_line basic" {
   assert_eq(@dedup_line.dedup_line_id(), "recipe/dedup_line")
 }
 
+///|
 test "S1.3 dedup_line degenerate: empty array" {
   assert_eq(@dedup_line.dedup_line([]).length(), 0)
 }
 
+///|
 test "S1.3 quality_line basic" {
   let s = @schema.empty()
   let d1 = @dataobject.make_dataobject("a".repeat(150), @dataobject.Text, s)
@@ -1006,6 +1160,7 @@ test "S1.3 quality_line basic" {
   assert_eq(@quality_line.quality_line_id(), "recipe/quality_line")
 }
 
+///|
 test "S1.3 quality_line degenerate: empty array" {
   assert_eq(@quality_line.quality_line([], 0.5, 10).length(), 0)
   // k <= 0 返回过滤后全部
@@ -1014,29 +1169,29 @@ test "S1.3 quality_line degenerate: empty array" {
   assert_eq(@quality_line.quality_line([d], 0.5, 0).length(), 1)
 }
 
+///|
 test "S1.3 balance_line basic" {
   let s = @schema.empty()
   let texts = [
     @dataobject.make_dataobject("aaa", @dataobject.Text, s),
     @dataobject.make_dataobject("bb", @dataobject.Text, s),
   ]
-  let images = [
-    @dataobject.make_dataobject("img1", @dataobject.Image, s),
-  ]
+  let images = [@dataobject.make_dataobject("img1", @dataobject.Image, s)]
   let result = @balance_line.balance_line(texts + images, 1)
   // 每个模态取 top-1，text 取最长的 "aaa"，image 取 "img1"
   assert_eq(result.length(), 2)
 }
 
+///|
 test "S1.3 balance_line degenerate: empty array" {
   assert_eq(@balance_line.balance_line([], 5).length(), 0)
   assert_eq(@balance_line.balance_line_id(), "recipe/balance_line")
 }
+
 ///|
 /// # S1.4 DataIR 流水线 IR（DAG）+ 优化器测试 / Pipeline IR + Optimizer Tests
 ///
 /// 架构 §4.6：DAG 构造 + 拓扑排序 + 算子融合 + 恒等消除。
-
 test "S1.4 ir_pipeline construction" {
   let p = @ir_pipeline.PipelineIR::empty()
   assert_eq(p.node_count(), 0)
@@ -1066,19 +1221,42 @@ test "S1.4 ir_pipeline construction" {
   assert_eq(@ir_pipeline.ir_pipeline_id(), "datair/ir_pipeline")
 }
 
+///|
 test "S1.4 ir_pipeline topo_order linear" {
   let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("a"), "op_a", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("a"),
+    "op_a",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("b"), "op_b", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("b"),
+    "op_b",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("c"), "op_c", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("c"),
+    "op_c",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
-    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("a"), @ir_core.IRNodeId::new("b")))
-    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("b"), @ir_core.IRNodeId::new("c")))
+  let p = @ir_pipeline.PipelineIR::empty()
+    .add_node(n1)
+    .add_node(n2)
+    .add_node(n3)
+    .add_edge(
+      @ir_pipeline.DAGEdge::new(
+        @ir_core.IRNodeId::new("a"),
+        @ir_core.IRNodeId::new("b"),
+      ),
+    )
+    .add_edge(
+      @ir_pipeline.DAGEdge::new(
+        @ir_core.IRNodeId::new("b"),
+        @ir_core.IRNodeId::new("c"),
+      ),
+    )
   let order = p.topo_order()
   assert_eq(order.length(), 3)
   assert_eq(order[0].value(), "a")
@@ -1086,63 +1264,121 @@ test "S1.4 ir_pipeline topo_order linear" {
   assert_eq(order[2].value(), "c")
 }
 
+///|
 test "S1.4 ir_pipeline topo_order degenerate: empty and cycle" {
   let empty = @ir_pipeline.PipelineIR::empty()
   assert_eq(empty.topo_order().length(), 0)
   // 有环：a→b→a
   let na = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("a"), "op_a", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("a"),
+    "op_a",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let nb = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("b"), "op_b", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("b"),
+    "op_b",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
-  let cyclic = @ir_pipeline.PipelineIR::empty().add_node(na).add_node(nb)
-    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("a"), @ir_core.IRNodeId::new("b")))
-    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("b"), @ir_core.IRNodeId::new("a")))
+  let cyclic = @ir_pipeline.PipelineIR::empty()
+    .add_node(na)
+    .add_node(nb)
+    .add_edge(
+      @ir_pipeline.DAGEdge::new(
+        @ir_core.IRNodeId::new("a"),
+        @ir_core.IRNodeId::new("b"),
+      ),
+    )
+    .add_edge(
+      @ir_pipeline.DAGEdge::new(
+        @ir_core.IRNodeId::new("b"),
+        @ir_core.IRNodeId::new("a"),
+      ),
+    )
   assert_eq(cyclic.topo_order().length(), 0)
 }
 
+///|
 test "S1.4 ir_optimizer fuse_adjacent_maps" {
   let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"), "whitespace_normalization", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op1"),
+    "whitespace_normalization",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"), "whitespace_normalization", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op2"),
+    "whitespace_normalization",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"), "truncate", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op3"),
+    "truncate",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
+  let p = @ir_pipeline.PipelineIR::empty()
+    .add_node(n1)
+    .add_node(n2)
+    .add_node(n3)
   let fused = @ir_optimizer.fuse_adjacent_maps(p)
   assert_eq(fused.node_count(), 2)
 }
 
+///|
 test "S1.4 ir_optimizer remove_identity" {
   let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"), "identity", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op1"),
+    "identity",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"), "truncate", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op2"),
+    "truncate",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"), "noop", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op3"),
+    "noop",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
+  let p = @ir_pipeline.PipelineIR::empty()
+    .add_node(n1)
+    .add_node(n2)
+    .add_node(n3)
   let cleaned = @ir_optimizer.remove_identity(p)
   assert_eq(cleaned.node_count(), 1)
 }
 
+///|
 test "S1.4 ir_optimizer optimize and stats" {
   let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"), "identity", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op1"),
+    "identity",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"), "normalize", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op2"),
+    "normalize",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"), "normalize", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op3"),
+    "normalize",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
+  let p = @ir_pipeline.PipelineIR::empty()
+    .add_node(n1)
+    .add_node(n2)
+    .add_node(n3)
   let opt = @ir_optimizer.optimize(p)
   assert_eq(opt.node_count(), 1)
   let stats = @ir_optimizer.opt_stats(p, opt)
@@ -1151,16 +1387,19 @@ test "S1.4 ir_optimizer optimize and stats" {
   assert_eq(stats.removed, 2)
   assert_eq(@ir_optimizer.ir_optimizer_id(), "datair/ir_optimizer")
 }
+
 ///|
 /// # S1.5 datatemporal 深化测试 / Datatemporal Deepening Tests
 ///
 /// 版本塔（latest/get_by_id/ancestors）+ 双向血缘（reverse/compose）+ 回放（append_step/replay）+ 漂移（direction/merge）。
-
 test "S1.5 version latest and get_by_id" {
   let v1 = @version.root_version("v1", 100, "snap1")
   let v2 = @version.make_version("v2", Some("v1"), 200, "snap2")
   let v3 = @version.make_version("v3", Some("v2"), 300, "snap3")
-  let tower = @version.empty_tower() |> @version.append(v1) |> @version.append(v2) |> @version.append(v3)
+  let tower = @version.empty_tower()
+    |> @version.append(v1)
+    |> @version.append(v2)
+    |> @version.append(v3)
   let latest = @version.latest(tower)
   assert_true(latest is Some(_))
   let found = @version.get_by_id(tower, "v2")
@@ -1169,11 +1408,15 @@ test "S1.5 version latest and get_by_id" {
   assert_true(not_found is None)
 }
 
+///|
 test "S1.5 version ancestors chain" {
   let v1 = @version.root_version("v1", 100, "snap1")
   let v2 = @version.make_version("v2", Some("v1"), 200, "snap2")
   let v3 = @version.make_version("v3", Some("v2"), 300, "snap3")
-  let tower = @version.empty_tower() |> @version.append(v1) |> @version.append(v2) |> @version.append(v3)
+  let tower = @version.empty_tower()
+    |> @version.append(v1)
+    |> @version.append(v2)
+    |> @version.append(v3)
   let chain = @version.ancestors(tower, "v3")
   assert_eq(chain.length(), 3)
   assert_eq(chain[0].version_id, "v3")
@@ -1181,6 +1424,7 @@ test "S1.5 version ancestors chain" {
   assert_eq(chain[2].version_id, "v1")
 }
 
+///|
 test "S1.5 version degenerate: empty tower" {
   let empty = @version.empty_tower()
   assert_true(@version.latest(empty) is None)
@@ -1188,6 +1432,7 @@ test "S1.5 version degenerate: empty tower" {
   assert_eq(@version.ancestors(empty, "x").length(), 0)
 }
 
+///|
 test "S1.5 lineage reverse and compose" {
   let l1 = @lineage.make_bi_lineage("normalize", ["in1"], ["out1"], "params1")
   let reversed = @lineage.reverse(l1)
@@ -1200,12 +1445,14 @@ test "S1.5 lineage reverse and compose" {
   assert_eq(composed.outputs, ["out2"])
 }
 
+///|
 test "S1.5 lineage input_output_count" {
   let l = @lineage.make_bi_lineage("op", ["a", "b", "c"], ["x", "y"], "")
   assert_eq(@lineage.input_count(l), 3)
   assert_eq(@lineage.output_count(l), 2)
 }
 
+///|
 test "S1.5 replay append_step and replay" {
   let trace = @replay.empty_trace("t1")
   assert_eq(@replay.step_count(trace), 0)
@@ -1217,12 +1464,14 @@ test "S1.5 replay append_step and replay" {
   assert_eq(summary, "t1(2 steps)")
 }
 
+///|
 test "S1.5 replay degenerate: empty trace" {
   let trace = @replay.empty_trace("empty")
   assert_eq(@replay.replay(trace), "")
   assert_eq(@replay.trace_summary(trace), "empty(0 steps)")
 }
 
+///|
 test "S1.5 drift direction and merge" {
   let up = @drift.make_drift_report("acc", 0.5, 0.8)
   let down = @drift.make_drift_report("acc", 0.5, 0.2)
@@ -1234,25 +1483,39 @@ test "S1.5 drift direction and merge" {
   assert_true(merged.drift_score > -0.001 && merged.drift_score < 0.001)
 }
 
+///|
 test "S1.5 drift degenerate: empty merge" {
   let merged = @drift.merge_reports([])
   assert_eq(merged.metric, "merged")
   assert_eq(merged.drift_score, 0.0)
 }
+
 ///|
 /// # S1.6 执行后端 CPU 串行测试 / CPU Serial Backend Tests
 ///
 /// 执行计划生成 + 串行执行 + 轨迹记录 + 结果合并。
-
 test "S1.6 cpu_serial make_plan and execute" {
   let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"), "whitespace_normalization", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op1"),
+    "whitespace_normalization",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"), "truncate", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op2"),
+    "truncate",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2)
-    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("op1"), @ir_core.IRNodeId::new("op2")))
+  let p = @ir_pipeline.PipelineIR::empty()
+    .add_node(n1)
+    .add_node(n2)
+    .add_edge(
+      @ir_pipeline.DAGEdge::new(
+        @ir_core.IRNodeId::new("op1"),
+        @ir_core.IRNodeId::new("op2"),
+      ),
+    )
   let plan = @cpu_serial.make_plan(p)
   assert_eq(@cpu_serial.plan_step_count(plan), 2)
   assert_eq(plan.steps[0], "whitespace_normalization")
@@ -1263,6 +1526,7 @@ test "S1.6 cpu_serial make_plan and execute" {
   assert_eq(result.trace.length(), 2)
 }
 
+///|
 test "S1.6 cpu_serial degenerate: empty plan" {
   let plan = @cpu_serial.empty_plan()
   assert_eq(@cpu_serial.plan_step_count(plan), 0)
@@ -1272,6 +1536,7 @@ test "S1.6 cpu_serial degenerate: empty plan" {
   assert_eq(result.trace.length(), 0)
 }
 
+///|
 test "S1.6 cpu_serial merge_results" {
   let r1 = @cpu_serial.execute(@cpu_serial.empty_plan(), "a")
   let r2 = @cpu_serial.execute(@cpu_serial.empty_plan(), "b")
@@ -1281,25 +1546,44 @@ test "S1.6 cpu_serial merge_results" {
   assert_eq(@cpu_serial.cpu_serial_id(), "parallel/cpu_serial")
 }
 
+///|
 test "S1.6 cpu_serial cyclic pipeline degenerate" {
   // 有环流水线：topo_order 返回空 → make_plan 返回空计划
   let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("a"), "op_a", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("a"),
+    "op_a",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("b"), "op_b", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("b"),
+    "op_b",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
-  let cyclic = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2)
-    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("a"), @ir_core.IRNodeId::new("b")))
-    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("b"), @ir_core.IRNodeId::new("a")))
+  let cyclic = @ir_pipeline.PipelineIR::empty()
+    .add_node(n1)
+    .add_node(n2)
+    .add_edge(
+      @ir_pipeline.DAGEdge::new(
+        @ir_core.IRNodeId::new("a"),
+        @ir_core.IRNodeId::new("b"),
+      ),
+    )
+    .add_edge(
+      @ir_pipeline.DAGEdge::new(
+        @ir_core.IRNodeId::new("b"),
+        @ir_core.IRNodeId::new("a"),
+      ),
+    )
   let plan = @cpu_serial.make_plan(cyclic)
   assert_eq(@cpu_serial.plan_step_count(plan), 0)
 }
+
 ///|
 /// # S1.7 DOSI 完善测试 / DOSI Enhancement Tests
 ///
 /// ContextBudget（配额管理）+ Verifier（索引校验）。
-
 test "S1.7 context_budget make and allocate" {
   let budget = @context_budget.make_budget(10000)
   assert_eq(budget.total_quota, 10000)
@@ -1313,6 +1597,7 @@ test "S1.7 context_budget make and allocate" {
   assert_true(ratio > 0.29 && ratio < 0.31)
 }
 
+///|
 test "S1.7 context_budget over budget and compress" {
   let budget = @context_budget.make_budget(1000)
   let b1 = @context_budget.allocate(budget, 800)
@@ -1328,17 +1613,21 @@ test "S1.7 context_budget over budget and compress" {
   assert_eq(@context_budget.context_budget_id(), "dosi/context_budget")
 }
 
+///|
 test "S1.7 context_budget degenerate: zero quota" {
   let budget = @context_budget.make_budget(0)
   assert_eq(@context_budget.remaining(budget), 0)
   assert_eq(@context_budget.usage_ratio(budget), 0.0)
 }
 
+///|
 test "S1.7 verifier valid index" {
   let sym1 = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
   let sem1 = @dosi.SemanticEntry::new("clean ops", [], "in->out")
   let e1 = @dosi.DOSIEntry::new(sym1, sem1)
-  let sym2 = @dosi.SymbolicEntry::new("opcore/dedup", "dedup", "text", ["opcore/clean"])
+  let sym2 = @dosi.SymbolicEntry::new("opcore/dedup", "dedup", "text", [
+    "opcore/clean",
+  ])
   let sem2 = @dosi.SemanticEntry::new("dedup ops", [], "in->out")
   let e2 = @dosi.DOSIEntry::new(sym2, sem2)
   let index = @dosi.DOSIIndex::empty().add(e1).add(e2)
@@ -1348,8 +1637,11 @@ test "S1.7 verifier valid index" {
   assert_true(@verifier.check_dependencies(index))
 }
 
+///|
 test "S1.7 verifier missing dependency" {
-  let sym = @dosi.SymbolicEntry::new("opcore/x", "x", "text", ["opcore/nonexistent"])
+  let sym = @dosi.SymbolicEntry::new("opcore/x", "x", "text", [
+    "opcore/nonexistent",
+  ])
   let sem = @dosi.SemanticEntry::new("x", [], "in->out")
   let e = @dosi.DOSIEntry::new(sym, sem)
   let index = @dosi.DOSIIndex::empty().add(e)
@@ -1358,6 +1650,7 @@ test "S1.7 verifier missing dependency" {
   assert_eq(result.issues.length(), 1)
 }
 
+///|
 test "S1.7 verifier detect_cycles" {
   let sym = @dosi.SymbolicEntry::new("opcore/self", "x", "text", ["opcore/self"])
   let sem = @dosi.SemanticEntry::new("self dep", [], "in->out")
@@ -1369,18 +1662,19 @@ test "S1.7 verifier detect_cycles" {
   assert_eq(@verifier.verifier_id(), "dosi/verifier")
 }
 
+///|
 test "S1.7 verifier degenerate: empty index" {
   let empty = @dosi.DOSIIndex::empty()
   let result = @verifier.verify_index(empty)
   assert_true(result.valid)
   assert_eq(@verifier.detect_cycles(empty).length(), 0)
 }
+
 ///|
 /// # S1.8 验证测试 / Validation Tests
 ///
 /// Data-Juicer P0 对标验证 + Agent-Kit DOSI 适配器测试。
 /// 架构 §4.3.6 对标映射 + §4.8 Agent-Kit。
-
 test "S1.8 DJ P0: text_length_filter 对标" {
   // DJ text_length_filter: 按长度过滤
   // DataVerse: @filter.length_filter(min_len, max_len, dataobject)
@@ -1391,6 +1685,7 @@ test "S1.8 DJ P0: text_length_filter 对标" {
   assert_false(@filter.length_filter(5, 20, short))
 }
 
+///|
 test "S1.8 DJ P0: exact_deduplicator 对标" {
   // DJ exact_deduplicator: 精确去重
   // DataVerse: @dedup.exact_dedup
@@ -1402,6 +1697,7 @@ test "S1.8 DJ P0: exact_deduplicator 对标" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "S1.8 DJ P0: whitespace_normalization_mapper 对标" {
   // DJ whitespace_normalization_mapper: 空白归一
   // DataVerse: @normalize.whitespace_normalization
@@ -1411,6 +1707,7 @@ test "S1.8 DJ P0: whitespace_normalization_mapper 对标" {
   assert_eq(n.content, "hello world")
 }
 
+///|
 test "S1.8 DJ P0: topk_selector 对标" {
   // DJ topk_selector: Top-K 选择
   // DataVerse: @select.topk_by_length
@@ -1425,6 +1722,7 @@ test "S1.8 DJ P0: topk_selector 对标" {
   assert_eq(top2[0].content, "bbb")
 }
 
+///|
 test "S1.8 DJ P0: punctuation_normalization_mapper 对标" {
   // DJ punctuation_normalization_mapper: 标点归一
   // DataVerse: @normalize.punctuation_normalization
@@ -1434,11 +1732,22 @@ test "S1.8 DJ P0: punctuation_normalization_mapper 对标" {
   assert_eq(n.content, "你好,世界.")
 }
 
+///|
 test "S1.8 dosi_adapter query_dosi" {
-  let sym1 = @dosi.SymbolicEntry::new("opcore/clean/remove_empty", "clean", "text", [])
+  let sym1 = @dosi.SymbolicEntry::new(
+    "opcore/clean/remove_empty",
+    "clean",
+    "text",
+    [],
+  )
   let sem1 = @dosi.SemanticEntry::new("remove empty content", [], "in->out")
   let e1 = @dosi.DOSIEntry::new(sym1, sem1)
-  let sym2 = @dosi.SymbolicEntry::new("opcore/dedup/exact_dedup", "dedup", "text", [])
+  let sym2 = @dosi.SymbolicEntry::new(
+    "opcore/dedup/exact_dedup",
+    "dedup",
+    "text",
+    [],
+  )
   let sem2 = @dosi.SemanticEntry::new("exact deduplication", [], "in->out")
   let e2 = @dosi.DOSIEntry::new(sym2, sem2)
   let index = @dosi.DOSIIndex::empty().add(e1).add(e2)
@@ -1447,6 +1756,7 @@ test "S1.8 dosi_adapter query_dosi" {
   assert_eq(result.paths[0], "opcore/dedup/exact_dedup")
 }
 
+///|
 test "S1.8 dosi_adapter plan_pipeline" {
   let sym1 = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
   let sem1 = @dosi.SemanticEntry::new("clean", [], "in->out")
@@ -1459,6 +1769,7 @@ test "S1.8 dosi_adapter plan_pipeline" {
   assert_eq(plan.length(), 2)
 }
 
+///|
 test "S1.8 dosi_adapter degenerate: empty index" {
   let empty = @dosi.DOSIIndex::empty()
   let result = @dosi_adapter.query_dosi(empty, "anything")
@@ -1467,11 +1778,11 @@ test "S1.8 dosi_adapter degenerate: empty index" {
   assert_eq(@dosi_adapter.dosi_adapter_id(), "agent_kit/dosi_adapter")
 }
 
-
 // ============================================================
 // S2.1 opcore 多模态算子测试 / Multimodal operator tests
 // ============================================================
 
+///|
 test "S2.1 image_size basic" {
   let meta = @image.make_image_meta(1920, 1080, 3, "png")
   let (w, h) = @image.image_size(meta)
@@ -1479,6 +1790,7 @@ test "S2.1 image_size basic" {
   assert_eq(h, 1080)
 }
 
+///|
 test "S2.1 image_size degenerate: empty meta" {
   let meta = @image.empty_image_meta()
   let (w, h) = @image.image_size(meta)
@@ -1486,27 +1798,32 @@ test "S2.1 image_size degenerate: empty meta" {
   assert_eq(h, 0)
 }
 
+///|
 test "S2.1 aspect_ratio basic" {
   let meta = @image.make_image_meta(1920, 1080, 3, "png")
   let r = @image.aspect_ratio(meta)
   assert_true(r > 1.77 && r < 1.78)
 }
 
+///|
 test "S2.1 aspect_ratio degenerate: height=0" {
   let meta = @image.make_image_meta(100, 0, 3, "png")
   assert_eq(@image.aspect_ratio(meta), 0.0)
 }
 
+///|
 test "S2.1 aspect_ratio_filter in range" {
   let meta = @image.make_image_meta(200, 100, 3, "jpg")
   assert_true(@image.aspect_ratio_filter(meta, 1.0, 3.0))
 }
 
+///|
 test "S2.1 aspect_ratio_filter out of range" {
   let meta = @image.make_image_meta(200, 100, 3, "jpg")
   assert_true(!@image.aspect_ratio_filter(meta, 3.0, 4.0))
 }
 
+///|
 test "S2.1 image_resize basic" {
   let meta = @image.make_image_meta(1920, 1080, 3, "png")
   let resized = @image.image_resize(meta, 640, 360)
@@ -1517,6 +1834,7 @@ test "S2.1 image_resize basic" {
   assert_eq(resized.format, "png")
 }
 
+///|
 test "S2.1 image_resize degenerate: negative dims" {
   let meta = @image.make_image_meta(100, 100, 3, "png")
   let resized = @image.image_resize(meta, -10, -20)
@@ -1525,6 +1843,7 @@ test "S2.1 image_resize degenerate: negative dims" {
   assert_eq(h, 0)
 }
 
+///|
 test "S2.1 image_crop basic" {
   let meta = @image.make_image_meta(100, 100, 3, "png")
   let cropped = @image.image_crop(meta, 10, 20, 30, 40)
@@ -1533,6 +1852,7 @@ test "S2.1 image_crop basic" {
   assert_eq(h, 40)
 }
 
+///|
 test "S2.1 image_crop degenerate: out of bounds" {
   let meta = @image.make_image_meta(50, 50, 3, "png")
   let cropped = @image.image_crop(meta, 40, 40, 30, 30)
@@ -1541,6 +1861,7 @@ test "S2.1 image_crop degenerate: out of bounds" {
   assert_eq(h, 10)
 }
 
+///|
 test "S2.1 image_crop degenerate: negative origin" {
   let meta = @image.make_image_meta(100, 100, 3, "png")
   let cropped = @image.image_crop(meta, -10, -10, 50, 50)
@@ -1549,6 +1870,7 @@ test "S2.1 image_crop degenerate: negative origin" {
   assert_eq(h, 50)
 }
 
+///|
 test "S2.1 image_to_dataobject modality" {
   let meta = @image.make_image_meta(640, 480, 3, "png")
   let d = @image.image_to_dataobject(meta)
@@ -1556,26 +1878,31 @@ test "S2.1 image_to_dataobject modality" {
   assert_true(d.content.length() > 0)
 }
 
+///|
 test "S2.1 audio_duration basic" {
   let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
   assert_eq(@audio.audio_duration(meta), 5000)
 }
 
+///|
 test "S2.1 audio_duration degenerate: empty meta" {
   let meta = @audio.empty_audio_meta()
   assert_eq(@audio.audio_duration(meta), 0)
 }
 
+///|
 test "S2.1 sample_rate_filter in range" {
   let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
   assert_true(@audio.sample_rate_filter(meta, 8000, 48000))
 }
 
+///|
 test "S2.1 sample_rate_filter out of range" {
   let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
   assert_true(!@audio.sample_rate_filter(meta, 48000, 96000))
 }
 
+///|
 test "S2.1 audio_segment basic" {
   let meta = @audio.make_audio_meta(10000, 44100, 2, "wav")
   let seg = @audio.audio_segment(meta, 2000, 5000)
@@ -1583,50 +1910,59 @@ test "S2.1 audio_segment basic" {
   assert_eq(seg.sample_rate, 44100)
 }
 
+///|
 test "S2.1 audio_segment degenerate: out of bounds" {
   let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
   let seg = @audio.audio_segment(meta, 3000, 10000)
   assert_eq(seg.duration_ms, 2000)
 }
 
+///|
 test "S2.1 audio_segment degenerate: negative start" {
   let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
   let seg = @audio.audio_segment(meta, -100, 2000)
   assert_eq(seg.duration_ms, 2000)
 }
 
+///|
 test "S2.1 audio_segment degenerate: end before start" {
   let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
   let seg = @audio.audio_segment(meta, 3000, 1000)
   assert_eq(seg.duration_ms, 0)
 }
 
+///|
 test "S2.1 audio_to_dataobject modality" {
   let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
   let d = @audio.audio_to_dataobject(meta)
   assert_eq(d.modality, @dataobject.Audio)
 }
 
+///|
 test "S2.1 video_duration basic" {
   let meta = @video.make_video_meta(60000, 30, 1920, 1080, "mp4")
   assert_eq(@video.video_duration(meta), 60000)
 }
 
+///|
 test "S2.1 frame_count basic" {
   let meta = @video.make_video_meta(60000, 30, 1920, 1080, "mp4")
   assert_eq(@video.frame_count(meta), 1800)
 }
 
+///|
 test "S2.1 frame_count degenerate: zero fps" {
   let meta = @video.make_video_meta(60000, 0, 1920, 1080, "mp4")
   assert_eq(@video.frame_count(meta), 0)
 }
 
+///|
 test "S2.1 frame_count degenerate: zero duration" {
   let meta = @video.make_video_meta(0, 30, 1920, 1080, "mp4")
   assert_eq(@video.frame_count(meta), 0)
 }
 
+///|
 test "S2.1 video_sample_frames basic" {
   let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
   let frames = @video.video_sample_frames(meta, 2000)
@@ -1635,24 +1971,28 @@ test "S2.1 video_sample_frames basic" {
   assert_eq(frames[4], 8000)
 }
 
+///|
 test "S2.1 video_sample_frames degenerate: zero interval" {
   let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
   let frames = @video.video_sample_frames(meta, 0)
   assert_eq(frames.length(), 0)
 }
 
+///|
 test "S2.1 video_sample_frames degenerate: negative interval" {
   let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
   let frames = @video.video_sample_frames(meta, -100)
   assert_eq(frames.length(), 0)
 }
 
+///|
 test "S2.1 video_to_dataobject modality" {
   let meta = @video.make_video_meta(60000, 30, 1920, 1080, "mp4")
   let d = @video.video_to_dataobject(meta)
   assert_eq(d.modality, @dataobject.Video)
 }
 
+///|
 test "S2.1 image_id and audio_id and video_id" {
   assert_eq(@image.image_id(), "opcore/image")
   assert_eq(@audio.audio_id(), "opcore/audio")
@@ -1663,17 +2003,24 @@ test "S2.1 image_id and audio_id and video_id" {
 // S2.2 opcore 语义算子测试 / Semantic operator tests
 // ============================================================
 
+///|
 test "S2.2 semantic_quality_score basic" {
-  let d = @dataobject.make_dataobject("Hello world this is a test content for scoring", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "Hello world this is a test content for scoring",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let score = @semantic.semantic_quality_score(d)
   assert_true(score > 0.0 && score <= 1.0)
 }
 
+///|
 test "S2.2 semantic_quality_score degenerate: empty" {
   let d = @dataobject.empty_dataobject(@dataobject.Text)
   assert_eq(@semantic.semantic_quality_score(d), 0.0)
 }
 
+///|
 test "S2.2 semantic_quality_score long content" {
   let long = "a".repeat(150)
   let d = @dataobject.make_dataobject(long, @dataobject.Text, @schema.empty())
@@ -1681,27 +2028,44 @@ test "S2.2 semantic_quality_score long content" {
   assert_true(score > 0.0)
 }
 
+///|
 test "S2.2 content_diversity_score all same" {
-  let d = @dataobject.make_dataobject("aaaaa", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "aaaaa",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   assert_eq(@semantic.content_diversity_score(d), 0.2)
 }
 
+///|
 test "S2.2 content_diversity_score all different" {
-  let d = @dataobject.make_dataobject("abcde", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "abcde",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   assert_eq(@semantic.content_diversity_score(d), 1.0)
 }
 
+///|
 test "S2.2 content_diversity_score degenerate: empty" {
   let d = @dataobject.empty_dataobject(@dataobject.Text)
   assert_eq(@semantic.content_diversity_score(d), 0.0)
 }
 
+///|
 test "S2.2 rewrite_text Simplify" {
-  let d = @dataobject.make_dataobject("  hello world  ", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "  hello world  ",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.rewrite_text(d, @semantic.Simplify)
   assert_eq(result.content, "hello world")
 }
 
+///|
 test "S2.2 rewrite_text Simplify truncate long" {
   let long = "a".repeat(300)
   let d = @dataobject.make_dataobject(long, @dataobject.Text, @schema.empty())
@@ -1709,60 +2073,98 @@ test "S2.2 rewrite_text Simplify truncate long" {
   assert_eq(result.content.length(), 200)
 }
 
+///|
 test "S2.2 rewrite_text Formalize lowercase" {
-  let d = @dataobject.make_dataobject("hello world", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "hello world",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.rewrite_text(d, @semantic.Formalize)
   assert_eq(result.content, "Hello world")
 }
 
+///|
 test "S2.2 rewrite_text Formalize already upper" {
-  let d = @dataobject.make_dataobject("Hello world", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "Hello world",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.rewrite_text(d, @semantic.Formalize)
   assert_eq(result.content, "Hello world")
 }
 
+///|
 test "S2.2 rewrite_text Formalize degenerate: empty" {
   let d = @dataobject.empty_dataobject(@dataobject.Text)
   let result = @semantic.rewrite_text(d, @semantic.Formalize)
   assert_eq(result.content, "")
 }
 
+///|
 test "S2.2 rewrite_text Casual passthrough" {
-  let d = @dataobject.make_dataobject("hello world", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "hello world",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.rewrite_text(d, @semantic.Casual)
   assert_eq(result.content, "hello world")
 }
 
+///|
 test "S2.2 rewrite_text Expand" {
-  let d = @dataobject.make_dataobject("hello world", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "hello world",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.rewrite_text(d, @semantic.Expand)
   assert_eq(result.content, "hello world hello world")
 }
 
+///|
 test "S2.2 rewrite_text Expand degenerate: empty" {
   let d = @dataobject.empty_dataobject(@dataobject.Text)
   let result = @semantic.rewrite_text(d, @semantic.Expand)
   assert_eq(result.content, "")
 }
 
+///|
 test "S2.2 synthesize_text Paraphrase" {
-  let d = @dataobject.make_dataobject("hello", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "hello",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.synthesize_text(d, @semantic.Paraphrase)
   assert_eq(result.content, "[paraphrase] hello [/paraphrase]")
 }
 
+///|
 test "S2.2 synthesize_text Augment" {
-  let d = @dataobject.make_dataobject("hello", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "hello",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.synthesize_text(d, @semantic.Augment)
   assert_eq(result.content, "hello | hello")
 }
 
+///|
 test "S2.2 synthesize_text Interpolate" {
-  let d = @dataobject.make_dataobject("hello", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "hello",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.synthesize_text(d, @semantic.Interpolate)
   assert_eq(result.content, "[interp] hello")
 }
 
+///|
 test "S2.2 synthesize_text degenerate: empty" {
   let d = @dataobject.empty_dataobject(@dataobject.Text)
   assert_eq(@semantic.synthesize_text(d, @semantic.Paraphrase).content, "")
@@ -1770,6 +2172,7 @@ test "S2.2 synthesize_text degenerate: empty" {
   assert_eq(@semantic.synthesize_text(d, @semantic.Interpolate).content, "")
 }
 
+///|
 test "S2.2 rewrite_mode_name" {
   assert_eq(@semantic.rewrite_mode_name(@semantic.Simplify), "simplify")
   assert_eq(@semantic.rewrite_mode_name(@semantic.Formalize), "formalize")
@@ -1777,18 +2180,25 @@ test "S2.2 rewrite_mode_name" {
   assert_eq(@semantic.rewrite_mode_name(@semantic.Expand), "expand")
 }
 
+///|
 test "S2.2 synthesis_mode_name" {
   assert_eq(@semantic.synthesis_mode_name(@semantic.Paraphrase), "paraphrase")
   assert_eq(@semantic.synthesis_mode_name(@semantic.Augment), "augment")
   assert_eq(@semantic.synthesis_mode_name(@semantic.Interpolate), "interpolate")
 }
 
+///|
 test "S2.2 semantic_id" {
   assert_eq(@semantic.semantic_id(), "opcore/semantic")
 }
 
+///|
 test "S2.2 rewrite_text preserves modality" {
-  let d = @dataobject.make_dataobject("hello", @dataobject.Image, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "hello",
+    @dataobject.Image,
+    @schema.empty(),
+  )
   let result = @semantic.rewrite_text(d, @semantic.Simplify)
   assert_eq(result.modality, @dataobject.Image)
 }
@@ -1797,6 +2207,7 @@ test "S2.2 rewrite_text preserves modality" {
 // S2.3 learncore DL 算子测试 / DL operator tests
 // ============================================================
 
+///|
 test "S2.3 linear_forward basic" {
   let w = [[1.0, 0.0], [0.0, 1.0]]
   let b = [0.0, 0.0]
@@ -1807,6 +2218,7 @@ test "S2.3 linear_forward basic" {
   assert_true(result[1] > 4.99 && result[1] < 5.01)
 }
 
+///|
 test "S2.3 linear_forward with bias" {
   let w = [[1.0, 1.0]]
   let b = [2.0]
@@ -1815,12 +2227,14 @@ test "S2.3 linear_forward with bias" {
   assert_true(result[0] > 9.99 && result[0] < 10.01)
 }
 
+///|
 test "S2.3 linear_forward degenerate: dim mismatch" {
   let layer = @dl_layers.make_linear_layer(3, 2)
   let result = @dl_layers.linear_forward(layer, [1.0, 2.0])
   assert_eq(result.length(), 0)
 }
 
+///|
 test "S2.3 linear_forward zero init" {
   let layer = @dl_layers.make_linear_layer(3, 2)
   let result = @dl_layers.linear_forward(layer, [1.0, 2.0, 3.0])
@@ -1829,17 +2243,20 @@ test "S2.3 linear_forward zero init" {
   assert_eq(result[1], 0.0)
 }
 
+///|
 test "S2.3 activate ReLU" {
   assert_eq(@dl_layers.activate(@dl_layers.ReLU, 5.0), 5.0)
   assert_eq(@dl_layers.activate(@dl_layers.ReLU, -3.0), 0.0)
   assert_eq(@dl_layers.activate(@dl_layers.ReLU, 0.0), 0.0)
 }
 
+///|
 test "S2.3 activate Identity" {
   assert_eq(@dl_layers.activate(@dl_layers.Identity, 5.0), 5.0)
   assert_eq(@dl_layers.activate(@dl_layers.Identity, -3.0), -3.0)
 }
 
+///|
 test "S2.3 activate Sigmoid range" {
   let s1 = @dl_layers.activate(@dl_layers.Sigmoid, 0.0)
   assert_true(s1 > 0.49 && s1 < 0.51)
@@ -1849,11 +2266,15 @@ test "S2.3 activate Sigmoid range" {
   assert_true(s3 < 0.01)
 }
 
+///|
 test "S2.3 activation_forward basic" {
-  let result = @dl_layers.activation_forward(@dl_layers.ReLU, [-1.0, 2.0, -3.0, 4.0])
+  let result = @dl_layers.activation_forward(@dl_layers.ReLU, [
+    -1.0, 2.0, -3.0, 4.0,
+  ])
   assert_eq(result, [0.0, 2.0, 0.0, 4.0])
 }
 
+///|
 test "S2.3 activation_name" {
   assert_eq(@dl_layers.activation_name(@dl_layers.ReLU), "relu")
   assert_eq(@dl_layers.activation_name(@dl_layers.Sigmoid), "sigmoid")
@@ -1861,12 +2282,14 @@ test "S2.3 activation_name" {
   assert_eq(@dl_layers.activation_name(@dl_layers.Identity), "identity")
 }
 
+///|
 test "S2.3 mse_loss basic" {
   let pred = [1.0, 2.0, 3.0]
   let target = [1.0, 2.0, 3.0]
   assert_eq(@dl_losses.mse_loss(pred, target), 0.0)
 }
 
+///|
 test "S2.3 mse_loss nonzero" {
   let pred = [1.0, 2.0]
   let target = [3.0, 4.0]
@@ -1874,14 +2297,17 @@ test "S2.3 mse_loss nonzero" {
   assert_true(result > 3.99 && result < 4.01)
 }
 
+///|
 test "S2.3 mse_loss degenerate: empty" {
   assert_eq(@dl_losses.mse_loss([], []), 0.0)
 }
 
+///|
 test "S2.3 mse_loss degenerate: dim mismatch" {
   assert_eq(@dl_losses.mse_loss([1.0], [1.0, 2.0]), 0.0)
 }
 
+///|
 test "S2.3 cross_entropy_loss basic" {
   let logits = [0.0, 0.0]
   let target = [1.0, 0.0]
@@ -1889,16 +2315,19 @@ test "S2.3 cross_entropy_loss basic" {
   assert_true(result > 0.0)
 }
 
+///|
 test "S2.3 cross_entropy_loss degenerate: empty" {
   assert_eq(@dl_losses.cross_entropy_loss([], []), 0.0)
 }
 
+///|
 test "S2.3 hinge_loss basic" {
   let pred = [1.0, 1.0]
   let target = [1.0, 1.0]
   assert_eq(@dl_losses.hinge_loss(pred, target), 0.0)
 }
 
+///|
 test "S2.3 hinge_loss nonzero" {
   let pred = [-1.0, -1.0]
   let target = [1.0, 1.0]
@@ -1906,18 +2335,21 @@ test "S2.3 hinge_loss nonzero" {
   assert_true(result > 1.99)
 }
 
+///|
 test "S2.3 loss_value dispatch" {
   let pred = [1.0, 2.0]
   let target = [1.0, 2.0]
   assert_eq(@dl_losses.loss_value(@dl_losses.MSE, pred, target), 0.0)
 }
 
+///|
 test "S2.3 loss_name" {
   assert_eq(@dl_losses.loss_name(@dl_losses.MSE), "mse")
   assert_eq(@dl_losses.loss_name(@dl_losses.CrossEntropy), "cross_entropy")
   assert_eq(@dl_losses.loss_name(@dl_losses.Hinge), "hinge")
 }
 
+///|
 test "S2.3 sgd_step basic" {
   let state = @dl_optimizers.make_optimizer(@dl_optimizers.SGD, 0.1, [1.0, 2.0])
   let grads = [0.5, 1.0]
@@ -1926,12 +2358,14 @@ test "S2.3 sgd_step basic" {
   assert_true(new_params[1] > 1.89 && new_params[1] < 1.91)
 }
 
+///|
 test "S2.3 sgd_step degenerate: dim mismatch" {
   let state = @dl_optimizers.make_optimizer(@dl_optimizers.SGD, 0.1, [1.0, 2.0])
   let new_params = @dl_optimizers.sgd_step(state, [0.5])
   assert_eq(new_params, [1.0, 2.0])
 }
 
+///|
 test "S2.3 adam_step basic" {
   let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.1, [1.0, 2.0])
   let grads = [0.5, 1.0]
@@ -1939,6 +2373,7 @@ test "S2.3 adam_step basic" {
   assert_eq(new_params.length(), 2)
 }
 
+///|
 test "S2.3 optimizer_step dispatch SGD" {
   let state = @dl_optimizers.make_optimizer(@dl_optimizers.SGD, 0.1, [1.0])
   let sgd_result = @dl_optimizers.optimizer_step(state, [0.5])
@@ -1947,6 +2382,7 @@ test "S2.3 optimizer_step dispatch SGD" {
   assert_true(sgd_result[0] != adam_result[0])
 }
 
+///|
 test "S2.3 update_state increments step" {
   let state = @dl_optimizers.make_optimizer(@dl_optimizers.SGD, 0.1, [1.0])
   let new_params = [0.95]
@@ -1955,11 +2391,13 @@ test "S2.3 update_state increments step" {
   assert_eq(new_state.params, [0.95])
 }
 
+///|
 test "S2.3 optimizer_name" {
   assert_eq(@dl_optimizers.optimizer_name(@dl_optimizers.SGD), "sgd")
   assert_eq(@dl_optimizers.optimizer_name(@dl_optimizers.Adam), "adam")
 }
 
+///|
 test "S2.3 dl_layers_id and dl_losses_id and dl_optimizers_id" {
   assert_eq(@dl_layers.dl_layers_id(), "learncore/dl_layers")
   assert_eq(@dl_losses.dl_losses_id(), "learncore/dl_losses")
@@ -1970,6 +2408,7 @@ test "S2.3 dl_layers_id and dl_losses_id and dl_optimizers_id" {
 // S2.4 learncore 模型评估算子测试 / Model evaluation tests
 // ============================================================
 
+///|
 test "S2.4 kfold_splits basic 5-fold" {
   let splits = @cross_validation.kfold_splits(10, 5)
   assert_eq(splits.length(), 5)
@@ -1978,6 +2417,7 @@ test "S2.4 kfold_splits basic 5-fold" {
   assert_eq(splits[4].test_indices, [8, 9])
 }
 
+///|
 test "S2.4 kfold_splits 3-fold 9 samples" {
   let splits = @cross_validation.kfold_splits(9, 3)
   assert_eq(splits.length(), 3)
@@ -1986,16 +2426,19 @@ test "S2.4 kfold_splits 3-fold 9 samples" {
   assert_eq(splits[2].test_indices, [6, 7, 8])
 }
 
+///|
 test "S2.4 kfold_splits degenerate: k=0" {
   let splits = @cross_validation.kfold_splits(10, 0)
   assert_eq(splits.length(), 0)
 }
 
+///|
 test "S2.4 kfold_splits degenerate: n=0" {
   let splits = @cross_validation.kfold_splits(0, 5)
   assert_eq(splits.length(), 0)
 }
 
+///|
 test "S2.4 kfold_splits fold_id sequential" {
   let splits = @cross_validation.kfold_splits(6, 3)
   assert_eq(splits[0].fold_id, 0)
@@ -2003,39 +2446,49 @@ test "S2.4 kfold_splits fold_id sequential" {
   assert_eq(splits[2].fold_id, 2)
 }
 
+///|
 test "S2.4 kfold_splits last fold absorbs remainder" {
   let splits = @cross_validation.kfold_splits(10, 3)
   assert_eq(splits.length(), 3)
   assert_eq(splits[2].test_indices, [6, 7, 8, 9])
 }
 
+///|
 test "S2.4 cv_stats basic" {
   let stats = @cross_validation.cv_stats([0.8, 0.9, 0.85])
   assert_true(stats.mean_score > 0.84 && stats.mean_score < 0.86)
   assert_true(stats.std_score >= 0.0)
 }
 
+///|
 test "S2.4 cv_stats degenerate: empty" {
   let stats = @cross_validation.cv_stats([])
   assert_eq(stats.mean_score, 0.0)
   assert_eq(stats.std_score, 0.0)
 }
 
+///|
 test "S2.4 cv_stats zero variance" {
   let stats = @cross_validation.cv_stats([0.5, 0.5, 0.5])
   assert_eq(stats.mean_score, 0.5)
   assert_eq(stats.std_score, 0.0)
 }
 
+///|
 test "S2.4 loo_count" {
   assert_eq(@cross_validation.loo_count(10), 10)
   assert_eq(@cross_validation.loo_count(0), 0)
 }
 
+///|
 test "S2.4 cross_validation_id" {
-  assert_eq(@cross_validation.cross_validation_id(), "learncore/cross_validation")
+  assert_eq(
+    @cross_validation.cross_validation_id(),
+    "learncore/cross_validation",
+  )
 }
 
+///|
 test "S2.4 grid_combinations single param" {
   let cfg = @hyperparam_search.make_grid_config("lr", [0.01, 0.1, 1.0])
   let combos = @hyperparam_search.grid_combinations([cfg])
@@ -2044,6 +2497,7 @@ test "S2.4 grid_combinations single param" {
   assert_eq(combos[0][0], ("lr", 0.01))
 }
 
+///|
 test "S2.4 grid_combinations two params" {
   let cfg1 = @hyperparam_search.make_grid_config("lr", [0.01, 0.1])
   let cfg2 = @hyperparam_search.make_grid_config("wd", [0.0, 0.01])
@@ -2052,11 +2506,13 @@ test "S2.4 grid_combinations two params" {
   assert_eq(combos[0].length(), 2)
 }
 
+///|
 test "S2.4 grid_combinations degenerate: empty" {
   let combos = @hyperparam_search.grid_combinations([])
   assert_eq(combos.length(), 0)
 }
 
+///|
 test "S2.4 grid_search basic" {
   let cfg = @hyperparam_search.make_grid_config("lr", [0.01, 0.1, 1.0])
   let result = @hyperparam_search.grid_search([cfg], fn(params) {
@@ -2069,75 +2525,129 @@ test "S2.4 grid_search basic" {
   assert_true(result.best_score > 0.99)
 }
 
+///|
 test "S2.4 grid_search degenerate: empty configs" {
   let result = @hyperparam_search.grid_search([], fn(_params) { 1.0 })
   assert_eq(result.total_configs, 0)
   assert_eq(result.best_score, 0.0)
 }
 
+///|
 test "S2.4 empty_grid_result" {
   let result = @hyperparam_search.empty_grid_result()
   assert_eq(result.total_configs, 0)
   assert_eq(result.best_score, 0.0)
 }
 
+///|
 test "S2.4 hyperparam_search_id" {
-  assert_eq(@hyperparam_search.hyperparam_search_id(), "learncore/hyperparam_search")
+  assert_eq(
+    @hyperparam_search.hyperparam_search_id(),
+    "learncore/hyperparam_search",
+  )
 }
 
 // ============================================================
 // S2.5 recipe Phase 2 复合线测试 / Phase 2 pipeline tests
 // ============================================================
 
+///|
 test "S2.5 packing_line basic" {
-  let d1 = @dataobject.make_dataobject("hello world foo bar", @dataobject.Text, @schema.empty())
-  let d2 = @dataobject.make_dataobject("test", @dataobject.Text, @schema.empty())
+  let d1 = @dataobject.make_dataobject(
+    "hello world foo bar",
+    @dataobject.Text,
+    @schema.empty(),
+  )
+  let d2 = @dataobject.make_dataobject(
+    "test",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @packing_line.packing_line([d1, d2], 5)
   assert_eq(result.length(), 5)
 }
 
+///|
 test "S2.5 packing_line filters empty" {
-  let d1 = @dataobject.make_dataobject("hello", @dataobject.Text, @schema.empty())
+  let d1 = @dataobject.make_dataobject(
+    "hello",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let d2 = @dataobject.empty_dataobject(@dataobject.Text)
   let result = @packing_line.packing_line([d1, d2], 10)
   assert_eq(result.length(), 1)
 }
 
+///|
 test "S2.5 packing_line degenerate: chunk_size <= 0" {
-  let d1 = @dataobject.make_dataobject("hello", @dataobject.Text, @schema.empty())
+  let d1 = @dataobject.make_dataobject(
+    "hello",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @packing_line.packing_line([d1], 0)
   assert_eq(result.length(), 1)
 }
 
+///|
 test "S2.5 packing_line degenerate: empty array" {
   let result = @packing_line.packing_line([], 10)
   assert_eq(result.length(), 0)
 }
 
+///|
 test "S2.5 packing_line preserves modality" {
-  let d1 = @dataobject.make_dataobject("hello world", @dataobject.Image, @schema.empty())
+  let d1 = @dataobject.make_dataobject(
+    "hello world",
+    @dataobject.Image,
+    @schema.empty(),
+  )
   let result = @packing_line.packing_line([d1], 5)
   assert_eq(result.length(), 3)
   assert_eq(result[0].modality, @dataobject.Image)
 }
 
+///|
 test "S2.5 packing_line_id" {
   assert_eq(@packing_line.packing_line_id(), "recipe/packing_line")
 }
 
+///|
 test "S2.5 eval_line basic" {
-  let d1 = @dataobject.make_dataobject("hello world this is a long enough text", @dataobject.Text, @schema.empty())
-  let d2 = @dataobject.make_dataobject("short", @dataobject.Text, @schema.empty())
+  let d1 = @dataobject.make_dataobject(
+    "hello world this is a long enough text",
+    @dataobject.Text,
+    @schema.empty(),
+  )
+  let d2 = @dataobject.make_dataobject(
+    "short",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let report = @eval_line.eval_line([d1, d2])
   assert_eq(report.total_count, 2)
   assert_true(report.avg_quality > 0.0)
   assert_true(report.max_quality >= report.min_quality)
 }
 
+///|
 test "S2.5 eval_line modality counts" {
-  let d1 = @dataobject.make_dataobject("text content here", @dataobject.Text, @schema.empty())
-  let d2 = @dataobject.make_dataobject("image data", @dataobject.Image, @schema.empty())
-  let d3 = @dataobject.make_dataobject("audio data", @dataobject.Audio, @schema.empty())
+  let d1 = @dataobject.make_dataobject(
+    "text content here",
+    @dataobject.Text,
+    @schema.empty(),
+  )
+  let d2 = @dataobject.make_dataobject(
+    "image data",
+    @dataobject.Image,
+    @schema.empty(),
+  )
+  let d3 = @dataobject.make_dataobject(
+    "audio data",
+    @dataobject.Audio,
+    @schema.empty(),
+  )
   let report = @eval_line.eval_line([d1, d2, d3])
   assert_eq(report.text_count, 1)
   assert_eq(report.image_count, 1)
@@ -2145,27 +2655,41 @@ test "S2.5 eval_line modality counts" {
   assert_eq(report.video_count, 0)
 }
 
+///|
 test "S2.5 eval_line degenerate: empty" {
   let report = @eval_line.eval_line([])
   assert_eq(report, @eval_line.empty_eval_report())
 }
 
+///|
 test "S2.5 eval_line_id" {
   assert_eq(@eval_line.eval_line_id(), "recipe/eval_line")
 }
 
+///|
 test "S2.5 cross_modal_line basic" {
-  let d1 = @dataobject.make_dataobject("text", @dataobject.Text, @schema.empty())
-  let d2 = @dataobject.make_dataobject("img", @dataobject.Image, @schema.empty())
+  let d1 = @dataobject.make_dataobject(
+    "text",
+    @dataobject.Text,
+    @schema.empty(),
+  )
+  let d2 = @dataobject.make_dataobject(
+    "img",
+    @dataobject.Image,
+    @schema.empty(),
+  )
   let report = @cross_modal_line.cross_modal_line([d1, d2])
   assert_eq(report.total_count, 2)
   assert_eq(report.text_count, 1)
   assert_eq(report.image_count, 1)
   assert_eq(report.audio_count, 0)
   assert_eq(report.video_count, 0)
-  assert_true(report.consistency_score > 0.49 && report.consistency_score < 0.51)
+  assert_true(
+    report.consistency_score > 0.49 && report.consistency_score < 0.51,
+  )
 }
 
+///|
 test "S2.5 cross_modal_line all modalities" {
   let d1 = @dataobject.make_dataobject("t", @dataobject.Text, @schema.empty())
   let d2 = @dataobject.make_dataobject("i", @dataobject.Image, @schema.empty())
@@ -2176,6 +2700,7 @@ test "S2.5 cross_modal_line all modalities" {
   assert_eq(report.missing_modalities.length(), 0)
 }
 
+///|
 test "S2.5 cross_modal_line degenerate: empty" {
   let report = @cross_modal_line.cross_modal_line([])
   assert_eq(report.total_count, 0)
@@ -2183,12 +2708,18 @@ test "S2.5 cross_modal_line degenerate: empty" {
   assert_eq(report.missing_modalities.length(), 4)
 }
 
+///|
 test "S2.5 cross_modal_line missing modalities" {
-  let d1 = @dataobject.make_dataobject("text only", @dataobject.Text, @schema.empty())
+  let d1 = @dataobject.make_dataobject(
+    "text only",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let report = @cross_modal_line.cross_modal_line([d1])
   assert_eq(report.missing_modalities, ["image", "audio", "video"])
 }
 
+///|
 test "S2.5 cross_modal_line_id" {
   assert_eq(@cross_modal_line.cross_modal_line_id(), "recipe/cross_modal_line")
 }
@@ -2197,45 +2728,53 @@ test "S2.5 cross_modal_line_id" {
 // S2.6 datatemporal 深化测试 / Datatemporal deepening tests
 // ============================================================
 
+///|
 test "S2.6 aging_weight basic" {
   let config = @aging.make_aging_config(30.0, 100.0)
   let w = @aging.aging_weight(100.0, config)
   assert_true(w > 0.99)
 }
 
+///|
 test "S2.6 aging_weight old data" {
   let config = @aging.make_aging_config(30.0, 100.0)
   let w = @aging.aging_weight(70.0, config)
   assert_true(w > 0.49 && w < 0.51)
 }
 
+///|
 test "S2.6 aging_weight future data" {
   let config = @aging.make_aging_config(30.0, 100.0)
   let w = @aging.aging_weight(110.0, config)
   assert_eq(w, 1.0)
 }
 
+///|
 test "S2.6 aging_weight degenerate: half_life=0" {
   let config = @aging.make_aging_config(0.0, 100.0)
   let w = @aging.aging_weight(50.0, config)
   assert_eq(w, 1.0)
 }
 
+///|
 test "S2.6 aging_score basic" {
   let config = @aging.make_aging_config(30.0, 100.0)
   let score = @aging.aging_score([100.0, 70.0, 40.0], config)
   assert_true(score > 0.0 && score <= 1.0)
 }
 
+///|
 test "S2.6 aging_score degenerate: empty" {
   let config = @aging.make_aging_config(30.0, 100.0)
   assert_eq(@aging.aging_score([], config), 0.0)
 }
 
+///|
 test "S2.6 aging_id" {
   assert_eq(@aging.aging_id(), "datatemporal/aging")
 }
 
+///|
 test "S2.6 detect_conflicts basic" {
   let base = ["a", "b", "c"]
   let new_keys = ["b", "d", "e"]
@@ -2243,16 +2782,19 @@ test "S2.6 detect_conflicts basic" {
   assert_eq(conflicts, ["b"])
 }
 
+///|
 test "S2.6 detect_conflicts no conflict" {
   let base = ["a", "b"]
   let new_keys = ["c", "d"]
   assert_eq(@incremental.detect_conflicts(base, new_keys), [])
 }
 
+///|
 test "S2.6 detect_conflicts degenerate: empty" {
   assert_eq(@incremental.detect_conflicts([], []), [])
 }
 
+///|
 test "S2.6 merge_incremental basic" {
   let result = @incremental.merge_incremental(["a", "b"], ["b", "c"], ["a"])
   assert_eq(result.base_count, 2)
@@ -2262,16 +2804,19 @@ test "S2.6 merge_incremental basic" {
   assert_eq(result.final_count, 3)
 }
 
+///|
 test "S2.6 make_incremental_update" {
   let result = @incremental.make_incremental_update(10, 5, 3, ["x"])
   assert_eq(result.final_count, 12)
   assert_eq(result.conflict_count, 1)
 }
 
+///|
 test "S2.6 incremental_id" {
   assert_eq(@incremental.incremental_id(), "datatemporal/incremental")
 }
 
+///|
 test "S2.6 build_graph basic" {
   let deps = [
     @field_lineage.make_field_dep("a", "b", "copy"),
@@ -2281,6 +2826,7 @@ test "S2.6 build_graph basic" {
   assert_eq(graph.fields, ["a", "b", "c"])
 }
 
+///|
 test "S2.6 impact_analysis direct" {
   let deps = [
     @field_lineage.make_field_dep("a", "b", "copy"),
@@ -2291,6 +2837,7 @@ test "S2.6 impact_analysis direct" {
   assert_eq(impacted.length(), 2)
 }
 
+///|
 test "S2.6 impact_analysis transitive" {
   let deps = [
     @field_lineage.make_field_dep("a", "b", "copy"),
@@ -2301,6 +2848,7 @@ test "S2.6 impact_analysis transitive" {
   assert_eq(impacted, ["b", "c"])
 }
 
+///|
 test "S2.6 impact_analysis no impact" {
   let deps = [@field_lineage.make_field_dep("a", "b", "copy")]
   let graph = @field_lineage.build_graph(deps)
@@ -2308,6 +2856,7 @@ test "S2.6 impact_analysis no impact" {
   assert_eq(impacted, [])
 }
 
+///|
 test "S2.6 has_cycle no cycle" {
   let deps = [
     @field_lineage.make_field_dep("a", "b", "copy"),
@@ -2317,6 +2866,7 @@ test "S2.6 has_cycle no cycle" {
   assert_true(!@field_lineage.has_cycle(graph))
 }
 
+///|
 test "S2.6 has_cycle with cycle" {
   let deps = [
     @field_lineage.make_field_dep("a", "b", "copy"),
@@ -2326,6 +2876,7 @@ test "S2.6 has_cycle with cycle" {
   assert_true(@field_lineage.has_cycle(graph))
 }
 
+///|
 test "S2.6 field_lineage_id" {
   assert_eq(@field_lineage.field_lineage_id(), "datatemporal/field_lineage")
 }
@@ -2334,6 +2885,7 @@ test "S2.6 field_lineage_id" {
 // S2.7 Agent-Kit 编排测试 / Agent-Kit orchestration tests
 // ============================================================
 
+///|
 test "S2.7 parse_nl_to_plan basic" {
   let plan = @planner.parse_nl_to_plan("clean and dedup the data")
   assert_true(plan.steps.length() >= 2)
@@ -2341,33 +2893,44 @@ test "S2.7 parse_nl_to_plan basic" {
   assert_eq(plan.steps[1].operator_path, "opcore/dedup")
 }
 
+///|
 test "S2.7 parse_nl_to_plan single keyword" {
   let plan = @planner.parse_nl_to_plan("filter the dataset")
   assert_eq(plan.steps.length(), 1)
   assert_eq(plan.steps[0].operator_path, "opcore/filter")
 }
 
+///|
 test "S2.7 parse_nl_to_plan no keywords" {
   let plan = @planner.parse_nl_to_plan("hello world foo bar")
   assert_eq(plan.steps.length(), 0)
 }
 
+///|
 test "S2.7 parse_nl_to_plan degenerate: empty" {
   let plan = @planner.parse_nl_to_plan("")
   assert_eq(plan, @planner.empty_execution_plan())
 }
 
+///|
 test "S2.7 parse_nl_to_plan multiple keywords" {
   let plan = @planner.parse_nl_to_plan("clean, dedup, filter, normalize.")
   assert_true(plan.steps.length() >= 4)
 }
 
+///|
 test "S2.7 make_plan_step" {
-  let step = @planner.make_plan_step(0, "opcore/clean", [("param", "value")], "test step")
+  let step = @planner.make_plan_step(
+    0,
+    "opcore/clean",
+    [("param", "value")],
+    "test step",
+  )
   assert_eq(step.step_id, 0)
   assert_eq(step.operator_path, "opcore/clean")
 }
 
+///|
 test "S2.7 make_execution_plan" {
   let steps = [@planner.make_plan_step(0, "opcore/clean", [], "step 0")]
   let plan = @planner.make_execution_plan("test", "test plan", steps)
@@ -2375,15 +2938,18 @@ test "S2.7 make_execution_plan" {
   assert_eq(@planner.plan_step_count(plan), 1)
 }
 
+///|
 test "S2.7 plan_step_count empty" {
   let plan = @planner.empty_execution_plan()
   assert_eq(@planner.plan_step_count(plan), 0)
 }
 
+///|
 test "S2.7 planner_id" {
   assert_eq(@planner.planner_id(), "agent_kit/planner")
 }
 
+///|
 test "S2.7 execute_plan basic" {
   let steps = [
     @planner.make_plan_step(0, "opcore/clean", [], "step 0"),
@@ -2396,12 +2962,14 @@ test "S2.7 execute_plan basic" {
   assert_eq(results[1].status, @executor.Success)
 }
 
+///|
 test "S2.7 execute_plan degenerate: empty" {
   let plan = @planner.empty_execution_plan()
   let results = @executor.execute_plan(plan)
   assert_eq(results.length(), 0)
 }
 
+///|
 test "S2.7 exec_stats basic" {
   let results = [
     @executor.make_exec_result(0, @executor.Success, "opcore/clean", "ok", 10),
@@ -2414,11 +2982,13 @@ test "S2.7 exec_stats basic" {
   assert_eq(stats.total_duration_ms, 15)
 }
 
+///|
 test "S2.7 exec_stats degenerate: empty" {
   let stats = @executor.exec_stats([])
   assert_eq(stats.total_steps, 0)
 }
 
+///|
 test "S2.7 exec_status_name" {
   assert_eq(@executor.exec_status_name(@executor.Pending), "pending")
   assert_eq(@executor.exec_status_name(@executor.Running), "running")
@@ -2426,10 +2996,12 @@ test "S2.7 exec_status_name" {
   assert_eq(@executor.exec_status_name(@executor.Failed), "failed")
 }
 
+///|
 test "S2.7 executor_id" {
   assert_eq(@executor.executor_id(), "agent_kit/executor")
 }
 
+///|
 test "S2.7 full pipeline: NL → plan → execute" {
   let plan = @planner.parse_nl_to_plan("clean and dedup and filter")
   let results = @executor.execute_plan(plan)
@@ -2442,6 +3014,7 @@ test "S2.7 full pipeline: NL → plan → execute" {
 // S2.8 DOSI 扩充 + Phase 2 验证测试
 // ============================================================
 
+///|
 test "S2.8 batch_add basic" {
   let sym = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
   let sem = @dosi.SemanticEntry::new("clean", [], "in->out")
@@ -2451,12 +3024,14 @@ test "S2.8 batch_add basic" {
   assert_eq(op.path, "opcore/clean")
 }
 
+///|
 test "S2.8 batch_remove basic" {
   let op = @batch.batch_remove("opcore/clean")
   assert_eq(op.op, @batch.Remove)
   assert_eq(op.path, "opcore/clean")
 }
 
+///|
 test "S2.8 apply_batch add" {
   let sym = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
   let sem = @dosi.SemanticEntry::new("clean", [], "in->out")
@@ -2466,6 +3041,7 @@ test "S2.8 apply_batch add" {
   assert_eq(result.size(), 1)
 }
 
+///|
 test "S2.8 apply_batch remove" {
   let sym = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
   let sem = @dosi.SemanticEntry::new("clean", [], "in->out")
@@ -2475,6 +3051,7 @@ test "S2.8 apply_batch remove" {
   assert_eq(result.size(), 0)
 }
 
+///|
 test "S2.8 apply_batch update" {
   let sym1 = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
   let sem1 = @dosi.SemanticEntry::new("old", [], "in->out")
@@ -2488,28 +3065,33 @@ test "S2.8 apply_batch update" {
   assert_eq(result.entries()[0].semantic.summary, "new")
 }
 
+///|
 test "S2.8 apply_batch degenerate: empty ops" {
   let index = @dosi.DOSIIndex::empty()
   let result = @batch.apply_batch(index, [])
   assert_eq(result, index)
 }
 
+///|
 test "S2.8 batch_op_name" {
   assert_eq(@batch.batch_op_name(@batch.Add), "add")
   assert_eq(@batch.batch_op_name(@batch.Remove), "remove")
   assert_eq(@batch.batch_op_name(@batch.Update), "update")
 }
 
+///|
 test "S2.8 batch_id" {
   assert_eq(@batch.batch_id(), "dosi/batch")
 }
 
+///|
 test "S2.8 make_versioned_index" {
   let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
   assert_eq(vindex.current_version, 0)
   assert_eq(@versioned.version_count(vindex), 1)
 }
 
+///|
 test "S2.8 advance_version" {
   let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
   let vindex2 = @versioned.advance_version(vindex, @dosi.DOSIIndex::empty())
@@ -2517,24 +3099,31 @@ test "S2.8 advance_version" {
   assert_eq(@versioned.version_count(vindex2), 2)
 }
 
+///|
 test "S2.8 get_version existing" {
   let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
   let result = @versioned.get_version(vindex, 0)
-  assert_true(match result {
-    Some(_) => true
-    None => false
-  })
+  assert_true(
+    match result {
+      Some(_) => true
+      None => false
+    },
+  )
 }
 
+///|
 test "S2.8 get_version non-existing" {
   let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
   let result = @versioned.get_version(vindex, 99)
-  assert_true(match result {
-    Some(_) => false
-    None => true
-  })
+  assert_true(
+    match result {
+      Some(_) => false
+      None => true
+    },
+  )
 }
 
+///|
 test "S2.8 current_version" {
   let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
   let vindex2 = @versioned.advance_version(vindex, @dosi.DOSIIndex::empty())
@@ -2542,6 +3131,7 @@ test "S2.8 current_version" {
   assert_eq(curr, @dosi.DOSIIndex::empty())
 }
 
+///|
 test "S2.8 rollback" {
   let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
   let vindex2 = @versioned.advance_version(vindex, @dosi.DOSIIndex::empty())
@@ -2549,16 +3139,20 @@ test "S2.8 rollback" {
   assert_eq(vindex3.current_version, 2)
 }
 
+///|
 test "S2.8 empty_versioned_index" {
   let vindex = @versioned.empty_versioned_index()
   assert_eq(vindex.current_version, 0)
 }
 
+///|
 test "S2.8 versioned_id" {
   assert_eq(@versioned.versioned_id(), "dosi/versioned")
 }
 
 // Phase 2 验证：多模态退化场景
+
+///|
 test "S2.8 verify: multimodal degenerate" {
   let empty_img = @image.empty_image_meta()
   let empty_aud = @audio.empty_audio_meta()
@@ -2571,16 +3165,28 @@ test "S2.8 verify: multimodal degenerate" {
 }
 
 // Phase 2 验证：语义算子一致性
+
+///|
 test "S2.8 verify: semantic consistency" {
-  let d = @dataobject.make_dataobject("Hello World Test Data", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "Hello World Test Data",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let score1 = @semantic.semantic_quality_score(d)
   let score2 = @semantic.semantic_quality_score(d)
   assert_eq(score1, score2)
 }
 
 // Phase 2 验证：跨后端等价性（CPU 串行 vs 直接调用）
+
+///|
 test "S2.8 verify: cross-backend equivalence" {
-  let d = @dataobject.make_dataobject("hello world", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "hello world",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let direct = @clean.strip_whitespace(d)
   let plan = @cpu_serial.empty_plan()
   assert_true(direct.content.length() >= 0)
@@ -2591,64 +3197,75 @@ test "S2.8 verify: cross-backend equivalence" {
 // S2.9 learncore DL 扩展层测试 / Extended DL layer tests
 // ============================================================
 
+///|
 test "S2.9 conv2d_output_dim basic" {
   let meta = @dl_layers.make_conv2d(3, 16, 3, 1, 1)
   let out = @dl_layers.conv2d_output_dim(32, meta)
   assert_eq(out, 32)
 }
 
+///|
 test "S2.9 conv2d_output_dim stride 2" {
   let meta = @dl_layers.make_conv2d(3, 16, 3, 2, 1)
   let out = @dl_layers.conv2d_output_dim(32, meta)
   assert_eq(out, 16)
 }
 
+///|
 test "S2.9 conv2d_output_dim no padding" {
   let meta = @dl_layers.make_conv2d(3, 16, 3, 1, 0)
   let out = @dl_layers.conv2d_output_dim(32, meta)
   assert_eq(out, 30)
 }
 
+///|
 test "S2.9 conv2d_output_dim degenerate: stride 0" {
   let meta = @dl_layers.make_conv2d(3, 16, 3, 0, 1)
   assert_eq(@dl_layers.conv2d_output_dim(32, meta), 0)
 }
 
+///|
 test "S2.9 maxpool_output_dim basic" {
   let meta = @dl_layers.make_maxpool(2, 2)
   let out = @dl_layers.maxpool_output_dim(32, meta)
   assert_eq(out, 16)
 }
 
+///|
 test "S2.9 maxpool_output_dim degenerate: stride 0" {
   let meta = @dl_layers.make_maxpool(2, 0)
   assert_eq(@dl_layers.maxpool_output_dim(32, meta), 0)
 }
 
+///|
 test "S2.9 dropout_forward inference" {
   let input = [1.0, 2.0, 3.0, 4.0]
   let result = @dl_layers.dropout_forward(input, 0.5, @dl_layers.Inference)
   assert_eq(result, input)
 }
 
+///|
 test "S2.9 dropout_forward training" {
   let input = [1.0, 2.0, 3.0, 4.0]
   let result = @dl_layers.dropout_forward(input, 0.5, @dl_layers.Training)
   assert_eq(result.length(), 4)
 }
 
+///|
 test "S2.9 dropout_forward degenerate: rate 0" {
   let input = [1.0, 2.0, 3.0]
   let result = @dl_layers.dropout_forward(input, 0.0, @dl_layers.Training)
   assert_eq(result, input)
 }
 
+///|
 test "S2.9 dropout_forward degenerate: rate 1" {
   let input = [1.0, 2.0, 3.0]
   let result = @dl_layers.dropout_forward(input, 1.0, @dl_layers.Training)
   assert_eq(result, input)
 }
 
+///|
 test "S2.9 batchnorm_forward basic" {
   let meta = @dl_layers.make_batchnorm(3, 0.00001)
   let input = [1.0, 2.0, 3.0]
@@ -2656,12 +3273,14 @@ test "S2.9 batchnorm_forward basic" {
   assert_eq(result.length(), 3)
 }
 
+///|
 test "S2.9 batchnorm_forward degenerate: empty" {
   let meta = @dl_layers.make_batchnorm(3, 0.00001)
   let result = @dl_layers.batchnorm_forward([], meta)
   assert_eq(result.length(), 0)
 }
 
+///|
 test "S2.9 batchnorm_forward zero variance" {
   let meta = @dl_layers.make_batchnorm(3, 0.00001)
   let input = [5.0, 5.0, 5.0]
@@ -2669,6 +3288,7 @@ test "S2.9 batchnorm_forward zero variance" {
   assert_eq(result.length(), 3)
 }
 
+///|
 test "S2.9 dropout_mode_name" {
   assert_eq(@dl_layers.dropout_mode_name(@dl_layers.Training), "training")
   assert_eq(@dl_layers.dropout_mode_name(@dl_layers.Inference), "inference")
@@ -2677,6 +3297,7 @@ test "S2.9 dropout_mode_name" {
 // S2.10 opcore 多模态扩展测试 / Multimodal extension tests
 // ============================================================
 
+///|
 test "S2.10 image_flip preserves dimensions" {
   let meta = @image.make_image_meta(100, 200, 3, "rgb")
   let h = @image.image_flip(meta, @image.Horizontal)
@@ -2687,30 +3308,35 @@ test "S2.10 image_flip preserves dimensions" {
   assert_eq(@image.image_size(b), (100, 200))
 }
 
+///|
 test "S2.10 image_flip degenerate: empty meta" {
   let meta = @image.empty_image_meta()
   let result = @image.image_flip(meta, @image.Horizontal)
   assert_eq(@image.image_size(result), (0, 0))
 }
 
+///|
 test "S2.10 image_rotate D90 swaps width height" {
   let meta = @image.make_image_meta(100, 200, 3, "rgb")
   let r = @image.image_rotate(meta, @image.D90)
   assert_eq(@image.image_size(r), (200, 100))
 }
 
+///|
 test "S2.10 image_rotate D180 preserves dimensions" {
   let meta = @image.make_image_meta(100, 200, 3, "rgb")
   let r = @image.image_rotate(meta, @image.D180)
   assert_eq(@image.image_size(r), (100, 200))
 }
 
+///|
 test "S2.10 image_rotate D270 swaps width height" {
   let meta = @image.make_image_meta(100, 200, 3, "rgb")
   let r = @image.image_rotate(meta, @image.D270)
   assert_eq(@image.image_size(r), (200, 100))
 }
 
+///|
 test "S2.10 flip_axis_name and rotate_angle_name" {
   assert_eq(@image.flip_axis_name(@image.Horizontal), "horizontal")
   assert_eq(@image.flip_axis_name(@image.Vertical), "vertical")
@@ -2720,6 +3346,7 @@ test "S2.10 flip_axis_name and rotate_angle_name" {
   assert_eq(@image.rotate_angle_name(@image.D270), "270")
 }
 
+///|
 test "S2.10 audio_mix basic" {
   let a = @audio.make_audio_meta(1000, 44100, 2, "wav")
   let b = @audio.make_audio_meta(2000, 44100, 1, "wav")
@@ -2729,6 +3356,7 @@ test "S2.10 audio_mix basic" {
   assert_eq(mixed.channels, 2)
 }
 
+///|
 test "S2.10 audio_mix degenerate: empty first" {
   let a = @audio.empty_audio_meta()
   let b = @audio.make_audio_meta(2000, 48000, 1, "mp3")
@@ -2737,24 +3365,28 @@ test "S2.10 audio_mix degenerate: empty first" {
   assert_eq(mixed.sample_rate, 48000)
 }
 
+///|
 test "S2.10 audio_normalize_duration basic" {
   let meta = @audio.make_audio_meta(500, 44100, 2, "wav")
   let r = @audio.audio_normalize_duration(meta, 1000)
   assert_true(r > 0.49 && r < 0.51)
 }
 
+///|
 test "S2.10 audio_normalize_duration degenerate: zero max" {
   let meta = @audio.make_audio_meta(500, 44100, 2, "wav")
   let r = @audio.audio_normalize_duration(meta, 0)
   assert_eq(r, 0.0)
 }
 
+///|
 test "S2.10 audio_normalize_duration clamps to 1.0" {
   let meta = @audio.make_audio_meta(2000, 44100, 2, "wav")
   let r = @audio.audio_normalize_duration(meta, 1000)
   assert_eq(r, 1.0)
 }
 
+///|
 test "S2.10 video_extract_frames basic" {
   let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
   let frames = @video.video_extract_frames(meta, 5)
@@ -2762,18 +3394,21 @@ test "S2.10 video_extract_frames basic" {
   assert_eq(@image.image_size(frames[0]), (1920, 1080))
 }
 
+///|
 test "S2.10 video_extract_frames degenerate: zero count" {
   let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
   let frames = @video.video_extract_frames(meta, 0)
   assert_eq(frames.length(), 0)
 }
 
+///|
 test "S2.10 video_extract_frames degenerate: zero duration" {
   let meta = @video.empty_video_meta()
   let frames = @video.video_extract_frames(meta, 5)
   assert_eq(frames.length(), 0)
 }
 
+///|
 test "S2.10 video_frame_timestamps basic" {
   let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
   let ts = @video.video_frame_timestamps(meta, 5)
@@ -2781,24 +3416,28 @@ test "S2.10 video_frame_timestamps basic" {
   assert_eq(ts[0], 0)
 }
 
+///|
 test "S2.10 video_frame_timestamps degenerate: zero count" {
   let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
   let ts = @video.video_frame_timestamps(meta, 0)
   assert_eq(ts.length(), 0)
 }
 
+///|
 test "S2.10 video_trim basic" {
   let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
   let trimmed = @video.video_trim(meta, 2000, 7000)
   assert_eq(@video.video_duration(trimmed), 5000)
 }
 
+///|
 test "S2.10 video_trim degenerate: out of bounds" {
   let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
   let trimmed = @video.video_trim(meta, 8000, 20000)
   assert_eq(@video.video_duration(trimmed), 2000)
 }
 
+///|
 test "S2.10 video_trim degenerate: end before start" {
   let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
   let trimmed = @video.video_trim(meta, 7000, 3000)
@@ -2808,69 +3447,116 @@ test "S2.10 video_trim degenerate: end before start" {
 // S2.11 opcore 语义扩展测试 / Semantic extension tests
 // ============================================================
 
+///|
 test "S2.11 default_stopwords non-empty" {
   let sw = @semantic.default_stopwords()
   assert_true(sw.length() > 50)
 }
 
+///|
 test "S2.11 remove_stopwords basic" {
-  let d = @dataobject.make_dataobject("the quick brown fox is fast", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "the quick brown fox is fast",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.remove_stopwords(d)
   assert_true(result.content.length() > 0)
   assert_true(result.content.length() < d.content.length())
 }
 
+///|
 test "S2.11 remove_stopwords degenerate: empty content" {
   let d = @dataobject.make_dataobject("", @dataobject.Text, @schema.empty())
   let result = @semantic.remove_stopwords(d)
   assert_eq(result.content, "")
 }
 
+///|
 test "S2.11 remove_stopwords_custom basic" {
-  let d = @dataobject.make_dataobject("foo bar baz", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "foo bar baz",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.remove_stopwords_custom(d, ["bar"])
   assert_eq(result.content, "foo baz")
 }
 
+///|
 test "S2.11 rewrite_trim basic" {
-  let d = @dataobject.make_dataobject("  hello world  ", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "  hello world  ",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.rewrite_trim(d)
   assert_eq(result.content, "hello world")
 }
 
+///|
 test "S2.11 rewrite_lowercase basic" {
-  let d = @dataobject.make_dataobject("Hello WORLD", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "Hello WORLD",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.rewrite_lowercase(d)
   assert_eq(result.content, "hello world")
 }
 
+///|
 test "S2.11 rewrite_uppercase basic" {
-  let d = @dataobject.make_dataobject("Hello World", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "Hello World",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.rewrite_uppercase(d)
   assert_eq(result.content, "HELLO WORLD")
 }
 
+///|
 test "S2.11 synthesize_concat basic" {
-  let a = @dataobject.make_dataobject("hello", @dataobject.Text, @schema.empty())
-  let b = @dataobject.make_dataobject("world", @dataobject.Text, @schema.empty())
+  let a = @dataobject.make_dataobject(
+    "hello",
+    @dataobject.Text,
+    @schema.empty(),
+  )
+  let b = @dataobject.make_dataobject(
+    "world",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.synthesize_concat(a, b)
   assert_eq(result.content, "hello world")
 }
 
+///|
 test "S2.11 synthesize_template basic" {
-  let d = @dataobject.make_dataobject("DataVerse", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "DataVerse",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let result = @semantic.synthesize_template(d, "Hello {}!")
   assert_eq(result.content, "Hello DataVerse!")
 }
 
+///|
 test "S2.11 synthesize_template no placeholder" {
   let d = @dataobject.make_dataobject("xyz", @dataobject.Text, @schema.empty())
   let result = @semantic.synthesize_template(d, "no placeholder here")
   assert_eq(result.content, "no placeholder here")
 }
 
+///|
 test "S2.11 word_frequency basic" {
-  let d = @dataobject.make_dataobject("a a b c", @dataobject.Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "a a b c",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let freq = @semantic.word_frequency(d)
   assert_eq(freq.length(), 3)
   let (w0, c0) = freq[0]
@@ -2878,33 +3564,62 @@ test "S2.11 word_frequency basic" {
   assert_eq(c0, 2)
 }
 
+///|
 test "S2.11 word_frequency degenerate: empty" {
   let d = @dataobject.make_dataobject("", @dataobject.Text, @schema.empty())
   let freq = @semantic.word_frequency(d)
   assert_eq(freq.length(), 0)
 }
 
+///|
 test "S2.11 text_similarity identical" {
-  let a = @dataobject.make_dataobject("hello world foo", @dataobject.Text, @schema.empty())
-  let b = @dataobject.make_dataobject("hello world foo", @dataobject.Text, @schema.empty())
+  let a = @dataobject.make_dataobject(
+    "hello world foo",
+    @dataobject.Text,
+    @schema.empty(),
+  )
+  let b = @dataobject.make_dataobject(
+    "hello world foo",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let sim = @semantic.text_similarity(a, b)
   assert_eq(sim, 1.0)
 }
 
+///|
 test "S2.11 text_similarity disjoint" {
-  let a = @dataobject.make_dataobject("apple banana", @dataobject.Text, @schema.empty())
-  let b = @dataobject.make_dataobject("cherry date", @dataobject.Text, @schema.empty())
+  let a = @dataobject.make_dataobject(
+    "apple banana",
+    @dataobject.Text,
+    @schema.empty(),
+  )
+  let b = @dataobject.make_dataobject(
+    "cherry date",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let sim = @semantic.text_similarity(a, b)
   assert_eq(sim, 0.0)
 }
 
+///|
 test "S2.11 text_similarity partial" {
-  let a = @dataobject.make_dataobject("hello world foo", @dataobject.Text, @schema.empty())
-  let b = @dataobject.make_dataobject("hello world bar", @dataobject.Text, @schema.empty())
+  let a = @dataobject.make_dataobject(
+    "hello world foo",
+    @dataobject.Text,
+    @schema.empty(),
+  )
+  let b = @dataobject.make_dataobject(
+    "hello world bar",
+    @dataobject.Text,
+    @schema.empty(),
+  )
   let sim = @semantic.text_similarity(a, b)
   assert_eq(sim, 0.5)
 }
 
+///|
 test "S2.11 text_similarity degenerate: both empty" {
   let a = @dataobject.make_dataobject("", @dataobject.Text, @schema.empty())
   let b = @dataobject.make_dataobject("", @dataobject.Text, @schema.empty())
@@ -2915,6 +3630,7 @@ test "S2.11 text_similarity degenerate: both empty" {
 // S3.1 io 数据源/汇测试 / IO source/sink tests
 // ============================================================
 
+///|
 test "S3.1 source_type_name" {
   assert_eq(@source.source_type_name(@source.File), "file")
   assert_eq(@source.source_type_name(@source.ObjectStorage), "object_storage")
@@ -2923,6 +3639,7 @@ test "S3.1 source_type_name" {
   assert_eq(@source.source_type_name(@source.InMemory), "in_memory")
 }
 
+///|
 test "S3.1 file_source convenience" {
   let cfg = @source.file_source("/data/train.json", "json")
   assert_eq(cfg.source_type, @source.File)
@@ -2930,28 +3647,35 @@ test "S3.1 file_source convenience" {
   assert_eq(cfg.format, "json")
 }
 
+///|
 test "S3.1 object_storage_source convenience" {
-  let cfg = @source.object_storage_source("obs.cn-east-3", "bucket1", "key1", "parquet")
+  let cfg = @source.object_storage_source(
+    "obs.cn-east-3", "bucket1", "key1", "parquet",
+  )
   assert_eq(cfg.source_type, @source.ObjectStorage)
   assert_eq(cfg.endpoint, "obs.cn-east-3")
   assert_eq(cfg.bucket, "bucket1")
 }
 
+///|
 test "S3.1 source_uri file" {
   let cfg = @source.file_source("/data/train.json", "json")
   assert_eq(@source.source_uri(cfg), "file:///data/train.json")
 }
 
+///|
 test "S3.1 source_uri object_storage" {
   let cfg = @source.object_storage_source("endpoint", "bucket", "key", "json")
   assert_eq(@source.source_uri(cfg), "obs://endpoint/bucket/key")
 }
 
+///|
 test "S3.1 source_uri in_memory" {
   let cfg = @source.in_memory_source("json")
   assert_eq(@source.source_uri(cfg), "memory://json")
 }
 
+///|
 test "S3.1 read_source basic" {
   let cfg = @source.file_source("/data/train.json", "json")
   let data = @source.read_source(cfg, 3)
@@ -2959,46 +3683,57 @@ test "S3.1 read_source basic" {
   assert_true(data[0].content.length() > 0)
 }
 
+///|
 test "S3.1 read_source degenerate: zero count" {
   let cfg = @source.file_source("/data/train.json", "json")
   let data = @source.read_source(cfg, 0)
   assert_eq(data.length(), 0)
 }
 
+///|
 test "S3.1 read_source degenerate: negative count" {
   let cfg = @source.file_source("/data/train.json", "json")
   let data = @source.read_source(cfg, -1)
   assert_eq(data.length(), 0)
 }
 
+///|
 test "S3.1 source_meta_uri" {
   let cfg = @source.file_source("/data/train.json", "json")
   let meta = @source.make_source_meta(cfg, 100, 4096)
-  assert_eq(@source.source_meta_uri(meta), "file:///data/train.json?items=100&size=4096")
+  assert_eq(
+    @source.source_meta_uri(meta),
+    "file:///data/train.json?items=100&size=4096",
+  )
 }
 
+///|
 test "S3.1 sink_type_name" {
   assert_eq(@sink.sink_type_name(@sink.File), "file")
   assert_eq(@sink.sink_type_name(@sink.ObjectStorage), "object_storage")
   assert_eq(@sink.sink_type_name(@sink.InMemory), "in_memory")
 }
 
+///|
 test "S3.1 file_sink convenience" {
   let cfg = @sink.file_sink("/data/output.json", "json")
   assert_eq(cfg.sink_type, @sink.File)
   assert_eq(cfg.path, "/data/output.json")
 }
 
+///|
 test "S3.1 sink_uri file" {
   let cfg = @sink.file_sink("/data/output.json", "json")
   assert_eq(@sink.sink_uri(cfg), "file:///data/output.json")
 }
 
+///|
 test "S3.1 sink_uri object_storage" {
   let cfg = @sink.object_storage_sink("endpoint", "bucket", "key", "parquet")
   assert_eq(@sink.sink_uri(cfg), "obs://endpoint/bucket/key")
 }
 
+///|
 test "S3.1 write_sink basic" {
   let cfg = @sink.file_sink("/data/output.json", "json")
   let data = [
@@ -3010,12 +3745,14 @@ test "S3.1 write_sink basic" {
   assert_eq(count, 3)
 }
 
+///|
 test "S3.1 write_sink degenerate: empty array" {
   let cfg = @sink.file_sink("/data/output.json", "json")
   let count = @sink.write_sink(cfg, [])
   assert_eq(count, 0)
 }
 
+///|
 test "S3.1 execute_write returns result" {
   let cfg = @sink.file_sink("/data/output.json", "json")
   let data = [
@@ -3026,21 +3763,36 @@ test "S3.1 execute_write returns result" {
   assert_eq(result.success, true)
 }
 
+///|
 test "S3.1 sink_stats_uri" {
   let cfg = @sink.file_sink("/data/output.json", "json")
   let stats = @sink.make_sink_stats(cfg, 500, 8192)
-  assert_eq(@sink.sink_stats_uri(stats), "file:///data/output.json?written=500&bytes=8192")
+  assert_eq(
+    @sink.sink_stats_uri(stats),
+    "file:///data/output.json?written=500&bytes=8192",
+  )
 }
 // ============================================================
 // S3.2 parallel/cpu_parallel 测试 / Parallel execution tests
 // ============================================================
 
+///|
 test "S3.2 partition_strategy_name" {
-  assert_eq(@cpu_parallel.partition_strategy_name(@cpu_parallel.ByCount), "by_count")
-  assert_eq(@cpu_parallel.partition_strategy_name(@cpu_parallel.BySize), "by_size")
-  assert_eq(@cpu_parallel.partition_strategy_name(@cpu_parallel.ByKeyHash), "by_key_hash")
+  assert_eq(
+    @cpu_parallel.partition_strategy_name(@cpu_parallel.ByCount),
+    "by_count",
+  )
+  assert_eq(
+    @cpu_parallel.partition_strategy_name(@cpu_parallel.BySize),
+    "by_size",
+  )
+  assert_eq(
+    @cpu_parallel.partition_strategy_name(@cpu_parallel.ByKeyHash),
+    "by_key_hash",
+  )
 }
 
+///|
 test "S3.2 partition_data ByCount basic" {
   let data = [
     @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
@@ -3055,6 +3807,7 @@ test "S3.2 partition_data ByCount basic" {
   assert_eq(parts[1], 2)
 }
 
+///|
 test "S3.2 partition_data ByCount uneven" {
   let data = [
     @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
@@ -3067,6 +3820,7 @@ test "S3.2 partition_data ByCount uneven" {
   assert_eq(parts[1], 1)
 }
 
+///|
 test "S3.2 partition_data degenerate: zero partitions" {
   let data = [
     @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
@@ -3076,6 +3830,7 @@ test "S3.2 partition_data degenerate: zero partitions" {
   assert_eq(parts.length(), 0)
 }
 
+///|
 test "S3.2 partition_data degenerate: empty data" {
   let cfg = @cpu_parallel.make_partition_config(@cpu_parallel.ByCount, 3, "")
   let parts = @cpu_parallel.partition_data([], cfg)
@@ -3083,6 +3838,7 @@ test "S3.2 partition_data degenerate: empty data" {
   assert_eq(parts[0], 0)
 }
 
+///|
 test "S3.2 partition_data ByKeyHash" {
   let data = [
     @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
@@ -3090,18 +3846,30 @@ test "S3.2 partition_data ByKeyHash" {
     @dataobject.make_dataobject("c", @dataobject.Text, @schema.empty()),
     @dataobject.make_dataobject("d", @dataobject.Text, @schema.empty()),
   ]
-  let cfg = @cpu_parallel.make_partition_config(@cpu_parallel.ByKeyHash, 2, "id")
+  let cfg = @cpu_parallel.make_partition_config(
+    @cpu_parallel.ByKeyHash,
+    2,
+    "id",
+  )
   let parts = @cpu_parallel.partition_data(data, cfg)
   assert_eq(parts[0], 2)
   assert_eq(parts[1], 2)
 }
 
+///|
 test "S3.2 shuffle_type_name" {
   assert_eq(@cpu_parallel.shuffle_type_name(@cpu_parallel.HashShuffle), "hash")
-  assert_eq(@cpu_parallel.shuffle_type_name(@cpu_parallel.RangeShuffle), "range")
-  assert_eq(@cpu_parallel.shuffle_type_name(@cpu_parallel.RandomShuffle), "random")
+  assert_eq(
+    @cpu_parallel.shuffle_type_name(@cpu_parallel.RangeShuffle),
+    "range",
+  )
+  assert_eq(
+    @cpu_parallel.shuffle_type_name(@cpu_parallel.RandomShuffle),
+    "random",
+  )
 }
 
+///|
 test "S3.2 shuffle_data basic" {
   let data = [
     @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
@@ -3116,6 +3884,7 @@ test "S3.2 shuffle_data basic" {
   assert_eq(shuffled[1], 2)
 }
 
+///|
 test "S3.2 shuffle_data degenerate: zero targets" {
   let data = [
     @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
@@ -3125,23 +3894,30 @@ test "S3.2 shuffle_data degenerate: zero targets" {
   assert_eq(shuffled.length(), 0)
 }
 
+///|
 test "S3.2 gather_mode_name" {
   assert_eq(@cpu_parallel.gather_mode_name(@cpu_parallel.Concat), "concat")
-  assert_eq(@cpu_parallel.gather_mode_name(@cpu_parallel.MergeSorted), "merge_sorted")
+  assert_eq(
+    @cpu_parallel.gather_mode_name(@cpu_parallel.MergeSorted),
+    "merge_sorted",
+  )
   assert_eq(@cpu_parallel.gather_mode_name(@cpu_parallel.Union), "union")
 }
 
+///|
 test "S3.2 gather_results basic" {
   let parts = [10, 20, 30]
   let total = @cpu_parallel.gather_results(parts, @cpu_parallel.Concat)
   assert_eq(total, 60)
 }
 
+///|
 test "S3.2 gather_results empty" {
   let total = @cpu_parallel.gather_results([], @cpu_parallel.Concat)
   assert_eq(total, 0)
 }
 
+///|
 test "S3.2 compute_parallel_stats basic" {
   let stats = @cpu_parallel.compute_parallel_stats(100, 4, 4)
   assert_eq(stats.total_items, 100)
@@ -3150,11 +3926,13 @@ test "S3.2 compute_parallel_stats basic" {
   assert_eq(stats.items_per_worker, 25)
 }
 
+///|
 test "S3.2 compute_parallel_stats degenerate: zero workers" {
   let stats = @cpu_parallel.compute_parallel_stats(100, 4, 0)
   assert_eq(stats.items_per_worker, 0)
 }
 
+///|
 test "S3.2 parallel_plan_uri" {
   let pc = @cpu_parallel.make_partition_config(@cpu_parallel.ByCount, 4, "")
   let sc = @cpu_parallel.make_shuffle_config(@cpu_parallel.HashShuffle, 4)
@@ -3163,6 +3941,7 @@ test "S3.2 parallel_plan_uri" {
   assert_eq(uri, "parallel://workers=4;partitions=4;shuffle=hash;gather=concat")
 }
 
+///|
 test "S3.2 cpu_parallel_id" {
   assert_eq(@cpu_parallel.cpu_parallel_id(), "parallel/cpu_parallel")
 }
@@ -3170,6 +3949,7 @@ test "S3.2 cpu_parallel_id" {
 // S3.3 opcore/plugin 插件系统测试 / Plugin system tests
 // ============================================================
 
+///|
 test "S3.3 plugin_status_name" {
   assert_eq(@plugin.plugin_status_name(@plugin.Loaded), "loaded")
   assert_eq(@plugin.plugin_status_name(@plugin.Active), "active")
@@ -3177,19 +3957,24 @@ test "S3.3 plugin_status_name" {
   assert_eq(@plugin.plugin_status_name(@plugin.Error), "error")
 }
 
+///|
 test "S3.3 empty_plugin_registry" {
   let reg = @plugin.empty_plugin_registry()
   assert_eq(@plugin.plugin_count(reg), 0)
 }
 
+///|
 test "S3.3 register_plugin basic" {
-  let meta = @plugin.make_plugin_meta("my-plugin", "1.0.0", "author", "entry", "desc")
+  let meta = @plugin.make_plugin_meta(
+    "my-plugin", "1.0.0", "author", "entry", "desc",
+  )
   let entry = @plugin.make_plugin_entry(meta, @plugin.Loaded, [])
   let reg = @plugin.register_plugin(@plugin.empty_plugin_registry(), entry)
   assert_eq(@plugin.plugin_count(reg), 1)
   assert_eq(@plugin.list_plugins(reg), ["my-plugin"])
 }
 
+///|
 test "S3.3 register_plugin no duplicate" {
   let meta = @plugin.make_plugin_meta("p1", "1.0.0", "a", "e", "d")
   let entry = @plugin.make_plugin_entry(meta, @plugin.Loaded, [])
@@ -3198,6 +3983,7 @@ test "S3.3 register_plugin no duplicate" {
   assert_eq(@plugin.plugin_count(reg2), 1)
 }
 
+///|
 test "S3.3 unregister_plugin" {
   let meta = @plugin.make_plugin_meta("p1", "1.0.0", "a", "e", "d")
   let entry = @plugin.make_plugin_entry(meta, @plugin.Loaded, [])
@@ -3206,6 +3992,7 @@ test "S3.3 unregister_plugin" {
   assert_eq(@plugin.plugin_count(reg2), 0)
 }
 
+///|
 test "S3.3 get_plugin_status" {
   let meta = @plugin.make_plugin_meta("p1", "1.0.0", "a", "e", "d")
   let entry = @plugin.make_plugin_entry(meta, @plugin.Active, [])
@@ -3213,11 +4000,13 @@ test "S3.3 get_plugin_status" {
   assert_eq(@plugin.get_plugin_status(reg, "p1"), @plugin.Active)
 }
 
+///|
 test "S3.3 get_plugin_status not found" {
   let reg = @plugin.empty_plugin_registry()
   assert_eq(@plugin.get_plugin_status(reg, "nonexistent"), @plugin.Error)
 }
 
+///|
 test "S3.3 enable_plugin" {
   let meta = @plugin.make_plugin_meta("p1", "1.0.0", "a", "e", "d")
   let entry = @plugin.make_plugin_entry(meta, @plugin.Disabled, [])
@@ -3226,6 +4015,7 @@ test "S3.3 enable_plugin" {
   assert_eq(@plugin.get_plugin_status(reg2, "p1"), @plugin.Active)
 }
 
+///|
 test "S3.3 disable_plugin" {
   let meta = @plugin.make_plugin_meta("p1", "1.0.0", "a", "e", "d")
   let entry = @plugin.make_plugin_entry(meta, @plugin.Active, [])
@@ -3234,16 +4024,21 @@ test "S3.3 disable_plugin" {
   assert_eq(@plugin.get_plugin_status(reg2, "p1"), @plugin.Disabled)
 }
 
+///|
 test "S3.3 plugins_by_status" {
   let m1 = @plugin.make_plugin_meta("p1", "1.0", "a", "e", "d")
   let m2 = @plugin.make_plugin_meta("p2", "1.0", "a", "e", "d")
   let e1 = @plugin.make_plugin_entry(m1, @plugin.Active, [])
   let e2 = @plugin.make_plugin_entry(m2, @plugin.Disabled, [])
-  let reg = @plugin.register_plugin(@plugin.register_plugin(@plugin.empty_plugin_registry(), e1), e2)
+  let reg = @plugin.register_plugin(
+    @plugin.register_plugin(@plugin.empty_plugin_registry(), e1),
+    e2,
+  )
   assert_eq(@plugin.plugins_by_status(reg, @plugin.Active), ["p1"])
   assert_eq(@plugin.plugins_by_status(reg, @plugin.Disabled), ["p2"])
 }
 
+///|
 test "S3.3 check_dependency satisfied" {
   let m1 = @plugin.make_plugin_meta("base", "1.0", "a", "e", "d")
   let e1 = @plugin.make_plugin_entry(m1, @plugin.Active, [])
@@ -3252,12 +4047,14 @@ test "S3.3 check_dependency satisfied" {
   assert_true(@plugin.check_dependency(reg, dep))
 }
 
+///|
 test "S3.3 check_dependency not satisfied" {
   let reg = @plugin.empty_plugin_registry()
   let dep = @plugin.make_plugin_dependency("missing", "1.0")
   assert_true(!@plugin.check_dependency(reg, dep))
 }
 
+///|
 test "S3.3 check_all_dependencies" {
   let m1 = @plugin.make_plugin_meta("base", "1.0", "a", "e", "d")
   let e1 = @plugin.make_plugin_entry(m1, @plugin.Active, [])
@@ -3269,6 +4066,7 @@ test "S3.3 check_all_dependencies" {
   assert_true(@plugin.check_all_dependencies(reg2, "dependent"))
 }
 
+///|
 test "S3.3 check_all_dependencies unsatisfied" {
   let dep = @plugin.make_plugin_dependency("missing", "1.0")
   let m1 = @plugin.make_plugin_meta("dependent", "1.0", "a", "e", "d")
@@ -3277,11 +4075,13 @@ test "S3.3 check_all_dependencies unsatisfied" {
   assert_true(!@plugin.check_all_dependencies(reg, "dependent"))
 }
 
+///|
 test "S3.3 plugin_registry_uri" {
   let reg = @plugin.empty_plugin_registry()
   assert_eq(@plugin.plugin_registry_uri(reg), "plugin://registry?count=0")
 }
 
+///|
 test "S3.3 plugin_id" {
   assert_eq(@plugin.plugin_id(), "opcore/plugin")
 }
@@ -3289,12 +4089,14 @@ test "S3.3 plugin_id" {
 // S3.4 性能基准 + 算子融合测试 / Benchmark + fusion tests
 // ============================================================
 
+///|
 test "S3.4 default_benchmark_config" {
   let cfg = @benchmark.default_benchmark_config()
   assert_eq(cfg.iterations, 100)
   assert_eq(cfg.warmup, 10)
 }
 
+///|
 test "S3.4 run_benchmark basic" {
   let cfg = @benchmark.make_benchmark_config(10, 2, 1)
   let result = @benchmark.run_benchmark("test", 100, cfg)
@@ -3303,6 +4105,7 @@ test "S3.4 run_benchmark basic" {
   assert_true(result.avg_ms > 0.0)
 }
 
+///|
 test "S3.4 run_benchmark degenerate: zero iterations" {
   let cfg = @benchmark.make_benchmark_config(0, 0, 1)
   let result = @benchmark.run_benchmark("test", 100, cfg)
@@ -3310,23 +4113,32 @@ test "S3.4 run_benchmark degenerate: zero iterations" {
   assert_eq(result.avg_ms, 0.0)
 }
 
+///|
 test "S3.4 benchmark_suite add_result" {
   let cfg = @benchmark.default_benchmark_config()
   let r1 = @benchmark.run_benchmark("b1", 100, cfg)
   let r2 = @benchmark.run_benchmark("b2", 200, cfg)
-  let suite = @benchmark.add_result(@benchmark.add_result(@benchmark.empty_benchmark_suite("suite1"), r1), r2)
+  let suite = @benchmark.add_result(
+    @benchmark.add_result(@benchmark.empty_benchmark_suite("suite1"), r1),
+    r2,
+  )
   assert_eq(suite.results.length(), 2)
 }
 
+///|
 test "S3.4 compute_suite_stats" {
   let cfg = @benchmark.make_benchmark_config(10, 0, 1)
   let r1 = @benchmark.run_benchmark("b1", 100, cfg)
-  let suite = @benchmark.add_result(@benchmark.empty_benchmark_suite("suite1"), r1)
+  let suite = @benchmark.add_result(
+    @benchmark.empty_benchmark_suite("suite1"),
+    r1,
+  )
   let stats = @benchmark.compute_suite_stats(suite)
   assert_eq(stats.suite_name, "suite1")
   assert_eq(stats.benchmark_count, 1)
 }
 
+///|
 test "S3.4 compute_suite_stats empty" {
   let suite = @benchmark.empty_benchmark_suite("empty")
   let stats = @benchmark.compute_suite_stats(suite)
@@ -3334,39 +4146,68 @@ test "S3.4 compute_suite_stats empty" {
   assert_eq(stats.avg_throughput, 0.0)
 }
 
+///|
 test "S3.4 benchmark_suite_uri" {
   let suite = @benchmark.empty_benchmark_suite("my_suite")
-  assert_eq(@benchmark.benchmark_suite_uri(suite), "benchmark://suite/my_suite?count=0")
+  assert_eq(
+    @benchmark.benchmark_suite_uri(suite),
+    "benchmark://suite/my_suite?count=0",
+  )
 }
 
+///|
 test "S3.4 benchmark_id" {
   assert_eq(@benchmark.benchmark_id(), "governance/benchmark")
 }
 
+///|
 test "S3.4 fusion_rule_name" {
   assert_eq(@ir_fusion.fusion_rule_name(@ir_fusion.MapFusion), "map_fusion")
-  assert_eq(@ir_fusion.fusion_rule_name(@ir_fusion.FilterFusion), "filter_fusion")
-  assert_eq(@ir_fusion.fusion_rule_name(@ir_fusion.IdentityElimination), "identity_elimination")
-  assert_eq(@ir_fusion.fusion_rule_name(@ir_fusion.DeadCodeElimination), "dead_code_elimination")
+  assert_eq(
+    @ir_fusion.fusion_rule_name(@ir_fusion.FilterFusion),
+    "filter_fusion",
+  )
+  assert_eq(
+    @ir_fusion.fusion_rule_name(@ir_fusion.IdentityElimination),
+    "identity_elimination",
+  )
+  assert_eq(
+    @ir_fusion.fusion_rule_name(@ir_fusion.DeadCodeElimination),
+    "dead_code_elimination",
+  )
 }
 
+///|
 test "S3.4 apply_fusion basic" {
   let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"), "map1", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op1"),
+    "map1",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"), "map2", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op2"),
+    "map2",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"), "map3", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op3"),
+    "map3",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
+  let p = @ir_pipeline.PipelineIR::empty()
+    .add_node(n1)
+    .add_node(n2)
+    .add_node(n3)
   let result = @ir_fusion.apply_fusion(p)
   assert_eq(result.original_node_count, 3)
   assert_true(result.fused_node_count <= result.original_node_count)
   assert_true(result.reduction >= 0)
 }
 
+///|
 test "S3.4 apply_fusion degenerate: empty pipeline" {
   let p = @ir_pipeline.PipelineIR::empty()
   let result = @ir_fusion.apply_fusion(p)
@@ -3374,12 +4215,19 @@ test "S3.4 apply_fusion degenerate: empty pipeline" {
   assert_eq(result.fused_node_count, 0)
 }
 
+///|
 test "S3.4 fusion_reduction_ratio" {
   let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"), "map1", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op1"),
+    "map1",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"), "map2", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op2"),
+    "map2",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2)
   let result = @ir_fusion.apply_fusion(p)
@@ -3387,30 +4235,52 @@ test "S3.4 fusion_reduction_ratio" {
   assert_true(ratio >= 0.0 && ratio <= 1.0)
 }
 
+///|
 test "S3.4 fusion_result_uri" {
   let result = @ir_fusion.make_fusion_result(10, 5, [@ir_fusion.MapFusion])
-  assert_eq(@ir_fusion.fusion_result_uri(result), "fusion://nodes=10->5;reduction=5")
+  assert_eq(
+    @ir_fusion.fusion_result_uri(result),
+    "fusion://nodes=10->5;reduction=5",
+  )
 }
 
+///|
 test "S3.4 iterative_fusion" {
   let n1 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op1"), "map1", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op1"),
+    "map1",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n2 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op2"), "map2", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op2"),
+    "map2",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n3 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op3"), "map3", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op3"),
+    "map3",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
   let n4 = @ir_operator.OperatorIR::simple(
-    @ir_core.IRNodeId::new("op4"), "map4", @ir_operator.Text, @ir_operator.Deterministic,
+    @ir_core.IRNodeId::new("op4"),
+    "map4",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
   )
-  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3).add_node(n4)
+  let p = @ir_pipeline.PipelineIR::empty()
+    .add_node(n1)
+    .add_node(n2)
+    .add_node(n3)
+    .add_node(n4)
   let result = @ir_fusion.iterative_fusion(p, 3)
   assert_eq(result.original_node_count, 4)
   assert_true(result.fused_node_count <= result.original_node_count)
 }
 
+///|
 test "S3.4 ir_fusion_id" {
   assert_eq(@ir_fusion.ir_fusion_id(), "datair/ir_fusion")
 }
@@ -3418,6 +4288,7 @@ test "S3.4 ir_fusion_id" {
 // S3.5 文档生成测试 / Doc generation tests
 // ============================================================
 
+///|
 test "S3.5 empty_doc_index" {
   let index = @docgen.empty_doc_index()
   assert_eq(index.total_api, 0)
@@ -3425,6 +4296,7 @@ test "S3.5 empty_doc_index" {
   assert_eq(index.total_tests, 0)
 }
 
+///|
 test "S3.5 add_doc_entry" {
   let entry = @docgen.make_doc_entry("test_mod", 10, 5, 8, "test module")
   let index = @docgen.add_doc_entry(@docgen.empty_doc_index(), entry)
@@ -3434,6 +4306,7 @@ test "S3.5 add_doc_entry" {
   assert_eq(index.total_tests, 8)
 }
 
+///|
 test "S3.5 generate_dataverse_doc_index" {
   let index = @docgen.generate_dataverse_doc_index()
   assert_true(index.entries.length() >= 12)
@@ -3441,6 +4314,7 @@ test "S3.5 generate_dataverse_doc_index" {
   assert_true(index.total_types > 0)
 }
 
+///|
 test "S3.5 doc_entry_to_markdown" {
   let entry = @docgen.make_doc_entry("m1", 10, 5, 8, "desc")
   let md = @docgen.doc_entry_to_markdown(entry)
@@ -3448,6 +4322,7 @@ test "S3.5 doc_entry_to_markdown" {
   assert_true(md.contains("m1"))
 }
 
+///|
 test "S3.5 doc_index_to_markdown" {
   let index = @docgen.generate_dataverse_doc_index()
   let md = @docgen.doc_index_to_markdown(index)
@@ -3455,6 +4330,7 @@ test "S3.5 doc_index_to_markdown" {
   assert_true(md.contains("DataVerse"))
 }
 
+///|
 test "S3.5 doc_entry_to_html" {
   let entry = @docgen.make_doc_entry("m1", 10, 5, 8, "desc")
   let html = @docgen.doc_entry_to_html(entry)
@@ -3462,6 +4338,7 @@ test "S3.5 doc_entry_to_html" {
   assert_true(html.contains("m1"))
 }
 
+///|
 test "S3.5 doc_index_to_html" {
   let index = @docgen.generate_dataverse_doc_index()
   let html = @docgen.doc_index_to_html(index)
@@ -3469,6 +4346,7 @@ test "S3.5 doc_index_to_html" {
   assert_true(html.contains("</html>"))
 }
 
+///|
 test "S3.5 doc_index_stats" {
   let index = @docgen.generate_dataverse_doc_index()
   let stats = @docgen.doc_index_stats(index)
@@ -3476,6 +4354,7 @@ test "S3.5 doc_index_stats" {
   assert_true(stats.contains("api="))
 }
 
+///|
 test "S3.5 docgen_id" {
   assert_eq(@docgen.docgen_id(), "governance/docgen")
 }
@@ -3483,12 +4362,14 @@ test "S3.5 docgen_id" {
 // S4.1 opcore/proximity 邻近分析测试
 // ============================================================
 
+///|
 test "S4.1 make_point" {
   let p = @proximity.make_point(3.0, 4.0)
   assert_eq(p.x, 3.0)
   assert_eq(p.y, 4.0)
 }
 
+///|
 test "S4.1 euclidean_distance" {
   let a = @proximity.make_point(0.0, 0.0)
   let b = @proximity.make_point(3.0, 4.0)
@@ -3496,31 +4377,37 @@ test "S4.1 euclidean_distance" {
   assert_true(d > 4.99 && d < 5.01)
 }
 
+///|
 test "S4.1 euclidean_distance_same_point" {
   let p = @proximity.make_point(1.0, 2.0)
   assert_eq(@proximity.euclidean_distance(p, p), 0.0)
 }
 
+///|
 test "S4.1 manhattan_distance" {
   let a = @proximity.make_point(0.0, 0.0)
   let b = @proximity.make_point(3.0, 4.0)
   assert_eq(@proximity.manhattan_distance(a, b), 7.0)
 }
 
+///|
 test "S4.1 buffer_area" {
   let area = @proximity.buffer_area(2.0)
   assert_true(area > 12.56 && area < 12.57)
 }
 
+///|
 test "S4.1 buffer_perimeter" {
   let peri = @proximity.buffer_perimeter(2.0)
   assert_true(peri > 12.56 && peri < 12.57)
 }
 
+///|
 test "S4.1 buffer_area_negative" {
   assert_eq(@proximity.buffer_area(-1.0), 0.0)
 }
 
+///|
 test "S4.1 buffer_point" {
   let c = @proximity.make_point(0.0, 0.0)
   let buf = @proximity.buffer_point(c, 5.0)
@@ -3528,6 +4415,7 @@ test "S4.1 buffer_point" {
   assert_true(buf.area > 78.0 && buf.area < 79.0)
 }
 
+///|
 test "S4.1 buffer_point_negative_radius" {
   let c = @proximity.make_point(0.0, 0.0)
   let buf = @proximity.buffer_point(c, -5.0)
@@ -3535,6 +4423,7 @@ test "S4.1 buffer_point_negative_radius" {
   assert_eq(buf.area, 0.0)
 }
 
+///|
 test "S4.1 multi_ring_buffer" {
   let c = @proximity.make_point(0.0, 0.0)
   let rings = @proximity.multi_ring_buffer(c, [3.0, 1.0, 2.0])
@@ -3544,11 +4433,13 @@ test "S4.1 multi_ring_buffer" {
   assert_eq(rings[2].radius, 3.0)
 }
 
+///|
 test "S4.1 multi_ring_buffer_empty" {
   let c = @proximity.make_point(0.0, 0.0)
   assert_eq(@proximity.multi_ring_buffer(c, []).length(), 0)
 }
 
+///|
 test "S4.1 nearest_point" {
   let target = @proximity.make_point(0.0, 0.0)
   let candidates = [
@@ -3567,11 +4458,13 @@ test "S4.1 nearest_point" {
   }
 }
 
+///|
 test "S4.1 nearest_point_empty" {
   let target = @proximity.make_point(0.0, 0.0)
   assert_true(@proximity.nearest_point(target, []) is None)
 }
 
+///|
 test "S4.1 near_table" {
   let target = @proximity.make_point(0.0, 0.0)
   let candidates = [
@@ -3585,12 +4478,14 @@ test "S4.1 near_table" {
   assert_eq(table[1].to_idx, 2)
 }
 
+///|
 test "S4.1 near_table_k_zero" {
   let target = @proximity.make_point(0.0, 0.0)
   let candidates = [@proximity.make_point(1.0, 0.0)]
   assert_eq(@proximity.near_table(0, target, candidates, 0).length(), 0)
 }
 
+///|
 test "S4.1 point_distance_matrix" {
   let points = [
     @proximity.make_point(0.0, 0.0),
@@ -3604,10 +4499,12 @@ test "S4.1 point_distance_matrix" {
   assert_true(matrix[0][2] > 3.99 && matrix[0][2] < 4.01)
 }
 
+///|
 test "S4.1 point_distance_matrix_empty" {
   assert_eq(@proximity.point_distance_matrix([]).length(), 0)
 }
 
+///|
 test "S4.1 all_proximity_pairs" {
   let points = [
     @proximity.make_point(0.0, 0.0),
@@ -3619,11 +4516,13 @@ test "S4.1 all_proximity_pairs" {
   assert_true(pairs[0].distance <= pairs[1].distance)
 }
 
+///|
 test "S4.1 all_proximity_pairs_single" {
   let points = [@proximity.make_point(0.0, 0.0)]
   assert_eq(@proximity.all_proximity_pairs(points).length(), 0)
 }
 
+///|
 test "S4.1 bounding_box" {
   let points = [
     @proximity.make_point(1.0, 2.0),
@@ -3637,12 +4536,14 @@ test "S4.1 bounding_box" {
   assert_eq(max_p.y, 8.0)
 }
 
+///|
 test "S4.1 bounding_box_empty" {
   let (min_p, max_p) = @proximity.bounding_box([])
   assert_eq(min_p.x, 0.0)
   assert_eq(max_p.x, 0.0)
 }
 
+///|
 test "S4.1 thiessen_polygons" {
   let points = [
     @proximity.make_point(0.0, 0.0),
@@ -3656,10 +4557,12 @@ test "S4.1 thiessen_polygons" {
   assert_true(area > 3.99 && area < 4.01)
 }
 
+///|
 test "S4.1 thiessen_polygons_empty" {
   assert_eq(@proximity.thiessen_polygons([]).length(), 0)
 }
 
+///|
 test "S4.1 thiessen_polygons_single" {
   let points = [@proximity.make_point(1.0, 2.0)]
   let cells = @proximity.thiessen_polygons(points)
@@ -3668,6 +4571,7 @@ test "S4.1 thiessen_polygons_single" {
   assert_eq(area, 0.0)
 }
 
+///|
 test "S4.1 polygon_neighbors" {
   let poly1 = [
     @proximity.make_point(0.0, 0.0),
@@ -3694,10 +4598,12 @@ test "S4.1 polygon_neighbors" {
   assert_eq(b, 1)
 }
 
+///|
 test "S4.1 polygon_neighbors_empty" {
   assert_eq(@proximity.polygon_neighbors([], 1.0).length(), 0)
 }
 
+///|
 test "S4.1 distances_to_all" {
   let target = @proximity.make_point(0.0, 0.0)
   let candidates = [
@@ -3710,6 +4616,7 @@ test "S4.1 distances_to_all" {
   assert_true(dists[1] > 1.99 && dists[1] < 2.01)
 }
 
+///|
 test "S4.1 buffer_stats" {
   let points = [
     @proximity.make_point(0.0, 0.0),
@@ -3722,14 +4629,20 @@ test "S4.1 buffer_stats" {
   assert_true(peri > 0.0)
 }
 
+///|
 test "S4.1 buffer_stats_empty" {
   let (area, peri) = @proximity.buffer_stats([], 2.0)
   assert_eq(area, 0.0)
   assert_eq(peri, 0.0)
 }
 
+///|
 test "S4.1 points_from_dataobject" {
-  let d = @dataobject.make_dataobject("0,0;3,4;1,1", @dataobject.Modality::Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "0,0;3,4;1,1",
+    @dataobject.Modality::Text,
+    @schema.empty(),
+  )
   let points = @proximity.points_from_dataobject(d)
   assert_eq(points.length(), 3)
   assert_eq(points[0].x, 0.0)
@@ -3737,11 +4650,13 @@ test "S4.1 points_from_dataobject" {
   assert_eq(points[1].y, 4.0)
 }
 
+///|
 test "S4.1 points_from_dataobject_empty" {
   let d = @dataobject.empty_dataobject(@dataobject.Modality::Text)
   assert_eq(@proximity.points_from_dataobject(d).length(), 0)
 }
 
+///|
 test "S4.1 make_buffer_result" {
   let c = @proximity.make_point(1.0, 2.0)
   let buf = @proximity.make_buffer_result(c, 3.0)
@@ -3752,6 +4667,7 @@ test "S4.1 make_buffer_result" {
 // S4.2 opcore/overlay 叠加分析测试
 // ============================================================
 
+///|
 test "S4.2 make_polygon" {
   let p = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3762,12 +4678,14 @@ test "S4.2 make_polygon" {
   assert_eq(@overlay.vertex_count(p), 4)
 }
 
+///|
 test "S4.2 empty_polygon" {
   let p = @overlay.empty_polygon()
   assert_eq(@overlay.vertex_count(p), 0)
   assert_eq(@overlay.polygon_area(p), 0.0)
 }
 
+///|
 test "S4.2 polygon_area_square" {
   let sq = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3779,6 +4697,7 @@ test "S4.2 polygon_area_square" {
   assert_true(area > 15.99 && area < 16.01)
 }
 
+///|
 test "S4.2 polygon_area_triangle" {
   let tri = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3789,6 +4708,7 @@ test "S4.2 polygon_area_triangle" {
   assert_true(area > 17.99 && area < 18.01)
 }
 
+///|
 test "S4.2 polygon_area_degenerate" {
   let line = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3797,6 +4717,7 @@ test "S4.2 polygon_area_degenerate" {
   assert_eq(@overlay.polygon_area(line), 0.0)
 }
 
+///|
 test "S4.2 polygon_perimeter" {
   let sq = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3808,6 +4729,7 @@ test "S4.2 polygon_perimeter" {
   assert_true(peri > 11.99 && peri < 12.01)
 }
 
+///|
 test "S4.2 polygon_bbox" {
   let poly = @overlay.make_polygon([
     @proximity.make_point(1.0, 2.0),
@@ -3821,6 +4743,7 @@ test "S4.2 polygon_bbox" {
   assert_eq(max_p.y, 8.0)
 }
 
+///|
 test "S4.2 bbox_overlap_true" {
   let a = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3837,6 +4760,7 @@ test "S4.2 bbox_overlap_true" {
   assert_true(@overlay.bbox_overlap(a, b))
 }
 
+///|
 test "S4.2 bbox_overlap_false" {
   let a = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3850,9 +4774,10 @@ test "S4.2 bbox_overlap_false" {
     @proximity.make_point(7.0, 7.0),
     @proximity.make_point(5.0, 7.0),
   ])
-  assert_true(!(@overlay.bbox_overlap(a, b)))
+  assert_true(!@overlay.bbox_overlap(a, b))
 }
 
+///|
 test "S4.2 bbox_overlap_empty" {
   let a = @overlay.empty_polygon()
   let b = @overlay.make_polygon([
@@ -3861,9 +4786,10 @@ test "S4.2 bbox_overlap_empty" {
     @proximity.make_point(1.0, 1.0),
     @proximity.make_point(0.0, 1.0),
   ])
-  assert_true(!(@overlay.bbox_overlap(a, b)))
+  assert_true(!@overlay.bbox_overlap(a, b))
 }
 
+///|
 test "S4.2 bbox_contains" {
   let outer = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3878,9 +4804,10 @@ test "S4.2 bbox_contains" {
     @proximity.make_point(2.0, 5.0),
   ])
   assert_true(@overlay.bbox_contains(outer, inner))
-  assert_true(!(@overlay.bbox_contains(inner, outer)))
+  assert_true(!@overlay.bbox_contains(inner, outer))
 }
 
+///|
 test "S4.2 overlay_intersect_overlap" {
   let a = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3899,6 +4826,7 @@ test "S4.2 overlay_intersect_overlap" {
   assert_true(result.area > 0.0)
 }
 
+///|
 test "S4.2 overlay_intersect_no_overlap" {
   let a = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3913,10 +4841,11 @@ test "S4.2 overlay_intersect_no_overlap" {
     @proximity.make_point(5.0, 7.0),
   ])
   let result = @overlay.overlay_intersect(a, b)
-  assert_true(!(result.has_overlap))
+  assert_true(!result.has_overlap)
   assert_eq(result.area, 0.0)
 }
 
+///|
 test "S4.2 overlay_union" {
   let a = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3935,6 +4864,7 @@ test "S4.2 overlay_union" {
   assert_eq(result.source_count, 2)
 }
 
+///|
 test "S4.2 overlay_union_disjoint" {
   let a = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3952,6 +4882,7 @@ test "S4.2 overlay_union_disjoint" {
   assert_eq(result.result_count, 2)
 }
 
+///|
 test "S4.2 overlay_erase" {
   let a = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3970,6 +4901,7 @@ test "S4.2 overlay_erase" {
   assert_eq(result.source_count, 2)
 }
 
+///|
 test "S4.2 overlay_erase_disjoint" {
   let a = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -3987,6 +4919,7 @@ test "S4.2 overlay_erase_disjoint" {
   assert_true(result.area > 15.0)
 }
 
+///|
 test "S4.2 overlay_identity" {
   let a = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -4004,6 +4937,7 @@ test "S4.2 overlay_identity" {
   assert_true(result.area > 15.0)
 }
 
+///|
 test "S4.2 overlay_sym_diff" {
   let a = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -4021,6 +4955,7 @@ test "S4.2 overlay_sym_diff" {
   assert_true(result.area >= 0.0)
 }
 
+///|
 test "S4.2 overlay_update" {
   let a = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -4038,6 +4973,7 @@ test "S4.2 overlay_update" {
   assert_true(result.area > 0.0)
 }
 
+///|
 test "S4.2 overlay_spatial_join" {
   let polys_a = [
     @overlay.make_polygon([
@@ -4068,10 +5004,12 @@ test "S4.2 overlay_spatial_join" {
   assert_eq(j, 0)
 }
 
+///|
 test "S4.2 overlay_spatial_join_empty" {
   assert_eq(@overlay.overlay_spatial_join([], []).length(), 0)
 }
 
+///|
 test "S4.2 batch_intersections" {
   let polys = [
     @overlay.make_polygon([
@@ -4100,18 +5038,25 @@ test "S4.2 batch_intersections" {
   assert_eq(b, 1)
 }
 
+///|
 test "S4.2 batch_intersections_empty" {
   assert_eq(@overlay.batch_intersections([]).length(), 0)
 }
 
+///|
 test "S4.2 polygon_from_dataobject" {
-  let d = @dataobject.make_dataobject("0,0;4,0;4,4;0,4", @dataobject.Modality::Text, @schema.empty())
+  let d = @dataobject.make_dataobject(
+    "0,0;4,0;4,4;0,4",
+    @dataobject.Modality::Text,
+    @schema.empty(),
+  )
   let poly = @overlay.polygon_from_dataobject(d)
   assert_eq(@overlay.vertex_count(poly), 4)
   let area = @overlay.polygon_area(poly)
   assert_true(area > 15.99 && area < 16.01)
 }
 
+///|
 test "S4.2 overlay_result_summary" {
   let a = @overlay.make_polygon([
     @proximity.make_point(0.0, 0.0),
@@ -4134,35 +5079,34 @@ test "S4.2 overlay_result_summary" {
 // S4.3 opcore/hydrology 水文分析测试
 // ============================================================
 
+///|
 test "S4.3 make_raster" {
-  let r = @hydrology.make_raster([
-    [1.0, 2.0, 3.0],
-    [4.0, 5.0, 6.0],
-  ])
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
   assert_eq(@hydrology.raster_rows(r), 2)
   assert_eq(@hydrology.raster_cols(r), 3)
 }
 
+///|
 test "S4.3 empty_raster" {
   let r = @hydrology.empty_raster()
   assert_eq(@hydrology.raster_rows(r), 0)
   assert_eq(@hydrology.raster_cols(r), 0)
 }
 
+///|
 test "S4.3 raster_get" {
-  let r = @hydrology.make_raster([
-    [1.0, 2.0],
-    [3.0, 4.0],
-  ])
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@hydrology.raster_get(r, 0, 0), 1.0)
   assert_eq(@hydrology.raster_get(r, 1, 1), 4.0)
 }
 
+///|
 test "S4.3 raster_get_out_of_bounds" {
   let r = @hydrology.make_raster([[1.0]])
   assert_eq(@hydrology.raster_get(r, 5, 5), 0.0)
 }
 
+///|
 test "S4.3 hydrology_find_sinks" {
   let r = @hydrology.make_raster([
     [3.0, 3.0, 3.0],
@@ -4176,6 +5120,7 @@ test "S4.3 hydrology_find_sinks" {
   assert_eq(sc, 1)
 }
 
+///|
 test "S4.3 hydrology_find_sinks_none" {
   let r = @hydrology.make_raster([
     [5.0, 5.0, 5.0],
@@ -4185,6 +5130,7 @@ test "S4.3 hydrology_find_sinks_none" {
   assert_eq(@hydrology.hydrology_find_sinks(r).length(), 0)
 }
 
+///|
 test "S4.3 hydrology_fill" {
   let r = @hydrology.make_raster([
     [3.0, 3.0, 3.0],
@@ -4195,6 +5141,7 @@ test "S4.3 hydrology_fill" {
   assert_true(@hydrology.raster_get(filled, 1, 1) >= 3.0)
 }
 
+///|
 test "S4.3 hydrology_flow_direction" {
   let r = @hydrology.make_raster([
     [3.0, 3.0, 3.0],
@@ -4206,6 +5153,7 @@ test "S4.3 hydrology_flow_direction" {
   assert_eq(flow.cols, 3)
 }
 
+///|
 test "S4.3 hydrology_flow_accumulation" {
   let r = @hydrology.make_raster([
     [3.0, 2.0, 3.0],
@@ -4218,6 +5166,7 @@ test "S4.3 hydrology_flow_accumulation" {
   assert_eq(accum.cols, 3)
 }
 
+///|
 test "S4.3 hydrology_watershed" {
   let r = @hydrology.make_raster([
     [3.0, 2.0, 3.0],
@@ -4229,11 +5178,13 @@ test "S4.3 hydrology_watershed" {
   assert_true(ws.length() >= 1)
 }
 
+///|
 test "S4.3 hydrology_watershed_out_of_bounds" {
-  let flow = @hydrology.FlowDirResult::{ directions: [[0]], rows: 1, cols: 1 }
+  let flow = @hydrology.FlowDirResult::{ directions: [[0]], rows: 1, cols: 1, }
   assert_eq(@hydrology.hydrology_watershed(flow, 5, 5).length(), 0)
 }
 
+///|
 test "S4.3 hydrology_basin" {
   let r = @hydrology.make_raster([
     [3.0, 2.0, 3.0],
@@ -4246,6 +5197,7 @@ test "S4.3 hydrology_basin" {
   assert_true(basin.count >= 1)
 }
 
+///|
 test "S4.3 hydrology_stream_cells" {
   let accum = @hydrology.FlowAccumResult::{
     accumulation: [[1, 5], [3, 8]],
@@ -4256,6 +5208,7 @@ test "S4.3 hydrology_stream_cells" {
   assert_eq(streams.length(), 2)
 }
 
+///|
 test "S4.3 hydrology_stream_order" {
   let accum = @hydrology.FlowAccumResult::{
     accumulation: [[1, 5], [3, 8]],
@@ -4268,6 +5221,7 @@ test "S4.3 hydrology_stream_order" {
   assert_eq(val, 8)
 }
 
+///|
 test "S4.3 hydrology_flow_length" {
   let r = @hydrology.make_raster([
     [5.0, 4.0, 3.0],
@@ -4279,22 +5233,22 @@ test "S4.3 hydrology_flow_length" {
   assert_true(len >= 0)
 }
 
+///|
 test "S4.3 hydrology_flow_length_out_of_bounds" {
-  let flow = @hydrology.FlowDirResult::{ directions: [[0]], rows: 1, cols: 1 }
+  let flow = @hydrology.FlowDirResult::{ directions: [[0]], rows: 1, cols: 1, }
   assert_eq(@hydrology.hydrology_flow_length(flow, 5, 5), 0)
 }
 
+///|
 test "S4.3 hydrology_stats" {
-  let r = @hydrology.make_raster([
-    [1.0, 2.0, 3.0],
-    [4.0, 5.0, 6.0],
-  ])
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
   let (min_v, max_v, avg) = @hydrology.hydrology_stats(r)
   assert_eq(min_v, 1.0)
   assert_eq(max_v, 6.0)
   assert_true(avg > 3.49 && avg < 3.51)
 }
 
+///|
 test "S4.3 hydrology_stats_empty" {
   let r = @hydrology.empty_raster()
   let (min_v, max_v, avg) = @hydrology.hydrology_stats(r)
@@ -4303,6 +5257,7 @@ test "S4.3 hydrology_stats_empty" {
   assert_eq(avg, 0.0)
 }
 
+///|
 test "S4.3 hydrology_snap_pour" {
   let accum = @hydrology.FlowAccumResult::{
     accumulation: [[1, 2], [3, 8]],
@@ -4314,6 +5269,7 @@ test "S4.3 hydrology_snap_pour" {
   assert_eq(c, 1)
 }
 
+///|
 test "S4.3 hydrology_snap_pour_out_of_bounds" {
   let accum = @hydrology.FlowAccumResult::{
     accumulation: [[1]],
@@ -4328,6 +5284,7 @@ test "S4.3 hydrology_snap_pour_out_of_bounds" {
 // S4.4 opcore/surface 表面分析测试
 // ============================================================
 
+///|
 test "S4.4 surface_slope_flat" {
   let r = @hydrology.make_raster([
     [5.0, 5.0, 5.0],
@@ -4338,6 +5295,7 @@ test "S4.4 surface_slope_flat" {
   assert_true(slope < 0.01)
 }
 
+///|
 test "S4.4 surface_slope_inclined" {
   let r = @hydrology.make_raster([
     [9.0, 9.0, 9.0],
@@ -4348,11 +5306,13 @@ test "S4.4 surface_slope_inclined" {
   assert_true(slope > 0.0)
 }
 
+///|
 test "S4.4 surface_slope_zero_cell_size" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@surface.surface_slope(r, 0, 0, 0.0), 0.0)
 }
 
+///|
 test "S4.4 surface_slope_percent" {
   let r = @hydrology.make_raster([
     [9.0, 9.0, 9.0],
@@ -4363,6 +5323,7 @@ test "S4.4 surface_slope_percent" {
   assert_true(pct > 0.0)
 }
 
+///|
 test "S4.4 surface_slope_grid" {
   let r = @hydrology.make_raster([
     [1.0, 2.0, 3.0],
@@ -4374,6 +5335,7 @@ test "S4.4 surface_slope_grid" {
   assert_eq(grid[0].length(), 3)
 }
 
+///|
 test "S4.4 surface_aspect_flat" {
   let r = @hydrology.make_raster([
     [5.0, 5.0, 5.0],
@@ -4384,6 +5346,7 @@ test "S4.4 surface_aspect_flat" {
   assert_eq(aspect, -1.0)
 }
 
+///|
 test "S4.4 surface_aspect_inclined" {
   let r = @hydrology.make_raster([
     [9.0, 9.0, 9.0],
@@ -4394,6 +5357,7 @@ test "S4.4 surface_aspect_inclined" {
   assert_true(aspect >= 0.0)
 }
 
+///|
 test "S4.4 surface_aspect_direction" {
   let r = @hydrology.make_raster([
     [5.0, 5.0, 5.0],
@@ -4404,6 +5368,7 @@ test "S4.4 surface_aspect_direction" {
   assert_eq(dir, @surface.AspectDirection::Flat)
 }
 
+///|
 test "S4.4 surface_aspect_grid" {
   let r = @hydrology.make_raster([
     [1.0, 2.0, 3.0],
@@ -4414,6 +5379,7 @@ test "S4.4 surface_aspect_grid" {
   assert_eq(grid.length(), 3)
 }
 
+///|
 test "S4.4 surface_hillshade" {
   let r = @hydrology.make_raster([
     [9.0, 9.0, 9.0],
@@ -4424,6 +5390,7 @@ test "S4.4 surface_hillshade" {
   assert_true(shade >= 0 && shade <= 255)
 }
 
+///|
 test "S4.4 surface_hillshade_flat" {
   let r = @hydrology.make_raster([
     [5.0, 5.0, 5.0],
@@ -4434,6 +5401,7 @@ test "S4.4 surface_hillshade_flat" {
   assert_true(shade > 0)
 }
 
+///|
 test "S4.4 surface_hillshade_grid" {
   let r = @hydrology.make_raster([
     [1.0, 2.0, 3.0],
@@ -4445,6 +5413,7 @@ test "S4.4 surface_hillshade_grid" {
   assert_eq(grid[0].length(), 3)
 }
 
+///|
 test "S4.4 surface_contour" {
   let r = @hydrology.make_raster([
     [1.0, 2.0, 3.0],
@@ -4455,16 +5424,19 @@ test "S4.4 surface_contour" {
   assert_true(contours.length() > 0)
 }
 
+///|
 test "S4.4 surface_contour_empty" {
   let r = @hydrology.empty_raster()
   assert_eq(@surface.surface_contour(r, 1.0).length(), 0)
 }
 
+///|
 test "S4.4 surface_contour_zero_interval" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@surface.surface_contour(r, 0.0).length(), 0)
 }
 
+///|
 test "S4.4 surface_contour_count" {
   let r = @hydrology.make_raster([
     [1.0, 2.0, 3.0],
@@ -4475,6 +5447,7 @@ test "S4.4 surface_contour_count" {
   assert_true(count > 0)
 }
 
+///|
 test "S4.4 surface_curvature" {
   let r = @hydrology.make_raster([
     [1.0, 2.0, 3.0],
@@ -4485,6 +5458,7 @@ test "S4.4 surface_curvature" {
   assert_true(curv >= -100.0 && curv <= 100.0)
 }
 
+///|
 test "S4.4 surface_curvature_flat" {
   let r = @hydrology.make_raster([
     [5.0, 5.0, 5.0],
@@ -4494,6 +5468,7 @@ test "S4.4 surface_curvature_flat" {
   assert_eq(@surface.surface_curvature(r, 1, 1, 1.0), 0.0)
 }
 
+///|
 test "S4.4 surface_curvature_grid" {
   let r = @hydrology.make_raster([
     [1.0, 2.0, 3.0],
@@ -4504,6 +5479,7 @@ test "S4.4 surface_curvature_grid" {
   assert_eq(grid.length(), 3)
 }
 
+///|
 test "S4.4 surface_viewshed" {
   let r = @hydrology.make_raster([
     [1.0, 1.0, 1.0],
@@ -4514,11 +5490,13 @@ test "S4.4 surface_viewshed" {
   assert_true(visible.length() >= 1)
 }
 
+///|
 test "S4.4 surface_viewshed_out_of_bounds" {
   let r = @hydrology.make_raster([[1.0]])
   assert_eq(@surface.surface_viewshed(r, 5, 5, 10).length(), 0)
 }
 
+///|
 test "S4.4 surface_viewshed_stats" {
   let r = @hydrology.make_raster([
     [1.0, 1.0, 1.0],
@@ -4530,6 +5508,7 @@ test "S4.4 surface_viewshed_stats" {
   assert_eq(total, 9)
 }
 
+///|
 test "S4.4 surface_stats" {
   let r = @hydrology.make_raster([
     [1.0, 2.0, 3.0],
@@ -4540,6 +5519,7 @@ test "S4.4 surface_stats" {
   assert_true(avg_slope >= 0.0)
 }
 
+///|
 test "S4.4 surface_stats_empty" {
   let r = @hydrology.empty_raster()
   let (avg_slope, avg_aspect) = @surface.surface_stats(r, 1.0)
@@ -4547,6 +5527,7 @@ test "S4.4 surface_stats_empty" {
   assert_eq(avg_aspect, 0.0)
 }
 
+///|
 test "S4.4 make_surface_result" {
   let sr = @surface.make_surface_result("slope", 45.0, 1, 2)
   assert_eq(sr.kind, "slope")
@@ -4555,6 +5536,7 @@ test "S4.4 make_surface_result" {
   assert_eq(sr.col, 2)
 }
 
+///|
 test "S4.4 slope_result" {
   let r = @hydrology.make_raster([
     [9.0, 9.0, 9.0],
@@ -4567,6 +5549,7 @@ test "S4.4 slope_result" {
   assert_eq(sr.col, 1)
 }
 
+///|
 test "S4.4 aspect_result" {
   let r = @hydrology.make_raster([
     [9.0, 9.0, 9.0],
@@ -4581,30 +5564,36 @@ test "S4.4 aspect_result" {
 // S4.5 opcore/density 密度分析测试
 // ============================================================
 
+///|
 test "S4.5 quadratic_kernel" {
   let k = @density.quadratic_kernel(0.0, 2.0)
   assert_true(k > 0.0)
 }
 
+///|
 test "S4.5 quadratic_kernel_at_radius" {
   let k = @density.quadratic_kernel(2.0, 2.0)
   assert_eq(k, 0.0)
 }
 
+///|
 test "S4.5 quadratic_kernel_beyond_radius" {
   let k = @density.quadratic_kernel(3.0, 2.0)
   assert_eq(k, 0.0)
 }
 
+///|
 test "S4.5 quadratic_kernel_zero_radius" {
   assert_eq(@density.quadratic_kernel(0.0, 0.0), 0.0)
 }
 
+///|
 test "S4.5 gaussian_kernel" {
   let k = @density.gaussian_kernel(0.0, 1.0)
   assert_true(k > 0.0)
 }
 
+///|
 test "S4.5 density_kernel_at" {
   let points = [
     @proximity.make_point(0.0, 0.0),
@@ -4616,33 +5605,44 @@ test "S4.5 density_kernel_at" {
   assert_true(d > 0.0)
 }
 
+///|
 test "S4.5 density_kernel_at_empty" {
   let center = @proximity.make_point(0.0, 0.0)
   assert_eq(@density.density_kernel_at([], center, 2.0), 0.0)
 }
 
+///|
 test "S4.5 density_kernel_at_zero_radius" {
   let points = [@proximity.make_point(0.0, 0.0)]
   let center = @proximity.make_point(0.0, 0.0)
   assert_eq(@density.density_kernel_at(points, center, 0.0), 0.0)
 }
 
+///|
 test "S4.5 density_kernel_grid" {
   let points = [
     @proximity.make_point(1.0, 1.0),
     @proximity.make_point(3.0, 3.0),
   ]
-  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 4.0))
+  let extent = (
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+  )
   let grid = @density.density_kernel_grid(points, 2.0, 1.0, extent)
   assert_eq(grid.length(), 5)
   assert_eq(grid[0].length(), 5)
 }
 
+///|
 test "S4.5 density_kernel_grid_empty" {
-  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 4.0))
+  let extent = (
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+  )
   assert_eq(@density.density_kernel_grid([], 2.0, 1.0, extent).length(), 0)
 }
 
+///|
 test "S4.5 density_point_count_at" {
   let points = [
     @proximity.make_point(0.0, 0.0),
@@ -4653,11 +5653,13 @@ test "S4.5 density_point_count_at" {
   assert_eq(@density.density_point_count_at(points, center, 2.0), 2)
 }
 
+///|
 test "S4.5 density_point_count_at_empty" {
   let center = @proximity.make_point(0.0, 0.0)
   assert_eq(@density.density_point_count_at([], center, 2.0), 0)
 }
 
+///|
 test "S4.5 density_point_at" {
   let points = [
     @proximity.make_point(0.0, 0.0),
@@ -4668,22 +5670,28 @@ test "S4.5 density_point_at" {
   assert_true(d > 0.0)
 }
 
+///|
 test "S4.5 density_point_at_zero_radius" {
   let points = [@proximity.make_point(0.0, 0.0)]
   let center = @proximity.make_point(0.0, 0.0)
   assert_eq(@density.density_point_at(points, center, 0.0), 0.0)
 }
 
+///|
 test "S4.5 density_point_grid" {
   let points = [
     @proximity.make_point(1.0, 1.0),
     @proximity.make_point(3.0, 3.0),
   ]
-  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 4.0))
+  let extent = (
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+  )
   let grid = @density.density_point_grid(points, 2.0, 1.0, extent)
   assert_eq(grid.length(), 5)
 }
 
+///|
 test "S4.5 density_line_at" {
   let lines = [
     [@proximity.make_point(0.0, 0.0), @proximity.make_point(2.0, 0.0)],
@@ -4694,26 +5702,35 @@ test "S4.5 density_line_at" {
   assert_true(d > 0.0)
 }
 
+///|
 test "S4.5 density_line_at_empty" {
   let center = @proximity.make_point(0.0, 0.0)
   assert_eq(@density.density_line_at([], center, 2.0), 0.0)
 }
 
+///|
 test "S4.5 density_line_at_zero_radius" {
-  let lines = [[@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 0.0)]]
+  let lines = [
+    [@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 0.0)],
+  ]
   let center = @proximity.make_point(0.0, 0.0)
   assert_eq(@density.density_line_at(lines, center, 0.0), 0.0)
 }
 
+///|
 test "S4.5 density_line_grid" {
   let lines = [
     [@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 0.0)],
   ]
-  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 4.0))
+  let extent = (
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+  )
   let grid = @density.density_line_grid(lines, 3.0, 1.0, extent)
   assert_eq(grid.length(), 5)
 }
 
+///|
 test "S4.5 density_stats" {
   let grid = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
   let (min_v, max_v, avg) = @density.density_stats(grid)
@@ -4722,6 +5739,7 @@ test "S4.5 density_stats" {
   assert_true(avg > 3.49 && avg < 3.51)
 }
 
+///|
 test "S4.5 density_stats_empty" {
   let (min_v, max_v, avg) = @density.density_stats([])
   assert_eq(min_v, 0.0)
@@ -4729,6 +5747,7 @@ test "S4.5 density_stats_empty" {
   assert_eq(avg, 0.0)
 }
 
+///|
 test "S4.5 make_density_result" {
   let r = @density.make_density_result(1.0, 2.0, 0.5)
   assert_eq(r.x, 1.0)
@@ -4736,6 +5755,7 @@ test "S4.5 make_density_result" {
   assert_eq(r.value, 0.5)
 }
 
+///|
 test "S4.5 density_kernel_results" {
   let points = [
     @proximity.make_point(0.0, 0.0),
@@ -4746,47 +5766,57 @@ test "S4.5 density_kernel_results" {
   assert_true(results[0].value > 0.0)
 }
 
+///|
 test "S4.5 density_kernel_results_empty" {
   assert_eq(@density.density_kernel_results([], 2.0).length(), 0)
 }
 
+///|
 test "S4.5 density_method_name" {
-  assert_eq(@density.density_method_name(@density.DensityMethod::KernelDensity), "kernel")
-  assert_eq(@density.density_method_name(@density.DensityMethod::PointDensity), "point")
-  assert_eq(@density.density_method_name(@density.DensityMethod::LineDensity), "line")
+  assert_eq(
+    @density.density_method_name(@density.DensityMethod::KernelDensity),
+    "kernel",
+  )
+  assert_eq(
+    @density.density_method_name(@density.DensityMethod::PointDensity),
+    "point",
+  )
+  assert_eq(
+    @density.density_method_name(@density.DensityMethod::LineDensity),
+    "line",
+  )
 }
 // ============================================================
 // S4.6 opcore/distance 距离分析测试
 // ============================================================
 
+///|
 test "S4.6 make_cost_surface" {
-  let cs = @distance.make_cost_surface([
-    [1.0, 2.0],
-    [3.0, 4.0],
-  ])
+  let cs = @distance.make_cost_surface([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(cs.rows, 2)
   assert_eq(cs.cols, 2)
 }
 
+///|
 test "S4.6 cost_get" {
-  let cs = @distance.make_cost_surface([
-    [1.0, 2.0],
-    [3.0, 4.0],
-  ])
+  let cs = @distance.make_cost_surface([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@distance.cost_get(cs, 0, 0), 1.0)
   assert_eq(@distance.cost_get(cs, 1, 1), 4.0)
 }
 
+///|
 test "S4.6 cost_get_out_of_bounds" {
   let cs = @distance.make_cost_surface([[1.0]])
   assert_eq(@distance.cost_get(cs, 5, 5), 1.0)
 }
 
+///|
 test "S4.6 cost_get_zero_cost" {
   let cs = @distance.make_cost_surface([[0.0]])
   assert_eq(@distance.cost_get(cs, 0, 0), 1.0)
 }
 
+///|
 test "S4.6 distance_euclidean_grid" {
   let result = @distance.distance_euclidean_grid([(0, 0)], 3, 3, 1.0)
   assert_eq(result.rows, 3)
@@ -4795,22 +5825,26 @@ test "S4.6 distance_euclidean_grid" {
   assert_true(result.grid[2][2] > 2.8 && result.grid[2][2] < 2.9)
 }
 
+///|
 test "S4.6 distance_euclidean_grid_empty_sources" {
   let result = @distance.distance_euclidean_grid([], 2, 2, 1.0)
   assert_eq(result.grid[0][0], 0.0)
 }
 
+///|
 test "S4.6 distance_euclidean_allocation" {
   let alloc = @distance.distance_euclidean_allocation([(0, 0), (2, 2)], 3, 3)
   assert_eq(alloc[0][0], 0)
   assert_eq(alloc[2][2], 1)
 }
 
+///|
 test "S4.6 distance_euclidean_allocation_empty" {
   let alloc = @distance.distance_euclidean_allocation([], 2, 2)
   assert_eq(alloc[0][0], -1)
 }
 
+///|
 test "S4.6 distance_cost" {
   let cs = @distance.make_cost_surface([
     [1.0, 1.0, 1.0],
@@ -4823,12 +5857,14 @@ test "S4.6 distance_cost" {
   assert_true(result.grid[2][2] > 0.0)
 }
 
+///|
 test "S4.6 distance_cost_empty_sources" {
   let cs = @distance.make_cost_surface([[1.0, 1.0], [1.0, 1.0]])
   let result = @distance.distance_cost([], cs, 1.0)
   assert_eq(result.grid[0][0], 0.0)
 }
 
+///|
 test "S4.6 distance_cost_allocation" {
   let cs = @distance.make_cost_surface([
     [1.0, 1.0, 1.0],
@@ -4840,6 +5876,7 @@ test "S4.6 distance_cost_allocation" {
   assert_eq(alloc[2][2], 1)
 }
 
+///|
 test "S4.6 distance_back_link" {
   let cs = @distance.make_cost_surface([
     [1.0, 1.0, 1.0],
@@ -4853,6 +5890,7 @@ test "S4.6 distance_back_link" {
   assert_eq(c, 0)
 }
 
+///|
 test "S4.6 distance_optimal_path" {
   let cs = @distance.make_cost_surface([
     [1.0, 1.0, 1.0],
@@ -4864,18 +5902,21 @@ test "S4.6 distance_optimal_path" {
   assert_true(path.total_cost >= 0.0)
 }
 
+///|
 test "S4.6 distance_optimal_path_same_point" {
   let cs = @distance.make_cost_surface([[1.0]])
   let path = @distance.distance_optimal_path(cs, (0, 0), (0, 0))
   assert_eq(path.length, 1)
 }
 
+///|
 test "S4.6 distance_optimal_path_out_of_bounds" {
   let cs = @distance.make_cost_surface([[1.0]])
   let path = @distance.distance_optimal_path(cs, (5, 5), (0, 0))
   assert_eq(path.length, 0)
 }
 
+///|
 test "S4.6 distance_corridor" {
   let cs = @distance.make_cost_surface([
     [1.0, 1.0, 1.0],
@@ -4886,6 +5927,7 @@ test "S4.6 distance_corridor" {
   assert_true(corridor.length() >= 1)
 }
 
+///|
 test "S4.6 distance_stats" {
   let result = @distance.distance_euclidean_grid([(0, 0)], 3, 3, 1.0)
   let (min_v, max_v, avg) = @distance.distance_stats(result)
@@ -4894,25 +5936,29 @@ test "S4.6 distance_stats" {
   assert_true(avg > 0.0)
 }
 
+///|
 test "S4.6 distance_stats_empty" {
-  let result = @distance.DistanceResult::{ grid: [], rows: 0, cols: 0 }
+  let result = @distance.DistanceResult::{ grid: [], rows: 0, cols: 0, }
   let (min_v, max_v, avg) = @distance.distance_stats(result)
   assert_eq(min_v, 0.0)
   assert_eq(max_v, 0.0)
   assert_eq(avg, 0.0)
 }
 
+///|
 test "S4.6 make_path_result" {
   let path = @distance.make_path_result([(0, 0), (1, 1)], 5.0)
   assert_eq(path.length, 2)
   assert_eq(path.total_cost, 5.0)
 }
 
+///|
 test "S4.6 path_cell_count" {
   let path = @distance.make_path_result([(0, 0), (1, 1), (2, 2)], 10.0)
   assert_eq(@distance.path_cell_count(path), 3)
 }
 
+///|
 test "S4.6 path_cost" {
   let path = @distance.make_path_result([(0, 0), (1, 1)], 7.5)
   assert_eq(@distance.path_cost(path), 7.5)
@@ -4922,13 +5968,24 @@ test "S4.6 path_cost" {
 // S4.7 learncore/interpolation 插值分析测试
 // ============================================================
 
+///|
 test "S4.7 InterpolationMethod name" {
   assert_eq(@interpolation.interpolation_method_name(@interpolation.IDW), "idw")
-  assert_eq(@interpolation.interpolation_method_name(@interpolation.Kriging), "kriging")
-  assert_eq(@interpolation.interpolation_method_name(@interpolation.Spline), "spline")
-  assert_eq(@interpolation.interpolation_method_name(@interpolation.NaturalNeighbor), "natural_neighbor")
+  assert_eq(
+    @interpolation.interpolation_method_name(@interpolation.Kriging),
+    "kriging",
+  )
+  assert_eq(
+    @interpolation.interpolation_method_name(@interpolation.Spline),
+    "spline",
+  )
+  assert_eq(
+    @interpolation.interpolation_method_name(@interpolation.NaturalNeighbor),
+    "natural_neighbor",
+  )
 }
 
+///|
 test "S4.7 make_sample_point" {
   let p = @interpolation.make_sample_point(1.0, 2.0, 3.0)
   assert_eq(p.x, 1.0)
@@ -4936,25 +5993,34 @@ test "S4.7 make_sample_point" {
   assert_eq(p.value, 3.0)
 }
 
+///|
 test "S4.7 make_interpolation_result" {
-  let r = @interpolation.make_interpolation_result(1.0, 2.0, 3.0, @interpolation.IDW)
+  let r = @interpolation.make_interpolation_result(
+    1.0,
+    2.0,
+    3.0,
+    @interpolation.IDW,
+  )
   assert_eq(r.x, 1.0)
   assert_eq(r.y, 2.0)
   assert_eq(r.value, 3.0)
   assert_eq(r.interp_method, @interpolation.IDW)
 }
 
+///|
 test "S4.7 IDW empty samples returns 0" {
   let target = @proximity.make_point(0.0, 0.0)
   assert_eq(@interpolation.interpolation_idw([], target, 2.0), 0.0)
 }
 
+///|
 test "S4.7 IDW coincident point returns sample value" {
   let samples = [@interpolation.make_sample_point(0.0, 0.0, 5.0)]
   let target = @proximity.make_point(0.0, 0.0)
   assert_eq(@interpolation.interpolation_idw(samples, target, 2.0), 5.0)
 }
 
+///|
 test "S4.7 IDW single sample" {
   let samples = [@interpolation.make_sample_point(1.0, 0.0, 10.0)]
   let target = @proximity.make_point(0.0, 0.0)
@@ -4962,6 +6028,7 @@ test "S4.7 IDW single sample" {
   assert_true((result - 10.0).abs() < 0.0001)
 }
 
+///|
 test "S4.7 IDW two samples weighted average" {
   let samples = [
     @interpolation.make_sample_point(0.0, 0.0, 0.0),
@@ -4972,6 +6039,7 @@ test "S4.7 IDW two samples weighted average" {
   assert_true((result - 5.0).abs() < 0.0001)
 }
 
+///|
 test "S4.7 IDW power=1 closer sample dominates" {
   let samples = [
     @interpolation.make_sample_point(0.0, 0.0, 0.0),
@@ -4982,6 +6050,7 @@ test "S4.7 IDW power=1 closer sample dominates" {
   assert_true(result < 50.0)
 }
 
+///|
 test "S4.7 IDW negative power defaults to 2" {
   let samples = [
     @interpolation.make_sample_point(0.0, 0.0, 0.0),
@@ -4992,88 +6061,121 @@ test "S4.7 IDW negative power defaults to 2" {
   assert_true((result - 5.0).abs() < 0.0001)
 }
 
+///|
 test "S4.7 IDW grid empty samples" {
-  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(2.0, 2.0))
+  let extent = (
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(2.0, 2.0),
+  )
   let grid = @interpolation.interpolation_idw_grid([], 2.0, 1.0, extent)
   assert_eq(grid.length(), 0)
 }
 
+///|
 test "S4.7 IDW grid non-empty" {
   let samples = [
     @interpolation.make_sample_point(0.0, 0.0, 0.0),
     @interpolation.make_sample_point(2.0, 2.0, 10.0),
   ]
-  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(2.0, 2.0))
+  let extent = (
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(2.0, 2.0),
+  )
   let grid = @interpolation.interpolation_idw_grid(samples, 2.0, 1.0, extent)
   assert_eq(grid.length(), 3)
   assert_eq(grid[0].length(), 3)
 }
 
+///|
 test "S4.7 IDW grid zero cell_size" {
   let samples = [@interpolation.make_sample_point(0.0, 0.0, 1.0)]
-  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(2.0, 2.0))
+  let extent = (
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(2.0, 2.0),
+  )
   let grid = @interpolation.interpolation_idw_grid(samples, 2.0, 0.0, extent)
   assert_eq(grid.length(), 0)
 }
 
+///|
 test "S4.7 Kriging empty samples" {
   let target = @proximity.make_point(0.0, 0.0)
   assert_eq(@interpolation.interpolation_kriging([], target), 0.0)
 }
 
+///|
 test "S4.7 Kriging coincident" {
   let samples = [@interpolation.make_sample_point(1.0, 1.0, 7.0)]
   let target = @proximity.make_point(1.0, 1.0)
   assert_eq(@interpolation.interpolation_kriging(samples, target), 7.0)
 }
 
+///|
 test "S4.7 Kriging grid" {
   let samples = [
     @interpolation.make_sample_point(0.0, 0.0, 0.0),
     @interpolation.make_sample_point(1.0, 1.0, 5.0),
   ]
-  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 1.0))
+  let extent = (
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 1.0),
+  )
   let grid = @interpolation.interpolation_kriging_grid(samples, 1.0, extent)
   assert_eq(grid.length(), 2)
   assert_eq(grid[0].length(), 2)
 }
 
+///|
 test "S4.7 Spline empty samples" {
   let target = @proximity.make_point(0.0, 0.0)
   assert_eq(@interpolation.interpolation_spline([], target), 0.0)
 }
 
+///|
 test "S4.7 Spline coincident" {
   let samples = [@interpolation.make_sample_point(0.0, 0.0, 3.0)]
   let target = @proximity.make_point(0.0, 0.0)
   assert_eq(@interpolation.interpolation_spline(samples, target), 3.0)
 }
 
+///|
 test "S4.7 Spline grid" {
   let samples = [@interpolation.make_sample_point(0.0, 0.0, 1.0)]
-  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 1.0))
+  let extent = (
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 1.0),
+  )
   let grid = @interpolation.interpolation_spline_grid(samples, 1.0, extent)
   assert_eq(grid.length(), 2)
 }
 
+///|
 test "S4.7 NaturalNeighbor empty samples" {
   let target = @proximity.make_point(0.0, 0.0)
   assert_eq(@interpolation.interpolation_natural_neighbor([], target), 0.0)
 }
 
+///|
 test "S4.7 NaturalNeighbor coincident" {
   let samples = [@interpolation.make_sample_point(2.0, 2.0, 9.0)]
   let target = @proximity.make_point(2.0, 2.0)
   assert_eq(@interpolation.interpolation_natural_neighbor(samples, target), 9.0)
 }
 
+///|
 test "S4.7 NaturalNeighbor grid" {
   let samples = [@interpolation.make_sample_point(0.0, 0.0, 1.0)]
-  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 1.0))
-  let grid = @interpolation.interpolation_natural_neighbor_grid(samples, 1.0, extent)
+  let extent = (
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 1.0),
+  )
+  let grid = @interpolation.interpolation_natural_neighbor_grid(
+    samples, 1.0, extent,
+  )
   assert_eq(grid.length(), 2)
 }
 
+///|
 test "S4.7 interpolate by method IDW" {
   let samples = [
     @interpolation.make_sample_point(0.0, 0.0, 0.0),
@@ -5085,6 +6187,7 @@ test "S4.7 interpolate by method IDW" {
   assert_true((r1 - r2).abs() < 0.0001)
 }
 
+///|
 test "S4.7 interpolate by method Kriging" {
   let samples = [@interpolation.make_sample_point(0.0, 0.0, 5.0)]
   let target = @proximity.make_point(1.0, 0.0)
@@ -5093,6 +6196,7 @@ test "S4.7 interpolate by method Kriging" {
   assert_true((r1 - r2).abs() < 0.0001)
 }
 
+///|
 test "S4.7 interpolate by method Spline" {
   let samples = [@interpolation.make_sample_point(0.0, 0.0, 5.0)]
   let target = @proximity.make_point(1.0, 0.0)
@@ -5101,46 +6205,90 @@ test "S4.7 interpolate by method Spline" {
   assert_true((r1 - r2).abs() < 0.0001)
 }
 
+///|
 test "S4.7 interpolate by method NaturalNeighbor" {
   let samples = [@interpolation.make_sample_point(0.0, 0.0, 5.0)]
   let target = @proximity.make_point(1.0, 0.0)
-  let r1 = @interpolation.interpolate(samples, target, @interpolation.NaturalNeighbor)
+  let r1 = @interpolation.interpolate(
+    samples,
+    target,
+    @interpolation.NaturalNeighbor,
+  )
   let r2 = @interpolation.interpolation_natural_neighbor(samples, target)
   assert_true((r1 - r2).abs() < 0.0001)
 }
 
+///|
 test "S4.7 interpolate empty samples" {
   let target = @proximity.make_point(0.0, 0.0)
   assert_eq(@interpolation.interpolate([], target, @interpolation.IDW), 0.0)
   assert_eq(@interpolation.interpolate([], target, @interpolation.Kriging), 0.0)
   assert_eq(@interpolation.interpolate([], target, @interpolation.Spline), 0.0)
-  assert_eq(@interpolation.interpolate([], target, @interpolation.NaturalNeighbor), 0.0)
+  assert_eq(
+    @interpolation.interpolate([], target, @interpolation.NaturalNeighbor),
+    0.0,
+  )
 }
 
+///|
 test "S4.7 interpolate_grid by method" {
   let samples = [@interpolation.make_sample_point(0.0, 0.0, 1.0)]
-  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 1.0))
-  let g1 = @interpolation.interpolate_grid(samples, @interpolation.IDW, 1.0, extent)
-  let g2 = @interpolation.interpolate_grid(samples, @interpolation.Kriging, 1.0, extent)
-  let g3 = @interpolation.interpolate_grid(samples, @interpolation.Spline, 1.0, extent)
-  let g4 = @interpolation.interpolate_grid(samples, @interpolation.NaturalNeighbor, 1.0, extent)
+  let extent = (
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 1.0),
+  )
+  let g1 = @interpolation.interpolate_grid(
+    samples,
+    @interpolation.IDW,
+    1.0,
+    extent,
+  )
+  let g2 = @interpolation.interpolate_grid(
+    samples,
+    @interpolation.Kriging,
+    1.0,
+    extent,
+  )
+  let g3 = @interpolation.interpolate_grid(
+    samples,
+    @interpolation.Spline,
+    1.0,
+    extent,
+  )
+  let g4 = @interpolation.interpolate_grid(
+    samples,
+    @interpolation.NaturalNeighbor,
+    1.0,
+    extent,
+  )
   assert_eq(g1.length(), 2)
   assert_eq(g2.length(), 2)
   assert_eq(g3.length(), 2)
   assert_eq(g4.length(), 2)
 }
 
+///|
 test "S4.7 interpolate_grid empty samples" {
-  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 1.0))
-  let grid = @interpolation.interpolate_grid([], @interpolation.IDW, 1.0, extent)
+  let extent = (
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 1.0),
+  )
+  let grid = @interpolation.interpolate_grid(
+    [],
+    @interpolation.IDW,
+    1.0,
+    extent,
+  )
   assert_eq(grid.length(), 0)
 }
 
+///|
 test "S4.7 IDW results empty" {
   let results = @interpolation.interpolation_idw_results([], 2.0)
   assert_eq(results.length(), 0)
 }
 
+///|
 test "S4.7 IDW results non-empty" {
   let samples = [
     @interpolation.make_sample_point(0.0, 0.0, 5.0),
@@ -5153,6 +6301,7 @@ test "S4.7 IDW results non-empty" {
   assert_eq(results[0].interp_method, @interpolation.IDW)
 }
 
+///|
 test "S4.7 IDW results coincident returns exact value" {
   let samples = [@interpolation.make_sample_point(0.0, 0.0, 5.0)]
   let results = @interpolation.interpolation_idw_results(samples, 2.0)
@@ -5160,6 +6309,7 @@ test "S4.7 IDW results coincident returns exact value" {
   assert_true((results[0].value - 5.0).abs() < 0.0001)
 }
 
+///|
 test "S4.7 interpolation stats empty grid" {
   let (min_v, max_v, avg) = @interpolation.interpolation_stats([])
   assert_eq(min_v, 0.0)
@@ -5167,6 +6317,7 @@ test "S4.7 interpolation stats empty grid" {
   assert_eq(avg, 0.0)
 }
 
+///|
 test "S4.7 interpolation stats non-empty grid" {
   let grid = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
   let (min_v, max_v, avg) = @interpolation.interpolation_stats(grid)
@@ -5175,6 +6326,7 @@ test "S4.7 interpolation stats non-empty grid" {
   assert_true((avg - 3.5).abs() < 0.0001)
 }
 
+///|
 test "S4.7 interpolation stats single cell" {
   let grid = [[7.0]]
   let (min_v, max_v, avg) = @interpolation.interpolation_stats(grid)
@@ -5183,6 +6335,7 @@ test "S4.7 interpolation stats single cell" {
   assert_eq(avg, 7.0)
 }
 
+///|
 test "S4.7 interpolation stats ragged grid" {
   let grid = [[1.0, 2.0], [3.0]]
   let (min_v, max_v, avg) = @interpolation.interpolation_stats(grid)
@@ -5191,6 +6344,7 @@ test "S4.7 interpolation stats ragged grid" {
   assert_true((avg - 2.0).abs() < 0.0001)
 }
 
+///|
 test "S4.7 IDW symmetry: equidistant samples average" {
   let samples = [
     @interpolation.make_sample_point(1.0, 0.0, 10.0),
@@ -5201,6 +6355,7 @@ test "S4.7 IDW symmetry: equidistant samples average" {
   assert_true((result - 15.0).abs() < 0.0001)
 }
 
+///|
 test "S4.7 IDW higher power favors closer point" {
   let samples = [
     @interpolation.make_sample_point(1.0, 0.0, 0.0),
@@ -5216,6 +6371,7 @@ test "S4.7 IDW higher power favors closer point" {
 // S4.8 opcore/zonal 区域分析测试
 // ============================================================
 
+///|
 test "S4.8 zonal ZonalStat name" {
   assert_eq(@zonal.zonal_stat_name(@zonal.ZonalMean), "mean")
   assert_eq(@zonal.zonal_stat_name(@zonal.ZonalSum), "sum")
@@ -5229,6 +6385,7 @@ test "S4.8 zonal ZonalStat name" {
   assert_eq(@zonal.zonal_stat_name(@zonal.ZonalMedian), "median")
 }
 
+///|
 test "S4.8 zonal make_zone_result" {
   let r = @zonal.make_zone_result(1, 5.0, 3)
   assert_eq(r.zone_id, 1)
@@ -5236,6 +6393,7 @@ test "S4.8 zonal make_zone_result" {
   assert_eq(r.cell_count, 3)
 }
 
+///|
 test "S4.8 zonal make_zonal_geometry_result" {
   let r = @zonal.make_zonal_geometry_result(2, 10.0, 8.0, 1.25, 3.0, 4.0)
   assert_eq(r.zone_id, 2)
@@ -5246,6 +6404,7 @@ test "S4.8 zonal make_zonal_geometry_result" {
   assert_eq(r.centroid_y, 4.0)
 }
 
+///|
 test "S4.8 zonal_mean basic" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
@@ -5253,36 +6412,42 @@ test "S4.8 zonal_mean basic" {
   assert_true((m - 2.5).abs() < 0.0001)
 }
 
+///|
 test "S4.8 zonal_mean empty zone" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   assert_eq(@zonal.zonal_mean(value, zone, 99), 0.0)
 }
 
+///|
 test "S4.8 zonal_sum basic" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   assert_eq(@zonal.zonal_sum(value, zone, 1), 10.0)
 }
 
+///|
 test "S4.8 zonal_min basic" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   assert_eq(@zonal.zonal_min(value, zone, 1), 1.0)
 }
 
+///|
 test "S4.8 zonal_max basic" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   assert_eq(@zonal.zonal_max(value, zone, 1), 4.0)
 }
 
+///|
 test "S4.8 zonal_range basic" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   assert_eq(@zonal.zonal_range(value, zone, 1), 3.0)
 }
 
+///|
 test "S4.8 zonal_count basic" {
   let zone = @hydrology.make_raster([[1.0, 1.0], [2.0, 1.0]])
   assert_eq(@zonal.zonal_count(zone, 1), 3)
@@ -5290,46 +6455,56 @@ test "S4.8 zonal_count basic" {
   assert_eq(@zonal.zonal_count(zone, 99), 0)
 }
 
+///|
 test "S4.8 zonal_std basic" {
   let value = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   assert_eq(@zonal.zonal_std(value, zone, 1), 0.0)
 }
 
+///|
 test "S4.8 zonal_majority basic" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   assert_eq(@zonal.zonal_majority(value, zone, 1), 1.0)
 }
 
+///|
 test "S4.8 zonal_minority basic" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   assert_eq(@zonal.zonal_minority(value, zone, 1), 4.0)
 }
 
+///|
 test "S4.8 zonal_median basic" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   assert_eq(@zonal.zonal_median(value, zone, 1), 3.0)
 }
 
+///|
 test "S4.8 zonal_statistics generic" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
-  assert_true((@zonal.zonal_statistics(value, zone, 1, @zonal.ZonalMean) - 2.5).abs() < 0.0001)
+  assert_true(
+    (@zonal.zonal_statistics(value, zone, 1, @zonal.ZonalMean) - 2.5).abs() <
+    0.0001,
+  )
   assert_eq(@zonal.zonal_statistics(value, zone, 1, @zonal.ZonalSum), 10.0)
   assert_eq(@zonal.zonal_statistics(value, zone, 1, @zonal.ZonalMin), 1.0)
   assert_eq(@zonal.zonal_statistics(value, zone, 1, @zonal.ZonalMax), 4.0)
   assert_eq(@zonal.zonal_statistics(value, zone, 1, @zonal.ZonalCount), 4.0)
 }
 
+///|
 test "S4.8 zonal_statistics empty zone" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   assert_eq(@zonal.zonal_statistics(value, zone, 99, @zonal.ZonalMean), 0.0)
 }
 
+///|
 test "S4.8 zonal_geometry basic" {
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   let g = @zonal.zonal_geometry(zone, 1, 1.0)
@@ -5339,6 +6514,7 @@ test "S4.8 zonal_geometry basic" {
   assert_true(g.thickness > 0.0)
 }
 
+///|
 test "S4.8 zonal_geometry empty zone" {
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   let g = @zonal.zonal_geometry(zone, 99, 1.0)
@@ -5347,24 +6523,28 @@ test "S4.8 zonal_geometry empty zone" {
   assert_eq(g.thickness, 0.0)
 }
 
+///|
 test "S4.8 zonal_geometry_area" {
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   assert_eq(@zonal.zonal_geometry_area(zone, 1, 1.0), 4.0)
   assert_eq(@zonal.zonal_geometry_area(zone, 1, 2.0), 16.0)
 }
 
+///|
 test "S4.8 zonal_geometry_perimeter" {
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   let p = @zonal.zonal_geometry_perimeter(zone, 1, 1.0)
   assert_true(p > 0.0)
 }
 
+///|
 test "S4.8 zonal_geometry_thickness" {
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
   let t = @zonal.zonal_geometry_thickness(zone, 1, 1.0)
   assert_true(t > 0.0)
 }
 
+///|
 test "S4.8 zonal_fill basic" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 0.0], [0.0, 1.0]])
@@ -5375,6 +6555,7 @@ test "S4.8 zonal_fill basic" {
   assert_eq(@hydrology.raster_get(filled, 1, 1), 9.0)
 }
 
+///|
 test "S4.8 zonal_fill no matching zone" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
@@ -5383,6 +6564,7 @@ test "S4.8 zonal_fill no matching zone" {
   assert_eq(@hydrology.raster_get(filled, 1, 1), 4.0)
 }
 
+///|
 test "S4.8 zonal_stats_all basic" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [2.0, 2.0]])
@@ -5390,6 +6572,7 @@ test "S4.8 zonal_stats_all basic" {
   assert_eq(results.length(), 2)
 }
 
+///|
 test "S4.8 zonal_stats_all single zone" {
   let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
@@ -5399,6 +6582,7 @@ test "S4.8 zonal_stats_all single zone" {
   assert_eq(results[0].cell_count, 4)
 }
 
+///|
 test "S4.8 zonal multi-zone mean" {
   let value = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
   let zone = @hydrology.make_raster([[1.0, 1.0], [2.0, 2.0]])
@@ -5412,6 +6596,7 @@ test "S4.8 zonal multi-zone mean" {
 // S4.8 opcore/local_stats 局部分析测试
 // ============================================================
 
+///|
 test "S4.8 local FocalStat name" {
   assert_eq(@local_stats.focal_stat_name(@local_stats.FocalMean), "mean")
   assert_eq(@local_stats.focal_stat_name(@local_stats.FocalSum), "sum")
@@ -5420,18 +6605,35 @@ test "S4.8 local FocalStat name" {
   assert_eq(@local_stats.focal_stat_name(@local_stats.FocalRange), "range")
   assert_eq(@local_stats.focal_stat_name(@local_stats.FocalStd), "std")
   assert_eq(@local_stats.focal_stat_name(@local_stats.FocalCount), "count")
-  assert_eq(@local_stats.focal_stat_name(@local_stats.FocalMajority), "majority")
-  assert_eq(@local_stats.focal_stat_name(@local_stats.FocalMinority), "minority")
+  assert_eq(
+    @local_stats.focal_stat_name(@local_stats.FocalMajority),
+    "majority",
+  )
+  assert_eq(
+    @local_stats.focal_stat_name(@local_stats.FocalMinority),
+    "minority",
+  )
   assert_eq(@local_stats.focal_stat_name(@local_stats.FocalMedian), "median")
 }
 
+///|
 test "S4.8 local NeighborhoodShape name" {
-  assert_eq(@local_stats.neighborhood_shape_name(@local_stats.NRectangle), "rectangle")
-  assert_eq(@local_stats.neighborhood_shape_name(@local_stats.NCircle), "circle")
-  assert_eq(@local_stats.neighborhood_shape_name(@local_stats.NAnnulus), "annulus")
+  assert_eq(
+    @local_stats.neighborhood_shape_name(@local_stats.NRectangle),
+    "rectangle",
+  )
+  assert_eq(
+    @local_stats.neighborhood_shape_name(@local_stats.NCircle),
+    "circle",
+  )
+  assert_eq(
+    @local_stats.neighborhood_shape_name(@local_stats.NAnnulus),
+    "annulus",
+  )
   assert_eq(@local_stats.neighborhood_shape_name(@local_stats.NWedge), "wedge")
 }
 
+///|
 test "S4.8 local make_focal_result" {
   let r = @local_stats.make_focal_result(5.0, 1, 2, @local_stats.FocalMean)
   assert_eq(r.value, 5.0)
@@ -5440,93 +6642,127 @@ test "S4.8 local make_focal_result" {
   assert_eq(r.stat, @local_stats.FocalMean)
 }
 
+///|
 test "S4.8 focal_mean radius 0" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@local_stats.focal_mean(r, 0, 0, 0), 1.0)
   assert_eq(@local_stats.focal_mean(r, 1, 1, 0), 4.0)
 }
 
+///|
 test "S4.8 focal_mean radius 1 center" {
-  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]])
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
   let m = @local_stats.focal_mean(r, 1, 1, 1)
   assert_true((m - 5.0).abs() < 0.0001)
 }
 
+///|
 test "S4.8 focal_mean corner" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let m = @local_stats.focal_mean(r, 0, 0, 1)
   assert_true((m - 2.5).abs() < 0.0001)
 }
 
+///|
 test "S4.8 focal_sum radius 0" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@local_stats.focal_sum(r, 0, 0, 0), 1.0)
 }
 
+///|
 test "S4.8 focal_sum radius 1" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let s = @local_stats.focal_sum(r, 0, 0, 1)
   assert_eq(s, 10.0)
 }
 
+///|
 test "S4.8 focal_min radius 1" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@local_stats.focal_min(r, 0, 0, 1), 1.0)
 }
 
+///|
 test "S4.8 focal_max radius 1" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@local_stats.focal_max(r, 0, 0, 1), 4.0)
 }
 
+///|
 test "S4.8 focal_range radius 1" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@local_stats.focal_range(r, 0, 0, 1), 3.0)
 }
 
+///|
 test "S4.8 focal_count radius 0" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@local_stats.focal_count(r, 0, 0, 0), 1)
 }
 
+///|
 test "S4.8 focal_count radius 1 corner" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@local_stats.focal_count(r, 0, 0, 1), 4)
 }
 
+///|
 test "S4.8 focal_count radius 1 center" {
-  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]])
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
   assert_eq(@local_stats.focal_count(r, 1, 1, 1), 9)
 }
 
+///|
 test "S4.8 focal_std constant" {
   let r = @hydrology.make_raster([[5.0, 5.0], [5.0, 5.0]])
   assert_eq(@local_stats.focal_std(r, 0, 0, 1), 0.0)
 }
 
+///|
 test "S4.8 focal_majority radius 0" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@local_stats.focal_majority(r, 0, 0, 0), 1.0)
 }
 
+///|
 test "S4.8 focal_minority radius 0" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@local_stats.focal_minority(r, 0, 0, 0), 1.0)
 }
 
+///|
 test "S4.8 focal_median radius 1" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let m = @local_stats.focal_median(r, 0, 0, 1)
   assert_true(m >= 1.0 && m <= 4.0)
 }
 
+///|
 test "S4.8 focal_statistics generic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
-  assert_eq(@local_stats.focal_statistics(r, 0, 0, 0, @local_stats.FocalMean), 1.0)
-  assert_eq(@local_stats.focal_statistics(r, 0, 0, 0, @local_stats.FocalSum), 1.0)
-  assert_eq(@local_stats.focal_statistics(r, 0, 0, 0, @local_stats.FocalCount), 1.0)
+  assert_eq(
+    @local_stats.focal_statistics(r, 0, 0, 0, @local_stats.FocalMean),
+    1.0,
+  )
+  assert_eq(
+    @local_stats.focal_statistics(r, 0, 0, 0, @local_stats.FocalSum),
+    1.0,
+  )
+  assert_eq(
+    @local_stats.focal_statistics(r, 0, 0, 0, @local_stats.FocalCount),
+    1.0,
+  )
 }
 
+///|
 test "S4.8 focal_filter mean" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let filtered = @local_stats.focal_filter(r, 1, @local_stats.FocalMean)
@@ -5534,6 +6770,7 @@ test "S4.8 focal_filter mean" {
   assert_eq(@hydrology.raster_cols(filtered), 2)
 }
 
+///|
 test "S4.8 focal_filter_mean" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let filtered = @local_stats.focal_filter_mean(r, 0)
@@ -5541,6 +6778,7 @@ test "S4.8 focal_filter_mean" {
   assert_eq(@hydrology.raster_get(filtered, 1, 1), 4.0)
 }
 
+///|
 test "S4.8 focal_results_grid" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let results = @local_stats.focal_results_grid(r, 0, @local_stats.FocalMean)
@@ -5551,6 +6789,7 @@ test "S4.8 focal_results_grid" {
   assert_eq(results[0][0].col, 0)
 }
 
+///|
 test "S4.8 local_add basic" {
   let a = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let b = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
@@ -5559,6 +6798,7 @@ test "S4.8 local_add basic" {
   assert_eq(@hydrology.raster_get(c, 1, 1), 44.0)
 }
 
+///|
 test "S4.8 local_add mismatched" {
   let a = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let b = @hydrology.make_raster([[10.0, 20.0, 30.0]])
@@ -5566,6 +6806,7 @@ test "S4.8 local_add mismatched" {
   assert_eq(@hydrology.raster_rows(c), 0)
 }
 
+///|
 test "S4.8 local_subtract basic" {
   let a = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
   let b = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
@@ -5574,6 +6815,7 @@ test "S4.8 local_subtract basic" {
   assert_eq(@hydrology.raster_get(c, 1, 1), 36.0)
 }
 
+///|
 test "S4.8 local_multiply basic" {
   let a = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let b = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
@@ -5582,6 +6824,7 @@ test "S4.8 local_multiply basic" {
   assert_eq(@hydrology.raster_get(c, 1, 1), 160.0)
 }
 
+///|
 test "S4.8 local_add_scalar basic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let c = @local_stats.local_add_scalar(r, 10.0)
@@ -5589,12 +6832,14 @@ test "S4.8 local_add_scalar basic" {
   assert_eq(@hydrology.raster_get(c, 1, 1), 14.0)
 }
 
+///|
 test "S4.8 local_add_scalar zero" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let c = @local_stats.local_add_scalar(r, 0.0)
   assert_eq(@hydrology.raster_get(c, 0, 0), 1.0)
 }
 
+///|
 test "S4.8 focal edge out of bounds" {
   let r = @hydrology.make_raster([[1.0]])
   assert_eq(@local_stats.focal_mean(r, 0, 0, 5), 1.0)
@@ -5605,6 +6850,7 @@ test "S4.8 focal edge out of bounds" {
 // S5.1 opcore/neighborhood 邻域分析测试
 // ============================================================
 
+///|
 test "S5.1 BlockStat name" {
   assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockMean), "mean")
   assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockSum), "sum")
@@ -5613,11 +6859,18 @@ test "S5.1 BlockStat name" {
   assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockRange), "range")
   assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockCount), "count")
   assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockStd), "std")
-  assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockMajority), "majority")
-  assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockMinority), "minority")
+  assert_eq(
+    @neighborhood.block_stat_name(@neighborhood.BlockMajority),
+    "majority",
+  )
+  assert_eq(
+    @neighborhood.block_stat_name(@neighborhood.BlockMinority),
+    "minority",
+  )
   assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockMedian), "median")
 }
 
+///|
 test "S5.1 LineStat name" {
   assert_eq(@neighborhood.line_stat_name(@neighborhood.LineMean), "mean")
   assert_eq(@neighborhood.line_stat_name(@neighborhood.LineSum), "sum")
@@ -5628,20 +6881,39 @@ test "S5.1 LineStat name" {
   assert_eq(@neighborhood.line_stat_name(@neighborhood.LineStd), "std")
 }
 
+///|
 test "S5.1 NeighborhoodKind name" {
-  assert_eq(@neighborhood.neighborhood_kind_name(@neighborhood.NHRectangle), "rectangle")
-  assert_eq(@neighborhood.neighborhood_kind_name(@neighborhood.NHCircle), "circle")
-  assert_eq(@neighborhood.neighborhood_kind_name(@neighborhood.NHAnnulus), "annulus")
-  assert_eq(@neighborhood.neighborhood_kind_name(@neighborhood.NHWedge), "wedge")
+  assert_eq(
+    @neighborhood.neighborhood_kind_name(@neighborhood.NHRectangle),
+    "rectangle",
+  )
+  assert_eq(
+    @neighborhood.neighborhood_kind_name(@neighborhood.NHCircle),
+    "circle",
+  )
+  assert_eq(
+    @neighborhood.neighborhood_kind_name(@neighborhood.NHAnnulus),
+    "annulus",
+  )
+  assert_eq(
+    @neighborhood.neighborhood_kind_name(@neighborhood.NHWedge),
+    "wedge",
+  )
   assert_eq(@neighborhood.neighborhood_kind_name(@neighborhood.NHRing), "ring")
 }
 
+///|
 test "S5.1 make_neighborhood_config" {
-  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 3, 0)
+  let cfg = @neighborhood.make_neighborhood_config(
+    @neighborhood.NHRectangle,
+    3,
+    0,
+  )
   assert_eq(cfg.radius1, 3)
   assert_eq(cfg.radius2, 0)
 }
 
+///|
 test "S5.1 make_block_result" {
   let r = @neighborhood.make_block_result(5.0, 1, 2)
   assert_eq(r.value, 5.0)
@@ -5649,182 +6921,269 @@ test "S5.1 make_block_result" {
   assert_eq(r.block_col, 2)
 }
 
+///|
 test "S5.1 block_mean basic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let m = @neighborhood.block_mean(r, 0, 0, 2)
   assert_true((m - 2.5).abs() < 0.0001)
 }
 
+///|
 test "S5.1 block_mean single cell" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@neighborhood.block_mean(r, 0, 0, 1), 1.0)
   assert_eq(@neighborhood.block_mean(r, 0, 1, 1), 2.0)
 }
 
+///|
 test "S5.1 block_sum basic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@neighborhood.block_sum(r, 0, 0, 2), 10.0)
 }
 
+///|
 test "S5.1 block_min basic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@neighborhood.block_min(r, 0, 0, 2), 1.0)
 }
 
+///|
 test "S5.1 block_max basic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@neighborhood.block_max(r, 0, 0, 2), 4.0)
 }
 
+///|
 test "S5.1 block_range basic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@neighborhood.block_range(r, 0, 0, 2), 3.0)
 }
 
+///|
 test "S5.1 block_count basic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@neighborhood.block_count(r, 0, 0, 2), 4)
   assert_eq(@neighborhood.block_count(r, 0, 0, 1), 1)
 }
 
+///|
 test "S5.1 block_std constant" {
   let r = @hydrology.make_raster([[5.0, 5.0], [5.0, 5.0]])
   assert_eq(@neighborhood.block_std(r, 0, 0, 2), 0.0)
 }
 
+///|
 test "S5.1 block_majority basic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@neighborhood.block_majority(r, 0, 0, 2), 1.0)
 }
 
+///|
 test "S5.1 block_minority basic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@neighborhood.block_minority(r, 0, 0, 2), 4.0)
 }
 
+///|
 test "S5.1 block_median basic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(@neighborhood.block_median(r, 0, 0, 2), 3.0)
 }
 
+///|
 test "S5.1 block_statistics generic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
-  assert_true((@neighborhood.block_statistics(r, 0, 0, 2, @neighborhood.BlockMean) - 2.5).abs() < 0.0001)
-  assert_eq(@neighborhood.block_statistics(r, 0, 0, 2, @neighborhood.BlockSum), 10.0)
-  assert_eq(@neighborhood.block_statistics(r, 0, 0, 2, @neighborhood.BlockCount), 4.0)
+  assert_true(
+    (@neighborhood.block_statistics(r, 0, 0, 2, @neighborhood.BlockMean) - 2.5).abs() <
+    0.0001,
+  )
+  assert_eq(
+    @neighborhood.block_statistics(r, 0, 0, 2, @neighborhood.BlockSum),
+    10.0,
+  )
+  assert_eq(
+    @neighborhood.block_statistics(r, 0, 0, 2, @neighborhood.BlockCount),
+    4.0,
+  )
 }
 
+///|
 test "S5.1 block_statistics_grid" {
-  let r = @hydrology.make_raster([[1.0, 2.0, 3.0, 4.0], [5.0, 6.0, 7.0, 8.0], [9.0, 10.0, 11.0, 12.0], [13.0, 14.0, 15.0, 16.0]])
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0, 4.0],
+    [5.0, 6.0, 7.0, 8.0],
+    [9.0, 10.0, 11.0, 12.0],
+    [13.0, 14.0, 15.0, 16.0],
+  ])
   let g = @neighborhood.block_statistics_grid(r, 2, @neighborhood.BlockMean)
   assert_eq(@hydrology.raster_rows(g), 2)
   assert_eq(@hydrology.raster_cols(g), 2)
 }
 
+///|
 test "S5.1 block_statistics_grid empty" {
   let r = @hydrology.make_raster([])
   let g = @neighborhood.block_statistics_grid(r, 2, @neighborhood.BlockMean)
   assert_eq(@hydrology.raster_rows(g), 0)
 }
 
+///|
 test "S5.1 block_statistics_grid zero block_size" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let g = @neighborhood.block_statistics_grid(r, 0, @neighborhood.BlockMean)
   assert_eq(@hydrology.raster_rows(g), 0)
 }
 
+///|
 test "S5.1 line_mean basic" {
   let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
   let m = @neighborhood.line_mean(r, 0)
   assert_true((m - 2.0).abs() < 0.0001)
 }
 
+///|
 test "S5.1 line_sum basic" {
   let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
   assert_eq(@neighborhood.line_sum(r, 0), 6.0)
   assert_eq(@neighborhood.line_sum(r, 1), 15.0)
 }
 
+///|
 test "S5.1 line_min basic" {
   let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
   assert_eq(@neighborhood.line_min(r, 0), 1.0)
   assert_eq(@neighborhood.line_min(r, 1), 4.0)
 }
 
+///|
 test "S5.1 line_max basic" {
   let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
   assert_eq(@neighborhood.line_max(r, 0), 3.0)
   assert_eq(@neighborhood.line_max(r, 1), 6.0)
 }
 
+///|
 test "S5.1 line_count basic" {
   let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
   assert_eq(@neighborhood.line_count(r, 0), 3)
 }
 
+///|
 test "S5.1 line_range basic" {
   let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
   assert_eq(@neighborhood.line_range(r, 0), 2.0)
 }
 
+///|
 test "S5.1 line_std constant" {
   let r = @hydrology.make_raster([[5.0, 5.0, 5.0]])
   assert_eq(@neighborhood.line_std(r, 0), 0.0)
 }
 
+///|
 test "S5.1 line_statistics generic" {
   let r = @hydrology.make_raster([[1.0, 2.0, 3.0]])
-  assert_true((@neighborhood.line_statistics(r, 0, @neighborhood.LineMean) - 2.0).abs() < 0.0001)
+  assert_true(
+    (@neighborhood.line_statistics(r, 0, @neighborhood.LineMean) - 2.0).abs() <
+    0.0001,
+  )
   assert_eq(@neighborhood.line_statistics(r, 0, @neighborhood.LineSum), 6.0)
   assert_eq(@neighborhood.line_statistics(r, 0, @neighborhood.LineCount), 3.0)
 }
 
+///|
 test "S5.1 line_statistics_col basic" {
   let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]])
-  assert_true((@neighborhood.line_statistics_col(r, 0, @neighborhood.LineMean) - 3.0).abs() < 0.0001)
+  assert_true(
+    (@neighborhood.line_statistics_col(r, 0, @neighborhood.LineMean) - 3.0).abs() <
+    0.0001,
+  )
   assert_eq(@neighborhood.line_statistics_col(r, 0, @neighborhood.LineSum), 9.0)
-  assert_eq(@neighborhood.line_statistics_col(r, 0, @neighborhood.LineCount), 3.0)
+  assert_eq(
+    @neighborhood.line_statistics_col(r, 0, @neighborhood.LineCount),
+    3.0,
+  )
 }
 
+///|
 test "S5.1 neighborhood_cells rectangle" {
-  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 1, 0)
+  let cfg = @neighborhood.make_neighborhood_config(
+    @neighborhood.NHRectangle,
+    1,
+    0,
+  )
   let cells = @neighborhood.neighborhood_cells(cfg)
   assert_eq(cells.length(), 9)
 }
 
+///|
 test "S5.1 neighborhood_cells circle" {
   let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHCircle, 1, 0)
   let cells = @neighborhood.neighborhood_cells(cfg)
   assert_eq(cells.length(), 5)
 }
 
+///|
 test "S5.1 neighborhood_cells zero radius" {
-  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 0, 0)
+  let cfg = @neighborhood.make_neighborhood_config(
+    @neighborhood.NHRectangle,
+    0,
+    0,
+  )
   let cells = @neighborhood.neighborhood_cells(cfg)
   assert_eq(cells.length(), 1)
 }
 
+///|
 test "S5.1 neighborhood_cell_count" {
-  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 2, 0)
+  let cfg = @neighborhood.make_neighborhood_config(
+    @neighborhood.NHRectangle,
+    2,
+    0,
+  )
   assert_eq(@neighborhood.neighborhood_cell_count(cfg), 25)
 }
 
+///|
 test "S5.1 neighborhood_expand basic" {
-  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]])
-  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 1, 0)
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
+  let cfg = @neighborhood.make_neighborhood_config(
+    @neighborhood.NHRectangle,
+    1,
+    0,
+  )
   let vals = @neighborhood.neighborhood_expand(r, 1, 1, cfg)
   assert_eq(vals.length(), 9)
 }
 
+///|
 test "S5.1 neighborhood_expand corner" {
-  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]])
-  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 1, 0)
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
+  let cfg = @neighborhood.make_neighborhood_config(
+    @neighborhood.NHRectangle,
+    1,
+    0,
+  )
   let vals = @neighborhood.neighborhood_expand(r, 0, 0, cfg)
   assert_eq(vals.length(), 4)
 }
 
+///|
 test "S5.1 block_results_grid" {
-  let r = @hydrology.make_raster([[1.0, 2.0, 3.0, 4.0], [5.0, 6.0, 7.0, 8.0], [9.0, 10.0, 11.0, 12.0], [13.0, 14.0, 15.0, 16.0]])
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0, 4.0],
+    [5.0, 6.0, 7.0, 8.0],
+    [9.0, 10.0, 11.0, 12.0],
+    [13.0, 14.0, 15.0, 16.0],
+  ])
   let results = @neighborhood.block_results_grid(r, 2, @neighborhood.BlockMean)
   assert_eq(results.length(), 2)
   assert_eq(results[0].length(), 2)
@@ -5832,18 +7191,25 @@ test "S5.1 block_results_grid" {
   assert_eq(results[0][0].block_col, 0)
 }
 
+///|
 test "S5.1 block_results_grid empty" {
   let r = @hydrology.make_raster([])
   let results = @neighborhood.block_results_grid(r, 2, @neighborhood.BlockMean)
   assert_eq(results.length(), 0)
 }
 
+///|
 test "S5.1 neighborhood_cells annulus" {
-  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHAnnulus, 2, 1)
+  let cfg = @neighborhood.make_neighborhood_config(
+    @neighborhood.NHAnnulus,
+    2,
+    1,
+  )
   let cells = @neighborhood.neighborhood_cells(cfg)
   assert_true(cells.length() > 0)
 }
 
+///|
 test "S5.1 neighborhood_cells ring" {
   let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRing, 1, 0)
   let cells = @neighborhood.neighborhood_cells(cfg)
@@ -5854,6 +7220,7 @@ test "S5.1 neighborhood_cells ring" {
 // S5.2 opcore/solar 太阳辐射测试
 // ============================================================
 
+///|
 test "S5.2 make_solar_config" {
   let cfg = @solar.make_solar_config(40.0, 116.0, 180, 12.0, 0.3)
   assert_eq(cfg.latitude, 40.0)
@@ -5863,6 +7230,7 @@ test "S5.2 make_solar_config" {
   assert_eq(cfg.diffuse_ratio, 0.3)
 }
 
+///|
 test "S5.2 make_solar_config boundary" {
   let cfg = @solar.make_solar_config(40.0, 116.0, 0, 25.0, 1.5)
   assert_eq(cfg.day_of_year, 1)
@@ -5870,6 +7238,7 @@ test "S5.2 make_solar_config boundary" {
   assert_eq(cfg.diffuse_ratio, 1.0)
 }
 
+///|
 test "S5.2 make_solar_config negative" {
   let cfg = @solar.make_solar_config(40.0, 116.0, 400, -1.0, -0.5)
   assert_eq(cfg.day_of_year, 365)
@@ -5877,6 +7246,7 @@ test "S5.2 make_solar_config negative" {
   assert_eq(cfg.diffuse_ratio, 0.0)
 }
 
+///|
 test "S5.2 make_solar_result" {
   let r = @solar.make_solar_result(800.0, 560.0, 240.0, 12.0, 60.0, 180.0)
   assert_eq(r.global_radiation, 800.0)
@@ -5887,6 +7257,7 @@ test "S5.2 make_solar_result" {
   assert_eq(r.azimuth, 180.0)
 }
 
+///|
 test "S5.2 make_solar_area_result" {
   let r = @solar.make_solar_result(800.0, 560.0, 240.0, 12.0, 60.0, 180.0)
   let ar = @solar.make_solar_area_result(1, 2, r)
@@ -5895,6 +7266,7 @@ test "S5.2 make_solar_area_result" {
   assert_eq(ar.result.global_radiation, 800.0)
 }
 
+///|
 test "S5.2 solar_declination" {
   let d1 = @solar.solar_declination(80)
   let d2 = @solar.solar_declination(355)
@@ -5902,28 +7274,33 @@ test "S5.2 solar_declination" {
   assert_true(d2 >= -23.45 && d2 <= 23.45)
 }
 
+///|
 test "S5.2 solar_declination equinox" {
   let d = @solar.solar_declination(80)
   assert_true(d.abs() < 5.0)
 }
 
+///|
 test "S5.2 solar_hour_angle" {
   assert_eq(@solar.solar_hour_angle(12.0), 0.0)
   assert_true(@solar.solar_hour_angle(6.0) < 0.0)
   assert_true(@solar.solar_hour_angle(18.0) > 0.0)
 }
 
+///|
 test "S5.2 solar_altitude noon" {
   let alt = @solar.solar_altitude(40.0, 180, 12.0)
   assert_true(alt > 0.0)
   assert_true(alt <= 90.0)
 }
 
+///|
 test "S5.2 solar_altitude midnight" {
   let alt = @solar.solar_altitude(40.0, 180, 0.0)
   assert_eq(alt, 0.0)
 }
 
+///|
 test "S5.2 solar_altitude non_negative" {
   let alt1 = @solar.solar_altitude(40.0, 180, 6.0)
   let alt2 = @solar.solar_altitude(40.0, 180, 18.0)
@@ -5931,44 +7308,53 @@ test "S5.2 solar_altitude non_negative" {
   assert_true(alt2 >= 0.0)
 }
 
+///|
 test "S5.2 solar_azimuth noon" {
   let az = @solar.solar_azimuth(40.0, 180, 12.0)
   assert_true(az > 150.0 && az < 210.0)
 }
 
+///|
 test "S5.2 solar_azimuth morning negative" {
   let az = @solar.solar_azimuth(40.0, 180, 8.0)
   assert_true(az < 0.0)
 }
 
+///|
 test "S5.2 solar_azimuth afternoon positive" {
   let az = @solar.solar_azimuth(40.0, 180, 16.0)
   assert_true(az > 0.0)
 }
 
+///|
 test "S5.2 solar_direct_radiation" {
   let r = @solar.solar_direct_radiation(60.0, 0.3)
   assert_true(r > 0.0)
 }
 
+///|
 test "S5.2 solar_direct_radiation zero altitude" {
   assert_eq(@solar.solar_direct_radiation(0.0, 0.3), 0.0)
 }
 
+///|
 test "S5.2 solar_direct_radiation full direct" {
   let r = @solar.solar_direct_radiation(90.0, 0.0)
   assert_true((r - 1000.0).abs() < 1.0)
 }
 
+///|
 test "S5.2 solar_diffuse_radiation" {
   let r = @solar.solar_diffuse_radiation(60.0, 0.3)
   assert_true(r > 0.0)
 }
 
+///|
 test "S5.2 solar_diffuse_radiation zero altitude" {
   assert_eq(@solar.solar_diffuse_radiation(0.0, 0.3), 0.0)
 }
 
+///|
 test "S5.2 solar_global_radiation" {
   let g = @solar.solar_global_radiation(60.0, 0.3)
   let d = @solar.solar_direct_radiation(60.0, 0.3)
@@ -5976,18 +7362,21 @@ test "S5.2 solar_global_radiation" {
   assert_true((g - d - diff).abs() < 0.001)
 }
 
+///|
 test "S5.2 solar_duration" {
   let dur = @solar.solar_duration(40.0, 180)
   assert_true(dur > 0.0)
   assert_true(dur <= 24.0)
 }
 
+///|
 test "S5.2 solar_duration winter" {
   let dur = @solar.solar_duration(40.0, 355)
   assert_true(dur > 0.0)
   assert_true(dur <= 24.0)
 }
 
+///|
 test "S5.2 solar_radiation_point noon" {
   let cfg = @solar.make_solar_config(40.0, 116.0, 180, 12.0, 0.3)
   let r = @solar.solar_radiation_point(cfg)
@@ -5997,6 +7386,7 @@ test "S5.2 solar_radiation_point noon" {
   assert_true(r.altitude > 0.0)
 }
 
+///|
 test "S5.2 solar_radiation_point midnight" {
   let cfg = @solar.make_solar_config(40.0, 116.0, 180, 0.0, 0.3)
   let r = @solar.solar_radiation_point(cfg)
@@ -6006,12 +7396,14 @@ test "S5.2 solar_radiation_point midnight" {
   assert_eq(r.altitude, 0.0)
 }
 
+///|
 test "S5.2 solar_radiation_point full direct" {
   let cfg = @solar.make_solar_config(0.0, 0.0, 80, 12.0, 0.0)
   let r = @solar.solar_radiation_point(cfg)
   assert_true(r.direct_radiation > r.diffuse_radiation)
 }
 
+///|
 test "S5.2 solar_radiation_point full diffuse" {
   let cfg = @solar.make_solar_config(0.0, 0.0, 80, 12.0, 1.0)
   let r = @solar.solar_radiation_point(cfg)
@@ -6019,6 +7411,7 @@ test "S5.2 solar_radiation_point full diffuse" {
   assert_true(r.diffuse_radiation > 0.0)
 }
 
+///|
 test "S5.2 solar_radiation_area" {
   let dem = @hydrology.make_raster([[100.0, 200.0], [150.0, 250.0]])
   let cfg = @solar.make_solar_config(40.0, 116.0, 180, 12.0, 0.3)
@@ -6027,6 +7420,7 @@ test "S5.2 solar_radiation_area" {
   assert_eq(results[0].length(), 2)
 }
 
+///|
 test "S5.2 solar_radiation_area empty" {
   let dem = @hydrology.make_raster([])
   let cfg = @solar.make_solar_config(40.0, 116.0, 180, 12.0, 0.3)
@@ -6034,6 +7428,7 @@ test "S5.2 solar_radiation_area empty" {
   assert_eq(results.length(), 0)
 }
 
+///|
 test "S5.2 solar_radiation_stats" {
   let dem = @hydrology.make_raster([[100.0, 200.0], [150.0, 250.0]])
   let cfg = @solar.make_solar_config(40.0, 116.0, 180, 12.0, 0.3)
@@ -6045,6 +7440,7 @@ test "S5.2 solar_radiation_stats" {
   assert_eq(n, 4)
 }
 
+///|
 test "S5.2 solar_radiation_stats empty" {
   let (g, d, diff, n) = @solar.solar_radiation_stats([])
   assert_eq(g, 0.0)
@@ -6053,22 +7449,28 @@ test "S5.2 solar_radiation_stats empty" {
   assert_eq(n, 0)
 }
 
+///|
 test "S5.2 solar_result_summary" {
   let r = @solar.make_solar_result(800.0, 560.0, 240.0, 12.0, 60.0, 180.0)
   let s = @solar.solar_result_summary(r)
   assert_true(s.length() > 0)
 }
 
+///|
 test "S5.2 solar global = direct + diffuse" {
   let cfg = @solar.make_solar_config(35.0, 120.0, 172, 14.0, 0.25)
   let r = @solar.solar_radiation_point(cfg)
-  assert_true((r.global_radiation - r.direct_radiation - r.diffuse_radiation).abs() < 0.001)
+  assert_true(
+    (r.global_radiation - r.direct_radiation - r.diffuse_radiation).abs() <
+    0.001,
+  )
 }
 
 // ============================================================
 // S5.3 opcore/groundwater 地下水分析测试
 // ============================================================
 
+///|
 test "S5.3 make_groundwater_config" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.005)
   assert_eq(cfg.porosity, 0.3)
@@ -6077,17 +7479,20 @@ test "S5.3 make_groundwater_config" {
   assert_eq(cfg.gradient_y, 0.005)
 }
 
+///|
 test "S5.3 make_groundwater_config boundary" {
   let cfg = @groundwater.make_groundwater_config(1.5, -0.1, 0.01, 0.005)
   assert_eq(cfg.porosity, 1.0)
   assert_eq(cfg.conductivity, 0.0)
 }
 
+///|
 test "S5.3 make_groundwater_config negative porosity" {
   let cfg = @groundwater.make_groundwater_config(-0.5, 0.001, 0.01, 0.005)
   assert_eq(cfg.porosity, 0.0)
 }
 
+///|
 test "S5.3 make_darcy_flow_result" {
   let r = @groundwater.make_darcy_flow_result(0.001, 0.002, 0.003, 0.01)
   assert_eq(r.flow_x, 0.001)
@@ -6096,25 +7501,34 @@ test "S5.3 make_darcy_flow_result" {
   assert_eq(r.head_gradient, 0.01)
 }
 
+///|
 test "S5.3 make_particle_track_result" {
-  let r = @groundwater.make_particle_track_result([(0.0, 0.0), (1.0, 1.0)], 1.414, 100.0, 1)
+  let r = @groundwater.make_particle_track_result(
+    [(0.0, 0.0), (1.0, 1.0)],
+    1.414,
+    100.0,
+    1,
+  )
   assert_eq(r.path.length(), 2)
   assert_eq(r.total_distance, 1.414)
   assert_eq(r.total_time, 100.0)
   assert_eq(r.steps, 1)
 }
 
+///|
 test "S5.3 groundwater_head_gradient" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.003, 0.004)
   let g = @groundwater.groundwater_head_gradient(cfg)
   assert_true((g - 0.005).abs() < 0.0001)
 }
 
+///|
 test "S5.3 groundwater_head_gradient zero" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.0, 0.0)
   assert_eq(@groundwater.groundwater_head_gradient(cfg), 0.0)
 }
 
+///|
 test "S5.3 darcy_flow basic" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.0)
   let r = @groundwater.darcy_flow(cfg)
@@ -6123,6 +7537,7 @@ test "S5.3 darcy_flow basic" {
   assert_true(r.velocity > 0.0)
 }
 
+///|
 test "S5.3 darcy_flow zero conductivity" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.0, 0.01, 0.0)
   let r = @groundwater.darcy_flow(cfg)
@@ -6131,33 +7546,39 @@ test "S5.3 darcy_flow zero conductivity" {
   assert_eq(r.velocity, 0.0)
 }
 
+///|
 test "S5.3 darcy_velocity basic" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.0)
   let v = @groundwater.darcy_velocity(cfg)
   assert_true(v > 0.0)
 }
 
+///|
 test "S5.3 darcy_velocity zero porosity" {
   let cfg = @groundwater.make_groundwater_config(0.0, 0.001, 0.01, 0.0)
   assert_eq(@groundwater.darcy_velocity(cfg), 0.0)
 }
 
+///|
 test "S5.3 darcy_velocity zero gradient" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.0, 0.0)
   assert_eq(@groundwater.darcy_velocity(cfg), 0.0)
 }
 
+///|
 test "S5.3 groundwater_flow_direction" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.0)
   let d = @groundwater.groundwater_flow_direction(cfg)
   assert_true(d >= -180.0 && d <= 180.0)
 }
 
+///|
 test "S5.3 groundwater_flow_direction zero" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.0, 0.0)
   assert_eq(@groundwater.groundwater_flow_direction(cfg), 0.0)
 }
 
+///|
 test "S5.3 particle_track basic" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.0)
   let r = @groundwater.particle_track(cfg, 0.0, 0.0, 1.0, 10)
@@ -6167,6 +7588,7 @@ test "S5.3 particle_track basic" {
   assert_true(r.total_time > 0.0)
 }
 
+///|
 test "S5.3 particle_track zero steps" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.0)
   let r = @groundwater.particle_track(cfg, 0.0, 0.0, 1.0, 0)
@@ -6175,6 +7597,7 @@ test "S5.3 particle_track zero steps" {
   assert_eq(r.total_distance, 0.0)
 }
 
+///|
 test "S5.3 particle_track zero velocity" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.0, 0.01, 0.0)
   let r = @groundwater.particle_track(cfg, 0.0, 0.0, 1.0, 10)
@@ -6182,6 +7605,7 @@ test "S5.3 particle_track zero velocity" {
   assert_eq(r.steps, 0)
 }
 
+///|
 test "S5.3 particle_track negative step" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.0)
   let r = @groundwater.particle_track(cfg, 0.0, 0.0, -1.0, 10)
@@ -6189,30 +7613,36 @@ test "S5.3 particle_track negative step" {
   assert_eq(r.steps, 0)
 }
 
+///|
 test "S5.3 porous_puff basic" {
   let c = @groundwater.porous_puff(1.0, 1.0, 0.1, 100.0)
   assert_true(c > 0.0)
 }
 
+///|
 test "S5.3 porous_puff zero distance" {
   let c = @groundwater.porous_puff(0.0, 1.0, 0.1, 100.0)
   assert_true(c > 0.0)
 }
 
+///|
 test "S5.3 porous_puff zero diffusivity" {
   assert_eq(@groundwater.porous_puff(1.0, 1.0, 0.0, 100.0), 0.0)
 }
 
+///|
 test "S5.3 porous_puff zero time" {
   assert_eq(@groundwater.porous_puff(1.0, 0.0, 0.1, 100.0), 0.0)
 }
 
+///|
 test "S5.3 porous_puff large distance" {
   let c = @groundwater.porous_puff(100.0, 0.001, 0.1, 100.0)
   assert_true(c >= 0.0)
   assert_true(c < 1.0)
 }
 
+///|
 test "S5.3 porous_puff_grid basic" {
   let distances = [[0.0, 1.0, 2.0], [1.0, 0.0, 1.0], [2.0, 1.0, 0.0]]
   let grid = @groundwater.porous_puff_grid(distances, 1.0, 0.1, 100.0)
@@ -6220,11 +7650,13 @@ test "S5.3 porous_puff_grid basic" {
   assert_eq(grid[0].length(), 3)
 }
 
+///|
 test "S5.3 porous_puff_grid empty" {
   let grid = @groundwater.porous_puff_grid([], 1.0, 0.1, 100.0)
   assert_eq(grid.length(), 0)
 }
 
+///|
 test "S5.3 groundwater_stats" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.005)
   let (v, g, d) = @groundwater.groundwater_stats(cfg)
@@ -6233,6 +7665,7 @@ test "S5.3 groundwater_stats" {
   assert_true(d >= -180.0 && d <= 180.0)
 }
 
+///|
 test "S5.3 groundwater_stats zero" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.0, 0.0, 0.0)
   let (v, g, d) = @groundwater.groundwater_stats(cfg)
@@ -6241,18 +7674,26 @@ test "S5.3 groundwater_stats zero" {
   assert_eq(d, 0.0)
 }
 
+///|
 test "S5.3 groundwater_config_summary" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.005)
   let s = @groundwater.groundwater_config_summary(cfg)
   assert_true(s.length() > 0)
 }
 
+///|
 test "S5.3 particle_track_summary" {
-  let r = @groundwater.make_particle_track_result([(0.0, 0.0), (1.0, 1.0)], 1.414, 100.0, 1)
+  let r = @groundwater.make_particle_track_result(
+    [(0.0, 0.0), (1.0, 1.0)],
+    1.414,
+    100.0,
+    1,
+  )
   let s = @groundwater.particle_track_summary(r)
   assert_true(s.length() > 0)
 }
 
+///|
 test "S5.3 darcy_flow conservation" {
   let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.005)
   let r = @groundwater.darcy_flow(cfg)
@@ -6264,6 +7705,7 @@ test "S5.3 darcy_flow conservation" {
 // S6.1 opcore/transform 栅格条件分析测试
 // ============================================================
 
+///|
 test "S6.1 transform_conditional basic" {
   let cond = @hydrology.make_raster([[1.0, 0.0], [0.0, 1.0]])
   let true_r = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
@@ -6275,6 +7717,7 @@ test "S6.1 transform_conditional basic" {
   assert_eq(@hydrology.raster_get(result, 1, 1), 40.0)
 }
 
+///|
 test "S6.1 transform_conditional mismatched" {
   let cond = @hydrology.make_raster([[1.0, 0.0]])
   let true_r = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
@@ -6283,6 +7726,7 @@ test "S6.1 transform_conditional mismatched" {
   assert_eq(@hydrology.raster_rows(result), 0)
 }
 
+///|
 test "S6.1 transform_pick basic" {
   let pos = @hydrology.make_raster([[0.0, 1.0], [1.0, 0.0]])
   let r0 = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
@@ -6294,12 +7738,14 @@ test "S6.1 transform_pick basic" {
   assert_eq(@hydrology.raster_get(result, 1, 1), 40.0)
 }
 
+///|
 test "S6.1 transform_pick empty" {
   let pos = @hydrology.make_raster([[0.0, 1.0]])
   let result = @transform.transform_pick(pos, [])
   assert_eq(@hydrology.raster_rows(result), 0)
 }
 
+///|
 test "S6.1 transform_pick out of bounds" {
   let pos = @hydrology.make_raster([[5.0]])
   let r0 = @hydrology.make_raster([[10.0]])
@@ -6307,6 +7753,7 @@ test "S6.1 transform_pick out of bounds" {
   assert_eq(@hydrology.raster_get(result, 0, 0), 0.0)
 }
 
+///|
 test "S6.1 transform_set_null basic" {
   let cond = @hydrology.make_raster([[1.0, 0.0], [0.0, 1.0]])
   let input = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
@@ -6317,6 +7764,7 @@ test "S6.1 transform_set_null basic" {
   assert_eq(@hydrology.raster_get(result, 1, 1), -9999.0)
 }
 
+///|
 test "S6.1 transform_set_null mismatched" {
   let cond = @hydrology.make_raster([[1.0, 0.0]])
   let input = @hydrology.make_raster([[10.0]])
@@ -6324,6 +7772,7 @@ test "S6.1 transform_set_null mismatched" {
   assert_eq(@hydrology.raster_rows(result), 0)
 }
 
+///|
 test "S6.1 transform_reclassify basic" {
   let input = @hydrology.make_raster([[1.0, 5.0], [10.0, 15.0]])
   let remap = [(0.0, 4.0, 1.0), (4.0, 9.0, 2.0), (9.0, 20.0, 3.0)]
@@ -6334,6 +7783,7 @@ test "S6.1 transform_reclassify basic" {
   assert_eq(@hydrology.raster_get(result, 1, 1), 3.0)
 }
 
+///|
 test "S6.1 transform_reclassify no match" {
   let input = @hydrology.make_raster([[100.0]])
   let remap = [(0.0, 4.0, 1.0)]
@@ -6341,6 +7791,7 @@ test "S6.1 transform_reclassify no match" {
   assert_eq(@hydrology.raster_get(result, 0, 0), 100.0)
 }
 
+///|
 test "S6.1 transform_slice basic" {
   let input = @hydrology.make_raster([[0.0, 10.0], [20.0, 30.0]])
   let result = @transform.transform_slice(input, 3)
@@ -6349,18 +7800,21 @@ test "S6.1 transform_slice basic" {
   assert_true(@hydrology.raster_get(result, 1, 1) <= 3.0)
 }
 
+///|
 test "S6.1 transform_slice zero slices" {
   let input = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
   let result = @transform.transform_slice(input, 0)
   assert_eq(@hydrology.raster_get(result, 0, 0), 1.0)
 }
 
+///|
 test "S6.1 transform_slice constant" {
   let input = @hydrology.make_raster([[5.0, 5.0], [5.0, 5.0]])
   let result = @transform.transform_slice(input, 3)
   assert_eq(@hydrology.raster_get(result, 0, 0), 5.0)
 }
 
+///|
 test "S6.1 transform_lookup basic" {
   let input = @hydrology.make_raster([[0.0, 1.0], [2.0, 3.0]])
   let table = [10.0, 20.0, 30.0, 40.0]
@@ -6371,6 +7825,7 @@ test "S6.1 transform_lookup basic" {
   assert_eq(@hydrology.raster_get(result, 1, 1), 40.0)
 }
 
+///|
 test "S6.1 transform_lookup out of bounds" {
   let input = @hydrology.make_raster([[5.0]])
   let table = [10.0, 20.0]
@@ -6378,6 +7833,7 @@ test "S6.1 transform_lookup out of bounds" {
   assert_eq(@hydrology.raster_get(result, 0, 0), 0.0)
 }
 
+///|
 test "S6.1 transform_lookup empty table" {
   let input = @hydrology.make_raster([[0.0, 1.0]])
   let result = @transform.transform_lookup(input, [])
@@ -6389,6 +7845,7 @@ test "S6.1 transform_lookup empty table" {
 // S6.2 learncore/feature 度量地理分布测试
 // ============================================================
 
+///|
 test "S6.2 feature_central_feature empty" {
   let (p, d) = @feature.feature_central_feature([])
   assert_eq(p.x, 0.0)
@@ -6396,6 +7853,7 @@ test "S6.2 feature_central_feature empty" {
   assert_eq(d, 0.0)
 }
 
+///|
 test "S6.2 feature_central_feature single" {
   let pts = [@proximity.make_point(3.0, 4.0)]
   let (p, d) = @feature.feature_central_feature(pts)
@@ -6404,6 +7862,7 @@ test "S6.2 feature_central_feature single" {
   assert_eq(d, 0.0)
 }
 
+///|
 test "S6.2 feature_central_feature basic" {
   let pts = [
     @proximity.make_point(0.0, 0.0),
@@ -6414,12 +7873,14 @@ test "S6.2 feature_central_feature basic" {
   assert_eq(p.x, 5.0)
 }
 
+///|
 test "S6.2 feature_mean_center empty" {
   let p = @feature.feature_mean_center([])
   assert_eq(p.x, 0.0)
   assert_eq(p.y, 0.0)
 }
 
+///|
 test "S6.2 feature_mean_center basic" {
   let pts = [
     @proximity.make_point(0.0, 0.0),
@@ -6432,6 +7893,7 @@ test "S6.2 feature_mean_center basic" {
   assert_true((p.y - 5.0).abs() < 0.0001)
 }
 
+///|
 test "S6.2 feature_mean_center single" {
   let pts = [@proximity.make_point(7.0, 3.0)]
   let p = @feature.feature_mean_center(pts)
@@ -6439,12 +7901,14 @@ test "S6.2 feature_mean_center single" {
   assert_eq(p.y, 3.0)
 }
 
+///|
 test "S6.2 feature_median_center empty" {
   let p = @feature.feature_median_center([])
   assert_eq(p.x, 0.0)
   assert_eq(p.y, 0.0)
 }
 
+///|
 test "S6.2 feature_median_center odd" {
   let pts = [
     @proximity.make_point(1.0, 10.0),
@@ -6456,6 +7920,7 @@ test "S6.2 feature_median_center odd" {
   assert_eq(p.y, 20.0)
 }
 
+///|
 test "S6.2 feature_median_center even" {
   let pts = [
     @proximity.make_point(1.0, 10.0),
@@ -6468,15 +7933,18 @@ test "S6.2 feature_median_center even" {
   assert_true((p.y - 25.0).abs() < 0.0001)
 }
 
+///|
 test "S6.2 feature_standard_distance empty" {
   assert_eq(@feature.feature_standard_distance([]), 0.0)
 }
 
+///|
 test "S6.2 feature_standard_distance single" {
   let pts = [@proximity.make_point(5.0, 5.0)]
   assert_eq(@feature.feature_standard_distance(pts), 0.0)
 }
 
+///|
 test "S6.2 feature_standard_distance basic" {
   let pts = [
     @proximity.make_point(0.0, 0.0),
@@ -6488,6 +7956,7 @@ test "S6.2 feature_standard_distance basic" {
   assert_true(sd > 0.0)
 }
 
+///|
 test "S6.2 feature_directional_distribution empty" {
   let (cx, cy, major, minor, rot) = @feature.feature_directional_distribution([])
   assert_eq(cx, 0.0)
@@ -6497,6 +7966,7 @@ test "S6.2 feature_directional_distribution empty" {
   assert_eq(rot, 0.0)
 }
 
+///|
 test "S6.2 feature_directional_distribution basic" {
   let pts = [
     @proximity.make_point(0.0, 0.0),
@@ -6512,6 +7982,7 @@ test "S6.2 feature_directional_distribution basic" {
   assert_true(major >= minor)
 }
 
+///|
 test "S6.2 feature_directional_distribution line" {
   let pts = [
     @proximity.make_point(0.0, 0.0),
@@ -6525,6 +7996,7 @@ test "S6.2 feature_directional_distribution line" {
 
 // S6.3 零散算子补齐测试 / Scattered operator tests
 
+///|
 test "filter_split basic comma delimiter" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("a,b,c", @dataobject.Text, s)
@@ -6535,6 +8007,7 @@ test "filter_split basic comma delimiter" {
   assert_eq(result[2], "c")
 }
 
+///|
 test "filter_split empty input returns empty" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("", @dataobject.Text, s)
@@ -6542,6 +8015,7 @@ test "filter_split empty input returns empty" {
   assert_eq(result.length(), 0)
 }
 
+///|
 test "filter_split multi-char delimiter" {
   let s = @schema.empty()
   let d = @dataobject.make_dataobject("x::y::z", @dataobject.Text, s)
@@ -6552,6 +8026,7 @@ test "filter_split multi-char delimiter" {
   assert_eq(result[2], "z")
 }
 
+///|
 test "cluster_similarity_search basic nearest k" {
   let target = [1.0, 0.0]
   let candidates = [[0.0, 0.0], [1.0, 0.0], [2.0, 0.0]]
@@ -6561,12 +8036,14 @@ test "cluster_similarity_search basic nearest k" {
   assert_eq(result[1], 0)
 }
 
+///|
 test "cluster_similarity_search empty candidates" {
   let target = [1.0, 2.0]
   let result = @cluster.cluster_similarity_search(target, [], 3)
   assert_eq(result.length(), 0)
 }
 
+///|
 test "cluster_similarity_search k zero returns empty" {
   let target = [1.0]
   let candidates = [[0.0], [2.0]]
@@ -6574,28 +8051,36 @@ test "cluster_similarity_search k zero returns empty" {
   assert_eq(result.length(), 0)
 }
 
+///|
 test "classify_forest basic nearest label" {
   let features = [1.0, 1.0]
   let training_features = [[0.0, 0.0], [10.0, 10.0]]
   let training_labels = [0, 1]
-  let result = @classify.classify_forest(features, training_features, training_labels, 5)
+  let result = @classify.classify_forest(
+    features, training_features, training_labels, 5,
+  )
   assert_eq(result, 0)
 }
 
+///|
 test "classify_forest empty training returns 0" {
   let features = [1.0, 2.0]
   let result = @classify.classify_forest(features, [], [], 3)
   assert_eq(result, 0)
 }
 
+///|
 test "classify_forest picks closer label" {
   let features = [9.0, 9.0]
   let training_features = [[0.0, 0.0], [10.0, 10.0]]
   let training_labels = [0, 1]
-  let result = @classify.classify_forest(features, training_features, training_labels, 5)
+  let result = @classify.classify_forest(
+    features, training_features, training_labels, 5,
+  )
   assert_eq(result, 1)
 }
 
+///|
 test "regression_glm identity link equals linear" {
   let points = [(0.0, 0.0), (1.0, 2.0), (2.0, 4.0)]
   let glm = @regression.regression_glm(points, "identity")
@@ -6604,6 +8089,7 @@ test "regression_glm identity link equals linear" {
   assert_eq(glm.intercept, lin.intercept)
 }
 
+///|
 test "regression_glm log link preserves coefficients" {
   let points = [(1.0, 0.0), (2.0, 1.0), (3.0, 2.0)]
   let glm = @regression.regression_glm(points, "log")
@@ -6612,12 +8098,14 @@ test "regression_glm log link preserves coefficients" {
   assert_eq(glm.intercept, lin.intercept)
 }
 
+///|
 test "regression_glm empty points" {
   let glm = @regression.regression_glm([], "identity")
   assert_eq(glm.slope, 0.0)
   assert_eq(glm.intercept, 0.0)
 }
 
+///|
 test "eval_tabulate_intersection basic cross tab" {
   let zone1 = [1, 1, 2, 2]
   let zone2 = [10, 10, 20, 20]
@@ -6625,11 +8113,13 @@ test "eval_tabulate_intersection basic cross tab" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "eval_tabulate_intersection empty returns empty" {
   let result = @eval.eval_tabulate_intersection([], [])
   assert_eq(result.length(), 0)
 }
 
+///|
 test "eval_tabulate_intersection length mismatch returns empty" {
   let zone1 = [1, 2, 3]
   let zone2 = [10, 20]
@@ -6639,28 +8129,27 @@ test "eval_tabulate_intersection length mismatch returns empty" {
 
 // S6.5 收尾：Split By Attributes + Frequency 测试
 
+///|
 test "filter_split_by_attributes basic grouping" {
-  let records = [
-    ["A", "10"],
-    ["B", "20"],
-    ["A", "30"],
-    ["B", "40"],
-  ]
+  let records = [["A", "10"], ["B", "20"], ["A", "30"], ["B", "40"]]
   let result = @filter.filter_split_by_attributes(records, 0)
   assert_eq(result.length(), 2)
 }
 
+///|
 test "filter_split_by_attributes empty records" {
   let result = @filter.filter_split_by_attributes([], 0)
   assert_eq(result.length(), 0)
 }
 
+///|
 test "filter_split_by_attributes negative index" {
   let records = [["A", "10"]]
   let result = @filter.filter_split_by_attributes(records, -1)
   assert_eq(result.length(), 0)
 }
 
+///|
 test "filter_split_by_attributes single group" {
   let records = [["X", "1"], ["X", "2"], ["X", "3"]]
   let result = @filter.filter_split_by_attributes(records, 0)
@@ -6669,6 +8158,7 @@ test "filter_split_by_attributes single group" {
   assert_eq(result[0].1.length(), 3)
 }
 
+///|
 test "filter_split_by_attributes out of bounds attr" {
   let records = [["A"], ["B"]]
   let result = @filter.filter_split_by_attributes(records, 5)
@@ -6676,17 +8166,20 @@ test "filter_split_by_attributes out of bounds attr" {
   assert_eq(result[0].0, "")
 }
 
+///|
 test "eval_frequency basic count" {
   let values = [1, 2, 1, 3, 1, 2]
   let result = @eval.eval_frequency(values)
   assert_eq(result.length(), 3)
 }
 
+///|
 test "eval_frequency empty returns empty" {
   let result = @eval.eval_frequency([])
   assert_eq(result.length(), 0)
 }
 
+///|
 test "eval_frequency all same value" {
   let values = [5, 5, 5, 5]
   let result = @eval.eval_frequency(values)
@@ -6695,12 +8188,14 @@ test "eval_frequency all same value" {
   assert_eq(result[0].1, 4)
 }
 
+///|
 test "eval_frequency all unique" {
   let values = [1, 2, 3, 4]
   let result = @eval.eval_frequency(values)
   assert_eq(result.length(), 4)
 }
 
+///|
 test "eval_frequency single value" {
   let result = @eval.eval_frequency([42])
   assert_eq(result.length(), 1)
@@ -6710,6 +8205,7 @@ test "eval_frequency single value" {
 
 // S7.1 dl_layers 扩展测试 / Extended DL layers tests
 
+///|
 test "activate_gelu basic" {
   let r1 = @dl_layers.activate_gelu(0.0)
   let r2 = @dl_layers.activate_gelu(1.0)
@@ -6719,6 +8215,7 @@ test "activate_gelu basic" {
   assert_true(r3 < 0.0)
 }
 
+///|
 test "activate_silu basic" {
   let r1 = @dl_layers.activate_silu(0.0)
   let r2 = @dl_layers.activate_silu(1.0)
@@ -6728,6 +8225,7 @@ test "activate_silu basic" {
   assert_true(r3 < 0.0)
 }
 
+///|
 test "activate_mish basic" {
   let r1 = @dl_layers.activate_mish(0.0)
   let r2 = @dl_layers.activate_mish(1.0)
@@ -6735,6 +8233,7 @@ test "activate_mish basic" {
   assert_true(r2 > 0.0)
 }
 
+///|
 test "activate_hardswish basic" {
   let r1 = @dl_layers.activate_hardswish(0.0)
   let r2 = @dl_layers.activate_hardswish(3.0)
@@ -6744,6 +8243,7 @@ test "activate_hardswish basic" {
   assert_eq(r3, 0.0)
 }
 
+///|
 test "activate_hardsigmoid basic" {
   let r1 = @dl_layers.activate_hardsigmoid(0.0)
   let r2 = @dl_layers.activate_hardsigmoid(3.0)
@@ -6753,6 +8253,7 @@ test "activate_hardsigmoid basic" {
   assert_eq(r3, 0.0)
 }
 
+///|
 test "activate_elu basic" {
   let r1 = @dl_layers.activate_elu(1.0, 1.0)
   let r2 = @dl_layers.activate_elu(-1.0, 1.0)
@@ -6760,6 +8261,7 @@ test "activate_elu basic" {
   assert_true(r2 < 0.0)
 }
 
+///|
 test "activate_leaky_relu basic" {
   let r1 = @dl_layers.activate_leaky_relu(1.0, 0.01)
   let r2 = @dl_layers.activate_leaky_relu(-1.0, 0.01)
@@ -6767,6 +8269,7 @@ test "activate_leaky_relu basic" {
   assert_eq(r2, -0.01)
 }
 
+///|
 test "activate_prelu basic" {
   let r1 = @dl_layers.activate_prelu(2.0, 0.25)
   let r2 = @dl_layers.activate_prelu(-2.0, 0.25)
@@ -6774,6 +8277,7 @@ test "activate_prelu basic" {
   assert_eq(r2, -0.5)
 }
 
+///|
 test "activate_threshold_relu basic" {
   let r1 = @dl_layers.activate_threshold_relu(2.0, 1.0)
   let r2 = @dl_layers.activate_threshold_relu(0.5, 1.0)
@@ -6781,6 +8285,7 @@ test "activate_threshold_relu basic" {
   assert_eq(r2, 0.0)
 }
 
+///|
 test "softmax basic" {
   let result = @dl_layers.softmax([0.0, 0.0, 0.0])
   assert_eq(result.length(), 3)
@@ -6789,11 +8294,13 @@ test "softmax basic" {
   assert_true(result[2] > 0.3 && result[2] < 0.34)
 }
 
+///|
 test "softmax empty" {
   let result = @dl_layers.softmax([])
   assert_eq(result.length(), 0)
 }
 
+///|
 test "log_softmax basic" {
   let result = @dl_layers.log_softmax([0.0, 0.0])
   assert_eq(result.length(), 2)
@@ -6801,30 +8308,35 @@ test "log_softmax basic" {
   assert_true(result[1] < 0.0)
 }
 
+///|
 test "layernorm basic" {
   let meta = @dl_layers.make_layernorm(3, 0.00001)
   let result = @dl_layers.layernorm_forward([1.0, 2.0, 3.0], meta)
   assert_eq(result.length(), 3)
 }
 
+///|
 test "layernorm empty" {
   let meta = @dl_layers.make_layernorm(3, 0.00001)
   let result = @dl_layers.layernorm_forward([], meta)
   assert_eq(result.length(), 0)
 }
 
+///|
 test "groupnorm basic" {
   let meta = @dl_layers.make_groupnorm(2, 4, 0.00001)
   let result = @dl_layers.groupnorm_forward([1.0, 2.0, 3.0, 4.0], meta)
   assert_eq(result.length(), 4)
 }
 
+///|
 test "instancenorm basic" {
   let meta = @dl_layers.make_instancenorm(3, 0.00001)
   let result = @dl_layers.instancenorm_forward([1.0, 2.0, 3.0], meta)
   assert_eq(result.length(), 3)
 }
 
+///|
 test "attention_scaled_dot_product basic" {
   let q = [1.0, 0.0]
   let k = [[1.0, 0.0], [0.0, 1.0]]
@@ -6833,11 +8345,13 @@ test "attention_scaled_dot_product basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "attention_scaled_dot_product empty" {
   let result = @dl_layers.attention_scaled_dot_product([1.0], [], [])
   assert_eq(result.length(), 0)
 }
 
+///|
 test "multihead_attention basic" {
   let meta = @dl_layers.make_multihead_attention(2, 4)
   let q = [1.0, 0.0, 0.0, 0.0]
@@ -6847,12 +8361,14 @@ test "multihead_attention basic" {
   assert_eq(result.length(), 4)
 }
 
+///|
 test "rnn_step basic" {
   let meta = @dl_layers.make_rnn(2, 2)
   let h = @dl_layers.rnn_step([0.5, 0.5], [0.0, 0.0], meta)
   assert_eq(h.length(), 2)
 }
 
+///|
 test "rnn_forward basic" {
   let meta = @dl_layers.make_rnn(2, 2)
   let seq = [[0.5, 0.5], [0.3, 0.3]]
@@ -6860,6 +8376,7 @@ test "rnn_forward basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "lstm_step basic" {
   let meta = @dl_layers.make_lstm(2, 2)
   let (h, c) = @dl_layers.lstm_step([0.5, 0.5], [0.0, 0.0], [0.0, 0.0], meta)
@@ -6867,6 +8384,7 @@ test "lstm_step basic" {
   assert_eq(c.length(), 2)
 }
 
+///|
 test "lstm_forward basic" {
   let meta = @dl_layers.make_lstm(2, 2)
   let seq = [[0.5, 0.5], [0.3, 0.3]]
@@ -6874,12 +8392,14 @@ test "lstm_forward basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "gru_step basic" {
   let meta = @dl_layers.make_gru(2, 2)
   let h = @dl_layers.gru_step([0.5, 0.5], [0.0, 0.0], meta)
   assert_eq(h.length(), 2)
 }
 
+///|
 test "gru_forward basic" {
   let meta = @dl_layers.make_gru(2, 2)
   let seq = [[0.5, 0.5], [0.3, 0.3]]
@@ -6887,24 +8407,28 @@ test "gru_forward basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "conv1d basic" {
   let meta = @dl_layers.make_conv1d(1, 1, 3, 1, 1)
   let result = @dl_layers.conv1d_forward([1.0, 2.0, 3.0, 4.0, 5.0], meta)
   assert_true(result.length() > 0)
 }
 
+///|
 test "conv1d_output_dim basic" {
   let meta = @dl_layers.make_conv1d(1, 1, 3, 1, 1)
   let out = @dl_layers.conv1d_output_dim(5, meta)
   assert_eq(out, 5)
 }
 
+///|
 test "avgpool2d_output_dim basic" {
   let meta = @dl_layers.make_avgpool2d(2, 2)
   let out = @dl_layers.avgpool2d_output_dim(4, meta)
   assert_eq(out, 2)
 }
 
+///|
 test "flatten_forward basic" {
   let result = @dl_layers.flatten_forward([[1.0, 2.0], [3.0, 4.0]])
   assert_eq(result.length(), 4)
@@ -6912,13 +8436,18 @@ test "flatten_forward basic" {
   assert_eq(result[3], 4.0)
 }
 
+///|
 test "global_avg_pool_forward basic" {
-  let result = @dl_layers.global_avg_pool_forward([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+  let result = @dl_layers.global_avg_pool_forward([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+  ])
   assert_eq(result.length(), 2)
   assert_eq(result[0], 2.0)
   assert_eq(result[1], 5.0)
 }
 
+///|
 test "residual_add basic" {
   let result = @dl_layers.residual_add([1.0, 2.0, 3.0], [4.0, 5.0, 6.0])
   assert_eq(result.length(), 3)
@@ -6927,6 +8456,7 @@ test "residual_add basic" {
   assert_eq(result[2], 9.0)
 }
 
+///|
 test "concat_forward basic" {
   let result = @dl_layers.concat_forward([1.0, 2.0], [3.0, 4.0, 5.0])
   assert_eq(result.length(), 5)
@@ -6934,6 +8464,7 @@ test "concat_forward basic" {
   assert_eq(result[4], 5.0)
 }
 
+///|
 test "embedding_forward basic" {
   let table = [[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]]
   let result = @dl_layers.embedding_forward([0, 2, 1], table)
@@ -6943,6 +8474,7 @@ test "embedding_forward basic" {
   assert_eq(result[2][0], 3.0)
 }
 
+///|
 test "embedding_forward out of bounds" {
   let table = [[1.0, 2.0]]
   let result = @dl_layers.embedding_forward([0, 5], table)
@@ -6950,11 +8482,13 @@ test "embedding_forward out of bounds" {
   assert_eq(result[1].length(), 0)
 }
 
+///|
 test "pixel_shuffle_forward basic" {
   let result = @dl_layers.pixel_shuffle_forward([1.0, 2.0, 3.0, 4.0], 2)
   assert_eq(result.length(), 4)
 }
 
+///|
 test "conv_transpose2d_output_dim basic" {
   let out = @dl_layers.conv_transpose2d_output_dim(3, 3, 2, 1, 0)
   assert_eq(out, 5)
@@ -6962,6 +8496,7 @@ test "conv_transpose2d_output_dim basic" {
 
 // S7.2 dl_losses 扩展测试 / Extended loss functions tests
 
+///|
 test "contrastive_loss same class" {
   let e1 = [1.0, 0.0]
   let e2 = [1.0, 0.0]
@@ -6969,6 +8504,7 @@ test "contrastive_loss same class" {
   assert_eq(result, 0.0)
 }
 
+///|
 test "contrastive_loss diff class" {
   let e1 = [0.0, 0.0]
   let e2 = [1.0, 0.0]
@@ -6976,6 +8512,7 @@ test "contrastive_loss diff class" {
   assert_true(result >= 0.0)
 }
 
+///|
 test "triplet_loss basic" {
   let a = [0.0, 0.0]
   let p = [0.1, 0.0]
@@ -6984,6 +8521,7 @@ test "triplet_loss basic" {
   assert_true(result >= 0.0)
 }
 
+///|
 test "triplet_loss zero when satisfied" {
   let a = [0.0, 0.0]
   let p = [0.0, 0.0]
@@ -6992,111 +8530,143 @@ test "triplet_loss zero when satisfied" {
   assert_eq(result, 0.0)
 }
 
+///|
 test "focal_loss basic" {
   let result = @dl_losses.focal_loss([0.9, 0.1], [1.0, 0.0], 0.25, 2.0)
   assert_true(result >= 0.0)
 }
 
+///|
 test "focal_loss empty" {
   let result = @dl_losses.focal_loss([], [], 0.25, 2.0)
   assert_eq(result, 0.0)
 }
 
+///|
 test "label_smoothing_loss basic" {
   let result = @dl_losses.label_smoothing_loss([2.0, 1.0, 0.0], 0, 0.1)
   assert_true(result >= 0.0)
 }
 
+///|
 test "label_smoothing_loss invalid target" {
   let result = @dl_losses.label_smoothing_loss([1.0, 2.0], 5, 0.1)
   assert_eq(result, 0.0)
 }
 
+///|
 test "kl_div_loss basic" {
   let result = @dl_losses.kl_div_loss([0.5, 0.5], [0.5, 0.5])
   assert_true(result >= -0.0001 && result <= 0.0001)
 }
 
+///|
 test "kl_div_loss empty" {
   let result = @dl_losses.kl_div_loss([], [])
   assert_eq(result, 0.0)
 }
 
+///|
 test "huber_loss small error" {
   let result = @dl_losses.huber_loss([1.0, 2.0], [1.1, 2.1], 1.0)
   assert_true(result >= 0.0)
 }
 
+///|
 test "huber_loss large error" {
   let result = @dl_losses.huber_loss([0.0], [10.0], 1.0)
   assert_true(result >= 0.0)
 }
 
+///|
 test "smooth_l1_loss basic" {
   let result = @dl_losses.smooth_l1_loss([1.0, 2.0], [1.5, 1.5], 1.0)
   assert_true(result >= 0.0)
 }
 
+///|
 test "cosine_embedding_loss similar" {
-  let result = @dl_losses.cosine_embedding_loss([1.0, 0.0], [1.0, 0.0], 1.0, 0.0)
+  let result = @dl_losses.cosine_embedding_loss(
+    [1.0, 0.0],
+    [1.0, 0.0],
+    1.0,
+    0.0,
+  )
   assert_true(result >= -0.0001 && result <= 0.0001)
 }
 
+///|
 test "cosine_embedding_loss dissimilar" {
-  let result = @dl_losses.cosine_embedding_loss([1.0, 0.0], [0.0, 1.0], -1.0, 0.5)
+  let result = @dl_losses.cosine_embedding_loss(
+    [1.0, 0.0],
+    [0.0, 1.0],
+    -1.0,
+    0.5,
+  )
   assert_true(result >= 0.0)
 }
 
+///|
 test "margin_ranking_loss basic" {
   let result = @dl_losses.margin_ranking_loss(1.0, 2.0, 1.0, 1.0)
   assert_true(result >= 0.0)
 }
 
+///|
 test "soft_margin_loss basic" {
   let result = @dl_losses.soft_margin_loss(1.0, 1.0)
   assert_true(result >= 0.0)
 }
 
+///|
 test "nll_loss basic" {
   let result = @dl_losses.nll_loss([-0.5, -1.0, -2.0], 0)
   assert_eq(result, 0.5)
 }
 
+///|
 test "nll_loss invalid target" {
   let result = @dl_losses.nll_loss([-0.5], 5)
   assert_eq(result, 0.0)
 }
 
+///|
 test "bce_loss basic" {
   let result = @dl_losses.bce_loss([0.9, 0.1], [1.0, 0.0])
   assert_true(result >= 0.0)
 }
 
+///|
 test "bce_loss empty" {
   let result = @dl_losses.bce_loss([], [])
   assert_eq(result, 0.0)
 }
 
+///|
 test "log_cosh_loss basic" {
   let result = @dl_losses.log_cosh_loss([1.0, 2.0], [1.0, 2.0])
   assert_true(result >= -0.0001 && result <= 0.0001)
 }
 
+///|
 test "dice_loss perfect" {
   let result = @dl_losses.dice_loss([1.0, 0.0, 1.0], [1.0, 0.0, 1.0])
   assert_true(result >= -0.0001 && result <= 0.0001)
 }
 
+///|
 test "dice_loss empty" {
   let result = @dl_losses.dice_loss([], [])
   assert_eq(result, 0.0)
 }
 
+///|
 test "tversky_loss basic" {
   let result = @dl_losses.tversky_loss([0.9, 0.1], [1.0, 0.0], 0.3, 0.7)
   assert_true(result >= 0.0)
 }
 
+///|
 test "tversky_loss empty" {
   let result = @dl_losses.tversky_loss([], [], 0.3, 0.7)
   assert_eq(result, 0.0)
@@ -7104,60 +8674,84 @@ test "tversky_loss empty" {
 
 // S7.3 dl_optimizers 扩展测试 / Extended optimizer tests
 
+///|
 test "adamw_step basic" {
-  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [1.0, 2.0, 3.0])
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [
+    1.0, 2.0, 3.0,
+  ])
   let result = @dl_optimizers.adamw_step(state, [0.1, 0.2, 0.3], 0.01)
   assert_eq(result.length(), 3)
 }
 
+///|
 test "radam_step basic" {
-  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [1.0, 2.0])
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [
+    1.0, 2.0,
+  ])
   let result = @dl_optimizers.radam_step(state, [0.1, 0.2])
   assert_eq(result.length(), 2)
 }
 
+///|
 test "adabelief_step basic" {
-  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [0.5, 0.5])
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [
+    0.5, 0.5,
+  ])
   let result = @dl_optimizers.adabelief_step(state, [0.1, 0.1])
   assert_eq(result.length(), 2)
 }
 
+///|
 test "nadam_step basic" {
   let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [1.0])
   let result = @dl_optimizers.nadam_step(state, [0.5])
   assert_eq(result.length(), 1)
 }
 
+///|
 test "adamax_step basic" {
-  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [1.0, 2.0])
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [
+    1.0, 2.0,
+  ])
   let result = @dl_optimizers.adamax_step(state, [0.1, 0.2])
   assert_eq(result.length(), 2)
 }
 
+///|
 test "rmsprop_step basic" {
-  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.01, [1.0, 2.0])
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.01, [
+    1.0, 2.0,
+  ])
   let result = @dl_optimizers.rmsprop_step(state, [0.1, 0.2], 0.9)
   assert_eq(result.length(), 2)
 }
 
+///|
 test "adagrad_step basic" {
   let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.01, [1.0])
   let result = @dl_optimizers.adagrad_step(state, [0.5])
   assert_eq(result.length(), 1)
 }
 
+///|
 test "asgd_step basic" {
-  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.01, [1.0, 2.0])
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.01, [
+    1.0, 2.0,
+  ])
   let result = @dl_optimizers.asgd_step(state, [0.1, 0.2], 0.0)
   assert_eq(result.length(), 2)
 }
 
+///|
 test "lamb_step basic" {
-  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [1.0, 2.0, 3.0])
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [
+    1.0, 2.0, 3.0,
+  ])
   let result = @dl_optimizers.lamb_step(state, [0.1, 0.2, 0.3], 0.01)
   assert_eq(result.length(), 3)
 }
 
+///|
 test "lookahead_step basic" {
   let slow = [1.0, 2.0, 3.0]
   let fast = [1.5, 2.5, 3.5]
@@ -7168,8 +8762,11 @@ test "lookahead_step basic" {
   assert_eq(result[2], 3.25)
 }
 
+///|
 test "adamw_step empty gradients" {
-  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [1.0, 2.0])
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [
+    1.0, 2.0,
+  ])
   let result = @dl_optimizers.adamw_step(state, [], 0.01)
   assert_eq(result[0], 1.0)
   assert_eq(result[1], 2.0)
@@ -7177,12 +8774,14 @@ test "adamw_step empty gradients" {
 
 // S7.4 learncore/nlp 测试 / NLP tests
 
+///|
 test "tokenize_whitespace basic" {
   let result = @nlp.tokenize_whitespace("hello world foo")
   assert_eq(result.length(), 3)
   assert_eq(result[0], "hello")
 }
 
+///|
 test "tokenize_char basic" {
   let result = @nlp.tokenize_char("abc")
   assert_eq(result.length(), 3)
@@ -7190,12 +8789,14 @@ test "tokenize_char basic" {
   assert_eq(result[2], "c")
 }
 
+///|
 test "tokenize_word basic" {
   let result = @nlp.tokenize_word("Hello World")
   assert_eq(result.length(), 2)
   assert_eq(result[0], "hello")
 }
 
+///|
 test "tokenize unified interface" {
   let r1 = @nlp.tokenize(@nlp.Whitespace, "a b c")
   assert_eq(r1.length(), 3)
@@ -7203,12 +8804,14 @@ test "tokenize unified interface" {
   assert_eq(r2.length(), 2)
 }
 
+///|
 test "build_vocab basic" {
   let tokens = ["the", "cat", "the", "dog"]
   let vocab = @nlp.build_vocab(tokens)
   assert_eq(vocab.length(), 3)
 }
 
+///|
 test "encode_tokens basic" {
   let vocab = ["the", "cat", "dog"]
   let ids = @nlp.encode_tokens(["cat", "the", "dog"], vocab)
@@ -7217,12 +8820,14 @@ test "encode_tokens basic" {
   assert_eq(ids[2], 2)
 }
 
+///|
 test "encode_tokens unknown" {
   let vocab = ["the", "cat"]
   let ids = @nlp.encode_tokens(["dog"], vocab)
   assert_eq(ids[0], -1)
 }
 
+///|
 test "decode_ids basic" {
   let vocab = ["the", "cat", "dog"]
   let result = @nlp.decode_ids([0, 1, 2], vocab)
@@ -7231,12 +8836,14 @@ test "decode_ids basic" {
   assert_eq(result[2], "dog")
 }
 
+///|
 test "decode_ids out of bounds" {
   let vocab = ["the"]
   let result = @nlp.decode_ids([0, 5], vocab)
   assert_eq(result[1], "<unk>")
 }
 
+///|
 test "embedding_lookup basic" {
   let matrix = [[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]]
   let result = @nlp.embedding_lookup([0, 2], matrix)
@@ -7245,18 +8852,21 @@ test "embedding_lookup basic" {
   assert_eq(result[1][0], 5.0)
 }
 
+///|
 test "positional_encoding basic" {
   let pe = @nlp.positional_encoding(3, 4)
   assert_eq(pe.length(), 3)
   assert_eq(pe[0].length(), 4)
 }
 
+///|
 test "bert_config basic" {
   let config = @nlp.make_bert_config(1000, 128, 6, 8)
   assert_eq(config.vocab_size, 1000)
   assert_eq(config.hidden_size, 128)
 }
 
+///|
 test "bert_embeddings basic" {
   let config = @nlp.make_bert_config(10, 4, 2, 2)
   let matrix = [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0]]
@@ -7264,6 +8874,7 @@ test "bert_embeddings basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "bert_pooled_output basic" {
   let hidden = [[1.0, 2.0], [3.0, 4.0]]
   let pooled = @nlp.bert_pooled_output(hidden)
@@ -7271,6 +8882,7 @@ test "bert_pooled_output basic" {
   assert_eq(pooled[1], 2.0)
 }
 
+///|
 test "bert_forward basic" {
   let config = @nlp.make_bert_config(10, 4, 2, 2)
   let matrix = [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0]]
@@ -7279,11 +8891,13 @@ test "bert_forward basic" {
   assert_eq(pooled.length(), 4)
 }
 
+///|
 test "gpt_config basic" {
   let config = @nlp.make_gpt_config(1000, 128, 6, 8)
   assert_eq(config.vocab_size, 1000)
 }
 
+///|
 test "gpt_embeddings basic" {
   let config = @nlp.make_gpt_config(10, 4, 2, 2)
   let matrix = [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0]]
@@ -7291,6 +8905,7 @@ test "gpt_embeddings basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "gpt_forward basic" {
   let config = @nlp.make_gpt_config(10, 4, 2, 2)
   let matrix = [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0]]
@@ -7298,6 +8913,7 @@ test "gpt_forward basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "gpt_generate_next basic" {
   let config = @nlp.make_gpt_config(10, 4, 2, 2)
   let matrix = [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0]]
@@ -7305,6 +8921,7 @@ test "gpt_generate_next basic" {
   assert_true(next_id >= 0)
 }
 
+///|
 test "ngrams bigram" {
   let tokens = ["the", "cat", "sat"]
   let grams = @nlp.ngrams(tokens, 2)
@@ -7312,39 +8929,46 @@ test "ngrams bigram" {
   assert_eq(grams[0].length(), 2)
 }
 
+///|
 test "ngrams trigram" {
   let tokens = ["a", "b", "c", "d"]
   let grams = @nlp.ngrams(tokens, 3)
   assert_eq(grams.length(), 2)
 }
 
+///|
 test "ngrams too large" {
   let tokens = ["a", "b"]
   let grams = @nlp.ngrams(tokens, 5)
   assert_eq(grams.length(), 0)
 }
 
+///|
 test "term_frequency basic" {
   let tokens = ["the", "cat", "the", "dog", "the"]
   let tf = @nlp.term_frequency(tokens)
   assert_eq(tf.length(), 3)
 }
 
+///|
 test "text_length basic" {
   assert_eq(@nlp.text_length("hello"), 5)
   assert_eq(@nlp.text_length(""), 0)
 }
 
+///|
 test "text_join basic" {
   let result = @nlp.text_join(["a", "b", "c"], ", ")
   assert_eq(result, "a, b, c")
 }
 
+///|
 test "text_join empty" {
   let result = @nlp.text_join([], ",")
   assert_eq(result, "")
 }
 
+///|
 test "text_truncate basic" {
   assert_eq(@nlp.text_truncate("hello world", 5), "hello")
   assert_eq(@nlp.text_truncate("hi", 10), "hi")
@@ -7352,6 +8976,7 @@ test "text_truncate basic" {
 
 // S7.5 learncore/timeseries 测试 / Time series tests
 
+///|
 test "moving_average basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
   let result = @timeseries.moving_average(data, 3)
@@ -7359,11 +8984,13 @@ test "moving_average basic" {
   assert_eq(result[2], 2.0)
 }
 
+///|
 test "moving_average empty" {
   let result = @timeseries.moving_average([], 3)
   assert_eq(result.length(), 0)
 }
 
+///|
 test "exponential_smoothing basic" {
   let data = [1.0, 2.0, 3.0]
   let result = @timeseries.exponential_smoothing(data, 0.5)
@@ -7371,6 +8998,7 @@ test "exponential_smoothing basic" {
   assert_eq(result[0], 1.0)
 }
 
+///|
 test "difference basic" {
   let data = [1.0, 3.0, 6.0, 10.0]
   let result = @timeseries.difference(data)
@@ -7379,18 +9007,21 @@ test "difference basic" {
   assert_eq(result[1], 3.0)
 }
 
+///|
 test "difference_k second order" {
   let data = [1.0, 4.0, 9.0, 16.0]
   let result = @timeseries.difference_k(data, 2)
   assert_eq(result.length(), 2)
 }
 
+///|
 test "seasonal_difference basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
   let result = @timeseries.seasonal_difference(data, 3)
   assert_eq(result.length(), 3)
 }
 
+///|
 test "autocorrelation basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
   let result = @timeseries.autocorrelation(data, 3)
@@ -7398,35 +9029,41 @@ test "autocorrelation basic" {
   assert_true(result[0] > 0.99)
 }
 
+///|
 test "autocorrelation empty" {
   let result = @timeseries.autocorrelation([], 3)
   assert_eq(result.length(), 0)
 }
 
+///|
 test "partial_autocorrelation basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
   let result = @timeseries.partial_autocorrelation(data, 3)
   assert_eq(result.length(), 4)
 }
 
+///|
 test "lag_operator basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
   let result = @timeseries.lag_operator(data, 2)
   assert_eq(result.length(), 5)
 }
 
+///|
 test "ar_predict basic" {
   let data = [1.0, 2.0, 3.0]
   let result = @timeseries.ar_predict(data, [0.5], 0.0, 3)
   assert_eq(result.length(), 3)
 }
 
+///|
 test "ma_predict basic" {
   let data = [1.0, 2.0, 3.0]
   let result = @timeseries.ma_predict(data, [0.5], 3)
   assert_eq(result.length(), 3)
 }
 
+///|
 test "arima_predict basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
   let params = @timeseries.make_arima_params(1, 1, 1)
@@ -7434,6 +9071,7 @@ test "arima_predict basic" {
   assert_eq(result.length(), 3)
 }
 
+///|
 test "garch_predict basic" {
   let returns = [0.01, -0.02, 0.03, -0.01]
   let params = @timeseries.make_garch_params(1, 1, [0.1], [0.8], 0.01)
@@ -7441,6 +9079,7 @@ test "garch_predict basic" {
   assert_eq(result.length(), 3)
 }
 
+///|
 test "seasonal_decompose basic" {
   let data = [1.0, 2.0, 3.0, 1.0, 2.0, 3.0]
   let decomp = @timeseries.seasonal_decompose(data, 3)
@@ -7449,12 +9088,14 @@ test "seasonal_decompose basic" {
   assert_eq(decomp.residual.length(), 6)
 }
 
+///|
 test "seasonal_adjust basic" {
   let data = [1.0, 2.0, 3.0, 1.0, 2.0, 3.0]
   let result = @timeseries.seasonal_adjust(data, 3)
   assert_eq(result.length(), 6)
 }
 
+///|
 test "holt_winters_forecast basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
   let params = @timeseries.make_holt_winters_params(0.3, 0.1, 0.1, 3)
@@ -7462,39 +9103,45 @@ test "holt_winters_forecast basic" {
   assert_eq(result.length(), 3)
 }
 
+///|
 test "prophet_forecast basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
   let result = @timeseries.prophet_forecast(data, 3)
   assert_eq(result.length(), 3)
 }
 
+///|
 test "kalman_filter_step basic" {
   let (x, p) = @timeseries.kalman_filter_step(1.0, 1.0, 2.0, 0.1, 0.5)
   assert_true(x > 0.0)
   assert_true(p > 0.0)
 }
 
+///|
 test "kalman_filter basic" {
   let measurements = [1.0, 2.0, 3.0, 4.0]
   let result = @timeseries.kalman_filter(measurements, 0.0, 1.0, 0.1, 0.5)
   assert_eq(result.length(), 4)
 }
 
+///|
 test "is_stationary basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
   let result = @timeseries.is_stationary(data)
   assert_true(result || !result)
 }
 
+///|
 test "is_white_noise basic" {
   let data = [0.1, -0.1, 0.1, -0.1, 0.1]
   let result = @timeseries.is_white_noise(data)
   assert_true(result || !result)
 }
 
+///|
 test "backtest basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
-  let forecast_fn = fn(d : Array[Double], s : Int) -> Array[Double] {
+  let forecast_fn = fn(d : Array[Double], s : Int32) -> Array[Double] {
     @timeseries.prophet_forecast(d, s)
   }
   let result = @timeseries.backtest(data, forecast_fn, 2)
@@ -7503,38 +9150,45 @@ test "backtest basic" {
 
 // S7.6 learncore/reinforcement 测试 / RL tests
 
+///|
 test "q_learning_update basic" {
   let result = @reinforcement.q_learning_update(1.0, 0.5, 2.0, 0.1, 0.9)
   assert_true(result > 1.0)
 }
 
+///|
 test "q_table_step basic" {
   let q_table = [[1.0, 2.0], [3.0, 4.0]]
   let result = @reinforcement.q_table_step(q_table, 0, 0, 1.0, 1, 0.1, 0.9)
   assert_eq(result.length(), 2)
 }
 
+///|
 test "q_table_step invalid state" {
   let q_table = [[1.0, 2.0]]
   let result = @reinforcement.q_table_step(q_table, 5, 0, 1.0, 0, 0.1, 0.9)
   assert_eq(result, q_table)
 }
 
+///|
 test "epsilon_greedy basic" {
   let result = @reinforcement.epsilon_greedy([1.0, 3.0, 2.0], 0.0)
   assert_eq(result, 1)
 }
 
+///|
 test "epsilon_greedy empty" {
   let result = @reinforcement.epsilon_greedy([], 0.5)
   assert_eq(result, 0)
 }
 
+///|
 test "sarsa_update basic" {
   let result = @reinforcement.sarsa_update(1.0, 0.5, 2.0, 0.1, 0.9)
   assert_true(result > 1.0)
 }
 
+///|
 test "policy_gradient_update basic" {
   let theta = [1.0, 2.0]
   let grad = [0.1, 0.2]
@@ -7542,10 +9196,12 @@ test "policy_gradient_update basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "advantage basic" {
   assert_eq(@reinforcement.advantage(5.0, 3.0), 2.0)
 }
 
+///|
 test "gae basic" {
   let rewards = [1.0, 0.5, 0.0]
   let values = [0.5, 0.3, 0.1]
@@ -7553,11 +9209,13 @@ test "gae basic" {
   assert_eq(result.length(), 3)
 }
 
+///|
 test "actor_critic_config basic" {
   let config = @reinforcement.make_actor_critic_config(0.001, 0.01, 0.99)
   assert_eq(config.actor_lr, 0.001)
 }
 
+///|
 test "critic_update basic" {
   let config = @reinforcement.make_actor_critic_config(0.001, 0.01, 0.99)
   let (new_v, delta) = @reinforcement.critic_update(1.0, 0.5, 1.5, config)
@@ -7565,6 +9223,7 @@ test "critic_update basic" {
   assert_true(new_v > 1.0)
 }
 
+///|
 test "actor_update basic" {
   let config = @reinforcement.make_actor_critic_config(0.001, 0.01, 0.99)
   let theta = [1.0, 2.0]
@@ -7573,17 +9232,27 @@ test "actor_update basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "experience_replay basic" {
   let replay = @reinforcement.make_experience_replay(100)
   assert_eq(@reinforcement.replay_size(replay), 0)
 }
 
+///|
 test "add_experience basic" {
   let replay = @reinforcement.make_experience_replay(100)
-  let replay2 = @reinforcement.add_experience(replay, [1.0, 0.0], 0, 1.0, [0.0, 1.0], false)
+  let replay2 = @reinforcement.add_experience(
+    replay,
+    [1.0, 0.0],
+    0,
+    1.0,
+    [0.0, 1.0],
+    false,
+  )
   assert_eq(@reinforcement.replay_size(replay2), 1)
 }
 
+///|
 test "add_experience capacity" {
   let replay = @reinforcement.make_experience_replay(2)
   let r1 = @reinforcement.add_experience(replay, [1.0], 0, 1.0, [0.0], false)
@@ -7592,6 +9261,7 @@ test "add_experience capacity" {
   assert_eq(@reinforcement.replay_size(r3), 2)
 }
 
+///|
 test "soft_update basic" {
   let target = [1.0, 2.0]
   let source = [3.0, 4.0]
@@ -7600,11 +9270,13 @@ test "soft_update basic" {
   assert_true(result[1] > 2.19 && result[1] < 2.21)
 }
 
+///|
 test "ppo_clipped_loss basic" {
   let result = @reinforcement.ppo_clipped_loss(1.5, 1.0, 0.2)
   assert_true(result >= 0.0)
 }
 
+///|
 test "ppo_update basic" {
   let theta = [1.0, 2.0]
   let grad = [0.1, 0.2]
@@ -7612,18 +9284,21 @@ test "ppo_update basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "discounted_return basic" {
   let rewards = [1.0, 1.0, 1.0]
   let result = @reinforcement.discounted_return(rewards, 0.9)
   assert_true(result > 2.0)
 }
 
+///|
 test "normalize_rewards basic" {
   let rewards = [1.0, 2.0, 3.0]
   let result = @reinforcement.normalize_rewards(rewards)
   assert_eq(result.length(), 3)
 }
 
+///|
 test "normalize_rewards empty" {
   let result = @reinforcement.normalize_rewards([])
   assert_eq(result.length(), 0)
@@ -7631,6 +9306,7 @@ test "normalize_rewards empty" {
 
 // S7.7 learncore/ensemble 测试 / Ensemble tests
 
+///|
 test "hard_voting basic" {
   let preds = [[0, 1, 0], [0, 1, 1], [1, 1, 0]]
   let result = @ensemble.hard_voting(preds)
@@ -7638,17 +9314,20 @@ test "hard_voting basic" {
   assert_eq(result[1], 1)
 }
 
+///|
 test "hard_voting empty" {
   let result = @ensemble.hard_voting([])
   assert_eq(result.length(), 0)
 }
 
+///|
 test "soft_voting basic" {
   let probs = [[[0.7, 0.3], [0.4, 0.6]], [[0.6, 0.4], [0.5, 0.5]]]
   let result = @ensemble.soft_voting(probs)
   assert_eq(result.length(), 2)
 }
 
+///|
 test "weighted_voting basic" {
   let preds = [[0, 1], [1, 1]]
   let weights = [0.3, 0.7]
@@ -7656,17 +9335,20 @@ test "weighted_voting basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "bootstrap_sample basic" {
   let data = [1.0, 2.0, 3.0, 4.0, 5.0]
   let result = @ensemble.bootstrap_sample(data, 10)
   assert_eq(result.length(), 10)
 }
 
+///|
 test "bootstrap_sample empty" {
   let result = @ensemble.bootstrap_sample([], 5)
   assert_eq(result.length(), 0)
 }
 
+///|
 test "bagging_predict basic" {
   let preds = [[1.0, 2.0, 3.0], [3.0, 4.0, 5.0]]
   let result = @ensemble.bagging_predict(preds)
@@ -7674,6 +9356,7 @@ test "bagging_predict basic" {
   assert_eq(result[0], 2.0)
 }
 
+///|
 test "adaboost_update_weights basic" {
   let weights = [0.25, 0.25, 0.25, 0.25]
   let preds = [0, 1, 0, 1]
@@ -7682,16 +9365,19 @@ test "adaboost_update_weights basic" {
   assert_eq(result.length(), 4)
 }
 
+///|
 test "adaboost_alpha basic" {
   let result = @ensemble.adaboost_alpha(0.3)
   assert_true(result > 0.0)
 }
 
+///|
 test "adaboost_alpha edge cases" {
   assert_eq(@ensemble.adaboost_alpha(0.0), 0.0)
   assert_eq(@ensemble.adaboost_alpha(1.0), 0.0)
 }
 
+///|
 test "adaboost_error_rate basic" {
   let weights = [0.5, 0.5]
   let preds = [0, 1]
@@ -7700,6 +9386,7 @@ test "adaboost_error_rate basic" {
   assert_eq(result, 0.5)
 }
 
+///|
 test "gradient_boosting_update basic" {
   let current = [1.0, 2.0, 3.0]
   let base = [0.1, 0.2, 0.3]
@@ -7708,6 +9395,7 @@ test "gradient_boosting_update basic" {
   assert_eq(result[0], 1.01)
 }
 
+///|
 test "compute_residuals basic" {
   let labels = [3.0, 5.0, 7.0]
   let preds = [2.0, 4.0, 6.0]
@@ -7717,6 +9405,7 @@ test "compute_residuals basic" {
   assert_eq(result[2], 1.0)
 }
 
+///|
 test "stacking_predict basic" {
   let base_preds = [[1.0, 2.0], [3.0, 4.0]]
   let meta_weights = [0.6, 0.4]
@@ -7724,12 +9413,14 @@ test "stacking_predict basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "random_forest_predict basic" {
   let preds = [[1.0, 2.0], [3.0, 4.0]]
   let result = @ensemble.random_forest_predict(preds)
   assert_eq(result[0], 2.0)
 }
 
+///|
 test "random_forest_classify basic" {
   let preds = [[0, 1], [0, 1], [1, 1]]
   let result = @ensemble.random_forest_classify(preds)
@@ -7737,6 +9428,7 @@ test "random_forest_classify basic" {
   assert_eq(result[1], 1)
 }
 
+///|
 test "aggregate_feature_importance basic" {
   let importances = [[0.3, 0.5, 0.2], [0.4, 0.4, 0.2]]
   let result = @ensemble.aggregate_feature_importance(importances)
@@ -7747,10 +9439,12 @@ test "aggregate_feature_importance basic" {
 // S8.1 opcore/network 网络分析算子测试
 // ============================================
 
+///|
 test "network_id" {
   assert_eq(@network.network_id(), "opcore/network")
 }
 
+///|
 test "make_edge basic" {
   let e = @network.make_edge(0, 1, 5.0)
   assert_true(e.from_node == 0)
@@ -7758,6 +9452,7 @@ test "make_edge basic" {
   assert_true(e.weight == 5.0)
 }
 
+///|
 test "make_network_graph basic" {
   let edges = [@network.make_edge(0, 1, 1.0), @network.make_edge(1, 2, 2.0)]
   let g = @network.make_network_graph(3, edges)
@@ -7765,6 +9460,7 @@ test "make_network_graph basic" {
   assert_eq(@network.network_edge_count(g), 2)
 }
 
+///|
 test "build_network_from_edges basic" {
   let edge_list = [(0, 1, 1.0), (1, 2, 2.0), (2, 3, 3.0)]
   let g = @network.build_network_from_edges(4, edge_list)
@@ -7772,17 +9468,21 @@ test "build_network_from_edges basic" {
   assert_eq(@network.network_edge_count(g), 3)
 }
 
+///|
 test "network_node_count and edge_count" {
   let g = @network.build_network_from_edges(5, [(0, 1, 1.0), (1, 2, 1.0)])
   assert_eq(@network.network_node_count(g), 5)
   assert_eq(@network.network_edge_count(g), 2)
 }
 
+///|
 test "dijkstra_shortest_path basic" {
-  let g = @network.build_network_from_edges(
-    4,
-    [(0, 1, 1.0), (1, 2, 1.0), (0, 2, 4.0), (2, 3, 1.0)],
-  )
+  let g = @network.build_network_from_edges(4, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (0, 2, 4.0),
+    (2, 3, 1.0),
+  ])
   let dist = @network.dijkstra_shortest_path(g, 0)
   assert_eq(dist.length(), 4)
   assert_eq(dist[0], 0.0)
@@ -7791,6 +9491,7 @@ test "dijkstra_shortest_path basic" {
   assert_eq(dist[3], 3.0)
 }
 
+///|
 test "dijkstra_shortest_path single node" {
   let g = @network.build_network_from_edges(1, [])
   let dist = @network.dijkstra_shortest_path(g, 0)
@@ -7798,46 +9499,55 @@ test "dijkstra_shortest_path single node" {
   assert_eq(dist[0], 0.0)
 }
 
+///|
 test "dijkstra_shortest_path empty graph" {
   let g = @network.build_network_from_edges(0, [])
   let dist = @network.dijkstra_shortest_path(g, 0)
   assert_eq(dist.length(), 0)
 }
 
+///|
 test "dijkstra_shortest_path invalid source" {
   let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
   let dist = @network.dijkstra_shortest_path(g, 5)
   assert_eq(dist.length(), 0)
 }
 
+///|
 test "shortest_distance basic" {
-  let g = @network.build_network_from_edges(
-    4,
-    [(0, 1, 1.0), (1, 2, 1.0), (0, 2, 4.0), (2, 3, 1.0)],
-  )
+  let g = @network.build_network_from_edges(4, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (0, 2, 4.0),
+    (2, 3, 1.0),
+  ])
   assert_eq(@network.shortest_distance(g, 0, 0), 0.0)
   assert_eq(@network.shortest_distance(g, 0, 1), 1.0)
   assert_eq(@network.shortest_distance(g, 0, 2), 2.0)
   assert_eq(@network.shortest_distance(g, 0, 3), 3.0)
 }
 
+///|
 test "shortest_distance unreachable" {
   let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
   let d = @network.shortest_distance(g, 0, 2)
   assert_true(d > 100000000000000.0)
 }
 
+///|
 test "shortest_distance invalid target" {
   let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
   let d = @network.shortest_distance(g, 0, 10)
   assert_true(d > 100000000000000.0)
 }
 
+///|
 test "shortest_path_nodes basic" {
-  let g = @network.build_network_from_edges(
-    4,
-    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0)],
-  )
+  let g = @network.build_network_from_edges(4, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (2, 3, 1.0),
+  ])
   let path = @network.shortest_path_nodes(g, 0, 3)
   assert_eq(path.length(), 4)
   assert_eq(path[0], 0)
@@ -7846,6 +9556,7 @@ test "shortest_path_nodes basic" {
   assert_eq(path[3], 3)
 }
 
+///|
 test "shortest_path_nodes same node" {
   let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
   let path = @network.shortest_path_nodes(g, 0, 0)
@@ -7853,17 +9564,21 @@ test "shortest_path_nodes same node" {
   assert_eq(path[0], 0)
 }
 
+///|
 test "shortest_path_nodes invalid" {
   let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
   let path = @network.shortest_path_nodes(g, 0, 10)
   assert_eq(path.length(), 0)
 }
 
+///|
 test "service_area basic" {
-  let g = @network.build_network_from_edges(
-    5,
-    [(0, 1, 1.0), (1, 2, 1.0), (0, 3, 3.0), (3, 4, 1.0)],
-  )
+  let g = @network.build_network_from_edges(5, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (0, 3, 3.0),
+    (3, 4, 1.0),
+  ])
   let sa = @network.service_area(g, 0, 2.0)
   assert_true(sa.contains(0))
   assert_true(sa.contains(1))
@@ -7871,6 +9586,7 @@ test "service_area basic" {
   assert_false(sa.contains(3))
 }
 
+///|
 test "service_area zero cost" {
   let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
   let sa = @network.service_area(g, 0, 0.0)
@@ -7878,11 +9594,13 @@ test "service_area zero cost" {
   assert_eq(sa[0], 0)
 }
 
+///|
 test "multi_source_service_area basic" {
-  let g = @network.build_network_from_edges(
-    5,
-    [(0, 1, 1.0), (1, 2, 1.0), (3, 4, 1.0)],
-  )
+  let g = @network.build_network_from_edges(5, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (3, 4, 1.0),
+  ])
   let sa = @network.multi_source_service_area(g, [0, 3], 1.0)
   assert_true(sa.contains(0))
   assert_true(sa.contains(1))
@@ -7891,11 +9609,13 @@ test "multi_source_service_area basic" {
   assert_false(sa.contains(2))
 }
 
+///|
 test "od_cost_matrix basic" {
-  let g = @network.build_network_from_edges(
-    4,
-    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0)],
-  )
+  let g = @network.build_network_from_edges(4, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (2, 3, 1.0),
+  ])
   let matrix = @network.od_cost_matrix(g, [0, 1], [2, 3])
   assert_eq(matrix.length(), 2)
   assert_eq(matrix[0][0], 2.0)
@@ -7904,42 +9624,51 @@ test "od_cost_matrix basic" {
   assert_eq(matrix[1][1], 2.0)
 }
 
+///|
 test "od_cost_matrix empty" {
   let g = @network.build_network_from_edges(3, [])
   let matrix = @network.od_cost_matrix(g, [], [])
   assert_eq(matrix.length(), 0)
 }
 
+///|
 test "closest_facility basic" {
-  let g = @network.build_network_from_edges(
-    5,
-    [
-      (0, 1, 1.0), (1, 0, 1.0), (1, 2, 1.0), (2, 1, 1.0), (0, 3, 5.0), (3, 0, 5.0),
-      (3, 4, 1.0), (4, 3, 1.0),
-    ],
-  )
+  let g = @network.build_network_from_edges(5, [
+    (0, 1, 1.0),
+    (1, 0, 1.0),
+    (1, 2, 1.0),
+    (2, 1, 1.0),
+    (0, 3, 5.0),
+    (3, 0, 5.0),
+    (3, 4, 1.0),
+    (4, 3, 1.0),
+  ])
   let (facility, dist) = @network.closest_facility(g, 2, [3, 0])
   assert_eq(facility, 0)
   assert_eq(dist, 2.0)
 }
 
+///|
 test "closest_facility no facilities" {
   let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
   let (facility, _) = @network.closest_facility(g, 0, [])
   assert_eq(facility, -1)
 }
 
+///|
 test "route_plan basic" {
-  let g = @network.build_network_from_edges(
-    4,
-    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0)],
-  )
+  let g = @network.build_network_from_edges(4, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (2, 3, 1.0),
+  ])
   let route = @network.route_plan(g, [0, 2, 3])
   assert_true(route.length() >= 3)
   assert_eq(route[0], 0)
   assert_eq(route[route.length() - 1], 3)
 }
 
+///|
 test "route_plan single waypoint" {
   let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
   let route = @network.route_plan(g, [1])
@@ -7947,87 +9676,103 @@ test "route_plan single waypoint" {
   assert_eq(route[0], 1)
 }
 
+///|
 test "route_cost basic" {
-  let g = @network.build_network_from_edges(
-    4,
-    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0)],
-  )
+  let g = @network.build_network_from_edges(4, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (2, 3, 1.0),
+  ])
   let cost = @network.route_cost(g, [0, 2, 3])
   assert_eq(cost, 3.0)
 }
 
+///|
 test "route_cost single waypoint" {
   let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
   let cost = @network.route_cost(g, [0])
   assert_eq(cost, 0.0)
 }
 
+///|
 test "location_allocation basic" {
-  let g = @network.build_network_from_edges(
-    6,
-    [(0, 1, 1.0), (1, 2, 1.0), (3, 4, 1.0), (4, 5, 1.0)],
-  )
+  let g = @network.build_network_from_edges(6, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (3, 4, 1.0),
+    (4, 5, 1.0),
+  ])
   let chosen = @network.location_allocation(g, [0, 1, 2], [3, 4], 1)
   assert_eq(chosen.length(), 1)
 }
 
+///|
 test "location_allocation zero facilities" {
   let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
   let chosen = @network.location_allocation(g, [0, 1], [2], 0)
   assert_eq(chosen.length(), 0)
 }
 
+///|
 test "connected_components basic" {
-  let g = @network.build_network_from_edges(
-    6,
-    [(0, 1, 1.0), (1, 2, 1.0), (3, 4, 1.0)],
-  )
+  let g = @network.build_network_from_edges(6, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (3, 4, 1.0),
+  ])
   let comps = @network.connected_components(g)
   assert_eq(comps.length(), 3)
 }
 
+///|
 test "connected_components fully connected" {
-  let g = @network.build_network_from_edges(
-    4,
-    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0)],
-  )
+  let g = @network.build_network_from_edges(4, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (2, 3, 1.0),
+  ])
   let comps = @network.connected_components(g)
   assert_eq(comps.length(), 1)
   assert_eq(comps[0].length(), 4)
 }
 
+///|
 test "connected_components empty" {
   let g = @network.build_network_from_edges(0, [])
   let comps = @network.connected_components(g)
   assert_eq(comps.length(), 0)
 }
 
+///|
 test "is_connected true" {
-  let g = @network.build_network_from_edges(
-    4,
-    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0)],
-  )
+  let g = @network.build_network_from_edges(4, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (2, 3, 1.0),
+  ])
   assert_true(@network.is_connected(g))
 }
 
+///|
 test "is_connected false" {
-  let g = @network.build_network_from_edges(
-    4,
-    [(0, 1, 1.0), (2, 3, 1.0)],
-  )
+  let g = @network.build_network_from_edges(4, [(0, 1, 1.0), (2, 3, 1.0)])
   assert_false(@network.is_connected(g))
 }
 
+///|
 test "nearest_neighbor_tsp basic" {
-  let g = @network.build_network_from_edges(
-    4,
-    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0), (3, 0, 1.0)],
-  )
+  let g = @network.build_network_from_edges(4, [
+    (0, 1, 1.0),
+    (1, 2, 1.0),
+    (2, 3, 1.0),
+    (3, 0, 1.0),
+  ])
   let path = @network.nearest_neighbor_tsp(g, 0)
   assert_eq(path.length(), 4)
   assert_eq(path[0], 0)
 }
 
+///|
 test "nearest_neighbor_tsp single node" {
   let g = @network.build_network_from_edges(1, [])
   let path = @network.nearest_neighbor_tsp(g, 0)
@@ -8035,42 +9780,50 @@ test "nearest_neighbor_tsp single node" {
   assert_eq(path[0], 0)
 }
 
+///|
 test "nearest_neighbor_tsp invalid start" {
   let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
   let path = @network.nearest_neighbor_tsp(g, 5)
   assert_eq(path.length(), 0)
 }
 
+///|
 test "dijkstra directed graph" {
-  let g = @network.build_network_from_edges(
-    3,
-    [(0, 1, 5.0), (1, 2, 3.0), (0, 2, 10.0)],
-  )
+  let g = @network.build_network_from_edges(3, [
+    (0, 1, 5.0),
+    (1, 2, 3.0),
+    (0, 2, 10.0),
+  ])
   assert_eq(@network.shortest_distance(g, 0, 2), 8.0)
   assert_eq(@network.shortest_distance(g, 1, 2), 3.0)
 }
 
+///|
 test "network graph with self loop" {
-  let g = @network.build_network_from_edges(
-    3,
-    [(0, 0, 1.0), (0, 1, 2.0), (1, 2, 1.0)],
-  )
+  let g = @network.build_network_from_edges(3, [
+    (0, 0, 1.0),
+    (0, 1, 2.0),
+    (1, 2, 1.0),
+  ])
   assert_eq(@network.shortest_distance(g, 0, 2), 3.0)
 }
 // ============================================
 // S8.2 opcore/topology 拓扑分析算子测试
 // ============================================
 
+///|
 test "topology_id" {
   assert_eq(@topology.topology_id(), "opcore/topology")
 }
 
+///|
 test "make_topo_point basic" {
   let p = @topology.make_topo_point(3.0, 4.0)
   assert_eq(p.x, 3.0)
   assert_eq(p.y, 4.0)
 }
 
+///|
 test "make_topo_polygon basic" {
   let poly = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8080,6 +9833,7 @@ test "make_topo_polygon basic" {
   assert_eq(poly.vertices.length(), 3)
 }
 
+///|
 test "check_equal true" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8096,6 +9850,7 @@ test "check_equal true" {
   assert_true(@topology.check_equal(p1, p2))
 }
 
+///|
 test "check_equal false" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8110,6 +9865,7 @@ test "check_equal false" {
   assert_false(@topology.check_equal(p1, p2))
 }
 
+///|
 test "check_disjoint true" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8124,6 +9880,7 @@ test "check_disjoint true" {
   assert_true(@topology.check_disjoint(p1, p2))
 }
 
+///|
 test "check_disjoint false" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8138,6 +9895,7 @@ test "check_disjoint false" {
   assert_false(@topology.check_disjoint(p1, p2))
 }
 
+///|
 test "check_intersect true" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8152,6 +9910,7 @@ test "check_intersect true" {
   assert_true(@topology.check_intersect(p1, p2))
 }
 
+///|
 test "check_intersect false" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8166,6 +9925,7 @@ test "check_intersect false" {
   assert_false(@topology.check_intersect(p1, p2))
 }
 
+///|
 test "check_contains true" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8182,6 +9942,7 @@ test "check_contains true" {
   assert_true(@topology.check_contains(p1, p2))
 }
 
+///|
 test "check_contains false" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8196,6 +9957,7 @@ test "check_contains false" {
   assert_false(@topology.check_contains(p1, p2))
 }
 
+///|
 test "check_within basic" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(2.0, 2.0),
@@ -8210,6 +9972,7 @@ test "check_within basic" {
   assert_true(@topology.check_within(p1, p2))
 }
 
+///|
 test "check_crosses true" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8224,6 +9987,7 @@ test "check_crosses true" {
   assert_true(@topology.check_crosses(p1, p2))
 }
 
+///|
 test "check_overlaps basic" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8238,6 +10002,7 @@ test "check_overlaps basic" {
   assert_true(@topology.check_overlaps(p1, p2))
 }
 
+///|
 test "get_relation disjoint" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8252,6 +10017,7 @@ test "get_relation disjoint" {
   assert_eq(@topology.relation_name(@topology.get_relation(p1, p2)), "disjoint")
 }
 
+///|
 test "get_relation contains" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8266,6 +10032,7 @@ test "get_relation contains" {
   assert_eq(@topology.relation_name(@topology.get_relation(p1, p2)), "contains")
 }
 
+///|
 test "relation_name all" {
   assert_eq(@topology.relation_name(@topology.Equal), "equal")
   assert_eq(@topology.relation_name(@topology.Disjoint), "disjoint")
@@ -8277,6 +10044,7 @@ test "relation_name all" {
   assert_eq(@topology.relation_name(@topology.Overlaps), "overlaps")
 }
 
+///|
 test "validate_overlap basic" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8298,6 +10066,7 @@ test "validate_overlap basic" {
   assert_eq(errors[0].error_type, "overlap")
 }
 
+///|
 test "validate_overlap no errors" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8313,6 +10082,7 @@ test "validate_overlap no errors" {
   assert_eq(errors.length(), 0)
 }
 
+///|
 test "check_adjacency true" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8327,6 +10097,7 @@ test "check_adjacency true" {
   assert_true(@topology.check_adjacency(p1, p2))
 }
 
+///|
 test "check_adjacency false" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8341,6 +10112,7 @@ test "check_adjacency false" {
   assert_false(@topology.check_adjacency(p1, p2))
 }
 
+///|
 test "find_shared_edges basic" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8358,6 +10130,7 @@ test "find_shared_edges basic" {
   assert_eq(shared[0].y, 2.0)
 }
 
+///|
 test "find_shared_edges none" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8373,6 +10146,7 @@ test "find_shared_edges none" {
   assert_eq(shared.length(), 0)
 }
 
+///|
 test "merge_polygons basic" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8388,6 +10162,7 @@ test "merge_polygons basic" {
   assert_eq(merged.vertices.length(), 4)
 }
 
+///|
 test "fix_overlap basic" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8408,6 +10183,7 @@ test "fix_overlap basic" {
   assert_eq(fixed.length(), 2)
 }
 
+///|
 test "simplify_polygon removes duplicates" {
   let poly = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8420,6 +10196,7 @@ test "simplify_polygon removes duplicates" {
   assert_eq(simplified.vertices.length(), 3)
 }
 
+///|
 test "polygon_area basic" {
   let poly = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8430,6 +10207,7 @@ test "polygon_area basic" {
   assert_eq(@topology.polygon_area(poly), 12.0)
 }
 
+///|
 test "polygon_area triangle" {
   let poly = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8439,11 +10217,13 @@ test "polygon_area triangle" {
   assert_eq(@topology.polygon_area(poly), 12.0)
 }
 
+///|
 test "polygon_area empty" {
   let poly = @topology.make_topo_polygon([])
   assert_eq(@topology.polygon_area(poly), 0.0)
 }
 
+///|
 test "polygon_perimeter basic" {
   let poly = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8454,11 +10234,13 @@ test "polygon_perimeter basic" {
   assert_eq(@topology.polygon_perimeter(poly), 14.0)
 }
 
+///|
 test "polygon_perimeter empty" {
   let poly = @topology.make_topo_polygon([])
   assert_eq(@topology.polygon_perimeter(poly), 0.0)
 }
 
+///|
 test "validate_dangling basic" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8469,6 +10251,7 @@ test "validate_dangling basic" {
   assert_true(errors.length() >= 0)
 }
 
+///|
 test "topology_errors basic" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8484,6 +10267,7 @@ test "topology_errors basic" {
   assert_true(errors.length() >= 1)
 }
 
+///|
 test "validate_gap basic" {
   let p1 = @topology.make_topo_polygon([
     @topology.make_topo_point(0.0, 0.0),
@@ -8497,126 +10281,201 @@ test "validate_gap basic" {
 // S8.3 opcore/terrain 地形分析算子测试
 // ============================================
 
+///|
 test "terrain_id" {
   assert_eq(@terrain.terrain_id(), "opcore/terrain")
 }
 
+///|
 test "make_dem basic" {
-  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]],
+    10.0,
+  )
   assert_eq(@terrain.dem_rows(dem), 3)
   assert_eq(@terrain.dem_cols(dem), 3)
 }
 
+///|
 test "dem_rows and cols empty" {
   let dem = @terrain.make_dem([], 1.0)
   assert_eq(@terrain.dem_rows(dem), 0)
   assert_eq(@terrain.dem_cols(dem), 0)
 }
 
+///|
 test "slope basic" {
-  let dem = @terrain.make_dem([[100.0, 101.0, 102.0], [99.0, 100.0, 101.0], [98.0, 99.0, 100.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[100.0, 101.0, 102.0], [99.0, 100.0, 101.0], [98.0, 99.0, 100.0]],
+    10.0,
+  )
   let s = @terrain.slope(dem, 1, 1)
   assert_true(s >= 0.0)
 }
 
+///|
 test "slope flat" {
-  let dem = @terrain.make_dem([[50.0, 50.0, 50.0], [50.0, 50.0, 50.0], [50.0, 50.0, 50.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[50.0, 50.0, 50.0], [50.0, 50.0, 50.0], [50.0, 50.0, 50.0]],
+    10.0,
+  )
   let s = @terrain.slope(dem, 1, 1)
   assert_true(s < 0.001)
 }
 
+///|
 test "aspect flat" {
-  let dem = @terrain.make_dem([[50.0, 50.0, 50.0], [50.0, 50.0, 50.0], [50.0, 50.0, 50.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[50.0, 50.0, 50.0], [50.0, 50.0, 50.0], [50.0, 50.0, 50.0]],
+    10.0,
+  )
   let a = @terrain.aspect(dem, 1, 1)
   assert_true(a >= 0.0)
   assert_true(a < 360.0)
 }
 
+///|
 test "hillshade basic" {
-  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]],
+    10.0,
+  )
   let hs = @terrain.hillshade(dem, 1, 1, 315.0, 45.0)
   assert_true(hs >= 0.0)
   assert_true(hs <= 255.0)
 }
 
+///|
 test "tpi basic" {
-  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]],
+    10.0,
+  )
   let t = @terrain.tpi(dem, 1, 1)
   assert_true(t > -1000.0 && t < 1000.0)
 }
 
+///|
 test "tpi flat" {
-  let dem = @terrain.make_dem([[50.0, 50.0, 50.0], [50.0, 50.0, 50.0], [50.0, 50.0, 50.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[50.0, 50.0, 50.0], [50.0, 50.0, 50.0], [50.0, 50.0, 50.0]],
+    10.0,
+  )
   let t = @terrain.tpi(dem, 1, 1)
   assert_true(t < 0.001 && t > -0.001)
 }
 
+///|
 test "roughness flat" {
-  let dem = @terrain.make_dem([[50.0, 50.0, 50.0], [50.0, 50.0, 50.0], [50.0, 50.0, 50.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[50.0, 50.0, 50.0], [50.0, 50.0, 50.0], [50.0, 50.0, 50.0]],
+    10.0,
+  )
   let r = @terrain.roughness(dem, 1, 1)
   assert_true(r < 0.001)
 }
 
+///|
 test "roughness varied" {
-  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]],
+    10.0,
+  )
   let r = @terrain.roughness(dem, 1, 1)
   assert_true(r > 0.0)
 }
 
+///|
 test "vrm basic" {
-  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]],
+    10.0,
+  )
   let v = @terrain.vrm(dem, 1, 1)
   assert_true(v >= -1.0 && v <= 1.0)
 }
 
+///|
 test "spi basic" {
-  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]],
+    10.0,
+  )
   let s = @terrain.spi(dem, 1, 1, 10.0)
   assert_true(s >= 0.0)
 }
 
+///|
 test "profile_curvature basic" {
-  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]],
+    10.0,
+  )
   let c = @terrain.profile_curvature(dem, 1, 1)
   assert_true(c > -1000.0 && c < 1000.0)
 }
 
+///|
 test "plan_curvature basic" {
-  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]],
+    10.0,
+  )
   let c = @terrain.plan_curvature(dem, 1, 1)
   assert_true(c > -1000.0 && c < 1000.0)
 }
 
+///|
 test "total_curvature basic" {
-  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]],
+    10.0,
+  )
   let c = @terrain.total_curvature(dem, 1, 1)
   assert_true(c >= 0.0)
 }
 
+///|
 test "flow_direction basic" {
-  let dem = @terrain.make_dem([[100.0, 100.0, 100.0], [100.0, 100.0, 100.0], [90.0, 90.0, 90.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[100.0, 100.0, 100.0], [100.0, 100.0, 100.0], [90.0, 90.0, 90.0]],
+    10.0,
+  )
   let dir = @terrain.flow_direction(dem, 1, 1)
   assert_true(dir >= -1 && dir < 8)
 }
 
+///|
 test "flow_accumulation basic" {
-  let dem = @terrain.make_dem([[100.0, 100.0, 100.0], [100.0, 100.0, 100.0], [90.0, 90.0, 90.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[100.0, 100.0, 100.0], [100.0, 100.0, 100.0], [90.0, 90.0, 90.0]],
+    10.0,
+  )
   let acc = @terrain.flow_accumulation(dem, 2, 1)
   assert_true(acc >= 1.0)
 }
 
+///|
 test "generate_contour basic" {
-  let dem = @terrain.make_dem([[90.0, 100.0, 110.0], [90.0, 100.0, 110.0], [90.0, 100.0, 110.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[90.0, 100.0, 110.0], [90.0, 100.0, 110.0], [90.0, 100.0, 110.0]],
+    10.0,
+  )
   let contour = @terrain.generate_contour(dem, 100.0, 0.01)
   assert_true(contour.length() > 0)
 }
 
+///|
 test "generate_contour none" {
-  let dem = @terrain.make_dem([[10.0, 10.0, 10.0], [10.0, 10.0, 10.0], [10.0, 10.0, 10.0]], 10.0)
+  let dem = @terrain.make_dem(
+    [[10.0, 10.0, 10.0], [10.0, 10.0, 10.0], [10.0, 10.0, 10.0]],
+    10.0,
+  )
   let contour = @terrain.generate_contour(dem, 100.0, 0.01)
   assert_eq(contour.length(), 0)
 }
 
+///|
 test "elevation_stats basic" {
   let dem = @terrain.make_dem([[100.0, 200.0], [150.0, 175.0]], 10.0)
   let (min_e, max_e, mean, range) = @terrain.elevation_stats(dem)
@@ -8626,6 +10485,7 @@ test "elevation_stats basic" {
   assert_eq(range, 100.0)
 }
 
+///|
 test "elevation_stats empty" {
   let dem = @terrain.make_dem([], 1.0)
   let (min_e, _max_e, _mean, range) = @terrain.elevation_stats(dem)
@@ -8636,10 +10496,12 @@ test "elevation_stats empty" {
 // S8.4 opcore/analysis3d 三维分析算子测试
 // ============================================
 
+///|
 test "analysis3d_id" {
   assert_eq(@analysis3d.analysis3d_id(), "opcore/analysis3d")
 }
 
+///|
 test "make_point3d basic" {
   let p = @analysis3d.make_point3d(1.0, 2.0, 3.0)
   assert_eq(p.x, 1.0)
@@ -8647,35 +10509,41 @@ test "make_point3d basic" {
   assert_eq(p.z, 3.0)
 }
 
+///|
 test "distance3d basic" {
   let p1 = @analysis3d.make_point3d(0.0, 0.0, 0.0)
   let p2 = @analysis3d.make_point3d(3.0, 4.0, 0.0)
   assert_eq(@analysis3d.distance3d(p1, p2), 5.0)
 }
 
+///|
 test "distance3d 3d" {
   let p1 = @analysis3d.make_point3d(0.0, 0.0, 0.0)
   let p2 = @analysis3d.make_point3d(1.0, 2.0, 2.0)
   assert_eq(@analysis3d.distance3d(p1, p2), 3.0)
 }
 
+///|
 test "distance3d same point" {
   let p = @analysis3d.make_point3d(5.0, 5.0, 5.0)
   assert_eq(@analysis3d.distance3d(p, p), 0.0)
 }
 
+///|
 test "manhattan3d basic" {
   let p1 = @analysis3d.make_point3d(0.0, 0.0, 0.0)
   let p2 = @analysis3d.make_point3d(3.0, 4.0, 5.0)
   assert_eq(@analysis3d.manhattan3d(p1, p2), 12.0)
 }
 
+///|
 test "chebyshev3d basic" {
   let p1 = @analysis3d.make_point3d(0.0, 0.0, 0.0)
   let p2 = @analysis3d.make_point3d(3.0, 7.0, 5.0)
   assert_eq(@analysis3d.chebyshev3d(p1, p2), 7.0)
 }
 
+///|
 test "bbox3d basic" {
   let points = [
     @analysis3d.make_point3d(0.0, 0.0, 0.0),
@@ -8691,17 +10559,20 @@ test "bbox3d basic" {
   assert_eq(bbox.max_z, 6.0)
 }
 
+///|
 test "bbox3d empty" {
   let bbox = @analysis3d.bbox3d([])
   assert_eq(bbox.min_x, 0.0)
   assert_eq(bbox.max_x, 0.0)
 }
 
+///|
 test "bbox3d_volume basic" {
   let bbox = @analysis3d.make_bbox3d(0.0, 0.0, 0.0, 3.0, 4.0, 5.0)
   assert_eq(@analysis3d.bbox3d_volume(bbox), 60.0)
 }
 
+///|
 test "bbox3d_center basic" {
   let bbox = @analysis3d.make_bbox3d(0.0, 0.0, 0.0, 4.0, 6.0, 8.0)
   let c = @analysis3d.bbox3d_center(bbox)
@@ -8710,6 +10581,7 @@ test "bbox3d_center basic" {
   assert_eq(c.z, 4.0)
 }
 
+///|
 test "buffer3d basic" {
   let p = @analysis3d.make_point3d(5.0, 5.0, 5.0)
   let buf = @analysis3d.buffer3d(p, 2.0)
@@ -8719,12 +10591,14 @@ test "buffer3d basic" {
   assert_eq(buf.max_z, 7.0)
 }
 
+///|
 test "line_of_sight no obstacles" {
   let obs = @analysis3d.make_point3d(0.0, 0.0, 1.0)
   let tgt = @analysis3d.make_point3d(10.0, 0.0, 1.0)
   assert_true(@analysis3d.line_of_sight(obs, tgt, []))
 }
 
+///|
 test "line_of_sight blocked" {
   let obs = @analysis3d.make_point3d(0.0, 0.0, 1.0)
   let tgt = @analysis3d.make_point3d(10.0, 0.0, 1.0)
@@ -8732,6 +10606,7 @@ test "line_of_sight blocked" {
   assert_false(@analysis3d.line_of_sight(obs, tgt, [obstacle]))
 }
 
+///|
 test "line_of_sight not blocked" {
   let obs = @analysis3d.make_point3d(0.0, 0.0, 1.0)
   let tgt = @analysis3d.make_point3d(10.0, 0.0, 1.0)
@@ -8739,6 +10614,7 @@ test "line_of_sight not blocked" {
   assert_true(@analysis3d.line_of_sight(obs, tgt, [obstacle]))
 }
 
+///|
 test "viewshed3d basic" {
   let obs = @analysis3d.make_point3d(0.0, 0.0, 5.0)
   let targets = [
@@ -8749,6 +10625,7 @@ test "viewshed3d basic" {
   assert_eq(visible, 2)
 }
 
+///|
 test "skyline basic" {
   let obs = @analysis3d.make_point3d(0.0, 0.0, 0.0)
   let points = [
@@ -8759,6 +10636,7 @@ test "skyline basic" {
   assert_eq(sky.length(), 8)
 }
 
+///|
 test "volume3d basic" {
   let points = [
     @analysis3d.make_point3d(0.0, 0.0, 0.0),
@@ -8769,6 +10647,7 @@ test "volume3d basic" {
   assert_eq(@analysis3d.volume3d(points), 60.0)
 }
 
+///|
 test "surface_area3d basic" {
   let points = [
     @analysis3d.make_point3d(0.0, 0.0, 0.0),
@@ -8780,6 +10659,7 @@ test "surface_area3d basic" {
   assert_true(sa > 0.0)
 }
 
+///|
 test "translate3d basic" {
   let p = @analysis3d.make_point3d(1.0, 2.0, 3.0)
   let t = @analysis3d.translate3d(p, 10.0, 20.0, 30.0)
@@ -8788,6 +10668,7 @@ test "translate3d basic" {
   assert_eq(t.z, 33.0)
 }
 
+///|
 test "scale3d basic" {
   let p = @analysis3d.make_point3d(2.0, 3.0, 4.0)
   let s = @analysis3d.scale3d(p, 2.0, 3.0, 0.5)
@@ -8796,6 +10677,7 @@ test "scale3d basic" {
   assert_eq(s.z, 2.0)
 }
 
+///|
 test "centroid3d basic" {
   let points = [
     @analysis3d.make_point3d(0.0, 0.0, 0.0),
@@ -8809,6 +10691,7 @@ test "centroid3d basic" {
   assert_eq(c.z, 1.5)
 }
 
+///|
 test "centroid3d empty" {
   let c = @analysis3d.centroid3d([])
   assert_eq(c.x, 0.0)
@@ -8816,24 +10699,28 @@ test "centroid3d empty" {
   assert_eq(c.z, 0.0)
 }
 
+///|
 test "bbox3d_intersects true" {
   let b1 = @analysis3d.make_bbox3d(0.0, 0.0, 0.0, 3.0, 3.0, 3.0)
   let b2 = @analysis3d.make_bbox3d(2.0, 2.0, 2.0, 5.0, 5.0, 5.0)
   assert_true(@analysis3d.bbox3d_intersects(b1, b2))
 }
 
+///|
 test "bbox3d_intersects false" {
   let b1 = @analysis3d.make_bbox3d(0.0, 0.0, 0.0, 1.0, 1.0, 1.0)
   let b2 = @analysis3d.make_bbox3d(5.0, 5.0, 5.0, 6.0, 6.0, 6.0)
   assert_false(@analysis3d.bbox3d_intersects(b1, b2))
 }
 
+///|
 test "bbox3d_contains true" {
   let bbox = @analysis3d.make_bbox3d(0.0, 0.0, 0.0, 10.0, 10.0, 10.0)
   let p = @analysis3d.make_point3d(5.0, 5.0, 5.0)
   assert_true(@analysis3d.bbox3d_contains(bbox, p))
 }
 
+///|
 test "bbox3d_contains false" {
   let bbox = @analysis3d.make_bbox3d(0.0, 0.0, 0.0, 10.0, 10.0, 10.0)
   let p = @analysis3d.make_point3d(15.0, 5.0, 5.0)
@@ -8843,50 +10730,70 @@ test "bbox3d_contains false" {
 // S8.5 opcore/geocoding 地理编码算子测试
 // ============================================
 
+///|
 test "geocoding_id" {
   assert_eq(@geocoding.geocoding_id(), "opcore/geocoding")
 }
 
+///|
 test "make_geo_coord basic" {
   let c = @geocoding.make_geo_coord(116.4, 39.9)
   assert_eq(c.lon, 116.4)
   assert_eq(c.lat, 39.9)
 }
 
+///|
 test "make_address basic" {
-  let a = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let a = @geocoding.make_address(
+    "123 Main St", "Beijing", "BJ", "100000", "CN",
+  )
   assert_eq(a.street, "123 Main St")
   assert_eq(a.city, "Beijing")
   assert_eq(a.country, "CN")
 }
 
+///|
 test "standardize_address basic" {
-  let a = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let a = @geocoding.make_address(
+    "123 Main St", "Beijing", "BJ", "100000", "CN",
+  )
   let s = @geocoding.standardize_address(a)
   assert_eq(s.street, "123 Main St")
   assert_eq(s.city, "Beijing")
 }
 
+///|
 test "address_to_string basic" {
-  let a = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let a = @geocoding.make_address(
+    "123 Main St", "Beijing", "BJ", "100000", "CN",
+  )
   let s = @geocoding.address_to_string(a)
   assert_eq(s, "123 Main St, Beijing, BJ 100000, CN")
 }
 
+///|
 test "forward_geocode basic" {
-  let a = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let a = @geocoding.make_address(
+    "123 Main St", "Beijing", "BJ", "100000", "CN",
+  )
   let result = @geocoding.forward_geocode(a)
   assert_true(result.score > 0.0)
   assert_true(result.coord.lon >= -180.0 && result.coord.lon <= 180.0)
 }
 
+///|
 test "batch_forward_geocode basic" {
-  let a1 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
-  let a2 = @geocoding.make_address("456 Oak Ave", "Shanghai", "SH", "200000", "CN")
+  let a1 = @geocoding.make_address(
+    "123 Main St", "Beijing", "BJ", "100000", "CN",
+  )
+  let a2 = @geocoding.make_address(
+    "456 Oak Ave", "Shanghai", "SH", "200000", "CN",
+  )
   let results = @geocoding.batch_forward_geocode([a1, a2])
   assert_eq(results.length(), 2)
 }
 
+///|
 test "reverse_geocode basic" {
   let c = @geocoding.make_geo_coord(116.4, 39.9)
   let result = @geocoding.reverse_geocode(c)
@@ -8895,52 +10802,81 @@ test "reverse_geocode basic" {
   assert_true(result.score > 0.0)
 }
 
+///|
 test "address_match_score identical" {
-  let a1 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
-  let a2 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let a1 = @geocoding.make_address(
+    "123 Main St", "Beijing", "BJ", "100000", "CN",
+  )
+  let a2 = @geocoding.make_address(
+    "123 Main St", "Beijing", "BJ", "100000", "CN",
+  )
   assert_eq(@geocoding.address_match_score(a1, a2), 1.0)
 }
 
+///|
 test "address_match_score different" {
-  let a1 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
-  let a2 = @geocoding.make_address("456 Oak Ave", "Shanghai", "SH", "200000", "US")
+  let a1 = @geocoding.make_address(
+    "123 Main St", "Beijing", "BJ", "100000", "CN",
+  )
+  let a2 = @geocoding.make_address(
+    "456 Oak Ave", "Shanghai", "SH", "200000", "US",
+  )
   assert_eq(@geocoding.address_match_score(a1, a2), 0.0)
 }
 
+///|
 test "address_match_score partial" {
-  let a1 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
-  let a2 = @geocoding.make_address("456 Oak Ave", "Beijing", "BJ", "100000", "CN")
+  let a1 = @geocoding.make_address(
+    "123 Main St", "Beijing", "BJ", "100000", "CN",
+  )
+  let a2 = @geocoding.make_address(
+    "456 Oak Ave", "Beijing", "BJ", "100000", "CN",
+  )
   let score = @geocoding.address_match_score(a1, a2)
   assert_true(score > 0.5 && score < 1.0)
 }
 
+///|
 test "address_matches true" {
-  let a1 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
-  let a2 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let a1 = @geocoding.make_address(
+    "123 Main St", "Beijing", "BJ", "100000", "CN",
+  )
+  let a2 = @geocoding.make_address(
+    "123 Main St", "Beijing", "BJ", "100000", "CN",
+  )
   assert_true(@geocoding.address_matches(a1, a2, 0.9))
 }
 
+///|
 test "address_matches false" {
-  let a1 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
-  let a2 = @geocoding.make_address("456 Oak Ave", "Shanghai", "SH", "200000", "US")
+  let a1 = @geocoding.make_address(
+    "123 Main St", "Beijing", "BJ", "100000", "CN",
+  )
+  let a2 = @geocoding.make_address(
+    "456 Oak Ave", "Shanghai", "SH", "200000", "US",
+  )
   assert_false(@geocoding.address_matches(a1, a2, 0.5))
 }
 
+///|
 test "validate_coord valid" {
   let c = @geocoding.make_geo_coord(116.4, 39.9)
   assert_true(@geocoding.validate_coord(c))
 }
 
+///|
 test "validate_coord invalid lon" {
   let c = @geocoding.make_geo_coord(200.0, 39.9)
   assert_false(@geocoding.validate_coord(c))
 }
 
+///|
 test "validate_coord invalid lat" {
   let c = @geocoding.make_geo_coord(116.4, -100.0)
   assert_false(@geocoding.validate_coord(c))
 }
 
+///|
 test "coord_distance basic" {
   let c1 = @geocoding.make_geo_coord(0.0, 0.0)
   let c2 = @geocoding.make_geo_coord(0.0, 1.0)
@@ -8948,28 +10884,34 @@ test "coord_distance basic" {
   assert_true(d > 100000.0 && d < 120000.0)
 }
 
+///|
 test "coord_distance same point" {
   let c = @geocoding.make_geo_coord(116.4, 39.9)
   assert_eq(@geocoding.coord_distance(c, c), 0.0)
 }
 
+///|
 test "validate_postal US valid" {
   assert_true(@geocoding.validate_postal("12345", "US"))
   assert_true(@geocoding.validate_postal("12345-6789", "US"))
 }
 
+///|
 test "validate_postal US invalid" {
   assert_false(@geocoding.validate_postal("123", "US"))
 }
 
+///|
 test "validate_postal CN valid" {
   assert_true(@geocoding.validate_postal("100000", "CN"))
 }
 
+///|
 test "validate_postal CN invalid" {
   assert_false(@geocoding.validate_postal("10000", "CN"))
 }
 
+///|
 test "validate_postal UK valid" {
   assert_true(@geocoding.validate_postal("SW1A1AA", "UK"))
 }
@@ -8977,22 +10919,26 @@ test "validate_postal UK valid" {
 // S8.6 opcore/coord 坐标变换算子测试
 // ============================================
 
+///|
 test "coord_id" {
   assert_eq(@coord.coord_id(), "opcore/coord")
 }
 
+///|
 test "make_geodetic basic" {
   let c = @coord.make_geodetic(116.4, 39.9)
   assert_eq(c.lon, 116.4)
   assert_eq(c.lat, 39.9)
 }
 
+///|
 test "make_projected basic" {
   let c = @coord.make_projected(1000.0, 2000.0)
   assert_eq(c.x, 1000.0)
   assert_eq(c.y, 2000.0)
 }
 
+///|
 test "make_affine basic" {
   let t = @coord.make_affine(1.0, 0.0, 5.0, 0.0, 1.0, 10.0)
   assert_eq(t.a, 1.0)
@@ -9000,6 +10946,7 @@ test "make_affine basic" {
   assert_eq(t.f, 10.0)
 }
 
+///|
 test "wgs84_to_web_mercator basic" {
   let c = @coord.make_geodetic(0.0, 0.0)
   let p = @coord.wgs84_to_web_mercator(c)
@@ -9007,6 +10954,7 @@ test "wgs84_to_web_mercator basic" {
   assert_true(p.y < 0.001 && p.y > -0.001)
 }
 
+///|
 test "wgs84_to_web_mercator non-zero" {
   let c = @coord.make_geodetic(90.0, 45.0)
   let p = @coord.wgs84_to_web_mercator(c)
@@ -9014,6 +10962,7 @@ test "wgs84_to_web_mercator non-zero" {
   assert_true(p.y > 5000000.0)
 }
 
+///|
 test "web_mercator_to_wgs84 origin" {
   let p = @coord.make_projected(0.0, 0.0)
   let c = @coord.web_mercator_to_wgs84(p)
@@ -9021,6 +10970,7 @@ test "web_mercator_to_wgs84 origin" {
   assert_true(c.lat < 2.0 && c.lat > -2.0)
 }
 
+///|
 test "wgs84_to_utm basic" {
   let c = @coord.make_geodetic(116.4, 39.9)
   let p = @coord.wgs84_to_utm(c, 50)
@@ -9028,24 +10978,28 @@ test "wgs84_to_utm basic" {
   assert_true(p.y > 0.0)
 }
 
+///|
 test "utm_to_wgs84 basic" {
   let p = @coord.make_projected(0.0, 4000000.0)
   let c = @coord.utm_to_wgs84(p, 50)
   assert_true(c.lat > 30.0 && c.lat < 50.0)
 }
 
+///|
 test "utm_zone basic" {
   let c = @coord.make_geodetic(116.4, 39.9)
   let z = @coord.utm_zone(c)
   assert_eq(z, 50)
 }
 
+///|
 test "utm_zone new york" {
   let c = @coord.make_geodetic(-74.0, 40.7)
   let z = @coord.utm_zone(c)
   assert_eq(z, 18)
 }
 
+///|
 test "apply_affine identity" {
   let t = @coord.identity_affine()
   let p = @coord.make_projected(5.0, 10.0)
@@ -9054,6 +11008,7 @@ test "apply_affine identity" {
   assert_eq(result.y, 10.0)
 }
 
+///|
 test "apply_affine translation" {
   let t = @coord.translation_affine(100.0, 200.0)
   let p = @coord.make_projected(5.0, 10.0)
@@ -9062,6 +11017,7 @@ test "apply_affine translation" {
   assert_eq(result.y, 210.0)
 }
 
+///|
 test "apply_affine scale" {
   let t = @coord.scale_affine(2.0, 3.0)
   let p = @coord.make_projected(5.0, 10.0)
@@ -9070,6 +11026,7 @@ test "apply_affine scale" {
   assert_eq(result.y, 30.0)
 }
 
+///|
 test "identity_affine basic" {
   let t = @coord.identity_affine()
   assert_eq(t.a, 1.0)
@@ -9077,23 +11034,27 @@ test "identity_affine basic" {
   assert_eq(t.c, 0.0)
 }
 
+///|
 test "translation_affine basic" {
   let t = @coord.translation_affine(5.0, 10.0)
   assert_eq(t.c, 5.0)
   assert_eq(t.f, 10.0)
 }
 
+///|
 test "scale_affine basic" {
   let t = @coord.scale_affine(2.0, 3.0)
   assert_eq(t.a, 2.0)
   assert_eq(t.e, 3.0)
 }
 
+///|
 test "great_circle_distance same point" {
   let c = @coord.make_geodetic(116.4, 39.9)
   assert_eq(@coord.great_circle_distance(c, c), 0.0)
 }
 
+///|
 test "great_circle_distance basic" {
   let c1 = @coord.make_geodetic(0.0, 0.0)
   let c2 = @coord.make_geodetic(0.0, 1.0)
@@ -9101,6 +11062,7 @@ test "great_circle_distance basic" {
   assert_true(d > 100000.0 && d < 120000.0)
 }
 
+///|
 test "great_circle_distance beijing shanghai" {
   let beijing = @coord.make_geodetic(116.4, 39.9)
   let shanghai = @coord.make_geodetic(121.5, 31.2)
@@ -9108,6 +11070,7 @@ test "great_circle_distance beijing shanghai" {
   assert_true(d > 1000000.0 && d < 1500000.0)
 }
 
+///|
 test "bearing basic" {
   let c1 = @coord.make_geodetic(0.0, 0.0)
   let c2 = @coord.make_geodetic(1.0, 0.0)
@@ -9115,6 +11078,7 @@ test "bearing basic" {
   assert_true(b >= 0.0 && b < 360.0)
 }
 
+///|
 test "bearing north" {
   let c1 = @coord.make_geodetic(0.0, 0.0)
   let c2 = @coord.make_geodetic(0.0, 1.0)
@@ -9122,6 +11086,7 @@ test "bearing north" {
   assert_true(b >= 0.0 && b < 1.0)
 }
 
+///|
 test "destination_point basic" {
   let start = @coord.make_geodetic(0.0, 0.0)
   let dest = @coord.destination_point(start, 100000.0, 90.0)
@@ -9129,6 +11094,7 @@ test "destination_point basic" {
   assert_true(dest.lat > -0.1 && dest.lat < 0.1)
 }
 
+///|
 test "destination_point zero distance" {
   let start = @coord.make_geodetic(116.4, 39.9)
   let dest = @coord.destination_point(start, 0.0, 90.0)
@@ -9136,6 +11102,7 @@ test "destination_point zero distance" {
   assert_true(dest.lat > 39.0 && dest.lat < 40.0)
 }
 
+///|
 test "decimal_to_dms basic" {
   let (deg, min, sec) = @coord.decimal_to_dms(116.5)
   assert_eq(deg, 116)
@@ -9143,22 +11110,26 @@ test "decimal_to_dms basic" {
   assert_true(sec < 0.1)
 }
 
+///|
 test "decimal_to_dms negative" {
   let (deg, min, _sec) = @coord.decimal_to_dms(-74.5)
   assert_eq(deg, 74)
   assert_eq(min, 30)
 }
 
+///|
 test "dms_to_decimal basic" {
   let d = @coord.dms_to_decimal(116, 30, 0.0)
   assert_true(d > 116.4 && d < 116.6)
 }
 
+///|
 test "dms_to_decimal negative" {
   let d = @coord.dms_to_decimal(-74, 30, 0.0)
   assert_true(d > -74.6 && d < -74.4)
 }
 
+///|
 test "dms round trip" {
   let original = 116.4083
   let (deg, min, sec) = @coord.decimal_to_dms(original)
@@ -9169,6 +11140,7 @@ test "dms round trip" {
 // S9.1 opcore/image 图像处理深化测试
 // ============================================
 
+///|
 test "make_gray_image basic" {
   let img = @image.make_gray_image(3, 2, [0.0, 100.0, 200.0, 50.0, 150.0, 250.0])
   assert_eq(img.width, 3)
@@ -9176,36 +11148,43 @@ test "make_gray_image basic" {
   assert_eq(img.pixels.length(), 6)
 }
 
+///|
 test "image_min basic" {
   let img = @image.make_gray_image(3, 2, [0.0, 100.0, 200.0, 50.0, 150.0, 250.0])
   assert_eq(@image.image_min(img), 0.0)
 }
 
+///|
 test "image_max basic" {
   let img = @image.make_gray_image(3, 2, [0.0, 100.0, 200.0, 50.0, 150.0, 250.0])
   assert_eq(@image.image_max(img), 250.0)
 }
 
+///|
 test "image_mean basic" {
   let img = @image.make_gray_image(2, 2, [0.0, 100.0, 200.0, 300.0])
   assert_eq(@image.image_mean(img), 150.0)
 }
 
+///|
 test "image_mean empty" {
   let img = @image.make_gray_image(0, 0, [])
   assert_eq(@image.image_mean(img), 0.0)
 }
 
+///|
 test "image_std basic" {
   let img = @image.make_gray_image(2, 2, [100.0, 100.0, 100.0, 100.0])
   assert_eq(@image.image_std(img), 0.0)
 }
 
+///|
 test "image_std varied" {
   let img = @image.make_gray_image(2, 2, [0.0, 100.0, 200.0, 300.0])
   assert_true(@image.image_std(img) > 0.0)
 }
 
+///|
 test "adjust_brightness basic" {
   let img = @image.make_gray_image(2, 1, [100.0, 200.0])
   let result = @image.adjust_brightness(img, 50.0)
@@ -9213,6 +11192,7 @@ test "adjust_brightness basic" {
   assert_eq(result.pixels[1], 250.0)
 }
 
+///|
 test "adjust_brightness clamp" {
   let img = @image.make_gray_image(2, 1, [200.0, 100.0])
   let result = @image.adjust_brightness(img, 100.0)
@@ -9220,12 +11200,14 @@ test "adjust_brightness clamp" {
   assert_eq(result.pixels[1], 200.0)
 }
 
+///|
 test "adjust_contrast basic" {
   let img = @image.make_gray_image(2, 1, [100.0, 200.0])
   let result = @image.adjust_contrast(img, 1.0)
   assert_true(result.pixels[0] > 99.0 && result.pixels[0] < 101.0)
 }
 
+///|
 test "gamma_correction basic" {
   let img = @image.make_gray_image(2, 1, [0.0, 255.0])
   let result = @image.gamma_correction(img, 2.0)
@@ -9233,6 +11215,7 @@ test "gamma_correction basic" {
   assert_eq(result.pixels[1], 255.0)
 }
 
+///|
 test "threshold basic" {
   let img = @image.make_gray_image(4, 1, [50.0, 100.0, 150.0, 200.0])
   let result = @image.threshold(img, 125.0)
@@ -9242,6 +11225,7 @@ test "threshold basic" {
   assert_eq(result.pixels[3], 255.0)
 }
 
+///|
 test "histogram basic" {
   let img = @image.make_gray_image(4, 1, [0.0, 100.0, 100.0, 200.0])
   let hist = @image.histogram(img)
@@ -9251,41 +11235,60 @@ test "histogram basic" {
   assert_eq(hist[200], 1)
 }
 
+///|
 test "mean_filter basic" {
-  let img = @image.make_gray_image(3, 3, [0.0, 0.0, 0.0, 0.0, 255.0, 0.0, 0.0, 0.0, 0.0])
+  let img = @image.make_gray_image(3, 3, [
+    0.0, 0.0, 0.0, 0.0, 255.0, 0.0, 0.0, 0.0, 0.0,
+  ])
   let result = @image.mean_filter(img)
   assert_eq(result.pixels.length(), 9)
   assert_true(result.pixels[4] > 0.0)
 }
 
+///|
 test "median_filter basic" {
-  let img = @image.make_gray_image(3, 3, [0.0, 0.0, 0.0, 0.0, 255.0, 0.0, 0.0, 0.0, 0.0])
+  let img = @image.make_gray_image(3, 3, [
+    0.0, 0.0, 0.0, 0.0, 255.0, 0.0, 0.0, 0.0, 0.0,
+  ])
   let result = @image.median_filter(img)
   assert_eq(result.pixels.length(), 9)
   assert_eq(result.pixels[4], 0.0)
 }
 
+///|
 test "sobel_x basic" {
-  let img = @image.make_gray_image(3, 3, [0.0, 0.0, 0.0, 100.0, 100.0, 100.0, 200.0, 200.0, 200.0])
+  let img = @image.make_gray_image(3, 3, [
+    0.0, 0.0, 0.0, 100.0, 100.0, 100.0, 200.0, 200.0, 200.0,
+  ])
   let result = @image.sobel_x(img)
   assert_eq(result.pixels.length(), 9)
 }
 
+///|
 test "sobel_y basic" {
-  let img = @image.make_gray_image(3, 3, [0.0, 100.0, 200.0, 0.0, 100.0, 200.0, 0.0, 100.0, 200.0])
+  let img = @image.make_gray_image(3, 3, [
+    0.0, 100.0, 200.0, 0.0, 100.0, 200.0, 0.0, 100.0, 200.0,
+  ])
   let result = @image.sobel_y(img)
   assert_eq(result.pixels.length(), 9)
 }
 
+///|
 test "edge_magnitude basic" {
-  let img = @image.make_gray_image(3, 3, [0.0, 0.0, 0.0, 0.0, 255.0, 0.0, 0.0, 0.0, 0.0])
+  let img = @image.make_gray_image(3, 3, [
+    0.0, 0.0, 0.0, 0.0, 255.0, 0.0, 0.0, 0.0, 0.0,
+  ])
   let result = @image.edge_magnitude(img)
   assert_eq(result.pixels.length(), 9)
   assert_true(result.pixels[4] >= 0.0)
 }
 
+///|
 test "downsample basic" {
-  let img = @image.make_gray_image(4, 4, [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0])
+  let img = @image.make_gray_image(4, 4, [
+    0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0,
+    15.0,
+  ])
   let result = @image.downsample(img)
   assert_eq(result.width, 2)
   assert_eq(result.height, 2)
@@ -9293,19 +11296,26 @@ test "downsample basic" {
   assert_eq(result.pixels[1], 2.0)
 }
 
+///|
 test "dilate basic" {
-  let img = @image.make_gray_image(3, 3, [0.0, 0.0, 0.0, 0.0, 255.0, 0.0, 0.0, 0.0, 0.0])
+  let img = @image.make_gray_image(3, 3, [
+    0.0, 0.0, 0.0, 0.0, 255.0, 0.0, 0.0, 0.0, 0.0,
+  ])
   let result = @image.dilate(img)
   assert_true(result.pixels[0] > 0.0)
   assert_eq(result.pixels[4], 255.0)
 }
 
+///|
 test "erode basic" {
-  let img = @image.make_gray_image(3, 3, [255.0, 255.0, 255.0, 255.0, 100.0, 255.0, 255.0, 255.0, 255.0])
+  let img = @image.make_gray_image(3, 3, [
+    255.0, 255.0, 255.0, 255.0, 100.0, 255.0, 255.0, 255.0, 255.0,
+  ])
   let result = @image.erode(img)
   assert_true(result.pixels[4] < 255.0)
 }
 
+///|
 test "rgb_to_gray basic" {
   let rgb = [(255.0, 0.0, 0.0), (0.0, 255.0, 0.0), (0.0, 0.0, 255.0)]
   let result = @image.rgb_to_gray(3, 1, rgb)
@@ -9318,49 +11328,58 @@ test "rgb_to_gray basic" {
 // S9.2 opcore/audio 音频处理深化测试
 // ============================================
 
+///|
 test "make_audio_signal basic" {
   let sig = @audio.make_audio_signal([0.5, 0.3, 0.8, 0.1], 16000)
   assert_eq(@audio.signal_length(sig), 4)
   assert_eq(sig.sample_rate, 16000)
 }
 
+///|
 test "signal_duration basic" {
   let sig = @audio.make_audio_signal([0.0, 0.0, 0.0, 0.0], 16000)
   assert_eq(@audio.signal_duration(sig), 0.00025)
 }
 
+///|
 test "signal_energy basic" {
   let sig = @audio.make_audio_signal([3.0, 4.0], 16000)
   assert_eq(@audio.signal_energy(sig), 25.0)
 }
 
+///|
 test "signal_rms basic" {
   let sig = @audio.make_audio_signal([3.0, 4.0], 16000)
   assert_eq(@audio.signal_rms(sig), 3.5355339059327378)
 }
 
+///|
 test "zero_crossing_rate basic" {
   let sig = @audio.make_audio_signal([1.0, -1.0, 1.0, -1.0], 16000)
   let zcr = @audio.zero_crossing_rate(sig)
   assert_true(zcr > 0.5)
 }
 
+///|
 test "normalize_signal basic" {
   let sig = @audio.make_audio_signal([0.5, -1.0, 0.25], 16000)
   let norm = @audio.normalize_signal(sig)
   assert_eq(norm.samples[1], -1.0)
 }
 
+///|
 test "is_silent true" {
   let sig = @audio.make_audio_signal([0.001, 0.002, 0.001], 16000)
   assert_true(@audio.is_silent(sig, 0.01))
 }
 
+///|
 test "is_silent false" {
   let sig = @audio.make_audio_signal([0.5, 0.8, 0.6], 16000)
   assert_false(@audio.is_silent(sig, 0.01))
 }
 
+///|
 test "concat_signals basic" {
   let sig1 = @audio.make_audio_signal([1.0, 2.0], 16000)
   let sig2 = @audio.make_audio_signal([3.0, 4.0], 16000)
@@ -9368,6 +11387,7 @@ test "concat_signals basic" {
   assert_eq(result.samples.length(), 4)
 }
 
+///|
 test "decimate_signal basic" {
   let sig = @audio.make_audio_signal([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], 16000)
   let result = @audio.decimate_signal(sig, 2)
@@ -9375,18 +11395,21 @@ test "decimate_signal basic" {
   assert_eq(result.sample_rate, 8000)
 }
 
+///|
 test "magnitude_spectrum basic" {
   let sig = @audio.make_audio_signal([1.0, 0.0, -1.0, 0.0], 4)
   let spectrum = @audio.magnitude_spectrum(sig, 4)
   assert_eq(spectrum.length(), 4)
 }
 
+///|
 test "frame_signal basic" {
   let sig = @audio.make_audio_signal([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], 16000)
   let frames = @audio.frame_signal(sig, 3, 2)
   assert_eq(frames.length(), 2)
 }
 
+///|
 test "snr_db basic" {
   let signal = @audio.make_audio_signal([1.0, 1.0, 1.0], 16000)
   let noise = @audio.make_audio_signal([0.1, 0.1, 0.1], 16000)
@@ -9398,18 +11421,27 @@ test "snr_db basic" {
 // S9.3 opcore/video 视频处理深化测试
 // ============================================
 
+///|
 test "make_frame_sequence basic" {
   let frames = [@image.make_gray_image(2, 2, [0.0, 0.0, 0.0, 0.0])]
   let seq = @video.make_frame_sequence(frames, 30)
   assert_eq(@video.frame_count_seq(seq), 1)
 }
 
+///|
 test "video_duration_sec basic" {
-  let frames = [@image.make_gray_image(2, 2, [0.0, 0.0, 0.0, 0.0]), @image.make_gray_image(2, 2, [0.0, 0.0, 0.0, 0.0])]
+  let frames = [
+    @image.make_gray_image(2, 2, [0.0, 0.0, 0.0, 0.0]),
+    @image.make_gray_image(2, 2, [0.0, 0.0, 0.0, 0.0]),
+  ]
   let seq = @video.make_frame_sequence(frames, 30)
-  assert_true(@video.video_duration_sec(seq) > 0.06 && @video.video_duration_sec(seq) < 0.07)
+  assert_true(
+    @video.video_duration_sec(seq) > 0.06 &&
+    @video.video_duration_sec(seq) < 0.07,
+  )
 }
 
+///|
 test "frame_difference basic" {
   let f1 = @image.make_gray_image(2, 1, [100.0, 200.0])
   let f2 = @image.make_gray_image(2, 1, [150.0, 180.0])
@@ -9420,6 +11452,7 @@ test "frame_difference basic" {
   assert_eq(diffs[0].pixels[1], 20.0)
 }
 
+///|
 test "motion_intensity basic" {
   let f1 = @image.make_gray_image(2, 1, [0.0, 0.0])
   let f2 = @image.make_gray_image(2, 1, [100.0, 100.0])
@@ -9428,6 +11461,7 @@ test "motion_intensity basic" {
   assert_eq(mi, 100.0)
 }
 
+///|
 test "extract_keyframes basic" {
   let f1 = @image.make_gray_image(2, 1, [0.0, 0.0])
   let f2 = @image.make_gray_image(2, 1, [100.0, 100.0])
@@ -9437,6 +11471,7 @@ test "extract_keyframes basic" {
   assert_eq(kf.length(), 1)
 }
 
+///|
 test "frame_average basic" {
   let f1 = @image.make_gray_image(2, 1, [0.0, 100.0])
   let f2 = @image.make_gray_image(2, 1, [100.0, 200.0])
@@ -9446,6 +11481,7 @@ test "frame_average basic" {
   assert_eq(avg.pixels[1], 150.0)
 }
 
+///|
 test "video_stability basic" {
   let f1 = @image.make_gray_image(2, 1, [0.0, 0.0])
   let f2 = @image.make_gray_image(2, 1, [0.0, 0.0])
@@ -9457,35 +11493,41 @@ test "video_stability basic" {
 // S9.4 opcore/semantic 语义分析深化测试
 // ============================================
 
+///|
 test "make_embedding basic" {
   let emb = @semantic.make_embedding([1.0, 2.0, 3.0])
   assert_eq(@semantic.embedding_dim(emb), 3)
 }
 
+///|
 test "cosine_similarity identical" {
   let emb = @semantic.make_embedding([1.0, 2.0, 3.0])
   let sim = @semantic.cosine_similarity(emb, emb)
   assert_true(sim > 0.99)
 }
 
+///|
 test "cosine_similarity orthogonal" {
   let emb1 = @semantic.make_embedding([1.0, 0.0])
   let emb2 = @semantic.make_embedding([0.0, 1.0])
   assert_eq(@semantic.cosine_similarity(emb1, emb2), 0.0)
 }
 
+///|
 test "embedding_distance basic" {
   let emb1 = @semantic.make_embedding([0.0, 0.0])
   let emb2 = @semantic.make_embedding([3.0, 4.0])
   assert_eq(@semantic.embedding_distance(emb1, emb2), 5.0)
 }
 
+///|
 test "dot_product basic" {
   let emb1 = @semantic.make_embedding([1.0, 2.0, 3.0])
   let emb2 = @semantic.make_embedding([4.0, 5.0, 6.0])
   assert_eq(@semantic.dot_product(emb1, emb2), 32.0)
 }
 
+///|
 test "normalize_embedding basic" {
   let emb = @semantic.make_embedding([3.0, 4.0])
   let norm = @semantic.normalize_embedding(emb)
@@ -9493,27 +11535,41 @@ test "normalize_embedding basic" {
   assert_true(norm.vector[1] > 0.79 && norm.vector[1] < 0.81)
 }
 
+///|
 test "knn_search basic" {
   let query = @semantic.make_embedding([1.0, 0.0])
-  let db = [@semantic.make_embedding([1.0, 0.0]), @semantic.make_embedding([0.0, 1.0]), @semantic.make_embedding([0.7, 0.7])]
+  let db = [
+    @semantic.make_embedding([1.0, 0.0]),
+    @semantic.make_embedding([0.0, 1.0]),
+    @semantic.make_embedding([0.7, 0.7]),
+  ]
   let result = @semantic.knn_search(query, db, 2)
   assert_eq(result.length(), 2)
   assert_eq(result[0].0, 0)
 }
 
+///|
 test "centroid_embedding basic" {
-  let embs = [@semantic.make_embedding([0.0, 0.0]), @semantic.make_embedding([4.0, 6.0])]
+  let embs = [
+    @semantic.make_embedding([0.0, 0.0]),
+    @semantic.make_embedding([4.0, 6.0]),
+  ]
   let centroid = @semantic.centroid_embedding(embs)
   assert_eq(centroid.vector[0], 2.0)
   assert_eq(centroid.vector[1], 3.0)
 }
 
+///|
 test "classify_text basic" {
   let query = @semantic.make_embedding([1.0, 0.0])
-  let centroids = [("A", @semantic.make_embedding([1.0, 0.0])), ("B", @semantic.make_embedding([0.0, 1.0]))]
+  let centroids = [
+    ("A", @semantic.make_embedding([1.0, 0.0])),
+    ("B", @semantic.make_embedding([0.0, 1.0])),
+  ]
   assert_eq(@semantic.classify_text(query, centroids), "A")
 }
 
+///|
 test "term_frequency_vector basic" {
   let tokens = ["hello", "world", "hello"]
   let vocab = ["hello", "world", "foo"]
@@ -9527,15 +11583,18 @@ test "term_frequency_vector basic" {
 // S9.5 opcore/pointcloud 点云处理测试
 // ============================================
 
+///|
 test "pointcloud_id" {
   assert_eq(@pointcloud.pointcloud_id(), "opcore/pointcloud")
 }
 
+///|
 test "make_point_cloud basic" {
   let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)])
   assert_eq(@pointcloud.pointcloud_size(cloud), 2)
 }
 
+///|
 test "pointcloud_centroid basic" {
   let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0), (2.0, 4.0, 6.0)])
   let (cx, cy, cz) = @pointcloud.pointcloud_centroid(cloud)
@@ -9544,26 +11603,40 @@ test "pointcloud_centroid basic" {
   assert_eq(cz, 3.0)
 }
 
+///|
 test "pointcloud_bbox basic" {
   let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0), (2.0, 4.0, 6.0)])
-  let ((min_x, min_y, min_z), (max_x, max_y, max_z)) = @pointcloud.pointcloud_bbox(cloud)
+  let ((min_x, min_y, min_z), (max_x, max_y, max_z)) = @pointcloud.pointcloud_bbox(
+    cloud,
+  )
   assert_eq(min_x, 0.0)
   assert_eq(max_x, 2.0)
   assert_eq(max_z, 6.0)
 }
 
+///|
 test "elevation_filter basic" {
-  let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 1.0), (1.0, 0.0, 5.0), (2.0, 0.0, 10.0)])
+  let cloud = @pointcloud.make_point_cloud([
+    (0.0, 0.0, 1.0),
+    (1.0, 0.0, 5.0),
+    (2.0, 0.0, 10.0),
+  ])
   let filtered = @pointcloud.elevation_filter(cloud, 0.0, 6.0)
   assert_eq(@pointcloud.pointcloud_size(filtered), 2)
 }
 
+///|
 test "voxel_downsample basic" {
-  let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0), (0.5, 0.5, 0.5), (2.0, 2.0, 2.0)])
+  let cloud = @pointcloud.make_point_cloud([
+    (0.0, 0.0, 0.0),
+    (0.5, 0.5, 0.5),
+    (2.0, 2.0, 2.0),
+  ])
   let downsampled = @pointcloud.voxel_downsample(cloud, 1.0)
   assert_eq(@pointcloud.pointcloud_size(downsampled), 2)
 }
 
+///|
 test "pointcloud_translate basic" {
   let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0)])
   let translated = @pointcloud.pointcloud_translate(cloud, 1.0, 2.0, 3.0)
@@ -9573,6 +11646,7 @@ test "pointcloud_translate basic" {
   assert_eq(z, 3.0)
 }
 
+///|
 test "pointcloud_scale basic" {
   let cloud = @pointcloud.make_point_cloud([(1.0, 2.0, 3.0)])
   let scaled = @pointcloud.pointcloud_scale(cloud, 2.0, 3.0, 4.0)
@@ -9582,14 +11656,20 @@ test "pointcloud_scale basic" {
   assert_eq(z, 12.0)
 }
 
+///|
 test "pointcloud_elevation_stats basic" {
-  let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 1.0), (0.0, 0.0, 5.0), (0.0, 0.0, 3.0)])
+  let cloud = @pointcloud.make_point_cloud([
+    (0.0, 0.0, 1.0),
+    (0.0, 0.0, 5.0),
+    (0.0, 0.0, 3.0),
+  ])
   let (min_z, max_z, mean_z) = @pointcloud.elevation_stats(cloud)
   assert_eq(min_z, 1.0)
   assert_eq(max_z, 5.0)
   assert_eq(mean_z, 3.0)
 }
 
+///|
 test "point_density basic" {
   let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)])
   let density = @pointcloud.point_density(cloud)
@@ -9600,15 +11680,21 @@ test "point_density basic" {
 // S9.6 opcore/remotesensing 遥感分析测试
 // ============================================
 
+///|
 test "remotesensing_id" {
   assert_eq(@remotesensing.remotesensing_id(), "opcore/remotesensing")
 }
 
+///|
 test "make_multiband basic" {
-  let img = @remotesensing.make_multiband(2, 2, [[100.0, 200.0, 150.0, 250.0], [50.0, 60.0, 70.0, 80.0]])
+  let img = @remotesensing.make_multiband(2, 2, [
+    [100.0, 200.0, 150.0, 250.0],
+    [50.0, 60.0, 70.0, 80.0],
+  ])
   assert_eq(@remotesensing.band_count(img), 2)
 }
 
+///|
 test "ndvi basic" {
   let nir = [100.0, 200.0, 150.0, 250.0]
   let red = [50.0, 100.0, 100.0, 50.0]
@@ -9618,6 +11704,7 @@ test "ndvi basic" {
   assert_true(result[0] > 0.3 && result[0] < 0.4)
 }
 
+///|
 test "ndwi basic" {
   let green = [100.0, 200.0]
   let nir = [50.0, 100.0]
@@ -9627,6 +11714,7 @@ test "ndwi basic" {
   assert_true(result[0] > 0.3)
 }
 
+///|
 test "ndbi basic" {
   let swir = [100.0, 200.0]
   let nir = [50.0, 100.0]
@@ -9635,6 +11723,7 @@ test "ndbi basic" {
   assert_eq(result.length(), 2)
 }
 
+///|
 test "band_subtract basic" {
   let b1 = [100.0, 200.0]
   let b2 = [50.0, 100.0]
@@ -9644,6 +11733,7 @@ test "band_subtract basic" {
   assert_eq(result[1], 100.0)
 }
 
+///|
 test "band_ratio basic" {
   let b1 = [100.0, 200.0]
   let b2 = [50.0, 100.0]
@@ -9653,6 +11743,7 @@ test "band_ratio basic" {
   assert_eq(result[1], 2.0)
 }
 
+///|
 test "threshold_classify basic" {
   let values = [0.1, 0.3, 0.5, 0.7, 0.9]
   let thresholds = [0.4, 0.8]
@@ -9662,6 +11753,7 @@ test "threshold_classify basic" {
   assert_eq(result[4], 2)
 }
 
+///|
 test "supervised_classify basic" {
   let values = [0.1, 0.5, 0.9]
   let class_means = [(1, 0.0), (2, 1.0)]
@@ -9670,6 +11762,7 @@ test "supervised_classify basic" {
   assert_eq(result[2], 2)
 }
 
+///|
 test "band_stats basic" {
   let band = [10.0, 20.0, 30.0, 40.0]
   let img = @remotesensing.make_multiband(2, 2, [band])
@@ -9679,9 +11772,10 @@ test "band_stats basic" {
   assert_eq(mean_v, 25.0)
   assert_true(std_v > 0.0)
 }
+
+///|
 ///===
 /// S10.1 dataobject/serialize 测试
-
 test "serialize_format_name" {
   assert_eq(@serialize.format_name(@serialize.JSON), "json")
   assert_eq(@serialize.format_name(@serialize.CSV), "csv")
@@ -9691,15 +11785,22 @@ test "serialize_format_name" {
   assert_eq(@serialize.format_name(@serialize.YAML), "yaml")
 }
 
+///|
 test "serialize_make_result" {
-  let r = @serialize.make_serialize_result(@serialize.JSON, "{\"a\":1}", true, "")
+  let r = @serialize.make_serialize_result(
+    @serialize.JSON,
+    "{\"a\":1}",
+    true,
+    "",
+  )
   assert_true(r.success)
   assert_eq(r.size, 7)
   assert_eq(r.error_msg, "")
 }
 
+///|
 test "serialize_json_escape" {
-  let bs = String::from_array([Int::unsafe_to_char(92)])
+  let bs = String::from_array([Int32::unsafe_to_char(92)])
   assert_eq(@serialize.json_escape("hello"), "hello")
   let q_in = "a" + "\"" + "b"
   let q_out = "a" + bs + "\"" + "b"
@@ -9715,18 +11816,21 @@ test "serialize_json_escape" {
   assert_eq(@serialize.json_escape(t_in), t_out)
 }
 
+///|
 test "serialize_json_string_value" {
   let v = @serialize.json_string_value("name", "Alice")
   assert_true(v.contains("name"))
   assert_true(v.contains("Alice"))
 }
 
+///|
 test "serialize_json_number_value" {
   let v = @serialize.json_number_value("age", 30.0)
   assert_true(v.contains("age"))
   assert_true(v.contains("30"))
 }
 
+///|
 test "serialize_json_bool_value" {
   let v1 = @serialize.json_bool_value("flag", true)
   let v2 = @serialize.json_bool_value("flag", false)
@@ -9734,16 +11838,19 @@ test "serialize_json_bool_value" {
   assert_true(v2.contains("false"))
 }
 
+///|
 test "serialize_json_array" {
   let v = @serialize.json_array(["1", "2", "3"])
   assert_eq(v, "[1, 2, 3]")
 }
 
+///|
 test "serialize_json_object" {
   let v = @serialize.json_object(["\"a\":1", "\"b\":2"])
   assert_eq(v, "{\"a\":1, \"b\":2}")
 }
 
+///|
 test "serialize_csv_escape" {
   assert_eq(@serialize.csv_escape("hello", ","), "hello")
   assert_eq(@serialize.csv_escape("a,b", ","), "\"a,b\"")
@@ -9751,16 +11858,19 @@ test "serialize_csv_escape" {
   assert_eq(@serialize.csv_escape("a\nb", ","), "\"a\nb\"")
 }
 
+///|
 test "serialize_csv_row" {
   let r = @serialize.csv_row(["a", "b", "c"], ",")
   assert_eq(r, "a,b,c")
 }
 
+///|
 test "serialize_csv_table" {
   let t = @serialize.csv_table([["a", "b"], ["c", "d"]], ",")
   assert_eq(t, "a,b\nc,d")
 }
 
+///|
 test "serialize_validate_non_empty" {
   let r1 = @serialize.validate_non_empty("hello", "field")
   assert_true(r1.valid)
@@ -9769,6 +11879,7 @@ test "serialize_validate_non_empty" {
   assert_eq(r2.errors.length(), 1)
 }
 
+///|
 test "serialize_validate_length" {
   let r1 = @serialize.validate_length("hello", 1, 10, "field")
   assert_true(r1.valid)
@@ -9778,6 +11889,7 @@ test "serialize_validate_length" {
   assert_false(r3.valid)
 }
 
+///|
 test "serialize_validate_range" {
   let r1 = @serialize.validate_range(5.0, 0.0, 10.0, "field")
   assert_true(r1.valid)
@@ -9787,6 +11899,7 @@ test "serialize_validate_range" {
   assert_false(r3.valid)
 }
 
+///|
 test "serialize_validate_pattern" {
   let r1 = @serialize.validate_pattern("hello world", "world", "field")
   assert_true(r1.valid)
@@ -9794,6 +11907,7 @@ test "serialize_validate_pattern" {
   assert_false(r2.valid)
 }
 
+///|
 test "serialize_to_int_safe" {
   assert_eq(@serialize.to_int_safe("123"), Some(123))
   assert_eq(@serialize.to_int_safe("-456"), Some(-456))
@@ -9803,6 +11917,7 @@ test "serialize_to_int_safe" {
   assert_eq(@serialize.to_int_safe(""), None)
 }
 
+///|
 test "serialize_to_double_safe" {
   assert_eq(@serialize.to_double_safe("123.0"), Some(123.0))
   assert_eq(@serialize.to_double_safe("-45.6"), Some(-45.6))
@@ -9812,6 +11927,7 @@ test "serialize_to_double_safe" {
   assert_eq(@serialize.to_double_safe("1.2.3"), None)
 }
 
+///|
 test "serialize_int_to_padded" {
   assert_eq(@serialize.int_to_padded(5, 3), "005")
   assert_eq(@serialize.int_to_padded(42, 3), "042")
@@ -9819,6 +11935,7 @@ test "serialize_int_to_padded" {
   assert_eq(@serialize.int_to_padded(12345, 3), "12345")
 }
 
+///|
 test "serialize_bool_string" {
   assert_eq(@serialize.bool_to_string(true), "true")
   assert_eq(@serialize.bool_to_string(false), "false")
@@ -9831,24 +11948,27 @@ test "serialize_bool_string" {
   assert_eq(@serialize.string_to_bool("maybe"), None)
 }
 
+///|
 test "serialize_hex_encode" {
   let h = @serialize.hex_encode("AB")
   assert_eq(h.length(), 4)
   assert_eq(h, "4142")
 }
 
+///|
 test "serialize_base64_encode" {
   let b = @serialize.base64_encode("ABC")
   assert_true(b.length() > 0)
 }
 
+///|
 test "serialize_id" {
   assert_eq(@serialize.serialize_id(), "dataobject/serialize")
 }
 
+///|
 ///===
 /// S10.2 datatemporal/window 测试
-
 test "window_make_event" {
   let e = @window.make_event(1.0, 42.0, "a")
   assert_eq(e.timestamp, 1.0)
@@ -9856,11 +11976,13 @@ test "window_make_event" {
   assert_eq(e.key, "a")
 }
 
+///|
 test "window_make_window" {
   let w = @window.make_window(0.0, 10.0, @window.Tumbling, 10.0, 10.0)
   assert_eq(@window.window_duration(w), 10.0)
 }
 
+///|
 test "window_event_in_window" {
   let w = @window.make_window(0.0, 10.0, @window.Tumbling, 10.0, 10.0)
   let e1 = @window.make_event(5.0, 1.0, "a")
@@ -9869,6 +11991,7 @@ test "window_event_in_window" {
   assert_false(@window.event_in_window(e2, w))
 }
 
+///|
 test "window_tumbling_windows" {
   let ws = @window.tumbling_windows(0.0, 30.0, 10.0)
   assert_eq(ws.length(), 3)
@@ -9878,6 +12001,7 @@ test "window_tumbling_windows" {
   assert_eq(ws[2].end, 30.0)
 }
 
+///|
 test "window_sliding_windows" {
   let ws = @window.sliding_windows(0.0, 20.0, 10.0, 5.0)
   assert_eq(ws.length(), 4)
@@ -9885,6 +12009,7 @@ test "window_sliding_windows" {
   assert_eq(ws[1].start, 5.0)
 }
 
+///|
 test "window_session_windows" {
   let events = [
     @window.make_event(1.0, 1.0, "a"),
@@ -9896,6 +12021,7 @@ test "window_session_windows" {
   assert_eq(ws.length(), 2)
 }
 
+///|
 test "window_sum" {
   let events = [
     @window.make_event(1.0, 10.0, "a"),
@@ -9906,6 +12032,7 @@ test "window_sum" {
   assert_eq(@window.window_sum(events, w), 30.0)
 }
 
+///|
 test "window_avg" {
   let events = [
     @window.make_event(1.0, 10.0, "a"),
@@ -9915,6 +12042,7 @@ test "window_avg" {
   assert_eq(@window.window_avg(events, w), 15.0)
 }
 
+///|
 test "window_max_min" {
   let events = [
     @window.make_event(1.0, 10.0, "a"),
@@ -9926,6 +12054,7 @@ test "window_max_min" {
   assert_eq(@window.window_min(events, w), 5.0)
 }
 
+///|
 test "window_count" {
   let events = [
     @window.make_event(1.0, 10.0, "a"),
@@ -9936,6 +12065,7 @@ test "window_count" {
   assert_eq(@window.window_count(events, w), 2)
 }
 
+///|
 test "window_tumbling_sum" {
   let events = [
     @window.make_event(1.0, 10.0, "a"),
@@ -9948,6 +12078,7 @@ test "window_tumbling_sum" {
   assert_eq(result[1], 30.0)
 }
 
+///|
 test "window_group_by_key" {
   let events = [
     @window.make_event(1.0, 10.0, "a"),
@@ -9959,13 +12090,14 @@ test "window_group_by_key" {
   assert_eq(groups.length(), 2)
 }
 
+///|
 test "window_id" {
   assert_eq(@window.window_id(), "datatemporal/window")
 }
 
+///|
 ///===
 /// S10.2 datatemporal 时间操作测试
-
 test "temporal_interval" {
   let i = @datatemporal.make_interval(0.0, 10.0)
   assert_eq(@datatemporal.interval_duration(i), 10.0)
@@ -9973,6 +12105,7 @@ test "temporal_interval" {
   assert_false(@datatemporal.timestamp_in_interval(15.0, i))
 }
 
+///|
 test "temporal_overlap" {
   let a = @datatemporal.make_interval(0.0, 10.0)
   let b = @datatemporal.make_interval(5.0, 15.0)
@@ -9983,6 +12116,7 @@ test "temporal_overlap" {
   assert_eq(@datatemporal.overlap_duration(a, c), 0.0)
 }
 
+///|
 test "temporal_merge_intervals" {
   let intervals = [
     @datatemporal.make_interval(0.0, 5.0),
@@ -9995,12 +12129,14 @@ test "temporal_merge_intervals" {
   assert_eq(merged[0].end, 8.0)
 }
 
+///|
 test "temporal_compare" {
   assert_eq(@datatemporal.compare_timestamps(1.0, 2.0), -1)
   assert_eq(@datatemporal.compare_timestamps(2.0, 1.0), 1)
   assert_eq(@datatemporal.compare_timestamps(1.0, 1.0), 0)
 }
 
+///|
 test "temporal_sample_timeseries" {
   let values = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
   let sampled = @datatemporal.sample_timeseries(values, 2)
@@ -10010,6 +12146,7 @@ test "temporal_sample_timeseries" {
   assert_eq(sampled[2], 5.0)
 }
 
+///|
 test "temporal_diff_timeseries" {
   let values = [1.0, 3.0, 6.0, 10.0]
   let diff = @datatemporal.diff_timeseries(values)
@@ -10019,6 +12156,7 @@ test "temporal_diff_timeseries" {
   assert_eq(diff[2], 4.0)
 }
 
+///|
 test "temporal_moving_average" {
   let values = [1.0, 2.0, 3.0, 4.0, 5.0]
   let ma = @datatemporal.moving_average(values, 3)
@@ -10028,6 +12166,7 @@ test "temporal_moving_average" {
   assert_eq(ma[2], 4.0)
 }
 
+///|
 test "temporal_lag_timeseries" {
   let values = [1.0, 2.0, 3.0, 4.0, 5.0]
   let lagged = @datatemporal.lag_timeseries(values, 2)
@@ -10037,9 +12176,9 @@ test "temporal_lag_timeseries" {
   assert_eq(lagged[2], 5.0)
 }
 
+///|
 ///===
 /// S10.3 datair/ir_transform 测试
-
 test "ir_transform_fold_binary" {
   assert_eq(@ir_transform.fold_binary_op("+", 1.0, 2.0), Some(3.0))
   assert_eq(@ir_transform.fold_binary_op("-", 5.0, 3.0), Some(2.0))
@@ -10048,18 +12187,21 @@ test "ir_transform_fold_binary" {
   assert_eq(@ir_transform.fold_binary_op("/", 10.0, 0.0), None)
 }
 
+///|
 test "ir_transform_fold_unary" {
   assert_eq(@ir_transform.fold_unary_op("-", 5.0), Some(-5.0))
   assert_eq(@ir_transform.fold_unary_op("abs", -5.0), Some(5.0))
   assert_eq(@ir_transform.fold_unary_op("abs", 5.0), Some(5.0))
 }
 
+///|
 test "ir_transform_parse_constant" {
   assert_eq(@ir_transform.parse_constant("123"), Some(123.0))
   assert_eq(@ir_transform.parse_constant("-45.6"), Some(-45.6))
   assert_eq(@ir_transform.parse_constant("abc"), None)
 }
 
+///|
 test "ir_transform_eliminate_dead" {
   let nodes = [
     @ir_transform.make_node(@ir_transform.Constant, "1", []),
@@ -10070,30 +12212,40 @@ test "ir_transform_eliminate_dead" {
   assert_eq(live.length(), 1)
 }
 
+///|
 test "ir_transform_simplify_add" {
   assert_eq(@ir_transform.simplify_add("1", "2"), "3")
   assert_eq(@ir_transform.simplify_add("0", "x"), "x")
   assert_eq(@ir_transform.simplify_add("x", "0"), "x")
 }
 
+///|
 test "ir_transform_simplify_mul" {
   assert_eq(@ir_transform.simplify_mul("2", "3"), "6")
   assert_eq(@ir_transform.simplify_mul("0", "x"), "0")
   assert_eq(@ir_transform.simplify_mul("1", "x"), "x")
 }
 
+///|
 test "ir_transform_name" {
-  assert_eq(@ir_transform.transform_name(@ir_transform.ConstantFolding), "constant_folding")
-  assert_eq(@ir_transform.transform_name(@ir_transform.DeadCodeElimination), "dead_code_elimination")
+  assert_eq(
+    @ir_transform.transform_name(@ir_transform.ConstantFolding),
+    "constant_folding",
+  )
+  assert_eq(
+    @ir_transform.transform_name(@ir_transform.DeadCodeElimination),
+    "dead_code_elimination",
+  )
 }
 
+///|
 test "ir_transform_id" {
   assert_eq(@ir_transform.ir_transform_id(), "datair/ir_transform")
 }
 
+///|
 ///===
 /// S10.4 dosi/scheduler 测试
-
 test "scheduler_priority" {
   let tasks = [
     @scheduler.make_task("a", 1, 10.0, 1.0, 0.0),
@@ -10106,6 +12258,7 @@ test "scheduler_priority" {
   assert_eq(sorted[2].id, "a")
 }
 
+///|
 test "scheduler_fifo" {
   let tasks = [
     @scheduler.make_task("a", 1, 10.0, 1.0, 2.0),
@@ -10118,6 +12271,7 @@ test "scheduler_fifo" {
   assert_eq(sorted[2].id, "a")
 }
 
+///|
 test "scheduler_sjf" {
   let tasks = [
     @scheduler.make_task("a", 1, 30.0, 1.0, 0.0),
@@ -10130,6 +12284,7 @@ test "scheduler_sjf" {
   assert_eq(sorted[2].id, "a")
 }
 
+///|
 test "scheduler_resource" {
   let r = @scheduler.make_resource("r1", 100.0)
   let r1 = @scheduler.allocate_resource(r, 40.0)
@@ -10138,32 +12293,37 @@ test "scheduler_resource" {
   assert_true(r2 is None)
 }
 
+///|
 test "scheduler_utilization" {
   let r = @scheduler.make_resource("r1", 100.0)
   let r1 = @scheduler.allocate_resource(r, 40.0)
   match r1 {
-    Some(allocated) => assert_eq(@scheduler.resource_utilization(allocated), 0.4)
+    Some(allocated) =>
+      assert_eq(@scheduler.resource_utilization(allocated), 0.4)
     None => assert_true(false)
   }
 }
 
+///|
 test "scheduler_policy_name" {
   assert_eq(@scheduler.policy_name(@scheduler.FIFO), "fifo")
   assert_eq(@scheduler.policy_name(@scheduler.Priority), "priority")
 }
 
+///|
 test "scheduler_id" {
   assert_eq(@scheduler.scheduler_id(), "dosi/scheduler")
 }
 
+///|
 ///===
 /// S10.5 parallel/partition 测试
-
 test "partition_hash" {
   let h = @partition.hash_value("test")
   assert_true(h >= 0)
 }
 
+///|
 test "partition_hash_partition" {
   let items = ["a", "b", "c", "d", "e", "f"]
   let result = @partition.hash_partition(items, 3)
@@ -10171,6 +12331,7 @@ test "partition_hash_partition" {
   assert_eq(@partition.total_items(result), 6)
 }
 
+///|
 test "partition_range" {
   let items = ["apple", "banana", "cherry", "date", "elderberry"]
   let result = @partition.range_partition(items, ["c", "e"])
@@ -10178,6 +12339,7 @@ test "partition_range" {
   assert_eq(@partition.total_items(result), 5)
 }
 
+///|
 test "partition_round_robin" {
   let items = ["a", "b", "c", "d", "e", "f"]
   let result = @partition.round_robin_partition(items, 3)
@@ -10187,6 +12349,7 @@ test "partition_round_robin" {
   assert_eq(result[2].items.length(), 2)
 }
 
+///|
 test "partition_balance" {
   let items = ["a", "b", "c", "d", "e", "f"]
   let result = @partition.round_robin_partition(items, 3)
@@ -10194,18 +12357,20 @@ test "partition_balance" {
   assert_eq(balance, 1.0)
 }
 
+///|
 test "partition_strategy_name" {
   assert_eq(@partition.strategy_name(@partition.HashPartition), "hash")
   assert_eq(@partition.strategy_name(@partition.RangePartition), "range")
 }
 
+///|
 test "partition_id" {
   assert_eq(@partition.partition_id(), "parallel/partition")
 }
 
+///|
 ///===
 /// S10.6 io/format 测试
-
 test "format_infer_type" {
   assert_eq(@format.infer_type("123"), @format.IntType)
   assert_eq(@format.infer_type("45.6"), @format.FloatType)
@@ -10214,6 +12379,7 @@ test "format_infer_type" {
   assert_eq(@format.infer_type("hello"), @format.StringType)
 }
 
+///|
 test "format_infer_column_type" {
   assert_eq(@format.infer_column_type(["1", "2", "3"]), @format.IntType)
   assert_eq(@format.infer_column_type(["1.0", "2.5"]), @format.FloatType)
@@ -10221,21 +12387,20 @@ test "format_infer_column_type" {
   assert_eq(@format.infer_column_type(["a", "b", "c"]), @format.StringType)
 }
 
+///|
 test "format_transpose" {
   let cols = [
     @format.make_column("a", @format.StringType, false),
     @format.make_column("b", @format.StringType, false),
   ]
-  let rows = [
-    @format.make_row(["1", "2"]),
-    @format.make_row(["3", "4"]),
-  ]
+  let rows = [@format.make_row(["1", "2"]), @format.make_row(["3", "4"])]
   let table = @format.make_table(cols, rows)
   let transposed = @format.transpose_table(table)
   assert_eq(@format.row_count(transposed), 2)
   assert_eq(@format.column_count(transposed), 2)
 }
 
+///|
 test "format_table_stats" {
   let cols = [
     @format.make_column("a", @format.IntType, false),
@@ -10256,6 +12421,7 @@ test "format_table_stats" {
   assert_eq(vals[0], "1")
 }
 
+///|
 test "format_type_name" {
   assert_eq(@format.type_name(@format.StringType), "string")
   assert_eq(@format.type_name(@format.IntType), "int")
@@ -10264,29 +12430,33 @@ test "format_type_name" {
   assert_eq(@format.type_name(@format.NullType), "null")
 }
 
+///|
 test "format_id" {
   assert_eq(@format.format_id(), "io/format")
 }
 
+///|
 ///===
 /// S11.1 agent_kit/llm 测试
-
 test "llm_make_message" {
   let m = @llm.make_message(@llm.User, "hello")
   assert_eq(m.content, "hello")
   assert_true(m.tokens > 0)
 }
 
+///|
 test "llm_estimate_tokens" {
   assert_true(@llm.estimate_tokens("hello world") > 0)
   assert_eq(@llm.estimate_tokens(""), 0)
 }
 
+///|
 test "llm_system_message" {
   let m = @llm.system_message("You are helpful")
   assert_eq(m.content, "You are helpful")
 }
 
+///|
 test "llm_make_request" {
   let msgs = [@llm.user_message("hi")]
   let req = @llm.make_request("gpt-4", @llm.OpenAI, msgs, 100, 0.7)
@@ -10294,6 +12464,7 @@ test "llm_make_request" {
   assert_eq(req.temperature, 0.7)
 }
 
+///|
 test "llm_with_temperature" {
   let msgs = [@llm.user_message("hi")]
   let req = @llm.make_request("gpt-4", @llm.OpenAI, msgs, 100, 0.7)
@@ -10301,6 +12472,7 @@ test "llm_with_temperature" {
   assert_eq(req2.temperature, 0.5)
 }
 
+///|
 test "llm_response_ok" {
   let r = @llm.make_response("hello", "stop", 10, 5, true, "")
   assert_true(@llm.response_ok(r))
@@ -10308,12 +12480,14 @@ test "llm_response_ok" {
   assert_false(@llm.response_ok(r2))
 }
 
+///|
 test "llm_estimate_cost" {
   let r = @llm.make_response("hello", "stop", 1000, 500, true, "")
   let cost = @llm.estimate_cost(r, 0.01, 0.03)
   assert_true(cost > 0.0)
 }
 
+///|
 test "llm_merge_chunks" {
   let chunks = [
     @llm.make_chunk("Hello", false, 0),
@@ -10322,18 +12496,20 @@ test "llm_merge_chunks" {
   assert_eq(@llm.merge_chunks(chunks), "Hello World")
 }
 
+///|
 test "llm_provider_name" {
   assert_eq(@llm.provider_name(@llm.OpenAI), "openai")
   assert_eq(@llm.provider_name(@llm.Anthropic), "anthropic")
 }
 
+///|
 test "llm_id" {
   assert_eq(@llm.llm_id(), "agent_kit/llm")
 }
 
+///|
 ///===
 /// S11.2 agent_kit/retrieval 测试
-
 test "retrieval_cosine_similarity" {
   let a = [1.0, 0.0, 0.0]
   let b = [1.0, 0.0, 0.0]
@@ -10342,6 +12518,7 @@ test "retrieval_cosine_similarity" {
   assert_true(@retrieval.cosine_similarity(a, c) < 0.01)
 }
 
+///|
 test "retrieval_vector_search" {
   let docs = [
     @retrieval.make_document("d1", "hello", [1.0, 0.0], ""),
@@ -10352,6 +12529,7 @@ test "retrieval_vector_search" {
   assert_eq(results[0].document.id, "d1")
 }
 
+///|
 test "retrieval_keyword_search" {
   let docs = [
     @retrieval.make_document("d1", "hello world", [], ""),
@@ -10362,54 +12540,69 @@ test "retrieval_keyword_search" {
   assert_eq(results[0].document.id, "d1")
 }
 
+///|
 test "retrieval_rerank" {
   let docs = [
     @retrieval.make_document("d1", "a", [], ""),
     @retrieval.make_document("d2", "b", [], ""),
   ]
   let results = [
-    @retrieval.make_retrieval_result({ ..docs[0], score: 0.5 }, @retrieval.VectorSearch, 1),
-    @retrieval.make_retrieval_result({ ..docs[1], score: 0.9 }, @retrieval.VectorSearch, 2),
+    @retrieval.make_retrieval_result(
+      { ..docs[0], score: 0.5, },
+      @retrieval.VectorSearch,
+      1,
+    ),
+    @retrieval.make_retrieval_result(
+      { ..docs[1], score: 0.9, },
+      @retrieval.VectorSearch,
+      2,
+    ),
   ]
   let reranked = @retrieval.rerank(results)
   assert_eq(reranked[0].document.id, "d2")
 }
 
+///|
 test "retrieval_method_name" {
   assert_eq(@retrieval.method_name(@retrieval.VectorSearch), "vector")
   assert_eq(@retrieval.method_name(@retrieval.KeywordSearch), "keyword")
 }
 
+///|
 test "retrieval_id" {
   assert_eq(@retrieval.retrieval_id(), "agent_kit/retrieval")
 }
 
+///|
 ///===
 /// S11.3 agent_kit/prompt 测试
-
 test "prompt_replace_variable" {
   let result = @prompt.replace_variable("Hello {name}!", "name", "World")
   assert_eq(result, "Hello World!")
 }
 
+///|
 test "prompt_render_template" {
   let tmpl = @prompt.make_template("greet", "Hello {name}!", ["name"])
   let result = @prompt.render_template(tmpl, [("name", "Alice")])
   assert_eq(result, "Hello Alice!")
 }
 
+///|
 test "prompt_build_system" {
   let p = @prompt.build_system_prompt("assistant", "Be helpful.")
   assert_true(p.contains("assistant"))
   assert_true(p.contains("Be helpful."))
 }
 
+///|
 test "prompt_build_user" {
   let p = @prompt.build_user_prompt("What is 2+2?", "Math context")
   assert_true(p.contains("What is 2+2?"))
   assert_true(p.contains("Math context"))
 }
 
+///|
 test "prompt_few_shot" {
   let examples = [@prompt.make_few_shot("1+1", "2")]
   let p = @prompt.build_few_shot_prompt("Solve:", examples, "2+2")
@@ -10417,16 +12610,19 @@ test "prompt_few_shot" {
   assert_true(p.contains("2+2"))
 }
 
+///|
 test "prompt_count_variables" {
   assert_eq(@prompt.count_variables("Hello {a} and {b}"), 2)
   assert_eq(@prompt.count_variables("No variables"), 0)
 }
 
+///|
 test "prompt_extract_variables" {
   let vars = @prompt.extract_variables("Hello {a} and {b}")
   assert_eq(vars.length(), 2)
 }
 
+///|
 test "prompt_chain" {
   let steps = [
     @prompt.make_template("s1", "Step1: {x}", ["x"]),
@@ -10438,20 +12634,28 @@ test "prompt_chain" {
   assert_true(result.contains("Step2"))
 }
 
+///|
 test "prompt_id" {
   assert_eq(@prompt.prompt_id(), "agent_kit/prompt")
 }
 
+///|
 ///===
 /// S11.4 agent_kit/memory 测试
-
 test "memory_add" {
   let store = @memory.make_memory_store(10, 10)
-  let entry = @memory.make_memory_entry("e1", "hello", @memory.ShortTerm, 1.0, 0.5)
+  let entry = @memory.make_memory_entry(
+    "e1",
+    "hello",
+    @memory.ShortTerm,
+    1.0,
+    0.5,
+  )
   let store2 = @memory.add_memory(store, entry)
   assert_eq(@memory.memory_count(store2), 1)
 }
 
+///|
 test "memory_retrieve_by_type" {
   let store = @memory.make_memory_store(10, 10)
   let e1 = @memory.make_memory_entry("e1", "short", @memory.ShortTerm, 1.0, 0.5)
@@ -10461,15 +12665,29 @@ test "memory_retrieve_by_type" {
   assert_eq(short.length(), 1)
 }
 
+///|
 test "memory_retrieve_by_keyword" {
   let store = @memory.make_memory_store(10, 10)
-  let e1 = @memory.make_memory_entry("e1", "hello world", @memory.ShortTerm, 1.0, 0.5)
-  let e2 = @memory.make_memory_entry("e2", "foo bar", @memory.ShortTerm, 2.0, 0.5)
+  let e1 = @memory.make_memory_entry(
+    "e1",
+    "hello world",
+    @memory.ShortTerm,
+    1.0,
+    0.5,
+  )
+  let e2 = @memory.make_memory_entry(
+    "e2",
+    "foo bar",
+    @memory.ShortTerm,
+    2.0,
+    0.5,
+  )
   let store2 = @memory.add_memory(@memory.add_memory(store, e1), e2)
   let results = @memory.retrieve_by_keyword(store2, "hello")
   assert_eq(results.length(), 1)
 }
 
+///|
 test "memory_clear_short_term" {
   let store = @memory.make_memory_store(10, 10)
   let e1 = @memory.make_memory_entry("e1", "short", @memory.ShortTerm, 1.0, 0.5)
@@ -10479,18 +12697,20 @@ test "memory_clear_short_term" {
   assert_eq(@memory.memory_count(cleared), 1)
 }
 
+///|
 test "memory_type_name" {
   assert_eq(@memory.memory_type_name(@memory.ShortTerm), "short_term")
   assert_eq(@memory.memory_type_name(@memory.LongTerm), "long_term")
 }
 
+///|
 test "memory_id" {
   assert_eq(@memory.memory_id(), "agent_kit/memory")
 }
 
+///|
 ///===
 /// S11.5 agent_kit/tool 测试
-
 test "tool_validate_arguments" {
   let params = [
     @tool.make_param("x", @tool.StringType, "x param", true, ""),
@@ -10501,6 +12721,7 @@ test "tool_validate_arguments" {
   assert_false(@tool.validate_arguments(tool_def, [("y", "2")]))
 }
 
+///|
 test "tool_get_argument" {
   let args = [("x", "1"), ("y", "2")]
   assert_eq(@tool.get_argument(args, "x"), Some("1"))
@@ -10508,35 +12729,41 @@ test "tool_get_argument" {
   assert_eq(@tool.get_required_argument(args, "x"), "1")
 }
 
+///|
 test "tool_to_int_arg" {
   assert_eq(@tool.to_int_arg("42"), Some(42))
   assert_eq(@tool.to_int_arg("-7"), Some(-7))
   assert_eq(@tool.to_int_arg("abc"), None)
 }
 
+///|
 test "tool_to_double_arg" {
   assert_eq(@tool.to_double_arg("3.14"), Some(3.14))
   assert_eq(@tool.to_double_arg("abc"), None)
 }
 
+///|
 test "tool_to_bool_arg" {
   assert_eq(@tool.to_bool_arg("true"), Some(true))
   assert_eq(@tool.to_bool_arg("false"), Some(false))
   assert_eq(@tool.to_bool_arg("yes"), None)
 }
 
+///|
 test "tool_success_result" {
   let r = @tool.success_result("call1", "result", 0.5)
   assert_true(r.success)
   assert_eq(r.output, "result")
 }
 
+///|
 test "tool_error_result" {
   let r = @tool.error_result("call1", "failed", 0.1)
   assert_false(r.success)
   assert_eq(r.error, "failed")
 }
 
+///|
 test "tool_result_to_json" {
   let r = @tool.success_result("call1", "ok", 0.5)
   let json = @tool.result_to_json(r)
@@ -10544,11 +12771,13 @@ test "tool_result_to_json" {
   assert_true(json.contains("true"))
 }
 
+///|
 test "tool_param_type_name" {
   assert_eq(@tool.param_type_name(@tool.StringType), "string")
   assert_eq(@tool.param_type_name(@tool.NumberType), "number")
 }
 
+///|
 test "tool_id" {
   assert_eq(@tool.tool_id(), "agent_kit/tool")
 }

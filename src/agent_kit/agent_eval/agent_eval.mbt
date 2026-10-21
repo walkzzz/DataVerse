@@ -6,15 +6,17 @@
 ///
 /// # Agent evaluation
 
+///|
 /// 评估配置 / Eval configuration.
 pub struct EvalConfig {
   name : String
   metrics : Array[String]
   threshold : Double
-  sample_size : Int
-  seed : Int
+  sample_size : Int32
+  seed : Int32
 }
 
+///|
 /// 任务结果 / Task result.
 pub struct TaskResult {
   task_id : String
@@ -22,21 +24,23 @@ pub struct TaskResult {
   completion : Double
   latency_ms : Double
   cost : Double
-  tokens : Int
-  api_calls : Int
+  tokens : Int32
+  api_calls : Int32
 }
 
+///|
 /// 构造评估配置 / Create eval config.
 pub fn make_eval_config(
   name : String,
   metrics : Array[String],
   threshold : Double,
-  sample_size : Int,
-  seed : Int
+  sample_size : Int32,
+  seed : Int32,
 ) -> EvalConfig {
-  { name: name, metrics: metrics, threshold: threshold, sample_size: sample_size, seed: seed }
+  { name, metrics, threshold, sample_size, seed, }
 }
 
+///|
 /// 任务成功率 / Eval task success rate.
 pub fn eval_task_success(results : Array[TaskResult]) -> Double {
   let n = results.length()
@@ -53,6 +57,7 @@ pub fn eval_task_success(results : Array[TaskResult]) -> Double {
   }
 }
 
+///|
 /// 任务完成度 / Eval task completion.
 pub fn eval_task_completion(results : Array[TaskResult]) -> Double {
   let n = results.length()
@@ -67,8 +72,12 @@ pub fn eval_task_completion(results : Array[TaskResult]) -> Double {
   }
 }
 
+///|
 /// 准确性评估 / Eval accuracy.
-pub fn eval_accuracy_agent(predictions : Array[String], ground_truth : Array[String]) -> Double {
+pub fn eval_accuracy_agent(
+  predictions : Array[String],
+  ground_truth : Array[String],
+) -> Double {
   let n = predictions.length()
   let m = ground_truth.length()
   let len = if n < m { n } else { m }
@@ -85,6 +94,7 @@ pub fn eval_accuracy_agent(predictions : Array[String], ground_truth : Array[Str
   }
 }
 
+///|
 /// 效率评估 / Eval efficiency.
 pub fn eval_efficiency(results : Array[TaskResult]) -> Double {
   let n = results.length()
@@ -101,6 +111,7 @@ pub fn eval_efficiency(results : Array[TaskResult]) -> Double {
   }
 }
 
+///|
 /// 延迟评估 / Eval latency (avg ms).
 pub fn eval_latency(results : Array[TaskResult]) -> Double {
   let n = results.length()
@@ -115,6 +126,7 @@ pub fn eval_latency(results : Array[TaskResult]) -> Double {
   }
 }
 
+///|
 /// 成本评估 / Eval cost.
 pub fn eval_cost_agent(results : Array[TaskResult]) -> Double {
   let mut sum = 0.0
@@ -124,8 +136,9 @@ pub fn eval_cost_agent(results : Array[TaskResult]) -> Double {
   sum
 }
 
+///|
 /// Token 用量评估 / Eval token usage.
-pub fn eval_token_usage(results : Array[TaskResult]) -> Int {
+pub fn eval_token_usage(results : Array[TaskResult]) -> Int32 {
   let mut sum = 0
   for i in 0..<results.length() {
     sum = sum + results[i].tokens
@@ -133,8 +146,9 @@ pub fn eval_token_usage(results : Array[TaskResult]) -> Int {
   sum
 }
 
+///|
 /// API 调用次数评估 / Eval API calls.
-pub fn eval_api_calls(results : Array[TaskResult]) -> Int {
+pub fn eval_api_calls(results : Array[TaskResult]) -> Int32 {
   let mut sum = 0
   for i in 0..<results.length() {
     sum = sum + results[i].api_calls
@@ -145,8 +159,12 @@ pub fn eval_api_calls(results : Array[TaskResult]) -> Int {
 ///===
 /// 推理与质量 / Reasoning and quality
 
+///|
 /// 推理质量评估 / Eval reasoning quality.
-pub fn eval_reasoning_quality(steps : Array[String], expected : Array[String]) -> Double {
+pub fn eval_reasoning_quality(
+  steps : Array[String],
+  expected : Array[String],
+) -> Double {
   let n = steps.length()
   if n == 0 {
     0.0
@@ -162,6 +180,7 @@ pub fn eval_reasoning_quality(steps : Array[String], expected : Array[String]) -
   }
 }
 
+///|
 /// 事实准确性评估 / Eval factual accuracy.
 pub fn eval_factual_accuracy(claims : Array[Bool]) -> Double {
   let n = claims.length()
@@ -178,6 +197,7 @@ pub fn eval_factual_accuracy(claims : Array[Bool]) -> Double {
   }
 }
 
+///|
 /// 连贯性评估 / Eval coherence.
 pub fn eval_coherence(sentences : Array[String]) -> Double {
   let n = sentences.length()
@@ -197,6 +217,7 @@ pub fn eval_coherence(sentences : Array[String]) -> Double {
 ///===
 /// 安全与偏见 / Safety and bias
 
+///|
 /// 安全评估 / Eval safety.
 pub fn eval_safety_agent(flags : Array[Bool]) -> Double {
   let n = flags.length()
@@ -213,6 +234,7 @@ pub fn eval_safety_agent(flags : Array[Bool]) -> Double {
   }
 }
 
+///|
 /// 偏见评估 / Eval bias.
 pub fn eval_bias_agent(group_scores : Array[(String, Double)]) -> Double {
   let n = group_scores.length()
@@ -234,6 +256,7 @@ pub fn eval_bias_agent(group_scores : Array[(String, Double)]) -> Double {
   }
 }
 
+///|
 /// 毒性评估 / Eval toxicity.
 pub fn eval_toxicity_agent(scores : Array[Double]) -> Double {
   let n = scores.length()
@@ -251,8 +274,12 @@ pub fn eval_toxicity_agent(scores : Array[Double]) -> Double {
 ///===
 /// 用户满意度 / User satisfaction
 
+///|
 /// 用户满意度评估 / Eval user satisfaction.
-pub fn eval_user_satisfaction(ratings : Array[Int], max_rating : Int) -> Double {
+pub fn eval_user_satisfaction(
+  ratings : Array[Int32],
+  max_rating : Int32,
+) -> Double {
   let n = ratings.length()
   if n == 0 || max_rating == 0 {
     0.0
@@ -265,6 +292,7 @@ pub fn eval_user_satisfaction(ratings : Array[Int], max_rating : Int) -> Double 
   }
 }
 
+///|
 /// 反馈分数评估 / Eval feedback score.
 pub fn eval_feedback_score(feedbacks : Array[Double]) -> Double {
   let n = feedbacks.length()
@@ -282,13 +310,15 @@ pub fn eval_feedback_score(feedbacks : Array[Double]) -> Double {
 ///===
 /// 基准测试 / Benchmark
 
+///|
 /// 基准测试 / Benchmark.
 pub struct BenchmarkAgent {
   name : String
   tasks : Array[String]
-  iterations : Int
+  iterations : Int32
 }
 
+///|
 /// 基准结果 / Benchmark result.
 pub struct BenchmarkResult {
   name : String
@@ -297,16 +327,25 @@ pub struct BenchmarkResult {
   success_rate : Double
 }
 
+///|
 /// 构造基准 / Create benchmark.
-pub fn make_benchmark_agent(name : String, tasks : Array[String], iterations : Int) -> BenchmarkAgent {
-  { name: name, tasks: tasks, iterations: iterations }
+pub fn make_benchmark_agent(
+  name : String,
+  tasks : Array[String],
+  iterations : Int32,
+) -> BenchmarkAgent {
+  { name, tasks, iterations, }
 }
 
+///|
 /// 运行基准 / Run benchmark.
-pub fn benchmark_run(bench : BenchmarkAgent, results : Array[TaskResult]) -> BenchmarkResult {
+pub fn benchmark_run(
+  bench : BenchmarkAgent,
+  results : Array[TaskResult],
+) -> BenchmarkResult {
   let n = results.length()
   if n == 0 {
-    { name: bench.name, avg_latency: 0.0, avg_cost: 0.0, success_rate: 0.0 }
+    { name: bench.name, avg_latency: 0.0, avg_cost: 0.0, success_rate: 0.0, }
   } else {
     let mut lat = 0.0
     let mut cost = 0.0
@@ -319,21 +358,33 @@ pub fn benchmark_run(bench : BenchmarkAgent, results : Array[TaskResult]) -> Ben
       }
     }
     let nd = n.to_double()
-    { name: bench.name, avg_latency: lat / nd, avg_cost: cost / nd, success_rate: succ.to_double() / nd }
+    {
+      name: bench.name,
+      avg_latency: lat / nd,
+      avg_cost: cost / nd,
+      success_rate: succ.to_double() / nd,
+    }
   }
 }
 
+///|
 /// 比较基准 / Compare benchmarks.
 pub fn benchmark_compare(a : BenchmarkResult, b : BenchmarkResult) -> String {
   let lat_diff = b.avg_latency - a.avg_latency
   let cost_diff = b.avg_cost - a.avg_cost
   let succ_diff = b.success_rate - a.success_rate
-  "latency_diff=" + lat_diff.to_string() + ",cost_diff=" + cost_diff.to_string() + ",success_diff=" + succ_diff.to_string()
+  "latency_diff=" +
+  lat_diff.to_string() +
+  ",cost_diff=" +
+  cost_diff.to_string() +
+  ",success_diff=" +
+  succ_diff.to_string()
 }
 
 ///===
 /// 测试套件 / Test suite
 
+///|
 /// 测试用例 / Test case.
 pub struct TestCase {
   name : String
@@ -341,12 +392,14 @@ pub struct TestCase {
   expected : String
 }
 
+///|
 /// 测试套件 / Test suite.
 pub struct TestSuite {
   name : String
   cases : Array[TestCase]
 }
 
+///|
 /// 测试运行结果 / Test run result.
 pub struct TestRunResult {
   name : String
@@ -354,28 +407,35 @@ pub struct TestRunResult {
   actual : String
 }
 
+///|
 /// 构造测试用例 / Create test case.
 pub fn test_case(name : String, input : String, expected : String) -> TestCase {
-  { name: name, input: input, expected: expected }
+  { name, input, expected, }
 }
 
+///|
 /// 构造测试套件 / Create test suite.
 pub fn make_test_suite(name : String, cases : Array[TestCase]) -> TestSuite {
-  { name: name, cases: cases }
+  { name, cases, }
 }
 
+///|
 /// 运行测试 / Run test suite.
-pub fn test_run(suite : TestSuite, run_fn : (String) -> String) -> Array[TestRunResult] {
+pub fn test_run(
+  suite : TestSuite,
+  run_fn : (String) -> String,
+) -> Array[TestRunResult] {
   let result : Array[TestRunResult] = []
   for i in 0..<suite.cases.length() {
     let c = suite.cases[i]
     let actual = run_fn(c.input)
     let passed = actual == c.expected
-    result.push({ name: c.name, passed: passed, actual: actual })
+    result.push({ name: c.name, passed, actual, })
   }
   result
 }
 
+///|
 /// 评估测试 / Evaluate test results.
 pub fn test_evaluate(results : Array[TestRunResult]) -> Double {
   let n = results.length()
@@ -395,24 +455,31 @@ pub fn test_evaluate(results : Array[TestRunResult]) -> Double {
 ///===
 /// 人工评估 / Human evaluation
 
+///|
 /// 人工评估条目 / Human eval entry.
 pub struct HumanEvalItem {
-  sample_id : Int
+  sample_id : Int32
   output : String
-  rating : Int
+  rating : Int32
 }
 
+///|
 /// 人工评估 / Human eval.
 pub struct HumanEval {
   items : Array[HumanEvalItem]
-  max_rating : Int
+  max_rating : Int32
 }
 
+///|
 /// 构造人工评估 / Create human eval.
-pub fn make_human_eval(items : Array[HumanEvalItem], max_rating : Int) -> HumanEval {
-  { items: items, max_rating: max_rating }
+pub fn make_human_eval(
+  items : Array[HumanEvalItem],
+  max_rating : Int32,
+) -> HumanEval {
+  { items, max_rating, }
 }
 
+///|
 /// 人工评分 / Human eval score.
 pub fn human_eval_score(eval : HumanEval) -> Double {
   let n = eval.items.length()
@@ -427,8 +494,12 @@ pub fn human_eval_score(eval : HumanEval) -> Double {
   }
 }
 
+///|
 /// 人工一致性 / Human eval agreement.
-pub fn human_eval_agreement(rater_a : Array[Int], rater_b : Array[Int]) -> Double {
+pub fn human_eval_agreement(
+  rater_a : Array[Int32],
+  rater_b : Array[Int32],
+) -> Double {
   let n = rater_a.length()
   let m = rater_b.length()
   if n == 0 || m != n {
@@ -447,17 +518,23 @@ pub fn human_eval_agreement(rater_a : Array[Int], rater_b : Array[Int]) -> Doubl
 ///===
 /// 自动评估 / Auto evaluation
 
+///|
 /// 自动评估 / Auto eval.
 pub struct AutoEval {
   rubric : Array[(String, Double)]
   weights : Array[Double]
 }
 
+///|
 /// 构造自动评估 / Create auto eval.
-pub fn make_auto_eval(rubric : Array[(String, Double)], weights : Array[Double]) -> AutoEval {
-  { rubric: rubric, weights: weights }
+pub fn make_auto_eval(
+  rubric : Array[(String, Double)],
+  weights : Array[Double],
+) -> AutoEval {
+  { rubric, weights, }
 }
 
+///|
 /// 自动评分 / Auto eval score.
 pub fn auto_eval_score(eval : AutoEval) -> Double {
   let n = eval.rubric.length()
@@ -480,6 +557,7 @@ pub fn auto_eval_score(eval : AutoEval) -> Double {
   }
 }
 
+///|
 /// 自动评分准则 / Auto eval rubric.
 pub fn auto_eval_rubric(eval : AutoEval) -> String {
   let mut s = ""
@@ -495,6 +573,7 @@ pub fn auto_eval_rubric(eval : AutoEval) -> String {
 ///===
 /// 多轮对话 / Multi-turn conversation
 
+///|
 /// 对话轮次 / Dialog turn.
 pub struct DialogTurn {
   role : String
@@ -502,12 +581,14 @@ pub struct DialogTurn {
   latency : Double
 }
 
+///|
 /// 多轮对话 / Multi-turn dialog.
 pub struct MultiTurnDialog {
   id : String
   turns : Array[DialogTurn]
 }
 
+///|
 /// 多轮评估 / Eval multi-turn.
 pub fn eval_multi_turn(dialog : MultiTurnDialog) -> Double {
   let n = dialog.turns.length()
@@ -524,6 +605,7 @@ pub fn eval_multi_turn(dialog : MultiTurnDialog) -> Double {
   }
 }
 
+///|
 /// 对话评估 / Eval conversation.
 pub fn eval_conversation(dialog : MultiTurnDialog) -> Double {
   let n = dialog.turns.length()
@@ -546,6 +628,7 @@ pub fn eval_conversation(dialog : MultiTurnDialog) -> Double {
   }
 }
 
+///|
 /// 对话质量评估 / Eval dialog quality.
 pub fn eval_dialog_quality(dialog : MultiTurnDialog) -> Double {
   let n = dialog.turns.length()
@@ -573,8 +656,12 @@ pub fn eval_dialog_quality(dialog : MultiTurnDialog) -> Double {
 ///===
 /// 工具与规划 / Tool use and planning
 
+///|
 /// 工具使用评估 / Eval tool use.
-pub fn eval_tool_use(tool_calls : Array[Bool], expected_calls : Int) -> Double {
+pub fn eval_tool_use(
+  tool_calls : Array[Bool],
+  expected_calls : Int32,
+) -> Double {
   let n = tool_calls.length()
   if n == 0 || expected_calls == 0 {
     0.0
@@ -589,8 +676,12 @@ pub fn eval_tool_use(tool_calls : Array[Bool], expected_calls : Int) -> Double {
   }
 }
 
+///|
 /// 规划质量评估 / Eval planning quality.
-pub fn eval_planning_quality(plan : Array[String], reference : Array[String]) -> Double {
+pub fn eval_planning_quality(
+  plan : Array[String],
+  reference : Array[String],
+) -> Double {
   let n = plan.length()
   let m = reference.length()
   if n == 0 || m == 0 {
@@ -613,6 +704,7 @@ pub fn eval_planning_quality(plan : Array[String], reference : Array[String]) ->
   }
 }
 
+///|
 /// 记忆使用评估 / Eval memory use.
 pub fn eval_memory_use(memory_hits : Array[Bool]) -> Double {
   let n = memory_hits.length()
@@ -632,6 +724,7 @@ pub fn eval_memory_use(memory_hits : Array[Bool]) -> Double {
 ///===
 /// 创造性 / Creativity
 
+///|
 /// 创造性评估 / Eval creative.
 pub fn eval_creative(outputs : Array[String]) -> Double {
   let n = outputs.length()
@@ -654,6 +747,7 @@ pub fn eval_creative(outputs : Array[String]) -> Double {
   }
 }
 
+///|
 /// 多样性评估 / Eval diversity.
 pub fn eval_diversity(outputs : Array[String]) -> Double {
   let n = outputs.length()
@@ -679,6 +773,7 @@ pub fn eval_diversity(outputs : Array[String]) -> Double {
   }
 }
 
+///|
 /// 新颖性评估 / Eval novelty.
 pub fn eval_novelty(outputs : Array[String], known : Array[String]) -> Double {
   let n = outputs.length()
@@ -704,26 +799,36 @@ pub fn eval_novelty(outputs : Array[String], known : Array[String]) -> Double {
 ///===
 /// 排行榜 / Leaderboard
 
+///|
 /// 排行榜条目 / Leaderboard entry.
 pub struct LeaderboardEntry {
   agent_name : String
   score : Double
-  rank : Int
+  rank : Int32
 }
 
+///|
 /// 排行榜 / Leaderboard.
 pub struct Leaderboard {
   name : String
   entries : Array[LeaderboardEntry]
 }
 
+///|
 /// 构造排行榜 / Create leaderboard.
-pub fn make_leaderboard(name : String, entries : Array[LeaderboardEntry]) -> Leaderboard {
-  { name: name, entries: entries }
+pub fn make_leaderboard(
+  name : String,
+  entries : Array[LeaderboardEntry],
+) -> Leaderboard {
+  { name, entries, }
 }
 
+///|
 /// 更新排行榜 / Update leaderboard.
-pub fn leaderboard_update(board : Leaderboard, entry : LeaderboardEntry) -> Leaderboard {
+pub fn leaderboard_update(
+  board : Leaderboard,
+  entry : LeaderboardEntry,
+) -> Leaderboard {
   let new_entries : Array[LeaderboardEntry] = []
   let mut found = false
   for i in 0..<board.entries.length() {
@@ -741,13 +846,14 @@ pub fn leaderboard_update(board : Leaderboard, entry : LeaderboardEntry) -> Lead
   sorted.sort_by(fn(a, b) { b.score.compare(a.score) })
   let ranked : Array[LeaderboardEntry] = []
   for i in 0..<sorted.length() {
-    ranked.push({ ..sorted[i], rank: i + 1 })
+    ranked.push({ ..sorted[i], rank: i + 1, })
   }
-  { name: board.name, entries: ranked }
+  { name: board.name, entries: ranked, }
 }
 
+///|
 /// 排名查询 / Get rank.
-pub fn leaderboard_rank(board : Leaderboard, agent_name : String) -> Int {
+pub fn leaderboard_rank(board : Leaderboard, agent_name : String) -> Int32 {
   let mut r = 0
   for i in 0..<board.entries.length() {
     if board.entries[i].agent_name == agent_name {
@@ -757,9 +863,9 @@ pub fn leaderboard_rank(board : Leaderboard, agent_name : String) -> Int {
   r
 }
 
+///|
 ///===
 /// ID
-
 pub fn agent_eval_id() -> String {
   "agent_kit/agent_eval"
 }

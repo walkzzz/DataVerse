@@ -8,44 +8,63 @@
 ///
 /// Grid search contract + result aggregation. See architecture §4.3.5.
 
+///|
 /// 网格搜索配置 / Grid search config: one param dimension.
 pub struct GridConfig {
   param_name : String
   param_values : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend GridConfig with Eq::{equal, not_equal}
+
+///|
 pub extend GridConfig with Debug::{to_repr}
 
+///|
 /// 参数组合 / Parameter combination.
 pub struct ParamCombo {
   params : Array[(String, Double)]
   score : Double
 } derive(Debug, Eq)
 
+///|
 pub extend ParamCombo with Eq::{equal, not_equal}
+
+///|
 pub extend ParamCombo with Debug::{to_repr}
 
+///|
 /// 网格搜索结果 / Grid search result.
 pub struct GridResult {
   best_params : Array[(String, Double)]
   best_score : Double
   all_results : Array[ParamCombo]
-  total_configs : Int
+  total_configs : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend GridResult with Eq::{equal, not_equal}
+
+///|
 pub extend GridResult with Debug::{to_repr}
 
+///|
 /// 构造网格配置 / Build grid config.
-pub fn make_grid_config(param_name : String, param_values : Array[Double]) -> GridConfig {
-  { param_name, param_values }
+pub fn make_grid_config(
+  param_name : String,
+  param_values : Array[Double],
+) -> GridConfig {
+  { param_name, param_values, }
 }
 
+///|
 /// 生成所有参数组合 / Generate all parameter combinations.
 ///
 /// 笛卡尔积。退化安全：空配置返回空数组。
-pub fn grid_combinations(configs : Array[GridConfig]) -> Array[Array[(String, Double)]] {
+pub fn grid_combinations(
+  configs : Array[GridConfig],
+) -> Array[Array[(String, Double)]] {
   if configs.length() == 0 {
     []
   } else {
@@ -73,12 +92,13 @@ pub fn grid_combinations(configs : Array[GridConfig]) -> Array[Array[(String, Do
   }
 }
 
+///|
 /// 网格搜索 / Grid search.
 ///
 /// 接受评估函数 eval_fn，对每个参数组合计算分数，返回最佳。
 pub fn grid_search(
   configs : Array[GridConfig],
-  eval_fn : (Array[(String, Double)]) -> Double
+  eval_fn : (Array[(String, Double)]) -> Double,
 ) -> GridResult {
   let combos = grid_combinations(configs)
   if combos.length() == 0 {
@@ -89,21 +109,23 @@ pub fn grid_search(
     let mut best_params : Array[(String, Double)] = []
     for i in 0..<combos.length() {
       let score = eval_fn(combos[i])
-      all_results.push({ params: combos[i], score })
+      all_results.push({ params: combos[i], score, })
       if score > best_score {
         best_score = score
         best_params = combos[i]
       }
     }
-    { best_params, best_score, all_results, total_configs: combos.length() }
+    { best_params, best_score, all_results, total_configs: combos.length(), }
   }
 }
 
+///|
 /// 空网格搜索结果（退化安全）/ Empty grid result (degenerate-safe).
 pub fn empty_grid_result() -> GridResult {
-  { best_params: [], best_score: 0.0, all_results: [], total_configs: 0 }
+  { best_params: [], best_score: 0.0, all_results: [], total_configs: 0, }
 }
 
+///|
 pub fn hyperparam_search_id() -> String {
   "learncore/hyperparam_search"
 }

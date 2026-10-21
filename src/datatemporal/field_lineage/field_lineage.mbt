@@ -8,6 +8,7 @@
 ///
 /// Dependency graph + impact analysis. See architecture §4.4.
 
+///|
 /// 字段依赖 / Field dependency: source → target via transform.
 pub struct FieldDep {
   source_field : String
@@ -15,23 +16,36 @@ pub struct FieldDep {
   transform : String
 } derive(Debug, Eq)
 
+///|
 pub extend FieldDep with Eq::{equal, not_equal}
+
+///|
 pub extend FieldDep with Debug::{to_repr}
 
+///|
 /// 字段血缘图 / Field lineage graph.
 pub struct FieldLineageGraph {
   dependencies : Array[FieldDep]
   fields : Array[String]
 } derive(Debug, Eq)
 
+///|
 pub extend FieldLineageGraph with Eq::{equal, not_equal}
+
+///|
 pub extend FieldLineageGraph with Debug::{to_repr}
 
+///|
 /// 构造字段依赖 / Build field dependency.
-pub fn make_field_dep(source : String, target : String, transform : String) -> FieldDep {
-  { source_field: source, target_field: target, transform }
+pub fn make_field_dep(
+  source : String,
+  target : String,
+  transform : String,
+) -> FieldDep {
+  { source_field: source, target_field: target, transform, }
 }
 
+///|
 /// 构造字段血缘图 / Build field lineage graph.
 pub fn build_graph(deps : Array[FieldDep]) -> FieldLineageGraph {
   let fields : Array[String] = []
@@ -56,13 +70,17 @@ pub fn build_graph(deps : Array[FieldDep]) -> FieldLineageGraph {
       fields.push(d.target_field)
     }
   }
-  { dependencies: deps, fields }
+  { dependencies: deps, fields, }
 }
 
+///|
 /// 影响分析 / Impact analysis: find all fields affected by changing a field.
 ///
 /// BFS 遍历依赖图，返回所有受影响的字段（包括直接和间接）。
-pub fn impact_analysis(graph : FieldLineageGraph, changed_field : String) -> Array[String] {
+pub fn impact_analysis(
+  graph : FieldLineageGraph,
+  changed_field : String,
+) -> Array[String] {
   let result : Array[String] = []
   let queue : Array[String] = [changed_field]
   while queue.length() > 0 {
@@ -87,6 +105,7 @@ pub fn impact_analysis(graph : FieldLineageGraph, changed_field : String) -> Arr
   result
 }
 
+///|
 /// 检测循环依赖 / Detect cycle in the graph.
 ///
 /// 简化版：检查是否有字段出现在自己的影响集中。
@@ -102,6 +121,7 @@ pub fn has_cycle(graph : FieldLineageGraph) -> Bool {
   false
 }
 
+///|
 pub fn field_lineage_id() -> String {
   "datatemporal/field_lineage"
 }

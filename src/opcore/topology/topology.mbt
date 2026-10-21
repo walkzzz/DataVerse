@@ -7,25 +7,29 @@
 ///
 /// # Topology analysis operators
 
+///|
 /// 点 / Point.
 pub struct TopoPoint {
   x : Double
   y : Double
 }
 
+///|
 /// 多边形（简化为顶点列表）/ Polygon (simplified as vertex list).
 pub struct TopoPolygon {
   vertices : Array[TopoPoint]
 }
 
+///|
 /// 拓扑错误 / Topology error.
 pub struct TopologyError {
   error_type : String
-  geometry_id1 : Int
-  geometry_id2 : Int
+  geometry_id1 : Int32
+  geometry_id2 : Int32
   description : String
 }
 
+///|
 /// 拓扑关系类型 / Topology relation type.
 pub(all) enum TopoRelation {
   Equal
@@ -38,16 +42,19 @@ pub(all) enum TopoRelation {
   Overlaps
 }
 
+///|
 /// 构造点 / Create point.
 pub fn make_topo_point(x : Double, y : Double) -> TopoPoint {
-  { x, y }
+  { x, y, }
 }
 
+///|
 /// 构造多边形 / Create polygon.
 pub fn make_topo_polygon(vertices : Array[TopoPoint]) -> TopoPolygon {
-  { vertices: vertices }
+  { vertices, }
 }
 
+///|
 /// 包围盒 / Bounding box (min_x, min_y, max_x, max_y).
 fn bounding_box(poly : TopoPolygon) -> (Double, Double, Double, Double) {
   if poly.vertices.length() == 0 {
@@ -75,6 +82,7 @@ fn bounding_box(poly : TopoPolygon) -> (Double, Double, Double, Double) {
   (min_x, min_y, max_x, max_y)
 }
 
+///|
 /// 包围盒相交 / Bounding box intersection check.
 fn bbox_intersects(
   b1 : (Double, Double, Double, Double),
@@ -88,6 +96,7 @@ fn bbox_intersects(
 ///===
 /// 拓扑关系判定
 
+///|
 /// 判断相等 / Check equal (same bounding box).
 pub fn check_equal(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   let b1 = bounding_box(p1)
@@ -97,6 +106,7 @@ pub fn check_equal(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   min_x1 == min_x2 && min_y1 == min_y2 && max_x1 == max_x2 && max_y1 == max_y2
 }
 
+///|
 /// 判断不相交 / Check disjoint.
 pub fn check_disjoint(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   let b1 = bounding_box(p1)
@@ -104,6 +114,7 @@ pub fn check_disjoint(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   !bbox_intersects(b1, b2)
 }
 
+///|
 /// 判断相交 / Check intersects.
 pub fn check_intersect(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   let b1 = bounding_box(p1)
@@ -111,17 +122,22 @@ pub fn check_intersect(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   bbox_intersects(b1, b2)
 }
 
+///|
 /// 判断接触 / Check touches (bbox edges touch but don't overlap interior).
 pub fn check_touches(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   let b1 = bounding_box(p1)
   let b2 = bounding_box(p2)
   let (min_x1, min_y1, max_x1, max_y1) = b1
   let (min_x2, min_y2, max_x2, max_y2) = b2
-  let edge_touch = (max_x1 == min_x2 || max_x2 == min_x1 || max_y1 == min_y2 || max_y2 == min_y1)
+  let edge_touch = max_x1 == min_x2 ||
+    max_x2 == min_x1 ||
+    max_y1 == min_y2 ||
+    max_y2 == min_y1
   let overlap = bbox_intersects(b1, b2)
   edge_touch && overlap
 }
 
+///|
 /// 判断包含 / Check contains (p1 contains p2).
 pub fn check_contains(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   let (min_x1, min_y1, max_x1, max_y1) = bounding_box(p1)
@@ -129,11 +145,13 @@ pub fn check_contains(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   min_x1 <= min_x2 && min_y1 <= min_y2 && max_x1 >= max_x2 && max_y1 >= max_y2
 }
 
+///|
 /// 判断在内 / Check within (p1 within p2).
 pub fn check_within(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   check_contains(p2, p1)
 }
 
+///|
 /// 判断交叉 / Check crosses (bbox overlap but neither contains the other).
 pub fn check_crosses(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   let b1 = bounding_box(p1)
@@ -141,11 +159,13 @@ pub fn check_crosses(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   bbox_intersects(b1, b2) && !check_contains(p1, p2) && !check_contains(p2, p1)
 }
 
+///|
 /// 判断重叠 / Check overlaps.
 pub fn check_overlaps(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   check_crosses(p1, p2)
 }
 
+///|
 /// 获取拓扑关系 / Get topology relation.
 pub fn get_relation(p1 : TopoPolygon, p2 : TopoPolygon) -> TopoRelation {
   if check_equal(p1, p2) {
@@ -172,6 +192,7 @@ pub fn get_relation(p1 : TopoPolygon, p2 : TopoPolygon) -> TopoRelation {
   Intersects
 }
 
+///|
 /// 关系名称 / Relation name.
 pub fn relation_name(rel : TopoRelation) -> String {
   match rel {
@@ -189,10 +210,9 @@ pub fn relation_name(rel : TopoRelation) -> String {
 ///===
 /// 拓扑验证
 
+///|
 /// 验证重叠 / Validate overlap (find overlapping polygons).
-pub fn validate_overlap(
-  polygons : Array[TopoPolygon],
-) -> Array[TopologyError] {
+pub fn validate_overlap(polygons : Array[TopoPolygon]) -> Array[TopologyError] {
   let errors : Array[TopologyError] = []
   let n = polygons.length()
   for i in 0..<n {
@@ -202,7 +222,11 @@ pub fn validate_overlap(
           error_type: "overlap",
           geometry_id1: i,
           geometry_id2: j,
-          description: "Polygons " + i.to_string() + " and " + j.to_string() + " overlap",
+          description: "Polygons " +
+          i.to_string() +
+          " and " +
+          j.to_string() +
+          " overlap",
         })
       }
     }
@@ -210,13 +234,18 @@ pub fn validate_overlap(
   errors
 }
 
+///|
 /// 验证邻接 / Validate adjacency (find adjacent polygons sharing edges).
 pub fn check_adjacency(p1 : TopoPolygon, p2 : TopoPolygon) -> Bool {
   check_touches(p1, p2) || check_overlaps(p1, p2)
 }
 
+///|
 /// 查找共享边 / Find shared edges (simplified: check shared vertices).
-pub fn find_shared_edges(p1 : TopoPolygon, p2 : TopoPolygon) -> Array[TopoPoint] {
+pub fn find_shared_edges(
+  p1 : TopoPolygon,
+  p2 : TopoPolygon,
+) -> Array[TopoPoint] {
   let shared : Array[TopoPoint] = []
   for i in 0..<p1.vertices.length() {
     let v1 = p1.vertices[i]
@@ -230,6 +259,7 @@ pub fn find_shared_edges(p1 : TopoPolygon, p2 : TopoPolygon) -> Array[TopoPoint]
   shared
 }
 
+///|
 /// 验证缝隙 / Validate gaps (find gaps in polygon coverage).
 pub fn validate_gap(
   polygons : Array[TopoPolygon],
@@ -239,11 +269,15 @@ pub fn validate_gap(
   let (cov_min_x, cov_min_y, cov_max_x, cov_max_y) = coverage_bbox
   for i in 0..<polygons.length() {
     let (min_x, min_y, max_x, max_y) = bounding_box(polygons[i])
-    if min_x > cov_min_x || min_y > cov_min_y || max_x < cov_max_x || max_y < cov_max_y {
+    if min_x > cov_min_x ||
+      min_y > cov_min_y ||
+      max_x < cov_max_x ||
+      max_y < cov_max_y {
       let mut covered = false
       for j in 0..<polygons.length() {
         if j != i {
-          if check_contains(polygons[j], polygons[i]) || check_overlaps(polygons[j], polygons[i]) {
+          if check_contains(polygons[j], polygons[i]) ||
+            check_overlaps(polygons[j], polygons[i]) {
             covered = true
             break
           }
@@ -254,7 +288,9 @@ pub fn validate_gap(
           error_type: "gap",
           geometry_id1: i,
           geometry_id2: -1,
-          description: "Polygon " + i.to_string() + " may have gap with coverage boundary",
+          description: "Polygon " +
+          i.to_string() +
+          " may have gap with coverage boundary",
         })
       }
     }
@@ -262,12 +298,11 @@ pub fn validate_gap(
   errors
 }
 
+///|
 /// 验证悬挂节点 / Validate dangling nodes (vertices that appear only once).
-pub fn validate_dangling(
-  polygons : Array[TopoPolygon],
-) -> Array[TopologyError] {
+pub fn validate_dangling(polygons : Array[TopoPolygon]) -> Array[TopologyError] {
   let errors : Array[TopologyError] = []
-  let vertex_count : Array[(TopoPoint, Int, Int)] = []
+  let vertex_count : Array[(TopoPoint, Int32, Int32)] = []
   for poly_id in 0..<polygons.length() {
     for v in polygons[poly_id].vertices {
       let mut found = false
@@ -292,17 +327,20 @@ pub fn validate_dangling(
         error_type: "dangling",
         geometry_id1: pid,
         geometry_id2: -1,
-        description: "Dangling node at (" + p.x.to_string() + ", " + p.y.to_string() + ")",
+        description: "Dangling node at (" +
+        p.x.to_string() +
+        ", " +
+        p.y.to_string() +
+        ")",
       })
     }
   }
   errors
 }
 
+///|
 /// 查找所有拓扑错误 / Find all topology errors.
-pub fn topology_errors(
-  polygons : Array[TopoPolygon],
-) -> Array[TopologyError] {
+pub fn topology_errors(polygons : Array[TopoPolygon]) -> Array[TopologyError] {
   let errors : Array[TopologyError] = []
   let overlap_errors = validate_overlap(polygons)
   for e in overlap_errors {
@@ -318,6 +356,7 @@ pub fn topology_errors(
 ///===
 /// 拓扑编辑
 
+///|
 /// 合并多边形 / Merge polygons (union of bounding boxes).
 pub fn merge_polygons(p1 : TopoPolygon, p2 : TopoPolygon) -> TopoPolygon {
   let (min_x1, min_y1, max_x1, max_y1) = bounding_box(p1)
@@ -328,18 +367,17 @@ pub fn merge_polygons(p1 : TopoPolygon, p2 : TopoPolygon) -> TopoPolygon {
   let max_y = if max_y1 > max_y2 { max_y1 } else { max_y2 }
   {
     vertices: [
-      { x: min_x, y: min_y },
-      { x: max_x, y: min_y },
-      { x: max_x, y: max_y },
-      { x: min_x, y: max_y },
+      { x: min_x, y: min_y, },
+      { x: max_x, y: min_y, },
+      { x: max_x, y: max_y, },
+      { x: min_x, y: max_y, },
     ],
   }
 }
 
+///|
 /// 修复重叠 / Fix overlap (merge overlapping polygons).
-pub fn fix_overlap(
-  polygons : Array[TopoPolygon],
-) -> Array[TopoPolygon] {
+pub fn fix_overlap(polygons : Array[TopoPolygon]) -> Array[TopoPolygon] {
   let result : Array[TopoPolygon] = []
   let merged : Array[Bool] = Array::make(polygons.length(), false)
   for i in 0..<polygons.length() {
@@ -358,6 +396,7 @@ pub fn fix_overlap(
   result
 }
 
+///|
 /// 简化多边形 / Simplify polygon (remove duplicate vertices).
 pub fn simplify_polygon(poly : TopoPolygon) -> TopoPolygon {
   let result : Array[TopoPoint] = []
@@ -374,9 +413,10 @@ pub fn simplify_polygon(poly : TopoPolygon) -> TopoPolygon {
       result.push(v)
     }
   }
-  { vertices: result }
+  { vertices: result, }
 }
 
+///|
 /// 多边形面积 / Polygon area (shoelace formula).
 pub fn polygon_area(poly : TopoPolygon) -> Double {
   let n = poly.vertices.length()
@@ -386,7 +426,11 @@ pub fn polygon_area(poly : TopoPolygon) -> Double {
   let mut area = 0.0
   for i in 0..<n {
     let j = (i + 1) % n
-    area = area + (poly.vertices[i].x * poly.vertices[j].y - poly.vertices[j].x * poly.vertices[i].y)
+    area = area +
+      (
+        poly.vertices[i].x * poly.vertices[j].y -
+        poly.vertices[j].x * poly.vertices[i].y
+      )
   }
   if area < 0.0 {
     -area / 2.0
@@ -395,6 +439,7 @@ pub fn polygon_area(poly : TopoPolygon) -> Double {
   }
 }
 
+///|
 /// 多边形周长 / Polygon perimeter.
 pub fn polygon_perimeter(poly : TopoPolygon) -> Double {
   let n = poly.vertices.length()
@@ -411,9 +456,9 @@ pub fn polygon_perimeter(poly : TopoPolygon) -> Double {
   peri
 }
 
+///|
 ///===
 /// ID
-
 pub fn topology_id() -> String {
   "opcore/topology"
 }

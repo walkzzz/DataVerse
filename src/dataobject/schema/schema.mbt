@@ -9,6 +9,7 @@
 /// Fields, types, nested structure, constraints. See architecture §4.2.
 /// S0.3 provides structure and constructors; validation logic filled in S0.4.
 
+///|
 /// 字段类型 / Field type.
 pub(all) enum FieldType {
   Text
@@ -18,46 +19,62 @@ pub(all) enum FieldType {
   Nested
 } derive(Debug, Eq)
 
+///|
 pub extend FieldType with Eq::{equal, not_equal}
+
+///|
 pub extend FieldType with Debug::{to_repr}
 
+///|
 /// 字段描述 / Field descriptor.
 pub struct Field {
   name : String
   field_type : FieldType
 } derive(Debug, Eq)
 
+///|
 pub extend Field with Eq::{equal, not_equal}
+
+///|
 pub extend Field with Debug::{to_repr}
 
+///|
 /// 模式 / Schema: field collection.
 pub struct Schema {
   fields : Array[Field]
 } derive(Debug, Eq)
 
+///|
 pub extend Schema with Eq::{equal, not_equal}
+
+///|
 pub extend Schema with Debug::{to_repr}
 
+///|
 /// 构造字段 / Build a field.
 pub fn field(name : String, field_type : FieldType) -> Field {
-  { name, field_type }
+  { name, field_type, }
 }
 
+///|
 /// 构造模式 / Build a schema from field list.
 pub fn make(fields : Array[Field]) -> Schema {
   { fields, }
 }
 
+///|
 /// 空模式 / Empty schema (degenerate-safe).
 pub fn empty() -> Schema {
-  { fields: [] }
+  { fields: [], }
 }
 
+///|
 /// 字段数 / Field count.
-pub fn size(s : Schema) -> Int {
+pub fn size(s : Schema) -> Int32 {
   s.fields.length()
 }
 
+///|
 pub fn schema_id() -> String {
   "dataobject/schema"
 }

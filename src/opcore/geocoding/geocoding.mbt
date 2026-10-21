@@ -7,12 +7,14 @@
 ///
 /// # Geocoding operators
 
+///|
 /// 地理坐标 / Geo coordinate.
 pub struct GeoCoord {
   lon : Double
   lat : Double
 }
 
+///|
 /// 地址 / Address.
 pub struct Address {
   street : String
@@ -22,6 +24,7 @@ pub struct Address {
   country : String
 }
 
+///|
 /// 地理编码结果 / Geocoding result.
 pub struct GeocodeResult {
   coord : GeoCoord
@@ -29,11 +32,13 @@ pub struct GeocodeResult {
   score : Double
 }
 
+///|
 /// 构造坐标 / Create coordinate.
 pub fn make_geo_coord(lon : Double, lat : Double) -> GeoCoord {
-  { lon: lon, lat: lat }
+  { lon, lat, }
 }
 
+///|
 /// 构造地址 / Create address.
 pub fn make_address(
   street : String,
@@ -42,12 +47,13 @@ pub fn make_address(
   postal : String,
   country : String,
 ) -> Address {
-  { street: street, city: city, state: state, postal: postal, country: country }
+  { street, city, state, postal, country, }
 }
 
 ///===
 /// 地址标准化
 
+///|
 /// 地址标准化 / Standardize address (trim, uppercase state).
 pub fn standardize_address(addr : Address) -> Address {
   {
@@ -59,14 +65,24 @@ pub fn standardize_address(addr : Address) -> Address {
   }
 }
 
+///|
 /// 地址转字符串 / Address to string.
 pub fn address_to_string(addr : Address) -> String {
-  addr.street + ", " + addr.city + ", " + addr.state + " " + addr.postal + ", " + addr.country
+  addr.street +
+  ", " +
+  addr.city +
+  ", " +
+  addr.state +
+  " " +
+  addr.postal +
+  ", " +
+  addr.country
 }
 
 ///===
 /// 正向地理编码
 
+///|
 /// 正向地理编码 / Forward geocode (simplified, hash-based coordinates).
 pub fn forward_geocode(addr : Address) -> GeocodeResult {
   let mut hash = 0.0
@@ -76,17 +92,16 @@ pub fn forward_geocode(addr : Address) -> GeocodeResult {
   for i in 0..<addr.city.length() {
     hash = hash + addr.city[i].to_int().to_double() * 2.0
   }
-  let lon = (hash % 360.0) - 180.0
-  let lat = ((hash * 1.7) % 180.0) - 90.0
-  {
-    coord: { lon: lon, lat: lat },
-    address: addr,
-    score: 0.85,
-  }
+  let lon = hash % 360.0 - 180.0
+  let lat = hash * 1.7 % 180.0 - 90.0
+  { coord: { lon, lat, }, address: addr, score: 0.85, }
 }
 
+///|
 /// 批量正向地理编码 / Batch forward geocode.
-pub fn batch_forward_geocode(addresses : Array[Address]) -> Array[GeocodeResult] {
+pub fn batch_forward_geocode(
+  addresses : Array[Address],
+) -> Array[GeocodeResult] {
   let results : Array[GeocodeResult] = []
   for i in 0..<addresses.length() {
     results.push(forward_geocode(addresses[i]))
@@ -97,12 +112,13 @@ pub fn batch_forward_geocode(addresses : Array[Address]) -> Array[GeocodeResult]
 ///===
 /// 逆向地理编码
 
+///|
 /// 逆向地理编码 / Reverse geocode (simplified, generate address from coordinates).
 pub fn reverse_geocode(coord : GeoCoord) -> GeocodeResult {
   let lon_str = coord.lon.to_string()
   let lat_str = coord.lat.to_string()
   {
-    coord: coord,
+    coord,
     address: {
       street: "Near " + lon_str + ", " + lat_str,
       city: "Unknown",
@@ -117,6 +133,7 @@ pub fn reverse_geocode(coord : GeoCoord) -> GeocodeResult {
 ///===
 /// 地址匹配
 
+///|
 /// 地址匹配分数 / Address match score (simplified string comparison).
 pub fn address_match_score(addr1 : Address, addr2 : Address) -> Double {
   let mut score = 0.0
@@ -144,6 +161,7 @@ pub fn address_match_score(addr1 : Address, addr2 : Address) -> Double {
   score / fields.to_double()
 }
 
+///|
 /// 地址是否匹配 / Check if addresses match (score >= threshold).
 pub fn address_matches(
   addr1 : Address,
@@ -156,18 +174,26 @@ pub fn address_matches(
 ///===
 /// 坐标验证
 
+///|
 /// 验证坐标 / Validate coordinate.
 pub fn validate_coord(coord : GeoCoord) -> Bool {
-  coord.lon >= -180.0 && coord.lon <= 180.0 && coord.lat >= -90.0 && coord.lat <= 90.0
+  coord.lon >= -180.0 &&
+  coord.lon <= 180.0 &&
+  coord.lat >= -90.0 &&
+  coord.lat <= 90.0
 }
 
+///|
 /// 坐标距离 / Coordinate distance (simplified, equirectangular).
 pub fn coord_distance(c1 : GeoCoord, c2 : GeoCoord) -> Double {
-  let dx = (c2.lon - c1.lon) * 111320.0 * cos_approx(c1.lat * 3.141592653589793 / 180.0)
+  let dx = (c2.lon - c1.lon) *
+    111320.0 *
+    cos_approx(c1.lat * 3.141592653589793 / 180.0)
   let dy = (c2.lat - c1.lat) * 111320.0
   (dx * dx + dy * dy).sqrt()
 }
 
+///|
 /// 余弦近似 / Cosine approximation.
 fn cos_approx(x : Double) -> Double {
   let mut x = x
@@ -192,6 +218,7 @@ fn cos_approx(x : Double) -> Double {
 ///===
 /// 邮编查询
 
+///|
 /// 邮编有效性 / Postal code validity (simplified, check length).
 pub fn validate_postal(postal : String, country : String) -> Bool {
   if country == "US" {
@@ -205,9 +232,9 @@ pub fn validate_postal(postal : String, country : String) -> Bool {
   }
 }
 
+///|
 ///===
 /// ID
-
 pub fn geocoding_id() -> String {
   "opcore/geocoding"
 }

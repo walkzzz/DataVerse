@@ -7,13 +7,14 @@
 ///
 /// Group by modality + per-group top-k. See architecture §4.5 ④.
 
+///|
 /// 配比线 / Balance line.
 ///
 /// 按模态分组，每组取长度 Top-k，合并返回。
 /// 退化安全：空数组返回空数组；k ≤ 0 返回全部。
 pub fn balance_line(
   arr : Array[@dataobject.DataObject],
-  k_per_modality : Int
+  k_per_modality : Int32,
 ) -> Array[@dataobject.DataObject] {
   let groups = @mix.group_by_modality(arr)
   let result = []
@@ -26,6 +27,7 @@ pub fn balance_line(
   result
 }
 
+///|
 pub fn balance_line_id() -> String {
   "recipe/balance_line"
 }

@@ -8,12 +8,13 @@
 ///
 /// Top-K, threshold, stratified, balanced selection. See architecture §4.3.2 ⑨.
 
+///|
 /// 按长度 Top-K：取长度最长的前 k 个 / Top-K by content length.
 ///
 /// 对标 DJ `topk_selector`。k ≤ 0 或 k ≥ arr.length() 时返回全部。
 pub fn topk_by_length(
   arr : Array[@dataobject.DataObject],
-  k : Int
+  k : Int32,
 ) -> Array[@dataobject.DataObject] {
   if k <= 0 || k >= arr.length() {
     arr
@@ -24,16 +25,18 @@ pub fn topk_by_length(
   }
 }
 
+///|
 /// 按长度阈值过滤：保留长度 ≥ min_len 的 / Threshold by length.
 ///
 /// 对标 DJ `threshold_selector`。
 pub fn threshold_by_length(
   arr : Array[@dataobject.DataObject],
-  min_len : Int
+  min_len : Int32,
 ) -> Array[@dataobject.DataObject] {
   arr.filter(fn(d) { d.content.length() >= min_len })
 }
 
+///|
 pub fn select_id() -> String {
   "opcore/select"
 }

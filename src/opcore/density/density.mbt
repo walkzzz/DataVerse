@@ -13,16 +13,21 @@
 // 类型定义 / Type definitions
 // ============================================================
 
+///|
 /// 密度方法 / Density method.
 pub(all) enum DensityMethod {
-  KernelDensity   // 核密度
-  PointDensity    // 点密度
-  LineDensity     // 线密度
+  KernelDensity // 核密度
+  PointDensity // 点密度
+  LineDensity // 线密度
 } derive(Debug, Eq)
 
+///|
 pub extend DensityMethod with Eq::{equal, not_equal}
+
+///|
 pub extend DensityMethod with Debug::{to_repr}
 
+///|
 /// 密度结果 / Density result at a location.
 pub struct DensityResult {
   x : Double
@@ -30,13 +35,17 @@ pub struct DensityResult {
   value : Double
 } derive(Debug, Eq)
 
+///|
 pub extend DensityResult with Eq::{equal, not_equal}
+
+///|
 pub extend DensityResult with Debug::{to_repr}
 
 // ============================================================
 // 核函数 / Kernel function
 // ============================================================
 
+///|
 /// 二次核函数 / Quadratic kernel function.
 ///
 /// 公式：`k(d) = 3/π * (1 - (d/r)²)²` for d < r, else 0。
@@ -51,6 +60,7 @@ pub fn quadratic_kernel(distance : Double, radius : Double) -> Double {
   }
 }
 
+///|
 /// 高斯核函数 / Gaussian kernel function.
 ///
 /// 公式：`k(d) = 1/(r*sqrt(2π)) * exp(-d²/(2r²))`。
@@ -63,6 +73,7 @@ pub fn gaussian_kernel(distance : Double, radius : Double) -> Double {
   }
 }
 
+///|
 /// 简易 exp / Simple exp via Taylor series.
 fn exp_custom(x : Double) -> Double {
   let mut result = 1.0
@@ -81,12 +92,17 @@ fn exp_custom(x : Double) -> Double {
 // 核密度 / Kernel density
 // ============================================================
 
+///|
 /// 核密度（单点）/ Kernel density at a point.
 ///
 /// 对标 ArcGIS Pro Kernel Density。
 /// 公式：`Σ k(d_i) / r²` for all points within radius。
 /// 退化安全：空点集返回 0.0。
-pub fn density_kernel_at(points : Array[@proximity.Point], center : @proximity.Point, radius : Double) -> Double {
+pub fn density_kernel_at(
+  points : Array[@proximity.Point],
+  center : @proximity.Point,
+  radius : Double,
+) -> Double {
   if radius <= 0.0 || points.length() == 0 {
     0.0
   } else {
@@ -101,6 +117,7 @@ pub fn density_kernel_at(points : Array[@proximity.Point], center : @proximity.P
   }
 }
 
+///|
 /// 核密度栅格 / Kernel density grid.
 ///
 /// 在指定范围内按 cell_size 间隔采样。
@@ -109,7 +126,7 @@ pub fn density_kernel_grid(
   points : Array[@proximity.Point],
   radius : Double,
   cell_size : Double,
-  extent : (@proximity.Point, @proximity.Point)
+  extent : (@proximity.Point, @proximity.Point),
 ) -> Array[Array[Double]] {
   if cell_size <= 0.0 || radius <= 0.0 || points.length() == 0 {
     []
@@ -123,7 +140,9 @@ pub fn density_kernel_grid(
       for j in 0..<cols {
         let cx = min_p.x + j.to_double() * cell_size
         let cy = min_p.y + i.to_double() * cell_size
-        row.push(density_kernel_at(points, @proximity.make_point(cx, cy), radius))
+        row.push(
+          density_kernel_at(points, @proximity.make_point(cx, cy), radius),
+        )
       }
       result.push(row)
     }
@@ -135,11 +154,16 @@ pub fn density_kernel_grid(
 // 点密度 / Point density
 // ============================================================
 
+///|
 /// 点计数（单点）/ Point count within radius.
 ///
 /// 对标 ArcGIS Pro Point Density。
 /// 退化安全：空点集返回 0。
-pub fn density_point_count_at(points : Array[@proximity.Point], center : @proximity.Point, radius : Double) -> Int {
+pub fn density_point_count_at(
+  points : Array[@proximity.Point],
+  center : @proximity.Point,
+  radius : Double,
+) -> Int32 {
   if radius <= 0.0 {
     0
   } else {
@@ -154,10 +178,15 @@ pub fn density_point_count_at(points : Array[@proximity.Point], center : @proxim
   }
 }
 
+///|
 /// 点密度（单点）/ Point density at a point.
 ///
 /// 公式：`count / (π * r²)`。
-pub fn density_point_at(points : Array[@proximity.Point], center : @proximity.Point, radius : Double) -> Double {
+pub fn density_point_at(
+  points : Array[@proximity.Point],
+  center : @proximity.Point,
+  radius : Double,
+) -> Double {
   let count = density_point_count_at(points, center, radius)
   if radius <= 0.0 {
     0.0
@@ -166,12 +195,13 @@ pub fn density_point_at(points : Array[@proximity.Point], center : @proximity.Po
   }
 }
 
+///|
 /// 点密度栅格 / Point density grid.
 pub fn density_point_grid(
   points : Array[@proximity.Point],
   radius : Double,
   cell_size : Double,
-  extent : (@proximity.Point, @proximity.Point)
+  extent : (@proximity.Point, @proximity.Point),
 ) -> Array[Array[Double]] {
   if cell_size <= 0.0 || radius <= 0.0 || points.length() == 0 {
     []
@@ -185,7 +215,9 @@ pub fn density_point_grid(
       for j in 0..<cols {
         let cx = min_p.x + j.to_double() * cell_size
         let cy = min_p.y + i.to_double() * cell_size
-        row.push(density_point_at(points, @proximity.make_point(cx, cy), radius))
+        row.push(
+          density_point_at(points, @proximity.make_point(cx, cy), radius),
+        )
       }
       result.push(row)
     }
@@ -197,6 +229,7 @@ pub fn density_point_grid(
 // 线密度 / Line density
 // ============================================================
 
+///|
 /// 线段长度 / Line segment length.
 fn segment_length(line : Array[@proximity.Point]) -> Double {
   let n = line.length()
@@ -211,12 +244,17 @@ fn segment_length(line : Array[@proximity.Point]) -> Double {
   }
 }
 
+///|
 /// 线密度（单点）/ Line density at a point.
 ///
 /// 对标 ArcGIS Pro Line Density。
 /// 公式：`Σ (L_i * k(d_i)) / (π * r²)` for lines within radius。
 /// 退化安全：空线集返回 0.0。
-pub fn density_line_at(lines : Array[Array[@proximity.Point]], center : @proximity.Point, radius : Double) -> Double {
+pub fn density_line_at(
+  lines : Array[Array[@proximity.Point]],
+  center : @proximity.Point,
+  radius : Double,
+) -> Double {
   if radius <= 0.0 || lines.length() == 0 {
     0.0
   } else {
@@ -236,8 +274,12 @@ pub fn density_line_at(lines : Array[Array[@proximity.Point]], center : @proximi
   }
 }
 
+///|
 /// 包围盒到点的距离 / Bounding box to point distance.
-fn bbox_point_distance(bbox : (@proximity.Point, @proximity.Point), p : @proximity.Point) -> Double {
+fn bbox_point_distance(
+  bbox : (@proximity.Point, @proximity.Point),
+  p : @proximity.Point,
+) -> Double {
   let (min_p, max_p) = bbox
   let dx = if p.x < min_p.x {
     min_p.x - p.x
@@ -256,12 +298,13 @@ fn bbox_point_distance(bbox : (@proximity.Point, @proximity.Point), p : @proximi
   (dx * dx + dy * dy).sqrt()
 }
 
+///|
 /// 线密度栅格 / Line density grid.
 pub fn density_line_grid(
   lines : Array[Array[@proximity.Point]],
   radius : Double,
   cell_size : Double,
-  extent : (@proximity.Point, @proximity.Point)
+  extent : (@proximity.Point, @proximity.Point),
 ) -> Array[Array[Double]] {
   if cell_size <= 0.0 || radius <= 0.0 || lines.length() == 0 {
     []
@@ -287,6 +330,7 @@ pub fn density_line_grid(
 // 密度统计 / Density statistics
 // ============================================================
 
+///|
 /// 密度栅格统计 / Density grid statistics: min/max/avg.
 ///
 /// 退化安全：空栅格返回 (0.0, 0.0, 0.0)。
@@ -317,23 +361,35 @@ pub fn density_stats(grid : Array[Array[Double]]) -> (Double, Double, Double) {
   }
 }
 
+///|
 /// 密度结果构造 / Build a density result.
-pub fn make_density_result(x : Double, y : Double, value : Double) -> DensityResult {
+pub fn make_density_result(
+  x : Double,
+  y : Double,
+  value : Double,
+) -> DensityResult {
   { x, y, value, }
 }
 
+///|
 /// 密度结果列表 / Density results at sample points.
 ///
 /// 在点集位置计算核密度，返回结果列表。
 /// 退化安全：空点集返回空数组。
-pub fn density_kernel_results(points : Array[@proximity.Point], radius : Double) -> Array[DensityResult] {
+pub fn density_kernel_results(
+  points : Array[@proximity.Point],
+  radius : Double,
+) -> Array[DensityResult] {
   if radius <= 0.0 || points.length() == 0 {
     []
   } else {
-    points.map(fn(p) { make_density_result(p.x, p.y, density_kernel_at(points, p, radius)) })
+    points.map(fn(p) {
+      make_density_result(p.x, p.y, density_kernel_at(points, p, radius))
+    })
   }
 }
 
+///|
 /// 密度方法名称 / Density method name.
 pub fn density_method_name(m : DensityMethod) -> String {
   match m {

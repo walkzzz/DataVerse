@@ -13,40 +13,53 @@
 // 类型定义 / Type definitions
 // ============================================================
 
+///|
 /// 距离结果 / Distance result grid.
 pub(all) struct DistanceResult {
   grid : Array[Array[Double]]
-  rows : Int
-  cols : Int
+  rows : Int32
+  cols : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend DistanceResult with Eq::{equal, not_equal}
+
+///|
 pub extend DistanceResult with Debug::{to_repr}
 
+///|
 /// 成本表面 / Cost surface.
 pub(all) struct CostSurface {
   costs : Array[Array[Double]]
-  rows : Int
-  cols : Int
+  rows : Int32
+  cols : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend CostSurface with Eq::{equal, not_equal}
+
+///|
 pub extend CostSurface with Debug::{to_repr}
 
+///|
 /// 路径结果 / Path result.
 pub struct PathResult {
-  path : Array[(Int, Int)]
+  path : Array[(Int32, Int32)]
   total_cost : Double
-  length : Int
+  length : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend PathResult with Eq::{equal, not_equal}
+
+///|
 pub extend PathResult with Debug::{to_repr}
 
 // ============================================================
 // 基础构造 / Basic constructors
 // ============================================================
 
+///|
 /// 构造成本表面 / Build a cost surface.
 pub fn make_cost_surface(costs : Array[Array[Double]]) -> CostSurface {
   let rows = costs.length()
@@ -54,20 +67,29 @@ pub fn make_cost_surface(costs : Array[Array[Double]]) -> CostSurface {
   { costs, rows, cols, }
 }
 
+///|
 /// 成本表面取值 / Get cost at cell.
 ///
 /// 退化安全：越界返回 1.0（默认成本）。
-pub fn cost_get(cs : CostSurface, row : Int, col : Int) -> Double {
+pub fn cost_get(cs : CostSurface, row : Int32, col : Int32) -> Double {
   if row < 0 || row >= cs.rows || col < 0 || col >= cs.cols {
     1.0
   } else {
     let v = cs.costs[row][col]
-    if v <= 0.0 { 1.0 } else { v }
+    if v <= 0.0 {
+      1.0
+    } else {
+      v
+    }
   }
 }
 
+///|
 /// 构造路径结果 / Build a path result.
-pub fn make_path_result(path : Array[(Int, Int)], total_cost : Double) -> PathResult {
+pub fn make_path_result(
+  path : Array[(Int32, Int32)],
+  total_cost : Double,
+) -> PathResult {
   { path, total_cost, length: path.length(), }
 }
 
@@ -75,12 +97,18 @@ pub fn make_path_result(path : Array[(Int, Int)], total_cost : Double) -> PathRe
 // 欧氏距离 / Euclidean distance
 // ============================================================
 
+///|
 /// 欧氏距离栅格 / Euclidean distance grid from sources.
 ///
 /// 对标 ArcGIS Pro Euclidean Distance。
 /// 每个像元到最近源点的欧氏距离。
 /// 退化安全：空源集返回全 0 栅格。
-pub fn distance_euclidean_grid(sources : Array[(Int, Int)], rows : Int, cols : Int, cell_size : Double) -> DistanceResult {
+pub fn distance_euclidean_grid(
+  sources : Array[(Int32, Int32)],
+  rows : Int32,
+  cols : Int32,
+  cell_size : Double,
+) -> DistanceResult {
   let grid : Array[Array[Double]] = []
   for i in 0..<rows {
     let row : Array[Double] = []
@@ -106,13 +134,18 @@ pub fn distance_euclidean_grid(sources : Array[(Int, Int)], rows : Int, cols : I
   { grid, rows, cols, }
 }
 
+///|
 /// 欧氏距离分配 / Euclidean allocation: 每个像元分配到最近源。
 ///
 /// 返回源索引栅格（-1 表示无源）。
-pub fn distance_euclidean_allocation(sources : Array[(Int, Int)], rows : Int, cols : Int) -> Array[Array[Int]] {
-  let grid : Array[Array[Int]] = []
+pub fn distance_euclidean_allocation(
+  sources : Array[(Int32, Int32)],
+  rows : Int32,
+  cols : Int32,
+) -> Array[Array[Int32]] {
+  let grid : Array[Array[Int32]] = []
   for i in 0..<rows {
-    let row : Array[Int] = []
+    let row : Array[Int32] = []
     for j in 0..<cols {
       if sources.length() == 0 {
         row.push(-1)
@@ -141,12 +174,17 @@ pub fn distance_euclidean_allocation(sources : Array[(Int, Int)], rows : Int, co
 // 成本距离 / Cost distance
 // ============================================================
 
+///|
 /// 成本距离 / Cost distance from sources (Dijkstra 简化版).
 ///
 /// 对标 ArcGIS Pro Cost Distance。
 /// 模拟策略：单次扫描，成本 = 源成本 + 移动成本 * 像元成本。
 /// 退化安全：空源集返回全 0。
-pub fn distance_cost(sources : Array[(Int, Int)], cs : CostSurface, cell_size : Double) -> DistanceResult {
+pub fn distance_cost(
+  sources : Array[(Int32, Int32)],
+  cs : CostSurface,
+  cell_size : Double,
+) -> DistanceResult {
   let rows = cs.rows
   let cols = cs.cols
   let grid : Array[Array[Double]] = []
@@ -176,13 +214,18 @@ pub fn distance_cost(sources : Array[(Int, Int)], cs : CostSurface, cell_size : 
   { grid, rows, cols, }
 }
 
+///|
 /// 成本分配 / Cost allocation: 每个像元分配到成本最低的源。
-pub fn distance_cost_allocation(sources : Array[(Int, Int)], cs : CostSurface, cell_size : Double) -> Array[Array[Int]] {
+pub fn distance_cost_allocation(
+  sources : Array[(Int32, Int32)],
+  cs : CostSurface,
+  cell_size : Double,
+) -> Array[Array[Int32]] {
   let rows = cs.rows
   let cols = cs.cols
-  let grid : Array[Array[Int]] = []
+  let grid : Array[Array[Int32]] = []
   for i in 0..<rows {
-    let row : Array[Int] = []
+    let row : Array[Int32] = []
     for j in 0..<cols {
       if sources.length() == 0 {
         row.push(-1)
@@ -209,16 +252,21 @@ pub fn distance_cost_allocation(sources : Array[(Int, Int)], cs : CostSurface, c
   grid
 }
 
+///|
 /// 成本回溯链接 / Cost back link: 每个像元指向成本最低的邻域。
 ///
 /// 返回 (row, col) 栅格，指向最小成本来源。
-pub fn distance_back_link(sources : Array[(Int, Int)], cs : CostSurface, cell_size : Double) -> Array[Array[(Int, Int)]] {
+pub fn distance_back_link(
+  sources : Array[(Int32, Int32)],
+  cs : CostSurface,
+  cell_size : Double,
+) -> Array[Array[(Int32, Int32)]] {
   let rows = cs.rows
   let cols = cs.cols
   let cost_grid = distance_cost(sources, cs, cell_size)
-  let links : Array[Array[(Int, Int)]] = []
+  let links : Array[Array[(Int32, Int32)]] = []
   for i in 0..<rows {
-    let row : Array[(Int, Int)] = []
+    let row : Array[(Int32, Int32)] = []
     for j in 0..<cols {
       let mut min_cost = cost_grid.grid[i][j]
       let mut best_link = (i, j)
@@ -247,12 +295,17 @@ pub fn distance_back_link(sources : Array[(Int, Int)], cs : CostSurface, cell_si
 // 最优路径 / Optimal path
 // ============================================================
 
+///|
 /// 最优路径 / Optimal path from source to target (贪心回溯).
 ///
 /// 对标 ArcGIS Pro Optimal Path As Line。
 /// 模拟策略：从目标沿成本回溯链接到源（贪心下降）。
 /// 退化安全：源=目标返回单点路径。
-pub fn distance_optimal_path(cs : CostSurface, source : (Int, Int), target : (Int, Int)) -> PathResult {
+pub fn distance_optimal_path(
+  cs : CostSurface,
+  source : (Int32, Int32),
+  target : (Int32, Int32),
+) -> PathResult {
   let (sr, sc) = source
   let (tr, tc) = target
   if sr < 0 || sr >= cs.rows || sc < 0 || sc >= cs.cols {
@@ -260,7 +313,7 @@ pub fn distance_optimal_path(cs : CostSurface, source : (Int, Int), target : (In
   } else if tr < 0 || tr >= cs.rows || tc < 0 || tc >= cs.cols {
     { path: [], total_cost: 0.0, length: 0, }
   } else {
-    let path : Array[(Int, Int)] = [(tr, tc)]
+    let path : Array[(Int32, Int32)] = [(tr, tc)]
     let mut ci = tr
     let mut cj = tc
     let mut total_cost = 0.0
@@ -290,7 +343,12 @@ pub fn distance_optimal_path(cs : CostSurface, source : (Int, Int), target : (In
       if next_i == ci && next_j == cj {
         break
       }
-      let move_cost = ((next_i - ci) * (next_i - ci) + (next_j - cj) * (next_j - cj)).to_double().sqrt() * (cost_get(cs, ci, cj) + cost_get(cs, next_i, next_j)) / 2.0
+      let move_cost = ((next_i - ci) * (next_i - ci) +
+        (next_j - cj) * (next_j - cj))
+        .to_double()
+        .sqrt() *
+        (cost_get(cs, ci, cj) + cost_get(cs, next_i, next_j)) /
+        2.0
       total_cost = total_cost + move_cost
       ci = next_i
       cj = next_j
@@ -305,15 +363,21 @@ pub fn distance_optimal_path(cs : CostSurface, source : (Int, Int), target : (In
 // 走廊分析 / Corridor
 // ============================================================
 
+///|
 /// 走廊 / Corridor: 两个成本距离累积面之和低于阈值的区域。
 ///
 /// 对标 ArcGIS Pro Corridor。
 /// 模拟策略：计算两个源到所有像元的成本距离之和，低于阈值则为走廊。
 /// 退化安全：空源返回空数组。
-pub fn distance_corridor(cs : CostSurface, source_a : (Int, Int), source_b : (Int, Int), threshold : Double) -> Array[(Int, Int)] {
+pub fn distance_corridor(
+  cs : CostSurface,
+  source_a : (Int32, Int32),
+  source_b : (Int32, Int32),
+  threshold : Double,
+) -> Array[(Int32, Int32)] {
   let cost_a = distance_cost([source_a], cs, 1.0)
   let cost_b = distance_cost([source_b], cs, 1.0)
-  let corridor : Array[(Int, Int)] = []
+  let corridor : Array[(Int32, Int32)] = []
   for i in 0..<cs.rows {
     for j in 0..<cs.cols {
       let total = cost_a.grid[i][j] + cost_b.grid[i][j]
@@ -329,6 +393,7 @@ pub fn distance_corridor(cs : CostSurface, source_a : (Int, Int), source_b : (In
 // 距离统计 / Distance statistics
 // ============================================================
 
+///|
 /// 距离栅格统计 / Distance grid statistics: min/max/avg.
 ///
 /// 退化安全：空栅格返回 (0.0, 0.0, 0.0)。
@@ -358,11 +423,13 @@ pub fn distance_stats(result : DistanceResult) -> (Double, Double, Double) {
   }
 }
 
+///|
 /// 路径长度（像元数）/ Path length in cells.
-pub fn path_cell_count(path : PathResult) -> Int {
+pub fn path_cell_count(path : PathResult) -> Int32 {
   path.length
 }
 
+///|
 /// 路径总成本 / Path total cost.
 pub fn path_cost(path : PathResult) -> Double {
   path.total_cost

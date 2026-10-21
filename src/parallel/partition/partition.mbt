@@ -6,6 +6,7 @@
 ///
 /// # Data partitioning strategies
 
+///|
 /// 分区策略 / Partition strategy.
 pub(all) enum PartitionStrategy {
   HashPartition
@@ -14,43 +15,48 @@ pub(all) enum PartitionStrategy {
   KeyPartition
 }
 
+///|
 /// 分区配置 / Partition config.
 pub struct PartitionConfig {
-  num_partitions : Int
+  num_partitions : Int32
   strategy : PartitionStrategy
   key_column : String
 }
 
+///|
 /// 分区结果 / Partition result.
 pub struct PartitionResult {
-  partition_id : Int
+  partition_id : Int32
   items : Array[String]
   strategy : PartitionStrategy
 }
 
+///|
 /// 构造分区配置 / Create partition config.
 pub fn make_partition_config(
-  num_partitions : Int,
+  num_partitions : Int32,
   strategy : PartitionStrategy,
   key_column : String,
 ) -> PartitionConfig {
-  { num_partitions: num_partitions, strategy: strategy, key_column: key_column }
+  { num_partitions, strategy, key_column, }
 }
 
+///|
 /// 构造分区结果 / Create partition result.
 pub fn make_partition_result(
-  partition_id : Int,
+  partition_id : Int32,
   items : Array[String],
   strategy : PartitionStrategy,
 ) -> PartitionResult {
-  { partition_id: partition_id, items: items, strategy: strategy }
+  { partition_id, items, strategy, }
 }
 
 ///===
 /// 哈希分区 / Hash partition
 
+///|
 /// 计算哈希值 / Compute hash value.
-pub fn hash_value(s : String) -> Int {
+pub fn hash_value(s : String) -> Int32 {
   let mut hash = 0
   for i in 0..<s.length() {
     hash = (hash * 31 + s[i].to_int()) % 1000000007
@@ -61,10 +67,11 @@ pub fn hash_value(s : String) -> Int {
   hash
 }
 
+///|
 /// 哈希分区 / Hash partition items.
 pub fn hash_partition(
   items : Array[String],
-  num_partitions : Int,
+  num_partitions : Int32,
 ) -> Array[PartitionResult] {
   if num_partitions <= 0 {
     return []
@@ -88,6 +95,7 @@ pub fn hash_partition(
 ///===
 /// 范围分区 / Range partition
 
+///|
 /// 范围分区 / Range partition items by boundaries.
 pub fn range_partition(
   items : Array[String],
@@ -117,10 +125,11 @@ pub fn range_partition(
 ///===
 /// 轮询分区 / Round-robin partition
 
+///|
 /// 轮询分区 / Round-robin partition items.
 pub fn round_robin_partition(
   items : Array[String],
-  num_partitions : Int,
+  num_partitions : Int32,
 ) -> Array[PartitionResult] {
   if num_partitions <= 0 {
     return []
@@ -142,13 +151,15 @@ pub fn round_robin_partition(
 ///===
 /// 分区统计 / Partition statistics
 
+///|
 /// 统计分区大小 / Count items in partition.
-pub fn partition_count(result : PartitionResult) -> Int {
+pub fn partition_count(result : PartitionResult) -> Int32 {
   result.items.length()
 }
 
+///|
 /// 总项数 / Total items across all partitions.
-pub fn total_items(partitions : Array[PartitionResult]) -> Int {
+pub fn total_items(partitions : Array[PartitionResult]) -> Int32 {
   let mut total = 0
   for i in 0..<partitions.length() {
     total = total + partitions[i].items.length()
@@ -156,8 +167,9 @@ pub fn total_items(partitions : Array[PartitionResult]) -> Int {
   total
 }
 
+///|
 /// 最大分区大小 / Max partition size.
-pub fn max_partition_size(partitions : Array[PartitionResult]) -> Int {
+pub fn max_partition_size(partitions : Array[PartitionResult]) -> Int32 {
   let mut max_size = 0
   for i in 0..<partitions.length() {
     let sz = partitions[i].items.length()
@@ -168,6 +180,7 @@ pub fn max_partition_size(partitions : Array[PartitionResult]) -> Int {
   max_size
 }
 
+///|
 /// 分区均衡度 / Partition balance (max/min ratio).
 pub fn partition_balance(partitions : Array[PartitionResult]) -> Double {
   if partitions.length() == 0 {
@@ -184,12 +197,16 @@ pub fn partition_balance(partitions : Array[PartitionResult]) -> Double {
       min_sz = sz
     }
   }
-  if min_sz == 0 { 999999.0 } else { max_sz.to_double() / min_sz.to_double() }
+  if min_sz == 0 {
+    999999.0
+  } else {
+    max_sz.to_double() / min_sz.to_double()
+  }
 }
 
+///|
 ///===
 /// 策略名称 / Strategy name
-
 pub fn strategy_name(strategy : PartitionStrategy) -> String {
   match strategy {
     HashPartition => "hash"
@@ -199,9 +216,9 @@ pub fn strategy_name(strategy : PartitionStrategy) -> String {
   }
 }
 
+///|
 ///===
 /// ID
-
 pub fn partition_id() -> String {
   "parallel/partition"
 }

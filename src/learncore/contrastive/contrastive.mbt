@@ -6,7 +6,6 @@
 /// # Contrastive Learning
 ///
 /// Contrastive losses, embedding mining, augmentation, projection head, temperature.
-
 fn exp(x : Double) -> Double {
   if x > 20.0 {
     485165195.4
@@ -23,6 +22,7 @@ fn exp(x : Double) -> Double {
   }
 }
 
+///|
 fn log(x : Double) -> Double {
   if x <= 0.0 {
     -1000.0
@@ -39,6 +39,7 @@ fn log(x : Double) -> Double {
   }
 }
 
+///|
 fn sqrt(x : Double) -> Double {
   if x <= 0.0 {
     0.0
@@ -51,6 +52,7 @@ fn sqrt(x : Double) -> Double {
   }
 }
 
+///|
 fn cos_d(x : Double) -> Double {
   let pi = 3.141592653589793
   let two_pi = 6.283185307179586
@@ -65,21 +67,28 @@ fn cos_d(x : Double) -> Double {
   let mut term = 1.0
   let y2 = y * y
   for j in 1..<20 {
-    term = term * y2 / ((2 * j - 1).to_double() * (2 * j).to_double()) * (-1.0)
+    term = term * y2 / ((2 * j - 1).to_double() * (2 * j).to_double()) * -1.0
     result = result + term
   }
   result
 }
 
+///|
 fn sin_d(x : Double) -> Double {
   let half_pi = 1.5707963267948966
   cos_d(x - half_pi)
 }
 
+///|
 fn abs_d(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
+  if x < 0.0 {
+    -x
+  } else {
+    x
+  }
 }
 
+///|
 fn dot(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
   let mut s = 0.0
@@ -89,10 +98,12 @@ fn dot(a : Array[Double], b : Array[Double]) -> Double {
   s
 }
 
+///|
 fn norm(a : Array[Double]) -> Double {
   sqrt(dot(a, a))
 }
 
+///|
 fn sub_arr(a : Array[Double], b : Array[Double]) -> Array[Double] {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
   let result : Array[Double] = []
@@ -102,14 +113,23 @@ fn sub_arr(a : Array[Double], b : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 fn clamp(x : Double, lo : Double, hi : Double) -> Double {
-  if x < lo { lo } else if x > hi { hi } else { x }
+  if x < lo {
+    lo
+  } else if x > hi {
+    hi
+  } else {
+    x
+  }
 }
 
+///|
 fn sigmoid(x : Double) -> Double {
   1.0 / (1.0 + exp(-x))
 }
 
+///|
 fn acos_d(x : Double) -> Double {
   let xx = clamp(x, -1.0, 1.0)
   let neg = xx < 0.0
@@ -119,150 +139,216 @@ fn acos_d(x : Double) -> Double {
   result = result * ax - 0.2121146
   result = result * ax + 1.5707288
   result = result * sqrt(1.0 - ax)
-  if neg { 3.141592653589793 - result } else { result }
+  if neg {
+    3.141592653589793 - result
+  } else {
+    result
+  }
 }
 
+///|
 pub(all) struct ContrastiveConfig {
   margin : Double
   temperature : Double
   distance_metric : String
 } derive(Debug, Eq)
 
+///|
 pub extend ContrastiveConfig with Eq::{equal, not_equal}
+
+///|
 pub extend ContrastiveConfig with Debug::{to_repr}
 
+///|
 pub(all) struct NTXentConfig {
   temperature : Double
-  batch_size : Int
+  batch_size : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend NTXentConfig with Eq::{equal, not_equal}
+
+///|
 pub extend NTXentConfig with Debug::{to_repr}
 
+///|
 pub(all) struct TripletConfig {
   margin : Double
   mining_strategy : String
 } derive(Debug, Eq)
 
+///|
 pub extend TripletConfig with Eq::{equal, not_equal}
+
+///|
 pub extend TripletConfig with Debug::{to_repr}
 
+///|
 pub(all) struct InfoNCEConfig {
   temperature : Double
-  num_negatives : Int
+  num_negatives : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend InfoNCEConfig with Eq::{equal, not_equal}
+
+///|
 pub extend InfoNCEConfig with Debug::{to_repr}
 
+///|
 pub(all) struct SupConConfig {
   temperature : Double
   mode : String
 } derive(Debug, Eq)
 
+///|
 pub extend SupConConfig with Eq::{equal, not_equal}
+
+///|
 pub extend SupConConfig with Debug::{to_repr}
 
+///|
 pub(all) struct MarginConfig {
   margin : Double
   reduction : String
 } derive(Debug, Eq)
 
+///|
 pub extend MarginConfig with Eq::{equal, not_equal}
+
+///|
 pub extend MarginConfig with Debug::{to_repr}
 
+///|
 pub(all) struct CircleConfig {
   gamma : Double
   margin : Double
 } derive(Debug, Eq)
 
+///|
 pub extend CircleConfig with Eq::{equal, not_equal}
+
+///|
 pub extend CircleConfig with Debug::{to_repr}
 
+///|
 pub(all) struct ProxyNCAConfig {
-  num_proxies : Int
-  dim : Int
+  num_proxies : Int32
+  dim : Int32
   temperature : Double
 } derive(Debug, Eq)
 
+///|
 pub extend ProxyNCAConfig with Eq::{equal, not_equal}
+
+///|
 pub extend ProxyNCAConfig with Debug::{to_repr}
 
+///|
 pub(all) struct ArcFaceConfig {
   margin : Double
   scale : Double
 } derive(Debug, Eq)
 
+///|
 pub extend ArcFaceConfig with Eq::{equal, not_equal}
+
+///|
 pub extend ArcFaceConfig with Debug::{to_repr}
 
+///|
 pub(all) struct CosFaceConfig {
   margin : Double
   scale : Double
 } derive(Debug, Eq)
 
+///|
 pub extend CosFaceConfig with Eq::{equal, not_equal}
+
+///|
 pub extend CosFaceConfig with Debug::{to_repr}
 
+///|
 pub(all) struct SphereFaceConfig {
   margin : Double
   scale : Double
 } derive(Debug, Eq)
 
+///|
 pub extend SphereFaceConfig with Eq::{equal, not_equal}
+
+///|
 pub extend SphereFaceConfig with Debug::{to_repr}
 
+///|
 pub(all) struct AdaFaceConfig {
   margin : Double
   scale : Double
   h : Double
 } derive(Debug, Eq)
 
+///|
 pub extend AdaFaceConfig with Eq::{equal, not_equal}
+
+///|
 pub extend AdaFaceConfig with Debug::{to_repr}
 
+///|
 pub(all) struct AugmentConfig {
   color_jitter : Double
   crop_ratio : Double
   flip_prob : Double
 } derive(Debug, Eq)
 
+///|
 pub extend AugmentConfig with Eq::{equal, not_equal}
+
+///|
 pub extend AugmentConfig with Debug::{to_repr}
 
+///|
 pub(all) struct ProjectionConfig {
-  input_dim : Int
-  output_dim : Int
+  input_dim : Int32
+  output_dim : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend ProjectionConfig with Eq::{equal, not_equal}
+
+///|
 pub extend ProjectionConfig with Debug::{to_repr}
 
+///|
 pub(all) struct TemperatureConfig {
   init_temp : Double
   min_temp : Double
   max_temp : Double
 } derive(Debug, Eq)
 
+///|
 pub extend TemperatureConfig with Eq::{equal, not_equal}
+
+///|
 pub extend TemperatureConfig with Debug::{to_repr}
 
+///|
 /// 构造对比配置 / Build contrastive config.
 pub fn make_contrastive_config(
   margin : Double,
   temperature : Double,
-  distance_metric : String
+  distance_metric : String,
 ) -> ContrastiveConfig {
-  { margin, temperature, distance_metric }
+  { margin, temperature, distance_metric, }
 }
 
+///|
 /// 对比损失 / Contrastive loss.
 /// L = (1 - y) * 0.5 * D^2 + y * 0.5 * max(0, margin - D)^2
 pub fn contrastive_loss(
   embedding1 : Array[Double],
   embedding2 : Array[Double],
   label : Double,
-  margin : Double
+  margin : Double,
 ) -> Double {
   let n = if embedding1.length() < embedding2.length() {
     embedding1.length()
@@ -284,11 +370,12 @@ pub fn contrastive_loss(
   same * 0.5 * d_sq + label * 0.5 * diff_loss
 }
 
+///|
 /// 监督对比损失 / Supervised contrastive loss over all pairs.
 pub fn contrastive_loss_supervised(
   embeddings : Array[Array[Double]],
-  labels : Array[Int],
-  margin : Double
+  labels : Array[Int32],
+  margin : Double,
 ) -> Double {
   let n = if embeddings.length() < labels.length() {
     embeddings.length()
@@ -303,7 +390,8 @@ pub fn contrastive_loss_supervised(
     for i in 0..<n {
       for j in (i + 1)..<n {
         let label = if labels[i] == labels[j] { 0.0 } else { 1.0 }
-        total = total + contrastive_loss(embeddings[i], embeddings[j], label, margin)
+        total = total +
+          contrastive_loss(embeddings[i], embeddings[j], label, margin)
         count = count + 1
       }
     }
@@ -315,11 +403,13 @@ pub fn contrastive_loss_supervised(
   }
 }
 
+///|
 /// 构造 NT-Xent 配置 / Build NT-Xent config.
-pub fn make_nt_xent(temperature : Double, batch_size : Int) -> NTXentConfig {
-  { temperature, batch_size }
+pub fn make_nt_xent(temperature : Double, batch_size : Int32) -> NTXentConfig {
+  { temperature, batch_size, }
 }
 
+///|
 /// NT-Xent 相似度 / Cosine similarity.
 pub fn nt_xent_sim(emb1 : Array[Double], emb2 : Array[Double]) -> Double {
   let n1 = norm(emb1)
@@ -331,13 +421,14 @@ pub fn nt_xent_sim(emb1 : Array[Double], emb2 : Array[Double]) -> Double {
   }
 }
 
+///|
 /// NT-Xent 损失 / NT-Xent loss.
 /// L = -log(exp(sim_pos / t) / sum_k exp(sim_k / t))
 pub fn nt_xent_loss(
   emb_i : Array[Double],
   emb_j : Array[Double],
   all_embs : Array[Array[Double]],
-  temperature : Double
+  temperature : Double,
 ) -> Double {
   if temperature <= 0.0 {
     0.0
@@ -356,33 +447,43 @@ pub fn nt_xent_loss(
   }
 }
 
+///|
 /// 构造三元组配置 / Build triplet config.
-pub fn make_triplet_loss(margin : Double, mining_strategy : String) -> TripletConfig {
-  { margin, mining_strategy }
+pub fn make_triplet_loss(
+  margin : Double,
+  mining_strategy : String,
+) -> TripletConfig {
+  { margin, mining_strategy, }
 }
 
+///|
 /// 三元组损失 / Triplet margin loss.
 /// L = max(0, d(a, p) - d(a, n) + margin)
 pub fn triplet_loss(
   anchor : Array[Double],
   positive : Array[Double],
   negative : Array[Double],
-  margin : Double
+  margin : Double,
 ) -> Double {
   let diff_ap = sub_arr(anchor, positive)
   let d_ap = sqrt(dot(diff_ap, diff_ap))
   let diff_an = sub_arr(anchor, negative)
   let d_an = sqrt(dot(diff_an, diff_an))
   let loss = d_ap - d_an + margin
-  if loss > 0.0 { loss } else { 0.0 }
+  if loss > 0.0 {
+    loss
+  } else {
+    0.0
+  }
 }
 
+///|
 /// 三元组挖掘 / Triplet mining: hardest positive and negative.
 pub fn triplet_mining(
   anchor : Array[Double],
   embeddings : Array[Array[Double]],
-  labels : Array[Int],
-  anchor_label : Int
+  labels : Array[Int32],
+  anchor_label : Int32,
 ) -> (Array[Double], Array[Double]) {
   let n = if embeddings.length() < labels.length() {
     embeddings.length()
@@ -401,25 +502,24 @@ pub fn triplet_mining(
         max_pos_d = d_sq
         hardest_pos = embeddings[i]
       }
-    } else {
-      if d_sq < min_neg_d {
-        min_neg_d = d_sq
-        hardest_neg = embeddings[i]
-      }
+    } else if d_sq < min_neg_d {
+      min_neg_d = d_sq
+      hardest_neg = embeddings[i]
     }
   }
   (hardest_pos, hardest_neg)
 }
 
+///|
 /// 半难挖掘 / Semihard negative mining.
 /// d(a, p) < d(a, n) < d(a, p) + margin
 pub fn triplet_semihard(
   anchor : Array[Double],
   positive : Array[Double],
   embeddings : Array[Array[Double]],
-  labels : Array[Int],
-  anchor_label : Int,
-  margin : Double
+  labels : Array[Int32],
+  anchor_label : Int32,
+  margin : Double,
 ) -> Array[Double] {
   let n = if embeddings.length() < labels.length() {
     embeddings.length()
@@ -445,18 +545,23 @@ pub fn triplet_semihard(
   best_neg
 }
 
+///|
 /// 构造 InfoNCE 配置 / Build InfoNCE config.
-pub fn make_info_nce(temperature : Double, num_negatives : Int) -> InfoNCEConfig {
-  { temperature, num_negatives }
+pub fn make_info_nce(
+  temperature : Double,
+  num_negatives : Int32,
+) -> InfoNCEConfig {
+  { temperature, num_negatives, }
 }
 
+///|
 /// InfoNCE 损失 / InfoNCE loss.
 /// L = -log(exp(sim(q, k+) / t) / sum_k exp(sim(q, k) / t))
 pub fn info_nce_loss(
   query : Array[Double],
   positive : Array[Double],
   negatives : Array[Array[Double]],
-  temperature : Double
+  temperature : Double,
 ) -> Double {
   if temperature <= 0.0 {
     0.0
@@ -475,8 +580,9 @@ pub fn info_nce_loss(
   }
 }
 
+///|
 /// InfoNCE 下界 / InfoNCE theoretical bound.
-pub fn info_nce_bound(num_negatives : Int, temperature : Double) -> Double {
+pub fn info_nce_bound(num_negatives : Int32, temperature : Double) -> Double {
   if num_negatives <= 0 || temperature <= 0.0 {
     0.0
   } else {
@@ -484,16 +590,18 @@ pub fn info_nce_bound(num_negatives : Int, temperature : Double) -> Double {
   }
 }
 
+///|
 /// 构造 SupCon 配置 / Build SupCon config.
 pub fn make_supcon(temperature : Double, mode : String) -> SupConConfig {
-  { temperature, mode }
+  { temperature, mode, }
 }
 
+///|
 /// SupCon 损失 / Supervised contrastive loss.
 pub fn supcon_loss(
   embeddings : Array[Array[Double]],
-  labels : Array[Int],
-  temperature : Double
+  labels : Array[Int32],
+  temperature : Double,
 ) -> Double {
   let n = if embeddings.length() < labels.length() {
     embeddings.length()
@@ -526,15 +634,16 @@ pub fn supcon_loss(
   }
 }
 
+///|
 /// SupCon 单对损失 / SupCon pair contribution.
 pub fn supcon_pair(
   emb_i : Array[Double],
   emb_j : Array[Double],
   embeddings : Array[Array[Double]],
-  labels : Array[Int],
-  i : Int,
-  j : Int,
-  temperature : Double
+  labels : Array[Int32],
+  i : Int32,
+  j : Int32,
+  temperature : Double,
 ) -> Double {
   let n = embeddings.length()
   if i >= n || j >= n || temperature <= 0.0 {
@@ -556,18 +665,20 @@ pub fn supcon_pair(
   }
 }
 
+///|
 /// 构造 Margin 配置 / Build margin config.
 pub fn make_margin_loss(margin : Double, reduction : String) -> MarginConfig {
-  { margin, reduction }
+  { margin, reduction, }
 }
 
+///|
 /// Margin 损失 / Margin ranking loss.
 /// L = max(0, -y * (x1 - x2) + margin)
 pub fn margin_loss(
   x1 : Array[Double],
   x2 : Array[Double],
   label : Double,
-  margin : Double
+  margin : Double,
 ) -> Double {
   let n = if x1.length() < x2.length() { x1.length() } else { x2.length() }
   if n == 0 {
@@ -582,8 +693,13 @@ pub fn margin_loss(
   }
 }
 
+///|
 /// Margin 调度 / Margin schedule over epochs.
-pub fn margin_schedule(epoch : Int, max_epoch : Int, init_margin : Double) -> Double {
+pub fn margin_schedule(
+  epoch : Int32,
+  max_epoch : Int32,
+  init_margin : Double,
+) -> Double {
   if max_epoch <= 0 {
     init_margin
   } else {
@@ -592,18 +708,20 @@ pub fn margin_schedule(epoch : Int, max_epoch : Int, init_margin : Double) -> Do
   }
 }
 
+///|
 /// 构造 Circle 配置 / Build circle config.
 pub fn make_circle_loss(gamma : Double, margin : Double) -> CircleConfig {
-  { gamma, margin }
+  { gamma, margin, }
 }
 
+///|
 /// Circle 损失 / Circle loss.
 /// L = log(1 + sum_j exp(gamma*(m+s_j)) * sum_k exp(-gamma*(m-s_k)))
 pub fn circle_loss(
   sim_pos : Array[Double],
   sim_neg : Array[Double],
   gamma : Double,
-  margin : Double
+  margin : Double,
 ) -> Double {
   let mut pos_term = 0.0
   for j in 0..<sim_pos.length() {
@@ -616,12 +734,13 @@ pub fn circle_loss(
   log(1.0 + pos_term * neg_term)
 }
 
+///|
 /// Circle 权重 / Circle weight for a sample.
 pub fn circle_weight(
   sim : Double,
   gamma : Double,
   margin : Double,
-  is_positive : Bool
+  is_positive : Bool,
 ) -> Double {
   if is_positive {
     exp(-gamma * (sim + margin))
@@ -630,18 +749,24 @@ pub fn circle_weight(
   }
 }
 
+///|
 /// 构造 ProxyNCA 配置 / Build ProxyNCA config.
-pub fn make_proxy_nca(num_proxies : Int, dim : Int, temperature : Double) -> ProxyNCAConfig {
-  { num_proxies, dim, temperature }
+pub fn make_proxy_nca(
+  num_proxies : Int32,
+  dim : Int32,
+  temperature : Double,
+) -> ProxyNCAConfig {
+  { num_proxies, dim, temperature, }
 }
 
+///|
 /// ProxyNCA 损失 / ProxyNCA loss.
 /// L = -log(exp(-d(z, p_y)) / sum_c exp(-d(z, p_c)))
 pub fn proxy_nca_loss(
   embedding : Array[Double],
   proxies : Array[Array[Double]],
-  label : Int,
-  temperature : Double
+  label : Int32,
+  temperature : Double,
 ) -> Double {
   let n = proxies.length()
   if n == 0 || label < 0 || label >= n || temperature <= 0.0 {
@@ -664,8 +789,12 @@ pub fn proxy_nca_loss(
   }
 }
 
+///|
 /// Proxy 锚点 / Find nearest proxy.
-pub fn proxy_anchor(embedding : Array[Double], proxies : Array[Array[Double]]) -> Int {
+pub fn proxy_anchor(
+  embedding : Array[Double],
+  proxies : Array[Array[Double]],
+) -> Int32 {
   let n = proxies.length()
   if n == 0 {
     -1
@@ -684,19 +813,21 @@ pub fn proxy_anchor(embedding : Array[Double], proxies : Array[Array[Double]]) -
   }
 }
 
+///|
 /// 构造 ArcFace 配置 / Build ArcFace config.
 pub fn make_arc_face(margin : Double, scale : Double) -> ArcFaceConfig {
-  { margin, scale }
+  { margin, scale, }
 }
 
+///|
 /// ArcFace 损失 / ArcFace loss.
 /// cos(theta + m) = cos(theta)cos(m) - sin(theta)sin(m)
 pub fn arc_face_loss(
   embedding : Array[Double],
   weight : Array[Double],
-  _label : Int,
+  _label : Int32,
   margin : Double,
-  scale : Double
+  scale : Double,
 ) -> Double {
   let n_emb = norm(embedding)
   let n_w = norm(weight)
@@ -711,12 +842,13 @@ pub fn arc_face_loss(
   }
 }
 
+///|
 /// ArcFace margin / ArcFace angular margin.
 pub fn arc_face_margin(
   embedding : Array[Double],
   weight : Array[Double],
-  _label : Int,
-  margin : Double
+  _label : Int32,
+  margin : Double,
 ) -> Double {
   let n_emb = norm(embedding)
   let n_w = norm(weight)
@@ -729,19 +861,21 @@ pub fn arc_face_margin(
   }
 }
 
+///|
 /// 构造 CosFace 配置 / Build CosFace config.
 pub fn make_cos_face(margin : Double, scale : Double) -> CosFaceConfig {
-  { margin, scale }
+  { margin, scale, }
 }
 
+///|
 /// CosFace 损失 / CosFace loss.
 /// cos(theta) - m
 pub fn cos_face_loss(
   embedding : Array[Double],
   weight : Array[Double],
-  _label : Int,
+  _label : Int32,
   margin : Double,
-  scale : Double
+  scale : Double,
 ) -> Double {
   let n_emb = norm(embedding)
   let n_w = norm(weight)
@@ -754,24 +888,27 @@ pub fn cos_face_loss(
   }
 }
 
+///|
 /// CosFace margin / CosFace additive margin.
 pub fn cos_face_margin(theta : Double, margin : Double) -> Double {
   cos_d(theta) - margin
 }
 
+///|
 /// 构造 SphereFace 配置 / Build SphereFace config.
 pub fn make_sphere_face(margin : Double, scale : Double) -> SphereFaceConfig {
-  { margin, scale }
+  { margin, scale, }
 }
 
+///|
 /// SphereFace 损失 / SphereFace loss.
 /// cos(m * theta)
 pub fn sphere_face_loss(
   embedding : Array[Double],
   weight : Array[Double],
-  _label : Int,
+  _label : Int32,
   margin : Double,
-  scale : Double
+  scale : Double,
 ) -> Double {
   let n_emb = norm(embedding)
   let n_w = norm(weight)
@@ -785,19 +922,25 @@ pub fn sphere_face_loss(
   }
 }
 
+///|
 /// 构造 AdaFace 配置 / Build AdaFace config.
-pub fn make_ada_face(margin : Double, scale : Double, h : Double) -> AdaFaceConfig {
-  { margin, scale, h }
+pub fn make_ada_face(
+  margin : Double,
+  scale : Double,
+  h : Double,
+) -> AdaFaceConfig {
+  { margin, scale, h, }
 }
 
+///|
 /// AdaFace 损失 / AdaFace loss with adaptive margin.
 pub fn ada_face_loss(
   embedding : Array[Double],
   weight : Array[Double],
-  _label : Int,
+  _label : Int32,
   margin : Double,
   scale : Double,
-  h : Double
+  h : Double,
 ) -> Double {
   let n_emb = norm(embedding)
   let n_w = norm(weight)
@@ -814,23 +957,29 @@ pub fn ada_face_loss(
   }
 }
 
+///|
 /// AdaFace 权重 / AdaFace adaptive weight based on feature quality.
 pub fn ada_face_weight(emb_norm : Double, h : Double) -> Double {
   let g = clamp(emb_norm / h, 0.0, 1.0)
   1.0 - g
 }
 
+///|
 /// 构造增强配置 / Build augmentation config.
 pub fn make_augment_contrast(
   color_jitter : Double,
   crop_ratio : Double,
-  flip_prob : Double
+  flip_prob : Double,
 ) -> AugmentConfig {
-  { color_jitter, crop_ratio, flip_prob }
+  { color_jitter, crop_ratio, flip_prob, }
 }
 
+///|
 /// 颜色增强 / Color jitter augmentation.
-pub fn augment_color(embedding : Array[Double], jitter : Double) -> Array[Double] {
+pub fn augment_color(
+  embedding : Array[Double],
+  jitter : Double,
+) -> Array[Double] {
   let result : Array[Double] = []
   for i in 0..<embedding.length() {
     let scale = 1.0 + jitter * sin_d(embedding[i] + i.to_double())
@@ -839,8 +988,12 @@ pub fn augment_color(embedding : Array[Double], jitter : Double) -> Array[Double
   result
 }
 
+///|
 /// 裁剪增强 / Center crop augmentation.
-pub fn augment_crop(embedding : Array[Double], crop_ratio : Double) -> Array[Double] {
+pub fn augment_crop(
+  embedding : Array[Double],
+  crop_ratio : Double,
+) -> Array[Double] {
   let n = embedding.length()
   let crop_size = (n.to_double() * crop_ratio).to_int()
   if crop_size <= 0 || crop_size > n {
@@ -855,8 +1008,12 @@ pub fn augment_crop(embedding : Array[Double], crop_ratio : Double) -> Array[Dou
   }
 }
 
+///|
 /// 翻转增强 / Flip augmentation.
-pub fn augment_flip(embedding : Array[Double], flip_prob : Double) -> Array[Double] {
+pub fn augment_flip(
+  embedding : Array[Double],
+  flip_prob : Double,
+) -> Array[Double] {
   let threshold = clamp(flip_prob, 0.0, 1.0)
   let seed = abs_d(sin_d(embedding.length().to_double()))
   if seed < threshold {
@@ -870,16 +1027,21 @@ pub fn augment_flip(embedding : Array[Double], flip_prob : Double) -> Array[Doub
   }
 }
 
+///|
 /// 构造投影配置 / Build projection config.
-pub fn make_projection(input_dim : Int, output_dim : Int) -> ProjectionConfig {
-  { input_dim, output_dim }
+pub fn make_projection(
+  input_dim : Int32,
+  output_dim : Int32,
+) -> ProjectionConfig {
+  { input_dim, output_dim, }
 }
 
+///|
 /// 投影头 / Projection head (linear layer).
 pub fn projection_head(
   embedding : Array[Double],
   weight : Array[Array[Double]],
-  bias : Array[Double]
+  bias : Array[Double],
 ) -> Array[Double] {
   let out_dim = weight.length()
   let result : Array[Double] = []
@@ -895,24 +1057,27 @@ pub fn projection_head(
   result
 }
 
+///|
 /// 投影维度 / Projection output dimension.
-pub fn projection_dim(config : ProjectionConfig) -> Int {
+pub fn projection_dim(config : ProjectionConfig) -> Int32 {
   config.output_dim
 }
 
+///|
 /// 构造温度配置 / Build temperature config.
 pub fn make_temperature(
   init_temp : Double,
   min_temp : Double,
-  max_temp : Double
+  max_temp : Double,
 ) -> TemperatureConfig {
-  { init_temp, min_temp, max_temp }
+  { init_temp, min_temp, max_temp, }
 }
 
+///|
 /// 温度缩放 / Temperature-scaled similarity matrix.
 pub fn temperature_scale(
   temperature : Double,
-  embeddings : Array[Array[Double]]
+  embeddings : Array[Array[Double]],
 ) -> Array[Array[Double]] {
   let n = embeddings.length()
   let result : Array[Array[Double]] = []
@@ -930,13 +1095,14 @@ pub fn temperature_scale(
   result
 }
 
+///|
 /// 温度搜索 / Grid search for best temperature.
 pub fn temperature_search(
   embeddings : Array[Array[Double]],
-  labels : Array[Int],
+  labels : Array[Int32],
   min_temp : Double,
   max_temp : Double,
-  steps : Int
+  steps : Int32,
 ) -> Double {
   if steps <= 0 {
     (min_temp + max_temp) / 2.0
@@ -957,6 +1123,7 @@ pub fn temperature_search(
   }
 }
 
+///|
 /// 模块标识 / Module identity.
 pub fn contrastive_id() -> String {
   "learncore/contrastive"

@@ -1,3 +1,4 @@
+///|
 fn main {
   println("DataVerse ExtCore Explorer v0.1.0-dev")
   println("======================================")
@@ -10,7 +11,10 @@ fn main {
   println("  math_linear_algebra: Point(\{x}, \{y})")
   let dist = pt.norm()
   println("    norm = \{dist}")
-  let sr = @math_linear_algebra.math_linear_algebra_make_series([1.0, 2.0, 3.0, 4.0, 5.0], "test")
+  let sr = @math_linear_algebra.math_linear_algebra_make_series(
+    [1.0, 2.0, 3.0, 4.0, 5.0],
+    "test",
+  )
   let sm = sr.mean()
   let ss = sr.std()
   println("    series mean = \{sm}, std = \{ss}")

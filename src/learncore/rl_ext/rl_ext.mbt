@@ -6,40 +6,58 @@
 ///
 /// # RL extension operators
 
+///|
 ///===
 /// 内部数学辅助 / Internal math helpers
-
 fn rl_abs_diff(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
+  if x < 0.0 {
+    -x
+  } else {
+    x
+  }
 }
 
+///|
 ///===
 /// Q-Table
-
 pub struct QTable {
-  n_states : Int
-  n_actions : Int
+  n_states : Int32
+  n_actions : Int32
   values : Array[Array[Double]]
 }
 
-pub fn make_q_table(n_states : Int, n_actions : Int) -> QTable {
+///|
+pub fn make_q_table(n_states : Int32, n_actions : Int32) -> QTable {
   let values : Array[Array[Double]] = []
   for _ in 0..<n_states {
     let row : Array[Double] = Array::make(n_actions, 0.0)
     values.push(row)
   }
-  { n_states, n_actions, values }
+  { n_states, n_actions, values, }
 }
 
-pub fn q_table_get(table : QTable, state : Int, action : Int) -> Double {
-  if state < 0 || state >= table.n_states || action < 0 || action >= table.n_actions {
+///|
+pub fn q_table_get(table : QTable, state : Int32, action : Int32) -> Double {
+  if state < 0 ||
+    state >= table.n_states ||
+    action < 0 ||
+    action >= table.n_actions {
     return 0.0
   }
   table.values[state][action]
 }
 
-pub fn q_table_set(table : QTable, state : Int, action : Int, value : Double) -> QTable {
-  if state < 0 || state >= table.n_states || action < 0 || action >= table.n_actions {
+///|
+pub fn q_table_set(
+  table : QTable,
+  state : Int32,
+  action : Int32,
+  value : Double,
+) -> QTable {
+  if state < 0 ||
+    state >= table.n_states ||
+    action < 0 ||
+    action >= table.n_actions {
     return table
   }
   let new_values : Array[Array[Double]] = []
@@ -54,19 +72,23 @@ pub fn q_table_set(table : QTable, state : Int, action : Int, value : Double) ->
     }
     new_values.push(row)
   }
-  { n_states: table.n_states, n_actions: table.n_actions, values: new_values }
+  { n_states: table.n_states, n_actions: table.n_actions, values: new_values, }
 }
 
+///|
 pub fn q_table_update(
   table : QTable,
-  state : Int,
-  action : Int,
+  state : Int32,
+  action : Int32,
   reward : Double,
-  next_state : Int,
+  next_state : Int32,
   alpha : Double,
-  gamma : Double
+  gamma : Double,
 ) -> QTable {
-  if state < 0 || state >= table.n_states || action < 0 || action >= table.n_actions {
+  if state < 0 ||
+    state >= table.n_states ||
+    action < 0 ||
+    action >= table.n_actions {
     return table
   }
   let mut max_next_q = 0.0
@@ -82,19 +104,21 @@ pub fn q_table_update(
   q_table_set(table, state, action, updated)
 }
 
+///|
 ///===
 /// Policy
-
 pub struct Policy {
-  n_actions : Int
+  n_actions : Int32
   logits : Array[Double]
 }
 
-pub fn make_policy(n_actions : Int) -> Policy {
-  { n_actions, logits: Array::make(n_actions, 0.0) }
+///|
+pub fn make_policy(n_actions : Int32) -> Policy {
+  { n_actions, logits: Array::make(n_actions, 0.0), }
 }
 
-pub fn policy_greedy(q_values : Array[Double]) -> Int {
+///|
+pub fn policy_greedy(q_values : Array[Double]) -> Int32 {
   let n = q_values.length()
   if n == 0 {
     return 0
@@ -108,7 +132,11 @@ pub fn policy_greedy(q_values : Array[Double]) -> Int {
   best
 }
 
-pub fn policy_epsilon_greedy(q_values : Array[Double], epsilon : Double) -> Int {
+///|
+pub fn policy_epsilon_greedy(
+  q_values : Array[Double],
+  epsilon : Double,
+) -> Int32 {
   let n = q_values.length()
   if n == 0 {
     return 0
@@ -121,6 +149,7 @@ pub fn policy_epsilon_greedy(q_values : Array[Double], epsilon : Double) -> Int 
   }
 }
 
+///|
 pub fn policy_softmax(logits : Array[Double]) -> Array[Double] {
   let n = logits.length()
   if n == 0 {
@@ -149,36 +178,40 @@ pub fn policy_softmax(logits : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 ///===
 /// Experience Replay
-
 pub struct Experience {
   state : Array[Double]
-  action : Int
+  action : Int32
   reward : Double
   next_state : Array[Double]
   done : Bool
 }
 
+///|
 pub struct ReplayBuffer {
-  capacity : Int
+  capacity : Int32
   buffer : Array[Experience]
 }
 
+///|
 pub fn make_experience(
   state : Array[Double],
-  action : Int,
+  action : Int32,
   reward : Double,
   next_state : Array[Double],
-  done : Bool
+  done : Bool,
 ) -> Experience {
-  { state, action, reward, next_state, done }
+  { state, action, reward, next_state, done, }
 }
 
-pub fn make_buffer(capacity : Int) -> ReplayBuffer {
-  { capacity, buffer: [] }
+///|
+pub fn make_buffer(capacity : Int32) -> ReplayBuffer {
+  { capacity, buffer: [], }
 }
 
+///|
 pub fn buffer_add(buffer : ReplayBuffer, exp : Experience) -> ReplayBuffer {
   let new_buffer : Array[Experience] = []
   for i in 0..<buffer.buffer.length() {
@@ -195,14 +228,19 @@ pub fn buffer_add(buffer : ReplayBuffer, exp : Experience) -> ReplayBuffer {
   } else {
     new_buffer
   }
-  { capacity: buffer.capacity, buffer: result }
+  { capacity: buffer.capacity, buffer: result, }
 }
 
-pub fn buffer_size(buffer : ReplayBuffer) -> Int {
+///|
+pub fn buffer_size(buffer : ReplayBuffer) -> Int32 {
   buffer.buffer.length()
 }
 
-pub fn buffer_sample(buffer : ReplayBuffer, batch_size : Int) -> Array[Experience] {
+///|
+pub fn buffer_sample(
+  buffer : ReplayBuffer,
+  batch_size : Int32,
+) -> Array[Experience] {
   let n = buffer.buffer.length()
   if n == 0 || batch_size <= 0 {
     return []
@@ -216,12 +254,13 @@ pub fn buffer_sample(buffer : ReplayBuffer, batch_size : Int) -> Array[Experienc
   result
 }
 
+///|
 pub fn experience_replay(
   buffer : ReplayBuffer,
-  batch_size : Int,
+  batch_size : Int32,
   q_table : QTable,
   alpha : Double,
-  gamma : Double
+  gamma : Double,
 ) -> QTable {
   let batch = buffer_sample(buffer, batch_size)
   let mut current = q_table
@@ -229,18 +268,30 @@ pub fn experience_replay(
     let exp = batch[i]
     let s_idx = 0
     let ns_idx = 0
-    current = q_table_update(current, s_idx, exp.action, exp.reward, ns_idx, alpha, gamma)
+    current = q_table_update(
+      current,
+      s_idx,
+      exp.action,
+      exp.reward,
+      ns_idx,
+      alpha,
+      gamma,
+    )
   }
   current
 }
 
-pub fn sample_batch(buffer : ReplayBuffer, batch_size : Int) -> Array[Experience] {
+///|
+pub fn sample_batch(
+  buffer : ReplayBuffer,
+  batch_size : Int32,
+) -> Array[Experience] {
   buffer_sample(buffer, batch_size)
 }
 
+///|
 ///===
 /// DQN
-
 pub struct DQN {
   weights : Array[Double]
   bias : Double
@@ -248,10 +299,16 @@ pub struct DQN {
   gamma : Double
 }
 
-pub fn make_dqn(n_features : Int, learning_rate : Double, gamma : Double) -> DQN {
-  { weights: Array::make(n_features, 0.0), bias: 0.0, learning_rate, gamma }
+///|
+pub fn make_dqn(
+  n_features : Int32,
+  learning_rate : Double,
+  gamma : Double,
+) -> DQN {
+  { weights: Array::make(n_features, 0.0), bias: 0.0, learning_rate, gamma, }
 }
 
+///|
 pub fn dqn_forward(dqn : DQN, state : Array[Double]) -> Double {
   let n = if dqn.weights.length() < state.length() {
     dqn.weights.length()
@@ -265,21 +322,15 @@ pub fn dqn_forward(dqn : DQN, state : Array[Double]) -> Double {
   sum
 }
 
-pub fn dqn_loss(
-  dqn : DQN,
-  state : Array[Double],
-  target : Double
-) -> Double {
+///|
+pub fn dqn_loss(dqn : DQN, state : Array[Double], target : Double) -> Double {
   let pred = dqn_forward(dqn, state)
   let diff = pred - target
   diff * diff
 }
 
-pub fn dqn_update(
-  dqn : DQN,
-  state : Array[Double],
-  target : Double
-) -> DQN {
+///|
+pub fn dqn_update(dqn : DQN, state : Array[Double], target : Double) -> DQN {
   let pred = dqn_forward(dqn, state)
   let diff = pred - target
   let n = if dqn.weights.length() < state.length() {
@@ -290,28 +341,40 @@ pub fn dqn_update(
   let new_weights : Array[Double] = Array::make(dqn.weights.length(), 0.0)
   for i in 0..<dqn.weights.length() {
     if i < n {
-      new_weights[i] = dqn.weights[i] - dqn.learning_rate * 2.0 * diff * state[i]
+      new_weights[i] = dqn.weights[i] -
+        dqn.learning_rate * 2.0 * diff * state[i]
     } else {
       new_weights[i] = dqn.weights[i]
     }
   }
   let new_bias = dqn.bias - dqn.learning_rate * 2.0 * diff
-  { weights: new_weights, bias: new_bias, learning_rate: dqn.learning_rate, gamma: dqn.gamma }
+  {
+    weights: new_weights,
+    bias: new_bias,
+    learning_rate: dqn.learning_rate,
+    gamma: dqn.gamma,
+  }
 }
 
+///|
 ///===
 /// REINFORCE
-
 pub struct Reinforce {
   theta : Array[Double]
   learning_rate : Double
   gamma : Double
 }
 
-pub fn make_reinforce(n_params : Int, learning_rate : Double, gamma : Double) -> Reinforce {
-  { theta: Array::make(n_params, 0.0), learning_rate, gamma }
+///|
+pub fn make_reinforce(
+  n_params : Int32,
+  learning_rate : Double,
+  gamma : Double,
+) -> Reinforce {
+  { theta: Array::make(n_params, 0.0), learning_rate, gamma, }
 }
 
+///|
 pub fn reinforce_forward(agent : Reinforce, state : Array[Double]) -> Double {
   let n = if agent.theta.length() < state.length() {
     agent.theta.length()
@@ -325,11 +388,12 @@ pub fn reinforce_forward(agent : Reinforce, state : Array[Double]) -> Double {
   sum
 }
 
+///|
 pub fn reinforce_loss(
   agent : Reinforce,
   state : Array[Double],
-  action : Int,
-  reward : Double
+  action : Int32,
+  reward : Double,
 ) -> Double {
   let logits = reinforce_forward(agent, state)
   let probs = policy_softmax([logits, 0.0])
@@ -340,9 +404,9 @@ pub fn reinforce_loss(
   -@math.ln(prob) * reward
 }
 
+///|
 ///===
 /// Actor-Critic
-
 pub struct ActorCritic {
   actor_theta : Array[Double]
   critic_theta : Array[Double]
@@ -351,11 +415,12 @@ pub struct ActorCritic {
   gamma : Double
 }
 
+///|
 pub fn make_actor_critic(
-  n_features : Int,
+  n_features : Int32,
   actor_lr : Double,
   critic_lr : Double,
-  gamma : Double
+  gamma : Double,
 ) -> ActorCritic {
   {
     actor_theta: Array::make(n_features, 0.0),
@@ -366,6 +431,7 @@ pub fn make_actor_critic(
   }
 }
 
+///|
 pub fn actor_forward(agent : ActorCritic, state : Array[Double]) -> Double {
   let n = if agent.actor_theta.length() < state.length() {
     agent.actor_theta.length()
@@ -379,6 +445,7 @@ pub fn actor_forward(agent : ActorCritic, state : Array[Double]) -> Double {
   sum
 }
 
+///|
 pub fn critic_forward(agent : ActorCritic, state : Array[Double]) -> Double {
   let n = if agent.critic_theta.length() < state.length() {
     agent.critic_theta.length()
@@ -392,12 +459,13 @@ pub fn critic_forward(agent : ActorCritic, state : Array[Double]) -> Double {
   sum
 }
 
+///|
 pub fn actor_critic_update(
   agent : ActorCritic,
   state : Array[Double],
   reward : Double,
   next_state : Array[Double],
-  grad_log_prob : Array[Double]
+  grad_log_prob : Array[Double],
 ) -> ActorCritic {
   let v = critic_forward(agent, state)
   let v_next = critic_forward(agent, next_state)
@@ -405,7 +473,8 @@ pub fn actor_critic_update(
   let new_actor : Array[Double] = Array::make(agent.actor_theta.length(), 0.0)
   for i in 0..<agent.actor_theta.length() {
     if i < grad_log_prob.length() {
-      new_actor[i] = agent.actor_theta[i] + agent.actor_lr * grad_log_prob[i] * delta
+      new_actor[i] = agent.actor_theta[i] +
+        agent.actor_lr * grad_log_prob[i] * delta
     } else {
       new_actor[i] = agent.actor_theta[i]
     }
@@ -427,9 +496,9 @@ pub fn actor_critic_update(
   }
 }
 
+///|
 ///===
 /// PPO
-
 pub struct PPO {
   theta : Array[Double]
   learning_rate : Double
@@ -437,15 +506,17 @@ pub struct PPO {
   gamma : Double
 }
 
+///|
 pub fn make_ppo(
-  n_params : Int,
+  n_params : Int32,
   learning_rate : Double,
   clip_epsilon : Double,
-  gamma : Double
+  gamma : Double,
 ) -> PPO {
-  { theta: Array::make(n_params, 0.0), learning_rate, clip_epsilon, gamma }
+  { theta: Array::make(n_params, 0.0), learning_rate, clip_epsilon, gamma, }
 }
 
+///|
 pub fn ppo_clip(ratio : Double, epsilon : Double) -> Double {
   let lower = 1.0 - epsilon
   let upper = 1.0 + epsilon
@@ -458,34 +529,50 @@ pub fn ppo_clip(ratio : Double, epsilon : Double) -> Double {
   }
 }
 
-pub fn ppo_loss(ratio : Double, advantage_val : Double, epsilon : Double) -> Double {
+///|
+pub fn ppo_loss(
+  ratio : Double,
+  advantage_val : Double,
+  epsilon : Double,
+) -> Double {
   let clipped_ratio = ppo_clip(ratio, epsilon)
   let unclipped = ratio * advantage_val
   let clipped = clipped_ratio * advantage_val
-  if unclipped < clipped { unclipped } else { clipped }
+  if unclipped < clipped {
+    unclipped
+  } else {
+    clipped
+  }
 }
 
+///|
 pub fn ppo_update(
   agent : PPO,
   grad_log_prob : Array[Double],
   advantage_val : Double,
-  ratio : Double
+  ratio : Double,
 ) -> PPO {
   let loss = ppo_loss(ratio, advantage_val, agent.clip_epsilon)
   let new_theta : Array[Double] = Array::make(agent.theta.length(), 0.0)
   for i in 0..<agent.theta.length() {
     if i < grad_log_prob.length() {
-      new_theta[i] = agent.theta[i] + agent.learning_rate * grad_log_prob[i] * loss
+      new_theta[i] = agent.theta[i] +
+        agent.learning_rate * grad_log_prob[i] * loss
     } else {
       new_theta[i] = agent.theta[i]
     }
   }
-  { theta: new_theta, learning_rate: agent.learning_rate, clip_epsilon: agent.clip_epsilon, gamma: agent.gamma }
+  {
+    theta: new_theta,
+    learning_rate: agent.learning_rate,
+    clip_epsilon: agent.clip_epsilon,
+    gamma: agent.gamma,
+  }
 }
 
+///|
 ///===
 /// A2C
-
 pub struct A2C {
   actor_theta : Array[Double]
   critic_theta : Array[Double]
@@ -494,11 +581,12 @@ pub struct A2C {
   gamma : Double
 }
 
+///|
 pub fn make_a2c(
-  n_features : Int,
+  n_features : Int32,
   actor_lr : Double,
   critic_lr : Double,
-  gamma : Double
+  gamma : Double,
 ) -> A2C {
   {
     actor_theta: Array::make(n_features, 0.0),
@@ -509,11 +597,12 @@ pub fn make_a2c(
   }
 }
 
+///|
 pub fn a2c_loss(
   agent : A2C,
   state : Array[Double],
   reward : Double,
-  next_state : Array[Double]
+  next_state : Array[Double],
 ) -> Double {
   let v = a2c_critic_value(agent, state)
   let v_next = a2c_critic_value(agent, next_state)
@@ -521,6 +610,7 @@ pub fn a2c_loss(
   delta * delta
 }
 
+///|
 fn a2c_critic_value(agent : A2C, state : Array[Double]) -> Double {
   let n = if agent.critic_theta.length() < state.length() {
     agent.critic_theta.length()
@@ -534,12 +624,13 @@ fn a2c_critic_value(agent : A2C, state : Array[Double]) -> Double {
   sum
 }
 
+///|
 pub fn a2c_update(
   agent : A2C,
   state : Array[Double],
   reward : Double,
   next_state : Array[Double],
-  grad_log_prob : Array[Double]
+  grad_log_prob : Array[Double],
 ) -> A2C {
   let v = a2c_critic_value(agent, state)
   let v_next = a2c_critic_value(agent, next_state)
@@ -547,7 +638,8 @@ pub fn a2c_update(
   let new_actor : Array[Double] = Array::make(agent.actor_theta.length(), 0.0)
   for i in 0..<agent.actor_theta.length() {
     if i < grad_log_prob.length() {
-      new_actor[i] = agent.actor_theta[i] + agent.actor_lr * grad_log_prob[i] * delta
+      new_actor[i] = agent.actor_theta[i] +
+        agent.actor_lr * grad_log_prob[i] * delta
     } else {
       new_actor[i] = agent.actor_theta[i]
     }
@@ -569,9 +661,9 @@ pub fn a2c_update(
   }
 }
 
+///|
 ///===
 /// SAC
-
 pub struct SAC {
   actor_theta : Array[Double]
   critic_theta : Array[Double]
@@ -581,12 +673,13 @@ pub struct SAC {
   gamma : Double
 }
 
+///|
 pub fn make_sac(
-  n_features : Int,
+  n_features : Int32,
   temperature : Double,
   actor_lr : Double,
   critic_lr : Double,
-  gamma : Double
+  gamma : Double,
 ) -> SAC {
   {
     actor_theta: Array::make(n_features, 0.0),
@@ -598,24 +691,23 @@ pub fn make_sac(
   }
 }
 
+///|
 pub fn sac_temperature(agent : SAC) -> Double {
   agent.temperature
 }
 
-pub fn sac_loss(
-  agent : SAC,
-  q_value : Double,
-  log_prob : Double
-) -> Double {
+///|
+pub fn sac_loss(agent : SAC, q_value : Double, log_prob : Double) -> Double {
   q_value - agent.temperature * log_prob
 }
 
+///|
 pub fn sac_update(
   agent : SAC,
   state : Array[Double],
   reward : Double,
   next_state : Array[Double],
-  grad_log_prob : Array[Double]
+  grad_log_prob : Array[Double],
 ) -> SAC {
   let n = if agent.critic_theta.length() < state.length() {
     agent.critic_theta.length()
@@ -639,7 +731,8 @@ pub fn sac_update(
   let new_actor : Array[Double] = Array::make(agent.actor_theta.length(), 0.0)
   for i in 0..<agent.actor_theta.length() {
     if i < grad_log_prob.length() {
-      new_actor[i] = agent.actor_theta[i] + agent.actor_lr * grad_log_prob[i] * delta
+      new_actor[i] = agent.actor_theta[i] +
+        agent.actor_lr * grad_log_prob[i] * delta
     } else {
       new_actor[i] = agent.actor_theta[i]
     }
@@ -662,9 +755,9 @@ pub fn sac_update(
   }
 }
 
+///|
 ///===
 /// TD3
-
 pub struct TD3 {
   actor_theta : Array[Double]
   critic_theta : Array[Double]
@@ -676,12 +769,13 @@ pub struct TD3 {
   tau : Double
 }
 
+///|
 pub fn make_td3(
-  n_features : Int,
+  n_features : Int32,
   actor_lr : Double,
   critic_lr : Double,
   gamma : Double,
-  tau : Double
+  tau : Double,
 ) -> TD3 {
   {
     actor_theta: Array::make(n_features, 0.0),
@@ -695,6 +789,7 @@ pub fn make_td3(
   }
 }
 
+///|
 pub fn td3_target(agent : TD3, state : Array[Double]) -> Double {
   let n = if agent.target_critic_theta.length() < state.length() {
     agent.target_critic_theta.length()
@@ -708,11 +803,12 @@ pub fn td3_target(agent : TD3, state : Array[Double]) -> Double {
   sum
 }
 
+///|
 pub fn td3_update(
   agent : TD3,
   state : Array[Double],
   reward : Double,
-  next_state : Array[Double]
+  next_state : Array[Double],
 ) -> TD3 {
   let n = if agent.critic_theta.length() < state.length() {
     agent.critic_theta.length()
@@ -733,10 +829,14 @@ pub fn td3_update(
       new_critic[i] = agent.critic_theta[i]
     }
   }
-  let new_target_critic : Array[Double] = Array::make(agent.target_critic_theta.length(), 0.0)
+  let new_target_critic : Array[Double] = Array::make(
+    agent.target_critic_theta.length(),
+    0.0,
+  )
   for i in 0..<agent.target_critic_theta.length() {
     if i < new_critic.length() {
-      new_target_critic[i] = agent.tau * new_critic[i] + (1.0 - agent.tau) * agent.target_critic_theta[i]
+      new_target_critic[i] = agent.tau * new_critic[i] +
+        (1.0 - agent.tau) * agent.target_critic_theta[i]
     } else {
       new_target_critic[i] = agent.target_critic_theta[i]
     }
@@ -753,52 +853,59 @@ pub fn td3_update(
   }
 }
 
+///|
 ///===
 /// Value Function & Bellman
-
-pub fn value_function(values : Array[Double], state : Int) -> Double {
+pub fn value_function(values : Array[Double], state : Int32) -> Double {
   if state < 0 || state >= values.length() {
     return 0.0
   }
   values[state]
 }
 
+///|
 pub fn bellman_update(
   value : Double,
   reward : Double,
   next_value : Double,
-  gamma : Double
+  gamma : Double,
 ) -> Double {
   reward + gamma * next_value - value
 }
 
+///|
 pub fn td_update(
   value : Double,
   reward : Double,
   next_value : Double,
   alpha : Double,
-  gamma : Double
+  gamma : Double,
 ) -> Double {
   let delta = bellman_update(value, reward, next_value, gamma)
   value + alpha * delta
 }
 
+///|
 pub fn monte_carlo_update(
   value : Double,
   returns : Double,
-  alpha : Double
+  alpha : Double,
 ) -> Double {
   value + alpha * (returns - value)
 }
 
+///|
 ///===
 /// Reward
-
 pub fn make_reward(value : Double) -> Double {
   value
 }
 
-pub fn discount_rewards(rewards : Array[Double], gamma : Double) -> Array[Double] {
+///|
+pub fn discount_rewards(
+  rewards : Array[Double],
+  gamma : Double,
+) -> Array[Double] {
   let n = rewards.length()
   if n == 0 {
     return []
@@ -814,6 +921,7 @@ pub fn discount_rewards(rewards : Array[Double], gamma : Double) -> Array[Double
   result
 }
 
+///|
 pub fn normalize_rewards(rewards : Array[Double]) -> Array[Double] {
   let n = rewards.length()
   if n == 0 {
@@ -842,35 +950,39 @@ pub fn normalize_rewards(rewards : Array[Double]) -> Array[Double] {
   }
 }
 
+///|
 ///===
 /// Transition & Episode
-
 pub struct Transition {
-  state : Int
-  action : Int
+  state : Int32
+  action : Int32
   reward : Double
-  next_state : Int
+  next_state : Int32
   done : Bool
 }
 
+///|
 pub fn make_transition(
-  state : Int,
-  action : Int,
+  state : Int32,
+  action : Int32,
   reward : Double,
-  next_state : Int,
-  done : Bool
+  next_state : Int32,
+  done : Bool,
 ) -> Transition {
-  { state, action, reward, next_state, done }
+  { state, action, reward, next_state, done, }
 }
 
+///|
 pub struct Episode {
   transitions : Array[Transition]
 }
 
+///|
 pub fn make_episode() -> Episode {
-  { transitions: [] }
+  { transitions: [], }
 }
 
+///|
 pub fn episode_return(episode : Episode, gamma : Double) -> Double {
   let mut total = 0.0
   let mut discount = 1.0
@@ -881,33 +993,48 @@ pub fn episode_return(episode : Episode, gamma : Double) -> Double {
   total
 }
 
+///|
 ///===
 /// Environment Wrapper
-
 pub struct EnvWrapper {
-  n_states : Int
-  n_actions : Int
-  current_state : Int
+  n_states : Int32
+  n_actions : Int32
+  current_state : Int32
 }
 
-pub fn make_env_wrapper(n_states : Int, n_actions : Int) -> EnvWrapper {
-  { n_states, n_actions, current_state: 0 }
+///|
+pub fn make_env_wrapper(n_states : Int32, n_actions : Int32) -> EnvWrapper {
+  { n_states, n_actions, current_state: 0, }
 }
 
+///|
 pub fn env_reset(env : EnvWrapper) -> EnvWrapper {
-  { n_states: env.n_states, n_actions: env.n_actions, current_state: 0 }
+  { n_states: env.n_states, n_actions: env.n_actions, current_state: 0, }
 }
 
-pub fn env_step(env : EnvWrapper, action : Int) -> (EnvWrapper, Int, Double, Bool) {
+///|
+pub fn env_step(
+  env : EnvWrapper,
+  action : Int32,
+) -> (EnvWrapper, Int32, Double, Bool) {
   let next_state = (env.current_state + 1) % env.n_states
   let reward = if action == 0 { 1.0 } else { 0.0 }
   let done = next_state == 0
-  ({ n_states: env.n_states, n_actions: env.n_actions, current_state: next_state }, next_state, reward, done)
+  (
+    {
+      n_states: env.n_states,
+      n_actions: env.n_actions,
+      current_state: next_state,
+    },
+    next_state,
+    reward,
+    done,
+  )
 }
 
+///|
 ///===
 /// Agent
-
 pub struct Agent {
   q_table : QTable
   epsilon : Double
@@ -915,38 +1042,52 @@ pub struct Agent {
   gamma : Double
 }
 
+///|
 pub fn make_agent(
-  n_states : Int,
-  n_actions : Int,
+  n_states : Int32,
+  n_actions : Int32,
   epsilon : Double,
   alpha : Double,
-  gamma : Double
+  gamma : Double,
 ) -> Agent {
-  { q_table: make_q_table(n_states, n_actions), epsilon, alpha, gamma }
+  { q_table: make_q_table(n_states, n_actions), epsilon, alpha, gamma, }
 }
 
-pub fn agent_act(agent : Agent, state : Int) -> Int {
+///|
+pub fn agent_act(agent : Agent, state : Int32) -> Int32 {
   if state < 0 || state >= agent.q_table.n_states {
     return 0
   }
   policy_epsilon_greedy(agent.q_table.values[state], agent.epsilon)
 }
 
+///|
 pub fn agent_observe(
   agent : Agent,
-  state : Int,
-  action : Int,
+  state : Int32,
+  action : Int32,
   reward : Double,
-  next_state : Int
+  next_state : Int32,
 ) -> Agent {
-  let new_q = q_table_update(agent.q_table, state, action, reward, next_state, agent.alpha, agent.gamma)
-  { q_table: new_q, epsilon: agent.epsilon, alpha: agent.alpha, gamma: agent.gamma }
+  let new_q = q_table_update(
+    agent.q_table,
+    state,
+    action,
+    reward,
+    next_state,
+    agent.alpha,
+    agent.gamma,
+  )
+  {
+    q_table: new_q,
+    epsilon: agent.epsilon,
+    alpha: agent.alpha,
+    gamma: agent.gamma,
+  }
 }
 
-pub fn agent_learn(
-  agent : Agent,
-  episode : Episode
-) -> Agent {
+///|
+pub fn agent_learn(agent : Agent, episode : Episode) -> Agent {
   let mut current = agent
   for i in 0..<episode.transitions.length() {
     let t = episode.transitions[i]
@@ -955,35 +1096,54 @@ pub fn agent_learn(
   current
 }
 
+///|
 ///===
 /// Schedules
-
-pub fn epsilon_decay(epsilon : Double, decay_rate : Double, episode : Int) -> Double {
+pub fn epsilon_decay(
+  epsilon : Double,
+  decay_rate : Double,
+  episode : Int32,
+) -> Double {
   let result = epsilon * @math.pow(decay_rate, episode.to_double())
-  if result < 0.01 { 0.01 } else { result }
+  if result < 0.01 {
+    0.01
+  } else {
+    result
+  }
 }
 
-pub fn lr_schedule_rl(initial_lr : Double, decay_rate : Double, step : Int) -> Double {
+///|
+pub fn lr_schedule_rl(
+  initial_lr : Double,
+  decay_rate : Double,
+  step : Int32,
+) -> Double {
   initial_lr / (1.0 + decay_rate * step.to_double())
 }
 
-pub fn exploration_rate(epsilon : Double, step : Int) -> Double {
+///|
+pub fn exploration_rate(epsilon : Double, step : Int32) -> Double {
   let result = epsilon / (1.0 + step.to_double() * 0.001)
-  if result < 0.01 { 0.01 } else { result }
+  if result < 0.01 {
+    0.01
+  } else {
+    result
+  }
 }
 
+///|
 ///===
 /// Prioritized Replay
-
 pub struct PrioritizedItem {
   experience : Experience
   priority : Double
 }
 
+///|
 pub fn prioritized_replay(
   buffer : ReplayBuffer,
   priorities : Array[Double],
-  batch_size : Int
+  batch_size : Int32,
 ) -> Array[Experience] {
   let n = buffer.buffer.length()
   if n == 0 || batch_size <= 0 {
@@ -1007,10 +1167,11 @@ pub fn prioritized_replay(
   result
 }
 
+///|
 pub fn importance_sampling(
   priorities : Array[Double],
-  buffer_size_val : Int,
-  beta : Double
+  buffer_size_val : Int32,
+  beta : Double,
 ) -> Array[Double] {
   let n = priorities.length()
   if n == 0 || buffer_size_val == 0 {
@@ -1032,14 +1193,14 @@ pub fn importance_sampling(
   result
 }
 
+///|
 ///===
 /// N-step / Lambda returns / GAE
-
 pub fn n_step_return(
   rewards : Array[Double],
   next_value : Double,
   gamma : Double,
-  n : Int
+  n : Int32,
 ) -> Double {
   let mut total = 0.0
   let mut discount = 1.0
@@ -1051,11 +1212,12 @@ pub fn n_step_return(
   total + discount * next_value
 }
 
+///|
 pub fn lambda_return(
   rewards : Array[Double],
   values : Array[Double],
   gamma : Double,
-  lambda : Double
+  lambda : Double,
 ) -> Array[Double] {
   let n = rewards.length()
   if n == 0 {
@@ -1074,11 +1236,12 @@ pub fn lambda_return(
   result
 }
 
+///|
 pub fn gae_advantage(
   rewards : Array[Double],
   values : Array[Double],
   gamma : Double,
-  lambda : Double
+  lambda : Double,
 ) -> Array[Double] {
   let n = rewards.length()
   if n == 0 {
@@ -1100,9 +1263,9 @@ pub fn gae_advantage(
   advantages
 }
 
+///|
 ///===
 /// ID
-
 pub fn rl_ext_id() -> String {
   "learncore/rl_ext"
 }

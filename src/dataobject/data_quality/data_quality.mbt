@@ -8,6 +8,7 @@
 ///
 /// Completeness / uniqueness / validity / consistency / accuracy / timeliness. See architecture §4.2.
 
+///|
 /// 质量维度 / Quality dimension.
 pub(all) enum QualityDimension {
   Completeness
@@ -18,9 +19,13 @@ pub(all) enum QualityDimension {
   Timeliness
 } derive(Debug, Eq)
 
+///|
 pub extend QualityDimension with Eq::{equal, not_equal}
+
+///|
 pub extend QualityDimension with Debug::{to_repr}
 
+///|
 /// 质量等级 / Quality level.
 pub(all) enum QualityLevel {
   Excellent
@@ -29,9 +34,13 @@ pub(all) enum QualityLevel {
   Poor
 } derive(Debug, Eq)
 
+///|
 pub extend QualityLevel with Eq::{equal, not_equal}
+
+///|
 pub extend QualityLevel with Debug::{to_repr}
 
+///|
 /// 质量结果 / Quality result.
 pub struct QualityResult {
   dimension : QualityDimension
@@ -40,9 +49,13 @@ pub struct QualityResult {
   details : String
 } derive(Debug, Eq)
 
+///|
 pub extend QualityResult with Eq::{equal, not_equal}
+
+///|
 pub extend QualityResult with Debug::{to_repr}
 
+///|
 /// 质量规则 / Quality rule.
 pub struct QualityRule {
   name : String
@@ -50,23 +63,31 @@ pub struct QualityRule {
   weight : Double
 } derive(Debug, Eq)
 
+///|
 pub extend QualityRule with Eq::{equal, not_equal}
+
+///|
 pub extend QualityRule with Debug::{to_repr}
 
+///|
 /// 列概要 / Column profile.
 pub struct ColumnProfile {
   name : String
-  count : Int
-  nulls : Int
-  distinct : Int
+  count : Int32
+  nulls : Int32
+  distinct : Int32
   mean : Double
 } derive(Debug, Eq)
 
+///|
 pub extend ColumnProfile with Eq::{equal, not_equal}
+
+///|
 pub extend ColumnProfile with Debug::{to_repr}
 
+///|
 /// 完整性 / Completeness (non-null ratio).
-pub fn completeness(values : Array[Option[String]]) -> Double {
+pub fn completeness(values : Array[String?]) -> Double {
   let n = values.length()
   if n == 0 {
     return 0.0
@@ -80,6 +101,7 @@ pub fn completeness(values : Array[Option[String]]) -> Double {
   non_null.to_double() / n.to_double()
 }
 
+///|
 /// 唯一性 / Uniqueness (distinct ratio).
 pub fn uniqueness(values : Array[String]) -> Double {
   let n = values.length()
@@ -95,13 +117,14 @@ pub fn uniqueness(values : Array[String]) -> Double {
         break
       }
     }
-    if !(found) {
+    if !found {
       seen.push(values[i])
     }
   }
   seen.length().to_double() / n.to_double()
 }
 
+///|
 /// 有效性 / Validity (in-domain ratio).
 pub fn validity(values : Array[String], domain : Array[String]) -> Double {
   let n = values.length()
@@ -124,6 +147,7 @@ pub fn validity(values : Array[String], domain : Array[String]) -> Double {
   valid.to_double() / n.to_double()
 }
 
+///|
 /// 一致性 / Consistency (cross-column agreement).
 pub fn consistency(col_a : Array[String], col_b : Array[String]) -> Double {
   let n = col_a.length()
@@ -139,6 +163,7 @@ pub fn consistency(col_a : Array[String], col_b : Array[String]) -> Double {
   consistent.to_double() / n.to_double()
 }
 
+///|
 /// 准确性 / Accuracy (closeness to reference).
 pub fn accuracy(
   values : Array[Double],
@@ -158,6 +183,7 @@ pub fn accuracy(
   accurate.to_double() / n.to_double()
 }
 
+///|
 /// 时效性 / Timeliness (freshness).
 pub fn timeliness(
   timestamps : Array[Double],
@@ -178,8 +204,9 @@ pub fn timeliness(
   fresh.to_double() / n.to_double()
 }
 
+///|
 /// 空值计数 / Null count.
-pub fn null_count(values : Array[Option[String]]) -> Int {
+pub fn null_count(values : Array[String?]) -> Int32 {
   let n = values.length()
   if n == 0 {
     return 0
@@ -193,8 +220,9 @@ pub fn null_count(values : Array[Option[String]]) -> Int {
   count
 }
 
+///|
 /// 空值率 / Null rate.
-pub fn null_rate(values : Array[Option[String]]) -> Double {
+pub fn null_rate(values : Array[String?]) -> Double {
   let n = values.length()
   if n == 0 {
     return 0.0
@@ -203,8 +231,9 @@ pub fn null_rate(values : Array[Option[String]]) -> Double {
   count.to_double() / n.to_double()
 }
 
+///|
 /// 去重计数 / Distinct count.
-pub fn distinct_count(values : Array[String]) -> Int {
+pub fn distinct_count(values : Array[String]) -> Int32 {
   let n = values.length()
   if n == 0 {
     return 0
@@ -218,15 +247,16 @@ pub fn distinct_count(values : Array[String]) -> Int {
         break
       }
     }
-    if !(found) {
+    if !found {
       seen.push(values[i])
     }
   }
   seen.length()
 }
 
+///|
 /// 重复计数 / Duplicate count.
-pub fn duplicate_count(values : Array[String]) -> Int {
+pub fn duplicate_count(values : Array[String]) -> Int32 {
   let n = values.length()
   if n == 0 {
     return 0
@@ -238,17 +268,18 @@ pub fn duplicate_count(values : Array[String]) -> Int {
   n - distinct
 }
 
+///|
 /// 值域检查 / Value range check.
 pub fn value_range_check(
   values : Array[Double],
   lo : Double,
   hi : Double,
-) -> Array[Int] {
+) -> Array[Int32] {
   let n = values.length()
   if n == 0 {
     return []
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<n {
     if values[i] < lo || values[i] > hi {
       result.push(i)
@@ -257,28 +288,30 @@ pub fn value_range_check(
   result
 }
 
+///|
 /// 模式检查 / Pattern check (contains substring).
-pub fn pattern_check(values : Array[String], pattern : String) -> Array[Int] {
+pub fn pattern_check(values : Array[String], pattern : String) -> Array[Int32] {
   let n = values.length()
   if n == 0 {
     return []
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<n {
-    if !(values[i].contains(pattern)) {
+    if !values[i].contains(pattern) {
       result.push(i)
     }
   }
   result
 }
 
+///|
 /// 类型检查 / Type check (non-empty).
-pub fn type_check(values : Array[String]) -> Array[Int] {
+pub fn type_check(values : Array[String]) -> Array[Int32] {
   let n = values.length()
   if n == 0 {
     return []
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<n {
     let v = values[i]
     if v.length() == 0 {
@@ -288,6 +321,7 @@ pub fn type_check(values : Array[String]) -> Array[Int] {
   result
 }
 
+///|
 /// 引用完整性 / Referential integrity.
 pub fn referential_integrity(
   foreign_keys : Array[String],
@@ -313,6 +347,7 @@ pub fn referential_integrity(
   valid.to_double() / n.to_double()
 }
 
+///|
 /// 域完整性 / Domain integrity.
 pub fn domain_integrity(
   values : Array[String],
@@ -338,8 +373,9 @@ pub fn domain_integrity(
   valid.to_double() / n.to_double()
 }
 
+///|
 /// 实体完整性 / Entity integrity (non-null primary key).
-pub fn entity_integrity(primary_keys : Array[Option[String]]) -> Double {
+pub fn entity_integrity(primary_keys : Array[String?]) -> Double {
   let n = primary_keys.length()
   if n == 0 {
     return 1.0
@@ -353,6 +389,7 @@ pub fn entity_integrity(primary_keys : Array[Option[String]]) -> Double {
   valid.to_double() / n.to_double()
 }
 
+///|
 /// 质量评分 / Overall quality score.
 pub fn quality_score(results : Array[QualityResult]) -> Double {
   let n = results.length()
@@ -366,6 +403,7 @@ pub fn quality_score(results : Array[QualityResult]) -> Double {
   sum / n.to_double()
 }
 
+///|
 /// 质量报告 / Quality report.
 pub fn quality_report(results : Array[QualityResult]) -> String {
   if results.length() == 0 {
@@ -374,13 +412,19 @@ pub fn quality_report(results : Array[QualityResult]) -> String {
   let mut report = "Quality Report:\n"
   for i in 0..<results.length() {
     let r = results[i]
-    report = report + "  [" + i.to_string() + "] score=" + r.score.to_string() + "\n"
+    report = report +
+      "  [" +
+      i.to_string() +
+      "] score=" +
+      r.score.to_string() +
+      "\n"
   }
   let overall = quality_score(results)
   report = report + "Overall: " + overall.to_string()
   report
 }
 
+///|
 /// 质量维度 / Quality dimension from score.
 pub fn quality_dimension(score : Double) -> QualityLevel {
   if score >= 0.9 {
@@ -395,6 +439,7 @@ pub fn quality_dimension(score : Double) -> QualityLevel {
   Poor
 }
 
+///|
 /// 构造质量结果 / Build quality result.
 pub fn make_quality_result(
   dimension : QualityDimension,
@@ -402,9 +447,10 @@ pub fn make_quality_result(
   details : String,
 ) -> QualityResult {
   let level = quality_dimension(score)
-  { dimension, score, level, details }
+  { dimension, score, level, details, }
 }
 
+///|
 /// 构造质量规则 / Build quality rule.
 pub fn make_quality_rule(
   name : String,
@@ -412,16 +458,17 @@ pub fn make_quality_rule(
   weight : Double,
 ) -> QualityRule {
   let w = if weight < 0.0 { 0.0 } else { weight }
-  { name, dimension, weight: w }
+  { name, dimension, weight: w, }
 }
 
+///|
 /// 检查缺失 / Check missing values.
-pub fn check_missing(values : Array[Option[String]]) -> Array[Int] {
+pub fn check_missing(values : Array[String?]) -> Array[Int32] {
   let n = values.length()
   if n == 0 {
     return []
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<n {
     if values[i] is None {
       result.push(i)
@@ -430,11 +477,12 @@ pub fn check_missing(values : Array[Option[String]]) -> Array[Int] {
   result
 }
 
+///|
 /// 检查离群值 / Check outliers.
 pub fn check_outlier(
   values : Array[Double],
   threshold : Double,
-) -> Array[Int] {
+) -> Array[Int32] {
   let n = values.length()
   if n < 2 {
     return []
@@ -444,7 +492,7 @@ pub fn check_outlier(
     sum = sum + values[i]
   }
   let m = sum / n.to_double()
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<n {
     if (values[i] - m).abs() > threshold {
       result.push(i)
@@ -453,13 +501,14 @@ pub fn check_outlier(
   result
 }
 
+///|
 /// 检查格式 / Check format (non-empty and no whitespace-only).
-pub fn check_format(values : Array[String]) -> Array[Int] {
+pub fn check_format(values : Array[String]) -> Array[Int32] {
   let n = values.length()
   if n == 0 {
     return []
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<n {
     let v = values[i]
     if v.length() == 0 {
@@ -469,16 +518,17 @@ pub fn check_format(values : Array[String]) -> Array[Int] {
   result
 }
 
+///|
 /// 检查模式 / Check schema (column count consistency).
 pub fn check_schema(
   rows : Array[Array[String]],
-  expected_cols : Int,
-) -> Array[Int] {
+  expected_cols : Int32,
+) -> Array[Int32] {
   let n = rows.length()
   if n == 0 {
     return []
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<n {
     if rows[i].length() != expected_cols {
       result.push(i)
@@ -487,6 +537,7 @@ pub fn check_schema(
   result
 }
 
+///|
 /// 数据概要 / Data profiling summary.
 pub fn data_profiling(values : Array[String]) -> String {
   let n = values.length()
@@ -495,15 +546,21 @@ pub fn data_profiling(values : Array[String]) -> String {
   }
   let distinct = distinct_count(values)
   let dup = n - distinct
-  let result = "count=" + n.to_string() + " distinct=" + distinct.to_string() + " dup=" + dup.to_string()
+  let result = "count=" +
+    n.to_string() +
+    " distinct=" +
+    distinct.to_string() +
+    " dup=" +
+    dup.to_string()
   result
 }
 
+///|
 /// 列概要 / Column profile.
 pub fn column_profile(name : String, values : Array[Double]) -> ColumnProfile {
   let n = values.length()
   if n == 0 {
-    return { name, count: 0, nulls: 0, distinct: 0, mean: 0.0 }
+    return { name, count: 0, nulls: 0, distinct: 0, mean: 0.0, }
   }
   let mut sum = 0.0
   for i in 0..<n {
@@ -519,13 +576,14 @@ pub fn column_profile(name : String, values : Array[Double]) -> ColumnProfile {
         break
       }
     }
-    if !(found) {
+    if !found {
       seen.push(values[i])
     }
   }
-  { name, count: n, nulls: 0, distinct: seen.length(), mean }
+  { name, count: n, nulls: 0, distinct: seen.length(), mean, }
 }
 
+///|
 /// 表概要 / Table profile.
 pub fn table_profile(columns : Array[Array[String]]) -> String {
   let n = columns.length()
@@ -536,11 +594,19 @@ pub fn table_profile(columns : Array[Array[String]]) -> String {
   for i in 0..<n {
     let col = columns[i]
     let d = distinct_count(col)
-    report = report + "  col" + i.to_string() + ": count=" + col.length().to_string() + " distinct=" + d.to_string() + "\n"
+    report = report +
+      "  col" +
+      i.to_string() +
+      ": count=" +
+      col.length().to_string() +
+      " distinct=" +
+      d.to_string() +
+      "\n"
   }
   report
 }
 
+///|
 /// 相关性质量 / Correlation quality.
 pub fn correlation_quality(
   col_a : Array[Double],
@@ -574,6 +640,7 @@ pub fn correlation_quality(
   cov / (va * vb).abs().sqrt()
 }
 
+///|
 /// 分布质量 / Distribution quality (uniform check).
 pub fn distribution_quality(values : Array[String]) -> Double {
   let n = values.length()
@@ -586,7 +653,7 @@ pub fn distribution_quality(values : Array[String]) -> Double {
   }
   let expected = n.to_double() / distinct.to_double()
   let seen : Array[String] = []
-  let counts : Array[Int] = []
+  let counts : Array[Int32] = []
   for i in 0..<n {
     let mut idx = -1
     for j in 0..<seen.length() {
@@ -610,8 +677,9 @@ pub fn distribution_quality(values : Array[String]) -> Double {
   1.0 / (1.0 + chi)
 }
 
+///|
 /// 缺失模式 / Missing pattern (MCAR check).
-pub fn missing_pattern(values : Array[Option[String]]) -> String {
+pub fn missing_pattern(values : Array[String?]) -> String {
   let n = values.length()
   if n == 0 {
     return "empty"
@@ -635,6 +703,7 @@ pub fn missing_pattern(values : Array[Option[String]]) -> String {
   "general-missing"
 }
 
+///|
 /// 离群值检测质量 / Outlier detection quality.
 pub fn outlier_detection_quality(
   values : Array[Double],
@@ -668,11 +737,9 @@ pub fn outlier_detection_quality(
   1.0 - outliers.to_double() / n.to_double()
 }
 
+///|
 /// 准确率 / Accuracy score (classification).
-pub fn accuracy_score(
-  predicted : Array[Bool],
-  actual : Array[Bool],
-) -> Double {
+pub fn accuracy_score(predicted : Array[Bool], actual : Array[Bool]) -> Double {
   let n = predicted.length()
   if n == 0 || n != actual.length() {
     return 0.0
@@ -686,11 +753,9 @@ pub fn accuracy_score(
   correct.to_double() / n.to_double()
 }
 
+///|
 /// 精确率 / Precision score.
-pub fn precision_score(
-  predicted : Array[Bool],
-  actual : Array[Bool],
-) -> Double {
+pub fn precision_score(predicted : Array[Bool], actual : Array[Bool]) -> Double {
   let n = predicted.length()
   if n == 0 || n != actual.length() {
     return 0.0
@@ -712,11 +777,9 @@ pub fn precision_score(
   tp.to_double() / (tp + fp).to_double()
 }
 
+///|
 /// 召回率 / Recall score.
-pub fn recall_score(
-  predicted : Array[Bool],
-  actual : Array[Bool],
-) -> Double {
+pub fn recall_score(predicted : Array[Bool], actual : Array[Bool]) -> Double {
   let n = predicted.length()
   if n == 0 || n != actual.length() {
     return 0.0
@@ -738,11 +801,9 @@ pub fn recall_score(
   tp.to_double() / (tp + fn_).to_double()
 }
 
+///|
 /// F1 分数 / F1 score.
-pub fn f1_score(
-  predicted : Array[Bool],
-  actual : Array[Bool],
-) -> Double {
+pub fn f1_score(predicted : Array[Bool], actual : Array[Bool]) -> Double {
   let p = precision_score(predicted, actual)
   let r = recall_score(predicted, actual)
   if p + r == 0.0 {
@@ -751,6 +812,7 @@ pub fn f1_score(
   2.0 * p * r / (p + r)
 }
 
+///|
 /// 包标识 / Package id.
 pub fn data_quality_id() -> String {
   let pkg = "dataobject/data_quality"

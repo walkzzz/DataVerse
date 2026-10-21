@@ -6,6 +6,7 @@
 ///
 /// # Tool calling operators
 
+///|
 /// 参数类型 / Parameter type.
 pub(all) enum ParamType {
   StringType
@@ -15,6 +16,7 @@ pub(all) enum ParamType {
   ObjectType
 }
 
+///|
 /// 工具参数定义 / Tool parameter definition.
 pub struct ToolParam {
   name : String
@@ -24,6 +26,7 @@ pub struct ToolParam {
   default_value : String
 }
 
+///|
 /// 工具定义 / Tool definition.
 pub struct ToolDef {
   name : String
@@ -31,6 +34,7 @@ pub struct ToolDef {
   parameters : Array[ToolParam]
 }
 
+///|
 /// 工具调用 / Tool call.
 pub struct ToolCall {
   tool_name : String
@@ -38,6 +42,7 @@ pub struct ToolCall {
   id : String
 }
 
+///|
 /// 工具结果 / Tool result.
 pub struct ToolResult {
   call_id : String
@@ -47,6 +52,7 @@ pub struct ToolResult {
   execution_time : Double
 }
 
+///|
 /// 构造工具参数 / Create tool parameter.
 pub fn make_param(
   name : String,
@@ -55,19 +61,30 @@ pub fn make_param(
   required : Bool,
   default_value : String,
 ) -> ToolParam {
-  { name: name, param_type: param_type, description: description, required: required, default_value: default_value }
+  { name, param_type, description, required, default_value, }
 }
 
+///|
 /// 构造工具定义 / Create tool definition.
-pub fn make_tool_def(name : String, description : String, parameters : Array[ToolParam]) -> ToolDef {
-  { name: name, description: description, parameters: parameters }
+pub fn make_tool_def(
+  name : String,
+  description : String,
+  parameters : Array[ToolParam],
+) -> ToolDef {
+  { name, description, parameters, }
 }
 
+///|
 /// 构造工具调用 / Create tool call.
-pub fn make_tool_call(tool_name : String, arguments : Array[(String, String)], id : String) -> ToolCall {
-  { tool_name: tool_name, arguments: arguments, id: id }
+pub fn make_tool_call(
+  tool_name : String,
+  arguments : Array[(String, String)],
+  id : String,
+) -> ToolCall {
+  { tool_name, arguments, id, }
 }
 
+///|
 /// 构造工具结果 / Create tool result.
 pub fn make_tool_result(
   call_id : String,
@@ -76,14 +93,18 @@ pub fn make_tool_result(
   error : String,
   execution_time : Double,
 ) -> ToolResult {
-  { call_id: call_id, success: success, output: output, error: error, execution_time: execution_time }
+  { call_id, success, output, error, execution_time, }
 }
 
 ///===
 /// 参数验证 / Parameter validation
 
+///|
 /// 验证参数 / Validate arguments against tool definition.
-pub fn validate_arguments(tool : ToolDef, args : Array[(String, String)]) -> Bool {
+pub fn validate_arguments(
+  tool : ToolDef,
+  args : Array[(String, String)],
+) -> Bool {
   for i in 0..<tool.parameters.length() {
     if tool.parameters[i].required {
       let mut found = false
@@ -92,7 +113,7 @@ pub fn validate_arguments(tool : ToolDef, args : Array[(String, String)]) -> Boo
           found = true
         }
       }
-      if !(found) {
+      if !found {
         return false
       }
     }
@@ -100,6 +121,7 @@ pub fn validate_arguments(tool : ToolDef, args : Array[(String, String)]) -> Boo
   true
 }
 
+///|
 /// 获取参数值 / Get argument value.
 pub fn get_argument(args : Array[(String, String)], name : String) -> String? {
   for i in 0..<args.length() {
@@ -110,8 +132,12 @@ pub fn get_argument(args : Array[(String, String)], name : String) -> String? {
   None
 }
 
+///|
 /// 获取必选参数 / Get required argument.
-pub fn get_required_argument(args : Array[(String, String)], name : String) -> String {
+pub fn get_required_argument(
+  args : Array[(String, String)],
+  name : String,
+) -> String {
   match get_argument(args, name) {
     Some(v) => v
     None => ""
@@ -121,8 +147,9 @@ pub fn get_required_argument(args : Array[(String, String)], name : String) -> S
 ///===
 /// 参数类型转换 / Parameter type conversion
 
+///|
 /// 转换为整数 / Convert to int.
-pub fn to_int_arg(value : String) -> Int? {
+pub fn to_int_arg(value : String) -> Int32? {
   let mut result = 0
   let mut sign = 1
   let mut start = 0
@@ -143,6 +170,7 @@ pub fn to_int_arg(value : String) -> Int? {
   Some(sign * result)
 }
 
+///|
 /// 转换为浮点 / Convert to double.
 pub fn to_double_arg(value : String) -> Double? {
   let mut result = 0.0
@@ -160,7 +188,9 @@ pub fn to_double_arg(value : String) -> Double? {
   for i in start..<value.length() {
     let code = value[i].to_int()
     if code == 46 {
-      if has_dot { return None }
+      if has_dot {
+        return None
+      }
       has_dot = true
     } else if code >= 48 && code <= 57 {
       let digit = (code - 48).to_double()
@@ -177,6 +207,7 @@ pub fn to_double_arg(value : String) -> Double? {
   Some(sign * result)
 }
 
+///|
 /// 转换为布尔 / Convert to bool.
 pub fn to_bool_arg(value : String) -> Bool? {
   if value == "true" || value == "1" {
@@ -191,25 +222,44 @@ pub fn to_bool_arg(value : String) -> Bool? {
 ///===
 /// 结果格式化 / Result formatting
 
+///|
 /// 成功结果 / Create success result.
-pub fn success_result(call_id : String, output : String, execution_time : Double) -> ToolResult {
+pub fn success_result(
+  call_id : String,
+  output : String,
+  execution_time : Double,
+) -> ToolResult {
   make_tool_result(call_id, true, output, "", execution_time)
 }
 
+///|
 /// 错误结果 / Create error result.
-pub fn error_result(call_id : String, error : String, execution_time : Double) -> ToolResult {
+pub fn error_result(
+  call_id : String,
+  error : String,
+  execution_time : Double,
+) -> ToolResult {
   make_tool_result(call_id, false, "", error, execution_time)
 }
 
+///|
 /// 结果转 JSON / Convert result to JSON-like string.
 pub fn result_to_json(result : ToolResult) -> String {
   let status = if result.success { "true" } else { "false" }
-  "{\"call_id\": \"" + result.call_id + "\", \"success\": " + status + ", \"output\": \"" + result.output + "\", \"error\": \"" + result.error + "\"}"
+  "{\"call_id\": \"" +
+  result.call_id +
+  "\", \"success\": " +
+  status +
+  ", \"output\": \"" +
+  result.output +
+  "\", \"error\": \"" +
+  result.error +
+  "\"}"
 }
 
+///|
 ///===
 /// 参数类型名称 / Parameter type name
-
 pub fn param_type_name(pt : ParamType) -> String {
   match pt {
     StringType => "string"
@@ -220,9 +270,9 @@ pub fn param_type_name(pt : ParamType) -> String {
   }
 }
 
+///|
 ///===
 /// ID
-
 pub fn tool_id() -> String {
   "agent_kit/tool"
 }

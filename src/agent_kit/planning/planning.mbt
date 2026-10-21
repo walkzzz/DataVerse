@@ -8,28 +8,37 @@
 ///
 /// Task decomposition / path planning / resource allocation / HTN / MDP.
 
+///|
 /// 任务 / Task.
 pub struct Task {
-  task_id : Int
+  task_id : Int32
   name : String
   description : String
-  priority : Int
-  duration : Int
+  priority : Int32
+  duration : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend Task with Eq::{equal, not_equal}
+
+///|
 pub extend Task with Debug::{to_repr}
 
+///|
 /// 计划 / Plan.
 pub struct Plan {
   plan_id : String
   tasks : Array[Task]
-  dependencies : Array[(Int, Int)]
+  dependencies : Array[(Int32, Int32)]
 } derive(Debug, Eq)
 
+///|
 pub extend Plan with Eq::{equal, not_equal}
+
+///|
 pub extend Plan with Debug::{to_repr}
 
+///|
 /// 目标 / Goal.
 pub struct Goal {
   goal_id : String
@@ -37,9 +46,13 @@ pub struct Goal {
   achieved : Bool
 } derive(Debug, Eq)
 
+///|
 pub extend Goal with Eq::{equal, not_equal}
+
+///|
 pub extend Goal with Debug::{to_repr}
 
+///|
 /// 动作 / Action.
 pub struct Action {
   action_id : String
@@ -49,29 +62,41 @@ pub struct Action {
   cost : Double
 } derive(Debug, Eq)
 
+///|
 pub extend Action with Eq::{equal, not_equal}
+
+///|
 pub extend Action with Debug::{to_repr}
 
+///|
 /// 状态 / State.
 pub struct State {
   state_id : String
   facts : Array[String]
 } derive(Debug, Eq)
 
+///|
 pub extend State with Eq::{equal, not_equal}
+
+///|
 pub extend State with Debug::{to_repr}
 
+///|
 /// 资源 / Resource.
 pub struct Resource {
   resource_id : String
   name : String
-  capacity : Int
-  used : Int
+  capacity : Int32
+  used : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend Resource with Eq::{equal, not_equal}
+
+///|
 pub extend Resource with Debug::{to_repr}
 
+///|
 /// 约束 / Constraint.
 pub struct Constraint {
   constraint_id : String
@@ -79,27 +104,39 @@ pub struct Constraint {
   penalty : Double
 } derive(Debug, Eq)
 
+///|
 pub extend Constraint with Eq::{equal, not_equal}
+
+///|
 pub extend Constraint with Debug::{to_repr}
 
+///|
 /// 时间线 / Timeline.
 pub struct Timeline {
   timeline_id : String
-  slots : Array[(Int, Int, String)]
+  slots : Array[(Int32, Int32, String)]
 } derive(Debug, Eq)
 
+///|
 pub extend Timeline with Eq::{equal, not_equal}
+
+///|
 pub extend Timeline with Debug::{to_repr}
 
+///|
 /// 有向无环图 / DAG.
 pub struct DAG {
   nodes : Array[String]
   edges : Array[(String, String)]
 } derive(Debug, Eq)
 
+///|
 pub extend DAG with Eq::{equal, not_equal}
+
+///|
 pub extend DAG with Debug::{to_repr}
 
+///|
 /// HTN 方法 / HTN method.
 pub struct HTNMethod {
   method_id : String
@@ -107,18 +144,26 @@ pub struct HTNMethod {
   subtasks : Array[String]
 } derive(Debug, Eq)
 
+///|
 pub extend HTNMethod with Eq::{equal, not_equal}
+
+///|
 pub extend HTNMethod with Debug::{to_repr}
 
+///|
 /// HTN / Hierarchical Task Network.
 pub struct HTN {
   htn_id : String
   methods : Array[HTNMethod]
 } derive(Debug, Eq)
 
+///|
 pub extend HTN with Eq::{equal, not_equal}
+
+///|
 pub extend HTN with Debug::{to_repr}
 
+///|
 /// MDP / Markov Decision Process.
 pub struct MDP {
   mdp_id : String
@@ -129,59 +174,100 @@ pub struct MDP {
   gamma : Double
 } derive(Debug, Eq)
 
+///|
 pub extend MDP with Eq::{equal, not_equal}
+
+///|
 pub extend MDP with Debug::{to_repr}
 
+///|
 /// 策略 / Policy.
 pub struct Policy {
   policy_id : String
   mapping : Array[(String, String)]
 } derive(Debug, Eq)
 
+///|
 pub extend Policy with Eq::{equal, not_equal}
+
+///|
 pub extend Policy with Debug::{to_repr}
 
 ///===
 /// 构造函数 / Constructors
 
+///|
 /// 构造任务 / Make task.
-pub fn make_task(task_id : Int, name : String, description : String, priority : Int, duration : Int) -> Task {
-  { task_id, name, description, priority, duration }
+pub fn make_task(
+  task_id : Int32,
+  name : String,
+  description : String,
+  priority : Int32,
+  duration : Int32,
+) -> Task {
+  { task_id, name, description, priority, duration, }
 }
 
+///|
 /// 构造计划 / Make plan.
-pub fn make_plan(plan_id : String, tasks : Array[Task], dependencies : Array[(Int, Int)]) -> Plan {
-  { plan_id, tasks, dependencies }
+pub fn make_plan(
+  plan_id : String,
+  tasks : Array[Task],
+  dependencies : Array[(Int32, Int32)],
+) -> Plan {
+  { plan_id, tasks, dependencies, }
 }
 
+///|
 /// 构造目标 / Make goal.
-pub fn make_goal(goal_id : String, description : String, achieved : Bool) -> Goal {
-  { goal_id, description, achieved }
+pub fn make_goal(
+  goal_id : String,
+  description : String,
+  achieved : Bool,
+) -> Goal {
+  { goal_id, description, achieved, }
 }
 
+///|
 /// 构造动作 / Make action.
-pub fn make_action(action_id : String, name : String, preconditions : Array[String], effects : Array[String], cost : Double) -> Action {
-  { action_id, name, preconditions, effects, cost }
+pub fn make_action(
+  action_id : String,
+  name : String,
+  preconditions : Array[String],
+  effects : Array[String],
+  cost : Double,
+) -> Action {
+  { action_id, name, preconditions, effects, cost, }
 }
 
 ///===
 /// 任务分解 / Task decomposition
 
+///|
 /// 分解任务 / Decompose task.
-pub fn decompose_task(task : Task, parts : Int) -> Array[Task] {
+pub fn decompose_task(task : Task, parts : Int32) -> Array[Task] {
   let result : Array[Task] = []
   if parts <= 0 {
     return result
   }
   let sub_duration = task.duration / parts
   for i = 0; i < parts; i = i + 1 {
-    result.push(make_task(task.task_id * 100 + i, task.name + "_sub_" + i.to_string(), "Subtask of " + task.description, task.priority, sub_duration))
+    result.push(
+      make_task(
+        task.task_id * 100 + i,
+        task.name + "_sub_" + i.to_string(),
+        "Subtask of " + task.description,
+        task.priority,
+        sub_duration,
+      ),
+    )
   }
   result
 }
 
+///|
 /// 子任务 / Subtasks.
-pub fn subtasks(plan : Plan, task_id : Int) -> Array[Task] {
+pub fn subtasks(plan : Plan, task_id : Int32) -> Array[Task] {
   let result : Array[Task] = []
   for i = 0; i < plan.dependencies.length(); i = i + 1 {
     if plan.dependencies[i].0 == task_id {
@@ -196,9 +282,10 @@ pub fn subtasks(plan : Plan, task_id : Int) -> Array[Task] {
   result
 }
 
+///|
 /// 任务依赖 / Task dependencies.
-pub fn task_dependencies(plan : Plan, task_id : Int) -> Array[Int] {
-  let result : Array[Int] = []
+pub fn task_dependencies(plan : Plan, task_id : Int32) -> Array[Int32] {
+  let result : Array[Int32] = []
   for i = 0; i < plan.dependencies.length(); i = i + 1 {
     if plan.dependencies[i].1 == task_id {
       result.push(plan.dependencies[i].0)
@@ -210,20 +297,23 @@ pub fn task_dependencies(plan : Plan, task_id : Int) -> Array[Int] {
 ///===
 /// 状态与搜索 / State and search
 
+///|
 /// 构造状态 / Make state.
 pub fn make_state(state_id : String, facts : Array[String]) -> State {
-  { state_id, facts }
+  { state_id, facts, }
 }
 
+///|
 /// 状态转移 / State transition.
 pub fn state_transition(state : State, action : Action) -> State {
   let new_facts = state.facts.copy()
   for i = 0; i < action.effects.length(); i = i + 1 {
     new_facts.push(action.effects[i])
   }
-  { state_id: state.state_id + "_" + action.action_id, facts: new_facts }
+  { state_id: state.state_id + "_" + action.action_id, facts: new_facts, }
 }
 
+///|
 /// 目标达成 / Goal reached.
 pub fn goal_reached(state : State, goal : Goal) -> Bool {
   if goal.achieved {
@@ -237,12 +327,18 @@ pub fn goal_reached(state : State, goal : Goal) -> Bool {
   false
 }
 
+///|
 /// 前向搜索 / Forward search.
-pub fn forward_search(initial : State, goal : Goal, actions : Array[Action], max_depth : Int) -> Array[Action] {
+pub fn forward_search(
+  initial : State,
+  goal : Goal,
+  actions : Array[Action],
+  max_depth : Int32,
+) -> Array[Action] {
   let result : Array[Action] = []
   let mut current = initial
   let mut depth = 0
-  while !(goal_reached(current, goal)) && depth < max_depth {
+  while !goal_reached(current, goal) && depth < max_depth {
     let mut applied = false
     for i = 0; i < actions.length(); i = i + 1 {
       let a = actions[i]
@@ -254,7 +350,7 @@ pub fn forward_search(initial : State, goal : Goal, actions : Array[Action], max
             found = true
           }
         }
-        if !(found) {
+        if !found {
           pre_ok = false
         }
       }
@@ -264,7 +360,7 @@ pub fn forward_search(initial : State, goal : Goal, actions : Array[Action], max
         applied = true
       }
     }
-    if !(applied) {
+    if !applied {
       return result
     }
     depth = depth + 1
@@ -272,8 +368,13 @@ pub fn forward_search(initial : State, goal : Goal, actions : Array[Action], max
   result
 }
 
+///|
 /// 后向搜索 / Backward search.
-pub fn backward_search(goal : Goal, actions : Array[Action], max_depth : Int) -> Array[Action] {
+pub fn backward_search(
+  goal : Goal,
+  actions : Array[Action],
+  max_depth : Int32,
+) -> Array[Action] {
   let result : Array[Action] = []
   let remaining : Array[String] = [goal.description]
   let mut depth = 0
@@ -295,8 +396,14 @@ pub fn backward_search(goal : Goal, actions : Array[Action], max_depth : Int) ->
   result
 }
 
+///|
 /// A* 搜索 / A-star search.
-pub fn a_star_search(start : String, goal : String, graph : Array[(String, String, Double)], heuristic : Array[(String, Double)]) -> Array[String] {
+pub fn a_star_search(
+  start : String,
+  goal : String,
+  graph : Array[(String, String, Double)],
+  heuristic : Array[(String, Double)],
+) -> Array[String] {
   let path : Array[String] = [start]
   let mut current = start
   let mut steps = 0
@@ -335,26 +442,33 @@ pub fn a_star_search(start : String, goal : String, graph : Array[(String, Strin
 ///===
 /// 资源管理 / Resource management
 
+///|
 /// 构造资源 / Make resource.
-pub fn make_resource(resource_id : String, name : String, capacity : Int) -> Resource {
-  { resource_id, name, capacity, used: 0 }
+pub fn make_resource(
+  resource_id : String,
+  name : String,
+  capacity : Int32,
+) -> Resource {
+  { resource_id, name, capacity, used: 0, }
 }
 
+///|
 /// 分配资源 / Allocate resource.
-pub fn allocate_resource_plan(resource : Resource, amount : Int) -> Resource {
+pub fn allocate_resource_plan(resource : Resource, amount : Int32) -> Resource {
   if resource.used + amount <= resource.capacity && amount >= 0 {
-    { ..resource, used: resource.used + amount }
+    { ..resource, used: resource.used + amount, }
   } else {
     resource
   }
 }
 
+///|
 /// 释放资源 / Deallocate resource.
-pub fn deallocate_resource(resource : Resource, amount : Int) -> Resource {
+pub fn deallocate_resource(resource : Resource, amount : Int32) -> Resource {
   if amount >= resource.used {
-    { ..resource, used: 0 }
+    { ..resource, used: 0, }
   } else if amount >= 0 {
-    { ..resource, used: resource.used - amount }
+    { ..resource, used: resource.used - amount, }
   } else {
     resource
   }
@@ -363,13 +477,23 @@ pub fn deallocate_resource(resource : Resource, amount : Int) -> Resource {
 ///===
 /// 约束 / Constraints
 
+///|
 /// 构造约束 / Make constraint.
-pub fn make_constraint(constraint_id : String, description : String, penalty : Double) -> Constraint {
-  { constraint_id, description, penalty }
+pub fn make_constraint(
+  constraint_id : String,
+  description : String,
+  penalty : Double,
+) -> Constraint {
+  { constraint_id, description, penalty, }
 }
 
+///|
 /// 检查约束 / Check constraint.
-pub fn check_constraint(constraint : Constraint, value : Double, limit : Double) -> Bool {
+pub fn check_constraint(
+  constraint : Constraint,
+  value : Double,
+  limit : Double,
+) -> Bool {
   if value <= limit {
     true
   } else {
@@ -377,14 +501,19 @@ pub fn check_constraint(constraint : Constraint, value : Double, limit : Double)
   }
 }
 
+///|
 /// 满足所有约束 / Satisfy constraints.
-pub fn satisfy_constraints(constraints : Array[Constraint], values : Array[Double], limits : Array[Double]) -> Bool {
+pub fn satisfy_constraints(
+  constraints : Array[Constraint],
+  values : Array[Double],
+  limits : Array[Double],
+) -> Bool {
   let n = constraints.length()
   if values.length() < n || limits.length() < n {
     return false
   }
   for i = 0; i < n; i = i + 1 {
-    if !(check_constraint(constraints[i], values[i], limits[i])) {
+    if !check_constraint(constraints[i], values[i], limits[i]) {
       return false
     }
   }
@@ -394,20 +523,27 @@ pub fn satisfy_constraints(constraints : Array[Constraint], values : Array[Doubl
 ///===
 /// 时间线 / Timeline
 
+///|
 /// 构造时间线 / Make timeline.
 pub fn make_timeline(timeline_id : String) -> Timeline {
-  { timeline_id, slots: [] }
+  { timeline_id, slots: [], }
 }
 
+///|
 /// 调度任务 / Schedule task.
-pub fn schedule_task_plan(timeline : Timeline, task : Task, start : Int) -> Timeline {
+pub fn schedule_task_plan(
+  timeline : Timeline,
+  task : Task,
+  start : Int32,
+) -> Timeline {
   let new_slots = timeline.slots.copy()
   new_slots.push((start, start + task.duration, task.name))
-  { ..timeline, slots: new_slots }
+  { ..timeline, slots: new_slots, }
 }
 
+///|
 /// 关键路径 / Critical path.
-pub fn critical_path(plan : Plan) -> Array[Int] {
+pub fn critical_path(plan : Plan) -> Array[Int32] {
   let n = plan.tasks.length()
   if n == 0 {
     return []
@@ -446,13 +582,13 @@ pub fn critical_path(plan : Plan) -> Array[Int] {
       max_idx = i
     }
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   result.push(plan.tasks[max_idx].task_id)
   let mut current = max_idx
 
   let mut done = false
   let mut loop_guard2 = 0
-  while !(done) && loop_guard2 < n {
+  while !done && loop_guard2 < n {
     done = true
     loop_guard2 = loop_guard2 + 1
     for j = 0; j < plan.dependencies.length(); j = j + 1 {
@@ -468,7 +604,7 @@ pub fn critical_path(plan : Plan) -> Array[Int] {
       }
     }
   }
-  let reversed : Array[Int] = []
+  let reversed : Array[Int32] = []
   let len = result.length()
   for i = 0; i < len; i = i + 1 {
     reversed.push(result[len - 1 - i])
@@ -479,12 +615,14 @@ pub fn critical_path(plan : Plan) -> Array[Int] {
 ///===
 /// DAG / Directed Acyclic Graph
 
+///|
 /// 构造 DAG / Make DAG.
 pub fn make_dag(nodes : Array[String], edges : Array[(String, String)]) -> DAG {
-  { nodes, edges }
+  { nodes, edges, }
 }
 
-fn node_index(dag : DAG, node : String) -> Int {
+///|
+fn node_index(dag : DAG, node : String) -> Int32 {
   for i = 0; i < dag.nodes.length(); i = i + 1 {
     if dag.nodes[i] == node {
       return i
@@ -493,6 +631,7 @@ fn node_index(dag : DAG, node : String) -> Int {
   -1
 }
 
+///|
 /// 拓扑排序 / Topological sort.
 pub fn topological_sort(dag : DAG) -> Array[String] {
   let result : Array[String] = []
@@ -503,7 +642,7 @@ pub fn topological_sort(dag : DAG) -> Array[String] {
   while remaining > 0 && loop_guard < n * n + 1 {
     loop_guard = loop_guard + 1
     for i = 0; i < n; i = i + 1 {
-      if !(visited[i]) {
+      if !visited[i] {
         let mut all_deps_visited = true
         for j = 0; j < dag.edges.length(); j = j + 1 {
           if dag.edges[j].1 == dag.nodes[i] {
@@ -513,7 +652,7 @@ pub fn topological_sort(dag : DAG) -> Array[String] {
                 dep_visited = true
               }
             }
-            if !(dep_visited) {
+            if !dep_visited {
               all_deps_visited = false
             }
           }
@@ -529,8 +668,9 @@ pub fn topological_sort(dag : DAG) -> Array[String] {
   result
 }
 
+///|
 /// 最长路径 / Longest path.
-pub fn longest_path(dag : DAG, source : String, target : String) -> Int {
+pub fn longest_path(dag : DAG, source : String, target : String) -> Int32 {
   let n = dag.nodes.length()
   if n == 0 {
     return 0
@@ -564,11 +704,13 @@ pub fn longest_path(dag : DAG, source : String, target : String) -> Int {
 ///===
 /// HTN / Hierarchical Task Network
 
+///|
 /// 构造 HTN / Make HTN.
 pub fn make_htn(htn_id : String, methods : Array[HTNMethod]) -> HTN {
-  { htn_id, methods }
+  { htn_id, methods, }
 }
 
+///|
 /// HTN 分解 / HTN decompose.
 pub fn htn_decompose(htn : HTN, task_name : String) -> Array[String] {
   for i = 0; i < htn.methods.length(); i = i + 1 {
@@ -579,10 +721,15 @@ pub fn htn_decompose(htn : HTN, task_name : String) -> Array[String] {
   []
 }
 
+///|
 /// HTN 规划 / HTN plan.
-pub fn htn_plan(htn : HTN, root_task : String, max_depth : Int) -> Array[String] {
+pub fn htn_plan(
+  htn : HTN,
+  root_task : String,
+  max_depth : Int32,
+) -> Array[String] {
   let result : Array[String] = []
-  let queue : Array[(String, Int)] = [(root_task, 0)]
+  let queue : Array[(String, Int32)] = [(root_task, 0)]
   while queue.length() > 0 {
     let item = queue.remove(queue.length() - 1)
     let task = item.0
@@ -607,11 +754,20 @@ pub fn htn_plan(htn : HTN, root_task : String, max_depth : Int) -> Array[String]
 ///===
 /// MDP / Markov Decision Process
 
+///|
 /// 构造 MDP / Make MDP.
-pub fn make_mdp(mdp_id : String, states : Array[String], actions : Array[String], transitions : Array[(String, String, String, Double)], rewards : Array[(String, String, Double)], gamma : Double) -> MDP {
-  { mdp_id, states, actions, transitions, rewards, gamma }
+pub fn make_mdp(
+  mdp_id : String,
+  states : Array[String],
+  actions : Array[String],
+  transitions : Array[(String, String, String, Double)],
+  rewards : Array[(String, String, Double)],
+  gamma : Double,
+) -> MDP {
+  { mdp_id, states, actions, transitions, rewards, gamma, }
 }
 
+///|
 fn state_value(values : Array[(String, Double)], s : String) -> Double {
   for i = 0; i < values.length(); i = i + 1 {
     if values[i].0 == s {
@@ -621,8 +777,13 @@ fn state_value(values : Array[(String, Double)], s : String) -> Double {
   0.0
 }
 
+///|
 /// 值迭代 / Value iteration.
-pub fn value_iteration(mdp : MDP, max_iter : Int, threshold : Double) -> Array[(String, Double)] {
+pub fn value_iteration(
+  mdp : MDP,
+  max_iter : Int32,
+  threshold : Double,
+) -> Array[(String, Double)] {
   let n = mdp.states.length()
   let values = Array::make(n, 0.0)
   let mut iter = 0
@@ -668,10 +829,8 @@ pub fn value_iteration(mdp : MDP, max_iter : Int, threshold : Double) -> Array[(
         if neg_diff > delta {
           delta = neg_diff
         }
-      } else {
-        if diff > delta {
-          delta = diff
-        }
+      } else if diff > delta {
+        delta = diff
       }
     }
     iter = iter + 1
@@ -683,8 +842,9 @@ pub fn value_iteration(mdp : MDP, max_iter : Int, threshold : Double) -> Array[(
   result
 }
 
+///|
 /// 策略迭代 / Policy iteration.
-pub fn policy_iteration(mdp : MDP, max_iter : Int) -> Policy {
+pub fn policy_iteration(mdp : MDP, max_iter : Int32) -> Policy {
   let n = mdp.states.length()
   let values = value_iteration(mdp, max_iter, 0.001)
   let new_mapping : Array[(String, String)] = []
@@ -718,11 +878,21 @@ pub fn policy_iteration(mdp : MDP, max_iter : Int) -> Policy {
     }
     new_mapping.push((s, best_action))
   }
-  { policy_id: "policy_" + mdp.mdp_id, mapping: new_mapping }
+  { policy_id: "policy_" + mdp.mdp_id, mapping: new_mapping, }
 }
 
+///|
 /// Q-learning 单步更新 / Q-learning step.
-pub fn q_learning_step(q_table : Array[(String, String, Double)], state : String, action : String, reward : Double, next_state : String, next_actions : Array[String], alpha : Double, gamma : Double) -> Array[(String, String, Double)] {
+pub fn q_learning_step(
+  q_table : Array[(String, String, Double)],
+  state : String,
+  action : String,
+  reward : Double,
+  next_state : String,
+  next_actions : Array[String],
+  alpha : Double,
+  gamma : Double,
+) -> Array[(String, String, Double)] {
   let new_q = q_table.copy()
   let mut current_q = 0.0
   let mut q_idx = -1
@@ -753,8 +923,18 @@ pub fn q_learning_step(q_table : Array[(String, String, Double)], state : String
   new_q
 }
 
+///|
 /// SARSA 单步更新 / SARSA step.
-pub fn sarsa_step(q_table : Array[(String, String, Double)], state : String, action : String, reward : Double, next_state : String, next_action : String, alpha : Double, gamma : Double) -> Array[(String, String, Double)] {
+pub fn sarsa_step(
+  q_table : Array[(String, String, Double)],
+  state : String,
+  action : String,
+  reward : Double,
+  next_state : String,
+  next_action : String,
+  alpha : Double,
+  gamma : Double,
+) -> Array[(String, String, Double)] {
   let new_q = q_table.copy()
   let mut current_q = 0.0
   let mut q_idx = -1
@@ -779,14 +959,19 @@ pub fn sarsa_step(q_table : Array[(String, String, Double)], state : String, act
   new_q
 }
 
+///|
 /// 构造策略 / Make policy.
-pub fn make_policy(policy_id : String, mapping : Array[(String, String)]) -> Policy {
-  { policy_id, mapping }
+pub fn make_policy(
+  policy_id : String,
+  mapping : Array[(String, String)],
+) -> Policy {
+  { policy_id, mapping, }
 }
 
 ///===
 /// 计划评估与优化 / Plan evaluation and optimization
 
+///|
 /// 评估计划 / Evaluate plan.
 pub fn evaluate_plan(plan : Plan) -> Double {
   let cost = plan_cost(plan)
@@ -794,6 +979,7 @@ pub fn evaluate_plan(plan : Plan) -> Double {
   cost + duration
 }
 
+///|
 /// 计划成本 / Plan cost.
 pub fn plan_cost(plan : Plan) -> Double {
   let mut total = 0.0
@@ -803,8 +989,9 @@ pub fn plan_cost(plan : Plan) -> Double {
   total
 }
 
+///|
 /// 计划工期 / Plan duration.
-pub fn plan_duration(plan : Plan) -> Int {
+pub fn plan_duration(plan : Plan) -> Int32 {
   let mut total = 0
   for i = 0; i < plan.tasks.length(); i = i + 1 {
     total = total + plan.tasks[i].duration
@@ -812,6 +999,7 @@ pub fn plan_duration(plan : Plan) -> Int {
   total
 }
 
+///|
 /// 优化计划 / Optimize plan.
 pub fn optimize_plan(plan : Plan) -> Plan {
   let sorted_tasks = plan.tasks.copy()
@@ -825,9 +1013,10 @@ pub fn optimize_plan(plan : Plan) -> Plan {
       }
     }
   }
-  { ..plan, tasks: sorted_tasks }
+  { ..plan, tasks: sorted_tasks, }
 }
 
+///|
 /// 并行化任务 / Parallelize tasks.
 pub fn parallelize_tasks(plan : Plan) -> Array[Array[Task]] {
   let result : Array[Array[Task]] = []
@@ -842,7 +1031,7 @@ pub fn parallelize_tasks(plan : Plan) -> Array[Array[Task]] {
     loop_guard = loop_guard + 1
     let batch : Array[Task] = []
     for i = 0; i < n; i = i + 1 {
-      if !(scheduled[i]) {
+      if !scheduled[i] {
         let mut deps_ok = true
         for j = 0; j < plan.dependencies.length(); j = j + 1 {
           if plan.dependencies[j].1 == plan.tasks[i].task_id {
@@ -852,7 +1041,7 @@ pub fn parallelize_tasks(plan : Plan) -> Array[Array[Task]] {
                 dep_done = true
               }
             }
-            if !(dep_done) {
+            if !dep_done {
               deps_ok = false
             }
           }
@@ -873,6 +1062,7 @@ pub fn parallelize_tasks(plan : Plan) -> Array[Array[Task]] {
   result
 }
 
+///|
 /// 序列化任务 / Serialize tasks.
 pub fn serialize_tasks(plan : Plan) -> Array[Task] {
   let n = plan.tasks.length()
@@ -885,7 +1075,9 @@ pub fn serialize_tasks(plan : Plan) -> Array[Task] {
     node_names.push(plan.tasks[i].task_id.to_string())
   }
   for j = 0; j < plan.dependencies.length(); j = j + 1 {
-    edges.push((plan.dependencies[j].0.to_string(), plan.dependencies[j].1.to_string()))
+    edges.push(
+      (plan.dependencies[j].0.to_string(), plan.dependencies[j].1.to_string()),
+    )
   }
   let dag = make_dag(node_names, edges)
   let sorted = topological_sort(dag)
@@ -900,6 +1092,7 @@ pub fn serialize_tasks(plan : Plan) -> Array[Task] {
   result
 }
 
+///|
 /// 模块标识 / Module id.
 pub fn planning_id() -> String {
   "agent_kit/planning"

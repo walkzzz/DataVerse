@@ -7,6 +7,7 @@
 ///
 /// # 3D analysis operators
 
+///|
 /// 三维点 / 3D point.
 pub struct Point3D {
   x : Double
@@ -14,6 +15,7 @@ pub struct Point3D {
   z : Double
 }
 
+///|
 /// 三维包围盒 / 3D bounding box.
 pub struct BBox3D {
   min_x : Double
@@ -24,11 +26,13 @@ pub struct BBox3D {
   max_z : Double
 }
 
+///|
 /// 构造三维点 / Create 3D point.
 pub fn make_point3d(x : Double, y : Double, z : Double) -> Point3D {
-  { x: x, y: y, z: z }
+  { x, y, z, }
 }
 
+///|
 /// 构造三维包围盒 / Create 3D bounding box.
 pub fn make_bbox3d(
   min_x : Double,
@@ -38,12 +42,13 @@ pub fn make_bbox3d(
   max_y : Double,
   max_z : Double,
 ) -> BBox3D {
-  { min_x: min_x, min_y: min_y, min_z: min_z, max_x: max_x, max_y: max_y, max_z: max_z }
+  { min_x, min_y, min_z, max_x, max_y, max_z, }
 }
 
 ///===
 /// 三维距离
 
+///|
 /// 三维欧氏距离 / 3D Euclidean distance.
 pub fn distance3d(p1 : Point3D, p2 : Point3D) -> Double {
   let dx = p2.x - p1.x
@@ -52,6 +57,7 @@ pub fn distance3d(p1 : Point3D, p2 : Point3D) -> Double {
   (dx * dx + dy * dy + dz * dz).sqrt()
 }
 
+///|
 /// 三维曼哈顿距离 / 3D Manhattan distance.
 pub fn manhattan3d(p1 : Point3D, p2 : Point3D) -> Double {
   let dx = p2.x - p1.x
@@ -63,6 +69,7 @@ pub fn manhattan3d(p1 : Point3D, p2 : Point3D) -> Double {
   abs_dx + abs_dy + abs_dz
 }
 
+///|
 /// 三维切比雪夫距离 / 3D Chebyshev distance.
 pub fn chebyshev3d(p1 : Point3D, p2 : Point3D) -> Double {
   let dx = p2.x - p1.x
@@ -84,10 +91,18 @@ pub fn chebyshev3d(p1 : Point3D, p2 : Point3D) -> Double {
 ///===
 /// 三维包围盒
 
+///|
 /// 三维包围盒 / Compute 3D bounding box.
 pub fn bbox3d(points : Array[Point3D]) -> BBox3D {
   if points.length() == 0 {
-    return { min_x: 0.0, min_y: 0.0, min_z: 0.0, max_x: 0.0, max_y: 0.0, max_z: 0.0 }
+    return {
+      min_x: 0.0,
+      min_y: 0.0,
+      min_z: 0.0,
+      max_x: 0.0,
+      max_y: 0.0,
+      max_z: 0.0,
+    }
   }
   let mut min_x = points[0].x
   let mut min_y = points[0].y
@@ -116,14 +131,18 @@ pub fn bbox3d(points : Array[Point3D]) -> BBox3D {
       max_z = p.z
     }
   }
-  { min_x: min_x, min_y: min_y, min_z: min_z, max_x: max_x, max_y: max_y, max_z: max_z }
+  { min_x, min_y, min_z, max_x, max_y, max_z, }
 }
 
+///|
 /// 包围盒体积 / Bounding box volume.
 pub fn bbox3d_volume(bbox : BBox3D) -> Double {
-  (bbox.max_x - bbox.min_x) * (bbox.max_y - bbox.min_y) * (bbox.max_z - bbox.min_z)
+  (bbox.max_x - bbox.min_x) *
+  (bbox.max_y - bbox.min_y) *
+  (bbox.max_z - bbox.min_z)
 }
 
+///|
 /// 包围盒中心 / Bounding box center.
 pub fn bbox3d_center(bbox : BBox3D) -> Point3D {
   {
@@ -136,6 +155,7 @@ pub fn bbox3d_center(bbox : BBox3D) -> Point3D {
 ///===
 /// 三维缓冲
 
+///|
 /// 三维缓冲 / 3D buffer (simplified, returns bounding box expanded by radius).
 pub fn buffer3d(point : Point3D, radius : Double) -> BBox3D {
   {
@@ -151,6 +171,7 @@ pub fn buffer3d(point : Point3D, radius : Double) -> BBox3D {
 ///===
 /// 视线分析
 
+///|
 /// 视线分析 / Line of sight (simplified, check if target is visible from observer).
 pub fn line_of_sight(
   observer : Point3D,
@@ -176,12 +197,13 @@ pub fn line_of_sight(
   true
 }
 
+///|
 /// 可视域分析 / Viewshed 3D (simplified, count visible points).
 pub fn viewshed3d(
   observer : Point3D,
   targets : Array[Point3D],
   obstacles : Array[Point3D],
-) -> Int {
+) -> Int32 {
   let mut count = 0
   for i in 0..<targets.length() {
     if line_of_sight(observer, targets[i], obstacles) {
@@ -194,11 +216,12 @@ pub fn viewshed3d(
 ///===
 /// 天际线
 
+///|
 /// 天际线分析 / Skyline (simplified, find max z for each direction).
 pub fn skyline(
   observer : Point3D,
   points : Array[Point3D],
-  n_directions : Int,
+  n_directions : Int32,
 ) -> Array[Double] {
   let result : Array[Double] = Array::make(n_directions, 0.0)
   for i in 0..<points.length() {
@@ -217,7 +240,12 @@ pub fn skyline(
         angle = angle + 3.141592653589793
       }
     }
-    let dir_idx = ((angle / 6.283185307179586 * n_directions.to_double()).to_int() % n_directions + n_directions) % n_directions
+    let dir_idx = (
+        (angle / 6.283185307179586 * n_directions.to_double()).to_int() %
+        n_directions +
+        n_directions
+      ) %
+      n_directions
     if p.z > result[dir_idx] {
       result[dir_idx] = p.z
     }
@@ -228,6 +256,7 @@ pub fn skyline(
 ///===
 /// 体积与表面积
 
+///|
 /// 三维体积 / 3D volume (simplified, using bounding box).
 pub fn volume3d(points : Array[Point3D]) -> Double {
   if points.length() < 4 {
@@ -237,6 +266,7 @@ pub fn volume3d(points : Array[Point3D]) -> Double {
   bbox3d_volume(bbox)
 }
 
+///|
 /// 表面积 / Surface area (simplified, using bounding box faces).
 pub fn surface_area3d(points : Array[Point3D]) -> Double {
   if points.length() < 4 {
@@ -252,21 +282,34 @@ pub fn surface_area3d(points : Array[Point3D]) -> Double {
 ///===
 /// 三维变换
 
+///|
 /// 平移 / Translate 3D point.
-pub fn translate3d(point : Point3D, dx : Double, dy : Double, dz : Double) -> Point3D {
-  { x: point.x + dx, y: point.y + dy, z: point.z + dz }
+pub fn translate3d(
+  point : Point3D,
+  dx : Double,
+  dy : Double,
+  dz : Double,
+) -> Point3D {
+  { x: point.x + dx, y: point.y + dy, z: point.z + dz, }
 }
 
+///|
 /// 缩放 / Scale 3D point.
-pub fn scale3d(point : Point3D, sx : Double, sy : Double, sz : Double) -> Point3D {
-  { x: point.x * sx, y: point.y * sy, z: point.z * sz }
+pub fn scale3d(
+  point : Point3D,
+  sx : Double,
+  sy : Double,
+  sz : Double,
+) -> Point3D {
+  { x: point.x * sx, y: point.y * sy, z: point.z * sz, }
 }
 
+///|
 /// 质心 / Centroid 3D.
 pub fn centroid3d(points : Array[Point3D]) -> Point3D {
   let n = points.length()
   if n == 0 {
-    return { x: 0.0, y: 0.0, z: 0.0 }
+    return { x: 0.0, y: 0.0, z: 0.0, }
   }
   let mut sum_x = 0.0
   let mut sum_y = 0.0
@@ -276,25 +319,41 @@ pub fn centroid3d(points : Array[Point3D]) -> Point3D {
     sum_y = sum_y + points[i].y
     sum_z = sum_z + points[i].z
   }
-  { x: sum_x / n.to_double(), y: sum_y / n.to_double(), z: sum_z / n.to_double() }
+  {
+    x: sum_x / n.to_double(),
+    y: sum_y / n.to_double(),
+    z: sum_z / n.to_double(),
+  }
 }
 
 ///===
 /// 三维相交
 
+///|
 /// 包围盒相交 / Bounding box intersection.
 pub fn bbox3d_intersects(b1 : BBox3D, b2 : BBox3D) -> Bool {
-  !(b1.max_x < b2.min_x || b2.max_x < b1.min_x || b1.max_y < b2.min_y || b2.max_y < b1.min_y || b1.max_z < b2.min_z || b2.max_z < b1.min_z)
+  !(b1.max_x < b2.min_x ||
+  b2.max_x < b1.min_x ||
+  b1.max_y < b2.min_y ||
+  b2.max_y < b1.min_y ||
+  b1.max_z < b2.min_z ||
+  b2.max_z < b1.min_z)
 }
 
+///|
 /// 包围盒包含 / Bounding box contains point.
 pub fn bbox3d_contains(bbox : BBox3D, point : Point3D) -> Bool {
-  point.x >= bbox.min_x && point.x <= bbox.max_x && point.y >= bbox.min_y && point.y <= bbox.max_y && point.z >= bbox.min_z && point.z <= bbox.max_z
+  point.x >= bbox.min_x &&
+  point.x <= bbox.max_x &&
+  point.y >= bbox.min_y &&
+  point.y <= bbox.max_y &&
+  point.z >= bbox.min_z &&
+  point.z <= bbox.max_z
 }
 
+///|
 ///===
 /// ID
-
 pub fn analysis3d_id() -> String {
   "opcore/analysis3d"
 }

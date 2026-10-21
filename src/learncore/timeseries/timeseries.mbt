@@ -9,9 +9,10 @@
 ///===
 /// 基础工具
 
+///|
 /// 移动平均 / Simple Moving Average.
 /// SMA(t) = mean(x[t-window+1], ..., x[t])
-pub fn moving_average(data : Array[Double], window : Int) -> Array[Double] {
+pub fn moving_average(data : Array[Double], window : Int32) -> Array[Double] {
   let n = data.length()
   if n == 0 || window <= 0 {
     return []
@@ -21,7 +22,7 @@ pub fn moving_average(data : Array[Double], window : Int) -> Array[Double] {
     let start = if i >= window { i - window + 1 } else { 0 }
     let mut sum = 0.0
     let count = i - start + 1
-    for j in start..=i {
+    for j in start..<=i {
       sum = sum + data[j]
     }
     result.push(sum / count.to_double())
@@ -29,9 +30,13 @@ pub fn moving_average(data : Array[Double], window : Int) -> Array[Double] {
   result
 }
 
+///|
 /// 指数平滑 / Exponential Smoothing.
 /// S(t) = alpha * x(t) + (1 - alpha) * S(t-1)
-pub fn exponential_smoothing(data : Array[Double], alpha : Double) -> Array[Double] {
+pub fn exponential_smoothing(
+  data : Array[Double],
+  alpha : Double,
+) -> Array[Double] {
   let n = data.length()
   if n == 0 {
     return []
@@ -44,6 +49,7 @@ pub fn exponential_smoothing(data : Array[Double], alpha : Double) -> Array[Doub
   result
 }
 
+///|
 /// 差分 / Differencing.
 /// d(t) = x(t) - x(t-1)
 pub fn difference(data : Array[Double]) -> Array[Double] {
@@ -58,8 +64,9 @@ pub fn difference(data : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 /// k 阶差分 / k-th order differencing.
-pub fn difference_k(data : Array[Double], k : Int) -> Array[Double] {
+pub fn difference_k(data : Array[Double], k : Int32) -> Array[Double] {
   let mut result = data
   for _i in 0..<k {
     result = difference(result)
@@ -67,9 +74,13 @@ pub fn difference_k(data : Array[Double], k : Int) -> Array[Double] {
   result
 }
 
+///|
 /// 季节差分 / Seasonal differencing.
 /// d(t) = x(t) - x(t - period)
-pub fn seasonal_difference(data : Array[Double], period : Int) -> Array[Double] {
+pub fn seasonal_difference(
+  data : Array[Double],
+  period : Int32,
+) -> Array[Double] {
   let n = data.length()
   if n <= period || period <= 0 {
     return []
@@ -84,9 +95,10 @@ pub fn seasonal_difference(data : Array[Double], period : Int) -> Array[Double] 
 ///===
 /// 自相关
 
+///|
 /// 自相关函数 / Autocorrelation function (ACF).
 /// ACF(k) = Cov(x_t, x_{t-k}) / Var(x)
-pub fn autocorrelation(data : Array[Double], max_lag : Int) -> Array[Double] {
+pub fn autocorrelation(data : Array[Double], max_lag : Int32) -> Array[Double] {
   let n = data.length()
   if n == 0 || max_lag <= 0 {
     return []
@@ -105,7 +117,7 @@ pub fn autocorrelation(data : Array[Double], max_lag : Int) -> Array[Double] {
     return Array::make(max_lag + 1, 0.0)
   }
   let result : Array[Double] = []
-  for lag in 0..=max_lag {
+  for lag in 0..<=max_lag {
     let mut cov = 0.0
     for i in lag..<n {
       cov = cov + (data[i] - mean) * (data[i - lag] - mean)
@@ -115,8 +127,12 @@ pub fn autocorrelation(data : Array[Double], max_lag : Int) -> Array[Double] {
   result
 }
 
+///|
 /// 偏自相关函数 / Partial autocorrelation (PACF, simplified).
-pub fn partial_autocorrelation(data : Array[Double], max_lag : Int) -> Array[Double] {
+pub fn partial_autocorrelation(
+  data : Array[Double],
+  max_lag : Int32,
+) -> Array[Double] {
   let acf = autocorrelation(data, max_lag)
   if acf.length() == 0 {
     return []
@@ -130,9 +146,10 @@ pub fn partial_autocorrelation(data : Array[Double], max_lag : Int) -> Array[Dou
   result
 }
 
+///|
 /// 滞后算子 / Lag operator.
 /// L(x, k)(t) = x(t - k)
-pub fn lag_operator(data : Array[Double], k : Int) -> Array[Double] {
+pub fn lag_operator(data : Array[Double], k : Int32) -> Array[Double] {
   let n = data.length()
   if n == 0 || k <= 0 {
     return data
@@ -149,25 +166,28 @@ pub fn lag_operator(data : Array[Double], k : Int) -> Array[Double] {
 ///===
 /// ARIMA
 
+///|
 /// ARIMA 参数 / ARIMA parameters.
 pub struct ArimaParams {
-  p : Int
-  d : Int
-  q : Int
+  p : Int32
+  d : Int32
+  q : Int32
 }
 
+///|
 /// 构造 ARIMA 参数 / Create ARIMA params.
-pub fn make_arima_params(p : Int, d : Int, q : Int) -> ArimaParams {
-  { p, d, q }
+pub fn make_arima_params(p : Int32, d : Int32, q : Int32) -> ArimaParams {
+  { p, d, q, }
 }
 
+///|
 /// AR 模型预测 / Autoregressive model prediction.
 /// x(t) = c + sum(phi_i * x(t-i))
 pub fn ar_predict(
   data : Array[Double],
   phi : Array[Double],
   constant : Double,
-  steps : Int
+  steps : Int32,
 ) -> Array[Double] {
   let n = data.length()
   let p = phi.length()
@@ -190,11 +210,12 @@ pub fn ar_predict(
   result
 }
 
+///|
 /// MA 模型预测 / Moving average model prediction (simplified).
 pub fn ma_predict(
   data : Array[Double],
   theta : Array[Double],
-  steps : Int
+  steps : Int32,
 ) -> Array[Double] {
   let q = theta.length()
   let result : Array[Double] = []
@@ -216,13 +237,14 @@ pub fn ma_predict(
   result
 }
 
+///|
 /// ARIMA 预测 / ARIMA prediction (simplified).
 pub fn arima_predict(
   data : Array[Double],
   params : ArimaParams,
   phi : Array[Double],
   theta : Array[Double],
-  steps : Int
+  steps : Int32,
 ) -> Array[Double] {
   let diffed = difference_k(data, params.d)
   let ar_forecast = ar_predict(diffed, phi, 0.0, steps)
@@ -243,32 +265,35 @@ pub fn arima_predict(
 ///===
 /// GARCH
 
+///|
 /// GARCH 参数 / GARCH parameters.
 pub struct GarchParams {
-  p : Int
-  q : Int
+  p : Int32
+  q : Int32
   alpha : Array[Double]
   beta : Array[Double]
   omega : Double
 }
 
+///|
 /// 构造 GARCH 参数 / Create GARCH params.
 pub fn make_garch_params(
-  p : Int,
-  q : Int,
+  p : Int32,
+  q : Int32,
   alpha : Array[Double],
   beta : Array[Double],
-  omega : Double
+  omega : Double,
 ) -> GarchParams {
-  { p, q, alpha, beta, omega }
+  { p, q, alpha, beta, omega, }
 }
 
+///|
 /// GARCH 条件方差预测 / GARCH conditional variance prediction.
 /// sigma^2(t) = omega + sum(alpha_i * r^2(t-i)) + sum(beta_j * sigma^2(t-j))
 pub fn garch_predict(
   returns : Array[Double],
   params : GarchParams,
-  steps : Int
+  steps : Int32,
 ) -> Array[Double] {
   let n = returns.length()
   let result : Array[Double] = []
@@ -299,6 +324,7 @@ pub fn garch_predict(
 ///===
 /// 季节分解
 
+///|
 /// 季节分解结果 / Seasonal decomposition result.
 pub struct SeasonalDecomposeResult {
   trend : Array[Double]
@@ -306,12 +332,16 @@ pub struct SeasonalDecomposeResult {
   residual : Array[Double]
 }
 
+///|
 /// 季节分解 / Seasonal decomposition (simplified additive).
 /// x = trend + seasonal + residual
-pub fn seasonal_decompose(data : Array[Double], period : Int) -> SeasonalDecomposeResult {
+pub fn seasonal_decompose(
+  data : Array[Double],
+  period : Int32,
+) -> SeasonalDecomposeResult {
   let n = data.length()
   if n == 0 || period <= 0 {
-    return { trend: [], seasonal: [], residual: [] }
+    return { trend: [], seasonal: [], residual: [], }
   }
   let trend = moving_average(data, period)
   let detrended : Array[Double] = []
@@ -339,11 +369,12 @@ pub fn seasonal_decompose(data : Array[Double], period : Int) -> SeasonalDecompo
   for i in 0..<n {
     residual.push(data[i] - trend[i] - seasonal[i])
   }
-  { trend, seasonal, residual }
+  { trend, seasonal, residual, }
 }
 
+///|
 /// 季节调整 / Seasonal adjustment.
-pub fn seasonal_adjust(data : Array[Double], period : Int) -> Array[Double] {
+pub fn seasonal_adjust(data : Array[Double], period : Int32) -> Array[Double] {
   let decomp = seasonal_decompose(data, period)
   let result : Array[Double] = []
   for i in 0..<data.length() {
@@ -355,24 +386,32 @@ pub fn seasonal_adjust(data : Array[Double], period : Int) -> Array[Double] {
 ///===
 /// Holt-Winters
 
+///|
 /// Holt-Winters 参数 / Holt-Winters parameters.
 pub struct HoltWintersParams {
   alpha : Double
   beta : Double
   gamma : Double
-  period : Int
+  period : Int32
 }
 
+///|
 /// 构造 Holt-Winters 参数 / Create Holt-Winters params.
-pub fn make_holt_winters_params(alpha : Double, beta : Double, gamma : Double, period : Int) -> HoltWintersParams {
-  { alpha, beta, gamma, period }
+pub fn make_holt_winters_params(
+  alpha : Double,
+  beta : Double,
+  gamma : Double,
+  period : Int32,
+) -> HoltWintersParams {
+  { alpha, beta, gamma, period, }
 }
 
+///|
 /// Holt-Winters 预测 / Holt-Winters forecasting.
 pub fn holt_winters_forecast(
   data : Array[Double],
   params : HoltWintersParams,
-  steps : Int
+  steps : Int32,
 ) -> Array[Double] {
   let n = data.length()
   let p = params.period
@@ -390,12 +429,15 @@ pub fn holt_winters_forecast(
   for i in 1..<n {
     let s_idx = i % p
     let prev_level = level
-    level = params.alpha * (data[i] - seasonal[s_idx]) + (1.0 - params.alpha) * (level + trend_val)
-    trend_val = params.beta * (level - prev_level) + (1.0 - params.beta) * trend_val
-    seasonal[s_idx] = params.gamma * (data[i] - level) + (1.0 - params.gamma) * seasonal[s_idx]
+    level = params.alpha * (data[i] - seasonal[s_idx]) +
+      (1.0 - params.alpha) * (level + trend_val)
+    trend_val = params.beta * (level - prev_level) +
+      (1.0 - params.beta) * trend_val
+    seasonal[s_idx] = params.gamma * (data[i] - level) +
+      (1.0 - params.gamma) * seasonal[s_idx]
   }
   let result : Array[Double] = []
-  for h in 1..=steps {
+  for h in 1..<=steps {
     let s_idx = (n + h - 1) % p
     result.push(level + h.to_double() * trend_val + seasonal[s_idx])
   }
@@ -405,11 +447,9 @@ pub fn holt_winters_forecast(
 ///===
 /// Prophet 简化
 
+///|
 /// Prophet 预测（简化）/ Prophet forecasting (simplified linear trend).
-pub fn prophet_forecast(
-  data : Array[Double],
-  steps : Int
-) -> Array[Double] {
+pub fn prophet_forecast(data : Array[Double], steps : Int32) -> Array[Double] {
   let n = data.length()
   if n == 0 {
     return []
@@ -427,10 +467,14 @@ pub fn prophet_forecast(
   }
   let nd = n.to_double()
   let denom = nd * sum_x2 - sum_x * sum_x
-  let slope = if denom != 0.0 { (nd * sum_xy - sum_x * sum_y) / denom } else { 0.0 }
+  let slope = if denom != 0.0 {
+    (nd * sum_xy - sum_x * sum_y) / denom
+  } else {
+    0.0
+  }
   let intercept = (sum_y - slope * sum_x) / nd
   let result : Array[Double] = []
-  for h in 1..=steps {
+  for h in 1..<=steps {
     let x = (n + h - 1).to_double()
     result.push(intercept + slope * x)
   }
@@ -440,6 +484,7 @@ pub fn prophet_forecast(
 ///===
 /// 卡尔曼滤波
 
+///|
 /// 卡尔曼滤波一步 / Kalman filter single step.
 /// x_pred = A * x_prev + B * u
 /// P_pred = A * P_prev * A^T + Q
@@ -451,7 +496,7 @@ pub fn kalman_filter_step(
   p_prev : Double,
   measurement : Double,
   process_noise : Double,
-  measurement_noise : Double
+  measurement_noise : Double,
 ) -> (Double, Double) {
   let x_pred = x_prev
   let p_pred = p_prev + process_noise
@@ -461,19 +506,26 @@ pub fn kalman_filter_step(
   (x_update, p_update)
 }
 
+///|
 /// 卡尔曼滤波序列 / Kalman filter sequence.
 pub fn kalman_filter(
   measurements : Array[Double],
   initial_state : Double,
   initial_covariance : Double,
   process_noise : Double,
-  measurement_noise : Double
+  measurement_noise : Double,
 ) -> Array[Double] {
   let result : Array[Double] = []
   let mut x = initial_state
   let mut p = initial_covariance
   for i in 0..<measurements.length() {
-    let (new_x, new_p) = kalman_filter_step(x, p, measurements[i], process_noise, measurement_noise)
+    let (new_x, new_p) = kalman_filter_step(
+      x,
+      p,
+      measurements[i],
+      process_noise,
+      measurement_noise,
+    )
     x = new_x
     p = new_p
     result.push(x)
@@ -484,6 +536,7 @@ pub fn kalman_filter(
 ///===
 /// 检验
 
+///|
 /// 平稳性检验（简化）/ Stationarity test (simplified, ADF-like).
 /// 返回 True 表示可能平稳。
 pub fn is_stationary(data : Array[Double]) -> Bool {
@@ -495,6 +548,7 @@ pub fn is_stationary(data : Array[Double]) -> Bool {
   acf[0] < 0.5
 }
 
+///|
 /// 白噪声检验（简化）/ White noise test (simplified).
 /// 返回 True 表示可能是白噪声。
 pub fn is_white_noise(data : Array[Double]) -> Bool {
@@ -514,11 +568,12 @@ pub fn is_white_noise(data : Array[Double]) -> Bool {
 ///===
 /// 回测
 
+///|
 /// 回测 / Backtest forecast accuracy.
 pub fn backtest(
   data : Array[Double],
-  forecast_fn : (Array[Double], Int) -> Array[Double],
-  test_size : Int
+  forecast_fn : (Array[Double], Int32) -> Array[Double],
+  test_size : Int32,
 ) -> Double {
   let n = data.length()
   if n <= test_size || test_size <= 0 {
@@ -539,9 +594,9 @@ pub fn backtest(
   (sse / test_size.to_double()).sqrt()
 }
 
+///|
 ///===
 /// ID
-
 pub fn timeseries_id() -> String {
   "learncore/timeseries"
 }

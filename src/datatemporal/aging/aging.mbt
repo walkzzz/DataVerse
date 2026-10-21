@@ -8,20 +8,29 @@
 ///
 /// Time-based exponential decay. See architecture §4.4.
 
+///|
 /// 衰减配置 / Aging config.
 pub struct AgingConfig {
   half_life_days : Double
   reference_time_days : Double
 } derive(Debug, Eq)
 
+///|
 pub extend AgingConfig with Eq::{equal, not_equal}
+
+///|
 pub extend AgingConfig with Debug::{to_repr}
 
+///|
 /// 构造衰减配置 / Build aging config.
-pub fn make_aging_config(half_life_days : Double, reference_time_days : Double) -> AgingConfig {
-  { half_life_days, reference_time_days }
+pub fn make_aging_config(
+  half_life_days : Double,
+  reference_time_days : Double,
+) -> AgingConfig {
+  { half_life_days, reference_time_days, }
 }
 
+///|
 /// 衰减权重 / Aging weight.
 ///
 /// 公式：`2^(-(reference - timestamp) / half_life)`。
@@ -41,10 +50,14 @@ pub fn aging_weight(timestamp_days : Double, config : AgingConfig) -> Double {
   }
 }
 
+///|
 /// 衰减分数 / Aging score for multiple timestamps.
 ///
 /// 返回平均衰减权重。退化安全：空数组返回 0.0。
-pub fn aging_score(timestamps_days : Array[Double], config : AgingConfig) -> Double {
+pub fn aging_score(
+  timestamps_days : Array[Double],
+  config : AgingConfig,
+) -> Double {
   let n = timestamps_days.length()
   if n == 0 {
     0.0
@@ -57,6 +70,7 @@ pub fn aging_score(timestamps_days : Array[Double], config : AgingConfig) -> Dou
   }
 }
 
+///|
 /// 2 的幂次 / 2^x (for x >= 0).
 fn pow2(x : Double) -> Double {
   let ln2 = 0.6931471805599453
@@ -70,6 +84,7 @@ fn pow2(x : Double) -> Double {
   result
 }
 
+///|
 pub fn aging_id() -> String {
   "datatemporal/aging"
 }

@@ -8,34 +8,44 @@
 ///
 /// Encoding/whitespace/schema normalization. See architecture §4.3.2 ②.
 
+///|
 /// 空白归一：合并连续空白为单空格，去除首尾空白 / Whitespace normalization.
 ///
 /// 对标 DJ `whitespace_normalization_mapper`。
 pub fn whitespace_normalization(
-  input : @dataobject.DataObject
+  input : @dataobject.DataObject,
 ) -> @dataobject.DataObject {
   let normalized = collapse_whitespace(input.content)
   @dataobject.make_dataobject_with_metadata(
-    normalized, input.modality, input.schema, input.metadata,
+    normalized,
+    input.modality,
+    input.schema,
+    input.metadata,
   )
 }
 
+///|
 /// 标点归一：全角标点转半角 / Punctuation normalization (full-width to half-width).
 ///
 /// 对标 DJ `punctuation_normalization_mapper`。S1.1 基础版：转换常见全角标点。
 pub fn punctuation_normalization(
-  input : @dataobject.DataObject
+  input : @dataobject.DataObject,
 ) -> @dataobject.DataObject {
   let normalized = normalize_punctuation(input.content)
   @dataobject.make_dataobject_with_metadata(
-    normalized, input.modality, input.schema, input.metadata,
+    normalized,
+    input.modality,
+    input.schema,
+    input.metadata,
   )
 }
 
+///|
 pub fn normalize_id() -> String {
   "opcore/normalize"
 }
 
+///|
 fn collapse_whitespace(s : String) -> String {
   let result = []
   let chars = s.to_array()
@@ -55,6 +65,7 @@ fn collapse_whitespace(s : String) -> String {
   String::from_array(result).trim().to_owned()
 }
 
+///|
 fn normalize_punctuation(s : String) -> String {
   let chars = s.to_array()
   let result = []

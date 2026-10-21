@@ -6,7 +6,6 @@
 /// # Federated Learning
 ///
 /// FedAvg, FedProx, SCAFFOLD, Split Learning, DP, Secure Aggregation, Byzantine-robust, Personalization.
-
 fn exp(x : Double) -> Double {
   if x > 20.0 {
     485165195.4
@@ -23,6 +22,7 @@ fn exp(x : Double) -> Double {
   }
 }
 
+///|
 fn log(x : Double) -> Double {
   if x <= 0.0 {
     -1000.0
@@ -39,6 +39,7 @@ fn log(x : Double) -> Double {
   }
 }
 
+///|
 fn sqrt(x : Double) -> Double {
   if x <= 0.0 {
     0.0
@@ -51,29 +52,33 @@ fn sqrt(x : Double) -> Double {
   }
 }
 
-
+///|
 fn sigmoid(x : Double) -> Double {
   1.0 / (1.0 + exp(-x))
 }
 
+///|
 fn tanh_d(x : Double) -> Double {
   let e1 = exp(x)
   let e2 = exp(-x)
   (e1 - e2) / (e1 + e2)
 }
 
-fn lcg_next(state : Int) -> Int {
+///|
+fn lcg_next(state : Int32) -> Int32 {
   let a = 1103515245
   let c = 12345
   let m = 2147483647
   (a * state + c) % m
 }
 
-fn rand_double(seed : Int) -> Double {
+///|
+fn rand_double(seed : Int32) -> Double {
   let s = lcg_next(seed)
   s.to_double() / 2147483647.0
 }
 
+///|
 fn vec_norm(a : Array[Double]) -> Double {
   let mut sum = 0.0
   for i in 0..<a.length() {
@@ -82,38 +87,51 @@ fn vec_norm(a : Array[Double]) -> Double {
   sqrt(sum)
 }
 
+///|
 /// 联邦配置 / Federated configuration.
 pub struct FedConfig {
-  n_clients : Int
-  n_rounds : Int
+  n_clients : Int32
+  n_rounds : Int32
   learning_rate : Double
   client_fraction : Double
 } derive(Debug, Eq)
 
+///|
 pub extend FedConfig with Eq::{equal, not_equal}
+
+///|
 pub extend FedConfig with Debug::{to_repr}
 
+///|
 /// 客户端 / Client.
 pub struct FedClient {
-  id : Int
-  data_size : Int
+  id : Int32
+  data_size : Int32
   params : Array[Double]
   gradient : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend FedClient with Eq::{equal, not_equal}
+
+///|
 pub extend FedClient with Debug::{to_repr}
 
+///|
 /// 服务器 / Server.
 pub struct FedServer {
   global_params : Array[Double]
-  n_clients : Int
-  round : Int
+  n_clients : Int32
+  round : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend FedServer with Eq::{equal, not_equal}
+
+///|
 pub extend FedServer with Debug::{to_repr}
 
+///|
 /// 差分隐私配置 / DP configuration.
 pub struct DPConfig {
   epsilon : Double
@@ -122,29 +140,41 @@ pub struct DPConfig {
   sensitivity : Double
 } derive(Debug, Eq)
 
+///|
 pub extend DPConfig with Eq::{equal, not_equal}
+
+///|
 pub extend DPConfig with Debug::{to_repr}
 
+///|
 /// 安全聚合配置 / Secure aggregation configuration.
 pub struct SecureAggConfig {
-  n_clients : Int
-  threshold : Int
-  key_size : Int
+  n_clients : Int32
+  threshold : Int32
+  key_size : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend SecureAggConfig with Eq::{equal, not_equal}
+
+///|
 pub extend SecureAggConfig with Debug::{to_repr}
 
+///|
 /// FedProx 配置 / FedProx configuration.
 pub struct FedProxMeta {
   mu : Double
   learning_rate : Double
-  n_local_steps : Int
+  n_local_steps : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend FedProxMeta with Eq::{equal, not_equal}
+
+///|
 pub extend FedProxMeta with Debug::{to_repr}
 
+///|
 /// FedAvg 动量配置 / FedAvg momentum configuration.
 pub struct FedAvgMomentumMeta {
   momentum : Double
@@ -152,48 +182,79 @@ pub struct FedAvgMomentumMeta {
   beta : Double
 } derive(Debug, Eq)
 
+///|
 pub extend FedAvgMomentumMeta with Eq::{equal, not_equal}
+
+///|
 pub extend FedAvgMomentumMeta with Debug::{to_repr}
 
+///|
 /// SCAFFOLD 配置 / SCAFFOLD configuration.
 pub struct ScaffoldMeta {
   learning_rate : Double
-  n_local_steps : Int
+  n_local_steps : Int32
   global_correction : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend ScaffoldMeta with Eq::{equal, not_equal}
+
+///|
 pub extend ScaffoldMeta with Debug::{to_repr}
 
+///|
 /// 分割学习配置 / Split learning configuration.
 pub struct FedSplitMeta {
-  split_point : Int
+  split_point : Int32
   learning_rate : Double
-  server_dim : Int
-  client_dim : Int
+  server_dim : Int32
+  client_dim : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend FedSplitMeta with Eq::{equal, not_equal}
+
+///|
 pub extend FedSplitMeta with Debug::{to_repr}
 
+///|
 /// 构造联邦配置 / Build federated config.
-pub fn make_fed_config(n_clients : Int, n_rounds : Int, learning_rate : Double, client_fraction : Double) -> FedConfig {
-  { n_clients, n_rounds, learning_rate, client_fraction }
+pub fn make_fed_config(
+  n_clients : Int32,
+  n_rounds : Int32,
+  learning_rate : Double,
+  client_fraction : Double,
+) -> FedConfig {
+  { n_clients, n_rounds, learning_rate, client_fraction, }
 }
 
+///|
 /// 构造客户端 / Build client.
-pub fn make_client(id : Int, data_size : Int, params : Array[Double]) -> FedClient {
+pub fn make_client(
+  id : Int32,
+  data_size : Int32,
+  params : Array[Double],
+) -> FedClient {
   let gradient : Array[Double] = Array::make(params.length(), 0.0)
-  { id, data_size, params, gradient }
+  { id, data_size, params, gradient, }
 }
 
+///|
 /// 构造服务器 / Build server.
-pub fn make_server(global_params : Array[Double], n_clients : Int) -> FedServer {
-  { global_params, n_clients, round: 0 }
+pub fn make_server(
+  global_params : Array[Double],
+  n_clients : Int32,
+) -> FedServer {
+  { global_params, n_clients, round: 0, }
 }
 
+///|
 /// 联邦轮次 / Federated round.
-pub fn fed_round(server : FedServer, clients : Array[FedClient], config : FedConfig) -> FedServer {
+pub fn fed_round(
+  server : FedServer,
+  clients : Array[FedClient],
+  config : FedConfig,
+) -> FedServer {
   let n = clients.length()
   if n == 0 {
     server
@@ -210,19 +271,29 @@ pub fn fed_round(server : FedServer, clients : Array[FedClient], config : FedCon
       let mut weighted_sum = 0.0
       for i in 0..<active_n {
         if j < clients[i].params.length() {
-          weighted_sum = weighted_sum + clients[i].params[j] * clients[i].data_size.to_double()
+          weighted_sum = weighted_sum +
+            clients[i].params[j] * clients[i].data_size.to_double()
         }
       }
       if total_size > 0 {
         new_params[j] = weighted_sum / total_size.to_double()
       }
     }
-    { global_params: new_params, n_clients: server.n_clients, round: server.round + 1 }
+    {
+      global_params: new_params,
+      n_clients: server.n_clients,
+      round: server.round + 1,
+    }
   }
 }
 
+///|
 /// 客户端训练 / Client train.
-pub fn fed_client_train(client : FedClient, gradients : Array[Double], lr : Double) -> FedClient {
+pub fn fed_client_train(
+  client : FedClient,
+  gradients : Array[Double],
+  lr : Double,
+) -> FedClient {
   let n = client.params.length()
   if n != gradients.length() {
     client
@@ -231,17 +302,31 @@ pub fn fed_client_train(client : FedClient, gradients : Array[Double], lr : Doub
     for i in 0..<n {
       new_params[i] = client.params[i] - lr * gradients[i]
     }
-    { id: client.id, data_size: client.data_size, params: new_params, gradient: gradients }
+    {
+      id: client.id,
+      data_size: client.data_size,
+      params: new_params,
+      gradient: gradients,
+    }
   }
 }
 
+///|
 /// 客户端评估 / Client eval.
-pub fn fed_client_eval(client : FedClient, data : Array[Double], labels : Array[Double]) -> Double {
+pub fn fed_client_eval(
+  client : FedClient,
+  data : Array[Double],
+  labels : Array[Double],
+) -> Double {
   let n = data.length()
   if n != labels.length() || n == 0 {
     0.0
   } else {
-    let bias = if client.params.length() > 0 { client.params[0] * 0.0 } else { 0.0 }
+    let bias = if client.params.length() > 0 {
+      client.params[0] * 0.0
+    } else {
+      0.0
+    }
     let mut loss = 0.0
     for i in 0..<n {
       let pred = sigmoid(data[i]) + bias
@@ -252,8 +337,14 @@ pub fn fed_client_eval(client : FedClient, data : Array[Double], labels : Array[
   }
 }
 
+///|
 /// 客户端更新 / Client update.
-pub fn fed_client_update(client : FedClient, global_params : Array[Double], local_gradient : Array[Double], lr : Double) -> FedClient {
+pub fn fed_client_update(
+  client : FedClient,
+  global_params : Array[Double],
+  local_gradient : Array[Double],
+  lr : Double,
+) -> FedClient {
   let n = global_params.length()
   if n != local_gradient.length() {
     client
@@ -262,12 +353,22 @@ pub fn fed_client_update(client : FedClient, global_params : Array[Double], loca
     for i in 0..<n {
       new_params[i] = global_params[i] - lr * local_gradient[i]
     }
-    { id: client.id, data_size: client.data_size, params: new_params, gradient: local_gradient }
+    {
+      id: client.id,
+      data_size: client.data_size,
+      params: new_params,
+      gradient: local_gradient,
+    }
   }
 }
 
+///|
 /// 服务器聚合 / Server aggregate.
-pub fn fed_server_aggregate(server : FedServer, client_params : Array[Array[Double]], weights : Array[Double]) -> FedServer {
+pub fn fed_server_aggregate(
+  server : FedServer,
+  client_params : Array[Array[Double]],
+  weights : Array[Double],
+) -> FedServer {
   let n = client_params.length()
   if n == 0 || n != weights.length() {
     server
@@ -289,17 +390,27 @@ pub fn fed_server_aggregate(server : FedServer, client_params : Array[Array[Doub
         new_params[j] = sum / total_weight
       }
     }
-    { global_params: new_params, n_clients: server.n_clients, round: server.round }
+    {
+      global_params: new_params,
+      n_clients: server.n_clients,
+      round: server.round,
+    }
   }
 }
 
+///|
 /// 服务器分发 / Server distribute.
 pub fn fed_server_distribute(server : FedServer) -> Array[Double] {
   server.global_params
 }
 
+///|
 /// 服务器评估 / Server eval.
-pub fn fed_server_eval(server : FedServer, test_data : Array[Array[Double]], test_labels : Array[Double]) -> Double {
+pub fn fed_server_eval(
+  server : FedServer,
+  test_data : Array[Array[Double]],
+  test_labels : Array[Double],
+) -> Double {
   let n = test_data.length()
   if n == 0 {
     0.0
@@ -321,6 +432,7 @@ pub fn fed_server_eval(server : FedServer, test_data : Array[Array[Double]], tes
   }
 }
 
+///|
 /// FedAvg 聚合 / FedAvg aggregate.
 pub fn fed_avg(client_params : Array[Array[Double]]) -> Array[Double] {
   let n = client_params.length()
@@ -342,8 +454,12 @@ pub fn fed_avg(client_params : Array[Array[Double]]) -> Array[Double] {
   }
 }
 
+///|
 /// 加权平均聚合 / Weighted average aggregate.
-pub fn fed_weighted_avg(client_params : Array[Array[Double]], weights : Array[Double]) -> Array[Double] {
+pub fn fed_weighted_avg(
+  client_params : Array[Array[Double]],
+  weights : Array[Double],
+) -> Array[Double] {
   let n = client_params.length()
   if n == 0 || n != weights.length() {
     []
@@ -369,6 +485,7 @@ pub fn fed_weighted_avg(client_params : Array[Array[Double]], weights : Array[Do
   }
 }
 
+///|
 /// 中位数聚合 / Median aggregate.
 pub fn fed_median(client_params : Array[Array[Double]]) -> Array[Double] {
   let n = client_params.length()
@@ -406,8 +523,12 @@ pub fn fed_median(client_params : Array[Array[Double]]) -> Array[Double] {
   }
 }
 
+///|
 /// Krum 聚合 / Krum aggregate.
-pub fn fed_krum(client_params : Array[Array[Double]], n_byzantine : Int) -> Array[Double] {
+pub fn fed_krum(
+  client_params : Array[Array[Double]],
+  n_byzantine : Int32,
+) -> Array[Double] {
   let n = client_params.length()
   if n == 0 {
     []
@@ -453,8 +574,12 @@ pub fn fed_krum(client_params : Array[Array[Double]], n_byzantine : Int) -> Arra
   }
 }
 
+///|
 /// 截断均值聚合 / Trimmed mean aggregate.
-pub fn fed_trim_mean(client_params : Array[Array[Double]], trim_ratio : Double) -> Array[Double] {
+pub fn fed_trim_mean(
+  client_params : Array[Array[Double]],
+  trim_ratio : Double,
+) -> Array[Double] {
   let n = client_params.length()
   if n == 0 {
     []
@@ -496,8 +621,13 @@ pub fn fed_trim_mean(client_params : Array[Array[Double]], trim_ratio : Double) 
   }
 }
 
+///|
 /// Multi-Krum 聚合 / Multi-Krum aggregate.
-pub fn fed_multi_krum(client_params : Array[Array[Double]], n_byzantine : Int, n_select : Int) -> Array[Double] {
+pub fn fed_multi_krum(
+  client_params : Array[Array[Double]],
+  n_byzantine : Int32,
+  n_select : Int32,
+) -> Array[Double] {
   let n = client_params.length()
   if n == 0 || n_select <= 0 {
     []
@@ -512,8 +642,12 @@ pub fn fed_multi_krum(client_params : Array[Array[Double]], n_byzantine : Int, n
   }
 }
 
+///|
 /// Bulyan 聚合 / Bulyan aggregate.
-pub fn fed_bulyan(client_params : Array[Array[Double]], n_byzantine : Int) -> Array[Double] {
+pub fn fed_bulyan(
+  client_params : Array[Array[Double]],
+  n_byzantine : Int32,
+) -> Array[Double] {
   let n = client_params.length()
   if n == 0 {
     []
@@ -541,10 +675,14 @@ pub fn fed_bulyan(client_params : Array[Array[Double]], n_byzantine : Int) -> Ar
   }
 }
 
+///|
 /// 检查投毒 / Check poisoning.
-pub fn fed_check_poisoning(client_params : Array[Array[Double]], threshold : Double) -> Array[Int] {
+pub fn fed_check_poisoning(
+  client_params : Array[Array[Double]],
+  threshold : Double,
+) -> Array[Int32] {
   let n = client_params.length()
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   if n < 2 {
     result
   } else {
@@ -565,8 +703,12 @@ pub fn fed_check_poisoning(client_params : Array[Array[Double]], threshold : Dou
   }
 }
 
+///|
 /// 拜占庭鲁棒聚合 / Byzantine robust aggregate.
-pub fn fed_byzantine_robust(client_params : Array[Array[Double]], n_byzantine : Int) -> Array[Double] {
+pub fn fed_byzantine_robust(
+  client_params : Array[Array[Double]],
+  n_byzantine : Int32,
+) -> Array[Double] {
   let n = client_params.length()
   if n == 0 {
     []
@@ -577,8 +719,11 @@ pub fn fed_byzantine_robust(client_params : Array[Array[Double]], n_byzantine : 
   }
 }
 
+///|
 /// 异常检测 / Anomaly detect.
-pub fn fed_anomaly_detect(client_params : Array[Array[Double]]) -> Array[Double] {
+pub fn fed_anomaly_detect(
+  client_params : Array[Array[Double]],
+) -> Array[Double] {
   let n = client_params.length()
   if n == 0 {
     []
@@ -599,13 +744,20 @@ pub fn fed_anomaly_detect(client_params : Array[Array[Double]]) -> Array[Double]
   }
 }
 
+///|
 /// 构造 DP 配置 / Build DP config.
-pub fn make_dp_config(epsilon : Double, delta : Double, clip_norm : Double, sensitivity : Double) -> DPConfig {
-  { epsilon, delta, clip_norm, sensitivity }
+pub fn make_dp_config(
+  epsilon : Double,
+  delta : Double,
+  clip_norm : Double,
+  sensitivity : Double,
+) -> DPConfig {
+  { epsilon, delta, clip_norm, sensitivity, }
 }
 
+///|
 /// DP 噪声 / DP noise.
-pub fn dp_noise(size : Int, config : DPConfig, seed : Int) -> Array[Double] {
+pub fn dp_noise(size : Int32, config : DPConfig, seed : Int32) -> Array[Double] {
   let result : Array[Double] = Array::make(size, 0.0)
   let sigma = config.sensitivity / config.epsilon
   let mut s = seed
@@ -620,6 +772,7 @@ pub fn dp_noise(size : Int, config : DPConfig, seed : Int) -> Array[Double] {
   result
 }
 
+///|
 fn cos_approx(x : Double) -> Double {
   let pi = 3.141592653589793
   let two_pi = 6.283185307179586
@@ -634,12 +787,13 @@ fn cos_approx(x : Double) -> Double {
   let mut term = 1.0
   let y2 = y * y
   for j in 1..<20 {
-    term = term * y2 / ((2 * j - 1).to_double() * (2 * j).to_double()) * (-1.0)
+    term = term * y2 / ((2 * j - 1).to_double() * (2 * j).to_double()) * -1.0
     result = result + term
   }
   result
 }
 
+///|
 /// DP 裁剪 / DP clip.
 pub fn dp_clip(params : Array[Double], clip_norm : Double) -> Array[Double] {
   let n = params.length()
@@ -656,19 +810,30 @@ pub fn dp_clip(params : Array[Double], clip_norm : Double) -> Array[Double] {
   }
 }
 
+///|
 /// DP 隐私预算 / DP privacy budget.
-pub fn dp_privacy_budget(config : DPConfig, n_steps : Int, sample_rate : Double) -> Double {
+pub fn dp_privacy_budget(
+  config : DPConfig,
+  n_steps : Int32,
+  sample_rate : Double,
+) -> Double {
   let eps_per_step = config.epsilon / n_steps.to_double()
   eps_per_step * sample_rate
 }
 
+///|
 /// 构造安全聚合配置 / Build secure agg config.
-pub fn make_secure_agg(n_clients : Int, threshold : Int, key_size : Int) -> SecureAggConfig {
-  { n_clients, threshold, key_size }
+pub fn make_secure_agg(
+  n_clients : Int32,
+  threshold : Int32,
+  key_size : Int32,
+) -> SecureAggConfig {
+  { n_clients, threshold, key_size, }
 }
 
+///|
 /// 安全加密 / Secure encrypt.
-pub fn secure_encrypt(params : Array[Double], key : Int) -> Array[Double] {
+pub fn secure_encrypt(params : Array[Double], key : Int32) -> Array[Double] {
   let n = params.length()
   let result : Array[Double] = Array::make(n, 0.0)
   let mut k = key
@@ -679,8 +844,9 @@ pub fn secure_encrypt(params : Array[Double], key : Int) -> Array[Double] {
   result
 }
 
+///|
 /// 安全解密 / Secure decrypt.
-pub fn secure_decrypt(encrypted : Array[Double], key : Int) -> Array[Double] {
+pub fn secure_decrypt(encrypted : Array[Double], key : Int32) -> Array[Double] {
   let n = encrypted.length()
   let result : Array[Double] = Array::make(n, 0.0)
   let mut k = key
@@ -691,8 +857,12 @@ pub fn secure_decrypt(encrypted : Array[Double], key : Int) -> Array[Double] {
   result
 }
 
+///|
 /// 安全聚合 / Secure aggregate.
-pub fn secure_aggregate(client_params : Array[Array[Double]], config : SecureAggConfig) -> Array[Double] {
+pub fn secure_aggregate(
+  client_params : Array[Array[Double]],
+  config : SecureAggConfig,
+) -> Array[Double] {
   let n = client_params.length()
   if n < config.threshold {
     []
@@ -712,13 +882,23 @@ pub fn secure_aggregate(client_params : Array[Array[Double]], config : SecureAgg
   }
 }
 
+///|
 /// 构造 FedProx / Build FedProx meta.
-pub fn make_fed_prox(mu : Double, learning_rate : Double, n_local_steps : Int) -> FedProxMeta {
-  { mu, learning_rate, n_local_steps }
+pub fn make_fed_prox(
+  mu : Double,
+  learning_rate : Double,
+  n_local_steps : Int32,
+) -> FedProxMeta {
+  { mu, learning_rate, n_local_steps, }
 }
 
+///|
 /// FedProx 损失 / FedProx loss.
-pub fn fed_prox_loss(local_params : Array[Double], global_params : Array[Double], meta : FedProxMeta) -> Double {
+pub fn fed_prox_loss(
+  local_params : Array[Double],
+  global_params : Array[Double],
+  meta : FedProxMeta,
+) -> Double {
   let n = local_params.length()
   if n != global_params.length() {
     0.0
@@ -732,28 +912,46 @@ pub fn fed_prox_loss(local_params : Array[Double], global_params : Array[Double]
   }
 }
 
+///|
 /// FedProx 步 / FedProx step.
-pub fn fed_prox_step(local_params : Array[Double], global_params : Array[Double], gradient : Array[Double], meta : FedProxMeta) -> Array[Double] {
+pub fn fed_prox_step(
+  local_params : Array[Double],
+  global_params : Array[Double],
+  gradient : Array[Double],
+  meta : FedProxMeta,
+) -> Array[Double] {
   let n = local_params.length()
   if n != global_params.length() || n != gradient.length() {
     local_params
   } else {
     let result : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
-      let prox_grad = gradient[i] + meta.mu * (local_params[i] - global_params[i])
+      let prox_grad = gradient[i] +
+        meta.mu * (local_params[i] - global_params[i])
       result[i] = local_params[i] - meta.learning_rate * prox_grad
     }
     result
   }
 }
 
+///|
 /// 构造 FedAvg 动量 / Build FedAvg momentum meta.
-pub fn make_fed_avg_momentum(momentum : Double, learning_rate : Double, beta : Double) -> FedAvgMomentumMeta {
-  { momentum, learning_rate, beta }
+pub fn make_fed_avg_momentum(
+  momentum : Double,
+  learning_rate : Double,
+  beta : Double,
+) -> FedAvgMomentumMeta {
+  { momentum, learning_rate, beta, }
 }
 
+///|
 /// FedAvg 动量步 / FedAvg momentum step.
-pub fn fed_avg_momentum_step(params : Array[Double], velocity : Array[Double], gradient : Array[Double], meta : FedAvgMomentumMeta) -> (Array[Double], Array[Double]) {
+pub fn fed_avg_momentum_step(
+  params : Array[Double],
+  velocity : Array[Double],
+  gradient : Array[Double],
+  meta : FedAvgMomentumMeta,
+) -> (Array[Double], Array[Double]) {
   let n = params.length()
   if n != velocity.length() || n != gradient.length() {
     (params, velocity)
@@ -761,20 +959,31 @@ pub fn fed_avg_momentum_step(params : Array[Double], velocity : Array[Double], g
     let new_params : Array[Double] = Array::make(n, 0.0)
     let new_velocity : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
-      new_velocity[i] = meta.momentum * velocity[i] + meta.learning_rate * gradient[i]
+      new_velocity[i] = meta.momentum * velocity[i] +
+        meta.learning_rate * gradient[i]
       new_params[i] = params[i] - new_velocity[i]
     }
     (new_params, new_velocity)
   }
 }
 
+///|
 /// 构造 SCAFFOLD / Build SCAFFOLD meta.
-pub fn make_scaffold(learning_rate : Double, n_local_steps : Int, global_correction : Array[Double]) -> ScaffoldMeta {
-  { learning_rate, n_local_steps, global_correction }
+pub fn make_scaffold(
+  learning_rate : Double,
+  n_local_steps : Int32,
+  global_correction : Array[Double],
+) -> ScaffoldMeta {
+  { learning_rate, n_local_steps, global_correction, }
 }
 
+///|
 /// SCAFFOLD 校正 / SCAFFOLD correction.
-pub fn scaffold_correction(local_gradient : Array[Double], local_correction : Array[Double], global_correction : Array[Double]) -> Array[Double] {
+pub fn scaffold_correction(
+  local_gradient : Array[Double],
+  local_correction : Array[Double],
+  global_correction : Array[Double],
+) -> Array[Double] {
   let n = local_gradient.length()
   if n != local_correction.length() || n != global_correction.length() {
     local_gradient
@@ -787,8 +996,13 @@ pub fn scaffold_correction(local_gradient : Array[Double], local_correction : Ar
   }
 }
 
+///|
 /// SCAFFOLD 步 / SCAFFOLD step.
-pub fn scaffold_step(params : Array[Double], corrected_gradient : Array[Double], meta : ScaffoldMeta) -> Array[Double] {
+pub fn scaffold_step(
+  params : Array[Double],
+  corrected_gradient : Array[Double],
+  meta : ScaffoldMeta,
+) -> Array[Double] {
   let n = params.length()
   if n != corrected_gradient.length() {
     params
@@ -801,13 +1015,24 @@ pub fn scaffold_step(params : Array[Double], corrected_gradient : Array[Double],
   }
 }
 
+///|
 /// 构造分割学习 / Build split learning meta.
-pub fn make_fed_split(split_point : Int, learning_rate : Double, server_dim : Int, client_dim : Int) -> FedSplitMeta {
-  { split_point, learning_rate, server_dim, client_dim }
+pub fn make_fed_split(
+  split_point : Int32,
+  learning_rate : Double,
+  server_dim : Int32,
+  client_dim : Int32,
+) -> FedSplitMeta {
+  { split_point, learning_rate, server_dim, client_dim, }
 }
 
+///|
 /// 分割学习 / Split learning.
-pub fn split_learning(client_input : Array[Double], server_weights : Array[Double], meta : FedSplitMeta) -> Array[Double] {
+pub fn split_learning(
+  client_input : Array[Double],
+  server_weights : Array[Double],
+  meta : FedSplitMeta,
+) -> Array[Double] {
   let split = split_forward(client_input, meta)
   let server_out : Array[Double] = Array::make(meta.server_dim, 0.0)
   for j in 0..<meta.server_dim {
@@ -823,8 +1048,12 @@ pub fn split_learning(client_input : Array[Double], server_weights : Array[Doubl
   server_out
 }
 
+///|
 /// 分割前向 / Split forward.
-pub fn split_forward(input : Array[Double], meta : FedSplitMeta) -> Array[Double] {
+pub fn split_forward(
+  input : Array[Double],
+  meta : FedSplitMeta,
+) -> Array[Double] {
   let n = meta.split_point
   if n > input.length() {
     input
@@ -837,10 +1066,19 @@ pub fn split_forward(input : Array[Double], meta : FedSplitMeta) -> Array[Double
   }
 }
 
+///|
 /// 分割反向 / Split backward.
-pub fn split_backward(server_grad : Array[Double], client_output : Array[Double], meta : FedSplitMeta) -> Array[Double] {
+pub fn split_backward(
+  server_grad : Array[Double],
+  client_output : Array[Double],
+  meta : FedSplitMeta,
+) -> Array[Double] {
   let n = client_output.length()
-  let scale = if meta.server_dim > 0 { 1.0 / meta.server_dim.to_double() } else { 1.0 }
+  let scale = if meta.server_dim > 0 {
+    1.0 / meta.server_dim.to_double()
+  } else {
+    1.0
+  }
   let result : Array[Double] = Array::make(n, 0.0)
   for i in 0..<n {
     let grad = if i < server_grad.length() { server_grad[i] } else { 0.0 }
@@ -849,13 +1087,19 @@ pub fn split_backward(server_grad : Array[Double], client_output : Array[Double]
   result
 }
 
+///|
 /// 通信成本 / Communication cost.
-pub fn fed_communication_cost(n_clients : Int, param_size : Int, n_rounds : Int) -> Int {
+pub fn fed_communication_cost(
+  n_clients : Int32,
+  param_size : Int32,
+  n_rounds : Int32,
+) -> Int32 {
   n_clients * param_size * n_rounds * 2
 }
 
+///|
 /// 联邦压缩 / Federated compression.
-pub fn fed_compression(params : Array[Double], ratio : Int) -> Array[Double] {
+pub fn fed_compression(params : Array[Double], ratio : Int32) -> Array[Double] {
   let n = params.length()
   if ratio <= 0 {
     params
@@ -863,16 +1107,17 @@ pub fn fed_compression(params : Array[Double], ratio : Int) -> Array[Double] {
     let result : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
       let scaled = params[i] * ratio.to_double()
-      result[i] = (scaled.to_int()).to_double() / ratio.to_double()
+      result[i] = scaled.to_int().to_double() / ratio.to_double()
     }
     result
   }
 }
 
+///|
 /// 联邦量化 / Federated quantization.
-pub fn fed_quantization(params : Array[Double], n_bits : Int) -> Array[Int] {
+pub fn fed_quantization(params : Array[Double], n_bits : Int32) -> Array[Int32] {
   let n = params.length()
-  let result : Array[Int] = Array::make(n, 0)
+  let result : Array[Int32] = Array::make(n, 0)
   if n_bits <= 0 || n_bits > 32 {
     result
   } else {
@@ -886,8 +1131,13 @@ pub fn fed_quantization(params : Array[Double], n_bits : Int) -> Array[Int] {
   }
 }
 
+///|
 /// 个性化 / Personalize.
-pub fn fed_personalize(global_params : Array[Double], local_params : Array[Double], alpha : Double) -> Array[Double] {
+pub fn fed_personalize(
+  global_params : Array[Double],
+  local_params : Array[Double],
+  alpha : Double,
+) -> Array[Double] {
   let n = global_params.length()
   if n != local_params.length() {
     global_params
@@ -900,8 +1150,14 @@ pub fn fed_personalize(global_params : Array[Double], local_params : Array[Doubl
   }
 }
 
+///|
 /// 微调 / Fine tune.
-pub fn fed_fine_tune(params : Array[Double], gradients : Array[Double], lr : Double, n_steps : Int) -> Array[Double] {
+pub fn fed_fine_tune(
+  params : Array[Double],
+  gradients : Array[Double],
+  lr : Double,
+  n_steps : Int32,
+) -> Array[Double] {
   let n = params.length()
   if n != gradients.length() {
     params
@@ -919,8 +1175,13 @@ pub fn fed_fine_tune(params : Array[Double], gradients : Array[Double], lr : Dou
   }
 }
 
+///|
 /// 本地适配 / Local adapt.
-pub fn fed_local_adapt(global_params : Array[Double], local_data : Array[Double], lr : Double) -> Array[Double] {
+pub fn fed_local_adapt(
+  global_params : Array[Double],
+  local_data : Array[Double],
+  lr : Double,
+) -> Array[Double] {
   let n = global_params.length()
   if n != local_data.length() {
     global_params
@@ -934,8 +1195,13 @@ pub fn fed_local_adapt(global_params : Array[Double], local_data : Array[Double]
   }
 }
 
+///|
 /// 全局评估 / Evaluate global.
-pub fn fed_evaluate_global(global_params : Array[Double], test_data : Array[Array[Double]], test_labels : Array[Double]) -> Double {
+pub fn fed_evaluate_global(
+  global_params : Array[Double],
+  test_data : Array[Array[Double]],
+  test_labels : Array[Double],
+) -> Double {
   let n = test_data.length()
   if n == 0 || n != test_labels.length() {
     0.0
@@ -950,7 +1216,8 @@ pub fn fed_evaluate_global(global_params : Array[Double], test_data : Array[Arra
         }
       }
       let p = sigmoid(pred)
-      if (p > 0.5 && test_labels[i] > 0.5) || (p <= 0.5 && test_labels[i] <= 0.5) {
+      if (p > 0.5 && test_labels[i] > 0.5) ||
+        (p <= 0.5 && test_labels[i] <= 0.5) {
         correct = correct + 1.0
       }
     }
@@ -958,8 +1225,13 @@ pub fn fed_evaluate_global(global_params : Array[Double], test_data : Array[Arra
   }
 }
 
+///|
 /// 本地评估 / Evaluate local.
-pub fn fed_evaluate_local(local_params : Array[Double], local_data : Array[Array[Double]], local_labels : Array[Double]) -> Double {
+pub fn fed_evaluate_local(
+  local_params : Array[Double],
+  local_data : Array[Array[Double]],
+  local_labels : Array[Double],
+) -> Double {
   let n = local_data.length()
   if n == 0 || n != local_labels.length() {
     0.0
@@ -981,8 +1253,11 @@ pub fn fed_evaluate_local(local_params : Array[Double], local_data : Array[Array
   }
 }
 
+///|
 /// 异构评估 / Evaluate heterogeneity.
-pub fn fed_evaluate_heterogeneity(client_performances : Array[Double]) -> Double {
+pub fn fed_evaluate_heterogeneity(
+  client_performances : Array[Double],
+) -> Double {
   let n = client_performances.length()
   if n == 0 {
     0.0
@@ -1002,6 +1277,7 @@ pub fn fed_evaluate_heterogeneity(client_performances : Array[Double]) -> Double
   }
 }
 
+///|
 /// 联邦学习 ID / Federated learning id.
 pub fn federated_id() -> String {
   "federated_v1"

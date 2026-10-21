@@ -13,6 +13,7 @@
 // 类型定义 / Type definitions
 // ============================================================
 
+///|
 /// 邻域统计类型 / Focal statistic kind.
 pub(all) enum FocalStat {
   FocalMean
@@ -27,9 +28,13 @@ pub(all) enum FocalStat {
   FocalMedian
 } derive(Debug, Eq)
 
+///|
 pub extend FocalStat with Eq::{equal, not_equal}
+
+///|
 pub extend FocalStat with Debug::{to_repr}
 
+///|
 /// 邻域形状 / Neighborhood shape.
 pub(all) enum NeighborhoodShape {
   NRectangle
@@ -38,29 +43,43 @@ pub(all) enum NeighborhoodShape {
   NWedge
 } derive(Debug, Eq)
 
+///|
 pub extend NeighborhoodShape with Eq::{equal, not_equal}
+
+///|
 pub extend NeighborhoodShape with Debug::{to_repr}
 
+///|
 /// 邻域统计结果 / Focal result.
 pub struct FocalResult {
   value : Double
-  row : Int
-  col : Int
+  row : Int32
+  col : Int32
   stat : FocalStat
 } derive(Debug, Eq)
 
+///|
 pub extend FocalResult with Eq::{equal, not_equal}
+
+///|
 pub extend FocalResult with Debug::{to_repr}
 
 // ============================================================
 // 基础构造 / Basic constructors
 // ============================================================
 
+///|
 /// 构造邻域统计结果 / Build a focal result.
-pub fn make_focal_result(value : Double, row : Int, col : Int, stat : FocalStat) -> FocalResult {
+pub fn make_focal_result(
+  value : Double,
+  row : Int32,
+  col : Int32,
+  stat : FocalStat,
+) -> FocalResult {
   { value, row, col, stat, }
 }
 
+///|
 /// 邻域统计类型名称 / Focal stat name.
 pub fn focal_stat_name(s : FocalStat) -> String {
   match s {
@@ -77,6 +96,7 @@ pub fn focal_stat_name(s : FocalStat) -> String {
   }
 }
 
+///|
 /// 邻域形状名称 / Neighborhood shape name.
 pub fn neighborhood_shape_name(s : NeighborhoodShape) -> String {
   match s {
@@ -91,8 +111,14 @@ pub fn neighborhood_shape_name(s : NeighborhoodShape) -> String {
 // 邻域窗口 / Neighborhood window
 // ============================================================
 
+///|
 /// 收集邻域值 / Collect neighborhood values (rectangle radius r).
-fn neighborhood_values(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : Int) -> Array[Double] {
+fn neighborhood_values(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  radius : Int32,
+) -> Array[Double] {
   let rows = @hydrology.raster_rows(raster)
   let cols = @hydrology.raster_cols(raster)
   let result : Array[Double] = []
@@ -114,10 +140,16 @@ fn neighborhood_values(raster : @hydrology.RasterGrid, row : Int, col : Int, rad
 // 邻域统计 / Focal statistics
 // ============================================================
 
+///|
 /// 邻域均值 / Focal mean.
 ///
 /// 退化安全：空邻域返回 0.0。
-pub fn focal_mean(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : Int) -> Double {
+pub fn focal_mean(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  radius : Int32,
+) -> Double {
   let vals = neighborhood_values(raster, row, col, radius)
   let n = vals.length()
   if n == 0 {
@@ -131,8 +163,14 @@ pub fn focal_mean(raster : @hydrology.RasterGrid, row : Int, col : Int, radius :
   }
 }
 
+///|
 /// 邻域求和 / Focal sum.
-pub fn focal_sum(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : Int) -> Double {
+pub fn focal_sum(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  radius : Int32,
+) -> Double {
   let vals = neighborhood_values(raster, row, col, radius)
   let mut sum = 0.0
   for v in vals {
@@ -141,10 +179,16 @@ pub fn focal_sum(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : 
   sum
 }
 
+///|
 /// 邻域最小值 / Focal min.
 ///
 /// 退化安全：空邻域返回 0.0。
-pub fn focal_min(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : Int) -> Double {
+pub fn focal_min(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  radius : Int32,
+) -> Double {
   let vals = neighborhood_values(raster, row, col, radius)
   if vals.length() == 0 {
     0.0
@@ -159,10 +203,16 @@ pub fn focal_min(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : 
   }
 }
 
+///|
 /// 邻域最大值 / Focal max.
 ///
 /// 退化安全：空邻域返回 0.0。
-pub fn focal_max(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : Int) -> Double {
+pub fn focal_max(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  radius : Int32,
+) -> Double {
   let vals = neighborhood_values(raster, row, col, radius)
   if vals.length() == 0 {
     0.0
@@ -177,15 +227,27 @@ pub fn focal_max(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : 
   }
 }
 
+///|
 /// 邻域极差 / Focal range.
-pub fn focal_range(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : Int) -> Double {
+pub fn focal_range(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  radius : Int32,
+) -> Double {
   focal_max(raster, row, col, radius) - focal_min(raster, row, col, radius)
 }
 
+///|
 /// 邻域标准差 / Focal standard deviation.
 ///
 /// 退化安全：空邻域返回 0.0。
-pub fn focal_std(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : Int) -> Double {
+pub fn focal_std(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  radius : Int32,
+) -> Double {
   let vals = neighborhood_values(raster, row, col, radius)
   let n = vals.length()
   if n <= 1 {
@@ -201,15 +263,27 @@ pub fn focal_std(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : 
   }
 }
 
+///|
 /// 邻域计数 / Focal count.
-pub fn focal_count(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : Int) -> Int {
+pub fn focal_count(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  radius : Int32,
+) -> Int32 {
   neighborhood_values(raster, row, col, radius).length()
 }
 
+///|
 /// 邻域众数 / Focal majority (simplified: first value).
 ///
 /// 退化安全：空邻域返回 0.0。
-pub fn focal_majority(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : Int) -> Double {
+pub fn focal_majority(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  radius : Int32,
+) -> Double {
   let vals = neighborhood_values(raster, row, col, radius)
   if vals.length() == 0 {
     0.0
@@ -218,10 +292,16 @@ pub fn focal_majority(raster : @hydrology.RasterGrid, row : Int, col : Int, radi
   }
 }
 
+///|
 /// 邻域少数 / Focal minority (simplified: last value).
 ///
 /// 退化安全：空邻域返回 0.0。
-pub fn focal_minority(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : Int) -> Double {
+pub fn focal_minority(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  radius : Int32,
+) -> Double {
   let vals = neighborhood_values(raster, row, col, radius)
   if vals.length() == 0 {
     0.0
@@ -230,10 +310,16 @@ pub fn focal_minority(raster : @hydrology.RasterGrid, row : Int, col : Int, radi
   }
 }
 
+///|
 /// 邻域中位数 / Focal median (simplified: middle element).
 ///
 /// 退化安全：空邻域返回 0.0。
-pub fn focal_median(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : Int) -> Double {
+pub fn focal_median(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  radius : Int32,
+) -> Double {
   let vals = neighborhood_values(raster, row, col, radius)
   let n = vals.length()
   if n == 0 {
@@ -243,10 +329,17 @@ pub fn focal_median(raster : @hydrology.RasterGrid, row : Int, col : Int, radius
   }
 }
 
+///|
 /// 通用邻域统计 / Generic focal statistics.
 ///
 /// 退化安全：空邻域返回 0.0。
-pub fn focal_statistics(raster : @hydrology.RasterGrid, row : Int, col : Int, radius : Int, stat : FocalStat) -> Double {
+pub fn focal_statistics(
+  raster : @hydrology.RasterGrid,
+  row : Int32,
+  col : Int32,
+  radius : Int32,
+  stat : FocalStat,
+) -> Double {
   match stat {
     FocalMean => focal_mean(raster, row, col, radius)
     FocalSum => focal_sum(raster, row, col, radius)
@@ -265,10 +358,15 @@ pub fn focal_statistics(raster : @hydrology.RasterGrid, row : Int, col : Int, ra
 // 邻域滤波 / Focal filter (entire grid)
 // ============================================================
 
+///|
 /// 邻域滤波 / Focal filter: apply focal stat to entire grid.
 ///
 /// 退化安全：空栅格返回空栅格。
-pub fn focal_filter(raster : @hydrology.RasterGrid, radius : Int, stat : FocalStat) -> @hydrology.RasterGrid {
+pub fn focal_filter(
+  raster : @hydrology.RasterGrid,
+  radius : Int32,
+  stat : FocalStat,
+) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(raster)
   let cols = @hydrology.raster_cols(raster)
   let result : Array[Array[Double]] = []
@@ -282,22 +380,38 @@ pub fn focal_filter(raster : @hydrology.RasterGrid, radius : Int, stat : FocalSt
   @hydrology.make_raster(result)
 }
 
+///|
 /// 邻域均值滤波 / Focal mean filter grid.
-pub fn focal_filter_mean(raster : @hydrology.RasterGrid, radius : Int) -> @hydrology.RasterGrid {
+pub fn focal_filter_mean(
+  raster : @hydrology.RasterGrid,
+  radius : Int32,
+) -> @hydrology.RasterGrid {
   focal_filter(raster, radius, FocalMean)
 }
 
+///|
 /// 邻域统计结果网格 / Focal results grid.
 ///
 /// 退化安全：空栅格返回空数组。
-pub fn focal_results_grid(raster : @hydrology.RasterGrid, radius : Int, stat : FocalStat) -> Array[Array[FocalResult]] {
+pub fn focal_results_grid(
+  raster : @hydrology.RasterGrid,
+  radius : Int32,
+  stat : FocalStat,
+) -> Array[Array[FocalResult]] {
   let rows = @hydrology.raster_rows(raster)
   let cols = @hydrology.raster_cols(raster)
   let result : Array[Array[FocalResult]] = []
   for i in 0..<rows {
     let row : Array[FocalResult] = []
     for j in 0..<cols {
-      row.push(make_focal_result(focal_statistics(raster, i, j, radius, stat), i, j, stat))
+      row.push(
+        make_focal_result(
+          focal_statistics(raster, i, j, radius, stat),
+          i,
+          j,
+          stat,
+        ),
+      )
     }
     result.push(row)
   }
@@ -308,10 +422,14 @@ pub fn focal_results_grid(raster : @hydrology.RasterGrid, radius : Int, stat : F
 // 逐单元格运算 / Local operations (cell-by-cell)
 // ============================================================
 
+///|
 /// 逐单元格加 / Local add: cell-by-cell addition of two rasters.
 ///
 /// 退化安全：尺寸不匹配返回空栅格。
-pub fn local_add(a : @hydrology.RasterGrid, b : @hydrology.RasterGrid) -> @hydrology.RasterGrid {
+pub fn local_add(
+  a : @hydrology.RasterGrid,
+  b : @hydrology.RasterGrid,
+) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(a)
   let cols = @hydrology.raster_cols(a)
   let brows = @hydrology.raster_rows(b)
@@ -323,7 +441,9 @@ pub fn local_add(a : @hydrology.RasterGrid, b : @hydrology.RasterGrid) -> @hydro
     for i in 0..<rows {
       let row : Array[Double] = []
       for j in 0..<cols {
-        row.push(@hydrology.raster_get(a, i, j) + @hydrology.raster_get(b, i, j))
+        row.push(
+          @hydrology.raster_get(a, i, j) + @hydrology.raster_get(b, i, j),
+        )
       }
       result.push(row)
     }
@@ -331,10 +451,14 @@ pub fn local_add(a : @hydrology.RasterGrid, b : @hydrology.RasterGrid) -> @hydro
   }
 }
 
+///|
 /// 逐单元格减 / Local subtract.
 ///
 /// 退化安全：尺寸不匹配返回空栅格。
-pub fn local_subtract(a : @hydrology.RasterGrid, b : @hydrology.RasterGrid) -> @hydrology.RasterGrid {
+pub fn local_subtract(
+  a : @hydrology.RasterGrid,
+  b : @hydrology.RasterGrid,
+) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(a)
   let cols = @hydrology.raster_cols(a)
   let brows = @hydrology.raster_rows(b)
@@ -346,7 +470,9 @@ pub fn local_subtract(a : @hydrology.RasterGrid, b : @hydrology.RasterGrid) -> @
     for i in 0..<rows {
       let row : Array[Double] = []
       for j in 0..<cols {
-        row.push(@hydrology.raster_get(a, i, j) - @hydrology.raster_get(b, i, j))
+        row.push(
+          @hydrology.raster_get(a, i, j) - @hydrology.raster_get(b, i, j),
+        )
       }
       result.push(row)
     }
@@ -354,10 +480,14 @@ pub fn local_subtract(a : @hydrology.RasterGrid, b : @hydrology.RasterGrid) -> @
   }
 }
 
+///|
 /// 逐单元格乘 / Local multiply.
 ///
 /// 退化安全：尺寸不匹配返回空栅格。
-pub fn local_multiply(a : @hydrology.RasterGrid, b : @hydrology.RasterGrid) -> @hydrology.RasterGrid {
+pub fn local_multiply(
+  a : @hydrology.RasterGrid,
+  b : @hydrology.RasterGrid,
+) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(a)
   let cols = @hydrology.raster_cols(a)
   let brows = @hydrology.raster_rows(b)
@@ -369,7 +499,9 @@ pub fn local_multiply(a : @hydrology.RasterGrid, b : @hydrology.RasterGrid) -> @
     for i in 0..<rows {
       let row : Array[Double] = []
       for j in 0..<cols {
-        row.push(@hydrology.raster_get(a, i, j) * @hydrology.raster_get(b, i, j))
+        row.push(
+          @hydrology.raster_get(a, i, j) * @hydrology.raster_get(b, i, j),
+        )
       }
       result.push(row)
     }
@@ -377,8 +509,12 @@ pub fn local_multiply(a : @hydrology.RasterGrid, b : @hydrology.RasterGrid) -> @
   }
 }
 
+///|
 /// 逐单元格标量加 / Local add scalar.
-pub fn local_add_scalar(raster : @hydrology.RasterGrid, scalar : Double) -> @hydrology.RasterGrid {
+pub fn local_add_scalar(
+  raster : @hydrology.RasterGrid,
+  scalar : Double,
+) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(raster)
   let cols = @hydrology.raster_cols(raster)
   let result : Array[Array[Double]] = []

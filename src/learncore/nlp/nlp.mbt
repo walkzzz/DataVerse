@@ -12,6 +12,7 @@
 ///===
 /// Tokenizer
 
+///|
 /// 分词器类型 / Tokenizer kind.
 pub(all) enum TokenizerKind {
   Whitespace
@@ -19,23 +20,29 @@ pub(all) enum TokenizerKind {
   Word
 } derive(Debug, Eq)
 
+///|
 pub extend TokenizerKind with Eq::{equal, not_equal}
+
+///|
 pub extend TokenizerKind with Debug::{to_repr}
 
+///|
 /// 空白分词 / Whitespace tokenization.
 pub fn tokenize_whitespace(text : String) -> Array[String] {
   text.split(" ").to_array().map(fn(s) { s.to_owned() })
 }
 
+///|
 /// 字符分词 / Character tokenization.
 pub fn tokenize_char(text : String) -> Array[String] {
   let result : Array[String] = []
   for i in 0..<text.length() {
-    result.push(text[i:i+1].to_owned())
+    result.push(text[i:i + 1].to_owned())
   }
   result
 }
 
+///|
 /// 单词分词（小写化）/ Word tokenization (lowercased).
 pub fn tokenize_word(text : String) -> Array[String] {
   let parts = text.split(" ").to_array()
@@ -49,6 +56,7 @@ pub fn tokenize_word(text : String) -> Array[String] {
   result
 }
 
+///|
 /// 分词器统一接口 / Tokenizer unified interface.
 pub fn tokenize(kind : TokenizerKind, text : String) -> Array[String] {
   match kind {
@@ -58,6 +66,7 @@ pub fn tokenize(kind : TokenizerKind, text : String) -> Array[String] {
   }
 }
 
+///|
 /// 词表构建 / Build vocabulary from tokens.
 pub fn build_vocab(tokens : Array[String]) -> Array[String] {
   let vocab : Array[String] = []
@@ -76,9 +85,13 @@ pub fn build_vocab(tokens : Array[String]) -> Array[String] {
   vocab
 }
 
+///|
 /// 文本编码为 ID / Encode text to token IDs.
-pub fn encode_tokens(tokens : Array[String], vocab : Array[String]) -> Array[Int] {
-  let result : Array[Int] = []
+pub fn encode_tokens(
+  tokens : Array[String],
+  vocab : Array[String],
+) -> Array[Int32] {
+  let result : Array[Int32] = []
   for i in 0..<tokens.length() {
     let w = tokens[i]
     let mut id = -1
@@ -92,8 +105,9 @@ pub fn encode_tokens(tokens : Array[String], vocab : Array[String]) -> Array[Int
   result
 }
 
+///|
 /// ID 解码为文本 / Decode token IDs to text.
-pub fn decode_ids(ids : Array[Int], vocab : Array[String]) -> Array[String] {
+pub fn decode_ids(ids : Array[Int32], vocab : Array[String]) -> Array[String] {
   let result : Array[String] = []
   for i in 0..<ids.length() {
     let id = ids[i]
@@ -109,10 +123,11 @@ pub fn decode_ids(ids : Array[Int], vocab : Array[String]) -> Array[String] {
 ///===
 /// Embedding
 
+///|
 /// 词嵌入查找 / Word embedding lookup.
 pub fn embedding_lookup(
-  token_ids : Array[Int],
-  embedding_matrix : Array[Array[Double]]
+  token_ids : Array[Int32],
+  embedding_matrix : Array[Array[Double]],
 ) -> Array[Array[Double]] {
   let result : Array[Array[Double]] = []
   for i in 0..<token_ids.length() {
@@ -126,12 +141,13 @@ pub fn embedding_lookup(
   result
 }
 
+///|
 /// 位置编码 / Positional encoding (sinusoidal).
 /// PE(pos, 2i) = sin(pos / 10000^(2i/d))
 /// PE(pos, 2i+1) = cos(pos / 10000^(2i/d))
 pub fn positional_encoding(
-  seq_len : Int,
-  d_model : Int
+  seq_len : Int32,
+  d_model : Int32,
 ) -> Array[Array[Double]] {
   let result : Array[Array[Double]] = []
   for pos in 0..<seq_len {
@@ -152,24 +168,32 @@ pub fn positional_encoding(
 ///===
 /// BERT 简化
 
+///|
 /// BERT 配置 / BERT configuration.
 pub struct BertConfig {
-  vocab_size : Int
-  hidden_size : Int
-  num_layers : Int
-  num_heads : Int
+  vocab_size : Int32
+  hidden_size : Int32
+  num_layers : Int32
+  num_heads : Int32
 }
 
+///|
 /// 构造 BERT 配置 / Create BERT config.
-pub fn make_bert_config(vocab_size : Int, hidden_size : Int, num_layers : Int, num_heads : Int) -> BertConfig {
-  { vocab_size, hidden_size, num_layers, num_heads }
+pub fn make_bert_config(
+  vocab_size : Int32,
+  hidden_size : Int32,
+  num_layers : Int32,
+  num_heads : Int32,
+) -> BertConfig {
+  { vocab_size, hidden_size, num_layers, num_heads, }
 }
 
+///|
 /// BERT 嵌入层 / BERT embedding layer (token + position + segment).
 pub fn bert_embeddings(
-  token_ids : Array[Int],
+  token_ids : Array[Int32],
   embedding_matrix : Array[Array[Double]],
-  config : BertConfig
+  config : BertConfig,
 ) -> Array[Array[Double]] {
   let token_emb = embedding_lookup(token_ids, embedding_matrix)
   let pos_emb = positional_encoding(token_ids.length(), config.hidden_size)
@@ -187,8 +211,11 @@ pub fn bert_embeddings(
   result
 }
 
+///|
 /// BERT 池化输出 / BERT pooled output (take [CLS] token).
-pub fn bert_pooled_output(hidden_states : Array[Array[Double]]) -> Array[Double] {
+pub fn bert_pooled_output(
+  hidden_states : Array[Array[Double]],
+) -> Array[Double] {
   if hidden_states.length() == 0 {
     []
   } else {
@@ -196,11 +223,12 @@ pub fn bert_pooled_output(hidden_states : Array[Array[Double]]) -> Array[Double]
   }
 }
 
+///|
 /// BERT 前向（简化）/ BERT forward (simplified).
 pub fn bert_forward(
-  token_ids : Array[Int],
+  token_ids : Array[Int32],
   embedding_matrix : Array[Array[Double]],
-  config : BertConfig
+  config : BertConfig,
 ) -> (Array[Array[Double]], Array[Double]) {
   let hidden = bert_embeddings(token_ids, embedding_matrix, config)
   let pooled = bert_pooled_output(hidden)
@@ -210,24 +238,32 @@ pub fn bert_forward(
 ///===
 /// GPT 简化
 
+///|
 /// GPT 配置 / GPT configuration.
 pub struct GptConfig {
-  vocab_size : Int
-  hidden_size : Int
-  num_layers : Int
-  num_heads : Int
+  vocab_size : Int32
+  hidden_size : Int32
+  num_layers : Int32
+  num_heads : Int32
 }
 
+///|
 /// 构造 GPT 配置 / Create GPT config.
-pub fn make_gpt_config(vocab_size : Int, hidden_size : Int, num_layers : Int, num_heads : Int) -> GptConfig {
-  { vocab_size, hidden_size, num_layers, num_heads }
+pub fn make_gpt_config(
+  vocab_size : Int32,
+  hidden_size : Int32,
+  num_layers : Int32,
+  num_heads : Int32,
+) -> GptConfig {
+  { vocab_size, hidden_size, num_layers, num_heads, }
 }
 
+///|
 /// GPT 嵌入层 / GPT embedding layer (token + position).
 pub fn gpt_embeddings(
-  token_ids : Array[Int],
+  token_ids : Array[Int32],
   embedding_matrix : Array[Array[Double]],
-  config : GptConfig
+  config : GptConfig,
 ) -> Array[Array[Double]] {
   let token_emb = embedding_lookup(token_ids, embedding_matrix)
   let pos_emb = positional_encoding(token_ids.length(), config.hidden_size)
@@ -245,21 +281,23 @@ pub fn gpt_embeddings(
   result
 }
 
+///|
 /// GPT 前向（简化）/ GPT forward (simplified).
 pub fn gpt_forward(
-  token_ids : Array[Int],
+  token_ids : Array[Int32],
   embedding_matrix : Array[Array[Double]],
-  config : GptConfig
+  config : GptConfig,
 ) -> Array[Array[Double]] {
   gpt_embeddings(token_ids, embedding_matrix, config)
 }
 
+///|
 /// GPT 生成（简化）/ GPT generate (simplified, returns next token id).
 pub fn gpt_generate_next(
-  token_ids : Array[Int],
+  token_ids : Array[Int32],
   embedding_matrix : Array[Array[Double]],
-  config : GptConfig
-) -> Int {
+  config : GptConfig,
+) -> Int32 {
   let hidden = gpt_forward(token_ids, embedding_matrix, config)
   if hidden.length() == 0 || hidden[0].length() == 0 {
     0
@@ -280,8 +318,9 @@ pub fn gpt_generate_next(
 ///===
 /// 文本工具
 
+///|
 /// n-gram 生成 / Generate n-grams.
-pub fn ngrams(tokens : Array[String], n : Int) -> Array[Array[String]] {
+pub fn ngrams(tokens : Array[String], n : Int32) -> Array[Array[String]] {
   let result : Array[Array[String]] = []
   if n <= 0 || n > tokens.length() {
     return result
@@ -296,9 +335,10 @@ pub fn ngrams(tokens : Array[String], n : Int) -> Array[Array[String]] {
   result
 }
 
+///|
 /// 词频统计 / Term frequency.
-pub fn term_frequency(tokens : Array[String]) -> Array[(String, Int)] {
-  let result : Array[(String, Int)] = []
+pub fn term_frequency(tokens : Array[String]) -> Array[(String, Int32)] {
+  let result : Array[(String, Int32)] = []
   for i in 0..<tokens.length() {
     let w = tokens[i]
     let mut found = false
@@ -315,11 +355,13 @@ pub fn term_frequency(tokens : Array[String]) -> Array[(String, Int)] {
   result
 }
 
+///|
 /// 文本长度 / Text length (character count).
-pub fn text_length(text : String) -> Int {
+pub fn text_length(text : String) -> Int32 {
   text.length()
 }
 
+///|
 /// 拼接文本 / Join text with delimiter.
 pub fn text_join(parts : Array[String], delimiter : String) -> String {
   if parts.length() == 0 {
@@ -333,8 +375,9 @@ pub fn text_join(parts : Array[String], delimiter : String) -> String {
   }
 }
 
+///|
 /// 文本截断 / Truncate text to max length.
-pub fn text_truncate(text : String, max_len : Int) -> String {
+pub fn text_truncate(text : String, max_len : Int32) -> String {
   if text.length() <= max_len {
     text
   } else {
@@ -345,8 +388,9 @@ pub fn text_truncate(text : String, max_len : Int) -> String {
 ///===
 /// 辅助函数
 
+///|
 /// 10 的幂 / Power of 10.
-fn pow10(exp : Int) -> Double {
+fn pow10(exp : Int32) -> Double {
   let mut result = 1.0
   for _i in 0..<exp {
     result = result * 10.0
@@ -354,6 +398,7 @@ fn pow10(exp : Int) -> Double {
   result
 }
 
+///|
 /// 正弦近似 / Sine approximation (Taylor series).
 fn sin_approx(x : Double) -> Double {
   let mut x = x
@@ -375,14 +420,15 @@ fn sin_approx(x : Double) -> Double {
   result
 }
 
+///|
 /// 余弦近似 / Cosine approximation.
 fn cos_approx(x : Double) -> Double {
   sin_approx(x + 1.5707963267948966)
 }
 
+///|
 ///===
 /// ID
-
 pub fn nlp_id() -> String {
   "learncore/nlp"
 }

@@ -13,17 +13,22 @@
 // 类型定义 / Type definitions
 // ============================================================
 
+///|
 /// 插值方法 / Interpolation method.
 pub(all) enum InterpolationMethod {
-  IDW             // 反距离加权
-  Kriging         // 克里金
-  Spline          // 样条
+  IDW // 反距离加权
+  Kriging // 克里金
+  Spline // 样条
   NaturalNeighbor // 自然邻域
 } derive(Debug, Eq)
 
+///|
 pub extend InterpolationMethod with Eq::{equal, not_equal}
+
+///|
 pub extend InterpolationMethod with Debug::{to_repr}
 
+///|
 /// 采样点 / Sample point with value.
 pub struct SamplePoint {
   x : Double
@@ -31,9 +36,13 @@ pub struct SamplePoint {
   value : Double
 } derive(Debug, Eq)
 
+///|
 pub extend SamplePoint with Eq::{equal, not_equal}
+
+///|
 pub extend SamplePoint with Debug::{to_repr}
 
+///|
 /// 插值结果 / Interpolation result.
 pub struct InterpolationResult {
   x : Double
@@ -42,23 +51,34 @@ pub struct InterpolationResult {
   interp_method : InterpolationMethod
 } derive(Debug, Eq)
 
+///|
 pub extend InterpolationResult with Eq::{equal, not_equal}
+
+///|
 pub extend InterpolationResult with Debug::{to_repr}
 
 // ============================================================
 // 基础构造 / Basic constructors
 // ============================================================
 
+///|
 /// 构造采样点 / Build a sample point.
 pub fn make_sample_point(x : Double, y : Double, value : Double) -> SamplePoint {
   { x, y, value, }
 }
 
+///|
 /// 构造插值结果 / Build an interpolation result.
-pub fn make_interpolation_result(x : Double, y : Double, value : Double, m : InterpolationMethod) -> InterpolationResult {
+pub fn make_interpolation_result(
+  x : Double,
+  y : Double,
+  value : Double,
+  m : InterpolationMethod,
+) -> InterpolationResult {
   { x, y, value, interp_method: m, }
 }
 
+///|
 /// 插值方法名称 / Interpolation method name.
 pub fn interpolation_method_name(m : InterpolationMethod) -> String {
   match m {
@@ -73,12 +93,17 @@ pub fn interpolation_method_name(m : InterpolationMethod) -> String {
 // 反距离加权 / IDW (Inverse Distance Weighting)
 // ============================================================
 
+///|
 /// IDW 插值（单点）/ IDW at a point.
 ///
 /// 对标 ArcGIS Pro IDW。
 /// 公式：`Σ(v_i / d_i^p) / Σ(1 / d_i^p)`。
 /// 退化安全：空采样集返回 0.0；目标与采样点重合返回该采样点值。
-pub fn interpolation_idw(samples : Array[SamplePoint], target : @proximity.Point, power : Double) -> Double {
+pub fn interpolation_idw(
+  samples : Array[SamplePoint],
+  target : @proximity.Point,
+  power : Double,
+) -> Double {
   let n = samples.length()
   if n == 0 {
     0.0
@@ -104,6 +129,7 @@ pub fn interpolation_idw(samples : Array[SamplePoint], target : @proximity.Point
   }
 }
 
+///|
 /// IDW 插值栅格 / IDW interpolation grid.
 ///
 /// 退化安全：空采样集返回空数组。
@@ -111,7 +137,7 @@ pub fn interpolation_idw_grid(
   samples : Array[SamplePoint],
   power : Double,
   cell_size : Double,
-  extent : (@proximity.Point, @proximity.Point)
+  extent : (@proximity.Point, @proximity.Point),
 ) -> Array[Array[Double]] {
   if cell_size <= 0.0 || samples.length() == 0 {
     []
@@ -125,7 +151,9 @@ pub fn interpolation_idw_grid(
       for j in 0..<cols {
         let cx = min_p.x + j.to_double() * cell_size
         let cy = min_p.y + i.to_double() * cell_size
-        row.push(interpolation_idw(samples, @proximity.make_point(cx, cy), power))
+        row.push(
+          interpolation_idw(samples, @proximity.make_point(cx, cy), power),
+        )
       }
       result.push(row)
     }
@@ -137,20 +165,25 @@ pub fn interpolation_idw_grid(
 // 克里金插值 / Kriging (simplified)
 // ============================================================
 
+///|
 /// 克里金插值（单点，简化）/ Simplified kriging at a point.
 ///
 /// 对标 ArcGIS Pro Kriging。
 /// 模拟策略：使用 IDW power=2 作为简化克里金（无变差函数拟合）。
 /// 退化安全：空采样集返回 0.0。
-pub fn interpolation_kriging(samples : Array[SamplePoint], target : @proximity.Point) -> Double {
+pub fn interpolation_kriging(
+  samples : Array[SamplePoint],
+  target : @proximity.Point,
+) -> Double {
   interpolation_idw(samples, target, 2.0)
 }
 
+///|
 /// 克里金插值栅格 / Kriging interpolation grid.
 pub fn interpolation_kriging_grid(
   samples : Array[SamplePoint],
   cell_size : Double,
-  extent : (@proximity.Point, @proximity.Point)
+  extent : (@proximity.Point, @proximity.Point),
 ) -> Array[Array[Double]] {
   interpolation_idw_grid(samples, 2.0, cell_size, extent)
 }
@@ -159,20 +192,25 @@ pub fn interpolation_kriging_grid(
 // 样条插值 / Spline (simplified)
 // ============================================================
 
+///|
 /// 样条插值（单点，简化）/ Simplified spline at a point.
 ///
 /// 对标 ArcGIS Pro Spline。
 /// 模拟策略：使用距离倒数平滑（power=1）作为简化样条。
 /// 退化安全：空采样集返回 0.0。
-pub fn interpolation_spline(samples : Array[SamplePoint], target : @proximity.Point) -> Double {
+pub fn interpolation_spline(
+  samples : Array[SamplePoint],
+  target : @proximity.Point,
+) -> Double {
   interpolation_idw(samples, target, 1.0)
 }
 
+///|
 /// 样条插值栅格 / Spline interpolation grid.
 pub fn interpolation_spline_grid(
   samples : Array[SamplePoint],
   cell_size : Double,
-  extent : (@proximity.Point, @proximity.Point)
+  extent : (@proximity.Point, @proximity.Point),
 ) -> Array[Array[Double]] {
   interpolation_idw_grid(samples, 1.0, cell_size, extent)
 }
@@ -181,20 +219,25 @@ pub fn interpolation_spline_grid(
 // 自然邻域插值 / Natural Neighbor (simplified)
 // ============================================================
 
+///|
 /// 自然邻域插值（单点，简化）/ Simplified natural neighbor at a point.
 ///
 /// 对标 ArcGIS Pro Natural Neighbor。
 /// 模拟策略：使用 IDW power=3 模拟（更强调近邻）。
 /// 退化安全：空采样集返回 0.0。
-pub fn interpolation_natural_neighbor(samples : Array[SamplePoint], target : @proximity.Point) -> Double {
+pub fn interpolation_natural_neighbor(
+  samples : Array[SamplePoint],
+  target : @proximity.Point,
+) -> Double {
   interpolation_idw(samples, target, 3.0)
 }
 
+///|
 /// 自然邻域插值栅格 / Natural neighbor interpolation grid.
 pub fn interpolation_natural_neighbor_grid(
   samples : Array[SamplePoint],
   cell_size : Double,
-  extent : (@proximity.Point, @proximity.Point)
+  extent : (@proximity.Point, @proximity.Point),
 ) -> Array[Array[Double]] {
   interpolation_idw_grid(samples, 3.0, cell_size, extent)
 }
@@ -203,11 +246,16 @@ pub fn interpolation_natural_neighbor_grid(
 // 通用插值接口 / Generic interpolation interface
 // ============================================================
 
+///|
 /// 通用插值 / Generic interpolation by method.
 ///
 /// 根据 method 选择插值方法。
 /// 退化安全：空采样集返回 0.0。
-pub fn interpolate(samples : Array[SamplePoint], target : @proximity.Point, m : InterpolationMethod) -> Double {
+pub fn interpolate(
+  samples : Array[SamplePoint],
+  target : @proximity.Point,
+  m : InterpolationMethod,
+) -> Double {
   match m {
     IDW => interpolation_idw(samples, target, 2.0)
     Kriging => interpolation_kriging(samples, target)
@@ -216,18 +264,20 @@ pub fn interpolate(samples : Array[SamplePoint], target : @proximity.Point, m : 
   }
 }
 
+///|
 /// 通用插值栅格 / Generic interpolation grid by method.
 pub fn interpolate_grid(
   samples : Array[SamplePoint],
   m : InterpolationMethod,
   cell_size : Double,
-  extent : (@proximity.Point, @proximity.Point)
+  extent : (@proximity.Point, @proximity.Point),
 ) -> Array[Array[Double]] {
   match m {
     IDW => interpolation_idw_grid(samples, 2.0, cell_size, extent)
     Kriging => interpolation_kriging_grid(samples, cell_size, extent)
     Spline => interpolation_spline_grid(samples, cell_size, extent)
-    NaturalNeighbor => interpolation_natural_neighbor_grid(samples, cell_size, extent)
+    NaturalNeighbor =>
+      interpolation_natural_neighbor_grid(samples, cell_size, extent)
   }
 }
 
@@ -235,10 +285,14 @@ pub fn interpolate_grid(
 // 插值结果列表 / Interpolation results
 // ============================================================
 
+///|
 /// IDW 插值结果列表 / IDW results at sample locations.
 ///
 /// 退化安全：空采样集返回空数组。
-pub fn interpolation_idw_results(samples : Array[SamplePoint], power : Double) -> Array[InterpolationResult] {
+pub fn interpolation_idw_results(
+  samples : Array[SamplePoint],
+  power : Double,
+) -> Array[InterpolationResult] {
   if samples.length() == 0 {
     []
   } else {
@@ -247,16 +301,19 @@ pub fn interpolation_idw_results(samples : Array[SamplePoint], power : Double) -
         s.x,
         s.y,
         interpolation_idw(samples, @proximity.make_point(s.x, s.y), power),
-        IDW
+        IDW,
       )
     })
   }
 }
 
+///|
 /// 插值统计 / Interpolation grid statistics: min/max/avg.
 ///
 /// 退化安全：空栅格返回 (0.0, 0.0, 0.0)。
-pub fn interpolation_stats(grid : Array[Array[Double]]) -> (Double, Double, Double) {
+pub fn interpolation_stats(
+  grid : Array[Array[Double]],
+) -> (Double, Double, Double) {
   let rows = grid.length()
   if rows == 0 {
     (0.0, 0.0, 0.0)
@@ -287,6 +344,7 @@ pub fn interpolation_stats(grid : Array[Array[Double]]) -> (Double, Double, Doub
 // 辅助函数 / Helper functions
 // ============================================================
 
+///|
 /// 幂运算 / Power function (positive power only).
 fn pow_custom(base : Double, exp : Double) -> Double {
   if exp == 0.0 {

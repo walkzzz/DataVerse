@@ -6,11 +6,12 @@
 ///
 /// # Advanced time series operators
 
+///|
 ///===
 /// 内部数学辅助 / Internal math helpers
-
 const TSA_LARGE : Double = 999999999999999.0
 
+///|
 fn tsa_variance(arr : Array[Double]) -> Double {
   let n = arr.length()
   if n == 0 {
@@ -25,32 +26,34 @@ fn tsa_variance(arr : Array[Double]) -> Double {
   sum / n.to_double()
 }
 
+///|
 ///===
 /// TsData
-
 pub struct TsData {
   values : Array[Double]
-  timestamps : Array[Int]
-  freq : Int
+  timestamps : Array[Int32]
+  freq : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend TsData with Eq::{equal, not_equal}
+
+///|
 pub extend TsData with Debug::{to_repr}
 
+///|
 /// 构造时序数据 / Build time series data.
 pub fn make_ts_data(
   values : Array[Double],
-  timestamps : Array[Int],
-  freq : Int
+  timestamps : Array[Int32],
+  freq : Int32,
 ) -> TsData {
-  { values, timestamps, freq }
+  { values, timestamps, freq, }
 }
 
+///|
 /// 重采样 / Resample time series.
-pub fn ts_resample(
-  data : TsData,
-  new_freq : Int
-) -> TsData {
+pub fn ts_resample(data : TsData, new_freq : Int32) -> TsData {
   if new_freq <= 0 || data.freq <= 0 {
     return data
   }
@@ -59,7 +62,7 @@ pub fn ts_resample(
     return data
   }
   let values : Array[Double] = []
-  let timestamps : Array[Int] = []
+  let timestamps : Array[Int32] = []
   let n = data.values.length()
   let mut i = 0
   while i < n {
@@ -76,14 +79,12 @@ pub fn ts_resample(
     }
     i = i + ratio
   }
-  { values, timestamps, freq: new_freq }
+  { values, timestamps, freq: new_freq, }
 }
 
+///|
 /// 插值 / Interpolate missing values.
-pub fn ts_interpolate(
-  values : Array[Double],
-  missing_idx : Int
-) -> Double {
+pub fn ts_interpolate(values : Array[Double], missing_idx : Int32) -> Double {
   let n = values.length()
   if missing_idx < 0 || missing_idx >= n {
     return 0.0
@@ -100,11 +101,9 @@ pub fn ts_interpolate(
   0.0
 }
 
+///|
 /// 外推 / Extrapolate beyond range.
-pub fn ts_extrapolate(
-  values : Array[Double],
-  target_idx : Int
-) -> Double {
+pub fn ts_extrapolate(values : Array[Double], target_idx : Int32) -> Double {
   let n = values.length()
   if n < 2 {
     return 0.0
@@ -113,6 +112,7 @@ pub fn ts_extrapolate(
   values[n - 1] + slope * (target_idx - n + 1).to_double()
 }
 
+///|
 /// 去趋势 / Detrend time series.
 pub fn ts_detrend(values : Array[Double]) -> Array[Double] {
   let n = values.length()
@@ -129,17 +129,18 @@ pub fn ts_detrend(values : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 /// 去季节化 / Deseasonalize.
 pub fn ts_deseasonalize(
   values : Array[Double],
-  period : Int
+  period : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 || period <= 0 {
     return values
   }
   let seasonal : Array[Double] = Array::make(period, 0.0)
-  let counts : Array[Int] = Array::make(period, 0)
+  let counts : Array[Int32] = Array::make(period, 0)
   for i in 0..<n {
     let k = i % period
     seasonal[k] = seasonal[k] + values[i]
@@ -157,10 +158,11 @@ pub fn ts_deseasonalize(
   result
 }
 
+///|
 /// STL 分解 / STL decomposition (simplified).
 pub fn ts_decompose_stl(
   values : Array[Double],
-  period : Int
+  period : Int32,
 ) -> (Array[Double], Array[Double], Array[Double]) {
   let n = values.length()
   let seasonal = ts_deseasonalize(values, period)
@@ -179,11 +181,9 @@ pub fn ts_decompose_stl(
 ///===
 /// ACF / PACF / CCF
 
+///|
 /// 自相关函数 / Autocorrelation function.
-pub fn ts_acf(
-  values : Array[Double],
-  max_lag : Int
-) -> Array[Double] {
+pub fn ts_acf(values : Array[Double], max_lag : Int32) -> Array[Double] {
   let n = values.length()
   if n == 0 {
     return []
@@ -198,7 +198,7 @@ pub fn ts_acf(
     return Array::make(max_lag + 1, 0.0)
   }
   let result : Array[Double] = []
-  for lag in 0..=max_lag {
+  for lag in 0..<=max_lag {
     let mut cov = 0.0
     for i in 0..<(n - lag) {
       cov = cov + (values[i] - m) * (values[i + lag] - m)
@@ -208,17 +208,15 @@ pub fn ts_acf(
   result
 }
 
+///|
 /// 偏自相关函数 / Partial autocorrelation function.
-pub fn ts_pacf(
-  values : Array[Double],
-  max_lag : Int
-) -> Array[Double] {
+pub fn ts_pacf(values : Array[Double], max_lag : Int32) -> Array[Double] {
   let acf = ts_acf(values, max_lag)
   if acf.length() == 0 {
     return []
   }
   let result : Array[Double] = [acf[0]]
-  for lag in 1..=max_lag {
+  for lag in 1..<=max_lag {
     if lag < acf.length() {
       result.push(acf[lag])
     } else {
@@ -228,11 +226,12 @@ pub fn ts_pacf(
   result
 }
 
+///|
 /// 互相关函数 / Cross-correlation function.
 pub fn ts_ccf(
   x : Array[Double],
   y : Array[Double],
-  max_lag : Int
+  max_lag : Int32,
 ) -> Array[Double] {
   let n = if x.length() < y.length() { x.length() } else { y.length() }
   if n == 0 {
@@ -241,7 +240,7 @@ pub fn ts_ccf(
   let mx = @_common.mean(x)
   let my = @_common.mean(y)
   let result : Array[Double] = []
-  for lag in 0..=max_lag {
+  for lag in 0..<=max_lag {
     let mut cov = 0.0
     for i in 0..<(n - lag) {
       cov = cov + (x[i] - mx) * (y[i + lag] - my)
@@ -254,6 +253,7 @@ pub fn ts_ccf(
 ///===
 /// 单位根检验 / Unit root tests
 
+///|
 /// ADF 检验 / Augmented Dickey-Fuller test statistic.
 pub fn ts_adf_test(values : Array[Double]) -> Double {
   let n = values.length()
@@ -274,6 +274,7 @@ pub fn ts_adf_test(values : Array[Double]) -> Double {
   num / den
 }
 
+///|
 /// KPSS 检验 / KPSS test statistic.
 pub fn ts_kpss_test(values : Array[Double]) -> Double {
   let n = values.length()
@@ -294,6 +295,7 @@ pub fn ts_kpss_test(values : Array[Double]) -> Double {
   stat / (n.to_double() * n.to_double() * var_val)
 }
 
+///|
 /// PP 检验 / Phillips-Perron test statistic.
 pub fn ts_pp_test(values : Array[Double]) -> Double {
   let n = values.length()
@@ -317,11 +319,12 @@ pub fn ts_pp_test(values : Array[Double]) -> Double {
 ///===
 /// Granger / Cointegration
 
+///|
 /// Granger 因果 / Granger causality F-statistic.
 pub fn ts_granger_causality(
   x : Array[Double],
   y : Array[Double],
-  lag : Int
+  lag : Int32,
 ) -> Double {
   let n = if x.length() < y.length() { x.length() } else { y.length() }
   if n <= lag + 1 || lag <= 0 {
@@ -341,11 +344,9 @@ pub fn ts_granger_causality(
   (rss_restricted - rss_unrestricted) / rss_unrestricted * lag.to_double()
 }
 
+///|
 /// 协整 / Cointegration test statistic.
-pub fn ts_cointegration(
-  x : Array[Double],
-  y : Array[Double]
-) -> Double {
+pub fn ts_cointegration(x : Array[Double], y : Array[Double]) -> Double {
   let n = if x.length() < y.length() { x.length() } else { y.length() }
   if n < 3 {
     return 0.0
@@ -375,11 +376,12 @@ pub fn ts_cointegration(
 ///===
 /// AR / MA / ARMA / ARIMA
 
+///|
 /// AR 模型 / AR model forecast.
 pub fn ts_ar_model(
   values : Array[Double],
   coeffs : Array[Double],
-  horizon : Int
+  horizon : Int32,
 ) -> Array[Double] {
   let p = coeffs.length()
   if p == 0 || horizon <= 0 {
@@ -404,11 +406,12 @@ pub fn ts_ar_model(
   result
 }
 
+///|
 /// MA 模型 / MA model forecast.
 pub fn ts_ma_model(
   values : Array[Double],
   coeffs : Array[Double],
-  horizon : Int
+  horizon : Int32,
 ) -> Array[Double] {
   let q = coeffs.length()
   if q == 0 || horizon <= 0 {
@@ -422,12 +425,13 @@ pub fn ts_ma_model(
   result
 }
 
+///|
 /// ARMA 模型 / ARMA model forecast.
 pub fn ts_arma_model(
   values : Array[Double],
   ar_coeffs : Array[Double],
   ma_coeffs : Array[Double],
-  horizon : Int
+  horizon : Int32,
 ) -> Array[Double] {
   let ar_pred = ts_ar_model(values, ar_coeffs, horizon)
   let ma_pred = ts_ma_model(values, ma_coeffs, horizon)
@@ -442,20 +446,22 @@ pub fn ts_arma_model(
   result
 }
 
+///|
 /// ARIMA 模型 / ARIMA model forecast.
 pub fn ts_arima_model(
   values : Array[Double],
-  d : Int,
+  d : Int32,
   ar_coeffs : Array[Double],
   ma_coeffs : Array[Double],
-  horizon : Int
+  horizon : Int32,
 ) -> Array[Double] {
   let diffed = ts_diff_apply(values, d)
   let forecast = ts_arma_model(diffed, ar_coeffs, ma_coeffs, horizon)
   ts_integrate_apply(values, forecast, d)
 }
 
-fn ts_diff_apply(values : Array[Double], d : Int) -> Array[Double] {
+///|
+fn ts_diff_apply(values : Array[Double], d : Int32) -> Array[Double] {
   let mut result : Array[Double] = []
   for i in 0..<values.length() {
     result.push(values[i])
@@ -470,10 +476,11 @@ fn ts_diff_apply(values : Array[Double], d : Int) -> Array[Double] {
   result
 }
 
+///|
 fn ts_integrate_apply(
   values : Array[Double],
   forecast : Array[Double],
-  d : Int
+  d : Int32,
 ) -> Array[Double] {
   if d == 0 {
     return forecast
@@ -491,13 +498,14 @@ fn ts_integrate_apply(
 ///===
 /// GARCH / ARCH / Volatility
 
+///|
 /// GARCH 模型 / GARCH model forecast.
 pub fn ts_garch_model(
   values : Array[Double],
   omega : Double,
   alpha : Double,
   beta : Double,
-  horizon : Int
+  horizon : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 || horizon <= 0 {
@@ -519,21 +527,20 @@ pub fn ts_garch_model(
   result
 }
 
+///|
 /// ARCH 模型 / ARCH model forecast.
 pub fn ts_arch_model(
   values : Array[Double],
   omega : Double,
   alpha : Double,
-  horizon : Int
+  horizon : Int32,
 ) -> Array[Double] {
   ts_garch_model(values, omega, alpha, 0.0, horizon)
 }
 
+///|
 /// 波动率 / Compute volatility.
-pub fn ts_volatility(
-  values : Array[Double],
-  window : Int
-) -> Array[Double] {
+pub fn ts_volatility(values : Array[Double], window : Int32) -> Array[Double] {
   let n = values.length()
   if n == 0 || window <= 0 {
     return []
@@ -542,7 +549,7 @@ pub fn ts_volatility(
   for i in 0..<n {
     let start = if i >= window { i - window + 1 } else { 0 }
     let segment : Array[Double] = []
-    for j in start..=i {
+    for j in start..<=i {
       segment.push(values[j])
     }
     result.push(@_common.sqrt(tsa_variance(segment)))
@@ -553,11 +560,12 @@ pub fn ts_volatility(
 ///===
 /// VAR / VECM
 
+///|
 /// VAR 模型 / VAR model forecast.
 pub fn ts_var_model(
   series_list : Array[Array[Double]],
   coeffs : Array[Array[Double]],
-  horizon : Int
+  horizon : Int32,
 ) -> Array[Array[Double]] {
   let k = series_list.length()
   if k == 0 || horizon <= 0 {
@@ -584,11 +592,12 @@ pub fn ts_var_model(
   result
 }
 
+///|
 /// VECM 模型 / VECM model forecast.
 pub fn ts_vecm_model(
   series_list : Array[Array[Double]],
   cointegration_vec : Array[Double],
-  horizon : Int
+  horizon : Int32,
 ) -> Array[Array[Double]] {
   let k = series_list.length()
   if k == 0 || horizon <= 0 {
@@ -614,9 +623,9 @@ pub fn ts_vecm_model(
   result
 }
 
+///|
 ///===
 /// StateSpace / Kalman
-
 pub struct StateSpace {
   transition : Array[Array[Double]]
   observation : Array[Array[Double]]
@@ -624,14 +633,18 @@ pub struct StateSpace {
   covariance : Array[Array[Double]]
 } derive(Debug, Eq)
 
+///|
 pub extend StateSpace with Eq::{equal, not_equal}
+
+///|
 pub extend StateSpace with Debug::{to_repr}
 
+///|
 /// 构造状态空间 / Build state space model.
 pub fn ts_state_space(
   transition : Array[Array[Double]],
   observation : Array[Array[Double]],
-  initial_state : Array[Double]
+  initial_state : Array[Double],
 ) -> StateSpace {
   let n = initial_state.length()
   let covariance : Array[Array[Double]] = []
@@ -640,14 +653,12 @@ pub fn ts_state_space(
     row[i] = 1.0
     covariance.push(row)
   }
-  { transition, observation, state: initial_state, covariance }
+  { transition, observation, state: initial_state, covariance, }
 }
 
+///|
 /// Kalman 滤波 / Kalman filter step.
-pub fn ts_kalman_filter(
-  ss : StateSpace,
-  observation : Double
-) -> StateSpace {
+pub fn ts_kalman_filter(ss : StateSpace, observation : Double) -> StateSpace {
   let n = ss.state.length()
   let predicted : Array[Double] = []
   for i in 0..<n {
@@ -673,13 +684,19 @@ pub fn ts_kalman_filter(
   for i in 0..<n {
     updated.push(predicted[i] + gain * innovation)
   }
-  { transition: ss.transition, observation: ss.observation, state: updated, covariance: ss.covariance }
+  {
+    transition: ss.transition,
+    observation: ss.observation,
+    state: updated,
+    covariance: ss.covariance,
+  }
 }
 
+///|
 /// Kalman 平滑 / Kalman smoother.
 pub fn ts_kalman_smooth(
   ss : StateSpace,
-  observations : Array[Double]
+  observations : Array[Double],
 ) -> Array[Double] {
   let mut current = ss
   let result : Array[Double] = []
@@ -697,16 +714,20 @@ pub fn ts_kalman_smooth(
 ///===
 /// ParticleFilter / MCMC
 
+///|
 /// 粒子滤波 / Particle filter.
 pub fn ts_particle_filter(
   values : Array[Double],
-  n_particles : Int
+  n_particles : Int32,
 ) -> Array[Double] {
   if n_particles <= 0 || values.length() == 0 {
     return []
   }
   let particles : Array[Double] = Array::make(n_particles, 0.0)
-  let weights : Array[Double] = Array::make(n_particles, 1.0 / n_particles.to_double())
+  let weights : Array[Double] = Array::make(
+    n_particles,
+    1.0 / n_particles.to_double(),
+  )
   let result : Array[Double] = []
   for t in 0..<values.length() {
     let mut est = 0.0
@@ -728,11 +749,12 @@ pub fn ts_particle_filter(
   result
 }
 
+///|
 /// MCMC 采样 / MCMC sampling (Metropolis).
 pub fn ts_mcmc_sampling(
   target : Array[Double],
-  n_samples : Int,
-  step_size : Double
+  n_samples : Int32,
+  step_size : Double,
 ) -> Array[Double] {
   if n_samples <= 0 || target.length() == 0 {
     return []
@@ -745,7 +767,10 @@ pub fn ts_mcmc_sampling(
   let result : Array[Double] = []
   let mut current = m
   for i in 0..<n_samples {
-    let proposal = current + (i.to_double() - n_samples.to_double() / 2.0) * step_size / n_samples.to_double()
+    let proposal = current +
+      (i.to_double() - n_samples.to_double() / 2.0) *
+      step_size /
+      n_samples.to_double()
     let cur_lik = @_common.abs(current - m) / std
     let prop_lik = @_common.abs(proposal - m) / std
     if prop_lik <= cur_lik {
@@ -759,9 +784,10 @@ pub fn ts_mcmc_sampling(
 ///===
 /// Wavelet
 
+///|
 /// 小波分解 / Wavelet decomposition (Haar).
 pub fn ts_wavelet_decompose(
-  values : Array[Double]
+  values : Array[Double],
 ) -> (Array[Double], Array[Double]) {
   let n = values.length()
   if n < 2 {
@@ -778,12 +804,17 @@ pub fn ts_wavelet_decompose(
   (approx, detail)
 }
 
+///|
 /// 小波重构 / Wavelet reconstruction (Haar).
 pub fn ts_wavelet_reconstruct(
   approx : Array[Double],
-  detail : Array[Double]
+  detail : Array[Double],
 ) -> Array[Double] {
-  let n = if approx.length() < detail.length() { approx.length() } else { detail.length() }
+  let n = if approx.length() < detail.length() {
+    approx.length()
+  } else {
+    detail.length()
+  }
   let result : Array[Double] = []
   for i in 0..<n {
     result.push((approx[i] + detail[i]) / @_common.sqrt(2.0))
@@ -795,10 +826,11 @@ pub fn ts_wavelet_reconstruct(
 ///===
 /// FFT / Bandpass / Lowpass
 
+///|
 /// FFT 滤波 / FFT-based filter (simplified magnitude filter).
 pub fn ts_fft_filter(
   values : Array[Double],
-  cutoff_ratio : Double
+  cutoff_ratio : Double,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 {
@@ -814,11 +846,12 @@ pub fn ts_fft_filter(
   result
 }
 
+///|
 /// 带通滤波 / Bandpass filter.
 pub fn ts_bandpass_filter(
   values : Array[Double],
   low_ratio : Double,
-  high_ratio : Double
+  high_ratio : Double,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 {
@@ -828,16 +861,21 @@ pub fn ts_bandpass_filter(
   let result : Array[Double] = []
   for i in 0..<n {
     let freq_idx = i.to_double() / n.to_double()
-    let weight = if freq_idx >= low_ratio && freq_idx <= high_ratio { 1.0 } else { 0.0 }
+    let weight = if freq_idx >= low_ratio && freq_idx <= high_ratio {
+      1.0
+    } else {
+      0.0
+    }
     result.push(m + (values[i] - m) * weight)
   }
   result
 }
 
+///|
 /// 低通滤波 / Lowpass filter.
 pub fn ts_lowpass_filter_ts(
   values : Array[Double],
-  cutoff_ratio : Double
+  cutoff_ratio : Double,
 ) -> Array[Double] {
   ts_fft_filter(values, cutoff_ratio)
 }
@@ -845,16 +883,17 @@ pub fn ts_lowpass_filter_ts(
 ///===
 /// ChangePoint / Segment / Regime
 
+///|
 /// 变点检测 / Change point detection.
 pub fn ts_change_point(
   values : Array[Double],
-  threshold : Double
-) -> Array[Int] {
+  threshold : Double,
+) -> Array[Int32] {
   let n = values.length()
   if n < 3 {
     return []
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 1..<(n - 1) {
     let left : Array[Double] = []
     let right : Array[Double] = []
@@ -872,10 +911,11 @@ pub fn ts_change_point(
   result
 }
 
+///|
 /// 分段 / Segment time series.
 pub fn ts_segment(
   values : Array[Double],
-  change_points : Array[Int]
+  change_points : Array[Int32],
 ) -> Array[Array[Double]] {
   let result : Array[Array[Double]] = []
   let n = values.length()
@@ -901,16 +941,14 @@ pub fn ts_segment(
   result
 }
 
+///|
 /// 制度检测 / Regime detection.
-pub fn ts_regime_detect(
-  values : Array[Double],
-  window : Int
-) -> Array[Int] {
+pub fn ts_regime_detect(values : Array[Double], window : Int32) -> Array[Int32] {
   let n = values.length()
   if n < window * 2 || window <= 0 {
     return []
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   let mut prev_var = 0.0
   for i in 0..<(n - window) {
     let segment : Array[Double] = []
@@ -929,10 +967,11 @@ pub fn ts_regime_detect(
 ///===
 /// Anomaly / Outlier
 
+///|
 /// 异常评分 / Anomaly score.
 pub fn ts_anomaly_score(
   values : Array[Double],
-  window : Int
+  window : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 || window <= 0 {
@@ -943,7 +982,7 @@ pub fn ts_anomaly_score(
     let start = if i >= window { i - window } else { 0 }
     let end = if i + window < n { i + window } else { n - 1 }
     let segment : Array[Double] = []
-    for j in start..=end {
+    for j in start..<=end {
       if j != i {
         segment.push(values[j])
       }
@@ -959,13 +998,14 @@ pub fn ts_anomaly_score(
   result
 }
 
+///|
 /// 离群点检测 / Outlier detection.
 pub fn ts_outlier_detect(
   values : Array[Double],
-  threshold : Double
-) -> Array[Int] {
+  threshold : Double,
+) -> Array[Int32] {
   let scores = ts_anomaly_score(values, 5)
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<scores.length() {
     if scores[i] > threshold {
       result.push(i)
@@ -977,10 +1017,9 @@ pub fn ts_outlier_detect(
 ///===
 /// Forecast ensemble / combination
 
+///|
 /// 集成预测 / Ensemble forecast.
-pub fn ts_forecast_ensemble(
-  forecasts : Array[Array[Double]]
-) -> Array[Double] {
+pub fn ts_forecast_ensemble(forecasts : Array[Array[Double]]) -> Array[Double] {
   let k = forecasts.length()
   if k == 0 {
     return []
@@ -1000,10 +1039,11 @@ pub fn ts_forecast_ensemble(
   result
 }
 
+///|
 /// 预测组合 / Weighted forecast combination.
 pub fn ts_forecast_combination(
   forecasts : Array[Array[Double]],
-  weights : Array[Double]
+  weights : Array[Double],
 ) -> Array[Double] {
   let k = forecasts.length()
   if k == 0 || weights.length() != k {
@@ -1024,12 +1064,13 @@ pub fn ts_forecast_combination(
 ///===
 /// Backtest
 
+///|
 /// 滚动回测 / Rolling window backtest.
 pub fn ts_backtest_rolling(
   values : Array[Double],
-  train_size : Int,
-  horizon : Int,
-  forecast_fn : (Array[Double], Int) -> Array[Double]
+  train_size : Int32,
+  horizon : Int32,
+  forecast_fn : (Array[Double], Int32) -> Array[Double],
 ) -> Array[Double] {
   let n = values.length()
   if n < train_size + horizon || train_size <= 0 {
@@ -1054,12 +1095,13 @@ pub fn ts_backtest_rolling(
   result
 }
 
+///|
 /// 扩展回测 / Expanding window backtest.
 pub fn ts_backtest_expanding(
   values : Array[Double],
-  min_train : Int,
-  horizon : Int,
-  forecast_fn : (Array[Double], Int) -> Array[Double]
+  min_train : Int32,
+  horizon : Int32,
+  forecast_fn : (Array[Double], Int32) -> Array[Double],
 ) -> Array[Double] {
   let n = values.length()
   if n < min_train + horizon || min_train <= 0 {
@@ -1087,11 +1129,12 @@ pub fn ts_backtest_expanding(
 ///===
 /// CrossValidate / GridSearch
 
+///|
 /// 时序交叉验证 / Time series cross validation.
 pub fn ts_cross_validate_ts(
   values : Array[Double],
-  n_folds : Int,
-  forecast_fn : (Array[Double], Int) -> Array[Double]
+  n_folds : Int32,
+  forecast_fn : (Array[Double], Int32) -> Array[Double],
 ) -> Array[Double] {
   let n = values.length()
   if n < n_folds + 1 || n_folds <= 0 {
@@ -1117,11 +1160,12 @@ pub fn ts_cross_validate_ts(
   result
 }
 
+///|
 /// 网格搜索 / Grid search over parameters.
 pub fn ts_grid_search_ts(
   values : Array[Double],
   param_grid : Array[Double],
-  eval_fn : (Array[Double], Double) -> Double
+  eval_fn : (Array[Double], Double) -> Double,
 ) -> (Double, Double) {
   if param_grid.length() == 0 {
     return (0.0, 0.0)
@@ -1141,6 +1185,7 @@ pub fn ts_grid_search_ts(
 ///===
 /// Feature
 
+///|
 /// 特征提取 / Extract features from time series.
 pub fn ts_feature_extract(values : Array[Double]) -> Array[Double] {
   let n = values.length()
@@ -1162,9 +1207,10 @@ pub fn ts_feature_extract(values : Array[Double]) -> Array[Double] {
   [m, @_common.sqrt(v), min_val, max_val, max_val - min_val]
 }
 
+///|
 /// 特征矩阵 / Build feature matrix.
 pub fn ts_feature_matrix(
-  series_list : Array[Array[Double]]
+  series_list : Array[Array[Double]],
 ) -> Array[Array[Double]] {
   let result : Array[Array[Double]] = []
   for i in 0..<series_list.length() {
@@ -1176,11 +1222,9 @@ pub fn ts_feature_matrix(
 ///===
 /// Similarity / DTW / Euclidean
 
+///|
 /// 相似度 / Similarity score.
-pub fn ts_similarity(
-  x : Array[Double],
-  y : Array[Double]
-) -> Double {
+pub fn ts_similarity(x : Array[Double], y : Array[Double]) -> Double {
   let n = if x.length() < y.length() { x.length() } else { y.length() }
   if n == 0 {
     return 0.0
@@ -1200,11 +1244,9 @@ pub fn ts_similarity(
   dot / denom
 }
 
+///|
 /// DTW 距离 / Dynamic time warping distance.
-pub fn ts_distance_dtw(
-  x : Array[Double],
-  y : Array[Double]
-) -> Double {
+pub fn ts_distance_dtw(x : Array[Double], y : Array[Double]) -> Double {
   let n = x.length()
   let m = y.length()
   if n == 0 || m == 0 {
@@ -1221,18 +1263,26 @@ pub fn ts_distance_dtw(
       let v1 = dp[i - 1][j]
       let v2 = dp[i][j - 1]
       let v3 = dp[i - 1][j - 1]
-      let min_v = if v1 <= v2 { if v1 <= v3 { v1 } else { v3 } } else { if v2 <= v3 { v2 } else { v3 } }
+      let min_v = if v1 <= v2 {
+        if v1 <= v3 {
+          v1
+        } else {
+          v3
+        }
+      } else if v2 <= v3 {
+        v2
+      } else {
+        v3
+      }
       dp[i][j] = cost + min_v
     }
   }
   @_common.sqrt(dp[n][m])
 }
 
+///|
 /// 欧氏距离 / Euclidean distance.
-pub fn ts_distance_euclidean(
-  x : Array[Double],
-  y : Array[Double]
-) -> Double {
+pub fn ts_distance_euclidean(x : Array[Double], y : Array[Double]) -> Double {
   let n = if x.length() < y.length() { x.length() } else { y.length() }
   let mut sum = 0.0
   for i in 0..<n {
@@ -1245,6 +1295,7 @@ pub fn ts_distance_euclidean(
 ///===
 /// ID
 
+///|
 /// 高级时序模块 ID / Advanced time series module id.
 pub fn time_series_adv_id() -> String {
   "opcore/time_series_adv"

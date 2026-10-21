@@ -8,41 +8,58 @@
 ///
 /// Prior/posterior/Bayes network/MCMC. See architecture §4.3.5 B.
 
+///|
 /// Beta 分布 / Beta distribution.
 pub(all) struct BetaDist {
   alpha : Double
   beta : Double
 } derive(Debug, Eq)
 
+///|
 pub extend BetaDist with Eq::{equal, not_equal}
+
+///|
 pub extend BetaDist with Debug::{to_repr}
 
+///|
 /// Gamma 分布 / Gamma distribution.
 pub(all) struct GammaDist {
   shape : Double
   rate : Double
 } derive(Debug, Eq)
 
+///|
 pub extend GammaDist with Eq::{equal, not_equal}
+
+///|
 pub extend GammaDist with Debug::{to_repr}
 
+///|
 /// 正态分布 / Normal distribution.
 pub(all) struct NormalDist {
   mean : Double
   variance : Double
 } derive(Debug, Eq)
 
+///|
 pub extend NormalDist with Eq::{equal, not_equal}
+
+///|
 pub extend NormalDist with Debug::{to_repr}
 
+///|
 /// Dirichlet 分布 / Dirichlet distribution.
 pub(all) struct DirichletDist {
   alphas : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend DirichletDist with Eq::{equal, not_equal}
+
+///|
 pub extend DirichletDist with Debug::{to_repr}
 
+///|
 /// 贝叶斯网络节点 / Bayes network node.
 pub(all) struct BayesNode {
   name : String
@@ -50,18 +67,26 @@ pub(all) struct BayesNode {
   cpt : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend BayesNode with Eq::{equal, not_equal}
+
+///|
 pub extend BayesNode with Debug::{to_repr}
 
+///|
 /// 贝叶斯网络 / Bayes network.
 pub(all) struct BayesNet {
   nodes : Array[BayesNode]
   edges : Array[(String, String)]
 } derive(Debug, Eq)
 
+///|
 pub extend BayesNet with Eq::{equal, not_equal}
+
+///|
 pub extend BayesNet with Debug::{to_repr}
 
+///|
 /// 共轭后验 / Conjugate posterior.
 pub(all) struct ConjugatePosterior {
   prior_type : String
@@ -69,9 +94,13 @@ pub(all) struct ConjugatePosterior {
   posterior_params : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend ConjugatePosterior with Eq::{equal, not_equal}
+
+///|
 pub extend ConjugatePosterior with Debug::{to_repr}
 
+///|
 /// MCMC 样本 / MCMC sample.
 pub(all) struct McmcSample {
   state : Double
@@ -79,9 +108,13 @@ pub(all) struct McmcSample {
   accepted : Bool
 } derive(Debug, Eq)
 
+///|
 pub extend McmcSample with Eq::{equal, not_equal}
+
+///|
 pub extend McmcSample with Debug::{to_repr}
 
+///|
 /// 自然对数 / Natural logarithm.
 pub fn ln_(x : Double) -> Double {
   if x <= 0.0 {
@@ -112,6 +145,7 @@ pub fn ln_(x : Double) -> Double {
   2.0 * sum + exp.to_double() * 0.6931471805599453
 }
 
+///|
 /// 指数函数 / Exponential function.
 pub fn exp_(x : Double) -> Double {
   if x > 700.0 {
@@ -138,6 +172,7 @@ pub fn exp_(x : Double) -> Double {
   sum
 }
 
+///|
 /// 平方根 / Square root (Newton's method).
 pub fn sqrt_(x : Double) -> Double {
   if x <= 0.0 {
@@ -149,7 +184,7 @@ pub fn sqrt_(x : Double) -> Double {
   }
   let mut i = 0
   let mut done = false
-  while i < 100 && !(done) {
+  while i < 100 && !done {
     let next = 0.5 * (guess + x / guess)
     let diff = next - guess
     if diff < 0.000000000000001 && diff > -0.000000000000001 {
@@ -163,103 +198,128 @@ pub fn sqrt_(x : Double) -> Double {
   guess
 }
 
+///|
 fn lgamma_(x : Double) -> Double {
   if x < 1.0 {
     return lgamma_(x + 1.0) - ln_(x)
   }
   let x2 = x * x
-  let ser = 1.0 + 1.0 / (12.0 * x) + 1.0 / (288.0 * x2) - 139.0 / (51840.0 * x2 * x)
+  let ser = 1.0 +
+    1.0 / (12.0 * x) +
+    1.0 / (288.0 * x2) -
+    139.0 / (51840.0 * x2 * x)
   (x - 0.5) * ln_(x) - x + 0.9189385332046727 + ln_(ser)
 }
 
+///|
 fn lbeta_(a : Double, b : Double) -> Double {
   lgamma_(a) + lgamma_(b) - lgamma_(a + b)
 }
 
-fn ln_factorial(n : Int) -> Double {
+///|
+fn ln_factorial(n : Int32) -> Double {
   if n <= 1 {
     return 0.0
   }
   lgamma_(n.to_double() + 1.0)
 }
 
-fn ln_binomial_coef(n : Int, k : Int) -> Double {
-  lgamma_(n.to_double() + 1.0) - lgamma_(k.to_double() + 1.0) - lgamma_(
-    (n - k).to_double() + 1.0
-  )
+///|
+fn ln_binomial_coef(n : Int32, k : Int32) -> Double {
+  lgamma_(n.to_double() + 1.0) -
+  lgamma_(k.to_double() + 1.0) -
+  lgamma_((n - k).to_double() + 1.0)
 }
 
+///|
 /// Beta 先验 / Beta prior.
 pub fn beta_prior(theta : Double, alpha : Double, beta : Double) -> Double {
   if theta <= 0.0 || theta >= 1.0 {
     return 0.0
   }
-  let logp = (alpha - 1.0) * ln_(theta) + (beta - 1.0) * ln_(1.0 - theta) - lbeta_(
-    alpha, beta
-  )
+  let logp = (alpha - 1.0) * ln_(theta) +
+    (beta - 1.0) * ln_(1.0 - theta) -
+    lbeta_(alpha, beta)
   exp_(logp)
 }
 
+///|
 /// Beta 后验 / Beta posterior.
 pub fn beta_posterior(
   theta : Double,
   alpha : Double,
   beta : Double,
-  successes : Int,
-  failures : Int
+  successes : Int32,
+  failures : Int32,
 ) -> Double {
   let post_alpha = alpha + successes.to_double()
   let post_beta = beta + failures.to_double()
   beta_prior(theta, post_alpha, post_beta)
 }
 
+///|
 /// Beta 更新 / Beta update.
-pub fn beta_update(prior : BetaDist, successes : Int, failures : Int) -> BetaDist {
+pub fn beta_update(
+  prior : BetaDist,
+  successes : Int32,
+  failures : Int32,
+) -> BetaDist {
   {
     alpha: prior.alpha + successes.to_double(),
-    beta: prior.beta + failures.to_double()
+    beta: prior.beta + failures.to_double(),
   }
 }
 
+///|
 /// Gamma 先验 / Gamma prior.
 pub fn gamma_prior(x : Double, shape : Double, rate : Double) -> Double {
   if x <= 0.0 {
     return 0.0
   }
-  let logp = shape * ln_(rate) - lgamma_(shape) + (shape - 1.0) * ln_(x) - rate * x
+  let logp = shape * ln_(rate) -
+    lgamma_(shape) +
+    (shape - 1.0) * ln_(x) -
+    rate * x
   exp_(logp)
 }
 
+///|
 /// Gamma 后验 / Gamma posterior.
 pub fn gamma_posterior(
   x : Double,
   shape : Double,
   rate : Double,
   sum_obs : Double,
-  n_obs : Int
+  n_obs : Int32,
 ) -> Double {
   let post_shape = shape + sum_obs
   let post_rate = rate + n_obs.to_double()
   gamma_prior(x, post_shape, post_rate)
 }
 
+///|
 /// Gamma 更新 / Gamma update.
-pub fn gamma_update(prior : GammaDist, sum_obs : Double, n_obs : Int) -> GammaDist {
-  { shape: prior.shape + sum_obs, rate: prior.rate + n_obs.to_double() }
+pub fn gamma_update(
+  prior : GammaDist,
+  sum_obs : Double,
+  n_obs : Int32,
+) -> GammaDist {
+  { shape: prior.shape + sum_obs, rate: prior.rate + n_obs.to_double(), }
 }
 
+///|
 /// 正态先验 / Normal prior.
 pub fn normal_prior(theta : Double, mean : Double, variance : Double) -> Double {
   if variance <= 0.0 {
     return 0.0
   }
   let diff = theta - mean
-  let logp = -0.5 * ln_(2.0 * 3.14159265358979323846 * variance) - diff * diff / (
-    2.0 * variance
-  )
+  let logp = -0.5 * ln_(2.0 * 3.14159265358979323846 * variance) -
+    diff * diff / (2.0 * variance)
   exp_(logp)
 }
 
+///|
 /// 正态后验 / Normal posterior.
 pub fn normal_posterior(
   theta : Double,
@@ -267,35 +327,42 @@ pub fn normal_posterior(
   prior_variance : Double,
   data_mean : Double,
   data_variance : Double,
-  n : Int
+  n : Int32,
 ) -> Double {
   if n == 0 {
     return normal_prior(theta, prior_mean, prior_variance)
   }
   let nv = n.to_double()
   let post_var = 1.0 / (1.0 / prior_variance + nv / data_variance)
-  let post_mean = post_var * (prior_mean / prior_variance + nv * data_mean / data_variance)
+  let post_mean = post_var *
+    (prior_mean / prior_variance + nv * data_mean / data_variance)
   normal_prior(theta, post_mean, post_var)
 }
 
+///|
 /// 正态更新 / Normal update.
 pub fn normal_update(
   prior : NormalDist,
   data_mean : Double,
   data_variance : Double,
-  n : Int
+  n : Int32,
 ) -> NormalDist {
   if n == 0 {
     return prior
   }
   let nv = n.to_double()
   let post_var = 1.0 / (1.0 / prior.variance + nv / data_variance)
-  let post_mean = post_var * (prior.mean / prior.variance + nv * data_mean / data_variance)
-  { mean: post_mean, variance: post_var }
+  let post_mean = post_var *
+    (prior.mean / prior.variance + nv * data_mean / data_variance)
+  { mean: post_mean, variance: post_var, }
 }
 
+///|
 /// Dirichlet 先验 / Dirichlet prior.
-pub fn dirichlet_prior(thetas : Array[Double], alphas : Array[Double]) -> Double {
+pub fn dirichlet_prior(
+  thetas : Array[Double],
+  alphas : Array[Double],
+) -> Double {
   let n = thetas.length()
   if n != alphas.length() || n == 0 {
     return 0.0
@@ -313,11 +380,12 @@ pub fn dirichlet_prior(thetas : Array[Double], alphas : Array[Double]) -> Double
   exp_(logp)
 }
 
+///|
 /// Dirichlet 后验 / Dirichlet posterior.
 pub fn dirichlet_posterior(
   thetas : Array[Double],
   alphas : Array[Double],
-  counts : Array[Double]
+  counts : Array[Double],
 ) -> Double {
   let n = alphas.length()
   if n != counts.length() {
@@ -330,8 +398,9 @@ pub fn dirichlet_posterior(
   dirichlet_prior(thetas, post_alphas)
 }
 
+///|
 /// Bernoulli 似然 / Bernoulli likelihood.
-pub fn bernoulli_likelihood(data : Array[Int], theta : Double) -> Double {
+pub fn bernoulli_likelihood(data : Array[Int32], theta : Double) -> Double {
   if theta < 0.0 || theta > 1.0 {
     return 0.0
   }
@@ -346,19 +415,21 @@ pub fn bernoulli_likelihood(data : Array[Int], theta : Double) -> Double {
   exp_(logp)
 }
 
+///|
 /// Binomial 似然 / Binomial likelihood.
-pub fn binomial_likelihood(k : Int, n : Int, theta : Double) -> Double {
+pub fn binomial_likelihood(k : Int32, n : Int32, theta : Double) -> Double {
   if theta < 0.0 || theta > 1.0 || k < 0 || n < 0 || k > n {
     return 0.0
   }
-  let logp = ln_binomial_coef(n, k) + k.to_double() * ln_(theta) + (n - k).to_double() * ln_(
-    1.0 - theta
-  )
+  let logp = ln_binomial_coef(n, k) +
+    k.to_double() * ln_(theta) +
+    (n - k).to_double() * ln_(1.0 - theta)
   exp_(logp)
 }
 
+///|
 /// Poisson 似然 / Poisson likelihood.
-pub fn poisson_likelihood(data : Array[Int], lambda : Double) -> Double {
+pub fn poisson_likelihood(data : Array[Int32], lambda : Double) -> Double {
   if lambda <= 0.0 {
     return 0.0
   }
@@ -370,6 +441,7 @@ pub fn poisson_likelihood(data : Array[Int], lambda : Double) -> Double {
   exp_(logp)
 }
 
+///|
 /// Exponential 似然 / Exponential likelihood.
 pub fn exponential_likelihood(data : Array[Double], rate : Double) -> Double {
   if rate <= 0.0 {
@@ -386,6 +458,7 @@ pub fn exponential_likelihood(data : Array[Double], rate : Double) -> Double {
   exp_(n * ln_(rate) - rate * sum)
 }
 
+///|
 /// 先验概率 / Prior probability (generic).
 pub fn prior(theta : Double, dist_params : Array[Double]) -> Double {
   if dist_params.length() >= 2 {
@@ -395,6 +468,7 @@ pub fn prior(theta : Double, dist_params : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 似然函数 / Likelihood function (generic).
 pub fn likelihood(data : Array[Double], theta : Double) -> Double {
   let mut prod = 1.0
@@ -410,10 +484,11 @@ pub fn likelihood(data : Array[Double], theta : Double) -> Double {
   prod
 }
 
+///|
 /// 边际似然 / Marginal likelihood.
 pub fn marginal_likelihood(
   data : Array[Double],
-  prior_params : Array[Double]
+  prior_params : Array[Double],
 ) -> Double {
   let mut sum = 0.0
   let steps = 100
@@ -424,11 +499,12 @@ pub fn marginal_likelihood(
   sum / steps.to_double()
 }
 
+///|
 /// 后验概率 / Posterior probability.
 pub fn posterior(
   theta : Double,
   data : Array[Double],
-  prior_params : Array[Double]
+  prior_params : Array[Double],
 ) -> Double {
   let pri = prior(theta, prior_params)
   let lik = likelihood(data, theta)
@@ -440,10 +516,11 @@ pub fn posterior(
   }
 }
 
+///|
 /// 贝叶斯更新 / Bayes update.
 pub fn bayes_update(
   prior_params : Array[Double],
-  data : Array[Double]
+  data : Array[Double],
 ) -> Array[Double] {
   if prior_params.length() < 2 {
     return prior_params
@@ -462,10 +539,11 @@ pub fn bayes_update(
   [post_alpha, post_beta]
 }
 
+///|
 /// 贝叶斯推断 / Bayes inference.
 pub fn bayes_infer(
   data : Array[Double],
-  prior_params : Array[Double]
+  prior_params : Array[Double],
 ) -> Double {
   let post_params = bayes_update(prior_params, data)
   if post_params.length() >= 2 {
@@ -475,30 +553,35 @@ pub fn bayes_infer(
   }
 }
 
+///|
 /// 证据 / Evidence.
 pub fn evidence(data : Array[Double], prior_params : Array[Double]) -> Double {
   marginal_likelihood(data, prior_params)
 }
 
+///|
 /// 构造贝叶斯网络 / Make Bayes network.
 pub fn make_bayes_net() -> BayesNet {
-  { nodes: [], edges: [] }
+  { nodes: [], edges: [], }
 }
 
+///|
 /// 添加节点 / Add node.
 pub fn add_node(net : BayesNet, node : BayesNode) -> BayesNet {
   let new_nodes = net.nodes.copy()
   new_nodes.push(node)
-  { nodes: new_nodes, edges: net.edges.copy() }
+  { nodes: new_nodes, edges: net.edges.copy(), }
 }
 
+///|
 /// 添加边 / Add edge.
 pub fn add_edge(net : BayesNet, from : String, to : String) -> BayesNet {
   let new_edges = net.edges.copy()
   new_edges.push((from, to))
-  { nodes: net.nodes.copy(), edges: new_edges }
+  { nodes: net.nodes.copy(), edges: new_edges, }
 }
 
+///|
 /// 查询边际 / Query marginal.
 pub fn query_marginal(net : BayesNet, node_name : String) -> Double {
   for i = 0; i < net.nodes.length(); i = i + 1 {
@@ -516,6 +599,7 @@ pub fn query_marginal(net : BayesNet, node_name : String) -> Double {
   0.0
 }
 
+///|
 /// 查询联合 / Query joint.
 pub fn query_joint(net : BayesNet, node_names : Array[String]) -> Double {
   let mut prod = 1.0
@@ -525,11 +609,12 @@ pub fn query_joint(net : BayesNet, node_names : Array[String]) -> Double {
   prod
 }
 
+///|
 /// 查询条件 / Query conditional.
 pub fn query_conditional(
   net : BayesNet,
   target : String,
-  evidence_nodes : Array[String]
+  evidence_nodes : Array[String],
 ) -> Double {
   let all_nodes = [target]
   for i = 0; i < evidence_nodes.length(); i = i + 1 {
@@ -544,8 +629,12 @@ pub fn query_conditional(
   }
 }
 
+///|
 /// 前向采样 / Forward sampling.
-pub fn forward_sampling(net : BayesNet, n_samples : Int) -> Array[Array[Double]] {
+pub fn forward_sampling(
+  net : BayesNet,
+  n_samples : Int32,
+) -> Array[Array[Double]] {
   let result = []
   for s = 0; s < n_samples; s = s + 1 {
     let sample = []
@@ -562,11 +651,12 @@ pub fn forward_sampling(net : BayesNet, n_samples : Int) -> Array[Array[Double]]
   result
 }
 
+///|
 /// 拒绝采样 / Rejection sampling.
 pub fn rejection_sampling(
   net : BayesNet,
-  n_samples : Int,
-  constraint : (Array[Double]) -> Bool
+  n_samples : Int32,
+  constraint : (Array[Double]) -> Bool,
 ) -> Array[Array[Double]] {
   let result = []
   let mut attempts = 0
@@ -581,10 +671,11 @@ pub fn rejection_sampling(
   result
 }
 
+///|
 /// 接受概率 / Acceptance probability.
 pub fn acceptance_probability(
   current_log : Double,
-  proposed_log : Double
+  proposed_log : Double,
 ) -> Double {
   let log_ratio = proposed_log - current_log
   if log_ratio >= 0.0 {
@@ -594,28 +685,30 @@ pub fn acceptance_probability(
   }
 }
 
+///|
 /// Metropolis 步 / Metropolis step.
 pub fn metropolis_step(
   current : Double,
   log_target : (Double) -> Double,
-  proposal_std : Double
+  proposal_std : Double,
 ) -> McmcSample {
   let proposed = current + proposal_std
   let current_log = log_target(current)
   let proposed_log = log_target(proposed)
   let accept_prob = acceptance_probability(current_log, proposed_log)
   if accept_prob >= 0.5 {
-    { state: proposed, log_prob: proposed_log, accepted: true }
+    { state: proposed, log_prob: proposed_log, accepted: true, }
   } else {
-    { state: current, log_prob: current_log, accepted: false }
+    { state: current, log_prob: current_log, accepted: false, }
   }
 }
 
+///|
 /// Gibbs 步 / Gibbs step.
 pub fn gibbs_step(
   current : Array[Double],
-  idx : Int,
-  conditional_dist : (Array[Double], Int) -> Double
+  idx : Int32,
+  conditional_dist : (Array[Double], Int32) -> Double,
 ) -> Array[Double] {
   if idx < 0 || idx >= current.length() {
     return current
@@ -625,13 +718,14 @@ pub fn gibbs_step(
   new_state
 }
 
+///|
 /// MH 采样 / Metropolis-Hastings sampling.
 pub fn mh_sample(
   initial : Double,
   log_target : (Double) -> Double,
   proposal_std : Double,
-  n_samples : Int,
-  burn_in : Int
+  n_samples : Int32,
+  burn_in : Int32,
 ) -> Array[Double] {
   let samples = []
   let mut current = initial
@@ -646,11 +740,12 @@ pub fn mh_sample(
   samples
 }
 
+///|
 /// 贝叶斯因子 / Bayes factor.
 pub fn bayes_factor(
   data : Array[Double],
   model1_params : Array[Double],
-  model2_params : Array[Double]
+  model2_params : Array[Double],
 ) -> Double {
   let m1 = marginal_likelihood(data, model1_params)
   let m2 = marginal_likelihood(data, model2_params)
@@ -661,20 +756,22 @@ pub fn bayes_factor(
   }
 }
 
+///|
 /// 后验赔率 / Posterior odds.
 pub fn posterior_odds(
   data : Array[Double],
   model1_params : Array[Double],
   model2_params : Array[Double],
-  prior_odds : Double
+  prior_odds : Double,
 ) -> Double {
   bayes_factor(data, model1_params, model2_params) * prior_odds
 }
 
+///|
 /// 模型证据 / Model evidence.
 pub fn model_evidence(
   data : Array[Double],
-  model_params : Array[Double]
+  model_params : Array[Double],
 ) -> Double {
   let mut log_ev = 0.0
   for i = 0; i < data.length(); i = i + 1 {
@@ -688,50 +785,47 @@ pub fn model_evidence(
   exp_(log_ev)
 }
 
+///|
 /// BIC 分数 / BIC score.
-pub fn bic_score(log_lik : Double, n_params : Int, n_data : Int) -> Double {
+pub fn bic_score(log_lik : Double, n_params : Int32, n_data : Int32) -> Double {
   log_lik - n_params.to_double() * ln_(n_data.to_double()) / 2.0
 }
 
+///|
 /// AIC 分数 / AIC score.
-pub fn aic_score(log_lik : Double, n_params : Int) -> Double {
+pub fn aic_score(log_lik : Double, n_params : Int32) -> Double {
   log_lik - n_params.to_double()
 }
 
+///|
 /// 共轭更新 / Conjugate update.
 pub fn conjugate_update(
   prior_type : String,
   prior_params : Array[Double],
-  data : Array[Double]
+  data : Array[Double],
 ) -> ConjugatePosterior {
   if prior_type == "beta" {
     let post = bayes_update(prior_params, data)
-    {
-      prior_type,
-      params: prior_params.copy(),
-      posterior_params: post
-    }
+    { prior_type, params: prior_params.copy(), posterior_params: post, }
   } else if prior_type == "normal" {
     let post = bayes_update(prior_params, data)
-    {
-      prior_type,
-      params: prior_params.copy(),
-      posterior_params: post
-    }
+    { prior_type, params: prior_params.copy(), posterior_params: post, }
   } else {
     {
       prior_type,
       params: prior_params.copy(),
-      posterior_params: prior_params.copy()
+      posterior_params: prior_params.copy(),
     }
   }
 }
 
+///|
 /// 共轭后验 / Conjugate posterior.
 pub fn conjugate_posterior(cp : ConjugatePosterior) -> Array[Double] {
   cp.posterior_params.copy()
 }
 
+///|
 /// 预测 Beta / Predict with Beta.
 pub fn predict_beta(dist : BetaDist) -> Double {
   if dist.alpha + dist.beta > 0.0 {
@@ -741,11 +835,13 @@ pub fn predict_beta(dist : BetaDist) -> Double {
   }
 }
 
+///|
 /// 预测正态 / Predict with Normal.
 pub fn predict_normal(dist : NormalDist) -> Double {
   dist.mean
 }
 
+///|
 /// 预测 Poisson / Predict with Poisson.
 pub fn predict_poisson(lambda : Double) -> Double {
   if lambda > 0.0 {
@@ -755,6 +851,7 @@ pub fn predict_poisson(lambda : Double) -> Double {
   }
 }
 
+///|
 pub fn bayesian_id() -> String {
   "learncore/bayesian"
 }

@@ -4,28 +4,37 @@
 /// 图像分割算法集合：阈值、区域、聚类、边缘、水平集、MRF/CRF、深度学习简化版等。
 /// 纯 MoonBit 实现，无外部依赖。
 
+///|
 /// 分割图像 / Segmentation image (grayscale, Double data).
 pub struct SegImage {
-  width : Int
-  height : Int
+  width : Int32
+  height : Int32
   data : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend SegImage with Eq::{equal, not_equal}
+
+///|
 pub extend SegImage with Debug::{to_repr}
 
+///|
 /// 分割配置 / Segmentation config.
 pub struct SegConfig {
-  method_ : Int
+  method_ : Int32
   threshold : Double
-  num_clusters : Int
-  max_iter : Int
+  num_clusters : Int32
+  max_iter : Int32
   tolerance : Double
 } derive(Debug, Eq)
 
+///|
 pub extend SegConfig with Eq::{equal, not_equal}
+
+///|
 pub extend SegConfig with Debug::{to_repr}
 
+///|
 /// 分割方法枚举 / Segmentation method_ enum.
 pub(all) enum SegMethod {
   Threshold
@@ -44,6 +53,7 @@ pub(all) enum SegMethod {
   MaskRCNN
 }
 
+///|
 fn seg_pow(base : Double, exp : Double) -> Double {
   if base <= 0.0 {
     return 0.0
@@ -51,16 +61,18 @@ fn seg_pow(base : Double, exp : Double) -> Double {
   @math.exp(exp * @math.ln(base))
 }
 
-fn seg_empty(w : Int, h : Int) -> SegImage {
+///|
+fn seg_empty(w : Int32, h : Int32) -> SegImage {
   let n = w * h
   let data : Array[Double] = []
   for _ in 0..<n {
     data.push(0.0)
   }
-  { width: w, height: h, data }
+  { width: w, height: h, data, }
 }
 
-fn seg_pixel(img : SegImage, x : Int, y : Int) -> Double {
+///|
+fn seg_pixel(img : SegImage, x : Int32, y : Int32) -> Double {
   if x < 0 || x >= img.width || y < 0 || y >= img.height {
     return 0.0
   }
@@ -71,7 +83,8 @@ fn seg_pixel(img : SegImage, x : Int, y : Int) -> Double {
   img.data[idx]
 }
 
-fn seg_set_pixel(img : SegImage, x : Int, y : Int, v : Double) -> Unit {
+///|
+fn seg_set_pixel(img : SegImage, x : Int32, y : Int32, v : Double) -> Unit {
   if x < 0 || x >= img.width || y < 0 || y >= img.height {
     return
   }
@@ -81,25 +94,33 @@ fn seg_set_pixel(img : SegImage, x : Int, y : Int, v : Double) -> Unit {
   }
 }
 
+///|
 /// 构造分割图像 / Build segmentation image.
-pub fn make_seg_image(width : Int, height : Int, data : Array[Double]) -> SegImage {
-  { width, height, data }
+pub fn make_seg_image(
+  width : Int32,
+  height : Int32,
+  data : Array[Double],
+) -> SegImage {
+  { width, height, data, }
 }
 
+///|
 /// 空分割图像 / Empty segmentation image.
-pub fn seg_empty_image(width : Int, height : Int) -> SegImage {
+pub fn seg_empty_image(width : Int32, height : Int32) -> SegImage {
   seg_empty(width, height)
 }
 
+///|
 /// 克隆分割图像 / Clone segmentation image.
 pub fn seg_clone(img : SegImage) -> SegImage {
   let data : Array[Double] = []
   for i in 0..<img.data.length() {
     data.push(img.data[i])
   }
-  { width: img.width, height: img.height, data }
+  { width: img.width, height: img.height, data, }
 }
 
+///|
 /// 反转掩码 / Invert mask.
 pub fn seg_invert(mask : SegImage) -> SegImage {
   let out = seg_empty(mask.width, mask.height)
@@ -112,6 +133,7 @@ pub fn seg_invert(mask : SegImage) -> SegImage {
   out
 }
 
+///|
 /// 阈值分割 / Threshold segmentation.
 pub fn seg_threshold(img : SegImage, threshold : Double) -> SegImage {
   let out = seg_empty(img.width, img.height)
@@ -126,8 +148,13 @@ pub fn seg_threshold(img : SegImage, threshold : Double) -> SegImage {
   out
 }
 
+///|
 /// 双阈值分割 / Double-threshold segmentation.
-pub fn seg_from_threshold(img : SegImage, low : Double, high : Double) -> SegImage {
+pub fn seg_from_threshold(
+  img : SegImage,
+  low : Double,
+  high : Double,
+) -> SegImage {
   let out = seg_empty(img.width, img.height)
   for y in 0..<img.height {
     for x in 0..<img.width {
@@ -140,9 +167,10 @@ pub fn seg_from_threshold(img : SegImage, low : Double, high : Double) -> SegIma
   out
 }
 
+///|
 /// Otsu 阈值分割 / Otsu threshold segmentation.
 pub fn seg_otsu(img : SegImage) -> SegImage {
-  let hist : Array[Int] = []
+  let hist : Array[Int32] = []
   for _ in 0..<256 {
     hist.push(0)
   }
@@ -188,8 +216,9 @@ pub fn seg_otsu(img : SegImage) -> SegImage {
   seg_threshold(img, best_t.to_double())
 }
 
+///|
 /// 自适应阈值分割 / Adaptive threshold segmentation.
-pub fn seg_adaptive(img : SegImage, block_size : Int, c : Double) -> SegImage {
+pub fn seg_adaptive(img : SegImage, block_size : Int32, c : Double) -> SegImage {
   if block_size < 3 {
     return seg_threshold(img, 128.0)
   }
@@ -199,8 +228,8 @@ pub fn seg_adaptive(img : SegImage, block_size : Int, c : Double) -> SegImage {
     for x in 0..<img.width {
       let mut sum = 0.0
       let mut count = 0
-      for dy in -half..=half {
-        for dx in -half..=half {
+      for dy in -half..<=half {
+        for dx in -half..<=half {
           sum = sum + seg_pixel(img, x + dx, y + dy)
           count = count + 1
         }
@@ -215,10 +244,11 @@ pub fn seg_adaptive(img : SegImage, block_size : Int, c : Double) -> SegImage {
   out
 }
 
+///|
 /// 分水岭分割 / Watershed segmentation (simplified).
 pub fn seg_watershed(img : SegImage) -> SegImage {
   let out = seg_empty(img.width, img.height)
-  let levels : Array[Array[(Int, Int)]] = []
+  let levels : Array[Array[(Int32, Int32)]] = []
   for _ in 0..<256 {
     levels.push([])
   }
@@ -237,20 +267,18 @@ pub fn seg_watershed(img : SegImage) -> SegImage {
       let (x, y) = levels[level][i]
       let mut min_neighbor = 0.0
       let mut has_label = false
-      for dy in -1..=1 {
-        for dx in -1..=1 {
+      for dy in -1..<=1 {
+        for dx in -1..<=1 {
           if dx == 0 && dy == 0 {
             continue
           }
           let nv = seg_pixel(out, x + dx, y + dy)
           if nv > 0.0 {
-            if !(has_label) {
+            if !has_label {
               min_neighbor = nv
               has_label = true
-            } else {
-              if nv < min_neighbor {
-                min_neighbor = nv
-              }
+            } else if nv < min_neighbor {
+              min_neighbor = nv
             }
           }
         }
@@ -266,18 +294,19 @@ pub fn seg_watershed(img : SegImage) -> SegImage {
   out
 }
 
+///|
 /// 区域生长 / Region growing.
 pub fn seg_region_growing(
   img : SegImage,
-  seeds : Array[(Int, Int)],
-  threshold : Double
+  seeds : Array[(Int32, Int32)],
+  threshold : Double,
 ) -> SegImage {
   let out = seg_empty(img.width, img.height)
   let visited : Array[Bool] = []
   for _ in 0..<(img.width * img.height) {
     visited.push(false)
   }
-  let queue : Array[(Int, Int)] = []
+  let queue : Array[(Int32, Int32)] = []
   for i in 0..<seeds.length() {
     let (sx, sy) = seeds[i]
     if sx >= 0 && sx < img.width && sy >= 0 && sy < img.height {
@@ -293,8 +322,8 @@ pub fn seg_region_growing(
     let (cx, cy) = queue[queue.length() - 1]
     ignore(queue.remove(queue.length() - 1))
     let seed_val = seg_pixel(img, cx, cy)
-    for dy in -1..=1 {
-      for dx in -1..=1 {
+    for dy in -1..<=1 {
+      for dx in -1..<=1 {
         if dx == 0 && dy == 0 {
           continue
         }
@@ -319,6 +348,7 @@ pub fn seg_region_growing(
   out
 }
 
+///|
 /// 区域合并 / Region merge.
 pub fn seg_region_merge(img : SegImage, threshold : Double) -> SegImage {
   let out = seg_clone(img)
@@ -343,8 +373,9 @@ pub fn seg_region_merge(img : SegImage, threshold : Double) -> SegImage {
   out
 }
 
+///|
 /// K-means 分割 / K-means segmentation.
-pub fn seg_kmeans(img : SegImage, k : Int, max_iter : Int) -> SegImage {
+pub fn seg_kmeans(img : SegImage, k : Int32, max_iter : Int32) -> SegImage {
   if k <= 0 || img.width * img.height == 0 {
     return seg_empty(img.width, img.height)
   }
@@ -355,7 +386,7 @@ pub fn seg_kmeans(img : SegImage, k : Int, max_iter : Int) -> SegImage {
   let out = seg_empty(img.width, img.height)
   for _ in 0..<max_iter {
     let sums : Array[Double] = []
-    let counts : Array[Int] = []
+    let counts : Array[Int32] = []
     for _ in 0..<k {
       sums.push(0.0)
       counts.push(0)
@@ -386,8 +417,14 @@ pub fn seg_kmeans(img : SegImage, k : Int, max_iter : Int) -> SegImage {
   out
 }
 
+///|
 /// 模糊 C 均值分割 / Fuzzy C-means segmentation.
-pub fn seg_fuzzy_cmeans(img : SegImage, c : Int, m : Double, max_iter : Int) -> SegImage {
+pub fn seg_fuzzy_cmeans(
+  img : SegImage,
+  c : Int32,
+  m : Double,
+  max_iter : Int32,
+) -> SegImage {
   if c <= 0 || img.width * img.height == 0 {
     return seg_empty(img.width, img.height)
   }
@@ -448,8 +485,9 @@ pub fn seg_fuzzy_cmeans(img : SegImage, c : Int, m : Double, max_iter : Int) -> 
   out
 }
 
+///|
 /// SLIC 超像素分割 / SLIC superpixels segmentation (simplified).
-pub fn seg_slic_superpixels(img : SegImage, k : Int, m : Double) -> SegImage {
+pub fn seg_slic_superpixels(img : SegImage, k : Int32, m : Double) -> SegImage {
   if k <= 0 || img.width * img.height == 0 {
     return seg_empty(img.width, img.height)
   }
@@ -458,7 +496,7 @@ pub fn seg_slic_superpixels(img : SegImage, k : Int, m : Double) -> SegImage {
   if s <= 0 {
     return seg_kmeans(img, k, 10)
   }
-  let centroids : Array[(Int, Int, Double)] = []
+  let centroids : Array[(Int32, Int32, Double)] = []
   let mut cy = s / 2
   while cy < img.height {
     let mut cx = s / 2
@@ -490,11 +528,12 @@ pub fn seg_slic_superpixels(img : SegImage, k : Int, m : Double) -> SegImage {
   out
 }
 
+///|
 /// 图割分割 / Graph cut segmentation (simplified).
 pub fn seg_graph_cut(
   img : SegImage,
-  seeds_fg : Array[(Int, Int)],
-  seeds_bg : Array[(Int, Int)]
+  seeds_fg : Array[(Int32, Int32)],
+  seeds_bg : Array[(Int32, Int32)],
 ) -> SegImage {
   let out = seg_empty(img.width, img.height)
   let mut fg_mean = 0.0
@@ -526,11 +565,13 @@ pub fn seg_graph_cut(
   out
 }
 
+///|
 /// 归一化割分割 / Normalized cut segmentation (simplified).
-pub fn seg_normalized_cut(img : SegImage, k : Int) -> SegImage {
+pub fn seg_normalized_cut(img : SegImage, k : Int32) -> SegImage {
   seg_kmeans(img, k, 15)
 }
 
+///|
 /// 均值漂移分割 / Mean shift segmentation.
 pub fn seg_mean_shift(img : SegImage, bandwidth : Double) -> SegImage {
   if bandwidth <= 0.0 {
@@ -545,8 +586,8 @@ pub fn seg_mean_shift(img : SegImage, bandwidth : Double) -> SegImage {
         iter = iter + 1
         let mut num = 0.0
         let mut den = 0.0
-        for dy in -2..=2 {
-          for dx in -2..=2 {
+        for dy in -2..<=2 {
+          for dx in -2..<=2 {
             let nv = seg_pixel(img, x + dx, y + dy)
             let diff = (nv - mode) / bandwidth
             let w = @math.exp(-diff * diff / 2.0)
@@ -571,8 +612,13 @@ pub fn seg_mean_shift(img : SegImage, bandwidth : Double) -> SegImage {
   out
 }
 
+///|
 /// 水平集分割 / Level set segmentation.
-pub fn seg_level_set(img : SegImage, init_phi : SegImage, max_iter : Int) -> SegImage {
+pub fn seg_level_set(
+  img : SegImage,
+  init_phi : SegImage,
+  max_iter : Int32,
+) -> SegImage {
   let phi = seg_clone(init_phi)
   let mut iter = 0
   while iter < max_iter {
@@ -592,7 +638,7 @@ pub fn seg_level_set(img : SegImage, init_phi : SegImage, max_iter : Int) -> Seg
         }
       }
     }
-    if !(changed) {
+    if !changed {
       break
     }
   }
@@ -607,17 +653,19 @@ pub fn seg_level_set(img : SegImage, init_phi : SegImage, max_iter : Int) -> Seg
   out
 }
 
+///|
 /// 主动轮廓 / Active contour segmentation.
 pub fn seg_active_contour(
   img : SegImage,
   init_contour : Array[(Double, Double)],
   alpha : Double,
   beta : Double,
-  gamma : Double
+  gamma : Double,
 ) -> SegImage {
   seg_snake(img, init_contour, alpha, beta, gamma, 50)
 }
 
+///|
 /// Snake 轮廓 / Snake contour.
 pub fn seg_snake(
   img : SegImage,
@@ -625,7 +673,7 @@ pub fn seg_snake(
   alpha : Double,
   beta : Double,
   gamma : Double,
-  max_iter : Int
+  max_iter : Int32,
 ) -> SegImage {
   let contour : Array[(Double, Double)] = []
   for i in 0..<init_contour.length() {
@@ -644,14 +692,32 @@ pub fn seg_snake(
       let (nx, ny) = contour[next_idx]
       let elastic_x = alpha * (px + nx - 2.0 * cx)
       let elastic_y = alpha * (py + ny - 2.0 * cy)
-      let ppx = if prev_idx == 0 { contour[n - 1].0 } else { contour[prev_idx - 1].0 }
-      let ppy = if prev_idx == 0 { contour[n - 1].1 } else { contour[prev_idx - 1].1 }
-      let nnx = if next_idx == n - 1 { contour[0].0 } else { contour[next_idx + 1].0 }
-      let nny = if next_idx == n - 1 { contour[0].1 } else { contour[next_idx + 1].1 }
+      let ppx = if prev_idx == 0 {
+        contour[n - 1].0
+      } else {
+        contour[prev_idx - 1].0
+      }
+      let ppy = if prev_idx == 0 {
+        contour[n - 1].1
+      } else {
+        contour[prev_idx - 1].1
+      }
+      let nnx = if next_idx == n - 1 {
+        contour[0].0
+      } else {
+        contour[next_idx + 1].0
+      }
+      let nny = if next_idx == n - 1 {
+        contour[0].1
+      } else {
+        contour[next_idx + 1].1
+      }
       let rigid_x = beta * (ppx - 4.0 * px + 6.0 * cx - 4.0 * nx + nnx)
       let rigid_y = beta * (ppy - 4.0 * py + 6.0 * cy - 4.0 * ny + nny)
-      let gx = seg_pixel(img, (cx + 1.0).to_int(), cy.to_int()) - seg_pixel(img, (cx - 1.0).to_int(), cy.to_int())
-      let gy = seg_pixel(img, cx.to_int(), (cy + 1.0).to_int()) - seg_pixel(img, cx.to_int(), (cy - 1.0).to_int())
+      let gx = seg_pixel(img, (cx + 1.0).to_int(), cy.to_int()) -
+        seg_pixel(img, (cx - 1.0).to_int(), cy.to_int())
+      let gy = seg_pixel(img, cx.to_int(), (cy + 1.0).to_int()) -
+        seg_pixel(img, cx.to_int(), (cy - 1.0).to_int())
       let new_x = cx + gamma * (elastic_x - rigid_x + gx)
       let new_y = cy + gamma * (elastic_y - rigid_y + gy)
       contour[i] = (new_x, new_y)
@@ -669,8 +735,12 @@ pub fn seg_snake(
   out
 }
 
+///|
 /// 随机游走分割 / Random walker segmentation (simplified).
-pub fn seg_random_walker(img : SegImage, seeds : Array[(Int, Int, Int)]) -> SegImage {
+pub fn seg_random_walker(
+  img : SegImage,
+  seeds : Array[(Int32, Int32, Int32)],
+) -> SegImage {
   let out = seg_empty(img.width, img.height)
   let n = img.width * img.height
   if n == 0 {
@@ -704,8 +774,8 @@ pub fn seg_random_walker(img : SegImage, seeds : Array[(Int, Int, Int)]) -> SegI
         }
         let mut sum = 0.0
         let mut count = 0
-        for dy in -1..=1 {
-          for dx in -1..=1 {
+        for dy in -1..<=1 {
+          for dx in -1..<=1 {
             if dx == 0 && dy == 0 {
               continue
             }
@@ -715,7 +785,10 @@ pub fn seg_random_walker(img : SegImage, seeds : Array[(Int, Int, Int)]) -> SegI
               continue
             }
             let nidx = ny * img.width + nx
-            let w = @math.exp(-@_common.abs(seg_pixel(img, x, y) - seg_pixel(img, nx, ny)) / 32.0)
+            let w = @math.exp(
+              -@_common.abs(seg_pixel(img, x, y) - seg_pixel(img, nx, ny)) /
+              32.0,
+            )
             sum = sum + labels[nidx] * w
             count = count + 1
           }
@@ -732,7 +805,7 @@ pub fn seg_random_walker(img : SegImage, seeds : Array[(Int, Int, Int)]) -> SegI
       }
       labels[i] = new_labels[i]
     }
-    if !(changed) {
+    if !changed {
       break
     }
   }
@@ -744,8 +817,9 @@ pub fn seg_random_walker(img : SegImage, seeds : Array[(Int, Int, Int)]) -> SegI
   out
 }
 
+///|
 /// MRF 分割 / MRF segmentation.
-pub fn seg_mrf(img : SegImage, labels : Int, max_iter : Int) -> SegImage {
+pub fn seg_mrf(img : SegImage, labels : Int32, max_iter : Int32) -> SegImage {
   if labels <= 0 {
     return seg_empty(img.width, img.height)
   }
@@ -758,10 +832,11 @@ pub fn seg_mrf(img : SegImage, labels : Int, max_iter : Int) -> SegImage {
         let mut best = cur.to_int()
         let mut best_energy = 999999.0
         for l in 0..<labels {
-          let data_energy = (v - l.to_double() * 255.0 / labels.to_double()) * (v - l.to_double() * 255.0 / labels.to_double())
+          let data_energy = (v - l.to_double() * 255.0 / labels.to_double()) *
+            (v - l.to_double() * 255.0 / labels.to_double())
           let mut smooth_energy = 0.0
-          for dy in -1..=1 {
-            for dx in -1..=1 {
+          for dy in -1..<=1 {
+            for dx in -1..<=1 {
               if dx == 0 && dy == 0 {
                 continue
               }
@@ -784,8 +859,9 @@ pub fn seg_mrf(img : SegImage, labels : Int, max_iter : Int) -> SegImage {
   out
 }
 
+///|
 /// CRF 分割 / CRF segmentation.
-pub fn seg_crf(img : SegImage, labels : Int, max_iter : Int) -> SegImage {
+pub fn seg_crf(img : SegImage, labels : Int32, max_iter : Int32) -> SegImage {
   let out = seg_mrf(img, labels, max_iter)
   for _ in 0..<5 {
     for y in 0..<out.height {
@@ -793,8 +869,8 @@ pub fn seg_crf(img : SegImage, labels : Int, max_iter : Int) -> SegImage {
         let cur = seg_pixel(out, x, y)
         let mut sum = cur
         let mut count = 1.0
-        for dy in -1..=1 {
-          for dx in -1..=1 {
+        for dy in -1..<=1 {
+          for dx in -1..<=1 {
             if dx == 0 && dy == 0 {
               continue
             }
@@ -813,6 +889,7 @@ pub fn seg_crf(img : SegImage, labels : Int, max_iter : Int) -> SegImage {
   out
 }
 
+///|
 /// UNet 简化分割 / UNet simple segmentation.
 pub fn seg_unet_simple(img : SegImage) -> SegImage {
   let out = seg_empty(img.width, img.height)
@@ -820,8 +897,8 @@ pub fn seg_unet_simple(img : SegImage) -> SegImage {
     for x in 0..<img.width {
       let mut sum = 0.0
       let mut count = 0
-      for dy in -1..=1 {
-        for dx in -1..=1 {
+      for dy in -1..<=1 {
+        for dx in -1..<=1 {
           sum = sum + seg_pixel(img, x + dx, y + dy)
           count = count + 1
         }
@@ -839,6 +916,7 @@ pub fn seg_unet_simple(img : SegImage) -> SegImage {
   out
 }
 
+///|
 /// FCN 简化分割 / FCN simple segmentation.
 pub fn seg_fcn_simple(img : SegImage) -> SegImage {
   let out = seg_empty(img.width, img.height)
@@ -846,8 +924,8 @@ pub fn seg_fcn_simple(img : SegImage) -> SegImage {
     for x in 0..<img.width {
       let mut sum = 0.0
       let mut count = 0
-      for dy in -2..=2 {
-        for dx in -2..=2 {
+      for dy in -2..<=2 {
+        for dx in -2..<=2 {
           sum = sum + seg_pixel(img, x + dx, y + dy)
           count = count + 1
         }
@@ -863,6 +941,7 @@ pub fn seg_fcn_simple(img : SegImage) -> SegImage {
   out
 }
 
+///|
 /// Mask R-CNN 简化分割 / Mask R-CNN simple segmentation.
 pub fn seg_mask_rcnn_simple(img : SegImage) -> SegImage {
   let edges = seg_otsu(img)
@@ -877,17 +956,20 @@ pub fn seg_mask_rcnn_simple(img : SegImage) -> SegImage {
   out
 }
 
+///|
 /// 实例分割 / Instance segmentation.
 pub fn seg_instance(img : SegImage) -> SegImage {
   let binary = seg_otsu(img)
   seg_label_regions(binary)
 }
 
+///|
 /// 语义分割 / Semantic segmentation.
 pub fn seg_semantic(img : SegImage) -> SegImage {
   seg_kmeans(img, 5, 20)
 }
 
+///|
 /// 全景分割 / Panoptic segmentation.
 pub fn seg_panoptic(img : SegImage) -> SegImage {
   let semantic = seg_semantic(img)
@@ -903,6 +985,7 @@ pub fn seg_panoptic(img : SegImage) -> SegImage {
   out
 }
 
+///|
 /// IoU 评估 / IoU evaluation.
 pub fn seg_evaluate_iou(pred : SegImage, gt : SegImage) -> Double {
   let mut inter = 0.0
@@ -927,6 +1010,7 @@ pub fn seg_evaluate_iou(pred : SegImage, gt : SegImage) -> Double {
   inter / union_
 }
 
+///|
 /// Dice 评估 / Dice evaluation.
 pub fn seg_evaluate_dice(pred : SegImage, gt : SegImage) -> Double {
   let mut inter = 0.0
@@ -949,6 +1033,7 @@ pub fn seg_evaluate_dice(pred : SegImage, gt : SegImage) -> Double {
   2.0 * inter / sum
 }
 
+///|
 /// 像素准确率 / Pixel accuracy.
 pub fn seg_evaluate_pixel_acc(pred : SegImage, gt : SegImage) -> Double {
   let mut correct = 0.0
@@ -971,8 +1056,13 @@ pub fn seg_evaluate_pixel_acc(pred : SegImage, gt : SegImage) -> Double {
   correct / total
 }
 
+///|
 /// 平均 IoU / Mean IoU.
-pub fn seg_evaluate_mean_iou(pred : SegImage, gt : SegImage, num_classes : Int) -> Double {
+pub fn seg_evaluate_mean_iou(
+  pred : SegImage,
+  gt : SegImage,
+  num_classes : Int32,
+) -> Double {
   if num_classes <= 0 {
     return 0.0
   }
@@ -1006,8 +1096,13 @@ pub fn seg_evaluate_mean_iou(pred : SegImage, gt : SegImage, num_classes : Int) 
   sum_iou / valid.to_double()
 }
 
+///|
 /// 边界 F-measure / Boundary F-measure.
-pub fn seg_evaluate_boundary(pred : SegImage, gt : SegImage, tolerance : Double) -> Double {
+pub fn seg_evaluate_boundary(
+  pred : SegImage,
+  gt : SegImage,
+  tolerance : Double,
+) -> Double {
   let pred_bd = seg_boundary_extract(pred)
   let gt_bd = seg_boundary_extract(gt)
   let mut tp = 0.0
@@ -1022,8 +1117,8 @@ pub fn seg_evaluate_boundary(pred : SegImage, gt : SegImage, tolerance : Double)
       let gb = seg_pixel(gt_bd, x, y) > 0.0
       if pb {
         let mut matched = false
-        for dy in -tol..=tol {
-          for dx in -tol..=tol {
+        for dy in -tol..<=tol {
+          for dx in -tol..<=tol {
             if seg_pixel(gt_bd, x + dx, y + dy) > 0.0 {
               matched = true
             }
@@ -1037,14 +1132,14 @@ pub fn seg_evaluate_boundary(pred : SegImage, gt : SegImage, tolerance : Double)
       }
       if gb {
         let mut matched = false
-        for dy in -tol..=tol {
-          for dx in -tol..=tol {
+        for dy in -tol..<=tol {
+          for dx in -tol..<=tol {
             if seg_pixel(pred_bd, x + dx, y + dy) > 0.0 {
               matched = true
             }
           }
         }
-        if !(matched) {
+        if !matched {
           fn_ = fn_ + 1.0
         }
       }
@@ -1061,12 +1156,14 @@ pub fn seg_evaluate_boundary(pred : SegImage, gt : SegImage, tolerance : Double)
   2.0 * precision * recall / (precision + recall)
 }
 
+///|
 /// 后处理 / Post process.
 pub fn seg_post_process(mask : SegImage) -> SegImage {
   let filled = seg_fill_holes(mask)
   seg_remove_small(filled, 10)
 }
 
+///|
 /// 填充孔洞 / Fill holes.
 pub fn seg_fill_holes(mask : SegImage) -> SegImage {
   let out = seg_clone(mask)
@@ -1074,7 +1171,7 @@ pub fn seg_fill_holes(mask : SegImage) -> SegImage {
   for _ in 0..<(mask.width * mask.height) {
     visited.push(false)
   }
-  let queue : Array[(Int, Int)] = []
+  let queue : Array[(Int32, Int32)] = []
   for x in 0..<mask.width {
     if seg_pixel(mask, x, 0) == 0.0 {
       queue.push((x, 0))
@@ -1098,8 +1195,8 @@ pub fn seg_fill_holes(mask : SegImage) -> SegImage {
   while queue.length() > 0 {
     let (cx, cy) = queue[queue.length() - 1]
     ignore(queue.remove(queue.length() - 1))
-    for dy in -1..=1 {
-      for dx in -1..=1 {
+    for dy in -1..<=1 {
+      for dx in -1..<=1 {
         if dx == 0 && dy == 0 {
           continue
         }
@@ -1120,7 +1217,7 @@ pub fn seg_fill_holes(mask : SegImage) -> SegImage {
   for y in 0..<mask.height {
     for x in 0..<mask.width {
       let idx = y * mask.width + x
-      if !(visited[idx]) && seg_pixel(mask, x, y) == 0.0 {
+      if !visited[idx] && seg_pixel(mask, x, y) == 0.0 {
         seg_set_pixel(out, x, y, 255.0)
       }
     }
@@ -1128,8 +1225,9 @@ pub fn seg_fill_holes(mask : SegImage) -> SegImage {
   out
 }
 
+///|
 /// 移除小区域 / Remove small regions.
-pub fn seg_remove_small(mask : SegImage, min_size : Int) -> SegImage {
+pub fn seg_remove_small(mask : SegImage, min_size : Int32) -> SegImage {
   let labels = seg_label_regions(mask)
   let max_label = 0.0
   for y in 0..<labels.height {
@@ -1140,7 +1238,7 @@ pub fn seg_remove_small(mask : SegImage, min_size : Int) -> SegImage {
       }
     }
   }
-  let counts : Array[Int] = []
+  let counts : Array[Int32] = []
   for _ in 0..<(mask.width * mask.height + 1) {
     counts.push(0)
   }
@@ -1164,6 +1262,7 @@ pub fn seg_remove_small(mask : SegImage, min_size : Int) -> SegImage {
   out
 }
 
+///|
 /// 边界提取 / Boundary extraction.
 pub fn seg_boundary_extract(mask : SegImage) -> SegImage {
   let out = seg_empty(mask.width, mask.height)
@@ -1172,8 +1271,8 @@ pub fn seg_boundary_extract(mask : SegImage) -> SegImage {
       let v = seg_pixel(mask, x, y)
       if v > 0.0 {
         let mut is_boundary = false
-        for dy in -1..=1 {
-          for dx in -1..=1 {
+        for dy in -1..<=1 {
+          for dx in -1..<=1 {
             if dx == 0 && dy == 0 {
               continue
             }
@@ -1191,8 +1290,11 @@ pub fn seg_boundary_extract(mask : SegImage) -> SegImage {
   out
 }
 
+///|
 /// 轮廓平滑 / Contour smooth.
-pub fn seg_contour_smooth(contour : Array[(Double, Double)]) -> Array[(Double, Double)] {
+pub fn seg_contour_smooth(
+  contour : Array[(Double, Double)],
+) -> Array[(Double, Double)] {
   let n = contour.length()
   if n < 3 {
     let result : Array[(Double, Double)] = []
@@ -1215,17 +1317,19 @@ pub fn seg_contour_smooth(contour : Array[(Double, Double)]) -> Array[(Double, D
   result
 }
 
+///|
 /// 构造分割配置 / Build segmentation config.
 pub fn make_seg_config(
-  method_ : Int,
+  method_ : Int32,
   threshold : Double,
-  num_clusters : Int,
-  max_iter : Int,
-  tolerance : Double
+  num_clusters : Int32,
+  max_iter : Int32,
+  tolerance : Double,
 ) -> SegConfig {
-  { method_, threshold, num_clusters, max_iter, tolerance }
+  { method_, threshold, num_clusters, max_iter, tolerance, }
 }
 
+///|
 /// 分割预测 / Segmentation predict.
 pub fn seg_predict(img : SegImage, config : SegConfig) -> SegImage {
   if config.method_ == 0 {
@@ -1255,8 +1359,12 @@ pub fn seg_predict(img : SegImage, config : SegConfig) -> SegImage {
   }
 }
 
+///|
 /// 分割可视化 / Segmentation visualize.
-pub fn seg_visualize(mask : SegImage, color_map : Array[(Double, Double, Double)]) -> SegImage {
+pub fn seg_visualize(
+  mask : SegImage,
+  color_map : Array[(Double, Double, Double)],
+) -> SegImage {
   let out = seg_empty(mask.width, mask.height)
   for y in 0..<mask.height {
     for x in 0..<mask.width {
@@ -1274,16 +1382,17 @@ pub fn seg_visualize(mask : SegImage, color_map : Array[(Double, Double, Double)
   out
 }
 
+///|
 /// 膨胀掩码 / Dilate mask.
-pub fn seg_dilate_mask(mask : SegImage, iter : Int) -> SegImage {
+pub fn seg_dilate_mask(mask : SegImage, iter : Int32) -> SegImage {
   let mut out = seg_clone(mask)
   for _ in 0..<iter {
     let next = seg_empty(out.width, out.height)
     for y in 0..<out.height {
       for x in 0..<out.width {
         let mut max_v = 0.0
-        for dy in -1..=1 {
-          for dx in -1..=1 {
+        for dy in -1..<=1 {
+          for dx in -1..<=1 {
             let v = seg_pixel(out, x + dx, y + dy)
             if v > max_v {
               max_v = v
@@ -1298,8 +1407,9 @@ pub fn seg_dilate_mask(mask : SegImage, iter : Int) -> SegImage {
   out
 }
 
+///|
 /// 腐蚀掩码 / Erode mask.
-pub fn seg_erode_mask(mask : SegImage, iter : Int) -> SegImage {
+pub fn seg_erode_mask(mask : SegImage, iter : Int32) -> SegImage {
   let mut out = seg_clone(mask)
   for _ in 0..<iter {
     let next = seg_empty(out.width, out.height)
@@ -1307,8 +1417,8 @@ pub fn seg_erode_mask(mask : SegImage, iter : Int) -> SegImage {
       for x in 0..<out.width {
         let mut min_v = 999999.0
         let mut found = false
-        for dy in -1..=1 {
-          for dx in -1..=1 {
+        for dy in -1..<=1 {
+          for dx in -1..<=1 {
             let v = seg_pixel(out, x + dx, y + dy)
             if v < min_v {
               min_v = v
@@ -1326,6 +1436,7 @@ pub fn seg_erode_mask(mask : SegImage, iter : Int) -> SegImage {
   out
 }
 
+///|
 /// 标记区域 / Label connected regions.
 pub fn seg_label_regions(mask : SegImage) -> SegImage {
   let out = seg_empty(mask.width, mask.height)
@@ -1340,15 +1451,15 @@ pub fn seg_label_regions(mask : SegImage) -> SegImage {
       if visited[idx] || seg_pixel(mask, x, y) == 0.0 {
         continue
       }
-      let queue : Array[(Int, Int)] = []
+      let queue : Array[(Int32, Int32)] = []
       queue.push((x, y))
       visited[idx] = true
       while queue.length() > 0 {
         let (cx, cy) = queue[queue.length() - 1]
         ignore(queue.remove(queue.length() - 1))
         seg_set_pixel(out, cx, cy, label)
-        for dy in -1..=1 {
-          for dx in -1..=1 {
+        for dy in -1..<=1 {
+          for dx in -1..<=1 {
             if dx == 0 && dy == 0 {
               continue
             }
@@ -1372,10 +1483,11 @@ pub fn seg_label_regions(mask : SegImage) -> SegImage {
   out
 }
 
+///|
 /// 合并区域 / Merge regions.
 pub fn seg_merge_regions(mask : SegImage, threshold : Double) -> SegImage {
   let labels = seg_label_regions(mask)
-  let counts : Array[Int] = []
+  let counts : Array[Int32] = []
   let sums : Array[Double] = []
   for _ in 0..<(mask.width * mask.height + 1) {
     counts.push(0)
@@ -1405,6 +1517,7 @@ pub fn seg_merge_regions(mask : SegImage, threshold : Double) -> SegImage {
   out
 }
 
+///|
 /// 分裂区域 / Split regions.
 pub fn seg_split_regions(img : SegImage, threshold : Double) -> SegImage {
   let out = seg_empty(img.width, img.height)
@@ -1421,9 +1534,14 @@ pub fn seg_split_regions(img : SegImage, threshold : Double) -> SegImage {
   out
 }
 
+///|
 /// 转字符串 / Convert to string.
 pub fn seg_to_string(img : SegImage) -> String {
-  let mut s = "SegImage(" + img.width.to_string() + "x" + img.height.to_string() + ")["
+  let mut s = "SegImage(" +
+    img.width.to_string() +
+    "x" +
+    img.height.to_string() +
+    ")["
   let limit = if img.data.length() > 10 { 10 } else { img.data.length() }
   for i in 0..<limit {
     if i > 0 {
@@ -1438,6 +1556,7 @@ pub fn seg_to_string(img : SegImage) -> String {
   s
 }
 
+///|
 /// 分割图像 ID / Image segmentation operator ID.
 pub fn image_segmentation_id() -> String {
   "opcore/image_segmentation"

@@ -14,15 +14,21 @@
 // ============================================================
 
 const PI : Double = 3.141592653589793
+
+///|
 const E_EULER : Double = 2.718281828459045
+
+///|
 const SQRT_2PI : Double = 2.5066282746310002
 
+///|
 const LARGE_DOUBLE : Double = 999999999999999.0
 
 // ============================================================
 // 类型定义 / Type definitions
 // ============================================================
 
+///|
 /// 分布类型 / Distribution kind.
 pub(all) enum DistributionKind {
   NormalDist
@@ -33,9 +39,13 @@ pub(all) enum DistributionKind {
   UniformDist
 } derive(Debug, Eq)
 
+///|
 pub extend DistributionKind with Eq::{equal, not_equal}
+
+///|
 pub extend DistributionKind with Debug::{to_repr}
 
+///|
 /// 检验类型 / Test kind (alternative hypothesis).
 pub(all) enum TestKind {
   TwoSided
@@ -43,9 +53,13 @@ pub(all) enum TestKind {
   OneSidedRight
 } derive(Debug, Eq)
 
+///|
 pub extend TestKind with Eq::{equal, not_equal}
+
+///|
 pub extend TestKind with Debug::{to_repr}
 
+///|
 /// 四分位数 / Quartiles (Q1, Q2=median, Q3).
 pub struct Quartiles {
   q1 : Double
@@ -53,9 +67,13 @@ pub struct Quartiles {
   q3 : Double
 } derive(Debug, Eq)
 
+///|
 pub extend Quartiles with Eq::{equal, not_equal}
+
+///|
 pub extend Quartiles with Debug::{to_repr}
 
+///|
 /// 置信区间 / Confidence interval.
 pub struct ConfidenceInterval {
   lower : Double
@@ -63,9 +81,13 @@ pub struct ConfidenceInterval {
   confidence : Double
 } derive(Debug, Eq)
 
+///|
 pub extend ConfidenceInterval with Eq::{equal, not_equal}
+
+///|
 pub extend ConfidenceInterval with Debug::{to_repr}
 
+///|
 /// 回归结果 / Linear regression result.
 pub struct RegressionResult {
   slope : Double
@@ -73,9 +95,13 @@ pub struct RegressionResult {
   r_value : Double
 } derive(Debug, Eq)
 
+///|
 pub extend RegressionResult with Eq::{equal, not_equal}
+
+///|
 pub extend RegressionResult with Debug::{to_repr}
 
+///|
 /// 检验结果 / Hypothesis test result.
 pub struct TestResult {
   statistic : Double
@@ -83,13 +109,17 @@ pub struct TestResult {
   reject_null : Bool
 } derive(Debug, Eq)
 
+///|
 pub extend TestResult with Eq::{equal, not_equal}
+
+///|
 pub extend TestResult with Debug::{to_repr}
 
 // ============================================================
 // 辅助数学函数 / Helper math functions (private)
 // ============================================================
 
+///|
 fn sqrt_(x : Double) -> Double {
   if x < 0.0 {
     return 0.0
@@ -107,6 +137,7 @@ fn sqrt_(x : Double) -> Double {
   guess
 }
 
+///|
 fn abs_(x : Double) -> Double {
   if x < 0.0 {
     -x
@@ -115,6 +146,7 @@ fn abs_(x : Double) -> Double {
   }
 }
 
+///|
 fn exp_(x : Double) -> Double {
   if x > 700.0 {
     return LARGE_DOUBLE
@@ -147,6 +179,7 @@ fn exp_(x : Double) -> Double {
   result
 }
 
+///|
 fn ln_(x : Double) -> Double {
   if x <= 0.0 {
     return -LARGE_DOUBLE
@@ -178,6 +211,7 @@ fn ln_(x : Double) -> Double {
   result * 2.0 + m.to_double()
 }
 
+///|
 fn pow_(base : Double, exp : Double) -> Double {
   if base < 0.0 {
     let rounded = exp.to_int().to_double()
@@ -205,6 +239,7 @@ fn pow_(base : Double, exp : Double) -> Double {
   }
 }
 
+///|
 fn sin_(x : Double) -> Double {
   let mut x = x
   let two_pi = 6.283185307179586
@@ -224,10 +259,12 @@ fn sin_(x : Double) -> Double {
   result
 }
 
+///|
 fn cos_(x : Double) -> Double {
   sin_(x + 1.5707963267948966)
 }
 
+///|
 /// 角均值 / Angular mean (circular statistics).
 pub fn angular_mean(angles : Array[Double]) -> Double {
   let n = angles.length()
@@ -251,6 +288,7 @@ pub fn angular_mean(angles : Array[Double]) -> Double {
   }
 }
 
+///|
 fn atan_approx(x : Double) -> Double {
   let mut result = 0.0
   let mut term = x
@@ -274,6 +312,7 @@ fn atan_approx(x : Double) -> Double {
 // 描述统计 / Descriptive statistics
 // ============================================================
 
+///|
 /// 求和 / Sum of values.
 pub fn sum(data : Array[Double]) -> Double {
   let mut s = 0.0
@@ -283,6 +322,7 @@ pub fn sum(data : Array[Double]) -> Double {
   s
 }
 
+///|
 /// 乘积 / Product of values.
 pub fn product(data : Array[Double]) -> Double {
   if data.length() == 0 {
@@ -295,6 +335,7 @@ pub fn product(data : Array[Double]) -> Double {
   p
 }
 
+///|
 /// 均值 / Arithmetic mean.
 pub fn mean(data : Array[Double]) -> Double {
   let n = data.length()
@@ -304,6 +345,7 @@ pub fn mean(data : Array[Double]) -> Double {
   sum(data) / n.to_double()
 }
 
+///|
 /// 中位数 / Median.
 pub fn median(data : Array[Double]) -> Double {
   let n = data.length()
@@ -314,15 +356,7 @@ pub fn median(data : Array[Double]) -> Double {
   for i in 0..<n {
     sorted.push(data[i])
   }
-  sorted.sort_by(fn(a, b) {
-    if a < b {
-      -1
-    } else if a > b {
-      1
-    } else {
-      0
-    }
-  })
+  sorted.sort_by(fn(a, b) { if a < b { -1 } else if a > b { 1 } else { 0 } })
   let mid = n / 2
   if n % 2 == 1 {
     sorted[mid]
@@ -331,6 +365,7 @@ pub fn median(data : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 众数 / Mode (first most frequent value).
 pub fn mode(data : Array[Double]) -> Double {
   let n = data.length()
@@ -354,6 +389,7 @@ pub fn mode(data : Array[Double]) -> Double {
   best_val
 }
 
+///|
 /// 方差 / Variance (sample, ddof=1).
 pub fn variance(data : Array[Double]) -> Double {
   let n = data.length()
@@ -369,11 +405,13 @@ pub fn variance(data : Array[Double]) -> Double {
   s / (n - 1).to_double()
 }
 
+///|
 /// 标准差 / Standard deviation (sample).
 pub fn std_dev(data : Array[Double]) -> Double {
   sqrt_(variance(data))
 }
 
+///|
 /// 最小值 / Minimum.
 pub fn min(data : Array[Double]) -> Double {
   let n = data.length()
@@ -389,6 +427,7 @@ pub fn min(data : Array[Double]) -> Double {
   m
 }
 
+///|
 /// 最大值 / Maximum.
 pub fn max(data : Array[Double]) -> Double {
   let n = data.length()
@@ -404,6 +443,7 @@ pub fn max(data : Array[Double]) -> Double {
   m
 }
 
+///|
 /// 极差 / Range (max - min).
 pub fn range(data : Array[Double]) -> Double {
   if data.length() == 0 {
@@ -412,6 +452,7 @@ pub fn range(data : Array[Double]) -> Double {
   max(data) - min(data)
 }
 
+///|
 /// 百分位数 / Percentile (0 <= p <= 100, linear interpolation).
 pub fn percentile(data : Array[Double], p : Double) -> Double {
   let n = data.length()
@@ -422,15 +463,7 @@ pub fn percentile(data : Array[Double], p : Double) -> Double {
   for i in 0..<n {
     sorted.push(data[i])
   }
-  sorted.sort_by(fn(a, b) {
-    if a < b {
-      -1
-    } else if a > b {
-      1
-    } else {
-      0
-    }
-  })
+  sorted.sort_by(fn(a, b) { if a < b { -1 } else if a > b { 1 } else { 0 } })
   let rank = p / 100.0 * (n - 1).to_double()
   let lower = rank.to_int()
   let upper = if lower + 1 < n { lower + 1 } else { lower }
@@ -438,6 +471,7 @@ pub fn percentile(data : Array[Double], p : Double) -> Double {
   sorted[lower] * (1.0 - frac) + sorted[upper] * frac
 }
 
+///|
 /// 四分位数 / Quartiles.
 pub fn quartiles(data : Array[Double]) -> Quartiles {
   let q1 = percentile(data, 25.0)
@@ -446,12 +480,14 @@ pub fn quartiles(data : Array[Double]) -> Quartiles {
   { q1, q2, q3, }
 }
 
+///|
 /// 四分位距 / Interquartile range.
 pub fn iqr(data : Array[Double]) -> Double {
   let q = quartiles(data)
   q.q3 - q.q1
 }
 
+///|
 /// 偏度 / Skewness (sample).
 pub fn skewness(data : Array[Double]) -> Double {
   let n = data.length()
@@ -472,6 +508,7 @@ pub fn skewness(data : Array[Double]) -> Double {
   m3 / pow_(s, 3.0)
 }
 
+///|
 /// 峰度 / Kurtosis (excess, sample).
 pub fn kurtosis(data : Array[Double]) -> Double {
   let n = data.length()
@@ -492,6 +529,7 @@ pub fn kurtosis(data : Array[Double]) -> Double {
   m4 / pow_(s, 4.0) - 3.0
 }
 
+///|
 /// 几何均值 / Geometric mean.
 pub fn geometric_mean(data : Array[Double]) -> Double {
   let n = data.length()
@@ -508,6 +546,7 @@ pub fn geometric_mean(data : Array[Double]) -> Double {
   exp_(log_sum / n.to_double())
 }
 
+///|
 /// 调和均值 / Harmonic mean.
 pub fn harmonic_mean(data : Array[Double]) -> Double {
   let n = data.length()
@@ -528,6 +567,7 @@ pub fn harmonic_mean(data : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 加权均值 / Weighted mean.
 pub fn weighted_mean(values : Array[Double], weights : Array[Double]) -> Double {
   let n = values.length()
@@ -547,6 +587,7 @@ pub fn weighted_mean(values : Array[Double], weights : Array[Double]) -> Double 
   }
 }
 
+///|
 /// 变异系数 / Coefficient of variation.
 pub fn coefficient_of_variation(data : Array[Double]) -> Double {
   let m = mean(data)
@@ -556,6 +597,7 @@ pub fn coefficient_of_variation(data : Array[Double]) -> Double {
   std_dev(data) / abs_(m)
 }
 
+///|
 /// Z 分数 / Z-score of a single value.
 pub fn z_score(value : Double, data : Array[Double]) -> Double {
   let s = std_dev(data)
@@ -565,6 +607,7 @@ pub fn z_score(value : Double, data : Array[Double]) -> Double {
   (value - mean(data)) / s
 }
 
+///|
 /// 标准化 / Standardize (z-score for each element).
 pub fn standardize(data : Array[Double]) -> Array[Double] {
   let n = data.length()
@@ -587,18 +630,20 @@ pub fn standardize(data : Array[Double]) -> Array[Double] {
 // 辅助特殊函数 / Special functions (public)
 // ============================================================
 
+///|
 /// 阶乘 / Factorial (n!).
-pub fn factorial(n : Int) -> Double {
+pub fn factorial(n : Int32) -> Double {
   if n < 0 {
     return 0.0
   }
   let mut result = 1.0
-  for i in 2..=n {
+  for i in 2..<=n {
     result = result * i.to_double()
   }
   result
 }
 
+///|
 /// 对数伽马 / Log gamma (Lanczos approximation).
 pub fn lgamma(x : Double) -> Double {
   if x < 0.5 {
@@ -607,9 +652,9 @@ pub fn lgamma(x : Double) -> Double {
   }
   let g = 7.0
   let c = [
-    0.99999999999980993, 676.5203681218851, -1259.1392167224028,
-    771.32342877765313, -176.61503016214059, 12.507343278406943,
-    -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7,
+    0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313,
+    -176.61503016214059, 12.507343278406943, -0.13857109526572012, 9.9843695780195716e-6,
+    1.5056327351493116e-7,
   ]
   let z = x - 1.0
   let mut a = c[0]
@@ -620,16 +665,19 @@ pub fn lgamma(x : Double) -> Double {
   0.5 * ln_(2.0 * PI) + (z + 0.5) * ln_(t) - t + ln_(a)
 }
 
+///|
 /// 伽马函数 / Gamma function.
 pub fn gamma_func(x : Double) -> Double {
   exp_(lgamma(x))
 }
 
+///|
 /// 贝塔函数 / Beta function.
 pub fn beta_func(a : Double, b : Double) -> Double {
   exp_(lgamma(a) + lgamma(b) - lgamma(a + b))
 }
 
+///|
 /// 误差函数 / Error function (erf).
 pub fn erf(x : Double) -> Double {
   let a1 = 0.254829592
@@ -638,14 +686,11 @@ pub fn erf(x : Double) -> Double {
   let a4 = -1.453152027
   let a5 = 1.061405429
   let p = 0.3275911
-  let sign = if x < 0.0 {
-    -1.0
-  } else {
-    1.0
-  }
+  let sign = if x < 0.0 { -1.0 } else { 1.0 }
   let ax = abs_(x)
   let t = 1.0 / (1.0 + p * ax)
-  let y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * exp_(-ax * ax)
+  let y = 1.0 -
+    ((((a5 * t + a4) * t + a3) * t + a2) * t + a1) * t * exp_(-ax * ax)
   sign * y
 }
 
@@ -653,6 +698,7 @@ pub fn erf(x : Double) -> Double {
 // 正态分布 / Normal distribution
 // ============================================================
 
+///|
 /// 正态 PDF / Normal probability density function.
 pub fn normal_pdf(x : Double, mu : Double, sigma : Double) -> Double {
   if sigma <= 0.0 {
@@ -662,6 +708,7 @@ pub fn normal_pdf(x : Double, mu : Double, sigma : Double) -> Double {
   exp_(-0.5 * z * z) / (sigma * SQRT_2PI)
 }
 
+///|
 /// 正态 CDF / Normal cumulative distribution function.
 pub fn normal_cdf(x : Double, mu : Double, sigma : Double) -> Double {
   if sigma <= 0.0 {
@@ -671,6 +718,7 @@ pub fn normal_cdf(x : Double, mu : Double, sigma : Double) -> Double {
   0.5 * (1.0 + erf(z))
 }
 
+///|
 /// 逆正态 CDF / Inverse normal CDF (quantile function).
 pub fn inv_normal_cdf(p : Double, mu : Double, sigma : Double) -> Double {
   if p <= 0.0 {
@@ -697,18 +745,21 @@ pub fn inv_normal_cdf(p : Double, mu : Double, sigma : Double) -> Double {
 // t 分布 / Student's t distribution
 // ============================================================
 
+///|
 /// t PDF / Student's t probability density function.
-pub fn t_pdf(x : Double, df : Int) -> Double {
+pub fn t_pdf(x : Double, df : Int32) -> Double {
   if df <= 0 {
     return 0.0
   }
   let half_df = df.to_double() / 2.0
-  let coef = exp_(lgamma(half_df + 0.5) - lgamma(half_df)) / sqrt_(df.to_double() * PI)
+  let coef = exp_(lgamma(half_df + 0.5) - lgamma(half_df)) /
+    sqrt_(df.to_double() * PI)
   coef * pow_(1.0 + x * x / df.to_double(), -(half_df + 0.5))
 }
 
+///|
 /// t CDF / Student's t cumulative distribution function (via numerical integration).
-pub fn t_cdf(x : Double, df : Int) -> Double {
+pub fn t_cdf(x : Double, df : Int32) -> Double {
   if df <= 0 {
     return 0.0
   }
@@ -729,8 +780,9 @@ pub fn t_cdf(x : Double, df : Int) -> Double {
 // 卡方分布 / Chi-square distribution
 // ============================================================
 
+///|
 /// 卡方 PDF / Chi-square probability density function.
-pub fn chi_square_pdf(x : Double, df : Int) -> Double {
+pub fn chi_square_pdf(x : Double, df : Int32) -> Double {
   if df <= 0 || x < 0.0 {
     return 0.0
   }
@@ -745,8 +797,9 @@ pub fn chi_square_pdf(x : Double, df : Int) -> Double {
   coef / (pow_(2.0, half_df) * exp_(lgamma(half_df)))
 }
 
+///|
 /// 卡方 CDF / Chi-square cumulative distribution function (via numerical integration).
-pub fn chi_square_cdf(x : Double, df : Int) -> Double {
+pub fn chi_square_cdf(x : Double, df : Int32) -> Double {
   if df <= 0 || x <= 0.0 {
     return 0.0
   }
@@ -769,8 +822,9 @@ pub fn chi_square_cdf(x : Double, df : Int) -> Double {
 // F 分布 / F distribution
 // ============================================================
 
+///|
 /// F PDF / F probability density function.
-pub fn f_pdf(x : Double, d1 : Int, d2 : Int) -> Double {
+pub fn f_pdf(x : Double, d1 : Int32, d2 : Int32) -> Double {
   if d1 <= 0 || d2 <= 0 || x < 0.0 {
     return 0.0
   }
@@ -781,12 +835,15 @@ pub fn f_pdf(x : Double, d1 : Int, d2 : Int) -> Double {
   let d2d = d2.to_double()
   let num = sqrt_(pow_(d1d * x, d1d) * pow_(d2d, d2d))
   let denom = (d1d * x + d2d) * sqrt_(d1d * x + d2d)
-  let beta = exp_(lgamma(d1d / 2.0) + lgamma(d2d / 2.0) - lgamma((d1d + d2d) / 2.0))
+  let beta = exp_(
+    lgamma(d1d / 2.0) + lgamma(d2d / 2.0) - lgamma((d1d + d2d) / 2.0),
+  )
   num / (denom * x * beta)
 }
 
+///|
 /// F CDF / F cumulative distribution function (via numerical integration).
-pub fn f_cdf(x : Double, d1 : Int, d2 : Int) -> Double {
+pub fn f_cdf(x : Double, d1 : Int32, d2 : Int32) -> Double {
   if d1 <= 0 || d2 <= 0 || x <= 0.0 {
     return 0.0
   }
@@ -809,6 +866,7 @@ pub fn f_cdf(x : Double, d1 : Int, d2 : Int) -> Double {
 // 指数分布 / Exponential distribution
 // ============================================================
 
+///|
 /// 指数 PDF / Exponential probability density function.
 pub fn exponential_pdf(x : Double, lambda : Double) -> Double {
   if lambda <= 0.0 || x < 0.0 {
@@ -817,6 +875,7 @@ pub fn exponential_pdf(x : Double, lambda : Double) -> Double {
   lambda * exp_(-lambda * x)
 }
 
+///|
 /// 指数 CDF / Exponential cumulative distribution function.
 pub fn exponential_cdf(x : Double, lambda : Double) -> Double {
   if lambda <= 0.0 || x < 0.0 {
@@ -829,6 +888,7 @@ pub fn exponential_cdf(x : Double, lambda : Double) -> Double {
 // 均匀分布 / Uniform distribution
 // ============================================================
 
+///|
 /// 均匀 PDF / Uniform probability density function.
 pub fn uniform_pdf(x : Double, a : Double, b : Double) -> Double {
   if b <= a {
@@ -841,6 +901,7 @@ pub fn uniform_pdf(x : Double, a : Double, b : Double) -> Double {
   }
 }
 
+///|
 /// 均匀 CDF / Uniform cumulative distribution function.
 pub fn uniform_cdf(x : Double, a : Double, b : Double) -> Double {
   if b <= a {
@@ -859,12 +920,13 @@ pub fn uniform_cdf(x : Double, a : Double, b : Double) -> Double {
 // 假设检验 / Hypothesis testing
 // ============================================================
 
+///|
 /// Z 检验 / One-sample Z-test.
 pub fn z_test(
   data : Array[Double],
   mu0 : Double,
   sigma : Double,
-  test_kind : TestKind
+  test_kind : TestKind,
 ) -> TestResult {
   let n = data.length()
   if n == 0 || sigma <= 0.0 {
@@ -875,11 +937,12 @@ pub fn z_test(
   { statistic: z, p_value: p, reject_null: p < 0.05, }
 }
 
+///|
 /// 单样本 t 检验 / One-sample t-test.
 pub fn t_test_one_sample(
   data : Array[Double],
   mu0 : Double,
-  test_kind : TestKind
+  test_kind : TestKind,
 ) -> TestResult {
   let n = data.length()
   if n < 2 {
@@ -895,11 +958,12 @@ pub fn t_test_one_sample(
   { statistic: t, p_value: p, reject_null: p < 0.05, }
 }
 
+///|
 /// 双样本 t 检验 / Two-sample t-test (Welch's).
 pub fn t_test_two_sample(
   data1 : Array[Double],
   data2 : Array[Double],
-  test_kind : TestKind
+  test_kind : TestKind,
 ) -> TestResult {
   let n1 = data1.length()
   let n2 = data2.length()
@@ -914,16 +978,18 @@ pub fn t_test_two_sample(
   }
   let t = (mean(data1) - mean(data2)) / se
   let num = pow_(v1 / n1.to_double() + v2 / n2.to_double(), 2.0)
-  let denom = pow_(v1 / n1.to_double(), 2.0) / (n1 - 1).to_double() + pow_(v2 / n2.to_double(), 2.0) / (n2 - 1).to_double()
+  let denom = pow_(v1 / n1.to_double(), 2.0) / (n1 - 1).to_double() +
+    pow_(v2 / n2.to_double(), 2.0) / (n2 - 1).to_double()
   let df = if denom == 0.0 { n1 + n2 - 2 } else { (num / denom).to_int() }
   let p = p_value_t(t, df, test_kind)
   { statistic: t, p_value: p, reject_null: p < 0.05, }
 }
 
+///|
 /// 卡方检验 / Chi-square goodness-of-fit test.
 pub fn chi_square_test(
   observed : Array[Double],
-  expected : Array[Double]
+  expected : Array[Double],
 ) -> TestResult {
   let n = observed.length()
   if n == 0 || n != expected.length() {
@@ -941,11 +1007,9 @@ pub fn chi_square_test(
   { statistic: chi2, p_value: p, reject_null: p < 0.05, }
 }
 
+///|
 /// F 检验 / F-test for equality of variances.
-pub fn f_test(
-  data1 : Array[Double],
-  data2 : Array[Double]
-) -> TestResult {
+pub fn f_test(data1 : Array[Double], data2 : Array[Double]) -> TestResult {
   let n1 = data1.length()
   let n2 = data2.length()
   if n1 < 2 || n2 < 2 {
@@ -964,21 +1028,27 @@ pub fn f_test(
   { statistic: f, p_value: p_clamped, reject_null: p_clamped < 0.05, }
 }
 
+///|
 /// 正态分布 p 值 / P-value for normal distribution.
 pub fn p_value_normal(z : Double, test_kind : TestKind) -> Double {
   let cdf = 0.5 * (1.0 + erf(z / sqrt_(2.0)))
   match test_kind {
     TwoSided => {
       let p = 2.0 * (1.0 - cdf)
-      if p > 1.0 { 1.0 } else { p }
+      if p > 1.0 {
+        1.0
+      } else {
+        p
+      }
     }
     OneSidedRight => 1.0 - cdf
     OneSidedLeft => cdf
   }
 }
 
+///|
 /// t 分布 p 值 / P-value for t distribution.
-pub fn p_value_t(t : Double, df : Int, test_kind : TestKind) -> Double {
+pub fn p_value_t(t : Double, df : Int32, test_kind : TestKind) -> Double {
   if df <= 0 {
     return 1.0
   }
@@ -986,7 +1056,11 @@ pub fn p_value_t(t : Double, df : Int, test_kind : TestKind) -> Double {
   match test_kind {
     TwoSided => {
       let p = 2.0 * (1.0 - cdf)
-      if p > 1.0 { 1.0 } else { p }
+      if p > 1.0 {
+        1.0
+      } else {
+        p
+      }
     }
     OneSidedRight => 1.0 - cdf
     OneSidedLeft => cdf
@@ -997,10 +1071,11 @@ pub fn p_value_t(t : Double, df : Int, test_kind : TestKind) -> Double {
 // 置信区间 / Confidence intervals
 // ============================================================
 
+///|
 /// 均值置信区间 / Confidence interval for mean.
 pub fn confidence_interval_mean(
   data : Array[Double],
-  confidence : Double
+  confidence : Double,
 ) -> ConfidenceInterval {
   let n = data.length()
   if n < 2 {
@@ -1014,11 +1089,12 @@ pub fn confidence_interval_mean(
   { lower: m - me, upper: m + me, confidence, }
 }
 
+///|
 /// 比例置信区间 / Confidence interval for proportion.
 pub fn confidence_interval_proportion(
-  successes : Int,
-  total : Int,
-  confidence : Double
+  successes : Int32,
+  total : Int32,
+  confidence : Double,
 ) -> ConfidenceInterval {
   if total <= 0 {
     return { lower: 0.0, upper: 1.0, confidence, }
@@ -1032,11 +1108,12 @@ pub fn confidence_interval_proportion(
   { lower: lo, upper: hi, confidence, }
 }
 
+///|
 /// 误差范围 / Margin of error.
 pub fn margin_of_error(
   std_dev_val : Double,
-  sample_size : Int,
-  confidence : Double
+  sample_size : Int32,
+  confidence : Double,
 ) -> Double {
   if sample_size <= 0 {
     return 0.0
@@ -1046,12 +1123,13 @@ pub fn margin_of_error(
   z * std_dev_val / sqrt_(sample_size.to_double())
 }
 
+///|
 /// 样本量估计 / Sample size estimate.
 pub fn sample_size_estimate(
   std_dev_val : Double,
   margin_error : Double,
-  confidence : Double
-) -> Int {
+  confidence : Double,
+) -> Int32 {
   if margin_error <= 0.0 {
     return 0
   }
@@ -1065,6 +1143,7 @@ pub fn sample_size_estimate(
 // 相关与回归 / Correlation and regression
 // ============================================================
 
+///|
 /// 协方差 / Covariance (sample).
 pub fn covariance(x : Array[Double], y : Array[Double]) -> Double {
   let n = x.length()
@@ -1080,6 +1159,7 @@ pub fn covariance(x : Array[Double], y : Array[Double]) -> Double {
   s / (n - 1).to_double()
 }
 
+///|
 /// 相关系数 / Pearson correlation coefficient.
 pub fn correlation(x : Array[Double], y : Array[Double]) -> Double {
   let n = x.length()
@@ -1094,8 +1174,12 @@ pub fn correlation(x : Array[Double], y : Array[Double]) -> Double {
   covariance(x, y) / (sx * sy)
 }
 
+///|
 /// 线性回归 / Simple linear regression (least squares).
-pub fn linear_regression(x : Array[Double], y : Array[Double]) -> RegressionResult {
+pub fn linear_regression(
+  x : Array[Double],
+  y : Array[Double],
+) -> RegressionResult {
   let n = x.length()
   if n < 2 || n != y.length() {
     return { slope: 0.0, intercept: mean(y), r_value: 0.0, }
@@ -1114,12 +1198,14 @@ pub fn linear_regression(x : Array[Double], y : Array[Double]) -> RegressionResu
   { slope, intercept, r_value: r, }
 }
 
+///|
 /// 决定系数 / R-squared (coefficient of determination).
 pub fn r_squared(x : Array[Double], y : Array[Double]) -> Double {
   let r = correlation(x, y)
   r * r
 }
 
+///|
 /// 调整决定系数 / Adjusted R-squared.
 pub fn adjusted_r_squared(x : Array[Double], y : Array[Double]) -> Double {
   let n = x.length()
@@ -1134,6 +1220,7 @@ pub fn adjusted_r_squared(x : Array[Double], y : Array[Double]) -> Double {
 // ID
 // ============================================================
 
+///|
 /// 模块标识 / Module identifier.
 pub fn statistics_id() -> String {
   "opcore/statistics"

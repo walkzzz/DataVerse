@@ -6,6 +6,7 @@
 ///
 /// # IR transform passes
 
+///|
 /// 变换类型 / Transform type.
 pub(all) enum TransformKind {
   ConstantFolding
@@ -15,15 +16,17 @@ pub(all) enum TransformKind {
   LoopUnrolling
 }
 
+///|
 /// 变换结果 / Transform result.
 pub struct TransformResult {
   kind : TransformKind
-  input_nodes : Int
-  output_nodes : Int
+  input_nodes : Int32
+  output_nodes : Int32
   changed : Bool
-  passes : Int
+  passes : Int32
 }
 
+///|
 /// IR 节点类型 / IR node type.
 pub(all) enum IRNodeKind {
   Constant
@@ -36,33 +39,41 @@ pub(all) enum IRNodeKind {
   Return
 }
 
+///|
 /// IR 节点 / IR node.
 pub struct IRNode {
   kind : IRNodeKind
   value : String
-  children : Array[Int]
+  children : Array[Int32]
   is_dead : Bool
 }
 
+///|
 /// 构造 IR 节点 / Create IR node.
-pub fn make_node(kind : IRNodeKind, value : String, children : Array[Int]) -> IRNode {
-  { kind: kind, value: value, children: children, is_dead: false }
+pub fn make_node(
+  kind : IRNodeKind,
+  value : String,
+  children : Array[Int32],
+) -> IRNode {
+  { kind, value, children, is_dead: false, }
 }
 
+///|
 /// 构造变换结果 / Create transform result.
 pub fn make_transform_result(
   kind : TransformKind,
-  input_nodes : Int,
-  output_nodes : Int,
+  input_nodes : Int32,
+  output_nodes : Int32,
   changed : Bool,
-  passes : Int,
+  passes : Int32,
 ) -> TransformResult {
-  { kind: kind, input_nodes: input_nodes, output_nodes: output_nodes, changed: changed, passes: passes }
+  { kind, input_nodes, output_nodes, changed, passes, }
 }
 
 ///===
 /// 常量折叠 / Constant folding
 
+///|
 /// 尝试折叠二元运算 / Try folding binary operation.
 pub fn fold_binary_op(op : String, left : Double, right : Double) -> Double? {
   if op == "+" {
@@ -72,23 +83,33 @@ pub fn fold_binary_op(op : String, left : Double, right : Double) -> Double? {
   } else if op == "*" {
     Some(left * right)
   } else if op == "/" {
-    if right == 0.0 { None } else { Some(left / right) }
+    if right == 0.0 {
+      None
+    } else {
+      Some(left / right)
+    }
   } else {
     None
   }
 }
 
+///|
 /// 尝试折叠一元运算 / Try folding unary operation.
 pub fn fold_unary_op(op : String, operand : Double) -> Double? {
   if op == "-" {
     Some(-operand)
   } else if op == "abs" {
-    if operand < 0.0 { Some(-operand) } else { Some(operand) }
+    if operand < 0.0 {
+      Some(-operand)
+    } else {
+      Some(operand)
+    }
   } else {
     None
   }
 }
 
+///|
 /// 解析常量 / Parse constant value.
 pub fn parse_constant(s : String) -> Double? {
   let mut result = 0.0
@@ -106,7 +127,9 @@ pub fn parse_constant(s : String) -> Double? {
   for i in start..<s.length() {
     let code = s[i].to_int()
     if code == 46 {
-      if has_dot { return None }
+      if has_dot {
+        return None
+      }
       has_dot = true
     } else if code >= 48 && code <= 57 {
       let digit = (code - 48).to_double()
@@ -126,31 +149,34 @@ pub fn parse_constant(s : String) -> Double? {
 ///===
 /// 死代码消除 / Dead code elimination
 
+///|
 /// 标记死节点 / Mark node as dead.
-pub fn mark_dead(nodes : Array[IRNode], index : Int) -> Array[IRNode] {
+pub fn mark_dead(nodes : Array[IRNode], index : Int32) -> Array[IRNode] {
   let result = nodes.copy()
   if index >= 0 && index < result.length() {
-    result[index] = { ..result[index], is_dead: true }
+    result[index] = { ..result[index], is_dead: true, }
   }
   result
 }
 
+///|
 /// 消除死节点 / Eliminate dead nodes.
 pub fn eliminate_dead(nodes : Array[IRNode]) -> Array[IRNode] {
   let result : Array[IRNode] = []
   for i in 0..<nodes.length() {
-    if !(nodes[i].is_dead) {
+    if !nodes[i].is_dead {
       result.push(nodes[i])
     }
   }
   result
 }
 
+///|
 /// 统计活节点 / Count live nodes.
-pub fn count_live_nodes(nodes : Array[IRNode]) -> Int {
+pub fn count_live_nodes(nodes : Array[IRNode]) -> Int32 {
   let mut count = 0
   for i in 0..<nodes.length() {
-    if !(nodes[i].is_dead) {
+    if !nodes[i].is_dead {
       count = count + 1
     }
   }
@@ -160,6 +186,7 @@ pub fn count_live_nodes(nodes : Array[IRNode]) -> Int {
 ///===
 /// 表达式简化 / Expression simplification
 
+///|
 /// 简化加法 / Simplify addition.
 pub fn simplify_add(left : String, right : String) -> String {
   let l = parse_constant(left)
@@ -172,6 +199,7 @@ pub fn simplify_add(left : String, right : String) -> String {
   }
 }
 
+///|
 /// 简化乘法 / Simplify multiplication.
 pub fn simplify_mul(left : String, right : String) -> String {
   let l = parse_constant(left)
@@ -189,6 +217,7 @@ pub fn simplify_mul(left : String, right : String) -> String {
 ///===
 /// 变换 pass 执行 / Run transform passes
 
+///|
 /// 运行常量折叠 pass / Run constant folding pass.
 pub fn run_constant_folding(nodes : Array[IRNode]) -> TransformResult {
   let input_count = nodes.length()
@@ -222,17 +251,24 @@ pub fn run_constant_folding(nodes : Array[IRNode]) -> TransformResult {
   make_transform_result(ConstantFolding, input_count, output_count, changed, 1)
 }
 
+///|
 /// 运行死代码消除 pass / Run dead code elimination pass.
 pub fn run_dead_code_elimination(nodes : Array[IRNode]) -> TransformResult {
   let input_count = nodes.length()
   let live_count = count_live_nodes(nodes)
   let changed = input_count != live_count
-  make_transform_result(DeadCodeElimination, input_count, live_count, changed, 1)
+  make_transform_result(
+    DeadCodeElimination,
+    input_count,
+    live_count,
+    changed,
+    1,
+  )
 }
 
+///|
 ///===
 /// 变换名称 / Transform name
-
 fn is_binary_op(kind : IRNodeKind) -> Bool {
   match kind {
     BinaryOp => true
@@ -240,6 +276,7 @@ fn is_binary_op(kind : IRNodeKind) -> Bool {
   }
 }
 
+///|
 pub fn transform_name(kind : TransformKind) -> String {
   match kind {
     ConstantFolding => "constant_folding"
@@ -250,9 +287,9 @@ pub fn transform_name(kind : TransformKind) -> String {
   }
 }
 
+///|
 ///===
 /// ID
-
 pub fn ir_transform_id() -> String {
   "datair/ir_transform"
 }

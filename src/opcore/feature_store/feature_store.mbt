@@ -6,13 +6,18 @@
 ///
 /// # Feature store
 
+///|
 ///===
 /// 内部辅助 / Internal helpers
-
 fn fs_min(a : Double, b : Double) -> Double {
-  if a < b { a } else { b }
+  if a < b {
+    a
+  } else {
+    b
+  }
 }
 
+///|
 fn fs_contains(arr : Array[String], v : String) -> Bool {
   for i in 0..<arr.length() {
     if arr[i] == v {
@@ -22,9 +27,9 @@ fn fs_contains(arr : Array[String], v : String) -> Bool {
   false
 }
 
+///|
 ///===
 /// FeatureDef / 特征定义
-
 pub(all) enum FeatureType {
   Numerical
   Categorical
@@ -33,9 +38,13 @@ pub(all) enum FeatureType {
   Embedding
 } derive(Debug, Eq)
 
+///|
 pub extend FeatureType with Eq::{equal, not_equal}
+
+///|
 pub extend FeatureType with Debug::{to_repr}
 
+///|
 pub(all) enum FeatureDType {
   Float32
   Float64
@@ -45,9 +54,13 @@ pub(all) enum FeatureDType {
   Bool_
 } derive(Debug, Eq)
 
+///|
 pub extend FeatureDType with Eq::{equal, not_equal}
+
+///|
 pub extend FeatureDType with Debug::{to_repr}
 
+///|
 pub struct FeatureDef {
   name : String
   feature_type : FeatureType
@@ -56,66 +69,87 @@ pub struct FeatureDef {
   tags : Array[String]
 } derive(Debug, Eq)
 
+///|
 pub extend FeatureDef with Eq::{equal, not_equal}
+
+///|
 pub extend FeatureDef with Debug::{to_repr}
 
+///|
 /// 构造特征定义 / Build a feature definition.
 pub fn make_feature_def(
   name : String,
   feature_type : FeatureType,
-  dtype : FeatureDType
+  dtype : FeatureDType,
 ) -> FeatureDef {
-  { name, feature_type, dtype, description: "", tags: [] }
+  { name, feature_type, dtype, description: "", tags: [], }
 }
 
+///|
 /// 特征名称 / Get feature name.
 pub fn feature_name(f : FeatureDef) -> String {
   f.name
 }
 
+///|
 /// 特征类型 / Get feature type.
 pub fn feature_type(f : FeatureDef) -> FeatureType {
   f.feature_type
 }
 
+///|
 /// 特征数据类型 / Get feature dtype.
 pub fn feature_dtype(f : FeatureDef) -> FeatureDType {
   f.dtype
 }
 
+///|
 ///===
 /// FeatureGroup / 特征组
-
 pub struct FeatureGroup {
   name : String
   features : Array[FeatureDef]
   description : String
 } derive(Debug, Eq)
 
+///|
 pub extend FeatureGroup with Eq::{equal, not_equal}
+
+///|
 pub extend FeatureGroup with Debug::{to_repr}
 
+///|
 /// 构造特征组 / Build a feature group.
 pub fn make_feature_group(name : String, description : String) -> FeatureGroup {
-  { name, features: [], description }
+  { name, features: [], description, }
 }
 
+///|
 /// 组添加 / Add feature to group.
 pub fn group_add(group : FeatureGroup, feature : FeatureDef) -> FeatureGroup {
-  { name: group.name, features: group.features + [feature], description: group.description }
+  {
+    name: group.name,
+    features: group.features + [feature],
+    description: group.description,
+  }
 }
 
+///|
 /// 组移除 / Remove feature from group.
-pub fn group_remove(group : FeatureGroup, feature_name : String) -> FeatureGroup {
+pub fn group_remove(
+  group : FeatureGroup,
+  feature_name : String,
+) -> FeatureGroup {
   let new_features : Array[FeatureDef] = []
   for i in 0..<group.features.length() {
     if group.features[i].name != feature_name {
       new_features.push(group.features[i])
     }
   }
-  { name: group.name, features: new_features, description: group.description }
+  { name: group.name, features: new_features, description: group.description, }
 }
 
+///|
 /// 组列表 / List features in group.
 pub fn group_list(group : FeatureGroup) -> Array[String] {
   let result : Array[String] = []
@@ -125,9 +159,9 @@ pub fn group_list(group : FeatureGroup) -> Array[String] {
   result
 }
 
+///|
 ///===
 /// FeatureView / 特征视图
-
 pub struct FeatureView {
   name : String
   feature_names : Array[String]
@@ -135,23 +169,29 @@ pub struct FeatureView {
   materialized : Bool
 } derive(Debug, Eq)
 
+///|
 pub extend FeatureView with Eq::{equal, not_equal}
+
+///|
 pub extend FeatureView with Debug::{to_repr}
 
+///|
 /// 构造特征视图 / Build a feature view.
 pub fn make_feature_view(name : String, entity_column : String) -> FeatureView {
-  { name, feature_names: [], entity_column, materialized: false }
+  { name, feature_names: [], entity_column, materialized: false, }
 }
 
+///|
 /// 视图创建 / Create a feature view.
 pub fn view_create(
   name : String,
   feature_names : Array[String],
-  entity_column : String
+  entity_column : String,
 ) -> FeatureView {
-  { name, feature_names, entity_column, materialized: false }
+  { name, feature_names, entity_column, materialized: false, }
 }
 
+///|
 /// 视图查询 / Query a feature view.
 pub fn view_query(view : FeatureView, entity_id : String) -> String {
   let mut result = "view:" + view.name + " entity:" + entity_id + " features:["
@@ -165,14 +205,20 @@ pub fn view_query(view : FeatureView, entity_id : String) -> String {
   result
 }
 
+///|
 /// 视图物化 / Materialize a feature view.
 pub fn view_materialize(view : FeatureView) -> FeatureView {
-  { name: view.name, feature_names: view.feature_names, entity_column: view.entity_column, materialized: true }
+  {
+    name: view.name,
+    feature_names: view.feature_names,
+    entity_column: view.entity_column,
+    materialized: true,
+  }
 }
 
+///|
 ///===
 /// FeatureStore / 特征存储
-
 pub struct FeatureStore {
   features : Array[(String, FeatureDef)]
   groups : Array[FeatureGroup]
@@ -182,14 +228,26 @@ pub struct FeatureStore {
   audit_log : Array[String]
 } derive(Debug, Eq)
 
+///|
 pub extend FeatureStore with Eq::{equal, not_equal}
+
+///|
 pub extend FeatureStore with Debug::{to_repr}
 
+///|
 /// 构造特征存储 / Build a feature store.
 pub fn make_feature_store() -> FeatureStore {
-  { features: [], groups: [], views: [], online_data: [], offline_data: [], audit_log: [] }
+  {
+    features: [],
+    groups: [],
+    views: [],
+    online_data: [],
+    offline_data: [],
+    audit_log: [],
+  }
 }
 
+///|
 /// 注册特征 / Register a feature.
 pub fn fs_register(store : FeatureStore, feature : FeatureDef) -> FeatureStore {
   {
@@ -202,6 +260,7 @@ pub fn fs_register(store : FeatureStore, feature : FeatureDef) -> FeatureStore {
   }
 }
 
+///|
 /// 获取特征 / Get a feature.
 pub fn fs_get(store : FeatureStore, name : String) -> FeatureDef? {
   for i in 0..<store.features.length() {
@@ -212,6 +271,7 @@ pub fn fs_get(store : FeatureStore, name : String) -> FeatureDef? {
   None
 }
 
+///|
 /// 删除特征 / Delete a feature.
 pub fn fs_delete(store : FeatureStore, name : String) -> FeatureStore {
   let new_features : Array[(String, FeatureDef)] = []
@@ -233,6 +293,7 @@ pub fn fs_delete(store : FeatureStore, name : String) -> FeatureStore {
 ///===
 /// Online / Offline read-write / 在线离线读写
 
+///|
 /// 在线读 / Online read.
 pub fn fs_online_read(store : FeatureStore, key : String) -> Array[Double] {
   for i in 0..<store.online_data.length() {
@@ -243,11 +304,12 @@ pub fn fs_online_read(store : FeatureStore, key : String) -> Array[Double] {
   []
 }
 
+///|
 /// 在线写 / Online write.
 pub fn fs_online_write(
   store : FeatureStore,
   key : String,
-  values : Array[Double]
+  values : Array[Double],
 ) -> FeatureStore {
   let new_data : Array[(String, Array[Double])] = []
   let mut found = false
@@ -259,7 +321,7 @@ pub fn fs_online_write(
       new_data.push(store.online_data[i])
     }
   }
-  if !(found) {
+  if !found {
     new_data.push((key, values))
   }
   {
@@ -272,6 +334,7 @@ pub fn fs_online_write(
   }
 }
 
+///|
 /// 离线读 / Offline read.
 pub fn fs_offline_read(store : FeatureStore, key : String) -> Array[Double] {
   for i in 0..<store.offline_data.length() {
@@ -282,11 +345,12 @@ pub fn fs_offline_read(store : FeatureStore, key : String) -> Array[Double] {
   []
 }
 
+///|
 /// 离线写 / Offline write.
 pub fn fs_offline_write(
   store : FeatureStore,
   key : String,
-  values : Array[Double]
+  values : Array[Double],
 ) -> FeatureStore {
   let new_data : Array[(String, Array[Double])] = []
   let mut found = false
@@ -298,7 +362,7 @@ pub fn fs_offline_write(
       new_data.push(store.offline_data[i])
     }
   }
-  if !(found) {
+  if !found {
     new_data.push((key, values))
   }
   {
@@ -314,11 +378,12 @@ pub fn fs_offline_write(
 ///===
 /// Point-in-time / 点对时间
 
+///|
 /// 点对时间查询 / Point-in-time join.
 pub fn fs_point_in_time(
   store : FeatureStore,
   entity_id : String,
-  timestamp : Double
+  timestamp : Double,
 ) -> Array[(String, Double)] {
   let result : Array[(String, Double)] = []
   for i in 0..<store.offline_data.length() {
@@ -334,10 +399,11 @@ pub fn fs_point_in_time(
   result
 }
 
+///|
 /// 连接特征 / Join features.
 pub fn fs_join_features(
   left : Array[(String, Array[Double])],
-  right : Array[(String, Array[Double])]
+  right : Array[(String, Array[Double])],
 ) -> Array[(String, Array[Double])] {
   let result : Array[(String, Array[Double])] = []
   let seen : Array[String] = []
@@ -346,15 +412,19 @@ pub fn fs_join_features(
     seen.push(left[i].0)
   }
   for i in 0..<right.length() {
-    if !(fs_contains(seen, right[i].0)) {
+    if !fs_contains(seen, right[i].0) {
       result.push(right[i])
     }
   }
   result
 }
 
+///|
 /// 特征向量 / Get feature vector.
-pub fn fs_feature_vector(store : FeatureStore, keys : Array[String]) -> Array[Double] {
+pub fn fs_feature_vector(
+  store : FeatureStore,
+  keys : Array[String],
+) -> Array[Double] {
   let result : Array[Double] = []
   for i in 0..<keys.length() {
     let vals = fs_online_read(store, keys[i])
@@ -365,9 +435,9 @@ pub fn fs_feature_vector(store : FeatureStore, keys : Array[String]) -> Array[Do
   result
 }
 
+///|
 ///===
 /// FeaturePipeline / 特征管道
-
 pub struct FeaturePipeline {
   name : String
   steps : Array[String]
@@ -375,18 +445,26 @@ pub struct FeaturePipeline {
   last_run : Double
 } derive(Debug, Eq)
 
+///|
 pub extend FeaturePipeline with Eq::{equal, not_equal}
+
+///|
 pub extend FeaturePipeline with Debug::{to_repr}
 
+///|
 /// 构造特征管道 / Build a feature pipeline.
-pub fn make_feature_pipeline(name : String, schedule : String) -> FeaturePipeline {
-  { name, steps: [], schedule, last_run: 0.0 }
+pub fn make_feature_pipeline(
+  name : String,
+  schedule : String,
+) -> FeaturePipeline {
+  { name, steps: [], schedule, last_run: 0.0, }
 }
 
+///|
 /// 管道计算 / Compute pipeline.
 pub fn pipeline_compute(
   pipeline : FeaturePipeline,
-  input : Array[Double]
+  input : Array[Double],
 ) -> Array[Double] {
   let result : Array[Double] = []
   for i in 0..<input.length() {
@@ -406,16 +484,28 @@ pub fn pipeline_compute(
   result
 }
 
+///|
 /// 管道调度 / Schedule pipeline.
-pub fn pipeline_schedule(pipeline : FeaturePipeline, schedule : String) -> FeaturePipeline {
-  { name: pipeline.name, steps: pipeline.steps, schedule, last_run: pipeline.last_run }
+pub fn pipeline_schedule(
+  pipeline : FeaturePipeline,
+  schedule : String,
+) -> FeaturePipeline {
+  {
+    name: pipeline.name,
+    steps: pipeline.steps,
+    schedule,
+    last_run: pipeline.last_run,
+  }
 }
 
 ///===
 /// Feature stats / quality / drift / 特征统计/质量/漂移
 
+///|
 /// 特征统计 / Compute feature statistics.
-pub fn feature_stats_store(values : Array[Double]) -> (Double, Double, Double, Double) {
+pub fn feature_stats_store(
+  values : Array[Double],
+) -> (Double, Double, Double, Double) {
   let n = values.length()
   if n == 0 {
     return (0.0, 0.0, 0.0, 0.0)
@@ -439,6 +529,7 @@ pub fn feature_stats_store(values : Array[Double]) -> (Double, Double, Double, D
   (mean, std, mn, mx)
 }
 
+///|
 /// 特征质量 / Compute feature quality.
 pub fn feature_quality_store(values : Array[Double]) -> Double {
   let n = values.length()
@@ -454,10 +545,11 @@ pub fn feature_quality_store(values : Array[Double]) -> Double {
   (n - non_finite).to_double() / n.to_double()
 }
 
+///|
 /// 特征漂移 / Compute feature drift (PSI).
 pub fn feature_drift_store(
   expected : Array[Double],
-  actual : Array[Double]
+  actual : Array[Double],
 ) -> Double {
   let n = expected.length()
   if n == 0 || n != actual.length() {
@@ -471,9 +563,9 @@ pub fn feature_drift_store(
   @_common.abs((act_mean - exp_mean) / exp_mean)
 }
 
+///|
 ///===
 /// FeatureMonitor / 特征监控
-
 pub struct FeatureMonitor {
   feature_name : String
   drift_threshold : Double
@@ -481,59 +573,83 @@ pub struct FeatureMonitor {
   alerts : Array[String]
 } derive(Debug, Eq)
 
+///|
 pub extend FeatureMonitor with Eq::{equal, not_equal}
+
+///|
 pub extend FeatureMonitor with Debug::{to_repr}
 
+///|
 /// 构造特征监控 / Build a feature monitor.
 pub fn make_feature_monitor(
   feature_name : String,
   drift_threshold : Double,
-  quality_threshold : Double
+  quality_threshold : Double,
 ) -> FeatureMonitor {
-  { feature_name, drift_threshold, quality_threshold, alerts: [] }
+  { feature_name, drift_threshold, quality_threshold, alerts: [], }
 }
 
+///|
 /// 监控漂移 / Monitor drift.
 pub fn monitor_drift(
   monitor : FeatureMonitor,
-  drift_value : Double
+  drift_value : Double,
 ) -> FeatureMonitor {
   if @_common.abs(drift_value) > monitor.drift_threshold {
-    { feature_name: monitor.feature_name, drift_threshold: monitor.drift_threshold, quality_threshold: monitor.quality_threshold, alerts: monitor.alerts + ["drift:" + drift_value.to_string()] }
+    {
+      feature_name: monitor.feature_name,
+      drift_threshold: monitor.drift_threshold,
+      quality_threshold: monitor.quality_threshold,
+      alerts: monitor.alerts + ["drift:" + drift_value.to_string()],
+    }
   } else {
     monitor
   }
 }
 
+///|
 /// 监控质量 / Monitor quality.
 pub fn monitor_quality(
   monitor : FeatureMonitor,
-  quality_value : Double
+  quality_value : Double,
 ) -> FeatureMonitor {
   if quality_value < monitor.quality_threshold {
-    { feature_name: monitor.feature_name, drift_threshold: monitor.drift_threshold, quality_threshold: monitor.quality_threshold, alerts: monitor.alerts + ["quality:" + quality_value.to_string()] }
+    {
+      feature_name: monitor.feature_name,
+      drift_threshold: monitor.drift_threshold,
+      quality_threshold: monitor.quality_threshold,
+      alerts: monitor.alerts + ["quality:" + quality_value.to_string()],
+    }
   } else {
     monitor
   }
 }
 
+///|
 ///===
 /// FeatureTransform / 特征变换
-
 pub struct FeatureTransform {
   name : String
   transform_type : String
   params : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend FeatureTransform with Eq::{equal, not_equal}
+
+///|
 pub extend FeatureTransform with Debug::{to_repr}
 
+///|
 /// 构造特征变换 / Build a feature transform.
-pub fn make_feature_transform(name : String, transform_type : String) -> FeatureTransform {
-  { name, transform_type, params: [] }
+pub fn make_feature_transform(
+  name : String,
+  transform_type : String,
+) -> FeatureTransform {
+  { name, transform_type, params: [], }
 }
 
+///|
 /// 应用变换 / Apply transform.
 pub fn transform_apply(t : FeatureTransform, value : Double) -> Double {
   if t.transform_type == "scale" && t.params.length() > 0 {
@@ -560,10 +676,11 @@ pub fn transform_apply(t : FeatureTransform, value : Double) -> Double {
   }
 }
 
+///|
 /// 变换链 / Chain transforms.
 pub fn transform_chain(
   transforms : Array[FeatureTransform],
-  value : Double
+  value : Double,
 ) -> Double {
   let mut result = value
   for i in 0..<transforms.length() {
@@ -572,9 +689,9 @@ pub fn transform_chain(
   result
 }
 
+///|
 ///===
 /// On-demand / Pre-compute / Cache / 按需/预计算/缓存
-
 pub(all) enum CacheStrategy {
   CacheAll
   CacheNone
@@ -582,18 +699,23 @@ pub(all) enum CacheStrategy {
   CacheTTL
 } derive(Debug, Eq)
 
+///|
 pub extend CacheStrategy with Eq::{equal, not_equal}
+
+///|
 pub extend CacheStrategy with Debug::{to_repr}
 
+///|
 /// 按需计算 / On-demand computation.
 pub fn fs_on_demand(store : FeatureStore, name : String) -> Array[Double] {
   fs_online_read(store, name)
 }
 
+///|
 /// 预计算 / Pre-compute features.
 pub fn fs_pre_compute(
   store : FeatureStore,
-  names : Array[String]
+  names : Array[String],
 ) -> FeatureStore {
   let mut s = store
   for i in 0..<names.length() {
@@ -606,6 +728,7 @@ pub fn fs_pre_compute(
   s
 }
 
+///|
 /// 缓存策略 / Cache strategy.
 pub fn fs_cache_strategy(strategy : String) -> CacheStrategy {
   match strategy {
@@ -617,36 +740,42 @@ pub fn fs_cache_strategy(strategy : String) -> CacheStrategy {
   }
 }
 
+///|
 ///===
 /// EmbeddingStore / 嵌入存储
-
 pub struct EmbeddingStore {
   embeddings : Array[(String, Array[Double])]
-  dimension : Int
+  dimension : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend EmbeddingStore with Eq::{equal, not_equal}
+
+///|
 pub extend EmbeddingStore with Debug::{to_repr}
 
+///|
 /// 构造嵌入存储 / Build an embedding store.
-pub fn make_embedding_store(dimension : Int) -> EmbeddingStore {
-  { embeddings: [], dimension }
+pub fn make_embedding_store(dimension : Int32) -> EmbeddingStore {
+  { embeddings: [], dimension, }
 }
 
+///|
 /// 注册嵌入 / Register an embedding.
 pub fn embedding_register(
   store : EmbeddingStore,
   key : String,
-  vec : Array[Double]
+  vec : Array[Double],
 ) -> EmbeddingStore {
-  { embeddings: store.embeddings + [(key, vec)], dimension: store.dimension }
+  { embeddings: store.embeddings + [(key, vec)], dimension: store.dimension, }
 }
 
+///|
 /// 嵌入搜索 / Search embeddings (cosine similarity).
 pub fn embedding_search(
   store : EmbeddingStore,
   query : Array[Double],
-  top_k : Int
+  top_k : Int32,
 ) -> Array[(String, Double)] {
   let scores : Array[(String, Double)] = []
   for i in 0..<store.embeddings.length() {
@@ -676,11 +805,13 @@ pub fn embedding_search(
 ///===
 /// Versioning / Lineage / Audit / 版本/血缘/审计
 
+///|
 /// 特征版本 / Feature versioning.
-pub fn fs_versioning(store : FeatureStore) -> Int {
+pub fn fs_versioning(store : FeatureStore) -> Int32 {
   store.audit_log.length()
 }
 
+///|
 /// 特征血缘 / Feature lineage.
 pub fn fs_lineage(store : FeatureStore) -> Array[String] {
   let result : Array[String] = []
@@ -690,6 +821,7 @@ pub fn fs_lineage(store : FeatureStore) -> Array[String] {
   result
 }
 
+///|
 /// 特征审计 / Feature audit.
 pub fn fs_audit(store : FeatureStore) -> Array[String] {
   store.audit_log
@@ -698,6 +830,7 @@ pub fn fs_audit(store : FeatureStore) -> Array[String] {
 ///===
 /// Validation / Schema / Type / 校验/模式/类型
 
+///|
 /// 特征校验 / Validate feature store.
 pub fn fs_validation(store : FeatureStore) -> Bool {
   let seen : Array[String] = []
@@ -710,6 +843,7 @@ pub fn fs_validation(store : FeatureStore) -> Bool {
   true
 }
 
+///|
 /// 模式检查 / Schema check.
 pub fn fs_schema_check(store : FeatureStore, feature : FeatureDef) -> Bool {
   if feature.name.length() == 0 {
@@ -726,8 +860,12 @@ pub fn fs_schema_check(store : FeatureStore, feature : FeatureDef) -> Bool {
   true
 }
 
+///|
 /// 类型检查 / Type check.
-pub fn fs_type_check(values : Array[Double], expected_type : FeatureType) -> Bool {
+pub fn fs_type_check(
+  values : Array[Double],
+  expected_type : FeatureType,
+) -> Bool {
   match expected_type {
     Numerical => {
       for i in 0..<values.length() {
@@ -749,39 +887,45 @@ pub fn fs_type_check(values : Array[Double], expected_type : FeatureType) -> Boo
   }
 }
 
+///|
 ///===
 /// FeatureIndex / 特征索引
-
 pub struct FeatureIndex {
   name : String
   keys : Array[String]
-  values : Array[Int]
+  values : Array[Int32]
 } derive(Debug, Eq)
 
+///|
 pub extend FeatureIndex with Eq::{equal, not_equal}
+
+///|
 pub extend FeatureIndex with Debug::{to_repr}
 
+///|
 /// 构造特征索引 / Build a feature index.
 pub fn make_feature_index(name : String) -> FeatureIndex {
-  { name, keys: [], values: [] }
+  { name, keys: [], values: [], }
 }
 
+///|
 /// 构建索引 / Build index.
 pub fn index_build(
   index : FeatureIndex,
-  entries : Array[(String, Int)]
+  entries : Array[(String, Int32)],
 ) -> FeatureIndex {
   let keys : Array[String] = []
-  let values : Array[Int] = []
+  let values : Array[Int32] = []
   for i in 0..<entries.length() {
     keys.push(entries[i].0)
     values.push(entries[i].1)
   }
-  { name: index.name, keys, values }
+  { name: index.name, keys, values, }
 }
 
+///|
 /// 索引查询 / Query index.
-pub fn index_query(index : FeatureIndex, key : String) -> Int {
+pub fn index_query(index : FeatureIndex, key : String) -> Int32 {
   for i in 0..<index.keys.length() {
     if index.keys[i] == key {
       return index.values[i]
@@ -790,14 +934,15 @@ pub fn index_query(index : FeatureIndex, key : String) -> Int {
   -1
 }
 
+///|
 /// 索引更新 / Update index.
 pub fn index_update(
   index : FeatureIndex,
   key : String,
-  value : Int
+  value : Int32,
 ) -> FeatureIndex {
   let new_keys : Array[String] = []
-  let new_values : Array[Int] = []
+  let new_values : Array[Int32] = []
   let mut found = false
   for i in 0..<index.keys.length() {
     if index.keys[i] == key {
@@ -809,16 +954,17 @@ pub fn index_update(
       new_values.push(index.values[i])
     }
   }
-  if !(found) {
+  if !found {
     new_keys.push(key)
     new_values.push(value)
   }
-  { name: index.name, keys: new_keys, values: new_values }
+  { name: index.name, keys: new_keys, values: new_values, }
 }
 
 ///===
 /// 包标识 / Package id
 
+///|
 /// 包标识 / Package id.
 pub fn feature_store_id() -> String {
   let pkg = "opcore/feature_store"

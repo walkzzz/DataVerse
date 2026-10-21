@@ -13,6 +13,7 @@
 // 类型定义 / Type definitions
 // ============================================================
 
+///|
 /// 分区统计类型 / Zonal statistic kind.
 pub(all) enum ZonalStat {
   ZonalMean
@@ -27,22 +28,30 @@ pub(all) enum ZonalStat {
   ZonalMedian
 } derive(Debug, Eq)
 
+///|
 pub extend ZonalStat with Eq::{equal, not_equal}
+
+///|
 pub extend ZonalStat with Debug::{to_repr}
 
+///|
 /// 分区统计结果 / Zone statistics result.
 pub struct ZoneResult {
-  zone_id : Int
+  zone_id : Int32
   stat_value : Double
-  cell_count : Int
+  cell_count : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend ZoneResult with Eq::{equal, not_equal}
+
+///|
 pub extend ZoneResult with Debug::{to_repr}
 
+///|
 /// 分区几何结果 / Zonal geometry result.
 pub struct ZonalGeometryResult {
-  zone_id : Int
+  zone_id : Int32
   area : Double
   perimeter : Double
   thickness : Double
@@ -50,30 +59,40 @@ pub struct ZonalGeometryResult {
   centroid_y : Double
 } derive(Debug, Eq)
 
+///|
 pub extend ZonalGeometryResult with Eq::{equal, not_equal}
+
+///|
 pub extend ZonalGeometryResult with Debug::{to_repr}
 
 // ============================================================
 // 基础构造 / Basic constructors
 // ============================================================
 
+///|
 /// 构造分区统计结果 / Build a zone result.
-pub fn make_zone_result(zone_id : Int, stat_value : Double, cell_count : Int) -> ZoneResult {
+pub fn make_zone_result(
+  zone_id : Int32,
+  stat_value : Double,
+  cell_count : Int32,
+) -> ZoneResult {
   { zone_id, stat_value, cell_count, }
 }
 
+///|
 /// 构造分区几何结果 / Build a zonal geometry result.
 pub fn make_zonal_geometry_result(
-  zone_id : Int,
+  zone_id : Int32,
   area : Double,
   perimeter : Double,
   thickness : Double,
   cx : Double,
-  cy : Double
+  cy : Double,
 ) -> ZonalGeometryResult {
   { zone_id, area, perimeter, thickness, centroid_x: cx, centroid_y: cy, }
 }
 
+///|
 /// 分区统计类型名称 / Zonal stat name.
 pub fn zonal_stat_name(s : ZonalStat) -> String {
   match s {
@@ -94,8 +113,13 @@ pub fn zonal_stat_name(s : ZonalStat) -> String {
 // 分区统计 / Zonal statistics
 // ============================================================
 
+///|
 /// 收集分区单元格值 / Collect cell values for a zone.
-fn zone_values(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, zone_id : Int) -> Array[Double] {
+fn zone_values(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+) -> Array[Double] {
   let rows = @hydrology.raster_rows(zone_raster)
   let cols = @hydrology.raster_cols(zone_raster)
   let vrows = @hydrology.raster_rows(value_raster)
@@ -113,10 +137,15 @@ fn zone_values(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.Ra
   result
 }
 
+///|
 /// 分区均值 / Zonal mean.
 ///
 /// 退化安全：空分区返回 0.0。
-pub fn zonal_mean(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, zone_id : Int) -> Double {
+pub fn zonal_mean(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+) -> Double {
   let vals = zone_values(value_raster, zone_raster, zone_id)
   let n = vals.length()
   if n == 0 {
@@ -130,8 +159,13 @@ pub fn zonal_mean(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology
   }
 }
 
+///|
 /// 分区求和 / Zonal sum.
-pub fn zonal_sum(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, zone_id : Int) -> Double {
+pub fn zonal_sum(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+) -> Double {
   let vals = zone_values(value_raster, zone_raster, zone_id)
   let mut sum = 0.0
   for v in vals {
@@ -140,10 +174,15 @@ pub fn zonal_sum(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.
   sum
 }
 
+///|
 /// 分区最小值 / Zonal min.
 ///
 /// 退化安全：空分区返回 0.0。
-pub fn zonal_min(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, zone_id : Int) -> Double {
+pub fn zonal_min(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+) -> Double {
   let vals = zone_values(value_raster, zone_raster, zone_id)
   if vals.length() == 0 {
     0.0
@@ -158,10 +197,15 @@ pub fn zonal_min(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.
   }
 }
 
+///|
 /// 分区最大值 / Zonal max.
 ///
 /// 退化安全：空分区返回 0.0。
-pub fn zonal_max(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, zone_id : Int) -> Double {
+pub fn zonal_max(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+) -> Double {
   let vals = zone_values(value_raster, zone_raster, zone_id)
   if vals.length() == 0 {
     0.0
@@ -176,13 +220,23 @@ pub fn zonal_max(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.
   }
 }
 
+///|
 /// 分区极差 / Zonal range (max - min).
-pub fn zonal_range(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, zone_id : Int) -> Double {
-  zonal_max(value_raster, zone_raster, zone_id) - zonal_min(value_raster, zone_raster, zone_id)
+pub fn zonal_range(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+) -> Double {
+  zonal_max(value_raster, zone_raster, zone_id) -
+  zonal_min(value_raster, zone_raster, zone_id)
 }
 
+///|
 /// 分区计数 / Zonal count.
-pub fn zonal_count(zone_raster : @hydrology.RasterGrid, zone_id : Int) -> Int {
+pub fn zonal_count(
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+) -> Int32 {
   let rows = @hydrology.raster_rows(zone_raster)
   let cols = @hydrology.raster_cols(zone_raster)
   let mut count = 0
@@ -196,10 +250,15 @@ pub fn zonal_count(zone_raster : @hydrology.RasterGrid, zone_id : Int) -> Int {
   count
 }
 
+///|
 /// 分区标准差 / Zonal standard deviation.
 ///
 /// 退化安全：空分区返回 0.0。
-pub fn zonal_std(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, zone_id : Int) -> Double {
+pub fn zonal_std(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+) -> Double {
   let vals = zone_values(value_raster, zone_raster, zone_id)
   let n = vals.length()
   if n <= 1 {
@@ -215,10 +274,15 @@ pub fn zonal_std(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.
   }
 }
 
+///|
 /// 分区众数 / Zonal majority (simplified: first value).
 ///
 /// 退化安全：空分区返回 0.0。
-pub fn zonal_majority(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, zone_id : Int) -> Double {
+pub fn zonal_majority(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+) -> Double {
   let vals = zone_values(value_raster, zone_raster, zone_id)
   if vals.length() == 0 {
     0.0
@@ -227,10 +291,15 @@ pub fn zonal_majority(value_raster : @hydrology.RasterGrid, zone_raster : @hydro
   }
 }
 
+///|
 /// 分区少数 / Zonal minority (simplified: last value).
 ///
 /// 退化安全：空分区返回 0.0。
-pub fn zonal_minority(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, zone_id : Int) -> Double {
+pub fn zonal_minority(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+) -> Double {
   let vals = zone_values(value_raster, zone_raster, zone_id)
   if vals.length() == 0 {
     0.0
@@ -239,10 +308,15 @@ pub fn zonal_minority(value_raster : @hydrology.RasterGrid, zone_raster : @hydro
   }
 }
 
+///|
 /// 分区中位数 / Zonal median (simplified: middle element).
 ///
 /// 退化安全：空分区返回 0.0。
-pub fn zonal_median(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, zone_id : Int) -> Double {
+pub fn zonal_median(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+) -> Double {
   let vals = zone_values(value_raster, zone_raster, zone_id)
   let n = vals.length()
   if n == 0 {
@@ -252,10 +326,16 @@ pub fn zonal_median(value_raster : @hydrology.RasterGrid, zone_raster : @hydrolo
   }
 }
 
+///|
 /// 通用分区统计 / Generic zonal statistics.
 ///
 /// 退化安全：空分区返回 0.0。
-pub fn zonal_statistics(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, zone_id : Int, stat : ZonalStat) -> Double {
+pub fn zonal_statistics(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+  stat : ZonalStat,
+) -> Double {
   match stat {
     ZonalMean => zonal_mean(value_raster, zone_raster, zone_id)
     ZonalSum => zonal_sum(value_raster, zone_raster, zone_id)
@@ -274,10 +354,15 @@ pub fn zonal_statistics(value_raster : @hydrology.RasterGrid, zone_raster : @hyd
 // 分区几何 / Zonal geometry
 // ============================================================
 
+///|
 /// 分区几何 / Zonal geometry: area, perimeter, thickness, centroid.
 ///
 /// 退化安全：空分区返回 area=0, perimeter=0, thickness=0, centroid=(0,0)。
-pub fn zonal_geometry(zone_raster : @hydrology.RasterGrid, zone_id : Int, cell_size : Double) -> ZonalGeometryResult {
+pub fn zonal_geometry(
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+  cell_size : Double,
+) -> ZonalGeometryResult {
   let rows = @hydrology.raster_rows(zone_raster)
   let cols = @hydrology.raster_cols(zone_raster)
   let cs = if cell_size <= 0.0 { 1.0 } else { cell_size }
@@ -291,10 +376,20 @@ pub fn zonal_geometry(zone_raster : @hydrology.RasterGrid, zone_id : Int, cell_s
         cell_count += 1
         sum_x = sum_x + (j.to_double() + 0.5) * cs
         sum_y = sum_y + (i.to_double() + 0.5) * cs
-        let is_boundary = (i == 0 || @hydrology.raster_get(zone_raster, i - 1, j).to_int() != zone_id) ||
-          (i == rows - 1 || @hydrology.raster_get(zone_raster, i + 1, j).to_int() != zone_id) ||
-          (j == 0 || @hydrology.raster_get(zone_raster, i, j - 1).to_int() != zone_id) ||
-          (j == cols - 1 || @hydrology.raster_get(zone_raster, i, j + 1).to_int() != zone_id)
+        let is_boundary = (
+            i == 0 ||
+            @hydrology.raster_get(zone_raster, i - 1, j).to_int() != zone_id
+          ) ||
+          (
+            i == rows - 1 ||
+            @hydrology.raster_get(zone_raster, i + 1, j).to_int() != zone_id
+          ) ||
+          (
+            j == 0 ||
+            @hydrology.raster_get(zone_raster, i, j - 1).to_int() != zone_id
+          ) ||
+          j == cols - 1 ||
+          @hydrology.raster_get(zone_raster, i, j + 1).to_int() != zone_id
         if is_boundary {
           boundary_count += 1
         }
@@ -313,20 +408,35 @@ pub fn zonal_geometry(zone_raster : @hydrology.RasterGrid, zone_id : Int, cell_s
   }
 }
 
+///|
 /// 分区面积 / Zonal area.
-pub fn zonal_geometry_area(zone_raster : @hydrology.RasterGrid, zone_id : Int, cell_size : Double) -> Double {
+pub fn zonal_geometry_area(
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+  cell_size : Double,
+) -> Double {
   let result = zonal_geometry(zone_raster, zone_id, cell_size)
   result.area
 }
 
+///|
 /// 分区周长 / Zonal perimeter.
-pub fn zonal_geometry_perimeter(zone_raster : @hydrology.RasterGrid, zone_id : Int, cell_size : Double) -> Double {
+pub fn zonal_geometry_perimeter(
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+  cell_size : Double,
+) -> Double {
   let result = zonal_geometry(zone_raster, zone_id, cell_size)
   result.perimeter
 }
 
+///|
 /// 分区厚度 / Zonal thickness.
-pub fn zonal_geometry_thickness(zone_raster : @hydrology.RasterGrid, zone_id : Int, cell_size : Double) -> Double {
+pub fn zonal_geometry_thickness(
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+  cell_size : Double,
+) -> Double {
   let result = zonal_geometry(zone_raster, zone_id, cell_size)
   result.thickness
 }
@@ -335,10 +445,16 @@ pub fn zonal_geometry_thickness(zone_raster : @hydrology.RasterGrid, zone_id : I
 // 分区填充 / Zonal fill
 // ============================================================
 
+///|
 /// 分区填充 / Zonal fill: fill zone cells with a constant value.
 ///
 /// 退化安全：空分区返回原始栅格。
-pub fn zonal_fill(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, zone_id : Int, fill_value : Double) -> @hydrology.RasterGrid {
+pub fn zonal_fill(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  zone_id : Int32,
+  fill_value : Double,
+) -> @hydrology.RasterGrid {
   let rows = @hydrology.raster_rows(value_raster)
   let cols = @hydrology.raster_cols(value_raster)
   let zrows = @hydrology.raster_rows(zone_raster)
@@ -347,7 +463,9 @@ pub fn zonal_fill(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology
   for i in 0..<rows {
     let row : Array[Double] = []
     for j in 0..<cols {
-      if i < zrows && j < zcols && @hydrology.raster_get(zone_raster, i, j).to_int() == zone_id {
+      if i < zrows &&
+        j < zcols &&
+        @hydrology.raster_get(zone_raster, i, j).to_int() == zone_id {
         row.push(fill_value)
       } else {
         row.push(@hydrology.raster_get(value_raster, i, j))
@@ -362,14 +480,19 @@ pub fn zonal_fill(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology
 // 全分区统计 / All-zone statistics
 // ============================================================
 
+///|
 /// 全分区统计 / Zonal statistics for all zones.
 ///
 /// 返回每个分区的 ZoneResult。
 /// 退化安全：空栅格返回空数组。
-pub fn zonal_stats_all(value_raster : @hydrology.RasterGrid, zone_raster : @hydrology.RasterGrid, stat : ZonalStat) -> Array[ZoneResult] {
+pub fn zonal_stats_all(
+  value_raster : @hydrology.RasterGrid,
+  zone_raster : @hydrology.RasterGrid,
+  stat : ZonalStat,
+) -> Array[ZoneResult] {
   let rows = @hydrology.raster_rows(zone_raster)
   let cols = @hydrology.raster_cols(zone_raster)
-  let zone_set : Array[Int] = []
+  let zone_set : Array[Int32] = []
   for i in 0..<rows {
     for j in 0..<cols {
       let z = @hydrology.raster_get(zone_raster, i, j).to_int()

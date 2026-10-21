@@ -6,7 +6,6 @@
 /// # Active Learning
 ///
 /// Uncertainty, margin, entropy, QBC, expected improvement, coreset, EMC, stopping, annotation cost.
-
 fn exp(x : Double) -> Double {
   if x > 20.0 {
     485165195.4
@@ -23,6 +22,7 @@ fn exp(x : Double) -> Double {
   }
 }
 
+///|
 fn log(x : Double) -> Double {
   if x <= 0.0 {
     -1000.0
@@ -39,6 +39,7 @@ fn log(x : Double) -> Double {
   }
 }
 
+///|
 fn sqrt(x : Double) -> Double {
   if x <= 0.0 {
     0.0
@@ -51,19 +52,21 @@ fn sqrt(x : Double) -> Double {
   }
 }
 
-
-fn lcg_next(state : Int) -> Int {
+///|
+fn lcg_next(state : Int32) -> Int32 {
   let a = 1103515245
   let c = 12345
   let m = 2147483647
   (a * state + c) % m
 }
 
-fn rand_double(seed : Int) -> Double {
+///|
+fn rand_double(seed : Int32) -> Double {
   let s = lcg_next(seed)
   s.to_double() / 2147483647.0
 }
 
+///|
 fn vec_dist(a : Array[Double], b : Array[Double]) -> Double {
   let n = a.length()
   if n != b.length() {
@@ -78,17 +81,22 @@ fn vec_dist(a : Array[Double], b : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 主动学习配置 / Active learning configuration.
 pub struct ALConfig {
-  n_initial : Int
-  n_query : Int
-  n_rounds : Int
-  strategy : Int
+  n_initial : Int32
+  n_query : Int32
+  n_rounds : Int32
+  strategy : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend ALConfig with Eq::{equal, not_equal}
+
+///|
 pub extend ALConfig with Debug::{to_repr}
 
+///|
 /// 标注者 / Oracle.
 pub struct Oracle {
   accuracy : Double
@@ -96,47 +104,67 @@ pub struct Oracle {
   noise_level : Double
 } derive(Debug, Eq)
 
+///|
 pub extend Oracle with Eq::{equal, not_equal}
+
+///|
 pub extend Oracle with Debug::{to_repr}
 
+///|
 /// 查询策略 / Query strategy.
 pub struct QueryStrategy {
-  strategy_type : Int
+  strategy_type : Int32
   temperature : Double
-  n_committee : Int
+  n_committee : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend QueryStrategy with Eq::{equal, not_equal}
+
+///|
 pub extend QueryStrategy with Debug::{to_repr}
 
+///|
 /// 已标注池 / Labeled pool.
 pub struct LabeledPool {
   features : Array[Array[Double]]
-  labels : Array[Int]
+  labels : Array[Int32]
 } derive(Debug, Eq)
 
+///|
 pub extend LabeledPool with Eq::{equal, not_equal}
+
+///|
 pub extend LabeledPool with Debug::{to_repr}
 
+///|
 /// 未标注池 / Unlabeled pool.
 pub struct UnlabeledPool {
   features : Array[Array[Double]]
-  indices : Array[Int]
+  indices : Array[Int32]
 } derive(Debug, Eq)
 
+///|
 pub extend UnlabeledPool with Eq::{equal, not_equal}
+
+///|
 pub extend UnlabeledPool with Debug::{to_repr}
 
+///|
 /// 停止准则 / Stop criterion.
 pub struct StopCriterion {
   target_accuracy : Double
-  max_budget : Int
-  patience : Int
+  max_budget : Int32
+  patience : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend StopCriterion with Eq::{equal, not_equal}
+
+///|
 pub extend StopCriterion with Debug::{to_repr}
 
+///|
 /// 标注成本 / Annotation cost.
 pub struct AnnotationCost {
   per_label_cost : Double
@@ -144,45 +172,73 @@ pub struct AnnotationCost {
   spent : Double
 } derive(Debug, Eq)
 
+///|
 pub extend AnnotationCost with Eq::{equal, not_equal}
+
+///|
 pub extend AnnotationCost with Debug::{to_repr}
 
+///|
 /// 主动学习流水线 / AL pipeline.
 pub struct ALPipeline {
   config : ALConfig
   strategy : QueryStrategy
   stop_criterion : StopCriterion
-  round : Int
+  round : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend ALPipeline with Eq::{equal, not_equal}
+
+///|
 pub extend ALPipeline with Debug::{to_repr}
 
+///|
 /// EMC 配置 / EMC configuration.
 pub struct EMCConfig {
-  n_samples : Int
-  n_classes : Int
+  n_samples : Int32
+  n_classes : Int32
   gamma : Double
 } derive(Debug, Eq)
 
+///|
 pub extend EMCConfig with Eq::{equal, not_equal}
+
+///|
 pub extend EMCConfig with Debug::{to_repr}
 
+///|
 /// 构造主动学习配置 / Build AL config.
-pub fn make_al_config(n_initial : Int, n_query : Int, n_rounds : Int, strategy : Int) -> ALConfig {
-  { n_initial, n_query, n_rounds, strategy }
+pub fn make_al_config(
+  n_initial : Int32,
+  n_query : Int32,
+  n_rounds : Int32,
+  strategy : Int32,
+) -> ALConfig {
+  { n_initial, n_query, n_rounds, strategy, }
 }
 
+///|
 /// 构造标注者 / Build oracle.
-pub fn make_oracle(accuracy : Double, cost_per_label : Double, noise_level : Double) -> Oracle {
-  { accuracy, cost_per_label, noise_level }
+pub fn make_oracle(
+  accuracy : Double,
+  cost_per_label : Double,
+  noise_level : Double,
+) -> Oracle {
+  { accuracy, cost_per_label, noise_level, }
 }
 
+///|
 /// 构造查询策略 / Build query strategy.
-pub fn make_query_strategy(strategy_type : Int, temperature : Double, n_committee : Int) -> QueryStrategy {
-  { strategy_type, temperature, n_committee }
+pub fn make_query_strategy(
+  strategy_type : Int32,
+  temperature : Double,
+  n_committee : Int32,
+) -> QueryStrategy {
+  { strategy_type, temperature, n_committee, }
 }
 
+///|
 /// 不确定性采样 / Uncertainty sampling.
 pub fn query_uncertainty(probs : Array[Double]) -> Double {
   let n = probs.length()
@@ -199,6 +255,7 @@ pub fn query_uncertainty(probs : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 边缘采样 / Margin sampling.
 pub fn query_margin(probs : Array[Double]) -> Double {
   let n = probs.length()
@@ -224,6 +281,7 @@ pub fn query_margin(probs : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 熵采样 / Entropy sampling.
 pub fn query_entropy(probs : Array[Double]) -> Double {
   let n = probs.length()
@@ -236,8 +294,9 @@ pub fn query_entropy(probs : Array[Double]) -> Double {
   entropy
 }
 
+///|
 /// 随机采样 / Random sampling.
-pub fn query_random(n_unlabeled : Int, seed : Int) -> Int {
+pub fn query_random(n_unlabeled : Int32, seed : Int32) -> Int32 {
   if n_unlabeled <= 0 {
     0
   } else {
@@ -246,8 +305,12 @@ pub fn query_random(n_unlabeled : Int, seed : Int) -> Int {
   }
 }
 
+///|
 /// 多样性采样 / Diversity sampling.
-pub fn query_diversity(feature : Array[Double], centers : Array[Array[Double]]) -> Double {
+pub fn query_diversity(
+  feature : Array[Double],
+  centers : Array[Array[Double]],
+) -> Double {
   let n = centers.length()
   if n == 0 {
     0.0
@@ -263,9 +326,13 @@ pub fn query_diversity(feature : Array[Double], centers : Array[Array[Double]]) 
   }
 }
 
-
+///|
 /// 密度采样 / Density sampling.
-pub fn query_density(feature : Array[Double], all_features : Array[Array[Double]], bandwidth : Double) -> Double {
+pub fn query_density(
+  feature : Array[Double],
+  all_features : Array[Array[Double]],
+  bandwidth : Double,
+) -> Double {
   let n = all_features.length()
   if n == 0 || bandwidth <= 0.0 {
     0.0
@@ -280,6 +347,7 @@ pub fn query_density(feature : Array[Double], all_features : Array[Array[Double]
   }
 }
 
+///|
 /// QBC 查询 / Query by committee.
 pub fn query_qbc(committee_probs : Array[Array[Double]]) -> Double {
   let n = committee_probs.length()
@@ -309,10 +377,15 @@ pub fn query_qbc(committee_probs : Array[Array[Double]]) -> Double {
   }
 }
 
+///|
 /// Bagging 查询 / Bagging query.
-pub fn query_bagging(features : Array[Array[Double]], n_models : Int, seed : Int) -> Array[Int] {
+pub fn query_bagging(
+  features : Array[Array[Double]],
+  n_models : Int32,
+  seed : Int32,
+) -> Array[Int32] {
   let n = features.length()
-  let result : Array[Int] = Array::make(n_models, 0)
+  let result : Array[Int32] = Array::make(n_models, 0)
   let mut s = seed
   for m in 0..<n_models {
     s = lcg_next(s)
@@ -324,13 +397,14 @@ pub fn query_bagging(features : Array[Array[Double]], n_models : Int, seed : Int
   result
 }
 
+///|
 /// 投票熵 / Vote entropy.
-pub fn query_vote_entropy(votes : Array[Int], n_classes : Int) -> Double {
+pub fn query_vote_entropy(votes : Array[Int32], n_classes : Int32) -> Double {
   let n = votes.length()
   if n == 0 || n_classes <= 0 {
     0.0
   } else {
-    let counts : Array[Int] = Array::make(n_classes, 0)
+    let counts : Array[Int32] = Array::make(n_classes, 0)
     for i in 0..<n {
       if votes[i] >= 0 && votes[i] < n_classes {
         counts[votes[i]] = counts[votes[i]] + 1
@@ -347,8 +421,12 @@ pub fn query_vote_entropy(votes : Array[Int], n_classes : Int) -> Double {
   }
 }
 
+///|
 /// 期望改进 / Expected improvement.
-pub fn query_expected_improvement(current_loss : Double, predicted_losses : Array[Double]) -> Double {
+pub fn query_expected_improvement(
+  current_loss : Double,
+  predicted_losses : Array[Double],
+) -> Double {
   let n = predicted_losses.length()
   if n == 0 {
     0.0
@@ -363,8 +441,13 @@ pub fn query_expected_improvement(current_loss : Double, predicted_losses : Arra
   }
 }
 
+///|
 /// 期望损失减少 / Expected reduction.
-pub fn query_expected_reduction(current_loss : Double, predicted_losses : Array[Double], probs : Array[Double]) -> Double {
+pub fn query_expected_reduction(
+  current_loss : Double,
+  predicted_losses : Array[Double],
+  probs : Array[Double],
+) -> Double {
   let n = predicted_losses.length()
   if n != probs.length() || n == 0 {
     0.0
@@ -372,15 +455,20 @@ pub fn query_expected_reduction(current_loss : Double, predicted_losses : Array[
     let mut expected_reduction = 0.0
     for i in 0..<n {
       if predicted_losses[i] < current_loss {
-        expected_reduction = expected_reduction + probs[i] * (current_loss - predicted_losses[i])
+        expected_reduction = expected_reduction +
+          probs[i] * (current_loss - predicted_losses[i])
       }
     }
     expected_reduction
   }
 }
 
+///|
 /// 核心集 / Coreset.
-pub fn query_coreset(labeled_features : Array[Array[Double]], unlabeled_features : Array[Array[Double]]) -> Int {
+pub fn query_coreset(
+  labeled_features : Array[Array[Double]],
+  unlabeled_features : Array[Array[Double]],
+) -> Int32 {
   let n_u = unlabeled_features.length()
   let n_l = labeled_features.length()
   if n_u == 0 {
@@ -407,13 +495,17 @@ pub fn query_coreset(labeled_features : Array[Array[Double]], unlabeled_features
   }
 }
 
+///|
 /// 贪心采样 / Greedy sampling.
-pub fn query_greedy_sampling(unlabeled_features : Array[Array[Double]], k : Int) -> Array[Int] {
+pub fn query_greedy_sampling(
+  unlabeled_features : Array[Array[Double]],
+  k : Int32,
+) -> Array[Int32] {
   let n = unlabeled_features.length()
   if n == 0 || k <= 0 {
     []
   } else {
-    let selected : Array[Int] = []
+    let selected : Array[Int32] = []
     selected.push(0)
     while selected.length() < k && selected.length() < n {
       let mut best_idx = -1
@@ -428,7 +520,10 @@ pub fn query_greedy_sampling(unlabeled_features : Array[Array[Double]], k : Int)
         if !already {
           let mut min_dist = 999999.0
           for s in 0..<selected.length() {
-            let d = vec_dist(unlabeled_features[u], unlabeled_features[selected[s]])
+            let d = vec_dist(
+              unlabeled_features[u],
+              unlabeled_features[selected[s]],
+            )
             if d < min_dist {
               min_dist = d
             }
@@ -449,79 +544,94 @@ pub fn query_greedy_sampling(unlabeled_features : Array[Array[Double]], k : Int)
   }
 }
 
+///|
 /// 构造已标注池 / Build labeled pool.
 pub fn make_labeled_pool() -> LabeledPool {
-  { features: [], labels: [] }
+  { features: [], labels: [], }
 }
 
+///|
 /// 构造未标注池 / Build unlabeled pool.
 pub fn make_unlabeled_pool(features : Array[Array[Double]]) -> UnlabeledPool {
   let n = features.length()
-  let indices : Array[Int] = Array::make(n, 0)
+  let indices : Array[Int32] = Array::make(n, 0)
   for i in 0..<n {
     indices[i] = i
   }
-  { features, indices }
+  { features, indices, }
 }
 
+///|
 /// 添加已标注 / Add labeled.
-pub fn add_labeled(pool : LabeledPool, feature : Array[Double], label : Int) -> LabeledPool {
+pub fn add_labeled(
+  pool : LabeledPool,
+  feature : Array[Double],
+  label : Int32,
+) -> LabeledPool {
   let new_features : Array[Array[Double]] = []
   for i in 0..<pool.features.length() {
     new_features.push(pool.features[i])
   }
   new_features.push(feature)
-  let new_labels : Array[Int] = []
+  let new_labels : Array[Int32] = []
   for i in 0..<pool.labels.length() {
     new_labels.push(pool.labels[i])
   }
   new_labels.push(label)
-  { features: new_features, labels: new_labels }
+  { features: new_features, labels: new_labels, }
 }
 
+///|
 /// 添加未标注 / Add unlabeled.
-pub fn add_unlabeled(pool : UnlabeledPool, feature : Array[Double]) -> UnlabeledPool {
+pub fn add_unlabeled(
+  pool : UnlabeledPool,
+  feature : Array[Double],
+) -> UnlabeledPool {
   let new_features : Array[Array[Double]] = []
   for i in 0..<pool.features.length() {
     new_features.push(pool.features[i])
   }
   new_features.push(feature)
-  let new_indices : Array[Int] = []
+  let new_indices : Array[Int32] = []
   for i in 0..<pool.indices.length() {
     new_indices.push(pool.indices[i])
   }
   new_indices.push(pool.indices.length())
-  { features: new_features, indices: new_indices }
+  { features: new_features, indices: new_indices, }
 }
 
+///|
 /// 移除未标注 / Remove unlabeled.
-pub fn remove_unlabeled(pool : UnlabeledPool, idx : Int) -> UnlabeledPool {
+pub fn remove_unlabeled(pool : UnlabeledPool, idx : Int32) -> UnlabeledPool {
   let n = pool.features.length()
   if idx < 0 || idx >= n {
     pool
   } else {
     let new_features : Array[Array[Double]] = []
-    let new_indices : Array[Int] = []
+    let new_indices : Array[Int32] = []
     for i in 0..<n {
       if i != idx {
         new_features.push(pool.features[i])
         new_indices.push(pool.indices[i])
       }
     }
-    { features: new_features, indices: new_indices }
+    { features: new_features, indices: new_indices, }
   }
 }
 
+///|
 /// 获取已标注 / Get labeled.
-pub fn get_labeled(pool : LabeledPool) -> (Array[Array[Double]], Array[Int]) {
+pub fn get_labeled(pool : LabeledPool) -> (Array[Array[Double]], Array[Int32]) {
   (pool.features, pool.labels)
 }
 
+///|
 /// 获取未标注 / Get unlabeled.
 pub fn get_unlabeled(pool : UnlabeledPool) -> Array[Array[Double]] {
   pool.features
 }
 
+///|
 /// 主动学习训练 / AL train.
 pub fn al_train(pool : LabeledPool, weights : Array[Double]) -> Array[Double] {
   let n = weights.length()
@@ -543,15 +653,21 @@ pub fn al_train(pool : LabeledPool, weights : Array[Double]) -> Array[Double] {
   }
 }
 
+///|
 /// 主动学习迭代 / AL iterate.
-pub fn al_iterate(pool : LabeledPool, unlabeled : UnlabeledPool, strategy : QueryStrategy, n_query : Int) -> Array[Int] {
+pub fn al_iterate(
+  pool : LabeledPool,
+  unlabeled : UnlabeledPool,
+  strategy : QueryStrategy,
+  n_query : Int32,
+) -> Array[Int32] {
   let n_u = unlabeled.features.length()
   let pool_size = pool.features.length()
   let strat_weight = strategy.temperature
   if n_u == 0 || n_query <= 0 {
     []
   } else {
-    let result : Array[Int] = []
+    let result : Array[Int32] = []
     let scores : Array[Double] = Array::make(n_u, 0.0)
     for i in 0..<n_u {
       let feature = unlabeled.features[i]
@@ -587,8 +703,13 @@ pub fn al_iterate(pool : LabeledPool, unlabeled : UnlabeledPool, strategy : Quer
   }
 }
 
+///|
 /// 主动学习评估 / AL evaluate.
-pub fn al_evaluate(params : Array[Double], test_features : Array[Array[Double]], test_labels : Array[Int]) -> Double {
+pub fn al_evaluate(
+  params : Array[Double],
+  test_features : Array[Array[Double]],
+  test_labels : Array[Int32],
+) -> Double {
   let n = test_features.length()
   if n == 0 || n != test_labels.length() {
     0.0
@@ -611,23 +732,37 @@ pub fn al_evaluate(params : Array[Double], test_features : Array[Array[Double]],
   }
 }
 
+///|
 /// 构造停止准则 / Build stop criterion.
-pub fn make_stop_criterion(target_accuracy : Double, max_budget : Int, patience : Int) -> StopCriterion {
-  { target_accuracy, max_budget, patience }
+pub fn make_stop_criterion(
+  target_accuracy : Double,
+  max_budget : Int32,
+  patience : Int32,
+) -> StopCriterion {
+  { target_accuracy, max_budget, patience, }
 }
 
+///|
 /// 准确率停止 / Stop by accuracy.
-pub fn stop_accuracy(current_accuracy : Double, criterion : StopCriterion) -> Bool {
+pub fn stop_accuracy(
+  current_accuracy : Double,
+  criterion : StopCriterion,
+) -> Bool {
   current_accuracy >= criterion.target_accuracy
 }
 
+///|
 /// 预算停止 / Stop by budget.
-pub fn stop_budget(spent : Int, criterion : StopCriterion) -> Bool {
+pub fn stop_budget(spent : Int32, criterion : StopCriterion) -> Bool {
   spent >= criterion.max_budget
 }
 
+///|
 /// 收敛停止 / Stop by convergence.
-pub fn stop_convergence(accuracies : Array[Double], criterion : StopCriterion) -> Bool {
+pub fn stop_convergence(
+  accuracies : Array[Double],
+  criterion : StopCriterion,
+) -> Bool {
   let n = accuracies.length()
   if n <= criterion.patience {
     false
@@ -638,22 +773,37 @@ pub fn stop_convergence(accuracies : Array[Double], criterion : StopCriterion) -
   }
 }
 
+///|
 fn abs_d(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
+  if x < 0.0 {
+    -x
+  } else {
+    x
+  }
 }
 
+///|
 /// 构造标注成本 / Build annotation cost.
-pub fn make_annotation_cost(per_label_cost : Double, total_budget : Double) -> AnnotationCost {
-  { per_label_cost, total_budget, spent: 0.0 }
+pub fn make_annotation_cost(
+  per_label_cost : Double,
+  total_budget : Double,
+) -> AnnotationCost {
+  { per_label_cost, total_budget, spent: 0.0, }
 }
 
+///|
 /// 估计成本 / Estimate cost.
-pub fn estimate_cost(n_labels : Int, cost : AnnotationCost) -> Double {
+pub fn estimate_cost(n_labels : Int32, cost : AnnotationCost) -> Double {
   n_labels.to_double() * cost.per_label_cost
 }
 
+///|
 /// 优化预算 / Optimize budget.
-pub fn optimize_budget(cost : AnnotationCost, accuracies : Array[Double], n_labels : Array[Int]) -> Int {
+pub fn optimize_budget(
+  cost : AnnotationCost,
+  accuracies : Array[Double],
+  n_labels : Array[Int32],
+) -> Int32 {
   let n = accuracies.length()
   if n == 0 || n != n_labels.length() {
     0
@@ -674,23 +824,46 @@ pub fn optimize_budget(cost : AnnotationCost, accuracies : Array[Double], n_labe
   }
 }
 
+///|
 /// 构造主动学习流水线 / Build AL pipeline.
-pub fn make_al_pipeline(config : ALConfig, strategy : QueryStrategy, stop_criterion : StopCriterion) -> ALPipeline {
-  { config, strategy, stop_criterion, round: 0 }
+pub fn make_al_pipeline(
+  config : ALConfig,
+  strategy : QueryStrategy,
+  stop_criterion : StopCriterion,
+) -> ALPipeline {
+  { config, strategy, stop_criterion, round: 0, }
 }
 
+///|
 /// 流水线步 / Pipeline step.
-pub fn pipeline_step(pipeline : ALPipeline, pool : LabeledPool, unlabeled : UnlabeledPool) -> ALPipeline {
+pub fn pipeline_step(
+  pipeline : ALPipeline,
+  pool : LabeledPool,
+  unlabeled : UnlabeledPool,
+) -> ALPipeline {
   let n_query = pipeline.config.n_query
   let _ = al_iterate(pool, unlabeled, pipeline.strategy, n_query)
-  { config: pipeline.config, strategy: pipeline.strategy, stop_criterion: pipeline.stop_criterion, round: pipeline.round + 1 }
+  {
+    config: pipeline.config,
+    strategy: pipeline.strategy,
+    stop_criterion: pipeline.stop_criterion,
+    round: pipeline.round + 1,
+  }
 }
 
+///|
 /// 流水线运行 / Pipeline run.
-pub fn pipeline_run(pipeline : ALPipeline, pool : LabeledPool, unlabeled : UnlabeledPool) -> ALPipeline {
+pub fn pipeline_run(
+  pipeline : ALPipeline,
+  pool : LabeledPool,
+  unlabeled : UnlabeledPool,
+) -> ALPipeline {
   let mut current = pipeline
   for _ in 0..<pipeline.config.n_rounds {
-    if stop_accuracy(al_evaluate(al_train(pool, Array::make(1, 1.0)), [], []), pipeline.stop_criterion) {
+    if stop_accuracy(
+        al_evaluate(al_train(pool, Array::make(1, 1.0)), [], []),
+        pipeline.stop_criterion,
+      ) {
       break
     }
     current = pipeline_step(current, pool, unlabeled)
@@ -698,6 +871,7 @@ pub fn pipeline_run(pipeline : ALPipeline, pool : LabeledPool, unlabeled : Unlab
   current
 }
 
+///|
 /// 准确率曲线 / Accuracy curve.
 pub fn al_accuracy_curve(accuracies : Array[Double]) -> Array[Double] {
   let n = accuracies.length()
@@ -708,13 +882,17 @@ pub fn al_accuracy_curve(accuracies : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 /// 学习曲线 / Learning curve.
-pub fn al_learning_curve(n_labels : Array[Int], accuracies : Array[Double]) -> Array[(Int, Double)] {
+pub fn al_learning_curve(
+  n_labels : Array[Int32],
+  accuracies : Array[Double],
+) -> Array[(Int32, Double)] {
   let n = n_labels.length()
   if n != accuracies.length() {
     []
   } else {
-    let result : Array[(Int, Double)] = []
+    let result : Array[(Int32, Double)] = []
     for i in 0..<n {
       result.push((n_labels[i], accuracies[i]))
     }
@@ -722,11 +900,17 @@ pub fn al_learning_curve(n_labels : Array[Int], accuracies : Array[Double]) -> A
   }
 }
 
+///|
 /// 构造 EMC / Build EMC config.
-pub fn make_emc(n_samples : Int, n_classes : Int, gamma : Double) -> EMCConfig {
-  { n_samples, n_classes, gamma }
+pub fn make_emc(
+  n_samples : Int32,
+  n_classes : Int32,
+  gamma : Double,
+) -> EMCConfig {
+  { n_samples, n_classes, gamma, }
 }
 
+///|
 /// EMC 估计 / EMC estimate.
 pub fn emc_estimate(config : EMCConfig, probs : Array[Array[Double]]) -> Double {
   let n = probs.length()
@@ -748,8 +932,13 @@ pub fn emc_estimate(config : EMCConfig, probs : Array[Array[Double]]) -> Double 
   }
 }
 
+///|
 /// EMC 最优 / EMC optimal.
-pub fn emc_optimal(config : EMCConfig, probs : Array[Array[Double]], budget : Int) -> Int {
+pub fn emc_optimal(
+  config : EMCConfig,
+  probs : Array[Array[Double]],
+  budget : Int32,
+) -> Int32 {
   let n = probs.length()
   if n == 0 || budget <= 0 {
     0
@@ -765,7 +954,7 @@ pub fn emc_optimal(config : EMCConfig, probs : Array[Array[Double]], budget : In
       }
       scores[i] = (1.0 - max_p) * config.gamma
     }
-    let selected : Array[Int] = []
+    let selected : Array[Int32] = []
     for _ in 0..<budget {
       if selected.length() >= n {
         break
@@ -792,6 +981,7 @@ pub fn emc_optimal(config : EMCConfig, probs : Array[Array[Double]], budget : In
   }
 }
 
+///|
 /// 主动学习 ID / Active learning id.
 pub fn active_learning_id() -> String {
   "active_learning_v1"

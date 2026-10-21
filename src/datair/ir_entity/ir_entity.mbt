@@ -9,6 +9,7 @@
 ///
 /// Projection of DataObject / Chunk / Embedding / Dataset. See architecture §4.6.
 
+///|
 /// 实体类型枚举 / Entity type enum.
 ///
 /// 对应基础数据层四类实体（架构 §4.2）。
@@ -19,9 +20,13 @@ pub(all) enum EntityType {
   Dataset
 } derive(Debug, Eq)
 
+///|
 pub extend EntityType with Eq::{equal, not_equal}
+
+///|
 pub extend EntityType with Debug::{to_repr}
 
+///|
 /// 实体 IR / Entity IR: projection of DataObject / Chunk / Embedding / Dataset.
 ///
 /// - `schema_ref`：schema 引用（路径或哈希），不内联 schema 定义
@@ -31,53 +36,69 @@ pub struct EntityIR {
   node_id : @ir_core.IRNodeId
   entity_type : EntityType
   schema_ref : String
-  size_hint : Int
+  size_hint : Int32
   metadata : @ir_core.IRMetadata
 } derive(Debug, Eq)
 
+///|
 pub extend EntityIR with Eq::{equal, not_equal}
+
+///|
 pub extend EntityIR with Debug::{to_repr}
 
+///|
 /// 构造实体 IR / Build an entity IR.
 pub fn EntityIR::new(
   node_id : @ir_core.IRNodeId,
   entity_type : EntityType,
   schema_ref : String,
-  size_hint : Int,
-  metadata : @ir_core.IRMetadata
+  size_hint : Int32,
+  metadata : @ir_core.IRMetadata,
 ) -> EntityIR {
-  { node_id, entity_type, schema_ref, size_hint, metadata }
+  { node_id, entity_type, schema_ref, size_hint, metadata, }
 }
 
+///|
 /// 简化构造（空元数据）/ Simplified build with empty metadata.
 pub fn EntityIR::simple(
   node_id : @ir_core.IRNodeId,
   entity_type : EntityType,
-  schema_ref : String
+  schema_ref : String,
 ) -> EntityIR {
-  { node_id, entity_type, schema_ref, size_hint: 0, metadata: @ir_core.IRMetadata::empty() }
+  {
+    node_id,
+    entity_type,
+    schema_ref,
+    size_hint: 0,
+    metadata: @ir_core.IRMetadata::empty(),
+  }
 }
 
+///|
 /// 节点 id / Node id.
 pub fn EntityIR::node_id(self : EntityIR) -> @ir_core.IRNodeId {
   self.node_id
 }
 
+///|
 /// 实体类型 / Entity type.
 pub fn EntityIR::entity_type(self : EntityIR) -> EntityType {
   self.entity_type
 }
 
+///|
 /// schema 引用 / Schema reference.
 pub fn EntityIR::schema_ref(self : EntityIR) -> String {
   self.schema_ref
 }
 
+///|
 /// 估计大小 / Size hint.
-pub fn EntityIR::size_hint(self : EntityIR) -> Int {
+pub fn EntityIR::size_hint(self : EntityIR) -> Int32 {
   self.size_hint
 }
 
+///|
 /// 实体类型名称 / Entity type name.
 pub fn entity_type_name(t : EntityType) -> String {
   match t {

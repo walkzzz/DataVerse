@@ -8,23 +8,28 @@
 ///
 /// Token quota partitioning + over-budget compression. See architecture §4.7.3.
 
+///|
 /// 上下文预算 / Context budget: total quota + used + partitions.
 pub struct ContextBudget {
-  total_quota : Int
-  used : Int
-  dosi_quota : Int
-  recall_quota : Int
-  user_input_quota : Int
-  output_quota : Int
+  total_quota : Int32
+  used : Int32
+  dosi_quota : Int32
+  recall_quota : Int32
+  user_input_quota : Int32
+  output_quota : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend ContextBudget with Eq::{equal, not_equal}
+
+///|
 pub extend ContextBudget with Debug::{to_repr}
 
+///|
 /// 构造预算 / Build a context budget.
 ///
 /// 默认分区：DOSI 10% + recall 40% + user_input 30% + output 20%。
-pub fn make_budget(total_quota : Int) -> ContextBudget {
+pub fn make_budget(total_quota : Int32) -> ContextBudget {
   {
     total_quota,
     used: 0,
@@ -35,27 +40,31 @@ pub fn make_budget(total_quota : Int) -> ContextBudget {
   }
 }
 
+///|
 /// 分配 Token / Allocate tokens.
 ///
 /// 退化安全：超预算返回原预算不变。
-pub fn allocate(budget : ContextBudget, tokens : Int) -> ContextBudget {
+pub fn allocate(budget : ContextBudget, tokens : Int32) -> ContextBudget {
   if budget.used + tokens > budget.total_quota {
     budget
   } else {
-    { ..budget, used: budget.used + tokens }
+    { ..budget, used: budget.used + tokens, }
   }
 }
 
+///|
 /// 检查是否超预算 / Check if over budget.
 pub fn is_over_budget(budget : ContextBudget) -> Bool {
   budget.used > budget.total_quota
 }
 
+///|
 /// 剩余配额 / Remaining quota.
-pub fn remaining(budget : ContextBudget) -> Int {
+pub fn remaining(budget : ContextBudget) -> Int32 {
   budget.total_quota - budget.used
 }
 
+///|
 /// 使用率 / Usage ratio (0.0-1.0).
 pub fn usage_ratio(budget : ContextBudget) -> Double {
   if budget.total_quota == 0 {
@@ -65,6 +74,7 @@ pub fn usage_ratio(budget : ContextBudget) -> Double {
   }
 }
 
+///|
 /// 压缩降级 / Compress on over-budget.
 ///
 /// 超预算时返回压缩后的预算（used 降到 quota 的 80%）。
@@ -72,17 +82,19 @@ pub fn usage_ratio(budget : ContextBudget) -> Double {
 pub fn compress(budget : ContextBudget) -> ContextBudget {
   if is_over_budget(budget) {
     let target = budget.total_quota * 4 / 5
-    { ..budget, used: target }
+    { ..budget, used: target, }
   } else {
     budget
   }
 }
 
+///|
 /// 设置已用量（测试/内部用）/ Set used amount (for testing/internal).
-pub fn with_used(budget : ContextBudget, used : Int) -> ContextBudget {
-  { ..budget, used }
+pub fn with_used(budget : ContextBudget, used : Int32) -> ContextBudget {
+  { ..budget, used, }
 }
 
+///|
 pub fn context_budget_id() -> String {
   "dosi/context_budget"
 }

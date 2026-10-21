@@ -3,5 +3,4 @@
 import {
   "dataverse/dataobject",
   "dataverse/opcore/proximity",
-
 }

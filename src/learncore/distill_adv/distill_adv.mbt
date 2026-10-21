@@ -6,7 +6,6 @@
 /// # Advanced Knowledge Distillation
 ///
 /// KL divergence, soft targets, feature/logit/relation/attention distillation, progressive/online/self distillation, mean teacher, debiased, evaluation, schedule.
-
 fn exp(x : Double) -> Double {
   if x > 20.0 {
     485165195.4
@@ -23,6 +22,7 @@ fn exp(x : Double) -> Double {
   }
 }
 
+///|
 fn log(x : Double) -> Double {
   if x <= 0.0 {
     -1000.0
@@ -39,10 +39,18 @@ fn log(x : Double) -> Double {
   }
 }
 
+///|
 fn clamp(x : Double, lo : Double, hi : Double) -> Double {
-  if x < lo { lo } else if x > hi { hi } else { x }
+  if x < lo {
+    lo
+  } else if x > hi {
+    hi
+  } else {
+    x
+  }
 }
 
+///|
 fn dot(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
   let mut s = 0.0
@@ -52,6 +60,7 @@ fn dot(a : Array[Double], b : Array[Double]) -> Double {
   s
 }
 
+///|
 fn sub_arr(a : Array[Double], b : Array[Double]) -> Array[Double] {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
   let result : Array[Double] = []
@@ -61,6 +70,7 @@ fn sub_arr(a : Array[Double], b : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 fn softmax_arr(logits : Array[Double]) -> Array[Double] {
   let n = logits.length()
   if n == 0 {
@@ -85,138 +95,195 @@ fn softmax_arr(logits : Array[Double]) -> Array[Double] {
   }
 }
 
+///|
 pub(all) struct DistillConfig {
   alpha : Double
   temperature : Double
   beta : Double
 } derive(Debug, Eq)
 
+///|
 pub extend DistillConfig with Eq::{equal, not_equal}
+
+///|
 pub extend DistillConfig with Debug::{to_repr}
 
+///|
 pub(all) struct TeacherStudentConfig {
-  teacher_dim : Int
-  student_dim : Int
+  teacher_dim : Int32
+  student_dim : Int32
   temperature : Double
   alpha : Double
 } derive(Debug, Eq)
 
+///|
 pub extend TeacherStudentConfig with Eq::{equal, not_equal}
+
+///|
 pub extend TeacherStudentConfig with Debug::{to_repr}
 
+///|
 pub(all) struct SoftTargetConfig {
   temperature : Double
   hard_weight : Double
 } derive(Debug, Eq)
 
+///|
 pub extend SoftTargetConfig with Eq::{equal, not_equal}
+
+///|
 pub extend SoftTargetConfig with Debug::{to_repr}
 
+///|
 pub(all) struct FeatureDistillConfig {
-  teacher_layers : Array[Int]
-  student_layers : Array[Int]
+  teacher_layers : Array[Int32]
+  student_layers : Array[Int32]
   weight : Double
 } derive(Debug, Eq)
 
+///|
 pub extend FeatureDistillConfig with Eq::{equal, not_equal}
+
+///|
 pub extend FeatureDistillConfig with Debug::{to_repr}
 
+///|
 pub(all) struct LogitDistillConfig {
   temperature : Double
   weight : Double
 } derive(Debug, Eq)
 
+///|
 pub extend LogitDistillConfig with Eq::{equal, not_equal}
+
+///|
 pub extend LogitDistillConfig with Debug::{to_repr}
 
+///|
 pub(all) struct RelationDistillConfig {
   temperature : Double
   weight : Double
 } derive(Debug, Eq)
 
+///|
 pub extend RelationDistillConfig with Eq::{equal, not_equal}
+
+///|
 pub extend RelationDistillConfig with Debug::{to_repr}
 
+///|
 pub(all) struct AttentionDistillConfig {
-  num_heads : Int
+  num_heads : Int32
   weight : Double
 } derive(Debug, Eq)
 
+///|
 pub extend AttentionDistillConfig with Eq::{equal, not_equal}
+
+///|
 pub extend AttentionDistillConfig with Debug::{to_repr}
 
+///|
 pub(all) struct ProgressiveDistillConfig {
-  num_stages : Int
-  stage_length : Int
+  num_stages : Int32
+  stage_length : Int32
   init_temperature : Double
 } derive(Debug, Eq)
 
+///|
 pub extend ProgressiveDistillConfig with Eq::{equal, not_equal}
+
+///|
 pub extend ProgressiveDistillConfig with Debug::{to_repr}
 
+///|
 pub(all) struct OnlineDistillConfig {
-  num_peers : Int
+  num_peers : Int32
   mutual_weight : Double
   temperature : Double
 } derive(Debug, Eq)
 
+///|
 pub extend OnlineDistillConfig with Eq::{equal, not_equal}
+
+///|
 pub extend OnlineDistillConfig with Debug::{to_repr}
 
+///|
 pub(all) struct SelfDistillConfig {
-  num_generations : Int
+  num_generations : Int32
   ema_decay : Double
 } derive(Debug, Eq)
 
+///|
 pub extend SelfDistillConfig with Eq::{equal, not_equal}
+
+///|
 pub extend SelfDistillConfig with Debug::{to_repr}
 
+///|
 pub(all) struct MeanTeacherConfig {
   ema_decay : Double
   consistency_weight : Double
 } derive(Debug, Eq)
 
+///|
 pub extend MeanTeacherConfig with Eq::{equal, not_equal}
+
+///|
 pub extend MeanTeacherConfig with Debug::{to_repr}
 
+///|
 pub(all) struct DebiasedDistillConfig {
   bias_estimate : Double
-  num_samples : Int
+  num_samples : Int32
   weight : Double
 } derive(Debug, Eq)
 
+///|
 pub extend DebiasedDistillConfig with Eq::{equal, not_equal}
+
+///|
 pub extend DebiasedDistillConfig with Debug::{to_repr}
 
+///|
 pub(all) struct DistillScheduleConfig {
   init_temperature : Double
   final_temperature : Double
-  num_steps : Int
+  num_steps : Int32
   schedule_type : String
 } derive(Debug, Eq)
 
+///|
 pub extend DistillScheduleConfig with Eq::{equal, not_equal}
+
+///|
 pub extend DistillScheduleConfig with Debug::{to_repr}
 
+///|
 /// 构造蒸馏配置 / Build distill config.
 pub fn make_distill_config(
   alpha : Double,
   temperature : Double,
-  beta : Double
+  beta : Double,
 ) -> DistillConfig {
-  { alpha, temperature, beta }
+  { alpha, temperature, beta, }
 }
 
+///|
 /// 蒸馏损失 / Distillation loss.
 /// L = alpha * task_loss + (1 - alpha) * T^2 * kl_loss
 pub fn distill_loss(
   task_loss : Double,
   kl_loss : Double,
-  config : DistillConfig
+  config : DistillConfig,
 ) -> Double {
-  config.alpha * task_loss + (1.0 - config.alpha) * config.temperature * config.temperature * kl_loss + config.beta * 0.0
+  config.alpha * task_loss +
+  (1.0 - config.alpha) * config.temperature * config.temperature * kl_loss +
+  config.beta * 0.0
 }
 
+///|
 /// KL 散度 / KL divergence.
 /// KL(p || q) = sum(p * log(p / q))
 pub fn distill_kl_divergence(p : Array[Double], q : Array[Double]) -> Double {
@@ -230,21 +297,23 @@ pub fn distill_kl_divergence(p : Array[Double], q : Array[Double]) -> Double {
   total
 }
 
+///|
 /// 构造师生配置 / Build teacher-student config.
 pub fn make_teacher_student(
-  teacher_dim : Int,
-  student_dim : Int,
+  teacher_dim : Int32,
+  student_dim : Int32,
   temperature : Double,
-  alpha : Double
+  alpha : Double,
 ) -> TeacherStudentConfig {
-  { teacher_dim, student_dim, temperature, alpha }
+  { teacher_dim, student_dim, temperature, alpha, }
 }
 
+///|
 /// 教师前向 / Teacher forward pass.
 pub fn teacher_forward_d(
   input : Array[Double],
   weight : Array[Array[Double]],
-  bias : Array[Double]
+  bias : Array[Double],
 ) -> Array[Double] {
   let out_dim = weight.length()
   let result : Array[Double] = []
@@ -260,11 +329,12 @@ pub fn teacher_forward_d(
   result
 }
 
+///|
 /// 学生前向 / Student forward pass.
 pub fn student_forward_d(
   input : Array[Double],
   weight : Array[Array[Double]],
-  bias : Array[Double]
+  bias : Array[Double],
 ) -> Array[Double] {
   let out_dim = weight.length()
   let result : Array[Double] = []
@@ -280,13 +350,21 @@ pub fn student_forward_d(
   result
 }
 
+///|
 /// 构造软目标配置 / Build soft target config.
-pub fn make_soft_target(temperature : Double, hard_weight : Double) -> SoftTargetConfig {
-  { temperature, hard_weight }
+pub fn make_soft_target(
+  temperature : Double,
+  hard_weight : Double,
+) -> SoftTargetConfig {
+  { temperature, hard_weight, }
 }
 
+///|
 /// 软目标计算 / Compute soft target from logits.
-pub fn soft_target_compute(logits : Array[Double], temperature : Double) -> Array[Double] {
+pub fn soft_target_compute(
+  logits : Array[Double],
+  temperature : Double,
+) -> Array[Double] {
   if temperature == 0.0 {
     []
   } else {
@@ -295,29 +373,32 @@ pub fn soft_target_compute(logits : Array[Double], temperature : Double) -> Arra
   }
 }
 
+///|
 /// 软目标温度 / Soft target temperature scaling.
 pub fn soft_target_temperature(
   logits : Array[Double],
-  temperature : Double
+  temperature : Double,
 ) -> Array[Double] {
   soft_target_compute(logits, temperature)
 }
 
+///|
 /// 构造特征蒸馏配置 / Build feature distill config.
 pub fn make_feature_distill(
-  teacher_layers : Array[Int],
-  student_layers : Array[Int],
-  weight : Double
+  teacher_layers : Array[Int32],
+  student_layers : Array[Int32],
+  weight : Double,
 ) -> FeatureDistillConfig {
-  { teacher_layers, student_layers, weight }
+  { teacher_layers, student_layers, weight, }
 }
 
+///|
 /// 特征蒸馏损失 / Feature distillation loss.
 /// L = weight * sum ||f_t - f_s||^2
 pub fn feature_distill_loss(
   teacher_features : Array[Array[Double]],
   student_features : Array[Array[Double]],
-  config : FeatureDistillConfig
+  config : FeatureDistillConfig,
 ) -> Double {
   let n = if teacher_features.length() < student_features.length() {
     teacher_features.length()
@@ -336,10 +417,11 @@ pub fn feature_distill_loss(
   }
 }
 
+///|
 /// 特征对齐 / Feature alignment via projection.
 pub fn feature_align(
   student_features : Array[Double],
-  projection : Array[Array[Double]]
+  projection : Array[Array[Double]],
 ) -> Array[Double] {
   let out_dim = projection.length()
   let result : Array[Double] = []
@@ -355,31 +437,40 @@ pub fn feature_align(
   result
 }
 
+///|
 /// 构造 Logit 蒸馏配置 / Build logit distill config.
-pub fn make_logit_distill(temperature : Double, weight : Double) -> LogitDistillConfig {
-  { temperature, weight }
+pub fn make_logit_distill(
+  temperature : Double,
+  weight : Double,
+) -> LogitDistillConfig {
+  { temperature, weight, }
 }
 
+///|
 /// Logit 蒸馏损失 / Logit distillation loss.
 /// L = T^2 * KL(soft_t || soft_s)
 pub fn logit_distill_loss(
   teacher_logits : Array[Double],
   student_logits : Array[Double],
-  config : LogitDistillConfig
+  config : LogitDistillConfig,
 ) -> Double {
   if config.temperature == 0.0 {
     0.0
   } else {
     let soft_t = soft_target_compute(teacher_logits, config.temperature)
     let soft_s = soft_target_compute(student_logits, config.temperature)
-    config.weight * config.temperature * config.temperature * distill_kl_divergence(soft_t, soft_s)
+    config.weight *
+    config.temperature *
+    config.temperature *
+    distill_kl_divergence(soft_t, soft_s)
   }
 }
 
+///|
 /// Logit 匹配 / Logit matching loss (MSE).
 pub fn logit_match(
   teacher_logits : Array[Double],
-  student_logits : Array[Double]
+  student_logits : Array[Double],
 ) -> Double {
   let n = if teacher_logits.length() < student_logits.length() {
     teacher_logits.length()
@@ -398,17 +489,22 @@ pub fn logit_match(
   }
 }
 
+///|
 /// 构造关系蒸馏配置 / Build relation distill config.
-pub fn make_relation_distill(temperature : Double, weight : Double) -> RelationDistillConfig {
-  { temperature, weight }
+pub fn make_relation_distill(
+  temperature : Double,
+  weight : Double,
+) -> RelationDistillConfig {
+  { temperature, weight, }
 }
 
+///|
 /// 关系蒸馏损失 / Relation distillation loss.
 /// L = weight * ||R_t - R_s||^2
 pub fn relation_distill_loss(
   teacher_relations : Array[Array[Double]],
   student_relations : Array[Array[Double]],
-  config : RelationDistillConfig
+  config : RelationDistillConfig,
 ) -> Double {
   let n = if teacher_relations.length() < student_relations.length() {
     teacher_relations.length()
@@ -434,8 +530,11 @@ pub fn relation_distill_loss(
   }
 }
 
+///|
 /// 关系提取 / Extract relation matrix from features.
-pub fn relation_extract(features : Array[Array[Double]]) -> Array[Array[Double]] {
+pub fn relation_extract(
+  features : Array[Array[Double]],
+) -> Array[Array[Double]] {
   let n = features.length()
   let result : Array[Array[Double]] = []
   for i in 0..<n {
@@ -448,17 +547,22 @@ pub fn relation_extract(features : Array[Array[Double]]) -> Array[Array[Double]]
   result
 }
 
+///|
 /// 构造注意力蒸馏配置 / Build attention distill config.
-pub fn make_attention_distill(num_heads : Int, weight : Double) -> AttentionDistillConfig {
-  { num_heads, weight }
+pub fn make_attention_distill(
+  num_heads : Int32,
+  weight : Double,
+) -> AttentionDistillConfig {
+  { num_heads, weight, }
 }
 
+///|
 /// 注意力蒸馏损失 / Attention distillation loss.
 /// L = weight * sum ||A_t - A_s||^2
 pub fn attention_distill_loss(
   teacher_attention : Array[Array[Double]],
   student_attention : Array[Array[Double]],
-  config : AttentionDistillConfig
+  config : AttentionDistillConfig,
 ) -> Double {
   let n = if teacher_attention.length() < student_attention.length() {
     teacher_attention.length()
@@ -484,9 +588,10 @@ pub fn attention_distill_loss(
   }
 }
 
+///|
 /// 注意力迁移 / Attention transfer.
 pub fn attention_transfer(
-  student_features : Array[Array[Double]]
+  student_features : Array[Array[Double]],
 ) -> Array[Array[Double]] {
   let n = student_features.length()
   let result : Array[Array[Double]] = []
@@ -502,45 +607,60 @@ pub fn attention_transfer(
   result
 }
 
+///|
 /// 构造渐进蒸馏配置 / Build progressive distill config.
 pub fn make_progressive_distill(
-  num_stages : Int,
-  stage_length : Int,
-  init_temperature : Double
+  num_stages : Int32,
+  stage_length : Int32,
+  init_temperature : Double,
 ) -> ProgressiveDistillConfig {
-  { num_stages, stage_length, init_temperature }
+  { num_stages, stage_length, init_temperature, }
 }
 
+///|
 /// 渐进调度 / Progressive schedule.
-pub fn progressive_schedule(config : ProgressiveDistillConfig, step : Int) -> Int {
+pub fn progressive_schedule(
+  config : ProgressiveDistillConfig,
+  step : Int32,
+) -> Int32 {
   if config.stage_length <= 0 {
     0
   } else {
     let stage = step / config.stage_length
-    if stage >= config.num_stages { config.num_stages - 1 } else { stage }
+    if stage >= config.num_stages {
+      config.num_stages - 1
+    } else {
+      stage
+    }
   }
 }
 
+///|
 /// 渐进步骤 / Progressive step temperature.
-pub fn progressive_step(config : ProgressiveDistillConfig, step : Int) -> Double {
+pub fn progressive_step(
+  config : ProgressiveDistillConfig,
+  step : Int32,
+) -> Double {
   let stage = progressive_schedule(config, step)
   config.init_temperature + stage.to_double()
 }
 
+///|
 /// 构造在线蒸馏配置 / Build online distill config.
 pub fn make_online_distill(
-  num_peers : Int,
+  num_peers : Int32,
   mutual_weight : Double,
-  temperature : Double
+  temperature : Double,
 ) -> OnlineDistillConfig {
-  { num_peers, mutual_weight, temperature }
+  { num_peers, mutual_weight, temperature, }
 }
 
+///|
 /// 在线同伴 / Online peer distillation loss.
 pub fn online_peer(
   peer_logits : Array[Array[Double]],
   my_logits : Array[Double],
-  config : OnlineDistillConfig
+  config : OnlineDistillConfig,
 ) -> Double {
   let n = peer_logits.length()
   if n == 0 {
@@ -556,31 +676,42 @@ pub fn online_peer(
   }
 }
 
+///|
 /// 在线互学习 / Online mutual learning loss.
 pub fn online_mutual(
   peer_a_logits : Array[Double],
   peer_b_logits : Array[Double],
-  config : OnlineDistillConfig
+  config : OnlineDistillConfig,
 ) -> Double {
   if config.temperature == 0.0 {
     0.0
   } else {
     let soft_a = soft_target_compute(peer_a_logits, config.temperature)
     let soft_b = soft_target_compute(peer_b_logits, config.temperature)
-    config.mutual_weight * (distill_kl_divergence(soft_a, soft_b) + distill_kl_divergence(soft_b, soft_a)) * 0.5
+    config.mutual_weight *
+    (
+      distill_kl_divergence(soft_a, soft_b) +
+      distill_kl_divergence(soft_b, soft_a)
+    ) *
+    0.5
   }
 }
 
+///|
 /// 构造自蒸馏配置 / Build self distill config.
-pub fn make_self_distill(num_generations : Int, ema_decay : Double) -> SelfDistillConfig {
-  { num_generations, ema_decay }
+pub fn make_self_distill(
+  num_generations : Int32,
+  ema_decay : Double,
+) -> SelfDistillConfig {
+  { num_generations, ema_decay, }
 }
 
+///|
 /// 自蒸馏损失 / Self distillation loss.
 pub fn self_distill_loss(
   current_logits : Array[Double],
   ema_logits : Array[Double],
-  temperature : Double
+  temperature : Double,
 ) -> Double {
   if temperature == 0.0 {
     0.0
@@ -591,11 +722,12 @@ pub fn self_distill_loss(
   }
 }
 
+///|
 /// 自集成 / Self ensemble (EMA update).
 pub fn self_ensemble(
   current_params : Array[Double],
   ema_params : Array[Double],
-  decay : Double
+  decay : Double,
 ) -> Array[Double] {
   let n = if current_params.length() < ema_params.length() {
     current_params.length()
@@ -609,16 +741,21 @@ pub fn self_ensemble(
   result
 }
 
+///|
 /// 构造 Mean Teacher 配置 / Build mean teacher config.
-pub fn make_mean_teacher(ema_decay : Double, consistency_weight : Double) -> MeanTeacherConfig {
-  { ema_decay, consistency_weight }
+pub fn make_mean_teacher(
+  ema_decay : Double,
+  consistency_weight : Double,
+) -> MeanTeacherConfig {
+  { ema_decay, consistency_weight, }
 }
 
+///|
 /// Mean Teacher EMA / Mean teacher EMA update.
 pub fn mean_teacher_ema(
   teacher_params : Array[Double],
   student_params : Array[Double],
-  config : MeanTeacherConfig
+  config : MeanTeacherConfig,
 ) -> Array[Double] {
   let n = if teacher_params.length() < student_params.length() {
     teacher_params.length()
@@ -627,16 +764,20 @@ pub fn mean_teacher_ema(
   }
   let result : Array[Double] = []
   for i in 0..<n {
-    result.push(config.ema_decay * teacher_params[i] + (1.0 - config.ema_decay) * student_params[i])
+    result.push(
+      config.ema_decay * teacher_params[i] +
+      (1.0 - config.ema_decay) * student_params[i],
+    )
   }
   result
 }
 
+///|
 /// Mean Teacher 损失 / Mean teacher consistency loss.
 pub fn mean_teacher_loss(
   teacher_output : Array[Double],
   student_output : Array[Double],
-  config : MeanTeacherConfig
+  config : MeanTeacherConfig,
 ) -> Double {
   let n = if teacher_output.length() < student_output.length() {
     teacher_output.length()
@@ -655,24 +796,27 @@ pub fn mean_teacher_loss(
   }
 }
 
+///|
 /// 构造去偏蒸馏配置 / Build debiased distill config.
 pub fn make_debiased_distill(
   bias_estimate : Double,
-  num_samples : Int,
-  weight : Double
+  num_samples : Int32,
+  weight : Double,
 ) -> DebiasedDistillConfig {
-  { bias_estimate, num_samples, weight }
+  { bias_estimate, num_samples, weight, }
 }
 
+///|
 /// 去偏损失 / Debiased distillation loss.
 pub fn debiased_loss(
   raw_loss : Double,
-  config : DebiasedDistillConfig
+  config : DebiasedDistillConfig,
 ) -> Double {
   let correction = bias_correction(config)
   config.weight * (raw_loss - correction)
 }
 
+///|
 /// 偏差校正 / Bias correction term.
 pub fn bias_correction(config : DebiasedDistillConfig) -> Double {
   if config.num_samples <= 0 {
@@ -682,21 +826,27 @@ pub fn bias_correction(config : DebiasedDistillConfig) -> Double {
   }
 }
 
+///|
 /// 蒸馏评估 / Evaluate distillation quality.
 pub fn distill_evaluate(
   teacher_acc : Double,
   student_acc : Double,
-  distill_loss : Double
+  distill_loss : Double,
 ) -> Double {
-  let acc_ratio = if teacher_acc == 0.0 { 0.0 } else { student_acc / teacher_acc }
+  let acc_ratio = if teacher_acc == 0.0 {
+    0.0
+  } else {
+    student_acc / teacher_acc
+  }
   acc_ratio - 0.01 * distill_loss
 }
 
+///|
 /// 蒸馏效率 / Distillation efficiency.
 pub fn distill_efficiency(
   student_acc : Double,
-  teacher_params : Int,
-  student_params : Int
+  teacher_params : Int32,
+  student_params : Int32,
 ) -> Double {
   if teacher_params <= 0 || student_params <= 0 {
     0.0
@@ -705,8 +855,12 @@ pub fn distill_efficiency(
   }
 }
 
+///|
 /// 蒸馏压缩比 / Distillation compression ratio.
-pub fn distill_compression_ratio(teacher_params : Int, student_params : Int) -> Double {
+pub fn distill_compression_ratio(
+  teacher_params : Int32,
+  student_params : Int32,
+) -> Double {
   if student_params <= 0 {
     0.0
   } else {
@@ -714,24 +868,31 @@ pub fn distill_compression_ratio(teacher_params : Int, student_params : Int) -> 
   }
 }
 
+///|
 /// 构造蒸馏调度配置 / Build distill schedule config.
 pub fn make_distill_schedule(
   init_temperature : Double,
   final_temperature : Double,
-  num_steps : Int,
-  schedule_type : String
+  num_steps : Int32,
+  schedule_type : String,
 ) -> DistillScheduleConfig {
-  { init_temperature, final_temperature, num_steps, schedule_type }
+  { init_temperature, final_temperature, num_steps, schedule_type, }
 }
 
+///|
 /// 调度步骤 / Schedule step value.
-pub fn schedule_step(config : DistillScheduleConfig, step : Int) -> Double {
+pub fn schedule_step(config : DistillScheduleConfig, step : Int32) -> Double {
   if config.num_steps <= 0 {
     config.init_temperature
   } else {
-    let progress = clamp(step.to_double() / config.num_steps.to_double(), 0.0, 1.0)
+    let progress = clamp(
+      step.to_double() / config.num_steps.to_double(),
+      0.0,
+      1.0,
+    )
     if config.schedule_type == "linear" {
-      config.init_temperature + (config.final_temperature - config.init_temperature) * progress
+      config.init_temperature +
+      (config.final_temperature - config.init_temperature) * progress
     } else if config.schedule_type == "exp" {
       let ratio = config.final_temperature / config.init_temperature
       config.init_temperature * exp(progress * log(ratio))
@@ -741,11 +902,16 @@ pub fn schedule_step(config : DistillScheduleConfig, step : Int) -> Double {
   }
 }
 
+///|
 /// 调度温度 / Schedule temperature at step.
-pub fn schedule_temperature(config : DistillScheduleConfig, step : Int) -> Double {
+pub fn schedule_temperature(
+  config : DistillScheduleConfig,
+  step : Int32,
+) -> Double {
   schedule_step(config, step)
 }
 
+///|
 /// 模块标识 / Module identity.
 pub fn distill_adv_id() -> String {
   "learncore/distill_adv"

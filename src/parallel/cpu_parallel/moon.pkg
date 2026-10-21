@@ -2,5 +2,4 @@
 // S3.2 填充：分区 + shuffle + gather 契约 + 内存模拟
 import {
   "dataverse/dataobject",
-
 }

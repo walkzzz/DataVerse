@@ -7,24 +7,28 @@
 ///
 /// # Terrain analysis operators
 
+///|
 /// DEM（数字高程模型）/ DEM (Digital Elevation Model).
 pub struct DEM {
   elevations : Array[Array[Double]]
   cell_size : Double
 }
 
+///|
 /// 构造 DEM / Create DEM.
 pub fn make_dem(elevations : Array[Array[Double]], cell_size : Double) -> DEM {
-  { elevations: elevations, cell_size: cell_size }
+  { elevations, cell_size, }
 }
 
+///|
 /// DEM 行数 / DEM row count.
-pub fn dem_rows(dem : DEM) -> Int {
+pub fn dem_rows(dem : DEM) -> Int32 {
   dem.elevations.length()
 }
 
+///|
 /// DEM 列数 / DEM column count.
-pub fn dem_cols(dem : DEM) -> Int {
+pub fn dem_cols(dem : DEM) -> Int32 {
   if dem.elevations.length() == 0 {
     0
   } else {
@@ -32,8 +36,9 @@ pub fn dem_cols(dem : DEM) -> Int {
   }
 }
 
+///|
 /// 安全获取高程 / Safe elevation access.
-fn get_elev(dem : DEM, row : Int, col : Int) -> Double {
+fn get_elev(dem : DEM, row : Int32, col : Int32) -> Double {
   let rows = dem.elevations.length()
   if rows == 0 {
     return 0.0
@@ -44,6 +49,7 @@ fn get_elev(dem : DEM, row : Int, col : Int) -> Double {
   dem.elevations[r][c]
 }
 
+///|
 /// 正弦近似 / Sine approximation (Taylor series).
 fn sin_(x : Double) -> Double {
   let mut x = x
@@ -65,11 +71,13 @@ fn sin_(x : Double) -> Double {
   result
 }
 
+///|
 /// 余弦近似 / Cosine approximation.
 fn cos_(x : Double) -> Double {
   sin_(x + 1.5707963267948966)
 }
 
+///|
 /// 正切近似 / Tangent approximation.
 fn tan_(x : Double) -> Double {
   let c = cos_(x)
@@ -80,6 +88,7 @@ fn tan_(x : Double) -> Double {
   }
 }
 
+///|
 /// 反正切近似 / Arctangent approximation.
 fn atan_(x : Double) -> Double {
   let pi = 3.141592653589793
@@ -92,6 +101,7 @@ fn atan_(x : Double) -> Double {
   }
 }
 
+///|
 fn atan_taylor_(x : Double) -> Double {
   let mut result = 0.0
   let mut x_pow = x
@@ -110,6 +120,7 @@ fn atan_taylor_(x : Double) -> Double {
   result
 }
 
+///|
 /// 反正切2 / atan2.
 fn atan2_(y : Double, x : Double) -> Double {
   let pi = 3.141592653589793
@@ -131,18 +142,52 @@ fn atan2_(y : Double, x : Double) -> Double {
 ///===
 /// 坡度与坡向
 
+///|
 /// 坡度计算 / Slope (Horn's method, degrees).
-pub fn slope(dem : DEM, row : Int, col : Int) -> Double {
-  let dz_dx = (get_elev(dem, row - 1, col + 1) + 2.0 * get_elev(dem, row, col + 1) + get_elev(dem, row + 1, col + 1) - get_elev(dem, row - 1, col - 1) - 2.0 * get_elev(dem, row, col - 1) - get_elev(dem, row + 1, col - 1)) / (8.0 * dem.cell_size)
-  let dz_dy = (get_elev(dem, row + 1, col - 1) + 2.0 * get_elev(dem, row + 1, col) + get_elev(dem, row + 1, col + 1) - get_elev(dem, row - 1, col - 1) - 2.0 * get_elev(dem, row - 1, col) - get_elev(dem, row - 1, col + 1)) / (8.0 * dem.cell_size)
+pub fn slope(dem : DEM, row : Int32, col : Int32) -> Double {
+  let dz_dx = (
+      get_elev(dem, row - 1, col + 1) +
+      2.0 * get_elev(dem, row, col + 1) +
+      get_elev(dem, row + 1, col + 1) -
+      get_elev(dem, row - 1, col - 1) -
+      2.0 * get_elev(dem, row, col - 1) -
+      get_elev(dem, row + 1, col - 1)
+    ) /
+    (8.0 * dem.cell_size)
+  let dz_dy = (
+      get_elev(dem, row + 1, col - 1) +
+      2.0 * get_elev(dem, row + 1, col) +
+      get_elev(dem, row + 1, col + 1) -
+      get_elev(dem, row - 1, col - 1) -
+      2.0 * get_elev(dem, row - 1, col) -
+      get_elev(dem, row - 1, col + 1)
+    ) /
+    (8.0 * dem.cell_size)
   let slope_rad = atan_((dz_dx * dz_dx + dz_dy * dz_dy).sqrt())
   slope_rad * 180.0 / 3.141592653589793
 }
 
+///|
 /// 坡向计算 / Aspect (Horn's method, degrees).
-pub fn aspect(dem : DEM, row : Int, col : Int) -> Double {
-  let dz_dx = (get_elev(dem, row - 1, col + 1) + 2.0 * get_elev(dem, row, col + 1) + get_elev(dem, row + 1, col + 1) - get_elev(dem, row - 1, col - 1) - 2.0 * get_elev(dem, row, col - 1) - get_elev(dem, row + 1, col - 1)) / (8.0 * dem.cell_size)
-  let dz_dy = (get_elev(dem, row + 1, col - 1) + 2.0 * get_elev(dem, row + 1, col) + get_elev(dem, row + 1, col + 1) - get_elev(dem, row - 1, col - 1) - 2.0 * get_elev(dem, row - 1, col) - get_elev(dem, row - 1, col + 1)) / (8.0 * dem.cell_size)
+pub fn aspect(dem : DEM, row : Int32, col : Int32) -> Double {
+  let dz_dx = (
+      get_elev(dem, row - 1, col + 1) +
+      2.0 * get_elev(dem, row, col + 1) +
+      get_elev(dem, row + 1, col + 1) -
+      get_elev(dem, row - 1, col - 1) -
+      2.0 * get_elev(dem, row, col - 1) -
+      get_elev(dem, row + 1, col - 1)
+    ) /
+    (8.0 * dem.cell_size)
+  let dz_dy = (
+      get_elev(dem, row + 1, col - 1) +
+      2.0 * get_elev(dem, row + 1, col) +
+      get_elev(dem, row + 1, col + 1) -
+      get_elev(dem, row - 1, col - 1) -
+      2.0 * get_elev(dem, row - 1, col) -
+      get_elev(dem, row - 1, col + 1)
+    ) /
+    (8.0 * dem.cell_size)
   if dz_dx == 0.0 && dz_dy == 0.0 {
     return 0.0
   }
@@ -161,11 +206,12 @@ pub fn aspect(dem : DEM, row : Int, col : Int) -> Double {
   aspect_deg
 }
 
+///|
 /// 山体阴影 / Hillshade.
 pub fn hillshade(
   dem : DEM,
-  row : Int,
-  col : Int,
+  row : Int32,
+  col : Int32,
   azimuth : Double,
   altitude : Double,
 ) -> Double {
@@ -173,7 +219,11 @@ pub fn hillshade(
   let aspect_rad = aspect(dem, row, col) * 3.141592653589793 / 180.0
   let zenith_rad = (90.0 - altitude) * 3.141592653589793 / 180.0
   let azimuth_rad = (360.0 - azimuth + 90.0) * 3.141592653589793 / 180.0
-  let hs = 255.0 * (cos_(zenith_rad) * cos_(slope_rad) + sin_(azimuth_rad) * sin_(slope_rad) * cos_(aspect_rad))
+  let hs = 255.0 *
+    (
+      cos_(zenith_rad) * cos_(slope_rad) +
+      sin_(azimuth_rad) * sin_(slope_rad) * cos_(aspect_rad)
+    )
   if hs < 0.0 {
     0.0
   } else {
@@ -184,12 +234,13 @@ pub fn hillshade(
 ///===
 /// 地形指数
 
+///|
 /// TPI（地形位置指数）/ Topographic Position Index.
-pub fn tpi(dem : DEM, row : Int, col : Int) -> Double {
+pub fn tpi(dem : DEM, row : Int32, col : Int32) -> Double {
   let mut sum = 0.0
   let mut count = 0
-  for dr in -1..=1 {
-    for dc in -1..=1 {
+  for dr in -1..<=1 {
+    for dc in -1..<=1 {
       if dr == 0 && dc == 0 {
         continue
       }
@@ -203,11 +254,12 @@ pub fn tpi(dem : DEM, row : Int, col : Int) -> Double {
   get_elev(dem, row, col) - sum / count.to_double()
 }
 
+///|
 /// 粗糙度 / Roughness (standard deviation of elevation in 3x3 window).
-pub fn roughness(dem : DEM, row : Int, col : Int) -> Double {
+pub fn roughness(dem : DEM, row : Int32, col : Int32) -> Double {
   let vals : Array[Double] = []
-  for dr in -1..=1 {
-    for dc in -1..=1 {
+  for dr in -1..<=1 {
+    for dc in -1..<=1 {
       vals.push(get_elev(dem, row + dr, col + dc))
     }
   }
@@ -228,8 +280,9 @@ pub fn roughness(dem : DEM, row : Int, col : Int) -> Double {
   (variance / n.to_double()).sqrt()
 }
 
+///|
 /// VRM（矢量粗糙度测度）/ Vector Ruggedness Measure (simplified).
-pub fn vrm(dem : DEM, row : Int, col : Int) -> Double {
+pub fn vrm(dem : DEM, row : Int32, col : Int32) -> Double {
   let s = slope(dem, row, col) * 3.141592653589793 / 180.0
   let a = aspect(dem, row, col) * 3.141592653589793 / 180.0
   let x = sin_(s) * cos_(a)
@@ -239,8 +292,8 @@ pub fn vrm(dem : DEM, row : Int, col : Int) -> Double {
   let mut sum_y = 0.0
   let mut sum_z = 0.0
   let mut count = 0
-  for dr in -1..=1 {
-    for dc in -1..=1 {
+  for dr in -1..<=1 {
+    for dc in -1..<=1 {
       if dr == 0 && dc == 0 {
         continue
       }
@@ -265,13 +318,9 @@ pub fn vrm(dem : DEM, row : Int, col : Int) -> Double {
   1.0 - mag
 }
 
+///|
 /// SPI（河流动力指数）/ Stream Power Index (simplified).
-pub fn spi(
-  dem : DEM,
-  row : Int,
-  col : Int,
-  flow_acc : Double,
-) -> Double {
+pub fn spi(dem : DEM, row : Int32, col : Int32, flow_acc : Double) -> Double {
   let s = slope(dem, row, col) * 3.141592653589793 / 180.0
   let tan_s = tan_(s)
   if tan_s <= 0.0 {
@@ -283,21 +332,34 @@ pub fn spi(
 ///===
 /// 曲率
 
+///|
 /// 剖面曲率 / Profile curvature (simplified).
-pub fn profile_curvature(dem : DEM, row : Int, col : Int) -> Double {
-  let d2z_dx2 = get_elev(dem, row, col - 1) - 2.0 * get_elev(dem, row, col) + get_elev(dem, row, col + 1)
-  let d2z_dy2 = get_elev(dem, row - 1, col) - 2.0 * get_elev(dem, row, col) + get_elev(dem, row + 1, col)
+pub fn profile_curvature(dem : DEM, row : Int32, col : Int32) -> Double {
+  let d2z_dx2 = get_elev(dem, row, col - 1) -
+    2.0 * get_elev(dem, row, col) +
+    get_elev(dem, row, col + 1)
+  let d2z_dy2 = get_elev(dem, row - 1, col) -
+    2.0 * get_elev(dem, row, col) +
+    get_elev(dem, row + 1, col)
   (d2z_dx2 + d2z_dy2) / 2.0
 }
 
+///|
 /// 平面曲率 / Plan curvature (simplified).
-pub fn plan_curvature(dem : DEM, row : Int, col : Int) -> Double {
-  let d2z_dxdy = (get_elev(dem, row + 1, col + 1) - get_elev(dem, row + 1, col - 1) - get_elev(dem, row - 1, col + 1) + get_elev(dem, row - 1, col - 1)) / 4.0
+pub fn plan_curvature(dem : DEM, row : Int32, col : Int32) -> Double {
+  let d2z_dxdy = (
+      get_elev(dem, row + 1, col + 1) -
+      get_elev(dem, row + 1, col - 1) -
+      get_elev(dem, row - 1, col + 1) +
+      get_elev(dem, row - 1, col - 1)
+    ) /
+    4.0
   d2z_dxdy
 }
 
+///|
 /// 总曲率 / Total curvature.
-pub fn total_curvature(dem : DEM, row : Int, col : Int) -> Double {
+pub fn total_curvature(dem : DEM, row : Int32, col : Int32) -> Double {
   let prof = profile_curvature(dem, row, col)
   let plan = plan_curvature(dem, row, col)
   prof * prof + plan * plan
@@ -306,8 +368,9 @@ pub fn total_curvature(dem : DEM, row : Int, col : Int) -> Double {
 ///===
 /// 水文分析
 
+///|
 /// 流向 / Flow direction (D8 method, returns direction code 0-7).
-pub fn flow_direction(dem : DEM, row : Int, col : Int) -> Int {
+pub fn flow_direction(dem : DEM, row : Int32, col : Int32) -> Int32 {
   let drops = [
     get_elev(dem, row, col) - get_elev(dem, row - 1, col),
     get_elev(dem, row, col) - get_elev(dem, row - 1, col + 1),
@@ -329,12 +392,9 @@ pub fn flow_direction(dem : DEM, row : Int, col : Int) -> Int {
   max_dir
 }
 
+///|
 /// 流向累积 / Flow accumulation (simplified, count upstream cells).
-pub fn flow_accumulation(
-  dem : DEM,
-  row : Int,
-  col : Int,
-) -> Double {
+pub fn flow_accumulation(dem : DEM, row : Int32, col : Int32) -> Double {
   let rows = dem_rows(dem)
   let cols = dem_cols(dem)
   let mut count = 0.0
@@ -366,13 +426,14 @@ pub fn flow_accumulation(
 ///===
 /// 等值线
 
+///|
 /// 等值线生成 / Generate contour (simplified, find cells at elevation).
 pub fn generate_contour(
   dem : DEM,
   elevation : Double,
   tolerance : Double,
-) -> Array[(Int, Int)] {
-  let result : Array[(Int, Int)] = []
+) -> Array[(Int32, Int32)] {
+  let result : Array[(Int32, Int32)] = []
   let rows = dem_rows(dem)
   let cols = dem_cols(dem)
   for r in 0..<rows {
@@ -383,10 +444,8 @@ pub fn generate_contour(
         if neg_diff <= tolerance {
           result.push((r, c))
         }
-      } else {
-        if diff <= tolerance {
-          result.push((r, c))
-        }
+      } else if diff <= tolerance {
+        result.push((r, c))
       }
     }
   }
@@ -396,6 +455,7 @@ pub fn generate_contour(
 ///===
 /// 高程统计
 
+///|
 /// 高程统计 / Elevation statistics.
 pub fn elevation_stats(dem : DEM) -> (Double, Double, Double, Double) {
   let rows = dem_rows(dem)
@@ -424,9 +484,9 @@ pub fn elevation_stats(dem : DEM) -> (Double, Double, Double, Double) {
   (min_e, max_e, mean, max_e - min_e)
 }
 
+///|
 ///===
 /// ID
-
 pub fn terrain_id() -> String {
   "opcore/terrain"
 }

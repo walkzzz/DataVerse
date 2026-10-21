@@ -1,3 +1,4 @@
+///|
 fn main {
   println("DataVerse Project Info v0.1.0-dev")
   println("====================================")
@@ -37,7 +38,10 @@ fn main {
   println("Semantic Package Demo (math_linear_algebra):")
   let pt = @math_linear_algebra.math_linear_algebra_make_point(3.0, 4.0)
   println("  Point(3,4).norm() = \{pt.norm()}")
-  let sr = @math_linear_algebra.math_linear_algebra_make_series([1.0, 2.0, 3.0], "s")
+  let sr = @math_linear_algebra.math_linear_algebra_make_series(
+    [1.0, 2.0, 3.0],
+    "s",
+  )
   println("  Series([1,2,3]).sum() = \{sr.sum()}")
   println("  Series([1,2,3]).mean() = \{sr.mean()}")
   println("")

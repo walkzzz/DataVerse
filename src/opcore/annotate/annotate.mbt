@@ -8,14 +8,13 @@
 ///
 /// LLM annotation, intent/sentiment/topic. See architecture §4.3.2 ⑧.
 
+///|
 /// 按长度标注：加 metadata 标签 short/medium/long / Tag by length.
 ///
 /// - short: < 50 字符
 /// - medium: 50-200 字符
 /// - long: > 200 字符
-pub fn tag_by_length(
-  input : @dataobject.DataObject
-) -> @dataobject.DataObject {
+pub fn tag_by_length(input : @dataobject.DataObject) -> @dataobject.DataObject {
   let len = input.content.length()
   let tag = if len < 50 {
     "short"
@@ -26,14 +25,16 @@ pub fn tag_by_length(
   }
   let new_metadata = input.metadata + [("length_tag", tag)]
   @dataobject.make_dataobject_with_metadata(
-    input.content, input.modality, input.schema, new_metadata,
+    input.content,
+    input.modality,
+    input.schema,
+    new_metadata,
   )
 }
 
+///|
 /// 标注模态：加 metadata 记录模态 / Tag modality.
-pub fn tag_modality(
-  input : @dataobject.DataObject
-) -> @dataobject.DataObject {
+pub fn tag_modality(input : @dataobject.DataObject) -> @dataobject.DataObject {
   let modality_str = match input.modality {
     @dataobject.Text => "text"
     @dataobject.Image => "image"
@@ -45,10 +46,14 @@ pub fn tag_modality(
   }
   let new_metadata = input.metadata + [("modality_tag", modality_str)]
   @dataobject.make_dataobject_with_metadata(
-    input.content, input.modality, input.schema, new_metadata,
+    input.content,
+    input.modality,
+    input.schema,
+    new_metadata,
   )
 }
 
+///|
 pub fn annotate_id() -> String {
   "opcore/annotate"
 }

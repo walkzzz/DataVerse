@@ -6,7 +6,6 @@
 /// # Recommendation System
 ///
 /// CF, matrix factorization, content-based, hybrid, evaluation metrics.
-
 fn log(x : Double) -> Double {
   if x <= 0.0 {
     -1000.0
@@ -23,6 +22,7 @@ fn log(x : Double) -> Double {
   }
 }
 
+///|
 fn sqrt(x : Double) -> Double {
   if x <= 0.0 {
     0.0
@@ -35,141 +35,200 @@ fn sqrt(x : Double) -> Double {
   }
 }
 
+///|
 fn abs_d(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
+  if x < 0.0 {
+    -x
+  } else {
+    x
+  }
 }
 
+///|
 /// 用户 / User.
 pub struct User {
-  user_id : Int
+  user_id : Int32
   features : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend User with Eq::{equal, not_equal}
+
+///|
 pub extend User with Debug::{to_repr}
 
+///|
 /// 物品 / Item.
 pub struct Item {
-  item_id : Int
+  item_id : Int32
   features : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend Item with Eq::{equal, not_equal}
+
+///|
 pub extend Item with Debug::{to_repr}
 
+///|
 /// 评分 / Rating.
 pub struct Rating {
-  user_id : Int
-  item_id : Int
+  user_id : Int32
+  item_id : Int32
   score : Double
 } derive(Debug, Eq)
 
+///|
 pub extend Rating with Eq::{equal, not_equal}
+
+///|
 pub extend Rating with Debug::{to_repr}
 
+///|
 /// 交互 / Interaction.
 pub struct Interaction {
-  user_id : Int
-  item_id : Int
-  timestamp : Int
+  user_id : Int32
+  item_id : Int32
+  timestamp : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend Interaction with Eq::{equal, not_equal}
+
+///|
 pub extend Interaction with Debug::{to_repr}
 
+///|
 /// 评分矩阵 / Rating matrix.
 pub struct RatingMatrix {
-  num_users : Int
-  num_items : Int
+  num_users : Int32
+  num_items : Int32
   data : Array[Array[Double]]
 } derive(Debug, Eq)
 
+///|
 pub extend RatingMatrix with Eq::{equal, not_equal}
+
+///|
 pub extend RatingMatrix with Debug::{to_repr}
 
+///|
 /// 嵌入 / Embedding.
 pub struct EmbeddingRec {
-  num_entities : Int
-  dim : Int
+  num_entities : Int32
+  dim : Int32
   vectors : Array[Array[Double]]
 } derive(Debug, Eq)
 
+///|
 pub extend EmbeddingRec with Eq::{equal, not_equal}
+
+///|
 pub extend EmbeddingRec with Debug::{to_repr}
 
+///|
 /// 会话 / Session.
 pub struct Session {
-  session_id : Int
-  items : Array[Int]
-  timestamps : Array[Int]
+  session_id : Int32
+  items : Array[Int32]
+  timestamps : Array[Int32]
 } derive(Debug, Eq)
 
+///|
 pub extend Session with Eq::{equal, not_equal}
+
+///|
 pub extend Session with Debug::{to_repr}
 
+///|
 /// 规则 / Rule.
 pub struct Rule {
-  item_id : Int
+  item_id : Int32
   weight : Double
 } derive(Debug, Eq)
 
+///|
 pub extend Rule with Eq::{equal, not_equal}
+
+///|
 pub extend Rule with Debug::{to_repr}
 
+///|
 /// 上下文强盗 / Contextual bandit.
 pub struct ContextualBandit {
-  num_arms : Int
-  counts : Array[Int]
+  num_arms : Int32
+  counts : Array[Int32]
   rewards : Array[Double]
   values : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend ContextualBandit with Eq::{equal, not_equal}
+
+///|
 pub extend ContextualBandit with Debug::{to_repr}
 
+///|
 /// 矩阵分解结果 / Matrix factorization result.
 pub struct MFResult {
-  num_users : Int
-  num_items : Int
-  k : Int
+  num_users : Int32
+  num_items : Int32
+  k : Int32
   user_factors : Array[Array[Double]]
   item_factors : Array[Array[Double]]
 } derive(Debug, Eq)
 
+///|
 pub extend MFResult with Eq::{equal, not_equal}
+
+///|
 pub extend MFResult with Debug::{to_repr}
 
+///|
 /// 构造用户 / Build user.
-pub fn make_user(user_id : Int, features : Array[Double]) -> User {
-  { user_id, features }
+pub fn make_user(user_id : Int32, features : Array[Double]) -> User {
+  { user_id, features, }
 }
 
+///|
 /// 构造物品 / Build item.
-pub fn make_item(item_id : Int, features : Array[Double]) -> Item {
-  { item_id, features }
+pub fn make_item(item_id : Int32, features : Array[Double]) -> Item {
+  { item_id, features, }
 }
 
+///|
 /// 构造评分 / Build rating.
-pub fn make_rating(user_id : Int, item_id : Int, score : Double) -> Rating {
-  { user_id, item_id, score }
+pub fn make_rating(user_id : Int32, item_id : Int32, score : Double) -> Rating {
+  { user_id, item_id, score, }
 }
 
+///|
 /// 构造交互 / Build interaction.
-pub fn make_interaction(user_id : Int, item_id : Int, timestamp : Int) -> Interaction {
-  { user_id, item_id, timestamp }
+pub fn make_interaction(
+  user_id : Int32,
+  item_id : Int32,
+  timestamp : Int32,
+) -> Interaction {
+  { user_id, item_id, timestamp, }
 }
 
+///|
 /// 构造评分矩阵（零初始化）/ Build rating matrix (zero-init).
-pub fn make_rating_matrix(num_users : Int, num_items : Int) -> RatingMatrix {
+pub fn make_rating_matrix(num_users : Int32, num_items : Int32) -> RatingMatrix {
   let data : Array[Array[Double]] = []
   for _ in 0..<num_users {
     data.push(Array::make(num_items, 0.0))
   }
-  { num_users, num_items, data }
+  { num_users, num_items, data, }
 }
 
+///|
 /// 归一化评分到 [0, 1] / Normalize ratings to [0, 1].
-pub fn normalize_ratings(matrix : RatingMatrix, min_val : Double, max_val : Double) -> RatingMatrix {
+pub fn normalize_ratings(
+  matrix : RatingMatrix,
+  min_val : Double,
+  max_val : Double,
+) -> RatingMatrix {
   let range = max_val - min_val
   if range == 0.0 {
     matrix
@@ -184,10 +243,11 @@ pub fn normalize_ratings(matrix : RatingMatrix, min_val : Double, max_val : Doub
       }
       data.push(row)
     }
-    { num_users: matrix.num_users, num_items: matrix.num_items, data }
+    { num_users: matrix.num_users, num_items: matrix.num_items, data, }
   }
 }
 
+///|
 /// 中心化评分（减去用户均值）/ Center ratings (subtract user mean).
 pub fn center_ratings(matrix : RatingMatrix) -> RatingMatrix {
   let data : Array[Array[Double]] = []
@@ -211,9 +271,10 @@ pub fn center_ratings(matrix : RatingMatrix) -> RatingMatrix {
     }
     data.push(row)
   }
-  { num_users: matrix.num_users, num_items: matrix.num_items, data }
+  { num_users: matrix.num_users, num_items: matrix.num_items, data, }
 }
 
+///|
 /// 余弦相似度 / Cosine similarity.
 pub fn cosine_sim_rec(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -229,10 +290,15 @@ pub fn cosine_sim_rec(a : Array[Double], b : Array[Double]) -> Double {
       nb = nb + b[i] * b[i]
     }
     let denom = sqrt(na) * sqrt(nb)
-    if denom == 0.0 { 0.0 } else { dot / denom }
+    if denom == 0.0 {
+      0.0
+    } else {
+      dot / denom
+    }
   }
 }
 
+///|
 /// 皮尔逊相关系数 / Pearson correlation.
 pub fn pearson_sim_rec(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -258,10 +324,15 @@ pub fn pearson_sim_rec(a : Array[Double], b : Array[Double]) -> Double {
       vb = vb + db * db
     }
     let denom = sqrt(va) * sqrt(vb)
-    if denom == 0.0 { 0.0 } else { cov / denom }
+    if denom == 0.0 {
+      0.0
+    } else {
+      cov / denom
+    }
   }
 }
 
+///|
 /// Jaccard 相似度 / Jaccard similarity.
 pub fn jaccard_sim_rec(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -280,19 +351,32 @@ pub fn jaccard_sim_rec(a : Array[Double], b : Array[Double]) -> Double {
         union = union + 1
       }
     }
-    if union == 0 { 0.0 } else { inter.to_double() / union.to_double() }
+    if union == 0 {
+      0.0
+    } else {
+      inter.to_double() / union.to_double()
+    }
   }
 }
 
+///|
 /// 基于用户的协同过滤 / User-based collaborative filtering.
-pub fn user_based_cf(matrix : RatingMatrix, user_id : Int, item_id : Int, k : Int) -> Double {
-  if user_id < 0 || user_id >= matrix.num_users || item_id < 0 || item_id >= matrix.num_items {
+pub fn user_based_cf(
+  matrix : RatingMatrix,
+  user_id : Int32,
+  item_id : Int32,
+  k : Int32,
+) -> Double {
+  if user_id < 0 ||
+    user_id >= matrix.num_users ||
+    item_id < 0 ||
+    item_id >= matrix.num_items {
     0.0
   } else if matrix.data[user_id][item_id] != 0.0 {
     matrix.data[user_id][item_id]
   } else {
     let target = matrix.data[user_id]
-    let sims : Array[(Int, Double)] = []
+    let sims : Array[(Int32, Double)] = []
     for u in 0..<matrix.num_users {
       if u != user_id && matrix.data[u][item_id] != 0.0 {
         let s = cosine_sim_rec(target, matrix.data[u])
@@ -312,14 +396,27 @@ pub fn user_based_cf(matrix : RatingMatrix, user_id : Int, item_id : Int, k : In
         num = num + s * matrix.data[u][item_id]
         den = den + abs_d(s)
       }
-      if den == 0.0 { 0.0 } else { num / den }
+      if den == 0.0 {
+        0.0
+      } else {
+        num / den
+      }
     }
   }
 }
 
+///|
 /// 基于物品的协同过滤 / Item-based collaborative filtering.
-pub fn item_based_cf(matrix : RatingMatrix, user_id : Int, item_id : Int, k : Int) -> Double {
-  if user_id < 0 || user_id >= matrix.num_users || item_id < 0 || item_id >= matrix.num_items {
+pub fn item_based_cf(
+  matrix : RatingMatrix,
+  user_id : Int32,
+  item_id : Int32,
+  k : Int32,
+) -> Double {
+  if user_id < 0 ||
+    user_id >= matrix.num_users ||
+    item_id < 0 ||
+    item_id >= matrix.num_items {
     0.0
   } else if matrix.data[user_id][item_id] != 0.0 {
     matrix.data[user_id][item_id]
@@ -328,7 +425,7 @@ pub fn item_based_cf(matrix : RatingMatrix, user_id : Int, item_id : Int, k : In
     for u in 0..<matrix.num_users {
       item_col.push(matrix.data[u][item_id])
     }
-    let sims : Array[(Int, Double)] = []
+    let sims : Array[(Int32, Double)] = []
     for j in 0..<matrix.num_items {
       if j != item_id && matrix.data[user_id][j] != 0.0 {
         let other_col : Array[Double] = []
@@ -352,13 +449,23 @@ pub fn item_based_cf(matrix : RatingMatrix, user_id : Int, item_id : Int, k : In
         num = num + s * matrix.data[user_id][j]
         den = den + abs_d(s)
       }
-      if den == 0.0 { 0.0 } else { num / den }
+      if den == 0.0 {
+        0.0
+      } else {
+        num / den
+      }
     }
   }
 }
 
+///|
 /// 预测评分 / Predict rating.
-pub fn predict_rating(matrix : RatingMatrix, user_id : Int, item_id : Int, method_ : Int) -> Double {
+pub fn predict_rating(
+  matrix : RatingMatrix,
+  user_id : Int32,
+  item_id : Int32,
+  method_ : Int32,
+) -> Double {
   if method_ == 0 {
     user_based_cf(matrix, user_id, item_id, 10)
   } else {
@@ -366,19 +473,24 @@ pub fn predict_rating(matrix : RatingMatrix, user_id : Int, item_id : Int, metho
   }
 }
 
+///|
 /// 推荐 Top-N / Recommend top-N items.
-pub fn recommend_top_n(matrix : RatingMatrix, user_id : Int, n : Int) -> Array[Int] {
+pub fn recommend_top_n(
+  matrix : RatingMatrix,
+  user_id : Int32,
+  n : Int32,
+) -> Array[Int32] {
   if user_id < 0 || user_id >= matrix.num_users {
     []
   } else {
-    let scores : Array[(Int, Double)] = []
+    let scores : Array[(Int32, Double)] = []
     for j in 0..<matrix.num_items {
       if matrix.data[user_id][j] == 0.0 {
         let s = user_based_cf(matrix, user_id, j, 10)
         scores.push((j, s))
       }
     }
-    let result : Array[Int] = []
+    let result : Array[Int32] = []
     for _ in 0..<n {
       let mut best_idx = -1
       let mut best_score = -1000.0
@@ -399,13 +511,24 @@ pub fn recommend_top_n(matrix : RatingMatrix, user_id : Int, n : Int) -> Array[I
   }
 }
 
+///|
 /// 为用户推荐 / Recommend for user.
-pub fn recommend_for_user(matrix : RatingMatrix, user_id : Int) -> Array[Int] {
+pub fn recommend_for_user(
+  matrix : RatingMatrix,
+  user_id : Int32,
+) -> Array[Int32] {
   recommend_top_n(matrix, user_id, 10)
 }
 
+///|
 /// 矩阵分解 / Matrix factorization (gradient descent).
-pub fn matrix_factorization(matrix : RatingMatrix, k : Int, lr : Double, reg : Double, epochs : Int) -> MFResult {
+pub fn matrix_factorization(
+  matrix : RatingMatrix,
+  k : Int32,
+  lr : Double,
+  reg : Double,
+  epochs : Int32,
+) -> MFResult {
   let nu = matrix.num_users
   let ni = matrix.num_items
   let uf : Array[Array[Double]] = []
@@ -436,13 +559,22 @@ pub fn matrix_factorization(matrix : RatingMatrix, k : Int, lr : Double, reg : D
       }
     }
   }
-  { num_users: nu, num_items: ni, k, user_factors: uf, item_factors: inf }
+  { num_users: nu, num_items: ni, k, user_factors: uf, item_factors: inf, }
 }
 
+///|
 /// SVD 推荐 / SVD-based recommendation (simplified as MF).
-pub fn svd_recommend(matrix : RatingMatrix, user_id : Int, item_id : Int, k : Int) -> Double {
+pub fn svd_recommend(
+  matrix : RatingMatrix,
+  user_id : Int32,
+  item_id : Int32,
+  k : Int32,
+) -> Double {
   let mf = matrix_factorization(matrix, k, 0.01, 0.1, 10)
-  if user_id < 0 || user_id >= mf.num_users || item_id < 0 || item_id >= mf.num_items {
+  if user_id < 0 ||
+    user_id >= mf.num_users ||
+    item_id < 0 ||
+    item_id >= mf.num_items {
     0.0
   } else {
     let mut pred = 0.0
@@ -453,24 +585,40 @@ pub fn svd_recommend(matrix : RatingMatrix, user_id : Int, item_id : Int, k : In
   }
 }
 
+///|
 /// ALS 分解 / ALS factorization (simplified).
-pub fn als_factorize(matrix : RatingMatrix, k : Int, epochs : Int) -> MFResult {
+pub fn als_factorize(
+  matrix : RatingMatrix,
+  k : Int32,
+  epochs : Int32,
+) -> MFResult {
   matrix_factorization(matrix, k, 0.01, 0.1, epochs)
 }
 
+///|
 /// 梯度下降分解 / Gradient descent factorization.
-pub fn gradient_factorize(matrix : RatingMatrix, k : Int, lr : Double, epochs : Int) -> MFResult {
+pub fn gradient_factorize(
+  matrix : RatingMatrix,
+  k : Int32,
+  lr : Double,
+  epochs : Int32,
+) -> MFResult {
   matrix_factorization(matrix, k, lr, 0.01, epochs)
 }
 
+///|
 /// 基于内容的推荐 / Content-based recommendation.
-pub fn content_based_rec(user : User, items : Array[Item], n : Int) -> Array[Int] {
-  let scores : Array[(Int, Double)] = []
+pub fn content_based_rec(
+  user : User,
+  items : Array[Item],
+  n : Int32,
+) -> Array[Int32] {
+  let scores : Array[(Int32, Double)] = []
   for i in 0..<items.length() {
     let s = cosine_sim_rec(user.features, items[i].features)
     scores.push((items[i].item_id, s))
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for _ in 0..<n {
     let mut best_idx = -1
     let mut best_score = -1000.0
@@ -490,14 +638,21 @@ pub fn content_based_rec(user : User, items : Array[Item], n : Int) -> Array[Int
   result
 }
 
+///|
 /// 混合推荐 / Hybrid recommendation.
-pub fn hybrid_recommend(matrix : RatingMatrix, user : User, items : Array[Item], alpha : Double, n : Int) -> Array[Int] {
+pub fn hybrid_recommend(
+  matrix : RatingMatrix,
+  user : User,
+  items : Array[Item],
+  alpha : Double,
+  n : Int32,
+) -> Array[Int32] {
   if user.user_id < 0 || user.user_id >= matrix.num_users {
     content_based_rec(user, items, n)
   } else {
     let cf_recs = recommend_top_n(matrix, user.user_id, n * 2)
     let cb_recs = content_based_rec(user, items, n * 2)
-    let scores : Array[(Int, Double)] = []
+    let scores : Array[(Int32, Double)] = []
     for i in 0..<cf_recs.length() {
       let weight = alpha * (1.0 / (i + 1).to_double())
       scores.push((cf_recs[i], weight))
@@ -518,7 +673,7 @@ pub fn hybrid_recommend(matrix : RatingMatrix, user : User, items : Array[Item],
         scores.push((cb_recs[i], weight))
       }
     }
-    let result : Array[Int] = []
+    let result : Array[Int32] = []
     for _ in 0..<n {
       let mut best_idx = -1
       let mut best_score = -1000.0
@@ -539,9 +694,10 @@ pub fn hybrid_recommend(matrix : RatingMatrix, user : User, items : Array[Item],
   }
 }
 
+///|
 /// 基于流行度的推荐 / Popularity-based recommendation.
-pub fn popularity_based_rec(matrix : RatingMatrix, n : Int) -> Array[Int] {
-  let counts : Array[(Int, Int)] = []
+pub fn popularity_based_rec(matrix : RatingMatrix, n : Int32) -> Array[Int32] {
+  let counts : Array[(Int32, Int32)] = []
   for j in 0..<matrix.num_items {
     let mut c = 0
     for i in 0..<matrix.num_users {
@@ -551,7 +707,7 @@ pub fn popularity_based_rec(matrix : RatingMatrix, n : Int) -> Array[Int] {
     }
     counts.push((j, c))
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for _ in 0..<n {
     let mut best_idx = -1
     let mut best_count = -1
@@ -571,9 +727,10 @@ pub fn popularity_based_rec(matrix : RatingMatrix, n : Int) -> Array[Int] {
   result
 }
 
+///|
 /// 随机推荐 / Random recommendation.
-pub fn random_rec(num_items : Int, n : Int) -> Array[Int] {
-  let result : Array[Int] = []
+pub fn random_rec(num_items : Int32, n : Int32) -> Array[Int32] {
+  let result : Array[Int32] = []
   let kk = if n < num_items { n } else { num_items }
   for i in 0..<kk {
     result.push(i)
@@ -581,8 +738,13 @@ pub fn random_rec(num_items : Int, n : Int) -> Array[Int] {
   result
 }
 
+///|
 /// 基线推荐 / Baseline recommendation (global mean).
-pub fn baseline_rec(matrix : RatingMatrix, user_id : Int, item_id : Int) -> Double {
+pub fn baseline_rec(
+  matrix : RatingMatrix,
+  user_id : Int32,
+  item_id : Int32,
+) -> Double {
   let mut sum = 0.0
   let mut count = 0
   for i in 0..<matrix.num_users {
@@ -625,8 +787,9 @@ pub fn baseline_rec(matrix : RatingMatrix, user_id : Int, item_id : Int) -> Doub
   u_mean + i_mean - mean
 }
 
+///|
 /// 构造嵌入 / Build embedding.
-pub fn make_embedding_rec(num_entities : Int, dim : Int) -> EmbeddingRec {
+pub fn make_embedding_rec(num_entities : Int32, dim : Int32) -> EmbeddingRec {
   let vectors : Array[Array[Double]] = []
   for i in 0..<num_entities {
     let v : Array[Double] = []
@@ -635,11 +798,12 @@ pub fn make_embedding_rec(num_entities : Int, dim : Int) -> EmbeddingRec {
     }
     vectors.push(v)
   }
-  { num_entities, dim, vectors }
+  { num_entities, dim, vectors, }
 }
 
+///|
 /// 嵌入点积 / Embedding dot product.
-pub fn embedding_dot(emb : EmbeddingRec, i : Int, j : Int) -> Double {
+pub fn embedding_dot(emb : EmbeddingRec, i : Int32, j : Int32) -> Double {
   if i < 0 || i >= emb.num_entities || j < 0 || j >= emb.num_entities {
     0.0
   } else {
@@ -651,18 +815,23 @@ pub fn embedding_dot(emb : EmbeddingRec, i : Int, j : Int) -> Double {
   }
 }
 
+///|
 /// 嵌入推荐 / Embedding-based recommendation.
-pub fn embedding_recommend(emb : EmbeddingRec, target : Int, n : Int) -> Array[Int] {
+pub fn embedding_recommend(
+  emb : EmbeddingRec,
+  target : Int32,
+  n : Int32,
+) -> Array[Int32] {
   if target < 0 || target >= emb.num_entities {
     []
   } else {
-    let scores : Array[(Int, Double)] = []
+    let scores : Array[(Int32, Double)] = []
     for j in 0..<emb.num_entities {
       if j != target {
         scores.push((j, embedding_dot(emb, target, j)))
       }
     }
-    let result : Array[Int] = []
+    let result : Array[Int32] = []
     for _ in 0..<n {
       let mut best_idx = -1
       let mut best_score = -1000.0
@@ -683,6 +852,7 @@ pub fn embedding_recommend(emb : EmbeddingRec, target : Int, n : Int) -> Array[I
   }
 }
 
+///|
 /// RMSE 评估 / RMSE evaluation.
 pub fn evaluate_rmse(pred : Array[Double], actual : Array[Double]) -> Double {
   let n = pred.length()
@@ -698,6 +868,7 @@ pub fn evaluate_rmse(pred : Array[Double], actual : Array[Double]) -> Double {
   }
 }
 
+///|
 /// MAE 评估 / MAE evaluation.
 pub fn evaluate_mae(pred : Array[Double], actual : Array[Double]) -> Double {
   let n = pred.length()
@@ -712,8 +883,12 @@ pub fn evaluate_mae(pred : Array[Double], actual : Array[Double]) -> Double {
   }
 }
 
+///|
 /// Precision/Recall 评估 / Precision and recall.
-pub fn evaluate_precision_recall(recommended : Array[Int], relevant : Array[Int]) -> (Double, Double) {
+pub fn evaluate_precision_recall(
+  recommended : Array[Int32],
+  relevant : Array[Int32],
+) -> (Double, Double) {
   let mut hits = 0
   for i in 0..<recommended.length() {
     for j in 0..<relevant.length() {
@@ -735,8 +910,12 @@ pub fn evaluate_precision_recall(recommended : Array[Int], relevant : Array[Int]
   (precision, recall)
 }
 
+///|
 /// NDCG 评估 / NDCG evaluation.
-pub fn evaluate_ndcg(recommended : Array[Int], relevant : Array[Int]) -> Double {
+pub fn evaluate_ndcg(
+  recommended : Array[Int32],
+  relevant : Array[Int32],
+) -> Double {
   if recommended.length() == 0 {
     0.0
   } else {
@@ -767,12 +946,20 @@ pub fn evaluate_ndcg(recommended : Array[Int], relevant : Array[Int]) -> Double 
         idcg = idcg + 1.0 / log((i + 2).to_double())
       }
     }
-    if idcg == 0.0 { 0.0 } else { dcg / idcg }
+    if idcg == 0.0 {
+      0.0
+    } else {
+      dcg / idcg
+    }
   }
 }
 
+///|
 /// MAP 评估 / Mean Average Precision.
-pub fn evaluate_map(recommended : Array[Int], relevant : Array[Int]) -> Double {
+pub fn evaluate_map(
+  recommended : Array[Int32],
+  relevant : Array[Int32],
+) -> Double {
   if recommended.length() == 0 || relevant.length() == 0 {
     0.0
   } else {
@@ -790,12 +977,20 @@ pub fn evaluate_map(recommended : Array[Int], relevant : Array[Int]) -> Double {
         sum_prec = sum_prec + hits.to_double() / (i + 1).to_double()
       }
     }
-    if hits == 0 { 0.0 } else { sum_prec / relevant.length().to_double() }
+    if hits == 0 {
+      0.0
+    } else {
+      sum_prec / relevant.length().to_double()
+    }
   }
 }
 
+///|
 /// Hit Rate 评估 / Hit rate.
-pub fn evaluate_hit_rate(recommended : Array[Int], relevant : Array[Int]) -> Double {
+pub fn evaluate_hit_rate(
+  recommended : Array[Int32],
+  relevant : Array[Int32],
+) -> Double {
   let mut hit = 0
   for i in 0..<recommended.length() {
     for j in 0..<relevant.length() {
@@ -807,12 +1002,16 @@ pub fn evaluate_hit_rate(recommended : Array[Int], relevant : Array[Int]) -> Dou
   hit.to_double()
 }
 
+///|
 /// 覆盖率 / Catalog coverage.
-pub fn coverage(recommended_lists : Array[Array[Int]], num_total_items : Int) -> Double {
+pub fn coverage(
+  recommended_lists : Array[Array[Int32]],
+  num_total_items : Int32,
+) -> Double {
   if num_total_items == 0 {
     0.0
   } else {
-    let unique : Array[Int] = []
+    let unique : Array[Int32] = []
     for i in 0..<recommended_lists.length() {
       for j in 0..<recommended_lists[i].length() {
         let item = recommended_lists[i][j]
@@ -822,7 +1021,7 @@ pub fn coverage(recommended_lists : Array[Array[Int]], num_total_items : Int) ->
             found = true
           }
         }
-        if !(found) {
+        if !found {
           unique.push(item)
         }
       }
@@ -831,8 +1030,13 @@ pub fn coverage(recommended_lists : Array[Array[Int]], num_total_items : Int) ->
   }
 }
 
+///|
 /// 新颖性 / Novelty (mean self-information).
-pub fn novelty(recommended : Array[Int], item_popularity : Array[Double], total_users : Int) -> Double {
+pub fn novelty(
+  recommended : Array[Int32],
+  item_popularity : Array[Double],
+  total_users : Int32,
+) -> Double {
   if recommended.length() == 0 || total_users == 0 {
     0.0
   } else {
@@ -842,7 +1046,7 @@ pub fn novelty(recommended : Array[Int], item_popularity : Array[Double], total_
       if item >= 0 && item < item_popularity.length() {
         let p = item_popularity[item] / total_users.to_double()
         if p > 0.0 {
-          sum = sum + (-1.0) * log(p)
+          sum = sum + -1.0 * log(p)
         }
       }
     }
@@ -850,8 +1054,12 @@ pub fn novelty(recommended : Array[Int], item_popularity : Array[Double], total_
   }
 }
 
+///|
 /// 多样性 / Diversity (mean pairwise distance).
-pub fn diversity(recommended : Array[Int], item_features : Array[Array[Double]]) -> Double {
+pub fn diversity(
+  recommended : Array[Int32],
+  item_features : Array[Array[Double]],
+) -> Double {
   let n = recommended.length()
   if n < 2 {
     0.0
@@ -863,19 +1071,31 @@ pub fn diversity(recommended : Array[Int], item_features : Array[Array[Double]])
       for j in start..<n {
         let a = recommended[i]
         let b = recommended[j]
-        if a >= 0 && a < item_features.length() && b >= 0 && b < item_features.length() {
+        if a >= 0 &&
+          a < item_features.length() &&
+          b >= 0 &&
+          b < item_features.length() {
           let dist = 1.0 - cosine_sim_rec(item_features[a], item_features[b])
           sum = sum + dist
           count = count + 1
         }
       }
     }
-    if count == 0 { 0.0 } else { sum / count.to_double() }
+    if count == 0 {
+      0.0
+    } else {
+      sum / count.to_double()
+    }
   }
 }
 
+///|
 /// 意外性 / Serendipity.
-pub fn serendipity(recommended : Array[Int], relevant : Array[Int], expected : Array[Int]) -> Double {
+pub fn serendipity(
+  recommended : Array[Int32],
+  relevant : Array[Int32],
+  expected : Array[Int32],
+) -> Double {
   if recommended.length() == 0 {
     0.0
   } else {
@@ -894,7 +1114,7 @@ pub fn serendipity(recommended : Array[Int], relevant : Array[Int], expected : A
           is_exp = true
         }
       }
-      if is_rel && !(is_exp) {
+      if is_rel && !is_exp {
         sum = sum + 1.0
       }
     }
@@ -902,14 +1122,24 @@ pub fn serendipity(recommended : Array[Int], relevant : Array[Int], expected : A
   }
 }
 
+///|
 /// 构造会话 / Build session.
-pub fn make_session(session_id : Int, items : Array[Int], timestamps : Array[Int]) -> Session {
-  { session_id, items, timestamps }
+pub fn make_session(
+  session_id : Int32,
+  items : Array[Int32],
+  timestamps : Array[Int32],
+) -> Session {
+  { session_id, items, timestamps, }
 }
 
+///|
 /// 基于会话的推荐 / Session-based recommendation.
-pub fn session_based_rec(session : Session, item_co_occurrence : Array[Array[Int]], n : Int) -> Array[Int] {
-  let scores : Array[(Int, Double)] = []
+pub fn session_based_rec(
+  session : Session,
+  item_co_occurrence : Array[Array[Int32]],
+  n : Int32,
+) -> Array[Int32] {
+  let scores : Array[(Int32, Double)] = []
   let num_items = item_co_occurrence.length()
   for j in 0..<num_items {
     let mut s = 0.0
@@ -925,11 +1155,11 @@ pub fn session_based_rec(session : Session, item_co_occurrence : Array[Array[Int
         in_session = true
       }
     }
-    if !(in_session) && s > 0.0 {
+    if !in_session && s > 0.0 {
       scores.push((j, s))
     }
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for _ in 0..<n {
     let mut best_idx = -1
     let mut best_score = -1000.0
@@ -949,8 +1179,13 @@ pub fn session_based_rec(session : Session, item_co_occurrence : Array[Array[Int
   result
 }
 
+///|
 /// 顺序推荐 / Sequential recommendation.
-pub fn sequential_rec(history : Array[Int], transition_matrix : Array[Array[Double]], n : Int) -> Array[Int] {
+pub fn sequential_rec(
+  history : Array[Int32],
+  transition_matrix : Array[Array[Double]],
+  n : Int32,
+) -> Array[Int32] {
   if history.length() == 0 {
     []
   } else {
@@ -958,12 +1193,12 @@ pub fn sequential_rec(history : Array[Int], transition_matrix : Array[Array[Doub
     if last < 0 || last >= transition_matrix.length() {
       []
     } else {
-      let scores : Array[(Int, Double)] = []
+      let scores : Array[(Int32, Double)] = []
       let row = transition_matrix[last]
       for j in 0..<row.length() {
         scores.push((j, row[j]))
       }
-      let result : Array[Int] = []
+      let result : Array[Int32] = []
       for _ in 0..<n {
         let mut best_idx = -1
         let mut best_score = -1000.0
@@ -985,18 +1220,20 @@ pub fn sequential_rec(history : Array[Int], transition_matrix : Array[Array[Doub
   }
 }
 
+///|
 /// 构造规则 / Build rule.
-pub fn make_rule_rec(item_id : Int, weight : Double) -> Rule {
-  { item_id, weight }
+pub fn make_rule_rec(item_id : Int32, weight : Double) -> Rule {
+  { item_id, weight, }
 }
 
+///|
 /// 基于规则的推荐 / Rule-based recommendation.
-pub fn rule_based_recommend(rules : Array[Rule], n : Int) -> Array[Int] {
+pub fn rule_based_recommend(rules : Array[Rule], n : Int32) -> Array[Int32] {
   let sorted : Array[Rule] = []
   for i in 0..<rules.length() {
     sorted.push(rules[i])
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for _ in 0..<n {
     let mut best_idx = -1
     let mut best_weight = -1000.0
@@ -1008,25 +1245,35 @@ pub fn rule_based_recommend(rules : Array[Rule], n : Int) -> Array[Int] {
     }
     if best_idx >= 0 {
       result.push(sorted[best_idx].item_id)
-      sorted[best_idx] = { item_id: sorted[best_idx].item_id, weight: -1000.0 }
+      sorted[best_idx] = { item_id: sorted[best_idx].item_id, weight: -1000.0, }
     }
   }
   result
 }
 
+///|
 /// 冷启动用户 / Cold start user.
-pub fn cold_start_user(user : User, items : Array[Item], n : Int) -> Array[Int] {
+pub fn cold_start_user(
+  user : User,
+  items : Array[Item],
+  n : Int32,
+) -> Array[Int32] {
   content_based_rec(user, items, n)
 }
 
+///|
 /// 冷启动物品 / Cold start item.
-pub fn cold_start_item(item : Item, users : Array[User], n : Int) -> Array[Int] {
-  let scores : Array[(Int, Double)] = []
+pub fn cold_start_item(
+  item : Item,
+  users : Array[User],
+  n : Int32,
+) -> Array[Int32] {
+  let scores : Array[(Int32, Double)] = []
   for i in 0..<users.length() {
     let s = cosine_sim_rec(item.features, users[i].features)
     scores.push((users[i].user_id, s))
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for _ in 0..<n {
     let mut best_idx = -1
     let mut best_score = -1000.0
@@ -1046,8 +1293,9 @@ pub fn cold_start_item(item : Item, users : Array[User], n : Int) -> Array[Int] 
   result
 }
 
+///|
 /// 多臂老虎机推荐 / Multi-armed bandit recommendation.
-pub fn bandit_rec(counts : Array[Int], rewards : Array[Double]) -> Int {
+pub fn bandit_rec(counts : Array[Int32], rewards : Array[Double]) -> Int32 {
   let n = counts.length()
   if n == 0 {
     0
@@ -1069,8 +1317,12 @@ pub fn bandit_rec(counts : Array[Int], rewards : Array[Double]) -> Int {
   }
 }
 
+///|
 /// Thompson 采样 / Thompson sampling.
-pub fn thompson_sampling(counts : Array[Int], successes : Array[Int]) -> Int {
+pub fn thompson_sampling(
+  counts : Array[Int32],
+  successes : Array[Int32],
+) -> Int32 {
   let n = counts.length()
   if n == 0 {
     0
@@ -1090,8 +1342,13 @@ pub fn thompson_sampling(counts : Array[Int], successes : Array[Int]) -> Int {
   }
 }
 
+///|
 /// UCB 推荐 / Upper Confidence Bound.
-pub fn ucb_rec(counts : Array[Int], rewards : Array[Double], total_count : Int) -> Int {
+pub fn ucb_rec(
+  counts : Array[Int32],
+  rewards : Array[Double],
+  total_count : Int32,
+) -> Int32 {
   let n = counts.length()
   if n == 0 {
     0
@@ -1122,13 +1379,23 @@ pub fn ucb_rec(counts : Array[Int], rewards : Array[Double], total_count : Int) 
   }
 }
 
+///|
 /// 构造上下文强盗 / Build contextual bandit.
-pub fn make_contextual(num_arms : Int) -> ContextualBandit {
-  { num_arms, counts: Array::make(num_arms, 0), rewards: Array::make(num_arms, 0.0), values: Array::make(num_arms, 0.0) }
+pub fn make_contextual(num_arms : Int32) -> ContextualBandit {
+  {
+    num_arms,
+    counts: Array::make(num_arms, 0),
+    rewards: Array::make(num_arms, 0.0),
+    values: Array::make(num_arms, 0.0),
+  }
 }
 
+///|
 /// 上下文强盗推荐 / Contextual bandit recommendation.
-pub fn contextual_bandit(state : ContextualBandit, context : Array[Double]) -> Int {
+pub fn contextual_bandit(
+  state : ContextualBandit,
+  context : Array[Double],
+) -> Int32 {
   let n = state.num_arms
   if n == 0 {
     0
@@ -1155,6 +1422,7 @@ pub fn contextual_bandit(state : ContextualBandit, context : Array[Double]) -> I
   }
 }
 
+///|
 /// 模块标识 / Module identifier.
 pub fn recommendation_id() -> String {
   "opcore/recommendation"

@@ -6,6 +6,7 @@
 ///
 /// # Data format conversion
 
+///|
 /// 数据类型 / Data type.
 pub(all) enum DataType {
   StringType
@@ -15,6 +16,7 @@ pub(all) enum DataType {
   NullType
 } derive(Eq, Debug)
 
+///|
 /// 列定义 / Column definition.
 pub struct ColumnDef {
   name : String
@@ -22,35 +24,45 @@ pub struct ColumnDef {
   nullable : Bool
 }
 
+///|
 /// 行数据 / Row data.
 pub struct Row {
   values : Array[String]
 }
 
+///|
 /// 表数据 / Table data.
 pub struct Table {
   columns : Array[ColumnDef]
   rows : Array[Row]
 }
 
+///|
 /// 构造列定义 / Create column definition.
-pub fn make_column(name : String, data_type : DataType, nullable : Bool) -> ColumnDef {
-  { name: name, data_type: data_type, nullable: nullable }
+pub fn make_column(
+  name : String,
+  data_type : DataType,
+  nullable : Bool,
+) -> ColumnDef {
+  { name, data_type, nullable, }
 }
 
+///|
 /// 构造行 / Create row.
 pub fn make_row(values : Array[String]) -> Row {
-  { values: values }
+  { values, }
 }
 
+///|
 /// 构造表 / Create table.
 pub fn make_table(columns : Array[ColumnDef], rows : Array[Row]) -> Table {
-  { columns: columns, rows: rows }
+  { columns, rows, }
 }
 
 ///===
 /// Schema 推断 / Schema inference
 
+///|
 /// 推断数据类型 / Infer data type from string.
 pub fn infer_type(s : String) -> DataType {
   if s == "" || s == "null" || s == "NULL" || s == "None" {
@@ -66,6 +78,7 @@ pub fn infer_type(s : String) -> DataType {
   }
 }
 
+///|
 fn is_int_string(s : String) -> Bool {
   if s.length() == 0 {
     return false
@@ -86,6 +99,7 @@ fn is_int_string(s : String) -> Bool {
   true
 }
 
+///|
 fn is_float_string(s : String) -> Bool {
   if s.length() == 0 {
     return false
@@ -99,7 +113,9 @@ fn is_float_string(s : String) -> Bool {
   for i in start..<s.length() {
     let code = s[i].to_int()
     if code == 46 {
-      if has_dot { return false }
+      if has_dot {
+        return false
+      }
       has_dot = true
     } else if code >= 48 && code <= 57 {
       has_digit = true
@@ -110,6 +126,7 @@ fn is_float_string(s : String) -> Bool {
   has_dot && has_digit
 }
 
+///|
 /// 推断列类型 / Infer column type from values.
 pub fn infer_column_type(values : Array[String]) -> DataType {
   if values.length() == 0 {
@@ -148,6 +165,7 @@ pub fn infer_column_type(values : Array[String]) -> DataType {
 ///===
 /// 行列转换 / Row-column transpose
 
+///|
 /// 转置表 / Transpose table (rows to columns).
 pub fn transpose_table(table : Table) -> Table {
   if table.rows.length() == 0 {
@@ -173,9 +191,9 @@ pub fn transpose_table(table : Table) -> Table {
   make_table(new_columns, new_rows)
 }
 
+///|
 ///===
 /// 类型名称 / Type name
-
 pub fn type_name(dt : DataType) -> String {
   match dt {
     StringType => "string"
@@ -186,19 +204,21 @@ pub fn type_name(dt : DataType) -> String {
   }
 }
 
+///|
 ///===
 /// 表统计 / Table statistics
-
-pub fn row_count(table : Table) -> Int {
+pub fn row_count(table : Table) -> Int32 {
   table.rows.length()
 }
 
-pub fn column_count(table : Table) -> Int {
+///|
+pub fn column_count(table : Table) -> Int32 {
   table.columns.length()
 }
 
+///|
 /// 获取列索引 / Get column index by name.
-pub fn column_index(table : Table, name : String) -> Int? {
+pub fn column_index(table : Table, name : String) -> Int32? {
   for i in 0..<table.columns.length() {
     if table.columns[i].name == name {
       return Some(i)
@@ -207,8 +227,9 @@ pub fn column_index(table : Table, name : String) -> Int? {
   None
 }
 
+///|
 /// 获取列值 / Get column values.
-pub fn column_values(table : Table, col_idx : Int) -> Array[String] {
+pub fn column_values(table : Table, col_idx : Int32) -> Array[String] {
   let result : Array[String] = []
   for i in 0..<table.rows.length() {
     if col_idx < table.rows[i].values.length() {
@@ -220,9 +241,9 @@ pub fn column_values(table : Table, col_idx : Int) -> Array[String] {
   result
 }
 
+///|
 ///===
 /// ID
-
 pub fn format_id() -> String {
   "io/format"
 }

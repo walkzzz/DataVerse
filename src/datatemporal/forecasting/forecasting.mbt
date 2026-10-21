@@ -6,43 +6,54 @@
 ///
 /// # Forecasting operators
 
+///|
 ///===
 /// 内部数学辅助 / Internal math helpers
-
 fn fc_abs_val(x : Double) -> Double {
-  if x < 0.0 { -x } else { x }
+  if x < 0.0 {
+    -x
+  } else {
+    x
+  }
 }
 
+///|
 ///===
 /// Time Series
-
 pub struct TimeSeries {
   values : Array[Double]
-  timestamps : Array[Int]
+  timestamps : Array[Int32]
 }
 
-pub fn make_time_series(values : Array[Double], timestamps : Array[Int]) -> TimeSeries {
-  { values, timestamps }
+///|
+pub fn make_time_series(
+  values : Array[Double],
+  timestamps : Array[Int32],
+) -> TimeSeries {
+  { values, timestamps, }
 }
 
-pub fn ts_length(ts : TimeSeries) -> Int {
+///|
+pub fn ts_length(ts : TimeSeries) -> Int32 {
   ts.values.length()
 }
 
+///|
 pub fn ts_values(ts : TimeSeries) -> Array[Double] {
   ts.values
 }
 
-pub fn ts_timestamps(ts : TimeSeries) -> Array[Int] {
+///|
+pub fn ts_timestamps(ts : TimeSeries) -> Array[Int32] {
   ts.timestamps
 }
 
+///|
 ///===
 /// Moving Average
-
 pub fn simple_moving_average_forecast(
   values : Array[Double],
-  window : Int
+  window : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 || window <= 0 {
@@ -63,9 +74,10 @@ pub fn simple_moving_average_forecast(
   result
 }
 
+///|
 pub fn weighted_moving_average_forecast(
   values : Array[Double],
-  weights : Array[Double]
+  weights : Array[Double],
 ) -> Array[Double] {
   let n = values.length()
   let w = weights.length()
@@ -94,12 +106,12 @@ pub fn weighted_moving_average_forecast(
   result
 }
 
+///|
 ///===
 /// Exponential Smoothing
-
 pub fn exponential_smoothing_forecast(
   values : Array[Double],
-  alpha : Double
+  alpha : Double,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 {
@@ -113,10 +125,11 @@ pub fn exponential_smoothing_forecast(
   result
 }
 
+///|
 pub fn double_exponential_smoothing(
   values : Array[Double],
   alpha : Double,
-  beta : Double
+  beta : Double,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 {
@@ -137,12 +150,13 @@ pub fn double_exponential_smoothing(
   result
 }
 
+///|
 pub fn triple_exponential_smoothing(
   values : Array[Double],
   alpha : Double,
   beta : Double,
   gamma : Double,
-  season_length : Int
+  season_length : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 || season_length <= 0 {
@@ -168,9 +182,11 @@ pub fn triple_exponential_smoothing(
     let prev_level = level[i - 1]
     let prev_trend = trend[i - 1]
     let seasonal_idx = i - s
-    level[i] = alpha * (values[i] - season[seasonal_idx]) + (1.0 - alpha) * (prev_level + prev_trend)
+    level[i] = alpha * (values[i] - season[seasonal_idx]) +
+      (1.0 - alpha) * (prev_level + prev_trend)
     trend[i] = beta * (level[i] - prev_level) + (1.0 - beta) * prev_trend
-    season[i] = gamma * (values[i] - level[i]) + (1.0 - gamma) * season[seasonal_idx]
+    season[i] = gamma * (values[i] - level[i]) +
+      (1.0 - gamma) * season[seasonal_idx]
   }
   let result : Array[Double] = []
   for i in 0..<n {
@@ -180,45 +196,51 @@ pub fn triple_exponential_smoothing(
   result
 }
 
+///|
 pub fn holt_winters(
   values : Array[Double],
   alpha : Double,
   beta : Double,
   gamma : Double,
-  season_length : Int,
-  horizon : Int
+  season_length : Int32,
+  horizon : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 || season_length <= 0 {
     return []
   }
-  let smoothed = triple_exponential_smoothing(values, alpha, beta, gamma, season_length)
+  let smoothed = triple_exponential_smoothing(
+    values, alpha, beta, gamma, season_length,
+  )
   let last_level = if n > 0 { smoothed[n - 1] } else { 0.0 }
   let result : Array[Double] = []
-  for h in 1..=horizon {
+  for h in 1..<=horizon {
     let s_idx = (n + h - 1) % season_length
-    result.push(last_level + h.to_double() * 0.0 + smoothed[s_idx % smoothed.length()])
+    result.push(
+      last_level + h.to_double() * 0.0 + smoothed[s_idx % smoothed.length()],
+    )
   }
   result
 }
 
+///|
 ///===
 /// ARIMA
-
 pub struct ARIMAModel {
-  p : Int
-  d : Int
-  q : Int
+  p : Int32
+  d : Int32
+  q : Int32
   phi : Array[Double]
   theta : Array[Double]
   residual : Double
 }
 
+///|
 pub fn arima_fit(
   values : Array[Double],
-  p : Int,
-  d : Int,
-  q : Int
+  p : Int32,
+  d : Int32,
+  q : Int32,
 ) -> ARIMAModel {
   let phi = Array::make(p, 0.0)
   let theta = Array::make(q, 0.0)
@@ -231,10 +253,15 @@ pub fn arima_fit(
     }
     residual = sum / (n - p).to_double()
   }
-  { p, d, q, phi, theta, residual }
+  { p, d, q, phi, theta, residual, }
 }
 
-pub fn arima_predict(model : ARIMAModel, values : Array[Double], horizon : Int) -> Array[Double] {
+///|
+pub fn arima_predict(
+  model : ARIMAModel,
+  values : Array[Double],
+  horizon : Int32,
+) -> Array[Double] {
   let n = values.length()
   if n == 0 || horizon <= 0 {
     return []
@@ -255,23 +282,24 @@ pub fn arima_predict(model : ARIMAModel, values : Array[Double], horizon : Int) 
   result
 }
 
+///|
 pub fn arima_forecast(
   values : Array[Double],
-  p : Int,
-  d : Int,
-  q : Int,
-  horizon : Int
+  p : Int32,
+  d : Int32,
+  q : Int32,
+  horizon : Int32,
 ) -> Array[Double] {
   let model = arima_fit(values, p, d, q)
   arima_predict(model, values, horizon)
 }
 
+///|
 ///===
 /// Trend
-
 pub fn linear_trend_forecast(
   values : Array[Double],
-  horizon : Int
+  horizon : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 || horizon <= 0 {
@@ -291,19 +319,24 @@ pub fn linear_trend_forecast(
   }
   let nd = n.to_double()
   let denom = nd * sum_x2 - sum_x * sum_x
-  let slope = if denom == 0.0 { 0.0 } else { (nd * sum_xy - sum_x * sum_y) / denom }
+  let slope = if denom == 0.0 {
+    0.0
+  } else {
+    (nd * sum_xy - sum_x * sum_y) / denom
+  }
   let intercept = (sum_y - slope * sum_x) / nd
   let result : Array[Double] = []
-  for h in 1..=horizon {
+  for h in 1..<=horizon {
     let x = (n + h - 1).to_double()
     result.push(intercept + slope * x)
   }
   result
 }
 
+///|
 pub fn quadratic_trend_forecast(
   values : Array[Double],
-  horizon : Int
+  horizon : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 || horizon <= 0 {
@@ -313,7 +346,7 @@ pub fn quadratic_trend_forecast(
   let mean_val = @_common.mean(values)
   let result : Array[Double] = []
   for h in 0..<horizon {
-    let adjustment = (h.to_double() * h.to_double()) * 0.001 * mean_val
+    let adjustment = h.to_double() * h.to_double() * 0.001 * mean_val
     if h < linear_pred.length() {
       result.push(linear_pred[h] + adjustment)
     } else {
@@ -323,22 +356,23 @@ pub fn quadratic_trend_forecast(
   result
 }
 
+///|
 ///===
 /// Seasonal Decomposition
-
 pub struct SeasonalDecomposition {
   trend : Array[Double]
   seasonal : Array[Double]
   remainder : Array[Double]
 }
 
+///|
 pub fn seasonal_decompose(
   values : Array[Double],
-  season_length : Int
+  season_length : Int32,
 ) -> SeasonalDecomposition {
   let n = values.length()
   if n == 0 || season_length <= 0 {
-    return { trend: [], seasonal: [], remainder: [] }
+    return { trend: [], seasonal: [], remainder: [], }
   }
   let trend = simple_moving_average_forecast(values, season_length)
   let seasonal : Array[Double] = Array::make(n, 0.0)
@@ -347,12 +381,13 @@ pub fn seasonal_decompose(
     seasonal[i] = values[i] - trend[i]
     remainder[i] = values[i] - trend[i] - seasonal[i]
   }
-  { trend, seasonal, remainder }
+  { trend, seasonal, remainder, }
 }
 
+///|
 pub fn seasonal_adjust(
   values : Array[Double],
-  season_length : Int
+  season_length : Int32,
 ) -> Array[Double] {
   let decomp = seasonal_decompose(values, season_length)
   let result : Array[Double] = []
@@ -362,12 +397,12 @@ pub fn seasonal_adjust(
   result
 }
 
+///|
 ///===
 /// Autocorrelation
-
 pub fn autocorrelation_func(
   values : Array[Double],
-  max_lag : Int
+  max_lag : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 || max_lag <= 0 {
@@ -383,7 +418,7 @@ pub fn autocorrelation_func(
     return Array::make(max_lag, 0.0)
   }
   let result : Array[Double] = []
-  for lag in 1..=max_lag {
+  for lag in 1..<=max_lag {
     let mut cov = 0.0
     for i in 0..<(n - lag) {
       cov = cov + (values[i] - mean) * (values[i + lag] - mean)
@@ -393,9 +428,10 @@ pub fn autocorrelation_func(
   result
 }
 
+///|
 pub fn partial_autocorrelation(
   values : Array[Double],
-  max_lag : Int
+  max_lag : Int32,
 ) -> Array[Double] {
   let acf = autocorrelation_func(values, max_lag)
   let n = acf.length()
@@ -418,25 +454,27 @@ pub fn partial_autocorrelation(
   pacf
 }
 
+///|
 ///===
 /// LSTM Forecast (simplified)
-
 pub struct LSTMForecast {
   weights : Array[Double]
-  hidden_size : Int
+  hidden_size : Int32
   learning_rate : Double
 }
 
+///|
 pub fn make_lstm_forecast(
-  hidden_size : Int,
-  learning_rate : Double
+  hidden_size : Int32,
+  learning_rate : Double,
 ) -> LSTMForecast {
-  { weights: Array::make(hidden_size, 0.0), hidden_size, learning_rate }
+  { weights: Array::make(hidden_size, 0.0), hidden_size, learning_rate, }
 }
 
+///|
 pub fn lstm_forecast_fit(
   model : LSTMForecast,
-  values : Array[Double]
+  values : Array[Double],
 ) -> LSTMForecast {
   let n = values.length()
   if n == 0 {
@@ -446,18 +484,24 @@ pub fn lstm_forecast_fit(
   let new_weights : Array[Double] = Array::make(model.hidden_size, 0.0)
   for i in 0..<model.hidden_size {
     if i < n {
-      new_weights[i] = model.weights[i] + model.learning_rate * (values[i] - mean_val)
+      new_weights[i] = model.weights[i] +
+        model.learning_rate * (values[i] - mean_val)
     } else {
       new_weights[i] = model.weights[i]
     }
   }
-  { weights: new_weights, hidden_size: model.hidden_size, learning_rate: model.learning_rate }
+  {
+    weights: new_weights,
+    hidden_size: model.hidden_size,
+    learning_rate: model.learning_rate,
+  }
 }
 
+///|
 pub fn lstm_forecast_predict(
   model : LSTMForecast,
   values : Array[Double],
-  horizon : Int
+  horizon : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 || horizon <= 0 {
@@ -478,25 +522,25 @@ pub fn lstm_forecast_predict(
   result
 }
 
+///|
 ///===
 /// Prophet Forecast (simplified)
-
 pub struct ProphetForecast {
   growth : Double
   seasonality : Double
-  changepoints : Array[Int]
+  changepoints : Array[Int32]
 }
 
+///|
 pub fn make_prophet_forecast(
   growth : Double,
-  seasonality : Double
+  seasonality : Double,
 ) -> ProphetForecast {
-  { growth, seasonality, changepoints: [] }
+  { growth, seasonality, changepoints: [], }
 }
 
-pub fn prophet_fit(
-  values : Array[Double]
-) -> ProphetForecast {
+///|
+pub fn prophet_fit(values : Array[Double]) -> ProphetForecast {
   let n = values.length()
   if n < 2 {
     return make_prophet_forecast(0.0, 0.0)
@@ -504,13 +548,14 @@ pub fn prophet_fit(
   let growth = (values[n - 1] - values[0]) / n.to_double()
   let mean_val = @_common.mean(values)
   let seasonality = mean_val * 0.1
-  { growth, seasonality, changepoints: [] }
+  { growth, seasonality, changepoints: [], }
 }
 
+///|
 pub fn prophet_predict(
   model : ProphetForecast,
   values : Array[Double],
-  horizon : Int
+  horizon : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 || horizon <= 0 {
@@ -518,7 +563,7 @@ pub fn prophet_predict(
   }
   let last_val = values[n - 1]
   let result : Array[Double] = []
-  for h in 1..=horizon {
+  for h in 1..<=horizon {
     let trend = last_val + model.growth * h.to_double()
     let seasonal = model.seasonality * (h.to_double() * 0.1)
     result.push(trend + seasonal)
@@ -526,12 +571,10 @@ pub fn prophet_predict(
   result
 }
 
+///|
 ///===
 /// Ensemble
-
-pub fn ensemble_forecast(
-  forecasts : Array[Array[Double]]
-) -> Array[Double] {
+pub fn ensemble_forecast(forecasts : Array[Array[Double]]) -> Array[Double] {
   let n = forecasts.length()
   if n == 0 {
     return []
@@ -551,9 +594,10 @@ pub fn ensemble_forecast(
   result
 }
 
+///|
 pub fn weighted_ensemble_forecast(
   forecasts : Array[Array[Double]],
-  weights : Array[Double]
+  weights : Array[Double],
 ) -> Array[Double] {
   let n = forecasts.length()
   if n == 0 {
@@ -582,12 +626,12 @@ pub fn weighted_ensemble_forecast(
   result
 }
 
+///|
 ///===
 /// Accuracy Metrics
-
 pub fn forecast_accuracy(
   actual : Array[Double],
-  predicted : Array[Double]
+  predicted : Array[Double],
 ) -> Double {
   let n = if actual.length() < predicted.length() {
     actual.length()
@@ -605,10 +649,8 @@ pub fn forecast_accuracy(
   (sum / n.to_double()).sqrt()
 }
 
-pub fn mape(
-  actual : Array[Double],
-  predicted : Array[Double]
-) -> Double {
+///|
+pub fn mape(actual : Array[Double], predicted : Array[Double]) -> Double {
   let n = if actual.length() < predicted.length() {
     actual.length()
   } else {
@@ -631,10 +673,8 @@ pub fn mape(
   100.0 * sum / count.to_double()
 }
 
-pub fn mase(
-  actual : Array[Double],
-  predicted : Array[Double]
-) -> Double {
+///|
+pub fn mase(actual : Array[Double], predicted : Array[Double]) -> Double {
   let n = if actual.length() < predicted.length() {
     actual.length()
   } else {
@@ -658,10 +698,8 @@ pub fn mase(
   err_sum / (n.to_double() * naive_scale)
 }
 
-pub fn smape(
-  actual : Array[Double],
-  predicted : Array[Double]
-) -> Double {
+///|
+pub fn smape(actual : Array[Double], predicted : Array[Double]) -> Double {
   let n = if actual.length() < predicted.length() {
     actual.length()
   } else {
@@ -685,18 +723,19 @@ pub fn smape(
   100.0 * sum / count.to_double()
 }
 
+///|
 ///===
 /// Residual Analysis
-
 pub struct ResidualAnalysis {
   mean : Double
   variance : Double
   autocorr : Array[Double]
 }
 
+///|
 pub fn residual_analysis(
   actual : Array[Double],
-  predicted : Array[Double]
+  predicted : Array[Double],
 ) -> ResidualAnalysis {
   let n = if actual.length() < predicted.length() {
     actual.length()
@@ -704,7 +743,7 @@ pub fn residual_analysis(
     predicted.length()
   }
   if n == 0 {
-    return { mean: 0.0, variance: 0.0, autocorr: [] }
+    return { mean: 0.0, variance: 0.0, autocorr: [], }
   }
   let residuals : Array[Double] = []
   for i in 0..<n {
@@ -718,13 +757,11 @@ pub fn residual_analysis(
   }
   variance = variance / n.to_double()
   let autocorr = autocorrelation_func(residuals, 5)
-  { mean, variance, autocorr }
+  { mean, variance, autocorr, }
 }
 
-pub fn ljung_box_test(
-  residuals : Array[Double],
-  lag : Int
-) -> Double {
+///|
+pub fn ljung_box_test(residuals : Array[Double], lag : Int32) -> Double {
   let n = residuals.length()
   if n == 0 || lag <= 0 {
     return 0.0
@@ -740,6 +777,7 @@ pub fn ljung_box_test(
   stat * n.to_double() * (n.to_double() + 1.0)
 }
 
+///|
 pub fn durbin_watson_test(residuals : Array[Double]) -> Double {
   let n = residuals.length()
   if n < 2 {
@@ -760,22 +798,24 @@ pub fn durbin_watson_test(residuals : Array[Double]) -> Double {
   num / denom
 }
 
+///|
 ///===
 /// Grid Search
-
 pub struct GridSearch {
   param_grid : Array[Array[Double]]
   best_score : Double
   best_params : Array[Double]
 }
 
+///|
 pub fn make_grid_search(param_grid : Array[Array[Double]]) -> GridSearch {
-  { param_grid, best_score: 999999.0, best_params: [] }
+  { param_grid, best_score: 999999.0, best_params: [], }
 }
 
+///|
 pub fn grid_search_forecast(
   values : Array[Double],
-  param_grid : Array[Array[Double]]
+  param_grid : Array[Array[Double]],
 ) -> GridSearch {
   let n = values.length()
   if n < 4 {
@@ -798,7 +838,11 @@ pub fn grid_search_forecast(
     let alpha = if params.length() > 0 { params[0] } else { 0.5 }
     let preds = exponential_smoothing_forecast(train, alpha)
     let pred_horizon : Array[Double] = []
-    let last_pred = if preds.length() > 0 { preds[preds.length() - 1] } else { 0.0 }
+    let last_pred = if preds.length() > 0 {
+      preds[preds.length() - 1]
+    } else {
+      0.0
+    }
     for _ in 0..<horizon {
       pred_horizon.push(last_pred)
     }
@@ -808,13 +852,14 @@ pub fn grid_search_forecast(
       best_params = params
     }
   }
-  { param_grid, best_score, best_params }
+  { param_grid, best_score, best_params, }
 }
 
+///|
 pub fn select_best_model(
   values : Array[Double],
-  forecasts : Array[Array[Double]]
-) -> Int {
+  forecasts : Array[Array[Double]],
+) -> Int32 {
   let n = values.length()
   if n == 0 || forecasts.length() == 0 {
     return 0
@@ -831,12 +876,12 @@ pub fn select_best_model(
   best_idx
 }
 
+///|
 ///===
 /// Cross Validation
-
 pub fn cross_validation_forecast(
   values : Array[Double],
-  k_folds : Int
+  k_folds : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n == 0 || k_folds <= 0 {
@@ -866,10 +911,11 @@ pub fn cross_validation_forecast(
   scores
 }
 
+///|
 pub fn rolling_forecast(
   values : Array[Double],
-  window : Int,
-  horizon : Int
+  window : Int32,
+  horizon : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n < window || horizon <= 0 {
@@ -891,10 +937,11 @@ pub fn rolling_forecast(
   result
 }
 
+///|
 pub fn expanding_window(
   values : Array[Double],
-  min_train : Int,
-  horizon : Int
+  min_train : Int32,
+  horizon : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n < min_train + horizon || horizon <= 0 {
@@ -916,44 +963,43 @@ pub fn expanding_window(
   result
 }
 
+///|
 ///===
 /// Decomposition Extract
-
-pub fn trend_extract(
-  values : Array[Double],
-  window : Int
-) -> Array[Double] {
+pub fn trend_extract(values : Array[Double], window : Int32) -> Array[Double] {
   simple_moving_average_forecast(values, window)
 }
 
+///|
 pub fn seasonality_extract(
   values : Array[Double],
-  season_length : Int
+  season_length : Int32,
 ) -> Array[Double] {
   let decomp = seasonal_decompose(values, season_length)
   decomp.seasonal
 }
 
+///|
 pub fn remainder_extract(
   values : Array[Double],
-  season_length : Int
+  season_length : Int32,
 ) -> Array[Double] {
   let decomp = seasonal_decompose(values, season_length)
   decomp.remainder
 }
 
+///|
 ///===
 /// Changepoint & Anomaly Detection
-
 pub fn detect_changepoint(
   values : Array[Double],
-  threshold : Double
-) -> Array[Int] {
+  threshold : Double,
+) -> Array[Int32] {
   let n = values.length()
   if n < 2 {
     return []
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 1..<n {
     let diff = fc_abs_val(values[i] - values[i - 1])
     if diff > threshold {
@@ -963,17 +1009,18 @@ pub fn detect_changepoint(
   result
 }
 
+///|
 pub fn detect_anomaly_forecast(
   values : Array[Double],
   predicted : Array[Double],
-  threshold : Double
-) -> Array[Int] {
+  threshold : Double,
+) -> Array[Int32] {
   let n = if values.length() < predicted.length() {
     values.length()
   } else {
     predicted.length()
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<n {
     let diff = fc_abs_val(values[i] - predicted[i])
     if diff > threshold {
@@ -983,13 +1030,13 @@ pub fn detect_anomaly_forecast(
   result
 }
 
+///|
 ///===
 /// Forecast Intervals
-
 pub fn forecast_interval(
   forecast : Array[Double],
   std_error : Double,
-  z_value : Double
+  z_value : Double,
 ) -> (Array[Double], Array[Double]) {
   let lower : Array[Double] = []
   let upper : Array[Double] = []
@@ -1001,10 +1048,11 @@ pub fn forecast_interval(
   (lower, upper)
 }
 
+///|
 pub fn prediction_interval(
   forecast : Array[Double],
   residuals : Array[Double],
-  z_value : Double
+  z_value : Double,
 ) -> (Array[Double], Array[Double]) {
   let std = @_common.mean(residuals)
   let mut variance = 0.0
@@ -1018,10 +1066,11 @@ pub fn prediction_interval(
   forecast_interval(forecast, std_err, z_value)
 }
 
+///|
 pub fn confidence_band(
   forecast : Array[Double],
   std_errors : Array[Double],
-  z_value : Double
+  z_value : Double,
 ) -> (Array[Double], Array[Double]) {
   let lower : Array[Double] = []
   let upper : Array[Double] = []
@@ -1034,21 +1083,22 @@ pub fn confidence_band(
   (lower, upper)
 }
 
+///|
 ///===
 /// Backtest & Validation
-
 pub fn backtest(
   values : Array[Double],
-  window : Int,
-  horizon : Int
+  window : Int32,
+  horizon : Int32,
 ) -> Array[Double] {
   rolling_forecast(values, window, horizon)
 }
 
+///|
 pub fn walk_forward_validation(
   values : Array[Double],
-  min_train : Int,
-  horizon : Int
+  min_train : Int32,
+  horizon : Int32,
 ) -> Array[Double] {
   let n = values.length()
   if n < min_train + horizon {
@@ -1072,21 +1122,23 @@ pub fn walk_forward_validation(
   errors
 }
 
+///|
 ///===
 /// Benchmark
-
 pub struct ForecastBenchmark {
   models : Array[String]
   scores : Array[Double]
 }
 
+///|
 pub fn make_benchmark(models : Array[String]) -> ForecastBenchmark {
-  { models, scores: Array::make(models.length(), 0.0) }
+  { models, scores: Array::make(models.length(), 0.0), }
 }
 
+///|
 pub fn benchmark_forecast(
   values : Array[Double],
-  forecasts : Array[Array[Double]]
+  forecasts : Array[Array[Double]],
 ) -> ForecastBenchmark {
   let n = forecasts.length()
   let models : Array[String] = []
@@ -1095,12 +1147,13 @@ pub fn benchmark_forecast(
     models.push("model_" + i.to_string())
     scores.push(forecast_accuracy(values, forecasts[i]))
   }
-  { models, scores }
+  { models, scores, }
 }
 
+///|
 pub fn compare_forecasts(
   forecasts : Array[Array[Double]],
-  actual : Array[Double]
+  actual : Array[Double],
 ) -> Array[Double] {
   let scores : Array[Double] = []
   for i in 0..<forecasts.length() {
@@ -1109,9 +1162,9 @@ pub fn compare_forecasts(
   scores
 }
 
+///|
 ///===
 /// ID
-
 pub fn forecasting_id() -> String {
   "datatemporal/forecasting"
 }

@@ -9,6 +9,7 @@
 /// ML/DL algorithms as first-class operators. See architecture §4.3.5.
 /// S1.2: traditional ML (regression/classify/cluster/feature) + metrics.
 
+///|
 /// 算法族 / Model space.
 pub(all) enum ModelSpace {
   ML
@@ -19,9 +20,13 @@ pub(all) enum ModelSpace {
   Optim
 } derive(Debug, Eq)
 
+///|
 pub extend ModelSpace with Eq::{equal, not_equal}
+
+///|
 pub extend ModelSpace with Debug::{to_repr}
 
+///|
 /// 算法族名称 / Model space name.
 pub fn model_space_name(ms : ModelSpace) -> String {
   match ms {
@@ -34,20 +39,26 @@ pub fn model_space_name(ms : ModelSpace) -> String {
   }
 }
 
+///|
 /// 超参空间占位 / Hyperparameter space (placeholder).
 pub struct Hyperparams {
   name : String
   values : Array[String]
 } derive(Debug, Eq)
 
+///|
 pub extend Hyperparams with Eq::{equal, not_equal}
+
+///|
 pub extend Hyperparams with Debug::{to_repr}
 
+///|
 /// 构造超参空间 / Build hyperparameter space.
 pub fn make_hyperparams(name : String, values : Array[String]) -> Hyperparams {
-  { name, values }
+  { name, values, }
 }
 
+///|
 pub fn learncore_id() -> String {
   "learncore"
 }

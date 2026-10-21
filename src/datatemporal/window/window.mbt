@@ -6,6 +6,7 @@
 ///
 /// # Time window operators
 
+///|
 /// 窗口类型 / Window type.
 pub(all) enum WindowType {
   Sliding
@@ -13,6 +14,7 @@ pub(all) enum WindowType {
   Session
 }
 
+///|
 /// 时间窗口 / Time window.
 pub struct TimeWindow {
   start : Double
@@ -22,6 +24,7 @@ pub struct TimeWindow {
   slide : Double
 }
 
+///|
 /// 时间事件 / Time event.
 pub struct TimeEvent {
   timestamp : Double
@@ -29,11 +32,17 @@ pub struct TimeEvent {
   key : String
 }
 
+///|
 /// 构造时间事件 / Create time event.
-pub fn make_event(timestamp : Double, value : Double, key : String) -> TimeEvent {
-  { timestamp: timestamp, value: value, key: key }
+pub fn make_event(
+  timestamp : Double,
+  value : Double,
+  key : String,
+) -> TimeEvent {
+  { timestamp, value, key, }
 }
 
+///|
 /// 构造时间窗口 / Create time window.
 pub fn make_window(
   start : Double,
@@ -42,21 +51,27 @@ pub fn make_window(
   size : Double,
   slide : Double,
 ) -> TimeWindow {
-  { start: start, end: end, window_type: window_type, size: size, slide: slide }
+  { start, end, window_type, size, slide, }
 }
 
+///|
 /// 窗口长度 / Window duration.
 pub fn window_duration(w : TimeWindow) -> Double {
   w.end - w.start
 }
 
+///|
 /// 事件是否在窗口内 / Check if event is in window.
 pub fn event_in_window(event : TimeEvent, w : TimeWindow) -> Bool {
   event.timestamp >= w.start && event.timestamp < w.end
 }
 
+///|
 /// 窗口内事件 / Get events in window.
-pub fn events_in_window(events : Array[TimeEvent], w : TimeWindow) -> Array[TimeEvent] {
+pub fn events_in_window(
+  events : Array[TimeEvent],
+  w : TimeWindow,
+) -> Array[TimeEvent] {
   let result : Array[TimeEvent] = []
   for i in 0..<events.length() {
     if event_in_window(events[i], w) {
@@ -69,6 +84,7 @@ pub fn events_in_window(events : Array[TimeEvent], w : TimeWindow) -> Array[Time
 ///===
 /// 滚动窗口 / Tumbling windows
 
+///|
 /// 生成滚动窗口 / Generate tumbling windows.
 pub fn tumbling_windows(
   start : Double,
@@ -88,6 +104,7 @@ pub fn tumbling_windows(
 ///===
 /// 滑动窗口 / Sliding windows
 
+///|
 /// 生成滑动窗口 / Generate sliding windows.
 pub fn sliding_windows(
   start : Double,
@@ -108,6 +125,7 @@ pub fn sliding_windows(
 ///===
 /// 会话窗口 / Session windows
 
+///|
 /// 生成会话窗口 / Generate session windows by gap.
 pub fn session_windows(
   events : Array[TimeEvent],
@@ -124,15 +142,32 @@ pub fn session_windows(
     if sorted[i].timestamp - session_end <= gap {
       session_end = sorted[i].timestamp
     } else {
-      result.push(make_window(session_start, session_end, Session, session_end - session_start, 0.0))
+      result.push(
+        make_window(
+          session_start,
+          session_end,
+          Session,
+          session_end - session_start,
+          0.0,
+        ),
+      )
       session_start = sorted[i].timestamp
       session_end = sorted[i].timestamp
     }
   }
-  result.push(make_window(session_start, session_end, Session, session_end - session_start, 0.0))
+  result.push(
+    make_window(
+      session_start,
+      session_end,
+      Session,
+      session_end - session_start,
+      0.0,
+    ),
+  )
   result
 }
 
+///|
 /// 按时间排序事件 / Sort events by timestamp.
 pub fn sort_events_by_time(events : Array[TimeEvent]) -> Array[TimeEvent] {
   let result = events.copy()
@@ -143,6 +178,7 @@ pub fn sort_events_by_time(events : Array[TimeEvent]) -> Array[TimeEvent] {
 ///===
 /// 窗口聚合 / Window aggregations
 
+///|
 /// 窗口内值求和 / Sum values in window.
 pub fn window_sum(events : Array[TimeEvent], w : TimeWindow) -> Double {
   let mut sum = 0.0
@@ -154,6 +190,7 @@ pub fn window_sum(events : Array[TimeEvent], w : TimeWindow) -> Double {
   sum
 }
 
+///|
 /// 窗口内值平均 / Average values in window.
 pub fn window_avg(events : Array[TimeEvent], w : TimeWindow) -> Double {
   let mut sum = 0.0
@@ -164,16 +201,21 @@ pub fn window_avg(events : Array[TimeEvent], w : TimeWindow) -> Double {
       count = count + 1
     }
   }
-  if count == 0 { 0.0 } else { sum / count.to_double() }
+  if count == 0 {
+    0.0
+  } else {
+    sum / count.to_double()
+  }
 }
 
+///|
 /// 窗口内值最大 / Max value in window.
 pub fn window_max(events : Array[TimeEvent], w : TimeWindow) -> Double {
   let mut max_val = 0.0
   let mut found = false
   for i in 0..<events.length() {
     if event_in_window(events[i], w) {
-      if !(found) || events[i].value > max_val {
+      if !found || events[i].value > max_val {
         max_val = events[i].value
         found = true
       }
@@ -182,13 +224,14 @@ pub fn window_max(events : Array[TimeEvent], w : TimeWindow) -> Double {
   max_val
 }
 
+///|
 /// 窗口内值最小 / Min value in window.
 pub fn window_min(events : Array[TimeEvent], w : TimeWindow) -> Double {
   let mut min_val = 0.0
   let mut found = false
   for i in 0..<events.length() {
     if event_in_window(events[i], w) {
-      if !(found) || events[i].value < min_val {
+      if !found || events[i].value < min_val {
         min_val = events[i].value
         found = true
       }
@@ -197,8 +240,9 @@ pub fn window_min(events : Array[TimeEvent], w : TimeWindow) -> Double {
   min_val
 }
 
+///|
 /// 窗口内值计数 / Count events in window.
-pub fn window_count(events : Array[TimeEvent], w : TimeWindow) -> Int {
+pub fn window_count(events : Array[TimeEvent], w : TimeWindow) -> Int32 {
   let mut count = 0
   for i in 0..<events.length() {
     if event_in_window(events[i], w) {
@@ -211,6 +255,7 @@ pub fn window_count(events : Array[TimeEvent], w : TimeWindow) -> Int {
 ///===
 /// 窗口应用 / Apply windows
 
+///|
 /// 对每个窗口应用聚合 / Apply aggregation to each window.
 pub fn apply_windows(
   events : Array[TimeEvent],
@@ -224,6 +269,7 @@ pub fn apply_windows(
   result
 }
 
+///|
 /// 滚动窗口求和 / Tumbling window sum.
 pub fn tumbling_sum(
   events : Array[TimeEvent],
@@ -235,6 +281,7 @@ pub fn tumbling_sum(
   apply_windows(events, windows, window_sum)
 }
 
+///|
 /// 滑动窗口平均 / Sliding window average.
 pub fn sliding_avg(
   events : Array[TimeEvent],
@@ -250,6 +297,7 @@ pub fn sliding_avg(
 ///===
 /// 窗口键分组 / Window key grouping
 
+///|
 /// 按键分组窗口内事件 / Group events by key in window.
 pub fn window_group_by_key(
   events : Array[TimeEvent],
@@ -267,7 +315,7 @@ pub fn window_group_by_key(
           found = true
         }
       }
-      if !(found) {
+      if !found {
         groups.push((k, [events[i]]))
       }
     }
@@ -275,9 +323,9 @@ pub fn window_group_by_key(
   groups
 }
 
+///|
 ///===
 /// ID
-
 pub fn window_id() -> String {
   "datatemporal/window"
 }

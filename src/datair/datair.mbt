@@ -14,24 +14,28 @@ pub fn datair_id() -> String {
   "datair"
 }
 
+///|
 /// ir_core 子包标识 / ir_core sub-package id.
 pub fn ir_core_id() -> String {
   "datair/ir_core"
 }
 
+///|
 /// ir_entity 子包标识 / ir_entity sub-package id.
 pub fn ir_entity_id() -> String {
   "datair/ir_entity"
 }
 
+///|
 /// ir_operator 子包标识 / ir_operator sub-package id.
 pub fn ir_operator_id() -> String {
   "datair/ir_operator"
 }
 
+///|
 /// IR 种类数 / IR kind count.
 ///
 /// S0.6 实体 IR + 算子 IR 已落地；流水线 IR 留 Phase 1，此处返回已落地种类数。
-pub fn ir_kind_count() -> Int {
+pub fn ir_kind_count() -> Int32 {
   2
 }

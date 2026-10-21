@@ -6,7 +6,6 @@
 /// # Self-Supervised Learning
 ///
 /// SimCLR, MoCo, BYOL, SwAV, DINO, Masked LM, MAE, contrastive, pretext, representation, projection, stop-gradient.
-
 fn exp(x : Double) -> Double {
   if x > 20.0 {
     485165195.4
@@ -23,6 +22,7 @@ fn exp(x : Double) -> Double {
   }
 }
 
+///|
 fn log(x : Double) -> Double {
   if x <= 0.0 {
     -1000.0
@@ -39,6 +39,7 @@ fn log(x : Double) -> Double {
   }
 }
 
+///|
 fn sqrt(x : Double) -> Double {
   if x <= 0.0 {
     0.0
@@ -51,29 +52,33 @@ fn sqrt(x : Double) -> Double {
   }
 }
 
-
+///|
 fn sigmoid(x : Double) -> Double {
   1.0 / (1.0 + exp(-x))
 }
 
+///|
 fn tanh_d(x : Double) -> Double {
   let e1 = exp(x)
   let e2 = exp(-x)
   (e1 - e2) / (e1 + e2)
 }
 
-fn lcg_next(state : Int) -> Int {
+///|
+fn lcg_next(state : Int32) -> Int32 {
   let a = 1103515245
   let c = 12345
   let m = 2147483647
   (a * state + c) % m
 }
 
-fn rand_double(seed : Int) -> Double {
+///|
+fn rand_double(seed : Int32) -> Double {
   let s = lcg_next(seed)
   s.to_double() / 2147483647.0
 }
 
+///|
 fn vec_dot(a : Array[Double], b : Array[Double]) -> Double {
   let n = a.length()
   if n != b.length() {
@@ -87,10 +92,12 @@ fn vec_dot(a : Array[Double], b : Array[Double]) -> Double {
   }
 }
 
+///|
 fn norm(a : Array[Double]) -> Double {
   sqrt(vec_dot(a, a))
 }
 
+///|
 fn normalize(a : Array[Double]) -> Array[Double] {
   let n = norm(a)
   if n == 0.0 {
@@ -104,145 +111,200 @@ fn normalize(a : Array[Double]) -> Array[Double] {
   }
 }
 
+///|
 /// SimCLR 配置 / SimCLR configuration.
 pub struct SimCLRMeta {
   temperature : Double
-  projection_dim : Int
-  feature_dim : Int
-  batch_size : Int
+  projection_dim : Int32
+  feature_dim : Int32
+  batch_size : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend SimCLRMeta with Eq::{equal, not_equal}
+
+///|
 pub extend SimCLRMeta with Debug::{to_repr}
 
+///|
 /// MoCo 配置 / MoCo configuration.
 pub struct MoCoMeta {
-  queue_size : Int
+  queue_size : Int32
   momentum : Double
   temperature : Double
-  feature_dim : Int
+  feature_dim : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend MoCoMeta with Eq::{equal, not_equal}
+
+///|
 pub extend MoCoMeta with Debug::{to_repr}
 
+///|
 /// BYOL 配置 / BYOL configuration.
 pub struct BYOLMeta {
-  projection_dim : Int
-  predictor_dim : Int
+  projection_dim : Int32
+  predictor_dim : Int32
   momentum : Double
-  feature_dim : Int
+  feature_dim : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend BYOLMeta with Eq::{equal, not_equal}
+
+///|
 pub extend BYOLMeta with Debug::{to_repr}
 
+///|
 /// SwAV 配置 / SwAV configuration.
 pub struct SwAVMeta {
-  n_prototypes : Int
-  n_queues : Int
+  n_prototypes : Int32
+  n_queues : Int32
   temperature : Double
   epsilon : Double
-  feature_dim : Int
+  feature_dim : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend SwAVMeta with Eq::{equal, not_equal}
+
+///|
 pub extend SwAVMeta with Debug::{to_repr}
 
+///|
 /// DINO 配置 / DINO configuration.
 pub struct DINOMeta {
-  student_dim : Int
-  teacher_dim : Int
-  n_patches : Int
+  student_dim : Int32
+  teacher_dim : Int32
+  n_patches : Int32
   momentum : Double
   temperature : Double
 } derive(Debug, Eq)
 
+///|
 pub extend DINOMeta with Eq::{equal, not_equal}
+
+///|
 pub extend DINOMeta with Debug::{to_repr}
 
+///|
 /// Masked LM 配置 / Masked LM configuration.
 pub struct MaskedLMMeta {
-  vocab_size : Int
+  vocab_size : Int32
   mask_prob : Double
-  n_masked : Int
-  hidden_dim : Int
+  n_masked : Int32
+  hidden_dim : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend MaskedLMMeta with Eq::{equal, not_equal}
+
+///|
 pub extend MaskedLMMeta with Debug::{to_repr}
 
+///|
 /// MAE 配置 / MAE configuration.
 pub struct MAEMeta {
-  patch_size : Int
+  patch_size : Int32
   mask_ratio : Double
-  encoder_dim : Int
-  decoder_dim : Int
-  img_size : Int
+  encoder_dim : Int32
+  decoder_dim : Int32
+  img_size : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend MAEMeta with Eq::{equal, not_equal}
+
+///|
 pub extend MAEMeta with Debug::{to_repr}
 
+///|
 /// 对比学习配置 / Contrastive learning configuration.
 pub struct ContrastiveMeta {
   temperature : Double
-  n_positives : Int
-  n_negatives : Int
-  feature_dim : Int
+  n_positives : Int32
+  n_negatives : Int32
+  feature_dim : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend ContrastiveMeta with Eq::{equal, not_equal}
+
+///|
 pub extend ContrastiveMeta with Debug::{to_repr}
 
+///|
 /// 前置任务配置 / Pretext task configuration.
 pub struct PretextMeta {
-  task_type : Int
-  n_classes : Int
-  feature_dim : Int
+  task_type : Int32
+  n_classes : Int32
+  feature_dim : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend PretextMeta with Eq::{equal, not_equal}
+
+///|
 pub extend PretextMeta with Debug::{to_repr}
 
+///|
 /// 表示学习配置 / Representation learning configuration.
 pub struct RepresentationMeta {
-  input_dim : Int
-  hidden_dim : Int
-  output_dim : Int
-  n_layers : Int
+  input_dim : Int32
+  hidden_dim : Int32
+  output_dim : Int32
+  n_layers : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend RepresentationMeta with Eq::{equal, not_equal}
+
+///|
 pub extend RepresentationMeta with Debug::{to_repr}
 
+///|
 /// 投影头配置 / Projection head configuration.
 pub struct ProjectionHeadMeta {
-  input_dim : Int
-  hidden_dim : Int
-  output_dim : Int
+  input_dim : Int32
+  hidden_dim : Int32
+  output_dim : Int32
   use_bn : Bool
 } derive(Debug, Eq)
 
+///|
 pub extend ProjectionHeadMeta with Eq::{equal, not_equal}
+
+///|
 pub extend ProjectionHeadMeta with Debug::{to_repr}
 
+///|
 /// 停止梯度配置 / Stop gradient configuration.
 pub struct StopGradientMeta {
   enabled : Bool
   scale : Double
 } derive(Debug, Eq)
 
+///|
 pub extend StopGradientMeta with Eq::{equal, not_equal}
+
+///|
 pub extend StopGradientMeta with Debug::{to_repr}
 
+///|
 /// 构造 SimCLR / Build SimCLR meta.
-pub fn make_simclr(temperature : Double, projection_dim : Int, feature_dim : Int, batch_size : Int) -> SimCLRMeta {
-  { temperature, projection_dim, feature_dim, batch_size }
+pub fn make_simclr(
+  temperature : Double,
+  projection_dim : Int32,
+  feature_dim : Int32,
+  batch_size : Int32,
+) -> SimCLRMeta {
+  { temperature, projection_dim, feature_dim, batch_size, }
 }
 
+///|
 /// SimCLR 数据增强 / SimCLR augmentation.
-pub fn simclr_augment(input : Array[Double], seed : Int) -> Array[Double] {
+pub fn simclr_augment(input : Array[Double], seed : Int32) -> Array[Double] {
   let n = input.length()
   let result : Array[Double] = Array::make(n, 0.0)
   let mut s = seed
@@ -255,16 +317,27 @@ pub fn simclr_augment(input : Array[Double], seed : Int) -> Array[Double] {
   result
 }
 
+///|
 /// SimCLR 对比损失 / SimCLR contrastive loss.
-pub fn simclr_contrastive_loss(z_i : Array[Double], z_j : Array[Double], meta : SimCLRMeta) -> Double {
+pub fn simclr_contrastive_loss(
+  z_i : Array[Double],
+  z_j : Array[Double],
+  meta : SimCLRMeta,
+) -> Double {
   let zi = normalize(z_i)
   let zj = normalize(z_j)
   let sim = vec_dot(zi, zj)
   -log(exp(sim / meta.temperature) + exp(0.0))
 }
 
+///|
 /// SimCLR NT-Xent 损失 / SimCLR NT-Xent loss.
-pub fn simclr_nt_xent(z_i : Array[Double], z_j : Array[Double], negatives : Array[Array[Double]], meta : SimCLRMeta) -> Double {
+pub fn simclr_nt_xent(
+  z_i : Array[Double],
+  z_j : Array[Double],
+  negatives : Array[Array[Double]],
+  meta : SimCLRMeta,
+) -> Double {
   let zi = normalize(z_i)
   let zj = normalize(z_j)
   let pos = vec_dot(zi, zj) / meta.temperature
@@ -276,13 +349,23 @@ pub fn simclr_nt_xent(z_i : Array[Double], z_j : Array[Double], negatives : Arra
   -log(exp(pos) / denom)
 }
 
+///|
 /// 构造 MoCo / Build MoCo meta.
-pub fn make_moco(queue_size : Int, momentum : Double, temperature : Double, feature_dim : Int) -> MoCoMeta {
-  { queue_size, momentum, temperature, feature_dim }
+pub fn make_moco(
+  queue_size : Int32,
+  momentum : Double,
+  temperature : Double,
+  feature_dim : Int32,
+) -> MoCoMeta {
+  { queue_size, momentum, temperature, feature_dim, }
 }
 
+///|
 /// MoCo 编码器前向 / MoCo encoder forward.
-pub fn moco_encoder(input : Array[Double], weights : Array[Double]) -> Array[Double] {
+pub fn moco_encoder(
+  input : Array[Double],
+  weights : Array[Double],
+) -> Array[Double] {
   let n = input.length()
   if n != weights.length() {
     Array::make(n, 0.0)
@@ -295,22 +378,33 @@ pub fn moco_encoder(input : Array[Double], weights : Array[Double]) -> Array[Dou
   }
 }
 
+///|
 /// MoCo 动量编码器更新 / MoCo momentum encoder update.
-pub fn moco_momentum_encoder(encoder_params : Array[Double], momentum_params : Array[Double], momentum : Double) -> Array[Double] {
+pub fn moco_momentum_encoder(
+  encoder_params : Array[Double],
+  momentum_params : Array[Double],
+  momentum : Double,
+) -> Array[Double] {
   let n = encoder_params.length()
   if n != momentum_params.length() {
     momentum_params
   } else {
     let result : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
-      result[i] = momentum * momentum_params[i] + (1.0 - momentum) * encoder_params[i]
+      result[i] = momentum * momentum_params[i] +
+        (1.0 - momentum) * encoder_params[i]
     }
     result
   }
 }
 
+///|
 /// MoCo 队列操作 / MoCo queue operation.
-pub fn moco_queue(queue : Array[Array[Double]], new_keys : Array[Array[Double]], max_size : Int) -> Array[Array[Double]] {
+pub fn moco_queue(
+  queue : Array[Array[Double]],
+  new_keys : Array[Array[Double]],
+  max_size : Int32,
+) -> Array[Array[Double]] {
   let result : Array[Array[Double]] = []
   for i in 0..<queue.length() {
     result.push(queue[i])
@@ -324,11 +418,18 @@ pub fn moco_queue(queue : Array[Array[Double]], new_keys : Array[Array[Double]],
   result
 }
 
+///|
 /// 构造 BYOL / Build BYOL meta.
-pub fn make_byol(projection_dim : Int, predictor_dim : Int, momentum : Double, feature_dim : Int) -> BYOLMeta {
-  { projection_dim, predictor_dim, momentum, feature_dim }
+pub fn make_byol(
+  projection_dim : Int32,
+  predictor_dim : Int32,
+  momentum : Double,
+  feature_dim : Int32,
+) -> BYOLMeta {
+  { projection_dim, predictor_dim, momentum, feature_dim, }
 }
 
+///|
 /// BYOL 预测器 / BYOL predictor.
 pub fn byol_predictor(input : Array[Double], meta : BYOLMeta) -> Array[Double] {
   let n = input.length()
@@ -341,6 +442,7 @@ pub fn byol_predictor(input : Array[Double], meta : BYOLMeta) -> Array[Double] {
   result
 }
 
+///|
 /// BYOL 损失 / BYOL loss.
 pub fn byol_loss(p : Array[Double], z : Array[Double]) -> Double {
   let pn = normalize(p)
@@ -349,27 +451,45 @@ pub fn byol_loss(p : Array[Double], z : Array[Double]) -> Double {
   2.0 - 2.0 * d
 }
 
+///|
 /// BYOL 动量更新 / BYOL momentum update.
-pub fn byol_momentum(online_params : Array[Double], target_params : Array[Double], momentum : Double) -> Array[Double] {
+pub fn byol_momentum(
+  online_params : Array[Double],
+  target_params : Array[Double],
+  momentum : Double,
+) -> Array[Double] {
   let n = online_params.length()
   if n != target_params.length() {
     target_params
   } else {
     let result : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
-      result[i] = momentum * target_params[i] + (1.0 - momentum) * online_params[i]
+      result[i] = momentum * target_params[i] +
+        (1.0 - momentum) * online_params[i]
     }
     result
   }
 }
 
+///|
 /// 构造 SwAV / Build SwAV meta.
-pub fn make_swav(n_prototypes : Int, n_queues : Int, temperature : Double, epsilon : Double, feature_dim : Int) -> SwAVMeta {
-  { n_prototypes, n_queues, temperature, epsilon, feature_dim }
+pub fn make_swav(
+  n_prototypes : Int32,
+  n_queues : Int32,
+  temperature : Double,
+  epsilon : Double,
+  feature_dim : Int32,
+) -> SwAVMeta {
+  { n_prototypes, n_queues, temperature, epsilon, feature_dim, }
 }
 
+///|
 /// SwAV 软分配 / SwAV assignments.
-pub fn swav_assignments(features : Array[Double], prototypes : Array[Array[Double]], meta : SwAVMeta) -> Array[Double] {
+pub fn swav_assignments(
+  features : Array[Double],
+  prototypes : Array[Array[Double]],
+  meta : SwAVMeta,
+) -> Array[Double] {
   let n = prototypes.length()
   let scores : Array[Double] = Array::make(n, 0.0)
   for i in 0..<n {
@@ -395,8 +515,13 @@ pub fn swav_assignments(features : Array[Double], prototypes : Array[Array[Doubl
   result
 }
 
+///|
 /// SwAV 损失 / SwAV loss.
-pub fn swav_loss(z : Array[Double], q : Array[Double], prototypes : Array[Array[Double]]) -> Double {
+pub fn swav_loss(
+  z : Array[Double],
+  q : Array[Double],
+  prototypes : Array[Array[Double]],
+) -> Double {
   let n = q.length()
   let mut loss = 0.0
   for i in 0..<n {
@@ -408,8 +533,13 @@ pub fn swav_loss(z : Array[Double], q : Array[Double], prototypes : Array[Array[
   loss
 }
 
+///|
 /// SwAV 多裁剪 / SwAV multi-crop.
-pub fn swav_multi_crop(input : Array[Double], n8 : Int, seed : Int) -> Array[Array[Double]] {
+pub fn swav_multi_crop(
+  input : Array[Double],
+  n8 : Int32,
+  seed : Int32,
+) -> Array[Array[Double]] {
   let result : Array[Array[Double]] = []
   let mut s = seed
   for _ in 0..<n8 {
@@ -424,11 +554,19 @@ pub fn swav_multi_crop(input : Array[Double], n8 : Int, seed : Int) -> Array[Arr
   result
 }
 
+///|
 /// 构造 DINO / Build DINO meta.
-pub fn make_dino(student_dim : Int, teacher_dim : Int, n_patches : Int, momentum : Double, temperature : Double) -> DINOMeta {
-  { student_dim, teacher_dim, n_patches, momentum, temperature }
+pub fn make_dino(
+  student_dim : Int32,
+  teacher_dim : Int32,
+  n_patches : Int32,
+  momentum : Double,
+  temperature : Double,
+) -> DINOMeta {
+  { student_dim, teacher_dim, n_patches, momentum, temperature, }
 }
 
+///|
 /// DINO 学生网络 / DINO student network.
 pub fn dino_student(input : Array[Double], meta : DINOMeta) -> Array[Double] {
   let result : Array[Double] = Array::make(meta.n_patches, 0.0)
@@ -440,6 +578,7 @@ pub fn dino_student(input : Array[Double], meta : DINOMeta) -> Array[Double] {
   result
 }
 
+///|
 /// DINO 教师网络 / DINO teacher network.
 pub fn dino_teacher(input : Array[Double], meta : DINOMeta) -> Array[Double] {
   let result : Array[Double] = Array::make(meta.n_patches, 0.0)
@@ -451,8 +590,12 @@ pub fn dino_teacher(input : Array[Double], meta : DINOMeta) -> Array[Double] {
   result
 }
 
+///|
 /// DINO 损失 / DINO loss.
-pub fn dino_loss(student_logits : Array[Double], teacher_probs : Array[Double]) -> Double {
+pub fn dino_loss(
+  student_logits : Array[Double],
+  teacher_probs : Array[Double],
+) -> Double {
   let n = student_logits.length()
   if n != teacher_probs.length() {
     0.0
@@ -468,15 +611,26 @@ pub fn dino_loss(student_logits : Array[Double], teacher_probs : Array[Double]) 
   }
 }
 
+///|
 /// 构造 Masked LM / Build Masked LM meta.
-pub fn make_masked_lm(vocab_size : Int, mask_prob : Double, n_masked : Int, hidden_dim : Int) -> MaskedLMMeta {
-  { vocab_size, mask_prob, n_masked, hidden_dim }
+pub fn make_masked_lm(
+  vocab_size : Int32,
+  mask_prob : Double,
+  n_masked : Int32,
+  hidden_dim : Int32,
+) -> MaskedLMMeta {
+  { vocab_size, mask_prob, n_masked, hidden_dim, }
 }
 
+///|
 /// 掩码 token / Mask tokens.
-pub fn mask_tokens(tokens : Array[Int], meta : MaskedLMMeta, seed : Int) -> Array[Int] {
+pub fn mask_tokens(
+  tokens : Array[Int32],
+  meta : MaskedLMMeta,
+  seed : Int32,
+) -> Array[Int32] {
   let n = tokens.length()
-  let result : Array[Int] = Array::make(n, 0)
+  let result : Array[Int32] = Array::make(n, 0)
   let mut s = seed
   for i in 0..<n {
     s = lcg_next(s)
@@ -490,8 +644,13 @@ pub fn mask_tokens(tokens : Array[Int], meta : MaskedLMMeta, seed : Int) -> Arra
   result
 }
 
+///|
 /// Masked LM 损失 / Masked LM loss.
-pub fn masked_lm_loss(predictions : Array[Array[Double]], targets : Array[Int], meta : MaskedLMMeta) -> Double {
+pub fn masked_lm_loss(
+  predictions : Array[Array[Double]],
+  targets : Array[Int32],
+  meta : MaskedLMMeta,
+) -> Double {
   let n = targets.length()
   if n != predictions.length() {
     0.0
@@ -519,13 +678,25 @@ pub fn masked_lm_loss(predictions : Array[Array[Double]], targets : Array[Int], 
   }
 }
 
+///|
 /// 构造 MAE / Build MAE meta.
-pub fn make_mae(patch_size : Int, mask_ratio : Double, encoder_dim : Int, decoder_dim : Int, img_size : Int) -> MAEMeta {
-  { patch_size, mask_ratio, encoder_dim, decoder_dim, img_size }
+pub fn make_mae(
+  patch_size : Int32,
+  mask_ratio : Double,
+  encoder_dim : Int32,
+  decoder_dim : Int32,
+  img_size : Int32,
+) -> MAEMeta {
+  { patch_size, mask_ratio, encoder_dim, decoder_dim, img_size, }
 }
 
+///|
 /// MAE 掩码 / MAE mask.
-pub fn mae_mask(n_patches : Int, mask_ratio : Double, seed : Int) -> Array[Bool] {
+pub fn mae_mask(
+  n_patches : Int32,
+  mask_ratio : Double,
+  seed : Int32,
+) -> Array[Bool] {
   let result : Array[Bool] = Array::make(n_patches, false)
   let mut s = seed
   let n_mask = (n_patches.to_double() * mask_ratio).to_int()
@@ -541,8 +712,13 @@ pub fn mae_mask(n_patches : Int, mask_ratio : Double, seed : Int) -> Array[Bool]
   result
 }
 
+///|
 /// MAE 编码器 / MAE encoder.
-pub fn mae_encoder(patches : Array[Array[Double]], mask : Array[Bool], meta : MAEMeta) -> Array[Array[Double]] {
+pub fn mae_encoder(
+  patches : Array[Array[Double]],
+  mask : Array[Bool],
+  meta : MAEMeta,
+) -> Array[Array[Double]] {
   let result : Array[Array[Double]] = []
   for i in 0..<patches.length() {
     if i < mask.length() {
@@ -560,8 +736,13 @@ pub fn mae_encoder(patches : Array[Array[Double]], mask : Array[Bool], meta : MA
   result
 }
 
+///|
 /// MAE 解码器 / MAE decoder.
-pub fn mae_decoder(encoded : Array[Array[Double]], mask : Array[Bool], meta : MAEMeta) -> Array[Array[Double]] {
+pub fn mae_decoder(
+  encoded : Array[Array[Double]],
+  mask : Array[Bool],
+  meta : MAEMeta,
+) -> Array[Array[Double]] {
   let mask_count = mask.length()
   let result : Array[Array[Double]] = []
   for i in 0..<encoded.length() {
@@ -580,8 +761,13 @@ pub fn mae_decoder(encoded : Array[Array[Double]], mask : Array[Bool], meta : MA
   }
 }
 
+///|
 /// MAE 损失 / MAE loss.
-pub fn mae_loss(reconstructions : Array[Array[Double]], targets : Array[Array[Double]], mask : Array[Bool]) -> Double {
+pub fn mae_loss(
+  reconstructions : Array[Array[Double]],
+  targets : Array[Array[Double]],
+  mask : Array[Bool],
+) -> Double {
   let mut loss = 0.0
   let mut count = 0
   for i in 0..<targets.length() {
@@ -600,23 +786,43 @@ pub fn mae_loss(reconstructions : Array[Array[Double]], targets : Array[Array[Do
       }
     }
   }
-  if count == 0 { 0.0 } else { loss / count.to_double() }
+  if count == 0 {
+    0.0
+  } else {
+    loss / count.to_double()
+  }
 }
 
+///|
 /// 构造对比学习 / Build contrastive meta.
-pub fn make_contrastive(temperature : Double, n_positives : Int, n_negatives : Int, feature_dim : Int) -> ContrastiveMeta {
-  { temperature, n_positives, n_negatives, feature_dim }
+pub fn make_contrastive(
+  temperature : Double,
+  n_positives : Int32,
+  n_negatives : Int32,
+  feature_dim : Int32,
+) -> ContrastiveMeta {
+  { temperature, n_positives, n_negatives, feature_dim, }
 }
 
+///|
 /// 对比学习正样本 / Contrastive positive.
-pub fn contrastive_positive(anchor : Array[Double], positive : Array[Double], meta : ContrastiveMeta) -> Double {
+pub fn contrastive_positive(
+  anchor : Array[Double],
+  positive : Array[Double],
+  meta : ContrastiveMeta,
+) -> Double {
   let a = normalize(anchor)
   let p = normalize(positive)
   vec_dot(a, p) / meta.temperature
 }
 
+///|
 /// 对比学习负样本 / Contrastive negative.
-pub fn contrastive_negative(anchor : Array[Double], negatives : Array[Array[Double]], meta : ContrastiveMeta) -> Double {
+pub fn contrastive_negative(
+  anchor : Array[Double],
+  negatives : Array[Array[Double]],
+  meta : ContrastiveMeta,
+) -> Double {
   let a = normalize(anchor)
   let mut sum = 0.0
   for i in 0..<negatives.length() {
@@ -626,18 +832,24 @@ pub fn contrastive_negative(anchor : Array[Double], negatives : Array[Array[Doub
   log(sum)
 }
 
+///|
 /// 构造前置任务 / Build pretext meta.
-pub fn make_pretext(task_type : Int, n_classes : Int, feature_dim : Int) -> PretextMeta {
-  { task_type, n_classes, feature_dim }
+pub fn make_pretext(
+  task_type : Int32,
+  n_classes : Int32,
+  feature_dim : Int32,
+) -> PretextMeta {
+  { task_type, n_classes, feature_dim, }
 }
 
+///|
 /// 前置任务旋转 / Pretext rotation.
-pub fn pretext_rotate(input : Array[Double], k : Int) -> Array[Double] {
+pub fn pretext_rotate(input : Array[Double], k : Int32) -> Array[Double] {
   let n = input.length()
   if n == 0 {
     input
   } else {
-    let shift = ((k % 4) + 4) % 4
+    let shift = (k % 4 + 4) % 4
     let result : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
       result[i] = input[(i + shift * (n / 4)) % n]
@@ -646,8 +858,12 @@ pub fn pretext_rotate(input : Array[Double], k : Int) -> Array[Double] {
   }
 }
 
+///|
 /// 前置任务拼图 / Pretext jigsaw.
-pub fn pretext_jigsaw(patches : Array[Array[Double]], permutation : Array[Int]) -> Array[Array[Double]] {
+pub fn pretext_jigsaw(
+  patches : Array[Array[Double]],
+  permutation : Array[Int32],
+) -> Array[Array[Double]] {
   let n = patches.length()
   let result : Array[Array[Double]] = []
   for i in 0..<permutation.length() {
@@ -659,10 +875,11 @@ pub fn pretext_jigsaw(patches : Array[Array[Double]], permutation : Array[Int]) 
   result
 }
 
+///|
 /// 前置任务着色 / Pretext colorize.
-pub fn pretext_colorize(input : Array[Double], n_bins : Int) -> Array[Int] {
+pub fn pretext_colorize(input : Array[Double], n_bins : Int32) -> Array[Int32] {
   let n = input.length()
-  let result : Array[Int] = Array::make(n, 0)
+  let result : Array[Int32] = Array::make(n, 0)
   for i in 0..<n {
     let v = input[i]
     let bin = ((v + 1.0) * n_bins.to_double() / 2.0).to_int()
@@ -677,13 +894,24 @@ pub fn pretext_colorize(input : Array[Double], n_bins : Int) -> Array[Int] {
   result
 }
 
+///|
 /// 构造表示学习 / Build representation meta.
-pub fn make_representation(input_dim : Int, hidden_dim : Int, output_dim : Int, n_layers : Int) -> RepresentationMeta {
-  { input_dim, hidden_dim, output_dim, n_layers }
+pub fn make_representation(
+  input_dim : Int32,
+  hidden_dim : Int32,
+  output_dim : Int32,
+  n_layers : Int32,
+) -> RepresentationMeta {
+  { input_dim, hidden_dim, output_dim, n_layers, }
 }
 
+///|
 /// 表示学习 / Representation learn.
-pub fn representation_learn(input : Array[Double], weights : Array[Array[Double]], meta : RepresentationMeta) -> Array[Double] {
+pub fn representation_learn(
+  input : Array[Double],
+  weights : Array[Array[Double]],
+  meta : RepresentationMeta,
+) -> Array[Double] {
   let mut current = input
   for l in 0..<meta.n_layers {
     if l < weights.length() {
@@ -706,8 +934,12 @@ pub fn representation_learn(input : Array[Double], weights : Array[Array[Double]
   current
 }
 
+///|
 /// 表示学习评估 / Representation eval.
-pub fn representation_eval(features : Array[Double], labels : Array[Int]) -> Double {
+pub fn representation_eval(
+  features : Array[Double],
+  labels : Array[Int32],
+) -> Double {
   let n = features.length()
   if n == 0 || labels.length() == 0 {
     0.0
@@ -723,13 +955,24 @@ pub fn representation_eval(features : Array[Double], labels : Array[Int]) -> Dou
   }
 }
 
+///|
 /// 构造投影头 / Build projection head meta.
-pub fn make_projection_head(input_dim : Int, hidden_dim : Int, output_dim : Int, use_bn : Bool) -> ProjectionHeadMeta {
-  { input_dim, hidden_dim, output_dim, use_bn }
+pub fn make_projection_head(
+  input_dim : Int32,
+  hidden_dim : Int32,
+  output_dim : Int32,
+  use_bn : Bool,
+) -> ProjectionHeadMeta {
+  { input_dim, hidden_dim, output_dim, use_bn, }
 }
 
+///|
 /// 投影头前向 / Projection head forward.
-pub fn projection_forward(input : Array[Double], weights : Array[Double], meta : ProjectionHeadMeta) -> Array[Double] {
+pub fn projection_forward(
+  input : Array[Double],
+  weights : Array[Double],
+  meta : ProjectionHeadMeta,
+) -> Array[Double] {
   let result : Array[Double] = Array::make(meta.output_dim, 0.0)
   for j in 0..<meta.output_dim {
     let mut sum = 0.0
@@ -761,6 +1004,7 @@ pub fn projection_forward(input : Array[Double], weights : Array[Double], meta :
   result
 }
 
+///|
 /// 投影头损失 / Projection head loss.
 pub fn projection_loss(z1 : Array[Double], z2 : Array[Double]) -> Double {
   let n = z1.length()
@@ -776,13 +1020,18 @@ pub fn projection_loss(z1 : Array[Double], z2 : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 构造停止梯度 / Build stop gradient meta.
 pub fn make_stop_gradient(enabled : Bool, scale : Double) -> StopGradientMeta {
-  { enabled, scale }
+  { enabled, scale, }
 }
 
+///|
 /// 停止梯度 / Stop gradient.
-pub fn stop_grad(values : Array[Double], meta : StopGradientMeta) -> Array[Double] {
+pub fn stop_grad(
+  values : Array[Double],
+  meta : StopGradientMeta,
+) -> Array[Double] {
   if meta.enabled {
     let result : Array[Double] = Array::make(values.length(), 0.0)
     for i in 0..<values.length() {
@@ -794,6 +1043,7 @@ pub fn stop_grad(values : Array[Double], meta : StopGradientMeta) -> Array[Doubl
   }
 }
 
+///|
 /// BYOL 停止梯度 / BYOL stop gradient.
 pub fn byol_stop_grad(values : Array[Double]) -> Array[Double] {
   let result : Array[Double] = Array::make(values.length(), 0.0)
@@ -803,6 +1053,7 @@ pub fn byol_stop_grad(values : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 /// 自监督学习 ID / Self-supervised learning id.
 pub fn self_supervised_id() -> String {
   "self_supervised_v1"

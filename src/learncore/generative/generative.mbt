@@ -6,7 +6,6 @@
 /// # Generative Models
 ///
 /// GAN, VAE, Diffusion, Flow, Autoregressive, Markov, HMM, TextGAN, etc.
-
 fn exp(x : Double) -> Double {
   if x > 20.0 {
     485165195.4
@@ -23,6 +22,7 @@ fn exp(x : Double) -> Double {
   }
 }
 
+///|
 fn log(x : Double) -> Double {
   if x <= 0.0 {
     -1000.0
@@ -39,6 +39,7 @@ fn log(x : Double) -> Double {
   }
 }
 
+///|
 fn sqrt(x : Double) -> Double {
   if x <= 0.0 {
     0.0
@@ -51,29 +52,34 @@ fn sqrt(x : Double) -> Double {
   }
 }
 
+///|
 fn sigmoid(x : Double) -> Double {
   1.0 / (1.0 + exp(-x))
 }
 
+///|
 fn tanh_d(x : Double) -> Double {
   let e1 = exp(x)
   let e2 = exp(-x)
   (e1 - e2) / (e1 + e2)
 }
 
-fn lcg_next(state : Int) -> Int {
+///|
+fn lcg_next(state : Int32) -> Int32 {
   let a = 1103515245
   let c = 12345
   let m = 2147483647
   (a * state + c) % m
 }
 
-fn rand_double(seed : Int) -> Double {
+///|
+fn rand_double(seed : Int32) -> Double {
   let s = lcg_next(seed)
   s.to_double() / 2147483647.0
 }
 
-fn box_muller(seed : Int) -> Double {
+///|
+fn box_muller(seed : Int32) -> Double {
   let u1 = rand_double(seed)
   let u2 = rand_double(lcg_next(seed))
   let r = sqrt(-2.0 * log(u1 + 0.000000001))
@@ -81,11 +87,13 @@ fn box_muller(seed : Int) -> Double {
   r * cos(0.0 + two_pi * u2)
 }
 
+///|
 fn cos(x : Double) -> Double {
   let half_pi = 1.5707963267948966
   sin(x + half_pi)
 }
 
+///|
 fn sin(x : Double) -> Double {
   let pi = 3.141592653589793
   let two_pi = 6.283185307179586
@@ -100,134 +108,186 @@ fn sin(x : Double) -> Double {
   let mut term = y
   let y2 = y * y
   for j in 1..<20 {
-    term = term * y2 / ((2 * j).to_double() * (2 * j + 1).to_double()) * (-1.0)
+    term = term * y2 / ((2 * j).to_double() * (2 * j + 1).to_double()) * -1.0
     result = result + term
   }
   result
 }
 
+///|
 /// GAN 模型配置 / GAN model configuration.
 pub struct GANModel {
-  gen_dim : Int
-  disc_dim : Int
-  noise_dim : Int
+  gen_dim : Int32
+  disc_dim : Int32
+  noise_dim : Int32
   lr : Double
-  seed : Int
+  seed : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend GANModel with Eq::{equal, not_equal}
+
+///|
 pub extend GANModel with Debug::{to_repr}
 
+///|
 /// VAE 模型配置 / VAE model configuration.
 pub struct VAEModel {
-  input_dim : Int
-  hidden_dim : Int
-  latent_dim : Int
+  input_dim : Int32
+  hidden_dim : Int32
+  latent_dim : Int32
   lr : Double
-  seed : Int
+  seed : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend VAEModel with Eq::{equal, not_equal}
+
+///|
 pub extend VAEModel with Debug::{to_repr}
 
+///|
 /// Diffusion 模型配置 / Diffusion model configuration.
 pub struct DiffusionModel {
-  num_steps : Int
+  num_steps : Int32
   beta_start : Double
   beta_end : Double
-  input_dim : Int
-  seed : Int
+  input_dim : Int32
+  seed : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend DiffusionModel with Eq::{equal, not_equal}
+
+///|
 pub extend DiffusionModel with Debug::{to_repr}
 
+///|
 /// TextGAN 配置 / TextGAN configuration.
 pub struct TextGANModel {
-  vocab_size : Int
-  seq_len : Int
-  embed_dim : Int
-  seed : Int
+  vocab_size : Int32
+  seq_len : Int32
+  embed_dim : Int32
+  seed : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend TextGANModel with Eq::{equal, not_equal}
+
+///|
 pub extend TextGANModel with Debug::{to_repr}
 
+///|
 /// Flow 模型配置 / Flow model configuration.
 pub struct FlowModel {
-  input_dim : Int
-  num_layers : Int
-  seed : Int
+  input_dim : Int32
+  num_layers : Int32
+  seed : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend FlowModel with Eq::{equal, not_equal}
+
+///|
 pub extend FlowModel with Debug::{to_repr}
 
+///|
 /// Autoregressive 模型配置 / Autoregressive model configuration.
 pub struct AutoregressiveModel {
-  vocab_size : Int
-  seq_len : Int
-  hidden_dim : Int
-  seed : Int
+  vocab_size : Int32
+  seq_len : Int32
+  hidden_dim : Int32
+  seed : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend AutoregressiveModel with Eq::{equal, not_equal}
+
+///|
 pub extend AutoregressiveModel with Debug::{to_repr}
 
+///|
 /// Markov 模型配置 / Markov model configuration.
 pub struct MarkovModel {
-  num_states : Int
+  num_states : Int32
   transition : Array[Array[Double]]
   initial : Array[Double]
-  seed : Int
+  seed : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend MarkovModel with Eq::{equal, not_equal}
+
+///|
 pub extend MarkovModel with Debug::{to_repr}
 
+///|
 /// HMM 生成配置 / HMM generation configuration.
 pub struct HMMGenModel {
-  num_states : Int
-  num_obs : Int
+  num_states : Int32
+  num_obs : Int32
   transition : Array[Array[Double]]
   emission : Array[Array[Double]]
   initial : Array[Double]
-  seed : Int
+  seed : Int32
 } derive(Debug, Eq)
 
+///|
 pub extend HMMGenModel with Eq::{equal, not_equal}
+
+///|
 pub extend HMMGenModel with Debug::{to_repr}
 
+///|
 /// Generator 网络配置 / Generator network configuration.
 pub struct GeneratorNet {
-  input_dim : Int
-  output_dim : Int
-  hidden_dim : Int
+  input_dim : Int32
+  output_dim : Int32
+  hidden_dim : Int32
   weights : Array[Array[Double]]
   bias : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend GeneratorNet with Eq::{equal, not_equal}
+
+///|
 pub extend GeneratorNet with Debug::{to_repr}
 
+///|
 /// Discriminator 网络配置 / Discriminator network configuration.
 pub struct DiscriminatorNet {
-  input_dim : Int
-  hidden_dim : Int
+  input_dim : Int32
+  hidden_dim : Int32
   weights : Array[Array[Double]]
   bias : Array[Double]
 } derive(Debug, Eq)
 
+///|
 pub extend DiscriminatorNet with Eq::{equal, not_equal}
+
+///|
 pub extend DiscriminatorNet with Debug::{to_repr}
 
+///|
 /// 构造 GAN 模型 / Build GAN model.
-pub fn make_gan_model(gen_dim : Int, disc_dim : Int, noise_dim : Int, lr : Double, seed : Int) -> GANModel {
-  { gen_dim, disc_dim, noise_dim, lr, seed }
+pub fn make_gan_model(
+  gen_dim : Int32,
+  disc_dim : Int32,
+  noise_dim : Int32,
+  lr : Double,
+  seed : Int32,
+) -> GANModel {
+  { gen_dim, disc_dim, noise_dim, lr, seed, }
 }
 
+///|
 /// GAN 训练步 / GAN training step.
-pub fn gan_train_step(model : GANModel, real_data : Array[Double], step : Int) -> (GANModel, Double) {
+pub fn gan_train_step(
+  model : GANModel,
+  real_data : Array[Double],
+  step : Int32,
+) -> (GANModel, Double) {
   let n = real_data.length()
   if n == 0 {
     (model, 0.0)
@@ -242,10 +302,20 @@ pub fn gan_train_step(model : GANModel, real_data : Array[Double], step : Int) -
     let eps = 0.000000001
     let loss = -(log(d_real + eps) + log(1.0 - d_fake + eps))
     let new_seed = lcg_next(model.seed)
-    ({ gen_dim: model.gen_dim, disc_dim: model.disc_dim, noise_dim: model.noise_dim, lr: model.lr, seed: new_seed }, loss)
+    (
+      {
+        gen_dim: model.gen_dim,
+        disc_dim: model.disc_dim,
+        noise_dim: model.noise_dim,
+        lr: model.lr,
+        seed: new_seed,
+      },
+      loss,
+    )
   }
 }
 
+///|
 /// GAN 生成 / GAN generate.
 pub fn gan_generate(model : GANModel, noise : Array[Double]) -> Array[Double] {
   let result : Array[Double] = Array::make(model.gen_dim, 0.0)
@@ -261,6 +331,7 @@ pub fn gan_generate(model : GANModel, noise : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 /// GAN 判别 / GAN discriminate.
 pub fn gan_discriminate(model : GANModel, input : Array[Double]) -> Double {
   let n = input.length()
@@ -275,13 +346,24 @@ pub fn gan_discriminate(model : GANModel, input : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 构造 VAE 模型 / Build VAE model.
-pub fn make_vae_model(input_dim : Int, hidden_dim : Int, latent_dim : Int, lr : Double, seed : Int) -> VAEModel {
-  { input_dim, hidden_dim, latent_dim, lr, seed }
+pub fn make_vae_model(
+  input_dim : Int32,
+  hidden_dim : Int32,
+  latent_dim : Int32,
+  lr : Double,
+  seed : Int32,
+) -> VAEModel {
+  { input_dim, hidden_dim, latent_dim, lr, seed, }
 }
 
+///|
 /// VAE 编码 / VAE encode.
-pub fn vae_encode(model : VAEModel, input : Array[Double]) -> (Array[Double], Array[Double]) {
+pub fn vae_encode(
+  model : VAEModel,
+  input : Array[Double],
+) -> (Array[Double], Array[Double]) {
   let mu : Array[Double] = Array::make(model.latent_dim, 0.0)
   let log_var : Array[Double] = Array::make(model.latent_dim, 0.0)
   for i in 0..<model.latent_dim {
@@ -297,6 +379,7 @@ pub fn vae_encode(model : VAEModel, input : Array[Double]) -> (Array[Double], Ar
   (mu, log_var)
 }
 
+///|
 /// VAE 解码 / VAE decode.
 pub fn vae_decode(model : VAEModel, latent : Array[Double]) -> Array[Double] {
   let result : Array[Double] = Array::make(model.input_dim, 0.0)
@@ -312,8 +395,14 @@ pub fn vae_decode(model : VAEModel, latent : Array[Double]) -> Array[Double] {
   result
 }
 
+///|
 /// VAE 损失 / VAE loss.
-pub fn vae_loss(recon : Array[Double], target : Array[Double], mu : Array[Double], log_var : Array[Double]) -> Double {
+pub fn vae_loss(
+  recon : Array[Double],
+  target : Array[Double],
+  mu : Array[Double],
+  log_var : Array[Double],
+) -> Double {
   let n = recon.length()
   if n == 0 || n != target.length() {
     0.0
@@ -334,8 +423,14 @@ pub fn vae_loss(recon : Array[Double], target : Array[Double], mu : Array[Double
   }
 }
 
+///|
 /// VAE 采样 / VAE sample.
-pub fn vae_sample(model : VAEModel, mu : Array[Double], log_var : Array[Double], step : Int) -> Array[Double] {
+pub fn vae_sample(
+  model : VAEModel,
+  mu : Array[Double],
+  log_var : Array[Double],
+  step : Int32,
+) -> Array[Double] {
   let result : Array[Double] = Array::make(model.latent_dim, 0.0)
   for i in 0..<model.latent_dim {
     let eps = box_muller(model.seed + step * 17 + i)
@@ -345,18 +440,34 @@ pub fn vae_sample(model : VAEModel, mu : Array[Double], log_var : Array[Double],
   result
 }
 
+///|
 /// 构造 Diffusion 模型 / Build diffusion model.
-pub fn make_diffusion(num_steps : Int, beta_start : Double, beta_end : Double, input_dim : Int, seed : Int) -> DiffusionModel {
-  { num_steps, beta_start, beta_end, input_dim, seed }
+pub fn make_diffusion(
+  num_steps : Int32,
+  beta_start : Double,
+  beta_end : Double,
+  input_dim : Int32,
+  seed : Int32,
+) -> DiffusionModel {
+  { num_steps, beta_start, beta_end, input_dim, seed, }
 }
 
+///|
 /// Diffusion 前向 / Diffusion forward (add noise).
-pub fn diffusion_forward(model : DiffusionModel, x0 : Array[Double], t : Int, step : Int) -> Array[Double] {
+pub fn diffusion_forward(
+  model : DiffusionModel,
+  x0 : Array[Double],
+  t : Int32,
+  step : Int32,
+) -> Array[Double] {
   let n = x0.length()
   if n == 0 || t <= 0 || t > model.num_steps {
     x0
   } else {
-    let beta = model.beta_start + (model.beta_end - model.beta_start) * t.to_double() / model.num_steps.to_double()
+    let beta = model.beta_start +
+      (model.beta_end - model.beta_start) *
+      t.to_double() /
+      model.num_steps.to_double()
     let alpha = 1.0 - beta
     let mut cum_alpha = 1.0
     for _ in 0..<t {
@@ -371,13 +482,22 @@ pub fn diffusion_forward(model : DiffusionModel, x0 : Array[Double], t : Int, st
   }
 }
 
+///|
 /// Diffusion 反向 / Diffusion reverse (denoise).
-pub fn diffusion_reverse(model : DiffusionModel, xt : Array[Double], t : Int, step : Int) -> Array[Double] {
+pub fn diffusion_reverse(
+  model : DiffusionModel,
+  xt : Array[Double],
+  t : Int32,
+  step : Int32,
+) -> Array[Double] {
   let n = xt.length()
   if n == 0 || t <= 0 {
     xt
   } else {
-    let beta = model.beta_start + (model.beta_end - model.beta_start) * t.to_double() / model.num_steps.to_double()
+    let beta = model.beta_start +
+      (model.beta_end - model.beta_start) *
+      t.to_double() /
+      model.num_steps.to_double()
     let alpha = 1.0 - beta
     let result : Array[Double] = Array::make(n, 0.0)
     for i in 0..<n {
@@ -388,33 +508,59 @@ pub fn diffusion_reverse(model : DiffusionModel, xt : Array[Double], t : Int, st
   }
 }
 
+///|
 /// Diffusion 单步 / Diffusion single step.
-pub fn diffusion_step(model : DiffusionModel, x : Array[Double], t : Int, step : Int) -> Array[Double] {
+pub fn diffusion_step(
+  model : DiffusionModel,
+  x : Array[Double],
+  t : Int32,
+  step : Int32,
+) -> Array[Double] {
   diffusion_reverse(model, x, t, step)
 }
 
+///|
 /// 构造 TextGAN / Build TextGAN.
-pub fn make_text_gan(vocab_size : Int, seq_len : Int, embed_dim : Int, seed : Int) -> TextGANModel {
-  { vocab_size, seq_len, embed_dim, seed }
+pub fn make_text_gan(
+  vocab_size : Int32,
+  seq_len : Int32,
+  embed_dim : Int32,
+  seed : Int32,
+) -> TextGANModel {
+  { vocab_size, seq_len, embed_dim, seed, }
 }
 
+///|
 /// TextGAN 生成 / TextGAN generate.
-pub fn text_gan_generate(model : TextGANModel, noise : Array[Double]) -> Array[Int] {
-  let result : Array[Int] = Array::make(model.seq_len, 0)
+pub fn text_gan_generate(
+  model : TextGANModel,
+  noise : Array[Double],
+) -> Array[Int32] {
+  let result : Array[Int32] = Array::make(model.seq_len, 0)
   for i in 0..<model.seq_len {
     let mut sum = 0.0
     for j in 0..<noise.length() {
       sum = sum + noise[j]
     }
     let v = (sigmoid(sum) * model.vocab_size.to_double()).to_int()
-    let clamped = if v < 0 { 0 } else if v >= model.vocab_size { model.vocab_size - 1 } else { v }
+    let clamped = if v < 0 {
+      0
+    } else if v >= model.vocab_size {
+      model.vocab_size - 1
+    } else {
+      v
+    }
     result[i] = clamped
   }
   result
 }
 
+///|
 /// TextGAN 判别 / TextGAN discriminate.
-pub fn text_gan_discriminate(model : TextGANModel, seq : Array[Int]) -> Double {
+pub fn text_gan_discriminate(
+  model : TextGANModel,
+  seq : Array[Int32],
+) -> Double {
   let n = seq.length()
   if n == 0 {
     0.0
@@ -428,11 +574,17 @@ pub fn text_gan_discriminate(model : TextGANModel, seq : Array[Int]) -> Double {
   }
 }
 
+///|
 /// 构造 Flow 模型 / Build flow model.
-pub fn make_flow_model(input_dim : Int, num_layers : Int, seed : Int) -> FlowModel {
-  { input_dim, num_layers, seed }
+pub fn make_flow_model(
+  input_dim : Int32,
+  num_layers : Int32,
+  seed : Int32,
+) -> FlowModel {
+  { input_dim, num_layers, seed, }
 }
 
+///|
 /// Flow 前向 / Flow forward.
 pub fn flow_forward(model : FlowModel, x : Array[Double]) -> Array[Double] {
   let n = x.length()
@@ -452,6 +604,7 @@ pub fn flow_forward(model : FlowModel, x : Array[Double]) -> Array[Double] {
   }
 }
 
+///|
 /// Flow 反向 / Flow inverse.
 pub fn flow_inverse(model : FlowModel, y : Array[Double]) -> Array[Double] {
   let n = y.length()
@@ -466,7 +619,9 @@ pub fn flow_inverse(model : FlowModel, y : Array[Double]) -> Array[Double] {
       for i in 0..<n {
         let mut z = result[i]
         for _ in 0..<20 {
-          z = z - (tanh_d(z + 0.1) - result[i]) / (1.0 - tanh_d(z + 0.1) * tanh_d(z + 0.1))
+          z = z -
+            (tanh_d(z + 0.1) - result[i]) /
+            (1.0 - tanh_d(z + 0.1) * tanh_d(z + 0.1))
         }
         result[i] = z
       }
@@ -475,6 +630,7 @@ pub fn flow_inverse(model : FlowModel, y : Array[Double]) -> Array[Double] {
   }
 }
 
+///|
 /// Flow 对数概率 / Flow log probability.
 pub fn flow_log_prob(model : FlowModel, x : Array[Double]) -> Double {
   let n = x.length()
@@ -484,7 +640,8 @@ pub fn flow_log_prob(model : FlowModel, x : Array[Double]) -> Double {
     let y = flow_forward(model, x)
     let mut log_det = 0.0
     for i in 0..<n {
-      log_det = log_det + log(1.0 - tanh_d(y[i] + 0.1) * tanh_d(y[i] + 0.1) + 0.000000001)
+      log_det = log_det +
+        log(1.0 - tanh_d(y[i] + 0.1) * tanh_d(y[i] + 0.1) + 0.000000001)
     }
     let mut lp = 0.0
     for i in 0..<n {
@@ -494,14 +651,25 @@ pub fn flow_log_prob(model : FlowModel, x : Array[Double]) -> Double {
   }
 }
 
+///|
 /// 构造 Autoregressive 模型 / Build autoregressive model.
-pub fn make_autoregressive(vocab_size : Int, seq_len : Int, hidden_dim : Int, seed : Int) -> AutoregressiveModel {
-  { vocab_size, seq_len, hidden_dim, seed }
+pub fn make_autoregressive(
+  vocab_size : Int32,
+  seq_len : Int32,
+  hidden_dim : Int32,
+  seed : Int32,
+) -> AutoregressiveModel {
+  { vocab_size, seq_len, hidden_dim, seed, }
 }
 
+///|
 /// Autoregressive 采样 / Autoregressive sample.
-pub fn autoregressive_sample(model : AutoregressiveModel, prompt : Array[Int], step : Int) -> Array[Int] {
-  let result : Array[Int] = []
+pub fn autoregressive_sample(
+  model : AutoregressiveModel,
+  prompt : Array[Int32],
+  step : Int32,
+) -> Array[Int32] {
+  let result : Array[Int32] = []
   for i in 0..<prompt.length() {
     result.push(prompt[i])
   }
@@ -511,15 +679,28 @@ pub fn autoregressive_sample(model : AutoregressiveModel, prompt : Array[Int], s
       sum = sum + result[i].to_double()
     }
     let noise = rand_double(model.seed + step * 7 + result.length())
-    let v = ((sigmoid(sum / (result.length() + 1).to_double()) + noise) * 0.5 * model.vocab_size.to_double()).to_int()
-    let clamped = if v < 0 { 0 } else if v >= model.vocab_size { model.vocab_size - 1 } else { v }
+    let v = ((sigmoid(sum / (result.length() + 1).to_double()) + noise) *
+    0.5 *
+    model.vocab_size.to_double()).to_int()
+    let clamped = if v < 0 {
+      0
+    } else if v >= model.vocab_size {
+      model.vocab_size - 1
+    } else {
+      v
+    }
     result.push(clamped)
   }
   result
 }
 
+///|
 /// Autoregressive 损失 / Autoregressive loss.
-pub fn autoregressive_loss(model : AutoregressiveModel, seq : Array[Int], target : Array[Int]) -> Double {
+pub fn autoregressive_loss(
+  model : AutoregressiveModel,
+  seq : Array[Int32],
+  target : Array[Int32],
+) -> Double {
   let n = seq.length()
   if n == 0 || n != target.length() {
     0.0
@@ -535,14 +716,25 @@ pub fn autoregressive_loss(model : AutoregressiveModel, seq : Array[Int], target
   }
 }
 
+///|
 /// 构造 Markov 模型 / Build Markov model.
-pub fn make_markov_model(num_states : Int, transition : Array[Array[Double]], initial : Array[Double], seed : Int) -> MarkovModel {
-  { num_states, transition, initial, seed }
+pub fn make_markov_model(
+  num_states : Int32,
+  transition : Array[Array[Double]],
+  initial : Array[Double],
+  seed : Int32,
+) -> MarkovModel {
+  { num_states, transition, initial, seed, }
 }
 
+///|
 /// Markov 采样 / Markov sample.
-pub fn markov_sample(model : MarkovModel, num_steps : Int, step : Int) -> Array[Int] {
-  let result : Array[Int] = []
+pub fn markov_sample(
+  model : MarkovModel,
+  num_steps : Int32,
+  step : Int32,
+) -> Array[Int32] {
+  let result : Array[Int32] = []
   if model.num_states == 0 {
     return result
   }
@@ -576,8 +768,13 @@ pub fn markov_sample(model : MarkovModel, num_steps : Int, step : Int) -> Array[
   result
 }
 
+///|
 /// Markov 概率 / Markov probability.
-pub fn markov_prob(model : MarkovModel, from_state : Int, to_state : Int) -> Double {
+pub fn markov_prob(
+  model : MarkovModel,
+  from_state : Int32,
+  to_state : Int32,
+) -> Double {
   if from_state < 0 || from_state >= model.transition.length() {
     0.0
   } else if to_state < 0 || to_state >= model.transition[from_state].length() {
@@ -587,15 +784,28 @@ pub fn markov_prob(model : MarkovModel, from_state : Int, to_state : Int) -> Dou
   }
 }
 
+///|
 /// 构造 HMM 生成模型 / Build HMM generation model.
-pub fn make_hmm_gen(num_states : Int, num_obs : Int, transition : Array[Array[Double]], emission : Array[Array[Double]], initial : Array[Double], seed : Int) -> HMMGenModel {
-  { num_states, num_obs, transition, emission, initial, seed }
+pub fn make_hmm_gen(
+  num_states : Int32,
+  num_obs : Int32,
+  transition : Array[Array[Double]],
+  emission : Array[Array[Double]],
+  initial : Array[Double],
+  seed : Int32,
+) -> HMMGenModel {
+  { num_states, num_obs, transition, emission, initial, seed, }
 }
 
+///|
 /// HMM 生成 / HMM generate.
-pub fn hmm_generate(model : HMMGenModel, num_steps : Int, step : Int) -> (Array[Int], Array[Int]) {
-  let states : Array[Int] = []
-  let obs : Array[Int] = []
+pub fn hmm_generate(
+  model : HMMGenModel,
+  num_steps : Int32,
+  step : Int32,
+) -> (Array[Int32], Array[Int32]) {
+  let states : Array[Int32] = []
+  let obs : Array[Int32] = []
   if model.num_states == 0 || model.num_obs == 0 {
     return (states, obs)
   }
@@ -653,17 +863,29 @@ pub fn hmm_generate(model : HMMGenModel, num_steps : Int, step : Int) -> (Array[
   (states, obs)
 }
 
+///|
 /// HMM Viterbi 生成 / HMM Viterbi generation.
-pub fn hmm_viterbi_gen(model : HMMGenModel, obs : Array[Int]) -> Array[Int] {
+pub fn hmm_viterbi_gen(model : HMMGenModel, obs : Array[Int32]) -> Array[Int32] {
   let t = obs.length()
   if t == 0 || model.num_states == 0 {
     return []
   }
-  let dp : Array[Array[Double]] = Array::make(t, Array::make(model.num_states, 0.0))
-  let bp : Array[Array[Int]] = Array::make(t, Array::make(model.num_states, 0))
+  let dp : Array[Array[Double]] = Array::make(
+    t,
+    Array::make(model.num_states, 0.0),
+  )
+  let bp : Array[Array[Int32]] = Array::make(
+    t,
+    Array::make(model.num_states, 0),
+  )
   for s in 0..<model.num_states {
     let init_p = if s < model.initial.length() { model.initial[s] } else { 0.0 }
-    let emit_p = if s < model.emission.length() && obs[0] < model.emission[s].length() { model.emission[s][obs[0]] } else { 0.0 }
+    let emit_p = if s < model.emission.length() &&
+      obs[0] < model.emission[s].length() {
+      model.emission[s][obs[0]]
+    } else {
+      0.0
+    }
     dp[0][s] = log(init_p + 0.000000001) + log(emit_p + 0.000000001)
   }
   for k in 1..<t {
@@ -671,19 +893,29 @@ pub fn hmm_viterbi_gen(model : HMMGenModel, obs : Array[Int]) -> Array[Int] {
       let mut best = -1000000000.0
       let mut best_prev = 0
       for ps in 0..<model.num_states {
-        let trans_p = if ps < model.transition.length() && s < model.transition[ps].length() { model.transition[ps][s] } else { 0.0 }
+        let trans_p = if ps < model.transition.length() &&
+          s < model.transition[ps].length() {
+          model.transition[ps][s]
+        } else {
+          0.0
+        }
         let val = dp[k - 1][ps] + log(trans_p + 0.000000001)
         if val > best {
           best = val
           best_prev = ps
         }
       }
-      let emit_p = if s < model.emission.length() && obs[k] < model.emission[s].length() { model.emission[s][obs[k]] } else { 0.0 }
+      let emit_p = if s < model.emission.length() &&
+        obs[k] < model.emission[s].length() {
+        model.emission[s][obs[k]]
+      } else {
+        0.0
+      }
       dp[k][s] = best + log(emit_p + 0.000000001)
       bp[k][s] = best_prev
     }
   }
-  let result : Array[Int] = Array::make(t, 0)
+  let result : Array[Int32] = Array::make(t, 0)
   let mut best_final = 0
   let mut best_val = -1000000000.0
   for s in 0..<model.num_states {
@@ -701,8 +933,14 @@ pub fn hmm_viterbi_gen(model : HMMGenModel, obs : Array[Int]) -> Array[Int] {
   result
 }
 
+///|
 /// 正态噪声 / Normal noise.
-pub fn noise_normal(size : Int, mean : Double, std : Double, seed : Int) -> Array[Double] {
+pub fn noise_normal(
+  size : Int32,
+  mean : Double,
+  std : Double,
+  seed : Int32,
+) -> Array[Double] {
   let result : Array[Double] = Array::make(size, 0.0)
   for i in 0..<size {
     result[i] = mean + std * box_muller(seed + i * 7)
@@ -710,8 +948,14 @@ pub fn noise_normal(size : Int, mean : Double, std : Double, seed : Int) -> Arra
   result
 }
 
+///|
 /// 均匀噪声 / Uniform noise.
-pub fn noise_uniform(size : Int, low : Double, high : Double, seed : Int) -> Array[Double] {
+pub fn noise_uniform(
+  size : Int32,
+  low : Double,
+  high : Double,
+  seed : Int32,
+) -> Array[Double] {
   let result : Array[Double] = Array::make(size, 0.0)
   for i in 0..<size {
     let r = rand_double(seed + i * 11)
@@ -720,8 +964,9 @@ pub fn noise_uniform(size : Int, low : Double, high : Double, seed : Int) -> Arr
   result
 }
 
+///|
 /// 伯努利噪声 / Bernoulli noise.
-pub fn noise_bernoulli(size : Int, p : Double, seed : Int) -> Array[Double] {
+pub fn noise_bernoulli(size : Int32, p : Double, seed : Int32) -> Array[Double] {
   let result : Array[Double] = Array::make(size, 0.0)
   for i in 0..<size {
     let r = rand_double(seed + i * 13)
@@ -730,8 +975,9 @@ pub fn noise_bernoulli(size : Int, p : Double, seed : Int) -> Array[Double] {
   result
 }
 
+///|
 /// 分类采样 / Categorical sample.
-pub fn sample_categorical(probs : Array[Double], seed : Int) -> Int {
+pub fn sample_categorical(probs : Array[Double], seed : Int32) -> Int32 {
   let n = probs.length()
   if n == 0 {
     return 0
@@ -747,10 +993,15 @@ pub fn sample_categorical(probs : Array[Double], seed : Int) -> Int {
   n - 1
 }
 
+///|
 /// 多项式采样 / Multinomial sample.
-pub fn sample_multinomial(probs : Array[Double], num_samples : Int, seed : Int) -> Array[Int] {
+pub fn sample_multinomial(
+  probs : Array[Double],
+  num_samples : Int32,
+  seed : Int32,
+) -> Array[Int32] {
   let n = probs.length()
-  let result : Array[Int] = Array::make(n, 0)
+  let result : Array[Int32] = Array::make(n, 0)
   for k in 0..<num_samples {
     let idx = sample_categorical(probs, seed + k * 17)
     if idx >= 0 && idx < n {
@@ -760,8 +1011,9 @@ pub fn sample_multinomial(probs : Array[Double], num_samples : Int, seed : Int) 
   result
 }
 
+///|
 /// Dirichlet 采样 / Dirichlet sample.
-pub fn sample_dirichlet(alphas : Array[Double], seed : Int) -> Array[Double] {
+pub fn sample_dirichlet(alphas : Array[Double], seed : Int32) -> Array[Double] {
   let n = alphas.length()
   if n == 0 {
     return []
@@ -786,8 +1038,13 @@ pub fn sample_dirichlet(alphas : Array[Double], seed : Int) -> Array[Double] {
   result
 }
 
+///|
 /// 潜空间插值 / Latent interpolation.
-pub fn interpolate_latent(z1 : Array[Double], z2 : Array[Double], alpha : Double) -> Array[Double] {
+pub fn interpolate_latent(
+  z1 : Array[Double],
+  z2 : Array[Double],
+  alpha : Double,
+) -> Array[Double] {
   let n = z1.length()
   if n == 0 || n != z2.length() {
     return []
@@ -799,8 +1056,13 @@ pub fn interpolate_latent(z1 : Array[Double], z2 : Array[Double], alpha : Double
   result
 }
 
+///|
 /// 潜空间多步插值 / Latent space multi-step interpolation.
-pub fn latent_space_interpolation(z1 : Array[Double], z2 : Array[Double], num_steps : Int) -> Array[Array[Double]] {
+pub fn latent_space_interpolation(
+  z1 : Array[Double],
+  z2 : Array[Double],
+  num_steps : Int32,
+) -> Array[Array[Double]] {
   let result : Array[Array[Double]] = []
   if num_steps <= 0 {
     return result
@@ -812,9 +1074,18 @@ pub fn latent_space_interpolation(z1 : Array[Double], z2 : Array[Double], num_st
   result
 }
 
+///|
 /// 构造 Generator 网络 / Build generator network.
-pub fn make_generator_net(input_dim : Int, output_dim : Int, hidden_dim : Int, seed : Int) -> GeneratorNet {
-  let weights : Array[Array[Double]] = Array::make(2, Array::make(hidden_dim, 0.0))
+pub fn make_generator_net(
+  input_dim : Int32,
+  output_dim : Int32,
+  hidden_dim : Int32,
+  seed : Int32,
+) -> GeneratorNet {
+  let weights : Array[Array[Double]] = Array::make(
+    2,
+    Array::make(hidden_dim, 0.0),
+  )
   weights[0] = Array::make(input_dim, 0.0)
   for i in 0..<input_dim {
     weights[0][i] = rand_double(seed + i) * 2.0 - 1.0
@@ -827,11 +1098,15 @@ pub fn make_generator_net(input_dim : Int, output_dim : Int, hidden_dim : Int, s
   for i in 0..<hidden_dim {
     bias[i] = rand_double(seed + 200 + i) * 0.1
   }
-  { input_dim, output_dim, hidden_dim, weights, bias }
+  { input_dim, output_dim, hidden_dim, weights, bias, }
 }
 
+///|
 /// Generator 前向 / Generator forward.
-pub fn generator_forward(net : GeneratorNet, input : Array[Double]) -> Array[Double] {
+pub fn generator_forward(
+  net : GeneratorNet,
+  input : Array[Double],
+) -> Array[Double] {
   let result : Array[Double] = Array::make(net.output_dim, 0.0)
   let hidden : Array[Double] = Array::make(net.hidden_dim, 0.0)
   for i in 0..<net.hidden_dim {
@@ -858,15 +1133,24 @@ pub fn generator_forward(net : GeneratorNet, input : Array[Double]) -> Array[Dou
   result
 }
 
+///|
 /// Generator 损失 / Generator loss.
 pub fn generator_loss(fake_disc : Double) -> Double {
   let eps = 0.000000001
   -log(fake_disc + eps)
 }
 
+///|
 /// 构造 Discriminator 网络 / Build discriminator network.
-pub fn make_discriminator_net(input_dim : Int, hidden_dim : Int, seed : Int) -> DiscriminatorNet {
-  let weights : Array[Array[Double]] = Array::make(2, Array::make(hidden_dim, 0.0))
+pub fn make_discriminator_net(
+  input_dim : Int32,
+  hidden_dim : Int32,
+  seed : Int32,
+) -> DiscriminatorNet {
+  let weights : Array[Array[Double]] = Array::make(
+    2,
+    Array::make(hidden_dim, 0.0),
+  )
   weights[0] = Array::make(input_dim, 0.0)
   for i in 0..<input_dim {
     weights[0][i] = rand_double(seed + i * 3) * 2.0 - 1.0
@@ -879,11 +1163,15 @@ pub fn make_discriminator_net(input_dim : Int, hidden_dim : Int, seed : Int) -> 
   for i in 0..<hidden_dim {
     bias[i] = rand_double(seed + 150 + i * 3) * 0.1
   }
-  { input_dim, hidden_dim, weights, bias }
+  { input_dim, hidden_dim, weights, bias, }
 }
 
+///|
 /// Discriminator 前向 / Discriminator forward.
-pub fn discriminator_forward(net : DiscriminatorNet, input : Array[Double]) -> Double {
+pub fn discriminator_forward(
+  net : DiscriminatorNet,
+  input : Array[Double],
+) -> Double {
   let hidden : Array[Double] = Array::make(net.hidden_dim, 0.0)
   for i in 0..<net.hidden_dim {
     let mut sum = 0.0
@@ -906,14 +1194,19 @@ pub fn discriminator_forward(net : DiscriminatorNet, input : Array[Double]) -> D
   sigmoid(sum)
 }
 
+///|
 /// Discriminator 损失 / Discriminator loss.
 pub fn discriminator_loss(d_real : Double, d_fake : Double) -> Double {
   let eps = 0.000000001
   -(log(d_real + eps) + log(1.0 - d_fake + eps))
 }
 
+///|
 /// 模式崩溃检查 / Mode collapse check.
-pub fn mode_collapse_check(samples : Array[Array[Double]], threshold : Double) -> Bool {
+pub fn mode_collapse_check(
+  samples : Array[Array[Double]],
+  threshold : Double,
+) -> Bool {
   let n = samples.length()
   if n < 2 {
     return false
@@ -941,8 +1234,12 @@ pub fn mode_collapse_check(samples : Array[Array[Double]], threshold : Double) -
   total_var < threshold
 }
 
+///|
 /// Inception Score 简化版 / Simplified Inception score.
-pub fn inception_score_simple(samples : Array[Array[Double]], num_classes : Int) -> Double {
+pub fn inception_score_simple(
+  samples : Array[Array[Double]],
+  num_classes : Int32,
+) -> Double {
   let n = samples.length()
   if n == 0 || num_classes == 0 {
     return 0.0
@@ -969,14 +1266,19 @@ pub fn inception_score_simple(samples : Array[Array[Double]], num_classes : Int)
     }
     for c in 0..<num_classes {
       let eps = 0.000000001
-      kl_sum = kl_sum + p[c] * (log(p[c] + eps) - log(p_mean[c] / n.to_double() + eps))
+      kl_sum = kl_sum +
+        p[c] * (log(p[c] + eps) - log(p_mean[c] / n.to_double() + eps))
     }
   }
   exp(kl_sum / n.to_double())
 }
 
+///|
 /// FID Score 简化版 / Simplified FID score.
-pub fn fid_score_simple(real : Array[Array[Double]], fake : Array[Array[Double]]) -> Double {
+pub fn fid_score_simple(
+  real : Array[Array[Double]],
+  fake : Array[Array[Double]],
+) -> Double {
   let nr = real.length()
   let nf = fake.length()
   if nr == 0 || nf == 0 {
@@ -1028,10 +1330,15 @@ pub fn fid_score_simple(real : Array[Array[Double]], fake : Array[Array[Double]]
   diff_sq + trace_r + trace_f
 }
 
+///|
 /// 生成文本 / Generate text.
-pub fn generate_text(model : TextGANModel, prompt : Array[Int], step : Int) -> Array[Int] {
+pub fn generate_text(
+  model : TextGANModel,
+  prompt : Array[Int32],
+  step : Int32,
+) -> Array[Int32] {
   let noise = noise_normal(model.seq_len, 0.0, 1.0, model.seed + step)
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for i in 0..<prompt.length() {
     result.push(prompt[i])
   }
@@ -1039,7 +1346,13 @@ pub fn generate_text(model : TextGANModel, prompt : Array[Int], step : Int) -> A
     let idx = result.length() - prompt.length()
     if idx >= 0 && idx < noise.length() {
       let v = ((sigmoid(noise[idx]) + 0.5) * model.vocab_size.to_double()).to_int()
-      let clamped = if v < 0 { 0 } else if v >= model.vocab_size { model.vocab_size - 1 } else { v }
+      let clamped = if v < 0 {
+        0
+      } else if v >= model.vocab_size {
+        model.vocab_size - 1
+      } else {
+        v
+      }
       result.push(clamped)
     } else {
       result.push(0)
@@ -1048,9 +1361,17 @@ pub fn generate_text(model : TextGANModel, prompt : Array[Int], step : Int) -> A
   result
 }
 
+///|
 /// 简化图像生成 / Simplified image generation.
-pub fn generate_image_simple(width : Int, height : Int, seed : Int) -> Array[Array[Double]] {
-  let result : Array[Array[Double]] = Array::make(height, Array::make(width, 0.0))
+pub fn generate_image_simple(
+  width : Int32,
+  height : Int32,
+  seed : Int32,
+) -> Array[Array[Double]] {
+  let result : Array[Array[Double]] = Array::make(
+    height,
+    Array::make(width, 0.0),
+  )
   for i in 0..<height {
     for j in 0..<width {
       let r = rand_double(seed + i * width + j)
@@ -1060,13 +1381,23 @@ pub fn generate_image_simple(width : Int, height : Int, seed : Int) -> Array[Arr
   result
 }
 
+///|
 /// 生成序列 / Generate sequence.
-pub fn generate_sequence(model : AutoregressiveModel, prompt : Array[Int], step : Int) -> Array[Int] {
+pub fn generate_sequence(
+  model : AutoregressiveModel,
+  prompt : Array[Int32],
+  step : Int32,
+) -> Array[Int32] {
   autoregressive_sample(model, prompt, step)
 }
 
+///|
 /// 条件生成 / Conditional generation.
-pub fn conditional_generate(model : GANModel, condition : Array[Double], noise : Array[Double]) -> Array[Double] {
+pub fn conditional_generate(
+  model : GANModel,
+  condition : Array[Double],
+  noise : Array[Double],
+) -> Array[Double] {
   let n = model.gen_dim
   let result : Array[Double] = Array::make(n, 0.0)
   for i in 0..<n {
@@ -1084,8 +1415,13 @@ pub fn conditional_generate(model : GANModel, condition : Array[Double], noise :
   result
 }
 
+///|
 /// 受控生成 / Controlled generation.
-pub fn controlled_generate(model : GANModel, noise : Array[Double], control : Array[Double]) -> Array[Double] {
+pub fn controlled_generate(
+  model : GANModel,
+  noise : Array[Double],
+  control : Array[Double],
+) -> Array[Double] {
   let base = gan_generate(model, noise)
   let n = base.length()
   let result : Array[Double] = Array::make(n, 0.0)
@@ -1096,6 +1432,7 @@ pub fn controlled_generate(model : GANModel, noise : Array[Double], control : Ar
   result
 }
 
+///|
 /// 模块标识 / Module identifier.
 pub fn generate_id() -> String {
   "learncore/generative"

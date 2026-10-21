@@ -9,6 +9,7 @@
 ///===
 /// Q-Learning
 
+///|
 /// Q 表更新 / Q-table update.
 /// Q(s,a) <- Q(s,a) + alpha * (r + gamma * max_a' Q(s',a') - Q(s,a))
 pub fn q_learning_update(
@@ -16,20 +17,21 @@ pub fn q_learning_update(
   reward : Double,
   max_next_q : Double,
   alpha : Double,
-  gamma : Double
+  gamma : Double,
 ) -> Double {
   q_value + alpha * (reward + gamma * max_next_q - q_value)
 }
 
+///|
 /// Q 表一步 / Q-table single step.
 pub fn q_table_step(
   q_table : Array[Array[Double]],
-  state : Int,
-  action : Int,
+  state : Int32,
+  action : Int32,
   reward : Double,
-  next_state : Int,
+  next_state : Int32,
   alpha : Double,
-  gamma : Double
+  gamma : Double,
 ) -> Array[Array[Double]] {
   let n_states = q_table.length()
   if state < 0 || state >= n_states || next_state < 0 || next_state >= n_states {
@@ -52,7 +54,9 @@ pub fn q_table_step(
     let row : Array[Double] = []
     for j in 0..<q_table[i].length() {
       if i == state && j == action {
-        row.push(q_learning_update(q_table[i][j], reward, max_next_q, alpha, gamma))
+        row.push(
+          q_learning_update(q_table[i][j], reward, max_next_q, alpha, gamma),
+        )
       } else {
         row.push(q_table[i][j])
       }
@@ -62,11 +66,9 @@ pub fn q_table_step(
   result
 }
 
+///|
 /// epsilon-贪心选择 / Epsilon-greedy action selection.
-pub fn epsilon_greedy(
-  q_values : Array[Double],
-  epsilon : Double
-) -> Int {
+pub fn epsilon_greedy(q_values : Array[Double], epsilon : Double) -> Int32 {
   let n = q_values.length()
   if n == 0 {
     return 0
@@ -88,6 +90,7 @@ pub fn epsilon_greedy(
 ///===
 /// SARSA
 
+///|
 /// SARSA 更新 / SARSA update.
 /// Q(s,a) <- Q(s,a) + alpha * (r + gamma * Q(s',a') - Q(s,a))
 pub fn sarsa_update(
@@ -95,7 +98,7 @@ pub fn sarsa_update(
   reward : Double,
   next_q : Double,
   alpha : Double,
-  gamma : Double
+  gamma : Double,
 ) -> Double {
   q_value + alpha * (reward + gamma * next_q - q_value)
 }
@@ -103,15 +106,20 @@ pub fn sarsa_update(
 ///===
 /// 策略梯度
 
+///|
 /// 策略梯度更新 / Policy gradient update.
 /// theta <- theta + alpha * grad_log_prob * advantage
 pub fn policy_gradient_update(
   theta : Array[Double],
   grad_log_prob : Array[Double],
   advantage : Double,
-  alpha : Double
+  alpha : Double,
 ) -> Array[Double] {
-  let n = if theta.length() < grad_log_prob.length() { theta.length() } else { grad_log_prob.length() }
+  let n = if theta.length() < grad_log_prob.length() {
+    theta.length()
+  } else {
+    grad_log_prob.length()
+  }
   let result : Array[Double] = Array::make(theta.length(), 0.0)
   for i in 0..<theta.length() {
     if i < n {
@@ -123,17 +131,19 @@ pub fn policy_gradient_update(
   result
 }
 
+///|
 /// 优势函数 / Advantage function (A = Q - V).
 pub fn advantage(q_value : Double, value : Double) -> Double {
   q_value - value
 }
 
+///|
 /// 广义优势估计 / Generalized Advantage Estimation (GAE, simplified).
 pub fn gae(
   rewards : Array[Double],
   values : Array[Double],
   gamma : Double,
-  lambda : Double
+  lambda : Double,
 ) -> Array[Double] {
   let n = rewards.length()
   if n == 0 {
@@ -158,6 +168,7 @@ pub fn gae(
 ///===
 /// Actor-Critic
 
+///|
 /// Actor-Critic 配置 / Actor-Critic config.
 pub struct ActorCriticConfig {
   actor_lr : Double
@@ -165,11 +176,17 @@ pub struct ActorCriticConfig {
   gamma : Double
 }
 
+///|
 /// 构造 Actor-Critic 配置 / Create Actor-Critic config.
-pub fn make_actor_critic_config(actor_lr : Double, critic_lr : Double, gamma : Double) -> ActorCriticConfig {
-  { actor_lr, critic_lr, gamma }
+pub fn make_actor_critic_config(
+  actor_lr : Double,
+  critic_lr : Double,
+  gamma : Double,
+) -> ActorCriticConfig {
+  { actor_lr, critic_lr, gamma, }
 }
 
+///|
 /// Critic 更新 / Critic (value) update.
 /// V(s) <- V(s) + alpha * delta
 /// delta = r + gamma * V(s') - V(s)
@@ -177,18 +194,19 @@ pub fn critic_update(
   value : Double,
   reward : Double,
   next_value : Double,
-  config : ActorCriticConfig
+  config : ActorCriticConfig,
 ) -> (Double, Double) {
   let delta = reward + config.gamma * next_value - value
   (value + config.critic_lr * delta, delta)
 }
 
+///|
 /// Actor 更新 / Actor update.
 pub fn actor_update(
   theta : Array[Double],
   grad_log_prob : Array[Double],
   delta : Double,
-  config : ActorCriticConfig
+  config : ActorCriticConfig,
 ) -> Array[Double] {
   policy_gradient_update(theta, grad_log_prob, delta, config.actor_lr)
 }
@@ -196,33 +214,36 @@ pub fn actor_update(
 ///===
 /// DQN
 
+///|
 /// DQN 经验回放 / DQN experience replay buffer.
 pub struct ExperienceReplay {
-  capacity : Int
-  buffer : Array[(Array[Double], Int, Double, Array[Double], Bool)]
+  capacity : Int32
+  buffer : Array[(Array[Double], Int32, Double, Array[Double], Bool)]
 }
 
+///|
 /// 构造经验回放 / Create experience replay.
-pub fn make_experience_replay(capacity : Int) -> ExperienceReplay {
-  { capacity, buffer: [] }
+pub fn make_experience_replay(capacity : Int32) -> ExperienceReplay {
+  { capacity, buffer: [], }
 }
 
+///|
 /// 添加经验 / Add experience.
 pub fn add_experience(
   replay : ExperienceReplay,
   state : Array[Double],
-  action : Int,
+  action : Int32,
   reward : Double,
   next_state : Array[Double],
-  done : Bool
+  done : Bool,
 ) -> ExperienceReplay {
-  let new_buffer : Array[(Array[Double], Int, Double, Array[Double], Bool)] = []
+  let new_buffer : Array[(Array[Double], Int32, Double, Array[Double], Bool)] = []
   for i in 0..<replay.buffer.length() {
     new_buffer.push(replay.buffer[i])
   }
   new_buffer.push((state, action, reward, next_state, done))
   let result = if new_buffer.length() > replay.capacity {
-    let trimmed : Array[(Array[Double], Int, Double, Array[Double], Bool)] = []
+    let trimmed : Array[(Array[Double], Int32, Double, Array[Double], Bool)] = []
     let start = new_buffer.length() - replay.capacity
     for i in start..<new_buffer.length() {
       trimmed.push(new_buffer[i])
@@ -231,25 +252,31 @@ pub fn add_experience(
   } else {
     new_buffer
   }
-  { capacity: replay.capacity, buffer: result }
+  { capacity: replay.capacity, buffer: result, }
 }
 
+///|
 /// 经验回放大小 / Replay buffer size.
-pub fn replay_size(replay : ExperienceReplay) -> Int {
+pub fn replay_size(replay : ExperienceReplay) -> Int32 {
   replay.buffer.length()
 }
 
 ///===
 /// DDPG
 
+///|
 /// DDPG 软更新 / DDPG soft update.
 /// target <- tau * source + (1 - tau) * target
 pub fn soft_update(
   target_params : Array[Double],
   source_params : Array[Double],
-  tau : Double
+  tau : Double,
 ) -> Array[Double] {
-  let n = if target_params.length() < source_params.length() { target_params.length() } else { source_params.length() }
+  let n = if target_params.length() < source_params.length() {
+    target_params.length()
+  } else {
+    source_params.length()
+  }
   let result : Array[Double] = Array::make(target_params.length(), 0.0)
   for i in 0..<target_params.length() {
     if i < n {
@@ -264,12 +291,13 @@ pub fn soft_update(
 ///===
 /// PPO
 
+///|
 /// PPO 截断目标 / PPO clipped objective.
 /// L = min(ratio * A, clip(ratio, 1-eps, 1+eps) * A)
 pub fn ppo_clipped_loss(
   ratio : Double,
   advantage_val : Double,
-  epsilon : Double
+  epsilon : Double,
 ) -> Double {
   let clipped_ratio = if ratio < 1.0 - epsilon {
     1.0 - epsilon
@@ -280,9 +308,14 @@ pub fn ppo_clipped_loss(
   }
   let unclipped = ratio * advantage_val
   let clipped = clipped_ratio * advantage_val
-  if unclipped < clipped { unclipped } else { clipped }
+  if unclipped < clipped {
+    unclipped
+  } else {
+    clipped
+  }
 }
 
+///|
 /// PPO 策略更新 / PPO policy update (simplified).
 pub fn ppo_update(
   theta : Array[Double],
@@ -290,7 +323,7 @@ pub fn ppo_update(
   advantage_val : Double,
   ratio : Double,
   epsilon : Double,
-  lr : Double
+  lr : Double,
 ) -> Array[Double] {
   let loss = ppo_clipped_loss(ratio, advantage_val, epsilon)
   let result : Array[Double] = Array::make(theta.length(), 0.0)
@@ -307,6 +340,7 @@ pub fn ppo_update(
 ///===
 /// 奖励
 
+///|
 /// 折扣累积奖励 / Discounted cumulative reward.
 /// R = sum(gamma^t * r_t)
 pub fn discounted_return(rewards : Array[Double], gamma : Double) -> Double {
@@ -319,6 +353,7 @@ pub fn discounted_return(rewards : Array[Double], gamma : Double) -> Double {
   total
 }
 
+///|
 /// 奖励归一化 / Reward normalization.
 pub fn normalize_rewards(rewards : Array[Double]) -> Array[Double] {
   let n = rewards.length()
@@ -348,9 +383,9 @@ pub fn normalize_rewards(rewards : Array[Double]) -> Array[Double] {
   }
 }
 
+///|
 ///===
 /// ID
-
 pub fn reinforcement_id() -> String {
   "learncore/reinforcement"
 }

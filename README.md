@@ -1,11 +1,24 @@
 # DataVerse 数据算子库
 
-> **版本**：0.1.0-dev (S0.1 骨架)  
-> **日期**：2026-10-17  
-> **语言**：MoonBit v0.1.20260920  
-> **状态**：Phase 0 地基固化期 · S0.1 骨架已交付
+> **版本**：0.1.0-dev (重构+workspace+proof)  
+> **日期**：2026-10-21  
+> **语言**：MoonBit v0.1.20261020  
+> **状态**：全面重构完成 · 7 workspace 子项目 · 1626 tests passed
 
 **DataVerse** 是一套面向 AI 的**一等数据实体 + 全域数据算法算子引擎**。把数据从"管道里的过客"提升为"一等实体"，把算子从"上层脚本"下沉为"内核原生算子"，所有算子统一编码进 **DataIR**，配套 **DOSI** 符号语义索引管控 AI 上下文。
+
+## 项目统计 / Project Stats
+
+| 指标 | 数值 |
+|------|------|
+| 源码行数 | ~1,001,479 行 |
+| MoonBit 文件 | 1,254 个 .mbt 文件 |
+| 测试 | 1,626 passed, 0 failed |
+| Workspace 成员 | 7 个独立子项目 |
+| `_common` 函数 | 55+ 共享函数 |
+| 语义包 | 825 个 (20 领域) |
+| Warnings | 62 (语义包 0 warning) |
+| Errors | 0 |
 
 ## 核心原则 / Core Principles
 
@@ -55,13 +68,13 @@ Phase 0 地基固化期，分 7 个 Sprint。详见 [docs/roadmap.md](./docs/roa
 
 | Sprint | 内容 | 状态 |
 |--------|------|------|
-| S0.1 | 项目骨架 + Roadmap | ✅ |
-| S0.2 | kernel 四模式执行内核 | ⏸ |
-| S0.3 | 基础数据层 | ⏸ |
-| S0.4 | opcore 框架 + 三类算子 | ⏸ |
-| S0.5 | datatemporal 数据结构 | ⏸ |
-| S0.6 | DataIR 基础语法 | ⏸ |
-| S0.7 | DOSI 基础设施原型 | ⏸ |
+| Phase 0-12 | 基础架构 + 100K 行 + 1528 tests | ✅ |
+| Phase 13-22 | 语义包扩展 + 825 包 + 180 万行 | ✅ |
+| 全面重构 | 委托 @_common + 方法链 + 性能优化 | ✅ |
+| Warning 治理 | 506→62 (-88%) | ✅ |
+| Workspace | 7 个独立子项目 (moon.work) | ✅ |
+| MoonBit 惯用法 | for x in / guard / proof 测试 | ✅ |
+| 数学函数扩展 | _common 55+ 函数 (log/exp/sin/cos...) | ✅ |
 
 ## 开发规则 / Development Rules
 
@@ -70,9 +83,34 @@ Phase 0 地基固化期，分 7 个 Sprint。详见 [docs/roadmap.md](./docs/roa
 ## 构建 / Build
 
 ```bash
-moon check    # 类型检查
-moon test     # 运行测试
+moon check    # 类型检查 (0 errors)
+moon test     # 运行测试 (1626 passed)
 moon build    # 构建
+
+# Workspace 子项目
+moon run apps/cli/cmd/main --target native       # CLI 工具
+moon run apps/proof/cmd/main --target native     # 证明验证工具
+moon run apps/stats/cmd/main --target native     # 统计分析工具
+moon run apps/info/cmd/main --target native      # 项目信息
+moon run apps/extcore/cmd/main --target native   # 语义包探索
+```
+
+## Workspace 结构
+
+```
+DataVerse/
+  moon.work              # workspace 清单
+  moon.mod               # 主库 dataverse
+  src/                   # 主库源码 (825 语义包 + 旧代码)
+  apps/
+    cli/                 # CLI 工具 (cmd/main)
+    bench/               # 基准测试工具
+    proof/               # 证明验证工具 (20+ 断言)
+    extcore/             # 语义包探索工具
+    info/                # 项目信息工具
+    stats/               # 统计分析工具 (5 数据集)
+  tests/                  # 测试目录说明
+  examples/              # 示例目录
 ```
 
 ## 变更记录 / Changelog
@@ -89,4 +127,4 @@ See [DataVerse-数据算子库-ARCHITECTURE.md](./DataVerse-数据算子库-ARCH
 
 ---
 
-> DataVerse v0.1.0-dev | MoonBit | 2026-10-17
+> DataVerse v0.1.0-dev | MoonBit v0.1.20261020 | 2026-10-21 | 1626 tests | 7 workspace members

@@ -223,7 +223,7 @@ pub struct SlotFiller {
 
 /// 构造槽位填充器
 pub fn make_slot_filler(slot_patterns : Array[(String, Array[String])]) -> SlotFiller {
-  { slot_patterns }
+  { slot_patterns, }
 }
 
 /// 填充槽位

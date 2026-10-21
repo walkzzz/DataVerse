@@ -662,7 +662,7 @@ pub fn make_metadata() -> Metadata {
 /// 元数据提取 / Extract metadata from asset.
 pub fn metadata_extract(asset : DataAsset) -> Metadata {
   let fields = asset.metadata + [("id", asset.id), ("name", asset.name), ("type", asset.asset_type), ("hash", asset.content_hash)]
-  { fields }
+  { fields, }
 }
 
 /// 元数据校验 / Validate metadata.

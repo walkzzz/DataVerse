@@ -822,7 +822,7 @@ pub fn translate_batch(t : Translator, texts : Array[String]) -> Array[String] {
 
 /// 构造 QA / Build QA system.
 pub fn make_qa(context : String) -> QA {
-  { context }
+  { context, }
 }
 
 /// QA 回答 / Answer question.

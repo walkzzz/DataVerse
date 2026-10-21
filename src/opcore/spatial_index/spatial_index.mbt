@@ -451,7 +451,7 @@ pub fn quadtree_range_query(tree : QuadTree, center : SIPoint, radius : Double) 
 pub fn kdtree_insert(tree : KDTree, entry : SIEntry) -> KDTree {
   let entries = tree.entries.copy()
   entries.push(entry)
-  { entries }
+  { entries, }
 }
 
 /// KDTree 搜索 / Search KD-tree by bbox.

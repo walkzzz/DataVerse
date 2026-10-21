@@ -399,7 +399,7 @@ pub struct GroverOracle {
 
 /// 构造 Grover oracle
 pub fn make_grover_oracle(marked : Array[Int]) -> GroverOracle {
-  { marked }
+  { marked, }
 }
 
 /// Oracle 判断是否标记

@@ -5,4 +5,5 @@ members = [
   "./apps/proof",
   "./apps/extcore",
   "./apps/info",
+  "./apps/stats",
 ]
